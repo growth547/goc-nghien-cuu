@@ -1,53 +1,135 @@
+<style>
+  #bk-bar{position:sticky;top:0;z-index:20;margin-bottom:12px;padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--background);font-size:.9rem;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between}
+  #bk-list details{border-bottom:1px solid var(--border);padding:4px 0}
+  #bk-list summary{cursor:pointer;font-weight:600;font-size:.9rem;padding:6px 0}
+  .bk-c{border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin:8px 0}
+  .bk-c .bk-head{display:flex;gap:6px;align-items:flex-start;justify-content:space-between}
+  .bk-c .bk-tools{display:flex;gap:4px;flex:none}
+  .bk-c .bk-tools button,.bk-mini{border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-size:.8rem;background:transparent;cursor:pointer;min-width:32px;min-height:32px}
+  .bk-c ol{margin:6px 0 0;padding-left:0;list-style:none}
+  .bk-c li{display:flex;gap:6px;align-items:flex-start;padding:3px 0;font-size:.85rem}
+  .bk-c li.off span.t{text-decoration:line-through;opacity:.6}
+  .bk-c li input[type=text]{flex:1;min-width:0}
+  #bk-q table,#bk-thesis table{border-collapse:collapse;width:100%;font-size:.85rem}
+  #bk-q th,#bk-q td,#bk-thesis th,#bk-thesis td{border:1px solid var(--border);padding:4px 6px;vertical-align:top}
+  #bk-q td.c{text-align:center;white-space:nowrap}
+  #bk-q td.s{min-width:10rem}
+  #bk-q td.p{min-width:4.5rem}
+  .bk-warn{margin:0;padding-left:18px;font-size:.88rem}
+  .bk-warn li{margin:4px 0}
+  .bk-box textarea{min-height:16rem;white-space:pre;overflow:auto}
+  .bk-steps{margin:0;padding-left:20px;font-size:.9rem}
+  .bk-hide{display:none}
+</style>
+
+<div id="bk-bar" role="status" aria-live="polite"><span id="bk-bar-text">Chưa chọn khái niệm nào</span><a href="#bk-out-anchor" class="text-accent underline underline-offset-4" style="font-size:.85rem">Xem bảng hỏi</a></div>
+
 <div class="tool">
   <form class="panel" id="bk-form" novalidate>
-    <div class="field"><label>1. Chọn các khái niệm trong mô hình</label>
-      <input id="bk-search" type="search" placeholder="Gõ tiếng Anh hoặc tiếng Việt: trust, hai long, intention to use…">
-      <small>Gõ tên khái niệm, có dấu hay không đều được; nhiều khái niệm thì ngăn bằng dấu chấm phẩy, ví dụ “trust; satisfaction; loyalty”. Mỗi khái niệm lấy nguyên biến quan sát từ thang đo gốc đã kiểm chứng nguồn.</small>
-      <label class="btn ghost" style="align-self:flex-start;cursor:pointer;margin-top:6px">Tải ảnh mô hình nghiên cứu<input id="bk-img" type="file" accept="image/*" hidden></label>
-      <small id="bk-img-status">Ảnh được đọc ngay trên máy bạn, không gửi lên máy chủ. Mỗi ô khái niệm trong ảnh sẽ được gợi ý thang đo gần nghĩa.</small></div>
-    <div id="bk-list" style="max-height:340px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:6px 10px"></div>
+    <div class="field"><label for="bk-aud">1. Đối tượng khảo sát (bắt buộc)</label>
+      <select id="bk-aud" required>
+        <option value="">Chọn đối tượng…</option>
+        <option value="td">Người tiêu dùng, người dùng</option>
+        <option value="ld">Người lao động</option>
+        <option value="sv">Sinh viên</option>
+      </select>
+      <small>Quyết định câu sàng lọc, cách xưng hô (Anh/Chị hoặc Bạn) và bộ câu hỏi thông tin chung.</small></div>
 
-    <div class="field" style="margin-top:14px"><label>2. Điền đối tượng nghiên cứu vào câu hỏi</label>
+    <div class="field"><label for="bk-search">2. Chọn các khái niệm trong mô hình</label>
+      <input id="bk-search" type="search" placeholder="Ví dụ: trust; hai long; intention to use">
+      <small>Gõ tiếng Anh hoặc tiếng Việt, có dấu hay không đều được; nhiều khái niệm thì ngăn bằng dấu chấm phẩy. Mỗi khái niệm lấy nguyên biến quan sát từ thang đo gốc đã kiểm chứng nguồn.</small>
+      <label class="btn ghost" style="cursor:pointer;margin-top:6px">Tải ảnh mô hình nghiên cứu<input id="bk-img" type="file" accept="image/*" hidden></label>
+      <small id="bk-img-status">Ảnh được đọc ngay trên máy bạn, không gửi lên máy chủ. Mỗi ô khái niệm trong ảnh sẽ được gợi ý thang đo gần nghĩa.</small></div>
+    <div id="bk-list"></div>
+
+    <div class="field"><label>3. Câu hỏi đã chọn</label>
+      <small>Thứ tự trên phiếu theo danh sách này. Biến phụ thuộc nên xếp cuối. Bỏ dấu tích để bỏ một biến, bấm Sửa để chỉnh câu chữ; câu đã sửa được ghi là “điều chỉnh” trong bảng mã hoá và chương 3.</small>
+      <div id="bk-chosen"></div></div>
+
+    <div class="field"><label>4. Điền đối tượng nghiên cứu vào câu hỏi</label>
       <div id="bk-ph"><small>Chọn khái niệm trước, các chỗ cần điền (ví dụ [hệ thống], [thương hiệu]) sẽ hiện ở đây.</small></div></div>
 
     <div class="row">
-      <div class="field"><label for="bk-scale">Thang trả lời</label>
-        <select id="bk-scale"><option value="5" selected>Likert 5 mức (đồng nhất)</option><option value="7">Likert 7 mức (đồng nhất)</option><option value="orig">Giữ thang gốc của từng thang đo</option></select>
-        <small>Thang đo gốc dùng tần suất hay mức độ đúng (ví dụ PSS-10, GSE) luôn giữ thang gốc.</small></div>
-      <div class="field"><label for="bk-method">Phân tích chính</label>
-        <select id="bk-method"><option value="pls" selected>PLS-SEM (SmartPLS)</option><option value="spss">EFA + hồi quy (SPSS)</option></select></div>
+      <div class="field" style="flex-basis:240px"><label for="bk-scale">Thang trả lời cho câu đồng ý</label>
+        <select id="bk-scale"><option value="5">Likert 5 mức</option><option value="7">Likert 7 mức</option><option value="orig">Giữ số mức của bản gốc</option></select>
+        <small>Thang tần suất, mức độ đúng (PSS-10, DASS-21, UWES…) luôn giữ nhãn gốc.</small></div>
+      <div class="field" style="flex-basis:240px"><label for="bk-method">Phân tích chính</label>
+        <select id="bk-method"><option value="pls">PLS-SEM (SmartPLS)</option><option value="spss">EFA và hồi quy (SPSS)</option></select></div>
     </div>
     <div class="row">
-      <div class="field"><label for="bk-arrows">Số mũi tên nhiều nhất trỏ vào một khái niệm</label>
-        <input id="bk-arrows" type="number" min="1" max="30" value="1"><small id="bk-arrows-hint">Đếm trên mô hình: khái niệm phụ thuộc nhận nhiều mũi tên nhất.</small></div>
+      <div class="field"><label for="bk-arrows" id="bk-arrows-label">Số mũi tên nhiều nhất trỏ vào một khái niệm</label>
+        <input id="bk-arrows" type="number" min="1" step="1" inputmode="numeric" value="1">
+        <small id="bk-arrows-hint"></small></div>
       <div class="field"><label for="bk-drop">Dự phòng phiếu bị loại (%)</label>
-        <input id="bk-drop" type="number" min="0" max="50" value="15"></div>
+        <input id="bk-drop" type="number" min="0" max="50" step="1" inputmode="numeric" value="15">
+        <small id="bk-drop-hint">Từ 0 đến 50%. Phiếu sai câu kiểm tra chú ý, điền thiếu hoặc không qua sàng lọc.</small></div>
+    </div>
+
+    <div class="field"><label>5. Thông tin trên phiếu</label></div>
+    <div class="row">
+      <div class="field"><label for="bk-topic">Tên đề tài</label>
+        <input id="bk-topic" type="text" placeholder="Ví dụ: Các yếu tố ảnh hưởng tới ý định mua mỹ phẩm trực tuyến"></div>
+      <div class="field"><label for="bk-who">Người thực hiện</label>
+        <input id="bk-who" type="text" placeholder="Ví dụ: Nguyễn Văn A, sinh viên năm 4"></div>
     </div>
     <div class="row">
-      <div class="field"><label for="bk-topic">Tên đề tài (cho lời mở đầu)</label>
-        <input id="bk-topic" type="text" placeholder="Ví dụ: Các yếu tố ảnh hưởng tới ý định sử dụng ví điện tử của sinh viên"></div>
-      <div class="field"><label for="bk-who">Người thực hiện</label>
-        <input id="bk-who" type="text" placeholder="Ví dụ: sinh viên năm 4, Trường Đại học …"></div>
+      <div class="field"><label for="bk-org">Trường, khoa</label>
+        <input id="bk-org" type="text" placeholder="Ví dụ: Khoa Marketing, Trường Đại học …"></div>
+      <div class="field"><label for="bk-contact">Liên hệ của người thực hiện</label>
+        <input id="bk-contact" type="text" placeholder="Email hoặc số điện thoại"></div>
     </div>
-    <div class="field"><label>Thêm vào bảng hỏi</label>
-      <label class="check"><input id="bk-screen" type="checkbox" checked> Câu hỏi sàng lọc (đã từng sử dụng/trải nghiệm đối tượng chưa)</label>
-      <label class="check"><input id="bk-attn" type="checkbox" checked> Câu kiểm tra sự chú ý (để lọc phiếu điền bừa)</label>
-      <div id="bk-demo" class="row" style="gap:12px;font-size:.9rem;flex-wrap:wrap"></div></div>
+    <div class="field">
+      <label class="check"><input id="bk-screen" type="checkbox" checked aria-label="Thêm câu hỏi sàng lọc"> Câu hỏi sàng lọc (người không đúng đối tượng dừng khảo sát)</label>
+      <textarea id="bk-screen-text" rows="2" style="min-height:3.5rem;font-family:inherit;font-size:.9rem" aria-label="Nội dung câu sàng lọc"></textarea>
+      <small id="bk-screen-hint">Sửa được. Phần trong ngoặc vuông là chỗ bạn phải điền.</small>
+      <label class="check"><input id="bk-attn" type="checkbox" checked aria-label="Thêm câu kiểm tra sự chú ý"> Câu kiểm tra sự chú ý (để lọc phiếu điền bừa)</label>
+      <label class="check"><input id="bk-names" type="checkbox" checked aria-label="Hiện tên khái niệm trên phiếu"> Hiện tên khái niệm làm tiêu đề từng phần trên phiếu</label>
+      <small>Bỏ tích nếu không muốn người trả lời biết đang đo khái niệm gì; phiếu chỉ ghi “Phần 1, Phần 2…”.</small></div>
+    <div class="field"><label>Câu hỏi thông tin chung</label>
+      <div id="bk-demo" style="display:flex;flex-direction:column;gap:2px"><small>Chọn đối tượng khảo sát trước.</small></div></div>
   </form>
 
   <div class="panel" id="bk-out" aria-live="polite"></div>
 </div>
 
-<div class="panel" style="margin-top:24px">
-  <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+<div class="panel" style="margin-top:24px" id="bk-out-anchor">
+  <div class="row" style="justify-content:space-between;align-items:center;gap:8px">
     <strong>Bảng hỏi</strong>
-    <span class="row" style="gap:8px;flex-wrap:wrap">
+    <span class="row" style="gap:8px">
       <button type="button" class="btn" id="bk-doc">Tải bảng hỏi (Word)</button>
-      <button type="button" class="btn ghost" id="bk-csv">Tải bảng mã hoá (Excel)</button>
+      <button type="button" class="btn ghost" id="bk-gform">Tạo Google Form</button>
+      <button type="button" class="btn ghost" id="bk-gdf">Xuất sang Genius Data (GDF)</button>
+      <button type="button" class="btn ghost" id="bk-csv">Bảng mã hoá (CSV, mở bằng Excel)</button>
       <button type="button" class="btn ghost" id="bk-copy-q">Sao chép dạng chữ</button>
+      <button type="button" class="btn ghost" id="bk-link">Sao chép link</button>
     </span>
   </div>
-  <div id="bk-q" style="line-height:1.6;margin-top:12px"></div>
+  <div id="bk-gform-box" class="bk-box bk-hide">
+    <p style="margin:0"><strong>Tạo Google Form bằng Apps Script</strong></p>
+    <ol class="bk-steps">
+      <li>Mở <a class="text-accent underline" href="https://script.google.com/home/projects/create" target="_blank" rel="noopener">script.google.com</a> (tạo dự án mới) bằng tài khoản Google của bạn.</li>
+      <li>Xoá đoạn mã có sẵn, dán đoạn dưới đây vào.</li>
+      <li>Bấm Chạy (hàm <code>taoBangHoi</code>).</li>
+      <li>Cấp quyền khi Google hỏi (nếu thấy “Google chưa xác minh ứng dụng này”, bấm Nâng cao rồi Đi tới dự án). Link form và bảng tính hiện trong Nhật ký thực thi.</li>
+    </ol>
+    <small>Đoạn mã chạy trong tài khoản Google của bạn; dữ liệu không đi qua máy chủ của Góc Nghiên Cứu. Mỗi khái niệm là một phần, mỗi hàng bắt đầu bằng mã biến (ví dụ “PU1. …”) để cột xuất ra khớp với SPSS. Câu trả lời tự lưu vào một Google Sheets mới.</small>
+    <textarea id="bk-gform-code" readonly aria-label="Đoạn Apps Script tạo Google Form"></textarea>
+    <button type="button" class="btn" id="bk-gform-copy">Sao chép đoạn mã</button>
+  </div>
+  <div id="bk-gdf-box" class="bk-box bk-hide">
+    <p style="margin:0"><strong>Xuất sang Genius Data (GDF)</strong></p>
+    <ol class="bk-steps">
+      <li>Bấm Sao chép.</li>
+      <li>Mở Genius Data và tạo khảo sát mới.</li>
+      <li>Dán vào phần nhập GDF.</li>
+    </ol>
+    <textarea id="bk-gdf-code" readonly aria-label="Bảng hỏi ở định dạng GDF"></textarea>
+    <span class="row" style="gap:8px;align-items:center">
+      <button type="button" class="btn" id="bk-gdf-copy">Sao chép</button>
+      <a class="text-accent underline underline-offset-4" href="https://geniusdata.io/signup?ref=lab-tool&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=tool&amp;utm_campaign=ai-lab&amp;utm_content=bo-khao-sat-gdf" target="_blank" rel="sponsored noopener">Mở Genius Data</a> <span class="text-muted-foreground" style="font-size:.85rem">(link giới thiệu)</span>
+    </span>
+  </div>
+  <div id="bk-q" style="line-height:1.6"></div>
 </div>
 
 <div class="panel" style="margin-top:24px">
@@ -56,9 +138,23 @@
     <button type="button" class="btn" id="bk-copy-t">Sao chép đoạn văn</button>
   </div>
   <div id="bk-thesis" style="line-height:1.7"></div>
-  <small class="text-muted-foreground">Phần trong ngoặc vuông là chỗ bạn tự điền theo việc đã làm thật (ví dụ số người khảo sát thử). Kiểm tra lại câu chữ trước khi đưa vào luận văn.</small>
+  <small class="text-muted-foreground">Câu trong ngoặc vuông chỉ giữ lại khi bạn đã làm việc đó thật (dịch ngược, khảo sát thử, góp ý chuyên gia), và điền số liệu thật vào. Kiểm tra lại câu chữ trước khi đưa vào luận văn.</small>
 </div>
-<p style="margin-top:20px">Xem từng thang đo đầy đủ, kèm bản gốc tiếng Anh: <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>. Cách trả lời hội đồng về phần này: <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">8 câu hội đồng hay hỏi</a>.</p>
+
+<div class="panel" style="margin-top:24px" id="checklist">
+  <strong>Thông tin cho bạn</strong>
+  <p style="margin:0">Thư viện hiện có <b id="bk-count">…</b> thang đo. Mỗi thang đo ghi nguồn gốc (bài báo, phụ lục, trang của tác giả) và được đối chiếu với bản gốc tiếng Anh; xem nguồn và câu gốc ở trang từng thang đo trong <a class="text-accent underline" href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> trước khi trích dẫn.</p>
+  <p style="margin:0">Cỡ mẫu: PLS-SEM lấy mức lớn hơn giữa G*Power (hồi quy bội, f² = 0,15, α = 0,05, power 0,80, số biến dự báo bằng số mũi tên lớn nhất trỏ vào một khái niệm) và phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018). SPSS lấy mức lớn hơn giữa G*Power và 5 quan sát cho mỗi biến (Hair và cộng sự, 2010). Số phiếu cần thu = cỡ mẫu tối thiểu ÷ (1 − tỉ lệ dự phòng).</p>
+  <p style="margin:0"><strong>Checklist trước khi nộp GVHD</strong></p>
+  <ul class="bk-warn">
+    <li>Có đủ biến phụ thuộc của mô hình, và biến phụ thuộc đứng cuối phần đo lường.</li>
+    <li>Mỗi khái niệm còn ít nhất 3 biến quan sát.</li>
+    <li>Các thang đồng ý cùng số mức và cùng chiều (1 là không đồng ý); câu đảo chiều đã ghi trong bảng mã hoá.</li>
+    <li>Câu sàng lọc khớp đối tượng khảo sát trong đề cương, không còn chỗ trống trong ngoặc vuông.</li>
+    <li>Đã khảo sát thử với vài người đúng đối tượng và sửa câu khó hiểu; chương 3 chỉ ghi những bước đã làm thật.</li>
+  </ul>
+</div>
+<p style="margin-top:20px">Cách trả lời hội đồng về phần này: <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">8 câu hội đồng hay hỏi</a>.</p>
 
 <script>
 (function(){
@@ -84,7 +180,42 @@
   const PH_RE=/\[([^\]]+)\]/g;
   // Placeholders are matched case-insensitively; a capitalised placeholder gets a capitalised value.
   function placeholdersOf(texts){const s=new Set();for(const t of texts)for(const m of t.matchAll(PH_RE))s.add(m[1].toLowerCase());return [...s]}
-  function fillPlaceholders(text,values){return text.replace(PH_RE,(all,key)=>{const v=(values[key.toLowerCase()]||'').trim();if(!v)return all;return key[0]!==key[0].toLowerCase()?v[0].toUpperCase()+v.slice(1):v})}
+  // Join a fragment onto the text so far, dropping words repeated across the seam:
+  // "mua dịch vụ " + "dịch vụ này" reads "mua dịch vụ này", "mỹ phẩm này" + " này." reads "mỹ phẩm này.".
+  const bare=w=>w.toLowerCase().replace(/[.,;:!?)"”]+$/,'');
+  function joinDedup(a,b){
+    if(!a||!b||!(/\s$/.test(a)||/^\s/.test(b)))return a+b;
+    const tail=a.trimEnd().split(/\s+/), head=b.trimStart().split(/\s+/);
+    for(let n=Math.min(3,tail.length,head.length);n>=1;n--){
+      const t=tail.slice(-n).map(bare).join(' '), h=head.slice(0,n).map(bare).join(' ');
+      if(t&&t===h&&/\p{L}/u.test(t)){
+        const drop=head.slice(0,n).join(' '), rest=b.trimStart();
+        const left=rest.slice(drop.length), punct=(head[n-1].match(/[.,;:!?)"”]+$/)||[''])[0];
+        return a.trimEnd()+punct+left;
+      }
+    }
+    return a+b;
+  }
+  function collapseRepeats(t){return t.replace(/(?<!\p{L})(này)(\s+này)+(?!\p{L})/giu,'$1')}
+  function fillPlaceholders(text,values){
+    let out='';
+    for(const p of String(text).split(/(\[[^\]]+\])/)){
+      const m=p.match(/^\[([^\]]+)\]$/);
+      if(!m){out=joinDedup(out,p);continue}
+      const key=m[1], v=(values[key.toLowerCase()]||'').trim();
+      if(!v){out+=p;continue}
+      out=joinDedup(out,key[0]!==key[0].toLowerCase()?v[0].toUpperCase()+v.slice(1):v);
+    }
+    return collapseRepeats(out);
+  }
+  // Form of address chosen by audience. Statements keep "tôi"; "anh/chị" in the source and the
+  // pronoun "bạn" (not "bạn bè", "người bạn") follow the choice.
+  function applyAddress(text,addr){
+    const low=addr==='Bạn'?'bạn':'Anh/Chị';
+    let t=String(text).replace(/(?<!\p{L})([Aa])nh\/[Cc]hị(?!\p{L})/gu,(m,a)=>a==='A'?addr:low);
+    if(addr!=='Bạn')t=t.replace(/(?<!\p{L})(?<!(?:người|nhóm|bầu|kết|những|làm) )([Bb])ạn(?!\p{L})(?! bè)/gu,(m,b)=>b==='B'?addr:low);
+    return t;
+  }
   // First "Authors (year)" in a construct's source note, with "&" read as "và" for Vietnamese prose.
   // Surname particles ("De Witte", "van der Heijden") belong to the name.
   function citeOf(source){const m=source.match(/((?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*[A-ZÀ-Ỹ][\p{L}.'\-]+(?:(?:, | & | và )(?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*[A-ZÀ-Ỹ][\p{L}.'\-]+)*(?: và cộng sự)?)\s*\((\d{4})/u);return m?`${m[1].replace(/ & /g,' và ')} (${m[2]})`:source}
@@ -110,14 +241,385 @@
   ].map(g=>g.split('|').map(normText));
   // Longest phrases first, so "gia tri" (value) is not also read as "gia" (price).
   const SYN_TERMS=SYN.flatMap((g,gi)=>g.map(t=>[t,gi])).sort((x,y)=>y[0].length-x[0].length);
-  function expandQuery(q){const n=normText(q);let rest=' '+n+' ';const groups=new Set();for(const [t,gi] of SYN_TERMS)if(rest.includes(' '+t+' ')){groups.add(gi);rest=rest.split(' '+t+' ').join('  ')}
-    const out=new Set(n.split(' ').filter(t=>t.length>1));groups.forEach(gi=>SYN[gi].forEach(t=>out.add(t)));return [...out]}
+  // A multi-word match ("niem tin") brings its group's phrases and long words, not the short
+  // single words ("tin") that would match half the library; words left unmatched still count.
+  function expandQuery(q){const n=normText(q);let rest=' '+n+' ';const groups=new Map();
+    for(const [t,gi] of SYN_TERMS)if(rest.includes(' '+t+' ')){groups.set(gi,(groups.get(gi)||false)||t.includes(' '));rest=rest.split(' '+t+' ').join('  ')}
+    const out=new Set(rest.split(' ').filter(t=>t.length>1));
+    groups.forEach((multi,gi)=>SYN[gi].forEach(t=>{if(!multi||t.includes(' ')||t.length>=4)out.add(t)}));
+    if(!groups.size)n.split(' ').filter(t=>t.length>1).forEach(t=>out.add(t));
+    return [...out]}
   function indexConstruct(scale,c){const f=s=>' '+normText(s)+' ';return [[f(`${c.nameVi} ${c.nameEn} ${c.code}`),6],[f(`${scale.name} ${scale.fullName}`),3],[f(c.definition),2],[f(c.items.map(i=>i.en+' '+i.vi).join(' ')),1]]}
-  function rankConstructs(q,index){
+  // Results scoring under 40% of the best match are noise; at most `limit` per phrase.
+  function rankConstructs(q,index,limit=12){
     const terms=expandQuery(q), phrase=' '+normText(q)+' ';if(!terms.length)return [];
-    return index.map((fields,i)=>{let s=0;for(const t of terms){let best=0;for(const [txt,w] of fields)if(txt.includes(' '+t+' ')||(t.length>3&&txt.includes(' '+t)))best=Math.max(best,w);s+=best}
-      if(phrase.trim().length>3&&fields[0][0].includes(phrase))s+=10;return [i,s]}).filter(([,s])=>s>=3).sort((a,b)=>b[1]-a[1]).map(([i])=>i)}
-  function isAgreementScale(responseScale){return /^Likert/i.test(responseScale)}
+    const scored=index.map((fields,i)=>{let s=0;for(const t of terms){let best=0;for(const [txt,w] of fields)if(txt.includes(' '+t+' ')||(t.length>3&&txt.includes(' '+t)))best=Math.max(best,w);s+=best}
+      if(phrase.trim().length>3&&fields[0][0].includes(phrase))s+=10;return [i,s]}).filter(([,s])=>s>=3).sort((a,b)=>b[1]-a[1]);
+    if(!scored.length)return [];const top=scored[0][1];
+    return scored.filter(([,s])=>s>=0.4*top).slice(0,limit).map(([i])=>i)}
+
+  // ---- response formats: read the scale note once, never print it to respondents ----
+  const VI_CH=/[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+  // Drop English glosses "(Not at all)", keep Vietnamese ones "(vài lần một năm hoặc ít hơn)".
+  const EDITORIAL=/(^|\s)(bản|theo|nghiên cứu|câu hỏi|tác giả|ví dụ|lưu ý|hỏi về)(\s|$)/i;
+  function cleanLabel(s){return String(s).replace(/\s*\(([^()]*)\)/g,(m,x)=>VI_CH.test(x)&&!EDITORIAL.test(x)?m:'').replace(/^[\s'"‘“]+|[\s'"’”.,;:]+$/g,'').trim()}
+  const LIK={
+    4:['Hoàn toàn không đồng ý','Không đồng ý','Đồng ý','Hoàn toàn đồng ý'],
+    5:['Hoàn toàn không đồng ý','Không đồng ý','Trung lập','Đồng ý','Hoàn toàn đồng ý'],
+    6:['Hoàn toàn không đồng ý','Không đồng ý','Hơi không đồng ý','Hơi đồng ý','Đồng ý','Hoàn toàn đồng ý'],
+    7:['Hoàn toàn không đồng ý','Không đồng ý','Hơi không đồng ý','Trung lập','Hơi đồng ý','Đồng ý','Hoàn toàn đồng ý']};
+  function isAgreementScale(rs){const s=String(rs);return /^Likert/i.test(s)||(/^Thang \d+ mức\./.test(s)&&/Hoàn toàn đồng ý/.test(s))}
+  // responseScale prose → {agree, points, ambiguous, min, labels:{value:label}}.
+  // Reads "v = nhãn" pairs (full or only the two ends), "nhãn (v)" pairs, or "N mức: A, B, C…".
+  function parseResponseScale(rs){
+    const s=String(rs);
+    const pm=s.match(/(\d+)(?:\s*hoặc\s*(\d+))?\s*(?:mức|điểm)/);
+    let points=pm?+pm[1]:null;const ambiguous=Boolean(pm&&pm[2]);
+    const agree=isAgreementScale(s);
+    const re=/(\d+)\s*=\s*((?:[^=()…;]|\([^()]*\))+?)(?=\s*(?:[,;]\s*\d+\s*=|…|\.\.\.|\)|;|\.(?:\s|$)|,\s(?!hoặc|gần như)|$))/g;
+    const runs=[];let last=null;
+    for(const m of s.matchAll(re)){
+      const gap=last?s.slice(last.end,m.index):null;
+      const pair=[+m[1],cleanLabel(m[2])];
+      if(last&&/^\s*(?:[,;]|…|\.\.\.)?\s*(?:\d+\/)?$/.test(gap))last.run.push(pair);else{last={run:[pair]};runs.push(last.run)}
+      last.end=m.index+m[0].length;
+    }
+    let pairs=runs.find(r=>r.length>=2&&r.some(([,l])=>VI_CH.test(l))&&r.every(([,l])=>l&&l.length<=70));
+    if(!pairs){const lv=[...s.matchAll(/([A-ZÀ-Ỹ][^,:;()=]*?)\s*\((\d+)\)/gu)].map(m=>[+m[2],cleanLabel(m[1])]);if(lv.length>=2)pairs=lv}
+    if(!pairs&&pm){
+      let seg=s.slice(pm.index+pm[0].length).split(/[.;](?:\s|$)/)[0];
+      if(seg.includes(':'))seg=seg.slice(seg.lastIndexOf(':')+1);
+      const list=seg.split(/,\s*/).map(cleanLabel).filter(Boolean);
+      if(list.length===points&&list.every(l=>l.length<=40&&/^\p{Lu}/u.test(l))){
+        if(/^(Luôn luôn|Rất cao|Rất giống|Rất đồng ý|Rất thường xuyên|Gần như luôn)/i.test(list[0]))list.reverse();
+        pairs=list.map((l,i)=>[i+1,l]);
+      }
+    }
+    const labels={};let min=1;
+    if(pairs){
+      pairs.sort((a,b)=>a[0]-b[0]);pairs.forEach(([v,l])=>{labels[v]=l});
+      min=pairs[0][0];const span=pairs[pairs.length-1][0]-min+1;
+      if(!agree||!points)points=span;
+    }
+    return {agree,points:points||null,ambiguous,min,labels};
+  }
+  // Scale-specific knowledge the prose cannot carry: per-item anchors (LMX-7, CBI), mixed
+  // formats inside one construct (MOAQ-TI, D&M US), and the lead-in a block needs to make sense.
+  const FREQ5={1:'Không bao giờ/hầu như không',2:'Hiếm khi',3:'Thỉnh thoảng',4:'Thường xuyên',5:'Luôn luôn'};
+  const DEG5={1:'Rất thấp',2:'Thấp',3:'Vừa phải',4:'Cao',5:'Rất cao'};
+  const LMX={
+    LMX1:['Hiếm khi','Thỉnh thoảng','Đôi khi','Khá thường xuyên','Rất thường xuyên'],
+    LMX2:['Hoàn toàn không','Một chút','Ở mức vừa phải','Khá nhiều','Rất nhiều'],
+    LMX3:['Hoàn toàn không','Một chút','Ở mức vừa phải','Phần lớn','Hoàn toàn'],
+    LMX4:['Không có','Thấp','Trung bình','Cao','Rất cao'],LMX5:['Không có','Thấp','Trung bình','Cao','Rất cao'],
+    LMX6:['Hoàn toàn không đồng ý','Không đồng ý','Trung lập','Đồng ý','Hoàn toàn đồng ý'],
+    LMX7:['Cực kỳ kém hiệu quả','Kém hơn mức trung bình','Trung bình','Tốt hơn mức trung bình','Cực kỳ hiệu quả']};
+  const lab=a=>Object.fromEntries(a.map((l,i)=>[i+1,l]));
+  const ends=(k,a,b)=>({1:a,[k]:b});
+  const OVR={
+    'kiet-suc-cbi':it=>/^(WB[123]|CB[1-4])$/.test(it.code)?{kind:'labeled',k:5,min:1,labels:DEG5}:{kind:'labeled',k:5,min:1,labels:FREQ5},
+    'lmx-7':it=>({kind:'labeled',k:5,min:1,labels:lab(LMX[it.code]||LMX.LMX6)}),
+    'y-dinh-nghi-viec':(it,u)=>it.code==='TI1'?{kind:'labeled',k:u||7,min:1,labels:ends(u||7,'Rất không có khả năng','Rất có khả năng'),orig:7}:{kind:'agree',k:u||7,orig:7},
+    'chat-luong-he-thong-thong-tin:US':(it,u)=>it.code==='US4'?{kind:'labeled',k:u||7,min:1,labels:ends(u||7,'Rất không hài lòng','Rất hài lòng'),orig:7}:{kind:'labeled',k:u||7,min:1,labels:ends(u||7,'Rất thấp','Rất cao'),orig:7},
+    'utaut2:USE':()=>({kind:'labeled',k:7,min:1,labels:ends(7,'Không bao giờ','Nhiều lần mỗi ngày')}),
+  };
+  const LEAD={
+    'dong-luc-lam-viec-mwms':'Vì sao {addr} bỏ (hoặc sẽ bỏ) công sức vào công việc hiện tại?',
+    'y-dinh-hanh-vi-khach-hang':'Khả năng {addr_low} sẽ làm những việc sau là bao nhiêu?',
+    'phq-9':'Trong 2 tuần qua, {addr_low} có thường bị những vấn đề sau làm phiền không?',
+    'gad-7':'Trong 2 tuần qua, {addr_low} có thường bị những vấn đề sau làm phiền không?',
+    'dass-21':'Mỗi câu sau đúng với {addr_low} ở mức nào trong tuần vừa qua?',
+    'nghien-dien-thoai-sas-sv':'{addr} đồng ý ở mức nào rằng mình gặp những điều sau khi dùng điện thoại?',
+    'do-tin-cay-nguon-ohanian':'{addr} thấy người đại diện cho thương hiệu là người như thế nào?',
+    'thai-do-voi-quang-cao:AAD':'{addr} cảm thấy quảng cáo này như thế nào?',
+    'thai-do-voi-quang-cao:AB':'{addr} cảm thấy thương hiệu được quảng cáo như thế nào?',
+    'ecm-tiep-tuc-su-dung:SAT':'{addr} cảm thấy thế nào về toàn bộ trải nghiệm sử dụng [hệ thống]?',
+    'utaut2:USE':'{addr} dùng các chức năng sau thường xuyên đến mức nào?',
+  };
+  function leadOf(slug,code,addr){const t=LEAD[`${slug}:${code}`]||LEAD[slug];return t?t.replace('{addr}',addr).replace('{addr_low}',addr==='Bạn'?'bạn':'Anh/Chị'):''}
+  // An item that carries its own poles: "A – B", "là: tốt 1 2 3 4 5 6 7 không tốt", "(rất cao … rất thấp)".
+  function itemAnchors(vi){
+    const t=String(vi).trim();
+    let m=t.match(/^(.*?)\s+1((?:\s+\d+){2,})\s+(.+)$/);
+    if(m){const k=+m[2].trim().split(/\s+/).pop();let before=m[1],after=m[3],stem,left,right;
+      if(before.includes(':')){stem=before.slice(0,before.lastIndexOf(':')+1).trim();left=before.slice(before.lastIndexOf(':')+1).trim()}
+      else{const w=before.trim().split(/\s+/);left=w.pop();stem=w.join(' ')}
+      const br=after.indexOf('[');
+      if(br>0){right=after.slice(0,br).trim();stem=`${stem} … ${after.slice(br).trim()}`}else right=after.replace(/[.\s]+$/,'');
+      return {stem,left,right,k}}
+    m=t.match(/^(.*?)\s*\(([^()…]*?)\s*…\s*([^()…]*?)\)(.*)$/);
+    if(m){const left=m[2].replace(/\s*\d+$/,'').trim(),right=m[3].replace(/^\d+\s*/,'').trim();
+      if(left&&right&&left.length<=40&&right.length<=40)return {stem:/^[\s.]*$/.test(m[4])?m[1].trim():`${m[1]} …${m[4]}`.trim(),left,right,k:null}}
+    m=t.match(/^([^–\/\[.?]{1,40}?)\s+[–\/]\s+([^–\/\[.?]{1,40})$/);
+    if(m)return {stem:'',left:m[1].trim(),right:m[2].trim(),k:null};
+    return null;
+  }
+  const NEG=/(^|\s)(không|thấp|kém|tệ|xấu|có hại|vô ích|khó)(\s|$)/i;
+  // Format of one item. mode: '5' | '7' (one agreement scale for the whole form) or 'orig'.
+  // Returns {kind:'agree'|'labeled'|'bipolar', k, min, labels, left, right, stem, notes:[…]}.
+  function itemFormat(scale,c,it,mode){
+    const P=parseResponseScale(scale.responseScale), u=mode==='orig'?0:+mode, notes=[];
+    const ov=OVR[`${scale.slug}:${c.code}`]||OVR[scale.slug];
+    const anc=itemAnchors(it.vi);
+    if(anc&&!ov){
+      const orig=anc.k||P.points||7, k=u||orig;let {left,right}=anc, swapped=false;
+      if(!it.reverse&&NEG.test(right)&&!NEG.test(left)){[left,right]=[right,left];swapped=true;notes.push('đổi chỗ hai đầu mút để 1 là đầu thấp')}
+      if(k!==orig)notes.push(`điều chỉnh từ ${orig} mức của bản gốc sang ${k} mức`);
+      return {kind:'bipolar',k,min:1,labels:{},left,right,stem:anc.stem,swapped,notes};
+    }
+    if(ov){const f=ov(it,u);if(f.orig&&f.k!==f.orig)notes.push(`điều chỉnh từ ${f.orig} mức của bản gốc sang ${f.k} mức`);
+      if(f.kind==='agree')return {kind:'agree',k:f.k,min:1,labels:lab(LIK[f.k]),notes};
+      return {kind:'labeled',k:f.k,min:f.min,labels:f.labels,notes}}
+    if(P.agree){
+      const orig=P.points||5, k=u||(LIK[orig]?orig:5);
+      if(P.ambiguous)notes.push(`bản gốc và các nghiên cứu dùng lại dùng 5 hoặc 7 mức; chọn ${k} mức`);
+      else if(k!==orig)notes.push(`điều chỉnh từ ${orig} mức của bản gốc sang Likert ${k} mức`);
+      const full=Object.keys(P.labels).length===k&&P.min===1&&k===orig;
+      return {kind:'agree',k,min:1,labels:full?P.labels:lab(LIK[k]),notes};
+    }
+    const k=P.points&&P.points>=2?P.points:5;
+    return {kind:'labeled',k,min:P.min,labels:Object.keys(P.labels).length?P.labels:ends(k,'Thấp nhất','Cao nhất'),notes};
+  }
+  const valuesOf=f=>Array.from({length:f.k},(_,i)=>f.min+i);
+  function legendOf(f,addr){
+    if(f.kind==='bipolar')return `Chọn một số từ 1 đến ${f.k}: số càng gần tính từ bên nào thì càng đúng với cảm nhận của ${addr==='Bạn'?'bạn':'Anh/Chị'}.`;
+    const vs=valuesOf(f), full=vs.every(v=>f.labels[v]);
+    if(full)return vs.map(v=>`${v} = ${f.labels[v]}`).join('; ');
+    const a=vs[0],b=vs[vs.length-1];return `${a} = ${f.labels[a]||''} … ${b} = ${f.labels[b]||''}`;
+  }
+  function describeFormat(f){
+    const vs=valuesOf(f),a=vs[0],b=vs[vs.length-1];
+    if(f.kind==='bipolar')return `thang đối nghĩa ${f.k} mức giữa hai tính từ đối lập`;
+    if(f.kind==='agree')return `thang Likert ${f.k} mức (${a} = ${f.labels[a]} … ${b} = ${f.labels[b]})`;
+    return `thang ${f.k} mức (${a} = ${f.labels[a]||''} … ${b} = ${f.labels[b]||''})`;
+  }
+  const reverseRule=f=>{const vs=valuesOf(f);return `${vs[0]+vs[vs.length-1]} − điểm`};
+  const fmtKey=f=>f.kind==='bipolar'?`b${f.k}`:`${f.kind}${f.k}:${f.min}:${JSON.stringify(f.labels)}`;
+
+  // ---- codes: never two columns with the same name ----
+  const tagOf=name=>normText(name).replace(/ /g,'').toUpperCase().slice(0,6)||'X';
+  // list: [{tag, code, items:[code]}] → [{code, items:[code]}]. A construct whose code or any item
+  // code clashes with another construct gets the scale prefix ("TPB_ATT1"); leftovers get "_2".
+  function dedupeCodes(list,reserved=[]){
+    const count=new Map(),bump=k=>count.set(k,(count.get(k)||0)+1);
+    list.forEach(x=>{bump('c:'+x.code);x.items.forEach(i=>bump('i:'+i))});
+    const used=new Set(reserved);
+    return list.map(x=>{
+      const clash=count.get('c:'+x.code)>1||x.items.some(i=>count.get('i:'+i)>1||reserved.includes(i));
+      const pre=clash?x.tag+'_':'';
+      const uniq=c=>{let v=c,n=2;while(used.has(v))v=`${c}_${n++}`;used.add(v);return v};
+      return {code:pre+x.code,items:x.items.map(i=>uniq(pre+i))};
+    });
+  }
+  function acCode(used){const s=new Set(used);return !s.has('AC1')?'AC1':!s.has('ACHK')?'ACHK':'ACHK_2'}
+  // Attention check: inside an agreement block near the middle of the form, never next to a
+  // reverse-worded item. blocks: [{kind, items:[{reverse}]}] → {block, pos} or null.
+  function placeAttention(blocks){
+    const total=blocks.reduce((n,b)=>n+b.items.length,0);let at=0,best=null;
+    blocks.forEach((b,bi)=>{const mid=at+b.items.length/2;at+=b.items.length;
+      if(b.kind!=='agree'||!b.items.length)return;const d=Math.abs(mid-total/2);if(!best||d<best.d)best={bi,d}});
+    if(!best)return null;
+    const its=blocks[best.bi].items,n=its.length;let pick=null;
+    for(let p=0;p<=n;p++){const ok=(p===0||!its[p-1].reverse)&&(p===n||!its[p].reverse);
+      const inner=p>0&&p<n;const score=(ok?0:100)+(inner?0:10)+Math.abs(p-n/2);
+      if(!pick||score<pick.score)pick={p,score}}
+    return {block:best.bi,pos:pick.p};
+  }
+
+  // ---- audience: screening, address, demographics ----
+  const AUD={td:'Người tiêu dùng, người dùng',ld:'Người lao động',sv:'Sinh viên'};
+  const addrOf=aud=>aud==='sv'?'Bạn':'Anh/Chị';
+  function defaultScreening(aud,target){
+    if(aud==='ld')return `Anh/Chị hiện đang làm việc tại ${target||'[công ty]'} từ 6 tháng trở lên phải không?`;
+    if(aud==='sv')return 'Bạn hiện là sinh viên [trường/ngành] phải không?';
+    return `Anh/Chị đã từng sử dụng hoặc mua ${target||'[sản phẩm/dịch vụ]'} trong 6 tháng qua chưa?`;
+  }
+  const screenChoices=aud=>aud==='td'?['Đã từng','Chưa từng']:['Đúng','Không phải'];
+  // "(ghi rõ)" marks an option that needs a short text answer; type 'text' is a free answer.
+  const DEMOS={
+    sv:[['gender','Giới tính',['Nam','Nữ','Khác']],['year','Năm học',['Năm thứ nhất','Năm thứ hai','Năm thứ ba','Năm thứ tư','Năm thứ năm trở lên']],
+      ['major','Ngành hoặc khối ngành đang học',['Kinh tế, kinh doanh, quản lý','Kỹ thuật, công nghệ','Khoa học xã hội và nhân văn','Khoa học tự nhiên','Y dược, sức khoẻ','Khác (ghi rõ)']],
+      ['school','Trường đang học','text'],['spend','Chi tiêu hằng tháng',['Dưới 2 triệu đồng','Từ 2 đến dưới 4 triệu đồng','Từ 4 đến dưới 6 triệu đồng','Từ 6 triệu đồng trở lên']],
+      ['freq','Mức độ thường xuyên {addr} sử dụng hoặc mua {target}',['Hằng ngày','Vài lần mỗi tuần','Vài lần mỗi tháng','Ít hơn một lần mỗi tháng']]],
+    ld:[['gender','Giới tính',['Nam','Nữ','Khác']],['age','Độ tuổi',['Từ 18 đến 25','Từ 26 đến 35','Từ 36 đến 45','Trên 45']],
+      ['edu','Trình độ học vấn',['Trung cấp, cao đẳng','Đại học','Sau đại học','Khác (ghi rõ)']],
+      ['tenure','Thâm niên làm việc tại tổ chức hiện tại',['Dưới 1 năm','Từ 1 đến dưới 3 năm','Từ 3 đến dưới 5 năm','Từ 5 năm trở lên']],
+      ['position','Chức vụ',['Nhân viên','Trưởng nhóm, quản lý cấp trung','Quản lý cấp cao']],
+      ['orgtype','Loại hình doanh nghiệp',['Nhà nước','Tư nhân trong nước','Có vốn đầu tư nước ngoài','Khác (ghi rõ)']],
+      ['income','Thu nhập hằng tháng',['Dưới 10 triệu đồng','Từ 10 đến dưới 20 triệu đồng','Từ 20 đến dưới 30 triệu đồng','Từ 30 triệu đồng trở lên']]],
+    td:[['gender','Giới tính',['Nam','Nữ','Khác']],['age','Độ tuổi',['Từ 18 đến 24','Từ 25 đến 34','Từ 35 đến 44','Từ 45 đến 54','Từ 55 trở lên']],
+      ['job','Nghề nghiệp',['Học sinh, sinh viên','Nhân viên văn phòng','Công chức, viên chức','Công nhân','Kinh doanh tự do, chủ doanh nghiệp','Nội trợ, hưu trí','Khác (ghi rõ)']],
+      ['edu','Trình độ học vấn',['Trung học cơ sở trở xuống','Trung học phổ thông','Cao đẳng, trung cấp','Đại học','Sau đại học']],
+      ['income','Thu nhập hằng tháng',['Chưa có thu nhập','Dưới 5 triệu đồng','Từ 5 đến dưới 10 triệu đồng','Từ 10 đến dưới 20 triệu đồng','Từ 20 đến dưới 30 triệu đồng','Từ 30 triệu đồng trở lên']],
+      ['freq','Mức độ thường xuyên {addr} sử dụng hoặc mua {target}',['Hằng ngày','Vài lần mỗi tuần','Vài lần mỗi tháng','Ít hơn một lần mỗi tháng']]],
+  };
+  const DEMO_DEFAULT={sv:['gender','year','major','spend'],ld:['gender','age','edu','tenure','position'],td:['gender','age','job','income']};
+
+  // ---- the questionnaire as data: every output (paper, Word, Google Form, GDF, codebook) reads this ----
+  // o = {aud, mode, ph, showNames, attn, screen, screenText, demos:[key], topic, who, org, contact,
+  //      constructs:[{key, scale:{slug,name,responseScale}, c:{code,nameVi,nameEn,source}, items:[{code,vi,en,reverse,edited}]}]}
+  function buildSurvey(o){
+    const addr=addrOf(o.aud), ph=o.ph||{}, fill=t=>collapseRepeats(applyAddress(fillPlaceholders(t,ph),addr));
+    const target=fill(o.target||'');
+    const reserved=['SANGLOC',...(o.demos||[]).map((k,i)=>`TT${i+1}`)];
+    const codes=dedupeCodes(o.constructs.map(x=>({tag:tagOf(x.scale.name),code:x.c.code,items:x.items.map(i=>i.code)})),reserved);
+    const constructs=o.constructs.map((x,ci)=>{
+      const blocks=[];
+      x.items.forEach((it,ii)=>{
+        const f=itemFormat(x.scale,x.c,it,o.mode), key=fmtKey(f);
+        const item={code:codes[ci].items[ii],origCode:it.code,text:fill(it.vi),en:it.en,reverse:Boolean(it.reverse),edited:Boolean(it.edited),
+          stem:f.kind==='bipolar'?fill(f.stem):'',left:f.left||'',right:f.right||'',notes:[...f.notes,...(it.edited?['sửa câu chữ']:[])]};
+        let b=blocks[blocks.length-1];
+        if(!b||b.key!==key){b={key,kind:f.kind,k:f.k,min:f.min,labels:f.labels,ci,items:[],legend:legendOf(f,addr),describe:describeFormat(f),reverseRule:reverseRule(f)};blocks.push(b)}
+        b.items.push(item);
+      });
+      const lead=fill(leadOf(x.scale.slug,x.c.code,addr));
+      const raw=[...new Set(blocks.flatMap(b=>b.items.flatMap(i=>i.notes.filter(n=>n!=='sửa câu chữ'))))];
+      // One construct mixing bipolar and agreement items: say the change once.
+      const notes=raw.filter(n=>!(/ sang \d+ mức$/.test(n)&&raw.includes(n.replace(/ sang (\d+ mức)$/,' sang Likert $1'))));
+      return {key:x.key,code:codes[ci].code,nameVi:x.c.nameVi,nameEn:x.c.nameEn,cite:citeOf(x.c.source),scale:x.scale,lead,blocks,notes,
+        nItems:x.items.length,edited:x.items.filter(i=>i.edited).length};
+    });
+    const flat=constructs.flatMap(c=>c.blocks);
+    const used=constructs.flatMap(c=>c.blocks.flatMap(b=>b.items.map(i=>i.code))).concat(reserved);
+    let ac=null;
+    if(o.attn){
+      const code=acCode(used), text=`Để xác nhận ${addr==='Bạn'?'bạn':'Anh/Chị'} đang đọc kỹ, vui lòng chọn mức "2 – Không đồng ý" cho câu này.`;
+      const at=placeAttention(flat);
+      if(at){const b=flat[at.block];b.items.splice(at.pos,0,{code,text,isAC:true,answer:2,reverse:false,notes:[]});ac={code,text,answer:2,inBlock:true,labels:LIK[b.k]}}
+      else{const mid=Math.max(0,Math.ceil(constructs.length/2)-1);ac={code,text,answer:2,inBlock:false,after:mid,labels:LIK[5]}}
+    }
+    const screening=o.screen?{code:'SANGLOC',text:fill(o.screenText||defaultScreening(o.aud,target)),choices:screenChoices(o.aud)}:null;
+    const demoDefs=DEMOS[o.aud]||DEMOS.td;
+    const demos=(o.demos||[]).map(k=>demoDefs.find(d=>d[0]===k)).filter(Boolean).map(([k,label,opts],i)=>({key:k,code:`TT${i+1}`,
+      label:label.replace('{addr}',addr==='Bạn'?'bạn':'Anh/Chị').replace('{target}',target||'[đối tượng nghiên cứu]'),
+      type:opts==='text'?'text':'single',options:opts==='text'?[]:opts}));
+    const nItems=constructs.reduce((n,c)=>n+c.nItems,0);
+    const nQ=nItems+(ac?1:0)+(screening?1:0)+demos.length;
+    const minutes=Math.max(3,Math.ceil((nItems*8+demos.length*6+(screening?8:0)+(ac?8:0)+40)/60));
+    const unfilled=[...new Set(constructs.flatMap(c=>c.blocks.flatMap(b=>b.items.flatMap(i=>[i.text,i.stem].join(' ').match(/\[[^\]]+\]/g)||[]))).concat((screening&&screening.text.match(/\[[^\]]+\]/g))||[]))];
+    return {aud:o.aud,addr,topic:(o.topic||'').trim(),who:(o.who||'').trim(),org:(o.org||'').trim(),contact:(o.contact||'').trim(),
+      showNames:o.showNames!==false,target,constructs,ac,screening,demos,nItems,nQ,minutes,unfilled,
+      renamed:constructs.flatMap((c,ci)=>c.code!==o.constructs[ci].c.code?[[o.constructs[ci].c.code,c.code]]:[])};
+  }
+  const sectionTitle=(sv,ci)=>sv.showNames?sv.constructs[ci].nameVi:`Phần ${ci+1}`;
+  function introLine(sv){
+    const a=sv.addr==='Bạn'?'bạn':'Anh/Chị';
+    return `Khảo sát phục vụ nghiên cứu "${sv.topic||'[tên đề tài]'}", mất khoảng ${sv.minutes} phút. Không có câu trả lời đúng hay sai; câu trả lời được giữ ẩn danh và chỉ dùng cho mục đích nghiên cứu. Tham gia là tự nguyện, ${a} có thể dừng bất cứ lúc nào.`;
+  }
+  const gridTitle=(sv,b,lead)=>lead||(b.kind==='agree'?`Mức độ đồng ý của ${sv.addr==='Bạn'?'bạn':'Anh/Chị'} với các phát biểu sau`:`Chọn mức phù hợp nhất với ${sv.addr==='Bạn'?'bạn':'Anh/Chị'} cho mỗi câu`);
+  const colLabel=(b,v)=>b.labels[v]?`${v} - ${b.labels[v]}`:String(v);
+
+  // ---- Google Apps Script (FormApp) that builds the form in the student's own Google account ----
+  function appsScript(sv){
+    const J=s=>JSON.stringify(String(s)), title=sv.topic||'Phiếu khảo sát', L=[];
+    L.push('// Tạo Google Form từ Bộ khảo sát (Góc Nghiên Cứu). Chạy trong tài khoản Google của bạn;');
+    L.push('// dữ liệu chỉ đi giữa trình duyệt của bạn và Google, không qua máy chủ của công cụ.');
+    L.push('function taoBangHoi() {');
+    L.push(`  var form = FormApp.create(${J(title)});`);
+    L.push(`  form.setDescription(${J(introLine(sv))});`);
+    L.push('  form.setProgressBar(true);');
+    L.push(`  form.setConfirmationMessage(${J(`Xin chân thành cảm ơn ${sv.addr==='Bạn'?'bạn':'Anh/Chị'} đã dành thời gian trả lời!`)});`);
+    if(sv.screening){
+      const s=sv.screening;
+      L.push(`  var sl = form.addMultipleChoiceItem().setTitle(${J(`${s.code}. ${s.text}`)}).setRequired(true);`);
+      L.push(`  sl.setChoices([sl.createChoice(${J(s.choices[0])}, FormApp.PageNavigationType.CONTINUE), sl.createChoice(${J(s.choices[1])}, FormApp.PageNavigationType.SUBMIT)]);`);
+    }
+    const acItem=()=>{L.push(`  form.addMultipleChoiceItem().setTitle(${J(`${sv.ac.code}. ${sv.ac.text}`)}).setChoiceValues(${JSON.stringify(sv.ac.labels)}).setRequired(true);`)};
+    sv.constructs.forEach((c,ci)=>{
+      L.push(`  form.addPageBreakItem().setTitle(${J(sectionTitle(sv,ci))})${c.lead?`.setHelpText(${J(c.lead)})`:''};`);
+      c.blocks.forEach(b=>{
+        if(b.kind==='bipolar'){b.items.forEach(i=>{
+          L.push(`  form.addScaleItem().setTitle(${J(`${i.code}. ${i.stem||`${i.left} / ${i.right}`}`)}).setBounds(1, ${b.k}).setLabels(${J(i.left)}, ${J(i.right)}).setRequired(true);`)});return}
+        const cols=valuesOf(b).map(String);
+        L.push(`  form.addGridItem().setTitle(${J(gridTitle(sv,b,c.lead))}).setHelpText(${J(b.legend)})`);
+        L.push(`    .setRows(${JSON.stringify(b.items.map(i=>`${i.code}. ${i.text}`))})`);
+        L.push(`    .setColumns(${JSON.stringify(cols)}).setRequired(true);`);
+      });
+      if(sv.ac&&!sv.ac.inBlock&&sv.ac.after===ci)acItem();
+    });
+    if(sv.demos.length){
+      L.push(`  form.addPageBreakItem().setTitle(${J('Thông tin chung')});`);
+      sv.demos.forEach(d=>{
+        if(d.type==='text'){L.push(`  form.addTextItem().setTitle(${J(`${d.code}. ${d.label}`)}).setRequired(false);`);return}
+        const other=d.options.some(x=>/\(ghi rõ\)$/.test(x)), opts=d.options.filter(x=>!/\(ghi rõ\)$/.test(x));
+        L.push(`  form.addMultipleChoiceItem().setTitle(${J(`${d.code}. ${d.label}`)}).setChoiceValues(${JSON.stringify(opts)})${other?'.showOtherOption(true)':''}.setRequired(true);`);
+      });
+    }
+    L.push(`  var ss = SpreadsheetApp.create(${J(title+' (câu trả lời)')});`);
+    L.push('  form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());');
+    L.push("  Logger.log('Link gửi người trả lời: ' + form.getPublishedUrl());");
+    L.push("  Logger.log('Link sửa form: ' + form.getEditUrl());");
+    L.push("  Logger.log('Bảng tính câu trả lời: ' + ss.getUrl());");
+    L.push('}');
+    return L.join('\n');
+  }
+
+  // ---- GDF (Genius Data import format) ----
+  const gq=s=>String(s).replace(/\s+/g,' ').trim().replace(/\|/g,'\\|').replace(/->/g,'\\->');
+  const slugOf=s=>normText(s).replace(/ /g,'-').slice(0,40).replace(/-+$/,'')||'phan';
+  function toGDF(sv){
+    const L=[],labels=new Set();let q=0;
+    const label=s=>{const b=slugOf(s);let v=b,n=2;while(labels.has(v))v=`${b}-${n++}`;labels.add(v);return v};
+    const a=sv.addr==='Bạn'?'bạn':'Anh/Chị';
+    L.push('=FORM',`title: ${gq(sv.topic||'Khảo sát cho nghiên cứu khoá luận')}`,`desc: ${gq(introLine(sv))}`,`screen_out: ${gq(`Cảm ơn ${a} đã quan tâm. Khảo sát này dành cho nhóm người trả lời khác.`)}`);
+    if(sv.screening){const s=sv.screening;
+      L.push('',`=SECTION #${label('sang-loc')} | Câu hỏi sàng lọc`,`# ${s.code}`,`Q${++q} [single] !screen ${gq(s.text)}`,`  - ${gq(s.choices[0])}`,`  - ${gq(s.choices[1])} -> disqualify`)}
+    const acQ=b=>{const labs=b?valuesOf(b).map(v=>b.labels[v]||String(v)):sv.ac.labels;
+      L.push(`# ${sv.ac.code}`,`Q${++q} [single] !qc=reject ${gq(sv.ac.text)}`);labs.forEach((l,i)=>L.push(`  - ${gq(l)}${i===sv.ac.answer-1?' [correct]':''}`))};
+    sv.constructs.forEach((c,ci)=>{
+      L.push('',`=SECTION #${label(c.nameVi)} | ${gq(sectionTitle(sv,ci))}`);
+      if(c.lead)L.push(`desc: ${gq(c.lead)}`);
+      c.blocks.forEach(b=>{
+        const rows=b.items.filter(i=>!i.isAC), hasAC=b.items.some(i=>i.isAC);
+        if(b.kind==='bipolar'){
+          const same=rows.every(i=>i.left===rows[0].left&&i.right===rows[0].right&&i.stem);
+          if(same&&rows.length>1){
+            L.push(`# ${rows.map(i=>i.code).join(', ')}`,`Q${++q} [grid] ${gq(c.lead||'Chọn mức phù hợp cho mỗi câu')}`);
+            L.push(`  rows: ${rows.map(i=>gq(i.stem)).join(' | ')}`,`  cols: ${valuesOf(b).map((v,vi)=>vi===0?`${v} - ${gq(rows[0].left)}`:vi===b.k-1?`${v} - ${gq(rows[0].right)}`:String(v)).join(' | ')}`);
+          }else rows.forEach(i=>{const dq=s=>gq(s).replace(/"/g,"'");
+            L.push(`# ${i.code}`,`Q${++q} [scale 1..${b.k} "${dq(i.left)}".."${dq(i.right)}"] ${gq(i.stem||`${i.left} / ${i.right}`)}`)});
+          return;
+        }
+        for(let s=0;s<rows.length;s+=60){
+          const part=rows.slice(s,s+60), long=part.some(i=>i.text.length>60);
+          L.push(`# ${part.map(i=>i.code).join(', ')}`,`Q${++q} [grid] ${gq(gridTitle(sv,b,c.lead))}${s?' (tiếp)':''}`);
+          if(long)part.forEach(i=>L.push(`  row: ${gq(i.text)}`));else L.push(`  rows: ${part.map(i=>gq(i.text)).join(' | ')}`);
+          L.push(`  cols: ${valuesOf(b).map(v=>gq(colLabel(b,v))).join(' | ')}`);
+        }
+        if(hasAC)acQ(b);
+      });
+      if(sv.ac&&!sv.ac.inBlock&&sv.ac.after===ci)acQ(null);
+    });
+    if(sv.demos.length){
+      L.push('',`=SECTION #${label('thong-tin-chung')} | Thông tin chung`);
+      sv.demos.forEach(d=>{
+        L.push(`# ${d.code}`);
+        if(d.type==='text'){L.push(`Q${++q} [text] ? ${gq(d.label)}`);return}
+        L.push(`Q${++q} [single] ${gq(d.label)}`);let other=false;
+        d.options.forEach(x=>{if(/\(ghi rõ\)$/.test(x)){other=true;L.push('  - Khác')}else L.push(`  - ${gq(x)}`)});
+        if(other)L.push(`Q${++q} [text] ? Nếu chọn "Khác", vui lòng ghi rõ`);
+      });
+    }
+    return L.join('\n')+'\n';
+  }
+
+  // ---- codebook: one row per column of the data file ----
+  function codebookRows(sv){
+    const rows=[['Mã','Khái niệm','Biến quan sát (tiếng Việt)','Câu gốc (tiếng Anh)','Nguồn','Thang trả lời','Đảo điểm','Kế thừa/Điều chỉnh','Nhãn giá trị']];
+    if(sv.screening)rows.push([sv.screening.code,'Câu sàng lọc',sv.screening.text,'','','','','',`1 = ${sv.screening.choices[0]}; 2 = ${sv.screening.choices[1]} (dừng khảo sát)`]);
+    const acRow=()=>rows.push([sv.ac.code,'Kiểm tra sự chú ý',sv.ac.text,'','','','','','Đáp án đúng: 2 = Không đồng ý; chọn mức khác thì loại phiếu']);
+    sv.constructs.forEach((c,ci)=>{c.blocks.forEach(b=>b.items.forEach(i=>{
+      if(i.isAC){acRow();return}
+      const txt=b.kind==='bipolar'?`${i.stem?i.stem+' ':''}(${i.left} … ${i.right})`:i.text;
+      rows.push([i.code,`${c.nameVi} (${c.code})`,txt,i.en||'',c.cite,b.kind==='bipolar'?describeFormat(b):b.legend,i.reverse?`Có: ${b.reverseRule}`:'Không',
+        i.notes.length?`Điều chỉnh: ${i.notes.join('; ')}`:'Kế thừa nguyên văn','']);
+    }));if(sv.ac&&!sv.ac.inBlock&&sv.ac.after===ci)acRow()});
+    sv.demos.forEach(d=>rows.push([d.code,'Thông tin chung',d.label,'','','','','',d.type==='text'?'Tự điền':d.options.map((x,i)=>`${i+1} = ${x}`).join('; ')]));
+    return rows;
+  }
+  function toCSV(rows){return '\uFEFF'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\r\n')}
+
   // Minimum sample: PLS-SEM takes the larger of G*Power and the inverse square root method;
   // SPSS takes the larger of G*Power regression and Hair's 5 observations per item for EFA.
   function kitSample(method,arrows,nItems){
@@ -136,75 +638,153 @@
 
   const CONSTRUCTS=[];
   DATA.forEach(s=>s.constructs.forEach(c=>CONSTRUCTS.push({key:`${s.slug}:${c.code}`,scale:s,c})));
-  const DEMO=[
-    ['gender','Giới tính',['Nam','Nữ','Khác / Không muốn trả lời']],
-    ['age','Độ tuổi',['Dưới 18','18–22','23–30','31–40','Trên 40']],
-    ['job','Nghề nghiệp',['Học sinh, sinh viên','Nhân viên văn phòng','Kinh doanh tự do','Lao động phổ thông','Khác']],
-    ['income','Thu nhập hằng tháng',['Dưới 5 triệu đồng','5–10 triệu đồng','10–20 triệu đồng','Trên 20 triệu đồng']],
-    ['edu','Trình độ học vấn',['Trung học phổ thông','Cao đẳng','Đại học','Sau đại học']],
-  ];
-  $('bk-demo').innerHTML=DEMO.map(([k,l],i)=>`<label class="check"><input type="checkbox" data-demo="${k}" ${i<3?'checked':''}> ${l}</label>`).join('');
-
-  const state={selected:new Set(),ph:{}};
+  const BYKEY=new Map(CONSTRUCTS.map(x=>[x.key,x]));
   const INDEX=CONSTRUCTS.map(x=>indexConstruct(x.scale,x.c));
-  const row=x=>`<label class="check" style="margin:4px 0"><input type="checkbox" data-key="${esc(x.key)}" ${state.selected.has(x.key)?'checked':''}><span>${esc(x.c.nameVi)} <span class="text-muted-foreground">· ${esc(x.c.nameEn)} (${esc(x.scale.name)}, ${x.c.items.length} câu · ${esc(citeOf(x.c.source))})</span></span></label>`;
+  $('bk-count').textContent=fmt(DATA.length);
+  // Outcome-type constructs go last by default; the student can change it.
+  const DV_RE=/intention|loyalty|turnover|continuance|willingness to buy|use behaviou?r|^usage/i;
+  const PH_EX={'thực hiện hành vi':'cụm động từ, ví dụ: mua mỹ phẩm trực tuyến','công ty':'tên tổ chức, ví dụ: Công ty ABC','quản lý':'ví dụ: quản lý trực tiếp của tôi','hệ thống':'tên hệ thống, ví dụ: ví MoMo',
+    'sản phẩm':'danh từ, ví dụ: mỹ phẩm này','thương hiệu':'ví dụ: thương hiệu Cocoon','dịch vụ':'ví dụ: ứng dụng Grab','website':'ví dụ: Shopee','cửa hàng trực tuyến':'ví dụ: cửa hàng Shopee Mall này',
+    'n':'một con số, ví dụ: 3','kết quả':'ví dụ: tiền lương và thưởng','khách hàng':'ví dụ: khách hàng','nhân viên':'ví dụ: nhân viên này','loại dịch vụ':'ví dụ: ăn uống','bộ phận':'ví dụ: phòng kinh doanh',
+    'ứng dụng ngân hàng':'ví dụ: ứng dụng Vietcombank','cơ sở y tế':'ví dụ: Bệnh viện X'};
+  // What the screening question asks about, by audience; "{}" wraps the value ("dịch vụ của cửa hàng X").
+  const TARGETS={td:['sản phẩm','dịch vụ','hệ thống','thương hiệu','website','cửa hàng trực tuyến','ứng dụng ngân hàng','cơ sở y tế','loại dịch vụ',['công ty','dịch vụ của {}']],ld:['công ty'],sv:[]};
+  function targetOf(aud){for(const t of TARGETS[aud||'td']||[]){const [k,wrap]=Array.isArray(t)?t:[t,''];const v=(st.ph[k]||'').trim();if(v)return wrap?wrap.replace('{}',v):v.replace(/\s+này$/u,'')}return ''}
+
+  const DEFAULTS={aud:'',order:[],dv:[],drop:{},edits:{},ph:{},mode:'5',method:'pls',arrows:1,arrowsSet:false,dropPct:15,topic:'',who:'',org:'',contact:'',screen:true,screenText:'',screenEdited:false,attn:true,demos:null,showNames:true};
+  let st=JSON.parse(JSON.stringify(DEFAULTS));
+
+  // ---- state in the URL and in this browser ----
+  const b64e=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
+  function save(){
+    const diff={};for(const k in st)if(JSON.stringify(st[k])!==JSON.stringify(DEFAULTS[k]))diff[k]=st[k];
+    const json=JSON.stringify(diff);
+    try{history.replaceState(null,'',location.pathname+(json==='{}'?'':'?k='+b64e(json))+location.hash)}catch(e){}
+    try{localStorage.setItem('bk-state-v2',json)}catch(e){}
+  }
+  function load(){
+    const qs=new URLSearchParams(location.search);let s=null;
+    if(qs.get('k')){try{s=JSON.parse(b64d(qs.get('k')))}catch(e){}}
+    else if(qs.get('c')){
+      // Link from a template page: ?c=tam:PU,tam:BI&ph=hệ thống=ví MoMo&a=2&m=pls&dt=sv&dv=tam:BI
+      s={order:qs.get('c').split(',').filter(k=>BYKEY.has(k)),ph:{}};
+      (qs.get('ph')||'').split(';').forEach(p=>{const i=p.indexOf('=');if(i>0)s.ph[p.slice(0,i).toLowerCase()]=p.slice(i+1)});
+      if(qs.get('m')==='spss'||qs.get('m')==='pls')s.method=qs.get('m');
+      const a=parseInt(qs.get('a'));if(a>=1){s.arrows=a;s.arrowsSet=true}
+      if(AUD[qs.get('dt')])s.aud=qs.get('dt');
+      s.dv=(qs.get('dv')||'').split(',').filter(k=>s.order.includes(k));
+    }else{try{s=JSON.parse(localStorage.getItem('bk-state-v2')||'null')}catch(e){}}
+    if(s&&typeof s==='object')for(const k in DEFAULTS)if(k in s)st[k]=s[k];
+    st.order=st.order.filter(k=>BYKEY.has(k));st.dv=st.dv.filter(k=>st.order.includes(k));sortDV();
+    if(!st.arrowsSet)st.arrows=autoArrows();
+  }
+  function autoArrows(){return Math.max(1,st.order.length-Math.max(1,st.dv.length))}
+
+  // ---- concept list ----
+  const sel=k=>st.order.includes(k);
+  const row=x=>`<label class="check" style="margin:4px 0"><input type="checkbox" data-key="${esc(x.key)}" ${sel(x.key)?'checked':''} aria-label="${esc(`Chọn ${x.c.nameVi} (${x.scale.name})`)}"><span>${esc(x.c.nameVi)} <span class="text-muted-foreground">· ${esc(x.c.nameEn)} (${esc(x.scale.name)}, ${x.c.items.length} câu · ${esc(citeOf(x.c.source))})</span></span></label>`;
   const REQ='https://github.com/growth547/goc-nghien-cuu/issues/new?labels=de-xuat-thang-do&title=';
   const ask=q=>`<p class="text-muted-foreground" style="font-size:.85rem">Chưa có thang đo bạn cần? <a class="text-accent underline" href="${REQ}${encodeURIComponent('Đề xuất thang đo: '+q)}" target="_blank" rel="noopener">Đề xuất thêm</a>, thư viện được bổ sung mỗi ngày.</p>`;
   function renderList(){
     const raw=$('bk-search').value.trim();
     if(!raw){
-      $('bk-list').innerHTML=DATA.map(s=>`<div style="margin:8px 0"><strong style="font-size:.9rem">${esc(s.name)}</strong> <span class="text-muted-foreground" style="font-size:.8rem">${esc(s.field)}</span>${CONSTRUCTS.filter(x=>x.scale===s).map(row).join('')}</div>`).join('');
+      const fields=[...new Set(DATA.map(s=>s.field))];
+      $('bk-list').innerHTML=`<small class="text-muted-foreground">Hoặc mở từng lĩnh vực:</small>`+fields.map(f=>`<details><summary>${esc(f)} (${DATA.filter(s=>s.field===f).length} thang đo)</summary>${DATA.filter(s=>s.field===f).map(s=>`<div style="margin:6px 0 10px"><strong style="font-size:.85rem">${esc(s.name)}</strong>${CONSTRUCTS.filter(x=>x.scale===s).map(row).join('')}</div>`).join('')}</details>`).join('');
       return;
     }
-    // Several concepts at once (from a model image or typed "trust; satisfaction"): best matches per concept.
-    const phrases=raw.split(/[;\n]+/).map(p=>p.trim()).filter(Boolean);
-    const many=phrases.length>1;
+    const phrases=raw.split(/[;\n]+/).map(p=>p.trim()).filter(Boolean), many=phrases.length>1;
     $('bk-list').innerHTML=phrases.map(p=>{
-      const hits=rankConstructs(p,INDEX).slice(0,many?5:30);
+      const hits=rankConstructs(p,INDEX,many?5:12);
       const head=many?`<p style="margin:10px 0 2px;font-weight:600;font-size:.9rem">“${esc(p)}”</p>`:'';
       return head+(hits.length?hits.map(i=>row(CONSTRUCTS[i])).join(''):`<p class="text-muted-foreground" style="font-size:.85rem">Không có khái niệm gần nghĩa.</p>`)+(many?'':ask(p));
     }).join('')+(many?ask(phrases.join('; ')):'');
   }
-  // Keep the order the student ticked, which usually follows their model.
-  function chosen(){return [...state.selected].map(k=>CONSTRUCTS.find(x=>x.key===k)).filter(Boolean)}
+  function addKey(k){
+    if(sel(k))return;const x=BYKEY.get(k);
+    if(DV_RE.test(x.c.nameEn))st.dv.push(k);
+    st.order.push(k);sortDV();
+  }
+  // Dependent variables last, otherwise keep the student's order.
+  function sortDV(){st.order=[...st.order.filter(k=>!st.dv.includes(k)),...st.order.filter(k=>st.dv.includes(k))]}
+
+  // ---- chosen constructs: order, dependent flag, keep/drop and edit items ----
+  let editing=null;
+  function renderChosen(){
+    if(!st.order.length){$('bk-chosen').innerHTML='<small>Chưa chọn khái niệm nào.</small>';return}
+    $('bk-chosen').innerHTML=st.order.map((k,i)=>{
+      const x=BYKEY.get(k), drop=st.drop[k]||[], kept=x.c.items.length-drop.length, P=parseResponseScale(x.scale.responseScale);
+      const items=x.c.items.map(it=>{
+        const id=`${k}|${it.code}`, on=!drop.includes(it.code), ed=st.edits[id];
+        const text=ed!=null?ed:it.vi;
+        if(editing===id)return `<li><input type="text" data-edit="${esc(id)}" value="${esc(text)}" aria-label="${esc('Sửa câu '+it.code)}"><button type="button" class="bk-mini" data-done="${esc(id)}">Xong</button><button type="button" class="bk-mini" data-reset="${esc(id)}">Câu gốc</button></li>`;
+        return `<li class="${on?'':'off'}"><input type="checkbox" data-keep="${esc(id)}" ${on?'checked':''} aria-label="${esc(`Giữ biến ${it.code}`)}"><span class="t"><b>${esc(it.code)}</b>${it.reverse?' (đảo chiều)':''} ${esc(text)}${ed!=null&&ed!==it.vi?' <span class="flag">(đã sửa)</span>':''}</span><button type="button" class="bk-mini" data-editbtn="${esc(id)}" aria-label="${esc('Sửa câu '+it.code)}">Sửa</button></li>`;
+      }).join('');
+      return `<div class="bk-c"><div class="bk-head"><span style="font-size:.9rem"><b>${i+1}. ${esc(x.c.nameVi)}</b> <span class="text-muted-foreground">(${esc(x.c.code)}, ${esc(x.scale.name)}, giữ ${kept}/${x.c.items.length} biến)</span></span>
+        <span class="bk-tools"><button type="button" data-up="${esc(k)}" aria-label="${esc('Đưa '+x.c.nameVi+' lên')}" ${i===0?'disabled':''}>↑</button><button type="button" data-down="${esc(k)}" aria-label="${esc('Đưa '+x.c.nameVi+' xuống')}" ${i===st.order.length-1?'disabled':''}>↓</button><button type="button" data-remove="${esc(k)}" aria-label="${esc('Bỏ '+x.c.nameVi)}">✕</button></span></div>
+        <label class="check"><input type="checkbox" data-dv="${esc(k)}" ${st.dv.includes(k)?'checked':''} aria-label="${esc('Đánh dấu '+x.c.nameVi+' là biến phụ thuộc')}"> Biến phụ thuộc (xếp cuối phiếu)</label>
+        ${kept<3?`<p class="err" style="margin:4px 0">Còn ${kept} biến. Nên giữ ít nhất 3 biến để đánh giá độ tin cậy và giá trị hội tụ.</p>`:''}
+        <details><summary style="cursor:pointer;font-size:.85rem">Các biến quan sát và ghi chú thang đo</summary><ol>${items}</ol>
+        <p class="text-muted-foreground" style="font-size:.8rem;margin:6px 0 0"><b>Ghi chú thang trả lời của bản gốc (chỉ cho bạn, không in lên phiếu):</b> ${esc(x.scale.responseScale)}${P.ambiguous?' Công cụ dùng số mức bạn chọn ở mục Thang trả lời.':''}</p></details></div>`;
+    }).join('');
+  }
   function renderPh(){
-    const list=placeholdersOf(chosen().flatMap(x=>x.c.items.map(i=>i.vi)));
+    const list=placeholdersOf(st.order.flatMap(k=>BYKEY.get(k).c.items.map(i=>st.edits[`${k}|${i.code}`]??i.vi)));
     if(!list.length){$('bk-ph').innerHTML='<small>Các khái niệm đã chọn không có chỗ cần điền.</small>';return}
-    $('bk-ph').innerHTML=list.map(k=>`<div class="field" style="margin:6px 0"><label style="font-weight:400">[${esc(k)}] →</label><input data-ph="${esc(k)}" value="${esc(state.ph[k]||'')}" placeholder="${k==='n'?'Ví dụ: 3':'Ví dụ: ví điện tử MoMo'}"></div>`).join('');
+    $('bk-ph').innerHTML=list.map(k=>`<div class="field" style="margin:6px 0"><label style="font-weight:400" for="ph-${esc(k)}">[${esc(k)}]</label><input id="ph-${esc(k)}" data-ph="${esc(k)}" value="${esc(st.ph[k]||'')}" placeholder="${esc(PH_EX[k]?'Điền '+PH_EX[k]:'Điền đối tượng cụ thể')}"></div>`).join('')
+      +'<small>Điền đúng loại từ để câu đọc trôi: cụm động từ cho [thực hiện hành vi], tên tổ chức cho [công ty]. Nếu câu gốc đã có chữ “này” sau chỗ trống, công cụ tự bỏ chữ “này” lặp.</small>';
+  }
+  function renderDemos(){
+    if(!st.aud){$('bk-demo').innerHTML='<small>Chọn đối tượng khảo sát trước.</small>';return}
+    const on=st.demos||DEMO_DEFAULT[st.aud];
+    $('bk-demo').innerHTML=DEMOS[st.aud].map(([k,l])=>`<label class="check"><input type="checkbox" data-demo="${k}" ${on.includes(k)?'checked':''} aria-label="${esc('Hỏi '+l.replace(/\{.*?\}/g,'').trim())}"> ${esc(l.replace('{addr}',addrOf(st.aud)==='Bạn'?'bạn':'Anh/Chị').replace('{target}','đối tượng nghiên cứu'))}</label>`).join('');
+  }
+  function syncInputs(){
+    $('bk-aud').value=st.aud;$('bk-scale').value=st.mode;$('bk-method').value=st.method;$('bk-arrows').value=st.arrows;$('bk-drop').value=st.dropPct;
+    for(const k of ['topic','who','org','contact'])$('bk-'+k).value=st[k];
+    $('bk-screen').checked=st.screen;$('bk-attn').checked=st.attn;$('bk-names').checked=st.showNames;
   }
 
-  // Response options per block: unified Likert for agreement scales, otherwise the original anchors.
-  const LIK={5:['Hoàn toàn không đồng ý','Không đồng ý','Trung lập','Đồng ý','Hoàn toàn đồng ý'],7:['Hoàn toàn không đồng ý','Không đồng ý','Hơi không đồng ý','Trung lập','Hơi đồng ý','Đồng ý','Hoàn toàn đồng ý']};
-  function blockScale(scale){const mode=$('bk-scale').value;if(mode!=='orig'&&isAgreementScale(scale.responseScale))return {points:+mode,text:`${mode} mức: ${LIK[mode].map((l,i)=>`${i+1} = ${l}`).join('; ')}`};return {points:0,text:scale.responseScale}}
-
-  function build(){
-    const sel=chosen(), method=$('bk-method').value, drop=Math.max(0,parseFloat($('bk-drop').value)||0)/100;
-    const items=[]; sel.forEach(x=>x.c.items.forEach(i=>items.push({...i,vi:fillPlaceholders(i.vi,state.ph),x})));
-    const arrows=Math.max(1,parseInt($('bk-arrows').value)||1);
-    const prefer=['hệ thống','dịch vụ','sản phẩm','thương hiệu','loại dịch vụ','công ty'];
-    const target=prefer.map(p=>(state.ph[p]||'').trim()).find(Boolean)||'[đối tượng nghiên cứu]';
-    const demo=DEMO.filter(([k])=>document.querySelector(`[data-demo="${k}"]`).checked);
-    const nQ=items.length+($('bk-attn').checked?1:0)+($('bk-screen').checked?1:0)+demo.length;
-    return {sel,method,drop,items,arrows,target,demo,nQ,ss:sel.length?kitSample(method,arrows,items.length):null};
+  // ---- assemble the survey model ----
+  function surveyInput(){
+    const constructs=st.order.map(k=>BYKEY.get(k)).map(x=>({key:x.key,scale:{slug:x.scale.slug,name:x.scale.name,responseScale:x.scale.responseScale},c:x.c,
+      items:x.c.items.filter(i=>!(st.drop[x.key]||[]).includes(i.code)).map(i=>{const e=st.edits[`${x.key}|${i.code}`];return e!=null&&e.trim()&&e.trim()!==i.vi?{...i,vi:e.trim(),edited:true}:i})})).filter(x=>x.items.length);
+    const target=targetOf(st.aud);
+    return {aud:st.aud||'td',mode:st.mode,ph:st.ph,target,showNames:st.showNames,attn:st.attn,screen:st.screen,screenText:st.screenEdited?st.screenText:'',
+      demos:st.aud?(st.demos||DEMO_DEFAULT[st.aud]):[],topic:st.topic,who:st.who,org:st.org,contact:st.contact,constructs};
   }
 
-  function questionnaireHtml(k){
-    const topic=$('bk-topic').value.trim()||'[tên đề tài]', who=$('bk-who').value.trim()||'[người thực hiện, đơn vị]';
-    const mins=Math.max(3,Math.round(k.nQ*8/60));
-    let h=`<h3 style="text-align:center">PHIẾU KHẢO SÁT</h3><p>Xin chào Anh/Chị. Chúng tôi là ${esc(who)}, đang thực hiện nghiên cứu “${esc(topic)}”. Phiếu khảo sát mất khoảng ${mins} phút. Không có câu trả lời đúng hay sai; mọi thông tin chỉ dùng cho mục đích nghiên cứu và được giữ ẩn danh. Rất mong Anh/Chị trả lời theo đúng suy nghĩ của mình.</p>`;
-    let part=0; const P=()=>`PHẦN ${['A','B','C','D'][part++]}`;
-    if($('bk-screen').checked) h+=`<h4>${P()}. CÂU HỎI SÀNG LỌC</h4><p>Anh/Chị đã từng sử dụng hoặc trải nghiệm ${esc(k.target)} chưa?<br>☐ Đã từng (tiếp tục khảo sát) &nbsp; ☐ Chưa từng (dừng khảo sát, xin cảm ơn Anh/Chị)</p>`;
-    h+=`<h4>${P()}. ĐÁNH GIÁ CỦA ANH/CHỊ</h4><p>Vui lòng chọn mức độ phù hợp nhất với Anh/Chị cho mỗi phát biểu.</p>`;
-    let no=0; const mid=Math.floor(k.sel.length/2);
-    k.sel.forEach((x,bi)=>{
-      const sc=blockScale(x.scale), pts=sc.points;
-      h+=`<p style="margin-top:14px"><b>${esc(x.c.nameVi)}</b><br><small>Thang trả lời: ${esc(sc.text)}</small></p><table style="width:100%;border-collapse:collapse" border="1" cellpadding="4"><tr><th>STT</th><th>Mã</th><th style="text-align:left">Phát biểu</th>${pts?Array.from({length:pts},(_,i)=>`<th>${i+1}</th>`).join(''):'<th>Mức trả lời</th>'}</tr>`;
-      x.c.items.forEach(i=>{no++;h+=`<tr><td>${no}</td><td>${esc(i.code)}</td><td>${esc(fillPlaceholders(i.vi,state.ph))}</td>${pts?Array.from({length:pts},()=>'<td style="text-align:center">☐</td>').join(''):'<td></td>'}</tr>`});
-      if($('bk-attn').checked&&bi===mid){no++;h+=`<tr><td>${no}</td><td>ATT1</td><td>Để kiểm tra sự tập trung, vui lòng chọn mức “${pts?LIK[pts][pts===5?3:5]:'Đồng ý'}” cho câu này.</td>${pts?Array.from({length:pts},()=>'<td style="text-align:center">☐</td>').join(''):'<td></td>'}</tr>`}
-      h+='</table>';
+  // ---- paper questionnaire (screen preview and Word file) ----
+  const box='☐';
+  function questionnaireHtml(sv){
+    const A=sv.addr, a=A==='Bạn'?'bạn':'Anh/Chị';let no=0,part=0;const P=()=>`PHẦN ${'ABCDEFGH'[part++]}`;
+    let h=`<p style="text-align:center;margin:0"><b>PHỤ LỤC 1. PHIẾU KHẢO SÁT</b></p><p style="text-align:right;margin:0">Mã phiếu: ……………</p>`;
+    h+=`<p>Xin chào ${A},</p><p>Tôi là ${esc(sv.who||'[họ tên người thực hiện]')}, ${esc(sv.org||'[khoa, trường]')}. Tôi đang thực hiện nghiên cứu “${esc(sv.topic||'[tên đề tài]')}”. Phiếu khảo sát mất khoảng ${sv.minutes} phút. Không có câu trả lời đúng hay sai; mọi thông tin chỉ dùng cho mục đích nghiên cứu và được giữ ẩn danh. Việc tham gia là tự nguyện, ${a} có thể dừng bất cứ lúc nào mà không cần giải thích.</p>`;
+    h+=`<p>Mọi thắc mắc về khảo sát, xin liên hệ: ${esc(sv.contact||'[email hoặc số điện thoại]')}.</p>`;
+    h+=`<p><b>Cách trả lời:</b> đánh dấu X vào một ô ${box} phù hợp nhất cho mỗi câu. Với các bảng, mỗi dòng chọn một số theo chú giải ngay trên bảng.</p>`;
+    if(sv.screening){const s=sv.screening;no++;h+=`<p><b>${P()}. CÂU HỎI SÀNG LỌC</b></p><p><b>Câu ${no}.</b> ${esc(s.text)}<br>${box} ${esc(s.choices[0])} (tiếp tục) &nbsp;&nbsp; ${box} ${esc(s.choices[1])} (dừng khảo sát, xin cảm ơn ${a})</p>`}
+    h+=`<p><b>${P()}. ĐÁNH GIÁ CỦA ${A.toUpperCase()}</b></p>`;
+    const acStandalone=()=>{no++;h+=`<p><b>Câu ${no}.</b> ${esc(sv.ac.text)}<br>${sv.ac.labels.map(l=>`${box} ${esc(l)}`).join(' &nbsp; ')}</p>`};
+    sv.constructs.forEach((c,ci)=>{
+      h+=sv.showNames?`<p style="margin:14px 0 4px"><b>${esc(c.nameVi)}</b></p>`:`<p style="margin:14px 0 4px"><b>Phần ${ci+1}</b></p>`;
+      if(c.lead)h+=`<p style="margin:0 0 4px"><i>${esc(c.lead)}</i></p>`;
+      c.blocks.forEach(b=>{
+        const vs=valuesOf(b), cells=()=>vs.map(()=>`<td class="c">${box}</td>`).join('');
+        if(b.kind==='bipolar'){
+          const stems=b.items.some(i=>i.stem);
+          h+=`<p style="margin:4px 0"><small>${esc(b.legend)}</small></p><div class="table-wrap"><table><tr><th>Câu</th><th>Mã</th>${stems?'<th>Phát biểu</th>':''}<th></th>${vs.map(v=>`<th class="c">${v}</th>`).join('')}<th></th></tr>`;
+          b.items.forEach(i=>{no++;h+=`<tr><td>${no}</td><td>${esc(i.code)}</td>${stems?`<td class="s">${esc(i.stem||'')}</td>`:''}<td class="p" style="text-align:right">${esc(i.left)}</td>${cells()}<td class="p">${esc(i.right)}</td></tr>`});
+          h+='</table></div>';return;
+        }
+        h+=`<p style="margin:4px 0"><small>Thang trả lời: ${esc(b.legend)}</small></p><div class="table-wrap"><table><tr><th>Câu</th><th>Mã</th><th>Phát biểu</th>${vs.map(v=>`<th class="c">${v}</th>`).join('')}</tr>`;
+        b.items.forEach(i=>{no++;h+=`<tr><td>${no}</td><td>${esc(i.code)}</td><td class="s">${esc(i.text)}</td>${cells()}</tr>`});
+        h+='</table></div>';
+      });
+      if(sv.ac&&!sv.ac.inBlock&&sv.ac.after===ci)acStandalone();
     });
-    if(k.demo.length){h+=`<h4>${P()}. THÔNG TIN CÁ NHÂN</h4>`;k.demo.forEach(([,l,opts])=>{h+=`<p>${esc(l)}: ${opts.map(o=>`☐ ${esc(o)}`).join(' &nbsp; ')}</p>`})}
-    return h+'<p style="text-align:center"><i>Xin chân thành cảm ơn Anh/Chị đã dành thời gian trả lời!</i></p>';
+    if(sv.demos.length){h+=`<p style="margin-top:14px"><b>${P()}. THÔNG TIN CHUNG</b></p>`;
+      sv.demos.forEach(dm=>{no++;h+=dm.type==='text'?`<p><b>Câu ${no}.</b> ${esc(dm.label)}: ……………………………………</p>`:`<p><b>Câu ${no}.</b> ${esc(dm.label)}<br>${dm.options.map(o=>`${box} ${esc(o.replace(/\s*\(ghi rõ\)$/,': ……………'))}`).join(' &nbsp; ')}</p>`})}
+    return h+`<p style="text-align:center"><i>Xin chân thành cảm ơn ${a} đã dành thời gian trả lời!</i></p>`;
   }
 
   const BASE_REF={
@@ -215,70 +795,150 @@
     hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
     kock:'Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131',
     meade:'Meade, A. W., &amp; Craig, S. B. (2012). Identifying careless responses in survey data. <em>Psychological Methods, 17</em>(3), 437–455. https://doi.org/10.1037/a0028085',
+    podsakoff:'Podsakoff, P. M., MacKenzie, S. B., Lee, J.-Y., &amp; Podsakoff, N. P. (2003). Common method biases in behavioral research: A critical review of the literature and recommended remedies. <em>Journal of Applied Psychology, 88</em>(5), 879–903. https://doi.org/10.1037/0021-9010.88.5.879',
   };
 
-  function thesisHtml(k){
-    const ps=[], refs=new Set(), base=['brislin','faul','cohen88'];
-    const byScale=new Map(); k.sel.forEach(x=>{if(!byScale.has(x.scale.slug))byScale.set(x.scale.slug,{scale:x.scale,list:[]});byScale.get(x.scale.slug).list.push(x)});
-    ps.push(`Bảng hỏi gồm ${k.sel.length} khái niệm nghiên cứu với tổng cộng ${k.items.length} biến quan sát, đều được kế thừa từ các thang đo đã được kiểm định trong các nghiên cứu trước.`);
-    ps.push(k.sel.map(x=>`Khái niệm “${x.c.nameVi}” (${x.c.code}) được đo bằng ${x.c.items.length} biến quan sát kế thừa từ ${citeOf(x.c.source)}.`).join(' '));
-    const cites=k.sel.map(x=>citeOf(x.c.source));
-    byScale.forEach(({scale})=>scale.references.filter(r=>cites.some(c=>citedBy(c,strip(r)))).forEach(r=>refs.add(r)));
-    const mode=$('bk-scale').value, nonAgree=[...byScale.values()].filter(v=>!isAgreementScale(v.scale.responseScale));
-    if(mode==='orig') ps.push('Mỗi thang đo được giữ nguyên dạng thang trả lời như trong nghiên cứu gốc.');
-    else ps.push(`Các thang đo dạng đồng ý được đo bằng thang Likert ${mode} mức (1 = Hoàn toàn không đồng ý, ${mode} = Hoàn toàn đồng ý)${nonAgree.length?`; riêng ${nonAgree.map(v=>v.scale.name).join(', ')} giữ thang trả lời của nghiên cứu gốc vì không phải dạng đồng ý`:''}.`);
-    const rev=k.items.filter(i=>i.reverse).map(i=>i.code);
-    if(rev.length) ps.push(`Các biến ${rev.join(', ')} là câu đảo chiều và được đảo điểm trước khi phân tích.`);
-    ps.push(`Thang đo gốc bằng tiếng Anh được dịch sang tiếng Việt theo quy trình dịch xuôi và dịch ngược (Brislin, 1970), sau đó được [giảng viên hướng dẫn/chuyên gia] góp ý về từ ngữ và khảo sát thử với [số người] người để điều chỉnh những câu khó hiểu trước khi khảo sát chính thức.`);
-    if($('bk-attn').checked){ps.push('Bảng hỏi có một câu kiểm tra sự chú ý (ATT1); phiếu trả lời sai câu này được loại khỏi dữ liệu phân tích (Meade và Craig, 2012).');base.push('meade')}
+  function thesisHtml(sv,k){
+    const ps=[],refs=new Set(),base=['brislin','podsakoff','faul','cohen88'];
+    ps.push(`Bảng hỏi gồm ${sv.constructs.length} khái niệm nghiên cứu với tổng cộng ${sv.nItems} biến quan sát, kế thừa từ các thang đo gốc nêu dưới đây và trong Bảng mã hoá thang đo.`);
+    ps.push(sv.constructs.map(c=>{
+      const desc=[...new Set(c.blocks.map(b=>b.describe))].join(', kết hợp ');
+      const notes=c.notes.length?` (${c.notes.join('; ')})`:'';
+      const ed=c.edited?` ${c.edited} biến được điều chỉnh câu chữ cho phù hợp bối cảnh nghiên cứu.`:'';
+      return `Khái niệm “${c.nameVi}” (${c.code}) được đo bằng ${c.nItems} biến quan sát kế thừa từ ${c.cite}, dùng ${desc}${notes}.${ed}`}).join(' '));
+    sv.constructs.forEach(c=>{const x=BYKEY.get(c.key);x.scale.references.filter(r=>citedBy(c.cite,strip(r))).forEach(r=>refs.add(r))});
+    const rev=sv.constructs.flatMap(c=>c.blocks.flatMap(b=>b.items.filter(i=>i.reverse).map(i=>`${i.code} (${b.reverseRule})`)));
+    if(rev.length)ps.push(`Các biến ${rev.join(', ')} là câu đảo chiều và được đảo điểm trước khi phân tích.`);
+    ps.push('[Nếu đã thực hiện:] Thang đo gốc bằng tiếng Anh được dịch sang tiếng Việt theo quy trình dịch xuôi và dịch ngược (Brislin, 1970); [người dịch xuôi] và [người dịch ngược] làm việc độc lập, các khác biệt được thống nhất trước khi khảo sát thử.');
+    ps.push('[Nếu đã thực hiện:] Bảng hỏi được [giảng viên hướng dẫn/số chuyên gia] góp ý về từ ngữ và khảo sát thử với [số người] người thuộc đối tượng nghiên cứu; [nêu các câu đã sửa sau khảo sát thử, hoặc ghi “không có câu nào phải sửa”].');
+    ps.push('[Để hạn chế sai lệch phương pháp chung, nghiên cứu áp dụng các biện pháp thủ tục theo Podsakoff và cộng sự (2003): phiếu khảo sát ẩn danh, lời dẫn nhấn mạnh không có câu trả lời đúng hay sai, biến phụ thuộc được đặt sau các biến độc lập, và câu chữ được rà soát qua khảo sát thử. Sau khi thu dữ liệu, kiểm tra bằng [kiểm định nhân tố đơn của Harman/hệ số VIF toàn phần].]');
+    if(sv.screening)ps.push(`Câu sàng lọc ở đầu phiếu (“${sv.screening.text}”) loại những người không thuộc đối tượng nghiên cứu.`);
+    if(sv.ac){ps.push(`Bảng hỏi có một câu kiểm tra sự chú ý (${sv.ac.code}, yêu cầu chọn mức “2 – Không đồng ý”); phiếu trả lời sai câu này được loại khỏi dữ liệu phân tích (Meade và Craig, 2012).`);base.push('meade')}
     const s=k.ss;
     if(k.method==='pls'){
-      ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009), dùng kiểm định F cho hồi quy bội với ${k.arrows} biến dự báo (số mũi tên lớn nhất trỏ vào một khái niệm trong mô hình), cỡ hiệu ứng f² = 0,15 (mức trung bình theo Cohen, 1988), α = 0,05 và power 0,80, cho kết quả ${fmt(s.pow)} quan sát. Theo phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018), được Hair và cộng sự (2022) khuyến nghị cho PLS-SEM, với hệ số đường dẫn nhỏ nhất kỳ vọng 0,2, cỡ mẫu tối thiểu là ${fmt(s.second)} quan sát. Nghiên cứu chọn mức lớn hơn, tức ${fmt(s.min)} quan sát.`);base.push('kock','hair22');
+      ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009), dùng kiểm định F cho hồi quy bội với ${k.arrows} biến dự báo (số mũi tên lớn nhất trỏ vào một khái niệm trong mô hình), cỡ hiệu ứng f² = 0,15 (mức trung bình theo Cohen, 1988), α = 0,05 và power 0,80, cho kết quả ${fmt(s.pow)} quan sát. Theo phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018), được Hair và cộng sự (2022) khuyến nghị cho PLS-SEM, với hệ số đường dẫn nhỏ nhất kỳ vọng 0,2, α = 0,05 và power 0,80, cỡ mẫu tối thiểu là ${fmt(s.second)} quan sát. Nghiên cứu chọn mức lớn hơn, tức ${fmt(s.min)} quan sát.`);base.push('kock','hair22');
     }else{
-      ps.push(`Theo Hair và cộng sự (2010), cỡ mẫu cho phân tích nhân tố khám phá nên tối thiểu gấp 5 lần số biến quan sát; với ${k.items.length} biến quan sát, cỡ mẫu tối thiểu là ${fmt(s.second)}. Phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009) cho hồi quy bội với ${k.arrows} biến độc lập, f² = 0,15 (Cohen, 1988), α = 0,05 và power 0,80 cho cỡ mẫu tối thiểu ${fmt(s.pow)}. Nghiên cứu chọn mức lớn hơn, tức ${fmt(s.min)} quan sát.`);base.push('hair10');
+      ps.push(`Theo Hair và cộng sự (2010), cỡ mẫu cho phân tích nhân tố khám phá nên tối thiểu gấp 5 lần số biến quan sát; với ${sv.nItems} biến quan sát, cỡ mẫu tối thiểu là ${fmt(s.second)}. Phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009) cho hồi quy bội với ${k.arrows} biến độc lập, f² = 0,15 (Cohen, 1988), α = 0,05 và power 0,80 cho cỡ mẫu tối thiểu ${fmt(s.pow)}. Nghiên cứu chọn mức lớn hơn, tức ${fmt(s.min)} quan sát.`);base.push('hair10');
     }
-    if(k.drop>0) ps.push(`Để dự phòng khoảng ${d(Math.round(k.drop*100))}% phiếu không hợp lệ, số phiếu dự kiến thu là ${fmt(Math.ceil(s.min/(1-k.drop)))} phiếu.`);
+    if(k.drop>0)ps.push(`Để dự phòng khoảng ${d(Math.round(k.drop*100))}% phiếu không hợp lệ, số phiếu dự kiến thu là ${fmt(Math.ceil(s.min/(1-k.drop)))} phiếu.`);
     base.forEach(r=>refs.add(BASE_REF[r]));
-    const sorted=[...refs].sort((a,b)=>strip(a).localeCompare(strip(b),'en'));
-    return ps.map(p=>`<p>${esc(p)}</p>`).join('')+`<p><strong>Tài liệu tham khảo</strong></p><ul>${sorted.map(r=>`<li>${r}</li>`).join('')}</ul>`;
+    const sorted=[...refs].sort((x,y)=>strip(x).localeCompare(strip(y),'en'));
+    const cb=codebookRows(sv).slice(1).filter(r=>r[4]);
+    const table=`<p><strong>Bảng mã hoá thang đo</strong></p><div class="table-wrap"><table><tr><th>Khái niệm</th><th>Mã</th><th>Biến quan sát</th><th>Câu gốc (tiếng Anh)</th><th>Nguồn</th><th>Kế thừa/điều chỉnh</th></tr>${cb.map(r=>`<tr><td>${esc(r[1])}</td><td>${esc(r[0])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td><td>${esc(r[7].replace(/^Điều chỉnh: /,'Điều chỉnh: '))}</td></tr>`).join('')}</table></div>`;
+    return ps.map(p=>`<p>${esc(p)}</p>`).join('')+table+`<p><strong>Tài liệu tham khảo</strong></p><ul>${sorted.map(r=>`<li>${r}</li>`).join('')}</ul>`;
   }
 
+  // ---- main render ----
   let last=null;
+  const LINK='https://geniusdata.io/signup?ref=lab-tool&next=%2Fapp%2Fforms&utm_source=goc-nghien-cuu&utm_medium=tool&utm_campaign=ai-lab&utm_content=bo-khao-sat';
   function render(){
-    const k=build(); last=k;
-    $('bk-arrows-hint').textContent=k.method==='pls'?'Đếm trên mô hình: khái niệm phụ thuộc nhận nhiều mũi tên nhất.':'Số biến độc lập trong mô hình hồi quy.';
-    if(!k.sel.length){$('bk-out').innerHTML='<p class="text-muted-foreground">Chọn ít nhất một khái niệm ở bên trái để bắt đầu. Ví dụ: Nhận thức sự hữu ích, Nhận thức tính dễ sử dụng và Ý định sử dụng (TAM).</p>';$('bk-q').innerHTML='';$('bk-thesis').innerHTML='';return}
-    const s=k.ss, sendN=Math.ceil(s.min/(1-k.drop));
-    const cost=r=>s.min*k.nQ*r*1100;
+    const method=st.method, arrowsOk=Number.isInteger(+st.arrows)&&+st.arrows>=1, arrows=arrowsOk?+st.arrows:1;
+    const dropOk=+st.dropPct>=0&&+st.dropPct<=50, drop=Math.min(50,Math.max(0,+st.dropPct||0))/100;
+    $('bk-arrows-label').textContent=method==='pls'?'Số mũi tên nhiều nhất trỏ vào một khái niệm':'Số biến độc lập trong mô hình hồi quy';
+    const isr15=isrN(0.15,0.05,0.8);
+    $('bk-arrows-hint').innerHTML=(arrowsOk?'':'<span class="err">Nhập số nguyên từ 1 trở lên. Đang tạm tính với 1. </span>')+(method==='pls'
+      ?`Đếm số mũi tên trỏ vào từng khái niệm trên mô hình, lấy số lớn nhất. Ví dụ TAM: PU và PEOU cùng trỏ vào BI, PEOU trỏ vào PU, nên nhập 2. Phương pháp Kock và Hadaya không phụ thuộc số này mà chỉ phụ thuộc hệ số đường dẫn nhỏ nhất kỳ vọng (p_min = 0,2, mức Hair và cộng sự, 2022 dùng làm chuẩn khi chưa có số liệu trước; nếu đường dẫn yếu hơn, ví dụ 0,15, cần ${fmt(isr15)} quan sát).`
+      :'Số biến độc lập trong phương trình hồi quy có nhiều biến nhất.');
+    $('bk-drop-hint').innerHTML=(dropOk?'':'<span class="err">Chỉ nhận từ 0 đến 50%. </span>')+'Phiếu sai câu kiểm tra chú ý, điền thiếu hoặc không qua sàng lọc.';
+    $('bk-screen-text').disabled=!st.screen;
+    const inp=surveyInput();
+    if(!st.aud||!inp.constructs.length){
+      $('bk-bar-text').textContent=st.order.length?`Đã chọn ${st.order.length} khái niệm`:'Chưa chọn khái niệm nào';
+      $('bk-out').innerHTML=!st.aud?'<p class="err">Chọn đối tượng khảo sát ở mục 1 để công cụ chọn câu sàng lọc, cách xưng hô và câu hỏi thông tin chung.</p>':'<p class="text-muted-foreground">Chọn ít nhất một khái niệm để bắt đầu. Ví dụ: Nhận thức sự hữu ích, Nhận thức tính dễ sử dụng và Ý định sử dụng (TAM).</p>';
+      $('bk-q').innerHTML='';$('bk-thesis').innerHTML='';last=null;
+      if(!st.screenEdited)$('bk-screen-text').value=st.aud?defaultScreening(st.aud,inp.target):'';
+      save();return;
+    }
+    const sv=buildSurvey(inp);
+    if(!st.screenEdited&&document.activeElement!==$('bk-screen-text'))$('bk-screen-text').value=sv.screening?sv.screening.text:defaultScreening(st.aud,inp.target);
+    const ss=kitSample(method,arrows,sv.nItems), k={sv,ss,method,arrows,drop};last=k;
+    $('bk-bar-text').textContent=`Đã chọn ${sv.constructs.length} khái niệm · ${sv.nQ} câu · khoảng ${sv.minutes} phút`;
+    const sendN=Math.ceil(ss.min/(1-drop)), cost=r=>ss.min*sv.nQ*r*1100;
     const money=v=>v>=1e6?`${d((Math.round(v/1e5)/10).toString())} triệu`:`${fmt(Math.round(v/1000))} nghìn`;
-    const link='https://geniusdata.io/signup?ref=lab-tool&next=%2Fapp%2Fforms&utm_source=goc-nghien-cuu&utm_medium=tool&utm_campaign=ai-lab&utm_content=bo-khao-sat';
-    $('bk-out').innerHTML=`<div class="result"><span class="lbl">Bảng hỏi</span><span class="num">${fmt(k.nQ)} câu</span><span class="how">${k.sel.length} khái niệm, ${k.items.length} biến quan sát. Khoảng ${Math.max(3,Math.round(k.nQ*8/60))} phút để trả lời.</span></div>
-<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${fmt(s.min)}</span><span class="how">${k.method==='pls'?`G*Power ${fmt(s.pow)}, Kock &amp; Hadaya ${fmt(s.second)}`:`G*Power ${fmt(s.pow)}, EFA 5:1 ${fmt(s.second)}`}. Cần thu khoảng <b>${fmt(sendN)} phiếu</b> nếu dự phòng ${d(Math.round(k.drop*100))}% phiếu loại.</span></div>
-<div class="result"><span class="lbl">Nếu cần người trả lời</span><span class="how">Thu ${fmt(s.min)} phiếu hợp lệ trên Genius Data khoảng <b>${money(cost(0.15))} – ${money(cost(0.4))} đ</b>, tuỳ mức thưởng bạn đặt; chỉ trả cho phiếu được duyệt. <a class="text-accent underline underline-offset-4" href="${link}" rel="noopener">Tạo khảo sát trên Genius Data</a> <span class="text-muted-foreground">(link giới thiệu)</span></span></div>`;
-    $('bk-q').innerHTML=questionnaireHtml(k);
-    $('bk-thesis').innerHTML=thesisHtml(k);
+    const warn=[];
+    if(sv.nQ>60||sv.minutes>15)warn.push(`Phiếu dài (${sv.nQ} câu, khoảng ${sv.minutes} phút). Phiếu quá 15 phút dễ bị bỏ dở hoặc trả lời qua loa ở nửa sau. Gợi ý: bỏ khái niệm không nằm trong giả thuyết, dùng bản rút gọn của thang đo, hoặc bỏ bớt câu thông tin chung không dùng khi phân tích.`);
+    sv.constructs.filter(c=>c.nItems<3).forEach(c=>warn.push(`${c.nameVi} chỉ còn ${c.nItems} biến; nên giữ ít nhất 3 biến.`));
+    const dropped=st.order.filter(k2=>!inp.constructs.some(x=>x.key===k2));
+    dropped.forEach(k2=>warn.push(`${BYKEY.get(k2).c.nameVi} đã bỏ hết biến nên không có trên phiếu.`));
+    if(sv.unfilled.length)warn.push(`Còn chỗ trống chưa điền: ${sv.unfilled.join(', ')}. Điền ở mục 4 hoặc sửa câu sàng lọc.`);
+    if(sv.renamed.length)warn.push(`Đổi mã để không trùng cột dữ liệu: ${sv.renamed.map(([a2,b2])=>`${a2} thành ${b2}`).join(', ')}.`);
+    const kinds=[...new Set(sv.constructs.flatMap(c=>c.blocks.map(b=>b.describe)))];
+    if(kinds.length>1)warn.push(`Phiếu dùng ${kinds.length} dạng thang trả lời; chương 3 đã ghi thang của từng khái niệm. Khi phân tích, không cộng điểm giữa các thang khác số mức.`);
+    if(sv.ac&&!sv.ac.inBlock)warn.push('Không có khối thang đồng ý nên câu kiểm tra chú ý là một câu riêng có 5 lựa chọn.');
+    if(!st.dv.some(k2=>inp.constructs.some(x=>x.key===k2)))warn.push('Chưa đánh dấu biến phụ thuộc nào. Biến phụ thuộc nên đặt cuối phần đo lường.');
+    $('bk-out').innerHTML=`<div class="result"><span class="lbl">Bảng hỏi</span><span class="num">${fmt(sv.nQ)} câu</span><span class="how">${sv.constructs.length} khái niệm, ${sv.nItems} biến quan sát. Khoảng ${sv.minutes} phút để trả lời.</span></div>
+<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${fmt(ss.min)}</span><span class="how">${method==='pls'?`G*Power ${fmt(ss.pow)}, Kock và Hadaya ${fmt(ss.second)}`:`G*Power ${fmt(ss.pow)}, EFA 5 quan sát mỗi biến ${fmt(ss.second)}`}. Cần thu khoảng <b>${fmt(sendN)} phiếu</b> nếu dự phòng ${d(Math.round(drop*100))}% phiếu loại.</span></div>
+${warn.length?`<div class="result"><span class="lbl">Cần xem lại</span><ul class="bk-warn">${warn.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:''}
+<div class="result"><span class="lbl">Nếu cần người trả lời</span><span class="how">Thu ${fmt(ss.min)} phiếu hợp lệ trên Genius Data khoảng <b>${money(cost(0.15))} – ${money(cost(0.4))} đ</b>, tuỳ mức thưởng bạn đặt; chỉ trả cho phiếu được duyệt. <a class="text-accent underline underline-offset-4" href="${LINK}" rel="sponsored noopener">Tạo khảo sát trên Genius Data</a> <span class="text-muted-foreground">(link giới thiệu)</span></span></div>`;
+    $('bk-q').innerHTML=questionnaireHtml(sv);
+    $('bk-thesis').innerHTML=thesisHtml(sv,k);
+    if(!$('bk-gform-box').classList.contains('bk-hide'))$('bk-gform-code').value=appsScript(sv);
+    if(!$('bk-gdf-box').classList.contains('bk-hide'))$('bk-gdf-code').value=toGDF(sv);
+    save();
   }
+  function renderAll(){renderList();renderChosen();renderPh();renderDemos();render()}
 
   function download(name,mime,content){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type:mime}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
-  function copyFrom(el,btn,label){const t=el.innerText,done=()=>{btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=label,1500)};const fb=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Đã chọn, nhấn Ctrl+C'};try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}}
+  function copyText(t,btn,label,el){const done=()=>{btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=label,1500)};
+    const fb=()=>{if(el&&el.select){el.focus();el.select()}else if(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}btn.textContent='Đã chọn, nhấn Ctrl+C'};
+    try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}}
+  const need=()=>{if(!last){$('bk-out').scrollIntoView({behavior:'smooth'});return false}return true};
 
-  $('bk-doc').addEventListener('click',()=>{if(!last||!last.sel.length)return;download('bang-hoi-khao-sat.doc','application/msword',`﻿<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse}td,th{border:1px solid #000;padding:4px}</style></head><body>${$('bk-q').innerHTML}</body></html>`)});
-  $('bk-csv').addEventListener('click',()=>{if(!last||!last.sel.length)return;const q=v=>`"${String(v).replace(/"/g,'""')}"`;const rows=[['Mã','Khái niệm','Phát biểu (tiếng Việt)','Phát biểu gốc','Đảo điểm','Nguồn','Thang trả lời']];last.items.forEach(i=>rows.push([i.code,i.x.c.nameVi,i.vi,i.en,i.reverse?'Có':'',citeOf(i.x.c.source),blockScale(i.x.scale).text]));download('bang-ma-hoa.csv','text/csv;charset=utf-8','﻿'+rows.map(r=>r.map(q).join(',')).join('\r\n'))});
-  $('bk-copy-q').addEventListener('click',()=>copyFrom($('bk-q'),$('bk-copy-q'),'Sao chép dạng chữ'));
-  $('bk-copy-t').addEventListener('click',()=>copyFrom($('bk-thesis'),$('bk-copy-t'),'Sao chép đoạn văn'));
+  $('bk-doc').addEventListener('click',()=>{if(!need())return;
+    download('phieu-khao-sat.doc','application/msword',`﻿<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Phiếu khảo sát</title><style>@page WordSection1{size:21cm 29.7cm;margin:2cm 2cm 2cm 3cm}div.WordSection1{page:WordSection1}body{font-family:"Times New Roman";font-size:13pt;line-height:1.4}table{border-collapse:collapse;width:100%}td,th{border:1px solid #000;padding:3pt 4pt;font-size:12pt;vertical-align:top}td.c,th.c{text-align:center}</style></head><body><div class="WordSection1">${questionnaireHtml(last.sv)}</div></body></html>`)});
+  $('bk-csv').addEventListener('click',()=>{if(!need())return;download('bang-ma-hoa.csv','text/csv;charset=utf-8',toCSV(codebookRows(last.sv)))});
+  $('bk-copy-q').addEventListener('click',()=>copyText($('bk-q').innerText,$('bk-copy-q'),'Sao chép dạng chữ',$('bk-q')));
+  $('bk-copy-t').addEventListener('click',()=>copyText($('bk-thesis').innerText,$('bk-copy-t'),'Sao chép đoạn văn',$('bk-thesis')));
+  $('bk-link').addEventListener('click',()=>{save();copyText(location.href,$('bk-link'),'Sao chép link')});
+  const toggle=(id,fill)=>{if(!need())return;const b=$(id+'-box');b.classList.toggle('bk-hide');if(!b.classList.contains('bk-hide')){fill();b.scrollIntoView({behavior:'smooth',block:'nearest'})}};
+  $('bk-gform').addEventListener('click',()=>toggle('bk-gform',()=>{$('bk-gform-code').value=appsScript(last.sv)}));
+  $('bk-gdf').addEventListener('click',()=>toggle('bk-gdf',()=>{$('bk-gdf-code').value=toGDF(last.sv)}));
+  $('bk-gform-copy').addEventListener('click',()=>copyText($('bk-gform-code').value,$('bk-gform-copy'),'Sao chép đoạn mã',$('bk-gform-code')));
+  $('bk-gdf-copy').addEventListener('click',()=>copyText($('bk-gdf-code').value,$('bk-gdf-copy'),'Sao chép',$('bk-gdf-code')));
 
-  $('bk-list').addEventListener('change',e=>{const k=e.target.dataset.key;if(!k)return;e.target.checked?state.selected.add(k):state.selected.delete(k);
-    $('bk-arrows').value=Math.max(1,state.selected.size-1);renderPh();render()});
-  $('bk-ph').addEventListener('input',e=>{const k=e.target.dataset.ph;if(k){state.ph[k]=e.target.value;render()}});
+  // ---- events ----
+  function afterSelection(){if(!st.arrowsSet){st.arrows=autoArrows();$('bk-arrows').value=st.arrows}renderChosen();renderPh();render()}
+  $('bk-list').addEventListener('change',e=>{const k=e.target.dataset.key;if(!k)return;
+    if(e.target.checked)addKey(k);else{st.order=st.order.filter(x=>x!==k);st.dv=st.dv.filter(x=>x!==k)}
+    document.querySelectorAll(`#bk-list [data-key="${CSS.escape(k)}"]`).forEach(x=>{x.checked=e.target.checked});afterSelection()});
+  $('bk-chosen').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const ds=t.dataset;
+    if(ds.up||ds.down){const k=ds.up||ds.down,i=st.order.indexOf(k),j=ds.up?i-1:i+1;if(j<0||j>=st.order.length)return;[st.order[i],st.order[j]]=[st.order[j],st.order[i]];renderChosen();render();
+      const nb=document.querySelector(`#bk-chosen [data-${ds.up?'up':'down'}="${CSS.escape(k)}"]`);if(nb&&!nb.disabled)nb.focus();return}
+    if(ds.remove){st.order=st.order.filter(x=>x!==ds.remove);st.dv=st.dv.filter(x=>x!==ds.remove);renderList();afterSelection();return}
+    if(ds.editbtn){editing=ds.editbtn;renderChosen();const inp=document.querySelector(`#bk-chosen [data-edit="${CSS.escape(editing)}"]`);if(inp){inp.closest('details').open=true;inp.focus()}return}
+    if(ds.done){editing=null;renderChosen();renderPh();render();return}
+    if(ds.reset){delete st.edits[ds.reset];editing=null;renderChosen();renderPh();render()}
+  });
+  $('bk-chosen').addEventListener('change',e=>{const ds=e.target.dataset;
+    if(ds.keep){const [k,code]=ds.keep.split('|');const dr=new Set(st.drop[k]||[]);e.target.checked?dr.delete(code):dr.add(code);st.drop[k]=[...dr];if(!st.drop[k].length)delete st.drop[k];renderChosen();
+      const d2=document.querySelector(`#bk-chosen [data-keep="${CSS.escape(ds.keep)}"]`);if(d2){d2.closest('details').open=true;d2.focus()}render();return}
+    if(ds.dv){e.target.checked?st.dv.push(ds.dv):st.dv=st.dv.filter(x=>x!==ds.dv);sortDV();afterSelection()}
+  });
+  $('bk-chosen').addEventListener('input',e=>{const id=e.target.dataset.edit;if(!id)return;const [k,code]=id.split('|');const orig=BYKEY.get(k).c.items.find(i=>i.code===code).vi;
+    if(e.target.value.trim()===orig)delete st.edits[id];else st.edits[id]=e.target.value;render()});
+  $('bk-chosen').addEventListener('keydown',e=>{if(e.target.dataset.edit&&e.key==='Enter'){e.preventDefault();editing=null;renderChosen();renderPh();render()}});
+  $('bk-ph').addEventListener('input',e=>{const k=e.target.dataset.ph;if(k){st.ph[k]=e.target.value;render()}});
+  $('bk-demo').addEventListener('change',e=>{const k=e.target.dataset.demo;if(!k)return;const on=new Set(st.demos||DEMO_DEFAULT[st.aud]);e.target.checked?on.add(k):on.delete(k);st.demos=DEMOS[st.aud].map(x=>x[0]).filter(x=>on.has(x));render()});
   $('bk-search').addEventListener('input',renderList);
+  $('bk-aud').addEventListener('change',e=>{st.aud=e.target.value;st.demos=null;renderDemos();render()});
+  $('bk-scale').addEventListener('change',e=>{st.mode=e.target.value;render()});
+  $('bk-method').addEventListener('change',e=>{st.method=e.target.value;render()});
+  $('bk-arrows').addEventListener('input',e=>{st.arrows=e.target.value===''?'':+e.target.value;st.arrowsSet=true;render()});
+  $('bk-drop').addEventListener('input',e=>{st.dropPct=e.target.value===''?0:+e.target.value;render()});
+  for(const k of ['topic','who','org','contact'])$('bk-'+k).addEventListener('input',e=>{st[k]=e.target.value;render()});
+  $('bk-screen').addEventListener('change',e=>{st.screen=e.target.checked;render()});
+  $('bk-screen-text').addEventListener('input',e=>{st.screenText=e.target.value;st.screenEdited=e.target.value.trim()!=='';render()});
+  $('bk-attn').addEventListener('change',e=>{st.attn=e.target.checked;render()});
+  $('bk-names').addEventListener('change',e=>{st.showNames=e.target.checked;render()});
+
   // Model image → text lines (Tesseract.js, Vietnamese + English, runs in the browser) → one search per box label.
   function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
   $('bk-img').addEventListener('change',async e=>{
-    const file=e.target.files[0];if(!file)return;const st=$('bk-img-status');
+    const file=e.target.files[0];if(!file)return;const stt=$('bk-img-status');
     try{
-      st.textContent='Đang tải bộ đọc chữ (lần đầu khoảng 10–20 giây)…';
+      stt.textContent='Đang tải bộ đọc chữ (lần đầu khoảng 10–20 giây)…';
       if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
-      st.textContent='Đang đọc chữ trong ảnh…';
+      stt.textContent='Đang đọc chữ trong ảnh…';
       // Sparse-text mode (PSM 11) reads scattered box labels; the default page mode skips some.
       const worker=await Tesseract.createWorker('vie+eng');
       await worker.setParameters({tessedit_pageseg_mode:'11'});
@@ -290,20 +950,15 @@
         for(const w of ln.words){if(prev&&w.bbox.x0-prev.bbox.x1>1.2*h){segs.push(cur.join(' '));cur=[]}cur.push(w.text);prev=w}
         if(cur.length)segs.push(cur.join(' '))}
       const lines=[...new Set((segs.length?segs:data.text.split('\n')).map(l=>l.replace(/\bH\d+[a-z]?\b|[+\-–→←↑↓|()[\]{}]/g,' ').replace(/\s+/g,' ').trim()).filter(l=>/\p{L}{3}/u.test(l)&&l.length<=60))];
-      if(!lines.length){st.textContent='Không đọc được chữ trong ảnh. Thử ảnh rõ hơn hoặc gõ tên khái niệm vào ô tìm kiếm.';return}
+      if(!lines.length){stt.textContent='Không đọc được chữ trong ảnh. Thử ảnh rõ hơn hoặc gõ tên khái niệm vào ô tìm kiếm.';return}
       $('bk-search').value=lines.join('; ');renderList();
-      st.textContent=`Đọc được ${lines.length} dòng chữ. Chọn thang đo phù hợp cho từng khái niệm bên dưới; dòng nào đọc sai thì sửa trong ô tìm kiếm.`;
-    }catch(err){st.textContent='Không tải được bộ đọc chữ. Kiểm tra kết nối mạng rồi thử lại, hoặc gõ tên khái niệm vào ô tìm kiếm.'}
+      stt.textContent=`Đọc được ${lines.length} dòng chữ. Chọn thang đo phù hợp cho từng khái niệm bên dưới; dòng nào đọc sai thì sửa trong ô tìm kiếm.`;
+    }catch(err){stt.textContent='Không tải được bộ đọc chữ. Kiểm tra kết nối mạng rồi thử lại, hoặc gõ tên khái niệm vào ô tìm kiếm.'}
     e.target.value='';
   });
-  $('bk-form').addEventListener('change',e=>{if(!e.target.dataset.key)render()});
-  $('bk-form').addEventListener('input',e=>{if(e.target.id!=='bk-search'&&!e.target.dataset.ph&&!e.target.dataset.key)render()});
-  // Preset from a link, e.g. a template page: ?c=tam:PU,tam:BI&ph=hệ thống=ví MoMo&a=2&m=pls
-  const qs=new URLSearchParams(location.search);
-  (qs.get('c')||'').split(',').filter(k=>CONSTRUCTS.some(x=>x.key===k)).forEach(k=>state.selected.add(k));
-  (qs.get('ph')||'').split(';').forEach(p=>{const i=p.indexOf('=');if(i>0)state.ph[p.slice(0,i).toLowerCase()]=p.slice(i+1)});
-  if(qs.get('m')==='spss'||qs.get('m')==='pls')$('bk-method').value=qs.get('m');
-  $('bk-arrows').value=Math.max(1,parseInt(qs.get('a'))||state.selected.size-1||1);
-  renderList();renderPh();render();
+
+  load();syncInputs();
+  if(st.screenEdited)$('bk-screen-text').value=st.screenText;
+  renderAll();
 })();
 </script>

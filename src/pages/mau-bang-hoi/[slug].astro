@@ -7,7 +7,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Footer from "@/components/Footer.astro";
 import config from "@/config";
 import { appLink } from "@/utils/appLink";
-import { fillPlaceholders, citeOf, citedBy, stripHtml, isAgreementScale, POWER_N, ISR_N, maxIndegree } from "@/utils/kit";
+import { fillPlaceholders, citeOf, citedBy, stripHtml, isAgreementScale, reverseRuleOf, audienceCode, POWER_N, ISR_N, maxIndegree } from "@/utils/kit";
 
 export async function getStaticPaths() {
   const [templates, scales] = await Promise.all([getCollection("templates"), getCollection("scales")]);
@@ -39,6 +39,14 @@ const minN = Math.max(pow, second);
 const issue = Math.ceil(minN / 0.85);
 const ownScale = [...new Set(parts.filter(p => !isAgreementScale(p.scale.data.responseScale)).map(p => p.scale.data.name))];
 const reverse = items.filter(i => i.reverse).map(i => i.code);
+// Reverse scoring follows each scale's real range: Likert 5 for agreement scales, the original range otherwise.
+const reverseRules = [
+  ...new Set(parts.filter(p => p.c.items.some(i => i.reverse)).map(p => `${p.scale.data.name}: ${reverseRuleOf(p.scale.data.responseScale)}`)),
+];
+// Dependent variables: the constructs most arrows point to.
+const indeg = new Map<string, number>();
+d.paths.forEach(p => indeg.set(p.to, (indeg.get(p.to) ?? 0) + 1));
+const dv = [...indeg].filter(([, n]) => n === arrows).map(([k]) => k);
 const refs = [
   ...new Set(
     parts.flatMap(p => p.scale.data.references.filter(r => citedBy(p.cite, stripHtml(r))))
@@ -50,6 +58,8 @@ const kitParams = new URLSearchParams({
   ph: Object.entries(d.placeholders).map(([k, v]) => `${k}=${v}`).join(";"),
   a: String(arrows),
   m: d.method,
+  dt: audienceCode(d.audience),
+  dv: dv.join(","),
 });
 const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${kitParams}`;
 const others = templates.filter(x => x.id !== t.id).slice(0, 6);
@@ -105,8 +115,8 @@ const ld = {
       <h2>Bảng hỏi: các phát biểu đo lường</h2>
       <p class="text-sm">
         Các phát biểu dạng đồng ý dùng thang Likert 5 mức: 1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý.{ownScale.length > 0 && ` Riêng ${ownScale.join(", ")} giữ thang trả lời gốc, ghi ngay dưới bảng.`}{" "}
-        Nên thêm một câu sàng lọc (đã từng sử dụng {Object.values(d.placeholders)[0]} chưa) và một câu kiểm tra sự chú ý;
-        Bộ khảo sát tự thêm hai câu này và phần thông tin cá nhân.
+        Nên thêm một câu sàng lọc đúng đối tượng ({d.audience.toLowerCase()}) và một câu kiểm tra sự chú ý;
+        Bộ khảo sát tự thêm hai câu này và phần thông tin chung theo đối tượng khảo sát.
       </p>
       {
         parts.map(p => (
@@ -132,7 +142,7 @@ const ld = {
           </section>
         ))
       }
-      {reverse.length > 0 && <p class="text-sm">(R): câu đảo chiều, đảo điểm trước khi phân tích (thang 5 mức: 6 − điểm).</p>}
+      {reverse.length > 0 && <p class="text-sm">(R): câu đảo chiều, đảo điểm trước khi phân tích ({reverseRules.join("; ")}).</p>}
 
       <h2>Cỡ mẫu</h2>
       <p>
@@ -146,10 +156,10 @@ const ld = {
       <h2>Đoạn văn chương 3 (bản rút gọn)</h2>
       <blockquote>
         <p>
-          Bảng hỏi gồm {parts.length} khái niệm với {items.length} biến quan sát kế thừa từ các nghiên cứu trước:{" "}
+          Bảng hỏi gồm {parts.length} khái niệm với {items.length} biến quan sát kế thừa từ:{" "}
           {parts.map((p, i) => `${p.c.nameVi} (${p.c.code}, ${p.c.items.length} biến) theo ${p.cite}${i < parts.length - 1 ? "; " : "."}`)}{" "}
           Các phát biểu dạng đồng ý được đo bằng thang Likert 5 mức{ownScale.length > 0 ? `; ${ownScale.join(", ")} giữ thang trả lời của nghiên cứu gốc.` : "."}{reverse.length > 0 && ` Các biến ${reverse.join(", ")} là câu đảo chiều và được đảo điểm trước khi phân tích.`}{" "}
-          Thang đo được dịch xuôi và dịch ngược (Brislin, 1970) và khảo sát thử trước khi khảo sát chính thức.
+          [Nếu đã thực hiện:] Thang đo được dịch xuôi và dịch ngược (Brislin, 1970). [Nếu đã thực hiện:] Bảng hỏi được khảo sát thử với [số người] người thuộc đối tượng nghiên cứu trước khi khảo sát chính thức.
         </p>
       </blockquote>
       <p class="text-sm">Bản đầy đủ, có phần cỡ mẫu và tài liệu tham khảo định dạng sẵn: mở trong <a href={kitHref}>Bộ khảo sát</a>.</p>
@@ -158,7 +168,7 @@ const ld = {
       <ul>{d.tips.map(tip => <li>{tip}</li>)}</ul>
       <p class="text-sm">
         Cần {issue} người trả lời đúng đối tượng? Có thể thu mẫu trên{" "}
-        <a href={appLink("blog", `mau-${t.id}`, "/app/forms")} rel="noopener">Genius Data</a> (link giới thiệu), chỉ trả cho phiếu được duyệt.
+        <a href={appLink("blog", `mau-${t.id}`, "/app/forms")} rel="sponsored noopener">Genius Data</a> (link giới thiệu), chỉ trả cho phiếu được duyệt.
       </p>
 
       <h2>Tài liệu tham khảo</h2>

@@ -2,6 +2,7 @@
 title: "Cách thu mẫu khảo sát khoá luận: 6 bước đủ số, đúng người"
 description: "Cách thu mẫu khảo sát khoá luận đủ số lượng, đúng đối tượng: chọn phương pháp chọn mẫu, kênh phát phiếu, câu gạn lọc, theo dõi hạn ngạch, lọc phiếu."
 pubDatetime: 2026-10-29T06:00:00+07:00
+modDatetime: 2026-10-30T02:34:17+07:00
 featured: true
 tags: ["thu mẫu","khoá luận"]
 ---
@@ -11,7 +12,9 @@ tags: ["thu mẫu","khoá luận"]
 <h2>Bước 1: Chốt đối tượng và cỡ mẫu trước khi gửi link</h2>
 <p>Viết ra giấy một câu mô tả người được phép trả lời phiếu. Ví dụ: "Người đang làm việc toàn thời gian tại Hà Nội, đã mua hàng trên sàn thương mại điện tử ít nhất một lần trong 6 tháng qua". Câu này quyết định câu gạn lọc ở đầu phiếu, kênh bạn sẽ phát phiếu và cách bạn viết phần phương pháp ở chương 3.</p>
 <p>Sau đó tính cỡ mẫu theo phương pháp phân tích bạn định dùng. Nếu chạy EFA với 25 biến quan sát, quy tắc 5:1 của Hair và cộng sự (2010) cho tối thiểu 125 phiếu, quy tắc 10:1 cho 250 phiếu. Chi tiết từng công thức có trong bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>; muốn ra số ngay thì dùng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.</p>
-<p>Con số cuối cùng bạn đặt làm mục tiêu nên cao hơn cỡ mẫu tối thiểu. Một phần phiếu sẽ bị loại vì trả lời rập khuôn, trả lời quá nhanh hoặc sai đối tượng. Kinh nghiệm của nhiều người hướng dẫn là cộng thêm khoảng 10 đến 20% tuỳ kênh phát phiếu. Kênh càng mở (đăng nhóm công khai, chia sẻ lan truyền) thì tỉ lệ phiếu hỏng càng cao.</p>
+<p>Con số cuối cùng bạn đặt làm mục tiêu nên cao hơn cỡ mẫu tối thiểu. Một phần phiếu sẽ bị loại vì trả lời rập khuôn, trả lời quá nhanh hoặc sai đối tượng. Cách tính đúng là chia cho phần phiếu còn lại sau khi loại, không phải cộng thêm phần trăm:</p>
+<p><code>Số phiếu cần thu = Cỡ mẫu tối thiểu / (1 − r)</code>, với r là tỉ lệ phiếu dự kiến bị loại.</p>
+<p>Ví dụ cần 250 phiếu hợp lệ và dự kiến loại 15%: 250 / 0,85 = 294,1, làm tròn lên 295 phiếu. Nếu dự kiến loại 20%: 250 / 0,8 = 312,5, làm tròn lên 313. Cộng thẳng 20% (250 × 1,2 = 300) sẽ thiếu 13 phiếu, vì 20% bị loại tính trên số phiếu thu về chứ không phải trên 250. Kênh càng mở (đăng nhóm công khai, chia sẻ lan truyền) thì r càng cao. Bảng tính sẵn số phiếu cần thu cho các mức loại 10%, 20% và 30% có ở bài <a href="/goc-nghien-cuu/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu khảo sát nhanh</a>.</p>
 
 <h2>Bước 2: Chọn phương pháp chọn mẫu bạn viết được vào chương 3</h2>
 <p>Hội đồng sẽ hỏi bạn chọn mẫu thế nào. Phần lớn khoá luận dùng mẫu phi xác suất, và điều đó chấp nhận được nếu bạn gọi đúng tên và nêu hạn chế. Vấn đề chỉ xảy ra khi bạn phát link trong nhóm lớp rồi ghi là "chọn mẫu ngẫu nhiên".</p>
@@ -26,20 +29,20 @@ tags: ["thu mẫu","khoá luận"]
 <tr><td>Ngẫu nhiên phân tầng</td><td>Có danh sách tổng thể, chia tầng, bốc ngẫu nhiên trong từng tầng</td><td>Khảo sát nội bộ một trường, một công ty có danh sách</td><td>Cần danh sách đầy đủ và tỉ lệ phản hồi cao</td></tr>
 </tbody>
 </table>
-<p>Với đa số đề tài hành vi người tiêu dùng, chọn mẫu thuận tiện kết hợp định mức là lựa chọn thực tế. Bạn đặt chỉ tiêu cho hai hoặc ba biến nhân khẩu học quan trọng, ví dụ tỉ lệ nam nữ và nhóm tuổi, rồi theo dõi để không ô nào bị thiếu.</p>
+<p>Etikan và cộng sự (2016) so sánh ngắn gọn mẫu thuận tiện và mẫu có mục đích, có thể trích khi viết chương 3. Với đa số đề tài hành vi người tiêu dùng, chọn mẫu thuận tiện kết hợp định mức là lựa chọn thực tế. Bạn đặt chỉ tiêu cho hai hoặc ba biến nhân khẩu học quan trọng, ví dụ tỉ lệ nam nữ và nhóm tuổi, rồi theo dõi để không ô nào bị thiếu.</p>
 
 <h2>Bước 3: Chuẩn bị bảng hỏi để còn lọc được phiếu</h2>
 <p>Một bảng hỏi sẵn sàng đi thu mẫu cần ba thứ mà nhiều bạn bỏ qua:</p>
 <ul>
 <li><strong>Câu gạn lọc ở đầu phiếu.</strong> Hỏi đúng điều kiện ở bước 1. Người không đạt thì kết thúc phiếu ngay, không để họ trả lời tiếp cho "đủ số".</li>
-<li><strong>Một đến hai câu kiểm tra sự chú ý.</strong> Ví dụ trong một khối câu Likert, chèn câu "Ở câu này, vui lòng chọn Hoàn toàn không đồng ý". Người chọn sai gần như chắc chắn đang điền cho xong.</li>
+<li><strong>Một đến hai câu kiểm tra sự chú ý.</strong> Ví dụ trong một khối câu Likert ở nửa sau phiếu, chèn câu "Để xác nhận bạn đang đọc kỹ, vui lòng chọn mức "2 – Không đồng ý" cho câu này". Đáp án đúng không nằm ở hai đầu thang và không phải mức giữa, nên người chọn cùng một cột cho cả khối sẽ trượt.</li>
 <li><strong>Thang đo nhất quán.</strong> Cùng một số mức và cùng chiều nhãn cho cả phiếu. Xem thêm bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> để chọn cho phù hợp.</li>
 </ul>
 <p>Nếu chưa có bảng hỏi, các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> đã có sẵn thang đo gốc, câu kiểm tra chú ý và cỡ mẫu gợi ý; mở trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> để chỉnh theo đối tượng của bạn.</p>
-<p>Trước khi phát rộng, chạy thử với 20 đến 30 người đúng đối tượng. Đợt này giúp bạn phát hiện câu khó hiểu, đo thời gian làm phiếu thực tế và chạy thử độ tin cậy thang đo. Nếu một thang đo có Cronbach's alpha thấp ngay từ đợt thử, sửa câu chữ lúc này rẻ hơn nhiều so với lúc đã có 300 phiếu.</p>
+<p>Nếu bạn dựng phiếu bằng Google Forms, bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách làm câu gạn lọc kết thúc form, lưới Likert và câu kiểm tra để dữ liệu xuất ra dùng được ngay. Trước khi phát rộng, chạy thử với 20 đến 30 người đúng đối tượng. Đợt này giúp bạn phát hiện câu khó hiểu, đo thời gian làm phiếu thực tế và chạy thử độ tin cậy thang đo. Nếu một thang đo có Cronbach's alpha thấp ngay từ đợt thử, sửa câu chữ lúc này rẻ hơn nhiều so với lúc đã có 300 phiếu.</p>
 
 <h2>Bước 4: Chọn kênh phát phiếu và hiểu thiên lệch của từng kênh</h2>
-<p>Mỗi kênh cho bạn một kiểu người trả lời khác nhau. Dùng nhiều kênh giúp mẫu bớt đồng nhất, nhưng phải ghi lại phiếu nào đến từ kênh nào (thêm tham số vào link hoặc tạo bản sao form cho từng kênh).</p>
+<p>Mỗi kênh cho bạn một kiểu người trả lời khác nhau. Bài <a href="/goc-nghien-cuu/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu khảo sát nhanh</a> so sánh tốc độ, độ đúng đối tượng và rủi ro của từng kênh, kèm cách viết bài đăng mời và lịch thu tính ngược từ ngày phải chạy số liệu. Dùng nhiều kênh giúp mẫu bớt đồng nhất, nhưng phải ghi lại phiếu nào đến từ kênh nào (thêm tham số vào link hoặc tạo bản sao form cho từng kênh).</p>
 <ul>
 <li><strong>Nhóm lớp, nhóm Zalo, bạn bè:</strong> nhanh, miễn phí, nhưng gần như toàn sinh viên cùng tuổi. Chỉ hợp khi đối tượng nghiên cứu chính là sinh viên.</li>
 <li><strong>Nhóm Facebook theo chủ đề:</strong> tiếp cận được đúng sở thích (nhóm mẹ bỉm sữa, nhóm chạy bộ, nhóm review mỹ phẩm). Nhiều nhóm cấm đăng khảo sát, nên xin phép quản trị viên trước. Tỉ lệ phiếu điền bừa thường cao hơn kênh quen biết.</li>
@@ -76,18 +79,24 @@ tags: ["thu mẫu","khoá luận"]
 <li>Kiểm tra câu tự luận: câu trả lời vô nghĩa, chép lại đề bài, hoặc lặp y hệt giữa nhiều phiếu.</li>
 <li>Kiểm tra phiếu trùng lặp (cùng email, cùng số điện thoại, cùng chuỗi trả lời).</li>
 </ol>
-<p>Ghi lại số phiếu bị loại ở từng bước. Phần này đưa vào chương 3 dưới dạng "Thu về 342 phiếu, loại 41 phiếu không hợp lệ, còn 301 phiếu đưa vào phân tích" làm hội đồng tin dữ liệu của bạn hơn hẳn. Sau khi lọc xong, bước tiếp theo thường là kiểm định độ tin cậy, xem hướng dẫn đọc bảng kết quả trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Cách làm từng bước, kể cả cú pháp SPSS, có ở bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Ghi lại số phiếu bị loại ở từng bước. Phần này đưa vào chương 3 dưới dạng "Thu về 342 phiếu, loại 41 phiếu không hợp lệ, còn 301 phiếu đưa vào phân tích" làm hội đồng tin dữ liệu của bạn hơn hẳn. Sau khi lọc xong, bước tiếp theo thường là kiểm định độ tin cậy, xem hướng dẫn đọc bảng kết quả trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 
 <h2>Danh sách kiểm tra trước khi gửi link đầu tiên</h2>
 <ol>
 <li>Đã có một câu mô tả đối tượng được phép trả lời.</li>
-<li>Đã tính cỡ mẫu tối thiểu và cộng phần dự phòng phiếu hỏng.</li>
+<li>Đã tính cỡ mẫu tối thiểu và số phiếu cần thu theo n / (1 − r).</li>
 <li>Đã ghi được tên phương pháp chọn mẫu và hạn chế của nó.</li>
 <li>Câu gạn lọc nằm ở đầu phiếu và kết thúc phiếu khi không đạt.</li>
-<li>Có ít nhất một câu kiểm tra sự chú ý.</li>
+<li>Có một đến hai câu kiểm tra sự chú ý ở nửa sau phiếu, đáp án đúng là mức 2.</li>
 <li>Đã chạy thử với 20 đến 30 người và sửa câu khó hiểu.</li>
 <li>Mỗi kênh phát có link hoặc bản form riêng để truy được nguồn.</li>
 <li>Có bảng theo dõi hạn ngạch cập nhật hằng ngày.</li>
 <li>Đã lên lịch ngày dừng thu mẫu, chừa ít nhất một tuần cho lọc và phân tích.</li>
 </ol>
-<p>Làm đủ sáu bước trên, phần phương pháp ở chương 3 gần như đã có sẵn nội dung, và bạn trả lời được khi hội đồng hỏi vì sao mẫu đáng tin.</p>
+<p>Làm đủ sáu bước trên, phần phương pháp ở chương 3 gần như đã có sẵn nội dung, và bạn trả lời được khi hội đồng hỏi vì sao mẫu đáng tin. Những câu hội đồng hay hỏi về chọn mẫu và cỡ mẫu được tổng hợp ở bài <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hay hỏi gì về phần khảo sát</a>.</p>
+
+<h2>Tài liệu tham khảo</h2>
+<ul>
+<li>Etikan, I., Musa, S. A., &amp; Alkassim, R. S. (2016). Comparison of convenience sampling and purposive sampling. <em>American Journal of Theoretical and Applied Statistics, 5</em>(1), 1–4. https://doi.org/10.11648/j.ajtas.20160501.11</li>
+<li>Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson.</li>
+</ul>

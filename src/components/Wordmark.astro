@@ -1,0 +1,17 @@
+---
+import Logo from "./Logo.astro";
+type Props = { class?: string; size?: "md" | "lg" };
+const { class: className, size = "md" } = Astro.props;
+---
+
+<span class:list={["inline-flex items-center gap-2.5 whitespace-nowrap", className]}>
+  <Logo class={size === "lg" ? "size-9 flex-none" : "size-8 flex-none"} />
+  <span
+    class:list={[
+      "text-foreground leading-none font-bold tracking-tight",
+      size === "lg" ? "text-[1.2rem]" : "text-[1.08rem]",
+    ]}
+  >
+    <span class="text-accent">Góc</span> Nghiên Cứu
+  </span>
+</span>

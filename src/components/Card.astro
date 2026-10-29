@@ -10,22 +10,25 @@ type Props = {
 
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
-const { title, description, ...props } = data;
+const { title, description, tags, ...props } = data;
+const topic = tags?.find(tag => tag !== "others");
 ---
 
-<li class="my-6">
+<li>
   <a
     href={getPostUrl(id, filePath, Astro.currentLocale)}
-    class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
+    class="card group gap-2"
   >
-    <Heading transition:name={toTransitionName(id)}>
+    <span class="flex flex-wrap items-center justify-between gap-2">
+      {topic && <span class="badge neutral capitalize">{topic}</span>}
+      <Datetime {...props} class="[&_svg]:size-4 [&_time]:text-xs" />
+    </span>
+    <Heading
+      class="card-title text-[1.08rem]"
+      transition:name={toTransitionName(id)}
+    >
       {title}
     </Heading>
+    <p class="card-meta line-clamp-3">{description}</p>
   </a>
-  <Datetime {...props} />
-  <p>{description}</p>
 </li>

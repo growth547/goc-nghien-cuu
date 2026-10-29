@@ -1,0 +1,22 @@
+---
+/**
+ * Brand mark: three rising bars (answers on a scale becoming a result) on a green
+ * tile, with a warm data point marking the finding.
+ */
+type Props = { class?: string };
+const { class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 32 32"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <rect width="32" height="32" rx="8" fill="var(--accent)"></rect>
+  <rect x="7" y="18" width="4" height="7" rx="1.5" fill="var(--accent-foreground)" opacity="0.65"></rect>
+  <rect x="14" y="14" width="4" height="11" rx="1.5" fill="var(--accent-foreground)" opacity="0.82"></rect>
+  <rect x="21" y="11" width="4" height="14" rx="1.5" fill="var(--accent-foreground)"></rect>
+  <circle cx="23" cy="6.2" r="2.6" fill="var(--warm)"></circle>
+</svg>

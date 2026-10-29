@@ -5,7 +5,13 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
 import ToolCards from "@/components/ToolCards.astro";
+import Icon from "@/components/Icon.astro";
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const [datasets, templates] = await Promise.all([getCollection("datasets"), getCollection("templates")]);
 ---
 
 <Layout title={`Công cụ miễn phí | ${config.site.title}`} description="Công cụ miễn phí cho người làm khảo sát: tính cỡ mẫu (PLS-SEM, G*Power, hồi quy, EFA, Cochran) và tính Cronbach's alpha online.">
@@ -13,6 +19,29 @@ import config from "@/config";
   <Breadcrumb />
   <Main pageTitle="Công cụ" pageDesc="Miễn phí, chạy ngay trong trình duyệt, không cần cài phần mềm.">
     <ToolCards />
+    <h2 class="text-foreground mt-14 mb-4 text-xl font-bold">Đi kèm công cụ</h2>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      <li>
+        <a href={getRelativeLocaleUrl(locale, "du-lieu")} class="card gap-3">
+          <span class="flex items-center justify-between gap-3">
+            <span class="icon-tile"><Icon name="database" /></span>
+            <span class="badge warm">{datasets.length} chỉ số</span>
+          </span>
+          <span class="card-title text-lg">Dữ liệu thứ cấp Việt Nam</span>
+          <span class="card-meta">Số liệu World Bank theo năm: bảng, biểu đồ, file CSV và trích dẫn APA cho khoá luận dùng dữ liệu thứ cấp.</span>
+        </a>
+      </li>
+      <li>
+        <a href={getRelativeLocaleUrl(locale, "mau-bang-hoi")} class="card gap-3">
+          <span class="flex items-center justify-between gap-3">
+            <span class="icon-tile"><Icon name="layers" /></span>
+            <span class="badge neutral">{templates.length} mẫu</span>
+          </span>
+          <span class="card-title text-lg">Mẫu bảng hỏi theo đề tài</span>
+          <span class="card-meta">Mô hình, câu hỏi từ thang đo gốc và cỡ mẫu có sẵn cho các đề tài hay gặp. Mở ra chỉnh tiếp trong Bộ khảo sát.</span>
+        </a>
+      </li>
+    </ul>
   </Main>
   <Footer />
 </Layout>

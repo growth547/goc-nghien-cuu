@@ -8,39 +8,236 @@
 @layer base {
   * {
     @apply border-border outline-accent/75;
-    scrollbar-width: auto;
-    scrollbar-color: var(--color-muted) transparent;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply leading-relaxed;
+    font-feature-settings: "kern", "liga";
+  }
+  /* Vietnamese diacritics stack above and below the line: keep headings airy. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.012em;
+  }
+  h1 {
+    line-height: 1.22;
+  }
+  h2,
+  h3,
+  h4 {
+    line-height: 1.32;
+  }
+  p {
+    text-wrap: pretty;
   }
   a,
   button,
+  summary,
+  input,
+  select,
+  textarea,
+  [tabindex],
   #main-content {
-    @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+    @apply outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+  #main-content:focus-visible {
+    outline: none;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 28%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
+/* Reading column for long text; wide container for grids, tools and tables. */
 @utility max-w-app {
   @apply max-w-3xl;
 }
 
 @utility app-layout {
-  @apply max-w-app mx-auto w-full px-4;
+  @apply mx-auto w-full max-w-5xl px-4 sm:px-6;
 }
 
 @utility active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-8;
+  @apply text-accent bg-accent-soft;
 }
 
 :target {
-  scroll-margin-block: 1rem;
+  scroll-margin-block: 5rem;
+}
+
+/* ================================================================
+   Components
+   ================================================================ */
+@layer components {
+  /* ---- Buttons ---- */
+  .btn {
+    @apply bg-accent text-accent-foreground inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-lg border border-transparent px-5 py-2.5 text-[0.95rem] leading-snug font-semibold no-underline transition-colors;
+    box-shadow: var(--shadow);
+  }
+  .btn:hover {
+    @apply bg-accent-strong text-accent-foreground no-underline;
+  }
+  .btn.ghost {
+    @apply border-border-strong bg-surface text-foreground;
+  }
+  .btn.ghost:hover {
+    @apply border-accent text-accent bg-surface;
+  }
+  .btn.lg {
+    @apply min-h-12 px-6 text-base;
+  }
+  .btn svg {
+    @apply size-5 flex-none;
+  }
+
+  /* ---- Cards ---- */
+  .card {
+    @apply border-border bg-surface relative flex h-full flex-col gap-1.5 rounded-xl border p-5 transition-[border-color,box-shadow,transform] duration-200;
+    box-shadow: var(--shadow);
+  }
+  a.card:hover {
+    @apply border-accent/60;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+  }
+  .card-title {
+    @apply text-foreground leading-snug font-semibold;
+  }
+  a.card:hover .card-title {
+    @apply text-accent;
+  }
+  .card-meta {
+    @apply text-muted-foreground text-sm leading-normal;
+  }
+  .card-foot {
+    @apply text-muted-foreground mt-auto flex flex-wrap gap-x-3 gap-y-1 pt-2 text-xs font-medium;
+  }
+
+  /* Cards on pages that still use plain utility classes get the same surface. */
+  main a.rounded-xl.border:not(.card) {
+    @apply bg-surface transition-[border-color,box-shadow];
+    box-shadow: var(--shadow);
+  }
+  main a.rounded-xl.border:not(.card):hover {
+    box-shadow: var(--shadow-lg);
+  }
+  main dl.rounded-xl.border {
+    @apply bg-surface;
+    box-shadow: var(--shadow);
+  }
+  main dl.rounded-xl.border dd {
+    @apply text-base;
+  }
+
+  /* ---- Badges, eyebrows, section headers ---- */
+  .badge {
+    @apply bg-accent-soft text-accent inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap;
+  }
+  .badge.warm {
+    @apply bg-warm-soft text-warm;
+  }
+  .badge.neutral {
+    @apply bg-muted text-muted-foreground;
+  }
+  .eyebrow {
+    @apply text-accent text-xs font-semibold tracking-[0.08em] uppercase;
+  }
+  .section {
+    @apply py-12 sm:py-16;
+  }
+  .section-head {
+    @apply mb-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 sm:mb-8;
+  }
+  .section-head h2 {
+    @apply text-foreground mt-1 text-2xl font-bold sm:text-[1.75rem];
+  }
+  .section-head p {
+    @apply text-muted-foreground mt-2 max-w-2xl;
+  }
+  .more-link {
+    @apply text-accent inline-flex items-center gap-1 text-sm font-semibold whitespace-nowrap hover:underline;
+    text-underline-offset: 4px;
+  }
+  .icon-tile {
+    @apply bg-accent-soft text-accent grid size-10 flex-none place-items-center rounded-lg;
+  }
+  .icon-tile svg {
+    @apply size-5;
+  }
+
+  /* ---- Brand motif: graph paper that fades out, used behind heroes and page heads ---- */
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
+  }
+  .fade-grid {
+    mask-image: radial-gradient(ellipse 80% 90% at 70% 0%, #000 30%, transparent 80%);
+  }
+
+  /* ---- Page header used by list and detail pages ---- */
+  .page-head {
+    @apply border-border relative mb-8 border-b pb-6;
+  }
+  .page-head h1 {
+    @apply text-foreground text-[1.75rem] font-bold sm:text-4xl;
+  }
+  .page-head p {
+    @apply text-muted-foreground mt-3 max-w-2xl text-[1.05rem];
+  }
+
+  /* ---- Data/item tables outside prose ---- */
+  .table-scroll {
+    @apply border-border bg-surface relative my-4 w-full overflow-x-auto rounded-xl border;
+    box-shadow: var(--shadow);
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-scroll > table {
+    @apply m-0 w-full border-collapse text-sm;
+  }
+  .table-scroll th,
+  .table-scroll td {
+    @apply border-border border-b px-4 py-3 text-start align-top;
+  }
+  .table-scroll thead th {
+    @apply bg-muted text-muted-foreground text-xs font-semibold tracking-wide uppercase;
+  }
+  .table-scroll tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  .table-scroll tbody tr:hover td {
+    background: color-mix(in oklab, var(--accent-soft) 45%, transparent);
+  }
 }
 
 /* ---- Góc Nghiên Cứu: call-to-action box and tool widgets ---- */
 .cta {
-  @apply bg-muted my-8 flex flex-col gap-3 rounded-xl px-6 py-5;
+  @apply border-accent/25 bg-accent-soft my-8 flex flex-col gap-3 rounded-xl border px-6 py-5;
 }
 .cta strong {
   @apply text-lg font-bold;
@@ -48,21 +245,18 @@
 .cta p {
   @apply m-0;
 }
-.app-prose .cta a.btn,
-.btn {
-  @apply bg-accent text-accent-foreground inline-block self-start rounded-lg px-5 py-2.5 font-semibold no-underline hover:opacity-90;
-}
-.btn.ghost {
-  @apply border-accent text-accent border-2 bg-transparent;
+.app-prose .cta a.btn {
+  @apply text-accent-foreground no-underline;
 }
 .tool {
   @apply grid items-start gap-6 md:grid-cols-2;
 }
 .panel {
-  @apply border-border bg-background flex min-w-0 flex-col gap-4 rounded-xl border p-5 shadow-sm;
+  @apply border-border bg-surface flex min-w-0 flex-col gap-4 rounded-xl border p-5 sm:p-6;
+  box-shadow: var(--shadow);
 }
 .field {
-  @apply flex flex-col gap-1;
+  @apply flex flex-col gap-1.5;
 }
 .field label {
   @apply text-sm font-semibold;
@@ -73,7 +267,12 @@
 .panel input,
 .panel select,
 .panel textarea {
-  @apply border-border bg-background focus-visible:outline-accent w-full rounded-lg border px-3 py-2 text-sm;
+  @apply border-border-strong bg-background text-foreground focus-visible:outline-accent w-full rounded-lg border px-3 py-2.5 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-0;
+}
+.panel input:hover,
+.panel select:hover,
+.panel textarea:hover {
+  @apply border-accent/60;
 }
 .panel textarea {
   @apply min-h-56 font-mono text-xs leading-relaxed;

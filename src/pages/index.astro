@@ -1,13 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import ToolCards from "@/components/ToolCards.astro";
 import Card from "@/components/Card.astro";
-import LinkButton from "@/components/LinkButton.astro";
+import Icon from "@/components/Icon.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
@@ -16,13 +15,164 @@ const { posts: postsConfig } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
+const href = (path: string) => getRelativeLocaleUrl(locale, path);
 
-const posts = await getCollection("posts");
-const templates = (await getCollection("templates")).sort((a, b) => a.data.topic.localeCompare(b.data.topic, "vi"));
+const [posts, templatesRaw, scales, concepts, datasets] = await Promise.all([
+  getCollection("posts"),
+  getCollection("templates"),
+  getCollection("scales"),
+  getCollection("concepts"),
+  getCollection("datasets"),
+]);
+const templates = templatesRaw.sort((a, b) =>
+  a.data.topic.localeCompare(b.data.topic, "vi")
+);
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+
+// ---- Real counts, computed from the content collections at build time ----
+const itemCount = scales.reduce(
+  (n, s) => n + s.data.constructs.reduce((m, c) => m + c.items.length, 0),
+  0
+);
+const fieldCounts = [
+  ...scales.reduce(
+    (m, s) => m.set(s.data.field, (m.get(s.data.field) ?? 0) + 1),
+    new Map<string, number>()
+  ),
+].sort((a, b) => b[1] - a[1]);
+const dataThemes = new Set(datasets.map(d => d.data.theme)).size;
+const latestDataYear = Math.max(
+  ...datasets.map(d => d.data.values[d.data.values.length - 1].year)
+);
+const constructCount = scales.reduce((n, s) => n + s.data.constructs.length, 0);
+const publishedPosts = posts.filter(p => !p.data.draft);
+const stats = [
+  { value: scales.length, label: "thang đo gốc", path: "thang-do" },
+  { value: constructCount, label: "khái niệm đo lường", path: "thang-do" },
+  { value: templates.length, label: "mẫu bảng hỏi theo đề tài", path: "mau-bang-hoi" },
+  { value: concepts.length, label: "trang so sánh theo khái niệm", path: "khai-niem" },
+  { value: datasets.length, label: "chỉ số kinh tế – xã hội", path: "du-lieu" },
+  { value: publishedPosts.length, label: "bài hướng dẫn", path: "posts" },
+];
+
+const journey = [
+  {
+    title: "Chọn mô hình & thang đo",
+    desc: `So sánh ${scales.length} thang đo gốc, xem theo khái niệm.`,
+    cta: "Mở thư viện",
+    path: "thang-do",
+  },
+  {
+    title: "Tạo bảng hỏi",
+    desc: "Ghép khái niệm, tải Word hoặc tạo Google Form.",
+    cta: "Tạo bảng hỏi",
+    path: "cong-cu/bo-khao-sat",
+  },
+  {
+    title: "Tính cỡ mẫu",
+    desc: "PLS-SEM, hồi quy, EFA, Cochran, kèm đoạn văn chương 3.",
+    cta: "Tính cỡ mẫu",
+    path: "cong-cu/tinh-co-mau",
+  },
+  {
+    title: "Thu mẫu",
+    desc: "Tìm đúng người trả lời, lọc phiếu không hợp lệ.",
+    cta: "Đọc hướng dẫn",
+    path: "posts/cach-thu-mau-khao-sat-khoa-luan",
+  },
+  {
+    title: "Phân tích & viết chương 4",
+    desc: "Cronbach, EFA, tương quan, hồi quy từ file Excel.",
+    cta: "Phân tích dữ liệu",
+    path: "cong-cu/phan-tich-du-lieu",
+  },
+];
+
+const popularScales = ["tam", "utaut2", "tpb", "servqual", "dass-21", "cang-thang-pss-10"]
+  .map(id => scales.find(s => s.id === id))
+  .filter((s): s is (typeof scales)[number] => Boolean(s));
+
+const faq = [
+  {
+    q: "Có mất phí hay phải đăng ký không?",
+    a: "Không. Công cụ, thang đo, mẫu bảng hỏi và dữ liệu trên trang đều dùng miễn phí, không cần tài khoản. Một số link là link giới thiệu (affiliate), được ghi rõ ở chân trang.",
+  },
+  {
+    q: "Bản dịch thang đo dùng thẳng cho khoá luận được không?",
+    a: "Bản tiếng Việt do ban biên tập dịch để tham khảo. Khi dùng cho nghiên cứu, hãy dịch ngược (back-translation) và chạy thử với 20–30 người trước khi phát chính thức.",
+  },
+  {
+    q: "Trích dẫn thang đo thế nào?",
+    a: "Mỗi trang thang đo ghi nguồn của từng khái niệm, bản tiếng Anh gốc của từng câu hỏi và danh sách tài liệu tham khảo để bạn trích dẫn bản gốc.",
+  },
+  {
+    q: "Số liệu ở mục Dữ liệu lấy từ đâu?",
+    a: "Từ World Development Indicators của World Bank (giấy phép CC BY 4.0). Mỗi chỉ số có bảng theo năm, biểu đồ, file CSV và trích dẫn APA.",
+  },
+];
+
+// ---- Hero preview: the first construct of TAM, exactly as the library holds it ----
+const sample = scales.find(s => s.id === "tam") ?? scales[0];
+const sampleConstruct = sample?.data.constructs[0];
+const likertPoints = Number(
+  sample?.data.responseScale.match(/Likert\s+(\d+)/i)?.[1] ?? 5
+);
+
+// ---- Featured indicators: latest value and year straight from the World Bank files ----
+const preferred = [
+  "tang-truong-gdp",
+  "gdp",
+  "lam-phat",
+  "lai-suat-cho-vay",
+  "tin-dung-khu-vuc-tu-nhan",
+  "fdi",
+  "xuat-khau-phan-tram-gdp",
+  ...datasets.filter(d => /gao|rice|hang-hoa|commodity/.test(d.id)).map(d => d.id),
+  "ty-gia",
+  "ty-le-that-nghiep",
+  "dan-so",
+];
+const featuredData = [...new Set(preferred)]
+  .map(id => datasets.find(d => d.id === id))
+  .filter((d): d is (typeof datasets)[number] => Boolean(d))
+  .slice(0, 8);
+const fmt = (v: number, decimals: number) =>
+  new Intl.NumberFormat("vi-VN", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(v);
+const sparkline = (values: { year: number; value: number }[]) => {
+  const pts = values.slice(-20);
+  const ys = pts.map(p => p.value);
+  const min = Math.min(...ys);
+  const max = Math.max(...ys);
+  const w = 120;
+  const h = 32;
+  return pts
+    .map((p, i) => {
+      const x = (i / Math.max(1, pts.length - 1)) * w;
+      const y = max === min ? h / 2 : h - 2 - ((p.value - min) / (max - min)) * (h - 4);
+      return `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(" ");
+};
+const indicatorCards = featuredData.map(d => {
+  const last = d.data.values[d.data.values.length - 1];
+  const first = d.data.values[0];
+  return {
+    id: d.id,
+    name: d.data.shortVi.charAt(0).toUpperCase() + d.data.shortVi.slice(1),
+    theme: d.data.theme,
+    value: fmt(last.value / d.data.scale, d.data.decimals),
+    unit: d.data.displayUnit,
+    year: last.year,
+    span: `${first.year}–${last.year}`,
+    path: sparkline(d.data.values),
+  };
+});
 
 const homeTitle =
   "Góc Nghiên Cứu: thang đo, mẫu bảng hỏi, cỡ mẫu, chương 3–4 khoá luận";
@@ -55,6 +205,10 @@ const homeLd = {
     },
   ],
 };
+const homePosts = [...featuredPosts, ...recentPosts].slice(
+  0,
+  Math.max(postsConfig.perIndex, 6)
+);
 ---
 
 <Layout title={homeTitle} description={homeDescription}>
@@ -65,97 +219,485 @@ const homeLd = {
     set:html={JSON.stringify(homeLd)}
   />
   <Header />
-  <main
-    id="main-content"
-    data-layout="index"
-    data-home-path={homePath}
-    class="app-layout my-1"
-  >
-    <section id="hero" class="border-border border-b pt-8 pb-8">
-      <p class="text-accent font-semibold">Cho sinh viên làm khoá luận, luận văn</p>
-      <h1 class="my-3 text-3xl leading-tight font-bold sm:my-5 sm:text-5xl">
-        Chọn khái niệm trong mô hình.<br />1 phút có bảng hỏi và chương 3.
-      </h1>
-      <p class="text-muted-foreground max-w-2xl text-lg">
-        Bảng hỏi tiếng Việt ghép từ thang đo gốc có trích dẫn, cỡ mẫu tối thiểu
-        cho PLS-SEM hoặc SPSS, và đoạn “Thang đo và cỡ mẫu” viết sẵn. Tải về
-        Word. Miễn phí, không cần đăng ký.
-      </p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a class="btn" href={getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}>Tạo bảng hỏi ngay</a>
-        <a class="btn ghost" href={getRelativeLocaleUrl(locale, "cong-cu/tinh-co-mau")}>Chỉ tính cỡ mẫu</a>
+  <main id="main-content" data-layout="index" data-home-path={homePath}>
+    <!-- ================= Hero ================= -->
+    <section
+      id="hero"
+      class="border-border relative overflow-hidden border-b"
+      aria-labelledby="hero-title"
+    >
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute inset-0 [background:radial-gradient(60rem_30rem_at_85%_-10%,var(--accent-soft),transparent_70%)]"></div>
+        <div class="bg-grid fade-grid absolute inset-0"></div>
       </div>
-      <ul class="text-muted-foreground mt-6 grid max-w-3xl gap-2 text-sm sm:grid-cols-3">
-        <li>✓ 21 thang đo gốc: TAM, UTAUT2, TPB, SERVQUAL…</li>
-        <li>✓ Cỡ mẫu theo G*Power và Kock &amp; Hadaya</li>
-        <li>✓ Có câu kiểm tra chú ý, bảng mã hoá Excel</li>
-      </ul>
-    </section>
+      <div
+        class="app-layout grid items-center gap-10 pt-12 pb-14 sm:pt-16 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:pt-20 lg:pb-20"
+      >
+        <div>
+          <p class="badge">
+            <Icon name="shield" class="size-3.5" /> Cho sinh viên làm khoá luận,
+            luận văn
+          </p>
+          <h1
+            id="hero-title"
+            class="text-foreground mt-5 text-[2.1rem] leading-[1.18] font-bold sm:text-5xl sm:leading-[1.15]"
+          >
+            Chọn khái niệm trong mô hình.
+            <span class="text-accent block">1 phút có bảng hỏi và chương 3.</span>
+          </h1>
+          <p class="text-muted-foreground mt-5 max-w-xl text-lg leading-relaxed">
+            Bảng hỏi tiếng Việt ghép từ thang đo gốc có trích dẫn, cỡ mẫu tối
+            thiểu cho PLS-SEM hoặc SPSS, và đoạn “Thang đo và cỡ mẫu” viết sẵn.
+            Tải về Word. Miễn phí, không cần đăng ký.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn lg" href={href("cong-cu/bo-khao-sat")}>
+              Tạo bảng hỏi ngay <Icon name="arrow" />
+            </a>
+            <a class="btn ghost lg" href={href("du-lieu")}>
+              <Icon name="database" /> Dữ liệu Việt Nam
+            </a>
+          </div>
+          <ul class="text-muted-foreground mt-8 grid gap-2.5 text-[0.95rem] sm:grid-cols-1">
+            <li class="flex gap-2.5">
+              <Icon name="check" class="text-accent mt-0.5 size-5 flex-none" />
+              <span>{scales.length} thang đo gốc: TAM, UTAUT2, TPB, SERVQUAL…</span>
+            </li>
+            <li class="flex gap-2.5">
+              <Icon name="check" class="text-accent mt-0.5 size-5 flex-none" />
+              <span>Cỡ mẫu theo G*Power và Kock &amp; Hadaya</span>
+            </li>
+            <li class="flex gap-2.5">
+              <Icon name="check" class="text-accent mt-0.5 size-5 flex-none" />
+              <span>Có câu kiểm tra chú ý, bảng mã hoá Excel</span>
+            </li>
+          </ul>
+        </div>
 
-    <section id="tools" class="border-border border-b pt-10 pb-10">
-      <h2 class="mb-5 text-2xl font-semibold tracking-wide">Công cụ miễn phí</h2>
-      <ToolCards />
-    </section>
-
-    <section id="templates" class="border-border border-b pt-10 pb-10">
-      <h2 class="mb-2 text-2xl font-semibold tracking-wide">Mẫu bảng hỏi theo đề tài</h2>
-      <p class="text-muted-foreground mb-5">Có sẵn mô hình, câu hỏi từ thang đo gốc, cỡ mẫu và đoạn chương 3. Mở ra chỉnh tiếp trong Bộ khảo sát.</p>
-      <ul class="grid gap-3 sm:grid-cols-2">
         {
-          templates.map(t => (
+          sample && sampleConstruct && (
+            <figure
+              class="border-border bg-surface relative overflow-hidden rounded-2xl border"
+              style="box-shadow: var(--shadow-lg)"
+              aria-label="Minh hoạ kết quả Bộ khảo sát: bảng hỏi, đoạn chương 3 và các nút xuất file"
+            >
+              <div class="border-border bg-muted/60 flex items-center gap-2 border-b px-4 py-2.5">
+                <span class="flex gap-1.5" aria-hidden="true">
+                  <span class="size-2.5 rounded-full bg-[#ef8a6b]" />
+                  <span class="size-2.5 rounded-full bg-[#f2c45c]" />
+                  <span class="size-2.5 rounded-full bg-[#5fc59c]" />
+                </span>
+                <span class="text-muted-foreground ms-2 truncate text-xs font-medium">
+                  Bộ khảo sát khoá luận · {sample.data.name}
+                </span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <div class="flex items-center gap-1 text-xs font-semibold" aria-hidden="true">
+                  <span class="bg-accent-soft text-accent rounded-md px-2.5 py-1">Bảng hỏi</span>
+                  <span class="text-muted-foreground px-2.5 py-1">Mã hoá</span>
+                  <span class="text-muted-foreground px-2.5 py-1">Chương 3</span>
+                </div>
+                <p class="text-foreground mt-3 text-sm font-semibold">
+                  {sampleConstruct.nameVi} ({sampleConstruct.code})
+                </p>
+                <table class="mt-2 w-full text-start text-[0.8rem]">
+                  <thead>
+                    <tr class="text-muted-foreground border-border border-b text-[0.7rem] uppercase">
+                      <th class="py-1.5 pe-2 text-start font-semibold">Mã</th>
+                      <th class="py-1.5 pe-2 text-start font-semibold">Biến quan sát</th>
+                      <th class="hidden py-1.5 text-end font-semibold sm:table-cell">1 → {likertPoints}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sampleConstruct.items.slice(0, 3).map((item, i) => (
+                      <tr class="border-border border-b last:border-b-0">
+                        <td class="text-accent py-2 pe-2 align-top font-semibold">{item.code}</td>
+                        <td class="text-foreground py-2 pe-2 align-top leading-snug">{item.vi}</td>
+                        <td class="hidden py-2 align-top sm:table-cell">
+                          <span class="flex justify-end gap-1" aria-hidden="true">
+                            {Array.from({ length: likertPoints }, (_, k) => (
+                              <span
+                                class:list={[
+                                  "size-2.5 rounded-full border",
+                                  k === likertPoints - 2 - (i % 2)
+                                    ? "bg-accent border-accent"
+                                    : "border-border-strong",
+                                ]}
+                              />
+                            ))}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div class="bg-warm-soft/70 border-warm/25 mt-3 rounded-lg border p-3 text-[0.8rem] leading-relaxed">
+                  <span class="text-warm text-[0.7rem] font-bold tracking-wide uppercase">Đoạn chương 3</span>
+                  <p class="text-foreground mt-1">
+                    Thang đo {sampleConstruct.nameVi.toLowerCase()} ({sampleConstruct.code}) gồm{" "}
+                    {sampleConstruct.items.length} biến quan sát, kế thừa từ{" "}
+                    {sampleConstruct.source.split(",")[0].replace(/\.$/, "")}, đo bằng thang Likert{" "}
+                    {likertPoints} mức…
+                  </p>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold" aria-hidden="true">
+                  <span class="bg-accent text-accent-foreground inline-flex items-center gap-1.5 rounded-md px-3 py-2">
+                    <Icon name="download" class="size-3.5" /> Tải Word
+                  </span>
+                  <span class="border-border-strong text-foreground rounded-md border px-3 py-2">Tạo Google Form</span>
+                  <span class="border-border-strong text-foreground rounded-md border px-3 py-2">Xuất GDF</span>
+                  <span class="border-border-strong text-foreground hidden rounded-md border px-3 py-2 sm:inline">Mã hoá Excel</span>
+                </div>
+              </div>
+            </figure>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- ================= Journey ================= -->
+    <section aria-labelledby="journey-title" class="app-layout pt-12 sm:pt-14">
+      <h2 id="journey-title" class="text-foreground text-lg font-bold sm:text-xl">
+        Bạn đang ở bước nào của khoá luận?
+      </h2>
+      <ol class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {
+          journey.map((step, i) => (
             <li>
-              <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${t.id}`)} class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors">
-                <span class="font-semibold">{t.data.topic}</span>
-                <span class="text-muted-foreground block text-sm">{t.data.audience}</span>
+              <a href={href(step.path)} class="card group gap-1 p-4">
+                <span class="flex items-center gap-2">
+                  <span class="bg-warm-soft text-warm grid size-7 flex-none place-items-center rounded-full text-sm font-bold">
+                    {i + 1}
+                  </span>
+                  <span class="card-title text-[0.95rem]">{step.title}</span>
+                </span>
+                <span class="card-meta text-[0.83rem]">{step.desc}</span>
+                <span class="text-accent mt-auto inline-flex items-center gap-1 pt-1 text-xs font-semibold">
+                  {step.cta} <Icon name="arrow" class="size-3.5" />
+                </span>
               </a>
             </li>
           ))
         }
-      </ul>
+      </ol>
     </section>
 
+    <!-- ================= Real counts ================= -->
+    <section aria-label="Thư viện có gì" class="border-border bg-surface mt-12 border-y">
+      <dl class="app-layout grid grid-cols-2 gap-y-6 py-8 sm:grid-cols-3 lg:grid-cols-6">
+        {
+          stats.map(s => (
+            <div class="border-border flex flex-col px-2 lg:border-s lg:px-5 lg:first:border-s-0 lg:first:ps-0">
+              <dt class="text-muted-foreground order-2 text-sm leading-snug">
+                <a href={href(s.path)} class="hover:text-accent">{s.label}</a>
+              </dt>
+              <dd class="text-foreground order-1 text-3xl font-bold tabular-nums">
+                {s.value.toLocaleString("vi-VN")}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- ================= Tools ================= -->
+    <section id="tools" class="section" aria-labelledby="tools-title">
+      <div class="app-layout">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Công cụ</p>
+            <h2 id="tools-title">Công cụ miễn phí</h2>
+            <p>Chạy ngay trong trình duyệt, không cần cài phần mềm.</p>
+          </div>
+          <a class="more-link" href={href("cong-cu")}>
+            Tất cả công cụ <Icon name="arrow" class="size-4" />
+          </a>
+        </div>
+        <ToolCards />
+      </div>
+    </section>
+
+    <!-- ================= Secondary data ================= -->
     {
-      featuredPosts.length > 0 && (
+      indicatorCards.length > 0 && (
         <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-border border-b": recentPosts.length > 0 },
-          ]}
+          id="data"
+          class="section border-border bg-surface border-y"
+          aria-labelledby="data-title"
         >
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t.home.featured}
-          </h2>
-          <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
+          <div class="app-layout">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Dữ liệu thứ cấp</p>
+                <h2 id="data-title">
+                  {datasets.length} chỉ số Việt Nam, sẵn để tải CSV
+                </h2>
+                <p>
+                  Số liệu World Bank (WDI) theo năm, {dataThemes} nhóm chủ đề, có
+                  bảng, biểu đồ và trích dẫn APA cho khoá luận dùng dữ liệu thứ
+                  cấp. Số mới nhất tới năm {latestDataYear}.
+                </p>
+              </div>
+            </div>
+            <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {indicatorCards.map(c => (
+                <li>
+                  <a href={href(`du-lieu/${c.id}`)} class="card gap-2">
+                    <span class="text-muted-foreground line-clamp-1 text-xs font-medium">
+                      {c.theme}
+                    </span>
+                    <span class="card-title text-[0.98rem]">{c.name}</span>
+                    <span class="mt-1 flex items-baseline gap-1.5">
+                      <span class="text-foreground text-2xl font-bold tabular-nums">
+                        {c.value}
+                      </span>
+                      <span class="text-muted-foreground text-sm">{c.unit}</span>
+                    </span>
+                    <svg
+                      viewBox="0 0 120 32"
+                      class="text-accent mt-1 h-8 w-full"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d={c.path}
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                        stroke-linecap="round"
+                        vector-effect="non-scaling-stroke"
+                      />
+                    </svg>
+                    <span class="card-foot">
+                      <span>Năm {c.year}</span>
+                      <span>Chuỗi {c.span}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a class="btn" href={href("du-lieu")}>
+                Xem toàn bộ dữ liệu, tải CSV <Icon name="arrow" />
+              </a>
+              <span class="text-muted-foreground text-sm">
+                Nguồn: World Bank, World Development Indicators (CC BY 4.0).
+              </span>
+            </div>
+          </div>
         </section>
       )
     }
 
+    <!-- ================= Templates by topic ================= -->
+    <section id="templates" class="section" aria-labelledby="templates-title">
+      <div class="app-layout">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Mẫu bảng hỏi</p>
+            <h2 id="templates-title">Mẫu bảng hỏi theo đề tài</h2>
+            <p>
+              Có sẵn mô hình, câu hỏi từ thang đo gốc, cỡ mẫu và đoạn chương 3.
+              Mở ra chỉnh tiếp trong Bộ khảo sát.
+            </p>
+          </div>
+          <a class="more-link" href={href("mau-bang-hoi")}>
+            Tất cả {templates.length} mẫu <Icon name="arrow" class="size-4" />
+          </a>
+        </div>
+        <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            templates.map(tpl => (
+              <li>
+                <a href={href(`mau-bang-hoi/${tpl.id}`)} class="card gap-1 p-4">
+                  <span class="card-title">{tpl.data.topic}</span>
+                  <span class="card-meta">{tpl.data.audience}</span>
+                  <span class="card-foot">
+                    <span class="badge neutral">
+                      {tpl.data.constructs.length} khái niệm
+                    </span>
+                    <span class="badge neutral">
+                      {tpl.data.method === "pls" ? "PLS-SEM" : "SPSS"}
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= Scales and concepts ================= -->
+    <section
+      id="library"
+      class="section border-border bg-surface border-y"
+      aria-labelledby="library-title"
+    >
+      {popularScales.length > 0 && (
+        <div class="app-layout mb-12">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Hay dùng nhất</p>
+              <h2 class="!mt-1">Thang đo phổ biến trong khoá luận</h2>
+            </div>
+            <a class="more-link" href={href("thang-do")}>
+              Cả {scales.length} thang đo <Icon name="arrow" class="size-4" />
+            </a>
+          </div>
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {popularScales.map(sc => (
+              <li>
+                <a href={href(`thang-do/${sc.id}`)} class="card gap-1 p-4">
+                  <span class="flex items-center justify-between gap-2">
+                    <span class="text-accent text-lg font-bold">{sc.data.name}</span>
+                    <span class="badge neutral">
+                      {sc.data.constructs.reduce((n, c) => n + c.items.length, 0)} biến
+                    </span>
+                  </span>
+                  <span class="card-meta line-clamp-2">{sc.data.fullName}</span>
+                  <span class="card-foot">{sc.data.field}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <div class="app-layout grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-14">
+        <div>
+          <p class="eyebrow">Thư viện thang đo</p>
+          <h3 id="library-title" class="text-foreground mt-1 text-xl font-bold">
+            Thang đo gốc, dịch sẵn, có trích dẫn
+          </h3>
+          <p class="text-muted-foreground mt-2">
+            {scales.length} thang đo và mô hình, {itemCount.toLocaleString("vi-VN")} biến
+            quan sát kèm bản tiếng Anh gốc và tài liệu tham khảo.
+          </p>
+          <ul class="mt-6 space-y-1">
+            {
+              fieldCounts.map(([field, n]) => (
+                <li>
+                  <a
+                    href={href("thang-do")}
+                    class="hover:bg-accent-soft/60 hover:text-accent flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors"
+                  >
+                    <span class="font-medium">{field}</span>
+                    <span class="badge neutral tabular-nums">{n}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <a class="btn ghost mt-6" href={href("thang-do")}>
+            Mở thư viện thang đo
+          </a>
+        </div>
+        <div>
+          <h3 class="text-foreground text-lg font-semibold">
+            Tìm theo khái niệm
+          </h3>
+          <p class="text-muted-foreground mt-1 text-sm">
+            {concepts.length} khái niệm hay gặp. Mỗi trang so sánh các thang đo
+            cùng khái niệm và gợi ý nên chọn thang nào.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-2">
+            {
+              concepts
+                .sort((a, b) => a.data.name.localeCompare(b.data.name, "vi"))
+                .map(c => (
+                  <li>
+                    <a
+                      href={href(`khai-niem/${c.id}`)}
+                      class="border-border bg-background hover:border-accent hover:text-accent inline-flex min-h-9 items-center rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors"
+                    >
+                      {c.data.name}
+                    </a>
+                  </li>
+                ))
+            }
+          </ul>
+          <a class="more-link mt-5" href={href("khai-niem")}>
+            Tất cả khái niệm <Icon name="arrow" class="size-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Articles ================= -->
     {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t.home.recentPosts}
-          </h2>
-          <ul>
-            {recentPosts.slice(0, postsConfig.perIndex).map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
+      homePosts.length > 0 && (
+        <section id="posts" class="section" aria-labelledby="posts-title">
+          <div class="app-layout">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Bài viết</p>
+                <h2 id="posts-title">
+                  {featuredPosts.length > 0 ? t.home.featured : t.home.recentPosts}
+                </h2>
+                <p>Hướng dẫn thực hành từ thiết kế bảng hỏi tới viết chương 4.</p>
+              </div>
+              <a class="more-link" href={href("posts")}>
+                {t.home.allPosts} <Icon name="arrow" class="size-4" />
+              </a>
+            </div>
+            <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {homePosts.map(data => (
+                <Card variant="h3" {...data} />
+              ))}
+            </ul>
+          </div>
         </section>
       )
     }
 
-    <div class="my-8 text-center">
-      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
-        {t.home.allPosts}
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
+    <!-- ================= FAQ ================= -->
+    <section class="app-layout pb-16" aria-labelledby="faq-title">
+      <div class="grid gap-8 lg:grid-cols-[1fr_2fr]">
+        <div>
+          <p class="eyebrow">Hỏi nhanh</p>
+          <h2 id="faq-title" class="text-foreground mt-1 text-2xl font-bold sm:text-[1.75rem]">
+            Câu hỏi thường gặp
+          </h2>
+        </div>
+        <div class="border-border bg-surface divide-border divide-y rounded-xl border" style="box-shadow: var(--shadow)">
+          {
+            faq.map(item => (
+              <details class="group px-5 py-4">
+                <summary class="text-foreground flex cursor-pointer list-none items-center justify-between gap-4 rounded font-semibold [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <span aria-hidden="true" class="text-accent grid size-6 flex-none place-items-center rounded-full text-lg leading-none transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="text-muted-foreground mt-2 leading-relaxed">{item.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Closing CTA ================= -->
+    <section class="app-layout pb-16" aria-labelledby="cta-title">
+      <div
+        class="bg-accent text-accent-foreground flex flex-col items-start justify-between gap-6 rounded-2xl px-6 py-10 sm:px-10 md:flex-row md:items-center"
+      >
+        <div>
+          <h2 id="cta-title" class="text-2xl font-bold">
+            Bắt đầu từ mô hình nghiên cứu của bạn
+          </h2>
+          <p class="mt-2 max-w-xl opacity-90">
+            Chọn khái niệm, nhận bảng hỏi Word, bảng mã hoá Excel và đoạn chương 3.
+            Miễn phí, không cần đăng ký.
+          </p>
+        </div>
+        <a
+          href={href("cong-cu/bo-khao-sat")}
+          class="bg-surface text-accent hover:bg-accent-soft inline-flex min-h-12 flex-none items-center gap-2 rounded-lg px-6 font-semibold transition-colors"
+        >
+          Tạo bảng hỏi ngay <Icon name="arrow" class="size-5" />
+        </a>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>

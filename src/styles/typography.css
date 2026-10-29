@@ -4,17 +4,39 @@
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
     @apply prose;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    --tw-prose-body: var(--foreground);
+    --tw-prose-headings: var(--foreground);
+    --tw-prose-bold: var(--foreground);
+    --tw-prose-counters: var(--muted-foreground);
+    --tw-prose-bullets: var(--accent);
+    --tw-prose-quotes: var(--foreground);
+    --tw-prose-captions: var(--muted-foreground);
+    --tw-prose-th-borders: var(--border);
+    --tw-prose-td-borders: var(--border);
+    --tw-prose-hr: var(--border);
 
     h1,
     h2,
     h3,
     h4,
     th {
-      @apply text-foreground mb-3;
+      @apply text-foreground;
+    }
+
+    h2 {
+      @apply mt-12 mb-4 text-[1.45rem] font-bold sm:text-2xl;
+      line-height: 1.32;
     }
 
     h3 {
-      @apply italic;
+      @apply mt-8 mb-3 text-[1.15rem] font-semibold;
+      line-height: 1.38;
+    }
+
+    h4 {
+      @apply mt-6 mb-2 font-semibold;
     }
 
     p,
@@ -28,7 +50,12 @@
     }
 
     a {
-      @apply text-foreground hover:text-accent wrap-break-word decoration-dashed underline-offset-4 focus-visible:no-underline;
+      @apply text-accent hover:text-accent-strong font-medium wrap-break-word underline decoration-1 underline-offset-[3px] focus-visible:no-underline;
+      text-decoration-color: color-mix(in oklab, var(--accent) 45%, transparent);
+    }
+
+    a:hover {
+      text-decoration-color: currentColor;
     }
 
     ul {
@@ -40,11 +67,11 @@
     }
 
     hr {
-      @apply border-border;
+      @apply border-border my-10;
     }
 
     img {
-      @apply border-border mx-auto border;
+      @apply border-border mx-auto rounded-lg border;
     }
 
     img[role="button"] {
@@ -56,17 +83,32 @@
     }
 
     figcaption {
-      @apply opacity-75;
+      @apply text-muted-foreground;
     }
 
+    /* Tables: bordered card, tinted header; wide ones scroll inside their wrapper. */
     table {
+      @apply my-0 w-full border-separate border-spacing-0 text-[0.92rem] leading-relaxed;
+
       th,
       td {
-        @apply border-border border p-2;
+        @apply border-border border-b px-3 py-2.5 align-top;
       }
 
-      th {
-        @apply py-1.5;
+      thead th {
+        @apply bg-muted text-foreground border-b-border-strong text-start text-[0.8rem] font-semibold;
+      }
+
+      tbody tr:last-child td {
+        @apply border-b-0;
+      }
+
+      thead th:first-child {
+        border-start-start-radius: 0.7rem;
+      }
+
+      thead th:last-child {
+        border-start-end-radius: 0.7rem;
       }
 
       th[align="center"],
@@ -85,8 +127,33 @@
       }
     }
 
+    /* Markdown tables are not wrapped, so make the table itself the scroller. */
+    > table,
+    > section > table {
+      @apply border-border bg-surface rounded-xl border;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 47.99rem) {
+      > table,
+      > section > table {
+        @apply block max-w-full overflow-x-auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    .overflow-x-auto {
+      @apply border-border bg-surface my-5 rounded-xl border;
+      box-shadow: var(--shadow);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .overflow-x-auto > table {
+      @apply m-0;
+    }
+
     code {
-      @apply bg-muted/75 text-foreground rounded p-1 wrap-break-word before:content-none after:content-none;
+      @apply bg-muted text-foreground rounded px-1.5 py-0.5 text-[0.88em] font-medium wrap-break-word before:content-none after:content-none;
     }
 
     .astro-code code {
@@ -94,7 +161,12 @@
     }
 
     blockquote {
-      @apply border-s-accent/80 wrap-break-word opacity-80;
+      @apply border-s-accent bg-accent-soft/60 rounded-e-lg py-1 font-normal not-italic wrap-break-word;
+    }
+
+    blockquote p:first-of-type::before,
+    blockquote p:last-of-type::after {
+      content: none;
     }
 
     details:not(.callout) {
@@ -102,11 +174,11 @@
     }
 
     summary {
-      @apply focus-visible:outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-dashed;
+      @apply focus-visible:outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1;
     }
 
     pre {
-      @apply focus-visible:outline-accent focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-dashed;
+      @apply rounded-lg focus-visible:outline-accent focus-visible:border-transparent focus-visible:outline-2;
     }
   }
 

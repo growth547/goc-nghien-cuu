@@ -1,0 +1,79 @@
+---
+/**
+ * Client-side filter for long lists: hides elements marked [data-filter-item]
+ * whose data-filter-text does not contain every typed word (accents ignored),
+ * and sections [data-filter-group] left with no visible items.
+ */
+type Props = { label: string; placeholder: string; total: number; unit: string };
+const { label, placeholder, total, unit } = Astro.props;
+---
+
+<div class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between" data-filter-root>
+  <label class="relative block w-full sm:max-w-md">
+    <span class="sr-only">{label}</span>
+    <svg
+      class="text-muted-foreground pointer-events-none absolute start-3 top-1/2 size-5 -translate-y-1/2"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="10" cy="10" r="7"></circle>
+      <path d="m21 21-6-6"></path>
+    </svg>
+    <input
+      type="search"
+      data-filter-input
+      placeholder={placeholder}
+      autocomplete="off"
+      class="border-border-strong bg-surface text-foreground placeholder:text-muted-foreground focus-visible:outline-accent h-12 w-full rounded-xl border ps-11 pe-4 text-base focus-visible:outline-2 focus-visible:outline-offset-0"
+      style="box-shadow: var(--shadow)"
+    />
+  </label>
+  <p class="text-muted-foreground text-sm" aria-live="polite" data-filter-count>
+    {total} {unit}
+  </p>
+</div>
+<p data-filter-none hidden class="text-muted-foreground border-border bg-surface mb-8 rounded-xl border border-dashed p-8 text-center">
+  Không có kết quả phù hợp. Thử từ khoá ngắn hơn, ví dụ tên mô hình (TAM, TPB) hoặc tên khái niệm.
+</p>
+
+<script>
+  function setupListFilter() {
+    const root = document.querySelector("[data-filter-root]");
+    const input = root?.querySelector("[data-filter-input]");
+    const count = root?.querySelector("[data-filter-count]");
+    const none = document.querySelector("[data-filter-none]");
+    if (!root || !(input instanceof HTMLInputElement) || !count) return;
+    const unit = count.textContent?.replace(/^\s*\d+\s*/, "").trim() ?? "";
+    const norm = (s: string) =>
+      s
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/đ/g, "d");
+    const items = [...document.querySelectorAll<HTMLElement>("[data-filter-item]")].map(el => ({
+      el,
+      text: norm(el.dataset.filterText ?? el.textContent ?? ""),
+    }));
+    const groups = [...document.querySelectorAll<HTMLElement>("[data-filter-group]")];
+    input.addEventListener("input", () => {
+      const words = norm(input.value).split(/\s+/).filter(Boolean);
+      let shown = 0;
+      for (const { el, text } of items) {
+        const ok = words.every(w => text.includes(w));
+        el.hidden = !ok;
+        if (ok) shown++;
+      }
+      for (const g of groups) {
+        g.hidden = !g.querySelector("[data-filter-item]:not([hidden])");
+      }
+      count.textContent = `${shown} ${unit}`;
+      if (none) none.hidden = shown > 0;
+    });
+  }
+  setupListFilter();
+  document.addEventListener("astro:after-swap", setupListFilter);
+</script>

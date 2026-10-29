@@ -1,13 +1,11 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconUnderline from "@/assets/icons/IconUnderline.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
-import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconX from "@/assets/icons/IconX.svg";
-import LinkButton from "./LinkButton.astro";
+import Wordmark from "./Wordmark.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
@@ -17,8 +15,7 @@ const { site, features } = config;
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
 
-// Strip the base prefix so isActive comparisons work regardless of deploy subdirectory.
-// e.g. with base "/blog": "/blog/posts/slug" → "/posts/slug"
+// Strip the base prefix so active-section checks work regardless of deploy subdirectory.
 const relativePath = stripBase(Astro.url.pathname);
 const pathWithoutTrailingSlash =
   relativePath.endsWith("/") && relativePath !== "/"
@@ -26,164 +23,161 @@ const pathWithoutTrailingSlash =
     : relativePath;
 
 const currentPath = stripLocale(pathWithoutTrailingSlash, locale);
+const firstSegment = currentPath.split("/").filter(p => p.trim())[0] ?? "";
 
-const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter(p => p.trim());
-  const pathArray = path.split("/").filter(p => p.trim());
-  return currentPath === path || currentPathArray[0] === pathArray[0];
+// Concept pages belong to the scale library; tags and archives to the articles.
+const sectionOf: Record<string, string> = {
+  "khai-niem": "thang-do",
+  tags: "posts",
+  archives: "posts",
 };
+const activeSection = sectionOf[firstSegment] ?? firstSegment;
+
+const navItems = [
+  { path: "cong-cu", label: "Công cụ" },
+  { path: "thang-do", label: "Thang đo" },
+  { path: "mau-bang-hoi", label: "Mẫu bảng hỏi" },
+  { path: "du-lieu", label: "Dữ liệu" },
+  { path: "posts", label: t.nav.posts },
+  { path: "about", label: t.nav.about },
+];
+const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
 ---
 
 <a
   id="skip-to-content"
   href="#main-content"
-  class="bg-background text-accent absolute inset-s-16 -top-full z-50 px-3 py-2 backdrop-blur-lg transition-all focus:top-4"
+  class="bg-accent text-accent-foreground fixed start-4 -top-20 z-[60] rounded-lg px-4 py-2 font-semibold shadow-lg transition-all focus:top-3"
 >
   {t.a11y.skipToContent}
 </a>
 
 <header
-  class="app-layout flex flex-col items-center justify-between sm:flex-row"
+  id="site-header"
+  class="border-border bg-background/90 sticky top-0 z-40 border-b backdrop-blur-md"
 >
-  <div
-    class="border-border bg-background relative flex w-full items-baseline justify-between border-b py-4 sm:items-center sm:py-6"
-  >
+  <div class="app-layout flex h-16 items-center justify-between gap-3">
     <a
       href={getRelativeLocaleUrl(locale, "")}
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      class="flex items-center gap-2.5 rounded-lg py-1 whitespace-nowrap"
+      aria-label={`${site.title}, về trang chủ`}
     >
-      {site.title}
+      <Wordmark />
     </a>
-    <nav
-      id="nav-menu"
-      class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
-    >
+
+    <nav aria-label="Điều hướng chính" class="hidden lg:block">
+      <ul class="flex items-center gap-0.5">
+        {
+          navItems.map(item => (
+            <li>
+              <a
+                href={getRelativeLocaleUrl(locale, item.path)}
+                aria-current={activeSection === item.path ? "page" : undefined}
+                class:list={[
+                  "hover:text-accent hover:bg-accent-soft/60 block rounded-lg px-3 py-2 text-[0.94rem] font-medium transition-colors",
+                  activeSection === item.path
+                    ? "active-nav"
+                    : "text-foreground/80",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1">
+      {
+        features.search !== false && (
+          <a
+            href={getRelativeLocaleUrl(locale, "search")}
+            class="text-foreground/80 hover:text-accent hover:bg-accent-soft/60 grid size-10 place-items-center rounded-lg transition-colors"
+            title={t.nav.search}
+            aria-label={t.nav.search}
+            aria-current={firstSegment === "search" ? "page" : undefined}
+          >
+            <IconSearch class="size-5" aria-hidden="true" />
+          </a>
+        )
+      }
+      {
+        features.lightAndDarkMode && (
+          <button
+            id="theme-btn"
+            type="button"
+            class="text-foreground/80 hover:text-accent hover:bg-accent-soft/60 relative grid size-10 place-items-center rounded-lg transition-colors"
+            title={t.a11y.toggleTheme}
+            aria-label="auto"
+            aria-live="polite"
+          >
+            <IconMoon
+              class="absolute size-5 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
+              aria-hidden="true"
+            />
+            <IconSunHigh
+              class="absolute size-5 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
+              aria-hidden="true"
+            />
+          </button>
+        )
+      }
+      <a
+        href={kitHref}
+        class="btn ms-1 hidden min-h-10 px-4 py-2 text-sm sm:inline-flex lg:hidden"
+      >
+        Tạo bảng hỏi
+      </a>
       <button
         id="menu-btn"
-        class="focus-outline self-end p-2 sm:hidden"
+        type="button"
+        class="text-foreground hover:bg-accent-soft/60 grid size-10 place-items-center rounded-lg lg:hidden"
         aria-label={t.a11y.openMenu}
         aria-expanded="false"
         aria-controls="menu-items"
         data-label-open={t.a11y.openMenu}
         data-label-close={t.a11y.closeMenu}
       >
-        <IconX id="close-icon" class="hidden" />
-        <IconMenuDeep id="menu-icon" />
+        <IconX id="close-icon" class="hidden size-6" aria-hidden="true" />
+        <IconMenuDeep id="menu-icon" class="size-6" aria-hidden="true" />
       </button>
-      <ul
-        id="menu-items"
-        class="[&>li>a]:hover:text-accent mt-4 hidden w-44 grid-cols-2 place-content-center gap-2 sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0 sm:[&>li]:h-8 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:font-medium sm:[&>li>a]:px-2 sm:[&>li>a]:py-1"
-      >
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "posts")}
-            class:list={{ "active-nav": isActive("/posts") }}
-          >
-            {t.nav.posts}
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "cong-cu")}
-            class:list={{ "active-nav": isActive("/cong-cu") }}
-          >
-            Công cụ
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "thang-do")}
-            class:list={{ "active-nav": isActive("/thang-do") }}
-          >
-            Thang đo
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "mau-bang-hoi")}
-            class:list={{ "active-nav": isActive("/mau-bang-hoi") }}
-          >
-            Mẫu bảng hỏi
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a
-            href={getRelativeLocaleUrl(locale, "about")}
-            class:list={{ "active-nav": isActive("/about") }}
-          >
-            {t.nav.about}
-          </a>
-        </li>
-        {
-          features.showArchives && (
-            <li class="col-span-2">
-              <LinkButton
-                href={getRelativeLocaleUrl(locale, "archives")}
-                class:list={[
-                  "focus-outline flex size-full justify-center p-3 sm:relative sm:size-8 sm:p-0",
-                  { "active-nav": isActive("/archives") },
-                ]}
-                title={t.nav.archives}
-                aria-label={t.nav.archives}
-              >
-                <IconArchive class="hidden sm:absolute sm:top-1/2 sm:left-1/2 sm:block sm:size-6 sm:-translate-x-1/2 sm:-translate-y-1/2" />
-                <span class="sm:sr-only">{t.nav.archives}</span>
-                {isActive("/archives") && (
-                  <IconUnderline
-                    aria-hidden="true"
-                    class="scale-125 max-sm:hidden sm:absolute sm:bottom-0 sm:w-6"
-                  />
-                )}
-              </LinkButton>
-            </li>
-          )
-        }
-        {
-          features.search !== false && (
-            <li class="col-span-1 flex items-center justify-center">
-              <LinkButton
-                href={getRelativeLocaleUrl(locale, "search")}
-                class:list={["focus-outline relative size-8"]}
-                title={t.nav.search}
-                aria-label={t.nav.search}
-              >
-                <IconSearch class="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2" />
-                <span class="sr-only">{t.nav.search}</span>
-                {isActive("/search") && (
-                  <IconUnderline
-                    aria-hidden="true"
-                    class="absolute bottom-0 w-6 scale-125 max-sm:inset-s-2"
-                  />
-                )}
-              </LinkButton>
-            </li>
-          )
-        }
-        {
-          features.lightAndDarkMode && (
-            <li class="col-span-1 flex items-center justify-center">
-              <button
-                id="theme-btn"
-                class="focus-outline hover:[&>svg]:stroke-accent relative size-12 p-4 sm:size-8"
-                title={t.a11y.toggleTheme}
-                aria-label="auto"
-                aria-live="polite"
-              >
-                <IconMoon class="absolute top-[50%] left-[50%] translate-[-50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-                <IconSunHigh class="absolute top-[50%] left-[50%] translate-[-50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-              </button>
-            </li>
-          )
-        }
-      </ul>
-    </nav>
+    </div>
   </div>
+
+  <nav
+    id="menu-items"
+    aria-label="Điều hướng chính"
+    class="border-border bg-background hidden border-t lg:hidden"
+  >
+    <ul class="app-layout grid gap-1 py-3 sm:grid-cols-2">
+      {
+        navItems.map(item => (
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, item.path)}
+              aria-current={activeSection === item.path ? "page" : undefined}
+              class:list={[
+                "hover:bg-accent-soft/60 flex min-h-12 items-center rounded-lg px-3 text-base font-medium",
+                activeSection === item.path ? "active-nav" : "text-foreground",
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-2 pb-1 sm:col-span-2">
+        <a href={kitHref} class="btn w-full">Tạo bảng hỏi miễn phí</a>
+      </li>
+    </ul>
+  </nav>
 </header>
 
 <script>
   function toggleNav() {
     const menuBtn = document.querySelector<HTMLButtonElement>("#menu-btn");
-    const menuItems = document.querySelector("#menu-items");
+    const menuItems = document.querySelector<HTMLElement>("#menu-items");
     const menuIcon = document.querySelector("#menu-icon");
     const closeIcon = document.querySelector("#close-icon");
 
@@ -192,16 +186,23 @@ const isActive = (path: string) => {
     const openLabel = menuBtn.dataset.labelOpen ?? "Open menu";
     const closeLabel = menuBtn.dataset.labelClose ?? "Close menu";
 
+    const setOpen = (open: boolean) => {
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn.setAttribute("aria-label", open ? closeLabel : openLabel);
+      menuItems.classList.toggle("hidden", !open);
+      menuIcon.classList.toggle("hidden", open);
+      closeIcon.classList.toggle("hidden", !open);
+    };
+
     menuBtn.addEventListener("click", () => {
-      const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
+      setOpen(menuBtn.getAttribute("aria-expanded") !== "true");
+    });
 
-      menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
-      menuBtn.setAttribute("aria-label", openMenu ? openLabel : closeLabel);
-
-      menuItems.classList.toggle("hidden");
-      menuItems.classList.toggle("grid");
-      menuIcon.classList.toggle("hidden");
-      closeIcon.classList.toggle("hidden");
+    menuItems.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        menuBtn.focus();
+      }
     });
   }
 

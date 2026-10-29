@@ -4,6 +4,12 @@ import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
+type Props = {
+  /** Readable label for the last crumb (otherwise the URL segment is shown). */
+  current?: string;
+};
+const { current } = Astro.props;
+
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
 
@@ -66,42 +72,41 @@ if (breadcrumbList[0] === "tags" && !isNaN(Number(breadcrumbList[2]))) {
 }
 ---
 
-<nav class="app-layout mt-8 mb-1" aria-label="breadcrumb">
-  <ul
-    class="flex flex-wrap items-center gap-x-1 font-light [&>li:not(:last-child)>a]:hover:opacity-100"
+<nav class="app-layout pt-6 pb-1" aria-label="breadcrumb">
+  <ol
+    class="text-muted-foreground flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm"
   >
-    <li class="flex items-center gap-x-1">
-      <a href={getRelativeLocaleUrl(locale, "")} class="opacity-80">
+    <li class="flex items-center gap-x-1.5">
+      <a href={getRelativeLocaleUrl(locale, "")} class="hover:text-accent">
         {t.nav.home}
       </a>
-      <span aria-hidden="true" class="opacity-80">&raquo;</span>
+      <span aria-hidden="true" class="opacity-60">/</span>
     </li>
     {
       breadcrumbList.map((breadcrumb, index) =>
         index + 1 === breadcrumbList.length ? (
-          <li>
+          <li class="min-w-0">
             <span
-              class:list={["capitalize opacity-75", { lowercase: index > 0 }]}
+              class="text-foreground block max-w-[60vw] truncate font-medium sm:max-w-md"
               aria-current="page"
             >
-              {/* make the last part lowercase in Home > Tags > some-tag */}
-              {navLabels[breadcrumb] ?? decodeSegment(breadcrumb)}
+              {current ?? navLabels[breadcrumb] ?? decodeSegment(breadcrumb)}
             </span>
           </li>
         ) : (
-          <li class="flex items-center gap-x-1">
+          <li class="flex items-center gap-x-1.5">
             <a
               href={getRelativeLocaleUrl(locale, breadcrumb)}
-              class="capitalize opacity-70"
+              class="hover:text-accent"
             >
               {navLabels[breadcrumb] ?? decodeSegment(breadcrumb)}
             </a>
-            <span aria-hidden="true" class="opacity-70">
-              &raquo;
+            <span aria-hidden="true" class="opacity-60">
+              /
             </span>
           </li>
         )
       )
     }
-  </ul>
+  </ol>
 </nav>

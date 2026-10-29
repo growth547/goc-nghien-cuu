@@ -1,48 +1,70 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import Icon, { type IconName } from "./Icon.astro";
 import config from "@/config";
 
 const locale = Astro.currentLocale ?? config.site.lang;
-const tools = [
+const tools: { path: string; title: string; desc: string; icon: IconName }[] = [
   {
     path: "cong-cu/bo-khao-sat",
     title: "Bộ khảo sát khoá luận",
     desc: "Chọn khái niệm trong mô hình, ra bảng hỏi tiếng Việt từ thang đo gốc, cỡ mẫu và đoạn chương 3. Tải về Word.",
+    icon: "clipboard",
   },
   {
     path: "cong-cu/phan-tich-du-lieu",
     title: "Phân tích dữ liệu, viết chương 4",
     desc: "Tải file Excel khảo sát: lọc phiếu, Cronbach cho mọi thang đo, EFA, tương quan, hồi quy và chương 4 viết sẵn. Không cần SPSS.",
+    icon: "chart",
   },
   {
     path: "cong-cu/tinh-co-mau",
     title: "Máy tính cỡ mẫu",
     desc: "PLS-SEM (G*Power, Kock & Hadaya), hồi quy, EFA, Cochran. Tự viết sẵn đoạn chọn mẫu cho chương 3, kèm tài liệu tham khảo.",
+    icon: "users",
   },
   {
     path: "cong-cu/cronbach-alpha",
     title: "Tính Cronbach's alpha",
     desc: "Dán dữ liệu từ Excel hoặc SPSS, ra alpha, tương quan biến–tổng và alpha nếu loại biến.",
+    icon: "check",
   },
   {
     path: "thang-do",
     title: "Thư viện thang đo",
     desc: "TAM, UTAUT2, TPB, SERVQUAL, thương hiệu, nhân sự, tâm lý: biến quan sát dịch sẵn, kèm bản gốc và trích dẫn.",
+    icon: "book",
   },
 ];
 ---
 
-<ul class="grid gap-4 sm:grid-cols-2">
+<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
   {
-    tools.map(t => (
-      <li>
+    tools.map((t, i) => (
+      <li class:list={{ "sm:col-span-2": i === 0 }}>
         <a
           href={getRelativeLocaleUrl(locale, t.path)}
-          class="border-border hover:border-accent bg-background flex h-full flex-col gap-2 rounded-xl border p-5 transition-colors"
+          class:list={[
+            "card gap-3",
+            { "border-accent/40 from-accent-soft to-surface bg-linear-to-br": i === 0 },
+          ]}
         >
-          <span class="text-accent text-xs font-semibold tracking-wider uppercase">{t.path === "thang-do" ? "Tra cứu" : "Công cụ miễn phí"}</span>
-          <span class="text-lg font-semibold">{t.title}</span>
-          <span class="text-muted-foreground text-sm">{t.desc}</span>
+          <span class="flex items-center justify-between gap-3">
+            <span class="icon-tile">
+              <Icon name={t.icon} />
+            </span>
+            <span class:list={["badge", { neutral: t.path === "thang-do" }]}>
+              {t.path === "thang-do" ? "Tra cứu" : "Công cụ miễn phí"}
+            </span>
+          </span>
+          <span class:list={["card-title", i === 0 ? "text-xl" : "text-lg"]}>
+            {t.title}
+          </span>
+          <span class="card-meta">{t.desc}</span>
+          <span class="text-accent mt-auto inline-flex items-center gap-1 pt-1 text-sm font-semibold">
+            {i === 0 ? "Bắt đầu tạo bảng hỏi" : "Mở"}
+            <Icon name="arrow" class="size-4" />
+          </span>
         </a>
       </li>
     ))

@@ -7,6 +7,8 @@
   "keyword": "thang đo UTAUT",
   "intro": "UTAUT do Venkatesh, Morris, Davis và Davis (2003) đề xuất sau khi so sánh tám mô hình chấp nhận công nghệ, trong đó có TAM, TPB và lý thuyết khuếch tán đổi mới. Mô hình giữ lại bốn yếu tố chính: hiệu quả kỳ vọng, nỗ lực kỳ vọng và ảnh hưởng xã hội tác động lên ý định hành vi; điều kiện thuận lợi tác động trực tiếp lên hành vi sử dụng. Giới tính, tuổi, kinh nghiệm và tính tự nguyện đóng vai trò biến điều tiết. Ở Việt Nam, UTAUT hay được dùng cho đề tài về phần mềm trong doanh nghiệp, chính phủ điện tử, hệ thống học tập trực tuyến của trường.",
   "responseScale": "Likert 7 mức, 1 là đầu tiêu cực và 7 là đầu tích cực của thang (thường ghi 1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Nhiều nghiên cứu ở Việt Nam chuyển sang thang 5 mức.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "PE",

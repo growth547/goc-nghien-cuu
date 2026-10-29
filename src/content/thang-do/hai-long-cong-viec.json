@@ -7,6 +7,8 @@
   "keyword": "thang đo hài lòng công việc",
   "intro": "Thang đo này đo mức hài lòng chung của người lao động với công việc, không tách theo khía cạnh như lương, đồng nghiệp hay cấp trên. Ba biến thuộc bộ Michigan Organizational Assessment Questionnaire do nhóm Quality of Work của Đại học Michigan phát triển giữa thập niên 1970, thường trích theo Cammann, Fichman, Jenkins và Klesh (1979, 1983). Bowling và Hammond (2008) tổng hợp hơn 70 nghiên cứu và xác nhận thang có giá trị cấu trúc tốt. Ở Việt Nam, thang hợp với đề tài về hài lòng, gắn kết và ý định nghỉ việc của nhân viên ngân hàng, giáo viên, điều dưỡng, nhân viên văn phòng.",
   "responseScale": "Likert đồng ý. Bộ MOAQ năm 1975 dùng thang 7 mức; bản do Paul Spector lưu trữ dùng 6 mức (1 = Rất không đồng ý … 6 = Rất đồng ý). Nhiều nghiên cứu sau dùng 5 hoặc 7 mức; cộng hoặc lấy trung bình 3 biến sau khi đảo chiều JS2.",
+  "responseScaleShort": "Likert 6–7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–6: điểm mới = 1 + 6 − điểm = 7 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "JS",

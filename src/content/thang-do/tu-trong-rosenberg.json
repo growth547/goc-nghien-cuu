@@ -7,6 +7,8 @@
   "keyword": "thang đo lòng tự trọng Rosenberg",
   "intro": "Thang đo do Morris Rosenberg (1965) xây dựng trên mẫu hơn 5.000 học sinh trung học ở bang New York để đo lòng tự trọng tổng quát, tức thái độ tích cực hay tiêu cực của một người đối với bản thân. Thang gồm 10 câu, một nửa phát biểu tích cực, một nửa tiêu cực. Đây là thang tự trọng được dùng nhiều nhất thế giới; ở Việt Nam thường gặp trong đề tài về hình ảnh cơ thể, sử dụng mạng xã hội, bắt nạt học đường và sức khoẻ tinh thần sinh viên.",
   "responseScale": "Thang 4 mức đồng ý, không có điểm giữa: Rất đồng ý (3), Đồng ý (2), Không đồng ý (1), Rất không đồng ý (0). Năm câu tiêu cực (RSE2, RSE5, RSE6, RSE8, RSE9) chấm ngược: Rất đồng ý = 0 … Rất không đồng ý = 3. Cộng 10 câu được điểm tổng 0–30, điểm càng cao lòng tự trọng càng cao. Một số nghiên cứu chấm 1–4, điểm tổng 10–40.",
+  "responseScaleShort": "Đồng ý 4 mức (0–3)",
+  "reverseRule": "Thang 0–3: điểm mới = 3 − điểm; thang 1–4: điểm mới = 1 + 4 − điểm = 5 − điểm.",
   "constructs": [
     {
       "code": "RSE",

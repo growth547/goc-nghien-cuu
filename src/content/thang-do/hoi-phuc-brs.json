@@ -7,6 +7,8 @@
   "keyword": "thang đo khả năng phục hồi BRS",
   "intro": "BRS do Smith và cộng sự (2008) xây dựng để đo khả năng 'bật lại' (bounce back), tức hồi phục sau căng thẳng và nghịch cảnh, theo đúng nghĩa gốc của từ resilience. Khác với các thang đo nguồn lực giúp con người kiên cường, BRS hỏi trực tiếp người trả lời hồi phục nhanh hay chậm. Thang có 6 câu, 3 câu thuận và 3 câu nghịch xen kẽ nhau. Ở Việt Nam, BRS hợp với đề tài về áp lực học tập, kiệt sức nghề nghiệp, sức khoẻ tinh thần sau biến cố, và làm biến trung gian hoặc điều tiết giữa căng thẳng với kết quả.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý). Đảo điểm 3 câu BRS2, BRS4, BRS6 (1 thành 5, 2 thành 4, 3 giữ nguyên, 4 thành 2, 5 thành 1) rồi lấy trung bình 6 câu, điểm từ 1 đến 5; điểm càng cao khả năng phục hồi càng tốt.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "BRS",

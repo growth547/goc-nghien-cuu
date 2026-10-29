@@ -7,6 +7,7 @@
   "keyword": "thang đo độ tin cậy nguồn Ohanian",
   "intro": "Ohanian (1990) xây dựng thang đo này để đo cách người tiêu dùng đánh giá người nổi tiếng đại diện cho thương hiệu. Thang gồm 15 cặp tính từ đối lập, chia đều cho 3 thành phần: sức hấp dẫn, sự đáng tin và chuyên môn. Đây là thang đo được trích dẫn nhiều nhất khi nghiên cứu hiệu quả của người đại diện quảng cáo. Ở Việt Nam, thang đo thường dùng cho đề tài về KOL, KOC, influencer trên TikTok, YouTube, Instagram và tác động của họ lên thái độ hoặc ý định mua.",
   "responseScale": "Thang đối nghĩa (semantic differential) 7 mức giữa hai tính từ đối lập, ví dụ 1 = Không hấp dẫn … 7 = Hấp dẫn. Không phải thang mức độ đồng ý.",
+  "responseScaleShort": "Đối nghĩa 7 mức",
   "constructs": [
     {
       "code": "ATT",

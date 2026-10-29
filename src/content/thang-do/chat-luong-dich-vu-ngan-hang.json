@@ -7,6 +7,7 @@
   "keyword": "thang đo chất lượng dịch vụ ngân hàng điện tử",
   "intro": "MPQe-BS do Malc, Dlačić, Pisnik và Milfelner (2023) phát triển để đo chất lượng dịch vụ ngân hàng điện tử theo cảm nhận của khách hàng. Bộ biến ban đầu kế thừa E-S-QUAL, E-RecS-QUAL và các thang về bảo mật, thiết kế website; sau EFA và CFA trên mẫu khách hàng ở Croatia và Slovenia còn 25 biến thuộc 6 thành phần: hiệu quả, sự sẵn sàng, thiết kế, liên hệ, bảo mật và thực hiện cam kết. Bài báo công bố đủ 25 biến dưới giấy phép mở. Ở Việt Nam, thang này hợp với đề tài về internet banking, mobile banking và sự hài lòng hoặc lòng trung thành của khách hàng ngân hàng số.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo bài gốc.",
+  "responseScaleShort": "Likert 5 mức",
   "constructs": [
     {
       "code": "EFF",

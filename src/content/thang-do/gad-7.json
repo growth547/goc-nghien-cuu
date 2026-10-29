@@ -7,6 +7,7 @@
   "keyword": "thang đo GAD-7",
   "intro": "GAD-7 do Spitzer, Kroenke, Williams và Löwe (2006) xây dựng để sàng lọc rối loạn lo âu lan toả và đo mức độ triệu chứng lo âu, kiểm định trên 2.740 bệnh nhân chăm sóc ban đầu. Thang hỏi người trả lời bị làm phiền bởi 7 triệu chứng lo âu bao nhiêu ngày trong 2 tuần qua. GAD-7 cùng nhóm với PHQ-9, ngắn và miễn phí, nên hay được dùng song song để đo cả trầm cảm và lo âu. Ở Việt Nam, thang này xuất hiện trong đề tài về lo âu của sinh viên mùa thi, người lao động, nhân viên y tế và người bệnh.",
   "responseScale": "Thang tần suất 4 mức, không phải Likert đồng ý, hỏi về 2 tuần qua: 0 = Hoàn toàn không (Not at all), 1 = Vài ngày (Several days), 2 = Hơn một nửa số ngày (More than half the days), 3 = Gần như mọi ngày (Nearly every day). Cộng 7 câu được điểm tổng 0–21; theo hướng dẫn của tác giả, các mốc 5, 10, 15 tương ứng mức nhẹ, vừa và nặng. Không có câu đảo chiều.",
+  "responseScaleShort": "Tần suất 0–3",
   "constructs": [
     {
       "code": "GAD",

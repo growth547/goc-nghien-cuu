@@ -7,6 +7,7 @@
   "keyword": "thang đo hài lòng cuộc sống",
   "intro": "SWLS do Diener, Emmons, Larsen và Griffin (1985) xây dựng để đo đánh giá tổng quát của một người về cuộc sống của chính mình, tức thành phần nhận thức của hạnh phúc chủ quan. Thang chỉ có 5 biến, một nhân tố, trả lời trong khoảng một phút. Ở Việt Nam, SWLS hay được dùng làm biến kết quả trong đề tài về sức khoẻ tinh thần sinh viên, cân bằng công việc và cuộc sống, người cao tuổi, hoặc tác động của mạng xã hội.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Hơi không đồng ý, 4 = Trung lập, 5 = Hơi đồng ý, 6 = Đồng ý, 7 = Hoàn toàn đồng ý). Điểm tổng là tổng 5 biến, từ 5 đến 35. Mức diễn giải kèm theo thang: 31–35 rất hài lòng; 26–30 hài lòng; 21–25 hơi hài lòng; 20 trung lập; 15–19 hơi không hài lòng; 10–14 không hài lòng; 5–9 rất không hài lòng.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "SWLS",

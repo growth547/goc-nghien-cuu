@@ -7,6 +7,8 @@
   "keyword": "thang đo SERVQUAL",
   "intro": "SERVQUAL do Parasuraman, Zeithaml và Berry (1988) phát triển để đo chất lượng dịch vụ theo cảm nhận của khách hàng. Bộ gốc gồm 22 cặp câu: một câu đo kỳ vọng về các doanh nghiệp trong ngành và một câu đo cảm nhận về doanh nghiệp cụ thể; chất lượng dịch vụ là hiệu số cảm nhận trừ kỳ vọng. 22 biến chia thành 5 thành phần: phương tiện hữu hình, tin cậy, đáp ứng, đảm bảo và đồng cảm. Ở Việt Nam, SERVQUAL là thang nền cho rất nhiều khoá luận về chất lượng dịch vụ ngân hàng, bệnh viện, khách sạn, viễn thông, giáo dục và dịch vụ công. Trang này đưa 22 biến phần cảm nhận đúng theo bản 1988.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), chỉ gắn nhãn hai đầu, theo phụ lục của Parasuraman và cộng sự (1988). Nhiều nghiên cứu ở Việt Nam chuyển sang thang 5 mức.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "TAN",

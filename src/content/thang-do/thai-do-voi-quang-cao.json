@@ -7,6 +7,7 @@
   "keyword": "thang đo thái độ với quảng cáo",
   "intro": "Thái độ với quảng cáo (Aad) là đánh giá tích cực hay tiêu cực của người xem đối với một mẩu quảng cáo cụ thể; MacKenzie và Lutz (1989) đo khái niệm này bằng 3 cặp tính từ đối lập và chỉ ra Aad ảnh hưởng tới thái độ với thương hiệu. Thái độ với thương hiệu (Ab) dùng thang 5 cặp tính từ của Spears và Singh (2004), được xây dựng riêng để tách thái độ khỏi ý định mua. Hai thang này thường đi cùng nhau trong các đề tài thực nghiệm về quảng cáo video, quảng cáo trên mạng xã hội, quảng cáo có người nổi tiếng hoặc quảng cáo dùng AI ở Việt Nam.",
   "responseScale": "Thang đối nghĩa (semantic differential) 7 mức giữa hai tính từ đối lập, ví dụ 1 = Không tốt … 7 = Tốt. Không phải thang mức độ đồng ý.",
+  "responseScaleShort": "Đối nghĩa 7 mức",
   "constructs": [
     {
       "code": "AAD",

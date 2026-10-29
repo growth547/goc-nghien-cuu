@@ -7,6 +7,7 @@
   "keyword": "thang đo công bằng tổ chức",
   "intro": "Colquitt (2001) kiểm định cấu trúc bốn thành phần của công bằng tổ chức và công bố bộ 20 biến: công bằng thủ tục (7 biến), phân phối (4 biến), quan hệ cá nhân (4 biến) và thông tin (5 biến). Mỗi biến là một câu hỏi về một kết quả cụ thể (lương, thưởng, đánh giá, thăng tiến) hoặc về người ra quyết định. Đây là bộ đo công bằng được trích nhiều nhất. Ở Việt Nam, thang hợp với đề tài về đánh giá thành tích, chính sách lương thưởng, ý định nghỉ việc, cam kết và hành vi công dân tổ chức.",
   "responseScale": "Thang mức độ 5 mức (1 = Ở mức rất ít … 5 = Ở mức rất nhiều; tiếng Anh 'to a small extent' … 'to a large extent'). Biến được viết dạng câu hỏi nên không dùng nhãn đồng ý; nếu đổi thành câu khẳng định với thang đồng ý, ghi rõ trong phần phương pháp.",
+  "responseScaleShort": "Mức độ 1–5",
   "constructs": [
     {
       "code": "PJ",

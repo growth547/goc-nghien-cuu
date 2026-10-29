@@ -7,6 +7,7 @@
   "keyword": "thang đo DASS-21",
   "intro": "DASS do Lovibond và Lovibond (1995) xây dựng để đo ba trạng thái cảm xúc tiêu cực có liên quan với nhau: trầm cảm, lo âu và căng thẳng (stress). Bản đầy đủ có 42 biến; DASS-21 lấy 7 biến cho mỗi tiểu thang và mất khoảng một nửa thời gian trả lời. Trang chính thức của DASS khuyên dùng DASS-21 cho mục đích nghiên cứu. Ở Việt Nam, thang này hay xuất hiện trong đề tài về sức khoẻ tinh thần của sinh viên, nhân viên y tế, người lao động, và làm biến kết quả trong mô hình áp lực học tập hoặc áp lực công việc.",
   "responseScale": "Thang mức độ 4 mức, không phải Likert đồng ý, hỏi về tuần vừa qua: 0 = Hoàn toàn không đúng với tôi (Did not apply to me at all), 1 = Đúng với tôi phần nào, hoặc thỉnh thoảng (Applied to me to some degree, or some of the time), 2 = Đúng với tôi phần nhiều, hoặc khá nhiều lúc (Applied to me to a considerable degree, or a good part of time), 3 = Rất đúng với tôi, hoặc hầu hết thời gian (Applied to me very much, or most of the time). Cộng 7 biến của mỗi tiểu thang rồi nhân 2 để so sánh được với DASS-42; mỗi tiểu thang có điểm từ 0 đến 42. Không có câu đảo chiều.",
+  "responseScaleShort": "Mức độ 0–3",
   "constructs": [
     {
       "code": "D",

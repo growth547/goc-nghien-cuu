@@ -7,6 +7,8 @@
   "keyword": "thang đo tự kiểm soát",
   "intro": "Tự kiểm soát là khả năng thay đổi phản ứng bên trong của bản thân, ngăn lại những thôi thúc không mong muốn và không hành động theo chúng. Tangney, Baumeister và Boone (2004) xây dựng thang Self-Control Scale 36 biến và bản rút gọn 13 biến (BSCS); bản rút gọn được dùng nhiều hơn hẳn. Ở Việt Nam, BSCS hay xuất hiện trong đề tài về nghiện điện thoại, nghiện mạng xã hội, trì hoãn học tập, mua sắm bốc đồng và kết quả học tập của sinh viên.",
   "responseScale": "Thang mức độ giống bản thân 5 mức, không phải Likert đồng ý: 1 = Hoàn toàn không giống tôi … 5 = Rất giống tôi. Đảo điểm 9 câu phát biểu theo hướng thiếu tự kiểm soát (SC2, SC3, SC4, SC5, SC7, SC9, SC10, SC12, SC13) rồi cộng hoặc lấy trung bình 13 câu; điểm càng cao tự kiểm soát càng tốt.",
+  "responseScaleShort": "Giống tôi 1–5",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "SC",

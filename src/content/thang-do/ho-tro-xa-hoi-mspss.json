@@ -7,6 +7,7 @@
   "keyword": "thang đo hỗ trợ xã hội MSPSS",
   "intro": "MSPSS do Zimet, Dahlem, Zimet và Farley (1988) xây dựng để đo mức hỗ trợ xã hội mà một người cảm nhận được từ ba nguồn: gia đình, bạn bè và một người đặc biệt. Thang có 12 câu, mỗi nguồn 4 câu, ngắn và dễ hiểu nên được dịch sang rất nhiều ngôn ngữ. Ở Việt Nam, MSPSS hay dùng trong đề tài về sức khoẻ tinh thần của sinh viên, người bệnh mạn tính, người cao tuổi, thường làm biến độc lập hoặc biến điều tiết giữa căng thẳng với trầm cảm, lo âu hay sự hài lòng với cuộc sống.",
   "responseScale": "Likert 7 mức theo mức độ đồng ý: 1 = Cực kỳ không đồng ý (Very Strongly Disagree), 2 = Rất không đồng ý (Strongly Disagree), 3 = Hơi không đồng ý (Mildly Disagree), 4 = Trung lập (Neutral), 5 = Hơi đồng ý (Mildly Agree), 6 = Rất đồng ý (Strongly Agree), 7 = Cực kỳ đồng ý (Very Strongly Agree). Điểm mỗi tiểu thang là trung bình 4 câu, điểm chung là trung bình 12 câu, từ 1 đến 7. Không có câu đảo chiều.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "SO",

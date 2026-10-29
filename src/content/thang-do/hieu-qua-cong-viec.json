@@ -7,6 +7,8 @@
   "keyword": "thang đo hiệu quả công việc",
   "intro": "Thang đo hành vi trong vai trò của Williams và Anderson (1991) đo mức một nhân viên hoàn thành những gì bản mô tả công việc yêu cầu. Thang được xây dựng cùng lúc với hai thang hành vi công dân OCBI và OCBO, để tách rõ phần việc bắt buộc với phần tự nguyện. Câu viết ở ngôi thứ ba nên dùng được cho quản lý đánh giá nhân viên, hoặc chuyển sang tự đánh giá. Ở Việt Nam, thang hay dùng làm biến kết quả trong đề tài về lãnh đạo, gắn kết, trao quyền, sự hài lòng công việc.",
   "responseScale": "Likert đồng ý, thường 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5 hoặc 7 = Hoàn toàn đồng ý) trong các nghiên cứu dùng lại. Đảo điểm IRB6 và IRB7 trước khi tính điểm trung bình.",
+  "responseScaleShort": "Likert 5 hoặc 7 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm; thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm.",
   "constructs": [
     {
       "code": "IRB",

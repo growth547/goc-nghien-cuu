@@ -59,6 +59,10 @@ const scales = defineCollection({
     keyword: z.string(),
     intro: z.string(),
     responseScale: z.string(),
+    // Short form for the stat card, e.g. "Tần suất 0–4".
+    responseScaleShort: z.string().max(28).optional(),
+    // Per-scale recoding of (R) items: (lowest + highest level) − score.
+    reverseRule: z.string().optional(),
     constructs: z
       .array(
         z.object({
@@ -72,6 +76,38 @@ const scales = defineCollection({
       )
       .min(1),
     usage: z.array(z.string()).min(2),
+    // Optional depth sections; every citation must also be in `references`.
+    model: z
+      .object({
+        paths: z.array(z.string()).min(1),
+        note: z.string().optional(),
+        source: z.string(),
+      })
+      .optional(),
+    reliability: z
+      .array(
+        z.object({
+          construct: z.string(),
+          value: z.string(),
+          sample: z.string(),
+          source: z.string(),
+          url: z.string().url(),
+        })
+      )
+      .optional(),
+    vietnamStudies: z
+      .array(
+        z.object({
+          authors: z.string(),
+          year: z.number().int(),
+          title: z.string(),
+          journal: z.string(),
+          url: z.string().url(),
+          note: z.string().optional(),
+        })
+      )
+      .optional(),
+    examinerQA: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
     sampleSize: z.object({
       arrowsMax: z.number().int().min(1).optional(),
       note: z.string(),

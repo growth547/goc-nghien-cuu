@@ -7,6 +7,7 @@
   "keyword": "thang đo marketing mạng xã hội",
   "intro": "Kim và Ko (2012) xây dựng thang đo này khi khảo sát 362 khách hàng của Louis Vuitton tại Hàn Quốc về hoạt động marketing trên mạng xã hội của thương hiệu. Thang gồm 5 thành phần: giải trí, tương tác, xu hướng, cá nhân hoá và truyền miệng, với tổng cộng 11 biến. Trong mô hình gốc, hoạt động marketing mạng xã hội tác động lên giá trị, quan hệ và tài sản thương hiệu, rồi tới ý định mua và giá trị khách hàng. Ở Việt Nam, thang đo được dùng nhiều trong các khoá luận về fanpage, TikTok, Instagram của thương hiệu thời trang, mỹ phẩm, F&B và ngân hàng.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo bài gốc.",
+  "responseScaleShort": "Likert 5 mức",
   "constructs": [
     {
       "code": "ENT",

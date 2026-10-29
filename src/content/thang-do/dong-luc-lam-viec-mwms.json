@@ -7,6 +7,7 @@
   "keyword": "thang đo động lực làm việc",
   "intro": "MWMS do Gagné và cộng sự (2015) xây dựng dựa trên thuyết tự quyết (Self-Determination Theory), đo lý do một người bỏ công sức vào công việc. Thang chia động lực thành sáu loại xếp từ ít đến nhiều tự chủ: không có động lực, điều tiết bên ngoài vì xã hội, điều tiết bên ngoài vì vật chất, điều tiết nội nhập, điều tiết đồng nhất và động lực nội tại. Bản 19 biến được kiểm định trên 3.435 người lao động, bằng bảy ngôn ngữ ở chín quốc gia. Ở Việt Nam, MWMS phù hợp với đề tài về động lực của nhân viên văn phòng, giáo viên, nhân viên y tế, và tác động của phong cách lãnh đạo, chế độ đãi ngộ tới từng loại động lực.",
   "responseScale": "Thang mức độ 7 điểm, không phải Likert đồng ý: 1 = Hoàn toàn không … 7 = Hoàn toàn đúng, trả lời cho câu dẫn hỏi vì sao bạn bỏ (hoặc sẽ bỏ) công sức vào công việc hiện tại. Tính điểm trung bình riêng từng loại động lực; không cộng cả 19 biến thành một điểm.",
+  "responseScaleShort": "Mức độ đúng 1–7",
   "constructs": [
     {
       "code": "AM",

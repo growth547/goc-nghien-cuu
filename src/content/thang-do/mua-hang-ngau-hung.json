@@ -7,6 +7,8 @@
   "keyword": "thang đo mua hàng ngẫu hứng",
   "intro": "Rook và Fisher (1995) định nghĩa xu hướng mua ngẫu hứng là khuynh hướng mua một cách tự phát, không suy nghĩ, ngay lập tức, bị cuốn theo sức hút cảm xúc với sản phẩm. Thang đo gốc có 9 biến, đơn hướng, đo đặc điểm cá nhân chứ không đo một lần mua cụ thể. Bài gốc trên Journal of Consumer Research dùng thang này để kiểm tra vai trò điều tiết của chuẩn mực xã hội lên hành vi mua ngẫu hứng. Ở Việt Nam, thang hay dùng cho đề tài mua sắm ngẫu hứng trên sàn thương mại điện tử, livestream bán hàng, mua sắm của Gen Z.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý) là dạng được các nghiên cứu sau dùng nhiều nhất; một số nghiên cứu dùng 7 mức. Điểm càng cao, xu hướng mua ngẫu hứng càng mạnh.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm; thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm.",
   "constructs": [
     {
       "code": "BI",

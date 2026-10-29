@@ -7,6 +7,8 @@
   "keyword": "thang đo sự hài lòng người bệnh",
   "intro": "PSQ-18 do Marshall và Hays (1994) tại RAND rút gọn từ bảng hỏi PSQ-III 50 biến, dùng để đo mức độ hài lòng của người bệnh với dịch vụ khám chữa bệnh. 18 biến chia thành 7 thành phần: hài lòng chung, chất lượng chuyên môn, cách đối xử, giao tiếp, khía cạnh tài chính, thời gian bác sĩ dành cho người bệnh, khả năng tiếp cận và sự thuận tiện. Bảng hỏi mất khoảng 3–4 phút để trả lời. Ở Việt Nam, PSQ-18 phù hợp với đề tài về sự hài lòng của người bệnh ngoại trú, chất lượng dịch vụ bệnh viện công và tư, phòng khám tư nhân.",
   "responseScale": "Likert 5 mức theo mức độ đồng ý. Bản gốc của RAND đánh số ngược: 1 = Strongly Agree, 2 = Agree, 3 = Uncertain, 4 = Disagree, 5 = Strongly Disagree; hướng dẫn chấm điểm quy đổi để điểm cao luôn là hài lòng cao. Nếu đổi sang 1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý, chỉ cần đảo điểm các câu đánh dấu đảo chiều.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm. Nếu giữ cách đánh số của RAND (1 = Strongly Agree), làm theo khoá chấm điểm gốc thay vì công thức này.",
   "constructs": [
     {
       "code": "GS",

@@ -7,6 +7,7 @@
   "keyword": "thang đo DeLone McLean",
   "intro": "DeLone & McLean (1992) đề xuất mô hình đo sự thành công của hệ thống thông tin, và bản cập nhật năm 2003 gồm chất lượng hệ thống, chất lượng thông tin, chất lượng dịch vụ, việc sử dụng, sự hài lòng người dùng và lợi ích ròng. Hai bài gốc là bài mô hình, không công bố một bộ biến quan sát cố định, nên các biến dưới đây lấy từ Cidral, Aparicio & Oliveira (2020), một nghiên cứu về thành công của hệ thống e-learning công bố đủ câu hỏi. Ở Việt Nam, mô hình hợp với đề tài đánh giá hệ thống LMS của trường, phần mềm kế toán, ERP, cổng dịch vụ công trực tuyến, hồ sơ bệnh án điện tử.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), theo Cidral, Aparicio & Oliveira (2020). Lưu ý US1–US3 viết dưới dạng câu hỏi mức độ; nếu giữ dạng câu hỏi thì nên dùng thang mức độ (1 = Rất thấp … 7 = Rất cao).",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "SysQ",

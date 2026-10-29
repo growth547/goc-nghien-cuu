@@ -7,6 +7,7 @@
   "keyword": "thang đo UTAUT2",
   "intro": "UTAUT2 do Venkatesh, Thong và Xu (2012) phát triển để đưa UTAUT từ bối cảnh tổ chức sang bối cảnh người tiêu dùng, kiểm định trên người dùng Internet di động ở Hồng Kông. Ngoài bốn yếu tố của UTAUT, mô hình thêm động lực hưởng thụ, giá trị giá cả và thói quen; thói quen tác động cả lên ý định lẫn hành vi sử dụng. Tuổi, giới tính và kinh nghiệm là biến điều tiết. Đây là mô hình phổ biến cho các khoá luận về ví điện tử, ứng dụng giao đồ ăn, mua sắm trên di động, học trực tuyến của người dùng cá nhân.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Hành vi sử dụng đo bằng tần suất, từ 'không bao giờ' tới 'nhiều lần mỗi ngày'.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "PE",

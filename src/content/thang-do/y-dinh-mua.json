@@ -7,6 +7,7 @@
   "keyword": "thang đo ý định mua",
   "intro": "Dodds, Monroe và Grewal (1991) nghiên cứu cách giá, thương hiệu và tên cửa hàng ảnh hưởng tới đánh giá sản phẩm của người mua. Trong mô hình, giá và thông tin thương hiệu, cửa hàng tác động lên chất lượng cảm nhận và hy sinh cảm nhận; hai yếu tố này tạo nên giá trị cảm nhận, và giá trị cảm nhận dẫn tới sự sẵn lòng mua. Thang đo sẵn lòng mua 5 biến của bài này là một trong những thang ý định mua được trích nhiều nhất. Ở Việt Nam, thang thường dùng cho đề tài về ý định mua mỹ phẩm, đồ điện tử, thời trang, hàng nội địa, sản phẩm khuyến mãi.",
   "responseScale": "Thang 7 mức. Bản gốc dùng cả hai dạng: cặp đầu mút 'very high … very low' và 'strongly agree … strongly disagree'. Nhiều nghiên cứu sau quy về thang đồng ý 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý).",
+  "responseScaleShort": "7 mức (khả năng/đồng ý)",
   "constructs": [
     {
       "code": "WTB",

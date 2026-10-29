@@ -7,6 +7,7 @@
   "keyword": "thang đo PHQ-9",
   "intro": "PHQ-9 là phần trầm cảm gồm 9 câu của bộ Patient Health Questionnaire, do Kroenke, Spitzer và Williams (2001) kiểm định. Mỗi câu ứng với một tiêu chí triệu chứng trầm cảm theo DSM-IV, hỏi người trả lời bị làm phiền bao nhiêu ngày trong 2 tuần qua. Thang ngắn, miễn phí và có mốc mức độ rõ ràng nên được dùng rộng rãi để đo mức độ triệu chứng trầm cảm. Ở Việt Nam, PHQ-9 hay xuất hiện trong đề tài về sức khoẻ tinh thần của sinh viên, người lao động, người bệnh mạn tính, và làm biến kết quả cùng GAD-7.",
   "responseScale": "Thang tần suất 4 mức, không phải Likert đồng ý, hỏi về 2 tuần qua: 0 = Hoàn toàn không (Not at all), 1 = Vài ngày (Several days), 2 = Hơn một nửa số ngày (More than half the days), 3 = Gần như mọi ngày (Nearly every day). Cộng 9 câu được điểm tổng 0–27; theo hướng dẫn của tác giả, các mốc 5, 10, 15, 20 tương ứng mức nhẹ, vừa, khá nặng và nặng. Không có câu đảo chiều. Câu hỏi thêm về mức độ khó khăn trong sinh hoạt ở cuối bảng không tính vào điểm.",
+  "responseScaleShort": "Tần suất 0–3",
   "constructs": [
     {
       "code": "PHQ",

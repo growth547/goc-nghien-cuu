@@ -7,6 +7,7 @@
   "keyword": "thang đo trao quyền tâm lý",
   "intro": "Spreitzer (1995) định nghĩa trao quyền tâm lý là động lực nội tại thể hiện qua bốn nhận thức về công việc: ý nghĩa, năng lực, quyền tự quyết và tác động, và xây dựng bộ 12 biến, mỗi thành phần 3 biến. Khác với trao quyền về mặt cơ cấu (giao quyền, phân cấp), thang này đo cảm nhận của chính người lao động. Ở Việt Nam, thang hợp với đề tài về lãnh đạo trao quyền, sự hài lòng, gắn kết, hiệu quả công việc và hành vi đổi mới của nhân viên.",
   "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Một số nghiên cứu dùng 5 mức; ghi rõ số mức khi báo cáo.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "ME",

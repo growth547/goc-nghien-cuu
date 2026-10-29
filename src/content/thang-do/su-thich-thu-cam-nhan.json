@@ -7,6 +7,7 @@
   "keyword": "thang đo sự thích thú cảm nhận",
   "intro": "Sự thích thú cảm nhận là động cơ nội tại: người dùng thấy việc dùng công nghệ tự nó vui, dễ chịu, ngoài lợi ích nó mang lại. Davis, Bagozzi & Warshaw (1992) đưa khái niệm này vào bên cạnh nhận thức sự hữu ích (động cơ bên ngoài) và cho thấy cả hai cùng tác động lên ý định sử dụng. Thang 3 biến này thường được ghép vào TAM, UTAUT hoặc ECM. Ở Việt Nam, nó hợp với đề tài về mạng xã hội, game, học trực tuyến, mua sắm qua livestream, ứng dụng giải trí.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như Luo, Lin & Yang (2021); Chao (2019) dùng Likert 5 mức.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "ENJ",

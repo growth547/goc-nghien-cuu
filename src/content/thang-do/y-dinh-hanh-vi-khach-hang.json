@@ -7,6 +7,8 @@
   "keyword": "thang đo ý định hành vi",
   "intro": "Bộ đo ý định hành vi do Zeithaml, Berry và Parasuraman (1996) xây dựng để kiểm định chất lượng dịch vụ ảnh hưởng ra sao tới việc khách hàng ở lại hay rời bỏ doanh nghiệp. Bộ gồm 13 biến, sau phân tích nhân tố tách thành 5 thành phần: trung thành, chuyển đổi, sẵn lòng trả giá cao, phản ứng bên ngoài và phản ứng bên trong. Trung thành (5 biến) là thành phần ổn định nhất, với alpha từ 0,93 đến 0,94 trong nghiên cứu gốc. Ở Việt Nam, thang này hay được dùng làm biến phụ thuộc trong các đề tài chất lượng dịch vụ, sự hài lòng và lòng trung thành của khách hàng ngân hàng, khách sạn, bán lẻ, viễn thông.",
   "responseScale": "Thang khả năng 7 mức (1 = Hoàn toàn không có khả năng … 7 = Rất có khả năng) theo Zeithaml và cộng sự (1996). Câu hỏi dẫn thường là 'Khả năng bạn sẽ … là bao nhiêu?'.",
+  "responseScaleShort": "Khả năng 1–7",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm. Chỉ đảo khi gộp SWI vào một điểm lòng trung thành chung; khi phân tích SWI như một thành phần riêng thì giữ nguyên.",
   "constructs": [
     {
       "code": "LOY",

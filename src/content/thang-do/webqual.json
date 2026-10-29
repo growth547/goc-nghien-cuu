@@ -7,6 +7,8 @@
   "keyword": "thang đo chất lượng website",
   "intro": "SITEQUAL do Yoo và Donthu (2001) phát triển để đo chất lượng mà người mua cảm nhận về một website bán hàng trực tuyến. Thang chỉ có 9 biến chia thành 4 thành phần: dễ sử dụng, thiết kế thẩm mỹ, tốc độ xử lý và bảo mật, nên phù hợp với bảng hỏi ngắn. Tác giả còn công bố kèm các thang chất lượng tổng thể của website, thái độ, lòng trung thành và ý định mua. Ở Việt Nam, SITEQUAL hợp với đề tài về chất lượng website hoặc ứng dụng thương mại điện tử tác động đến sự hài lòng, ý định mua lại hoặc lòng trung thành.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), theo trang của tác giả. Người trả lời được yêu cầu ghi tên website mình đánh giá trước khi trả lời.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "EOU",

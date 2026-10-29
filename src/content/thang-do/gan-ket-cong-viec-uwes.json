@@ -7,6 +7,7 @@
   "keyword": "thang đo gắn kết công việc UWES",
   "intro": "UWES đo gắn kết công việc (work engagement), một trạng thái tích cực gồm ba mặt: sức sống (vigor), cống hiến (dedication) và say mê (absorption). Schaufeli và Bakker xây dựng bản 17 biến, sau đó Schaufeli, Bakker và Salanova (2006) rút gọn còn 9 biến, mỗi mặt 3 biến, và kiểm định trên dữ liệu 10 quốc gia. Bản 9 biến ngắn nên hay được dùng trong khảo sát nhân viên. Ở Việt Nam, UWES-9 hợp với đề tài về lãnh đạo, nguồn lực công việc, kiệt sức và hiệu quả làm việc của nhân viên y tế, giáo viên, nhân viên ngân hàng.",
   "responseScale": "Thang tần suất 7 mức từ 0 đến 6: 0 = Không bao giờ, 1 = Hầu như không (vài lần một năm hoặc ít hơn), 2 = Hiếm khi (một lần một tháng hoặc ít hơn), 3 = Thỉnh thoảng (vài lần một tháng), 4 = Thường xuyên (một lần một tuần), 5 = Rất thường xuyên (vài lần một tuần), 6 = Luôn luôn (hằng ngày). Điểm mỗi mặt là trung bình 3 biến.",
+  "responseScaleShort": "Tần suất 0–6",
   "constructs": [
     {
       "code": "VI",

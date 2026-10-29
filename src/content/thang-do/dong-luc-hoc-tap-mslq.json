@@ -7,6 +7,7 @@
   "keyword": "thang đo động lực học tập",
   "intro": "MSLQ do Pintrich, Smith, Garcia và McKeachie (1991) tại Đại học Michigan xây dựng để đo động lực và chiến lược học tập của sinh viên đối với một môn học cụ thể. Bản đầy đủ có 81 câu, chia thành 15 thang con thuộc hai phần động lực và chiến lược học tập; tác giả thiết kế để các thang con có thể dùng riêng lẻ. Trang này đưa ba thang con động lực hay gặp nhất trong khoá luận ở Việt Nam: định hướng mục tiêu nội tại, giá trị nhiệm vụ và tự tin vào năng lực học tập, thường dùng trong đề tài về kết quả học tập, học trực tuyến và sự gắn kết của sinh viên.",
   "responseScale": "Thang mức độ đúng 7 mức, không phải Likert đồng ý: 1 = Hoàn toàn không đúng với tôi … 7 = Rất đúng với tôi. Điểm mỗi thang con là trung bình các câu thuộc thang đó; ba thang con ở đây không có câu đảo chiều.",
+  "responseScaleShort": "Mức độ đúng 1–7",
   "constructs": [
     {
       "code": "IGO",

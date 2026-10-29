@@ -7,6 +7,7 @@
   "keyword": "thang đo tự hiệu quả GSE",
   "intro": "GSE do Ralf Schwarzer và Matthias Jerusalem xây dựng (bản tiếng Đức từ 1979, bản tiếng Anh công bố năm 1995) để đo niềm tin chung của một người rằng mình đối phó được với các tình huống khó khăn và yêu cầu mới. Khái niệm dựa trên lý thuyết tự hiệu quả của Bandura nhưng ở mức tổng quát, không gắn với một nhiệm vụ cụ thể. Ở Việt Nam, GSE được dùng trong đề tài về kết quả học tập, khả năng thích ứng của sinh viên năm nhất, ý định khởi nghiệp và ứng phó với căng thẳng.",
   "responseScale": "Thang 4 mức mức độ đúng: 1 = Hoàn toàn không đúng, 2 = Hầu như không đúng, 3 = Đúng một phần, 4 = Hoàn toàn đúng. Không có câu đảo chiều; điểm tổng là tổng 10 câu, từ 10 đến 40, hoặc dùng điểm trung bình. Tác giả không đặt điểm cắt và không khuyến khích chia người trả lời thành nhóm cao, thấp.",
+  "responseScaleShort": "Mức độ đúng 1–4",
   "constructs": [
     {
       "code": "GSE",

@@ -7,6 +7,7 @@
   "keyword": "thang đo chánh niệm MAAS",
   "intro": "MAAS do Brown và Ryan (2003) xây dựng để đo chánh niệm như một đặc điểm tính cách: mức độ một người chú ý và nhận biết những gì đang diễn ra ở hiện tại trong đời sống hằng ngày. Thang gồm 15 câu, một nhân tố, mô tả các trạng thái 'chạy tự động', thiếu chú ý; người trả lời cho biết trải nghiệm đó xảy ra thường xuyên tới đâu. Ở Việt Nam, MAAS được dùng trong đề tài về căng thẳng và sức khoẻ tinh thần sinh viên, kiệt sức nghề nghiệp, hiệu quả các chương trình thiền và tiêu dùng có ý thức.",
   "responseScale": "Thang tần suất 6 mức: 1 = Gần như luôn luôn, 2 = Rất thường xuyên, 3 = Khá thường xuyên, 4 = Khá ít khi, 5 = Rất ít khi, 6 = Gần như không bao giờ. Điểm là trung bình 15 câu, từ 1 đến 6; điểm càng cao chánh niệm càng cao. Vì thang đã xếp 'gần như không bao giờ' ở mức 6, không cần đảo điểm câu nào.",
+  "responseScaleShort": "Tần suất 1–6",
   "constructs": [
     {
       "code": "MAAS",

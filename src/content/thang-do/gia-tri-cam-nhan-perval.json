@@ -7,6 +7,8 @@
   "keyword": "thang đo giá trị cảm nhận PERVAL",
   "intro": "PERVAL do Sweeney và Soutar (2001) phát triển để đo giá trị mà người tiêu dùng cảm nhận được từ một sản phẩm lâu bền ở cấp thương hiệu. Thang có 19 biến chia thành bốn khía cạnh: giá trị chất lượng, giá trị cảm xúc, giá trị giá cả và giá trị xã hội. Điểm khác với cách đo giá trị một chiều (chất lượng so với giá) là PERVAL tách riêng phần cảm xúc và phần hình ảnh xã hội. Ở Việt Nam, thang hay dùng cho đề tài về ý định mua, sự hài lòng và lòng trung thành với điện thoại, mỹ phẩm, thời trang, thực phẩm hữu cơ.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý) là dạng thường gặp ở các nghiên cứu dùng lại PERVAL; nhiều nghiên cứu ở Việt Nam dùng 5 mức.",
+  "responseScaleShort": "Likert 7 (hoặc 5) mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "QV",

@@ -7,6 +7,8 @@
   "keyword": "thang đo SERVPERF",
   "intro": "SERVPERF do Cronin và Taylor (1992) đề xuất khi phản biện cách đo chất lượng dịch vụ bằng hiệu số cảm nhận trừ kỳ vọng của SERVQUAL. Hai tác giả cho rằng chỉ cần đo mức cảm nhận về kết quả thực hiện dịch vụ, nên SERVPERF giữ 22 biến phần cảm nhận của Parasuraman, Zeithaml và Berry (1988) và bỏ toàn bộ 22 câu kỳ vọng. Bảng hỏi vì thế ngắn bằng một nửa, người trả lời đỡ mệt và tránh được các vấn đề của điểm hiệu số. Ở Việt Nam, phần lớn khoá luận chỉ đo cảm nhận theo 5 thành phần nên thực chất đang dùng SERVPERF, thường để giải thích sự hài lòng hoặc lòng trung thành trong ngân hàng, bệnh viện, giáo dục, du lịch.",
   "responseScale": "Likert 7 mức như phụ lục SERVQUAL gốc (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Nhiều nghiên cứu ở Việt Nam dùng thang 5 mức.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "TAN",

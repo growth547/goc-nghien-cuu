@@ -7,6 +7,8 @@
   "keyword": "thang đo tính cách Big Five BFI-10",
   "intro": "BFI-10 do Rammstedt và John (2007) rút gọn từ Big Five Inventory 44 biến, xây dựng song song bằng tiếng Anh và tiếng Đức, dành cho khảo sát mà thời gian trả lời rất hạn chế. Thang đo năm khía cạnh tính cách: hướng ngoại, dễ chịu, tận tâm, bất ổn cảm xúc và cởi mở, mỗi khía cạnh 2 câu, một câu thuận và một câu đảo chiều. Ở Việt Nam, BFI-10 hay được đưa vào làm biến kiểm soát hoặc biến điều tiết trong đề tài về hành vi tiêu dùng, ý định khởi nghiệp, sử dụng mạng xã hội và kết quả học tập.",
   "responseScale": "Likert 5 mức, câu dẫn 'Tôi thấy mình là người…': 1 = Hoàn toàn không đồng ý, 2 = Hơi không đồng ý, 3 = Không đồng ý cũng không phản đối, 4 = Hơi đồng ý, 5 = Hoàn toàn đồng ý. Khoá chấm điểm của tác giả: Hướng ngoại 1R, 6; Dễ chịu 2, 7R; Tận tâm 3R, 8; Bất ổn cảm xúc 4R, 9; Cởi mở 5R, 10 (R = đảo điểm, 6 trừ điểm trả lời). Điểm khía cạnh là trung bình hoặc tổng 2 câu.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "E",

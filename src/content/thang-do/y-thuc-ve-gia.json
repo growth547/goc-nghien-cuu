@@ -7,6 +7,8 @@
   "keyword": "thang đo ý thức về giá",
   "intro": "Lichtenstein, Ridgway và Netemeyer (1993) xây dựng một bộ thang đo các cảm nhận về giá của người tiêu dùng, trong đó hay được dùng nhất là ý thức về giá và ý thức giá trị. Ý thức về giá là mức độ một người chỉ tập trung vào việc trả giá thấp; ý thức giá trị là mức độ người đó quan tâm tới tương quan giữa giá và chất lượng nhận được. Bài gốc khảo sát người mua hàng tạp hoá tại Mỹ. Ở Việt Nam, thang hay dùng cho đề tài về săn khuyến mãi, mua hàng giảm giá trên sàn thương mại điện tử, chọn nhãn hàng riêng của siêu thị.",
   "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý). Điểm càng cao, ý thức về giá hoặc ý thức giá trị càng mạnh (sau khi đã mã hoá ngược câu đảo chiều).",
+  "responseScaleShort": "Likert 5 hoặc 7 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm; thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm.",
   "constructs": [
     {
       "code": "PC",

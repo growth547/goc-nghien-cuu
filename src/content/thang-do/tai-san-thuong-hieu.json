@@ -7,6 +7,8 @@
   "keyword": "thang đo tài sản thương hiệu",
   "intro": "Yoo và Donthu (2001) phát triển thang đo tài sản thương hiệu dựa trên khách hàng theo hướng của Aaker và Keller, kiểm định trên nhiều mẫu và nhiều nhóm sản phẩm. Thang đa chiều (MBE) gồm 10 biến thuộc 3 thành phần: lòng trung thành thương hiệu, chất lượng cảm nhận, nhận biết và liên tưởng thương hiệu. Tài sản thương hiệu tổng thể (OBE) gồm 4 biến, đo mức khách hàng vẫn chọn thương hiệu dù thương hiệu khác tương đương. Ở Việt Nam, thang này hay dùng cho đề tài về tài sản thương hiệu của điện thoại, mỹ phẩm, đồ uống, ngân hàng, điểm đến du lịch, và tác động của quảng cáo, mạng xã hội lên thương hiệu.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), theo bảng hỏi mẫu trên trang của tác giả.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "BL",

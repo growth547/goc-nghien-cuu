@@ -7,6 +7,7 @@
   "keyword": "thang đo TAM",
   "intro": "TAM do Davis (1989) đề xuất để giải thích vì sao người dùng chấp nhận hay từ chối một công nghệ. Hai niềm tin cốt lõi là nhận thức sự hữu ích và nhận thức tính dễ sử dụng; nhận thức tính dễ sử dụng tác động lên sự hữu ích, và cả hai cùng dẫn tới ý định sử dụng. Đây là mô hình nền của rất nhiều khoá luận về ví điện tử, ngân hàng số, học trực tuyến, thương mại điện tử.",
   "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Davis (1989) gốc dùng thang 7 mức từ 'rất không có khả năng' tới 'rất có khả năng'; phần lớn nghiên cứu sau chuyển sang thang đồng ý 5 hoặc 7 mức.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "PU",

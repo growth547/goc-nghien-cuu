@@ -7,6 +7,7 @@
   "keyword": "thang đo nghiện mạng xã hội",
   "intro": "BSMAS đo mức độ sử dụng mạng xã hội theo kiểu gây nghiện, dựa trên sáu thành phần của nghiện hành vi theo Griffiths: nổi trội, điều chỉnh tâm trạng, dung nạp, cai, xung đột và tái nghiện. Thang được Andreassen và cộng sự (2016) chuyển từ thang nghiện Facebook (BFAS) của Andreassen và cộng sự (2012), thay chữ 'Facebook' bằng 'mạng xã hội' nói chung. Ở Việt Nam, BSMAS hay dùng trong đề tài về nghiện Facebook, TikTok của sinh viên, liên quan giữa mạng xã hội với trầm cảm, lo âu, giấc ngủ và kết quả học tập.",
   "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý: 1 = Rất hiếm khi, 2 = Hiếm khi, 3 = Thỉnh thoảng, 4 = Thường xuyên, 5 = Rất thường xuyên (bản dạng câu hỏi hỏi về năm vừa qua). Cộng 6 câu, điểm tổng từ 6 đến 30; điểm càng cao nguy cơ nghiện càng lớn. Không có câu đảo chiều.",
+  "responseScaleShort": "Tần suất 1–5",
   "constructs": [
     {
       "code": "BSMAS",

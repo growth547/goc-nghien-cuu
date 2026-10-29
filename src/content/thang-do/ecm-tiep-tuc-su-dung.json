@@ -7,6 +7,8 @@
   "keyword": "thang đo ECM",
   "intro": "ECM do Bhattacherjee (2001) đề xuất để giải thích vì sao người dùng tiếp tục hay bỏ dùng một hệ thống sau lần chấp nhận đầu tiên. Mô hình cho rằng khi trải nghiệm thực tế tốt hơn kỳ vọng (sự xác nhận), người dùng thấy hệ thống hữu ích hơn và hài lòng hơn; sự hài lòng và nhận thức hữu ích cùng dẫn tới ý định tiếp tục sử dụng. Bài gốc khảo sát khách hàng ngân hàng trực tuyến; các biến dưới đây lấy từ bản dùng lại công bố đầy đủ của Vedadi & Warkentin (2016) cho ứng dụng mobile banking. Ở Việt Nam, ECM hợp với đề tài về việc tiếp tục dùng ví điện tử, app ngân hàng, học trực tuyến, ứng dụng giao đồ ăn.",
   "responseScale": "Thang 7 mức. CONF, PU, CI dùng Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý); SAT dùng 4 cặp tính từ đối nghĩa 7 mức (ví dụ 1 = Rất không hài lòng … 7 = Rất hài lòng), theo Vedadi & Warkentin (2016).",
+  "responseScaleShort": "Likert/đối nghĩa 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "CONF",

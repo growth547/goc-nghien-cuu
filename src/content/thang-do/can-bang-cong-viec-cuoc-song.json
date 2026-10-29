@@ -7,6 +7,8 @@
   "keyword": "thang đo cân bằng công việc cuộc sống",
   "intro": "Brough, Timms, O'Driscoll, Kalliath, Siu, Sit và Lo (2014) xây dựng thang 4 biến đo mức độ một người đánh giá tổng thể rằng công việc và các hoạt động ngoài công việc của mình đang cân bằng. Khác với các thang xung đột công việc và gia đình, thang này không chỉ hỏi về gia đình mà bao trùm mọi hoạt động ngoài giờ làm, nên dùng được cho cả người độc thân. Thang được kiểm định theo thời gian trên người lao động ở Úc và New Zealand. Ở Việt Nam, thang phù hợp với đề tài về làm việc từ xa, làm thêm giờ, chính sách linh hoạt, và làm biến trung gian giữa áp lực công việc với hài lòng hay ý định nghỉ việc.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý), người trả lời nghĩ về công việc và hoạt động ngoài công việc trong 3 tháng gần đây. Đảo điểm WLB2 rồi lấy trung bình 4 biến; điểm càng cao càng cân bằng.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "WLB",

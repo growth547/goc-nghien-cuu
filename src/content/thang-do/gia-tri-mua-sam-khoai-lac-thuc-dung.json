@@ -7,6 +7,8 @@
   "keyword": "thang đo giá trị mua sắm khoái lạc thực dụng",
   "intro": "Babin, Darden và Griffin (1994) cho rằng một chuyến mua sắm mang lại hai loại giá trị: giá trị thực dụng khi người mua hoàn thành được việc cần mua, và giá trị khoái lạc khi bản thân việc đi mua đã vui. Thang gốc có 11 biến khoái lạc và 4 biến thực dụng, hỏi về một chuyến mua sắm cụ thể vừa diễn ra. Đây là thang nền của nhiều nghiên cứu về trải nghiệm mua sắm, sự hài lòng và ý định quay lại. Ở Việt Nam, thang hay dùng cho đề tài về trung tâm thương mại, siêu thị, mua sắm trên sàn thương mại điện tử và livestream.",
   "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý). Người trả lời đánh giá một chuyến mua sắm cụ thể vừa thực hiện.",
+  "responseScaleShort": "Likert 5 hoặc 7 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm; thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm.",
   "constructs": [
     {
       "code": "HSV",

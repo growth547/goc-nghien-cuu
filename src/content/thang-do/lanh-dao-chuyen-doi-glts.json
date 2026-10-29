@@ -7,6 +7,7 @@
   "keyword": "thang đo lãnh đạo chuyển đổi",
   "intro": "GTL do Carless, Wearing và Mann (2000) đề xuất như một thước đo ngắn của lãnh đạo chuyển đổi, gồm 7 hành vi: truyền đạt tầm nhìn, phát triển nhân viên, ghi nhận, khuyến khích tinh thần đồng đội, kích thích tư duy đổi mới, hành động nhất quán với giá trị, và tạo cảm hứng bằng năng lực của chính người lãnh đạo. Mỗi biến đại diện cho một hành vi, và thang đo lãnh đạo chuyển đổi như một khái niệm tổng. GTL hay được chọn thay cho MLQ, bộ phải mua bản quyền. Ở Việt Nam, GTL phù hợp với đề tài về ảnh hưởng của người quản lý tới gắn kết, hài lòng, sáng tạo và cam kết của nhân viên, kể cả trong trường học và bệnh viện.",
   "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý, theo cách dùng của Hendrikx và cộng sự (1 = Không bao giờ … 5 = Thường xuyên, gần như luôn luôn); nhiều nghiên cứu khác dùng thang đồng ý 5 mức. Nhân viên đánh giá người quản lý trực tiếp; điểm là trung bình 7 biến.",
+  "responseScaleShort": "Tần suất 1–5",
   "constructs": [
     {
       "code": "TL",

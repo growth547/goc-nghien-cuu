@@ -7,6 +7,8 @@
   "keyword": "thang đo bất an việc làm",
   "intro": "Hellgren, Sverke và Isaksson (1999) tách bất an việc làm thành hai chiều. Bất an về số lượng là nỗi lo mất chính công việc hiện tại; bất an về chất là nỗi lo các đặc điểm đáng giá của công việc bị suy giảm, như cơ hội thăng tiến, nội dung công việc hay mức tăng lương. Nhóm tác giả cho thấy hai chiều này liên quan khác nhau tới thái độ với công việc và sức khoẻ của người lao động. Ở Việt Nam, thang phù hợp với đề tài về tái cấu trúc, sáp nhập, cắt giảm nhân sự, tác động của AI và tự động hoá, và làm biến dự báo cho hài lòng công việc, cam kết hay ý định nghỉ việc.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo các nghiên cứu đã đối chiếu. Bốn biến bất an về chất viết theo chiều tích cực nên phải đảo điểm để điểm cao nghĩa là bất an cao; tính điểm trung bình riêng cho từng chiều.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm; thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm.",
   "constructs": [
     {
       "code": "QNJI",

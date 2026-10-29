@@ -7,6 +7,7 @@
   "keyword": "thang đo hành vi công dân tổ chức",
   "intro": "Hành vi công dân tổ chức là những việc người lao động tự nguyện làm ngoài phần việc được giao, có lợi cho đồng nghiệp hoặc cho tổ chức. Lee và Allen (2002) xây dựng bộ 16 biến theo cách chia của Williams và Anderson (1991): OCBI hướng tới cá nhân và OCBO hướng tới tổ chức, mỗi nhóm 8 biến, và chọn câu chữ sao cho không trùng với hành vi lệch chuẩn. Trang này trình bày 15 biến đã đối chiếu được nguyên văn. Ở Việt Nam, thang hay dùng làm biến kết quả trong đề tài về lãnh đạo, hỗ trợ tổ chức, cam kết, gắn kết công việc.",
   "responseScale": "Thang tần suất 7 mức (1 = Không bao giờ … 7 = Luôn luôn); người trả lời cho biết mình thường làm mỗi việc ở mức nào. Một số nghiên cứu sau đổi sang thang đồng ý 5 hoặc 7 mức; nếu đổi, ghi rõ trong phần phương pháp.",
+  "responseScaleShort": "Tần suất 1–7",
   "constructs": [
     {
       "code": "OCBI",

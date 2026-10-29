@@ -7,6 +7,7 @@
   "keyword": "thang đo nghiện điện thoại",
   "intro": "SAS-SV đo mức độ nghiện điện thoại thông minh qua các biểu hiện như ảnh hưởng tới sinh hoạt hằng ngày, khó chịu khi không có điện thoại, dùng lâu hơn dự định và người xung quanh phàn nàn. Kwon, Kim, Cho và Yang (2013) rút 10 câu từ thang SAS 33 câu dựa trên ý kiến chuyên gia và kiểm định trên học sinh trung học Hàn Quốc. Ở Việt Nam, SAS-SV là thang nghiện điện thoại được dùng nhiều nhất trong đề tài về sinh viên, liên quan tới giấc ngủ, căng thẳng, kết quả học tập và FoMO.",
   "responseScale": "Likert 6 mức (1 = Hoàn toàn không đồng ý … 6 = Hoàn toàn đồng ý), theo thang của bản SAS gốc mà SAS-SV được rút ra. Cộng 10 câu, điểm tổng từ 10 đến 60; không có câu đảo chiều. Kwon và cộng sự (2013) đề xuất điểm cắt 31 cho nam và 33 cho nữ ở học sinh Hàn Quốc.",
+  "responseScaleShort": "Likert 6 mức",
   "constructs": [
     {
       "code": "SAS",

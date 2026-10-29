@@ -7,6 +7,7 @@
   "keyword": "thang đo LMX",
   "intro": "Lý thuyết trao đổi lãnh đạo - thành viên cho rằng mỗi người lãnh đạo xây dựng quan hệ với từng cấp dưới ở chất lượng khác nhau, từ quan hệ thuần hợp đồng tới quan hệ tin cậy, hỗ trợ lẫn nhau. Graen và Uhl-Bien (1995) tổng kết 25 năm nghiên cứu và đề xuất LMX-7, bộ 7 câu hỏi đo chất lượng quan hệ này, dùng được cho cả nhân viên lẫn người lãnh đạo trả lời. Ở Việt Nam, LMX hay xuất hiện trong đề tài về sự hài lòng, gắn kết, ý định nghỉ việc, hành vi công dân và hiệu quả công việc.",
   "responseScale": "Thang 5 mức với nhãn riêng cho từng câu hỏi (ví dụ mức độ thường xuyên, mức độ hiểu, khả năng xảy ra, mức đồng ý, mức hiệu quả), theo phụ lục của Graen và Uhl-Bien (1995). Nhiều nghiên cứu sau dùng chung một thang đồng ý 5 hoặc 7 mức; nếu đổi, ghi rõ.",
+  "responseScaleShort": "5 mức, nhãn riêng mỗi câu",
   "constructs": [
     {
       "code": "LMX",

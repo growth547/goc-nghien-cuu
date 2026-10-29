@@ -83,6 +83,19 @@ const ld = {
   about: d.fullName,
   citation: d.references.map(toPlainText),
 };
+// Committee questions double as an FAQ for search engines.
+const faqLd = d.examinerQA?.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: d.examinerQA.map(x => ({
+        "@type": "Question",
+        name: x.q,
+        acceptedAnswer: { "@type": "Answer", text: x.a },
+      })),
+    }
+  : null;
+const lead = d.keyword.charAt(0).toUpperCase() + d.keyword.slice(1);
 const sampleHref = getRelativeLocaleUrl(locale, "cong-cu/tinh-co-mau");
 // Open the survey builder with every construct of this scale preselected.
 const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new URLSearchParams(
@@ -95,18 +108,18 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
     is:inline
     type="application/ld+json"
     slot="head"
-    set:html={JSON.stringify(ld).replace(/</g, "\\u003c")}
+    set:html={JSON.stringify(faqLd ? [ld, faqLd] : ld).replace(/</g, "\\u003c")}
   />
   <Header />
-  <Breadcrumb />
+  <Breadcrumb current={d.name} />
   <main id="main-content" class="app-layout pb-10" data-pagefind-body>
-    <p class="text-accent text-xs font-semibold tracking-wider uppercase">
+    <p class="eyebrow">
       {d.field}
     </p>
-    <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">{d.title}</h1>
+    <h1 class="text-foreground mt-2 max-w-4xl text-[1.75rem] font-bold sm:text-[2.25rem]">{d.title}</h1>
 
     <dl
-      class="border-border mt-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-xl border p-4 text-sm sm:grid-cols-4"
+      class="border-border mt-6 grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl border p-5 text-sm sm:grid-cols-4"
     >
       <div>
         <dt class="text-muted-foreground">Mô hình</dt>
@@ -122,15 +135,23 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
       </div>
       <div>
         <dt class="text-muted-foreground">Thang trả lời</dt>
-        <dd class="font-semibold">{d.responseScale.split("(")[0].trim()}</dd>
+        <dd class="font-semibold">
+          {d.responseScaleShort ?? d.responseScale.split("(")[0].trim()}
+        </dd>
       </div>
     </dl>
 
     <div class="app-prose mt-6 max-w-none">
+      <p>
+        {lead} trên trang này gồm {itemCount} biến quan sát thuộc {
+          d.constructs.length
+        } khái niệm, có câu gốc tiếng Anh, cách chấm điểm và tài liệu để trích
+        dẫn.
+      </p>
       <p>{d.intro}</p>
       <p class="text-sm"><strong>Thang trả lời:</strong> {d.responseScale}</p>
 
-      <h2>Các khái niệm và biến quan sát</h2>
+      <h2>Biến quan sát thang đo {d.name} (tiếng Việt và bản gốc)</h2>
       <p class="text-sm">
         Bản tiếng Việt do ban biên tập dịch để tham khảo. Khi dùng cho nghiên
         cứu, hãy dịch ngược (back-translation) và chạy thử với 20–30 người trước
@@ -149,23 +170,30 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
             </h3>
             <p>{c.definition}</p>
             <div class="overflow-x-auto">
-              <table>
+              <table class="sm:min-w-[36rem]">
                 <thead>
                   <tr>
                     <th>Mã</th>
                     <th>Biến quan sát (tiếng Việt)</th>
-                    <th>Bản gốc (tiếng Anh)</th>
+                    <th class="hidden sm:table-cell">Bản gốc (tiếng Anh)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {c.items.map(i => (
                     <tr>
-                      <td class="font-semibold whitespace-nowrap">
+                      <td class="text-accent font-semibold whitespace-nowrap">
                         {i.code}
                         {i.reverse && " (R)"}
                       </td>
-                      <td>{i.vi}</td>
-                      <td class="text-muted-foreground">{i.en}</td>
+                      <td>
+                        {i.vi}
+                        <span class="text-muted-foreground mt-1 block text-xs sm:hidden">
+                          {i.en}
+                        </span>
+                      </td>
+                      <td class="text-muted-foreground hidden sm:table-cell">
+                        {i.en}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -178,14 +206,100 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
       {
         hasReverse && (
           <p class="text-sm">
-            (R): câu đảo chiều. Khi nhập liệu thang 5 mức, mã hoá lại bằng 6 −
-            điểm; thang 7 mức thì 8 − điểm.
+            <strong>(R): câu đảo chiều.</strong> Mã hoá lại trước khi tính điểm:
+            điểm mới = (mức thấp nhất + mức cao nhất) − điểm trả lời.{" "}
+            {d.reverseRule ??
+              "Lấy mức thấp nhất và cao nhất theo đúng thang trả lời của trang này."}
           </p>
         )
       }
 
-      <h2>Lưu ý khi sử dụng</h2>
+      <h2>Lưu ý khi sử dụng thang đo {d.name}</h2>
       <ul>{d.usage.map(u => <li>{u}</li>)}</ul>
+
+      {
+        d.model && (
+          <>
+            <h2>Mô hình gốc của {d.name}: biến nào tác động lên biến nào</h2>
+            <ul>{d.model.paths.map(p => <li>{p}</li>)}</ul>
+            {d.model.note && <p>{d.model.note}</p>}
+            <p class="text-muted-foreground text-sm">Nguồn: {d.model.source}</p>
+          </>
+        )
+      }
+
+      {
+        d.reliability && d.reliability.length > 0 && (
+          <>
+            <h2>Độ tin cậy của {d.name} trong các nghiên cứu đã công bố</h2>
+            <div class="overflow-x-auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Khái niệm</th>
+                    <th>Hệ số</th>
+                    <th>Mẫu và nguồn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {d.reliability.map(r => (
+                    <tr>
+                      <td>{r.construct}</td>
+                      <td>{r.value}</td>
+                      <td>
+                        {r.sample}
+                        <span class="text-muted-foreground block text-xs">
+                          <a href={r.url} rel="noopener">
+                            {r.source}
+                          </a>
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm">
+              Đây là số liệu của nghiên cứu khác, không thay cho kiểm định trên
+              dữ liệu của bạn. Khi viết chương 4, so sánh hệ số của bạn với các
+              con số này và trích đúng nguồn.
+            </p>
+          </>
+        )
+      }
+
+      {
+        d.vietnamStudies && d.vietnamStudies.length > 0 && (
+          <>
+            <h2>Nghiên cứu ở Việt Nam đã dùng thang đo {d.name}</h2>
+            <ul>
+              {d.vietnamStudies.map(v => (
+                <li>
+                  {v.authors} ({v.year}). {v.title}. <em>{v.journal}</em>.{" "}
+                  <a href={v.url} rel="noopener">
+                    Xem bài
+                  </a>
+                  {v.note && <> {v.note}</>}
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+
+      {
+        d.examinerQA && d.examinerQA.length > 0 && (
+          <>
+            <h2>Câu hỏi hội đồng hay hỏi về thang đo {d.name}</h2>
+            {d.examinerQA.map(x => (
+              <>
+                <h3>{x.q}</h3>
+                <p>{x.a}</p>
+              </>
+            ))}
+          </>
+        )
+      }
 
       <p class="not-prose mt-6">
         <a class="btn" href={kitHref}>Dùng trong Bộ khảo sát</a>
@@ -196,7 +310,7 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
         và đoạn chương 3.
       </p>
 
-      <h2>Cỡ mẫu gợi ý</h2>
+      <h2>Cỡ mẫu gợi ý cho {d.name}</h2>
       <p>
         {d.sampleSize.note} Tính chính xác cho mô hình của bạn bằng <a
           href={sampleHref}>máy tính cỡ mẫu</a
@@ -210,27 +324,27 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
         }.
       </p>
 
-      <h2>Bản quyền và quyền sử dụng</h2>
+      <h2>Bản quyền và quyền sử dụng {d.name}</h2>
       <p>{d.license}</p>
 
-      <h2>Tài liệu tham khảo</h2>
+      <h2>Tài liệu tham khảo thang đo {d.name}</h2>
       <ul class="text-sm">{d.references.map(r => <li set:html={r} />)}</ul>
     </div>
 
     {
       usedIn.length > 0 && (
-        <section data-pagefind-ignore class="border-border mt-10 border-t pt-6">
-          <h2 class="mb-4 text-xl font-semibold">
+        <section data-pagefind-ignore class="border-border mt-14 border-t pt-8">
+          <h2 class="text-foreground mb-4 text-xl font-bold">
             Mẫu bảng hỏi dùng thang đo này
           </h2>
-          <ul class="grid gap-3 sm:grid-cols-2">
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {usedIn.map(t => (
               <li>
                 <a
                   href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${t.id}`)}
-                  class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors"
+                  class="card gap-1 p-4"
                 >
-                  <span class="font-semibold">{t.data.topic}</span>
+                  <span class="card-title">{t.data.topic}</span>
                   <span class="text-muted-foreground block text-sm">
                     {t.data.audience}
                   </span>
@@ -244,16 +358,16 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
 
     {
       related.length + sameField.length > 0 && (
-        <section data-pagefind-ignore class="border-border mt-10 border-t pt-6">
-          <h2 class="mb-4 text-xl font-semibold">Thang đo liên quan</h2>
-          <ul class="grid gap-3 sm:grid-cols-2">
+        <section data-pagefind-ignore class="border-border mt-14 border-t pt-8">
+          <h2 class="text-foreground mb-4 text-xl font-bold">Thang đo liên quan</h2>
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[...related, ...sameField].map(s => (
               <li>
                 <a
                   href={getRelativeLocaleUrl(locale, `thang-do/${s.id}`)}
-                  class="border-border hover:border-accent block rounded-xl border p-4 transition-colors"
+                  class="card gap-1 p-4"
                 >
-                  <span class="font-semibold">{s.data.name}</span>
+                  <span class="card-title">{s.data.name}</span>
                   <span class="text-muted-foreground block text-sm">
                     {s.data.fullName}
                   </span>

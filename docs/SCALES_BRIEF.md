@@ -43,3 +43,18 @@ tam (đã có), utaut, utaut2, ecm-tiep-tuc-su-dung, niem-tin-thuong-mai-dien-tu
 - Mỗi biến `en` phải là nguyên văn nhìn thấy trên trang trong `verifiedFrom`. Nếu chỉ thấy bản diễn giải, không dùng.
 - `related`: chỉ dùng slug đã có file trong `src/content/thang-do/` (xem bằng `ls`).
 - Kiểm tra bằng cả hai lệnh: `node scripts/check-scales.mjs <slug>` và `node scripts/check-kit.mjs`.
+
+## Trường mới (bắt buộc từ 30/10/2026, sau QA thư viện thang đo)
+
+- `responseScaleShort` (bắt buộc, ≤ 28 ký tự): dạng ngắn cho ô thống kê đầu trang, ví dụ `Likert 7 mức`, `Tần suất 0–4`, `Đồng ý 4 mức (0–3)`, `Likert 5 hoặc 7 mức`. Không lặp lại cả câu `responseScale`.
+- `reverseRule` (bắt buộc khi có biến `"reverse": true`, bỏ trường nếu không có): công thức đảo điểm theo đúng dải điểm của thang này, điểm mới = mức thấp nhất + mức cao nhất − điểm. Ví dụ `Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.`; `Thang 0–4: điểm mới = 4 − điểm.`; nếu bài gốc và nghiên cứu sau dùng nhiều dải, liệt kê từng dải, cách nhau bằng dấu chấm phẩy. Không bao giờ mặc định 6 − điểm cho thang bắt đầu từ 0.
+- `title` phải chứa nguyên văn `keyword` (không phân biệt hoa thường) và nên có "tiếng Việt" khi còn chỗ (≤ 70 ký tự). Mẫu: `Thang đo {keyword bỏ chữ "thang đo"} tiếng Việt: {tác giả} ({năm})`.
+- Mọi trích dẫn dạng `Tác giả (năm)` hoặc `(Tác giả, năm)` trong `intro`, `usage`, `source`, `model`, `reliability`, `examinerQA` phải có mục tương ứng trong `references` (cùng họ tác giả đầu, cùng năm). Tác phẩm nào cung cấp câu chữ biến (kể cả bài chỉ dùng để đối chiếu, ví dụ phụ lục của một bài khác) cũng phải có trong `references`, kiểm tra qua `https://api.crossref.org/works/<DOI>` trước khi ghi.
+
+### Trường chiều sâu (tuỳ chọn; chỉ thêm khi có nguồn đã mở)
+
+- `model`: `{ "paths": ["PU → BI: …", …], "note": "…", "source": "Davis, Bagozzi & Warshaw (1989), Hình 1." }`. Chỉ dùng cho mô hình có đường dẫn trong bài gốc. Mỗi đường dẫn là một câu ngắn bằng lời.
+- `reliability`: `[{ "construct": "PU", "value": "α = 0,98", "sample": "Nghiên cứu 1, n = 112 nhân viên", "source": "Davis (1989), Bảng 1", "url": "<trang bạn đã mở>" }]`. Chỉ chép số từ bảng bạn đã thật sự mở; `source` phải ghi bảng hoặc trang. Không có bảng thì bỏ trường này, tuyệt đối không ước lượng.
+- `vietnamStudies`: 2–4 bài ở Việt Nam đã dùng thang đo, mỗi bài `{ "authors", "year", "title", "journal", "url", "note"? }`. Chỉ ghi bài bạn đã mở được trang (DOI, trang tạp chí, PMC) và thấy thang đo được dùng. Không chắc thì bỏ.
+- `examinerQA`: 2–3 câu hội đồng hay hỏi `{ "q": "…?", "a": "…" }`. Câu trả lời dựa trên tài liệu của thang đo và nguồn có trong `references` (ví dụ HTMT theo Henseler, Ringle & Sarstedt (2015); cỡ mẫu PLS-SEM theo Kock & Hadaya (2018)).
+- Không dùng gạch ngang dài (—) ở bất kỳ trường nào. `node scripts/check-scales.mjs <slug>` kiểm tra các điều trên.

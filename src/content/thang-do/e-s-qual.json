@@ -7,6 +7,7 @@
   "keyword": "thang đo E-S-QUAL",
   "intro": "E-S-QUAL do Parasuraman, Zeithaml và Malhotra (2005) phát triển để đo chất lượng dịch vụ mà khách hàng cảm nhận khi mua sắm trên website. Thang chính có 22 biến thuộc 4 thành phần: hiệu quả, sẵn sàng của hệ thống, thực hiện đơn hàng và bảo mật. Thang phụ E-RecS-QUAL có 11 biến thuộc 3 thành phần (đáp ứng, bồi thường, liên hệ), chỉ hỏi những khách hàng đã từng gặp sự cố hoặc có thắc mắc khi giao dịch. Ở Việt Nam, E-S-QUAL hay được dùng cho đề tài về sàn thương mại điện tử, ứng dụng giao đồ ăn, website bán lẻ và ngân hàng số.",
   "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo phụ lục của bài gốc. Các biến được trộn ngẫu nhiên trên bảng hỏi, không xếp theo thành phần.",
+  "responseScaleShort": "Likert 5 mức",
   "constructs": [
     {
       "code": "EFF",

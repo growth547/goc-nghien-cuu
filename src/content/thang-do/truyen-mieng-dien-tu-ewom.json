@@ -7,6 +7,7 @@
   "keyword": "thang đo eWOM",
   "intro": "Jalilvand và Samiei (2012) đo truyền miệng điện tử từ phía người nhận thông tin: mức độ một người đọc, tham khảo và dựa vào đánh giá sản phẩm trực tuyến của người tiêu dùng khác trước khi mua. Thang có 6 biến, phát triển từ thang của Bambauer-Sachse và Mangold (2011), và được dùng trong nghiên cứu về tác động của eWOM lên hình ảnh thương hiệu và ý định mua ô tô tại Iran. Ở Việt Nam, thang hay dùng cho đề tài về đánh giá trên Shopee, TikTok Shop, Google Maps, review mỹ phẩm, du lịch và ẩm thực.",
   "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý).",
+  "responseScaleShort": "Likert 5 hoặc 7 mức",
   "constructs": [
     {
       "code": "EWOM",

@@ -7,6 +7,7 @@
   "keyword": "thang đo cô đơn UCLA 3 biến",
   "intro": "Hughes, Waite, Hawkley và Cacioppo (2004) rút 3 câu từ thang cô đơn UCLA bản sửa đổi 20 câu để đo cảm giác cô đơn trong các cuộc khảo sát lớn, nơi không đủ thời gian cho thang dài. Ba câu hỏi về cảm giác thiếu người bầu bạn, bị gạt ra ngoài và bị cô lập với người khác. Trong hai nghiên cứu dân số ở Mỹ, thang đạt alpha 0,72 và tương quan cao với bản 20 câu. Ở Việt Nam, thang hợp với đề tài về sinh viên xa nhà, người cao tuổi, người làm việc từ xa, hoặc dùng làm biến kết quả của việc dùng mạng xã hội.",
   "responseScale": "Thang tần suất 3 mức, không phải Likert đồng ý: 1 = Hiếm khi (Hardly ever), 2 = Thỉnh thoảng (Some of the time), 3 = Thường xuyên (Often). Cộng 3 câu được điểm 3–9; điểm càng cao càng cô đơn. Không có câu đảo chiều.",
+  "responseScaleShort": "Tần suất 1–3",
   "constructs": [
     {
       "code": "LON",

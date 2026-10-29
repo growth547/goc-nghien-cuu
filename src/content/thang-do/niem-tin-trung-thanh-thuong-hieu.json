@@ -7,6 +7,7 @@
   "keyword": "thang đo niềm tin thương hiệu",
   "intro": "Chaudhuri và Holbrook (2001) đề xuất chuỗi tác động từ niềm tin thương hiệu và cảm xúc thương hiệu tới lòng trung thành, rồi tới kết quả kinh doanh của thương hiệu. Niềm tin và cảm xúc cùng dẫn tới trung thành hành vi (mua lặp lại) và trung thành thái độ (cam kết, sẵn lòng trả giá cao hơn); trung thành hành vi gắn với thị phần, trung thành thái độ gắn với giá tương đối. Dữ liệu gốc gồm 107 thương hiệu từ ba đợt khảo sát người tiêu dùng và quản lý thương hiệu. Ở Việt Nam, bộ thang này hay dùng cho đề tài về lòng trung thành với thương hiệu mỹ phẩm, cà phê, điện thoại, ngân hàng.",
   "responseScale": "Likert 7 mức (1 = Rất không đồng ý … 7 = Rất đồng ý), theo bài gốc.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "BT",

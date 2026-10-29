@@ -7,6 +7,8 @@
   "keyword": "thang đo cam kết tổ chức",
   "intro": "OCQ đo cam kết tổ chức theo nghĩa gắn bó về thái độ: tin và chấp nhận mục tiêu, giá trị của tổ chức, sẵn lòng nỗ lực vì tổ chức và mong muốn ở lại làm thành viên. Thang do nhóm Porter phát triển và được Mowday, Steers và Porter (1979) công bố cùng kết quả kiểm định trên 2.563 nhân viên ở 9 tổ chức. Tác giả coi đây là thang một khái niệm, dù một số nghiên cứu sau tách thành cam kết giá trị và cam kết ở lại. Ở Việt Nam, OCQ hợp với đề tài về hài lòng, lãnh đạo, hỗ trợ tổ chức và ý định nghỉ việc; nếu cần ba thành phần tình cảm, duy trì, chuẩn mực thì phải dùng thang khác.",
   "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Đảo điểm 6 câu đảo chiều rồi lấy trung bình 15 biến.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "OC",

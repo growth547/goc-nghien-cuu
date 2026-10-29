@@ -7,6 +7,7 @@
   "keyword": "thang đo lãnh đạo phục vụ",
   "intro": "SL-7 là bản rút gọn của thang SL-28 về lãnh đạo phục vụ, do Liden, Wayne, Meuser, Hu, Wu và Liao (2015) kiểm định. Lãnh đạo phục vụ đặt nhu cầu phát triển của cấp dưới lên trước lợi ích của chính người lãnh đạo, quan tâm tới cộng đồng và giữ chuẩn mực đạo đức. Mỗi biến của SL-7 đại diện cho một khía cạnh của SL-28, nên thang ngắn nhưng vẫn phủ đủ nội dung. Ở Việt Nam, SL-7 phù hợp với đề tài về ảnh hưởng của người quản lý trực tiếp tới gắn kết, sáng tạo, hành vi công dân tổ chức và ý định nghỉ việc của nhân viên.",
   "responseScale": "Likert đồng ý. Các nghiên cứu đã đối chiếu dùng thang 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý) hoặc 7 mức; chọn một thang và giữ thống nhất với các khái niệm khác trong bảng hỏi. Nhân viên đánh giá người quản lý trực tiếp của mình; điểm là trung bình 7 biến.",
+  "responseScaleShort": "Likert 5 hoặc 7 mức",
   "constructs": [
     {
       "code": "SL",

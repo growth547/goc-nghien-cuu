@@ -7,6 +7,8 @@
   "keyword": "thang đo kiệt sức CBI",
   "intro": "CBI do Kristensen, Borritz, Villadsen và Christensen (2005) xây dựng trong dự án PUMA tại Đan Mạch, định nghĩa kiệt sức là trạng thái mệt mỏi và cạn kiệt kéo dài về thể chất lẫn tinh thần. Thang tách ba phần: kiệt sức cá nhân (ai cũng trả lời được, kể cả người không đi làm), kiệt sức liên quan đến công việc và kiệt sức liên quan đến khách hàng. CBI được công bố công khai và hay được dùng thay MBI, vốn là bộ phải mua bản quyền. Ở Việt Nam, CBI phù hợp với đề tài về kiệt sức của điều dưỡng, bác sĩ, giáo viên, nhân viên ngân hàng, nhân viên chăm sóc khách hàng, và làm biến trung gian giữa áp lực công việc với ý định nghỉ việc.",
   "responseScale": "Thang tần suất và mức độ, không phải Likert đồng ý. Câu hỏi 'How often…' dùng 5 mức Luôn luôn, Thường xuyên, Thỉnh thoảng, Hiếm khi, Không bao giờ/hầu như không; câu hỏi về mức độ dùng 5 mức Rất cao, Cao, Vừa phải, Thấp, Rất thấp. Quy điểm 100, 75, 50, 25, 0 rồi lấy trung bình từng phần; riêng WB7 đảo điểm. Theo tài liệu gốc, người trả lời dưới 3 câu (phần cá nhân, phần khách hàng) hoặc dưới 4 câu (phần công việc) bị coi là không trả lời phần đó.",
+  "responseScaleShort": "Tần suất/mức độ, 0–100",
+  "reverseRule": "Câu WB7 sau khi quy điểm 0–100: điểm mới = 100 − điểm (100 thành 0, 75 thành 25, 50 giữ nguyên).",
   "constructs": [
     {
       "code": "PB",

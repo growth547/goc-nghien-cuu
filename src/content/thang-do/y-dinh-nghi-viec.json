@@ -7,6 +7,7 @@
   "keyword": "thang đo ý định nghỉ việc",
   "intro": "Thang đo này đo mức người lao động đang nghĩ tới việc rời tổ chức và tìm việc mới trong thời gian tới. Ba biến thuộc mục Turnover của Michigan Organizational Assessment Questionnaire, do nhóm Quality of Work của Đại học Michigan phát triển và thường trích theo Cammann, Fichman, Jenkins và Klesh (1979). Ý định nghỉ việc là biến kết quả quen thuộc trong mô hình về hài lòng công việc, cam kết tổ chức, hỗ trợ tổ chức và kiệt sức. Ở Việt Nam, thang hay dùng cho đề tài về nhân viên ngân hàng, công nghệ thông tin, điều dưỡng, giáo viên trường tư.",
   "responseScale": "Bộ MOAQ năm 1975 dùng thang 7 mức: TI2 và TI3 hỏi mức đồng ý, TI1 hỏi mức khả năng xảy ra. Nhiều nghiên cứu sau đưa cả 3 biến về Likert đồng ý 5 hoặc 7 mức; nếu làm vậy, ghi rõ trong phần phương pháp.",
+  "responseScaleShort": "Likert/khả năng 7 mức",
   "constructs": [
     {
       "code": "TI",

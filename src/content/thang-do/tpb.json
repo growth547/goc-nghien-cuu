@@ -7,6 +7,8 @@
   "keyword": "thang đo TPB",
   "intro": "TPB do Ajzen (1991) đề xuất, mở rộng thuyết hành động hợp lý bằng cách thêm nhận thức kiểm soát hành vi. Ý định thực hiện một hành vi chịu tác động của ba yếu tố: thái độ đối với hành vi, chuẩn chủ quan và nhận thức kiểm soát hành vi; ý định là tiền đề trực tiếp của hành vi. Ajzen không công bố một bộ biến cố định mà hướng dẫn soạn biến theo từng hành vi cụ thể, nên các biến dưới đây lấy từ hướng dẫn của Ajzen và sổ tay của Francis và cộng sự (2004). Ở Việt Nam, TPB là khung nền của nhiều khoá luận về ý định mua thực phẩm hữu cơ, mua sắm trực tuyến, khởi nghiệp, tiêu dùng xanh.",
   "responseScale": "Thang 7 mức. Thái độ đo bằng cặp tính từ đối lập (ví dụ có hại … có lợi); các khái niệm còn lại phần lớn dùng 1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý. Một số biến đặt đầu tiêu cực bên phải để tránh trả lời theo quán tính, cần mã hoá ngược khi tính điểm.",
+  "responseScaleShort": "Đối nghĩa + Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm. Với cặp tính từ đặt đầu tích cực bên trái, đảo để điểm cao luôn là đầu tích cực.",
   "constructs": [
     {
       "code": "ATT",

@@ -7,6 +7,7 @@
   "keyword": "thang đo niềm tin thương mại điện tử",
   "intro": "Gefen, Karahanna & Straub (2003) tích hợp niềm tin vào TAM để giải thích ý định mua hàng trực tuyến: khi không thể kiểm soát người bán, khách hàng dựa vào niềm tin rằng người bán trung thực, quan tâm tới khách và có năng lực. Thang 7 biến hỏi niềm tin hình thành từ trải nghiệm trước đó với một người bán cụ thể. Đây là một trong những thang niềm tin được trích nhiều nhất trong nghiên cứu thương mại điện tử. Ở Việt Nam, thang hợp với đề tài về mua hàng trên Shopee, Tiki, Lazada, website của thương hiệu, hoặc người bán trên mạng xã hội.",
   "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý) là dạng thường dùng với các câu khẳng định này; trang đối chiếu (Gefen, Fresneda & Larsen, 2020) không ghi thang trả lời.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "TR",

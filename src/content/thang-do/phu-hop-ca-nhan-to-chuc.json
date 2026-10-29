@@ -7,6 +7,7 @@
   "keyword": "thang đo phù hợp cá nhân tổ chức",
   "intro": "Cable và DeRue (2002) đo trực tiếp cảm nhận của người lao động về ba loại phù hợp: giữa giá trị cá nhân và giá trị tổ chức (P-O fit), giữa nhu cầu cá nhân và những gì công việc mang lại (needs-supplies fit), và giữa năng lực cá nhân với yêu cầu công việc (demands-abilities fit). Mỗi loại có 3 biến; hai loại sau thường được gộp thành phù hợp cá nhân - công việc (P-J fit). Bài gốc cho thấy ba loại phù hợp phân biệt được và dự báo các kết quả khác nhau. Ở Việt Nam, thang hợp với đề tài về tuyển dụng, gắn kết, sự hài lòng và ý định nghỉ việc.",
   "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như nhiều nghiên cứu dùng lại; một số nghiên cứu dùng 5 mức.",
+  "responseScaleShort": "Likert 7 mức",
   "constructs": [
     {
       "code": "POF",

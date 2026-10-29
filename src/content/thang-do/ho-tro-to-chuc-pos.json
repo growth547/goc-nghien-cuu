@@ -7,6 +7,8 @@
   "keyword": "thang đo hỗ trợ tổ chức",
   "intro": "SPOS đo niềm tin chung của người lao động về mức tổ chức coi trọng đóng góp và quan tâm tới đời sống của họ. Eisenberger, Huntington, Hutchison và Sowa (1986) xây dựng bản 36 biến và đánh dấu 16 biến giữ lại cho bản rút gọn; trang này trình bày bản 16 biến đó. Theo thuyết trao đổi xã hội, nhân viên thấy được tổ chức hỗ trợ sẽ đáp lại bằng cam kết, nỗ lực và ít nghỉ việc hơn. Ở Việt Nam, thang hợp với đề tài về cam kết, gắn kết, ý định nghỉ việc và hành vi công dân tổ chức.",
   "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như Eisenberger và cộng sự (1986). Đảo điểm các câu đánh dấu đảo chiều trước khi tính điểm trung bình.",
+  "responseScaleShort": "Likert 7 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
     {
       "code": "POS",

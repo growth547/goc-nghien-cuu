@@ -1,0 +1,238 @@
+<div class="tool">
+  <form class="panel" id="bk-form" novalidate>
+    <div class="field"><label>1. Chọn các khái niệm trong mô hình</label>
+      <input id="bk-search" type="search" placeholder="Tìm: hữu ích, niềm tin, hài lòng, SERVQUAL…">
+      <small>Mỗi khái niệm lấy nguyên biến quan sát từ thang đo gốc đã kiểm chứng nguồn. Chọn từ nhiều thang đo khác nhau cũng được.</small></div>
+    <div id="bk-list" style="max-height:340px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:6px 10px"></div>
+
+    <div class="field" style="margin-top:14px"><label>2. Điền đối tượng nghiên cứu vào câu hỏi</label>
+      <div id="bk-ph"><small>Chọn khái niệm trước, các chỗ cần điền (ví dụ [hệ thống], [thương hiệu]) sẽ hiện ở đây.</small></div></div>
+
+    <div class="row">
+      <div class="field"><label for="bk-scale">Thang trả lời</label>
+        <select id="bk-scale"><option value="5" selected>Likert 5 mức (đồng nhất)</option><option value="7">Likert 7 mức (đồng nhất)</option><option value="orig">Giữ thang gốc của từng thang đo</option></select>
+        <small>Thang đo gốc dùng tần suất hay mức độ đúng (ví dụ PSS-10, GSE) luôn giữ thang gốc.</small></div>
+      <div class="field"><label for="bk-method">Phân tích chính</label>
+        <select id="bk-method"><option value="pls" selected>PLS-SEM (SmartPLS)</option><option value="spss">EFA + hồi quy (SPSS)</option></select></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="bk-arrows">Số mũi tên nhiều nhất trỏ vào một khái niệm</label>
+        <input id="bk-arrows" type="number" min="1" max="30" value="1"><small id="bk-arrows-hint">Đếm trên mô hình: khái niệm phụ thuộc nhận nhiều mũi tên nhất.</small></div>
+      <div class="field"><label for="bk-drop">Dự phòng phiếu bị loại (%)</label>
+        <input id="bk-drop" type="number" min="0" max="50" value="15"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="bk-topic">Tên đề tài (cho lời mở đầu)</label>
+        <input id="bk-topic" type="text" placeholder="Ví dụ: Các yếu tố ảnh hưởng tới ý định sử dụng ví điện tử của sinh viên"></div>
+      <div class="field"><label for="bk-who">Người thực hiện</label>
+        <input id="bk-who" type="text" placeholder="Ví dụ: sinh viên năm 4, Trường Đại học …"></div>
+    </div>
+    <div class="field"><label>Thêm vào bảng hỏi</label>
+      <label class="row" style="gap:8px;align-items:center;font-size:.9rem"><input id="bk-screen" type="checkbox" checked style="width:auto"> Câu hỏi sàng lọc (đã từng sử dụng/trải nghiệm đối tượng chưa)</label>
+      <label class="row" style="gap:8px;align-items:center;font-size:.9rem"><input id="bk-attn" type="checkbox" checked style="width:auto"> Câu kiểm tra sự chú ý (để lọc phiếu điền bừa)</label>
+      <div id="bk-demo" class="row" style="gap:12px;font-size:.9rem;flex-wrap:wrap"></div></div>
+  </form>
+
+  <div class="panel" id="bk-out" aria-live="polite"></div>
+</div>
+
+<div class="panel" style="margin-top:24px">
+  <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+    <strong>Bảng hỏi</strong>
+    <span class="row" style="gap:8px;flex-wrap:wrap">
+      <button type="button" class="btn" id="bk-doc">Tải bảng hỏi (Word)</button>
+      <button type="button" class="btn ghost" id="bk-csv">Tải bảng mã hoá (Excel)</button>
+      <button type="button" class="btn ghost" id="bk-copy-q">Sao chép dạng chữ</button>
+    </span>
+  </div>
+  <div id="bk-q" style="line-height:1.6;margin-top:12px"></div>
+</div>
+
+<div class="panel" style="margin-top:24px">
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <strong>Đoạn văn cho chương 3: Thang đo và cỡ mẫu</strong>
+    <button type="button" class="btn" id="bk-copy-t">Sao chép đoạn văn</button>
+  </div>
+  <div id="bk-thesis" style="line-height:1.7"></div>
+  <small class="text-muted-foreground">Phần trong ngoặc vuông là chỗ bạn tự điền theo việc đã làm thật (ví dụ số người khảo sát thử). Kiểm tra lại câu chữ trước khi đưa vào luận văn.</small>
+</div>
+<p style="margin-top:20px">Xem từng thang đo đầy đủ, kèm bản gốc tiếng Anh: <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>. Cách trả lời hội đồng về phần này: <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">8 câu hội đồng hay hỏi</a>.</p>
+
+<script>
+(function(){
+  // ---- statistics: identical copy of the block in tinh-co-mau.html (checked by scripts/check-kit.mjs) ----
+  //#math-start
+  function lgamma(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,t=x+5.5;t-=(x+0.5)*Math.log(t);let s=1.000000000190015;for(const ci of c)s+=ci/++y;return -t+Math.log(2.5066282746310005*s/x)}
+  function betacf(a,b,x){const MAXIT=300,EPS=3e-14,FPMIN=1e-300;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=MAXIT;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<EPS)break}return h}
+  function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(lgamma(a+b)-lgamma(a)-lgamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(a,b,x)/a:1-bt*betacf(b,a,1-x)/b}
+  function fcdf(x,d1,d2){return x<=0?0:ibeta(d1*x/(d1*x+d2),d1/2,d2/2)}
+  function finv(p,d1,d2){let lo=0,hi=1;while(fcdf(hi,d1,d2)<p)hi*=2;for(let i=0;i<200;i++){const mid=(lo+hi)/2;fcdf(mid,d1,d2)<p?lo=mid:hi=mid}return (lo+hi)/2}
+  // Noncentral F CDF as a Poisson mixture of central beta terms.
+  function ncfcdf(x,d1,d2,lam){const y=d1*x/(d1*x+d2),h=lam/2;let sum=0,jmax=Math.ceil(h+12*Math.sqrt(h+1)+40);for(let j=0;j<=jmax;j++){const w=Math.exp(-h+j*Math.log(h||1e-300)-lgamma(j+1));sum+=w*ibeta(y,d1/2+j,d2/2)}return sum}
+  // G*Power "Linear multiple regression: Fixed model, R² deviation from zero".
+  function regPower(n,m,f2,alpha){const d2=n-m-1;if(d2<1)return 0;const crit=finv(1-alpha,m,d2);return 1-ncfcdf(crit,m,d2,f2*n)}
+  function regN(m,f2,alpha,power){for(let n=m+2;n<20000;n++)if(regPower(n,m,f2,alpha)>=power)return n;return NaN}
+  function zinv(p){const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416],pl=0.02425;let q,r;if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}if(p>1-pl){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}q=p-0.5;r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
+  // Kock & Hadaya (2018) inverse square root method (one-tailed test).
+  function isrN(pmin,alpha,power){const k=zinv(1-alpha)+zinv(power);return Math.ceil(Math.pow(k/pmin,2))}
+  //#math-end
+
+  // ---- kit logic (pure; unit-checked by scripts/check-kit.mjs) ----
+  //#kit-start
+  const PH_RE=/\[([^\]]+)\]/g;
+  // Placeholders are matched case-insensitively; a capitalised placeholder gets a capitalised value.
+  function placeholdersOf(texts){const s=new Set();for(const t of texts)for(const m of t.matchAll(PH_RE))s.add(m[1].toLowerCase());return [...s]}
+  function fillPlaceholders(text,values){return text.replace(PH_RE,(all,key)=>{const v=(values[key.toLowerCase()]||'').trim();if(!v)return all;return key[0]!==key[0].toLowerCase()?v[0].toUpperCase()+v.slice(1):v})}
+  // First "Authors (year)" in a construct's source note, with "&" read as "và" for Vietnamese prose.
+  function citeOf(source){const m=source.match(/([A-ZÀ-Ỹ][\p{L}.'\-]+(?:(?:, | & | và )[A-ZÀ-Ỹ][\p{L}.'\-]+)*(?: và cộng sự)?)\s*\((\d{4})/u);return m?`${m[1].replace(/ & /g,' và ')} (${m[2]})`:source}
+  // A reference belongs to a citation when the first surname and year match, and a
+  // single-author citation only matches a single-author reference.
+  function citedBy(cite,ref){const m=cite.match(/^([^\s,]+)(.*)\((\d{4})\)$/);if(!m)return false;const solo=!/,| và /.test(m[2]);return ref.startsWith(m[1])&&ref.includes(`(${m[3]})`)&&(!solo||!ref.includes('&'))}
+  function isAgreementScale(responseScale){return /^Likert/i.test(responseScale)}
+  // Minimum sample: PLS-SEM takes the larger of G*Power and the inverse square root method;
+  // SPSS takes the larger of G*Power regression and Hair's 5 observations per item for EFA.
+  function kitSample(method,arrows,nItems){
+    const pow=regN(arrows,0.15,0.05,0.8);
+    if(method==='pls'){const isr=isrN(0.2,0.05,0.8);return {pow,second:isr,min:Math.max(pow,isr)}}
+    const efa=Math.max(50,5*nItems);return {pow,second:efa,min:Math.max(pow,efa)}
+  }
+  //#kit-end
+
+  const DATA=JSON.parse(document.getElementById('bk-data').textContent);
+  const $=id=>document.getElementById(id);
+  const fmt=n=>Number(n).toLocaleString('vi-VN');
+  const d=x=>String(x).replace('.',',');
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const strip=s=>s.replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');
+
+  const CONSTRUCTS=[];
+  DATA.forEach(s=>s.constructs.forEach(c=>CONSTRUCTS.push({key:`${s.slug}:${c.code}`,scale:s,c})));
+  const DEMO=[
+    ['gender','Giới tính',['Nam','Nữ','Khác / Không muốn trả lời']],
+    ['age','Độ tuổi',['Dưới 18','18–22','23–30','31–40','Trên 40']],
+    ['job','Nghề nghiệp',['Học sinh, sinh viên','Nhân viên văn phòng','Kinh doanh tự do','Lao động phổ thông','Khác']],
+    ['income','Thu nhập hằng tháng',['Dưới 5 triệu đồng','5–10 triệu đồng','10–20 triệu đồng','Trên 20 triệu đồng']],
+    ['edu','Trình độ học vấn',['Trung học phổ thông','Cao đẳng','Đại học','Sau đại học']],
+  ];
+  $('bk-demo').innerHTML=DEMO.map(([k,l],i)=>`<label class="row" style="gap:6px;align-items:center"><input type="checkbox" data-demo="${k}" ${i<3?'checked':''} style="width:auto"> ${l}</label>`).join('');
+
+  const state={selected:new Set(),ph:{}};
+  function renderList(){
+    const q=$('bk-search').value.trim().toLowerCase();
+    $('bk-list').innerHTML=DATA.map(s=>{
+      const rows=s.constructs.filter(c=>!q||[s.name,s.fullName,c.nameVi,c.nameEn,c.code].join(' ').toLowerCase().includes(q));
+      if(!rows.length)return '';
+      return `<div style="margin:8px 0"><strong style="font-size:.9rem">${esc(s.name)}</strong> <span class="text-muted-foreground" style="font-size:.8rem">${esc(s.field)}</span>${rows.map(c=>{const k=`${s.slug}:${c.code}`;return `<label class="row" style="gap:8px;align-items:flex-start;font-size:.92rem;margin:4px 0"><input type="checkbox" data-key="${esc(k)}" ${state.selected.has(k)?'checked':''} style="width:auto;margin-top:4px"><span>${esc(c.nameVi)} <span class="text-muted-foreground">(${esc(c.code)}, ${c.items.length} câu · ${esc(citeOf(c.source))})</span></span></label>`}).join('')}</div>`;
+    }).join('')||'<p class="text-muted-foreground">Không tìm thấy khái niệm nào.</p>';
+  }
+  // Keep the order the student ticked, which usually follows their model.
+  function chosen(){return [...state.selected].map(k=>CONSTRUCTS.find(x=>x.key===k)).filter(Boolean)}
+  function renderPh(){
+    const list=placeholdersOf(chosen().flatMap(x=>x.c.items.map(i=>i.vi)));
+    if(!list.length){$('bk-ph').innerHTML='<small>Các khái niệm đã chọn không có chỗ cần điền.</small>';return}
+    $('bk-ph').innerHTML=list.map(k=>`<div class="field" style="margin:6px 0"><label style="font-weight:400">[${esc(k)}] →</label><input data-ph="${esc(k)}" value="${esc(state.ph[k]||'')}" placeholder="${k==='n'?'Ví dụ: 3':'Ví dụ: ví điện tử MoMo'}"></div>`).join('');
+  }
+
+  // Response options per block: unified Likert for agreement scales, otherwise the original anchors.
+  const LIK={5:['Hoàn toàn không đồng ý','Không đồng ý','Trung lập','Đồng ý','Hoàn toàn đồng ý'],7:['Hoàn toàn không đồng ý','Không đồng ý','Hơi không đồng ý','Trung lập','Hơi đồng ý','Đồng ý','Hoàn toàn đồng ý']};
+  function blockScale(scale){const mode=$('bk-scale').value;if(mode!=='orig'&&isAgreementScale(scale.responseScale))return {points:+mode,text:`${mode} mức: ${LIK[mode].map((l,i)=>`${i+1} = ${l}`).join('; ')}`};return {points:0,text:scale.responseScale}}
+
+  function build(){
+    const sel=chosen(), method=$('bk-method').value, drop=Math.max(0,parseFloat($('bk-drop').value)||0)/100;
+    const items=[]; sel.forEach(x=>x.c.items.forEach(i=>items.push({...i,vi:fillPlaceholders(i.vi,state.ph),x})));
+    const arrows=Math.max(1,parseInt($('bk-arrows').value)||1);
+    const prefer=['hệ thống','dịch vụ','sản phẩm','thương hiệu','loại dịch vụ','công ty'];
+    const target=prefer.map(p=>(state.ph[p]||'').trim()).find(Boolean)||'[đối tượng nghiên cứu]';
+    const demo=DEMO.filter(([k])=>document.querySelector(`[data-demo="${k}"]`).checked);
+    const nQ=items.length+($('bk-attn').checked?1:0)+($('bk-screen').checked?1:0)+demo.length;
+    return {sel,method,drop,items,arrows,target,demo,nQ,ss:sel.length?kitSample(method,arrows,items.length):null};
+  }
+
+  function questionnaireHtml(k){
+    const topic=$('bk-topic').value.trim()||'[tên đề tài]', who=$('bk-who').value.trim()||'[người thực hiện, đơn vị]';
+    const mins=Math.max(3,Math.round(k.nQ*8/60));
+    let h=`<h3 style="text-align:center">PHIẾU KHẢO SÁT</h3><p>Xin chào Anh/Chị. Chúng tôi là ${esc(who)}, đang thực hiện nghiên cứu “${esc(topic)}”. Phiếu khảo sát mất khoảng ${mins} phút. Không có câu trả lời đúng hay sai; mọi thông tin chỉ dùng cho mục đích nghiên cứu và được giữ ẩn danh. Rất mong Anh/Chị trả lời theo đúng suy nghĩ của mình.</p>`;
+    let part=0; const P=()=>`PHẦN ${['A','B','C','D'][part++]}`;
+    if($('bk-screen').checked) h+=`<h4>${P()}. CÂU HỎI SÀNG LỌC</h4><p>Anh/Chị đã từng sử dụng hoặc trải nghiệm ${esc(k.target)} chưa?<br>☐ Đã từng (tiếp tục khảo sát) &nbsp; ☐ Chưa từng (dừng khảo sát, xin cảm ơn Anh/Chị)</p>`;
+    h+=`<h4>${P()}. ĐÁNH GIÁ CỦA ANH/CHỊ</h4><p>Vui lòng chọn mức độ phù hợp nhất với Anh/Chị cho mỗi phát biểu.</p>`;
+    let no=0; const mid=Math.floor(k.sel.length/2);
+    k.sel.forEach((x,bi)=>{
+      const sc=blockScale(x.scale), pts=sc.points;
+      h+=`<p style="margin-top:14px"><b>${esc(x.c.nameVi)}</b><br><small>Thang trả lời: ${esc(sc.text)}</small></p><table style="width:100%;border-collapse:collapse" border="1" cellpadding="4"><tr><th>STT</th><th>Mã</th><th style="text-align:left">Phát biểu</th>${pts?Array.from({length:pts},(_,i)=>`<th>${i+1}</th>`).join(''):'<th>Mức trả lời</th>'}</tr>`;
+      x.c.items.forEach(i=>{no++;h+=`<tr><td>${no}</td><td>${esc(i.code)}</td><td>${esc(fillPlaceholders(i.vi,state.ph))}</td>${pts?Array.from({length:pts},()=>'<td style="text-align:center">☐</td>').join(''):'<td></td>'}</tr>`});
+      if($('bk-attn').checked&&bi===mid){no++;h+=`<tr><td>${no}</td><td>ATT1</td><td>Để kiểm tra sự tập trung, vui lòng chọn mức “${pts?LIK[pts][pts===5?3:5]:'Đồng ý'}” cho câu này.</td>${pts?Array.from({length:pts},()=>'<td style="text-align:center">☐</td>').join(''):'<td></td>'}</tr>`}
+      h+='</table>';
+    });
+    if(k.demo.length){h+=`<h4>${P()}. THÔNG TIN CÁ NHÂN</h4>`;k.demo.forEach(([,l,opts])=>{h+=`<p>${esc(l)}: ${opts.map(o=>`☐ ${esc(o)}`).join(' &nbsp; ')}</p>`})}
+    return h+'<p style="text-align:center"><i>Xin chân thành cảm ơn Anh/Chị đã dành thời gian trả lời!</i></p>';
+  }
+
+  const BASE_REF={
+    brislin:'Brislin, R. W. (1970). Back-translation for cross-cultural research. <em>Journal of Cross-Cultural Psychology, 1</em>(3), 185–216. https://doi.org/10.1177/135910457000100301',
+    faul:'Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <em>Behavior Research Methods, 41</em>(4), 1149–1160. https://doi.org/10.3758/BRM.41.4.1149',
+    cohen88:'Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em> (2nd ed.). Lawrence Erlbaum Associates.',
+    hair10:'Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.',
+    hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
+    kock:'Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131',
+    meade:'Meade, A. W., &amp; Craig, S. B. (2012). Identifying careless responses in survey data. <em>Psychological Methods, 17</em>(3), 437–455. https://doi.org/10.1037/a0028085',
+  };
+
+  function thesisHtml(k){
+    const ps=[], refs=new Set(), base=['brislin','faul','cohen88'];
+    const byScale=new Map(); k.sel.forEach(x=>{if(!byScale.has(x.scale.slug))byScale.set(x.scale.slug,{scale:x.scale,list:[]});byScale.get(x.scale.slug).list.push(x)});
+    ps.push(`Bảng hỏi gồm ${k.sel.length} khái niệm nghiên cứu với tổng cộng ${k.items.length} biến quan sát, đều được kế thừa từ các thang đo đã được kiểm định trong các nghiên cứu trước.`);
+    ps.push(k.sel.map(x=>`Khái niệm “${x.c.nameVi}” (${x.c.code}) được đo bằng ${x.c.items.length} biến quan sát kế thừa từ ${citeOf(x.c.source)}.`).join(' '));
+    const cites=k.sel.map(x=>citeOf(x.c.source));
+    byScale.forEach(({scale})=>scale.references.filter(r=>cites.some(c=>citedBy(c,strip(r)))).forEach(r=>refs.add(r)));
+    const mode=$('bk-scale').value, nonAgree=[...byScale.values()].filter(v=>!isAgreementScale(v.scale.responseScale));
+    if(mode==='orig') ps.push('Mỗi thang đo được giữ nguyên dạng thang trả lời như trong nghiên cứu gốc.');
+    else ps.push(`Các thang đo dạng đồng ý được đo bằng thang Likert ${mode} mức (1 = Hoàn toàn không đồng ý, ${mode} = Hoàn toàn đồng ý)${nonAgree.length?`; riêng ${nonAgree.map(v=>v.scale.name).join(', ')} giữ thang trả lời của nghiên cứu gốc vì không phải dạng đồng ý`:''}.`);
+    const rev=k.items.filter(i=>i.reverse).map(i=>i.code);
+    if(rev.length) ps.push(`Các biến ${rev.join(', ')} là câu đảo chiều và được đảo điểm trước khi phân tích.`);
+    ps.push(`Thang đo gốc bằng tiếng Anh được dịch sang tiếng Việt theo quy trình dịch xuôi và dịch ngược (Brislin, 1970), sau đó được [giảng viên hướng dẫn/chuyên gia] góp ý về từ ngữ và khảo sát thử với [số người] người để điều chỉnh những câu khó hiểu trước khi khảo sát chính thức.`);
+    if($('bk-attn').checked){ps.push('Bảng hỏi có một câu kiểm tra sự chú ý (ATT1); phiếu trả lời sai câu này được loại khỏi dữ liệu phân tích (Meade và Craig, 2012).');base.push('meade')}
+    const s=k.ss;
+    if(k.method==='pls'){
+      ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009), dùng kiểm định F cho hồi quy bội với ${k.arrows} biến dự báo (số mũi tên lớn nhất trỏ vào một khái niệm trong mô hình), cỡ hiệu ứng f² = 0,15 (mức trung bình theo Cohen, 1988), α = 0,05 và power 0,80, cho kết quả ${fmt(s.pow)} quan sát. Theo phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018), được Hair và cộng sự (2022) khuyến nghị cho PLS-SEM, với hệ số đường dẫn nhỏ nhất kỳ vọng 0,2, cỡ mẫu tối thiểu là ${fmt(s.second)} quan sát. Nghiên cứu chọn mức lớn hơn, tức ${fmt(s.min)} quan sát.`);base.push('kock','hair22');
+    }else{
+      ps.push(`Theo Hair và cộng sự (2010), cỡ mẫu cho phân tích nhân tố khám phá nên tối thiểu gấp 5 lần số biến quan sát; với ${k.items.length} biến quan sát, cỡ mẫu tối thiểu là ${fmt(s.second)}. Phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009) cho hồi quy bội với ${k.arrows} biến độc lập, f² = 0,15 (Cohen, 1988), α = 0,05 và power 0,80 cho cỡ mẫu tối thiểu ${fmt(s.pow)}. Nghiên cứu chọn mức lớn hơn, tức ${fmt(s.min)} quan sát.`);base.push('hair10');
+    }
+    if(k.drop>0) ps.push(`Để dự phòng khoảng ${d(Math.round(k.drop*100))}% phiếu không hợp lệ, số phiếu dự kiến thu là ${fmt(Math.ceil(s.min/(1-k.drop)))} phiếu.`);
+    base.forEach(r=>refs.add(BASE_REF[r]));
+    const sorted=[...refs].sort((a,b)=>strip(a).localeCompare(strip(b),'en'));
+    return ps.map(p=>`<p>${esc(p)}</p>`).join('')+`<p><strong>Tài liệu tham khảo</strong></p><ul>${sorted.map(r=>`<li>${r}</li>`).join('')}</ul>`;
+  }
+
+  let last=null;
+  function render(){
+    const k=build(); last=k;
+    $('bk-arrows-hint').textContent=k.method==='pls'?'Đếm trên mô hình: khái niệm phụ thuộc nhận nhiều mũi tên nhất.':'Số biến độc lập trong mô hình hồi quy.';
+    if(!k.sel.length){$('bk-out').innerHTML='<p class="text-muted-foreground">Chọn ít nhất một khái niệm ở bên trái để bắt đầu. Ví dụ: Nhận thức sự hữu ích, Nhận thức tính dễ sử dụng và Ý định sử dụng (TAM).</p>';$('bk-q').innerHTML='';$('bk-thesis').innerHTML='';return}
+    const s=k.ss, sendN=Math.ceil(s.min/(1-k.drop));
+    const cost=r=>s.min*k.nQ*r*1100;
+    const money=v=>v>=1e6?`${d((Math.round(v/1e5)/10).toString())} triệu`:`${fmt(Math.round(v/1000))} nghìn`;
+    const link='https://geniusdata.io/signup?ref=lab-tool&next=%2Fapp%2Fforms&utm_source=goc-nghien-cuu&utm_medium=tool&utm_campaign=ai-lab&utm_content=bo-khao-sat';
+    $('bk-out').innerHTML=`<div class="result"><span class="lbl">Bảng hỏi</span><span class="num">${fmt(k.nQ)} câu</span><span class="how">${k.sel.length} khái niệm, ${k.items.length} biến quan sát. Khoảng ${Math.max(3,Math.round(k.nQ*8/60))} phút để trả lời.</span></div>
+<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${fmt(s.min)}</span><span class="how">${k.method==='pls'?`G*Power ${fmt(s.pow)}, Kock &amp; Hadaya ${fmt(s.second)}`:`G*Power ${fmt(s.pow)}, EFA 5:1 ${fmt(s.second)}`}. Cần thu khoảng <b>${fmt(sendN)} phiếu</b> nếu dự phòng ${d(Math.round(k.drop*100))}% phiếu loại.</span></div>
+<div class="result"><span class="lbl">Nếu cần người trả lời</span><span class="how">Thu ${fmt(s.min)} phiếu hợp lệ trên Genius Data khoảng <b>${money(cost(0.15))} – ${money(cost(0.4))} đ</b>, tuỳ mức thưởng bạn đặt; chỉ trả cho phiếu được duyệt. <a class="text-accent underline underline-offset-4" href="${link}" rel="noopener">Tạo khảo sát trên Genius Data</a> <span class="text-muted-foreground">(link giới thiệu)</span></span></div>`;
+    $('bk-q').innerHTML=questionnaireHtml(k);
+    $('bk-thesis').innerHTML=thesisHtml(k);
+  }
+
+  function download(name,mime,content){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type:mime}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+  function copyFrom(el,btn,label){const t=el.innerText,done=()=>{btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=label,1500)};const fb=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Đã chọn, nhấn Ctrl+C'};try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}}
+
+  $('bk-doc').addEventListener('click',()=>{if(!last||!last.sel.length)return;download('bang-hoi-khao-sat.doc','application/msword',`﻿<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse}td,th{border:1px solid #000;padding:4px}</style></head><body>${$('bk-q').innerHTML}</body></html>`)});
+  $('bk-csv').addEventListener('click',()=>{if(!last||!last.sel.length)return;const q=v=>`"${String(v).replace(/"/g,'""')}"`;const rows=[['Mã','Khái niệm','Phát biểu (tiếng Việt)','Phát biểu gốc','Đảo điểm','Nguồn','Thang trả lời']];last.items.forEach(i=>rows.push([i.code,i.x.c.nameVi,i.vi,i.en,i.reverse?'Có':'',citeOf(i.x.c.source),blockScale(i.x.scale).text]));download('bang-ma-hoa.csv','text/csv;charset=utf-8','﻿'+rows.map(r=>r.map(q).join(',')).join('\r\n'))});
+  $('bk-copy-q').addEventListener('click',()=>copyFrom($('bk-q'),$('bk-copy-q'),'Sao chép dạng chữ'));
+  $('bk-copy-t').addEventListener('click',()=>copyFrom($('bk-thesis'),$('bk-copy-t'),'Sao chép đoạn văn'));
+
+  $('bk-list').addEventListener('change',e=>{const k=e.target.dataset.key;if(!k)return;e.target.checked?state.selected.add(k):state.selected.delete(k);
+    $('bk-arrows').value=Math.max(1,state.selected.size-1);renderPh();render()});
+  $('bk-ph').addEventListener('input',e=>{const k=e.target.dataset.ph;if(k){state.ph[k]=e.target.value;render()}});
+  $('bk-search').addEventListener('input',renderList);
+  $('bk-form').addEventListener('change',e=>{if(!e.target.dataset.key)render()});
+  $('bk-form').addEventListener('input',e=>{if(e.target.id!=='bk-search'&&!e.target.dataset.ph&&!e.target.dataset.key)render()});
+  renderList();render();
+})();
+</script>

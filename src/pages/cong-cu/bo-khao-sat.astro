@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/bo-khao-sat.html?raw";
+
+// Only what the browser needs to assemble a questionnaire; "<" is escaped so the JSON cannot close the script tag.
+const scales = (await getCollection("scales"))
+  .map(({ id, data }) => ({
+    slug: id,
+    name: data.name,
+    fullName: data.fullName,
+    field: data.field,
+    responseScale: data.responseScale,
+    references: data.references,
+    constructs: data.constructs,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name, "vi"));
+const json = JSON.stringify(scales).replace(/</g, "\\u003c");
+---
+
+<ToolLayout
+  slug="bo-khao-sat"
+  title="Tạo bảng hỏi khoá luận từ thang đo gốc, kèm cỡ mẫu và chương 3"
+  h1="Bộ khảo sát khoá luận"
+  description="Chọn các khái niệm trong mô hình, nhận ngay bảng hỏi tiếng Việt từ thang đo gốc có trích dẫn, cỡ mẫu tối thiểu PLS-SEM hoặc SPSS và đoạn văn chương 3. Tải về Word, Excel."
+  lede="Chọn các khái niệm trong mô hình nghiên cứu. Công cụ ghép bảng hỏi tiếng Việt từ thang đo gốc, tính cỡ mẫu tối thiểu và viết sẵn đoạn “Thang đo và cỡ mẫu” cho chương 3. Tải về Word để dùng ngay."
+  html={html}
+>
+  <script is:inline type="application/json" id="bk-data" set:html={json} />
+</ToolLayout>

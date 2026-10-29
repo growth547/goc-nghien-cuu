@@ -1,0 +1,11 @@
+---
+// Renders one schema.org JSON-LD block. Use it inside <Layout> with slot="head":
+//   <JsonLd slot="head" data={definedTermSetLd(...)} />
+// Builders for the shapes this site needs live in src/utils/jsonLd.ts. Keep the data identical to
+// what the page visibly shows (Google: structured data must match the visible content).
+type Props = { data: Record<string, unknown> | Record<string, unknown>[] };
+const { data } = Astro.props;
+const json = JSON.stringify(data).replace(/</g, "\\u003c");
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

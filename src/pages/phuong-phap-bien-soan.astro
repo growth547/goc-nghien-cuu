@@ -1,0 +1,163 @@
+---
+// Trust page: how scales, translations, statistics and data are checked, plus corrections and disclosure.
+// Every number below is computed from the collections at build time.
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import { appLink } from "@/utils/appLink";
+import { publisherLd } from "@/utils/jsonLd";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const link = (p: string) => getRelativeLocaleUrl(locale, p);
+const [scales, concepts, templates, datasets] = await Promise.all([
+  getCollection("scales"),
+  getCollection("concepts"),
+  getCollection("templates"),
+  getCollection("datasets"),
+]);
+const items = scales.reduce((n, s) => n + s.data.constructs.reduce((m, c) => m + c.items.length, 0), 0);
+const sources = new Set(scales.flatMap(s => s.data.verifiedFrom)).size;
+const fetched = datasets.map(d => d.data.fetchedAt).sort().at(-1);
+const repo = "https://github.com/growth547/goc-nghien-cuu";
+const script = (f: string) => `${repo}/blob/main/scripts/${f}`;
+
+const title = "Phương pháp biên soạn và kiểm chứng";
+const description =
+  "Cách Góc Nghiên Cứu kiểm chứng thang đo (nguyên văn từ nguồn đã mở, trích dẫn qua Crossref), kiểm tra công cụ thống kê, lấy dữ liệu World Bank và sửa lỗi.";
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: title,
+  description,
+  url: pageUrl,
+  inLanguage: "vi",
+  publisher: publisherLd,
+};
+---
+
+<Layout title={`${title} | ${config.site.title}`} description={description}>
+  <JsonLd slot="head" data={ld} />
+  <Header />
+  <Breadcrumb />
+  <Main pageTitle={title} class="app-prose">
+    <p>
+      <strong>Tóm tắt:</strong> {scales.length} thang đo ({items} biến quan sát) trên trang được chép nguyên văn từ
+      {sources} trang nguồn mà ban biên tập đã thực sự mở, mỗi trang thang đo ghi lại các URL đó. Tài liệu tham khảo theo
+      APA 7, DOI được đối chiếu qua Crossref. Công cụ thống kê được so với giá trị tham chiếu đã công bố bằng script chạy
+      ở mỗi lần cập nhật trang. Dữ liệu Việt Nam lấy trực tiếp từ API của World Bank (giấy phép CC BY 4.0). Thấy lỗi, hãy
+      <a href={`${repo}/issues`}>mở issue trên GitHub</a>.
+    </p>
+
+    <h2 id="thang-do">Thang đo được kiểm chứng như thế nào?</h2>
+    <ul>
+      <li>
+        <strong>Nguyên văn từ nguồn đã mở.</strong> Câu chữ tiếng Anh của từng biến phải khớp với trang nguồn: bài báo gốc,
+        bản toàn văn trên PubMed Central, trang của tác giả hoặc trang chính thức của thang đo, phụ lục của bài có DOI. URL
+        của các trang đã đối chiếu được ghi ở mục "Đã đối chiếu tại" cuối mỗi trang thang đo. Nếu chỉ thấy bản diễn giải,
+        biến đó không được dùng.
+      </li>
+      <li>
+        <strong>Không đối chiếu được thì không đăng.</strong> Nếu bài gốc chỉ công bố một phần biến, trang chỉ đưa các biến
+        đã thấy và ghi rõ trong nguồn của khái niệm (ví dụ "3 biến minh hoạ").
+      </li>
+      <li>
+        <strong>Trích dẫn kiểm được.</strong> Mỗi trích dẫn dạng Tác giả (năm) trong nội dung phải có mục tương ứng trong
+        tài liệu tham khảo; DOI được tra qua <a href="https://api.crossref.org">Crossref</a> trước khi ghi. Không có số trang,
+        số tập hay DOI nào được điền khi chưa chắc.
+      </li>
+      <li>
+        <strong>Số liệu độ tin cậy</strong> (Cronbach's alpha, CR…) chỉ được chép từ bảng trong bài đã mở, kèm tên bảng và
+        đường link. Không có bảng thì không ghi, không ước lượng.
+      </li>
+      <li>
+        <strong>Bản quyền.</strong> Chỉ đăng thang đo công bố trong bài báo học thuật hoặc được tác giả cho phép dùng cho
+        nghiên cứu. Các bộ có bản quyền thương mại phải mua (ví dụ MBI, MLQ, SF-36) không được đăng. Điều kiện sử dụng của
+        từng thang đo ghi ở mục giấy phép trên trang của nó; trang này không chuyển giao quyền nào của tác giả gốc.
+      </li>
+      <li>
+        <strong>Kiểm tra tự động.</strong> <a href={script("check-scales.mjs")}>check-scales.mjs</a> kiểm tra mọi file
+        thang đo (đủ trường, mỗi biến có cả bản Anh và Việt, trích dẫn khớp tài liệu tham khảo, công thức đảo điểm);
+        <a href={script("check-concepts.mjs")}>check-concepts.mjs</a> kiểm tra mỗi trang khái niệm trỏ tới đúng khái niệm có
+        thật trong thư viện ({concepts.length} trang khái niệm, {templates.length} mẫu bảng hỏi dùng chung dữ liệu này).
+      </li>
+    </ul>
+
+    <h2 id="ban-dich">Bản dịch tiếng Việt được duyệt ra sao?</h2>
+    <p>
+      Bản dịch do ban biên tập thực hiện, ưu tiên giữ đúng ý biến gốc hơn là dịch từng chữ, và giữ chỗ trống như
+      [hệ thống], [thương hiệu], [công ty] để bạn thay bằng đối tượng của đề tài. Mỗi biến luôn hiển thị cạnh nguyên văn
+      tiếng Anh để bạn tự đối chiếu. Đợt rà soát ngày 30/10/2026 đã đọc thủ công toàn bộ các cặp câu Anh–Việt, đối chiếu
+      câu đảo chiều với nguồn và số biến với bài gốc.
+    </p>
+    <p>
+      Bản dịch trên trang là điểm xuất phát, chưa phải bản đã thẩm định cho mẫu của bạn. Khi dùng trong khoá luận, hãy dịch
+      ngược hoặc nhờ người thứ hai đọc lại, khảo sát thử với một nhóm nhỏ, và báo cáo Cronbach's alpha, EFA hoặc CFA trên
+      dữ liệu của chính bạn.
+    </p>
+
+    <h2 id="cong-cu">Công cụ thống kê được kiểm tra bằng gì?</h2>
+    <ul>
+      <li>
+        <a href={script("check-power.mjs")}>check-power.mjs</a>: so công thức cỡ mẫu của
+        <a href={link("cong-cu/tinh-co-mau")}>máy tính cỡ mẫu</a> với giá trị G*Power và bảng của Kock &amp; Hadaya (2018).
+      </li>
+      <li>
+        <a href={script("check-stats.mjs")}>check-stats.mjs</a>: so các phép tính của
+        <a href={link("cong-cu/phan-tich-du-lieu")}>công cụ phân tích dữ liệu</a> (Cronbach's alpha, EFA, tương quan, hồi
+        quy, giá trị p) với công thức đóng và giá trị trong giáo trình.
+      </li>
+      <li>
+        <a href={script("check-kit.mjs")}>check-kit.mjs</a>: bảo đảm <a href={link("cong-cu/bo-khao-sat")}>Bộ khảo sát</a>
+        dùng đúng cùng một khối thống kê với máy tính cỡ mẫu và tạo được bảng hỏi hợp lệ cho mọi thang đo.
+      </li>
+    </ul>
+    <p>
+      Các script trên chạy trong <a href={`${repo}/actions`}>quy trình triển khai</a> ở mỗi lần cập nhật; một kiểm tra
+      thất bại thì phiên bản mới không được đăng.
+    </p>
+
+    <h2 id="du-lieu">Dữ liệu lấy từ đâu và dùng theo giấy phép nào?</h2>
+    <p>
+      {datasets.length} chỉ số tại <a href={link("du-lieu")}>Dữ liệu thứ cấp Việt Nam</a> được tải bằng script từ API
+      World Development Indicators của World Bank. Mỗi trang chỉ số ghi mã chỉ số, ngày World Bank cập nhật, ngày lấy về
+      và đường link tới nguồn. Dữ liệu dùng theo giấy phép
+      <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a>: khi dùng,
+      trích World Bank, World Development Indicators, kèm mã chỉ số và ngày truy cập.
+    </p>
+
+    <h2 id="cap-nhat">Nội dung được cập nhật bao lâu một lần?</h2>
+    <p>
+      Trang được dựng lại và đăng mỗi khi có thay đổi; toàn bộ lịch sử chỉnh sửa công khai trong
+      <a href={`${repo}/commits/main`}>lịch sử commit trên GitHub</a>. Bài viết ghi ngày cập nhật ở đầu bài. Dữ liệu
+      World Bank được lấy lại bằng script, lần lấy gần nhất là {fetched}. Thang đo mới được bổ sung theo từng đợt và phải
+      qua đủ các kiểm tra ở trên.
+    </p>
+
+    <h2 id="sua-loi">Báo lỗi và sửa lỗi</h2>
+    <p>
+      Nếu bạn thấy một biến sai chữ, trích dẫn sai, bản dịch lệch nghĩa hay một con số không khớp nguồn, hãy
+      <a href={`${repo}/issues`}>mở một issue trên GitHub</a>, ghi đường link trang, chỗ sai và nguồn bạn đối chiếu. Lỗi
+      được sửa trực tiếp trên trang và lưu lại trong lịch sử commit.
+    </p>
+
+    <h2 id="cong-khai">Công khai quan hệ tài trợ</h2>
+    <p>
+      Chúng tôi tham gia chương trình giới thiệu (affiliate) của
+      <a href={appLink("home", "phuong-phap")} rel="sponsored noopener">Genius Data</a>: khi bạn đăng ký qua link trên trang,
+      chúng tôi có thể nhận hoa hồng mà bạn không phải trả thêm. Điều đó không ảnh hưởng tới nội dung.
+    </p>
+
+    <p>
+      Xem thêm: <a href={link("about")}>Giới thiệu</a> · <a href={link("thang-do")}>Thư viện thang đo</a> ·
+      <a href={link("cong-cu")}>Công cụ</a>
+    </p>
+  </Main>
+  <Footer />
+</Layout>

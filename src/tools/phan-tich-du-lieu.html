@@ -1,0 +1,186 @@
+<div class="panel" id="pt-in">
+  <div class="field"><label>1. Đưa dữ liệu khảo sát vào</label>
+    <div class="row" style="gap:8px;flex-wrap:wrap">
+      <label class="btn" style="cursor:pointer">Tải file Excel hoặc CSV<input id="pt-file" type="file" accept=".xlsx,.xls,.csv,.txt" hidden></label>
+      <button type="button" class="btn ghost" id="pt-sample">Dùng dữ liệu mẫu (TAM, 250 phiếu)</button>
+    </div>
+    <small>Dòng đầu là tên cột. Mỗi dòng là một phiếu. Đặt tên cột biến quan sát theo mã khái niệm + số, ví dụ PU1, PU2, PEOU1… để công cụ tự nhóm. Dữ liệu được xử lý ngay trên trình duyệt của bạn, không gửi lên máy chủ.</small>
+    <small id="pt-status"></small></div>
+</div>
+
+<div class="panel" id="pt-setup" hidden style="margin-top:20px">
+  <div class="field"><label for="pt-groups">2. Các khái niệm và biến quan sát</label>
+    <textarea id="pt-groups" rows="5" style="min-height:0"></textarea>
+    <small>Mỗi dòng một khái niệm: <code>MÃ: biến1 biến2 …</code>. Công cụ đã tự nhóm theo tên cột; sửa nếu cần.</small></div>
+  <div class="row">
+    <div class="field"><label for="pt-rev">Câu đảo chiều (đảo điểm trước khi phân tích)</label>
+      <input id="pt-rev" type="text" placeholder="Ví dụ: RSE2 RSE5"></div>
+    <div class="field"><label for="pt-dv">Biến phụ thuộc trong hồi quy</label>
+      <select id="pt-dv"></select></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="pt-attn">Câu kiểm tra chú ý (cột = đáp án đúng)</label>
+      <input id="pt-attn" type="text" placeholder="Ví dụ: ATT1=4"></div>
+    <div class="field"><label for="pt-k">Số nhân tố rút trích trong EFA</label>
+      <select id="pt-k"><option value="eigen" selected>Theo eigenvalue &gt; 1</option></select></div>
+  </div>
+  <label class="check"><input id="pt-straight" type="checkbox" checked> Loại phiếu chọn cùng một mức cho mọi biến quan sát</label>
+  <button type="button" class="btn" id="pt-run" style="align-self:flex-start;margin-top:8px">Phân tích và viết chương 4</button>
+</div>
+
+<div id="pt-out" hidden style="margin-top:20px">
+  <div class="panel">
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <strong>Kết quả và đoạn văn chương 4</strong>
+      <span class="row" style="gap:8px"><button type="button" class="btn" id="pt-doc">Tải chương 4 (Word)</button><button type="button" class="btn ghost" id="pt-copy">Sao chép</button></span>
+    </div>
+    <div id="pt-report" class="pt-report" style="line-height:1.65"></div>
+    <small class="text-muted-foreground">Kết quả tính theo công thức chuẩn (Cronbach's alpha, PCA với phép xoay Varimax có chuẩn hoá Kaiser, hồi quy OLS). Hãy đối chiếu với SPSS ở lần đầu dùng và kiểm tra câu chữ trước khi đưa vào luận văn.</small>
+  </div>
+</div>
+<style>
+.pt-report table{border-collapse:collapse;margin:8px 0 14px;font-size:.88rem;width:100%}
+.pt-report th,.pt-report td{border-bottom:1px solid var(--border);padding:4px 8px;text-align:right}
+.pt-report th:first-child,.pt-report td:first-child{text-align:left}
+.pt-report caption{text-align:left;font-weight:600;padding:4px 0}
+.pt-report .bad{color:#c0392b;font-weight:600}
+</style>
+
+<script>
+(function(){
+  //#stats-start
+  function lgamma(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,t=x+5.5;t-=(x+0.5)*Math.log(t);let s=1.000000000190015;for(const ci of c)s+=ci/++y;return -t+Math.log(2.5066282746310005*s/x)}
+  function betacf(a,b,x){const MAXIT=300,EPS=3e-14,FPMIN=1e-300;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=MAXIT;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<EPS)break}return h}
+  function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(lgamma(a+b)-lgamma(a)-lgamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(a,b,x)/a:1-bt*betacf(b,a,1-x)/b}
+  // Upper regularised incomplete gamma Q(a, x), for chi-square tail probabilities.
+  function gammaQ(a,x){if(x<=0)return 1;const gln=lgamma(a);if(x<a+1){let ap=a,sum=1/a,del=sum;for(let n=0;n<500;n++){ap++;del*=x/ap;sum+=del;if(Math.abs(del)<Math.abs(sum)*3e-14)break}return 1-sum*Math.exp(-x+a*Math.log(x)-gln)}
+    let b=x+1-a,c=1e300,d=1/b,h=d;for(let i=1;i<500;i++){const an=-i*(i-a);b+=2;d=an*d+b;if(Math.abs(d)<1e-300)d=1e-300;c=b+an/c;if(Math.abs(c)<1e-300)c=1e-300;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<3e-14)break}return Math.exp(-x+a*Math.log(x)-gln)*h}
+  const tP=(t,df)=>ibeta(df/(df+t*t),df/2,0.5);              // two-tailed p of a t statistic
+  const fP=(F,d1,d2)=>F<=0?1:ibeta(d2/(d2+d1*F),d2/2,d1/2);    // upper-tail p of an F statistic
+  const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
+  const variance=a=>{const m=mean(a);return a.reduce((s,v)=>s+(v-m)*(v-m),0)/(a.length-1)};
+  function pearson(x,y){const mx=mean(x),my=mean(y);let sxy=0,sxx=0,syy=0;for(let i=0;i<x.length;i++){const a=x[i]-mx,b=y[i]-my;sxy+=a*b;sxx+=a*a;syy+=b*b}return sxy/Math.sqrt(sxx*syy)}
+  const corrMatrix=cols=>cols.map(a=>cols.map(b=>a===b?1:pearson(a,b)));
+  function invert(M){const n=M.length,A=M.map((r,i)=>[...r,...r.map((_,j)=>i===j?1:0)]);for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];const v=A[c][c];if(Math.abs(v)<1e-12)return null;for(let j=0;j<2*n;j++)A[c][j]/=v;for(let r=0;r<n;r++)if(r!==c){const f=A[r][c];if(f)for(let j=0;j<2*n;j++)A[r][j]-=f*A[c][j]}}return A.map(r=>r.slice(n))}
+  function logDet(M){const n=M.length,A=M.map(r=>[...r]);let s=0;for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];const v=A[c][c];if(v<=0&&p===c&&Math.abs(v)<1e-300)return -Infinity;s+=Math.log(Math.abs(v));for(let r=c+1;r<n;r++){const f=A[r][c]/v;for(let j=c;j<n;j++)A[r][j]-=f*A[c][j]}}return s}
+  // Cronbach's alpha with corrected item-total correlation and alpha if item deleted.
+  function cronbach(cols){const k=cols.length,n=cols[0].length,tot=Array.from({length:n},(_,i)=>cols.reduce((s,c)=>s+c[i],0));
+    const a=c=>{const kk=c.length;if(kk<2)return NaN;const t=Array.from({length:n},(_,i)=>c.reduce((s,x)=>s+x[i],0));return kk/(kk-1)*(1-c.reduce((s,x)=>s+variance(x),0)/variance(t))};
+    return {alpha:a(cols),items:cols.map((c,j)=>({citc:pearson(c,tot.map((v,i)=>v-c[i])),ifDel:a(cols.filter((_,q)=>q!==j))}))}}
+  // Symmetric eigen-decomposition (cyclic Jacobi), eigenvalues sorted descending.
+  function eigenSym(S){const n=S.length,A=S.map(r=>[...r]),V=A.map((r,i)=>r.map((_,j)=>i===j?1:0));
+    for(let sweep=0;sweep<100;sweep++){let off=0;for(let i=0;i<n;i++)for(let j=i+1;j<n;j++)off+=A[i][j]*A[i][j];if(off<1e-20)break;
+      for(let p=0;p<n;p++)for(let q=p+1;q<n;q++){if(Math.abs(A[p][q])<1e-15)continue;const th=(A[q][q]-A[p][p])/(2*A[p][q]),t=Math.sign(th||1)/(Math.abs(th)+Math.sqrt(th*th+1)),c=1/Math.sqrt(t*t+1),s=t*c;
+        for(let k=0;k<n;k++){const akp=A[k][p],akq=A[k][q];A[k][p]=c*akp-s*akq;A[k][q]=s*akp+c*akq}
+        for(let k=0;k<n;k++){const apk=A[p][k],aqk=A[q][k];A[p][k]=c*apk-s*aqk;A[q][k]=s*apk+c*aqk}
+        for(let k=0;k<n;k++){const vkp=V[k][p],vkq=V[k][q];V[k][p]=c*vkp-s*vkq;V[k][q]=s*vkp+c*vkq}}}
+    return A.map((r,i)=>({val:r[i],vec:V.map(row=>row[i])})).sort((a,b)=>b.val-a.val)}
+  // Varimax rotation with Kaiser normalisation (as in SPSS).
+  function varimax(L){const p=L.length,k=L[0].length;if(k<2)return L.map(r=>[...r]);const h=L.map(r=>Math.sqrt(r.reduce((s,v)=>s+v*v,0))||1),A=L.map((r,i)=>r.map(v=>v/h[i]));
+    for(let it=0;it<1000;it++){let moved=0;for(let a=0;a<k;a++)for(let b=a+1;b<k;b++){let u=0,v=0,U=0,Vv=0;for(let i=0;i<p;i++){const x=A[i][a],y=A[i][b],uu=x*x-y*y,vv=2*x*y;u+=uu;v+=vv;U+=uu*uu-vv*vv;Vv+=2*uu*vv}
+      const phi=0.25*Math.atan2(Vv-2*u*v/p,U-(u*u-v*v)/p);if(Math.abs(phi)<1e-10)continue;moved=1;const c=Math.cos(phi),s=Math.sin(phi);for(let i=0;i<p;i++){const x=A[i][a],y=A[i][b];A[i][a]=c*x+s*y;A[i][b]=-s*x+c*y}}if(!moved)break}
+    // Sign and order like SPSS: each factor's largest loading positive, factors by sum of squares.
+    const R=A.map((r,i)=>r.map(v=>v*h[i]));for(let j=0;j<k;j++){let s=0;for(let i=0;i<p;i++)s+=R[i][j];if(s<0)for(let i=0;i<p;i++)R[i][j]=-R[i][j]}
+    const ord=[...Array(k).keys()].sort((x,y)=>R.reduce((s,r)=>s+r[y]*r[y],0)-R.reduce((s,r)=>s+r[x]*r[x],0));return R.map(r=>ord.map(j=>r[j]))}
+  // EFA by principal components on the correlation matrix, with KMO and Bartlett's test.
+  function efa(cols,kFixed){const p=cols.length,n=cols[0].length,R=corrMatrix(cols),Ri=invert(R);
+    let r2=0,q2=0;const msa=[];for(let i=0;i<p;i++){let ri=0,qi=0;for(let j=0;j<p;j++)if(i!==j){const r=R[i][j],q=Ri?-Ri[i][j]/Math.sqrt(Ri[i][i]*Ri[j][j]):0;ri+=r*r;qi+=q*q}r2+=ri;q2+=qi;msa.push(ri/(ri+qi))}
+    const chi=-(n-1-(2*p+5)/6)*logDet(R),df=p*(p-1)/2,eig=eigenSym(R),k=kFixed||Math.max(1,eig.filter(e=>e.val>1).length);
+    const L=Array.from({length:p},(_,i)=>eig.slice(0,k).map(e=>e.vec[i]*Math.sqrt(Math.max(e.val,0))));
+    return {kmo:r2/(r2+q2),msa,chi,df,bartP:gammaQ(df/2,chi/2),eig:eig.map(e=>e.val),k,cum:eig.slice(0,k).reduce((s,e)=>s+e.val,0)/p,rotated:varimax(L)}}
+  // OLS with standardised betas, t tests and VIF.
+  function ols(y,X){const n=y.length,k=X.length,D=y.map((_,i)=>[1,...X.map(x=>x[i])]),XtX=Array.from({length:k+1},(_,a)=>Array.from({length:k+1},(_,b)=>D.reduce((s,r)=>s+r[a]*r[b],0))),inv=invert(XtX);if(!inv)return null;
+    const Xty=Array.from({length:k+1},(_,a)=>D.reduce((s,r,i)=>s+r[a]*y[i],0)),b=inv.map(r=>r.reduce((s,v,j)=>s+v*Xty[j],0)),fit=D.map(r=>r.reduce((s,v,j)=>s+v*b[j],0)),my=mean(y);
+    const sse=y.reduce((s,v,i)=>s+(v-fit[i])**2,0),sst=y.reduce((s,v)=>s+(v-my)**2,0),dfe=n-k-1,mse=sse/dfe,r2=1-sse/sst,F=((sst-sse)/k)/mse,sy=Math.sqrt(variance(y)),Rxx=invert(corrMatrix(X));
+    return {r2,adj:1-(1-r2)*(n-1)/dfe,F,fp:fP(F,k,dfe),df1:k,df2:dfe,coef:b.slice(1).map((bj,j)=>{const se=Math.sqrt(mse*inv[j+1][j+1]),t=bj/se;return {b:bj,se,beta:bj*Math.sqrt(variance(X[j]))/sy,t,p:tP(t,dfe),vif:Rxx?Rxx[j][j]:NaN}}),b0:b[0]}}
+  //#stats-end
+
+  const $=id=>document.getElementById(id);
+  const f2=x=>Number.isFinite(x)?x.toFixed(3).replace('.',','):'—';
+  const f1=x=>Number.isFinite(x)?x.toFixed(1).replace('.',','):'—';
+  const pfmt=p=>p<0.001?'< 0,001':f2(p);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let rows=null, header=null;
+
+  function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+  function parseDelimited(text){const lines=text.replace(/\r/g,'').split('\n').filter(l=>l.trim());const d=['\t',';',','].find(c=>lines[0].includes(c))||',';return lines.map(l=>l.split(d).map(v=>v.trim().replace(/^"|"$/g,'')))}
+  function setData(table,label){
+    header=table[0].map(h=>String(h).trim());rows=table.slice(1).filter(r=>r.some(v=>String(v).trim()!==''));
+    const items=header.filter(h=>/^[A-Za-z]+[_.]?\d+$/.test(h)&&!/^ATT/i.test(h));
+    const groups={};items.forEach(h=>{const g=h.replace(/[_.]?\d+$/,'').toUpperCase();(groups[g]=groups[g]||[]).push(h)});
+    $('pt-groups').value=Object.entries(groups).filter(([,v])=>v.length>=2).map(([g,v])=>`${g}: ${v.join(' ')}`).join('\n');
+    if(header.some(h=>/^ATT\d*$/i.test(h))&&!$('pt-attn').value)$('pt-attn').value=header.find(h=>/^ATT\d*$/i.test(h))+'=4';
+    $('pt-status').textContent=`${label}: ${rows.length} phiếu, ${header.length} cột, nhận ra ${Object.keys(groups).length} khái niệm.`;
+    $('pt-setup').hidden=false;refreshSelects();
+  }
+  function parseGroups(){return $('pt-groups').value.split('\n').map(l=>l.split(':')).filter(p=>p.length===2).map(([g,v])=>({code:g.trim(),items:v.trim().split(/[\s,]+/).filter(x=>header.includes(x))})).filter(g=>g.code&&g.items.length>=2)}
+  function refreshSelects(){const gs=parseGroups(),cur=$('pt-dv').value;$('pt-dv').innerHTML=gs.map(g=>`<option ${g.code===cur?'selected':''}>${esc(g.code)}</option>`).join('');if(!cur&&gs.length)$('pt-dv').value=gs[gs.length-1].code;
+    const k=$('pt-k').value;$('pt-k').innerHTML='<option value="eigen">Theo eigenvalue &gt; 1</option>'+gs.map((_,i)=>`<option value="${i+1}">Cố định ${i+1} nhân tố</option>`).join('');$('pt-k').value=k&&[...$('pt-k').options].some(o=>o.value===k)?k:'eigen'}
+
+  $('pt-file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;$('pt-status').textContent='Đang đọc file…';
+    try{if(/\.(xlsx|xls)$/i.test(f.name)){if(!window.XLSX)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');const wb=XLSX.read(await f.arrayBuffer());setData(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''}),f.name)}
+      else setData(parseDelimited(await f.text()),f.name)}catch(err){$('pt-status').textContent='Không đọc được file. Lưu lại dạng .xlsx hoặc .csv rồi thử lại.'}});
+  $('pt-sample').addEventListener('click',()=>setData(sampleData(),'Dữ liệu mẫu'));
+  $('pt-groups').addEventListener('input',refreshSelects);
+
+  // Synthetic TAM data (PEOU → PU → BI), fixed seed so the demo is reproducible.
+  function sampleData(){let s=20261030;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,norm=()=>Math.sqrt(-2*Math.log(rnd()+1e-12))*Math.cos(2*Math.PI*rnd());
+    const lik=v=>Math.min(5,Math.max(1,Math.round(3.4+v)));const head=['ID','GT','TUOI',...[1,2,3,4,5,6].map(i=>'PEOU'+i),...[1,2,3,4,5,6].map(i=>'PU'+i),'BI1','BI2','BI3','ATT1'],out=[head];
+    for(let i=1;i<=250;i++){const peou=norm(),pu=0.55*peou+0.8*norm(),bi=0.45*pu+0.3*peou+0.75*norm(),it=l=>lik(0.75*l+0.55*norm());
+      out.push([i,rnd()<0.58?'Nữ':'Nam',['18–22','23–30','31–40'][Math.floor(rnd()*3)],...Array.from({length:6},()=>it(peou)),...Array.from({length:6},()=>it(pu)),it(bi),it(bi),it(bi),rnd()<0.95?4:2])}
+    return out}
+
+  function run(){
+    const gs=parseGroups();if(!gs.length){$('pt-status').textContent='Chưa có khái niệm nào có từ 2 biến quan sát.';return}
+    const all=[...new Set(gs.flatMap(g=>g.items))],rev=new Set($('pt-rev').value.split(/[\s,]+/).filter(Boolean));
+    const ix=Object.fromEntries(header.map((h,i)=>[h,i])),num=v=>{const x=parseFloat(String(v).replace(',','.'));return Number.isFinite(x)?x:NaN};
+    let data=rows.map(r=>r),log=[];const n0=data.length;
+    const miss=data.filter(r=>all.some(h=>!Number.isFinite(num(r[ix[h]]))));data=data.filter(r=>!miss.includes(r));if(miss.length)log.push(`${miss.length} phiếu thiếu câu trả lời`);
+    const att=$('pt-attn').value.match(/^\s*([^=\s]+)\s*=\s*([\d.]+)/);if(att&&att[1] in ix){const bad=data.filter(r=>num(r[ix[att[1]]])!==+att[2]);data=data.filter(r=>!bad.includes(r));if(bad.length)log.push(`${bad.length} phiếu trả lời sai câu kiểm tra chú ý ${att[1]}`)}
+    if($('pt-straight').checked){const bad=data.filter(r=>new Set(all.map(h=>num(r[ix[h]]))).size===1);data=data.filter(r=>!bad.includes(r));if(bad.length)log.push(`${bad.length} phiếu chọn cùng một mức cho mọi câu`)}
+    const n=data.length;if(n<all.length+5){$('pt-status').textContent=`Chỉ còn ${n} phiếu hợp lệ, quá ít để phân tích.`;return}
+    const vals=all.flatMap(h=>data.map(r=>num(r[ix[h]]))),lo=Math.min(...vals),hi=Math.max(...vals);
+    const col=h=>data.map(r=>{const v=num(r[ix[h]]);return rev.has(h)?lo+hi-v:v});
+    const C=Object.fromEntries(all.map(h=>[h,col(h)]));
+    let html='',refs=new Set();
+
+    // 4.1 sample
+    const demo=header.filter(h=>!all.includes(h)&&!/^(id|stt|timestamp|dấu thời gian)$/i.test(h)&&!(att&&h===att[1])).filter(h=>{const u=new Set(data.map(r=>String(r[ix[h]]).trim()));return u.size>=2&&u.size<=8});
+    html+=`<h3>4.1. Mô tả mẫu nghiên cứu</h3><p>Nghiên cứu thu về ${n0} phiếu khảo sát. ${log.length?`Sau khi loại ${n0-n} phiếu không hợp lệ (${log.join('; ')}), `:'Không có phiếu nào bị loại, '}còn lại ${n} phiếu hợp lệ được đưa vào phân tích.</p>`;
+    demo.forEach(h=>{const cnt={};data.forEach(r=>{const v=String(r[ix[h]]).trim()||'(trống)';cnt[v]=(cnt[v]||0)+1});html+=`<table><caption>Bảng: Cơ cấu mẫu theo ${esc(h)}</caption><tr><th>${esc(h)}</th><th>Số phiếu</th><th>Tỷ lệ (%)</th></tr>${Object.entries(cnt).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v}</td><td>${f1(100*v/n)}</td></tr>`).join('')}</table>`});
+
+    // 4.2 reliability
+    html+=`<h3>4.2. Kiểm định độ tin cậy thang đo (Cronbach's alpha)</h3><p>Thang đo đạt độ tin cậy khi hệ số Cronbach's alpha từ 0,7 trở lên (Nunnally, 1978) và các biến quan sát có tương quan biến – tổng hiệu chỉnh từ 0,3 trở lên (Nunnally &amp; Bernstein, 1994).</p>`;refs.add('nunnally78').add('nunnally94');
+    const relText=[];
+    gs.forEach(g=>{const r=cronbach(g.items.map(h=>C[h]));const weak=g.items.filter((h,j)=>r.items[j].citc<0.3);
+      html+=`<table><caption>Bảng: Độ tin cậy thang đo ${esc(g.code)} (Cronbach's alpha = ${f2(r.alpha)})</caption><tr><th>Biến</th><th>Trung bình</th><th>Tương quan biến – tổng</th><th>Alpha nếu loại biến</th></tr>${g.items.map((h,j)=>`<tr><td>${esc(h)}</td><td>${f2(mean(C[h]))}</td><td class="${r.items[j].citc<0.3?'bad':''}">${f2(r.items[j].citc)}</td><td>${f2(r.items[j].ifDel)}</td></tr>`).join('')}</table>`;
+      relText.push(`${g.code} (α = ${f2(r.alpha)}${r.alpha<0.7?', chưa đạt':''}${weak.length?`; biến ${weak.join(', ')} có tương quan biến – tổng dưới 0,3`:''})`)});
+    html+=`<p>Kết quả cho thấy hệ số Cronbach's alpha của các thang đo lần lượt là: ${relText.join('; ')}. ${gs.every(g=>cronbach(g.items.map(h=>C[h])).alpha>=0.7)?'Tất cả thang đo đều đạt độ tin cậy và được giữ lại cho phân tích nhân tố khám phá.':'Các thang đo chưa đạt cần được xem xét loại biến hoặc giải thích trước khi phân tích tiếp.'}</p>`;
+
+    // 4.3 EFA (independent and dependent together, as many theses do; split if needed)
+    const kSel=$('pt-k').value,e=efa(all.map(h=>C[h]),kSel==='eigen'?0:+kSel);refs.add('kaiser74').add('hair10');
+    html+=`<h3>4.3. Phân tích nhân tố khám phá (EFA)</h3><p>Phân tích nhân tố khám phá được thực hiện với ${all.length} biến quan sát, phương pháp trích Principal Components và phép xoay Varimax. Hệ số KMO = ${f2(e.kmo)} ${e.kmo>=0.5?'(≥ 0,5)':'(< 0,5, chưa đạt)'} và kiểm định Bartlett có χ² = ${f1(e.chi)}, df = ${e.df}, Sig. ${e.bartP<0.001?'< 0,001':'= '+f2(e.bartP)}, cho thấy dữ liệu ${e.kmo>=0.5&&e.bartP<0.05?'phù hợp':'chưa phù hợp'} để phân tích nhân tố (Kaiser, 1974). ${e.k} nhân tố được rút trích ${kSel==='eigen'?'tại eigenvalue lớn hơn 1':'theo số nhân tố cố định'} (eigenvalue nhỏ nhất được giữ = ${f2(e.eig[e.k-1])}), giải thích ${f1(100*e.cum)}% biến thiên của dữ liệu ${e.cum>=0.5?'(≥ 50%)':'(< 50%)'}.</p>`;
+    const show=v=>Math.abs(v)>=0.3?f2(v):'';
+    const order=all.map((h,i)=>({h,i,f:e.rotated[i].reduce((b,v,j,a)=>Math.abs(v)>Math.abs(a[b])?j:b,0)})).sort((a,b)=>a.f-b.f||Math.abs(e.rotated[b.i][b.f])-Math.abs(e.rotated[a.i][a.f]));
+    html+=`<table><caption>Bảng: Ma trận nhân tố sau khi xoay (hệ số tải dưới 0,3 được ẩn)</caption><tr><th>Biến</th>${Array.from({length:e.k},(_,j)=>`<th>${j+1}</th>`).join('')}</tr>${order.map(o=>`<tr><td>${esc(o.h)}</td>${e.rotated[o.i].map(v=>`<td class="${Math.abs(v)>=0.3&&Math.abs(v)<0.5?'bad':''}">${show(v)}</td>`).join('')}</tr>`).join('')}</table>`;
+    const lowLoad=order.filter(o=>Math.abs(e.rotated[o.i][o.f])<0.5).map(o=>o.h),cross=order.filter(o=>e.rotated[o.i].filter(v=>Math.abs(v)>=0.3).length>1).map(o=>o.h);
+    html+=`<p>Theo Hair và cộng sự (2010), hệ số tải nhân tố từ 0,5 trở lên là có ý nghĩa thực tiễn. ${lowLoad.length?`Các biến ${lowLoad.join(', ')} có hệ số tải dưới 0,5 cần cân nhắc loại. `:'Tất cả biến quan sát đều có hệ số tải từ 0,5 trở lên. '}${cross.length?`Các biến ${cross.join(', ')} tải lên nhiều hơn một nhân tố (từ 0,3 trở lên); nên kiểm tra lại trước khi đặt tên nhân tố.`:'Không có biến tải chéo đáng kể.'}${e.k!==gs.length?` Lưu ý: số nhân tố rút trích (${e.k}) khác số khái niệm trong mô hình (${gs.length}); thử chọn "Cố định ${gs.length} nhân tố" để đối chiếu.`:''}</p>`;
+
+    // 4.4 correlation and 4.5 regression on construct means
+    const score=Object.fromEntries(gs.map(g=>[g.code,data.map((_,i)=>mean(g.items.map(h=>C[h][i])))])),codes=gs.map(g=>g.code);
+    html+=`<h3>4.4. Phân tích tương quan Pearson</h3><table><caption>Bảng: Ma trận tương quan giữa các khái niệm (giá trị trung bình)</caption><tr><th></th>${codes.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${codes.map((a,i)=>`<tr><td>${esc(a)}</td>${codes.map((b,j)=>{if(j>i)return '<td></td>';if(i===j)return '<td>1</td>';const r=pearson(score[a],score[b]),p=tP(r*Math.sqrt((n-2)/(1-r*r)),n-2);return `<td>${f2(r)}${p<0.01?'**':p<0.05?'*':''}</td>`}).join('')}</tr>`).join('')}</table><p><small>** tương quan có ý nghĩa ở mức 0,01; * ở mức 0,05 (kiểm định hai phía).</small></p>`;
+    const dv=$('pt-dv').value,ivs=codes.filter(c=>c!==dv);
+    if(ivs.length){const m=ols(score[dv],ivs.map(c=>score[c]));
+      if(m){refs.add('hair10');html+=`<h3>4.5. Phân tích hồi quy tuyến tính bội</h3><p>Mô hình hồi quy với biến phụ thuộc ${esc(dv)} và ${ivs.length} biến độc lập (${ivs.join(', ')}) có R² = ${f2(m.r2)}, R² hiệu chỉnh = ${f2(m.adj)}, nghĩa là các biến độc lập giải thích ${f1(100*m.adj)}% biến thiên của ${esc(dv)}. Kiểm định F = ${f2(m.F)} (df = ${m.df1}; ${m.df2}), Sig. ${m.fp<0.001?'< 0,001':'= '+f2(m.fp)}, cho thấy mô hình ${m.fp<0.05?'phù hợp với dữ liệu':'chưa có ý nghĩa thống kê'}.</p>
+<table><caption>Bảng: Kết quả hồi quy (biến phụ thuộc: ${esc(dv)})</caption><tr><th>Biến</th><th>B</th><th>Sai số chuẩn</th><th>Beta chuẩn hoá</th><th>t</th><th>Sig.</th><th>VIF</th></tr><tr><td>(Hằng số)</td><td>${f2(m.b0)}</td><td></td><td></td><td></td><td></td><td></td></tr>${m.coef.map((c,j)=>`<tr><td>${esc(ivs[j])}</td><td>${f2(c.b)}</td><td>${f2(c.se)}</td><td>${f2(c.beta)}</td><td>${f2(c.t)}</td><td>${pfmt(c.p)}</td><td class="${c.vif>=5?'bad':''}">${f2(c.vif)}</td></tr>`).join('')}</table>
+<p>Hệ số phóng đại phương sai (VIF) của các biến độc lập ${m.coef.every(c=>c.vif<5)?'đều nhỏ hơn 5, nên không có dấu hiệu đa cộng tuyến nghiêm trọng (Hair và cộng sự, 2010)':'có giá trị từ 5 trở lên ở một số biến, cần xem xét hiện tượng đa cộng tuyến (Hair và cộng sự, 2010)'}. ${m.coef.map((c,j)=>`${ivs[j]} ${c.p<0.05?`có tác động ${c.beta>0?'cùng chiều':'ngược chiều'} tới ${dv} (β = ${f2(c.beta)}, Sig. ${pfmt(c.p)})`:`không có tác động có ý nghĩa thống kê tới ${dv} (Sig. = ${f2(c.p)})`}`).join('; ')}.${(()=>{const sig=m.coef.map((c,j)=>[ivs[j],c]).filter(([,c])=>c.p<0.05).sort((a,b)=>Math.abs(b[1].beta)-Math.abs(a[1].beta));return sig.length>1?` Trong đó ${sig[0][0]} có tác động mạnh nhất.`:''})()}</p>`}}
+
+    const REF={nunnally78:'Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.). McGraw-Hill.',nunnally94:'Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em> (3rd ed.). McGraw-Hill.',kaiser74:'Kaiser, H. F. (1974). An index of factorial simplicity. <em>Psychometrika, 39</em>(1), 31–36. https://doi.org/10.1007/BF02291575',hair10:'Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.'};
+    html+=`<p><strong>Tài liệu tham khảo</strong></p><ul>${['hair10','kaiser74','nunnally78','nunnally94'].filter(r=>refs.has(r)).map(r=>`<li>${REF[r]}</li>`).join('')}</ul>`;
+    $('pt-report').innerHTML=html;$('pt-out').hidden=false;$('pt-out').scrollIntoView({behavior:'smooth'});
+  }
+  $('pt-run').addEventListener('click',run);
+  $('pt-doc').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([`﻿<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse}td,th{border:1px solid #000;padding:3px 6px}</style></head><body><h2>CHƯƠNG 4. KẾT QUẢ NGHIÊN CỨU</h2>${$('pt-report').innerHTML}</body></html>`],{type:'application/msword'}));a.download='chuong-4-ket-qua.doc';document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),500)});
+  $('pt-copy').addEventListener('click',()=>{const t=$('pt-report').innerText,b=$('pt-copy');try{navigator.clipboard.writeText(t).then(()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent='Sao chép',1500)})}catch(e){}});
+})();
+</script>

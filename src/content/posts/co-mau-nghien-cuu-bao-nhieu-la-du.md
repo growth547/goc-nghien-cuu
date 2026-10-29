@@ -105,7 +105,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 </table>
 <p>Cỡ mẫu tối thiểu được tính trên số phiếu hợp lệ còn lại sau khi lọc. Khi lên kế hoạch phát phiếu, cộng thêm phần dự phòng cho phiếu bị loại: với 15% phiếu bị loại và mức tối thiểu 92, nên phát khoảng 92 / 0,85 ≈ 109 phiếu.</p>
 
-<p>Có con số rồi thì việc khó là thu đủ phiếu hợp lệ. Nếu không muốn đi xin điền form khắp các group, các nền tảng thu mẫu có lọc đối tượng như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=co-mau-nghien-cuu-bao-nhieu-la-du" rel="sponsored noopener">Genius Data</a> cho phép đặt trước số phiếu và chỉ trả cho phiếu được duyệt.</p>
+<p>Có con số rồi thì việc khó là thu đủ phiếu hợp lệ. Nếu không muốn đi xin điền form khắp các group, một lựa chọn là <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=co-mau-nghien-cuu-bao-nhieu-la-du" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng cho mỗi câu hỏi và chỉ trả tiền cho phiếu được duyệt.</p>
 
 <h2>Năm lỗi hay gặp khi trình bày cỡ mẫu</h2>
 <ol>

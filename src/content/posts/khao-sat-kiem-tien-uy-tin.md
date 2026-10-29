@@ -57,8 +57,13 @@ tags: ["đáp viên"]
 
 <p>Nếu bạn đã qua được checklist này và muốn thử một nền tảng cụ thể, phần dưới là một lựa chọn.</p>
 
-
-<p>Genius Data, nền tảng chúng tôi là đối tác giới thiệu, là một lựa chọn: bạn tự chọn khảo sát phù hợp, làm lúc nào cũng được, tích GTOKEN từ các khảo sát hợp lệ và dùng GTOKEN để đổi quà hoặc voucher trong hệ sinh thái. Website đã thông báo với Bộ Công Thương và có email hỗ trợ hi@geniusdata.io. Hãy áp dụng đúng checklist ở trên cho Genius Data như với mọi trang khác.</p>
+<p>Genius Data, nền tảng chúng tôi là đối tác giới thiệu, là một lựa chọn. Dưới đây là những gì trang của họ tự công bố, chúng tôi chỉ chép lại và chưa thay bạn kiểm chứng phần thưởng:</p>
+<ul>
+<li>Trang dành cho đáp viên (geniusdata.io/join-surveys) mô tả việc tích GTOKEN từ các khảo sát hợp lệ và dùng GTOKEN để đổi voucher, thanh toán dịch vụ trong hệ sinh thái của họ. Trang đó cũng có câu "giá trị quy đổi lên đến 5+ triệu/tháng"; hãy đọc câu này như một mức trần quảng cáo, đúng như mục kỳ vọng thực tế ở trên.</li>
+<li>Chân trang ghi tên Công ty TNHH Nghiên cứu và Phát triển GR, mã số thuế 0319440277, địa chỉ và email hi@geniusdata.io.</li>
+<li>Logo Bộ Công Thương ở chân trang bấm vào dẫn tới <a href="https://online.gov.vn/Home/WebDetails/142371" rel="noopener">hồ sơ trên online.gov.vn</a>. Khi chúng tôi mở hồ sơ ngày 30/10/2026, tên doanh nghiệp và mã số thuế trùng với chân trang, còn địa chỉ trên hồ sơ khác với địa chỉ ở chân trang. Đây đúng là loại chi tiết checklist ở trên khuyên bạn tự đối chiếu và hỏi lại qua email hỗ trợ.</li>
+</ul>
+<p>Hãy áp dụng đúng checklist ở trên cho Genius Data như với mọi trang khác.</p>
 
 <h2>Làm sao để phiếu của bạn được tính</h2>
 <p>Ở các trang làm thật, phiếu điền bừa thường bị loại và không có thưởng. Một vài thói quen giúp bạn ít bị từ chối:</p>

@@ -47,7 +47,7 @@ tags: ["thu mẫu","khoá luận"]
 <li><strong>Phát trực tiếp:</strong> đứng ở siêu thị, quán cà phê, cổng bệnh viện. Mất công nhưng hợp với đối tượng ít dùng mạng xã hội, ví dụ người lớn tuổi.</li>
 <li><strong>Nền tảng khảo sát có trả thưởng:</strong> bạn trả phí để tiếp cận cộng đồng người trả lời đã đăng ký. Hợp khi cần số lượng lớn trong thời gian ngắn hoặc đối tượng ngoài vòng quan hệ của bạn.</li>
 </ul>
-<p>Lấy ví dụ một nền tảng như Genius Data: bạn chọn nhóm đối tượng mục tiêu và tự đặt mức thưởng mỗi câu, tối thiểu 0,15 GP/câu, mức gợi ý 0,4 GP/câu, với 1 GP = 1.100 đ đã gồm VAT. Một form 15 câu ở mức gợi ý là 6 GP mỗi phản hồi, 200 phản hồi khoảng 1.320.000 đ, và bạn chỉ trả cho phản hồi được duyệt. Dù dùng nền tảng nào, hãy hỏi rõ ba điều: có chọn được đối tượng không, phiếu kém chất lượng xử lý ra sao, và bạn có phải trả tiền cho phiếu bị loại không.</p>
+<p>Lấy ví dụ Genius Data. Theo trang bảng giá của Genius Data tại thời điểm viết (tháng 10/2026), người tạo khảo sát tự chọn mức thưởng cho mỗi câu: tối thiểu 0,15 GP/câu, mức gợi ý 0,4 GP/câu, 1 GP = 1.100 đ, giá đã gồm VAT, và chỉ trả cho phản hồi được duyệt. Với form 15 câu ở mức gợi ý, công cụ ước tính trên trang đó cho 6 GP mỗi phản hồi, tức khoảng 1.320.000 đ cho 200 phản hồi. Giá có thể thay đổi, nên hãy mở lại trang bảng giá trước khi lập ngân sách. Dù dùng nền tảng nào, hãy hỏi rõ ba điều: có chọn được đối tượng không, phiếu kém chất lượng xử lý ra sao, và bạn có phải trả tiền cho phiếu bị loại không.</p>
 
 <h2>Bước 5: Theo dõi tiến độ theo hạn ngạch, đừng chỉ nhìn tổng số</h2>
 <p>Lập một bảng nhỏ và cập nhật mỗi ngày. Tổng số phiếu tăng đều chưa chắc là tốt nếu toàn bộ phiếu mới rơi vào một ô.</p>
@@ -64,7 +64,7 @@ tags: ["thu mẫu","khoá luận"]
 </table>
 <p>Nhìn bảng này bạn biết ngay phải dồn sức vào nhóm 31 đến 45 tuổi, thay vì tiếp tục đăng vào nhóm lớp. Cột "Đã có" chỉ nên đếm phiếu hợp lệ, vì 95 phiếu mà 20 phiếu điền bừa thì thực chất bạn có 75.</p>
 
-<p>Nếu thời gian gấp, bạn có thể kết hợp phát phiếu qua mạng quen biết với một nền tảng thu mẫu như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=cach-thu-mau-khao-sat-khoa-luan" rel="sponsored noopener">Genius Data</a>, nơi bạn chọn đối tượng và chỉ trả cho phiếu được duyệt.</p>
+<p>Nếu thời gian gấp, bạn có thể kết hợp phát phiếu qua mạng quen biết với một nền tảng thu mẫu như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=cach-thu-mau-khao-sat-khoa-luan" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng cho mỗi câu hỏi và chỉ trả tiền cho phiếu được duyệt.</p>
 
 <h2>Bước 6: Lọc phiếu trước khi chạy SPSS</h2>
 <p>Đừng nhập thẳng file tải về vào SPSS. Mở file bằng Excel và kiểm tra lần lượt:</p>

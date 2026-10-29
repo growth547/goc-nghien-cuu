@@ -65,7 +65,7 @@ tags: ["làm sạch dữ liệu","AI"]
 <p>Dù thiết kế tốt tới đâu, bạn vẫn phải đọc lại từng câu tự luận, và với vài trăm phiếu thì việc này rất tốn thời gian.</p>
 
 
-<p>Một số nền tảng thu mẫu đã thêm lớp kiểm tra cho việc này. Ví dụ, Genius Data tự chấm chất lượng từng phản hồi, trong đó có việc nhận diện câu tự luận có dấu hiệu do AI viết. Phiếu đáng ngờ được gắn cờ để bạn xem lại, và với câu tự luận quá sơ sài, đáp viên được gợi ý viết lại trước khi nộp. Người tạo khảo sát chỉ trả cho phản hồi được duyệt. Kể cả khi có công cụ như vậy, các nguyên tắc thiết kế ở trên vẫn là tuyến phòng thủ đầu tiên.</p>
+<p>Nếu bạn thu mẫu qua một nền tảng, hãy hỏi nền tảng đó có kiểm tra câu tự luận hay không, kiểm tra bằng cách nào và bạn có xem được lý do một phiếu bị gắn cờ không. Một lựa chọn để thu mẫu là <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=phat-hien-cau-tra-loi-khao-sat-do-ai-viet" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng cho mỗi câu hỏi và chỉ trả tiền cho phiếu được duyệt. Dù dùng nền tảng nào, các nguyên tắc thiết kế ở trên và bước tự đọc lại câu tự luận vẫn là tuyến phòng thủ đầu tiên, và chính bạn là người phải giải thích tiêu chí loại phiếu trong chương 3.</p>
 
 <h2>Xử lý phiếu nghi ngờ thế nào</h2>
 <ul>

@@ -15,13 +15,41 @@
       "definition": "Những hành vi tự nguyện giúp ích trực tiếp cho đồng nghiệp cụ thể, qua đó gián tiếp có lợi cho tổ chức.",
       "source": "Lee & Allen (2002), 7 trên 8 biến OCBI; biến thứ tám (chia sẻ đồ dùng cá nhân để giúp đồng nghiệp làm việc) chưa đối chiếu được nguyên văn nên không đưa vào.",
       "items": [
-        { "code": "OCBI1", "en": "Help others who have been absent.", "vi": "Tôi giúp đỡ đồng nghiệp khi họ vắng mặt." },
-        { "code": "OCBI2", "en": "Willingly give your time to help others who have work-related problems.", "vi": "Tôi sẵn lòng dành thời gian giúp đồng nghiệp đang gặp khó khăn trong công việc." },
-        { "code": "OCBI3", "en": "Adjust your work schedule to accommodate other employees’ requests for time off.", "vi": "Tôi điều chỉnh lịch làm việc của mình để đồng nghiệp có thể xin nghỉ." },
-        { "code": "OCBI4", "en": "Go out of the way to make newer employees feel welcome in the work group.", "vi": "Tôi chủ động làm cho nhân viên mới cảm thấy được chào đón trong nhóm." },
-        { "code": "OCBI5", "en": "Show genuine concern and courtesy toward co-workers, even under the most trying business or personal situations.", "vi": "Tôi thật lòng quan tâm và lịch sự với đồng nghiệp, kể cả khi công việc hay chuyện riêng đang rất căng thẳng." },
-        { "code": "OCBI6", "en": "Give up time to help others who have work or non-work problems.", "vi": "Tôi bớt thời gian của mình để giúp đồng nghiệp gặp chuyện trong hoặc ngoài công việc." },
-        { "code": "OCBI7", "en": "Assist others with their duties.", "vi": "Tôi hỗ trợ đồng nghiệp làm phần việc của họ." }
+        {
+          "code": "OCBI1",
+          "en": "Help others who have been absent.",
+          "vi": "Tôi giúp đỡ những đồng nghiệp đã nghỉ vắng."
+        },
+        {
+          "code": "OCBI2",
+          "en": "Willingly give your time to help others who have work-related problems.",
+          "vi": "Tôi sẵn lòng dành thời gian giúp đồng nghiệp đang gặp khó khăn trong công việc."
+        },
+        {
+          "code": "OCBI3",
+          "en": "Adjust your work schedule to accommodate other employees’ requests for time off.",
+          "vi": "Tôi điều chỉnh lịch làm việc của mình để đồng nghiệp có thể xin nghỉ."
+        },
+        {
+          "code": "OCBI4",
+          "en": "Go out of the way to make newer employees feel welcome in the work group.",
+          "vi": "Tôi chủ động làm cho nhân viên mới cảm thấy được chào đón trong nhóm."
+        },
+        {
+          "code": "OCBI5",
+          "en": "Show genuine concern and courtesy toward co-workers, even under the most trying business or personal situations.",
+          "vi": "Tôi thật lòng quan tâm và lịch sự với đồng nghiệp, kể cả khi công việc hay chuyện riêng đang rất căng thẳng."
+        },
+        {
+          "code": "OCBI6",
+          "en": "Give up time to help others who have work or non-work problems.",
+          "vi": "Tôi bớt thời gian của mình để giúp đồng nghiệp gặp chuyện trong hoặc ngoài công việc."
+        },
+        {
+          "code": "OCBI7",
+          "en": "Assist others with their duties.",
+          "vi": "Tôi hỗ trợ đồng nghiệp làm phần việc của họ."
+        }
       ]
     },
     {
@@ -31,14 +59,46 @@
       "definition": "Những hành vi tự nguyện có lợi cho tổ chức nói chung, như bảo vệ hình ảnh, góp ý cải tiến, theo dõi tình hình của tổ chức.",
       "source": "Lee & Allen (2002), 8 biến.",
       "items": [
-        { "code": "OCBO1", "en": "Attend functions that are not required but that help the organizational image", "vi": "Tôi tham dự các sự kiện không bắt buộc nhưng giúp ích cho hình ảnh của [công ty]." },
-        { "code": "OCBO2", "en": "Keep up with developments in the organization", "vi": "Tôi theo dõi những thay đổi, diễn biến trong [công ty]." },
-        { "code": "OCBO3", "en": "Defend the organization when other employees criticize it", "vi": "Tôi bênh vực [công ty] khi nhân viên khác chỉ trích." },
-        { "code": "OCBO4", "en": "Show pride when representing the organization in public", "vi": "Tôi thể hiện niềm tự hào khi đại diện cho [công ty] ở nơi công cộng." },
-        { "code": "OCBO5", "en": "Offer ideas to improve the functioning of the organization", "vi": "Tôi đưa ra ý tưởng để [công ty] vận hành tốt hơn." },
-        { "code": "OCBO6", "en": "Express loyalty toward the organization", "vi": "Tôi thể hiện sự trung thành với [công ty]." },
-        { "code": "OCBO7", "en": "Take action to protect the organization from potential problems", "vi": "Tôi hành động để bảo vệ [công ty] trước những vấn đề có thể xảy ra." },
-        { "code": "OCBO8", "en": "Demonstrate concern about the image of the organization", "vi": "Tôi quan tâm tới hình ảnh của [công ty]." }
+        {
+          "code": "OCBO1",
+          "en": "Attend functions that are not required but that help the organizational image",
+          "vi": "Tôi tham dự các sự kiện không bắt buộc nhưng giúp ích cho hình ảnh của [công ty]."
+        },
+        {
+          "code": "OCBO2",
+          "en": "Keep up with developments in the organization",
+          "vi": "Tôi theo dõi những thay đổi, diễn biến trong [công ty]."
+        },
+        {
+          "code": "OCBO3",
+          "en": "Defend the organization when other employees criticize it",
+          "vi": "Tôi bênh vực [công ty] khi nhân viên khác chỉ trích."
+        },
+        {
+          "code": "OCBO4",
+          "en": "Show pride when representing the organization in public",
+          "vi": "Tôi thể hiện niềm tự hào khi đại diện cho [công ty] trước công chúng."
+        },
+        {
+          "code": "OCBO5",
+          "en": "Offer ideas to improve the functioning of the organization",
+          "vi": "Tôi đưa ra ý tưởng để [công ty] vận hành tốt hơn."
+        },
+        {
+          "code": "OCBO6",
+          "en": "Express loyalty toward the organization",
+          "vi": "Tôi thể hiện sự trung thành với [công ty]."
+        },
+        {
+          "code": "OCBO7",
+          "en": "Take action to protect the organization from potential problems",
+          "vi": "Tôi hành động để bảo vệ [công ty] trước những vấn đề có thể xảy ra."
+        },
+        {
+          "code": "OCBO8",
+          "en": "Demonstrate concern about the image of the organization",
+          "vi": "Tôi quan tâm tới hình ảnh của [công ty]."
+        }
       ]
     }
   ],
@@ -67,5 +127,9 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7345164/fullTextXML",
     "https://api.crossref.org/works/10.1037/0021-9010.87.1.131"
   ],
-  "related": ["ho-tro-to-chuc-pos", "cam-ket-to-chuc-ocq", "hieu-qua-cong-viec"]
+  "related": [
+    "ho-tro-to-chuc-pos",
+    "cam-ket-to-chuc-ocq",
+    "hieu-qua-cong-viec"
+  ]
 }

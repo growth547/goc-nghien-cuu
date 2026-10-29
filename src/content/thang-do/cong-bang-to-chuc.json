@@ -15,13 +15,41 @@
       "definition": "Mức độ công bằng của các quy trình, thủ tục dùng để đi tới kết quả phân bổ.",
       "source": "Colquitt (2001), 7 biến; câu hỏi dẫn nói về các thủ tục dùng để xác định [kết quả].",
       "items": [
-        { "code": "PJ1", "en": "Have you been able to express your views and feelings during those procedures?", "vi": "Anh/chị có được nói lên quan điểm và cảm nhận của mình trong các thủ tục đó không?" },
-        { "code": "PJ2", "en": "Have you had influence over the (outcome) arrived at by those procedures?", "vi": "Anh/chị có ảnh hưởng tới [kết quả] được đưa ra qua các thủ tục đó không?" },
-        { "code": "PJ3", "en": "Have those procedures been applied consistently?", "vi": "Các thủ tục đó có được áp dụng nhất quán không?" },
-        { "code": "PJ4", "en": "Have those procedures been free of bias?", "vi": "Các thủ tục đó có khách quan, không thiên vị không?" },
-        { "code": "PJ5", "en": "Have those procedures been based on accurate information?", "vi": "Các thủ tục đó có dựa trên thông tin chính xác không?" },
-        { "code": "PJ6", "en": "Have you been able to appeal the (outcome) arrived at by those procedures?", "vi": "Anh/chị có thể khiếu nại [kết quả] được đưa ra qua các thủ tục đó không?" },
-        { "code": "PJ7", "en": "Have those procedures upheld ethical and moral standards?", "vi": "Các thủ tục đó có tuân thủ chuẩn mực đạo đức không?" }
+        {
+          "code": "PJ1",
+          "en": "Have you been able to express your views and feelings during those procedures?",
+          "vi": "Anh/chị có được nói lên quan điểm và cảm nhận của mình trong các thủ tục đó không?"
+        },
+        {
+          "code": "PJ2",
+          "en": "Have you had influence over the (outcome) arrived at by those procedures?",
+          "vi": "Anh/chị có ảnh hưởng tới [kết quả] được đưa ra qua các thủ tục đó không?"
+        },
+        {
+          "code": "PJ3",
+          "en": "Have those procedures been applied consistently?",
+          "vi": "Các thủ tục đó có được áp dụng nhất quán không?"
+        },
+        {
+          "code": "PJ4",
+          "en": "Have those procedures been free of bias?",
+          "vi": "Các thủ tục đó có khách quan, không thiên vị không?"
+        },
+        {
+          "code": "PJ5",
+          "en": "Have those procedures been based on accurate information?",
+          "vi": "Các thủ tục đó có dựa trên thông tin chính xác không?"
+        },
+        {
+          "code": "PJ6",
+          "en": "Have you been able to appeal the (outcome) arrived at by those procedures?",
+          "vi": "Anh/chị có thể khiếu nại [kết quả] được đưa ra qua các thủ tục đó không?"
+        },
+        {
+          "code": "PJ7",
+          "en": "Have those procedures upheld ethical and moral standards?",
+          "vi": "Các thủ tục đó có tuân thủ chuẩn mực đạo đức không?"
+        }
       ]
     },
     {
@@ -31,10 +59,26 @@
       "definition": "Mức độ công bằng của kết quả người lao động nhận được so với đóng góp của họ.",
       "source": "Colquitt (2001), 4 biến; (outcome) thay bằng kết quả cụ thể như lương, thưởng.",
       "items": [
-        { "code": "DJ1", "en": "Does your (outcome) reflect the effort you have put into your work?", "vi": "[Kết quả] của anh/chị có phản ánh đúng công sức anh/chị bỏ ra cho công việc không?" },
-        { "code": "DJ2", "en": "Is your (outcome) appropriate for the work you have completed?", "vi": "[Kết quả] của anh/chị có tương xứng với công việc anh/chị đã hoàn thành không?" },
-        { "code": "DJ3", "en": "Does your (outcome) reflect what you have contributed to the organization?", "vi": "[Kết quả] của anh/chị có phản ánh đúng những gì anh/chị đã đóng góp cho [công ty] không?" },
-        { "code": "DJ4", "en": "Is your (outcome) justified, given your performance?", "vi": "Xét theo kết quả làm việc của anh/chị, [kết quả] anh/chị nhận được có hợp lý không?" }
+        {
+          "code": "DJ1",
+          "en": "Does your (outcome) reflect the effort you have put into your work?",
+          "vi": "[Kết quả] của anh/chị có phản ánh đúng công sức anh/chị bỏ ra cho công việc không?"
+        },
+        {
+          "code": "DJ2",
+          "en": "Is your (outcome) appropriate for the work you have completed?",
+          "vi": "[Kết quả] của anh/chị có tương xứng với công việc anh/chị đã hoàn thành không?"
+        },
+        {
+          "code": "DJ3",
+          "en": "Does your (outcome) reflect what you have contributed to the organization?",
+          "vi": "[Kết quả] của anh/chị có phản ánh đúng những gì anh/chị đã đóng góp cho [công ty] không?"
+        },
+        {
+          "code": "DJ4",
+          "en": "Is your (outcome) justified, given your performance?",
+          "vi": "Xét theo thành tích làm việc của anh/chị, [kết quả] anh/chị nhận được có xứng đáng không?"
+        }
       ]
     },
     {
@@ -44,10 +88,26 @@
       "definition": "Mức độ người lao động được người ra quyết định đối xử lịch sự, tôn trọng.",
       "source": "Colquitt (2001), 4 biến; (he/she) là người thực hiện thủ tục, thường là [quản lý].",
       "items": [
-        { "code": "IPJ1", "en": "Has (he/she) treated you in a polite manner?", "vi": "[Quản lý] có đối xử lịch sự với anh/chị không?" },
-        { "code": "IPJ2", "en": "Has (he/she) treated you with dignity?", "vi": "[Quản lý] có đối xử với anh/chị một cách đàng hoàng, giữ thể diện cho anh/chị không?" },
-        { "code": "IPJ3", "en": "Has (he/she) treated you with respect?", "vi": "[Quản lý] có tôn trọng anh/chị không?" },
-        { "code": "IPJ4", "en": "Has (he/she) refrained from improper remarks or comments?", "vi": "[Quản lý] có tránh những lời nhận xét không phù hợp không?" }
+        {
+          "code": "IPJ1",
+          "en": "Has (he/she) treated you in a polite manner?",
+          "vi": "[Quản lý] có đối xử lịch sự với anh/chị không?"
+        },
+        {
+          "code": "IPJ2",
+          "en": "Has (he/she) treated you with dignity?",
+          "vi": "[Quản lý] có đối xử đàng hoàng với anh/chị không?"
+        },
+        {
+          "code": "IPJ3",
+          "en": "Has (he/she) treated you with respect?",
+          "vi": "[Quản lý] có tôn trọng anh/chị không?"
+        },
+        {
+          "code": "IPJ4",
+          "en": "Has (he/she) refrained from improper remarks or comments?",
+          "vi": "[Quản lý] có tránh những lời nhận xét không phù hợp không?"
+        }
       ]
     },
     {
@@ -57,11 +117,31 @@
       "definition": "Mức độ người ra quyết định giải thích thủ tục và truyền đạt thông tin trung thực, đầy đủ, kịp thời.",
       "source": "Colquitt (2001), 5 biến.",
       "items": [
-        { "code": "IFJ1", "en": "Has (he/she) been candid in (his/her) communications with you?", "vi": "[Quản lý] có thẳng thắn khi trao đổi với anh/chị không?" },
-        { "code": "IFJ2", "en": "Has (he/she) explained the procedures thoroughly?", "vi": "[Quản lý] có giải thích kỹ các thủ tục không?" },
-        { "code": "IFJ3", "en": "Were (his/her) explanations regarding the procedures reasonable?", "vi": "Những giải thích của [quản lý] về các thủ tục có hợp lý không?" },
-        { "code": "IFJ4", "en": "Has (he/she) communicated details in a timely manner?", "vi": "[Quản lý] có thông báo chi tiết kịp thời không?" },
-        { "code": "IFJ5", "en": "Has (he/she) seemed to tailor (his/her) communications to individuals’ specific needs?", "vi": "[Quản lý] có điều chỉnh cách truyền đạt cho phù hợp với nhu cầu riêng của từng người không?" }
+        {
+          "code": "IFJ1",
+          "en": "Has (he/she) been candid in (his/her) communications with you?",
+          "vi": "[Quản lý] có thẳng thắn khi trao đổi với anh/chị không?"
+        },
+        {
+          "code": "IFJ2",
+          "en": "Has (he/she) explained the procedures thoroughly?",
+          "vi": "[Quản lý] có giải thích kỹ các thủ tục không?"
+        },
+        {
+          "code": "IFJ3",
+          "en": "Were (his/her) explanations regarding the procedures reasonable?",
+          "vi": "Những giải thích của [quản lý] về các thủ tục có hợp lý không?"
+        },
+        {
+          "code": "IFJ4",
+          "en": "Has (he/she) communicated details in a timely manner?",
+          "vi": "[Quản lý] có thông báo chi tiết kịp thời không?"
+        },
+        {
+          "code": "IFJ5",
+          "en": "Has (he/she) seemed to tailor (his/her) communications to individuals’ specific needs?",
+          "vi": "[Quản lý] có điều chỉnh cách truyền đạt cho phù hợp với nhu cầu riêng của từng người không?"
+        }
       ]
     }
   ],
@@ -85,5 +165,9 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9337234/fullTextXML",
     "https://api.crossref.org/works/10.1037/0021-9010.86.3.386"
   ],
-  "related": ["ho-tro-to-chuc-pos", "y-dinh-nghi-viec", "hanh-vi-cong-dan-to-chuc"]
+  "related": [
+    "ho-tro-to-chuc-pos",
+    "y-dinh-nghi-viec",
+    "hanh-vi-cong-dan-to-chuc"
+  ]
 }

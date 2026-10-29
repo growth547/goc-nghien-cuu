@@ -15,10 +15,26 @@
       "definition": "Mức độ hệ thống dễ dùng, dễ điều hướng, có cấu trúc tốt và giúp người dùng tìm được thứ cần tìm.",
       "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
       "items": [
-        { "code": "SysQ1", "en": "The [e-learning system] is easy to navigate.", "vi": "[Hệ thống] dễ điều hướng." },
-        { "code": "SysQ2", "en": "The [e-learning system] allows me to easily find the information I am looking for.", "vi": "[Hệ thống] giúp tôi dễ dàng tìm được thông tin mình cần." },
-        { "code": "SysQ3", "en": "The [e-learning system] is well structured.", "vi": "[Hệ thống] được tổ chức có cấu trúc tốt." },
-        { "code": "SysQ4", "en": "The [e-learning system] is easy to use.", "vi": "[Hệ thống] dễ sử dụng." }
+        {
+          "code": "SysQ1",
+          "en": "The [e-learning system] is easy to navigate.",
+          "vi": "[Hệ thống] dễ điều hướng."
+        },
+        {
+          "code": "SysQ2",
+          "en": "The [e-learning system] allows me to easily find the information I am looking for.",
+          "vi": "[Hệ thống] giúp tôi dễ dàng tìm được thông tin mình cần."
+        },
+        {
+          "code": "SysQ3",
+          "en": "The [e-learning system] is well structured.",
+          "vi": "[Hệ thống] có cấu trúc tốt."
+        },
+        {
+          "code": "SysQ4",
+          "en": "The [e-learning system] is easy to use.",
+          "vi": "[Hệ thống] dễ sử dụng."
+        }
       ]
     },
     {
@@ -28,10 +44,26 @@
       "definition": "Mức độ thông tin mà hệ thống cung cấp hữu ích, dễ hiểu, thú vị và đáng tin cậy.",
       "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
       "items": [
-        { "code": "IQ1", "en": "The information provided by the [e-learning system] is useful.", "vi": "Thông tin do [hệ thống] cung cấp là hữu ích." },
-        { "code": "IQ2", "en": "The information provided by the [e-learning system] understandable.", "vi": "Thông tin do [hệ thống] cung cấp dễ hiểu." },
-        { "code": "IQ3", "en": "The information provided by the [e-learning system] is interesting.", "vi": "Thông tin do [hệ thống] cung cấp là thú vị." },
-        { "code": "IQ4", "en": "The information provided by the [e-learning system] is reliable.", "vi": "Thông tin do [hệ thống] cung cấp là đáng tin cậy." }
+        {
+          "code": "IQ1",
+          "en": "The information provided by the [e-learning system] is useful.",
+          "vi": "Thông tin do [hệ thống] cung cấp là hữu ích."
+        },
+        {
+          "code": "IQ2",
+          "en": "The information provided by the [e-learning system] understandable.",
+          "vi": "Thông tin do [hệ thống] cung cấp dễ hiểu."
+        },
+        {
+          "code": "IQ3",
+          "en": "The information provided by the [e-learning system] is interesting.",
+          "vi": "Thông tin do [hệ thống] cung cấp là thú vị."
+        },
+        {
+          "code": "IQ4",
+          "en": "The information provided by the [e-learning system] is reliable.",
+          "vi": "Thông tin do [hệ thống] cung cấp là đáng tin cậy."
+        }
       ]
     },
     {
@@ -41,10 +73,26 @@
       "definition": "Mức độ bộ phận hỗ trợ của hệ thống sẵn lòng giúp đỡ, quan tâm tới từng người dùng, đúng hẹn và đủ kiến thức.",
       "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
       "items": [
-        { "code": "SerQ1", "en": "The responsible service personnel are always highly willing to help whenever I need support with the [e-learning system].", "vi": "Nhân viên phụ trách luôn rất sẵn lòng giúp đỡ mỗi khi tôi cần hỗ trợ về [hệ thống]." },
-        { "code": "SerQ2", "en": "The responsible service personnel provide personal attention when I experience problems with the [e-learning system].", "vi": "Nhân viên phụ trách quan tâm tới riêng tôi khi tôi gặp sự cố với [hệ thống]." },
-        { "code": "SerQ3", "en": "The responsible service personnel provide services related to the [e-learning system] at the promised time.", "vi": "Nhân viên phụ trách cung cấp các dịch vụ liên quan tới [hệ thống] đúng thời gian đã hứa." },
-        { "code": "SerQ4", "en": "The responsible service personnel have sufficient knowledge to answer my questions in respect of the [e-learning system].", "vi": "Nhân viên phụ trách có đủ kiến thức để trả lời các câu hỏi của tôi về [hệ thống]." }
+        {
+          "code": "SerQ1",
+          "en": "The responsible service personnel are always highly willing to help whenever I need support with the [e-learning system].",
+          "vi": "Nhân viên phụ trách luôn rất sẵn lòng giúp đỡ mỗi khi tôi cần hỗ trợ về [hệ thống]."
+        },
+        {
+          "code": "SerQ2",
+          "en": "The responsible service personnel provide personal attention when I experience problems with the [e-learning system].",
+          "vi": "Nhân viên phụ trách dành sự quan tâm riêng cho tôi khi tôi gặp sự cố với [hệ thống]."
+        },
+        {
+          "code": "SerQ3",
+          "en": "The responsible service personnel provide services related to the [e-learning system] at the promised time.",
+          "vi": "Nhân viên phụ trách cung cấp các dịch vụ liên quan tới [hệ thống] đúng thời gian đã hứa."
+        },
+        {
+          "code": "SerQ4",
+          "en": "The responsible service personnel have sufficient knowledge to answer my questions in respect of the [e-learning system].",
+          "vi": "Nhân viên phụ trách có đủ kiến thức để trả lời các câu hỏi của tôi về [hệ thống]."
+        }
       ]
     },
     {
@@ -54,10 +102,26 @@
       "definition": "Mức độ người dùng thấy hệ thống đáp ứng tốt, hiệu quả cho công việc của mình và hài lòng với hệ thống nói chung.",
       "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
       "items": [
-        { "code": "US1", "en": "How adequately does the [e-learning system] support your area of study?", "vi": "[Hệ thống] hỗ trợ lĩnh vực học tập của bạn đầy đủ đến mức nào?" },
-        { "code": "US2", "en": "How efficient is the [e-learning system]?", "vi": "[Hệ thống] hoạt động hiệu quả đến mức nào?" },
-        { "code": "US3", "en": "How effective is the [e-learning system]?", "vi": "[Hệ thống] mang lại kết quả tốt đến mức nào?" },
-        { "code": "US4", "en": "Are you satisfied with the [e-learning system] on the whole?", "vi": "Nhìn chung, bạn có hài lòng với [hệ thống] không?" }
+        {
+          "code": "US1",
+          "en": "How adequately does the [e-learning system] support your area of study?",
+          "vi": "[Hệ thống] hỗ trợ lĩnh vực học tập của bạn đầy đủ đến mức nào?"
+        },
+        {
+          "code": "US2",
+          "en": "How efficient is the [e-learning system]?",
+          "vi": "[Hệ thống] hoạt động hiệu quả đến mức nào?"
+        },
+        {
+          "code": "US3",
+          "en": "How effective is the [e-learning system]?",
+          "vi": "[Hệ thống] mang lại kết quả tốt đến mức nào?"
+        },
+        {
+          "code": "US4",
+          "en": "Are you satisfied with the [e-learning system] on the whole?",
+          "vi": "Nhìn chung, bạn có hài lòng với [hệ thống] không?"
+        }
       ]
     }
   ],
@@ -81,5 +145,9 @@
   "verifiedFrom": [
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7753911/fullTextXML"
   ],
-  "related": ["tam", "ecm-tiep-tuc-su-dung", "servqual"]
+  "related": [
+    "tam",
+    "ecm-tiep-tuc-su-dung",
+    "servqual"
+  ]
 }

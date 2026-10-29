@@ -15,13 +15,41 @@
       "definition": "Chất lượng mối quan hệ làm việc giữa một nhân viên và cấp trên trực tiếp, thể hiện qua sự thấu hiểu, tin cậy và sẵn lòng hỗ trợ.",
       "source": "Graen & Uhl-Bien (1995), LMX-7, 7 biến, bản dành cho nhân viên trả lời về cấp trên.",
       "items": [
-        { "code": "LMX1", "en": "Do you know where you stand with your leader. Do you usually know how satisfied your leader is with what you do?", "vi": "Anh/chị có biết vị trí của mình trong mắt [quản lý] không? Anh/chị có thường biết [quản lý] hài lòng thế nào với những gì anh/chị làm không?" },
-        { "code": "LMX2", "en": "How well does your leader understand your job problems and needs?", "vi": "[Quản lý] hiểu những khó khăn và nhu cầu trong công việc của anh/chị ở mức nào?" },
-        { "code": "LMX3", "en": "How well does your leader recognize your potential?", "vi": "[Quản lý] nhận ra tiềm năng của anh/chị ở mức nào?" },
-        { "code": "LMX4", "en": "Regardless of how much formal authority he/she has built into his/her position, what are the chances that your leader would use his/her power to help you solve problems in your work?", "vi": "Bất kể quyền hạn chính thức của vị trí [quản lý] lớn hay nhỏ, khả năng [quản lý] dùng quyền của mình để giúp anh/chị giải quyết vấn đề trong công việc là bao nhiêu?" },
-        { "code": "LMX5", "en": "Again, regardless of the amount of formal authority your leader has, what are the chances that he/she would “bail you out,” at his/her expense?", "vi": "Cũng bất kể quyền hạn chính thức của [quản lý], khả năng [quản lý] chịu thiệt về mình để gỡ rối cho anh/chị là bao nhiêu?" },
-        { "code": "LMX6", "en": "I have enough confidence in my leader that I would defend and justify his/her decision if he/she were not present to do so.", "vi": "Tôi đủ tin tưởng [quản lý] để bảo vệ và giải thích quyết định của [quản lý] khi [quản lý] không có mặt." },
-        { "code": "LMX7", "en": "How would you characterize your working relationship with your leader?", "vi": "Anh/chị đánh giá thế nào về mối quan hệ làm việc giữa mình và [quản lý]?" }
+        {
+          "code": "LMX1",
+          "en": "Do you know where you stand with your leader. Do you usually know how satisfied your leader is with what you do?",
+          "vi": "Anh/chị có biết vị trí của mình trong mắt [quản lý] không? Anh/chị có thường biết [quản lý] hài lòng thế nào với những gì anh/chị làm không?"
+        },
+        {
+          "code": "LMX2",
+          "en": "How well does your leader understand your job problems and needs?",
+          "vi": "[Quản lý] hiểu những khó khăn và nhu cầu trong công việc của anh/chị ở mức nào?"
+        },
+        {
+          "code": "LMX3",
+          "en": "How well does your leader recognize your potential?",
+          "vi": "[Quản lý] nhận ra tiềm năng của anh/chị ở mức nào?"
+        },
+        {
+          "code": "LMX4",
+          "en": "Regardless of how much formal authority he/she has built into his/her position, what are the chances that your leader would use his/her power to help you solve problems in your work?",
+          "vi": "Bất kể quyền hạn chính thức của vị trí [quản lý] lớn hay nhỏ, khả năng [quản lý] dùng quyền của mình để giúp anh/chị giải quyết vấn đề trong công việc là bao nhiêu?"
+        },
+        {
+          "code": "LMX5",
+          "en": "Again, regardless of the amount of formal authority your leader has, what are the chances that he/she would “bail you out,” at his/her expense?",
+          "vi": "Cũng bất kể quyền hạn chính thức của [quản lý], khả năng [quản lý] chịu thiệt về mình để gỡ rối cho anh/chị là bao nhiêu?"
+        },
+        {
+          "code": "LMX6",
+          "en": "I have enough confidence in my leader that I would defend and justify his/her decision if he/she were not present to do so.",
+          "vi": "Tôi đủ tin tưởng [quản lý] để đứng ra bảo vệ và giải thích các quyết định của người đó khi người đó vắng mặt."
+        },
+        {
+          "code": "LMX7",
+          "en": "How would you characterize your working relationship with your leader?",
+          "vi": "Anh/chị đánh giá thế nào về mối quan hệ làm việc giữa mình và [quản lý]?"
+        }
       ]
     }
   ],
@@ -45,5 +73,9 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13050726/fullTextXML",
     "https://api.crossref.org/works/10.1016/1048-9843(95)90036-5"
   ],
-  "related": ["ho-tro-to-chuc-pos", "y-dinh-nghi-viec", "hanh-vi-cong-dan-to-chuc"]
+  "related": [
+    "ho-tro-to-chuc-pos",
+    "y-dinh-nghi-viec",
+    "hanh-vi-cong-dan-to-chuc"
+  ]
 }

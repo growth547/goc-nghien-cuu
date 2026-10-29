@@ -15,10 +15,26 @@
       "definition": "Cơ sở vật chất, trang thiết bị và diện mạo của nhân viên.",
       "source": "Parasuraman, Zeithaml & Berry (1988), 4 biến (P1–P4).",
       "items": [
-        { "code": "P1", "en": "XYZ has up-to-date equipment.", "vi": "[Công ty] có trang thiết bị hiện đại." },
-        { "code": "P2", "en": "XYZ's physical facilities are visually appealing.", "vi": "Cơ sở vật chất của [công ty] trông hấp dẫn." },
-        { "code": "P3", "en": "XYZ's employees are well dressed and appear neat.", "vi": "Nhân viên của [công ty] ăn mặc đẹp và trông gọn gàng." },
-        { "code": "P4", "en": "The appearance of the physical facilities of XYZ is in keeping with the type of services provided.", "vi": "Diện mạo cơ sở vật chất của [công ty] phù hợp với loại dịch vụ được cung cấp." }
+        {
+          "code": "P1",
+          "en": "XYZ has up-to-date equipment.",
+          "vi": "[Công ty] có trang thiết bị hiện đại."
+        },
+        {
+          "code": "P2",
+          "en": "XYZ's physical facilities are visually appealing.",
+          "vi": "Cơ sở vật chất của [công ty] trông bắt mắt."
+        },
+        {
+          "code": "P3",
+          "en": "XYZ's employees are well dressed and appear neat.",
+          "vi": "Nhân viên của [công ty] ăn mặc chỉn chu, gọn gàng."
+        },
+        {
+          "code": "P4",
+          "en": "The appearance of the physical facilities of XYZ is in keeping with the type of services provided.",
+          "vi": "Diện mạo cơ sở vật chất của [công ty] phù hợp với loại dịch vụ được cung cấp."
+        }
       ]
     },
     {
@@ -28,11 +44,31 @@
       "definition": "Khả năng thực hiện dịch vụ đã hứa một cách đáng tin cậy và chính xác.",
       "source": "Parasuraman, Zeithaml & Berry (1988), 5 biến (P5–P9).",
       "items": [
-        { "code": "P5", "en": "When XYZ promises to do something by a certain time, it does so.", "vi": "Khi [công ty] hứa làm điều gì vào một thời điểm nhất định, họ làm đúng như vậy." },
-        { "code": "P6", "en": "When you have problems, XYZ is sympathetic and reassuring.", "vi": "Khi bạn gặp vấn đề, [công ty] tỏ ra thông cảm và giúp bạn yên tâm." },
-        { "code": "P7", "en": "XYZ is dependable.", "vi": "[Công ty] là nơi đáng tin cậy." },
-        { "code": "P8", "en": "XYZ provides its services at the time it promises to do so.", "vi": "[Công ty] cung cấp dịch vụ đúng thời điểm đã hứa." },
-        { "code": "P9", "en": "XYZ keeps its records accurately.", "vi": "[Công ty] lưu giữ hồ sơ một cách chính xác." }
+        {
+          "code": "P5",
+          "en": "When XYZ promises to do something by a certain time, it does so.",
+          "vi": "Khi [công ty] hứa làm điều gì vào một thời điểm nhất định, họ làm đúng như vậy."
+        },
+        {
+          "code": "P6",
+          "en": "When you have problems, XYZ is sympathetic and reassuring.",
+          "vi": "Khi bạn gặp vấn đề, [công ty] tỏ ra thông cảm và giúp bạn yên tâm."
+        },
+        {
+          "code": "P7",
+          "en": "XYZ is dependable.",
+          "vi": "[Công ty] là nơi đáng tin cậy."
+        },
+        {
+          "code": "P8",
+          "en": "XYZ provides its services at the time it promises to do so.",
+          "vi": "[Công ty] cung cấp dịch vụ đúng thời điểm đã hứa."
+        },
+        {
+          "code": "P9",
+          "en": "XYZ keeps its records accurately.",
+          "vi": "[Công ty] lưu giữ hồ sơ một cách chính xác."
+        }
       ]
     },
     {
@@ -42,10 +78,30 @@
       "definition": "Sự sẵn lòng giúp đỡ khách hàng và cung cấp dịch vụ nhanh chóng.",
       "source": "Parasuraman, Zeithaml & Berry (1988), 4 biến (P10–P13), cả 4 câu đều đảo chiều.",
       "items": [
-        { "code": "P10", "en": "XYZ does not tell customers exactly when services will be performed.", "vi": "[Công ty] không cho khách hàng biết chính xác khi nào dịch vụ sẽ được thực hiện.", "reverse": true },
-        { "code": "P11", "en": "You do not receive prompt service from XYZ's employees.", "vi": "Bạn không được nhân viên của [công ty] phục vụ nhanh chóng.", "reverse": true },
-        { "code": "P12", "en": "Employees of XYZ are not always willing to help customers.", "vi": "Nhân viên của [công ty] không phải lúc nào cũng sẵn lòng giúp đỡ khách hàng.", "reverse": true },
-        { "code": "P13", "en": "Employees of XYZ are too busy to respond to customer requests promptly.", "vi": "Nhân viên của [công ty] quá bận nên không đáp ứng kịp thời yêu cầu của khách hàng.", "reverse": true }
+        {
+          "code": "P10",
+          "en": "XYZ does not tell customers exactly when services will be performed.",
+          "vi": "[Công ty] không cho khách hàng biết chính xác khi nào dịch vụ sẽ được thực hiện.",
+          "reverse": true
+        },
+        {
+          "code": "P11",
+          "en": "You do not receive prompt service from XYZ's employees.",
+          "vi": "Bạn không được nhân viên của [công ty] phục vụ nhanh chóng.",
+          "reverse": true
+        },
+        {
+          "code": "P12",
+          "en": "Employees of XYZ are not always willing to help customers.",
+          "vi": "Nhân viên của [công ty] không phải lúc nào cũng sẵn lòng giúp đỡ khách hàng.",
+          "reverse": true
+        },
+        {
+          "code": "P13",
+          "en": "Employees of XYZ are too busy to respond to customer requests promptly.",
+          "vi": "Nhân viên của [công ty] quá bận nên không đáp ứng kịp thời yêu cầu của khách hàng.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -55,10 +111,26 @@
       "definition": "Kiến thức, sự lịch sự của nhân viên và khả năng tạo niềm tin, sự tin tưởng cho khách hàng.",
       "source": "Parasuraman, Zeithaml & Berry (1988), 4 biến (P14–P17).",
       "items": [
-        { "code": "P14", "en": "You can trust employees of XYZ.", "vi": "Bạn có thể tin tưởng nhân viên của [công ty]." },
-        { "code": "P15", "en": "You feel safe in your transactions with XYZ's employees.", "vi": "Bạn cảm thấy an toàn khi giao dịch với nhân viên của [công ty]." },
-        { "code": "P16", "en": "Employees of XYZ are polite.", "vi": "Nhân viên của [công ty] lịch sự." },
-        { "code": "P17", "en": "Employees get adequate support from XYZ to do their jobs well.", "vi": "Nhân viên được [công ty] hỗ trợ đầy đủ để làm tốt công việc của mình." }
+        {
+          "code": "P14",
+          "en": "You can trust employees of XYZ.",
+          "vi": "Bạn có thể tin tưởng nhân viên của [công ty]."
+        },
+        {
+          "code": "P15",
+          "en": "You feel safe in your transactions with XYZ's employees.",
+          "vi": "Bạn cảm thấy an toàn khi giao dịch với nhân viên của [công ty]."
+        },
+        {
+          "code": "P16",
+          "en": "Employees of XYZ are polite.",
+          "vi": "Nhân viên của [công ty] lịch sự."
+        },
+        {
+          "code": "P17",
+          "en": "Employees get adequate support from XYZ to do their jobs well.",
+          "vi": "Nhân viên được [công ty] hỗ trợ đầy đủ để làm tốt công việc của mình."
+        }
       ]
     },
     {
@@ -68,11 +140,36 @@
       "definition": "Sự quan tâm, chăm sóc riêng đến từng khách hàng mà doanh nghiệp dành cho khách hàng.",
       "source": "Parasuraman, Zeithaml & Berry (1988), 5 biến (P18–P22), cả 5 câu đều đảo chiều.",
       "items": [
-        { "code": "P18", "en": "XYZ does not give you individual attention.", "vi": "[Công ty] không dành sự quan tâm đến cá nhân bạn.", "reverse": true },
-        { "code": "P19", "en": "Employees of XYZ do not give you personal attention.", "vi": "Nhân viên của [công ty] không quan tâm đến riêng bạn.", "reverse": true },
-        { "code": "P20", "en": "Employees of XYZ do not know what your needs are.", "vi": "Nhân viên của [công ty] không biết nhu cầu của bạn là gì.", "reverse": true },
-        { "code": "P21", "en": "XYZ does not have your best interests at heart.", "vi": "[Công ty] không thật lòng đặt lợi ích của bạn lên hàng đầu.", "reverse": true },
-        { "code": "P22", "en": "XYZ does not have operating hours convenient to all their customers.", "vi": "[Công ty] không có giờ hoạt động thuận tiện cho tất cả khách hàng.", "reverse": true }
+        {
+          "code": "P18",
+          "en": "XYZ does not give you individual attention.",
+          "vi": "[Công ty] không dành sự quan tâm đến cá nhân bạn.",
+          "reverse": true
+        },
+        {
+          "code": "P19",
+          "en": "Employees of XYZ do not give you personal attention.",
+          "vi": "Nhân viên của [công ty] không quan tâm đến riêng bạn.",
+          "reverse": true
+        },
+        {
+          "code": "P20",
+          "en": "Employees of XYZ do not know what your needs are.",
+          "vi": "Nhân viên của [công ty] không biết nhu cầu của bạn là gì.",
+          "reverse": true
+        },
+        {
+          "code": "P21",
+          "en": "XYZ does not have your best interests at heart.",
+          "vi": "[Công ty] không thật lòng đặt lợi ích của bạn lên hàng đầu.",
+          "reverse": true
+        },
+        {
+          "code": "P22",
+          "en": "XYZ does not have operating hours convenient to all their customers.",
+          "vi": "[Công ty] không có giờ hoạt động thuận tiện cho tất cả khách hàng.",
+          "reverse": true
+        }
       ]
     }
   ],
@@ -94,5 +191,8 @@
     "https://zenodo.org/records/14579730",
     "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
   ],
-  "related": ["servperf", "y-dinh-hanh-vi-khach-hang"]
+  "related": [
+    "servperf",
+    "y-dinh-hanh-vi-khach-hang"
+  ]
 }

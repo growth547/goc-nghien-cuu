@@ -18,22 +18,22 @@
         {
           "code": "BT1",
           "en": "I trust this brand.",
-          "vi": "Tôi tin tưởng [thương hiệu] này."
+          "vi": "Tôi tin tưởng [thương hiệu]."
         },
         {
           "code": "BT2",
           "en": "I rely on this brand.",
-          "vi": "Tôi trông cậy vào [thương hiệu] này."
+          "vi": "Tôi có thể trông cậy vào [thương hiệu]."
         },
         {
           "code": "BT3",
           "en": "This is an honest brand.",
-          "vi": "Đây là một thương hiệu trung thực."
+          "vi": "[Thương hiệu] là một thương hiệu trung thực."
         },
         {
           "code": "BT4",
           "en": "This brand is safe.",
-          "vi": "[Thương hiệu] này an toàn."
+          "vi": "[Thương hiệu] là một thương hiệu an toàn."
         }
       ]
     },
@@ -47,17 +47,17 @@
         {
           "code": "BA1",
           "en": "I feel good when I use this brand.",
-          "vi": "Tôi cảm thấy dễ chịu khi dùng [thương hiệu] này."
+          "vi": "Tôi cảm thấy dễ chịu khi dùng [thương hiệu]."
         },
         {
           "code": "BA2",
           "en": "This brand makes me happy.",
-          "vi": "[Thương hiệu] này làm tôi vui."
+          "vi": "[Thương hiệu] làm tôi vui."
         },
         {
           "code": "BA3",
           "en": "This brand gives me pleasure.",
-          "vi": "[Thương hiệu] này mang lại cho tôi niềm thích thú."
+          "vi": "[Thương hiệu] mang lại cho tôi niềm thích thú."
         }
       ]
     },
@@ -71,12 +71,12 @@
         {
           "code": "PL1",
           "en": "I will buy this brand the next time I buy [product name].",
-          "vi": "Lần tới khi mua [sản phẩm], tôi sẽ mua [thương hiệu] này."
+          "vi": "Lần tới khi mua [sản phẩm], tôi sẽ mua [thương hiệu]."
         },
         {
           "code": "PL2",
           "en": "I intend to keep purchasing this brand.",
-          "vi": "Tôi dự định tiếp tục mua [thương hiệu] này."
+          "vi": "Tôi dự định tiếp tục mua [thương hiệu]."
         }
       ]
     },
@@ -90,12 +90,12 @@
         {
           "code": "AL1",
           "en": "I am committed to this brand.",
-          "vi": "Tôi gắn bó với [thương hiệu] này."
+          "vi": "Tôi gắn bó với [thương hiệu]."
         },
         {
           "code": "AL2",
           "en": "I would be willing to pay a higher price for this brand over other brands.",
-          "vi": "Tôi sẵn lòng trả giá cao hơn cho [thương hiệu] này so với các thương hiệu khác."
+          "vi": "Tôi sẵn lòng trả giá cao hơn cho [thương hiệu] so với các thương hiệu khác."
         }
       ]
     }

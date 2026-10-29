@@ -15,16 +15,61 @@
       "definition": "Thái độ tích cực hoặc tiêu cực chung của một người đối với bản thân, mức độ họ thấy mình có giá trị.",
       "source": "Rosenberg (1965), 10 biến.",
       "items": [
-        { "code": "RSE1", "en": "On the whole, I am satisfied with myself.", "vi": "Nhìn chung, tôi hài lòng với bản thân." },
-        { "code": "RSE2", "en": "At times, I think I am no good at all.", "vi": "Đôi khi tôi nghĩ mình chẳng ra gì cả.", "reverse": true },
-        { "code": "RSE3", "en": "I feel that I have a number of good qualities.", "vi": "Tôi thấy mình có nhiều phẩm chất tốt." },
-        { "code": "RSE4", "en": "I am able to do things as well as most other people.", "vi": "Tôi có thể làm mọi việc tốt như phần lớn những người khác." },
-        { "code": "RSE5", "en": "I feel I do not have much to be proud of.", "vi": "Tôi thấy mình không có nhiều điều để tự hào.", "reverse": true },
-        { "code": "RSE6", "en": "I certainly feel useless at times.", "vi": "Có những lúc tôi thực sự thấy mình vô dụng.", "reverse": true },
-        { "code": "RSE7", "en": "I feel that I'm a person of worth, at least on an equal plane with others.", "vi": "Tôi thấy mình là người có giá trị, ít nhất là ngang bằng với người khác." },
-        { "code": "RSE8", "en": "I wish I could have more respect for myself.", "vi": "Tôi ước mình có thể tôn trọng bản thân nhiều hơn.", "reverse": true },
-        { "code": "RSE9", "en": "All in all, I am inclined to feel that I am a failure.", "vi": "Nói chung, tôi có xu hướng cảm thấy mình là người thất bại.", "reverse": true },
-        { "code": "RSE10", "en": "I take a positive attitude toward myself.", "vi": "Tôi có thái độ tích cực với bản thân." }
+        {
+          "code": "RSE1",
+          "en": "On the whole, I am satisfied with myself.",
+          "vi": "Nhìn chung, tôi hài lòng với bản thân."
+        },
+        {
+          "code": "RSE2",
+          "en": "At times, I think I am no good at all.",
+          "vi": "Đôi khi tôi nghĩ mình chẳng ra gì cả.",
+          "reverse": true
+        },
+        {
+          "code": "RSE3",
+          "en": "I feel that I have a number of good qualities.",
+          "vi": "Tôi thấy mình có một số phẩm chất tốt."
+        },
+        {
+          "code": "RSE4",
+          "en": "I am able to do things as well as most other people.",
+          "vi": "Tôi có thể làm mọi việc tốt như phần lớn những người khác."
+        },
+        {
+          "code": "RSE5",
+          "en": "I feel I do not have much to be proud of.",
+          "vi": "Tôi thấy mình không có nhiều điều để tự hào.",
+          "reverse": true
+        },
+        {
+          "code": "RSE6",
+          "en": "I certainly feel useless at times.",
+          "vi": "Có những lúc tôi thực sự thấy mình vô dụng.",
+          "reverse": true
+        },
+        {
+          "code": "RSE7",
+          "en": "I feel that I'm a person of worth, at least on an equal plane with others.",
+          "vi": "Tôi thấy mình là người có giá trị, ít nhất là ngang bằng với người khác."
+        },
+        {
+          "code": "RSE8",
+          "en": "I wish I could have more respect for myself.",
+          "vi": "Tôi ước mình có thể tôn trọng bản thân nhiều hơn.",
+          "reverse": true
+        },
+        {
+          "code": "RSE9",
+          "en": "All in all, I am inclined to feel that I am a failure.",
+          "vi": "Nói chung, tôi có xu hướng cảm thấy mình là người thất bại.",
+          "reverse": true
+        },
+        {
+          "code": "RSE10",
+          "en": "I take a positive attitude toward myself.",
+          "vi": "Tôi có thái độ tích cực với bản thân."
+        }
       ]
     }
   ],
@@ -45,5 +90,9 @@
     "https://www.ewi-psy.fu-berlin.de/psychologie/arbeitsbereiche/arbpsych/media/lehre/ss08/12736/rosenberg_self_esteem_scale.pdf",
     "https://www.psytoolkit.org/survey-library/self-esteem-rosenberg.html"
   ],
-  "related": ["tu-hieu-qua-gse", "hai-long-cuoc-song-swls", "tinh-cach-bfi-10"]
+  "related": [
+    "tu-hieu-qua-gse",
+    "hai-long-cuoc-song-swls",
+    "tinh-cach-bfi-10"
+  ]
 }

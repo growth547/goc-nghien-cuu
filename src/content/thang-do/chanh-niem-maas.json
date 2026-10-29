@@ -15,21 +15,81 @@
       "definition": "Mức độ một người cởi mở chú ý và nhận biết những gì đang diễn ra trong hiện tại, cả bên trong lẫn bên ngoài bản thân.",
       "source": "Brown & Ryan (2003), 15 biến.",
       "items": [
-        { "code": "MAAS1", "en": "I could be experiencing some emotion and not be conscious of it until some time later.", "vi": "Tôi có thể đang trải qua một cảm xúc nào đó mà mãi một lúc sau mới nhận ra." },
-        { "code": "MAAS2", "en": "I break or spill things because of carelessness, not paying attention, or thinking of something else.", "vi": "Tôi làm vỡ hoặc làm đổ đồ vì bất cẩn, không chú ý hoặc đang nghĩ chuyện khác." },
-        { "code": "MAAS3", "en": "I find it difficult to stay focused on what's happening in the present.", "vi": "Tôi thấy khó tập trung vào những gì đang diễn ra ở hiện tại." },
-        { "code": "MAAS4", "en": "I tend to walk quickly to get where I'm going without paying attention to what I experience along the way.", "vi": "Tôi thường đi vội tới nơi cần đến mà không để ý tới những gì mình trải qua trên đường." },
-        { "code": "MAAS5", "en": "I tend not to notice feelings of physical tension or discomfort until they really grab my attention.", "vi": "Tôi thường không để ý tới cảm giác căng cứng hay khó chịu trong cơ thể cho tới khi chúng thực sự khiến tôi phải chú ý." },
-        { "code": "MAAS6", "en": "I forget a person's name almost as soon as I've been told it for the first time.", "vi": "Tôi quên tên một người gần như ngay sau khi được nghe lần đầu." },
-        { "code": "MAAS7", "en": "It seems I am \"running on automatic,\" without much awareness of what I'm doing.", "vi": "Dường như tôi đang \"chạy chế độ tự động\", không mấy nhận biết mình đang làm gì." },
-        { "code": "MAAS8", "en": "I rush through activities without being really attentive to them.", "vi": "Tôi làm vội các việc mà không thực sự chú tâm vào chúng." },
-        { "code": "MAAS9", "en": "I get so focused on the goal I want to achieve that I lose touch with what I'm doing right now to get there.", "vi": "Tôi tập trung vào mục tiêu muốn đạt tới đến mức không còn để ý mình đang làm gì lúc này để đạt được nó." },
-        { "code": "MAAS10", "en": "I do jobs or tasks automatically, without being aware of what I'm doing.", "vi": "Tôi làm các công việc một cách tự động, không nhận biết mình đang làm gì." },
-        { "code": "MAAS11", "en": "I find myself listening to someone with one ear, doing something else at the same time.", "vi": "Tôi thấy mình nghe người khác nói một cách nửa vời trong khi đang làm việc khác." },
-        { "code": "MAAS12", "en": "I drive places on \"automatic pilot\" and then wonder why I went there.", "vi": "Tôi lái xe đi đâu đó theo \"chế độ lái tự động\" rồi tự hỏi sao mình lại đến đó." },
-        { "code": "MAAS13", "en": "I find myself preoccupied with the future or the past.", "vi": "Tôi thấy mình bận tâm về tương lai hoặc quá khứ." },
-        { "code": "MAAS14", "en": "I find myself doing things without paying attention.", "vi": "Tôi thấy mình làm việc gì đó mà không để tâm." },
-        { "code": "MAAS15", "en": "I snack without being aware that I'm eating.", "vi": "Tôi ăn vặt mà không nhận biết là mình đang ăn." }
+        {
+          "code": "MAAS1",
+          "en": "I could be experiencing some emotion and not be conscious of it until some time later.",
+          "vi": "Tôi có thể đang trải qua một cảm xúc nào đó mà mãi một lúc sau mới nhận ra."
+        },
+        {
+          "code": "MAAS2",
+          "en": "I break or spill things because of carelessness, not paying attention, or thinking of something else.",
+          "vi": "Tôi làm vỡ hoặc làm đổ đồ vì bất cẩn, không chú ý hoặc đang nghĩ chuyện khác."
+        },
+        {
+          "code": "MAAS3",
+          "en": "I find it difficult to stay focused on what's happening in the present.",
+          "vi": "Tôi thấy khó tập trung vào những gì đang diễn ra ở hiện tại."
+        },
+        {
+          "code": "MAAS4",
+          "en": "I tend to walk quickly to get where I'm going without paying attention to what I experience along the way.",
+          "vi": "Tôi thường đi vội tới nơi cần đến mà không để ý tới những gì mình trải qua trên đường."
+        },
+        {
+          "code": "MAAS5",
+          "en": "I tend not to notice feelings of physical tension or discomfort until they really grab my attention.",
+          "vi": "Tôi thường không để ý tới cảm giác căng cứng hay khó chịu trong cơ thể cho tới khi chúng thực sự khiến tôi phải chú ý."
+        },
+        {
+          "code": "MAAS6",
+          "en": "I forget a person's name almost as soon as I've been told it for the first time.",
+          "vi": "Tôi quên tên một người gần như ngay sau khi được nghe lần đầu."
+        },
+        {
+          "code": "MAAS7",
+          "en": "It seems I am \"running on automatic,\" without much awareness of what I'm doing.",
+          "vi": "Dường như tôi đang \"chạy chế độ tự động\", không mấy nhận biết mình đang làm gì."
+        },
+        {
+          "code": "MAAS8",
+          "en": "I rush through activities without being really attentive to them.",
+          "vi": "Tôi làm vội các việc mà không thực sự chú tâm vào chúng."
+        },
+        {
+          "code": "MAAS9",
+          "en": "I get so focused on the goal I want to achieve that I lose touch with what I'm doing right now to get there.",
+          "vi": "Tôi tập trung vào mục tiêu muốn đạt tới đến mức không còn để ý mình đang làm gì lúc này để đạt được nó."
+        },
+        {
+          "code": "MAAS10",
+          "en": "I do jobs or tasks automatically, without being aware of what I'm doing.",
+          "vi": "Tôi làm các công việc một cách tự động, không nhận biết mình đang làm gì."
+        },
+        {
+          "code": "MAAS11",
+          "en": "I find myself listening to someone with one ear, doing something else at the same time.",
+          "vi": "Tôi thấy mình nghe người khác nói một cách nửa vời trong khi đang làm việc khác."
+        },
+        {
+          "code": "MAAS12",
+          "en": "I drive places on \"automatic pilot\" and then wonder why I went there.",
+          "vi": "Tôi đi xe tới một nơi nào đó như theo \"chế độ tự động\" rồi mới tự hỏi sao mình lại đến đó."
+        },
+        {
+          "code": "MAAS13",
+          "en": "I find myself preoccupied with the future or the past.",
+          "vi": "Tôi thấy mình bận tâm về tương lai hoặc quá khứ."
+        },
+        {
+          "code": "MAAS14",
+          "en": "I find myself doing things without paying attention.",
+          "vi": "Tôi thấy mình làm việc gì đó mà không để tâm."
+        },
+        {
+          "code": "MAAS15",
+          "en": "I snack without being aware that I'm eating.",
+          "vi": "Tôi ăn vặt mà không nhận biết là mình đang ăn."
+        }
       ]
     }
   ],
@@ -51,5 +111,9 @@
     "https://ppc.sas.upenn.edu/node/214",
     "https://selfdeterminationtheory.org/mindfulness-attention-awareness/"
   ],
-  "related": ["cang-thang-pss-10", "hai-long-cuoc-song-swls", "tinh-cach-bfi-10"]
+  "related": [
+    "cang-thang-pss-10",
+    "hai-long-cuoc-song-swls",
+    "tinh-cach-bfi-10"
+  ]
 }

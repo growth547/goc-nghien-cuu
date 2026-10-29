@@ -15,13 +15,43 @@
       "definition": "Mức độ nhân viên thực hiện đầy đủ các nhiệm vụ, trách nhiệm được quy định chính thức trong công việc.",
       "source": "Williams & Anderson (1991), 7 biến.",
       "items": [
-        { "code": "IRB1", "en": "Adequately completes assigned duties", "vi": "[Nhân viên] hoàn thành đầy đủ các nhiệm vụ được giao." },
-        { "code": "IRB2", "en": "Fulfills responsibilities specified in job description", "vi": "[Nhân viên] thực hiện các trách nhiệm ghi trong bản mô tả công việc." },
-        { "code": "IRB3", "en": "Performs tasks that are expected of him", "vi": "[Nhân viên] làm những việc mà vị trí của mình được kỳ vọng phải làm." },
-        { "code": "IRB4", "en": "Meets formal performance requirements of the job", "vi": "[Nhân viên] đáp ứng các yêu cầu chính thức về kết quả công việc." },
-        { "code": "IRB5", "en": "Engages in activities that will directly affect his performance evaluation", "vi": "[Nhân viên] tham gia các hoạt động ảnh hưởng trực tiếp tới kết quả đánh giá công việc của mình." },
-        { "code": "IRB6", "en": "Neglects aspects of the job he is obligated to perform", "vi": "[Nhân viên] bỏ qua một số phần việc mà mình có nghĩa vụ phải làm.", "reverse": true },
-        { "code": "IRB7", "en": "Fails to perform essential duties", "vi": "[Nhân viên] không thực hiện được những nhiệm vụ thiết yếu.", "reverse": true }
+        {
+          "code": "IRB1",
+          "en": "Adequately completes assigned duties",
+          "vi": "[Nhân viên] hoàn thành đầy đủ các nhiệm vụ được giao."
+        },
+        {
+          "code": "IRB2",
+          "en": "Fulfills responsibilities specified in job description",
+          "vi": "[Nhân viên] thực hiện các trách nhiệm ghi trong bản mô tả công việc."
+        },
+        {
+          "code": "IRB3",
+          "en": "Performs tasks that are expected of him",
+          "vi": "[Nhân viên] làm những việc mà vị trí của mình được kỳ vọng phải làm."
+        },
+        {
+          "code": "IRB4",
+          "en": "Meets formal performance requirements of the job",
+          "vi": "[Nhân viên] đáp ứng các yêu cầu chính thức về kết quả công việc."
+        },
+        {
+          "code": "IRB5",
+          "en": "Engages in activities that will directly affect his performance evaluation",
+          "vi": "[Nhân viên] tham gia các hoạt động ảnh hưởng trực tiếp tới kết quả đánh giá công việc của mình."
+        },
+        {
+          "code": "IRB6",
+          "en": "Neglects aspects of the job he is obligated to perform",
+          "vi": "[Nhân viên] bỏ qua một số phần việc mà mình có nghĩa vụ phải làm.",
+          "reverse": true
+        },
+        {
+          "code": "IRB7",
+          "en": "Fails to perform essential duties",
+          "vi": "[Nhân viên] không hoàn thành những nhiệm vụ thiết yếu.",
+          "reverse": true
+        }
       ]
     }
   ],
@@ -45,5 +75,9 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11440434/fullTextXML",
     "https://api.crossref.org/works/10.1177/014920639101700305"
   ],
-  "related": ["hanh-vi-cong-dan-to-chuc", "gan-ket-cong-viec-uwes", "hai-long-cong-viec"]
+  "related": [
+    "hanh-vi-cong-dan-to-chuc",
+    "gan-ket-cong-viec-uwes",
+    "hai-long-cong-viec"
+  ]
 }

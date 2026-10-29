@@ -15,8 +15,17 @@
       "definition": "Xu hướng hoà đồng, năng động, thích giao tiếp và tìm kiếm sự kích thích từ người khác.",
       "source": "Rammstedt & John (2007), 2 biến (câu 1R, 6).",
       "items": [
-        { "code": "BFI1", "en": "I see myself as someone who is reserved.", "vi": "Tôi thấy mình là người dè dặt, kín đáo.", "reverse": true },
-        { "code": "BFI6", "en": "I see myself as someone who is outgoing, sociable.", "vi": "Tôi thấy mình là người cởi mở, hoà đồng." }
+        {
+          "code": "BFI1",
+          "en": "I see myself as someone who is reserved.",
+          "vi": "Tôi thấy mình là người dè dặt, kín đáo.",
+          "reverse": true
+        },
+        {
+          "code": "BFI6",
+          "en": "I see myself as someone who is outgoing, sociable.",
+          "vi": "Tôi thấy mình là người cởi mở, hoà đồng."
+        }
       ]
     },
     {
@@ -26,8 +35,17 @@
       "definition": "Xu hướng tin tưởng, hợp tác, vị tha và dễ hoà hợp với người khác.",
       "source": "Rammstedt & John (2007), 2 biến (câu 2, 7R).",
       "items": [
-        { "code": "BFI2", "en": "I see myself as someone who is generally trusting.", "vi": "Tôi thấy mình là người nhìn chung dễ tin người." },
-        { "code": "BFI7", "en": "I see myself as someone who tends to find fault with others.", "vi": "Tôi thấy mình là người hay bắt lỗi người khác.", "reverse": true }
+        {
+          "code": "BFI2",
+          "en": "I see myself as someone who is generally trusting.",
+          "vi": "Tôi thấy mình là người nhìn chung hay tin tưởng người khác."
+        },
+        {
+          "code": "BFI7",
+          "en": "I see myself as someone who tends to find fault with others.",
+          "vi": "Tôi thấy mình là người hay bắt lỗi người khác.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -37,8 +55,17 @@
       "definition": "Xu hướng có tổ chức, kỷ luật, chu đáo và kiên trì với nhiệm vụ.",
       "source": "Rammstedt & John (2007), 2 biến (câu 3R, 8).",
       "items": [
-        { "code": "BFI3", "en": "I see myself as someone who tends to be lazy.", "vi": "Tôi thấy mình là người có xu hướng lười biếng.", "reverse": true },
-        { "code": "BFI8", "en": "I see myself as someone who does a thorough job.", "vi": "Tôi thấy mình là người làm việc kỹ lưỡng." }
+        {
+          "code": "BFI3",
+          "en": "I see myself as someone who tends to be lazy.",
+          "vi": "Tôi thấy mình là người có xu hướng lười biếng.",
+          "reverse": true
+        },
+        {
+          "code": "BFI8",
+          "en": "I see myself as someone who does a thorough job.",
+          "vi": "Tôi thấy mình là người làm việc kỹ lưỡng."
+        }
       ]
     },
     {
@@ -48,8 +75,17 @@
       "definition": "Xu hướng dễ lo âu, căng thẳng và trải nghiệm cảm xúc tiêu cực.",
       "source": "Rammstedt & John (2007), 2 biến (câu 4R, 9).",
       "items": [
-        { "code": "BFI4", "en": "I see myself as someone who is relaxed, handles stress well.", "vi": "Tôi thấy mình là người thoải mái, đối phó tốt với căng thẳng.", "reverse": true },
-        { "code": "BFI9", "en": "I see myself as someone who gets nervous easily.", "vi": "Tôi thấy mình là người dễ lo lắng, bồn chồn." }
+        {
+          "code": "BFI4",
+          "en": "I see myself as someone who is relaxed, handles stress well.",
+          "vi": "Tôi thấy mình là người thoải mái, đối phó tốt với căng thẳng.",
+          "reverse": true
+        },
+        {
+          "code": "BFI9",
+          "en": "I see myself as someone who gets nervous easily.",
+          "vi": "Tôi thấy mình là người dễ lo lắng, bồn chồn."
+        }
       ]
     },
     {
@@ -59,8 +95,17 @@
       "definition": "Xu hướng tò mò, giàu trí tưởng tượng, quan tâm tới nghệ thuật và ý tưởng mới.",
       "source": "Rammstedt & John (2007), 2 biến (câu 5R, 10).",
       "items": [
-        { "code": "BFI5", "en": "I see myself as someone who has few artistic interests.", "vi": "Tôi thấy mình là người ít quan tâm tới nghệ thuật.", "reverse": true },
-        { "code": "BFI10", "en": "I see myself as someone who has an active imagination.", "vi": "Tôi thấy mình là người giàu trí tưởng tượng." }
+        {
+          "code": "BFI5",
+          "en": "I see myself as someone who has few artistic interests.",
+          "vi": "Tôi thấy mình là người ít quan tâm tới nghệ thuật.",
+          "reverse": true
+        },
+        {
+          "code": "BFI10",
+          "en": "I see myself as someone who has an active imagination.",
+          "vi": "Tôi thấy mình là người giàu trí tưởng tượng."
+        }
       ]
     }
   ],
@@ -83,5 +128,9 @@
     "https://access.gesis.org/zis/553",
     "https://majournals.bib.uni-mannheim.de/mda/article/view/2013.013"
   ],
-  "related": ["tu-trong-rosenberg", "hai-long-cuoc-song-swls", "chanh-niem-maas"]
+  "related": [
+    "tu-trong-rosenberg",
+    "hai-long-cuoc-song-swls",
+    "chanh-niem-maas"
+  ]
 }

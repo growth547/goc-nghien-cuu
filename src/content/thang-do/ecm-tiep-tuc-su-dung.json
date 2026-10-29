@@ -15,9 +15,21 @@
       "definition": "Mức độ người dùng thấy trải nghiệm thực tế khi dùng hệ thống đáp ứng hoặc vượt kỳ vọng ban đầu.",
       "source": "Vedadi & Warkentin (2016), Phụ lục B, 3 biến, phỏng theo Bhattacherjee (2001).",
       "items": [
-        { "code": "CONF1", "en": "My experience with using [mobile banking applications] was better than what I expected.", "vi": "Trải nghiệm khi sử dụng [hệ thống] tốt hơn tôi kỳ vọng." },
-        { "code": "CONF2", "en": "The service level provided by [mobile banking applications] was better than what I expected.", "vi": "Mức độ dịch vụ mà [hệ thống] mang lại tốt hơn tôi kỳ vọng." },
-        { "code": "CONF3", "en": "Overall, most of my expectations from using [mobile banking applications] were confirmed.", "vi": "Nhìn chung, phần lớn kỳ vọng của tôi khi sử dụng [hệ thống] đã được đáp ứng." }
+        {
+          "code": "CONF1",
+          "en": "My experience with using [mobile banking applications] was better than what I expected.",
+          "vi": "Trải nghiệm khi sử dụng [hệ thống] tốt hơn tôi kỳ vọng."
+        },
+        {
+          "code": "CONF2",
+          "en": "The service level provided by [mobile banking applications] was better than what I expected.",
+          "vi": "Mức độ dịch vụ mà [hệ thống] mang lại tốt hơn tôi kỳ vọng."
+        },
+        {
+          "code": "CONF3",
+          "en": "Overall, most of my expectations from using [mobile banking applications] were confirmed.",
+          "vi": "Nhìn chung, phần lớn kỳ vọng của tôi khi sử dụng [hệ thống] đã được đáp ứng."
+        }
       ]
     },
     {
@@ -27,10 +39,26 @@
       "definition": "Mức độ người dùng tin rằng tiếp tục dùng hệ thống giúp cải thiện kết quả của việc họ cần làm.",
       "source": "Vedadi & Warkentin (2016), Phụ lục B, 4 biến, phỏng theo Bhattacherjee (2001).",
       "items": [
-        { "code": "PU1", "en": "Using [mobile banking applications] improves my performance in managing personal finances.", "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân tốt hơn." },
-        { "code": "PU2", "en": "Using [mobile banking applications] increases my productivity in managing personal finances.", "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân năng suất hơn." },
-        { "code": "PU3", "en": "Using [mobile banking applications] enhances my effectiveness in managing personal finances.", "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân hiệu quả hơn." },
-        { "code": "PU4", "en": "Overall, [mobile banking applications] is useful in managing personal finances.", "vi": "Nhìn chung, [hệ thống] hữu ích cho việc quản lý tài chính cá nhân." }
+        {
+          "code": "PU1",
+          "en": "Using [mobile banking applications] improves my performance in managing personal finances.",
+          "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân tốt hơn."
+        },
+        {
+          "code": "PU2",
+          "en": "Using [mobile banking applications] increases my productivity in managing personal finances.",
+          "vi": "Sử dụng [hệ thống] giúp tăng năng suất quản lý tài chính cá nhân của tôi."
+        },
+        {
+          "code": "PU3",
+          "en": "Using [mobile banking applications] enhances my effectiveness in managing personal finances.",
+          "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân hiệu quả hơn."
+        },
+        {
+          "code": "PU4",
+          "en": "Overall, [mobile banking applications] is useful in managing personal finances.",
+          "vi": "Nhìn chung, [hệ thống] hữu ích cho việc quản lý tài chính cá nhân."
+        }
       ]
     },
     {
@@ -40,10 +68,26 @@
       "definition": "Cảm nhận chung của người dùng về toàn bộ trải nghiệm sử dụng hệ thống. Câu dẫn: 'How do you feel about your overall experience of [mobile banking applications] use?' (Bạn cảm thấy thế nào về toàn bộ trải nghiệm sử dụng [hệ thống]?)",
       "source": "Vedadi & Warkentin (2016), Phụ lục B, 4 cặp tính từ đối nghĩa, phỏng theo Bhattacherjee (2001).",
       "items": [
-        { "code": "SAT1", "en": "Very dissatisfied/Very satisfied", "vi": "Rất không hài lòng / Rất hài lòng" },
-        { "code": "SAT2", "en": "Very displeased/Very pleased", "vi": "Rất không vừa ý / Rất vừa ý" },
-        { "code": "SAT3", "en": "Very frustrated/Very contented", "vi": "Rất bực bội / Rất mãn nguyện" },
-        { "code": "SAT4", "en": "Absolutely terrible/Absolutely delighted", "vi": "Hoàn toàn tệ hại / Hoàn toàn thích thú" }
+        {
+          "code": "SAT1",
+          "en": "Very dissatisfied/Very satisfied",
+          "vi": "Rất không hài lòng / Rất hài lòng"
+        },
+        {
+          "code": "SAT2",
+          "en": "Very displeased/Very pleased",
+          "vi": "Rất không vừa ý / Rất vừa ý"
+        },
+        {
+          "code": "SAT3",
+          "en": "Very frustrated/Very contented",
+          "vi": "Rất bực bội / Rất mãn nguyện"
+        },
+        {
+          "code": "SAT4",
+          "en": "Absolutely terrible/Absolutely delighted",
+          "vi": "Hoàn toàn tệ hại / Hoàn toàn thích thú"
+        }
       ]
     },
     {
@@ -53,9 +97,22 @@
       "definition": "Mức độ người dùng dự định tiếp tục dùng hệ thống thay vì ngừng dùng hoặc chuyển sang cách khác.",
       "source": "Vedadi & Warkentin (2016), Phụ lục B, 3 biến (CI3 đảo chiều), phỏng theo Bhattacherjee (2001).",
       "items": [
-        { "code": "CI1", "en": "I intend to continue using [mobile banking applications] rather than discontinue its use.", "vi": "Tôi dự định tiếp tục sử dụng [hệ thống] thay vì ngừng sử dụng." },
-        { "code": "CI2", "en": "My intentions are to continue using [mobile banking applications] than use any alternative means (traditional or web-based banking).", "vi": "Tôi dự định tiếp tục sử dụng [hệ thống] hơn là dùng bất kỳ cách thay thế nào khác (giao dịch tại quầy hoặc ngân hàng trên web)." },
-        { "code": "CI3", "en": "If I could, I would like to discontinue my use of [mobile banking applications].", "vi": "Nếu có thể, tôi muốn ngừng sử dụng [hệ thống].", "reverse": true }
+        {
+          "code": "CI1",
+          "en": "I intend to continue using [mobile banking applications] rather than discontinue its use.",
+          "vi": "Tôi dự định tiếp tục sử dụng [hệ thống] thay vì ngừng sử dụng."
+        },
+        {
+          "code": "CI2",
+          "en": "My intentions are to continue using [mobile banking applications] than use any alternative means (traditional or web-based banking).",
+          "vi": "Tôi dự định tiếp tục sử dụng [hệ thống] hơn là dùng bất kỳ cách thay thế nào khác (giao dịch tại quầy hoặc ngân hàng trên web)."
+        },
+        {
+          "code": "CI3",
+          "en": "If I could, I would like to discontinue my use of [mobile banking applications].",
+          "vi": "Nếu có thể, tôi muốn ngừng sử dụng [hệ thống].",
+          "reverse": true
+        }
       ]
     }
   ],
@@ -79,5 +136,9 @@
     "https://dm.its.msstate.edu/cob/mw156/intellcont/VedadiWarkentin2016_AISTRR2_7_ContinuanceMobileBanking-1.pdf",
     "https://aisel.aisnet.org/trr/vol2/iss1/7"
   ],
-  "related": ["tam", "utaut2", "chat-luong-he-thong-thong-tin"]
+  "related": [
+    "tam",
+    "utaut2",
+    "chat-luong-he-thong-thong-tin"
+  ]
 }

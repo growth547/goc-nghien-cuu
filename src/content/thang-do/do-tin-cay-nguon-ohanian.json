@@ -15,11 +15,31 @@
       "definition": "Mức độ người đại diện được cảm nhận là cuốn hút về ngoại hình và phong cách.",
       "source": "Ohanian (1990), 5 biến.",
       "items": [
-        { "code": "ATT1", "en": "Unattractive – Attractive", "vi": "Không hấp dẫn – Hấp dẫn" },
-        { "code": "ATT2", "en": "Not classy – Classy", "vi": "Không sang trọng – Sang trọng" },
-        { "code": "ATT3", "en": "Ugly – Beautiful", "vi": "Xấu – Đẹp" },
-        { "code": "ATT4", "en": "Plain – Elegant", "vi": "Giản đơn – Thanh lịch" },
-        { "code": "ATT5", "en": "Not sexy – Sexy", "vi": "Không quyến rũ – Quyến rũ" }
+        {
+          "code": "ATT1",
+          "en": "Unattractive – Attractive",
+          "vi": "Không hấp dẫn – Hấp dẫn"
+        },
+        {
+          "code": "ATT2",
+          "en": "Not classy – Classy",
+          "vi": "Không sang trọng – Sang trọng"
+        },
+        {
+          "code": "ATT3",
+          "en": "Ugly – Beautiful",
+          "vi": "Xấu – Đẹp"
+        },
+        {
+          "code": "ATT4",
+          "en": "Plain – Elegant",
+          "vi": "Tầm thường – Thanh lịch"
+        },
+        {
+          "code": "ATT5",
+          "en": "Not sexy – Sexy",
+          "vi": "Không quyến rũ – Quyến rũ"
+        }
       ]
     },
     {
@@ -29,11 +49,31 @@
       "definition": "Mức độ người xem tin rằng người đại diện trung thực và nói điều mình thật sự nghĩ.",
       "source": "Ohanian (1990), 5 biến.",
       "items": [
-        { "code": "TRU1", "en": "Not dependable – Dependable", "vi": "Không thể trông cậy – Có thể trông cậy" },
-        { "code": "TRU2", "en": "Dishonest – Honest", "vi": "Không trung thực – Trung thực" },
-        { "code": "TRU3", "en": "Unreliable – Reliable", "vi": "Không đáng tin cậy – Đáng tin cậy" },
-        { "code": "TRU4", "en": "Insincere – Sincere", "vi": "Không chân thành – Chân thành" },
-        { "code": "TRU5", "en": "Untrustworthy – Trustworthy", "vi": "Không đáng tin – Đáng tin" }
+        {
+          "code": "TRU1",
+          "en": "Not dependable – Dependable",
+          "vi": "Không thể trông cậy – Có thể trông cậy"
+        },
+        {
+          "code": "TRU2",
+          "en": "Dishonest – Honest",
+          "vi": "Không trung thực – Trung thực"
+        },
+        {
+          "code": "TRU3",
+          "en": "Unreliable – Reliable",
+          "vi": "Không đáng tin cậy – Đáng tin cậy"
+        },
+        {
+          "code": "TRU4",
+          "en": "Insincere – Sincere",
+          "vi": "Không chân thành – Chân thành"
+        },
+        {
+          "code": "TRU5",
+          "en": "Untrustworthy – Trustworthy",
+          "vi": "Không đáng tin – Đáng tin"
+        }
       ]
     },
     {
@@ -43,11 +83,31 @@
       "definition": "Mức độ người đại diện được cảm nhận là có kiến thức, kinh nghiệm và kỹ năng về sản phẩm được giới thiệu.",
       "source": "Ohanian (1990), 5 biến.",
       "items": [
-        { "code": "EXP1", "en": "Not an expert – Expert", "vi": "Không phải chuyên gia – Chuyên gia" },
-        { "code": "EXP2", "en": "Inexperienced – Experienced", "vi": "Thiếu kinh nghiệm – Có kinh nghiệm" },
-        { "code": "EXP3", "en": "Unknowledgeable – Knowledgeable", "vi": "Không am hiểu – Am hiểu" },
-        { "code": "EXP4", "en": "Unqualified – Qualified", "vi": "Không đủ năng lực – Đủ năng lực" },
-        { "code": "EXP5", "en": "Unskilled – Skilled", "vi": "Không có kỹ năng – Có kỹ năng" }
+        {
+          "code": "EXP1",
+          "en": "Not an expert – Expert",
+          "vi": "Không phải chuyên gia – Chuyên gia"
+        },
+        {
+          "code": "EXP2",
+          "en": "Inexperienced – Experienced",
+          "vi": "Thiếu kinh nghiệm – Có kinh nghiệm"
+        },
+        {
+          "code": "EXP3",
+          "en": "Unknowledgeable – Knowledgeable",
+          "vi": "Không am hiểu – Am hiểu"
+        },
+        {
+          "code": "EXP4",
+          "en": "Unqualified – Qualified",
+          "vi": "Không đủ trình độ – Đủ trình độ"
+        },
+        {
+          "code": "EXP5",
+          "en": "Unskilled – Skilled",
+          "vi": "Không có kỹ năng – Có kỹ năng"
+        }
       ]
     }
   ],
@@ -70,5 +130,9 @@
     "https://researchcommons.waikato.ac.nz/server/api/core/bitstreams/b7b47d35-e8c1-4bdc-9382-860385a73c44/content",
     "https://api.crossref.org/works/10.1080/00913367.1990.10673191"
   ],
-  "related": ["y-dinh-mua", "tai-san-thuong-hieu", "niem-tin-trung-thanh-thuong-hieu"]
+  "related": [
+    "y-dinh-mua",
+    "tai-san-thuong-hieu",
+    "niem-tin-trung-thanh-thuong-hieu"
+  ]
 }

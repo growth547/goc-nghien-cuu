@@ -15,8 +15,17 @@
       "definition": "Đánh giá chung của người bệnh về dịch vụ y tế đang nhận.",
       "source": "Marshall & Hays (1994), 2 biến (câu 3 và 17).",
       "items": [
-        { "code": "PSQ3", "en": "The medical care I have been receiving is just about perfect.", "vi": "Dịch vụ y tế tôi đang nhận gần như hoàn hảo." },
-        { "code": "PSQ17", "en": "I am dissatisfied with some things about the medical care I receive.", "vi": "Tôi không hài lòng với một số điều trong dịch vụ y tế tôi nhận được.", "reverse": true }
+        {
+          "code": "PSQ3",
+          "en": "The medical care I have been receiving is just about perfect.",
+          "vi": "Dịch vụ y tế tôi đang nhận gần như hoàn hảo."
+        },
+        {
+          "code": "PSQ17",
+          "en": "I am dissatisfied with some things about the medical care I receive.",
+          "vi": "Tôi không hài lòng với một số điều trong dịch vụ y tế tôi nhận được.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -26,10 +35,28 @@
       "definition": "Đánh giá của người bệnh về năng lực chuyên môn, sự cẩn thận và trang thiết bị.",
       "source": "Marshall & Hays (1994), 4 biến (câu 2, 4, 6, 14).",
       "items": [
-        { "code": "PSQ2", "en": "I think my doctor's office has everything needed to provide complete medical care.", "vi": "Tôi nghĩ [cơ sở y tế] có đủ mọi thứ cần thiết để chăm sóc y tế đầy đủ." },
-        { "code": "PSQ4", "en": "Sometimes doctors make me wonder if their diagnosis is correct.", "vi": "Đôi khi các bác sĩ khiến tôi băn khoăn liệu chẩn đoán của họ có đúng không.", "reverse": true },
-        { "code": "PSQ6", "en": "When I go for medical care, they are careful to check everything when treating and examining me.", "vi": "Khi tôi đi khám, họ cẩn thận kiểm tra mọi thứ trong lúc điều trị và thăm khám cho tôi." },
-        { "code": "PSQ14", "en": "I have some doubts about the ability of the doctors who treat me.", "vi": "Tôi có một số nghi ngờ về năng lực của các bác sĩ điều trị cho tôi.", "reverse": true }
+        {
+          "code": "PSQ2",
+          "en": "I think my doctor's office has everything needed to provide complete medical care.",
+          "vi": "Tôi nghĩ [cơ sở y tế] có đủ mọi thứ cần thiết để chăm sóc y tế đầy đủ."
+        },
+        {
+          "code": "PSQ4",
+          "en": "Sometimes doctors make me wonder if their diagnosis is correct.",
+          "vi": "Đôi khi các bác sĩ khiến tôi băn khoăn liệu chẩn đoán của họ có đúng không.",
+          "reverse": true
+        },
+        {
+          "code": "PSQ6",
+          "en": "When I go for medical care, they are careful to check everything when treating and examining me.",
+          "vi": "Khi tôi đi khám, nhân viên y tế cẩn thận kiểm tra mọi thứ trong lúc khám và điều trị cho tôi."
+        },
+        {
+          "code": "PSQ14",
+          "en": "I have some doubts about the ability of the doctors who treat me.",
+          "vi": "Tôi có một số nghi ngờ về năng lực của các bác sĩ điều trị cho tôi.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -39,8 +66,17 @@
       "definition": "Thái độ thân thiện, tôn trọng của bác sĩ với người bệnh.",
       "source": "Marshall & Hays (1994), 2 biến (câu 10 và 11).",
       "items": [
-        { "code": "PSQ10", "en": "Doctors act too businesslike and impersonal toward me.", "vi": "Các bác sĩ cư xử với tôi quá công việc và thiếu tình người.", "reverse": true },
-        { "code": "PSQ11", "en": "My doctors treat me in a very friendly and courteous manner.", "vi": "Các bác sĩ của tôi đối xử với tôi rất thân thiện và lịch sự." }
+        {
+          "code": "PSQ10",
+          "en": "Doctors act too businesslike and impersonal toward me.",
+          "vi": "Các bác sĩ đối xử với tôi quá máy móc và xa cách.",
+          "reverse": true
+        },
+        {
+          "code": "PSQ11",
+          "en": "My doctors treat me in a very friendly and courteous manner.",
+          "vi": "Các bác sĩ của tôi đối xử với tôi rất thân thiện và lịch sự."
+        }
       ]
     },
     {
@@ -50,8 +86,17 @@
       "definition": "Mức độ bác sĩ giải thích và lắng nghe người bệnh.",
       "source": "Marshall & Hays (1994), 2 biến (câu 1 và 13).",
       "items": [
-        { "code": "PSQ1", "en": "Doctors are good about explaining the reason for medical tests.", "vi": "Các bác sĩ giải thích rõ lý do phải làm các xét nghiệm." },
-        { "code": "PSQ13", "en": "Doctors sometimes ignore what I tell them.", "vi": "Các bác sĩ đôi khi bỏ qua những gì tôi nói với họ.", "reverse": true }
+        {
+          "code": "PSQ1",
+          "en": "Doctors are good about explaining the reason for medical tests.",
+          "vi": "Các bác sĩ giải thích rõ lý do phải làm các xét nghiệm."
+        },
+        {
+          "code": "PSQ13",
+          "en": "Doctors sometimes ignore what I tell them.",
+          "vi": "Các bác sĩ đôi khi bỏ qua những gì tôi nói với họ.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -61,8 +106,17 @@
       "definition": "Mức độ người bệnh lo lắng về chi phí khám chữa bệnh.",
       "source": "Marshall & Hays (1994), 2 biến (câu 5 và 7).",
       "items": [
-        { "code": "PSQ5", "en": "I feel confident that I can get the medical care I need without being set back financially.", "vi": "Tôi tin rằng mình có thể nhận dịch vụ y tế cần thiết mà không bị khó khăn về tài chính." },
-        { "code": "PSQ7", "en": "I have to pay for more of my medical care than I can afford.", "vi": "Tôi phải trả chi phí khám chữa bệnh nhiều hơn khả năng chi trả của mình.", "reverse": true }
+        {
+          "code": "PSQ5",
+          "en": "I feel confident that I can get the medical care I need without being set back financially.",
+          "vi": "Tôi tin rằng mình có thể nhận dịch vụ y tế cần thiết mà không bị khó khăn về tài chính."
+        },
+        {
+          "code": "PSQ7",
+          "en": "I have to pay for more of my medical care than I can afford.",
+          "vi": "Tôi phải trả chi phí khám chữa bệnh nhiều hơn khả năng chi trả của mình.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -72,8 +126,17 @@
       "definition": "Cảm nhận của người bệnh về lượng thời gian bác sĩ dành cho mình.",
       "source": "Marshall & Hays (1994), 2 biến (câu 12 và 15).",
       "items": [
-        { "code": "PSQ12", "en": "Those who provide my medical care sometimes hurry too much when they treat me.", "vi": "Những người chăm sóc y tế cho tôi đôi khi quá vội vàng khi điều trị cho tôi.", "reverse": true },
-        { "code": "PSQ15", "en": "Doctors usually spend plenty of time with me.", "vi": "Các bác sĩ thường dành nhiều thời gian cho tôi." }
+        {
+          "code": "PSQ12",
+          "en": "Those who provide my medical care sometimes hurry too much when they treat me.",
+          "vi": "Những người chăm sóc y tế cho tôi đôi khi quá vội vàng khi điều trị cho tôi.",
+          "reverse": true
+        },
+        {
+          "code": "PSQ15",
+          "en": "Doctors usually spend plenty of time with me.",
+          "vi": "Các bác sĩ thường dành nhiều thời gian cho tôi."
+        }
       ]
     },
     {
@@ -83,10 +146,28 @@
       "definition": "Mức độ người bệnh dễ dàng nhận được dịch vụ khi cần: lịch hẹn, chuyên khoa, cấp cứu.",
       "source": "Marshall & Hays (1994), 4 biến (câu 8, 9, 16, 18).",
       "items": [
-        { "code": "PSQ8", "en": "I have easy access to the medical specialists I need.", "vi": "Tôi dễ dàng tiếp cận các bác sĩ chuyên khoa mình cần." },
-        { "code": "PSQ9", "en": "Where I get medical care, people have to wait too long for emergency treatment.", "vi": "Ở nơi tôi khám chữa bệnh, người bệnh phải chờ quá lâu để được cấp cứu.", "reverse": true },
-        { "code": "PSQ16", "en": "I find it hard to get an appointment for medical care right away.", "vi": "Tôi thấy khó đặt được lịch khám ngay khi cần.", "reverse": true },
-        { "code": "PSQ18", "en": "I am able to get medical care whenever I need it.", "vi": "Tôi có thể nhận được dịch vụ y tế bất cứ khi nào tôi cần." }
+        {
+          "code": "PSQ8",
+          "en": "I have easy access to the medical specialists I need.",
+          "vi": "Tôi dễ dàng tiếp cận các bác sĩ chuyên khoa mình cần."
+        },
+        {
+          "code": "PSQ9",
+          "en": "Where I get medical care, people have to wait too long for emergency treatment.",
+          "vi": "Ở nơi tôi khám chữa bệnh, người bệnh phải chờ quá lâu để được cấp cứu.",
+          "reverse": true
+        },
+        {
+          "code": "PSQ16",
+          "en": "I find it hard to get an appointment for medical care right away.",
+          "vi": "Tôi thấy khó đặt được lịch khám ngay khi cần.",
+          "reverse": true
+        },
+        {
+          "code": "PSQ18",
+          "en": "I am able to get medical care whenever I need it.",
+          "vi": "Tôi có thể nhận được dịch vụ y tế bất cứ khi nào tôi cần."
+        }
       ]
     }
   ],
@@ -109,5 +190,9 @@
     "https://www.rand.org/content/dam/rand/www/external/health/surveys_tools/psq/psq18_survey.pdf",
     "https://www.rand.org/content/dam/rand/www/external/health/surveys_tools/psq/psq18_scoring.pdf"
   ],
-  "related": ["servqual", "servperf", "y-dinh-hanh-vi-khach-hang"]
+  "related": [
+    "servqual",
+    "servperf",
+    "y-dinh-hanh-vi-khach-hang"
+  ]
 }

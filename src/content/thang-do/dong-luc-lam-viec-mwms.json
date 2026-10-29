@@ -15,9 +15,21 @@
       "definition": "Không có lý do hay ý định bỏ công sức vào công việc.",
       "source": "Gagné và cộng sự (2015), 3 biến.",
       "items": [
-        { "code": "AM1", "en": "I don't, because I really feel that I'm wasting my time at work.", "vi": "Tôi không bỏ công sức, vì tôi thực sự thấy mình đang lãng phí thời gian ở nơi làm việc." },
-        { "code": "AM2", "en": "I do little because I don't think this work is worth putting efforts into.", "vi": "Tôi làm ít vì tôi không nghĩ công việc này đáng để bỏ công sức." },
-        { "code": "AM3", "en": "I don't know why I'm doing this job, it's pointless work.", "vi": "Tôi không biết vì sao mình làm công việc này, đây là việc vô nghĩa." }
+        {
+          "code": "AM1",
+          "en": "I don't, because I really feel that I'm wasting my time at work.",
+          "vi": "Tôi không bỏ công sức, vì tôi thực sự thấy mình đang lãng phí thời gian ở nơi làm việc."
+        },
+        {
+          "code": "AM2",
+          "en": "I do little because I don't think this work is worth putting efforts into.",
+          "vi": "Tôi làm ít vì tôi không nghĩ công việc này đáng để bỏ công sức."
+        },
+        {
+          "code": "AM3",
+          "en": "I don't know why I'm doing this job, it's pointless work.",
+          "vi": "Tôi không biết vì sao mình làm công việc này, đây là việc vô nghĩa."
+        }
       ]
     },
     {
@@ -27,9 +39,21 @@
       "definition": "Bỏ công sức để được người khác chấp nhận, tôn trọng hoặc tránh bị chê trách.",
       "source": "Gagné và cộng sự (2015), 3 biến.",
       "items": [
-        { "code": "ESO1", "en": "To get others' approval (e.g., supervisor, colleagues, family, clients …).", "vi": "Để được người khác tán thành (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)." },
-        { "code": "ESO2", "en": "Because others will respect me more (e.g., supervisor, colleagues, family, clients …).", "vi": "Vì người khác sẽ tôn trọng tôi hơn (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)." },
-        { "code": "ESO3", "en": "To avoid being criticized by others (e.g., supervisor, colleagues, family, clients …).", "vi": "Để tránh bị người khác chỉ trích (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)." }
+        {
+          "code": "ESO1",
+          "en": "To get others' approval (e.g., supervisor, colleagues, family, clients …).",
+          "vi": "Để được người khác tán thành (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)."
+        },
+        {
+          "code": "ESO2",
+          "en": "Because others will respect me more (e.g., supervisor, colleagues, family, clients …).",
+          "vi": "Vì người khác sẽ tôn trọng tôi hơn (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)."
+        },
+        {
+          "code": "ESO3",
+          "en": "To avoid being criticized by others (e.g., supervisor, colleagues, family, clients …).",
+          "vi": "Để tránh bị người khác chỉ trích (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)."
+        }
       ]
     },
     {
@@ -39,9 +63,21 @@
       "definition": "Bỏ công sức để nhận phần thưởng vật chất hoặc tránh mất việc.",
       "source": "Gagné và cộng sự (2015), 3 biến.",
       "items": [
-        { "code": "EMA1", "en": "Because others will reward me financially only if I put enough effort in my job (e.g., employer, supervisor …).", "vi": "Vì người khác chỉ thưởng tiền cho tôi khi tôi bỏ đủ công sức vào công việc (ví dụ chủ doanh nghiệp, cấp trên…)." },
-        { "code": "EMA2", "en": "Because others offer me greater job security if I put enough effort in my job (e.g., employer, supervisor …).", "vi": "Vì người khác cho tôi công việc ổn định hơn nếu tôi bỏ đủ công sức (ví dụ chủ doanh nghiệp, cấp trên…)." },
-        { "code": "EMA3", "en": "Because I risk losing my job if I don't put enough effort in it.", "vi": "Vì tôi có nguy cơ mất việc nếu không bỏ đủ công sức." }
+        {
+          "code": "EMA1",
+          "en": "Because others will reward me financially only if I put enough effort in my job (e.g., employer, supervisor …).",
+          "vi": "Vì người khác chỉ thưởng tiền cho tôi khi tôi bỏ đủ công sức vào công việc (ví dụ chủ doanh nghiệp, cấp trên…)."
+        },
+        {
+          "code": "EMA2",
+          "en": "Because others offer me greater job security if I put enough effort in my job (e.g., employer, supervisor …).",
+          "vi": "Vì người khác cho tôi công việc ổn định hơn nếu tôi bỏ đủ công sức (ví dụ chủ doanh nghiệp, cấp trên…)."
+        },
+        {
+          "code": "EMA3",
+          "en": "Because I risk losing my job if I don't put enough effort in it.",
+          "vi": "Vì tôi có nguy cơ mất việc nếu không bỏ đủ công sức."
+        }
       ]
     },
     {
@@ -51,10 +87,26 @@
       "definition": "Bỏ công sức để giữ lòng tự trọng hoặc tránh cảm giác tội lỗi, xấu hổ với bản thân.",
       "source": "Gagné và cộng sự (2015), 4 biến.",
       "items": [
-        { "code": "IJ1", "en": "Because I have to prove to myself that I can.", "vi": "Vì tôi phải chứng minh với bản thân rằng mình làm được." },
-        { "code": "IJ2", "en": "Because it makes me feel proud of myself.", "vi": "Vì điều đó khiến tôi tự hào về bản thân." },
-        { "code": "IJ3", "en": "Because otherwise I will feel ashamed of myself.", "vi": "Vì nếu không, tôi sẽ thấy xấu hổ với chính mình." },
-        { "code": "IJ4", "en": "Because otherwise I will feel bad about myself.", "vi": "Vì nếu không, tôi sẽ thấy không hài lòng về bản thân." }
+        {
+          "code": "IJ1",
+          "en": "Because I have to prove to myself that I can.",
+          "vi": "Vì tôi phải chứng minh với bản thân rằng mình làm được."
+        },
+        {
+          "code": "IJ2",
+          "en": "Because it makes me feel proud of myself.",
+          "vi": "Vì điều đó khiến tôi tự hào về bản thân."
+        },
+        {
+          "code": "IJ3",
+          "en": "Because otherwise I will feel ashamed of myself.",
+          "vi": "Vì nếu không, tôi sẽ thấy xấu hổ với chính mình."
+        },
+        {
+          "code": "IJ4",
+          "en": "Because otherwise I will feel bad about myself.",
+          "vi": "Vì nếu không, tôi sẽ cảm thấy tệ về bản thân."
+        }
       ]
     },
     {
@@ -64,9 +116,21 @@
       "definition": "Bỏ công sức vì thấy công việc quan trọng và phù hợp với giá trị của bản thân.",
       "source": "Gagné và cộng sự (2015), 3 biến.",
       "items": [
-        { "code": "ID1", "en": "Because I personally consider it important to put efforts in this job.", "vi": "Vì cá nhân tôi thấy việc bỏ công sức cho công việc này là quan trọng." },
-        { "code": "ID2", "en": "Because putting efforts in this job aligns with my personal values.", "vi": "Vì bỏ công sức cho công việc này phù hợp với giá trị cá nhân của tôi." },
-        { "code": "ID3", "en": "Because putting efforts in this job has personal significance to me.", "vi": "Vì bỏ công sức cho công việc này có ý nghĩa riêng với tôi." }
+        {
+          "code": "ID1",
+          "en": "Because I personally consider it important to put efforts in this job.",
+          "vi": "Vì cá nhân tôi thấy việc bỏ công sức cho công việc này là quan trọng."
+        },
+        {
+          "code": "ID2",
+          "en": "Because putting efforts in this job aligns with my personal values.",
+          "vi": "Vì bỏ công sức cho công việc này phù hợp với giá trị cá nhân của tôi."
+        },
+        {
+          "code": "ID3",
+          "en": "Because putting efforts in this job has personal significance to me.",
+          "vi": "Vì bỏ công sức cho công việc này có ý nghĩa riêng với tôi."
+        }
       ]
     },
     {
@@ -76,9 +140,21 @@
       "definition": "Bỏ công sức vì bản thân công việc thú vị, mang lại niềm vui.",
       "source": "Gagné và cộng sự (2015), 3 biến.",
       "items": [
-        { "code": "IM1", "en": "Because I have fun doing my job.", "vi": "Vì tôi thấy vui khi làm công việc của mình." },
-        { "code": "IM2", "en": "Because what I do in my work is exciting.", "vi": "Vì những gì tôi làm trong công việc thật hào hứng." },
-        { "code": "IM3", "en": "Because the work I do is interesting.", "vi": "Vì công việc tôi làm rất thú vị." }
+        {
+          "code": "IM1",
+          "en": "Because I have fun doing my job.",
+          "vi": "Vì tôi thấy vui khi làm công việc của mình."
+        },
+        {
+          "code": "IM2",
+          "en": "Because what I do in my work is exciting.",
+          "vi": "Vì những gì tôi làm trong công việc khiến tôi hào hứng."
+        },
+        {
+          "code": "IM3",
+          "en": "Because the work I do is interesting.",
+          "vi": "Vì công việc tôi làm rất thú vị."
+        }
       ]
     }
   ],
@@ -101,5 +177,9 @@
     "https://selfdeterminationtheory.org/multidimensional-work-motivation-scale/",
     "https://api.crossref.org/works/10.1080/1359432X.2013.877892"
   ],
-  "related": ["gan-ket-cong-viec-uwes", "hai-long-cong-viec", "y-dinh-nghi-viec"]
+  "related": [
+    "gan-ket-cong-viec-uwes",
+    "hai-long-cong-viec",
+    "y-dinh-nghi-viec"
+  ]
 }

@@ -15,13 +15,41 @@
       "definition": "Mức độ người lãnh đạo truyền cảm hứng bằng tầm nhìn, quan tâm phát triển từng nhân viên, khuyến khích tư duy mới và làm gương bằng giá trị, năng lực của mình.",
       "source": "Carless, Wearing & Mann (2000), 7 biến; câu chữ TL1–TL6 theo Kloutsiniotis và cộng sự (chủ ngữ 'My manager'), TL7 theo Saif và cộng sự (chủ ngữ 'My leader').",
       "items": [
-        { "code": "TL1", "en": "My manager communicates a clear and positive vision of the future", "vi": "Quản lý của tôi truyền đạt một tầm nhìn rõ ràng và tích cực về tương lai." },
-        { "code": "TL2", "en": "My manager treats staff as individuals, supports and encourages their development", "vi": "Quản lý của tôi đối xử với nhân viên như những cá nhân riêng biệt, hỗ trợ và khuyến khích họ phát triển." },
-        { "code": "TL3", "en": "My manager gives encouragement and recognition to staff", "vi": "Quản lý của tôi động viên và ghi nhận nhân viên." },
-        { "code": "TL4", "en": "My manager fosters trust, involvement and cooperation among team members", "vi": "Quản lý của tôi xây dựng sự tin tưởng, tham gia và hợp tác giữa các thành viên trong nhóm." },
-        { "code": "TL5", "en": "My manager encourages thinking about problems in new ways and questions assumptions", "vi": "Quản lý của tôi khuyến khích suy nghĩ về vấn đề theo cách mới và đặt câu hỏi với các giả định." },
-        { "code": "TL6", "en": "My manager is clear about his/her values and practices what he/she preaches", "vi": "Quản lý của tôi rõ ràng về giá trị của mình và làm đúng những gì mình nói." },
-        { "code": "TL7", "en": "My leader instills pride and respect in others and inspires me by being highly competent", "vi": "Quản lý của tôi khiến người khác tự hào và tôn trọng, và truyền cảm hứng cho tôi bằng năng lực vượt trội." }
+        {
+          "code": "TL1",
+          "en": "My manager communicates a clear and positive vision of the future",
+          "vi": "Quản lý của tôi truyền đạt một tầm nhìn rõ ràng và tích cực về tương lai."
+        },
+        {
+          "code": "TL2",
+          "en": "My manager treats staff as individuals, supports and encourages their development",
+          "vi": "Quản lý của tôi đối xử với nhân viên như những cá nhân riêng biệt, hỗ trợ và khuyến khích họ phát triển."
+        },
+        {
+          "code": "TL3",
+          "en": "My manager gives encouragement and recognition to staff",
+          "vi": "Quản lý của tôi động viên và ghi nhận nhân viên."
+        },
+        {
+          "code": "TL4",
+          "en": "My manager fosters trust, involvement and cooperation among team members",
+          "vi": "Quản lý của tôi xây dựng sự tin tưởng, tham gia và hợp tác giữa các thành viên trong nhóm."
+        },
+        {
+          "code": "TL5",
+          "en": "My manager encourages thinking about problems in new ways and questions assumptions",
+          "vi": "Quản lý của tôi khuyến khích nhân viên suy nghĩ về vấn đề theo cách mới và đặt câu hỏi về những giả định sẵn có."
+        },
+        {
+          "code": "TL6",
+          "en": "My manager is clear about his/her values and practices what he/she preaches",
+          "vi": "Quản lý của tôi rõ ràng về giá trị của mình và làm đúng những gì mình nói."
+        },
+        {
+          "code": "TL7",
+          "en": "My leader instills pride and respect in others and inspires me by being highly competent",
+          "vi": "Quản lý của tôi khiến người khác tự hào và tôn trọng, và truyền cảm hứng cho tôi bằng năng lực vượt trội."
+        }
       ]
     }
   ],
@@ -45,5 +73,9 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13445784/fullTextXML",
     "https://api.crossref.org/works/10.1023/A:1022991115523"
   ],
-  "related": ["lanh-dao-phuc-vu", "cam-ket-to-chuc-ocq", "hai-long-cong-viec"]
+  "related": [
+    "lanh-dao-phuc-vu",
+    "cam-ket-to-chuc-ocq",
+    "hai-long-cong-viec"
+  ]
 }

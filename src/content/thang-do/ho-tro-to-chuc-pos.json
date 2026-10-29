@@ -15,22 +15,93 @@
       "definition": "Niềm tin chung của người lao động về mức tổ chức coi trọng đóng góp của họ và quan tâm tới đời sống của họ.",
       "source": "Eisenberger, Huntington, Hutchison & Sowa (1986), Bảng 1, 16 biến được đánh dấu giữ lại cho bản rút gọn (câu 1, 2, 3, 4, 6, 7, 8, 9, 17, 20, 21, 22, 23, 25, 27, 35 của bản 36 biến). Phần thân bài viết 'bản rút gọn 17 biến' nhưng Bảng 1 chỉ đánh dấu 16 biến; trang này theo Bảng 1.",
       "items": [
-        { "code": "POS1", "en": "The organization values my contribution to its well-being.", "vi": "[Công ty] coi trọng đóng góp của tôi cho sự phát triển của [công ty]." },
-        { "code": "POS2", "en": "If the organization could hire someone to replace me at a lower salary it would do so.", "vi": "Nếu thuê được người thay tôi với mức lương thấp hơn, [công ty] sẽ làm vậy.", "reverse": true },
-        { "code": "POS3", "en": "The organization fails to appreciate any extra effort from me.", "vi": "[Công ty] không ghi nhận bất kỳ nỗ lực thêm nào của tôi.", "reverse": true },
-        { "code": "POS4", "en": "The organization strongly considers my goals and values.", "vi": "[Công ty] rất quan tâm tới mục tiêu và giá trị của tôi." },
-        { "code": "POS5", "en": "The organization would ignore any complaint from me.", "vi": "[Công ty] sẽ phớt lờ mọi phàn nàn của tôi.", "reverse": true },
-        { "code": "POS6", "en": "The organization disregards my best interests when it makes decisions that affect me.", "vi": "Khi ra quyết định ảnh hưởng tới tôi, [công ty] không tính tới lợi ích của tôi.", "reverse": true },
-        { "code": "POS7", "en": "Help is available from the organization when I have a problem.", "vi": "Khi tôi gặp vấn đề, [công ty] sẵn sàng giúp đỡ." },
-        { "code": "POS8", "en": "The organization really cares about my well-being.", "vi": "[Công ty] thật sự quan tâm tới đời sống của tôi." },
-        { "code": "POS9", "en": "Even if I did the best job possible, the organization would fail to notice.", "vi": "Dù tôi làm việc tốt nhất có thể, [công ty] cũng không nhận ra.", "reverse": true },
-        { "code": "POS10", "en": "The organization is willing to help me when I need a special favor.", "vi": "[Công ty] sẵn lòng giúp khi tôi cần một sự giúp đỡ đặc biệt." },
-        { "code": "POS11", "en": "The organization cares about my general satisfaction at work.", "vi": "[Công ty] quan tâm tới mức hài lòng chung của tôi trong công việc." },
-        { "code": "POS12", "en": "If given the opportunity, the organization would take advantage of me.", "vi": "Nếu có cơ hội, [công ty] sẽ lợi dụng tôi.", "reverse": true },
-        { "code": "POS13", "en": "The organization shows very little concern for me.", "vi": "[Công ty] rất ít quan tâm tới tôi.", "reverse": true },
-        { "code": "POS14", "en": "The organization cares about my opinions.", "vi": "[Công ty] quan tâm tới ý kiến của tôi." },
-        { "code": "POS15", "en": "The organization takes pride in my accomplishments at work.", "vi": "[Công ty] tự hào về những thành tích công việc của tôi." },
-        { "code": "POS16", "en": "The organization tries to make my job as interesting as possible.", "vi": "[Công ty] cố gắng làm cho công việc của tôi thú vị nhất có thể." }
+        {
+          "code": "POS1",
+          "en": "The organization values my contribution to its well-being.",
+          "vi": "[Công ty] coi trọng những đóng góp của tôi cho sự phát triển chung."
+        },
+        {
+          "code": "POS2",
+          "en": "If the organization could hire someone to replace me at a lower salary it would do so.",
+          "vi": "Nếu thuê được người thay tôi với mức lương thấp hơn, [công ty] sẽ làm vậy.",
+          "reverse": true
+        },
+        {
+          "code": "POS3",
+          "en": "The organization fails to appreciate any extra effort from me.",
+          "vi": "[Công ty] không ghi nhận bất kỳ nỗ lực thêm nào của tôi.",
+          "reverse": true
+        },
+        {
+          "code": "POS4",
+          "en": "The organization strongly considers my goals and values.",
+          "vi": "[Công ty] rất quan tâm tới mục tiêu và giá trị của tôi."
+        },
+        {
+          "code": "POS5",
+          "en": "The organization would ignore any complaint from me.",
+          "vi": "[Công ty] sẽ phớt lờ mọi phàn nàn của tôi.",
+          "reverse": true
+        },
+        {
+          "code": "POS6",
+          "en": "The organization disregards my best interests when it makes decisions that affect me.",
+          "vi": "Khi ra quyết định ảnh hưởng tới tôi, [công ty] không tính tới lợi ích của tôi.",
+          "reverse": true
+        },
+        {
+          "code": "POS7",
+          "en": "Help is available from the organization when I have a problem.",
+          "vi": "Khi tôi gặp vấn đề, [công ty] sẵn sàng giúp đỡ."
+        },
+        {
+          "code": "POS8",
+          "en": "The organization really cares about my well-being.",
+          "vi": "[Công ty] thật sự quan tâm tới đời sống của tôi."
+        },
+        {
+          "code": "POS9",
+          "en": "Even if I did the best job possible, the organization would fail to notice.",
+          "vi": "Dù tôi làm việc tốt nhất có thể, [công ty] cũng không nhận ra.",
+          "reverse": true
+        },
+        {
+          "code": "POS10",
+          "en": "The organization is willing to help me when I need a special favor.",
+          "vi": "[Công ty] sẵn lòng giúp khi tôi cần một sự giúp đỡ đặc biệt."
+        },
+        {
+          "code": "POS11",
+          "en": "The organization cares about my general satisfaction at work.",
+          "vi": "[Công ty] quan tâm tới mức hài lòng chung của tôi trong công việc."
+        },
+        {
+          "code": "POS12",
+          "en": "If given the opportunity, the organization would take advantage of me.",
+          "vi": "Nếu có cơ hội, [công ty] sẽ lợi dụng tôi.",
+          "reverse": true
+        },
+        {
+          "code": "POS13",
+          "en": "The organization shows very little concern for me.",
+          "vi": "[Công ty] rất ít quan tâm tới tôi.",
+          "reverse": true
+        },
+        {
+          "code": "POS14",
+          "en": "The organization cares about my opinions.",
+          "vi": "[Công ty] quan tâm tới ý kiến của tôi."
+        },
+        {
+          "code": "POS15",
+          "en": "The organization takes pride in my accomplishments at work.",
+          "vi": "[Công ty] tự hào về những thành tích công việc của tôi."
+        },
+        {
+          "code": "POS16",
+          "en": "The organization tries to make my job as interesting as possible.",
+          "vi": "[Công ty] cố gắng làm cho công việc của tôi thú vị nhất có thể."
+        }
       ]
     }
   ],
@@ -54,5 +125,9 @@
     "https://sajip.co.za/index.php/sajip/article/download/754/869",
     "https://api.crossref.org/works/10.1037/0021-9010.71.3.500"
   ],
-  "related": ["cam-ket-to-chuc-ocq", "y-dinh-nghi-viec", "gan-ket-cong-viec-uwes"]
+  "related": [
+    "cam-ket-to-chuc-ocq",
+    "y-dinh-nghi-viec",
+    "gan-ket-cong-viec-uwes"
+  ]
 }

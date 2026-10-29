@@ -15,17 +15,62 @@
       "definition": "Giá trị đến từ niềm vui, sự hứng thú và cảm giác thoát khỏi thường nhật trong chính quá trình mua sắm.",
       "source": "Babin, Darden & Griffin (1994), 11 biến của thang cuối cùng.",
       "items": [
-        { "code": "HSV1", "en": "This shopping trip was truly a joy.", "vi": "Chuyến mua sắm này thật sự là một niềm vui." },
-        { "code": "HSV2", "en": "Compared to other things I could have done, the time spent shopping was truly enjoyable.", "vi": "So với những việc khác tôi có thể làm, thời gian dành cho mua sắm thật sự thú vị." },
-        { "code": "HSV3", "en": "During the trip, I felt the excitement of the hunt.", "vi": "Trong chuyến đi, tôi cảm thấy hào hứng như đang săn tìm." },
-        { "code": "HSV4", "en": "This shopping trip truly felt like an escape.", "vi": "Chuyến mua sắm này thật sự giống như một lần thoát khỏi thường nhật." },
-        { "code": "HSV5", "en": "I enjoyed being immersed in exciting new products.", "vi": "Tôi thích được đắm mình giữa những sản phẩm mới hấp dẫn." },
-        { "code": "HSV6", "en": "I enjoyed this shopping trip for its own sake, not just for the items I may have purchased.", "vi": "Tôi thích bản thân chuyến mua sắm này, không chỉ vì những món đồ tôi có thể đã mua." },
-        { "code": "HSV7", "en": "I continued to shop, not because I had to, but because I wanted to.", "vi": "Tôi tiếp tục mua sắm không phải vì phải làm, mà vì tôi muốn." },
-        { "code": "HSV8", "en": "I had a good time because I was able to act on the \"spur of the moment.\"", "vi": "Tôi thấy vui vì được hành động theo hứng nhất thời." },
-        { "code": "HSV9", "en": "While shopping, I was able to forget my problems.", "vi": "Khi mua sắm, tôi quên được những chuyện phiền muộn của mình." },
-        { "code": "HSV10", "en": "While shopping, I felt a sense of adventure.", "vi": "Khi mua sắm, tôi có cảm giác như đang phiêu lưu." },
-        { "code": "HSV11", "en": "This shopping trip was not a very nice time out.", "vi": "Chuyến mua sắm này không phải là khoảng thời gian thư giãn dễ chịu.", "reverse": true }
+        {
+          "code": "HSV1",
+          "en": "This shopping trip was truly a joy.",
+          "vi": "Chuyến mua sắm này thật sự là một niềm vui."
+        },
+        {
+          "code": "HSV2",
+          "en": "Compared to other things I could have done, the time spent shopping was truly enjoyable.",
+          "vi": "So với những việc khác tôi có thể làm, thời gian dành cho mua sắm thật sự thú vị."
+        },
+        {
+          "code": "HSV3",
+          "en": "During the trip, I felt the excitement of the hunt.",
+          "vi": "Trong chuyến mua sắm, tôi cảm thấy sự hào hứng của việc \"săn\" hàng."
+        },
+        {
+          "code": "HSV4",
+          "en": "This shopping trip truly felt like an escape.",
+          "vi": "Chuyến mua sắm này thật sự giống như một dịp thoát khỏi nhịp sống thường ngày."
+        },
+        {
+          "code": "HSV5",
+          "en": "I enjoyed being immersed in exciting new products.",
+          "vi": "Tôi thích được đắm mình giữa những sản phẩm mới hấp dẫn."
+        },
+        {
+          "code": "HSV6",
+          "en": "I enjoyed this shopping trip for its own sake, not just for the items I may have purchased.",
+          "vi": "Tôi thích bản thân chuyến mua sắm này, không chỉ vì những món đồ tôi có thể đã mua."
+        },
+        {
+          "code": "HSV7",
+          "en": "I continued to shop, not because I had to, but because I wanted to.",
+          "vi": "Tôi tiếp tục mua sắm không phải vì phải làm, mà vì tôi muốn."
+        },
+        {
+          "code": "HSV8",
+          "en": "I had a good time because I was able to act on the \"spur of the moment.\"",
+          "vi": "Tôi thấy vui vì được hành động theo hứng nhất thời."
+        },
+        {
+          "code": "HSV9",
+          "en": "While shopping, I was able to forget my problems.",
+          "vi": "Khi mua sắm, tôi quên được những chuyện phiền muộn của mình."
+        },
+        {
+          "code": "HSV10",
+          "en": "While shopping, I felt a sense of adventure.",
+          "vi": "Khi mua sắm, tôi có cảm giác như đang phiêu lưu."
+        },
+        {
+          "code": "HSV11",
+          "en": "This shopping trip was not a very nice time out.",
+          "vi": "Chuyến mua sắm này không phải là khoảng thời gian thư giãn dễ chịu.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -35,10 +80,28 @@
       "definition": "Giá trị đến từ việc hoàn thành mục đích mua sắm một cách hiệu quả, tìm được và mua được thứ mình cần.",
       "source": "Babin, Darden & Griffin (1994), 4 biến của thang cuối cùng.",
       "items": [
-        { "code": "USV1", "en": "I accomplished just what I wanted to on this shopping trip.", "vi": "Tôi đã làm được đúng điều mình muốn trong chuyến mua sắm này." },
-        { "code": "USV2", "en": "I couldn't buy what I really needed.", "vi": "Tôi đã không mua được thứ mình thật sự cần.", "reverse": true },
-        { "code": "USV3", "en": "While shopping, I found just the item(s) I was looking for.", "vi": "Khi mua sắm, tôi tìm được đúng món đồ mình đang tìm." },
-        { "code": "USV4", "en": "I was disappointed because I had to go to another store(s) to complete my shopping.", "vi": "Tôi thất vọng vì phải sang cửa hàng khác mới mua đủ đồ.", "reverse": true }
+        {
+          "code": "USV1",
+          "en": "I accomplished just what I wanted to on this shopping trip.",
+          "vi": "Tôi đã làm được đúng điều mình muốn trong chuyến mua sắm này."
+        },
+        {
+          "code": "USV2",
+          "en": "I couldn't buy what I really needed.",
+          "vi": "Tôi đã không mua được thứ mình thật sự cần.",
+          "reverse": true
+        },
+        {
+          "code": "USV3",
+          "en": "While shopping, I found just the item(s) I was looking for.",
+          "vi": "Khi mua sắm, tôi tìm được đúng món đồ mình đang tìm."
+        },
+        {
+          "code": "USV4",
+          "en": "I was disappointed because I had to go to another store(s) to complete my shopping.",
+          "vi": "Tôi thất vọng vì phải sang cửa hàng khác mới mua đủ đồ.",
+          "reverse": true
+        }
       ]
     }
   ],
@@ -63,5 +126,9 @@
     "https://link.springer.com/content/pdf/10.1186/s43093-026-00775-z.pdf",
     "https://marketingmanagementjournal.scholasticahq.com/article/150938.pdf"
   ],
-  "related": ["mua-hang-ngau-hung", "gia-tri-cam-nhan-perval", "y-dinh-mua"]
+  "related": [
+    "mua-hang-ngau-hung",
+    "gia-tri-cam-nhan-perval",
+    "y-dinh-mua"
+  ]
 }

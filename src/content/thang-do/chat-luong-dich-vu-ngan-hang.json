@@ -15,13 +15,41 @@
       "definition": "Dịch vụ ngân hàng điện tử dễ dùng, hiệu quả và được tổ chức tốt.",
       "source": "Malc và cộng sự (2023), 7 biến.",
       "items": [
-        { "code": "EFF1", "en": "This e-banking site is simple to use.", "vi": "[Ứng dụng ngân hàng] sử dụng đơn giản." },
-        { "code": "EFF2", "en": "It is easy to get anywhere on this e-banking site.", "vi": "Tôi dễ dàng đi tới bất kỳ mục nào trên [ứng dụng ngân hàng]." },
-        { "code": "EFF3", "en": "This e-banking site is easy to access.", "vi": "[Ứng dụng ngân hàng] dễ truy cập." },
-        { "code": "EFF4", "en": "Information at this e-banking site is well organized.", "vi": "Thông tin trên [ứng dụng ngân hàng] được sắp xếp tốt." },
-        { "code": "EFF5", "en": "This e-banking site enables me to complete a transaction quickly.", "vi": "[Ứng dụng ngân hàng] giúp tôi hoàn tất giao dịch nhanh chóng." },
-        { "code": "EFF6", "en": "This e-banking site simplifies banking transactions.", "vi": "[Ứng dụng ngân hàng] giúp các giao dịch ngân hàng trở nên đơn giản hơn." },
-        { "code": "EFF7", "en": "This e-banking site is well organized.", "vi": "[Ứng dụng ngân hàng] được tổ chức tốt." }
+        {
+          "code": "EFF1",
+          "en": "This e-banking site is simple to use.",
+          "vi": "Việc sử dụng [ứng dụng ngân hàng] đơn giản."
+        },
+        {
+          "code": "EFF2",
+          "en": "It is easy to get anywhere on this e-banking site.",
+          "vi": "Tôi dễ dàng đi tới bất kỳ mục nào trên [ứng dụng ngân hàng]."
+        },
+        {
+          "code": "EFF3",
+          "en": "This e-banking site is easy to access.",
+          "vi": "[Ứng dụng ngân hàng] dễ truy cập."
+        },
+        {
+          "code": "EFF4",
+          "en": "Information at this e-banking site is well organized.",
+          "vi": "Thông tin trên [ứng dụng ngân hàng] được sắp xếp tốt."
+        },
+        {
+          "code": "EFF5",
+          "en": "This e-banking site enables me to complete a transaction quickly.",
+          "vi": "[Ứng dụng ngân hàng] giúp tôi hoàn tất giao dịch nhanh chóng."
+        },
+        {
+          "code": "EFF6",
+          "en": "This e-banking site simplifies banking transactions.",
+          "vi": "[Ứng dụng ngân hàng] giúp các giao dịch ngân hàng trở nên đơn giản hơn."
+        },
+        {
+          "code": "EFF7",
+          "en": "This e-banking site is well organized.",
+          "vi": "[Ứng dụng ngân hàng] được tổ chức tốt."
+        }
       ]
     },
     {
@@ -31,10 +59,26 @@
       "definition": "Khách hàng truy cập và thực hiện được giao dịch khi cần, không gặp sự cố kỹ thuật.",
       "source": "Malc và cộng sự (2023), 4 biến.",
       "items": [
-        { "code": "AVA1", "en": "This e-banking site launches and works without issues.", "vi": "[Ứng dụng ngân hàng] khởi động và hoạt động không gặp sự cố." },
-        { "code": "AVA2", "en": "This e-banking site does not crash.", "vi": "[Ứng dụng ngân hàng] không bị sập." },
-        { "code": "AVA3", "en": "Pages at this e-banking site do not freeze after I enter the required information.", "vi": "Các màn hình của [ứng dụng ngân hàng] không bị treo sau khi tôi nhập thông tin cần thiết." },
-        { "code": "AVA4", "en": "This e-banking site is always available for business.", "vi": "[Ứng dụng ngân hàng] luôn sẵn sàng để giao dịch." }
+        {
+          "code": "AVA1",
+          "en": "This e-banking site launches and works without issues.",
+          "vi": "[Ứng dụng ngân hàng] khởi động và hoạt động không gặp sự cố."
+        },
+        {
+          "code": "AVA2",
+          "en": "This e-banking site does not crash.",
+          "vi": "[Ứng dụng ngân hàng] không bị sập."
+        },
+        {
+          "code": "AVA3",
+          "en": "Pages at this e-banking site do not freeze after I enter the required information.",
+          "vi": "Các màn hình của [ứng dụng ngân hàng] không bị treo sau khi tôi nhập thông tin cần thiết."
+        },
+        {
+          "code": "AVA4",
+          "en": "This e-banking site is always available for business.",
+          "vi": "[Ứng dụng ngân hàng] luôn sẵn sàng để giao dịch."
+        }
       ]
     },
     {
@@ -44,9 +88,21 @@
       "definition": "Giao diện ngân hàng điện tử hiện đại, có tính tương tác và đẹp mắt.",
       "source": "Malc và cộng sự (2023), 3 biến.",
       "items": [
-        { "code": "DES1", "en": "This e-banking sites’ design is aesthetical.", "vi": "Thiết kế của [ứng dụng ngân hàng] có tính thẩm mỹ." },
-        { "code": "DES2", "en": "The e-banking site design is visually pleasing.", "vi": "Thiết kế của [ứng dụng ngân hàng] dễ nhìn, bắt mắt." },
-        { "code": "DES3", "en": "The e-banking site includes interactive features.", "vi": "[Ứng dụng ngân hàng] có các tính năng tương tác." }
+        {
+          "code": "DES1",
+          "en": "This e-banking sites’ design is aesthetical.",
+          "vi": "Thiết kế của [ứng dụng ngân hàng] có tính thẩm mỹ."
+        },
+        {
+          "code": "DES2",
+          "en": "The e-banking site design is visually pleasing.",
+          "vi": "Thiết kế của [ứng dụng ngân hàng] đẹp mắt."
+        },
+        {
+          "code": "DES3",
+          "en": "The e-banking site includes interactive features.",
+          "vi": "[Ứng dụng ngân hàng] có các tính năng tương tác."
+        }
       ]
     },
     {
@@ -56,10 +112,26 @@
       "definition": "Khách hàng liên lạc được với ngân hàng khi gặp vấn đề với dịch vụ điện tử.",
       "source": "Malc và cộng sự (2023), 4 biến.",
       "items": [
-        { "code": "CON1", "en": "This e-banking site has online customer service available.", "vi": "[Ứng dụng ngân hàng] có dịch vụ chăm sóc khách hàng trực tuyến." },
-        { "code": "CON2", "en": "This e-banking site offers the ability to speak to a live person if there is a problem.", "vi": "[Ứng dụng ngân hàng] cho phép tôi nói chuyện với nhân viên khi có sự cố." },
-        { "code": "CON3", "en": "This e-banking site provides a telephone number to reach the company.", "vi": "[Ứng dụng ngân hàng] cung cấp số điện thoại để liên lạc với ngân hàng." },
-        { "code": "CON4", "en": "Quickly resolves online transaction problems.", "vi": "Nhanh chóng giải quyết các sự cố giao dịch trực tuyến." }
+        {
+          "code": "CON1",
+          "en": "This e-banking site has online customer service available.",
+          "vi": "[Ứng dụng ngân hàng] có dịch vụ chăm sóc khách hàng trực tuyến."
+        },
+        {
+          "code": "CON2",
+          "en": "This e-banking site offers the ability to speak to a live person if there is a problem.",
+          "vi": "[Ứng dụng ngân hàng] cho phép tôi nói chuyện với nhân viên khi có sự cố."
+        },
+        {
+          "code": "CON3",
+          "en": "This e-banking site provides a telephone number to reach the company.",
+          "vi": "[Ứng dụng ngân hàng] cung cấp số điện thoại để liên lạc với ngân hàng."
+        },
+        {
+          "code": "CON4",
+          "en": "Quickly resolves online transaction problems.",
+          "vi": "[Ứng dụng ngân hàng] nhanh chóng giải quyết các sự cố giao dịch trực tuyến."
+        }
       ]
     },
     {
@@ -69,9 +141,21 @@
       "definition": "Dịch vụ ngân hàng điện tử bảo vệ dữ liệu cá nhân, dữ liệu tài chính và giao dịch an toàn.",
       "source": "Malc và cộng sự (2023), 3 biến.",
       "items": [
-        { "code": "SEC1", "en": "My financial information is protected on this e-banking site.", "vi": "Thông tin tài chính của tôi được bảo vệ trên [ứng dụng ngân hàng]." },
-        { "code": "SEC2", "en": "My personal information is protected on this e-banking site.", "vi": "Thông tin cá nhân của tôi được bảo vệ trên [ứng dụng ngân hàng]." },
-        { "code": "SEC3", "en": "The transactions over this e-banking site are secured.", "vi": "Các giao dịch qua [ứng dụng ngân hàng] được bảo mật." }
+        {
+          "code": "SEC1",
+          "en": "My financial information is protected on this e-banking site.",
+          "vi": "Thông tin tài chính của tôi được bảo vệ trên [ứng dụng ngân hàng]."
+        },
+        {
+          "code": "SEC2",
+          "en": "My personal information is protected on this e-banking site.",
+          "vi": "Thông tin cá nhân của tôi được bảo vệ trên [ứng dụng ngân hàng]."
+        },
+        {
+          "code": "SEC3",
+          "en": "The transactions over this e-banking site are secured.",
+          "vi": "Các giao dịch qua [ứng dụng ngân hàng] được bảo mật."
+        }
       ]
     },
     {
@@ -81,10 +165,26 @@
       "definition": "Dịch vụ ngân hàng điện tử được cung cấp đúng như đã hứa và đáp ứng mong đợi của khách hàng.",
       "source": "Malc và cộng sự (2023), 4 biến.",
       "items": [
-        { "code": "FUL1", "en": "This e-banking site is truthful about its offerings.", "vi": "[Ứng dụng ngân hàng] trung thực về các dịch vụ mình cung cấp." },
-        { "code": "FUL2", "en": "This e-banking site makes accurate promises about the services being delivered.", "vi": "[Ứng dụng ngân hàng] đưa ra cam kết chính xác về các dịch vụ được cung cấp." },
-        { "code": "FUL3", "en": "When this e-banking site promises to do something by a certain time, it does so.", "vi": "Khi [ứng dụng ngân hàng] hứa làm điều gì vào một thời điểm nhất định, họ làm đúng như vậy." },
-        { "code": "FUL4", "en": "This e-banking site takes care of problems promptly.", "vi": "[Ứng dụng ngân hàng] giải quyết sự cố kịp thời." }
+        {
+          "code": "FUL1",
+          "en": "This e-banking site is truthful about its offerings.",
+          "vi": "[Ứng dụng ngân hàng] trung thực về các dịch vụ mình cung cấp."
+        },
+        {
+          "code": "FUL2",
+          "en": "This e-banking site makes accurate promises about the services being delivered.",
+          "vi": "[Ứng dụng ngân hàng] đưa ra cam kết chính xác về các dịch vụ được cung cấp."
+        },
+        {
+          "code": "FUL3",
+          "en": "When this e-banking site promises to do something by a certain time, it does so.",
+          "vi": "Khi [ứng dụng ngân hàng] hứa làm điều gì vào một thời điểm nhất định, họ làm đúng như vậy."
+        },
+        {
+          "code": "FUL4",
+          "en": "This e-banking site takes care of problems promptly.",
+          "vi": "[Ứng dụng ngân hàng] giải quyết sự cố kịp thời."
+        }
       ]
     }
   ],
@@ -106,5 +206,9 @@
   "verifiedFrom": [
     "https://www.mdpi.com/2071-1050/15/16/12659"
   ],
-  "related": ["e-s-qual", "servqual", "servperf"]
+  "related": [
+    "e-s-qual",
+    "servqual",
+    "servperf"
+  ]
 }

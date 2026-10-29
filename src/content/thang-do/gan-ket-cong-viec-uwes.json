@@ -15,9 +15,21 @@
       "definition": "Mức năng lượng và sự bền bỉ về tinh thần khi làm việc, sẵn lòng bỏ công sức kể cả khi gặp khó khăn.",
       "source": "Schaufeli, Bakker & Salanova (2006), UWES-9, 3 biến.",
       "items": [
-        { "code": "VI1", "en": "At my work, I feel bursting with energy.", "vi": "Ở nơi làm việc, tôi thấy mình tràn đầy năng lượng." },
-        { "code": "VI2", "en": "At my job, I feel strong and vigorous.", "vi": "Khi làm việc, tôi thấy mình khoẻ khoắn và sung sức." },
-        { "code": "VI3", "en": "When I get up in the morning, I feel like going to work.", "vi": "Sáng thức dậy, tôi thấy muốn đi làm." }
+        {
+          "code": "VI1",
+          "en": "At my work, I feel bursting with energy.",
+          "vi": "Ở nơi làm việc, tôi thấy mình tràn đầy năng lượng."
+        },
+        {
+          "code": "VI2",
+          "en": "At my job, I feel strong and vigorous.",
+          "vi": "Khi làm việc, tôi thấy mình khoẻ khoắn và sung sức."
+        },
+        {
+          "code": "VI3",
+          "en": "When I get up in the morning, I feel like going to work.",
+          "vi": "Sáng thức dậy, tôi thấy muốn đi làm."
+        }
       ]
     },
     {
@@ -27,9 +39,21 @@
       "definition": "Mức một người thấy công việc có ý nghĩa, hào hứng, tự hào và được truyền cảm hứng từ công việc.",
       "source": "Schaufeli, Bakker & Salanova (2006), UWES-9, 3 biến.",
       "items": [
-        { "code": "DE1", "en": "I am enthusiastic about my job.", "vi": "Tôi hào hứng với công việc của mình." },
-        { "code": "DE2", "en": "My job inspires me.", "vi": "Công việc truyền cảm hứng cho tôi." },
-        { "code": "DE3", "en": "I am proud of the work that I do.", "vi": "Tôi tự hào về công việc mình làm." }
+        {
+          "code": "DE1",
+          "en": "I am enthusiastic about my job.",
+          "vi": "Tôi hào hứng với công việc của mình."
+        },
+        {
+          "code": "DE2",
+          "en": "My job inspires me.",
+          "vi": "Công việc truyền cảm hứng cho tôi."
+        },
+        {
+          "code": "DE3",
+          "en": "I am proud of the work that I do.",
+          "vi": "Tôi tự hào về công việc mình làm."
+        }
       ]
     },
     {
@@ -39,9 +63,21 @@
       "definition": "Mức một người tập trung trọn vẹn và đắm mình vào công việc, thấy thời gian trôi nhanh.",
       "source": "Schaufeli, Bakker & Salanova (2006), UWES-9, 3 biến.",
       "items": [
-        { "code": "AB1", "en": "I feel happy when I am working intensely.", "vi": "Tôi thấy vui khi làm việc tập trung cao độ." },
-        { "code": "AB2", "en": "I am immersed in my work.", "vi": "Tôi đắm mình vào công việc." },
-        { "code": "AB3", "en": "I get carried away when I'm working.", "vi": "Tôi bị cuốn đi khi đang làm việc." }
+        {
+          "code": "AB1",
+          "en": "I feel happy when I am working intensely.",
+          "vi": "Tôi thấy vui khi làm việc tập trung cao độ."
+        },
+        {
+          "code": "AB2",
+          "en": "I am immersed in my work.",
+          "vi": "Tôi đắm mình vào công việc."
+        },
+        {
+          "code": "AB3",
+          "en": "I get carried away when I'm working.",
+          "vi": "Tôi bị cuốn hút hoàn toàn khi đang làm việc."
+        }
       ]
     }
   ],
@@ -67,5 +103,9 @@
     "https://www.wilmarschaufeli.nl/tests/",
     "https://api.crossref.org/works/10.1177/0013164405282471"
   ],
-  "related": ["hai-long-cong-viec", "ho-tro-to-chuc-pos", "cam-ket-to-chuc-ocq"]
+  "related": [
+    "hai-long-cong-viec",
+    "ho-tro-to-chuc-pos",
+    "cam-ket-to-chuc-ocq"
+  ]
 }

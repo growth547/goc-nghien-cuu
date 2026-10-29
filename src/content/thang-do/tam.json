@@ -15,12 +15,36 @@
       "definition": "Mức độ một người tin rằng dùng hệ thống sẽ cải thiện kết quả công việc của mình.",
       "source": "Davis (1989), 6 biến.",
       "items": [
-        { "code": "PU1", "en": "Using [system] in my job would enable me to accomplish tasks more quickly.", "vi": "Sử dụng [hệ thống] giúp tôi hoàn thành công việc nhanh hơn." },
-        { "code": "PU2", "en": "Using [system] would improve my job performance.", "vi": "Sử dụng [hệ thống] giúp cải thiện kết quả công việc của tôi." },
-        { "code": "PU3", "en": "Using [system] in my job would increase my productivity.", "vi": "Sử dụng [hệ thống] giúp tăng năng suất làm việc của tôi." },
-        { "code": "PU4", "en": "Using [system] would enhance my effectiveness on the job.", "vi": "Sử dụng [hệ thống] giúp tôi làm việc hiệu quả hơn." },
-        { "code": "PU5", "en": "Using [system] would make it easier to do my job.", "vi": "Sử dụng [hệ thống] khiến công việc của tôi dễ dàng hơn." },
-        { "code": "PU6", "en": "I would find [system] useful in my job.", "vi": "Tôi thấy [hệ thống] hữu ích cho công việc của mình." }
+        {
+          "code": "PU1",
+          "en": "Using [system] in my job would enable me to accomplish tasks more quickly.",
+          "vi": "Sử dụng [hệ thống] giúp tôi hoàn thành công việc nhanh hơn."
+        },
+        {
+          "code": "PU2",
+          "en": "Using [system] would improve my job performance.",
+          "vi": "Sử dụng [hệ thống] giúp cải thiện kết quả công việc của tôi."
+        },
+        {
+          "code": "PU3",
+          "en": "Using [system] in my job would increase my productivity.",
+          "vi": "Sử dụng [hệ thống] giúp tăng năng suất làm việc của tôi."
+        },
+        {
+          "code": "PU4",
+          "en": "Using [system] would enhance my effectiveness on the job.",
+          "vi": "Sử dụng [hệ thống] giúp tôi làm việc hiệu quả hơn."
+        },
+        {
+          "code": "PU5",
+          "en": "Using [system] would make it easier to do my job.",
+          "vi": "Sử dụng [hệ thống] khiến công việc của tôi dễ dàng hơn."
+        },
+        {
+          "code": "PU6",
+          "en": "I would find [system] useful in my job.",
+          "vi": "Tôi thấy [hệ thống] hữu ích cho công việc của mình."
+        }
       ]
     },
     {
@@ -30,12 +54,36 @@
       "definition": "Mức độ một người tin rằng dùng hệ thống không đòi hỏi nhiều công sức.",
       "source": "Davis (1989), 6 biến.",
       "items": [
-        { "code": "PEOU1", "en": "Learning to operate [system] would be easy for me.", "vi": "Tôi thấy học cách sử dụng [hệ thống] là dễ dàng." },
-        { "code": "PEOU2", "en": "I would find it easy to get [system] to do what I want it to do.", "vi": "Tôi dễ dàng khiến [hệ thống] làm được điều tôi muốn." },
-        { "code": "PEOU3", "en": "My interaction with [system] would be clear and understandable.", "vi": "Các thao tác của tôi với [hệ thống] rõ ràng và dễ hiểu." },
-        { "code": "PEOU4", "en": "I would find [system] to be flexible to interact with.", "vi": "Tôi thấy [hệ thống] linh hoạt khi tương tác." },
-        { "code": "PEOU5", "en": "It would be easy for me to become skillful at using [system].", "vi": "Tôi dễ dàng trở nên thành thạo khi sử dụng [hệ thống]." },
-        { "code": "PEOU6", "en": "I would find [system] easy to use.", "vi": "Tôi thấy [hệ thống] dễ sử dụng." }
+        {
+          "code": "PEOU1",
+          "en": "Learning to operate [system] would be easy for me.",
+          "vi": "Tôi thấy học cách sử dụng [hệ thống] là dễ dàng."
+        },
+        {
+          "code": "PEOU2",
+          "en": "I would find it easy to get [system] to do what I want it to do.",
+          "vi": "Tôi dễ dàng khiến [hệ thống] làm được điều tôi muốn."
+        },
+        {
+          "code": "PEOU3",
+          "en": "My interaction with [system] would be clear and understandable.",
+          "vi": "Việc tương tác với [hệ thống] rõ ràng và dễ hiểu đối với tôi."
+        },
+        {
+          "code": "PEOU4",
+          "en": "I would find [system] to be flexible to interact with.",
+          "vi": "Tôi thấy [hệ thống] linh hoạt khi tương tác."
+        },
+        {
+          "code": "PEOU5",
+          "en": "It would be easy for me to become skillful at using [system].",
+          "vi": "Tôi có thể dễ dàng trở nên thành thạo trong việc sử dụng [hệ thống]."
+        },
+        {
+          "code": "PEOU6",
+          "en": "I would find [system] easy to use.",
+          "vi": "Tôi thấy [hệ thống] dễ sử dụng."
+        }
       ]
     },
     {
@@ -45,8 +93,16 @@
       "definition": "Mức độ một người dự định sẽ sử dụng hệ thống trong thời gian tới.",
       "source": "Venkatesh & Davis (2000), TAM2, 2 biến.",
       "items": [
-        { "code": "BI1", "en": "Assuming I have access to the system, I intend to use it.", "vi": "Nếu được tiếp cận [hệ thống], tôi dự định sẽ sử dụng nó." },
-        { "code": "BI2", "en": "Given that I have access to the system, I predict that I would use it.", "vi": "Khi đã được tiếp cận [hệ thống], tôi nghĩ mình sẽ sử dụng nó." }
+        {
+          "code": "BI1",
+          "en": "Assuming I have access to the system, I intend to use it.",
+          "vi": "Nếu được tiếp cận [hệ thống], tôi dự định sẽ sử dụng nó."
+        },
+        {
+          "code": "BI2",
+          "en": "Given that I have access to the system, I predict that I would use it.",
+          "vi": "Khi đã được tiếp cận [hệ thống], tôi nghĩ mình sẽ sử dụng nó."
+        }
       ]
     }
   ],
@@ -70,5 +126,9 @@
     "https://doi.org/10.2307/249008",
     "https://doi.org/10.1287/mnsc.46.2.186.11926"
   ],
-  "related": ["utaut", "utaut2", "tpb"]
+  "related": [
+    "utaut",
+    "utaut2",
+    "tpb"
+  ]
 }

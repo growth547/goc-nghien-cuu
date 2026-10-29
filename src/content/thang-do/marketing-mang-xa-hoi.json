@@ -18,12 +18,12 @@
         {
           "code": "ENT1",
           "en": "Using [brand]'s social media is fun.",
-          "vi": "Sử dụng mạng xã hội của [thương hiệu] rất vui."
+          "vi": "Sử dụng các trang mạng xã hội của [thương hiệu] rất vui."
         },
         {
           "code": "ENT2",
           "en": "Contents shown in [brand]'s social media seem interesting.",
-          "vi": "Nội dung trên mạng xã hội của [thương hiệu] có vẻ thú vị."
+          "vi": "Nội dung trên các trang mạng xã hội của [thương hiệu] có vẻ thú vị."
         }
       ]
     },
@@ -37,17 +37,17 @@
         {
           "code": "INT1",
           "en": "[Brand]'s social media enables information sharing with others.",
-          "vi": "Mạng xã hội của [thương hiệu] giúp tôi chia sẻ thông tin với người khác."
+          "vi": "Các trang mạng xã hội của [thương hiệu] giúp tôi chia sẻ thông tin với người khác."
         },
         {
           "code": "INT2",
           "en": "Conversation or opinion exchange with others is possible through [brand]'s social media.",
-          "vi": "Tôi có thể trò chuyện hoặc trao đổi ý kiến với người khác qua mạng xã hội của [thương hiệu]."
+          "vi": "Tôi có thể trò chuyện hoặc trao đổi ý kiến với người khác qua các trang mạng xã hội của [thương hiệu]."
         },
         {
           "code": "INT3",
           "en": "It is easy to deliver my opinion through [brand]'s social media.",
-          "vi": "Tôi dễ dàng bày tỏ ý kiến của mình qua mạng xã hội của [thương hiệu]."
+          "vi": "Tôi dễ dàng bày tỏ ý kiến của mình qua các trang mạng xã hội của [thương hiệu]."
         }
       ]
     },
@@ -61,12 +61,12 @@
         {
           "code": "TRD1",
           "en": "Contents shown in [brand]'s social media is the newest information.",
-          "vi": "Nội dung trên mạng xã hội của [thương hiệu] là thông tin mới nhất."
+          "vi": "Nội dung trên các trang mạng xã hội của [thương hiệu] là thông tin mới nhất."
         },
         {
           "code": "TRD2",
           "en": "Using [brand]'s social media is very trendy.",
-          "vi": "Sử dụng mạng xã hội của [thương hiệu] rất hợp xu hướng."
+          "vi": "Sử dụng các trang mạng xã hội của [thương hiệu] rất hợp xu hướng."
         }
       ]
     },
@@ -80,12 +80,12 @@
         {
           "code": "CUS1",
           "en": "[Brand]'s social media offers customized information search.",
-          "vi": "Mạng xã hội của [thương hiệu] cho phép tìm kiếm thông tin theo nhu cầu riêng của tôi."
+          "vi": "Các trang mạng xã hội của [thương hiệu] cho phép tìm kiếm thông tin theo nhu cầu riêng của tôi."
         },
         {
           "code": "CUS2",
           "en": "[Brand]'s social media provides customized service.",
-          "vi": "Mạng xã hội của [thương hiệu] cung cấp dịch vụ phù hợp với cá nhân tôi."
+          "vi": "Các trang mạng xã hội của [thương hiệu] cung cấp dịch vụ phù hợp với cá nhân tôi."
         }
       ]
     },
@@ -99,12 +99,12 @@
         {
           "code": "WOM1",
           "en": "I would like to pass along information on brand, product, or services from [brand]'s social media to my friends.",
-          "vi": "Tôi muốn chia sẻ cho bạn bè thông tin về thương hiệu, sản phẩm hoặc dịch vụ mà tôi thấy trên mạng xã hội của [thương hiệu]."
+          "vi": "Tôi muốn chia sẻ cho bạn bè thông tin về thương hiệu, sản phẩm hoặc dịch vụ mà tôi thấy trên các trang mạng xã hội của [thương hiệu]."
         },
         {
           "code": "WOM2",
           "en": "I would like to upload contents from [brand]'s social media on my blog or micro blog.",
-          "vi": "Tôi muốn đăng lại nội dung từ mạng xã hội của [thương hiệu] lên trang cá nhân của mình."
+          "vi": "Tôi muốn đăng lại nội dung từ các trang mạng xã hội của [thương hiệu] lên trang cá nhân của mình."
         }
       ]
     }

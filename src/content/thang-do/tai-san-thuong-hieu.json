@@ -15,9 +15,21 @@
       "definition": "Mức độ khách hàng gắn bó và ưu tiên chọn thương hiệu.",
       "source": "Yoo & Donthu (2001), 3 biến.",
       "items": [
-        { "code": "BL1", "en": "I consider myself to be loyal to [brand].", "vi": "Tôi tự cho mình là khách hàng trung thành của [thương hiệu]." },
-        { "code": "BL2", "en": "[brand] would be my first choice.", "vi": "[Thương hiệu] sẽ là lựa chọn đầu tiên của tôi." },
-        { "code": "BL3", "en": "I will not buy other brands if [brand] is available at the store.", "vi": "Tôi sẽ không mua thương hiệu khác nếu cửa hàng có bán [thương hiệu]." }
+        {
+          "code": "BL1",
+          "en": "I consider myself to be loyal to [brand].",
+          "vi": "Tôi tự cho mình là khách hàng trung thành của [thương hiệu]."
+        },
+        {
+          "code": "BL2",
+          "en": "[brand] would be my first choice.",
+          "vi": "[Thương hiệu] sẽ là lựa chọn đầu tiên của tôi."
+        },
+        {
+          "code": "BL3",
+          "en": "I will not buy other brands if [brand] is available at the store.",
+          "vi": "Tôi sẽ không mua thương hiệu khác nếu cửa hàng có bán [thương hiệu]."
+        }
       ]
     },
     {
@@ -27,8 +39,16 @@
       "definition": "Đánh giá chủ quan của khách hàng về chất lượng tổng thể của thương hiệu.",
       "source": "Yoo & Donthu (2001), 2 biến dùng trong thang MBE.",
       "items": [
-        { "code": "PQ1", "en": "The likely quality of [brand] is extremely high.", "vi": "Chất lượng của [thương hiệu] có lẽ là rất cao." },
-        { "code": "PQ2", "en": "The likelihood that [brand] would be functional is very high.", "vi": "Khả năng [thương hiệu] hoạt động tốt đúng công năng là rất cao." }
+        {
+          "code": "PQ1",
+          "en": "The likely quality of [brand] is extremely high.",
+          "vi": "Nhiều khả năng [thương hiệu] có chất lượng rất cao."
+        },
+        {
+          "code": "PQ2",
+          "en": "The likelihood that [brand] would be functional is very high.",
+          "vi": "Khả năng [thương hiệu] hoạt động tốt đúng công năng là rất cao."
+        }
       ]
     },
     {
@@ -38,11 +58,32 @@
       "definition": "Khả năng khách hàng nhận ra, nhớ tới và hình dung được thương hiệu.",
       "source": "Yoo & Donthu (2001), 5 biến, có 1 câu đảo chiều.",
       "items": [
-        { "code": "BAA1", "en": "I can recognize [brand] among other competing brands.", "vi": "Tôi có thể nhận ra [thương hiệu] giữa các thương hiệu cạnh tranh." },
-        { "code": "BAA2", "en": "I am aware of [brand].", "vi": "Tôi biết đến [thương hiệu]." },
-        { "code": "BAA3", "en": "Some characteristics of [brand] come to my mind quickly.", "vi": "Một vài đặc điểm của [thương hiệu] hiện ra trong đầu tôi rất nhanh." },
-        { "code": "BAA4", "en": "I can quickly recall the symbol or logo of [brand].", "vi": "Tôi có thể nhanh chóng nhớ ra biểu tượng hoặc logo của [thương hiệu]." },
-        { "code": "BAA5", "en": "I have difficulty in imagining [brand] in my mind.", "vi": "Tôi thấy khó hình dung ra [thương hiệu] trong đầu.", "reverse": true }
+        {
+          "code": "BAA1",
+          "en": "I can recognize [brand] among other competing brands.",
+          "vi": "Tôi có thể nhận ra [thương hiệu] giữa các thương hiệu cạnh tranh."
+        },
+        {
+          "code": "BAA2",
+          "en": "I am aware of [brand].",
+          "vi": "Tôi biết đến [thương hiệu]."
+        },
+        {
+          "code": "BAA3",
+          "en": "Some characteristics of [brand] come to my mind quickly.",
+          "vi": "Một vài đặc điểm của [thương hiệu] hiện ra trong đầu tôi rất nhanh."
+        },
+        {
+          "code": "BAA4",
+          "en": "I can quickly recall the symbol or logo of [brand].",
+          "vi": "Tôi có thể nhanh chóng nhớ ra biểu tượng hoặc logo của [thương hiệu]."
+        },
+        {
+          "code": "BAA5",
+          "en": "I have difficulty in imagining [brand] in my mind.",
+          "vi": "Tôi thấy khó hình dung ra [thương hiệu] trong đầu.",
+          "reverse": true
+        }
       ]
     },
     {
@@ -52,10 +93,26 @@
       "definition": "Sự khác biệt trong lựa chọn của khách hàng giữa thương hiệu và một sản phẩm không thương hiệu có cùng đặc tính.",
       "source": "Yoo, Donthu & Lee (2000); Yoo & Donthu (2001), 4 biến.",
       "items": [
-        { "code": "OBE1", "en": "It makes sense to buy [brand] instead of any other brand, even if they are the same.", "vi": "Mua [thương hiệu] thay vì thương hiệu khác là hợp lý, kể cả khi chúng giống nhau." },
-        { "code": "OBE2", "en": "Even if another brand has same features as [brand], I would prefer to buy [brand].", "vi": "Dù thương hiệu khác có cùng tính năng như [thương hiệu], tôi vẫn thích mua [thương hiệu] hơn." },
-        { "code": "OBE3", "en": "If there is another brand as good as [brand], I prefer to buy [brand].", "vi": "Nếu có thương hiệu khác tốt ngang [thương hiệu], tôi vẫn thích mua [thương hiệu] hơn." },
-        { "code": "OBE4", "en": "If another brand is not different from [brand] in any way, it seems smarter to purchase [brand].", "vi": "Nếu thương hiệu khác không khác gì [thương hiệu], mua [thương hiệu] vẫn có vẻ là lựa chọn khôn ngoan hơn." }
+        {
+          "code": "OBE1",
+          "en": "It makes sense to buy [brand] instead of any other brand, even if they are the same.",
+          "vi": "Mua [thương hiệu] thay vì thương hiệu khác là hợp lý, kể cả khi chúng giống nhau."
+        },
+        {
+          "code": "OBE2",
+          "en": "Even if another brand has same features as [brand], I would prefer to buy [brand].",
+          "vi": "Dù thương hiệu khác có cùng tính năng như [thương hiệu], tôi vẫn thích mua [thương hiệu] hơn."
+        },
+        {
+          "code": "OBE3",
+          "en": "If there is another brand as good as [brand], I prefer to buy [brand].",
+          "vi": "Nếu có thương hiệu khác tốt ngang [thương hiệu], tôi vẫn thích mua [thương hiệu] hơn."
+        },
+        {
+          "code": "OBE4",
+          "en": "If another brand is not different from [brand] in any way, it seems smarter to purchase [brand].",
+          "vi": "Nếu thương hiệu khác không khác gì [thương hiệu], mua [thương hiệu] vẫn có vẻ là lựa chọn khôn ngoan hơn."
+        }
       ]
     }
   ],
@@ -78,5 +135,9 @@
     "https://sites.hofstra.edu/boonghee-yoo/yoo-and-donthus-brand-equity-scale/",
     "https://api.crossref.org/works/10.1016/S0148-2963(99)00098-3"
   ],
-  "related": ["niem-tin-trung-thanh-thuong-hieu", "y-dinh-mua", "y-dinh-hanh-vi-khach-hang"]
+  "related": [
+    "niem-tin-trung-thanh-thuong-hieu",
+    "y-dinh-mua",
+    "y-dinh-hanh-vi-khach-hang"
+  ]
 }

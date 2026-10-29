@@ -10,4 +10,137 @@ import html from "@/tools/cronbach-alpha.html?raw";
   description="Công cụ tính hệ số Cronbach's alpha miễn phí: dán dữ liệu từ Excel hoặc SPSS, nhận alpha, tương quan biến–tổng hiệu chỉnh và alpha nếu loại biến."
   lede="Dán dữ liệu một thang đo từ Excel hoặc SPSS (mỗi dòng một người trả lời, mỗi cột một biến quan sát). Kết quả giống bảng Reliability Statistics và Item-Total Statistics của SPSS."
   html={html}
-/>
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        Trong Excel hoặc SPSS Data View, bôi đen các cột của <strong
+          >một</strong
+        > thang đo (ví dụ HL1 đến HL5), kể cả dòng tên biến nếu muốn, rồi sao chép.
+      </li>
+      <li>
+        Dán vào ô dữ liệu. Công cụ tự nhận dấu phân cách là tab, dấu chấm phẩy
+        hoặc dấu phẩy, và nhận dòng đầu là tên biến nếu dòng đó có chữ.
+      </li>
+      <li>
+        Bấm <strong>Tính alpha</strong>. Dòng nào thiếu giá trị hoặc có ô không
+        phải số sẽ bị loại (listwise), giống thiết lập mặc định của SPSS.
+      </li>
+      <li>
+        Mã hoá lại câu đảo chiều trước khi dán: thang 5 mức dùng 6 − điểm, thang
+        7 mức dùng 8 − điểm. Câu đảo chiều chưa mã hoá là nguyên nhân phổ biến
+        nhất khiến alpha thấp hoặc âm.
+      </li>
+    </ol>
+    <p>
+      Mỗi khái niệm tính riêng một lần. Dữ liệu chỉ được xử lý trong trình duyệt
+      của bạn, không gửi lên máy chủ.
+    </p>
+
+    <h2>Công thức và cách tính</h2>
+    <p>
+      Hệ số alpha (Cronbach, 1951) đo độ nhất quán nội tại của các câu cùng đo
+      một khái niệm:
+    </p>
+    <p><code>α = k / (k − 1) × (1 − Σσᵢ² / σₜ²)</code></p>
+    <ul>
+      <li><strong>k</strong>: số biến quan sát trong thang đo.</li>
+      <li><strong>Σσᵢ²</strong>: tổng phương sai của từng biến.</li>
+      <li>
+        <strong>σₜ²</strong>: phương sai của điểm tổng (cộng tất cả các biến của
+        một người trả lời).
+      </li>
+    </ul>
+    <p>
+      Phương sai tính theo mẫu (chia cho n − 1), như SPSS. <strong
+        >Tương quan biến–tổng hiệu chỉnh</strong
+      > là hệ số tương quan Pearson giữa một biến và tổng các biến còn lại (không
+      tính chính biến đó). <strong>Alpha nếu loại biến</strong> là alpha tính lại
+      sau khi bỏ biến đó khỏi thang đo.
+    </p>
+
+    <h2>Đọc kết quả</h2>
+    <ul>
+      <li>
+        <strong>Alpha tổng.</strong> Mốc được trích nhiều nhất là 0,7 (Nunnally,
+        1978). Từ 0,6 đến dưới 0,7 thường được chấp nhận trong nghiên cứu khám phá
+        hoặc thang đo mới (Hair và cộng sự, 2010). Trên 0,95 nên xem lại có câu
+        nào lặp ý gần như nguyên văn không (Tavakol &amp; Dennick, 2011).
+      </li>
+      <li>
+        <strong>Tương quan biến–tổng hiệu chỉnh dưới 0,3</strong> được tô màu:
+        biến đó đóng góp yếu vào thang đo (Nunnally &amp; Bernstein, 1994).
+      </li>
+      <li>
+        <strong>Alpha nếu loại biến lớn hơn alpha tổng</strong> cũng được đánh
+        dấu: bỏ biến đó làm thang đo nhất quán hơn.
+      </li>
+    </ul>
+    <p>
+      Loại từng biến một, bắt đầu từ biến yếu nhất, rồi tính lại; các con số thay
+      đổi sau mỗi lần loại. Xem nội dung câu hỏi trước khi loại: câu dịch sai
+      nghĩa hoặc câu hai ý có thể sửa được. Giữ ít nhất 3 biến cho mỗi khái niệm.
+      Cách đọc từng bảng và câu mẫu cho chương 4 có trong bài
+      <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/"
+        >Cronbach's alpha là gì</a
+      >.
+    </p>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Kết quả có khớp với SPSS không?</h3>
+    <p>
+      Có, khi dùng cùng dữ liệu và cùng cách xử lý giá trị thiếu. Số trên công cụ
+      tương ứng cột <code>Cronbach's Alpha</code> của bảng Reliability Statistics
+      và hai cột <code>Corrected Item-Total Correlation</code>,
+      <code>Cronbach's Alpha if Item Deleted</code> của bảng Item-Total Statistics.
+    </p>
+    <h3>Vì sao alpha âm?</h3>
+    <p>
+      Alpha âm khi hiệp phương sai trung bình giữa các biến âm. Gần như luôn do
+      còn câu đảo chiều chưa mã hoá lại. Tìm biến có tương quan biến–tổng âm.
+    </p>
+    <h3>Có nên tính alpha cho cả bảng hỏi?</h3>
+    <p>
+      Không. Alpha chỉ có nghĩa với các câu cùng đo một khái niệm. Alpha cao cũng
+      chưa chứng minh thang đo đơn hướng; việc đó cần EFA. Để chạy alpha cho mọi
+      thang đo, EFA và hồi quy cùng lúc, dùng
+      <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/"
+        >công cụ phân tích dữ liệu khảo sát</a
+      >.
+    </p>
+    <h3>Cần bao nhiêu phiếu?</h3>
+    <p>
+      Công cụ chạy được từ 3 dòng, nhưng với 20–30 phiếu chạy thử alpha dao động
+      mạnh. Dùng kết quả đó để phát hiện câu có vấn đề; kết luận chính thức dựa
+      trên mẫu đầy đủ, tính bằng
+      <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Cronbach, L. J. (1951). Coefficient alpha and the internal structure of
+        tests. <em>Psychometrika, 16</em>(3), 297–334.
+        https://doi.org/10.1007/BF02310555
+      </li>
+      <li>
+        Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010).
+        <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.
+      </li>
+      <li>
+        Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.).
+        McGraw-Hill.
+      </li>
+      <li>
+        Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em>
+        (3rd ed.). McGraw-Hill.
+      </li>
+      <li>
+        Tavakol, M., &amp; Dennick, R. (2011). Making sense of Cronbach's alpha.
+        <em>International Journal of Medical Education, 2</em>, 53–55.
+        https://doi.org/10.5116/ijme.4dfb.8dfd
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

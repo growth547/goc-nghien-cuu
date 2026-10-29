@@ -20,9 +20,9 @@ export function ctaHtml(audience: "researcher" | "respondent", kind: keyof typeo
   if (audience === "respondent") {
     return `<aside class="cta not-prose"><span class="cta-label">Tài trợ · Genius Data</span><strong>Rảnh 10 phút? Làm khảo sát, tích GTOKEN</strong>
 <p>Trên Genius Data bạn tự chọn khảo sát hợp với mình, làm trên điện thoại lúc nào cũng được. Mỗi khảo sát hợp lệ được cộng GTOKEN để đổi quà và voucher.</p>
-<a class="btn" href="${esc(appLink(kind, content))}" rel="noopener">Tham gia làm khảo sát</a></aside>`;
+<a class="btn" href="${esc(appLink(kind, content))}" rel="sponsored noopener">Tham gia làm khảo sát</a></aside>`;
   }
   return `<aside class="cta not-prose"><span class="cta-label">Tài trợ · Genius Data</span><strong>Cần thu mẫu nhanh và đúng đối tượng?</strong>
 <p>Genius Data cho bạn chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu, và <b>chỉ trả tiền cho phản hồi được duyệt</b>. Phiếu điền bừa hay do AI viết được hệ thống gắn cờ trước khi tới tay bạn.</p>
-<a class="btn" href="${esc(appLink(kind, content, "/app/forms"))}" rel="noopener">Tạo khảo sát trên Genius Data</a></aside>`;
+<a class="btn" href="${esc(appLink(kind, content, "/app/forms"))}" rel="sponsored noopener">Tạo khảo sát trên Genius Data</a></aside>`;
 }

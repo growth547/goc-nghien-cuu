@@ -98,6 +98,7 @@ tags: ["làm sạch dữ liệu","SPSS"]
 <li>Kiểm tra cỡ mẫu còn lại so với yêu cầu. Nếu thiếu, thu thêm thay vì nới tiêu chí. Dùng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để biết bạn cần bao nhiêu.</li>
 <li>Chạy Cronbach's alpha trên dữ liệu sạch. Bạn có thể dán dữ liệu vào <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để so sánh trước và sau khi lọc.</li>
 </ol>
+<p>Phần trượt câu kiểm tra chú ý, phiếu rập khuôn, mã hoá ngược câu đảo chiều và chạy alpha (bước 4, 6 và 8) có thể làm tự động bằng <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ ghi rõ số phiếu bị loại theo từng lý do để bạn đưa vào chương 4. Các tiêu chí còn lại như thời gian làm bài hay mâu thuẫn giữa các câu vẫn cần lọc tay theo bảng ở trên.</p>
 
 <h2>Lọc bao nhiêu là vừa?</h2>
 <p>Không có tỉ lệ chuẩn. Điều quan trọng là tiêu chí nhất quán và được báo cáo. Nếu bạn loại quá nửa mẫu, vấn đề nằm ở khâu thu mẫu hoặc bảng hỏi, và lọc mạnh tay hơn không giải quyết được.</p>

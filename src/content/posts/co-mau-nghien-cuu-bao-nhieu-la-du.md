@@ -105,7 +105,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 </table>
 <p>Cỡ mẫu tối thiểu được tính trên số phiếu hợp lệ còn lại sau khi lọc. Khi lên kế hoạch phát phiếu, cộng thêm phần dự phòng cho phiếu bị loại: với 15% phiếu bị loại và mức tối thiểu 92, nên phát khoảng 92 / 0,85 ≈ 109 phiếu.</p>
 
-<p>Có con số rồi thì việc khó là thu đủ phiếu hợp lệ. Nếu không muốn đi xin điền form khắp các group, các nền tảng thu mẫu có lọc đối tượng như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=co-mau-nghien-cuu-bao-nhieu-la-du">Genius Data</a> cho phép đặt trước số phiếu và chỉ trả cho phiếu được duyệt.</p>
+<p>Có con số rồi thì việc khó là thu đủ phiếu hợp lệ. Nếu không muốn đi xin điền form khắp các group, các nền tảng thu mẫu có lọc đối tượng như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=co-mau-nghien-cuu-bao-nhieu-la-du" rel="sponsored noopener">Genius Data</a> cho phép đặt trước số phiếu và chỉ trả cho phiếu được duyệt.</p>
 
 <h2>Năm lỗi hay gặp khi trình bày cỡ mẫu</h2>
 <ol>
@@ -118,6 +118,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 
 <h2>Đoạn văn mẫu cho chương 3</h2>
 <blockquote>Mô hình nghiên cứu được phân tích bằng PLS-SEM, trong đó biến phụ thuộc nhận nhiều nhất 5 mũi tên. Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009) với cỡ hiệu ứng trung bình f² = 0,15, mức ý nghĩa 5% và power 0,80 (Cohen, 1992), cho kết quả 92 quan sát. Đối chiếu theo phương pháp căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018) với hệ số đường dẫn nhỏ nhất kỳ vọng 0,2, cỡ mẫu tối thiểu là 155. Nghiên cứu thu được 180 phiếu hợp lệ, đáp ứng cả hai tiêu chí.</blockquote>
+<p>Nếu bạn ghép bảng hỏi trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a>, đoạn “Thang đo và cỡ mẫu” được viết sẵn theo đúng mô hình và số mũi tên bạn chọn, kèm danh mục tài liệu tham khảo.</p>
 <h3>Tài liệu tham khảo</h3>
 <ul>
 <li>Cochran, W. G. (1977). <em>Sampling Techniques</em> (3rd ed.). Wiley.</li>

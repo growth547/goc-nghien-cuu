@@ -11,7 +11,7 @@ tags: ["bảng hỏi","thang đo"]
 
 <h2>Bắt đầu từ mô hình nghiên cứu</h2>
 <p>Trước khi viết câu đầu tiên, liệt kê các khái niệm trong mô hình nghiên cứu và thang đo bạn dùng cho từng khái niệm. Mỗi câu trong bảng hỏi phải trả lời được: câu này đo biến nào, sẽ dùng trong phân tích nào? Câu nào không trả lời được thì bỏ.</p>
-<p>Nên kế thừa thang đo đã được kiểm định trong các nghiên cứu trước và ghi rõ nguồn. Khi dịch từ tiếng Anh, hãy dịch rồi nhờ người khác dịch ngược lại để so nghĩa. Một thang đo dịch vụng thường là nguyên nhân khiến Cronbach's alpha thấp, xem thêm bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Nên kế thừa thang đo đã được kiểm định trong các nghiên cứu trước và ghi rõ nguồn. <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> có câu hỏi gốc tiếng Anh, bản tiếng Việt tham khảo và trích dẫn cho các mô hình hay dùng như <a href="/goc-nghien-cuu/thang-do/tam/">TAM</a> hay <a href="/goc-nghien-cuu/thang-do/servqual/">SERVQUAL</a>; nếu đã có mô hình, <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> ghép sẵn bảng hỏi từ các thang đo đó. Khi dịch từ tiếng Anh, hãy dịch rồi nhờ người khác dịch ngược lại để so nghĩa. Một thang đo dịch vụng thường là nguyên nhân khiến Cronbach's alpha thấp, xem thêm bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 
 <h2>Các lỗi câu hỏi hay gặp</h2>
 <table>

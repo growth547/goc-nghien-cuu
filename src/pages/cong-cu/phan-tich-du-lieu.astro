@@ -10,4 +10,143 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
   description="Tải file Excel khảo sát, nhận ngay lọc phiếu, Cronbach's alpha cho mọi thang đo, EFA (KMO, Bartlett, ma trận xoay), tương quan, hồi quy và đoạn chương 4 viết sẵn. Miễn phí."
   lede="Tải file Excel hoặc CSV kết quả khảo sát. Công cụ lọc phiếu không hợp lệ, chạy Cronbach's alpha cho từng thang đo, EFA, tương quan Pearson, hồi quy bội, rồi viết sẵn chương 4 kèm bảng để tải về Word. Không cần SPSS."
   html={html}
-/>
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        <strong>Chuẩn bị file.</strong> Dòng đầu là tên cột, mỗi dòng là một
+        phiếu. Đặt tên biến quan sát theo mã khái niệm cộng số thứ tự (PU1, PU2,
+        PEOU1…) để công cụ tự nhóm. Cột câu kiểm tra chú ý nên đặt tên ATT hoặc
+        ATT1. Xuất từ Google Forms thì đổi tên cột câu hỏi trước khi tải lên;
+        <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> có sẵn bảng
+        mã hoá theo đúng quy ước này.
+      </li>
+      <li>
+        <strong>Kiểm tra nhóm khái niệm.</strong> Mỗi dòng có dạng
+        <code>MÃ: biến1 biến2 …</code>; sửa nếu công cụ nhóm sai. Khai báo câu đảo
+        chiều để công cụ đảo điểm trước khi tính.
+      </li>
+      <li>
+        <strong>Chọn cách lọc phiếu:</strong> câu kiểm tra chú ý (ví dụ
+        <code>ATT1=4</code> nghĩa là đáp án đúng là 4) và loại phiếu chọn cùng một
+        mức cho mọi biến quan sát. Phiếu thiếu câu trả lời bị loại tự động.
+      </li>
+      <li>
+        <strong>Chọn biến phụ thuộc</strong> cho hồi quy và số nhân tố cho EFA
+        (mặc định theo eigenvalue &gt; 1), rồi bấm phân tích.
+      </li>
+    </ol>
+    <p>
+      File được đọc ngay trong trình duyệt, không gửi lên máy chủ. Muốn thử trước,
+      bấm “Dùng dữ liệu mẫu” để chạy bộ dữ liệu TAM 250 phiếu.
+    </p>
+
+    <h2>Công thức và cách tính</h2>
+    <ul>
+      <li>
+        <strong>Cronbach's alpha</strong> cho từng khái niệm, kèm tương quan
+        biến–tổng hiệu chỉnh và alpha nếu loại biến, như
+        <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/"
+          >công cụ tính Cronbach's alpha</a
+        >.
+      </li>
+      <li>
+        <strong>EFA</strong> chạy chung cho mọi biến quan sát đã khai báo: trích
+        nhân tố bằng Principal Components trên ma trận tương quan, xoay Varimax có
+        chuẩn hoá Kaiser (Kaiser, 1958), giống lựa chọn phổ biến trong SPSS. Công
+        cụ báo KMO (Kaiser, 1974), kiểm định Bartlett, eigenvalue, phương sai
+        trích luỹ kế và ma trận xoay.
+      </li>
+      <li>
+        <strong>Tương quan Pearson</strong> giữa các khái niệm, mỗi khái niệm lấy
+        điểm trung bình của các biến quan sát.
+      </li>
+      <li>
+        <strong>Hồi quy bội OLS</strong>: R², R² hiệu chỉnh, kiểm định F, hệ số B,
+        sai số chuẩn, β chuẩn hoá, t, Sig. và VIF cho từng biến độc lập.
+      </li>
+    </ul>
+
+    <h2>Đọc kết quả</h2>
+    <ul>
+      <li>
+        <strong>Độ tin cậy:</strong> alpha từ 0,7 (Nunnally, 1978) và tương quan
+        biến–tổng hiệu chỉnh từ 0,3 (Nunnally &amp; Bernstein, 1994).
+      </li>
+      <li>
+        <strong>EFA:</strong> KMO từ 0,5 và Bartlett có Sig. &lt; 0,05 thì dữ liệu
+        phù hợp để phân tích nhân tố; phương sai trích từ 50%; hệ số tải từ 0,5
+        trở lên là có ý nghĩa thực tiễn (Hair và cộng sự, 2010). Biến tải lên hai
+        nhân tố với hệ số gần nhau, hoặc tải sai nhóm, cần xem lại nội dung câu
+        hỏi.
+      </li>
+      <li>
+        <strong>Hồi quy:</strong> Sig. của F &lt; 0,05 thì mô hình có ý nghĩa; mỗi
+        biến độc lập có Sig. &lt; 0,05 thì tác động có ý nghĩa, dấu của β cho biết
+        chiều tác động. VIF từ 5 trở lên được tô màu để xem xét đa cộng tuyến
+        (Hair và cộng sự, 2010).
+      </li>
+    </ul>
+    <p>
+      Đoạn văn chương 4 (mục 4.1 đến 4.5) được viết theo đúng các con số trên, kèm
+      bảng và tài liệu tham khảo, tải về Word được. Kiểm tra câu chữ và đối chiếu
+      với SPSS ở lần đầu dùng.
+    </p>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Công cụ có thay được SPSS hay SmartPLS không?</h3>
+    <p>
+      Công cụ tính theo các công thức chuẩn và cho cùng kết quả với SPSS khi dùng
+      cùng lựa chọn (PCA, Varimax, loại phiếu thiếu theo listwise). Công cụ không
+      chạy CFA, SEM hay PLS-SEM; đề tài dùng SmartPLS vẫn cần phần mềm đó cho mô
+      hình cấu trúc.
+    </p>
+    <h3>Vì sao số phiếu hợp lệ ít hơn số phiếu tải lên?</h3>
+    <p>
+      Phần 4.1 liệt kê số phiếu bị loại theo từng lý do: thiếu câu trả lời, sai
+      câu kiểm tra chú ý, chọn cùng một mức cho mọi câu. Cách đặt câu kiểm tra và
+      các dấu hiệu khác có trong bài
+      <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/"
+        >cách lọc phiếu khảo sát không hợp lệ</a
+      >.
+    </p>
+    <h3>KMO dưới 0,5 thì làm gì?</h3>
+    <p>
+      Xem cỡ mẫu có đủ không (ít nhất 5 phiếu cho mỗi biến quan sát) bằng
+      <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>, kiểm tra
+      câu đảo chiều đã khai báo chưa, rồi loại biến có tương quan biến–tổng thấp
+      trước khi chạy lại EFA.
+    </p>
+    <h3>Cột nhân khẩu học được xử lý thế nào?</h3>
+    <p>
+      Cột không phải biến quan sát và có từ 2 đến 8 giá trị khác nhau (giới tính,
+      năm học, thu nhập theo khoảng…) được lập bảng tần số trong phần mô tả mẫu.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010).
+        <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.
+      </li>
+      <li>
+        Kaiser, H. F. (1958). The varimax criterion for analytic rotation in
+        factor analysis. <em>Psychometrika, 23</em>(3), 187–200.
+        https://doi.org/10.1007/BF02289233
+      </li>
+      <li>
+        Kaiser, H. F. (1974). An index of factorial simplicity.
+        <em>Psychometrika, 39</em>(1), 31–36. https://doi.org/10.1007/BF02291575
+      </li>
+      <li>
+        Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.).
+        McGraw-Hill.
+      </li>
+      <li>
+        Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em>
+        (3rd ed.). McGraw-Hill.
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

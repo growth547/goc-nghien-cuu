@@ -18,6 +18,8 @@ const ld = {
   applicationCategory: "EducationalApplication",
   operatingSystem: "Any",
   inLanguage: "vi",
+  isAccessibleForFree: true,
+  browserRequirements: "Requires JavaScript. Works in current versions of Chrome, Edge, Firefox and Safari.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "VND" },
   publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
 };
@@ -32,7 +34,14 @@ const ld = {
     <p class="text-muted-foreground mt-2 mb-6 max-w-3xl">{lede}</p>
     <slot />
     <Fragment set:html={html} />
-    <p class="text-muted-foreground mt-8 max-w-3xl text-sm">Tính xong cỡ mẫu, cần người trả lời đúng đối tượng? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")}>Genius Data</a>.</p>
+    {
+      Astro.slots.has("guide") && (
+        <div class="app-prose max-w-app mt-12">
+          <slot name="guide" />
+        </div>
+      )
+    }
+    <p class="text-muted-foreground mt-8 max-w-3xl text-sm">Tính xong cỡ mẫu, cần người trả lời đúng đối tượng? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")} rel="sponsored noopener">Genius Data</a>.</p>
   </main>
   <Footer />
 </Layout>

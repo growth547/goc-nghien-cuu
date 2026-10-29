@@ -23,9 +23,47 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+
+const homeTitle =
+  "Góc Nghiên Cứu: thang đo, mẫu bảng hỏi, cỡ mẫu, chương 3–4 khoá luận";
+const homeDescription =
+  "Thang đo gốc có trích dẫn, mẫu bảng hỏi tiếng Việt, máy tính cỡ mẫu và Cronbach's alpha, đoạn chương 3–4 viết sẵn cho khoá luận. Miễn phí, không cần đăng ký.";
+
+const siteUrl = new URL(config.site.url).href;
+const homeLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}#organization`,
+      name: config.site.title,
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: new URL("favicon.svg", siteUrl).href,
+      },
+      sameAs: config.socials.map(s => s.url),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      name: config.site.title,
+      url: siteUrl,
+      description: homeDescription,
+      inLanguage: "vi",
+      publisher: { "@id": `${siteUrl}#organization` },
+    },
+  ],
+};
 ---
 
-<Layout>
+<Layout title={homeTitle} description={homeDescription}>
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(homeLd)}
+  />
   <Header />
   <main
     id="main-content"

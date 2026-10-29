@@ -21,9 +21,31 @@ const { page } = Astro.props;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
+
+// Each page of the list gets its own title and description so search engines
+// do not treat /posts/2/, /posts/3/... as duplicates of /posts/.
+const first = page.start + 1;
+const last = page.end + 1;
+const isFirstPage = page.currentPage === 1;
+const clip = (text: string, max = 160) =>
+  text.length <= max
+    ? text
+    : `${text.slice(0, max - 1).replace(/[\s,;:]+\S*$/, "")}…`;
+const listTitle = isFirstPage
+  ? `${t.pages.postsTitle} | ${config.site.title}`
+  : `${t.pages.postsTitle} (${t.pagination.page} ${page.currentPage}) | ${config.site.title}`;
+const listDescription = clip(isFirstPage
+  ? `${t.pages.postsDesc} Bài mới nhất: ${page.data
+      .slice(0, 3)
+      .map(p => p.data.title)
+      .join("; ")}.`
+  : `Bài viết ${first}–${last} trên tổng ${page.total} (trang ${page.currentPage}/${page.lastPage}): ${page.data
+      .slice(0, 3)
+      .map(p => p.data.title)
+      .join("; ")}.`);
 ---
 
-<Layout title={`${t.pages.postsTitle} | ${config.site.title}`}>
+<Layout title={listTitle} description={listDescription}>
   <Header />
 
   <Breadcrumb />

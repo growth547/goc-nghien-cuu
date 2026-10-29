@@ -10,4 +10,165 @@ import html from "@/tools/tinh-co-mau.html?raw";
   description="Tính cỡ mẫu tối thiểu cho SmartPLS (G*Power, Kock & Hadaya), hồi quy, EFA, Cochran và tự viết sẵn đoạn phương pháp chọn mẫu cho chương 3 kèm tài liệu tham khảo APA."
   lede="Chọn phương pháp phân tích của đề tài. Máy tính trả về cỡ mẫu tối thiểu và viết sẵn đoạn văn “Phương pháp xác định cỡ mẫu” kèm tài liệu tham khảo APA để bạn chép vào chương 3."
   html={html}
-/>
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        <strong>Chọn phương pháp phân tích chính</strong> của đề tài: PLS-SEM
+        (SmartPLS), hồi quy bội (SPSS), EFA/CFA, hoặc thống kê mô tả và ước lượng
+        tỷ lệ. Cỡ mẫu tối thiểu phụ thuộc vào phương pháp phân tích, nên chọn
+        đúng phương pháp bạn sẽ báo cáo ở chương 4.
+      </li>
+      <li>
+        <strong>Đếm mũi tên trên mô hình.</strong> Với PLS-SEM, tìm biến nhận
+        nhiều mũi tên trỏ vào nhất (thường là biến phụ thuộc cuối cùng). Với hồi
+        quy, đó là số biến độc lập trong phương trình lớn nhất.
+      </li>
+      <li>
+        <strong>Giữ mặc định nếu chưa có lý do đổi:</strong> f² = 0,15, α = 5%,
+        power = 0,80. Đây là mức đa số luận văn dùng và hội đồng quen đọc.
+      </li>
+      <li>
+        <strong>Nhập tỷ lệ dự phòng phiếu bị loại</strong> (thường 10–20%) để
+        biết cần phát ra bao nhiêu phiếu, chứ không chỉ cần thu về bao nhiêu phiếu
+        hợp lệ.
+      </li>
+      <li>
+        Chép đoạn văn ở khung cuối vào mục “Phương pháp xác định cỡ mẫu” của
+        chương 3, rồi sửa tên biến cho đúng đề tài.
+      </li>
+    </ol>
+
+    <h2>Công thức và cách tính</h2>
+    <p>
+      <strong>Phân tích power (G*Power).</strong> Công cụ giải bài toán “Linear
+      multiple regression: Fixed model, R² deviation from zero” giống G*Power 3.1
+      (Faul và cộng sự, 2009): tìm n nhỏ nhất để kiểm định F đạt power mong muốn
+      với cỡ hiệu ứng f² đã chọn (Cohen, 1988). Ví dụ: 3 mũi tên, f² = 0,15, α =
+      5%, power = 0,80 cho n = 77, trùng với con số G*Power trả về.
+    </p>
+    <p>
+      <strong>Căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018).</strong>
+      <code>n &gt; ((z₁₋α + z₁₋β) / |p_min|)²</code>, trong đó p_min là hệ số
+      đường dẫn nhỏ nhất bạn kỳ vọng có ý nghĩa. Với α = 5% (kiểm định một phía)
+      và power 0,80, tử số là 1,645 + 0,842 ≈ 2,486. Nếu p_min = 0,2 thì n &gt;
+      (2,486 / 0,2)² ≈ 154,6, tức cần ít nhất 155 phiếu. Hair và cộng sự (2022)
+      khuyến nghị cách này cho PLS-SEM.
+    </p>
+    <p>
+      <strong>Quy tắc 10 lần</strong> (10 × số mũi tên lớn nhất) chỉ hiện để đối
+      chiếu, vì thường cho cỡ mẫu quá thấp. Với hồi quy, công cụ đối chiếu thêm
+      quy tắc của Tabachnick và Fidell (2013): N ≥ 50 + 8m để kiểm định cả mô hình
+      và N ≥ 104 + m để kiểm định từng biến (m là số biến độc lập), lấy số lớn
+      hơn.
+    </p>
+    <p>
+      <strong>EFA.</strong> Tối thiểu 5 phiếu cho mỗi biến quan sát và không dưới
+      50 phiếu; mức nên đạt là 10 phiếu cho mỗi biến (Hair và cộng sự, 2010).
+    </p>
+    <p>
+      <strong>Ước lượng tỷ lệ (Cochran, 1977).</strong>
+      <code>n₀ = z² · p(1 − p) / e²</code>. Độ tin cậy 95% (z = 1,96), sai số 5%
+      và p = 50% cho n₀ = 384,16, làm tròn lên 385. Khi biết quy mô tổng thể N,
+      công cụ hiệu chỉnh <code>n = n₀ / (1 + (n₀ − 1) / N)</code>; với N = 2.000
+      thì n = 323. Công thức Slovin/Yamane <code>n = N / (1 + N·e²)</code> chỉ
+      hiện để đối chiếu.
+    </p>
+
+    <h2>Đọc kết quả</h2>
+    <ul>
+      <li>
+        <strong>Cỡ mẫu tối thiểu</strong> là số phiếu <em>hợp lệ</em> cần có sau
+        khi lọc, không phải số phiếu phát ra. Nếu dự phòng 15% phiếu bị loại, số
+        phiếu cần thu là n / 0,85 (155 phiếu hợp lệ cần khoảng 183 phiếu thu về).
+      </li>
+      <li>
+        <strong>Khung đối chiếu</strong> liệt kê các tiêu chí khác. Lấy số lớn
+        nhất mà bạn trích dẫn được, rồi viết rõ trong chương 3 rằng mẫu thực tế
+        đạt cả hai tiêu chí.
+      </li>
+      <li>
+        <strong>Đoạn văn chương 3</strong> tự cập nhật theo lựa chọn ở trên và kèm
+        danh mục tài liệu tham khảo APA. Kiểm tra lại số liệu trước khi nộp.
+      </li>
+    </ul>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Nên chọn f² bằng bao nhiêu?</h3>
+    <p>
+      Cohen (1992) quy ước 0,02 là nhỏ, 0,15 là trung bình, 0,35 là lớn. Không có
+      nghiên cứu trước để ước lượng thì dùng 0,15. Chọn 0,35 cho ra cỡ mẫu rất
+      nhỏ nhưng khó bảo vệ trước hội đồng.
+    </p>
+    <h3>PLS-SEM nên báo cáo G*Power hay căn bậc hai nghịch đảo?</h3>
+    <p>
+      Nên báo cáo cả hai và lấy số lớn hơn. Phương pháp căn bậc hai nghịch đảo
+      gắn trực tiếp với hệ số đường dẫn trong mô hình nên ngày càng được hội đồng
+      và phản biện tạp chí hỏi tới.
+    </p>
+    <h3>Có nên dùng công thức Slovin?</h3>
+    <p>
+      Slovin bỏ qua độ tin cậy và tỷ lệ p, nên chỉ hợp với ước lượng tỷ lệ thô.
+      Đề tài kiểm định mô hình nên dựa vào power hoặc các quy tắc theo phương
+      pháp phân tích ở trên. Xem thêm bài
+      <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/"
+        >cỡ mẫu nghiên cứu bao nhiêu là đủ</a
+      >.
+    </p>
+    <h3>Tính xong cỡ mẫu thì làm gì tiếp?</h3>
+    <p>
+      Ghép bảng hỏi từ thang đo gốc trong
+      <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a>. Khi đã có
+      dữ liệu, chạy độ tin cậy, EFA và hồi quy bằng
+      <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/"
+        >công cụ phân tích dữ liệu khảo sát</a
+      >.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Cochran, W. G. (1977). <em>Sampling techniques</em> (3rd ed.). John Wiley
+        &amp; Sons.
+      </li>
+      <li>
+        Cohen, J. (1988). <em
+          >Statistical power analysis for the behavioral sciences</em
+        > (2nd ed.). Lawrence Erlbaum Associates.
+      </li>
+      <li>
+        Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1),
+        155–159. https://doi.org/10.1037/0033-2909.112.1.155
+      </li>
+      <li>
+        Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009).
+        Statistical power analyses using G*Power 3.1: Tests for correlation and
+        regression analyses. <em>Behavior Research Methods, 41</em>(4),
+        1149–1160. https://doi.org/10.3758/BRM.41.4.1149
+      </li>
+      <li>
+        Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010).
+        <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.
+      </li>
+      <li>
+        Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022).
+        <em
+          >A primer on partial least squares structural equation modeling
+          (PLS-SEM)</em
+        > (3rd ed.). Sage.
+      </li>
+      <li>
+        Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in
+        PLS-SEM: The inverse square root and gamma-exponential methods.
+        <em>Information Systems Journal, 28</em>(1), 227–261.
+        https://doi.org/10.1111/isj.12131
+      </li>
+      <li>
+        Tabachnick, B. G., &amp; Fidell, L. S. (2013). <em
+          >Using multivariate statistics</em
+        > (6th ed.). Pearson.
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

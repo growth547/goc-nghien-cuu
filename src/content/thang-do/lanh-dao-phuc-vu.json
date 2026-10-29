@@ -45,5 +45,5 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7084789/fullTextXML",
     "https://api.crossref.org/works/10.1016/j.leaqua.2014.12.002"
   ],
-  "related": ["lanh-dao-chuyen-doi-glts", "gan-ket-cong-viec-uwes", "ho-tro-to-chuc-pos"]
+  "related": ["lanh-dao-chuyen-doi-glts", "gan-ket-cong-viec-uwes", "ho-tro-to-chuc-pos", "trao-quyen-tam-ly"]
 }

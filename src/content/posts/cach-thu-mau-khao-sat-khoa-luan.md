@@ -10,7 +10,7 @@ tags: ["thu mẫu","khoá luận"]
 
 <h2>Bước 1: Chốt đối tượng và cỡ mẫu trước khi gửi link</h2>
 <p>Viết ra giấy một câu mô tả người được phép trả lời phiếu. Ví dụ: "Người đang làm việc toàn thời gian tại Hà Nội, đã mua hàng trên sàn thương mại điện tử ít nhất một lần trong 6 tháng qua". Câu này quyết định câu gạn lọc ở đầu phiếu, kênh bạn sẽ phát phiếu và cách bạn viết phần phương pháp ở chương 3.</p>
-<p>Sau đó tính cỡ mẫu theo phương pháp phân tích bạn định dùng. Nếu chạy EFA với 25 biến quan sát, quy tắc 5:1 của Hair và cộng sự (2010) cho tối thiểu 125 phiếu, quy tắc 10:1 cho 250 phiếu. Chi tiết từng công thức có trong bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>
+<p>Sau đó tính cỡ mẫu theo phương pháp phân tích bạn định dùng. Nếu chạy EFA với 25 biến quan sát, quy tắc 5:1 của Hair và cộng sự (2010) cho tối thiểu 125 phiếu, quy tắc 10:1 cho 250 phiếu. Chi tiết từng công thức có trong bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>; muốn ra số ngay thì dùng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.</p>
 <p>Con số cuối cùng bạn đặt làm mục tiêu nên cao hơn cỡ mẫu tối thiểu. Một phần phiếu sẽ bị loại vì trả lời rập khuôn, trả lời quá nhanh hoặc sai đối tượng. Kinh nghiệm của nhiều người hướng dẫn là cộng thêm khoảng 10 đến 20% tuỳ kênh phát phiếu. Kênh càng mở (đăng nhóm công khai, chia sẻ lan truyền) thì tỉ lệ phiếu hỏng càng cao.</p>
 
 <h2>Bước 2: Chọn phương pháp chọn mẫu bạn viết được vào chương 3</h2>
@@ -35,6 +35,7 @@ tags: ["thu mẫu","khoá luận"]
 <li><strong>Một đến hai câu kiểm tra sự chú ý.</strong> Ví dụ trong một khối câu Likert, chèn câu "Ở câu này, vui lòng chọn Hoàn toàn không đồng ý". Người chọn sai gần như chắc chắn đang điền cho xong.</li>
 <li><strong>Thang đo nhất quán.</strong> Cùng một số mức và cùng chiều nhãn cho cả phiếu. Xem thêm bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> để chọn cho phù hợp.</li>
 </ul>
+<p>Nếu chưa có bảng hỏi, các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> đã có sẵn thang đo gốc, câu kiểm tra chú ý và cỡ mẫu gợi ý; mở trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> để chỉnh theo đối tượng của bạn.</p>
 <p>Trước khi phát rộng, chạy thử với 20 đến 30 người đúng đối tượng. Đợt này giúp bạn phát hiện câu khó hiểu, đo thời gian làm phiếu thực tế và chạy thử độ tin cậy thang đo. Nếu một thang đo có Cronbach's alpha thấp ngay từ đợt thử, sửa câu chữ lúc này rẻ hơn nhiều so với lúc đã có 300 phiếu.</p>
 
 <h2>Bước 4: Chọn kênh phát phiếu và hiểu thiên lệch của từng kênh</h2>
@@ -63,7 +64,7 @@ tags: ["thu mẫu","khoá luận"]
 </table>
 <p>Nhìn bảng này bạn biết ngay phải dồn sức vào nhóm 31 đến 45 tuổi, thay vì tiếp tục đăng vào nhóm lớp. Cột "Đã có" chỉ nên đếm phiếu hợp lệ, vì 95 phiếu mà 20 phiếu điền bừa thì thực chất bạn có 75.</p>
 
-<p>Nếu thời gian gấp, bạn có thể kết hợp phát phiếu qua mạng quen biết với một nền tảng thu mẫu như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=cach-thu-mau-khao-sat-khoa-luan">Genius Data</a>, nơi bạn chọn đối tượng và chỉ trả cho phiếu được duyệt.</p>
+<p>Nếu thời gian gấp, bạn có thể kết hợp phát phiếu qua mạng quen biết với một nền tảng thu mẫu như <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=cach-thu-mau-khao-sat-khoa-luan" rel="sponsored noopener">Genius Data</a>, nơi bạn chọn đối tượng và chỉ trả cho phiếu được duyệt.</p>
 
 <h2>Bước 6: Lọc phiếu trước khi chạy SPSS</h2>
 <p>Đừng nhập thẳng file tải về vào SPSS. Mở file bằng Excel và kiểm tra lần lượt:</p>

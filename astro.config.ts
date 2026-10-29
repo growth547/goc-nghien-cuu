@@ -16,8 +16,28 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
+import { readdirSync, readFileSync } from "node:fs";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import config from "./astro-paper.config";
+
+// Sitemap <lastmod>: posts use modDatetime (or pubDatetime) from their front
+// matter; every other page (tools, scale pages, lists) uses the build date.
+const BUILD_DATE = new Date().toISOString();
+const POSTS_DIR = new URL("./src/content/posts/", import.meta.url);
+const postLastmod = new Map<string, string>();
+for (const file of readdirSync(POSTS_DIR)) {
+  if (!/\.mdx?$/.test(file) || file.startsWith("_")) continue;
+  const head = readFileSync(new URL(file, POSTS_DIR), "utf8").split(/^---\s*$/m)[1] ?? "";
+  const field = (key: string) => {
+    const m = head.match(new RegExp(`^${key}:[ \\t]*["']?([^"'\\r\\n]+?)["']?[ \\t]*\\r?$`, "m"));
+    const d = m && m[1] !== "null" ? new Date(m[1]) : null;
+    return d && !Number.isNaN(d.getTime()) ? d.toISOString() : null;
+  };
+  const date = field("modDatetime") ?? field("pubDatetime");
+  if (date) postLastmod.set(file.replace(/\.mdx?$/, ""), date);
+}
+// Thin or utility pages kept out of the sitemap (they are also noindex).
+const SITEMAP_EXCLUDE = /\/(search|tags|bai-viet|404)(\/|$)/;
 
 export default defineConfig({
   site: config.site.url,
@@ -40,7 +60,14 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: page =>
-        config.features?.showArchives !== false || !page.endsWith("/archives/"),
+        (config.features?.showArchives !== false ||
+          !page.endsWith("/archives/")) &&
+        !SITEMAP_EXCLUDE.test(new URL(page).pathname),
+      serialize: item => {
+        const post = new URL(item.url).pathname.match(/\/posts\/([^/]+)\/?$/);
+        const lastmod = post && postLastmod.get(decodeURIComponent(post[1]));
+        return { ...item, lastmod: lastmod ?? BUILD_DATE };
+      },
     }),
   ],
   i18n: {
@@ -82,7 +109,8 @@ export default defineConfig({
       subsets: ["latin", "vietnamese"],
       weights: [400, 500, 600, 700],
       styles: ["normal", "italic"],
-      formats: ["woff", "ttf"],
+      // woff2 only: every browser that supports the Vietnamese subset reads it.
+      formats: ["woff2"],
     },
   ],
   env: {

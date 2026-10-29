@@ -1,9 +1,13 @@
 ---
 import Layout from "./Layout.astro";
+import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
 import config from "@/config";
 
 type Props = {
+  /** Full <title>, usually "<post title> | <site title>". */
   title?: string;
+  /** Post title without the site suffix, used as the JSON-LD headline. */
+  headline?: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
@@ -13,16 +17,35 @@ type Props = {
 
 const { site } = config;
 
-const { title, description, ogImage, canonicalURL, pubDatetime, modDatetime } =
-  Astro.props;
+const {
+  title,
+  headline,
+  description,
+  ogImage,
+  canonicalURL,
+  pubDatetime,
+  modDatetime,
+} = Astro.props;
+
+const pageUrl = canonicalURL ?? new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = new URL(
+  ogImage ?? resolveDefaultOgImagePath(config),
+  Astro.site ?? Astro.url
+).href;
+const siteUrl = new URL(site.url).href;
+const lastModified = modDatetime ?? pubDatetime;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  headline: title ?? site.title,
-  image: ogImage,
+  headline: headline ?? title ?? site.title,
+  ...(description && { description }),
+  image: [imageUrl],
+  inLanguage: "vi",
+  mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+  url: pageUrl,
   ...(pubDatetime && { datePublished: pubDatetime.toISOString() }),
-  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+  ...(lastModified && { dateModified: lastModified.toISOString() }),
   author: [
     {
       "@type": "Person",
@@ -30,14 +53,20 @@ const structuredData = {
       ...(site.profile && { url: site.profile }),
     },
   ],
+  publisher: {
+    "@type": "Organization",
+    name: site.title,
+    url: siteUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("favicon.svg", siteUrl).href,
+    },
+  },
 };
 ---
 
-<Layout {title} {description} {ogImage} {canonicalURL}>
+<Layout {title} {description} {ogImage} {canonicalURL} ogType="article">
   <Fragment slot="head">
-    <!-- Override og:type for article pages -->
-    <meta property="og:type" content="article" />
-
     {
       pubDatetime && (
         <meta

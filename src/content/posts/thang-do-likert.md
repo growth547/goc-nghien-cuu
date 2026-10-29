@@ -56,6 +56,7 @@ tags: ["thang đo","bảng hỏi"]
 <p>Thang chẵn (4 hoặc 6 mức) ép người trả lời nghiêng về một phía. Cách này đôi khi được dùng khi nhà nghiên cứu lo người trả lời chọn mức giữa cho nhanh. Đổi lại, người thực sự trung lập bị buộc chọn bừa, và điều đó cũng là sai số. Với khoá luận, giữ mức trung lập là lựa chọn an toàn và dễ bảo vệ hơn, trừ khi thang đo gốc dùng số mức chẵn.</p>
 
 <h2>Viết câu Likert: những lỗi làm hỏng dữ liệu</h2>
+<p>Cách an toàn nhất là kế thừa câu hỏi từ thang đo gốc đã kiểm định, ví dụ trong <a href="/goc-nghien-cuu/thang-do/">thư viện thang đo</a>. Khi buộc phải tự viết hoặc chỉnh câu, tránh các lỗi sau:</p>
 <ul>
 <li><strong>Câu hai ý:</strong> "Nhân viên thân thiện và phục vụ nhanh". Người thấy thân thiện nhưng chậm không biết chọn gì. Tách thành hai câu.</li>
 <li><strong>Câu phủ định kép:</strong> "Tôi không cho rằng giá không hợp lý". Người đọc phải dừng lại giải mã, và nhiều người giải sai.</li>
@@ -71,7 +72,7 @@ tags: ["thang đo","bảng hỏi"]
 <li>Thang 5 mức: giá trị mới = 6 − giá trị cũ (1 thành 5, 2 thành 4, 3 giữ nguyên).</li>
 <li>Thang 7 mức: giá trị mới = 8 − giá trị cũ.</li>
 </ul>
-<p>Trong SPSS, dùng <code>Transform &gt; Recode into Different Variables</code> để tạo biến mới, giữ biến gốc để đối chiếu. Quên bước này là nguyên nhân phổ biến nhất khiến Cronbach's alpha thấp bất thường hoặc âm, chi tiết trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Trong SPSS, dùng <code>Transform &gt; Recode into Different Variables</code> để tạo biến mới, giữ biến gốc để đối chiếu. Quên bước này là nguyên nhân phổ biến nhất khiến Cronbach's alpha thấp bất thường hoặc âm, chi tiết trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>. <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu khảo sát</a> cho khai báo danh sách câu đảo chiều và tự đảo điểm trước khi tính.</p>
 
 
 <h2>Phân tích dữ liệu Likert: thứ bậc hay khoảng</h2>

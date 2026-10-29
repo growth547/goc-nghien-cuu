@@ -1,0 +1,79 @@
+{
+  "code": "SI.POV.DDAY",
+  "theme": "Giá cả, lao động & thu nhập",
+  "shortVi": "tỷ lệ nghèo",
+  "nameVi": "Tỷ lệ nghèo theo chuẩn nghèo cùng cực quốc tế của World Bank",
+  "nameEn": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+  "unit": "% dân số",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Tỷ lệ dân số sống dưới chuẩn nghèo cùng cực quốc tế của World Bank (mức chi tiêu mỗi ngày theo sức mua tương đương; mức chuẩn cụ thể ghi trong tên tiếng Anh của chỉ tiêu). Đây là chuẩn quốc tế, khác chuẩn nghèo đa chiều của Việt Nam.",
+  "thesisUse": [
+    "Mô tả thành tựu giảm nghèo và so sánh quốc tế. Khi viết về chính sách trong nước, nên đối chiếu thêm tỷ lệ hộ nghèo theo chuẩn của Việt Nam."
+  ],
+  "sourceNote": "Poverty headcount ratio at $3.00 a day is the percentage of the population living on less than $3.00 a day at 2021 purchasing power adjusted prices. As a result of revisions in PPP exchange rates, poverty rates for individual countries cannot be compared with poverty rates reported in earlier editions.",
+  "sourceOrganization": "World Bank, Poverty and Inequality Platform. Data are based on primary household survey data obtained from government statistical agencies and World Bank country departments. Data for high-income economies are mostly from the Luxembourg Income Study database. For more information and methodology, please see http://pip.worldbank.org., World Bank (WB), uri: http://pip.worldbank.org, note: Data are based on primary household survey data obtained from government statistical agencies and World Bank country departments. Data for high-income economies are mostly from the Luxembourg Income Study database.",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/SI.POV.DDAY?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/SI.POV.DDAY?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1992,
+      "value": 57.5
+    },
+    {
+      "year": 1997,
+      "value": 38.1
+    },
+    {
+      "year": 2002,
+      "value": 43.3
+    },
+    {
+      "year": 2004,
+      "value": 30.9
+    },
+    {
+      "year": 2006,
+      "value": 23.7
+    },
+    {
+      "year": 2008,
+      "value": 17.6
+    },
+    {
+      "year": 2010,
+      "value": 5.2
+    },
+    {
+      "year": 2012,
+      "value": 3.7
+    },
+    {
+      "year": 2014,
+      "value": 3.4
+    },
+    {
+      "year": 2016,
+      "value": 2.5
+    },
+    {
+      "year": 2018,
+      "value": 2.2
+    },
+    {
+      "year": 2020,
+      "value": 1.3
+    },
+    {
+      "year": 2022,
+      "value": 1.6
+    }
+  ]
+}

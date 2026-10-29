@@ -1,0 +1,188 @@
+{
+  "code": "PA.NUS.FCRF",
+  "theme": "Tài chính – ngân hàng",
+  "shortVi": "tỷ giá USD/VND",
+  "nameVi": "Tỷ giá chính thức VND/USD (bình quân năm)",
+  "nameEn": "Official exchange rate (LCU per US$, period average)",
+  "unit": "VND/USD, bình quân năm",
+  "displayUnit": "VND/USD",
+  "scale": 1,
+  "decimals": 0,
+  "explanation": "Tỷ giá chính thức do cơ quan quản lý công bố, tính bình quân các tháng trong năm, biểu thị số đồng Việt Nam đổi được một đô la Mỹ. Tỷ giá tăng nghĩa là VND mất giá.",
+  "thesisUse": [
+    "Biến giải thích trong các đề tài về xuất nhập khẩu, cán cân thương mại, lạm phát (truyền dẫn tỷ giá) và thị trường chứng khoán.",
+    "Dùng để quy đổi các số liệu tính bằng VND sang USD theo năm."
+  ],
+  "sourceNote": "Official exchange rate refers to the exchange rate determined by national authorities or to the rate determined in the legally sanctioned exchange market. This indicator represents the ratio of Local Currency Units relative to United States dollars.This indicator is derived as an average over the reference period.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/PA.NUS.FCRF?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/PA.NUS.FCRF?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1983,
+      "value": 1.00177092268493
+    },
+    {
+      "year": 1986,
+      "value": 22.9367282608695
+    },
+    {
+      "year": 1987,
+      "value": 78.9533157246375
+    },
+    {
+      "year": 1988,
+      "value": 611.646086956522
+    },
+    {
+      "year": 1989,
+      "value": 4501.68652908966
+    },
+    {
+      "year": 1990,
+      "value": 6537.60468568839
+    },
+    {
+      "year": 1991,
+      "value": 10121.8932306763
+    },
+    {
+      "year": 1992,
+      "value": 11202.1916666666
+    },
+    {
+      "year": 1993,
+      "value": 10640.9583333333
+    },
+    {
+      "year": 1994,
+      "value": 10965.6666666666
+    },
+    {
+      "year": 1995,
+      "value": 11038.25
+    },
+    {
+      "year": 1996,
+      "value": 11032.5833333333
+    },
+    {
+      "year": 1997,
+      "value": 11683.3333333333
+    },
+    {
+      "year": 1998,
+      "value": 13268
+    },
+    {
+      "year": 1999,
+      "value": 13943.1666666666
+    },
+    {
+      "year": 2000,
+      "value": 14167.75
+    },
+    {
+      "year": 2001,
+      "value": 14725.1666666666
+    },
+    {
+      "year": 2002,
+      "value": 15279.5
+    },
+    {
+      "year": 2003,
+      "value": 15509.5833333333
+    },
+    {
+      "year": 2004,
+      "value": 15746
+    },
+    {
+      "year": 2005,
+      "value": 15858.9166666666
+    },
+    {
+      "year": 2006,
+      "value": 15994.25
+    },
+    {
+      "year": 2007,
+      "value": 16105.125
+    },
+    {
+      "year": 2008,
+      "value": 16302.25
+    },
+    {
+      "year": 2009,
+      "value": 17065.0833333333
+    },
+    {
+      "year": 2010,
+      "value": 18612.9166666666
+    },
+    {
+      "year": 2011,
+      "value": 20509.75
+    },
+    {
+      "year": 2012,
+      "value": 20828
+    },
+    {
+      "year": 2013,
+      "value": 20933.4166666666
+    },
+    {
+      "year": 2014,
+      "value": 21148
+    },
+    {
+      "year": 2015,
+      "value": 21697.5675
+    },
+    {
+      "year": 2016,
+      "value": 21935.0008333333
+    },
+    {
+      "year": 2017,
+      "value": 22370.0866666666
+    },
+    {
+      "year": 2018,
+      "value": 22602.05
+    },
+    {
+      "year": 2019,
+      "value": 23050.2416666666
+    },
+    {
+      "year": 2020,
+      "value": 23208.3683333333
+    },
+    {
+      "year": 2021,
+      "value": 23159.7825925925
+    },
+    {
+      "year": 2022,
+      "value": 23271.2125
+    },
+    {
+      "year": 2023,
+      "value": 23787.3191666666
+    },
+    {
+      "year": 2024,
+      "value": 24164.8858333333
+    }
+  ]
+}

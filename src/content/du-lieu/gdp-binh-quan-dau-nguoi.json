@@ -1,0 +1,192 @@
+{
+  "code": "NY.GDP.PCAP.CD",
+  "theme": "Tăng trưởng & cơ cấu kinh tế",
+  "shortVi": "GDP bình quân đầu người",
+  "nameVi": "GDP bình quân đầu người, giá hiện hành",
+  "nameEn": "GDP per capita (current US$)",
+  "unit": "USD/người, giá hiện hành",
+  "displayUnit": "USD",
+  "scale": 1,
+  "decimals": 0,
+  "explanation": "GDP chia cho dân số giữa năm, tính bằng đô la Mỹ theo giá hiện hành. Chỉ tiêu phản ánh mức thu nhập bình quân và thường dùng để xếp nhóm thu nhập quốc gia.",
+  "thesisUse": [
+    "Đại diện cho mức sống hoặc trình độ phát triển trong các đề tài về tiêu dùng, du lịch, chuyển đổi số, môi trường (ví dụ kiểm định đường cong Kuznets môi trường với CO2).",
+    "Khi so sánh sức mua giữa các nước, nên dùng chuỗi GDP bình quân đầu người theo PPP."
+  ],
+  "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate.This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
+  "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NY.GDP.PCAP.CD?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1985,
+      "value": 238.647805313403
+    },
+    {
+      "year": 1986,
+      "value": 436.419296772225
+    },
+    {
+      "year": 1987,
+      "value": 595.247488701606
+    },
+    {
+      "year": 1988,
+      "value": 404.559305078888
+    },
+    {
+      "year": 1989,
+      "value": 98.1070172159577
+    },
+    {
+      "year": 1990,
+      "value": 98.7983370311401
+    },
+    {
+      "year": 1991,
+      "value": 143.715270231936
+    },
+    {
+      "year": 1992,
+      "value": 144.549392371677
+    },
+    {
+      "year": 1993,
+      "value": 189.418573584332
+    },
+    {
+      "year": 1994,
+      "value": 229.857787265757
+    },
+    {
+      "year": 1995,
+      "value": 287.802661028593
+    },
+    {
+      "year": 1996,
+      "value": 337.051231790277
+    },
+    {
+      "year": 1997,
+      "value": 361.643884085566
+    },
+    {
+      "year": 1998,
+      "value": 361.350928411167
+    },
+    {
+      "year": 1999,
+      "value": 375.994455900496
+    },
+    {
+      "year": 2000,
+      "value": 404.029784055118
+    },
+    {
+      "year": 2001,
+      "value": 419.205677580901
+    },
+    {
+      "year": 2002,
+      "value": 445.132861817313
+    },
+    {
+      "year": 2003,
+      "value": 497.117089249256
+    },
+    {
+      "year": 2004,
+      "value": 565.452284586212
+    },
+    {
+      "year": 2005,
+      "value": 710.746759994861
+    },
+    {
+      "year": 2006,
+      "value": 807.756645117054
+    },
+    {
+      "year": 2007,
+      "value": 925.640338348717
+    },
+    {
+      "year": 2008,
+      "value": 1163.83195772873
+    },
+    {
+      "year": 2009,
+      "value": 1226.16976051536
+    },
+    {
+      "year": 2010,
+      "value": 1683.16182443979
+    },
+    {
+      "year": 2011,
+      "value": 1950.92504174913
+    },
+    {
+      "year": 2012,
+      "value": 2185.11767654291
+    },
+    {
+      "year": 2013,
+      "value": 2359.51736472828
+    },
+    {
+      "year": 2014,
+      "value": 2546.38464459903
+    },
+    {
+      "year": 2015,
+      "value": 2577.56885340113
+    },
+    {
+      "year": 2016,
+      "value": 2735.0604380416
+    },
+    {
+      "year": 2017,
+      "value": 2956.10992127753
+    },
+    {
+      "year": 2018,
+      "value": 3222.31003125366
+    },
+    {
+      "year": 2019,
+      "value": 3440.90025375434
+    },
+    {
+      "year": 2020,
+      "value": 3534.03953482647
+    },
+    {
+      "year": 2021,
+      "value": 3704.1935590038
+    },
+    {
+      "year": 2022,
+      "value": 4147.69777213621
+    },
+    {
+      "year": 2023,
+      "value": 4322.82572261566
+    },
+    {
+      "year": 2024,
+      "value": 4716.6599379632
+    },
+    {
+      "year": 2025,
+      "value": 5065.99091899299
+    }
+  ]
+}

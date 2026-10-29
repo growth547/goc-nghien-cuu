@@ -1,0 +1,107 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import { DATASET_THEMES } from "@/content.config";
+import { getAssetPath } from "@/utils/withBase";
+import { displayValue, yearSpan } from "@/utils/dataSeries";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const datasets = (await getCollection("datasets")).sort((a, b) =>
+  a.data.nameVi.localeCompare(b.data.nameVi, "vi")
+);
+const themes = DATASET_THEMES.filter(t =>
+  datasets.some(s => s.data.theme === t)
+);
+const lastUpdated = datasets
+  .map(s => s.data.lastUpdated)
+  .sort()
+  .at(-1);
+const allCsvHref = getAssetPath("du-lieu/tat-ca-chi-so.csv");
+---
+
+<Layout
+  title={`Dữ liệu thứ cấp Việt Nam cho khoá luận: tải CSV | ${config.site.title}`}
+  description="Số liệu vĩ mô Việt Nam qua các năm từ World Bank: GDP, lạm phát, FDI, lãi suất, tỷ giá, dân số, Internet, giáo dục, y tế, CO2. Có biểu đồ, tải CSV, trích dẫn APA."
+>
+  <Header />
+  <Breadcrumb />
+  <Main
+    pageTitle="Dữ liệu thứ cấp Việt Nam"
+    pageDesc={`${datasets.length} chỉ số kinh tế – xã hội của Việt Nam qua các năm, lấy từ World Development Indicators của World Bank (giấy phép CC BY 4.0). Mỗi chỉ số có bảng số liệu, biểu đồ, file CSV và trích dẫn APA.`}
+  >
+    <div class="cta mt-0">
+      <p>
+        Dữ liệu cập nhật từ World Bank ngày {lastUpdated}. Muốn chạy hồi quy
+        nhiều biến? Tải một file gồm tất cả chỉ số (định dạng dài: quốc gia, mã
+        chỉ số, tên chỉ số, đơn vị, năm, giá trị).
+      </p>
+      <a class="btn" href={allCsvHref} download>
+        Tải CSV tất cả {datasets.length} chỉ số
+      </a>
+    </div>
+
+    {
+      themes.map(theme => (
+        <section class="mb-8">
+          <h2 class="mb-3 text-xl font-semibold">{theme}</h2>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {datasets
+              .filter(s => s.data.theme === theme)
+              .map(s => {
+                const { first, last } = yearSpan(s.data);
+                const latest = s.data.values[s.data.values.length - 1];
+                return (
+                  <li>
+                    <a
+                      href={getRelativeLocaleUrl(locale, `du-lieu/${s.id}`)}
+                      class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors"
+                    >
+                      <span class="font-semibold">{s.data.nameVi}</span>
+                      <span class="text-muted-foreground block text-sm">
+                        {first}–{last} · {s.data.code}
+                      </span>
+                      <span class="text-muted-foreground mt-1 block text-xs">
+                        Năm {latest.year}: {displayValue(s.data, latest.value)}{" "}
+                        {s.data.displayUnit}
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+          </ul>
+        </section>
+      ))
+    }
+
+    <section class="app-prose max-w-none text-sm">
+      <h2>Nguồn và giấy phép</h2>
+      <p>
+        Toàn bộ số liệu lấy từ World Bank, World Development Indicators, qua
+        World Bank API, theo giấy phép <a
+          href="https://creativecommons.org/licenses/by/4.0/"
+          rel="license noopener"
+          target="_blank">Creative Commons Attribution 4.0 (CC BY 4.0)</a
+        > (<a
+          href="https://datacatalog.worldbank.org/public-licenses"
+          rel="noopener"
+          target="_blank">điều khoản dữ liệu của World Bank</a
+        >). {config.site.title} đã chọn lọc, dịch tên và mô tả sang tiếng Việt, định
+        dạng lại và vẽ biểu đồ; không thay đổi giá trị số liệu. Mỗi trang chỉ số
+        ghi rõ tổ chức cung cấp gốc (IMF, ILO, ITU, UNESCO, WHO...) theo World
+        Bank.
+      </p>
+      <p>
+        Khi dùng trong khoá luận, trích dẫn World Bank (không trích dẫn trang
+        này) theo mẫu APA có sẵn trên từng trang chỉ số, và ghi ngày truy cập vì
+        World Bank có thể sửa số liệu các năm trước.
+      </p>
+    </section>
+  </Main>
+  <Footer />
+</Layout>

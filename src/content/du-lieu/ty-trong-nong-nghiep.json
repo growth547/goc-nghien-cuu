@@ -1,0 +1,187 @@
+{
+  "code": "NV.AGR.TOTL.ZS",
+  "theme": "Tăng trưởng & cơ cấu kinh tế",
+  "shortVi": "tỷ trọng nông nghiệp trong GDP",
+  "nameVi": "Giá trị tăng thêm ngành nông, lâm nghiệp và thuỷ sản (% GDP)",
+  "nameEn": "Agriculture, forestry, and fishing, value added (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Phần đóng góp của khu vực nông, lâm nghiệp và thuỷ sản vào GDP. Tỷ trọng này giảm dần là dấu hiệu của quá trình chuyển dịch cơ cấu kinh tế sang công nghiệp và dịch vụ.",
+  "thesisUse": [
+    "Mô tả chuyển dịch cơ cấu kinh tế trong chương bối cảnh; làm biến cơ cấu ngành trong các mô hình tăng trưởng, việc làm, phát thải."
+  ],
+  "sourceNote": "Agriculture, forestry, and fishing corresponds to ISIC (Rev. 4) divisions 01-03 and includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants, animals or animal products from a farm or their natural habitats.Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period. Note: For VAB countries, gross value added at factor cost is used as the denominator.",
+  "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NV.AGR.TOTL.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NV.AGR.TOTL.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1986,
+      "value": 38.0634390651085
+    },
+    {
+      "year": 1987,
+      "value": 40.5574912891986
+    },
+    {
+      "year": 1988,
+      "value": 46.2970168612192
+    },
+    {
+      "year": 1989,
+      "value": 42.0674189299826
+    },
+    {
+      "year": 1990,
+      "value": 38.73674174711
+    },
+    {
+      "year": 1991,
+      "value": 40.4891339773424
+    },
+    {
+      "year": 1992,
+      "value": 33.9385879202403
+    },
+    {
+      "year": 1993,
+      "value": 29.8699539420211
+    },
+    {
+      "year": 1994,
+      "value": 27.4278288729318
+    },
+    {
+      "year": 1995,
+      "value": 27.1826887789875
+    },
+    {
+      "year": 1996,
+      "value": 27.7588260377303
+    },
+    {
+      "year": 1997,
+      "value": 25.7717067944634
+    },
+    {
+      "year": 1998,
+      "value": 25.7807804064629
+    },
+    {
+      "year": 1999,
+      "value": 25.4344379935091
+    },
+    {
+      "year": 2000,
+      "value": 24.5345819955349
+    },
+    {
+      "year": 2001,
+      "value": 23.2410475903552
+    },
+    {
+      "year": 2002,
+      "value": 23.0294421776834
+    },
+    {
+      "year": 2003,
+      "value": 22.5424367056108
+    },
+    {
+      "year": 2004,
+      "value": 21.8076993514673
+    },
+    {
+      "year": 2005,
+      "value": 19.2999788840494
+    },
+    {
+      "year": 2006,
+      "value": 18.7267854535521
+    },
+    {
+      "year": 2007,
+      "value": 18.655099701709
+    },
+    {
+      "year": 2008,
+      "value": 20.4131439246507
+    },
+    {
+      "year": 2009,
+      "value": 19.1684598670425
+    },
+    {
+      "year": 2010,
+      "value": 15.3750906872381
+    },
+    {
+      "year": 2011,
+      "value": 16.2591484896283
+    },
+    {
+      "year": 2012,
+      "value": 16.199507640393
+    },
+    {
+      "year": 2013,
+      "value": 15.2156122465127
+    },
+    {
+      "year": 2014,
+      "value": 14.8803489262722
+    },
+    {
+      "year": 2015,
+      "value": 14.4747261789547
+    },
+    {
+      "year": 2016,
+      "value": 13.8182553730866
+    },
+    {
+      "year": 2017,
+      "value": 12.9298794852362
+    },
+    {
+      "year": 2018,
+      "value": 12.3066684310428
+    },
+    {
+      "year": 2019,
+      "value": 11.7845285540387
+    },
+    {
+      "year": 2020,
+      "value": 12.6554035685556
+    },
+    {
+      "year": 2021,
+      "value": 12.6030904652745
+    },
+    {
+      "year": 2022,
+      "value": 11.8802998248459
+    },
+    {
+      "year": 2023,
+      "value": 11.8713266425191
+    },
+    {
+      "year": 2024,
+      "value": 12.0289339019357
+    },
+    {
+      "year": 2025,
+      "value": 11.6440301326976
+    }
+  ]
+}

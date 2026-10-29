@@ -1,0 +1,187 @@
+{
+  "code": "NV.IND.TOTL.ZS",
+  "theme": "Tăng trưởng & cơ cấu kinh tế",
+  "shortVi": "tỷ trọng công nghiệp trong GDP",
+  "nameVi": "Giá trị tăng thêm ngành công nghiệp và xây dựng (% GDP)",
+  "nameEn": "Industry (including construction), value added (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Phần đóng góp của công nghiệp (khai khoáng, chế biến chế tạo, điện, nước) và xây dựng vào GDP.",
+  "thesisUse": [
+    "Đo mức độ công nghiệp hoá; hay dùng làm biến giải thích trong các đề tài về phát thải CO2, tiêu thụ năng lượng và tăng trưởng."
+  ],
+  "sourceNote": "Industry (including construction) corresponds to ISIC (Rev.4) divisions 05-43. It is comprised of mining, manufacturing, construction, electricity, water, and gas industries. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NV.IND.TOTL.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NV.IND.TOTL.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1986,
+      "value": 28.881469115192
+    },
+    {
+      "year": 1987,
+      "value": 28.3623693379791
+    },
+    {
+      "year": 1988,
+      "value": 23.9623865110246
+    },
+    {
+      "year": 1989,
+      "value": 22.9380984586908
+    },
+    {
+      "year": 1990,
+      "value": 22.6742938863068
+    },
+    {
+      "year": 1991,
+      "value": 23.7944385779655
+    },
+    {
+      "year": 1992,
+      "value": 27.2635978721094
+    },
+    {
+      "year": 1993,
+      "value": 28.9003122816524
+    },
+    {
+      "year": 1994,
+      "value": 28.8684508272934
+    },
+    {
+      "year": 1995,
+      "value": 28.755919822449
+    },
+    {
+      "year": 1996,
+      "value": 29.7298886912026
+    },
+    {
+      "year": 1997,
+      "value": 32.0751347955985
+    },
+    {
+      "year": 1998,
+      "value": 32.4912677242346
+    },
+    {
+      "year": 1999,
+      "value": 34.4947517390022
+    },
+    {
+      "year": 2000,
+      "value": 36.7307753268455
+    },
+    {
+      "year": 2001,
+      "value": 38.1294216644677
+    },
+    {
+      "year": 2002,
+      "value": 38.4866787864761
+    },
+    {
+      "year": 2003,
+      "value": 39.4700078083864
+    },
+    {
+      "year": 2004,
+      "value": 40.2087495299221
+    },
+    {
+      "year": 2005,
+      "value": 38.1311399002846
+    },
+    {
+      "year": 2006,
+      "value": 38.5847310338981
+    },
+    {
+      "year": 2007,
+      "value": 38.5116248479069
+    },
+    {
+      "year": 2008,
+      "value": 37.0776963788801
+    },
+    {
+      "year": 2009,
+      "value": 37.3881863793419
+    },
+    {
+      "year": 2010,
+      "value": 33.0228771360005
+    },
+    {
+      "year": 2011,
+      "value": 34.580408780539
+    },
+    {
+      "year": 2012,
+      "value": 35.8602323946766
+    },
+    {
+      "year": 2013,
+      "value": 35.575150437736
+    },
+    {
+      "year": 2014,
+      "value": 35.2985684880333
+    },
+    {
+      "year": 2015,
+      "value": 34.2665466382117
+    },
+    {
+      "year": 2016,
+      "value": 34.1152288612372
+    },
+    {
+      "year": 2017,
+      "value": 35.3903640729728
+    },
+    {
+      "year": 2018,
+      "value": 36.5424334086447
+    },
+    {
+      "year": 2019,
+      "value": 36.8031368977554
+    },
+    {
+      "year": 2020,
+      "value": 36.7437132938801
+    },
+    {
+      "year": 2021,
+      "value": 37.3915192469302
+    },
+    {
+      "year": 2022,
+      "value": 38.482361279715
+    },
+    {
+      "year": 2023,
+      "value": 37.5932883534337
+    },
+    {
+      "year": 2024,
+      "value": 37.5162935306841
+    },
+    {
+      "year": 2025,
+      "value": 37.6491235864782
+    }
+  ]
+}

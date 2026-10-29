@@ -1,0 +1,203 @@
+{
+  "code": "DT.DOD.DECT.CD",
+  "theme": "Thương mại & đầu tư nước ngoài",
+  "shortVi": "nợ nước ngoài",
+  "nameVi": "Tổng nợ nước ngoài",
+  "nameEn": "External debt stocks, total (DOD, current US$)",
+  "unit": "USD, giá hiện hành",
+  "displayUnit": "tỷ USD",
+  "scale": 1000000000,
+  "decimals": 1,
+  "explanation": "Tổng dư nợ phải trả cho người không cư trú bằng ngoại tệ, hàng hoá hoặc dịch vụ, gồm nợ công và nợ được bảo lãnh, nợ tư nhân không được bảo lãnh, tín dụng IMF và nợ ngắn hạn.",
+  "thesisUse": [
+    "Biến giải thích trong các đề tài về nợ nước ngoài và tăng trưởng, rủi ro tỷ giá; nên chia cho GDP trước khi đưa vào mô hình."
+  ],
+  "sourceNote": "Total external debt is debt owed to nonresidents repayable in currency, goods, or services. Total external debt is the sum of public, publicly guaranteed, and private nonguaranteed long-term debt, use of IMF credit, and short-term debt. Short-term debt includes all debt having an original maturity of one year or less and interest in arrears on long-term debt. Data are in current U.S. dollars.",
+  "sourceOrganization": "International Debt Statistics, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/DT.DOD.DECT.CD?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/DT.DOD.DECT.CD?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1981,
+      "value": 25579000
+    },
+    {
+      "year": 1982,
+      "value": 42766000
+    },
+    {
+      "year": 1983,
+      "value": 52564000
+    },
+    {
+      "year": 1984,
+      "value": 54570000
+    },
+    {
+      "year": 1985,
+      "value": 61267000
+    },
+    {
+      "year": 1986,
+      "value": 174639228.8
+    },
+    {
+      "year": 1987,
+      "value": 191481041.4
+    },
+    {
+      "year": 1988,
+      "value": 617484768.8
+    },
+    {
+      "year": 1989,
+      "value": 20705352668.4
+    },
+    {
+      "year": 1990,
+      "value": 23270062150.1
+    },
+    {
+      "year": 1991,
+      "value": 23395041592.5
+    },
+    {
+      "year": 1992,
+      "value": 24389145840.7
+    },
+    {
+      "year": 1993,
+      "value": 24224319557.6
+    },
+    {
+      "year": 1994,
+      "value": 24855517887.4
+    },
+    {
+      "year": 1995,
+      "value": 25483320390.6
+    },
+    {
+      "year": 1996,
+      "value": 26309991483.3
+    },
+    {
+      "year": 1997,
+      "value": 21830829876.4
+    },
+    {
+      "year": 1998,
+      "value": 22512305266.7
+    },
+    {
+      "year": 1999,
+      "value": 23328780655.5
+    },
+    {
+      "year": 2000,
+      "value": 12841178044.2
+    },
+    {
+      "year": 2001,
+      "value": 12632834003.6
+    },
+    {
+      "year": 2002,
+      "value": 13342966639.1
+    },
+    {
+      "year": 2003,
+      "value": 15592997724.7
+    },
+    {
+      "year": 2004,
+      "value": 17631234906.8
+    },
+    {
+      "year": 2005,
+      "value": 18593542977.2
+    },
+    {
+      "year": 2006,
+      "value": 18752446327.7
+    },
+    {
+      "year": 2007,
+      "value": 23135389256
+    },
+    {
+      "year": 2008,
+      "value": 26497616052.6
+    },
+    {
+      "year": 2009,
+      "value": 32773324076.8
+    },
+    {
+      "year": 2010,
+      "value": 45021621601.7
+    },
+    {
+      "year": 2011,
+      "value": 54319557705.4
+    },
+    {
+      "year": 2012,
+      "value": 62254441307.6
+    },
+    {
+      "year": 2013,
+      "value": 66249485679.8
+    },
+    {
+      "year": 2014,
+      "value": 74733824699.1
+    },
+    {
+      "year": 2015,
+      "value": 81824874001.8
+    },
+    {
+      "year": 2016,
+      "value": 90484088511.7
+    },
+    {
+      "year": 2017,
+      "value": 109893164470.1
+    },
+    {
+      "year": 2018,
+      "value": 112621985456.9
+    },
+    {
+      "year": 2019,
+      "value": 122495972199.3
+    },
+    {
+      "year": 2020,
+      "value": 129479217056.5
+    },
+    {
+      "year": 2021,
+      "value": 139852502036.8
+    },
+    {
+      "year": 2022,
+      "value": 146621789309.1
+    },
+    {
+      "year": 2023,
+      "value": 141845082045.7
+    },
+    {
+      "year": 2024,
+      "value": 132907340372.3
+    }
+  ]
+}

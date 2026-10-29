@@ -1,0 +1,151 @@
+{
+  "code": "NE.GDI.TOTL.ZS",
+  "theme": "Tăng trưởng & cơ cấu kinh tế",
+  "shortVi": "tổng tích luỹ tài sản (đầu tư) so với GDP",
+  "nameVi": "Tổng tích luỹ tài sản (% GDP)",
+  "nameEn": "Gross capital formation (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tổng tích luỹ tài sản (gross capital formation) gồm chi đầu tư vào tài sản cố định cộng với thay đổi hàng tồn kho của toàn nền kinh tế, tính theo % GDP. Đây là đại diện phổ biến cho tỷ lệ đầu tư của nền kinh tế.",
+  "thesisUse": [
+    "Đại diện cho vốn đầu tư (biến K) trong các mô hình hàm sản xuất và tăng trưởng kinh tế."
+  ],
+  "sourceNote": "Gross capital formation includes acquisitions less disposals of produced assets for purposes of fixed capital formation, inventories or valuables. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NE.GDI.TOTL.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NE.GDI.TOTL.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1995,
+      "value": 27.1442426996138
+    },
+    {
+      "year": 1996,
+      "value": 28.1028981458336
+    },
+    {
+      "year": 1997,
+      "value": 28.2995826198971
+    },
+    {
+      "year": 1998,
+      "value": 29.0498785375758
+    },
+    {
+      "year": 1999,
+      "value": 27.6297563146656
+    },
+    {
+      "year": 2000,
+      "value": 29.6099138223826
+    },
+    {
+      "year": 2001,
+      "value": 31.1727734549497
+    },
+    {
+      "year": 2002,
+      "value": 33.2205344910613
+    },
+    {
+      "year": 2003,
+      "value": 35.444857957463
+    },
+    {
+      "year": 2004,
+      "value": 35.46533166878
+    },
+    {
+      "year": 2005,
+      "value": 33.7574028912441
+    },
+    {
+      "year": 2006,
+      "value": 34.5366510764767
+    },
+    {
+      "year": 2007,
+      "value": 39.5662708970146
+    },
+    {
+      "year": 2008,
+      "value": 36.4931217965814
+    },
+    {
+      "year": 2009,
+      "value": 37.1625554335215
+    },
+    {
+      "year": 2010,
+      "value": 37.0990761715168
+    },
+    {
+      "year": 2011,
+      "value": 32.3711434429224
+    },
+    {
+      "year": 2012,
+      "value": 30.5592897696566
+    },
+    {
+      "year": 2013,
+      "value": 30.2129034609593
+    },
+    {
+      "year": 2014,
+      "value": 30.2890267860991
+    },
+    {
+      "year": 2015,
+      "value": 32.1089158178217
+    },
+    {
+      "year": 2016,
+      "value": 31.7245390951042
+    },
+    {
+      "year": 2017,
+      "value": 32.305300920099
+    },
+    {
+      "year": 2018,
+      "value": 32.019502902433
+    },
+    {
+      "year": 2019,
+      "value": 31.9799606565797
+    },
+    {
+      "year": 2020,
+      "value": 31.915688393806
+    },
+    {
+      "year": 2021,
+      "value": 32.8956023366901
+    },
+    {
+      "year": 2022,
+      "value": 32.3404994444961
+    },
+    {
+      "year": 2023,
+      "value": 31.6683495522758
+    },
+    {
+      "year": 2024,
+      "value": 30.5847264337631
+    },
+    {
+      "year": 2025,
+      "value": 30.7951346149846
+    }
+  ]
+}

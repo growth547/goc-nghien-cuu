@@ -1,0 +1,187 @@
+{
+  "code": "NE.IMP.GNFS.ZS",
+  "theme": "Thương mại & đầu tư nước ngoài",
+  "shortVi": "nhập khẩu so với GDP",
+  "nameVi": "Nhập khẩu hàng hoá và dịch vụ (% GDP)",
+  "nameEn": "Imports of goods and services (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Giá trị nhập khẩu hàng hoá và dịch vụ chia cho GDP. Với Việt Nam, nhập khẩu gắn chặt với xuất khẩu vì nhiều ngành gia công, lắp ráp nhập nguyên liệu và linh kiện.",
+  "thesisUse": [
+    "Dùng cùng xuất khẩu để tính cán cân thương mại; biến giải thích trong các đề tài về tỷ giá và cán cân thương mại (hiệu ứng tuyến J)."
+  ],
+  "sourceNote": "Imports of goods includes change in the economic ownership of goods from non-residents to\n\n\n\n\nresidents of the compiling economy, irrespective of physical movement of goods across national borders. Imports of services includes services provided by non-residents to residents. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NE.IMP.GNFS.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NE.IMP.GNFS.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1986,
+      "value": 16.5961550250417
+    },
+    {
+      "year": 1987,
+      "value": 14.7971782020906
+    },
+    {
+      "year": 1988,
+      "value": 15.0051888612192
+    },
+    {
+      "year": 1989,
+      "value": 34.0551043647884
+    },
+    {
+      "year": 1990,
+      "value": 45.2770843017519
+    },
+    {
+      "year": 1991,
+      "value": 36.0319130561748
+    },
+    {
+      "year": 1992,
+      "value": 38.8312893080737
+    },
+    {
+      "year": 1993,
+      "value": 37.4894844843075
+    },
+    {
+      "year": 1994,
+      "value": 43.4600692982849
+    },
+    {
+      "year": 1995,
+      "value": 41.9084105866522
+    },
+    {
+      "year": 1996,
+      "value": 51.8372593774353
+    },
+    {
+      "year": 1997,
+      "value": 51.2417773154392
+    },
+    {
+      "year": 1998,
+      "value": 52.1529451355476
+    },
+    {
+      "year": 1999,
+      "value": 52.8211606307915
+    },
+    {
+      "year": 2000,
+      "value": 57.4955974105958
+    },
+    {
+      "year": 2001,
+      "value": 56.8940047164421
+    },
+    {
+      "year": 2002,
+      "value": 61.9577349644058
+    },
+    {
+      "year": 2003,
+      "value": 67.6546965243715
+    },
+    {
+      "year": 2004,
+      "value": 73.2854564543616
+    },
+    {
+      "year": 2005,
+      "value": 67.0153533748869
+    },
+    {
+      "year": 2006,
+      "value": 70.5968075435795
+    },
+    {
+      "year": 2007,
+      "value": 84.0875093942823
+    },
+    {
+      "year": 2008,
+      "value": 83.9807876874868
+    },
+    {
+      "year": 2009,
+      "value": 72.0974336552711
+    },
+    {
+      "year": 2010,
+      "value": 59.8018415728627
+    },
+    {
+      "year": 2011,
+      "value": 64.0804222196337
+    },
+    {
+      "year": 2012,
+      "value": 59.7501918421214
+    },
+    {
+      "year": 2013,
+      "value": 64.0459088748316
+    },
+    {
+      "year": 2014,
+      "value": 65.8119455041556
+    },
+    {
+      "year": 2015,
+      "value": 71.9913763582877
+    },
+    {
+      "year": 2016,
+      "value": 71.3022217174998
+    },
+    {
+      "year": 2017,
+      "value": 79.2175618233041
+    },
+    {
+      "year": 2018,
+      "value": 80.2404806925565
+    },
+    {
+      "year": 2019,
+      "value": 79.5466276240668
+    },
+    {
+      "year": 2020,
+      "value": 78.8642648059779
+    },
+    {
+      "year": 2021,
+      "value": 92.8256257092568
+    },
+    {
+      "year": 2022,
+      "value": 89.7334901043249
+    },
+    {
+      "year": 2023,
+      "value": 78.2589213683517
+    },
+    {
+      "year": 2024,
+      "value": 83.7189908785716
+    },
+    {
+      "year": 2025,
+      "value": 92.0924009535244
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "code": "IT.NET.USER.ZS",
+  "theme": "Công nghệ & chuyển đổi số",
+  "shortVi": "tỷ lệ người dùng Internet",
+  "nameVi": "Tỷ lệ người sử dụng Internet",
+  "nameEn": "Individuals using the Internet (% of population)",
+  "unit": "% dân số",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Tỷ lệ dân số đã sử dụng Internet trong 3 tháng gần nhất, qua bất kỳ thiết bị nào, theo số liệu của Liên minh Viễn thông Quốc tế (ITU).",
+  "thesisUse": [
+    "Số liệu bối cảnh cho các đề tài về thương mại điện tử, ngân hàng số, mạng xã hội, chuyển đổi số; biến công nghệ trong mô hình tăng trưởng."
+  ],
+  "sourceNote": "Internet users are individuals who have used the Internet (from any location) in the last 3 months. The Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.",
+  "sourceOrganization": "World Telecommunication/ICT Indicators Database, International Telecommunication Union (ITU), uri: https://datahub.itu.int/",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/IT.NET.USER.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1990,
+      "value": 0
+    },
+    {
+      "year": 1996,
+      "value": 0.000135
+    },
+    {
+      "year": 1997,
+      "value": 0.00398
+    },
+    {
+      "year": 1998,
+      "value": 0.0131
+    },
+    {
+      "year": 1999,
+      "value": 0.129
+    },
+    {
+      "year": 2000,
+      "value": 0.254248275754934
+    },
+    {
+      "year": 2001,
+      "value": 1.26565123612317
+    },
+    {
+      "year": 2002,
+      "value": 1.85499923592581
+    },
+    {
+      "year": 2003,
+      "value": 3.78028081370641
+    },
+    {
+      "year": 2004,
+      "value": 7.64240852842363
+    },
+    {
+      "year": 2005,
+      "value": 12.7399292907031
+    },
+    {
+      "year": 2006,
+      "value": 17.2545617186662
+    },
+    {
+      "year": 2007,
+      "value": 20.7554447679753
+    },
+    {
+      "year": 2008,
+      "value": 23.92
+    },
+    {
+      "year": 2009,
+      "value": 26.55
+    },
+    {
+      "year": 2010,
+      "value": 30.65
+    },
+    {
+      "year": 2011,
+      "value": 35.07
+    },
+    {
+      "year": 2012,
+      "value": 36.79999924
+    },
+    {
+      "year": 2013,
+      "value": 38.5
+    },
+    {
+      "year": 2014,
+      "value": 41
+    },
+    {
+      "year": 2015,
+      "value": 45
+    },
+    {
+      "year": 2016,
+      "value": 53
+    },
+    {
+      "year": 2017,
+      "value": 58.1400000036297
+    },
+    {
+      "year": 2018,
+      "value": 69.8479286837965
+    },
+    {
+      "year": 2019,
+      "value": 68.6615802057338
+    },
+    {
+      "year": 2020,
+      "value": 70.30000012
+    },
+    {
+      "year": 2021,
+      "value": 74.20999985
+    },
+    {
+      "year": 2022,
+      "value": 78.58999918
+    },
+    {
+      "year": 2023,
+      "value": 78.08
+    },
+    {
+      "year": 2024,
+      "value": 84.15
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "code": "FR.INR.LEND",
+  "theme": "Tài chính – ngân hàng",
+  "shortVi": "lãi suất cho vay",
+  "nameVi": "Lãi suất cho vay bình quân",
+  "nameEn": "Lending interest rate (%)",
+  "unit": "%/năm",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Lãi suất bình quân mà các ngân hàng áp dụng cho các khoản vay ngắn và trung hạn của khu vực tư nhân, theo số liệu Thống kê Tài chính Quốc tế (IFS) của IMF.",
+  "thesisUse": [
+    "Biến kiểm soát chi phí vốn trong các đề tài về đầu tư doanh nghiệp, tín dụng, nợ xấu, giá nhà và thị trường chứng khoán.",
+    "Chuỗi có thể dừng sớm hơn các chỉ tiêu khác; nếu cần số liệu mới hơn, bổ sung từ báo cáo của Ngân hàng Nhà nước và ghi rõ nguồn."
+  ],
+  "sourceNote": "Lending rate is the bank rate that usually meets the short- and medium-term financing needs of the private sector. This rate is normally differentiated according to creditworthiness of borrowers and objectives of financing. The terms and conditions attached to these rates differ by country, however, limiting their comparability.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FR.INR.LEND?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FR.INR.LEND?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1993,
+      "value": 32.1825
+    },
+    {
+      "year": 1996,
+      "value": 20.1
+    },
+    {
+      "year": 1997,
+      "value": 14.4166666666667
+    },
+    {
+      "year": 1998,
+      "value": 14.4
+    },
+    {
+      "year": 1999,
+      "value": 12.7
+    },
+    {
+      "year": 2000,
+      "value": 10.55
+    },
+    {
+      "year": 2001,
+      "value": 9.42
+    },
+    {
+      "year": 2002,
+      "value": 9.06166666666667
+    },
+    {
+      "year": 2003,
+      "value": 9.48
+    },
+    {
+      "year": 2004,
+      "value": 9.7225
+    },
+    {
+      "year": 2005,
+      "value": 11.025
+    },
+    {
+      "year": 2006,
+      "value": 11.17625
+    },
+    {
+      "year": 2007,
+      "value": 11.18
+    },
+    {
+      "year": 2008,
+      "value": 15.7835714285714
+    },
+    {
+      "year": 2009,
+      "value": 10.069
+    },
+    {
+      "year": 2010,
+      "value": 13.13525
+    },
+    {
+      "year": 2011,
+      "value": 16.9538333333333
+    },
+    {
+      "year": 2012,
+      "value": 13.4716666666667
+    },
+    {
+      "year": 2013,
+      "value": 10.3741666666667
+    },
+    {
+      "year": 2014,
+      "value": 8.665
+    },
+    {
+      "year": 2015,
+      "value": 7.1175
+    },
+    {
+      "year": 2016,
+      "value": 6.96
+    },
+    {
+      "year": 2017,
+      "value": 7.0675
+    },
+    {
+      "year": 2018,
+      "value": 7.371875
+    },
+    {
+      "year": 2019,
+      "value": 7.7075
+    },
+    {
+      "year": 2020,
+      "value": 7.6475
+    },
+    {
+      "year": 2021,
+      "value": 7.811
+    },
+    {
+      "year": 2022,
+      "value": 8.01333333333333
+    },
+    {
+      "year": 2023,
+      "value": 9.323
+    }
+  ]
+}

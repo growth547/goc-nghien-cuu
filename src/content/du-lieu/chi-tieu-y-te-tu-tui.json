@@ -1,0 +1,123 @@
+{
+  "code": "SH.XPD.OOPC.CH.ZS",
+  "theme": "Giáo dục & y tế",
+  "shortVi": "chi tiêu y tế từ tiền túi hộ gia đình",
+  "nameVi": "Chi tiêu y tế trực tiếp từ tiền túi hộ gia đình (% tổng chi y tế thường xuyên)",
+  "nameEn": "Out-of-pocket expenditure (% of current health expenditure)",
+  "unit": "% chi tiêu y tế thường xuyên",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Phần chi phí y tế người dân tự trả trực tiếp khi sử dụng dịch vụ (không qua bảo hiểm), tính theo % tổng chi y tế thường xuyên, theo WHO. Tỷ lệ cao cho thấy gánh nặng tài chính y tế đè lên hộ gia đình.",
+  "thesisUse": [
+    "Số liệu bối cảnh cho các đề tài về bảo hiểm y tế, bảo hiểm sức khoẻ, sự hài lòng với dịch vụ bệnh viện."
+  ],
+  "sourceNote": "Share of out-of-pocket payments of total current health expenditures.  Out-of-pocket payments are spending on health directly out-of-pocket by households.",
+  "sourceOrganization": "Global Health Expenditure Database, updated December 12th, 2025, World Health Organization (WHO), uri: http://apps.who.int/nha/database",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/SH.XPD.OOPC.CH.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/SH.XPD.OOPC.CH.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 2000,
+      "value": 34.58065033
+    },
+    {
+      "year": 2001,
+      "value": 29.7014904
+    },
+    {
+      "year": 2002,
+      "value": 34.54223251
+    },
+    {
+      "year": 2003,
+      "value": 34.54283524
+    },
+    {
+      "year": 2004,
+      "value": 34.6751709
+    },
+    {
+      "year": 2005,
+      "value": 34.64176559
+    },
+    {
+      "year": 2006,
+      "value": 34.69738388
+    },
+    {
+      "year": 2007,
+      "value": 34.66907883
+    },
+    {
+      "year": 2008,
+      "value": 34.57612991
+    },
+    {
+      "year": 2009,
+      "value": 34.63538361
+    },
+    {
+      "year": 2010,
+      "value": 34.67405701
+    },
+    {
+      "year": 2011,
+      "value": 34.68690491
+    },
+    {
+      "year": 2012,
+      "value": 40.77892303
+    },
+    {
+      "year": 2013,
+      "value": 41.58710098
+    },
+    {
+      "year": 2014,
+      "value": 41.02820969
+    },
+    {
+      "year": 2015,
+      "value": 42.13227844
+    },
+    {
+      "year": 2016,
+      "value": 41.35647964
+    },
+    {
+      "year": 2017,
+      "value": 42.58786774
+    },
+    {
+      "year": 2018,
+      "value": 44.58100891
+    },
+    {
+      "year": 2019,
+      "value": 45.11730576
+    },
+    {
+      "year": 2020,
+      "value": 42.40335083
+    },
+    {
+      "year": 2021,
+      "value": 40.46375656
+    },
+    {
+      "year": 2022,
+      "value": 39.62643814
+    },
+    {
+      "year": 2023,
+      "value": 39.20284653
+    }
+  ]
+}

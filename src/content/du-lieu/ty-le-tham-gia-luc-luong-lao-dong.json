@@ -1,0 +1,171 @@
+{
+  "code": "SL.TLF.CACT.ZS",
+  "theme": "Giá cả, lao động & thu nhập",
+  "shortVi": "tỷ lệ tham gia lực lượng lao động",
+  "nameVi": "Tỷ lệ tham gia lực lượng lao động (dân số từ 15 tuổi trở lên, ước tính của ILO)",
+  "nameEn": "Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)",
+  "unit": "% dân số từ 15 tuổi trở lên",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tỷ lệ dân số từ 15 tuổi trở lên đang làm việc hoặc đang tìm việc. Số liệu là ước tính theo mô hình của ILO.",
+  "thesisUse": [
+    "Đại diện cho nguồn lao động (biến L) trong mô hình hàm sản xuất; mô tả thị trường lao động trong chương bối cảnh."
+  ],
+  "sourceNote": "Labor force participation rate is the proportion of the population ages 15 and older that is economically active: all people who supply labor for the production of goods and services during a specified period.",
+  "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/SL.TLF.CACT.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/SL.TLF.CACT.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1990,
+      "value": 78.151
+    },
+    {
+      "year": 1991,
+      "value": 78.062
+    },
+    {
+      "year": 1992,
+      "value": 77.87
+    },
+    {
+      "year": 1993,
+      "value": 77.709
+    },
+    {
+      "year": 1994,
+      "value": 77.525
+    },
+    {
+      "year": 1995,
+      "value": 77.315
+    },
+    {
+      "year": 1996,
+      "value": 77.113
+    },
+    {
+      "year": 1997,
+      "value": 76.14
+    },
+    {
+      "year": 1998,
+      "value": 75.327
+    },
+    {
+      "year": 1999,
+      "value": 74.509
+    },
+    {
+      "year": 2000,
+      "value": 73.393
+    },
+    {
+      "year": 2001,
+      "value": 74.911
+    },
+    {
+      "year": 2002,
+      "value": 74.416
+    },
+    {
+      "year": 2003,
+      "value": 74.096
+    },
+    {
+      "year": 2004,
+      "value": 73.986
+    },
+    {
+      "year": 2005,
+      "value": 74.247
+    },
+    {
+      "year": 2006,
+      "value": 74.596
+    },
+    {
+      "year": 2007,
+      "value": 75.032
+    },
+    {
+      "year": 2008,
+      "value": 75.587
+    },
+    {
+      "year": 2009,
+      "value": 76.039
+    },
+    {
+      "year": 2010,
+      "value": 76.268
+    },
+    {
+      "year": 2011,
+      "value": 76.372
+    },
+    {
+      "year": 2012,
+      "value": 76.323
+    },
+    {
+      "year": 2013,
+      "value": 77.234
+    },
+    {
+      "year": 2014,
+      "value": 77.306
+    },
+    {
+      "year": 2015,
+      "value": 77.43
+    },
+    {
+      "year": 2016,
+      "value": 76.965
+    },
+    {
+      "year": 2017,
+      "value": 77.2
+    },
+    {
+      "year": 2018,
+      "value": 77.482
+    },
+    {
+      "year": 2019,
+      "value": 76.615
+    },
+    {
+      "year": 2020,
+      "value": 74.367
+    },
+    {
+      "year": 2021,
+      "value": 73.738
+    },
+    {
+      "year": 2022,
+      "value": 74.484
+    },
+    {
+      "year": 2023,
+      "value": 73.545
+    },
+    {
+      "year": 2024,
+      "value": 73.134
+    },
+    {
+      "year": 2025,
+      "value": 72.778
+    }
+  ]
+}

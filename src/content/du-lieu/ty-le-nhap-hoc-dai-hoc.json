@@ -1,0 +1,187 @@
+{
+  "code": "SE.TER.ENRR",
+  "theme": "Giáo dục & y tế",
+  "shortVi": "tỷ lệ nhập học đại học",
+  "nameVi": "Tỷ lệ nhập học giáo dục đại học (tỷ lệ thô)",
+  "nameEn": "School enrollment, tertiary (% gross)",
+  "unit": "% dân số trong độ tuổi đại học",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Tổng số người đang học ở bậc sau phổ thông (cao đẳng, đại học, sau đại học), không phân biệt tuổi, chia cho dân số trong 5 năm tuổi ngay sau tuổi tốt nghiệp phổ thông, theo UNESCO.",
+  "thesisUse": [
+    "Đại diện cho vốn con người trong các mô hình tăng trưởng; số liệu bối cảnh cho các đề tài về giáo dục đại học, học trực tuyến."
+  ],
+  "sourceNote": "Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Tertiary education, whether or not to an advanced research qualification, normally requires, as a minimum condition of admission, the successful completion of education at the secondary level.",
+  "sourceOrganization": "Data API, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources, note: The data are obtained through the UIS API.  Detailed documentation is available at: https://api.uis.unesco.org/api/public/documentation/, publisher: UNESCO Institute for Statistics (UIS), type: Bulk file (csv), date accessed: 2026-03-19, date published: 2026-02",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/SE.TER.ENRR?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/SE.TER.ENRR?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1976,
+      "value": 1.6805100440979
+    },
+    {
+      "year": 1977,
+      "value": 1.98196995258331
+    },
+    {
+      "year": 1978,
+      "value": 2.33300995826721
+    },
+    {
+      "year": 1979,
+      "value": 2.50336003303528
+    },
+    {
+      "year": 1980,
+      "value": 2.4519898891449
+    },
+    {
+      "year": 1981,
+      "value": 2.07332992553711
+    },
+    {
+      "year": 1986,
+      "value": 2.08523988723755
+    },
+    {
+      "year": 1989,
+      "value": 2.97109007835388
+    },
+    {
+      "year": 1990,
+      "value": 3.05396008491516
+    },
+    {
+      "year": 1991,
+      "value": 2.04989004135132
+    },
+    {
+      "year": 1992,
+      "value": 1.62644994258881
+    },
+    {
+      "year": 1993,
+      "value": 2.01602005958557
+    },
+    {
+      "year": 1994,
+      "value": 2.24714994430542
+    },
+    {
+      "year": 1995,
+      "value": 2.83200001716614
+    },
+    {
+      "year": 1996,
+      "value": 4.06363010406494
+    },
+    {
+      "year": 1997,
+      "value": 6.84087991714478
+    },
+    {
+      "year": 1998,
+      "value": 9.53810024261475
+    },
+    {
+      "year": 1999,
+      "value": 10.4174203872681
+    },
+    {
+      "year": 2000,
+      "value": 9.24740982055664
+    },
+    {
+      "year": 2001,
+      "value": 9.30103015899658
+    },
+    {
+      "year": 2002,
+      "value": 9.55722999572754
+    },
+    {
+      "year": 2003,
+      "value": 9.91792964935303
+    },
+    {
+      "year": 2005,
+      "value": 15.8760204315185
+    },
+    {
+      "year": 2006,
+      "value": 16.8052501678467
+    },
+    {
+      "year": 2007,
+      "value": 18.9504508972168
+    },
+    {
+      "year": 2008,
+      "value": 20.0552005767822
+    },
+    {
+      "year": 2009,
+      "value": 21.5007190704346
+    },
+    {
+      "year": 2010,
+      "value": 23.9250975429329
+    },
+    {
+      "year": 2011,
+      "value": 25.8674734818525
+    },
+    {
+      "year": 2012,
+      "value": 25.7487091222031
+    },
+    {
+      "year": 2013,
+      "value": 25.6249412769592
+    },
+    {
+      "year": 2014,
+      "value": 31.3306389293887
+    },
+    {
+      "year": 2015,
+      "value": 29.7250797402999
+    },
+    {
+      "year": 2016,
+      "value": 29.0811980839409
+    },
+    {
+      "year": 2017,
+      "value": 25.9526307046456
+    },
+    {
+      "year": 2019,
+      "value": 30.2241191864014
+    },
+    {
+      "year": 2021,
+      "value": 41.9554971195048
+    },
+    {
+      "year": 2022,
+      "value": 44.7536854027422
+    },
+    {
+      "year": 2023,
+      "value": 32.8415128147815
+    },
+    {
+      "year": 2024,
+      "value": 37.5923642016718
+    }
+  ]
+}

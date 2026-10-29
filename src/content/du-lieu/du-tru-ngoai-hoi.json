@@ -1,0 +1,151 @@
+{
+  "code": "FI.RES.TOTL.CD",
+  "theme": "Thương mại & đầu tư nước ngoài",
+  "shortVi": "dự trữ ngoại hối",
+  "nameVi": "Tổng dự trữ quốc tế (bao gồm vàng)",
+  "nameEn": "Total reserves (includes gold, current US$)",
+  "unit": "USD, giá hiện hành",
+  "displayUnit": "tỷ USD",
+  "scale": 1000000000,
+  "decimals": 1,
+  "explanation": "Tổng tài sản dự trữ do ngân hàng trung ương nắm giữ: ngoại tệ, vàng tiền tệ, quyền rút vốn đặc biệt (SDR) và vị thế dự trữ tại IMF.",
+  "thesisUse": [
+    "Biến giải thích trong các đề tài về ổn định tỷ giá, chính sách tiền tệ và khả năng chống chịu cú sốc bên ngoài."
+  ],
+  "sourceNote": "Reserve assets are external assets, including monetary gold, that are readily available to and controlled by monetary authorities for meeting balance of payments financing needs, for intervention in exchange markets to affect the currency exchange rate, and for other related purposes (such as maintaining confidence in the currency and the economy, and serving as a basis for foreign borrowing). Reserve assets must be denominated and settled in foreign currency. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FI.RES.TOTL.CD?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FI.RES.TOTL.CD?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1995,
+      "value": 1323681930.28786
+    },
+    {
+      "year": 1996,
+      "value": 1735897756.92245
+    },
+    {
+      "year": 1997,
+      "value": 1985854205.99895
+    },
+    {
+      "year": 1998,
+      "value": 2002261884.51771
+    },
+    {
+      "year": 1999,
+      "value": 3326147673.21607
+    },
+    {
+      "year": 2000,
+      "value": 3416511105.0847
+    },
+    {
+      "year": 2001,
+      "value": 3674565622.65934
+    },
+    {
+      "year": 2002,
+      "value": 4121051660.52162
+    },
+    {
+      "year": 2003,
+      "value": 6224181087.75991
+    },
+    {
+      "year": 2004,
+      "value": 7041460609.52428
+    },
+    {
+      "year": 2005,
+      "value": 9050561631.21509
+    },
+    {
+      "year": 2006,
+      "value": 13384067982.1569
+    },
+    {
+      "year": 2007,
+      "value": 23479392779.8197
+    },
+    {
+      "year": 2008,
+      "value": 23890250550.2908
+    },
+    {
+      "year": 2009,
+      "value": 16447104123.628
+    },
+    {
+      "year": 2010,
+      "value": 12466600610.9074
+    },
+    {
+      "year": 2011,
+      "value": 13539119001.0032
+    },
+    {
+      "year": 2012,
+      "value": 25573282232.2766
+    },
+    {
+      "year": 2013,
+      "value": 25893489673.0735
+    },
+    {
+      "year": 2014,
+      "value": 34189368832.6688
+    },
+    {
+      "year": 2015,
+      "value": 28250254960.181
+    },
+    {
+      "year": 2016,
+      "value": 36527291044.3306
+    },
+    {
+      "year": 2017,
+      "value": 49075567812.4586
+    },
+    {
+      "year": 2018,
+      "value": 55452622582.5608
+    },
+    {
+      "year": 2019,
+      "value": 78334835182.609
+    },
+    {
+      "year": 2020,
+      "value": 94833616150.4504
+    },
+    {
+      "year": 2021,
+      "value": 109371353442.832
+    },
+    {
+      "year": 2022,
+      "value": 86539530966.645
+    },
+    {
+      "year": 2023,
+      "value": 92237540812.2467
+    },
+    {
+      "year": 2024,
+      "value": 83081854928.1161
+    },
+    {
+      "year": 2025,
+      "value": 85580367980.9693
+    }
+  ]
+}

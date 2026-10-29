@@ -1,0 +1,87 @@
+{
+  "code": "SE.XPD.TOTL.GD.ZS",
+  "theme": "Giáo dục & y tế",
+  "shortVi": "chi tiêu công cho giáo dục so với GDP",
+  "nameVi": "Chi tiêu của Chính phủ cho giáo dục (% GDP)",
+  "nameEn": "Government expenditure on education, total (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tổng chi của Chính phủ (trung ương và địa phương) cho giáo dục, gồm chi thường xuyên và chi đầu tư, chia cho GDP, theo UNESCO.",
+  "thesisUse": [
+    "Biến đầu tư công cho vốn con người trong các đề tài về tăng trưởng và chất lượng giáo dục; chuỗi ngắn nên phù hợp mô tả hơn hồi quy."
+  ],
+  "sourceNote": "General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. General government usually refers to local, regional and central governments.",
+  "sourceOrganization": "Data API, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources, note: The data are obtained through the UIS API.  Detailed documentation is available at: https://api.uis.unesco.org/api/public/documentation/, publisher: UNESCO Institute for Statistics (UIS), date accessed: 2026-03-19, date published: 2026-02",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/SE.XPD.TOTL.GD.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 2008,
+      "value": 4.8867301940918
+    },
+    {
+      "year": 2009,
+      "value": 4.81650018692017
+    },
+    {
+      "year": 2010,
+      "value": 4.04594993591309
+    },
+    {
+      "year": 2011,
+      "value": 3.7802300453186
+    },
+    {
+      "year": 2012,
+      "value": 4.40817022323608
+    },
+    {
+      "year": 2013,
+      "value": 4.52833986282349
+    },
+    {
+      "year": 2014,
+      "value": 3.54012312110584
+    },
+    {
+      "year": 2015,
+      "value": 3.41660449674943
+    },
+    {
+      "year": 2016,
+      "value": 3.46906995773315
+    },
+    {
+      "year": 2017,
+      "value": 3.41865686539527
+    },
+    {
+      "year": 2018,
+      "value": 3.29537010192871
+    },
+    {
+      "year": 2019,
+      "value": 3.08499832693462
+    },
+    {
+      "year": 2020,
+      "value": 3.21652900152514
+    },
+    {
+      "year": 2021,
+      "value": 2.94517488804327
+    },
+    {
+      "year": 2022,
+      "value": 2.88738689372749
+    }
+  ]
+}

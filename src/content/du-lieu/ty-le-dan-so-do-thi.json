@@ -1,0 +1,291 @@
+{
+  "code": "SP.URB.TOTL.IN.ZS",
+  "theme": "Dân số & đô thị hoá",
+  "shortVi": "tỷ lệ dân số đô thị",
+  "nameVi": "Tỷ lệ dân số đô thị",
+  "nameEn": "Urban population (% of total population)",
+  "unit": "% tổng dân số",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tỷ lệ dân số sống ở khu vực đô thị theo định nghĩa của cơ quan thống kê quốc gia, do Liên Hợp Quốc ước tính và chuẩn hoá.",
+  "thesisUse": [
+    "Biến đô thị hoá trong các đề tài về tiêu thụ năng lượng, phát thải CO2, tăng trưởng và thị trường bất động sản."
+  ],
+  "sourceNote": "Urban population refers to people living in urban areas as defined by national statistical offices. The data are collected and smoothed by United Nations Population Division.",
+  "sourceOrganization": "World Urbanization Prospects, United Nations (UN), uri: https://population.un.org/wup/, note: United Nations Population Division's World Urbanization Prospects, National definitions, publisher: UN Population Division",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1960,
+      "value": 15.2654522865939
+    },
+    {
+      "year": 1961,
+      "value": 15.7222800181777
+    },
+    {
+      "year": 1962,
+      "value": 16.1171198003772
+    },
+    {
+      "year": 1963,
+      "value": 16.5064813685263
+    },
+    {
+      "year": 1964,
+      "value": 16.9451069825263
+    },
+    {
+      "year": 1965,
+      "value": 17.5364065879613
+    },
+    {
+      "year": 1966,
+      "value": 18.3531587422478
+    },
+    {
+      "year": 1967,
+      "value": 19.2877201330996
+    },
+    {
+      "year": 1968,
+      "value": 20.1142113255002
+    },
+    {
+      "year": 1969,
+      "value": 20.626316557591
+    },
+    {
+      "year": 1970,
+      "value": 20.6931421380499
+    },
+    {
+      "year": 1971,
+      "value": 20.6568005981446
+    },
+    {
+      "year": 1972,
+      "value": 20.6000003814697
+    },
+    {
+      "year": 1973,
+      "value": 20.5432001647949
+    },
+    {
+      "year": 1974,
+      "value": 20.5056000213623
+    },
+    {
+      "year": 1975,
+      "value": 20.5500001907349
+    },
+    {
+      "year": 1976,
+      "value": 20.4269235007156
+    },
+    {
+      "year": 1977,
+      "value": 19.6402443802216
+    },
+    {
+      "year": 1978,
+      "value": 19.2447282689118
+    },
+    {
+      "year": 1979,
+      "value": 19.1884708733747
+    },
+    {
+      "year": 1980,
+      "value": 19.1594762135261
+    },
+    {
+      "year": 1981,
+      "value": 19.1354009405791
+    },
+    {
+      "year": 1982,
+      "value": 19.1141027989929
+    },
+    {
+      "year": 1983,
+      "value": 19.0956204231262
+    },
+    {
+      "year": 1984,
+      "value": 19.0799924473374
+    },
+    {
+      "year": 1985,
+      "value": 19.0672575059852
+    },
+    {
+      "year": 1986,
+      "value": 19.0574542334283
+    },
+    {
+      "year": 1987,
+      "value": 19.0506212640251
+    },
+    {
+      "year": 1988,
+      "value": 19.0467972321344
+    },
+    {
+      "year": 1989,
+      "value": 19.0530524987416
+    },
+    {
+      "year": 1990,
+      "value": 19.1735039651626
+    },
+    {
+      "year": 1991,
+      "value": 19.4396801924029
+    },
+    {
+      "year": 1992,
+      "value": 19.8252510026665
+    },
+    {
+      "year": 1993,
+      "value": 20.3057679487956
+    },
+    {
+      "year": 1994,
+      "value": 20.8567825836322
+    },
+    {
+      "year": 1995,
+      "value": 21.4538464600183
+    },
+    {
+      "year": 1996,
+      "value": 22.072511130796
+    },
+    {
+      "year": 1997,
+      "value": 22.6883281488073
+    },
+    {
+      "year": 1998,
+      "value": 23.2768490668943
+    },
+    {
+      "year": 1999,
+      "value": 23.8212278892522
+    },
+    {
+      "year": 2000,
+      "value": 24.3672526919772
+    },
+    {
+      "year": 2001,
+      "value": 24.9489362725143
+    },
+    {
+      "year": 2002,
+      "value": 25.5540925665659
+    },
+    {
+      "year": 2003,
+      "value": 26.1745407830283
+    },
+    {
+      "year": 2004,
+      "value": 26.8021001307977
+    },
+    {
+      "year": 2005,
+      "value": 27.4285898187702
+    },
+    {
+      "year": 2006,
+      "value": 28.0458290558422
+    },
+    {
+      "year": 2007,
+      "value": 28.6456370509099
+    },
+    {
+      "year": 2008,
+      "value": 29.2198330128693
+    },
+    {
+      "year": 2009,
+      "value": 29.7581347355675
+    },
+    {
+      "year": 2010,
+      "value": 30.2504027258526
+    },
+    {
+      "year": 2011,
+      "value": 30.6996041680996
+    },
+    {
+      "year": 2012,
+      "value": 31.1222779403029
+    },
+    {
+      "year": 2013,
+      "value": 31.5334201724543
+    },
+    {
+      "year": 2014,
+      "value": 31.9480269945454
+    },
+    {
+      "year": 2015,
+      "value": 32.3810945365679
+    },
+    {
+      "year": 2016,
+      "value": 32.8476189285136
+    },
+    {
+      "year": 2017,
+      "value": 33.3625963003742
+    },
+    {
+      "year": 2018,
+      "value": 33.9410227821412
+    },
+    {
+      "year": 2019,
+      "value": 34.6239134999511
+    },
+    {
+      "year": 2020,
+      "value": 35.5706676299742
+    },
+    {
+      "year": 2021,
+      "value": 36.6540656426603
+    },
+    {
+      "year": 2022,
+      "value": 37.5478515625
+    },
+    {
+      "year": 2023,
+      "value": 38.1298904418945
+    },
+    {
+      "year": 2024,
+      "value": 38.4900703430176
+    },
+    {
+      "year": 2025,
+      "value": 38.8299160351294
+    }
+  ]
+}

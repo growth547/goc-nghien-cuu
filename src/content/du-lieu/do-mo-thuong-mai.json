@@ -1,0 +1,187 @@
+{
+  "code": "NE.TRD.GNFS.ZS",
+  "theme": "Thương mại & đầu tư nước ngoài",
+  "shortVi": "độ mở thương mại",
+  "nameVi": "Độ mở thương mại: tổng xuất nhập khẩu (% GDP)",
+  "nameEn": "Trade (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tổng giá trị xuất khẩu và nhập khẩu hàng hoá, dịch vụ chia cho GDP. Tỷ lệ trên 100% cho thấy nền kinh tế có độ mở rất lớn.",
+  "thesisUse": [
+    "Biến độ mở thương mại (trade openness) chuẩn trong các mô hình tăng trưởng, FDI, môi trường và phát triển tài chính."
+  ],
+  "sourceNote": "Trade is the sum of exports and imports of goods and services. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NE.TRD.GNFS.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1986,
+      "value": 23.2186943238731
+    },
+    {
+      "year": 1987,
+      "value": 20.7986065749129
+    },
+    {
+      "year": 1988,
+      "value": 18.9504870869001
+    },
+    {
+      "year": 1989,
+      "value": 57.9044621549852
+    },
+    {
+      "year": 1990,
+      "value": 81.315697940889
+    },
+    {
+      "year": 1991,
+      "value": 66.9469523941752
+    },
+    {
+      "year": 1992,
+      "value": 73.5768851264792
+    },
+    {
+      "year": 1993,
+      "value": 66.2122671512498
+    },
+    {
+      "year": 1994,
+      "value": 77.4731979426888
+    },
+    {
+      "year": 1995,
+      "value": 74.7212659206088
+    },
+    {
+      "year": 1996,
+      "value": 92.7057468018939
+    },
+    {
+      "year": 1997,
+      "value": 94.3444840684516
+    },
+    {
+      "year": 1998,
+      "value": 97.0012485118429
+    },
+    {
+      "year": 1999,
+      "value": 102.787406603958
+    },
+    {
+      "year": 2000,
+      "value": 111.417094419512
+    },
+    {
+      "year": 2001,
+      "value": 111.955937998525
+    },
+    {
+      "year": 2002,
+      "value": 116.696868652499
+    },
+    {
+      "year": 2003,
+      "value": 124.327954439125
+    },
+    {
+      "year": 2004,
+      "value": 133.016497868747
+    },
+    {
+      "year": 2005,
+      "value": 130.714846045026
+    },
+    {
+      "year": 2006,
+      "value": 138.313621869598
+    },
+    {
+      "year": 2007,
+      "value": 154.605383996554
+    },
+    {
+      "year": 2008,
+      "value": 154.317479627758
+    },
+    {
+      "year": 2009,
+      "value": 134.706317721758
+    },
+    {
+      "year": 2010,
+      "value": 113.977687539714
+    },
+    {
+      "year": 2011,
+      "value": 125.260577940829
+    },
+    {
+      "year": 2012,
+      "value": 123.224116745985
+    },
+    {
+      "year": 2013,
+      "value": 130.846354866743
+    },
+    {
+      "year": 2014,
+      "value": 135.410521454361
+    },
+    {
+      "year": 2015,
+      "value": 144.914228195237
+    },
+    {
+      "year": 2016,
+      "value": 145.409507973118
+    },
+    {
+      "year": 2017,
+      "value": 160.98008365887
+    },
+    {
+      "year": 2018,
+      "value": 164.663936775893
+    },
+    {
+      "year": 2019,
+      "value": 164.704215031408
+    },
+    {
+      "year": 2020,
+      "value": 163.245862814935
+    },
+    {
+      "year": 2021,
+      "value": 186.675832836814
+    },
+    {
+      "year": 2022,
+      "value": 183.153619147836
+    },
+    {
+      "year": 2023,
+      "value": 164.995585455876
+    },
+    {
+      "year": 2024,
+      "value": 173.885260216071
+    },
+    {
+      "year": 2025,
+      "value": 190.336808817292
+    }
+  ]
+}

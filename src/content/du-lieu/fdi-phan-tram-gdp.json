@@ -1,0 +1,191 @@
+{
+  "code": "BX.KLT.DINV.WD.GD.ZS",
+  "theme": "Thương mại & đầu tư nước ngoài",
+  "shortVi": "FDI so với GDP",
+  "nameVi": "Đầu tư trực tiếp nước ngoài, dòng vốn vào ròng (% GDP)",
+  "nameEn": "Foreign direct investment, net inflows (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Dòng vốn FDI vào ròng chia cho GDP. Chuẩn hoá theo quy mô nền kinh tế nên dễ so sánh giữa các năm và giữa các nước hơn số tuyệt đối.",
+  "thesisUse": [
+    "Dạng biến FDI hay dùng nhất trong hồi quy tăng trưởng và mô hình dữ liệu bảng đa quốc gia, vì tránh được vấn đề quy mô và đơn vị tiền tệ."
+  ],
+  "sourceNote": "Foreign direct investment is the net inflows of investment to acquire a lasting management interest (10 percent or more of voting stock) in an enterprise operating in an economy other than that of the investor. It is the sum of equity capital, reinvestment of earnings, other long-term capital, and short-term capital as shown in the balance of payments. This series shows net inflows (new investment inflows less disinvestment) in the reporting economy from foreign investors, and is divided by GDP.",
+  "sourceOrganization": "International Financial Statistics and Balance of Payments databases, International Monetary Fund (IMF);\nInternational Debt Statistics, World Bank (WB);\nWorld Bank GDP estimates, World Bank (WB);\nOECD GDP estimates, Organisation for Economic Co-operation and Development (OECD)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/BX.KLT.DINV.WD.GD.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/BX.KLT.DINV.WD.GD.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1985,
+      "value": -0.000567589726125444
+    },
+    {
+      "year": 1986,
+      "value": 0.00015187979966611
+    },
+    {
+      "year": 1987,
+      "value": 0.0282712448214878
+    },
+    {
+      "year": 1988,
+      "value": 0.030207899995773
+    },
+    {
+      "year": 1989,
+      "value": 0.0646719015911437
+    },
+    {
+      "year": 1990,
+      "value": 2.78132276010011
+    },
+    {
+      "year": 1991,
+      "value": 3.90279679984311
+    },
+    {
+      "year": 1992,
+      "value": 4.80334777518942
+    },
+    {
+      "year": 1993,
+      "value": 7.02759256453564
+    },
+    {
+      "year": 1994,
+      "value": 11.9394828341112
+    },
+    {
+      "year": 1995,
+      "value": 8.58596585460392
+    },
+    {
+      "year": 1996,
+      "value": 9.71308063712156
+    },
+    {
+      "year": 1997,
+      "value": 8.2700967582097
+    },
+    {
+      "year": 1998,
+      "value": 6.14121440264586
+    },
+    {
+      "year": 1999,
+      "value": 4.92266345680124
+    },
+    {
+      "year": 2000,
+      "value": 4.16392407955693
+    },
+    {
+      "year": 2001,
+      "value": 3.97733545270572
+    },
+    {
+      "year": 2002,
+      "value": 3.99268705133996
+    },
+    {
+      "year": 2003,
+      "value": 3.66601229989583
+    },
+    {
+      "year": 2004,
+      "value": 3.54408107288199
+    },
+    {
+      "year": 2005,
+      "value": 3.39040363930871
+    },
+    {
+      "year": 2006,
+      "value": 3.61600090432522
+    },
+    {
+      "year": 2007,
+      "value": 8.65471771434805
+    },
+    {
+      "year": 2008,
+      "value": 9.6630390545572
+    },
+    {
+      "year": 2009,
+      "value": 7.16881988884276
+    },
+    {
+      "year": 2010,
+      "value": 5.4347392933443
+    },
+    {
+      "year": 2011,
+      "value": 4.30487434902161
+    },
+    {
+      "year": 2012,
+      "value": 4.27832287681174
+    },
+    {
+      "year": 2013,
+      "value": 4.16454517277325
+    },
+    {
+      "year": 2014,
+      "value": 3.94086189051961
+    },
+    {
+      "year": 2015,
+      "value": 4.93190773329022
+    },
+    {
+      "year": 2016,
+      "value": 4.90089302916746
+    },
+    {
+      "year": 2017,
+      "value": 5.01148721749681
+    },
+    {
+      "year": 2018,
+      "value": 4.99828319622328
+    },
+    {
+      "year": 2019,
+      "value": 4.821074861051
+    },
+    {
+      "year": 2020,
+      "value": 4.55836196782424
+    },
+    {
+      "year": 2021,
+      "value": 4.27314566190187
+    },
+    {
+      "year": 2022,
+      "value": 4.32947308910883
+    },
+    {
+      "year": 2023,
+      "value": 4.26458856546888
+    },
+    {
+      "year": 2024,
+      "value": 4.23450755062236
+    },
+    {
+      "year": 2025,
+      "value": 4.27241480079657
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "code": "FB.CBK.BRCH.P5",
+  "theme": "Tài chính – ngân hàng",
+  "shortVi": "số chi nhánh ngân hàng trên 100.000 người trưởng thành",
+  "nameVi": "Số chi nhánh ngân hàng thương mại trên 100.000 người trưởng thành",
+  "nameEn": "Commercial bank branches (per 100,000 adults)",
+  "unit": "chi nhánh/100.000 người trưởng thành",
+  "displayUnit": "chi nhánh",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Số chi nhánh ngân hàng thương mại tính trên 100.000 người từ 15 tuổi trở lên, theo khảo sát Tiếp cận tài chính (Financial Access Survey) của IMF.",
+  "thesisUse": [
+    "Đại diện cho khả năng tiếp cận dịch vụ ngân hàng trong các đề tài về tài chính toàn diện (financial inclusion)."
+  ],
+  "sourceNote": "Commercial bank branches are retail locations of resident commercial banks and other resident banks that function as commercial banks that provide financial services to customers and are physically separated from the main office but not organized as legally separated subsidiaries.",
+  "sourceOrganization": "Financial Access Survey, International Monetary Fund (IMF), uri: https://data.imf.org/en/datasets/IMF.STA:FAS",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FB.CBK.BRCH.P5?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FB.CBK.BRCH.P5?format=json&per_page=100",
+  "values": [
+    {
+      "year": 2008,
+      "value": 3.34103343956252
+    },
+    {
+      "year": 2009,
+      "value": 3.34145737053573
+    },
+    {
+      "year": 2010,
+      "value": 3.27189826318907
+    },
+    {
+      "year": 2011,
+      "value": 3.59352181546691
+    },
+    {
+      "year": 2012,
+      "value": 3.1504539182238
+    },
+    {
+      "year": 2013,
+      "value": 3.69264640820464
+    },
+    {
+      "year": 2014,
+      "value": 3.87924840824567
+    },
+    {
+      "year": 2015,
+      "value": 3.7957611751291
+    },
+    {
+      "year": 2016,
+      "value": 3.87290717182762
+    },
+    {
+      "year": 2017,
+      "value": 3.48786595206701
+    },
+    {
+      "year": 2018,
+      "value": 3.95980955878738
+    },
+    {
+      "year": 2019,
+      "value": 4.02302863414495
+    },
+    {
+      "year": 2020,
+      "value": 4.03998386595495
+    },
+    {
+      "year": 2021,
+      "value": 2.92952332268588
+    },
+    {
+      "year": 2022,
+      "value": 3.02681768381105
+    },
+    {
+      "year": 2023,
+      "value": 3.07187771218757
+    },
+    {
+      "year": 2024,
+      "value": 3.09669381955115
+    }
+  ]
+}

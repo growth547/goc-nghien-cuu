@@ -1,0 +1,139 @@
+{
+  "code": "EG.ELC.ACCS.ZS",
+  "theme": "Năng lượng & môi trường",
+  "shortVi": "tỷ lệ dân số được tiếp cận điện",
+  "nameVi": "Tỷ lệ dân số được tiếp cận điện",
+  "nameEn": "Access to electricity (% of population)",
+  "unit": "% dân số",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Tỷ lệ dân số có điện sinh hoạt, tổng hợp từ khảo sát hộ gia đình và số liệu ngành điện.",
+  "thesisUse": [
+    "Số liệu bối cảnh cho các đề tài về phát triển nông thôn, giảm nghèo và năng lượng."
+  ],
+  "sourceNote": "Access to electricity is the percentage of population with access to electricity. Electrification data are collected from industry, national surveys and international sources.",
+  "sourceOrganization": "SDG 7.1.1 Electrification Dataset, World Bank (WB), uri: https://trackingsdg7.esmap.org/downloads, note: Data is downloaded from ESMAP website. Data is released when a new Tracking SDG7 report is released., publisher: World Bank (WB), date accessed: 2024-05-16, date published: 2023",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/EG.ELC.ACCS.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1997,
+      "value": 78.4
+    },
+    {
+      "year": 1998,
+      "value": 86.1759872436523
+    },
+    {
+      "year": 1999,
+      "value": 86.9944381713867
+    },
+    {
+      "year": 2000,
+      "value": 88.2
+    },
+    {
+      "year": 2001,
+      "value": 88.9
+    },
+    {
+      "year": 2002,
+      "value": 89.1
+    },
+    {
+      "year": 2003,
+      "value": 90.3
+    },
+    {
+      "year": 2004,
+      "value": 91
+    },
+    {
+      "year": 2005,
+      "value": 96.1
+    },
+    {
+      "year": 2006,
+      "value": 96
+    },
+    {
+      "year": 2007,
+      "value": 93.1
+    },
+    {
+      "year": 2008,
+      "value": 93.8
+    },
+    {
+      "year": 2009,
+      "value": 96.1
+    },
+    {
+      "year": 2010,
+      "value": 97.4
+    },
+    {
+      "year": 2011,
+      "value": 99
+    },
+    {
+      "year": 2012,
+      "value": 97.9
+    },
+    {
+      "year": 2013,
+      "value": 98.5
+    },
+    {
+      "year": 2014,
+      "value": 99.2
+    },
+    {
+      "year": 2015,
+      "value": 99.3
+    },
+    {
+      "year": 2016,
+      "value": 99.2
+    },
+    {
+      "year": 2017,
+      "value": 100
+    },
+    {
+      "year": 2018,
+      "value": 100
+    },
+    {
+      "year": 2019,
+      "value": 99.4
+    },
+    {
+      "year": 2020,
+      "value": 99.8
+    },
+    {
+      "year": 2021,
+      "value": 100
+    },
+    {
+      "year": 2022,
+      "value": 100
+    },
+    {
+      "year": 2023,
+      "value": 99.8
+    },
+    {
+      "year": 2024,
+      "value": 100
+    }
+  ]
+}

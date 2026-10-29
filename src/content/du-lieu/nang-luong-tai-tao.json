@@ -1,0 +1,155 @@
+{
+  "code": "EG.FEC.RNEW.ZS",
+  "theme": "Năng lượng & môi trường",
+  "shortVi": "tỷ trọng năng lượng tái tạo",
+  "nameVi": "Tỷ trọng năng lượng tái tạo trong tổng tiêu thụ năng lượng cuối cùng",
+  "nameEn": "Renewable energy consumption (% of total final energy consumption)",
+  "unit": "% tổng tiêu thụ năng lượng cuối cùng",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Phần năng lượng tái tạo (thuỷ điện, sinh khối, mặt trời, gió...) trong tổng năng lượng tiêu thụ cuối cùng. Chuỗi thường có độ trễ vài năm so với các chỉ tiêu kinh tế.",
+  "thesisUse": [
+    "Biến giải thích trong các đề tài về chuyển dịch năng lượng, phát thải CO2 và tăng trưởng xanh."
+  ],
+  "sourceNote": "Renewable energy consumption is the share of renewable energy in total final energy consumption.",
+  "sourceOrganization": "IEA Energy Statistics Data Browser, International Energy Agency (IEA), uri: https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser, publisher: International Energy Agency (IEA), date accessed: 2025-03-25",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/EG.FEC.RNEW.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/EG.FEC.RNEW.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1990,
+      "value": 75.9
+    },
+    {
+      "year": 1991,
+      "value": 75.5
+    },
+    {
+      "year": 1992,
+      "value": 74.5
+    },
+    {
+      "year": 1993,
+      "value": 70.6
+    },
+    {
+      "year": 1994,
+      "value": 67.8
+    },
+    {
+      "year": 1995,
+      "value": 64.9
+    },
+    {
+      "year": 1996,
+      "value": 62.6
+    },
+    {
+      "year": 1997,
+      "value": 60.5
+    },
+    {
+      "year": 1998,
+      "value": 59.2
+    },
+    {
+      "year": 1999,
+      "value": 59.3
+    },
+    {
+      "year": 2000,
+      "value": 57.7
+    },
+    {
+      "year": 2001,
+      "value": 56.1
+    },
+    {
+      "year": 2002,
+      "value": 52.2
+    },
+    {
+      "year": 2003,
+      "value": 50.8
+    },
+    {
+      "year": 2004,
+      "value": 45.8
+    },
+    {
+      "year": 2005,
+      "value": 44.1
+    },
+    {
+      "year": 2006,
+      "value": 44.2
+    },
+    {
+      "year": 2007,
+      "value": 41.9
+    },
+    {
+      "year": 2008,
+      "value": 39.3
+    },
+    {
+      "year": 2009,
+      "value": 37
+    },
+    {
+      "year": 2010,
+      "value": 34.6
+    },
+    {
+      "year": 2011,
+      "value": 36.3
+    },
+    {
+      "year": 2012,
+      "value": 37.9
+    },
+    {
+      "year": 2013,
+      "value": 37.4
+    },
+    {
+      "year": 2014,
+      "value": 36.7
+    },
+    {
+      "year": 2015,
+      "value": 27.8
+    },
+    {
+      "year": 2016,
+      "value": 26.8
+    },
+    {
+      "year": 2017,
+      "value": 28.3
+    },
+    {
+      "year": 2018,
+      "value": 24.3
+    },
+    {
+      "year": 2019,
+      "value": 20.4
+    },
+    {
+      "year": 2020,
+      "value": 18.9
+    },
+    {
+      "year": 2021,
+      "value": 24.2
+    }
+  ]
+}

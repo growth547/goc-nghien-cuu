@@ -1,0 +1,147 @@
+{
+  "code": "FS.AST.PRVT.GD.ZS",
+  "theme": "Tài chính – ngân hàng",
+  "shortVi": "tín dụng cho khu vực tư nhân so với GDP",
+  "nameVi": "Tín dụng trong nước cho khu vực tư nhân (% GDP)",
+  "nameEn": "Domestic credit to private sector (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 1,
+  "explanation": "Các khoản cho vay, mua chứng khoán phi cổ phần, tín dụng thương mại và các khoản phải thu khác mà các tổ chức tài chính cấp cho khu vực tư nhân, chia cho GDP.",
+  "thesisUse": [
+    "Đại diện phổ biến nhất cho mức độ phát triển tài chính (financial development) trong các đề tài về tài chính và tăng trưởng, tài chính và môi trường."
+  ],
+  "sourceNote": "Domestic credit to private sector refers to financial resources provided to the private sector by financial corporations, such as through loans, purchases of nonequity securities, and trade credits and other accounts receivable, that establish a claim for repayment. For some countries these claims include credit to public enterprises. The financial corporations include monetary authorities and deposit money banks, as well as other financial corporations where data are available (including corporations that do not accept transferable deposits but do incur such liabilities as time and savings deposits). Examples of other financial corporations are finance and leasing companies, money lenders, insurance corporations, pension funds, and foreign exchange companies. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF);\nWorld Development Indicators Database, World Bank (WB);\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FS.AST.PRVT.GD.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FS.AST.PRVT.GD.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1992,
+      "value": 13.656910216046
+    },
+    {
+      "year": 1993,
+      "value": 16.5294642729826
+    },
+    {
+      "year": 1995,
+      "value": 18.4846722471733
+    },
+    {
+      "year": 1996,
+      "value": 18.6700359511241
+    },
+    {
+      "year": 1997,
+      "value": 19.8488411245349
+    },
+    {
+      "year": 1998,
+      "value": 20.1238631421789
+    },
+    {
+      "year": 1999,
+      "value": 28.186587055123
+    },
+    {
+      "year": 2000,
+      "value": 35.2590740095008
+    },
+    {
+      "year": 2001,
+      "value": 39.2903936255311
+    },
+    {
+      "year": 2002,
+      "value": 43.1307744856858
+    },
+    {
+      "year": 2003,
+      "value": 48.37235081336
+    },
+    {
+      "year": 2004,
+      "value": 58.7224307884587
+    },
+    {
+      "year": 2005,
+      "value": 60.4667877825079
+    },
+    {
+      "year": 2006,
+      "value": 65.3595423737595
+    },
+    {
+      "year": 2007,
+      "value": 85.63968738395
+    },
+    {
+      "year": 2008,
+      "value": 82.8727709652009
+    },
+    {
+      "year": 2009,
+      "value": 103.322353769645
+    },
+    {
+      "year": 2010,
+      "value": 90.3531701049882
+    },
+    {
+      "year": 2011,
+      "value": 79.9430818204467
+    },
+    {
+      "year": 2012,
+      "value": 75.5493913710905
+    },
+    {
+      "year": 2013,
+      "value": 77.5581108210475
+    },
+    {
+      "year": 2014,
+      "value": 80.0010314902415
+    },
+    {
+      "year": 2015,
+      "value": 90.399227327709
+    },
+    {
+      "year": 2016,
+      "value": 98.8589607655139
+    },
+    {
+      "year": 2017,
+      "value": 103.972032257471
+    },
+    {
+      "year": 2018,
+      "value": 105.275984683547
+    },
+    {
+      "year": 2019,
+      "value": 108.031900933361
+    },
+    {
+      "year": 2020,
+      "value": 115.525349937741
+    },
+    {
+      "year": 2021,
+      "value": 124.282898747665
+    },
+    {
+      "year": 2022,
+      "value": 124.961478822546
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "code": "FP.CPI.TOTL.ZG",
+  "theme": "Giá cả, lao động & thu nhập",
+  "shortVi": "lạm phát (CPI)",
+  "nameVi": "Lạm phát theo chỉ số giá tiêu dùng (CPI)",
+  "nameEn": "Inflation, consumer prices (annual %)",
+  "unit": "%/năm",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tốc độ thay đổi hằng năm của chỉ số giá tiêu dùng (CPI), tức mức tăng giá bình quân của giỏ hàng hoá và dịch vụ mà hộ gia đình mua. Đây là thước đo lạm phát được dùng rộng rãi nhất.",
+  "thesisUse": [
+    "Biến kiểm soát vĩ mô gần như bắt buộc trong các đề tài ngân hàng (lợi nhuận, nợ xấu, rủi ro tín dụng) và thị trường chứng khoán.",
+    "Biến phụ thuộc trong các đề tài về tác động của cung tiền, tỷ giá, giá dầu đến lạm phát (mô hình VAR/ARDL)."
+  ],
+  "sourceNote": "Inflation as measured by the consumer price index reflects the annual percentage change in the cost to the average consumer of acquiring a basket of goods and services that may be fixed or changed at specified intervals, such as yearly.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1996,
+      "value": 5.67499999999991
+    },
+    {
+      "year": 1997,
+      "value": 3.20952606261374
+    },
+    {
+      "year": 1998,
+      "value": 7.26619804400963
+    },
+    {
+      "year": 1999,
+      "value": 4.11710235771735
+    },
+    {
+      "year": 2000,
+      "value": -1.7103372785111
+    },
+    {
+      "year": 2001,
+      "value": -0.43154451172818
+    },
+    {
+      "year": 2002,
+      "value": 3.83082838168467
+    },
+    {
+      "year": 2003,
+      "value": 3.23464817293925
+    },
+    {
+      "year": 2004,
+      "value": 7.75494748709606
+    },
+    {
+      "year": 2005,
+      "value": 8.28457243128667
+    },
+    {
+      "year": 2006,
+      "value": 7.41801715108469
+    },
+    {
+      "year": 2007,
+      "value": 8.34444889773846
+    },
+    {
+      "year": 2008,
+      "value": 23.1154483474477
+    },
+    {
+      "year": 2009,
+      "value": 6.71698269988631
+    },
+    {
+      "year": 2010,
+      "value": 9.20746648778412
+    },
+    {
+      "year": 2011,
+      "value": 18.6777322770706
+    },
+    {
+      "year": 2012,
+      "value": 9.09470339557192
+    },
+    {
+      "year": 2013,
+      "value": 6.59267475899192
+    },
+    {
+      "year": 2014,
+      "value": 4.08455446637624
+    },
+    {
+      "year": 2015,
+      "value": 0.631200905175684
+    },
+    {
+      "year": 2016,
+      "value": 2.66824816969082
+    },
+    {
+      "year": 2017,
+      "value": 3.52025688811617
+    },
+    {
+      "year": 2018,
+      "value": 3.53962805942641
+    },
+    {
+      "year": 2019,
+      "value": 2.79582367452243
+    },
+    {
+      "year": 2020,
+      "value": 3.22093436652514
+    },
+    {
+      "year": 2021,
+      "value": 1.83471554810461
+    },
+    {
+      "year": 2022,
+      "value": 3.15650749963111
+    },
+    {
+      "year": 2023,
+      "value": 3.25289282667662
+    },
+    {
+      "year": 2024,
+      "value": 3.62109273885843
+    },
+    {
+      "year": 2025,
+      "value": 3.30999314219739
+    }
+  ]
+}

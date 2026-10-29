@@ -1,0 +1,192 @@
+{
+  "code": "NY.GDP.MKTP.KD.ZG",
+  "theme": "Tăng trưởng & cơ cấu kinh tế",
+  "shortVi": "tăng trưởng GDP",
+  "nameVi": "Tốc độ tăng trưởng GDP (giá so sánh)",
+  "nameEn": "GDP growth (annual %)",
+  "unit": "%/năm",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Tốc độ tăng GDP thực so với năm trước, tính theo giá cố định nên đã loại bỏ ảnh hưởng của biến động giá. Đây là chỉ tiêu tăng trưởng kinh tế được trích dẫn nhiều nhất.",
+  "thesisUse": [
+    "Biến phụ thuộc trong các đề tài về tác động của FDI, xuất khẩu, đầu tư công, tín dụng đến tăng trưởng kinh tế (mô hình ARDL, VAR, OLS chuỗi thời gian).",
+    "Biến kiểm soát chu kỳ kinh tế trong các nghiên cứu ngân hàng (nợ xấu, lợi nhuận ngân hàng) dùng dữ liệu bảng."
+  ],
+  "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.",
+  "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1985,
+      "value": 3.80585566810947
+    },
+    {
+      "year": 1986,
+      "value": 2.78929157479443
+    },
+    {
+      "year": 1987,
+      "value": 3.5834696313072
+    },
+    {
+      "year": 1988,
+      "value": 5.13501167157808
+    },
+    {
+      "year": 1989,
+      "value": 7.36451289395819
+    },
+    {
+      "year": 1990,
+      "value": 5.10091813908369
+    },
+    {
+      "year": 1991,
+      "value": 5.96084393218912
+    },
+    {
+      "year": 1992,
+      "value": 8.64604745934572
+    },
+    {
+      "year": 1993,
+      "value": 8.07273065739605
+    },
+    {
+      "year": 1994,
+      "value": 8.83898095245374
+    },
+    {
+      "year": 1995,
+      "value": 9.54048017491264
+    },
+    {
+      "year": 1996,
+      "value": 9.34001749939179
+    },
+    {
+      "year": 1997,
+      "value": 8.1520841433542
+    },
+    {
+      "year": 1998,
+      "value": 5.76445545848843
+    },
+    {
+      "year": 1999,
+      "value": 4.77358688344989
+    },
+    {
+      "year": 2000,
+      "value": 6.78731640463151
+    },
+    {
+      "year": 2001,
+      "value": 6.19289331233377
+    },
+    {
+      "year": 2002,
+      "value": 6.32082099160833
+    },
+    {
+      "year": 2003,
+      "value": 6.89906349055258
+    },
+    {
+      "year": 2004,
+      "value": 7.53641060890386
+    },
+    {
+      "year": 2005,
+      "value": 7.54724772895918
+    },
+    {
+      "year": 2006,
+      "value": 6.97795481056711
+    },
+    {
+      "year": 2007,
+      "value": 7.12950448605439
+    },
+    {
+      "year": 2008,
+      "value": 5.66177120891362
+    },
+    {
+      "year": 2009,
+      "value": 5.39789754014181
+    },
+    {
+      "year": 2010,
+      "value": 6.42324482239482
+    },
+    {
+      "year": 2011,
+      "value": 6.41316889681683
+    },
+    {
+      "year": 2012,
+      "value": 5.5045447041189
+    },
+    {
+      "year": 2013,
+      "value": 5.55351081026072
+    },
+    {
+      "year": 2014,
+      "value": 6.42224312118567
+    },
+    {
+      "year": 2015,
+      "value": 6.98715430598611
+    },
+    {
+      "year": 2016,
+      "value": 6.69000892660424
+    },
+    {
+      "year": 2017,
+      "value": 6.94019037359206
+    },
+    {
+      "year": 2018,
+      "value": 7.46500685572751
+    },
+    {
+      "year": 2019,
+      "value": 7.35926270105006
+    },
+    {
+      "year": 2020,
+      "value": 2.86541320912272
+    },
+    {
+      "year": 2021,
+      "value": 2.55372852648131
+    },
+    {
+      "year": 2022,
+      "value": 8.53750041218142
+    },
+    {
+      "year": 2023,
+      "value": 4.97865959483225
+    },
+    {
+      "year": 2024,
+      "value": 7.03955197123018
+    },
+    {
+      "year": 2025,
+      "value": 8.01882998978245
+    }
+  ]
+}

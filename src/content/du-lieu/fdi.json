@@ -1,0 +1,251 @@
+{
+  "code": "BX.KLT.DINV.CD.WD",
+  "theme": "Thương mại & đầu tư nước ngoài",
+  "shortVi": "FDI vào Việt Nam",
+  "nameVi": "Đầu tư trực tiếp nước ngoài (FDI), dòng vốn vào ròng",
+  "nameEn": "Foreign direct investment, net inflows (BoP, current US$)",
+  "unit": "USD, giá hiện hành (cán cân thanh toán)",
+  "displayUnit": "tỷ USD",
+  "scale": 1000000000,
+  "decimals": 2,
+  "explanation": "Dòng vốn FDI vào ròng theo cán cân thanh toán: vốn mới của nhà đầu tư nước ngoài cộng lợi nhuận tái đầu tư và vay nội bộ công ty, trừ phần rút vốn. Số liệu này gần với FDI giải ngân, không phải FDI đăng ký mà Cục Đầu tư nước ngoài hay công bố.",
+  "thesisUse": [
+    "Biến giải thích chính trong các đề tài về tác động của FDI đến tăng trưởng, xuất khẩu, việc làm, môi trường (giả thuyết nơi trú ẩn ô nhiễm). Thường lấy logarit hoặc dùng chuỗi FDI/GDP."
+  ],
+  "sourceNote": "Foreign direct investment refers to direct investment equity flows in the reporting economy. It is the sum of equity capital, reinvestment of earnings, and other capital. Direct investment is a category of cross-border investment associated with a resident in one economy having control or a significant degree of influence on the management of an enterprise that is resident in another economy. Ownership of 10 percent or more of the ordinary shares of voting stock is the criterion for determining the existence of a direct investment relationship. Data are in current U.S. dollars.",
+  "sourceOrganization": "Balance of Payments database, International Monetary Fund (IMF), note: International Monetary Fund, Balance of Payments database, supplemented by data from the United Nations Conference on Trade and Development and official national sources.;\nUN Conference on Trade and Development (UNCTAD);\nOfficial national sources",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/BX.KLT.DINV.CD.WD?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/BX.KLT.DINV.CD.WD?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1970,
+      "value": 70000
+    },
+    {
+      "year": 1971,
+      "value": 1820000
+    },
+    {
+      "year": 1972,
+      "value": -890000
+    },
+    {
+      "year": 1973,
+      "value": 1030000
+    },
+    {
+      "year": 1974,
+      "value": 1250000
+    },
+    {
+      "year": 1975,
+      "value": 4089999.9
+    },
+    {
+      "year": 1976,
+      "value": -340000
+    },
+    {
+      "year": 1977,
+      "value": -10000
+    },
+    {
+      "year": 1978,
+      "value": 463333.3
+    },
+    {
+      "year": 1979,
+      "value": -60000
+    },
+    {
+      "year": 1980,
+      "value": 1666666.6
+    },
+    {
+      "year": 1981,
+      "value": 17910000
+    },
+    {
+      "year": 1982,
+      "value": 13050000
+    },
+    {
+      "year": 1983,
+      "value": 131111.1
+    },
+    {
+      "year": 1984,
+      "value": 690000
+    },
+    {
+      "year": 1985,
+      "value": -80000
+    },
+    {
+      "year": 1986,
+      "value": 40000
+    },
+    {
+      "year": 1987,
+      "value": 10363703.7
+    },
+    {
+      "year": 1988,
+      "value": 7679999.9
+    },
+    {
+      "year": 1989,
+      "value": 4070000
+    },
+    {
+      "year": 1990,
+      "value": 180000000
+    },
+    {
+      "year": 1991,
+      "value": 375190278
+    },
+    {
+      "year": 1992,
+      "value": 473945856
+    },
+    {
+      "year": 1993,
+      "value": 926303715
+    },
+    {
+      "year": 1994,
+      "value": 1944515936
+    },
+    {
+      "year": 1995,
+      "value": 1780400000
+    },
+    {
+      "year": 1996,
+      "value": 2395000000
+    },
+    {
+      "year": 1997,
+      "value": 2220000000
+    },
+    {
+      "year": 1998,
+      "value": 1671000000
+    },
+    {
+      "year": 1999,
+      "value": 1412000000
+    },
+    {
+      "year": 2000,
+      "value": 1298000000
+    },
+    {
+      "year": 2001,
+      "value": 1300000000
+    },
+    {
+      "year": 2002,
+      "value": 1400000000
+    },
+    {
+      "year": 2003,
+      "value": 1450000000
+    },
+    {
+      "year": 2004,
+      "value": 1610000000
+    },
+    {
+      "year": 2005,
+      "value": 1954000000
+    },
+    {
+      "year": 2006,
+      "value": 2400000000
+    },
+    {
+      "year": 2007,
+      "value": 6700000000
+    },
+    {
+      "year": 2008,
+      "value": 9579000000
+    },
+    {
+      "year": 2009,
+      "value": 7600000000
+    },
+    {
+      "year": 2010,
+      "value": 8000000000
+    },
+    {
+      "year": 2011,
+      "value": 7430000000
+    },
+    {
+      "year": 2012,
+      "value": 8368000000
+    },
+    {
+      "year": 2013,
+      "value": 8900000000
+    },
+    {
+      "year": 2014,
+      "value": 9200000000
+    },
+    {
+      "year": 2015,
+      "value": 11800000000
+    },
+    {
+      "year": 2016,
+      "value": 12600000000
+    },
+    {
+      "year": 2017,
+      "value": 14100000000
+    },
+    {
+      "year": 2018,
+      "value": 15500000000
+    },
+    {
+      "year": 2019,
+      "value": 16120000000
+    },
+    {
+      "year": 2020,
+      "value": 15800000000
+    },
+    {
+      "year": 2021,
+      "value": 15660000000
+    },
+    {
+      "year": 2022,
+      "value": 17900000000
+    },
+    {
+      "year": 2023,
+      "value": 18500000000
+    },
+    {
+      "year": 2024,
+      "value": 20170000000
+    },
+    {
+      "year": 2025,
+      "value": 21990000000
+    }
+  ]
+}

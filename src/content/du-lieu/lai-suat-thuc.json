@@ -1,0 +1,143 @@
+{
+  "code": "FR.INR.RINR",
+  "theme": "Tài chính – ngân hàng",
+  "shortVi": "lãi suất thực",
+  "nameVi": "Lãi suất thực (lãi suất cho vay đã điều chỉnh lạm phát)",
+  "nameEn": "Real interest rate (%)",
+  "unit": "%/năm",
+  "displayUnit": "%",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Lãi suất cho vay sau khi đã điều chỉnh lạm phát, với lạm phát đo bằng chỉ số giảm phát GDP. Lãi suất thực âm nghĩa là lạm phát cao hơn lãi suất danh nghĩa.",
+  "thesisUse": [
+    "Biến chi phí vốn thực trong các đề tài về đầu tư, tiết kiệm và tăng trưởng; tốt hơn lãi suất danh nghĩa khi giai đoạn nghiên cứu có lạm phát biến động mạnh."
+  ],
+  "sourceNote": "An interest rate is the amount charged, expressed as a percentage of the principal over a period of time, by the owners of certain kinds of financial assets for putting the financial assets at the disposal of another institutional unit. The real interest rate is the lending interest rate adjusted for inflation as measured by the GDP deflator. The terms and conditions attached to lending rates differ by country, however, limiting their comparability. This indicator is expressed as a percentage (a÷b)*100.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF);\nWorld Development Indicators, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FR.INR.RINR?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FR.INR.RINR?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1993,
+      "value": 12.5772078193359
+    },
+    {
+      "year": 1996,
+      "value": 10.4908666421004
+    },
+    {
+      "year": 1997,
+      "value": 7.33532106237832
+    },
+    {
+      "year": 1998,
+      "value": 5.11047870740324
+    },
+    {
+      "year": 1999,
+      "value": 6.58752234054448
+    },
+    {
+      "year": 2000,
+      "value": 6.9057666506376
+    },
+    {
+      "year": 2001,
+      "value": 6.62403546630217
+    },
+    {
+      "year": 2002,
+      "value": 4.16693712269503
+    },
+    {
+      "year": 2003,
+      "value": 2.21305791691824
+    },
+    {
+      "year": 2004,
+      "value": 1.18892233628232
+    },
+    {
+      "year": 2005,
+      "value": -6.55288740331808
+    },
+    {
+      "year": 2006,
+      "value": 2.40151725937125
+    },
+    {
+      "year": 2007,
+      "value": 1.41363787147666
+    },
+    {
+      "year": 2008,
+      "value": -5.6163352886234
+    },
+    {
+      "year": 2009,
+      "value": 3.62788141186044
+    },
+    {
+      "year": 2010,
+      "value": -20.4970819101768
+    },
+    {
+      "year": 2011,
+      "value": -3.67326480415152
+    },
+    {
+      "year": 2012,
+      "value": 4.02832802666538
+    },
+    {
+      "year": 2013,
+      "value": 6.08970870368918
+    },
+    {
+      "year": 2014,
+      "value": 4.78973116512498
+    },
+    {
+      "year": 2015,
+      "value": 8.98829687567201
+    },
+    {
+      "year": 2016,
+      "value": 5.04860292807267
+    },
+    {
+      "year": 2017,
+      "value": 2.59151415896465
+    },
+    {
+      "year": 2018,
+      "value": 3.61415504341763
+    },
+    {
+      "year": 2019,
+      "value": 5.15925265729481
+    },
+    {
+      "year": 2020,
+      "value": 6.09064299683403
+    },
+    {
+      "year": 2021,
+      "value": 4.79218047283212
+    },
+    {
+      "year": 2022,
+      "value": 3.41861679203259
+    },
+    {
+      "year": 2023,
+      "value": 7.006330785335
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "code": "FM.LBL.BMNY.GD.ZS",
+  "theme": "Tài chính – ngân hàng",
+  "shortVi": "cung tiền M2 so với GDP",
+  "nameVi": "Cung tiền mở rộng (M2) (% GDP)",
+  "nameEn": "Broad money (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Cung tiền mở rộng gồm tiền mặt ngoài hệ thống ngân hàng, tiền gửi không kỳ hạn, có kỳ hạn, tiết kiệm và tiền gửi ngoại tệ của khu vực ngoài ngân hàng trung ương, chia cho GDP.",
+  "thesisUse": [
+    "Đại diện cho chính sách tiền tệ hoặc độ sâu tài chính trong các đề tài về lạm phát, tăng trưởng và thị trường chứng khoán."
+  ],
+  "sourceNote": "Broad money is the sum of all liquid financial instruments held by money-holding sectors that are widely accepted in an economy as a medium of exchange, plus those that can be converted into a medium of exchange at short notice at, or close to, their full nominal value. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF);\nWorld Development Indicators Database, World Bank (WB);\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/FM.LBL.BMNY.GD.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/FM.LBL.BMNY.GD.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1992,
+      "value": 22.5075281366482
+    },
+    {
+      "year": 1993,
+      "value": 20.0745540361334
+    },
+    {
+      "year": 1995,
+      "value": 19.5664889991787
+    },
+    {
+      "year": 1996,
+      "value": 20.7100619035716
+    },
+    {
+      "year": 1997,
+      "value": 22.5073100506022
+    },
+    {
+      "year": 1998,
+      "value": 24.2079289894936
+    },
+    {
+      "year": 1999,
+      "value": 36.372758800026
+    },
+    {
+      "year": 2000,
+      "value": 44.6045928186828
+    },
+    {
+      "year": 2001,
+      "value": 52.1189083618155
+    },
+    {
+      "year": 2002,
+      "value": 53.0355456340689
+    },
+    {
+      "year": 2003,
+      "value": 61.6291652199145
+    },
+    {
+      "year": 2004,
+      "value": 69.263585984759
+    },
+    {
+      "year": 2005,
+      "value": 70.9598496062915
+    },
+    {
+      "year": 2006,
+      "value": 79.2236673213605
+    },
+    {
+      "year": 2007,
+      "value": 100.579772836829
+    },
+    {
+      "year": 2008,
+      "value": 93.6571699337952
+    },
+    {
+      "year": 2009,
+      "value": 105.606938068672
+    },
+    {
+      "year": 2010,
+      "value": 90.4544561577953
+    },
+    {
+      "year": 2011,
+      "value": 78.372150336306
+    },
+    {
+      "year": 2012,
+      "value": 84.8164706968756
+    },
+    {
+      "year": 2013,
+      "value": 93.7627042859535
+    },
+    {
+      "year": 2014,
+      "value": 101.733990237778
+    },
+    {
+      "year": 2015,
+      "value": 111.174659759175
+    },
+    {
+      "year": 2016,
+      "value": 120.640293793796
+    },
+    {
+      "year": 2017,
+      "value": 123.505308979579
+    },
+    {
+      "year": 2018,
+      "value": 124.986986384995
+    },
+    {
+      "year": 2019,
+      "value": 129.147672762315
+    },
+    {
+      "year": 2020,
+      "value": 140.60368022862
+    },
+    {
+      "year": 2021,
+      "value": 146.157951321812
+    },
+    {
+      "year": 2022,
+      "value": 136.255601802475
+    }
+  ]
+}

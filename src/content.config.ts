@@ -104,4 +104,46 @@ const templates = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, scales, templates };
+// Vietnam secondary data: one JSON file per World Bank WDI indicator, written by
+// scripts/fetch-worldbank.mjs (themes must match THEMES in scripts/worldbank-indicators.mjs).
+export const DATASET_THEMES = [
+  "Tăng trưởng & cơ cấu kinh tế",
+  "Giá cả, lao động & thu nhập",
+  "Thương mại & đầu tư nước ngoài",
+  "Tài chính – ngân hàng",
+  "Dân số & đô thị hoá",
+  "Công nghệ & chuyển đổi số",
+  "Giáo dục & y tế",
+  "Năng lượng & môi trường",
+] as const;
+const datasets = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/du-lieu" }),
+  schema: z.object({
+    code: z.string(),
+    theme: z.enum(DATASET_THEMES),
+    shortVi: z.string(),
+    nameVi: z.string(),
+    nameEn: z.string(),
+    unit: z.string(),
+    displayUnit: z.string(),
+    scale: z.number().positive(),
+    decimals: z.number().int().min(0),
+    explanation: z.string(),
+    thesisUse: z.array(z.string()).min(1),
+    sourceNote: z.string(),
+    sourceOrganization: z.string(),
+    source: z.string(),
+    lastUpdated: z.string(),
+    fetchedAt: z.string(),
+    license: z.string(),
+    licenseUrl: z.string().url(),
+    termsUrl: z.string().url(),
+    dataUrl: z.string().url(),
+    apiUrl: z.string().url(),
+    values: z
+      .array(z.object({ year: z.number().int(), value: z.number() }))
+      .min(2),
+  }),
+});
+
+export const collections = { posts, pages, scales, templates, datasets };

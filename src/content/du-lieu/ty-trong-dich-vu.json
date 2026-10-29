@@ -1,0 +1,187 @@
+{
+  "code": "NV.SRV.TOTL.ZS",
+  "theme": "Tăng trưởng & cơ cấu kinh tế",
+  "shortVi": "tỷ trọng dịch vụ trong GDP",
+  "nameVi": "Giá trị tăng thêm khu vực dịch vụ (% GDP)",
+  "nameEn": "Services, value added (% of GDP)",
+  "unit": "% GDP",
+  "displayUnit": "% GDP",
+  "scale": 1,
+  "decimals": 2,
+  "explanation": "Phần đóng góp của khu vực dịch vụ (thương mại, vận tải, tài chính, du lịch, giáo dục, y tế...) vào GDP.",
+  "thesisUse": [
+    "Mô tả cơ cấu kinh tế trong chương tổng quan; biến kiểm soát trong các đề tài về du lịch, tài chính, thương mại điện tử."
+  ],
+  "sourceNote": "Services industries correspond to ISIC (Rev. 4) divisions 45-99 and includes wholesale and retail trade, repair of motor vehicles, hotels and restaurants, transport, storage and communication, financial intermediation, real estate, renting and business activities, public administration and defence, compulsory social security, education, health and social work, other community, social and personal service activities, private households with employed persons, and extra-territorial organizations and bodies. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+  "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
+  "source": "World Development Indicators",
+  "lastUpdated": "2026-10-08",
+  "fetchedAt": "2026-10-29",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://datacatalog.worldbank.org/public-licenses",
+  "dataUrl": "https://data.worldbank.org/indicator/NV.SRV.TOTL.ZS?locations=VN",
+  "apiUrl": "https://api.worldbank.org/v2/country/VNM/indicator/NV.SRV.TOTL.ZS?format=json&per_page=100",
+  "values": [
+    {
+      "year": 1986,
+      "value": 33.0550918196995
+    },
+    {
+      "year": 1987,
+      "value": 31.0801393728223
+    },
+    {
+      "year": 1988,
+      "value": 29.7405966277562
+    },
+    {
+      "year": 1989,
+      "value": 34.9944826113267
+    },
+    {
+      "year": 1990,
+      "value": 38.5889643665832
+    },
+    {
+      "year": 1991,
+      "value": 35.7164274446921
+    },
+    {
+      "year": 1992,
+      "value": 38.7978142076503
+    },
+    {
+      "year": 1993,
+      "value": 41.2297337763265
+    },
+    {
+      "year": 1994,
+      "value": 43.7037202997748
+    },
+    {
+      "year": 1995,
+      "value": 44.0613913985635
+    },
+    {
+      "year": 1996,
+      "value": 42.5112852710671
+    },
+    {
+      "year": 1997,
+      "value": 42.153158409938
+    },
+    {
+      "year": 1998,
+      "value": 41.7279518693026
+    },
+    {
+      "year": 1999,
+      "value": 40.0708102674888
+    },
+    {
+      "year": 2000,
+      "value": 38.7346426776196
+    },
+    {
+      "year": 2001,
+      "value": 38.6295307451771
+    },
+    {
+      "year": 2002,
+      "value": 38.4838790358405
+    },
+    {
+      "year": 2003,
+      "value": 37.9875554860028
+    },
+    {
+      "year": 2004,
+      "value": 37.9835511186106
+    },
+    {
+      "year": 2005,
+      "value": 42.5688812156661
+    },
+    {
+      "year": 2006,
+      "value": 42.6884835125499
+    },
+    {
+      "year": 2007,
+      "value": 42.8332754503841
+    },
+    {
+      "year": 2008,
+      "value": 42.5091596964692
+    },
+    {
+      "year": 2009,
+      "value": 43.4433537536156
+    },
+    {
+      "year": 2010,
+      "value": 40.6273720032231
+    },
+    {
+      "year": 2011,
+      "value": 38.9070145300747
+    },
+    {
+      "year": 2012,
+      "value": 39.1188401087315
+    },
+    {
+      "year": 2013,
+      "value": 40.542010129242
+    },
+    {
+      "year": 2014,
+      "value": 40.9236092881482
+    },
+    {
+      "year": 2015,
+      "value": 42.1930087721287
+    },
+    {
+      "year": 2016,
+      "value": 42.8544900073075
+    },
+    {
+      "year": 2017,
+      "value": 42.5807243141144
+    },
+    {
+      "year": 2018,
+      "value": 42.1709178908888
+    },
+    {
+      "year": 2019,
+      "value": 42.4687227777403
+    },
+    {
+      "year": 2020,
+      "value": 41.8311604395691
+    },
+    {
+      "year": 2021,
+      "value": 41.2574400803721
+    },
+    {
+      "year": 2022,
+      "value": 41.1356424803034
+    },
+    {
+      "year": 2023,
+      "value": 42.280320467255
+    },
+    {
+      "year": 2024,
+      "value": 42.3541982658904
+    },
+    {
+      "year": 2025,
+      "value": 42.7438415027506
+    }
+  ]
+}

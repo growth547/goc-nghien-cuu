@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import "./theme.css";
+@import "./typography.css";
+@import "rehype-callouts/theme/obsidian";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@layer base {
+  * {
+    @apply border-border outline-accent/75;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+  a,
+  button,
+  #main-content {
+    @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility max-w-app {
+  @apply max-w-3xl;
+}
+
+@utility app-layout {
+  @apply max-w-app mx-auto w-full px-4;
+}
+
+@utility active-nav {
+  @apply underline decoration-wavy decoration-2 underline-offset-8;
+}
+
+:target {
+  scroll-margin-block: 1rem;
+}
+
+/* ---- Góc Nghiên Cứu: call-to-action box and tool widgets ---- */
+.cta {
+  @apply bg-muted my-8 flex flex-col gap-3 rounded-xl px-6 py-5;
+}
+.cta strong {
+  @apply text-lg font-bold;
+}
+.cta p {
+  @apply m-0;
+}
+.app-prose .cta a.btn,
+.btn {
+  @apply bg-accent text-accent-foreground inline-block self-start rounded-lg px-5 py-2.5 font-semibold no-underline hover:opacity-90;
+}
+.btn.ghost {
+  @apply border-accent text-accent border-2 bg-transparent;
+}
+.tool {
+  @apply grid items-start gap-6 md:grid-cols-2;
+}
+.panel {
+  @apply border-border bg-background flex min-w-0 flex-col gap-4 rounded-xl border p-5 shadow-sm;
+}
+.field {
+  @apply flex flex-col gap-1;
+}
+.field label {
+  @apply text-sm font-semibold;
+}
+.field small {
+  @apply text-muted-foreground text-xs;
+}
+.panel input,
+.panel select,
+.panel textarea {
+  @apply border-border bg-background focus-visible:outline-accent w-full rounded-lg border px-3 py-2 text-sm;
+}
+.panel textarea {
+  @apply min-h-56 font-mono text-xs leading-relaxed;
+}
+.row {
+  @apply flex flex-wrap gap-3;
+}
+.row > .field {
+  flex: 1 1 140px;
+}
+.result {
+  @apply border-border flex flex-col gap-0.5 border-b py-3 last:border-b-0;
+}
+.result .num {
+  @apply text-accent text-3xl font-bold tabular-nums;
+}
+.result .lbl {
+  @apply font-semibold;
+}
+.result .how {
+  @apply text-muted-foreground text-sm;
+}
+.panel .table-wrap {
+  @apply overflow-x-auto;
+}
+.panel table {
+  @apply w-full text-sm tabular-nums;
+}
+.panel th,
+.panel td {
+  @apply border-border border-b px-2 py-1.5 text-start align-top;
+}
+.panel th {
+  @apply bg-muted font-semibold;
+}
+.flag {
+  @apply font-semibold text-orange-700 dark:text-orange-300;
+}
+tr.flagged td {
+  @apply bg-orange-50 dark:bg-orange-950/40;
+}
+.err {
+  @apply text-sm text-orange-700 dark:text-orange-300;
+}
+.cta-label {
+  @apply text-muted-foreground text-xs font-semibold tracking-wider uppercase;
+}

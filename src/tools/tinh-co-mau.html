@@ -1,63 +1,121 @@
-<!--
-{"title":"Máy tính cỡ mẫu nghiên cứu: Cochran, Slovin, EFA, hồi quy",
- "description":"Tính cỡ mẫu khảo sát miễn phí theo công thức Cochran, Slovin (Yamane), quy tắc EFA của Hair và hồi quy của Tabachnick & Fidell. Có giải thích từng bước.",
- "h1":"Máy tính cỡ mẫu nghiên cứu",
- "lede":"Nhập thông số, máy tính trả về cỡ mẫu tối thiểu theo bốn cách tính sinh viên hay dùng nhất, kèm công thức để bạn chép vào chương phương pháp."}
--->
 <div class="tool">
   <form class="panel" id="ss-form" novalidate>
-    <div class="row">
+    <div class="field"><label for="ss-method">Bạn sẽ phân tích bằng</label>
+      <select id="ss-method">
+        <option value="pls" selected>PLS-SEM (SmartPLS)</option>
+        <option value="reg">Hồi quy bội (SPSS)</option>
+        <option value="efa">EFA / CFA (SPSS, AMOS)</option>
+        <option value="prop">Thống kê mô tả, ước lượng tỷ lệ</option>
+      </select>
+      <small>Cỡ mẫu tối thiểu phụ thuộc vào phương pháp phân tích chính của đề tài.</small></div>
+
+    <div data-for="pls reg" class="row">
+      <div class="field"><label for="ss-m" data-label-pls="Số mũi tên nhiều nhất trỏ vào một biến" data-label-reg="Số biến độc lập">Số mũi tên nhiều nhất trỏ vào một biến</label>
+        <input id="ss-m" type="number" min="1" max="40" value="5"><small data-for="pls">Đếm trên mô hình: biến phụ thuộc nào nhận nhiều mũi tên nhất.</small></div>
+      <div class="field"><label for="ss-f2">Cỡ hiệu ứng f²</label>
+        <select id="ss-f2"><option value="0.02">0,02 (nhỏ)</option><option value="0.15" selected>0,15 (trung bình)</option><option value="0.35">0,35 (lớn)</option></select>
+        <small>Theo Cohen (1988). Đa số luận văn dùng 0,15.</small></div>
+    </div>
+    <div data-for="pls" class="field"><label for="ss-pmin">Hệ số đường dẫn nhỏ nhất kỳ vọng có ý nghĩa</label>
+      <select id="ss-pmin"><option value="0.11">0,11–0,20</option><option value="0.21" selected>0,21–0,30</option><option value="0.31">0,31–0,40</option><option value="0.1">0,10</option></select>
+      <small>Dùng cho phương pháp căn bậc hai nghịch đảo. Không có nghiên cứu trước thì chọn mức thận trọng 0,11–0,20.</small></div>
+    <div data-for="pls reg" class="row">
+      <div class="field"><label for="ss-alpha">Mức ý nghĩa α</label>
+        <select id="ss-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.1">10%</option></select></div>
+      <div class="field"><label for="ss-power">Power (1 − β)</label>
+        <select id="ss-power"><option value="0.8" selected>0,80</option><option value="0.9">0,90</option><option value="0.95">0,95</option></select></div>
+    </div>
+
+    <div data-for="efa" class="field"><label for="ss-items">Số biến quan sát (câu hỏi đo lường)</label>
+      <input id="ss-items" type="number" min="1" value="25"></div>
+
+    <div data-for="prop" class="row">
       <div class="field"><label for="ss-conf">Độ tin cậy</label>
         <select id="ss-conf"><option value="1.645">90%</option><option value="1.96" selected>95%</option><option value="2.576">99%</option></select></div>
       <div class="field"><label for="ss-e">Sai số cho phép (%)</label>
         <input id="ss-e" type="number" min="1" max="20" step="0.5" value="5"></div>
     </div>
-    <div class="row">
+    <div data-for="prop" class="row">
       <div class="field"><label for="ss-p">Tỷ lệ ước lượng p (%)</label>
-        <input id="ss-p" type="number" min="1" max="99" value="50"><small>Không biết thì để 50%, cho cỡ mẫu lớn nhất.</small></div>
+        <input id="ss-p" type="number" min="1" max="99" value="50"><small>Không biết thì để 50%.</small></div>
       <div class="field"><label for="ss-N">Quy mô tổng thể N</label>
-        <input id="ss-N" type="number" min="0" step="1" placeholder="Để trống nếu rất lớn"><small>Ví dụ: 3.200 sinh viên của khoa.</small></div>
+        <input id="ss-N" type="number" min="0" step="1" placeholder="Để trống nếu rất lớn"></div>
     </div>
-    <div class="row">
-      <div class="field"><label for="ss-items">Số biến quan sát (câu hỏi đo lường)</label>
-        <input id="ss-items" type="number" min="1" value="25"><small>Dùng cho quy tắc EFA.</small></div>
-      <div class="field"><label for="ss-iv">Số biến độc lập</label>
-        <input id="ss-iv" type="number" min="1" value="5"><small>Dùng cho hồi quy bội.</small></div>
-    </div>
-    <div class="field"><label for="ss-drop">Dự phòng phiếu bị loại (%)</label>
-      <input id="ss-drop" type="number" min="0" max="50" value="15"><small>Thường 10–20%: phiếu điền bừa, bỏ dở, sai đối tượng.</small></div>
+
+    <div class="field"><label for="ss-q">Số câu hỏi trong bảng hỏi</label>
+      <input id="ss-q" type="number" min="1" value="25"><small>Chỉ dùng để ước tính chi phí thu mẫu.</small></div>
   </form>
   <div class="panel" id="ss-out" aria-live="polite"></div>
 </div>
-<p style="margin-top:20px">Không chắc nên chọn công thức nào? Đọc <a href="/bai-viet/co-mau-nghien-cuu-bao-nhieu-la-du/">Cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>
-{{CTA}}
+<p style="margin-top:20px">Cách chọn phương pháp và trích dẫn trong chương 3: xem <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">Cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>
 <script>
 (function(){
+  // ---- statistics (shared with the unit check in scripts/check-power.mjs) ----
+  //#math-start
+  function lgamma(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,t=x+5.5;t-=(x+0.5)*Math.log(t);let s=1.000000000190015;for(const ci of c)s+=ci/++y;return -t+Math.log(2.5066282746310005*s/x)}
+  function betacf(a,b,x){const MAXIT=300,EPS=3e-14,FPMIN=1e-300;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=MAXIT;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<EPS)break}return h}
+  function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(lgamma(a+b)-lgamma(a)-lgamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(a,b,x)/a:1-bt*betacf(b,a,1-x)/b}
+  function fcdf(x,d1,d2){return x<=0?0:ibeta(d1*x/(d1*x+d2),d1/2,d2/2)}
+  function finv(p,d1,d2){let lo=0,hi=1;while(fcdf(hi,d1,d2)<p)hi*=2;for(let i=0;i<200;i++){const mid=(lo+hi)/2;fcdf(mid,d1,d2)<p?lo=mid:hi=mid}return (lo+hi)/2}
+  // Noncentral F CDF as a Poisson mixture of central beta terms.
+  function ncfcdf(x,d1,d2,lam){const y=d1*x/(d1*x+d2),h=lam/2;let sum=0,jmax=Math.ceil(h+12*Math.sqrt(h+1)+40);for(let j=0;j<=jmax;j++){const w=Math.exp(-h+j*Math.log(h||1e-300)-lgamma(j+1));sum+=w*ibeta(y,d1/2+j,d2/2)}return sum}
+  // G*Power "Linear multiple regression: Fixed model, R² deviation from zero".
+  function regPower(n,m,f2,alpha){const d2=n-m-1;if(d2<1)return 0;const crit=finv(1-alpha,m,d2);return 1-ncfcdf(crit,m,d2,f2*n)}
+  function regN(m,f2,alpha,power){for(let n=m+2;n<20000;n++)if(regPower(n,m,f2,alpha)>=power)return n;return NaN}
+  function zinv(p){const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416],pl=0.02425;let q,r;if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}if(p>1-pl){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}q=p-0.5;r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
+  // Kock & Hadaya (2018) inverse square root method (one-tailed test).
+  function isrN(pmin,alpha,power){const k=zinv(1-alpha)+zinv(power);return Math.ceil(Math.pow(k/pmin,2))}
+  //#math-end
+
   const $=id=>document.getElementById(id);
-  const fmt=n=>n.toLocaleString('vi-VN');
+  const fmt=n=>Number(n).toLocaleString('vi-VN');
+  const d=x=>String(x).replace('.',',');
   const num=id=>{const v=parseFloat($(id).value);return Number.isFinite(v)?v:NaN};
+  const pct=x=>`${d(Math.round(x*100))}%`;
+
   function render(){
-    const z=num('ss-conf'), e=num('ss-e')/100, p=num('ss-p')/100, N=num('ss-N'), items=num('ss-items'), iv=num('ss-iv'), drop=num('ss-drop')/100;
-    const d=x=>String(x).replace('.',',');
-    const out=[]; const hasN=Number.isFinite(N)&&N>0;
-    if(!(e>0&&p>0&&p<1)){ $('ss-out').innerHTML='<p class="err">Sai số và tỷ lệ p phải lớn hơn 0; p nhỏ hơn 100%.</p>'; return; }
-    const n0=z*z*p*(1-p)/(e*e);
-    let cochran=Math.ceil(n0), how=`n₀ = z²·p(1−p)/e² = ${d(z)}²·${d(p)}·${d((1-p).toFixed(2))}/${d(e)}² = ${d(n0.toFixed(2))}`;
-    if(hasN){ const n=n0/(1+(n0-1)/N); cochran=Math.ceil(n); how+=`; hiệu chỉnh tổng thể hữu hạn: n = n₀/(1+(n₀−1)/N) = ${d(n.toFixed(2))}`; }
-    out.push(['Cochran (1977)',cochran,how]);
-    if(hasN){ const s=N/(1+N*e*e); out.push(['Slovin / Yamane (1967)',Math.ceil(s),`n = N/(1+N·e²) = ${fmt(N)}/(1+${fmt(N)}·${d(e)}²) = ${d(s.toFixed(2))}`]); }
-    else out.push(['Slovin / Yamane (1967)',null,'Cần nhập quy mô tổng thể N.']);
-    if(items>0){ out.push(['EFA, tối thiểu 5:1 (Hair và cộng sự, 2010)',Math.max(50,5*items),`5 × ${items} biến quan sát; Hair khuyên không dưới 50, tốt nhất từ 100.`]);
-      out.push(['EFA, lý tưởng 10:1',10*items,`10 × ${items} biến quan sát`]); }
-    if(iv>0) out.push(['Hồi quy bội (Tabachnick & Fidell, 2013)',50+8*iv,`n ≥ 50 + 8m = 50 + 8 × ${iv}`]);
-    const need=Math.max(...out.map(r=>r[1]||0));
-    const plan=Math.ceil(need/(1-(drop||0)));
-    let html=out.map(([l,v,h])=>`<div class="result"><span class="lbl">${l}</span><span class="num">${v==null?'—':fmt(v)}</span><span class="how">${h}</span></div>`).join('');
-    html+=`<div class="result"><span class="lbl">Nên thu (lấy số lớn nhất + ${Math.round((drop||0)*100)}% dự phòng)</span><span class="num">${fmt(plan)}</span><span class="how">Cỡ mẫu tối thiểu ${fmt(need)} phiếu hợp lệ.</span></div>`;
-    if(items>0){ const vnd=Math.round(plan*items*0.4*1100/1000)*1000;
-      html+=`<div class="result"><span class="lbl">Chi phí ước tính nếu thu trên Genius Data</span><span class="num">${fmt(vnd)} đ</span><span class="how">${fmt(plan)} phiếu × ${items} câu × 0,4 GP/câu (mức gợi ý) × 1.100 đ/GP. Chỉ trả cho phiếu được duyệt; bạn có thể đặt thấp nhất 0,15 GP/câu.</span></div>`; }
+    const method=$('ss-method').value;
+    document.querySelectorAll('[data-for]').forEach(el=>{el.hidden=!el.dataset.for.split(' ').includes(method)});
+    const mLabel=document.querySelector('label[for="ss-m"]');mLabel.textContent=mLabel.dataset[method==='reg'?'labelReg':'labelPls'];
+    let main=null; const refs=[]; let note='';
+    if(method==='pls'||method==='reg'){
+      const m=num('ss-m'),f2=num('ss-f2'),alpha=num('ss-alpha'),power=num('ss-power');
+      if(!(m>=1)){ $('ss-out').innerHTML='<p class="err">Nhập số biến lớn hơn 0.</p>'; return; }
+      const nPow=regN(m,f2,alpha,power);
+      const powHow=`F-test hồi quy, f² = ${d(f2)}, α = ${pct(alpha)}, power = ${d(power)}, ${m} biến dự báo. Cohen (1992); tính như G*Power 3.1 (Faul và cộng sự, 2009).`;
+      if(method==='pls'){
+        const pmin=num('ss-pmin');
+        main=['Phân tích power (G*Power)',nPow,powHow];
+        refs.push(['Căn bậc hai nghịch đảo (Kock & Hadaya, 2018)',isrN(pmin,alpha,power),`n > ((z₁₋α + z₁₋β)/|p_min|)², p_min = ${d(pmin)}. Hair và cộng sự (2022) khuyên dùng cách này cho PLS-SEM.`]);
+        refs.push(['Quy tắc 10 lần (Hair và cộng sự, 2011)',10*m,`10 × ${m} mũi tên. Cách cũ, thường cho cỡ mẫu quá thấp; chỉ nên dùng để đối chiếu.`]);
+        note='Hội đồng ngày càng hỏi về power. Báo cáo số theo G*Power, kèm số theo căn bậc hai nghịch đảo để cho thấy mẫu đủ cho cả hai cách.';
+      } else {
+        main=['Phân tích power (G*Power)',nPow,powHow];
+        refs.push(['Tabachnick & Fidell (2013)',Math.max(50+8*m,104+m),`max(50 + 8m, 104 + m) = max(${50+8*m}, ${104+m}).`]);
+      }
+    } else if(method==='efa'){
+      const items=num('ss-items');
+      if(!(items>=1)){ $('ss-out').innerHTML='<p class="err">Nhập số biến quan sát lớn hơn 0.</p>'; return; }
+      main=['Tỷ lệ 5:1 (Hair và cộng sự, 2010)',Math.max(50,5*items),`5 × ${items} biến quan sát, và không dưới 50.`];
+      refs.push(['Tỷ lệ 10:1, mức khuyến nghị',10*items,`10 × ${items} biến quan sát.`]);
+      note='Hair và cộng sự khuyên mẫu từ 100 trở lên cho phân tích nhân tố.';
+    } else {
+      const z=num('ss-conf'),e=num('ss-e')/100,p=num('ss-p')/100,N=num('ss-N'),hasN=Number.isFinite(N)&&N>0;
+      if(!(e>0&&p>0&&p<1)){ $('ss-out').innerHTML='<p class="err">Sai số và tỷ lệ p phải lớn hơn 0; p nhỏ hơn 100%.</p>'; return; }
+      const n0=z*z*p*(1-p)/(e*e); let n=n0, how=`n₀ = z²·p(1−p)/e² = ${d(z)}²·${d(p)}·${d((1-p).toFixed(2))}/${d(e)}² = ${d(n0.toFixed(2))}`;
+      if(hasN){n=n0/(1+(n0-1)/N);how+=`; hiệu chỉnh tổng thể hữu hạn = ${d(n.toFixed(2))}`;}
+      main=['Cochran (1977)',Math.ceil(n),how];
+      if(hasN){const s=N/(1+N*e*e);refs.push(['Slovin / Yamane (1967)',Math.ceil(s),`n = N/(1+N·e²) = ${d(s.toFixed(2))}`]);}
+    }
+    const [lbl,val,how]=main;
+    let html=`<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${Number.isFinite(val)?fmt(val):'—'}</span><span class="how"><b>${lbl}.</b> ${how}</span></div>`;
+    if(refs.length) html+=`<div class="result"><span class="lbl">Đối chiếu</span>${refs.map(([l,v,h])=>`<span class="how"><b>${l}: ${fmt(v)}</b>. ${h}</span>`).join('')}</div>`;
+    if(note) html+=`<div class="result"><span class="how">${note}</span></div>`;
+    const q=num('ss-q');
+    if(q>0&&Number.isFinite(val)){const vnd=Math.round(val*q*0.4*1100/1000)*1000;
+      html+=`<div class="result"><span class="lbl">Chi phí thu ${fmt(val)} phiếu hợp lệ trên Genius Data</span><span class="num">${fmt(vnd)} đ</span><span class="how">${q} câu × 0,4 GP/câu (mức gợi ý) × 1.100 đ/GP. Chỉ trả cho phiếu được duyệt; mức thấp nhất là 0,15 GP/câu.</span></div>`;}
     $('ss-out').innerHTML=html;
   }
-  document.getElementById('ss-form').addEventListener('input',render); render();
+  $('ss-form').addEventListener('input',render); render();
 })();
 </script>

@@ -1,0 +1,37 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Footer from "@/components/Footer.astro";
+import { appLink } from "@/utils/appLink";
+import config from "@/config";
+
+type Props = { slug: string; title: string; h1: string; description: string; lede: string; html: string };
+const { slug, title, h1, description, lede, html } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: h1,
+  url,
+  description,
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "Any",
+  inLanguage: "vi",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "VND" },
+  publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
+};
+---
+
+<Layout title={`${title} | ${config.site.title}`} description={description}>
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <Header />
+  <Breadcrumb />
+  <main id="main-content" class="mx-auto w-full max-w-5xl px-4 pb-8">
+    <h1 class="text-2xl font-semibold sm:text-3xl">{h1}</h1>
+    <p class="text-muted-foreground mt-2 mb-6 max-w-3xl">{lede}</p>
+    <Fragment set:html={html} />
+    <p class="text-muted-foreground mt-8 max-w-3xl text-sm">Tính xong cỡ mẫu, cần người trả lời đúng đối tượng? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")}>Genius Data</a>.</p>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import ToolCards from "@/components/ToolCards.astro";
+import config from "@/config";
+---
+
+<Layout title={`Công cụ miễn phí | ${config.site.title}`} description="Công cụ miễn phí cho người làm khảo sát: tính cỡ mẫu (PLS-SEM, G*Power, hồi quy, EFA, Cochran) và tính Cronbach's alpha online.">
+  <Header />
+  <Breadcrumb />
+  <Main pageTitle="Công cụ" pageDesc="Miễn phí, chạy ngay trong trình duyệt, không cần cài phần mềm.">
+    <ToolCards />
+  </Main>
+  <Footer />
+</Layout>

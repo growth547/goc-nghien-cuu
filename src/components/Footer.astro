@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Socials from "./Socials.astro";
+import { appLink } from "@/utils/appLink";
+
+type Props = {
+  noMarginTop?: boolean;
+} & HTMLAttributes<"footer">;
+
+const { noMarginTop = false, class: className, ...attrs } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class:list={["app-layout", { "mt-auto": !noMarginTop }, className]}
+  {...attrs}
+>
+  <div
+    class="border-border flex flex-col items-center justify-between gap-3 border-t py-6 text-sm sm:flex-row-reverse sm:py-5"
+  >
+    <Socials />
+    <p class="text-muted-foreground text-center sm:text-start">
+      © {currentYear} Góc Nghiên Cứu · Đồng hành cùng
+      <a class="text-accent underline underline-offset-4" href={appLink("home", "footer")}>Genius Data</a>
+    </p>
+  </div>
+</footer>

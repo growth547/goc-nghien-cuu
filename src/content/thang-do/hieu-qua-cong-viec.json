@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo hiệu quả công việc: Williams & Anderson (1991)",
+  "description": "Thang đo hiệu quả công việc trong vai trò (in-role performance) 7 biến của Williams và Anderson (1991) dịch sẵn tiếng Việt, có bản gốc và đánh dấu câu đảo chiều.",
+  "name": "IRB",
+  "fullName": "Hiệu quả công việc trong vai trò (In-Role Behavior / In-Role Performance)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo hiệu quả công việc",
+  "intro": "Thang đo hành vi trong vai trò của Williams và Anderson (1991) đo mức một nhân viên hoàn thành những gì bản mô tả công việc yêu cầu. Thang được xây dựng cùng lúc với hai thang hành vi công dân OCBI và OCBO, để tách rõ phần việc bắt buộc với phần tự nguyện. Câu viết ở ngôi thứ ba nên dùng được cho quản lý đánh giá nhân viên, hoặc chuyển sang tự đánh giá. Ở Việt Nam, thang hay dùng làm biến kết quả trong đề tài về lãnh đạo, gắn kết, trao quyền, sự hài lòng công việc.",
+  "responseScale": "Likert đồng ý, thường 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5 hoặc 7 = Hoàn toàn đồng ý) trong các nghiên cứu dùng lại. Đảo điểm IRB6 và IRB7 trước khi tính điểm trung bình.",
+  "constructs": [
+    {
+      "code": "IRB",
+      "nameVi": "Hiệu quả công việc trong vai trò",
+      "nameEn": "In-Role Behavior",
+      "definition": "Mức độ nhân viên thực hiện đầy đủ các nhiệm vụ, trách nhiệm được quy định chính thức trong công việc.",
+      "source": "Williams & Anderson (1991), 7 biến.",
+      "items": [
+        { "code": "IRB1", "en": "Adequately completes assigned duties", "vi": "[Nhân viên] hoàn thành đầy đủ các nhiệm vụ được giao." },
+        { "code": "IRB2", "en": "Fulfills responsibilities specified in job description", "vi": "[Nhân viên] thực hiện các trách nhiệm ghi trong bản mô tả công việc." },
+        { "code": "IRB3", "en": "Performs tasks that are expected of him", "vi": "[Nhân viên] làm những việc mà vị trí của mình được kỳ vọng phải làm." },
+        { "code": "IRB4", "en": "Meets formal performance requirements of the job", "vi": "[Nhân viên] đáp ứng các yêu cầu chính thức về kết quả công việc." },
+        { "code": "IRB5", "en": "Engages in activities that will directly affect his performance evaluation", "vi": "[Nhân viên] tham gia các hoạt động ảnh hưởng trực tiếp tới kết quả đánh giá công việc của mình." },
+        { "code": "IRB6", "en": "Neglects aspects of the job he is obligated to perform", "vi": "[Nhân viên] bỏ qua một số phần việc mà mình có nghĩa vụ phải làm.", "reverse": true },
+        { "code": "IRB7", "en": "Fails to perform essential duties", "vi": "[Nhân viên] không thực hiện được những nhiệm vụ thiết yếu.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Khi quản lý đánh giá, thay [Nhân viên] bằng tên hoặc mã nhân viên; khi tự đánh giá, đổi thành 'Tôi' và nói rõ trong luận văn rằng đây là hiệu quả tự đánh giá, vì điểm thường cao hơn khi quản lý chấm.",
+    "Bản đã đối chiếu viết 'him', 'his', 'he'; nhiều nghiên cứu khác viết 'him or her' hoặc 'he/she'. Bản tiếng Việt nên dùng chủ ngữ trung tính như trên.",
+    "IRB6 và IRB7 là câu phủ định, hay tải yếu hoặc tách thành nhân tố riêng; mã hoá ngược rồi chạy Cronbach's alpha và EFA, nếu bỏ biến thì báo cáo lý do.",
+    "Đây là hành vi trong vai trò, không phải hành vi công dân; nếu mô hình có cả OCB, kiểm tra giá trị phân biệt giữa hai thang.",
+    "Nếu dữ liệu tự đánh giá và các biến độc lập cùng do một người trả lời, chạy kiểm định sai lệch phương pháp chung (Harman một nhân tố hoặc biến đánh dấu)."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không phải mô hình. Nếu hiệu quả công việc là biến phụ thuộc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo gốc trên Journal of Management và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Williams, L. J., &amp; Anderson, S. E. (1991). Job satisfaction and organizational commitment as predictors of organizational citizenship and in-role behaviors. <em>Journal of Management, 17</em>(3), 601–617. https://doi.org/10.1177/014920639101700305"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13521822/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11352056/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11440434/fullTextXML",
+    "https://api.crossref.org/works/10.1177/014920639101700305"
+  ],
+  "related": ["hanh-vi-cong-dan-to-chuc", "gan-ket-cong-viec-uwes", "hai-long-cong-viec"]
+}

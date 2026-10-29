@@ -1,0 +1,44 @@
+{
+  "title": "Thang đo cân bằng công việc cuộc sống: Brough và cộng sự (2014)",
+  "description": "Thang đo cân bằng công việc và cuộc sống (Work-Life Balance) 4 biến của Brough và cộng sự (2014) dịch sẵn tiếng Việt, có bản gốc, câu đảo chiều và lưu ý dùng.",
+  "name": "WLB",
+  "fullName": "Thang đo cân bằng công việc và cuộc sống (Work-Life Balance Scale)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo cân bằng công việc cuộc sống",
+  "intro": "Brough, Timms, O'Driscoll, Kalliath, Siu, Sit và Lo (2014) xây dựng thang 4 biến đo mức độ một người đánh giá tổng thể rằng công việc và các hoạt động ngoài công việc của mình đang cân bằng. Khác với các thang xung đột công việc và gia đình, thang này không chỉ hỏi về gia đình mà bao trùm mọi hoạt động ngoài giờ làm, nên dùng được cho cả người độc thân. Thang được kiểm định theo thời gian trên người lao động ở Úc và New Zealand. Ở Việt Nam, thang phù hợp với đề tài về làm việc từ xa, làm thêm giờ, chính sách linh hoạt, và làm biến trung gian giữa áp lực công việc với hài lòng hay ý định nghỉ việc.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý), người trả lời nghĩ về công việc và hoạt động ngoài công việc trong 3 tháng gần đây. Đảo điểm WLB2 rồi lấy trung bình 4 biến; điểm càng cao càng cân bằng.",
+  "constructs": [
+    {
+      "code": "WLB",
+      "nameVi": "Cân bằng công việc và cuộc sống",
+      "nameEn": "Work-Life Balance",
+      "definition": "Đánh giá chủ quan của một người rằng công việc và các hoạt động ngoài công việc của mình đang hài hoà, phù hợp với ưu tiên hiện tại trong cuộc sống.",
+      "source": "Brough và cộng sự (2014), 4 biến.",
+      "items": [
+        { "code": "WLB1", "en": "I currently have a good balance between the time I spend at work and the time I have available for non-work activities", "vi": "Hiện tôi cân bằng tốt giữa thời gian làm việc và thời gian dành cho các hoạt động ngoài công việc." },
+        { "code": "WLB2", "en": "I have difficulty balancing my work and non-work activities", "vi": "Tôi gặp khó khăn trong việc cân bằng giữa công việc và các hoạt động ngoài công việc.", "reverse": true },
+        { "code": "WLB3", "en": "I feel that the balance between my work demands and non-work activities is currently about right", "vi": "Tôi thấy hiện nay sự cân bằng giữa yêu cầu công việc và các hoạt động ngoài công việc là khá hợp lý." },
+        { "code": "WLB4", "en": "Overall, I believe that my work and non-work life are balanced", "vi": "Nhìn chung, tôi tin rằng công việc và cuộc sống ngoài công việc của tôi đang cân bằng." }
+      ]
+    }
+  ],
+  "usage": [
+    "Đảo điểm WLB2 trước khi tính Cronbach's alpha và điểm trung bình; nếu quên, alpha có thể giảm mạnh.",
+    "Dịch 'non-work activities' là 'hoạt động ngoài công việc', không thu hẹp thành 'gia đình', vì thang muốn bao trùm cả nghỉ ngơi, học tập, bạn bè.",
+    "Nếu đề tài cần tách chiều tác động (công việc ảnh hưởng gia đình và ngược lại), thang 4 biến này không đủ; khi đó cần một thang xung đột công việc và gia đình riêng, trích đúng nguồn từng biến.",
+    "Với thang 4 biến, chạy CFA để kiểm tra hệ số tải của WLB2; câu đảo chiều đôi khi tải thấp hơn, và nếu loại câu này cần báo cáo rõ trong luận văn."
+  ],
+  "sampleSize": {
+    "note": "WLB là thang đơn lẻ 4 biến. Nếu dùng trong mô hình, cỡ mẫu do biến phụ thuộc nhận nhiều mũi tên nhất quyết định; riêng EFA và Cronbach's alpha cho 4 biến nên có tối thiểu 100 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Không tìm thấy điều kiện mua bản quyền; khi dùng, trích dẫn Brough và cộng sự (2014). Nếu dịch và công bố bản tiếng Việt, nên liên hệ tác giả như nhóm dịch sang tiếng Thuỵ Điển đã làm.",
+  "references": [
+    "Brough, P., Timms, C., O'Driscoll, M. P., Kalliath, T., Siu, O.-L., Sit, C., &amp; Lo, D. (2014). Work–life balance: A longitudinal evaluation of a new measure across Australia and New Zealand workers. <em>The International Journal of Human Resource Management, 25</em>(19), 2724–2744. https://doi.org/10.1080/09585192.2014.899262"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13653383/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9306445/fullTextXML",
+    "https://api.crossref.org/works/10.1080/09585192.2014.899262"
+  ],
+  "related": ["hai-long-cong-viec", "y-dinh-nghi-viec", "kiet-suc-cbi"]
+}

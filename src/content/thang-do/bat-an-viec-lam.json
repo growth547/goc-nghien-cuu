@@ -1,0 +1,57 @@
+{
+  "title": "Thang đo bất an việc làm: Hellgren, Sverke & Isaksson (1999)",
+  "description": "Thang đo bất an việc làm hai chiều của Hellgren, Sverke và Isaksson (1999) dịch sẵn tiếng Việt: bất an về số lượng và về chất, 7 biến, có bản gốc và câu đảo chiều.",
+  "name": "JI",
+  "fullName": "Thang đo bất an việc làm hai chiều (Quantitative and Qualitative Job Insecurity)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo bất an việc làm",
+  "intro": "Hellgren, Sverke và Isaksson (1999) tách bất an việc làm thành hai chiều. Bất an về số lượng là nỗi lo mất chính công việc hiện tại; bất an về chất là nỗi lo các đặc điểm đáng giá của công việc bị suy giảm, như cơ hội thăng tiến, nội dung công việc hay mức tăng lương. Nhóm tác giả cho thấy hai chiều này liên quan khác nhau tới thái độ với công việc và sức khoẻ của người lao động. Ở Việt Nam, thang phù hợp với đề tài về tái cấu trúc, sáp nhập, cắt giảm nhân sự, tác động của AI và tự động hoá, và làm biến dự báo cho hài lòng công việc, cam kết hay ý định nghỉ việc.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo các nghiên cứu đã đối chiếu. Bốn biến bất an về chất viết theo chiều tích cực nên phải đảo điểm để điểm cao nghĩa là bất an cao; tính điểm trung bình riêng cho từng chiều.",
+  "constructs": [
+    {
+      "code": "QNJI",
+      "nameVi": "Bất an việc làm về số lượng",
+      "nameEn": "Quantitative Job Insecurity",
+      "definition": "Nỗi lo của người lao động về khả năng mất chính công việc hiện tại.",
+      "source": "Hellgren, Sverke & Isaksson (1999), 3 biến.",
+      "items": [
+        { "code": "QNJI1", "en": "I am worried about having to leave my job before I would like to", "vi": "Tôi lo mình sẽ phải rời bỏ công việc sớm hơn mong muốn." },
+        { "code": "QNJI2", "en": "There is a risk that I will have to leave my present job in the year to come", "vi": "Có nguy cơ tôi sẽ phải rời công việc hiện tại trong năm tới." },
+        { "code": "QNJI3", "en": "I feel uneasy about losing my job in the near future", "vi": "Tôi thấy bất an về việc có thể mất việc trong thời gian tới." }
+      ]
+    },
+    {
+      "code": "QLJI",
+      "nameVi": "Bất an việc làm về chất",
+      "nameEn": "Qualitative Job Insecurity",
+      "definition": "Nỗi lo của người lao động rằng các đặc điểm đáng giá của công việc (cơ hội nghề nghiệp, nội dung công việc, thu nhập) sẽ suy giảm trong tương lai.",
+      "source": "Hellgren, Sverke & Isaksson (1999), 4 biến, cả 4 đảo điểm.",
+      "items": [
+        { "code": "QLJI1", "en": "My future career opportunities in [the organization] are favourable", "vi": "Cơ hội nghề nghiệp sắp tới của tôi tại [công ty] là thuận lợi.", "reverse": true },
+        { "code": "QLJI2", "en": "I feel that [the organization] can provide me with a stimulating job content in the near future", "vi": "Tôi cảm thấy [công ty] có thể giao cho tôi những công việc hấp dẫn trong thời gian tới.", "reverse": true },
+        { "code": "QLJI3", "en": "I believe that [the organization] will need my competence also in the future", "vi": "Tôi tin rằng [công ty] vẫn sẽ cần năng lực của tôi trong tương lai.", "reverse": true },
+        { "code": "QLJI4", "en": "My pay development in this organization is promising", "vi": "Triển vọng tăng lương của tôi tại [công ty] là khả quan.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Đảo điểm cả 4 biến QLJI trước khi tính Cronbach's alpha và điểm trung bình; nếu không đảo, chiều bất an về chất sẽ thành 'an tâm về chất' và tương quan với các biến khác bị ngược dấu.",
+    "Vì 3 câu QNJI viết theo chiều tiêu cực còn 4 câu QLJI theo chiều tích cực, hai nhân tố có thể tách ra một phần do cách viết câu; chạy CFA hai nhân tố và báo cáo rõ hệ số tải.",
+    "Nhiều nghiên cứu chỉ dùng 3 biến QNJI khi đề tài chỉ quan tâm nỗi lo mất việc; khi đó ghi rõ là dùng chiều bất an về số lượng của Hellgren, Sverke và Isaksson (1999).",
+    "Thay '[the organization]' bằng tên hoặc cách gọi đơn vị cụ thể, và dùng thống nhất trong cả bảng hỏi."
+  ],
+  "sampleSize": {
+    "note": "Thang gồm 7 biến chia hai chiều, thường làm biến độc lập. Cỡ mẫu do biến phụ thuộc nhận nhiều mũi tên nhất trong mô hình quyết định; riêng EFA cho 7 biến cần tối thiểu 35 quan sát và nên từ 100 trở lên."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Không tìm thấy điều kiện mua bản quyền; khi dùng, trích dẫn Hellgren, Sverke và Isaksson (1999).",
+  "references": [
+    "Hellgren, J., Sverke, M., &amp; Isaksson, K. (1999). A two-dimensional approach to job insecurity: Consequences for employee attitudes and well-being. <em>European Journal of Work and Organizational Psychology, 8</em>(2), 179–195. https://doi.org/10.1080/135943299398311"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11481598/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11481429/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12740867/fullTextXML",
+    "https://api.crossref.org/works/10.1080/135943299398311"
+  ],
+  "related": ["y-dinh-nghi-viec", "cam-ket-to-chuc-ocq", "hai-long-cong-viec"]
+}

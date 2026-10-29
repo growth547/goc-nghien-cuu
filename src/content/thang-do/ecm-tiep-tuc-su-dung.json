@@ -1,0 +1,83 @@
+{
+  "title": "Thang đo ECM tiếp tục sử dụng: Bhattacherjee (2001), có bản gốc",
+  "description": "Thang đo mô hình kỳ vọng – xác nhận ECM về ý định tiếp tục sử dụng hệ thống thông tin: sự xác nhận, hữu ích, hài lòng, ý định tiếp tục. Có bản gốc.",
+  "name": "ECM",
+  "fullName": "Mô hình kỳ vọng – xác nhận về việc tiếp tục sử dụng hệ thống thông tin (Expectation-Confirmation Model of IS Continuance)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo ECM",
+  "intro": "ECM do Bhattacherjee (2001) đề xuất để giải thích vì sao người dùng tiếp tục hay bỏ dùng một hệ thống sau lần chấp nhận đầu tiên. Mô hình cho rằng khi trải nghiệm thực tế tốt hơn kỳ vọng (sự xác nhận), người dùng thấy hệ thống hữu ích hơn và hài lòng hơn; sự hài lòng và nhận thức hữu ích cùng dẫn tới ý định tiếp tục sử dụng. Bài gốc khảo sát khách hàng ngân hàng trực tuyến; các biến dưới đây lấy từ bản dùng lại công bố đầy đủ của Vedadi & Warkentin (2016) cho ứng dụng mobile banking. Ở Việt Nam, ECM hợp với đề tài về việc tiếp tục dùng ví điện tử, app ngân hàng, học trực tuyến, ứng dụng giao đồ ăn.",
+  "responseScale": "Thang 7 mức. CONF, PU, CI dùng Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý); SAT dùng 4 cặp tính từ đối nghĩa 7 mức (ví dụ 1 = Rất không hài lòng … 7 = Rất hài lòng), theo Vedadi & Warkentin (2016).",
+  "constructs": [
+    {
+      "code": "CONF",
+      "nameVi": "Sự xác nhận",
+      "nameEn": "Confirmation",
+      "definition": "Mức độ người dùng thấy trải nghiệm thực tế khi dùng hệ thống đáp ứng hoặc vượt kỳ vọng ban đầu.",
+      "source": "Vedadi & Warkentin (2016), Phụ lục B, 3 biến, phỏng theo Bhattacherjee (2001).",
+      "items": [
+        { "code": "CONF1", "en": "My experience with using [mobile banking applications] was better than what I expected.", "vi": "Trải nghiệm khi sử dụng [hệ thống] tốt hơn tôi kỳ vọng." },
+        { "code": "CONF2", "en": "The service level provided by [mobile banking applications] was better than what I expected.", "vi": "Mức độ dịch vụ mà [hệ thống] mang lại tốt hơn tôi kỳ vọng." },
+        { "code": "CONF3", "en": "Overall, most of my expectations from using [mobile banking applications] were confirmed.", "vi": "Nhìn chung, phần lớn kỳ vọng của tôi khi sử dụng [hệ thống] đã được đáp ứng." }
+      ]
+    },
+    {
+      "code": "PU",
+      "nameVi": "Nhận thức sự hữu ích",
+      "nameEn": "Perceived Usefulness",
+      "definition": "Mức độ người dùng tin rằng tiếp tục dùng hệ thống giúp cải thiện kết quả của việc họ cần làm.",
+      "source": "Vedadi & Warkentin (2016), Phụ lục B, 4 biến, phỏng theo Bhattacherjee (2001).",
+      "items": [
+        { "code": "PU1", "en": "Using [mobile banking applications] improves my performance in managing personal finances.", "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân tốt hơn." },
+        { "code": "PU2", "en": "Using [mobile banking applications] increases my productivity in managing personal finances.", "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân năng suất hơn." },
+        { "code": "PU3", "en": "Using [mobile banking applications] enhances my effectiveness in managing personal finances.", "vi": "Sử dụng [hệ thống] giúp tôi quản lý tài chính cá nhân hiệu quả hơn." },
+        { "code": "PU4", "en": "Overall, [mobile banking applications] is useful in managing personal finances.", "vi": "Nhìn chung, [hệ thống] hữu ích cho việc quản lý tài chính cá nhân." }
+      ]
+    },
+    {
+      "code": "SAT",
+      "nameVi": "Sự hài lòng",
+      "nameEn": "Satisfaction",
+      "definition": "Cảm nhận chung của người dùng về toàn bộ trải nghiệm sử dụng hệ thống. Câu dẫn: 'How do you feel about your overall experience of [mobile banking applications] use?' (Bạn cảm thấy thế nào về toàn bộ trải nghiệm sử dụng [hệ thống]?)",
+      "source": "Vedadi & Warkentin (2016), Phụ lục B, 4 cặp tính từ đối nghĩa, phỏng theo Bhattacherjee (2001).",
+      "items": [
+        { "code": "SAT1", "en": "Very dissatisfied/Very satisfied", "vi": "Rất không hài lòng / Rất hài lòng" },
+        { "code": "SAT2", "en": "Very displeased/Very pleased", "vi": "Rất không vừa ý / Rất vừa ý" },
+        { "code": "SAT3", "en": "Very frustrated/Very contented", "vi": "Rất bực bội / Rất mãn nguyện" },
+        { "code": "SAT4", "en": "Absolutely terrible/Absolutely delighted", "vi": "Hoàn toàn tệ hại / Hoàn toàn thích thú" }
+      ]
+    },
+    {
+      "code": "CI",
+      "nameVi": "Ý định tiếp tục sử dụng",
+      "nameEn": "Continuance Intention",
+      "definition": "Mức độ người dùng dự định tiếp tục dùng hệ thống thay vì ngừng dùng hoặc chuyển sang cách khác.",
+      "source": "Vedadi & Warkentin (2016), Phụ lục B, 3 biến (CI3 đảo chiều), phỏng theo Bhattacherjee (2001).",
+      "items": [
+        { "code": "CI1", "en": "I intend to continue using [mobile banking applications] rather than discontinue its use.", "vi": "Tôi dự định tiếp tục sử dụng [hệ thống] thay vì ngừng sử dụng." },
+        { "code": "CI2", "en": "My intentions are to continue using [mobile banking applications] than use any alternative means (traditional or web-based banking).", "vi": "Tôi dự định tiếp tục sử dụng [hệ thống] hơn là dùng bất kỳ cách thay thế nào khác (giao dịch tại quầy hoặc ngân hàng trên web)." },
+        { "code": "CI3", "en": "If I could, I would like to discontinue my use of [mobile banking applications].", "vi": "Nếu có thể, tôi muốn ngừng sử dụng [hệ thống].", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Nguyên văn đang theo bối cảnh mobile banking; khi đổi sang ví điện tử hay học trực tuyến, thay cả cụm 'quản lý tài chính cá nhân' ở PU và 'cách thay thế' ở CI2 bằng việc tương ứng, ví dụ 'thanh toán', 'học tập', 'tiền mặt'.",
+    "Vedadi & Warkentin (2016) đã chỉnh câu chữ qua nhóm chuyên gia, nên trích cả bài này khi dùng nguyên văn bên trên, và trích Bhattacherjee (2001) cho mô hình.",
+    "CI3 là câu đảo chiều: đảo điểm trước khi tính Cronbach's alpha. Nếu hệ số tải của CI3 thấp, cân nhắc loại và ghi rõ lý do.",
+    "SAT là thang đối nghĩa, không phải câu đồng ý; giữ dạng hai đầu mút trên bảng hỏi, đừng đổi thành 'Tôi hài lòng…' rồi vẫn ghi nguồn như bản gốc.",
+    "ECM chỉ áp dụng cho người đã dùng hệ thống; thêm câu sàng lọc 'đã sử dụng [hệ thống] ít nhất một lần trong 3 tháng gần đây' để loại người chưa dùng."
+  ],
+  "sampleSize": {
+    "arrowsMax": 2,
+    "note": "Trong ECM gốc, ý định tiếp tục nhận 2 mũi tên (từ PU và SAT), sự hài lòng cũng nhận 2 (từ CONF và PU). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát."
+  },
+  "license": "Các biến được công bố trong phụ lục bài báo học thuật (Vedadi & Warkentin, 2016) và trong bài gốc của Bhattacherjee (2001). Khi dùng, trích dẫn cả hai bài; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Bhattacherjee, A. (2001). Understanding information systems continuance: An expectation-confirmation model. <em>MIS Quarterly, 25</em>(3), 351–370. https://doi.org/10.2307/3250921",
+    "Vedadi, A., &amp; Warkentin, M. (2016). Continuance intention on using mobile banking applications: A replication study of information systems continuance model. <em>AIS Transactions on Replication Research, 2</em>, Article 7. https://doi.org/10.17705/1atrr.00014"
+  ],
+  "verifiedFrom": [
+    "https://dm.its.msstate.edu/cob/mw156/intellcont/VedadiWarkentin2016_AISTRR2_7_ContinuanceMobileBanking-1.pdf",
+    "https://aisel.aisnet.org/trr/vol2/iss1/7"
+  ],
+  "related": ["tam", "utaut2", "chat-luong-he-thong-thong-tin"]
+}

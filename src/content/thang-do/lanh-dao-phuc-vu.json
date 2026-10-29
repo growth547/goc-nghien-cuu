@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo lãnh đạo phục vụ SL-7 tiếng Việt: Liden và cộng sự (2015)",
+  "description": "Thang đo lãnh đạo phục vụ SL-7 (Servant Leadership) 7 biến của Liden và cộng sự (2015) dịch sẵn tiếng Việt, có bản gốc tiếng Anh, thang trả lời và lưu ý khi dùng.",
+  "name": "SL-7",
+  "fullName": "Thang đo lãnh đạo phục vụ rút gọn 7 biến (Servant Leadership SL-7)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo lãnh đạo phục vụ",
+  "intro": "SL-7 là bản rút gọn của thang SL-28 về lãnh đạo phục vụ, do Liden, Wayne, Meuser, Hu, Wu và Liao (2015) kiểm định. Lãnh đạo phục vụ đặt nhu cầu phát triển của cấp dưới lên trước lợi ích của chính người lãnh đạo, quan tâm tới cộng đồng và giữ chuẩn mực đạo đức. Mỗi biến của SL-7 đại diện cho một khía cạnh của SL-28, nên thang ngắn nhưng vẫn phủ đủ nội dung. Ở Việt Nam, SL-7 phù hợp với đề tài về ảnh hưởng của người quản lý trực tiếp tới gắn kết, sáng tạo, hành vi công dân tổ chức và ý định nghỉ việc của nhân viên.",
+  "responseScale": "Likert đồng ý. Các nghiên cứu đã đối chiếu dùng thang 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý) hoặc 7 mức; chọn một thang và giữ thống nhất với các khái niệm khác trong bảng hỏi. Nhân viên đánh giá người quản lý trực tiếp của mình; điểm là trung bình 7 biến.",
+  "constructs": [
+    {
+      "code": "SL",
+      "nameVi": "Lãnh đạo phục vụ",
+      "nameEn": "Servant Leadership",
+      "definition": "Mức độ người quản lý trực tiếp đặt sự phát triển và lợi ích của cấp dưới lên trước, trao quyền, quan tâm tới cộng đồng và hành xử có đạo đức.",
+      "source": "Liden và cộng sự (2015), 7 biến; câu chữ đối chiếu theo phụ lục của Wang, Kang & Choi (2021), nơi chủ ngữ là 'My supervisor'.",
+      "items": [
+        { "code": "SL1", "en": "My supervisor can tell if something work-related is going wrong", "vi": "Quản lý của tôi nhận ra khi có vấn đề trong công việc." },
+        { "code": "SL2", "en": "My supervisor makes my career development a priority", "vi": "Quản lý của tôi coi việc phát triển sự nghiệp của tôi là ưu tiên." },
+        { "code": "SL3", "en": "I would seek help from my supervisor if I had a personal problem", "vi": "Tôi sẽ tìm đến quản lý của mình để được giúp đỡ nếu gặp chuyện cá nhân." },
+        { "code": "SL4", "en": "My supervisor emphasizes the importance of giving back to the community", "vi": "Quản lý của tôi nhấn mạnh tầm quan trọng của việc đóng góp lại cho cộng đồng." },
+        { "code": "SL5", "en": "My supervisor puts my best interests ahead of his/her own", "vi": "Quản lý của tôi đặt lợi ích của tôi lên trên lợi ích của bản thân họ." },
+        { "code": "SL6", "en": "My supervisor gives me the freedom to handle difficult situations in the way that I feel is best", "vi": "Quản lý của tôi cho tôi tự do xử lý các tình huống khó theo cách tôi thấy tốt nhất." },
+        { "code": "SL7", "en": "My supervisor would NOT compromise ethical principles in order to achieve success.", "vi": "Quản lý của tôi KHÔNG đánh đổi nguyên tắc đạo đức để đạt được thành công." }
+      ]
+    }
+  ],
+  "usage": [
+    "Nhiều nghiên cứu dùng 'My leader' thay cho 'My supervisor' (ví dụ 'My leader puts my best interests ahead of his/her own'); khi dịch, chọn một cách gọi người quản lý trực tiếp và dùng thống nhất cho cả 7 câu.",
+    "SL7 là câu có chữ NOT viết hoa nhưng không phải câu đảo chiều: đồng ý nghĩa là lãnh đạo có đạo đức, nên không đảo điểm. Khi dịch, giữ nhấn mạnh chữ 'KHÔNG' để người trả lời không đọc sót.",
+    "SL-7 đo lãnh đạo phục vụ như một khái niệm tổng; nếu đề tài cần tách các khía cạnh (trao quyền, hành xử đạo đức…), dùng bản SL-28 đầy đủ và trích đúng nguồn.",
+    "Vì nhân viên đánh giá cùng một người quản lý, dữ liệu theo nhóm có thể không độc lập; nếu thu theo phòng ban, báo cáo số người quản lý được đánh giá và cân nhắc phân tích đa cấp."
+  ],
+  "sampleSize": {
+    "note": "SL-7 là thang đơn lẻ 7 biến, thường làm biến độc lập. Cỡ mẫu do biến phụ thuộc nhận nhiều mũi tên nhất trong mô hình quyết định; riêng EFA cho 7 biến cần tối thiểu 35 quan sát và nên từ 100 trở lên."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Không tìm thấy điều kiện mua bản quyền; khi dùng, trích dẫn Liden và cộng sự (2015).",
+  "references": [
+    "Liden, R. C., Wayne, S. J., Meuser, J. D., Hu, J., Wu, J., &amp; Liao, C. (2015). Servant leadership: Validation of a short form of the SL-28. <em>The Leadership Quarterly, 26</em>(2), 254–269. https://doi.org/10.1016/j.leaqua.2014.12.002"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8854215/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9858640/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11317245/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7084789/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.leaqua.2014.12.002"
+  ],
+  "related": ["lanh-dao-chuyen-doi-glts", "gan-ket-cong-viec-uwes", "ho-tro-to-chuc-pos"]
+}

@@ -1,8 +1,10 @@
 <div class="tool">
   <form class="panel" id="bk-form" novalidate>
     <div class="field"><label>1. Chọn các khái niệm trong mô hình</label>
-      <input id="bk-search" type="search" placeholder="Tìm: hữu ích, niềm tin, hài lòng, SERVQUAL…">
-      <small>Mỗi khái niệm lấy nguyên biến quan sát từ thang đo gốc đã kiểm chứng nguồn. Chọn từ nhiều thang đo khác nhau cũng được.</small></div>
+      <input id="bk-search" type="search" placeholder="Gõ tiếng Anh hoặc tiếng Việt: trust, hai long, intention to use…">
+      <small>Gõ tên khái niệm, có dấu hay không đều được; nhiều khái niệm thì ngăn bằng dấu chấm phẩy, ví dụ “trust; satisfaction; loyalty”. Mỗi khái niệm lấy nguyên biến quan sát từ thang đo gốc đã kiểm chứng nguồn.</small>
+      <label class="btn ghost" style="align-self:flex-start;cursor:pointer;margin-top:6px">Tải ảnh mô hình nghiên cứu<input id="bk-img" type="file" accept="image/*" hidden></label>
+      <small id="bk-img-status">Ảnh được đọc ngay trên máy bạn, không gửi lên máy chủ. Mỗi ô khái niệm trong ảnh sẽ được gợi ý thang đo gần nghĩa.</small></div>
     <div id="bk-list" style="max-height:340px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:6px 10px"></div>
 
     <div class="field" style="margin-top:14px"><label>2. Điền đối tượng nghiên cứu vào câu hỏi</label>
@@ -84,10 +86,37 @@
   function placeholdersOf(texts){const s=new Set();for(const t of texts)for(const m of t.matchAll(PH_RE))s.add(m[1].toLowerCase());return [...s]}
   function fillPlaceholders(text,values){return text.replace(PH_RE,(all,key)=>{const v=(values[key.toLowerCase()]||'').trim();if(!v)return all;return key[0]!==key[0].toLowerCase()?v[0].toUpperCase()+v.slice(1):v})}
   // First "Authors (year)" in a construct's source note, with "&" read as "và" for Vietnamese prose.
-  function citeOf(source){const m=source.match(/([A-ZÀ-Ỹ][\p{L}.'\-]+(?:(?:, | & | và )[A-ZÀ-Ỹ][\p{L}.'\-]+)*(?: và cộng sự)?)\s*\((\d{4})/u);return m?`${m[1].replace(/ & /g,' và ')} (${m[2]})`:source}
+  // Surname particles ("De Witte", "van der Heijden") belong to the name.
+  function citeOf(source){const m=source.match(/((?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*[A-ZÀ-Ỹ][\p{L}.'\-]+(?:(?:, | & | và )(?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*[A-ZÀ-Ỹ][\p{L}.'\-]+)*(?: và cộng sự)?)\s*\((\d{4})/u);return m?`${m[1].replace(/ & /g,' và ')} (${m[2]})`:source}
   // A reference belongs to a citation when the first surname and year match, and a
   // single-author citation only matches a single-author reference.
-  function citedBy(cite,ref){const m=cite.match(/^([^\s,]+)(.*)\((\d{4})\)$/);if(!m)return false;const solo=!/,| và /.test(m[2]);return ref.startsWith(m[1])&&ref.includes(`(${m[3]})`)&&(!solo||!ref.includes('&'))}
+  function citedBy(cite,ref){const m=cite.match(/^([^\s,]+)(.*)\((\d{4})\)$/);if(!m)return false;const solo=!/,| và /.test(m[2]);const at=ref.indexOf(`(${m[3]})`);return ref.startsWith(m[1])&&at>0&&(!solo||!ref.slice(0,at).includes('&'))}
+  // ---- concept search: English or Vietnamese, with or without diacritics, plus near-synonyms ----
+  function normText(s){return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim()}
+  const SYN=[
+    'trust|tin|niem tin|tin tuong|tin cay|trustworthiness','satisfaction|satisfied|hai long|thoa man','intention|intend|y dinh|du dinh|willingness|san long','use|usage|using|su dung','continuance|continue|tiep tuc',
+    'loyalty|loyal|trung thanh|gan bo','quality|chat luong','service|dich vu','value|gia tri','price|gia|chi phi|cost','risk|rui ro','usefulness|useful|huu ich|loi ich|performance expectancy|hieu qua mong doi',
+    'ease|easy|de dang|de su dung|effort expectancy|no luc mong doi','enjoyment|enjoy|thich thu|vui|giai tri|entertainment|hedonic|khoai lac|huong thu','social|xa hoi','influence|anh huong',
+    'brand|thuong hieu|nhan hieu','image|hinh anh','awareness|nhan biet','association|lien tuong','commitment|cam ket','engagement|gan ket|nhiet huyet','job|work|cong viec|viec lam|nghe nghiep',
+    'stress|cang thang|ap luc','anxiety|lo au|lo lang','depression|tram cam','burnout|kiet suc|exhaustion|met moi','leadership|leader|lanh dao|supervisor|quan ly','support|ho tro',
+    'motivation|dong luc|dong co','performance|hieu suat|ket qua|thanh tich','purchase|buy|buying|mua|mua hang|mua sam|shopping','online|truc tuyen|dien tu|internet|e commerce|thuong mai dien tu',
+    'website|web|trang web|site','attitude|thai do','norm|chuan|chuan chu quan','control|kiem soat','habit|thoi quen','green|xanh|moi truong|environment','word of mouth|wom|ewom|truyen mieng|review|danh gia',
+    'credibility|uy tin|dang tin|expertise|chuyen mon','addiction|nghien|phu thuoc','esteem|tu trong','efficacy|tu hieu qua|nang luc ban than|tu tin|confidence','turnover|nghi viec|quit|roi bo',
+    'justice|cong bang|fairness','fit|phu hop','empowerment|trao quyen','loneliness|co don','resilience|phuc hoi|kien cuong','mindfulness|chanh niem','personality|tinh cach',
+    'learning|hoc|hoc tap|student|sinh vien','impulse|ngau hung|bong dong','advertising|ad|quang cao','social media|mang xa hoi|facebook|tiktok','influencer|kol|nguoi noi tieng|celebrity|endorser',
+    'bank|ngan hang|banking','health|y te|suc khoe|patient|benh nhan','security|bao mat|privacy|rieng tu|an toan','information|thong tin','system|he thong','technology|cong nghe|ung dung|app|application',
+    'organizational|to chuc|cong ty','citizenship|cong dan|ocb','exchange|trao doi|lmx','insecurity|bat an','balance|can bang|family|gia dinh','servant|phuc vu','transformational|chuyen doi',
+    'confirmation|xac nhan|ky vong','fomo|bo lo','self control|tu kiem soat','grit|kien tri|perseverance','social support|ho tro xa hoi',
+  ].map(g=>g.split('|').map(normText));
+  // Longest phrases first, so "gia tri" (value) is not also read as "gia" (price).
+  const SYN_TERMS=SYN.flatMap((g,gi)=>g.map(t=>[t,gi])).sort((x,y)=>y[0].length-x[0].length);
+  function expandQuery(q){const n=normText(q);let rest=' '+n+' ';const groups=new Set();for(const [t,gi] of SYN_TERMS)if(rest.includes(' '+t+' ')){groups.add(gi);rest=rest.split(' '+t+' ').join('  ')}
+    const out=new Set(n.split(' ').filter(t=>t.length>1));groups.forEach(gi=>SYN[gi].forEach(t=>out.add(t)));return [...out]}
+  function indexConstruct(scale,c){const f=s=>' '+normText(s)+' ';return [[f(`${c.nameVi} ${c.nameEn} ${c.code}`),6],[f(`${scale.name} ${scale.fullName}`),3],[f(c.definition),2],[f(c.items.map(i=>i.en+' '+i.vi).join(' ')),1]]}
+  function rankConstructs(q,index){
+    const terms=expandQuery(q), phrase=' '+normText(q)+' ';if(!terms.length)return [];
+    return index.map((fields,i)=>{let s=0;for(const t of terms){let best=0;for(const [txt,w] of fields)if(txt.includes(' '+t+' ')||(t.length>3&&txt.includes(' '+t)))best=Math.max(best,w);s+=best}
+      if(phrase.trim().length>3&&fields[0][0].includes(phrase))s+=10;return [i,s]}).filter(([,s])=>s>=3).sort((a,b)=>b[1]-a[1]).map(([i])=>i)}
   function isAgreementScale(responseScale){return /^Likert/i.test(responseScale)}
   // Minimum sample: PLS-SEM takes the larger of G*Power and the inverse square root method;
   // SPSS takes the larger of G*Power regression and Hair's 5 observations per item for EFA.
@@ -117,13 +146,24 @@
   $('bk-demo').innerHTML=DEMO.map(([k,l],i)=>`<label class="check"><input type="checkbox" data-demo="${k}" ${i<3?'checked':''}> ${l}</label>`).join('');
 
   const state={selected:new Set(),ph:{}};
+  const INDEX=CONSTRUCTS.map(x=>indexConstruct(x.scale,x.c));
+  const row=x=>`<label class="check" style="margin:4px 0"><input type="checkbox" data-key="${esc(x.key)}" ${state.selected.has(x.key)?'checked':''}><span>${esc(x.c.nameVi)} <span class="text-muted-foreground">· ${esc(x.c.nameEn)} (${esc(x.scale.name)}, ${x.c.items.length} câu · ${esc(citeOf(x.c.source))})</span></span></label>`;
+  const REQ='https://github.com/growth547/goc-nghien-cuu/issues/new?labels=de-xuat-thang-do&title=';
+  const ask=q=>`<p class="text-muted-foreground" style="font-size:.85rem">Chưa có thang đo bạn cần? <a class="text-accent underline" href="${REQ}${encodeURIComponent('Đề xuất thang đo: '+q)}" target="_blank" rel="noopener">Đề xuất thêm</a>, thư viện được bổ sung mỗi ngày.</p>`;
   function renderList(){
-    const q=$('bk-search').value.trim().toLowerCase();
-    $('bk-list').innerHTML=DATA.map(s=>{
-      const rows=s.constructs.filter(c=>!q||[s.name,s.fullName,c.nameVi,c.nameEn,c.code].join(' ').toLowerCase().includes(q));
-      if(!rows.length)return '';
-      return `<div style="margin:8px 0"><strong style="font-size:.9rem">${esc(s.name)}</strong> <span class="text-muted-foreground" style="font-size:.8rem">${esc(s.field)}</span>${rows.map(c=>{const k=`${s.slug}:${c.code}`;return `<label class="check" style="margin:4px 0"><input type="checkbox" data-key="${esc(k)}" ${state.selected.has(k)?'checked':''}><span>${esc(c.nameVi)} <span class="text-muted-foreground">(${esc(c.code)}, ${c.items.length} câu · ${esc(citeOf(c.source))})</span></span></label>`}).join('')}</div>`;
-    }).join('')||'<p class="text-muted-foreground">Không tìm thấy khái niệm nào.</p>';
+    const raw=$('bk-search').value.trim();
+    if(!raw){
+      $('bk-list').innerHTML=DATA.map(s=>`<div style="margin:8px 0"><strong style="font-size:.9rem">${esc(s.name)}</strong> <span class="text-muted-foreground" style="font-size:.8rem">${esc(s.field)}</span>${CONSTRUCTS.filter(x=>x.scale===s).map(row).join('')}</div>`).join('');
+      return;
+    }
+    // Several concepts at once (from a model image or typed "trust; satisfaction"): best matches per concept.
+    const phrases=raw.split(/[;\n]+/).map(p=>p.trim()).filter(Boolean);
+    const many=phrases.length>1;
+    $('bk-list').innerHTML=phrases.map(p=>{
+      const hits=rankConstructs(p,INDEX).slice(0,many?5:30);
+      const head=many?`<p style="margin:10px 0 2px;font-weight:600;font-size:.9rem">“${esc(p)}”</p>`:'';
+      return head+(hits.length?hits.map(i=>row(CONSTRUCTS[i])).join(''):`<p class="text-muted-foreground" style="font-size:.85rem">Không có khái niệm gần nghĩa.</p>`)+(many?'':ask(p));
+    }).join('')+(many?ask(phrases.join('; ')):'');
   }
   // Keep the order the student ticked, which usually follows their model.
   function chosen(){return [...state.selected].map(k=>CONSTRUCTS.find(x=>x.key===k)).filter(Boolean)}
@@ -231,6 +271,31 @@
     $('bk-arrows').value=Math.max(1,state.selected.size-1);renderPh();render()});
   $('bk-ph').addEventListener('input',e=>{const k=e.target.dataset.ph;if(k){state.ph[k]=e.target.value;render()}});
   $('bk-search').addEventListener('input',renderList);
+  // Model image → text lines (Tesseract.js, Vietnamese + English, runs in the browser) → one search per box label.
+  function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+  $('bk-img').addEventListener('change',async e=>{
+    const file=e.target.files[0];if(!file)return;const st=$('bk-img-status');
+    try{
+      st.textContent='Đang tải bộ đọc chữ (lần đầu khoảng 10–20 giây)…';
+      if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
+      st.textContent='Đang đọc chữ trong ảnh…';
+      // Sparse-text mode (PSM 11) reads scattered box labels; the default page mode skips some.
+      const worker=await Tesseract.createWorker('vie+eng');
+      await worker.setParameters({tessedit_pageseg_mode:'11'});
+      const {data}=await worker.recognize(file);await worker.terminate();
+      // Boxes on the same row come out as one OCR line: split a line wherever the gap between
+      // two words is wider than the text height. Then drop hypothesis tags (H1, H2a…) and noise.
+      const segs=[];
+      for(const ln of data.lines||[]){let cur=[],prev=null;const h=Math.max(8,ln.bbox.y1-ln.bbox.y0);
+        for(const w of ln.words){if(prev&&w.bbox.x0-prev.bbox.x1>1.2*h){segs.push(cur.join(' '));cur=[]}cur.push(w.text);prev=w}
+        if(cur.length)segs.push(cur.join(' '))}
+      const lines=[...new Set((segs.length?segs:data.text.split('\n')).map(l=>l.replace(/\bH\d+[a-z]?\b|[+\-–→←↑↓|()[\]{}]/g,' ').replace(/\s+/g,' ').trim()).filter(l=>/\p{L}{3}/u.test(l)&&l.length<=60))];
+      if(!lines.length){st.textContent='Không đọc được chữ trong ảnh. Thử ảnh rõ hơn hoặc gõ tên khái niệm vào ô tìm kiếm.';return}
+      $('bk-search').value=lines.join('; ');renderList();
+      st.textContent=`Đọc được ${lines.length} dòng chữ. Chọn thang đo phù hợp cho từng khái niệm bên dưới; dòng nào đọc sai thì sửa trong ô tìm kiếm.`;
+    }catch(err){st.textContent='Không tải được bộ đọc chữ. Kiểm tra kết nối mạng rồi thử lại, hoặc gõ tên khái niệm vào ô tìm kiếm.'}
+    e.target.value='';
+  });
   $('bk-form').addEventListener('change',e=>{if(!e.target.dataset.key)render()});
   $('bk-form').addEventListener('input',e=>{if(e.target.id!=='bk-search'&&!e.target.dataset.ph&&!e.target.dataset.key)render()});
   // Preset from a link, e.g. a template page: ?c=tam:PU,tam:BI&ph=hệ thống=ví MoMo&a=2&m=pls

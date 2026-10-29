@@ -1,0 +1,89 @@
+{
+  "title": "Thang đo SITEQUAL chất lượng website: Yoo & Donthu (2001)",
+  "description": "Thang đo SITEQUAL 9 biến đo chất lượng website bán hàng, dịch sẵn tiếng Việt: dễ sử dụng, thiết kế thẩm mỹ, tốc độ xử lý, bảo mật. Kèm thang chất lượng tổng thể.",
+  "name": "SITEQUAL",
+  "fullName": "Thang đo chất lượng cảm nhận của website mua sắm trực tuyến SITEQUAL (Yoo & Donthu, 2001)",
+  "field": "Chất lượng dịch vụ",
+  "keyword": "thang đo chất lượng website",
+  "intro": "SITEQUAL do Yoo và Donthu (2001) phát triển để đo chất lượng mà người mua cảm nhận về một website bán hàng trực tuyến. Thang chỉ có 9 biến chia thành 4 thành phần: dễ sử dụng, thiết kế thẩm mỹ, tốc độ xử lý và bảo mật, nên phù hợp với bảng hỏi ngắn. Tác giả còn công bố kèm các thang chất lượng tổng thể của website, thái độ, lòng trung thành và ý định mua. Ở Việt Nam, SITEQUAL hợp với đề tài về chất lượng website hoặc ứng dụng thương mại điện tử tác động đến sự hài lòng, ý định mua lại hoặc lòng trung thành.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), theo trang của tác giả. Người trả lời được yêu cầu ghi tên website mình đánh giá trước khi trả lời.",
+  "constructs": [
+    {
+      "code": "EOU",
+      "nameVi": "Dễ sử dụng",
+      "nameEn": "Ease of Use",
+      "definition": "Mức độ website thuận tiện khi dùng và dễ tìm thông tin.",
+      "source": "Yoo & Donthu (2001), 2 biến (Q1–Q2).",
+      "items": [
+        { "code": "Q1", "en": "This site is convenient to use.", "vi": "[Website] sử dụng thuận tiện." },
+        { "code": "Q2", "en": "It is easy to search for information.", "vi": "Tìm kiếm thông tin trên [website] dễ dàng." }
+      ]
+    },
+    {
+      "code": "AD",
+      "nameVi": "Thiết kế thẩm mỹ",
+      "nameEn": "Aesthetic Design",
+      "definition": "Mức độ website hấp dẫn về hình thức: màu sắc, sáng tạo, hình ảnh sản phẩm.",
+      "source": "Yoo & Donthu (2001), 3 biến (Q3–Q5).",
+      "items": [
+        { "code": "Q3", "en": "This site is colorful.", "vi": "[Website] có màu sắc sinh động." },
+        { "code": "Q4", "en": "This site is creative.", "vi": "[Website] được thiết kế sáng tạo." },
+        { "code": "Q5", "en": "This site shows good pictures of the products.", "vi": "[Website] có hình ảnh sản phẩm đẹp và rõ." }
+      ]
+    },
+    {
+      "code": "PS",
+      "nameVi": "Tốc độ xử lý",
+      "nameEn": "Processing Speed",
+      "definition": "Mức độ website phản hồi và xử lý thao tác của người dùng nhanh chóng.",
+      "source": "Yoo & Donthu (2001), 2 biến (Q6–Q7).",
+      "items": [
+        { "code": "Q6", "en": "It is easy to access the results.", "vi": "Truy cập kết quả trên [website] dễ dàng." },
+        { "code": "Q7", "en": "This site has quick process.", "vi": "[Website] xử lý nhanh." }
+      ]
+    },
+    {
+      "code": "SEC",
+      "nameVi": "Bảo mật",
+      "nameEn": "Security",
+      "definition": "Mức độ người dùng tin rằng giao dịch và thông tin của mình trên website được an toàn.",
+      "source": "Yoo & Donthu (2001), 2 biến (Q8–Q9).",
+      "items": [
+        { "code": "Q8", "en": "This site ensures me of security.", "vi": "[Website] khiến tôi yên tâm về sự an toàn." },
+        { "code": "Q9", "en": "I am confident of security with this site.", "vi": "Tôi tin tưởng vào sự an toàn của [website]." }
+      ]
+    },
+    {
+      "code": "OSQ",
+      "nameVi": "Chất lượng tổng thể của website",
+      "nameEn": "Overall Site Quality",
+      "definition": "Đánh giá chung của người dùng về chất lượng website, dùng làm biến kết quả của 4 thành phần SITEQUAL.",
+      "source": "Yoo & Donthu (2001), thang liên quan, 4 biến (OSQ4 đảo chiều).",
+      "items": [
+        { "code": "OSQ1", "en": "This site is of high quality.", "vi": "[Website] có chất lượng cao." },
+        { "code": "OSQ2", "en": "The likely quality of this site is extremely high.", "vi": "Chất lượng của [website] nhiều khả năng là rất cao." },
+        { "code": "OSQ3", "en": "This site must be of very good quality.", "vi": "[Website] hẳn phải có chất lượng rất tốt." },
+        { "code": "OSQ4", "en": "This site appears to be of very poor quality.", "vi": "[Website] có vẻ có chất lượng rất kém.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Mỗi thành phần chỉ có 2–3 biến, nên Cronbach's alpha dễ thấp hơn các thang dài. Nếu hội đồng yêu cầu ít nhất 3 biến mỗi khái niệm, bổ sung biến từ E-S-QUAL và ghi rõ nguồn từng biến.",
+    "Thay 'this site' bằng tên website hoặc ứng dụng cụ thể. Với ứng dụng di động, có thể dịch 'site' thành 'ứng dụng' nhưng giữ nguyên ý từng câu.",
+    "Q6 và Q7 viết khá chung chung; khi dịch nên đọc thử với 5–10 người để chắc họ hiểu đây là tốc độ xử lý chứ không phải dễ sử dụng.",
+    "OSQ4 là câu đảo chiều, phải đảo điểm (1 thành 7, 7 thành 1) trước khi tính độ tin cậy và EFA.",
+    "Tên slug là 'webqual' nhưng trang này dùng SITEQUAL của Yoo & Donthu (2001); WebQual của Loiacono và cộng sự (2007) hay Barnes & Vidgen (2002) là các thang khác, không trộn câu chữ giữa các thang mà không ghi nguồn."
+  ],
+  "sampleSize": {
+    "arrowsMax": 4,
+    "note": "Khi dùng 4 thành phần SITEQUAL dự báo chất lượng tổng thể của website, biến kết quả nhận 4 mũi tên. Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 85 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo gốc và được tác giả Boonghee Yoo đăng công khai trên trang cá nhân tại Hofstra University. Khi dùng, trích dẫn bài gốc; chúng tôi không tìm thấy điều kiện cấp phép riêng cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Yoo, B., &amp; Donthu, N. (2001). Developing a scale to measure the perceived quality of an Internet shopping site (SITEQUAL). <em>Quarterly Journal of Electronic Commerce, 2</em>(1), 31–47."
+  ],
+  "verifiedFrom": [
+    "https://sites.hofstra.edu/boonghee-yoo/yoo-and-donthus-2001-sitequal/"
+  ],
+  "related": ["e-s-qual", "servqual", "y-dinh-mua"]
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Thang đo tự kiểm soát BSCS tiếng Việt: Tangney và cộng sự (2004)",
+  "description": "Thang đo tự kiểm soát rút gọn BSCS 13 biến dịch sẵn tiếng Việt, có bản gốc tiếng Anh, 9 câu đảo chiều, cách tính điểm và lưu ý về cấu trúc nhân tố.",
+  "name": "BSCS",
+  "fullName": "Thang đo tự kiểm soát rút gọn (Brief Self-Control Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo tự kiểm soát",
+  "intro": "Tự kiểm soát là khả năng thay đổi phản ứng bên trong của bản thân, ngăn lại những thôi thúc không mong muốn và không hành động theo chúng. Tangney, Baumeister và Boone (2004) xây dựng thang Self-Control Scale 36 biến và bản rút gọn 13 biến (BSCS); bản rút gọn được dùng nhiều hơn hẳn. Ở Việt Nam, BSCS hay xuất hiện trong đề tài về nghiện điện thoại, nghiện mạng xã hội, trì hoãn học tập, mua sắm bốc đồng và kết quả học tập của sinh viên.",
+  "responseScale": "Thang mức độ giống bản thân 5 mức, không phải Likert đồng ý: 1 = Hoàn toàn không giống tôi … 5 = Rất giống tôi. Đảo điểm 9 câu phát biểu theo hướng thiếu tự kiểm soát (SC2, SC3, SC4, SC5, SC7, SC9, SC10, SC12, SC13) rồi cộng hoặc lấy trung bình 13 câu; điểm càng cao tự kiểm soát càng tốt.",
+  "constructs": [
+    {
+      "code": "SC",
+      "nameVi": "Tự kiểm soát",
+      "nameEn": "Self-Control",
+      "definition": "Khả năng điều chỉnh hay thay đổi phản ứng bên trong của bản thân, kìm lại các thôi thúc không mong muốn và không hành động theo chúng.",
+      "source": "Tangney, Baumeister & Boone (2004), 13 biến.",
+      "items": [
+        {
+          "code": "SC1",
+          "en": "I am good at resisting temptation.",
+          "vi": "Tôi giỏi cưỡng lại những cám dỗ."
+        },
+        {
+          "code": "SC2",
+          "en": "I have a hard time breaking bad habits.",
+          "vi": "Tôi khó bỏ được các thói quen xấu.",
+          "reverse": true
+        },
+        {
+          "code": "SC3",
+          "en": "I am lazy.",
+          "vi": "Tôi là người lười biếng.",
+          "reverse": true
+        },
+        {
+          "code": "SC4",
+          "en": "I say inappropriate things.",
+          "vi": "Tôi hay nói những điều không phù hợp.",
+          "reverse": true
+        },
+        {
+          "code": "SC5",
+          "en": "I do certain things that are bad for me, if they are fun.",
+          "vi": "Tôi vẫn làm một số việc có hại cho mình nếu những việc đó vui.",
+          "reverse": true
+        },
+        {
+          "code": "SC6",
+          "en": "I refuse things that are bad for me.",
+          "vi": "Tôi từ chối những thứ có hại cho mình."
+        },
+        {
+          "code": "SC7",
+          "en": "I wish I had more self-discipline.",
+          "vi": "Tôi ước mình kỷ luật hơn.",
+          "reverse": true
+        },
+        {
+          "code": "SC8",
+          "en": "People would say that I have iron self-discipline.",
+          "vi": "Mọi người sẽ nói tôi là người có kỷ luật thép."
+        },
+        {
+          "code": "SC9",
+          "en": "Pleasure and fun sometimes keep me from getting work done.",
+          "vi": "Đôi khi những thú vui khiến tôi không hoàn thành được công việc.",
+          "reverse": true
+        },
+        {
+          "code": "SC10",
+          "en": "I have trouble concentrating.",
+          "vi": "Tôi khó tập trung.",
+          "reverse": true
+        },
+        {
+          "code": "SC11",
+          "en": "I am able to work effectively toward long-term goals.",
+          "vi": "Tôi có thể làm việc hiệu quả để đạt các mục tiêu dài hạn."
+        },
+        {
+          "code": "SC12",
+          "en": "Sometimes I can't stop myself from doing something, even if I know it is wrong.",
+          "vi": "Đôi khi tôi không thể ngăn mình làm một việc dù biết việc đó là sai.",
+          "reverse": true
+        },
+        {
+          "code": "SC13",
+          "en": "I often act without thinking through all the alternatives.",
+          "vi": "Tôi thường hành động mà không cân nhắc kỹ các lựa chọn khác.",
+          "reverse": true
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Đảo điểm 9 câu tiêu cực trước khi tính alpha và điểm tổng; với 9/13 câu đảo chiều, quên bước này sẽ làm alpha âm hoặc gần 0.",
+    "Cấu trúc nhân tố của BSCS chưa thống nhất: có nghiên cứu ra 1 nhân tố, có nghiên cứu tách 2 nhân tố (kiềm chế và khởi động, hoặc câu tích cực và câu tiêu cực). Chạy EFA rồi CFA so sánh mô hình 1 và 2 nhân tố, báo cáo mô hình phù hợp hơn thay vì mặc định 1 nhân tố.",
+    "Tangney và cộng sự khuyến nghị dùng điểm tổng; nếu dùng trong SEM mà vài câu tải thấp, có thể loại câu nhưng phải ghi rõ câu nào bị loại và lý do.",
+    "Câu SC4 'I say inappropriate things' và SC8 'iron self-discipline' dễ bị dịch sát chữ, nghe lạ với người Việt; dịch theo nghĩa và thử phỏng vấn nhận thức trước khi khảo sát chính thức.",
+    "Giữ thang 'giống tôi' 5 mức của bản gốc; nếu đổi sang thang đồng ý, ghi rõ trong phương pháp nghiên cứu."
+  ],
+  "sampleSize": {
+    "note": "BSCS là thang đơn lẻ 13 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (65) và nên từ 100 quan sát trở lên; khi đưa vào mô hình với các biến khác thì tính cỡ mẫu theo số mũi tên trỏ vào biến phụ thuộc."
+  },
+  "license": "Các biến được công bố trong bài báo của Tangney, Baumeister và Boone (2004) và được dùng rộng rãi trong nghiên cứu học thuật. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu trả phí cho mục đích nghiên cứu phi thương mại.",
+  "references": [
+    "Tangney, J. P., Baumeister, R. F., &amp; Boone, A. L. (2004). High self-control predicts good adjustment, less pathology, better grades, and interpersonal success. <em>Journal of Personality, 72</em>(2), 271–324. https://doi.org/10.1111/j.0022-3506.2004.00263.x",
+    "Manapat, P. D., Edwards, M. C., MacKinnon, D. P., Poldrack, R. A., &amp; Marsch, L. A. (2019). A psychometric analysis of the Brief Self-Control Scale. <em>Assessment, 28</em>(2), 395–412. https://doi.org/10.1177/1073191119890021"
+  ],
+  "verifiedFrom": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7261631/",
+    "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02903/full"
+  ],
+  "related": [
+    "nghien-dien-thoai-sas-sv",
+    "tu-hieu-qua-gse"
+  ]
+}

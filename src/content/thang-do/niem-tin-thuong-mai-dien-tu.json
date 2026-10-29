@@ -1,0 +1,46 @@
+{
+  "title": "Thang đo niềm tin thương mại điện tử: Gefen và cộng sự (2003)",
+  "description": "Thang đo niềm tin vào người bán trực tuyến 7 biến của Gefen, Karahanna & Straub (2003), dịch sẵn tiếng Việt, có bản gốc tiếng Anh và trích dẫn APA.",
+  "name": "Trust in e-vendor",
+  "fullName": "Niềm tin vào người bán trực tuyến (Trust in the online vendor)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo niềm tin thương mại điện tử",
+  "intro": "Gefen, Karahanna & Straub (2003) tích hợp niềm tin vào TAM để giải thích ý định mua hàng trực tuyến: khi không thể kiểm soát người bán, khách hàng dựa vào niềm tin rằng người bán trung thực, quan tâm tới khách và có năng lực. Thang 7 biến hỏi niềm tin hình thành từ trải nghiệm trước đó với một người bán cụ thể. Đây là một trong những thang niềm tin được trích nhiều nhất trong nghiên cứu thương mại điện tử. Ở Việt Nam, thang hợp với đề tài về mua hàng trên Shopee, Tiki, Lazada, website của thương hiệu, hoặc người bán trên mạng xã hội.",
+  "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý) là dạng thường dùng với các câu khẳng định này; trang đối chiếu (Gefen, Fresneda & Larsen, 2020) không ghi thang trả lời.",
+  "constructs": [
+    {
+      "code": "TR",
+      "nameVi": "Niềm tin vào người bán trực tuyến",
+      "nameEn": "Trust",
+      "definition": "Niềm tin của khách hàng, dựa trên trải nghiệm trước đó, rằng người bán trực tuyến trung thực, quan tâm tới khách, không cơ hội và có năng lực.",
+      "source": "Gefen, Karahanna & Straub (2003), 7 biến; câu chữ đối chiếu qua bản trích trong Gefen, Fresneda & Larsen (2020), Bảng 2.",
+      "items": [
+        { "code": "TR1", "en": "Based on my experience with [the online vendor] in the past, I know it is honest", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này trung thực." },
+        { "code": "TR2", "en": "Based on my experience with [the online vendor] in the past, I know it cares about customers", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này quan tâm tới khách hàng." },
+        { "code": "TR3", "en": "Based on my experience with [the online vendor] in the past, I know it is not opportunistic", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này không lợi dụng khách hàng để trục lợi." },
+        { "code": "TR4", "en": "Based on my experience with [the online vendor] in the past, I know it provides good service", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này cung cấp dịch vụ tốt." },
+        { "code": "TR5", "en": "Based on my experience with [the online vendor] in the past, I know it is predictable", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này hành xử nhất quán, dễ đoán trước." },
+        { "code": "TR6", "en": "Based on my experience with [the online vendor] in the past, I know it is trustworthy", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này đáng tin cậy." },
+        { "code": "TR7", "en": "Based on my experience with [the online vendor] in the past, I know it knows its market", "vi": "Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này hiểu rõ thị trường của mình." }
+      ]
+    }
+  ],
+  "usage": [
+    "Mọi câu bắt đầu bằng 'dựa trên trải nghiệm trước đây', nên chỉ khảo sát người đã từng mua của người bán đó; với người chưa mua, đây không còn là thang phù hợp.",
+    "TR3 'not opportunistic' không phải câu đảo chiều (đồng ý vẫn là tin tưởng), nhưng khó dịch; tránh dịch thành 'không cơ hội' vì người đọc dễ hiểu sai. Khảo sát thử để kiểm tra.",
+    "Trong Gefen, Fresneda & Larsen (2020), TR3, TR5, TR6 bị loại khi chạy mô hình; khi dữ liệu của bạn cho hệ số tải thấp ở các biến này, có thể loại nhưng phải báo cáo.",
+    "Câu dẫn lặp lại 7 lần làm bảng hỏi dài; có thể đặt cụm 'Dựa trên trải nghiệm trước đây với [cửa hàng trực tuyến], tôi biết người bán này…' làm câu dẫn chung rồi liệt kê phần đuôi."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, cỡ mẫu tính theo mô hình mà bạn ghép nó vào. Ví dụ ghép vào TAM để ý định mua nhận 3 mũi tên (niềm tin, PU, PEOU) thì cần tối thiểu 77 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và được chính tác giả đầu dùng lại trong một bài truy cập mở. Khi dùng, trích dẫn Gefen, Karahanna & Straub (2003); không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Gefen, D., Karahanna, E., &amp; Straub, D. W. (2003). Trust and TAM in online shopping: An integrated model. <em>MIS Quarterly, 27</em>(1), 51–90. https://doi.org/10.2307/30036519",
+    "Gefen, D., Fresneda, J. E., &amp; Larsen, K. R. (2020). Trust and distrust as artifacts of language: A latent semantic approach to studying their linguistic correlates. <em>Frontiers in Psychology, 11</em>, 561. https://doi.org/10.3389/fpsyg.2020.00561"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7113403/fullTextXML"
+  ],
+  "related": ["tam", "y-dinh-mua", "ecm-tiep-tuc-su-dung"]
+}

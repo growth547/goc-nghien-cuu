@@ -1,0 +1,136 @@
+{
+  "title": "Thang đo hoạt động marketing mạng xã hội: Kim & Ko (2012)",
+  "description": "Thang đo hoạt động marketing trên mạng xã hội của Kim và Ko (2012) dịch sẵn tiếng Việt: giải trí, tương tác, xu hướng, cá nhân hoá, truyền miệng. Có bản gốc.",
+  "name": "SMMA",
+  "fullName": "Hoạt động marketing trên mạng xã hội (Social Media Marketing Activities)",
+  "field": "Marketing & thương hiệu",
+  "keyword": "thang đo marketing mạng xã hội",
+  "intro": "Kim và Ko (2012) xây dựng thang đo này khi khảo sát 362 khách hàng của Louis Vuitton tại Hàn Quốc về hoạt động marketing trên mạng xã hội của thương hiệu. Thang gồm 5 thành phần: giải trí, tương tác, xu hướng, cá nhân hoá và truyền miệng, với tổng cộng 11 biến. Trong mô hình gốc, hoạt động marketing mạng xã hội tác động lên giá trị, quan hệ và tài sản thương hiệu, rồi tới ý định mua và giá trị khách hàng. Ở Việt Nam, thang đo được dùng nhiều trong các khoá luận về fanpage, TikTok, Instagram của thương hiệu thời trang, mỹ phẩm, F&B và ngân hàng.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo bài gốc.",
+  "constructs": [
+    {
+      "code": "ENT",
+      "nameVi": "Giải trí",
+      "nameEn": "Entertainment",
+      "definition": "Mức độ khách hàng thấy mạng xã hội của thương hiệu vui và nội dung hấp dẫn.",
+      "source": "Kim & Ko (2012), 2 biến (bản gốc ghi \"LV's\" thay cho [brand]'s).",
+      "items": [
+        {
+          "code": "ENT1",
+          "en": "Using [brand]'s social media is fun.",
+          "vi": "Sử dụng mạng xã hội của [thương hiệu] rất vui."
+        },
+        {
+          "code": "ENT2",
+          "en": "Contents shown in [brand]'s social media seem interesting.",
+          "vi": "Nội dung trên mạng xã hội của [thương hiệu] có vẻ thú vị."
+        }
+      ]
+    },
+    {
+      "code": "INT",
+      "nameVi": "Tương tác",
+      "nameEn": "Interaction",
+      "definition": "Mức độ mạng xã hội của thương hiệu cho phép khách hàng chia sẻ thông tin và trao đổi ý kiến với người khác.",
+      "source": "Kim & Ko (2012), 3 biến.",
+      "items": [
+        {
+          "code": "INT1",
+          "en": "[Brand]'s social media enables information sharing with others.",
+          "vi": "Mạng xã hội của [thương hiệu] giúp tôi chia sẻ thông tin với người khác."
+        },
+        {
+          "code": "INT2",
+          "en": "Conversation or opinion exchange with others is possible through [brand]'s social media.",
+          "vi": "Tôi có thể trò chuyện hoặc trao đổi ý kiến với người khác qua mạng xã hội của [thương hiệu]."
+        },
+        {
+          "code": "INT3",
+          "en": "It is easy to deliver my opinion through [brand]'s social media.",
+          "vi": "Tôi dễ dàng bày tỏ ý kiến của mình qua mạng xã hội của [thương hiệu]."
+        }
+      ]
+    },
+    {
+      "code": "TRD",
+      "nameVi": "Tính xu hướng",
+      "nameEn": "Trendiness",
+      "definition": "Mức độ mạng xã hội của thương hiệu cung cấp thông tin mới và bắt kịp xu hướng.",
+      "source": "Kim & Ko (2012), 2 biến.",
+      "items": [
+        {
+          "code": "TRD1",
+          "en": "Contents shown in [brand]'s social media is the newest information.",
+          "vi": "Nội dung trên mạng xã hội của [thương hiệu] là thông tin mới nhất."
+        },
+        {
+          "code": "TRD2",
+          "en": "Using [brand]'s social media is very trendy.",
+          "vi": "Sử dụng mạng xã hội của [thương hiệu] rất hợp xu hướng."
+        }
+      ]
+    },
+    {
+      "code": "CUS",
+      "nameVi": "Cá nhân hoá",
+      "nameEn": "Customization",
+      "definition": "Mức độ mạng xã hội của thương hiệu cung cấp thông tin và dịch vụ phù hợp với từng khách hàng.",
+      "source": "Kim & Ko (2012), 2 biến.",
+      "items": [
+        {
+          "code": "CUS1",
+          "en": "[Brand]'s social media offers customized information search.",
+          "vi": "Mạng xã hội của [thương hiệu] cho phép tìm kiếm thông tin theo nhu cầu riêng của tôi."
+        },
+        {
+          "code": "CUS2",
+          "en": "[Brand]'s social media provides customized service.",
+          "vi": "Mạng xã hội của [thương hiệu] cung cấp dịch vụ phù hợp với cá nhân tôi."
+        }
+      ]
+    },
+    {
+      "code": "WOM",
+      "nameVi": "Truyền miệng",
+      "nameEn": "Word of Mouth",
+      "definition": "Mức độ khách hàng muốn chuyển tiếp thông tin, nội dung từ mạng xã hội của thương hiệu tới người khác.",
+      "source": "Kim & Ko (2012), 2 biến.",
+      "items": [
+        {
+          "code": "WOM1",
+          "en": "I would like to pass along information on brand, product, or services from [brand]'s social media to my friends.",
+          "vi": "Tôi muốn chia sẻ cho bạn bè thông tin về thương hiệu, sản phẩm hoặc dịch vụ mà tôi thấy trên mạng xã hội của [thương hiệu]."
+        },
+        {
+          "code": "WOM2",
+          "en": "I would like to upload contents from [brand]'s social media on my blog or micro blog.",
+          "vi": "Tôi muốn đăng lại nội dung từ mạng xã hội của [thương hiệu] lên trang cá nhân của mình."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Bản gốc ghi tên thương hiệu cụ thể (\"LV's social media\"). Khi dùng, thay [thương hiệu] bằng tên thương hiệu và nêu rõ nền tảng (fanpage Facebook, TikTok, Instagram) để người trả lời không hiểu \"mạng xã hội\" theo nghĩa chung.",
+    "WOM2 nói tới \"blog or micro blog\" vì bài gốc khảo sát năm 2010; với người dùng Việt Nam hiện nay, có thể dịch thành \"trang cá nhân\" hoặc \"tài khoản mạng xã hội của tôi\" và ghi chú việc điều chỉnh này trong chương 3.",
+    "Bốn thành phần chỉ có 2 biến, dễ có Cronbach's alpha thấp hoặc không đủ để chạy CFA riêng. Nhiều nghiên cứu sau (ví dụ Godey và cộng sự, 2016) bổ sung biến; nếu bổ sung, ghi rõ nguồn từng biến.",
+    "Trong bài gốc, các thành phần tải chưa tách bạch ở EFA nên tác giả chạy CFA; khi phân tích, có thể mô hình hoá SMMA là khái niệm bậc hai gồm 5 thành phần bậc một.",
+    "Đối tượng khảo sát phải là người đã theo dõi hoặc từng xem mạng xã hội của thương hiệu; đặt câu hỏi gạn lọc ở đầu bảng hỏi."
+  ],
+  "sampleSize": {
+    "arrowsMax": 4,
+    "note": "Trong mô hình gốc, giá trị khách hàng (customer equity) nhận nhiều nhất 4 mũi tên (từ giá trị, quan hệ, tài sản thương hiệu và ý định mua). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 85 quan sát."
+  },
+  "license": "Các biến quan sát được công bố trong bảng CFA của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Kim, A. J., &amp; Ko, E. (2012). Do social media marketing activities enhance customer equity? An empirical study of luxury fashion brand. <em>Journal of Business Research, 65</em>(10), 1480–1486. https://doi.org/10.1016/j.jbusres.2011.10.014"
+  ],
+  "verifiedFrom": [
+    "https://doi.org/10.1016/j.jbusres.2011.10.014",
+    "https://api.crossref.org/works/10.1016/j.jbusres.2011.10.014"
+  ],
+  "related": [
+    "tai-san-thuong-hieu",
+    "y-dinh-mua",
+    "niem-tin-trung-thanh-thuong-hieu"
+  ]
+}

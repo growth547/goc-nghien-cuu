@@ -1,0 +1,151 @@
+{
+  "title": "Thang đo động lực học tập MSLQ tiếng Việt: Pintrich và cộng sự (1991)",
+  "description": "Ba thang con động lực học tập MSLQ dịch sẵn tiếng Việt: định hướng mục tiêu nội tại, giá trị nhiệm vụ, tự tin vào năng lực học tập. Có bản gốc và trích dẫn.",
+  "name": "MSLQ",
+  "fullName": "Bảng hỏi chiến lược học tập có động lực (Motivated Strategies for Learning Questionnaire)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo động lực học tập",
+  "intro": "MSLQ do Pintrich, Smith, Garcia và McKeachie (1991) tại Đại học Michigan xây dựng để đo động lực và chiến lược học tập của sinh viên đối với một môn học cụ thể. Bản đầy đủ có 81 câu, chia thành 15 thang con thuộc hai phần động lực và chiến lược học tập; tác giả thiết kế để các thang con có thể dùng riêng lẻ. Trang này đưa ba thang con động lực hay gặp nhất trong khoá luận ở Việt Nam: định hướng mục tiêu nội tại, giá trị nhiệm vụ và tự tin vào năng lực học tập, thường dùng trong đề tài về kết quả học tập, học trực tuyến và sự gắn kết của sinh viên.",
+  "responseScale": "Thang mức độ đúng 7 mức, không phải Likert đồng ý: 1 = Hoàn toàn không đúng với tôi … 7 = Rất đúng với tôi. Điểm mỗi thang con là trung bình các câu thuộc thang đó; ba thang con ở đây không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "IGO",
+      "nameVi": "Định hướng mục tiêu nội tại",
+      "nameEn": "Intrinsic Goal Orientation",
+      "definition": "Mức độ sinh viên tham gia môn học vì thử thách, tò mò và mong muốn làm chủ kiến thức, coi việc học là mục đích tự thân chứ không phải phương tiện.",
+      "source": "Pintrich và cộng sự (1991), 4 biến (câu 1, 16, 22, 24 của MSLQ).",
+      "items": [
+        {
+          "code": "IGO1",
+          "en": "In a class like this, I prefer course material that really challenges me so I can learn new things.",
+          "vi": "Trong một môn học như thế này, tôi thích nội dung thật sự thử thách để tôi học được điều mới."
+        },
+        {
+          "code": "IGO2",
+          "en": "In a class like this, I prefer course material that arouses my curiosity, even if it is difficult to learn.",
+          "vi": "Trong một môn học như thế này, tôi thích nội dung khơi gợi sự tò mò của mình, dù khó học."
+        },
+        {
+          "code": "IGO3",
+          "en": "The most satisfying thing for me in this course is trying to understand the content as thoroughly as possible.",
+          "vi": "Điều khiến tôi hài lòng nhất ở môn học này là cố gắng hiểu nội dung thật thấu đáo."
+        },
+        {
+          "code": "IGO4",
+          "en": "When I have the opportunity in this class, I choose course assignments that I can learn from even if they don't guarantee a good grade.",
+          "vi": "Khi có cơ hội trong môn học này, tôi chọn những bài tập giúp tôi học được nhiều, dù không chắc được điểm cao."
+        }
+      ]
+    },
+    {
+      "code": "TV",
+      "nameVi": "Giá trị nhiệm vụ",
+      "nameEn": "Task Value",
+      "definition": "Đánh giá của sinh viên về mức độ thú vị, quan trọng và hữu ích của nội dung môn học.",
+      "source": "Pintrich và cộng sự (1991), 6 biến (câu 4, 10, 17, 23, 26, 27 của MSLQ).",
+      "items": [
+        {
+          "code": "TV1",
+          "en": "I think I will be able to use what I learn in this course in other courses.",
+          "vi": "Tôi nghĩ mình có thể dùng những gì học được ở môn này cho các môn học khác."
+        },
+        {
+          "code": "TV2",
+          "en": "It is important for me to learn the course material in this class.",
+          "vi": "Việc học nội dung của môn học này là quan trọng đối với tôi."
+        },
+        {
+          "code": "TV3",
+          "en": "I am very interested in the content area of this course.",
+          "vi": "Tôi rất quan tâm tới lĩnh vực nội dung của môn học này."
+        },
+        {
+          "code": "TV4",
+          "en": "I think the course material in this class is useful for me to learn.",
+          "vi": "Tôi nghĩ nội dung môn học này hữu ích để tôi học."
+        },
+        {
+          "code": "TV5",
+          "en": "I like the subject matter of this course.",
+          "vi": "Tôi thích chủ đề của môn học này."
+        },
+        {
+          "code": "TV6",
+          "en": "Understanding the subject matter of this course is very important to me.",
+          "vi": "Hiểu được chủ đề của môn học này rất quan trọng với tôi."
+        }
+      ]
+    },
+    {
+      "code": "SE",
+      "nameVi": "Tự tin vào năng lực học tập",
+      "nameEn": "Self-Efficacy for Learning and Performance",
+      "definition": "Kỳ vọng thành công và niềm tin của sinh viên vào khả năng hiểu bài, làm tốt bài tập, bài kiểm tra và đạt kết quả tốt trong môn học.",
+      "source": "Pintrich và cộng sự (1991), 8 biến (câu 5, 6, 12, 15, 20, 21, 29, 31 của MSLQ).",
+      "items": [
+        {
+          "code": "SE1",
+          "en": "I believe I will receive an excellent grade in this class.",
+          "vi": "Tôi tin mình sẽ đạt điểm xuất sắc ở môn học này."
+        },
+        {
+          "code": "SE2",
+          "en": "I'm certain I can understand the most difficult material presented in the readings for this course.",
+          "vi": "Tôi chắc chắn mình hiểu được những nội dung khó nhất trong tài liệu đọc của môn học này."
+        },
+        {
+          "code": "SE3",
+          "en": "I'm confident I can learn the basic concepts taught in this course.",
+          "vi": "Tôi tự tin mình học được các khái niệm cơ bản của môn học này."
+        },
+        {
+          "code": "SE4",
+          "en": "I'm confident I can understand the most complex material presented by the instructor in this course.",
+          "vi": "Tôi tự tin mình hiểu được những nội dung phức tạp nhất mà giảng viên trình bày trong môn học này."
+        },
+        {
+          "code": "SE5",
+          "en": "I'm confident I can do an excellent job on the assignments and tests in this course.",
+          "vi": "Tôi tự tin mình làm rất tốt các bài tập và bài kiểm tra của môn học này."
+        },
+        {
+          "code": "SE6",
+          "en": "I expect to do well in this class.",
+          "vi": "Tôi kỳ vọng mình sẽ học tốt môn học này."
+        },
+        {
+          "code": "SE7",
+          "en": "I'm certain I can master the skills being taught in this class.",
+          "vi": "Tôi chắc chắn mình thành thạo được các kỹ năng được dạy trong môn học này."
+        },
+        {
+          "code": "SE8",
+          "en": "Considering the difficulty of this course, the teacher, and my skills, I think I will do well in this class.",
+          "vi": "Xét độ khó của môn học, giảng viên và kỹ năng của bản thân, tôi nghĩ mình sẽ học tốt môn học này."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "MSLQ hỏi về một môn học cụ thể; ghi rõ tên môn trong lời dẫn hoặc thay 'this course' bằng [môn học]. Nếu muốn hỏi về việc học nói chung, ghi rõ là đã điều chỉnh vì có thể làm thay đổi cấu trúc nhân tố.",
+    "Câu SE3 trong bảng hỏi của sổ tay là 'learn the basic concepts', còn phần mô tả thang con ghi 'understand the basic concepts'; trang này dùng câu trong bảng hỏi, hãy giữ một cách và nói rõ nguồn.",
+    "Thang con giá trị nhiệm vụ và tự tin vào năng lực học tập đều thuộc phần động lực và có thể tương quan cao; chạy CFA và kiểm tra giá trị phân biệt (HTMT) trước khi đưa cả hai vào cùng một mô hình.",
+    "Giữ thang 7 mức 'không đúng với tôi … rất đúng với tôi' của bản gốc; nếu rút xuống 5 mức cho dễ trả lời, ghi rõ trong phương pháp và không so sánh trực tiếp điểm trung bình với các nghiên cứu dùng 7 mức.",
+    "Muốn đo chiến lược học tập (tự điều chỉnh siêu nhận thức, quản lý thời gian, nỗ lực) thì lấy thêm thang con tương ứng trong cùng sổ tay, trích dẫn Pintrich và cộng sự (1991)."
+  ],
+  "sampleSize": {
+    "note": "Ba thang con có tổng cộng 18 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (90) và nên từ 100 quan sát trở lên; nếu các thang con là biến độc lập trong mô hình hồi quy thì đối chiếu thêm với mốc G*Power theo số biến dự báo."
+  },
+  "license": "Toàn bộ bảng hỏi in trong sổ tay hướng dẫn công khai trên ERIC (ED338122). Sổ tay ghi bản quyền 1991 thuộc The Regents of The University of Michigan và cho biết các thang con được thiết kế để nhà nghiên cứu, giảng viên dùng riêng lẻ theo nhu cầu; không thấy yêu cầu trả phí. Khi dùng, trích dẫn sổ tay.",
+  "references": [
+    "Pintrich, P. R., Smith, D. A. F., Garcia, T., &amp; McKeachie, W. J. (1991). <em>A manual for the use of the Motivated Strategies for Learning Questionnaire (MSLQ)</em> (Technical Report No. 91-B-004). National Center for Research to Improve Postsecondary Teaching and Learning, The University of Michigan. https://files.eric.ed.gov/fulltext/ED338122.pdf",
+    "Pintrich, P. R., Smith, D. A. F., Garcia, T., &amp; McKeachie, W. J. (1993). Reliability and predictive validity of the Motivated Strategies for Learning Questionnaire (MSLQ). <em>Educational and Psychological Measurement, 53</em>(3), 801–813. https://doi.org/10.1177/0013164493053003024"
+  ],
+  "verifiedFrom": [
+    "https://files.eric.ed.gov/fulltext/ED338122.pdf"
+  ],
+  "related": [
+    "tu-hieu-qua-gse",
+    "tu-kiem-soat-bscs"
+  ]
+}

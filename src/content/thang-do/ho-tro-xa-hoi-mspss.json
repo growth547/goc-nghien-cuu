@@ -1,0 +1,74 @@
+{
+  "title": "Thang đo hỗ trợ xã hội MSPSS tiếng Việt: Zimet và cộng sự (1988)",
+  "description": "Thang đo hỗ trợ xã hội cảm nhận MSPSS của Zimet dịch sẵn tiếng Việt: 12 biến, 3 nguồn gia đình, bạn bè, người đặc biệt; Likert 7 mức và cách tính điểm.",
+  "name": "MSPSS",
+  "fullName": "Thang đo đa chiều về hỗ trợ xã hội cảm nhận (Multidimensional Scale of Perceived Social Support)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo hỗ trợ xã hội MSPSS",
+  "intro": "MSPSS do Zimet, Dahlem, Zimet và Farley (1988) xây dựng để đo mức hỗ trợ xã hội mà một người cảm nhận được từ ba nguồn: gia đình, bạn bè và một người đặc biệt. Thang có 12 câu, mỗi nguồn 4 câu, ngắn và dễ hiểu nên được dịch sang rất nhiều ngôn ngữ. Ở Việt Nam, MSPSS hay dùng trong đề tài về sức khoẻ tinh thần của sinh viên, người bệnh mạn tính, người cao tuổi, thường làm biến độc lập hoặc biến điều tiết giữa căng thẳng với trầm cảm, lo âu hay sự hài lòng với cuộc sống.",
+  "responseScale": "Likert 7 mức theo mức độ đồng ý: 1 = Cực kỳ không đồng ý (Very Strongly Disagree), 2 = Rất không đồng ý (Strongly Disagree), 3 = Hơi không đồng ý (Mildly Disagree), 4 = Trung lập (Neutral), 5 = Hơi đồng ý (Mildly Agree), 6 = Rất đồng ý (Strongly Agree), 7 = Cực kỳ đồng ý (Very Strongly Agree). Điểm mỗi tiểu thang là trung bình 4 câu, điểm chung là trung bình 12 câu, từ 1 đến 7. Không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "SO",
+      "nameVi": "Hỗ trợ từ người đặc biệt",
+      "nameEn": "Significant Other",
+      "definition": "Mức hỗ trợ một người cảm nhận được từ một người đặc biệt, thân thiết trong đời mình.",
+      "source": "Zimet, Dahlem, Zimet & Farley (1988), 4 biến (câu 1, 2, 5, 10).",
+      "items": [
+        { "code": "SO1", "en": "There is a special person who is around when I am in need.", "vi": "Có một người đặc biệt luôn ở bên khi tôi cần." },
+        { "code": "SO2", "en": "There is a special person with whom I can share joys and sorrows.", "vi": "Có một người đặc biệt mà tôi có thể chia sẻ niềm vui và nỗi buồn." },
+        { "code": "SO5", "en": "I have a special person who is a real source of comfort to me.", "vi": "Tôi có một người đặc biệt là chỗ dựa tinh thần thực sự của mình." },
+        { "code": "SO10", "en": "There is a special person in my life who cares about my feelings.", "vi": "Trong cuộc sống của tôi có một người đặc biệt quan tâm tới cảm xúc của tôi." }
+      ]
+    },
+    {
+      "code": "FAM",
+      "nameVi": "Hỗ trợ từ gia đình",
+      "nameEn": "Family",
+      "definition": "Mức hỗ trợ về tinh thần và giúp đỡ thực tế một người cảm nhận được từ gia đình.",
+      "source": "Zimet, Dahlem, Zimet & Farley (1988), 4 biến (câu 3, 4, 8, 11).",
+      "items": [
+        { "code": "FAM3", "en": "My family really tries to help me.", "vi": "Gia đình thực sự cố gắng giúp đỡ tôi." },
+        { "code": "FAM4", "en": "I get the emotional help & support I need from my family.", "vi": "Tôi nhận được sự giúp đỡ và động viên về tinh thần mà tôi cần từ gia đình." },
+        { "code": "FAM8", "en": "I can talk about my problems with my family.", "vi": "Tôi có thể nói về những vấn đề của mình với gia đình." },
+        { "code": "FAM11", "en": "My family is willing to help me make decisions.", "vi": "Gia đình sẵn lòng giúp tôi đưa ra quyết định." }
+      ]
+    },
+    {
+      "code": "FRI",
+      "nameVi": "Hỗ trợ từ bạn bè",
+      "nameEn": "Friends",
+      "definition": "Mức hỗ trợ về tinh thần và giúp đỡ thực tế một người cảm nhận được từ bạn bè.",
+      "source": "Zimet, Dahlem, Zimet & Farley (1988), 4 biến (câu 6, 7, 9, 12).",
+      "items": [
+        { "code": "FRI6", "en": "My friends really try to help me.", "vi": "Bạn bè thực sự cố gắng giúp đỡ tôi." },
+        { "code": "FRI7", "en": "I can count on my friends when things go wrong.", "vi": "Tôi có thể trông cậy vào bạn bè khi mọi việc không suôn sẻ." },
+        { "code": "FRI9", "en": "I have friends with whom I can share my joys and sorrows.", "vi": "Tôi có những người bạn để chia sẻ niềm vui và nỗi buồn." },
+        { "code": "FRI12", "en": "I can talk about my problems with my friends.", "vi": "Tôi có thể nói về những vấn đề của mình với bạn bè." }
+      ]
+    }
+  ],
+  "usage": [
+    "MSPSS đo hỗ trợ xã hội mà người trả lời cảm nhận được, không phải công cụ chẩn đoán. Khi dùng chung với các thang sàng lọc như PHQ-9, GAD-7, DASS-21, đề tài phải làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ, ví dụ phòng tư vấn tâm lý của trường hoặc đường dây nóng hỗ trợ tâm lý, ở cuối bảng hỏi.",
+    "Đặt 12 câu theo đúng thứ tự gốc (mã biến ở đây giữ số thứ tự gốc), không gom theo nguồn. 'Người đặc biệt' do người trả lời tự hiểu; người Việt dễ hiểu là người yêu, nên có thể thêm chú thích ngắn như 'người yêu, vợ/chồng hoặc một người rất thân' và ghi rõ điều chỉnh này trong chương phương pháp.",
+    "Câu chữ tiếng Anh ở đây chép từ mẫu bảng hỏi trên trang của tác giả. Một số bản lưu hành khác ghi câu 2 là 'share my joys and sorrows' và câu 4 là 'help and support'; khác biệt không đổi nghĩa, nhưng nên ghi rõ bạn lấy bản từ nguồn nào.",
+    "Phần tiếng Việt ở đây là bản dịch của trang này. Đã có bản MSPSS tiếng Việt được kiểm định trên 500 người sống chung với HIV/AIDS (Kieu, Vuong & Dung, 2023), đạt Cronbach's alpha 0,90 và cấu trúc được CFA xác nhận; nếu dùng bản đó, trích dẫn bài kiểm định.",
+    "Chạy CFA 3 nhân tố (người đặc biệt, gia đình, bạn bè) và báo cáo cả điểm từng nguồn lẫn điểm chung; nếu hai nhân tố tương quan quá cao, kiểm tra giá trị phân biệt (HTMT hoặc Fornell–Larcker) trước khi tách riêng trong mô hình."
+  ],
+  "sampleSize": {
+    "note": "MSPSS là thang đơn lẻ 12 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến, tức 60 quan sát, và nên từ 100 quan sát trở lên; chạy CFA 3 nhân tố thì nên từ 150–200 quan sát."
+  },
+  "license": "Theo trang MSPSS của Gregory Zimet, thang được dùng miễn phí, chỉ cần trích dẫn bài gốc năm 1988; trang này còn cung cấp sẵn một thư cho phép sử dụng cho nghiên cứu nếu trường yêu cầu.",
+  "references": [
+    "Zimet, G. D., Dahlem, N. W., Zimet, S. G., &amp; Farley, G. K. (1988). The Multidimensional Scale of Perceived Social Support. <em>Journal of Personality Assessment, 52</em>(1), 30–41. https://doi.org/10.1207/s15327752jpa5201_2",
+    "Kieu, P. T., Vuong, N. L., &amp; Dung, D. V. (2023). Validation of Multidimensional Scale of Perceived Social Support (MSPSS) in Vietnamese among people living with HIV/AIDS. <em>AIDS and Behavior, 27</em>(8), 2488–2496. https://doi.org/10.1007/s10461-022-03974-1"
+  ],
+  "verifiedFrom": [
+    "https://gzimet.wixsite.com/mspss",
+    "https://gzimet.wixsite.com/mspss/about-us",
+    "https://12fab08f-d2d3-ce70-6d1a-9d3fa0d8a67b.filesusr.com/ugd/5119f9_b72b60c1285542cbb8ee2941a8e97c2b.pdf",
+    "https://12fab08f-d2d3-ce70-6d1a-9d3fa0d8a67b.filesusr.com/ugd/5119f9_664dc96d5f564c34b441b310c9392446.pdf",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10338605/"
+  ],
+  "related": ["co-don-ucla-3", "hai-long-cuoc-song-swls", "dass-21"]
+}

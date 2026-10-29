@@ -1,0 +1,47 @@
+{
+  "title": "Thang đo phục hồi BRS tiếng Việt: Smith và cộng sự (2008)",
+  "description": "Thang đo khả năng phục hồi BRS (Brief Resilience Scale) dịch sẵn tiếng Việt: 6 biến, 3 câu đảo chiều, Likert 5 mức, cách tính điểm trung bình và lưu ý khi dùng.",
+  "name": "BRS",
+  "fullName": "Thang đo khả năng phục hồi ngắn (Brief Resilience Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo khả năng phục hồi BRS",
+  "intro": "BRS do Smith và cộng sự (2008) xây dựng để đo khả năng 'bật lại' (bounce back), tức hồi phục sau căng thẳng và nghịch cảnh, theo đúng nghĩa gốc của từ resilience. Khác với các thang đo nguồn lực giúp con người kiên cường, BRS hỏi trực tiếp người trả lời hồi phục nhanh hay chậm. Thang có 6 câu, 3 câu thuận và 3 câu nghịch xen kẽ nhau. Ở Việt Nam, BRS hợp với đề tài về áp lực học tập, kiệt sức nghề nghiệp, sức khoẻ tinh thần sau biến cố, và làm biến trung gian hoặc điều tiết giữa căng thẳng với kết quả.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý). Đảo điểm 3 câu BRS2, BRS4, BRS6 (1 thành 5, 2 thành 4, 3 giữ nguyên, 4 thành 2, 5 thành 1) rồi lấy trung bình 6 câu, điểm từ 1 đến 5; điểm càng cao khả năng phục hồi càng tốt.",
+  "constructs": [
+    {
+      "code": "BRS",
+      "nameVi": "Khả năng phục hồi",
+      "nameEn": "Resilience (ability to bounce back)",
+      "definition": "Khả năng hồi phục, lấy lại trạng thái bình thường sau căng thẳng hoặc biến cố bất lợi.",
+      "source": "Smith và cộng sự (2008), 6 biến.",
+      "items": [
+        { "code": "BRS1", "en": "I tend to bounce back quickly after hard times", "vi": "Tôi thường nhanh chóng lấy lại tinh thần sau những giai đoạn khó khăn." },
+        { "code": "BRS2", "en": "I have a hard time making it through stressful events", "vi": "Tôi thấy khó vượt qua những sự kiện căng thẳng.", "reverse": true },
+        { "code": "BRS3", "en": "It does not take me long to recover from a stressful event", "vi": "Tôi không mất nhiều thời gian để hồi phục sau một sự kiện căng thẳng." },
+        { "code": "BRS4", "en": "It is hard for me to snap back when something bad happens", "vi": "Tôi khó lấy lại trạng thái bình thường khi có chuyện tồi tệ xảy ra.", "reverse": true },
+        { "code": "BRS5", "en": "I usually come through difficult times with little trouble", "vi": "Tôi thường vượt qua những lúc khó khăn mà không gặp nhiều trở ngại." },
+        { "code": "BRS6", "en": "I tend to take a long time to get over set-backs in my life", "vi": "Tôi thường mất nhiều thời gian mới vượt qua được những thất bại trong cuộc sống.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "BRS đo một đặc điểm tâm lý, không phải công cụ chẩn đoán; điểm thấp không có nghĩa người trả lời có rối loạn tâm thần. Đề tài có hỏi về sức khoẻ tinh thần phải làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ, ví dụ phòng tư vấn tâm lý của trường hoặc đường dây nóng hỗ trợ tâm lý, ở cuối bảng hỏi.",
+    "Nhớ đảo điểm BRS2, BRS4, BRS6 trước khi tính Cronbach's alpha và điểm trung bình; quên bước này làm alpha thấp bất thường hoặc âm. Giữ thứ tự xen kẽ câu thuận và câu nghịch như bản gốc.",
+    "Câu thuận và câu nghịch đôi khi tách thành hai nhân tố do hiệu ứng cách diễn đạt, và một số bản dịch gặp vấn đề với riêng câu 5; chạy EFA/CFA, xem hệ số tải từng câu và báo cáo rõ nếu phải loại câu.",
+    "BRS đo kết quả 'hồi phục được hay không', không đo nguồn lực như lạc quan, hỗ trợ xã hội hay tự hiệu quả. Nếu mô hình có cả các biến đó, giữ chúng là khái niệm riêng (ví dụ dùng GSE cho tự hiệu quả, MSPSS cho hỗ trợ xã hội) thay vì gộp vào BRS.",
+    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. Các động từ 'bounce back', 'snap back' khó dịch sát; nên dịch ngược và khảo sát thử 20–30 người trước khi khảo sát chính thức."
+  ],
+  "sampleSize": {
+    "note": "BRS là thang đơn lẻ 6 biến. Theo Hair và cộng sự, EFA cần tối thiểu 50 quan sát (5 quan sát cho mỗi biến, không dưới 50) và nên từ 100 quan sát trở lên; khi BRS là một biến trong mô hình lớn, tính cỡ mẫu theo mô hình đó."
+  },
+  "license": "Theo PhenX Toolkit (NIH), giao thức BRS được cung cấp miễn phí, không cần xin phép để sử dụng. Khi dùng, trích dẫn bài gốc của Smith và cộng sự (2008).",
+  "references": [
+    "Smith, B. W., Dalen, J., Wiggins, K., Tooley, E., Christopher, P., &amp; Bernard, J. (2008). The brief resilience scale: Assessing the ability to bounce back. <em>International Journal of Behavioral Medicine, 15</em>(3), 194–200. https://doi.org/10.1080/10705500802222972"
+  ],
+  "verifiedFrom": [
+    "https://phenxtoolkit.org/protocols/view/251401",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5811014/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7068432/"
+  ],
+  "related": ["tu-hieu-qua-gse", "ho-tro-xa-hoi-mspss", "cang-thang-pss-10"]
+}

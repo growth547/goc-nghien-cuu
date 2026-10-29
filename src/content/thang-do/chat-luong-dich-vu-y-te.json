@@ -1,0 +1,113 @@
+{
+  "title": "Thang đo PSQ-18 sự hài lòng người bệnh: Marshall & Hays (1994)",
+  "description": "Thang đo PSQ-18 của RAND đo sự hài lòng của người bệnh với dịch vụ y tế, 18 biến, 7 thành phần, dịch sẵn tiếng Việt. Có câu đảo chiều và cách tính điểm.",
+  "name": "PSQ-18",
+  "fullName": "Bảng hỏi sự hài lòng của người bệnh dạng ngắn PSQ-18 (Patient Satisfaction Questionnaire Short Form, Marshall & Hays, 1994)",
+  "field": "Chất lượng dịch vụ",
+  "keyword": "thang đo sự hài lòng người bệnh",
+  "intro": "PSQ-18 do Marshall và Hays (1994) tại RAND rút gọn từ bảng hỏi PSQ-III 50 biến, dùng để đo mức độ hài lòng của người bệnh với dịch vụ khám chữa bệnh. 18 biến chia thành 7 thành phần: hài lòng chung, chất lượng chuyên môn, cách đối xử, giao tiếp, khía cạnh tài chính, thời gian bác sĩ dành cho người bệnh, khả năng tiếp cận và sự thuận tiện. Bảng hỏi mất khoảng 3–4 phút để trả lời. Ở Việt Nam, PSQ-18 phù hợp với đề tài về sự hài lòng của người bệnh ngoại trú, chất lượng dịch vụ bệnh viện công và tư, phòng khám tư nhân.",
+  "responseScale": "Likert 5 mức theo mức độ đồng ý. Bản gốc của RAND đánh số ngược: 1 = Strongly Agree, 2 = Agree, 3 = Uncertain, 4 = Disagree, 5 = Strongly Disagree; hướng dẫn chấm điểm quy đổi để điểm cao luôn là hài lòng cao. Nếu đổi sang 1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý, chỉ cần đảo điểm các câu đánh dấu đảo chiều.",
+  "constructs": [
+    {
+      "code": "GS",
+      "nameVi": "Hài lòng chung",
+      "nameEn": "General Satisfaction",
+      "definition": "Đánh giá chung của người bệnh về dịch vụ y tế đang nhận.",
+      "source": "Marshall & Hays (1994), 2 biến (câu 3 và 17).",
+      "items": [
+        { "code": "PSQ3", "en": "The medical care I have been receiving is just about perfect.", "vi": "Dịch vụ y tế tôi đang nhận gần như hoàn hảo." },
+        { "code": "PSQ17", "en": "I am dissatisfied with some things about the medical care I receive.", "vi": "Tôi không hài lòng với một số điều trong dịch vụ y tế tôi nhận được.", "reverse": true }
+      ]
+    },
+    {
+      "code": "TQ",
+      "nameVi": "Chất lượng chuyên môn",
+      "nameEn": "Technical Quality",
+      "definition": "Đánh giá của người bệnh về năng lực chuyên môn, sự cẩn thận và trang thiết bị.",
+      "source": "Marshall & Hays (1994), 4 biến (câu 2, 4, 6, 14).",
+      "items": [
+        { "code": "PSQ2", "en": "I think my doctor's office has everything needed to provide complete medical care.", "vi": "Tôi nghĩ [cơ sở y tế] có đủ mọi thứ cần thiết để chăm sóc y tế đầy đủ." },
+        { "code": "PSQ4", "en": "Sometimes doctors make me wonder if their diagnosis is correct.", "vi": "Đôi khi các bác sĩ khiến tôi băn khoăn liệu chẩn đoán của họ có đúng không.", "reverse": true },
+        { "code": "PSQ6", "en": "When I go for medical care, they are careful to check everything when treating and examining me.", "vi": "Khi tôi đi khám, họ cẩn thận kiểm tra mọi thứ trong lúc điều trị và thăm khám cho tôi." },
+        { "code": "PSQ14", "en": "I have some doubts about the ability of the doctors who treat me.", "vi": "Tôi có một số nghi ngờ về năng lực của các bác sĩ điều trị cho tôi.", "reverse": true }
+      ]
+    },
+    {
+      "code": "IM",
+      "nameVi": "Cách đối xử",
+      "nameEn": "Interpersonal Manner",
+      "definition": "Thái độ thân thiện, tôn trọng của bác sĩ với người bệnh.",
+      "source": "Marshall & Hays (1994), 2 biến (câu 10 và 11).",
+      "items": [
+        { "code": "PSQ10", "en": "Doctors act too businesslike and impersonal toward me.", "vi": "Các bác sĩ cư xử với tôi quá công việc và thiếu tình người.", "reverse": true },
+        { "code": "PSQ11", "en": "My doctors treat me in a very friendly and courteous manner.", "vi": "Các bác sĩ của tôi đối xử với tôi rất thân thiện và lịch sự." }
+      ]
+    },
+    {
+      "code": "COM",
+      "nameVi": "Giao tiếp",
+      "nameEn": "Communication",
+      "definition": "Mức độ bác sĩ giải thích và lắng nghe người bệnh.",
+      "source": "Marshall & Hays (1994), 2 biến (câu 1 và 13).",
+      "items": [
+        { "code": "PSQ1", "en": "Doctors are good about explaining the reason for medical tests.", "vi": "Các bác sĩ giải thích rõ lý do phải làm các xét nghiệm." },
+        { "code": "PSQ13", "en": "Doctors sometimes ignore what I tell them.", "vi": "Các bác sĩ đôi khi bỏ qua những gì tôi nói với họ.", "reverse": true }
+      ]
+    },
+    {
+      "code": "FA",
+      "nameVi": "Khía cạnh tài chính",
+      "nameEn": "Financial Aspects",
+      "definition": "Mức độ người bệnh lo lắng về chi phí khám chữa bệnh.",
+      "source": "Marshall & Hays (1994), 2 biến (câu 5 và 7).",
+      "items": [
+        { "code": "PSQ5", "en": "I feel confident that I can get the medical care I need without being set back financially.", "vi": "Tôi tin rằng mình có thể nhận dịch vụ y tế cần thiết mà không bị khó khăn về tài chính." },
+        { "code": "PSQ7", "en": "I have to pay for more of my medical care than I can afford.", "vi": "Tôi phải trả chi phí khám chữa bệnh nhiều hơn khả năng chi trả của mình.", "reverse": true }
+      ]
+    },
+    {
+      "code": "TS",
+      "nameVi": "Thời gian dành cho người bệnh",
+      "nameEn": "Time Spent with Doctor",
+      "definition": "Cảm nhận của người bệnh về lượng thời gian bác sĩ dành cho mình.",
+      "source": "Marshall & Hays (1994), 2 biến (câu 12 và 15).",
+      "items": [
+        { "code": "PSQ12", "en": "Those who provide my medical care sometimes hurry too much when they treat me.", "vi": "Những người chăm sóc y tế cho tôi đôi khi quá vội vàng khi điều trị cho tôi.", "reverse": true },
+        { "code": "PSQ15", "en": "Doctors usually spend plenty of time with me.", "vi": "Các bác sĩ thường dành nhiều thời gian cho tôi." }
+      ]
+    },
+    {
+      "code": "AC",
+      "nameVi": "Khả năng tiếp cận và sự thuận tiện",
+      "nameEn": "Accessibility and Convenience",
+      "definition": "Mức độ người bệnh dễ dàng nhận được dịch vụ khi cần: lịch hẹn, chuyên khoa, cấp cứu.",
+      "source": "Marshall & Hays (1994), 4 biến (câu 8, 9, 16, 18).",
+      "items": [
+        { "code": "PSQ8", "en": "I have easy access to the medical specialists I need.", "vi": "Tôi dễ dàng tiếp cận các bác sĩ chuyên khoa mình cần." },
+        { "code": "PSQ9", "en": "Where I get medical care, people have to wait too long for emergency treatment.", "vi": "Ở nơi tôi khám chữa bệnh, người bệnh phải chờ quá lâu để được cấp cứu.", "reverse": true },
+        { "code": "PSQ16", "en": "I find it hard to get an appointment for medical care right away.", "vi": "Tôi thấy khó đặt được lịch khám ngay khi cần.", "reverse": true },
+        { "code": "PSQ18", "en": "I am able to get medical care whenever I need it.", "vi": "Tôi có thể nhận được dịch vụ y tế bất cứ khi nào tôi cần." }
+      ]
+    }
+  ],
+  "usage": [
+    "Giữ đúng thứ tự 18 câu như bản gốc, không xếp theo thành phần; các câu thuận và câu nghịch xen kẽ để giảm trả lời theo quán tính.",
+    "9 câu đảo chiều (4, 7, 9, 10, 12, 13, 14, 16, 17) phải đảo điểm trước khi tính điểm thành phần, Cronbach's alpha hay EFA. RAND tính điểm thành phần bằng trung bình các câu đã trả lời, bỏ qua câu bỏ trống.",
+    "Mỗi thành phần chỉ có 2–4 câu nên alpha của thành phần 2 câu thường thấp; nhiều nghiên cứu báo cáo tương quan giữa 2 câu thay cho alpha, hoặc dùng điểm tổng làm một biến hài lòng.",
+    "Khi dịch, giữ đúng sắc thái phủ định ('đôi khi bỏ qua', 'quá vội vàng'). 'Doctor's office' nên đổi thành tên bệnh viện, phòng khám hoặc khoa cụ thể và ghi rõ trong chương phương pháp.",
+    "Câu về tài chính (5, 7) chịu ảnh hưởng mạnh của bảo hiểm y tế; nên hỏi thêm người bệnh có dùng thẻ BHYT hay không để phân tích nhóm."
+  ],
+  "sampleSize": {
+    "note": "PSQ-18 là thang đo, không phải mô hình. Khi dùng 7 thành phần làm biến dự báo một biến kết quả (ví dụ ý định quay lại), phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 103 quan sát."
+  },
+  "license": "Theo trang của RAND Health, các bảng hỏi do RAND Health phát triển được dùng công khai; RAND không thu phí và không yêu cầu xin phép cho mục đích phi thương mại, chỉ cần trích dẫn phù hợp. Dịch sang ngôn ngữ khác cũng không cần xin phép.",
+  "references": [
+    "Marshall, G. N., &amp; Hays, R. D. (1994). <em>The Patient Satisfaction Questionnaire Short Form (PSQ-18)</em> (P-7865). RAND Corporation."
+  ],
+  "verifiedFrom": [
+    "https://www.rand.org/health/surveys/psq.html",
+    "https://www.rand.org/content/dam/rand/www/external/health/surveys_tools/psq/psq18_survey.pdf",
+    "https://www.rand.org/content/dam/rand/www/external/health/surveys_tools/psq/psq18_scoring.pdf"
+  ],
+  "related": ["servqual", "servperf", "y-dinh-hanh-vi-khach-hang"]
+}

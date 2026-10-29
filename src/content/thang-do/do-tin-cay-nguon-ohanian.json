@@ -1,0 +1,74 @@
+{
+  "title": "Thang đo độ tin cậy nguồn tiếng Việt: Ohanian (1990)",
+  "description": "Thang đo độ tin cậy của người nổi tiếng, KOL, influencer theo Ohanian (1990): sức hấp dẫn, sự đáng tin, chuyên môn. 15 cặp tính từ dịch sẵn, có bản gốc.",
+  "name": "Source Credibility",
+  "fullName": "Thang đo độ tin cậy nguồn (Source Credibility Scale)",
+  "field": "Marketing & thương hiệu",
+  "keyword": "thang đo độ tin cậy nguồn Ohanian",
+  "intro": "Ohanian (1990) xây dựng thang đo này để đo cách người tiêu dùng đánh giá người nổi tiếng đại diện cho thương hiệu. Thang gồm 15 cặp tính từ đối lập, chia đều cho 3 thành phần: sức hấp dẫn, sự đáng tin và chuyên môn. Đây là thang đo được trích dẫn nhiều nhất khi nghiên cứu hiệu quả của người đại diện quảng cáo. Ở Việt Nam, thang đo thường dùng cho đề tài về KOL, KOC, influencer trên TikTok, YouTube, Instagram và tác động của họ lên thái độ hoặc ý định mua.",
+  "responseScale": "Thang đối nghĩa (semantic differential) 7 mức giữa hai tính từ đối lập, ví dụ 1 = Không hấp dẫn … 7 = Hấp dẫn. Không phải thang mức độ đồng ý.",
+  "constructs": [
+    {
+      "code": "ATT",
+      "nameVi": "Sức hấp dẫn",
+      "nameEn": "Attractiveness",
+      "definition": "Mức độ người đại diện được cảm nhận là cuốn hút về ngoại hình và phong cách.",
+      "source": "Ohanian (1990), 5 biến.",
+      "items": [
+        { "code": "ATT1", "en": "Unattractive – Attractive", "vi": "Không hấp dẫn – Hấp dẫn" },
+        { "code": "ATT2", "en": "Not classy – Classy", "vi": "Không sang trọng – Sang trọng" },
+        { "code": "ATT3", "en": "Ugly – Beautiful", "vi": "Xấu – Đẹp" },
+        { "code": "ATT4", "en": "Plain – Elegant", "vi": "Giản đơn – Thanh lịch" },
+        { "code": "ATT5", "en": "Not sexy – Sexy", "vi": "Không quyến rũ – Quyến rũ" }
+      ]
+    },
+    {
+      "code": "TRU",
+      "nameVi": "Sự đáng tin",
+      "nameEn": "Trustworthiness",
+      "definition": "Mức độ người xem tin rằng người đại diện trung thực và nói điều mình thật sự nghĩ.",
+      "source": "Ohanian (1990), 5 biến.",
+      "items": [
+        { "code": "TRU1", "en": "Not dependable – Dependable", "vi": "Không thể trông cậy – Có thể trông cậy" },
+        { "code": "TRU2", "en": "Dishonest – Honest", "vi": "Không trung thực – Trung thực" },
+        { "code": "TRU3", "en": "Unreliable – Reliable", "vi": "Không đáng tin cậy – Đáng tin cậy" },
+        { "code": "TRU4", "en": "Insincere – Sincere", "vi": "Không chân thành – Chân thành" },
+        { "code": "TRU5", "en": "Untrustworthy – Trustworthy", "vi": "Không đáng tin – Đáng tin" }
+      ]
+    },
+    {
+      "code": "EXP",
+      "nameVi": "Chuyên môn",
+      "nameEn": "Expertise",
+      "definition": "Mức độ người đại diện được cảm nhận là có kiến thức, kinh nghiệm và kỹ năng về sản phẩm được giới thiệu.",
+      "source": "Ohanian (1990), 5 biến.",
+      "items": [
+        { "code": "EXP1", "en": "Not an expert – Expert", "vi": "Không phải chuyên gia – Chuyên gia" },
+        { "code": "EXP2", "en": "Inexperienced – Experienced", "vi": "Thiếu kinh nghiệm – Có kinh nghiệm" },
+        { "code": "EXP3", "en": "Unknowledgeable – Knowledgeable", "vi": "Không am hiểu – Am hiểu" },
+        { "code": "EXP4", "en": "Unqualified – Qualified", "vi": "Không đủ năng lực – Đủ năng lực" },
+        { "code": "EXP5", "en": "Unskilled – Skilled", "vi": "Không có kỹ năng – Có kỹ năng" }
+      ]
+    }
+  ],
+  "usage": [
+    "Mỗi biến là một cặp tính từ, không phải câu phát biểu. Trình bày trên bảng hỏi theo dạng hàng ngang: tính từ tiêu cực bên trái, tích cực bên phải, 7 ô ở giữa; câu dẫn ví dụ \"Theo bạn, [người đại diện] là người:\".",
+    "Đừng chuyển sang câu Likert kiểu \"[người đại diện] hấp dẫn\" rồi vẫn ghi nguồn Ohanian (1990) như nguyên bản; nếu chuyển dạng, ghi rõ là đã điều chỉnh.",
+    "\"Sexy\" và \"Classy\" khó dịch tự nhiên với KOL nam hoặc KOL chuyên môn (bác sĩ, chuyên gia tài chính); có thể giữ nghĩa \"quyến rũ\", \"sang trọng\" và thử phỏng vấn sâu vài người trước khi khảo sát chính thức.",
+    "Nên cho người trả lời xem ảnh hoặc clip của người đại diện cụ thể trước khi đánh giá, và hỏi một câu gạn lọc về mức độ biết người đó.",
+    "Chạy Cronbach's alpha và CFA cho 3 thành phần; với mẫu Việt Nam, sức hấp dẫn và sự đáng tin đôi khi tải chéo, cần kiểm tra giá trị phân biệt (HTMT)."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo đơn lẻ, không phải mô hình. Cỡ mẫu tính theo mô hình nghiên cứu của bạn; ví dụ nếu 3 thành phần cùng tác động lên thái độ hoặc ý định mua thì cần tối thiểu 77 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các cặp tính từ được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu quảng cáo. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Ohanian, R. (1990). Construction and validation of a scale to measure celebrity endorsers' perceived expertise, trustworthiness, and attractiveness. <em>Journal of Advertising, 19</em>(3), 39–52. https://doi.org/10.1080/00913367.1990.10673191",
+    "Charbonneau, J., &amp; Garland, R. (2006). The use of celebrity athletes as endorsers: Views of the New Zealand general public. <em>International Journal of Sports Marketing and Sponsorship, 7</em>(4), 31–38. https://doi.org/10.1108/ijsms-07-04-2006-b007"
+  ],
+  "verifiedFrom": [
+    "https://researchcommons.waikato.ac.nz/server/api/core/bitstreams/b7b47d35-e8c1-4bdc-9382-860385a73c44/content",
+    "https://api.crossref.org/works/10.1080/00913367.1990.10673191"
+  ],
+  "related": ["y-dinh-mua", "tai-san-thuong-hieu", "niem-tin-trung-thanh-thuong-hieu"]
+}

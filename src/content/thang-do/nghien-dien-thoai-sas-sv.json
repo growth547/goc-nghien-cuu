@@ -1,0 +1,48 @@
+{
+  "title": "Thang đo nghiện điện thoại SAS-SV tiếng Việt: Kwon và cộng sự (2013)",
+  "description": "Thang đo nghiện điện thoại thông minh SAS-SV 10 biến dịch sẵn tiếng Việt, có bản gốc tiếng Anh, điểm cắt theo giới tính và lưu ý khi dùng cho sinh viên.",
+  "name": "SAS-SV",
+  "fullName": "Thang đo nghiện điện thoại thông minh bản rút gọn (Smartphone Addiction Scale – Short Version)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo nghiện điện thoại",
+  "intro": "SAS-SV đo mức độ nghiện điện thoại thông minh qua các biểu hiện như ảnh hưởng tới sinh hoạt hằng ngày, khó chịu khi không có điện thoại, dùng lâu hơn dự định và người xung quanh phàn nàn. Kwon, Kim, Cho và Yang (2013) rút 10 câu từ thang SAS 33 câu dựa trên ý kiến chuyên gia và kiểm định trên học sinh trung học Hàn Quốc. Ở Việt Nam, SAS-SV là thang nghiện điện thoại được dùng nhiều nhất trong đề tài về sinh viên, liên quan tới giấc ngủ, căng thẳng, kết quả học tập và FoMO.",
+  "responseScale": "Likert 6 mức (1 = Hoàn toàn không đồng ý … 6 = Hoàn toàn đồng ý), theo thang của bản SAS gốc mà SAS-SV được rút ra. Cộng 10 câu, điểm tổng từ 10 đến 60; không có câu đảo chiều. Kwon và cộng sự (2013) đề xuất điểm cắt 31 cho nam và 33 cho nữ ở học sinh Hàn Quốc.",
+  "constructs": [
+    {
+      "code": "SAS",
+      "nameVi": "Nghiện điện thoại thông minh",
+      "nameEn": "Smartphone Addiction",
+      "definition": "Mức độ sử dụng điện thoại thông minh quá mức tới mức gây rối loạn sinh hoạt, khó chịu khi không có điện thoại và khó kiểm soát thời gian sử dụng.",
+      "source": "Kwon, Kim, Cho & Yang (2013), 10 biến.",
+      "items": [
+        { "code": "SA1", "en": "Missing planned work due to smartphone use", "vi": "Bỏ lỡ công việc đã lên kế hoạch vì dùng điện thoại." },
+        { "code": "SA2", "en": "Having a hard time concentrating in class, while doing assignments, or while working due to smartphone use", "vi": "Khó tập trung trong giờ học, khi làm bài tập hoặc khi làm việc vì dùng điện thoại." },
+        { "code": "SA3", "en": "Feeling pain in the wrists or at the back of the neck while using a smartphone", "vi": "Thấy đau cổ tay hoặc sau gáy khi dùng điện thoại." },
+        { "code": "SA4", "en": "Won't be able to stand not having a smartphone", "vi": "Không chịu nổi khi không có điện thoại bên mình." },
+        { "code": "SA5", "en": "Feeling impatient and fretful when I am not holding my smartphone", "vi": "Thấy sốt ruột, bứt rứt khi không cầm điện thoại trên tay." },
+        { "code": "SA6", "en": "Having my smartphone in my mind even when I am not using it", "vi": "Vẫn nghĩ tới điện thoại ngay cả khi không dùng." },
+        { "code": "SA7", "en": "I will never give up using my smartphone even when my daily life is already greatly affected by it.", "vi": "Tôi sẽ không bao giờ bỏ dùng điện thoại, kể cả khi nó đã ảnh hưởng nhiều tới cuộc sống hằng ngày của tôi." },
+        { "code": "SA8", "en": "Constantly checking my smartphone so as not to miss conversations between other people on Twitter or Facebook", "vi": "Liên tục kiểm tra điện thoại để không bỏ lỡ các cuộc trò chuyện của người khác trên Twitter hoặc Facebook." },
+        { "code": "SA9", "en": "Using my smartphone longer than I had intended", "vi": "Dùng điện thoại lâu hơn dự định." },
+        { "code": "SA10", "en": "The people around me tell me that I use my smartphone too much.", "vi": "Những người xung quanh nói rằng tôi dùng điện thoại quá nhiều." }
+      ]
+    }
+  ],
+  "usage": [
+    "Câu SA8 nhắc tới Twitter và Facebook; với sinh viên Việt Nam có thể thêm Zalo, TikTok, Messenger nhưng phải ghi rõ là đã điều chỉnh từ bản gốc.",
+    "Phần lớn câu là cụm danh từ không có chủ ngữ ('Missing planned work…'); khi dịch nên thống nhất một dạng câu và thêm lời dẫn 'Mức độ bạn đồng ý với các mô tả sau về bản thân'.",
+    "Điểm cắt 31 (nam) và 33 (nữ) được xác định trên học sinh trung học Hàn Quốc; dùng cho sinh viên Việt Nam chỉ nên coi là mốc tham khảo, không phải chẩn đoán.",
+    "SAS-SV thường được dùng như thang 1 nhân tố; vẫn nên chạy EFA và CFA, chú ý câu SA3 (đau cổ tay, sau gáy) vì đây là biểu hiện thể chất, khác nội dung với các câu còn lại."
+  ],
+  "sampleSize": {
+    "note": "SAS-SV là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; nếu so sánh nam và nữ theo điểm cắt thì mỗi nhóm cũng nên đủ cỡ này."
+  },
+  "license": "Bài báo của Kwon và cộng sự (2013) đăng trên PLoS ONE theo giấy phép Creative Commons Attribution, cho phép sử dụng và sao chép tự do nếu ghi đúng tác giả và nguồn. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Kwon, M., Kim, D.-J., Cho, H., &amp; Yang, S. (2013). The smartphone addiction scale: Development and validation of a short version for adolescents. <em>PLoS ONE, 8</em>(12), e83558. https://doi.org/10.1371/journal.pone.0083558"
+  ],
+  "verifiedFrom": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3877074/"
+  ],
+  "related": ["nghien-mang-xa-hoi-bsmas", "fomo", "tu-kiem-soat-bscs"]
+}

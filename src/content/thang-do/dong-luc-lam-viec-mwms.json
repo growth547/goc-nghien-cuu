@@ -1,0 +1,105 @@
+{
+  "title": "Thang đo động lực làm việc MWMS tiếng Việt: Gagné và cộng sự (2015)",
+  "description": "Thang đo động lực làm việc đa chiều MWMS của Gagné và cộng sự (2015) dịch sẵn tiếng Việt: 19 biến, 6 loại động lực theo thuyết tự quyết, có bản gốc tiếng Anh.",
+  "name": "MWMS",
+  "fullName": "Thang đo động lực làm việc đa chiều (Multidimensional Work Motivation Scale)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo động lực làm việc",
+  "intro": "MWMS do Gagné và cộng sự (2015) xây dựng dựa trên thuyết tự quyết (Self-Determination Theory), đo lý do một người bỏ công sức vào công việc. Thang chia động lực thành sáu loại xếp từ ít đến nhiều tự chủ: không có động lực, điều tiết bên ngoài vì xã hội, điều tiết bên ngoài vì vật chất, điều tiết nội nhập, điều tiết đồng nhất và động lực nội tại. Bản 19 biến được kiểm định trên 3.435 người lao động, bằng bảy ngôn ngữ ở chín quốc gia. Ở Việt Nam, MWMS phù hợp với đề tài về động lực của nhân viên văn phòng, giáo viên, nhân viên y tế, và tác động của phong cách lãnh đạo, chế độ đãi ngộ tới từng loại động lực.",
+  "responseScale": "Thang mức độ 7 điểm, không phải Likert đồng ý: 1 = Hoàn toàn không … 7 = Hoàn toàn đúng, trả lời cho câu dẫn hỏi vì sao bạn bỏ (hoặc sẽ bỏ) công sức vào công việc hiện tại. Tính điểm trung bình riêng từng loại động lực; không cộng cả 19 biến thành một điểm.",
+  "constructs": [
+    {
+      "code": "AM",
+      "nameVi": "Không có động lực",
+      "nameEn": "Amotivation",
+      "definition": "Không có lý do hay ý định bỏ công sức vào công việc.",
+      "source": "Gagné và cộng sự (2015), 3 biến.",
+      "items": [
+        { "code": "AM1", "en": "I don't, because I really feel that I'm wasting my time at work.", "vi": "Tôi không bỏ công sức, vì tôi thực sự thấy mình đang lãng phí thời gian ở nơi làm việc." },
+        { "code": "AM2", "en": "I do little because I don't think this work is worth putting efforts into.", "vi": "Tôi làm ít vì tôi không nghĩ công việc này đáng để bỏ công sức." },
+        { "code": "AM3", "en": "I don't know why I'm doing this job, it's pointless work.", "vi": "Tôi không biết vì sao mình làm công việc này, đây là việc vô nghĩa." }
+      ]
+    },
+    {
+      "code": "ESO",
+      "nameVi": "Điều tiết bên ngoài vì xã hội",
+      "nameEn": "Extrinsic Regulation – Social",
+      "definition": "Bỏ công sức để được người khác chấp nhận, tôn trọng hoặc tránh bị chê trách.",
+      "source": "Gagné và cộng sự (2015), 3 biến.",
+      "items": [
+        { "code": "ESO1", "en": "To get others' approval (e.g., supervisor, colleagues, family, clients …).", "vi": "Để được người khác tán thành (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)." },
+        { "code": "ESO2", "en": "Because others will respect me more (e.g., supervisor, colleagues, family, clients …).", "vi": "Vì người khác sẽ tôn trọng tôi hơn (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)." },
+        { "code": "ESO3", "en": "To avoid being criticized by others (e.g., supervisor, colleagues, family, clients …).", "vi": "Để tránh bị người khác chỉ trích (ví dụ cấp trên, đồng nghiệp, gia đình, khách hàng…)." }
+      ]
+    },
+    {
+      "code": "EMA",
+      "nameVi": "Điều tiết bên ngoài vì vật chất",
+      "nameEn": "Extrinsic Regulation – Material",
+      "definition": "Bỏ công sức để nhận phần thưởng vật chất hoặc tránh mất việc.",
+      "source": "Gagné và cộng sự (2015), 3 biến.",
+      "items": [
+        { "code": "EMA1", "en": "Because others will reward me financially only if I put enough effort in my job (e.g., employer, supervisor …).", "vi": "Vì người khác chỉ thưởng tiền cho tôi khi tôi bỏ đủ công sức vào công việc (ví dụ chủ doanh nghiệp, cấp trên…)." },
+        { "code": "EMA2", "en": "Because others offer me greater job security if I put enough effort in my job (e.g., employer, supervisor …).", "vi": "Vì người khác cho tôi công việc ổn định hơn nếu tôi bỏ đủ công sức (ví dụ chủ doanh nghiệp, cấp trên…)." },
+        { "code": "EMA3", "en": "Because I risk losing my job if I don't put enough effort in it.", "vi": "Vì tôi có nguy cơ mất việc nếu không bỏ đủ công sức." }
+      ]
+    },
+    {
+      "code": "IJ",
+      "nameVi": "Điều tiết nội nhập",
+      "nameEn": "Introjected Regulation",
+      "definition": "Bỏ công sức để giữ lòng tự trọng hoặc tránh cảm giác tội lỗi, xấu hổ với bản thân.",
+      "source": "Gagné và cộng sự (2015), 4 biến.",
+      "items": [
+        { "code": "IJ1", "en": "Because I have to prove to myself that I can.", "vi": "Vì tôi phải chứng minh với bản thân rằng mình làm được." },
+        { "code": "IJ2", "en": "Because it makes me feel proud of myself.", "vi": "Vì điều đó khiến tôi tự hào về bản thân." },
+        { "code": "IJ3", "en": "Because otherwise I will feel ashamed of myself.", "vi": "Vì nếu không, tôi sẽ thấy xấu hổ với chính mình." },
+        { "code": "IJ4", "en": "Because otherwise I will feel bad about myself.", "vi": "Vì nếu không, tôi sẽ thấy không hài lòng về bản thân." }
+      ]
+    },
+    {
+      "code": "ID",
+      "nameVi": "Điều tiết đồng nhất",
+      "nameEn": "Identified Regulation",
+      "definition": "Bỏ công sức vì thấy công việc quan trọng và phù hợp với giá trị của bản thân.",
+      "source": "Gagné và cộng sự (2015), 3 biến.",
+      "items": [
+        { "code": "ID1", "en": "Because I personally consider it important to put efforts in this job.", "vi": "Vì cá nhân tôi thấy việc bỏ công sức cho công việc này là quan trọng." },
+        { "code": "ID2", "en": "Because putting efforts in this job aligns with my personal values.", "vi": "Vì bỏ công sức cho công việc này phù hợp với giá trị cá nhân của tôi." },
+        { "code": "ID3", "en": "Because putting efforts in this job has personal significance to me.", "vi": "Vì bỏ công sức cho công việc này có ý nghĩa riêng với tôi." }
+      ]
+    },
+    {
+      "code": "IM",
+      "nameVi": "Động lực nội tại",
+      "nameEn": "Intrinsic Motivation",
+      "definition": "Bỏ công sức vì bản thân công việc thú vị, mang lại niềm vui.",
+      "source": "Gagné và cộng sự (2015), 3 biến.",
+      "items": [
+        { "code": "IM1", "en": "Because I have fun doing my job.", "vi": "Vì tôi thấy vui khi làm công việc của mình." },
+        { "code": "IM2", "en": "Because what I do in my work is exciting.", "vi": "Vì những gì tôi làm trong công việc thật hào hứng." },
+        { "code": "IM3", "en": "Because the work I do is interesting.", "vi": "Vì công việc tôi làm rất thú vị." }
+      ]
+    }
+  ],
+  "usage": [
+    "Phải giữ câu dẫn hỏi lý do bỏ công sức vào công việc hiện tại; các biến bắt đầu bằng 'Vì…' hoặc 'Để…' chỉ có nghĩa khi đi sau câu dẫn đó. Các câu AM bắt đầu bằng 'Tôi không bỏ công sức' để trả lời thẳng câu dẫn.",
+    "Không cộng 19 biến thành một điểm động lực chung; mỗi loại động lực có thể tác động ngược chiều nhau tới kết quả. Nếu cần một chỉ số tổng, tham khảo cách tính chỉ số tự chủ trong tài liệu về thuyết tự quyết và trích nguồn.",
+    "Nhiều nghiên cứu sau thấy các câu điều tiết nội nhập (đặc biệt IJ1, IJ2) tải chéo hoặc không ổn định; chạy CFA sáu nhân tố và báo cáo rõ câu nào bị loại.",
+    "Ví dụ trong ngoặc của các câu ESO và EMA (cấp trên, đồng nghiệp, gia đình, khách hàng) nên giữ khi dịch vì giúp người trả lời hiểu 'người khác' là ai."
+  ],
+  "sampleSize": {
+    "note": "MWMS là thang 19 biến chia 6 nhân tố. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (95) và nên từ 200 trở lên khi chạy CFA sáu nhân tố; nếu dùng từng loại động lực làm biến độc lập, cỡ mẫu còn tuỳ số mũi tên trỏ vào biến phụ thuộc."
+  },
+  "license": "Trung tâm Thuyết tự quyết (Center for Self-Determination Theory) giữ bản quyền bảng hỏi và cho phép mọi mục đích học thuật sau khi đồng ý điều khoản trên website; dùng thương mại phải xin phép. Khi dùng, trích dẫn Gagné và cộng sự (2015).",
+  "references": [
+    "Gagné, M., Forest, J., Vansteenkiste, M., Crevier-Braud, L., van den Broeck, A., Aspeli, A. K., Bellerose, J., Benabou, C., Chemolli, E., Güntert, S. T., Halvari, H., Indiyastuti, D. L., Johnson, P. A., Molstad, M. H., Naudin, M., Ndao, A., Olafsen, A. H., Roussel, P., Wang, Z., &amp; Westbye, C. (2015). The Multidimensional Work Motivation Scale: Validation evidence in seven languages and nine countries. <em>European Journal of Work and Organizational Psychology, 24</em>(2), 178–196. https://doi.org/10.1080/1359432X.2013.877892"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12410516/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12790102/fullTextXML",
+    "https://selfdeterminationtheory.org/multidimensional-work-motivation-scale/",
+    "https://api.crossref.org/works/10.1080/1359432X.2013.877892"
+  ],
+  "related": ["gan-ket-cong-viec-uwes", "hai-long-cong-viec", "y-dinh-nghi-viec"]
+}

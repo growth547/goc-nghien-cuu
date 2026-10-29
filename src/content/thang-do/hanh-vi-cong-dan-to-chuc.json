@@ -1,0 +1,71 @@
+{
+  "title": "Thang đo hành vi công dân tổ chức OCB: Lee & Allen (2002)",
+  "description": "Thang đo hành vi công dân tổ chức OCB của Lee và Allen (2002) dịch sẵn tiếng Việt: OCB hướng tới cá nhân và OCB hướng tới tổ chức, có bản gốc và trích dẫn.",
+  "name": "OCB",
+  "fullName": "Hành vi công dân tổ chức (Organizational Citizenship Behavior)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo hành vi công dân tổ chức",
+  "intro": "Hành vi công dân tổ chức là những việc người lao động tự nguyện làm ngoài phần việc được giao, có lợi cho đồng nghiệp hoặc cho tổ chức. Lee và Allen (2002) xây dựng bộ 16 biến theo cách chia của Williams và Anderson (1991): OCBI hướng tới cá nhân và OCBO hướng tới tổ chức, mỗi nhóm 8 biến, và chọn câu chữ sao cho không trùng với hành vi lệch chuẩn. Trang này trình bày 15 biến đã đối chiếu được nguyên văn. Ở Việt Nam, thang hay dùng làm biến kết quả trong đề tài về lãnh đạo, hỗ trợ tổ chức, cam kết, gắn kết công việc.",
+  "responseScale": "Thang tần suất 7 mức (1 = Không bao giờ … 7 = Luôn luôn); người trả lời cho biết mình thường làm mỗi việc ở mức nào. Một số nghiên cứu sau đổi sang thang đồng ý 5 hoặc 7 mức; nếu đổi, ghi rõ trong phần phương pháp.",
+  "constructs": [
+    {
+      "code": "OCBI",
+      "nameVi": "Hành vi công dân hướng tới cá nhân",
+      "nameEn": "OCB directed at individuals (OCBI)",
+      "definition": "Những hành vi tự nguyện giúp ích trực tiếp cho đồng nghiệp cụ thể, qua đó gián tiếp có lợi cho tổ chức.",
+      "source": "Lee & Allen (2002), 7 trên 8 biến OCBI; biến thứ tám (chia sẻ đồ dùng cá nhân để giúp đồng nghiệp làm việc) chưa đối chiếu được nguyên văn nên không đưa vào.",
+      "items": [
+        { "code": "OCBI1", "en": "Help others who have been absent.", "vi": "Tôi giúp đỡ đồng nghiệp khi họ vắng mặt." },
+        { "code": "OCBI2", "en": "Willingly give your time to help others who have work-related problems.", "vi": "Tôi sẵn lòng dành thời gian giúp đồng nghiệp đang gặp khó khăn trong công việc." },
+        { "code": "OCBI3", "en": "Adjust your work schedule to accommodate other employees’ requests for time off.", "vi": "Tôi điều chỉnh lịch làm việc của mình để đồng nghiệp có thể xin nghỉ." },
+        { "code": "OCBI4", "en": "Go out of the way to make newer employees feel welcome in the work group.", "vi": "Tôi chủ động làm cho nhân viên mới cảm thấy được chào đón trong nhóm." },
+        { "code": "OCBI5", "en": "Show genuine concern and courtesy toward co-workers, even under the most trying business or personal situations.", "vi": "Tôi thật lòng quan tâm và lịch sự với đồng nghiệp, kể cả khi công việc hay chuyện riêng đang rất căng thẳng." },
+        { "code": "OCBI6", "en": "Give up time to help others who have work or non-work problems.", "vi": "Tôi bớt thời gian của mình để giúp đồng nghiệp gặp chuyện trong hoặc ngoài công việc." },
+        { "code": "OCBI7", "en": "Assist others with their duties.", "vi": "Tôi hỗ trợ đồng nghiệp làm phần việc của họ." }
+      ]
+    },
+    {
+      "code": "OCBO",
+      "nameVi": "Hành vi công dân hướng tới tổ chức",
+      "nameEn": "OCB directed at the organization (OCBO)",
+      "definition": "Những hành vi tự nguyện có lợi cho tổ chức nói chung, như bảo vệ hình ảnh, góp ý cải tiến, theo dõi tình hình của tổ chức.",
+      "source": "Lee & Allen (2002), 8 biến.",
+      "items": [
+        { "code": "OCBO1", "en": "Attend functions that are not required but that help the organizational image", "vi": "Tôi tham dự các sự kiện không bắt buộc nhưng giúp ích cho hình ảnh của [công ty]." },
+        { "code": "OCBO2", "en": "Keep up with developments in the organization", "vi": "Tôi theo dõi những thay đổi, diễn biến trong [công ty]." },
+        { "code": "OCBO3", "en": "Defend the organization when other employees criticize it", "vi": "Tôi bênh vực [công ty] khi nhân viên khác chỉ trích." },
+        { "code": "OCBO4", "en": "Show pride when representing the organization in public", "vi": "Tôi thể hiện niềm tự hào khi đại diện cho [công ty] ở nơi công cộng." },
+        { "code": "OCBO5", "en": "Offer ideas to improve the functioning of the organization", "vi": "Tôi đưa ra ý tưởng để [công ty] vận hành tốt hơn." },
+        { "code": "OCBO6", "en": "Express loyalty toward the organization", "vi": "Tôi thể hiện sự trung thành với [công ty]." },
+        { "code": "OCBO7", "en": "Take action to protect the organization from potential problems", "vi": "Tôi hành động để bảo vệ [công ty] trước những vấn đề có thể xảy ra." },
+        { "code": "OCBO8", "en": "Demonstrate concern about the image of the organization", "vi": "Tôi quan tâm tới hình ảnh của [công ty]." }
+      ]
+    }
+  ],
+  "usage": [
+    "Bản gốc là câu mệnh lệnh đi sau câu hỏi chung 'Bạn có thường xuyên…'; khi dịch nên đưa về ngôi thứ nhất ('Tôi…') hoặc giữ câu hỏi dẫn chung, nhưng thống nhất cho mọi biến.",
+    "Lee và Allen (2002) có 8 biến OCBI; biến thứ tám nói về việc chia sẻ đồ dùng cá nhân để giúp đồng nghiệp làm việc. Nếu muốn đủ 16 biến, lấy nguyên văn từ phụ lục bài gốc và ghi rõ nguồn.",
+    "OCB tự đánh giá dễ bị thiên lệch mong muốn xã hội; nếu có thể, cho quản lý hoặc đồng nghiệp đánh giá, khi đó đổi chủ ngữ thành '[Nhân viên]'.",
+    "Chạy CFA hai nhân tố OCBI và OCBO và so với mô hình một nhân tố; hai nhóm thường tương quan cao nên cần kiểm tra giá trị phân biệt (HTMT, Fornell-Larcker).",
+    "Đừng gộp chung với thang hiệu quả công việc trong vai trò; Williams và Anderson (1991) tách rõ hành vi trong vai trò và hành vi công dân."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm hai thành phần, không phải mô hình. Nếu OCB là biến phụ thuộc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo gốc trên Journal of Applied Psychology và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Lee, K., &amp; Allen, N. J. (2002). Organizational citizenship behavior and workplace deviance: The role of affect and cognitions. <em>Journal of Applied Psychology, 87</em>(1), 131–142. https://doi.org/10.1037/0021-9010.87.1.131",
+    "Williams, L. J., &amp; Anderson, S. E. (1991). Job satisfaction and organizational commitment as predictors of organizational citizenship and in-role behaviors. <em>Journal of Management, 17</em>(3), 601–617. https://doi.org/10.1177/014920639101700305"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10812830/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9669745/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9797252/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7794012/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8356080/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8403081/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7345164/fullTextXML",
+    "https://api.crossref.org/works/10.1037/0021-9010.87.1.131"
+  ],
+  "related": ["ho-tro-to-chuc-pos", "cam-ket-to-chuc-ocq", "hieu-qua-cong-viec"]
+}

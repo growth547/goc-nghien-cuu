@@ -1,0 +1,61 @@
+{
+  "title": "Thang đo thái độ với quảng cáo và thương hiệu (Aad, Ab)",
+  "description": "Thang đo thái độ với quảng cáo (MacKenzie & Lutz, 1989) và thái độ với thương hiệu (Spears & Singh, 2004) dạng cặp tính từ đối lập, dịch sẵn tiếng Việt.",
+  "name": "Aad – Ab",
+  "fullName": "Thái độ với quảng cáo (Attitude toward the Ad) và thái độ với thương hiệu (Attitude toward the Brand)",
+  "field": "Marketing & thương hiệu",
+  "keyword": "thang đo thái độ với quảng cáo",
+  "intro": "Thái độ với quảng cáo (Aad) là đánh giá tích cực hay tiêu cực của người xem đối với một mẩu quảng cáo cụ thể; MacKenzie và Lutz (1989) đo khái niệm này bằng 3 cặp tính từ đối lập và chỉ ra Aad ảnh hưởng tới thái độ với thương hiệu. Thái độ với thương hiệu (Ab) dùng thang 5 cặp tính từ của Spears và Singh (2004), được xây dựng riêng để tách thái độ khỏi ý định mua. Hai thang này thường đi cùng nhau trong các đề tài thực nghiệm về quảng cáo video, quảng cáo trên mạng xã hội, quảng cáo có người nổi tiếng hoặc quảng cáo dùng AI ở Việt Nam.",
+  "responseScale": "Thang đối nghĩa (semantic differential) 7 mức giữa hai tính từ đối lập, ví dụ 1 = Không tốt … 7 = Tốt. Không phải thang mức độ đồng ý.",
+  "constructs": [
+    {
+      "code": "AAD",
+      "nameVi": "Thái độ với quảng cáo",
+      "nameEn": "Attitude toward the Ad",
+      "definition": "Xu hướng phản ứng tích cực hoặc tiêu cực của người xem đối với một quảng cáo cụ thể tại thời điểm xem.",
+      "source": "MacKenzie & Lutz (1989), 3 biến.",
+      "items": [
+        { "code": "AAD1", "en": "Bad – Good", "vi": "Không tốt – Tốt" },
+        { "code": "AAD2", "en": "Unpleasant – Pleasant", "vi": "Khó chịu – Dễ chịu" },
+        { "code": "AAD3", "en": "Unfavorable – Favorable", "vi": "Không có thiện cảm – Có thiện cảm" }
+      ]
+    },
+    {
+      "code": "AB",
+      "nameVi": "Thái độ với thương hiệu",
+      "nameEn": "Attitude toward the Brand",
+      "definition": "Đánh giá tổng thể, tương đối bền vững của một người về thương hiệu, tách khỏi ý định mua.",
+      "source": "Spears & Singh (2004), 5 biến.",
+      "items": [
+        { "code": "AB1", "en": "Unappealing – Appealing", "vi": "Không lôi cuốn – Lôi cuốn" },
+        { "code": "AB2", "en": "Bad – Good", "vi": "Không tốt – Tốt" },
+        { "code": "AB3", "en": "Unpleasant – Pleasant", "vi": "Khó chịu – Dễ chịu" },
+        { "code": "AB4", "en": "Unfavorable – Favorable", "vi": "Không có thiện cảm – Có thiện cảm" },
+        { "code": "AB5", "en": "Unlikable – Likable", "vi": "Không đáng mến – Đáng mến" }
+      ]
+    }
+  ],
+  "usage": [
+    "Mỗi biến là một cặp tính từ. Đặt câu dẫn rõ đối tượng, ví dụ \"Quảng cáo bạn vừa xem là:\" cho Aad và \"Bạn thấy [thương hiệu] là:\" cho Ab, rồi để 7 ô giữa hai tính từ.",
+    "Aad và Ab dùng chung ba cặp tính từ (Bad – Good, Unpleasant – Pleasant, Unfavorable – Favorable); đặt hai khối ở hai trang hoặc hai phần tách biệt để người trả lời không chép đáp án sang nhau, và kiểm tra giá trị phân biệt giữa hai khái niệm.",
+    "Aad đo phản ứng ngay sau khi xem, nên phù hợp nhất với thiết kế thực nghiệm: cho xem quảng cáo trước rồi mới hỏi. Khảo sát chéo hỏi về \"quảng cáo nói chung\" là đo khái niệm khác.",
+    "Nếu cần ý định mua, Spears và Singh (2004) có thang riêng; tìm và ghi đúng nguồn, đừng tự đổi các cặp tính từ ở đây thành câu Likert.",
+    "Chạy Cronbach's alpha cho từng khái niệm; với thang đối nghĩa, alpha thường cao (trên 0,9) nên cần chú ý kiểm tra phương sai phương pháp chung."
+  ],
+  "sampleSize": {
+    "note": "Đây là hai thang đo đơn lẻ, không phải mô hình đầy đủ. Nếu Aad là biến dự báo duy nhất của Ab, G*Power (f² = 0,15, α = 5%, power 0,80) cho tối thiểu 55 quan sát; thiết kế thực nghiệm cần tính theo số nhóm."
+  },
+  "license": "Các cặp tính từ được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu quảng cáo. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "MacKenzie, S. B., &amp; Lutz, R. J. (1989). An empirical examination of the structural antecedents of attitude toward the ad in an advertising pretesting context. <em>Journal of Marketing, 53</em>(2), 48–65. https://doi.org/10.1177/002224298905300204",
+    "Spears, N., &amp; Singh, S. N. (2004). Measuring attitude toward the brand and purchase intentions. <em>Journal of Current Issues &amp; Research in Advertising, 26</em>(2), 53–66. https://doi.org/10.1080/10641734.2004.10505164"
+  ],
+  "verifiedFrom": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC13113155/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10420879/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579633/",
+    "https://api.crossref.org/works/10.1177/002224298905300204",
+    "https://api.crossref.org/works/10.1080/10641734.2004.10505164"
+  ],
+  "related": ["y-dinh-mua", "tai-san-thuong-hieu", "tpb"]
+}

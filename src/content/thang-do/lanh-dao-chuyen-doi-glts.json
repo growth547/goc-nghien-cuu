@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo lãnh đạo chuyển đổi GTL: Carless, Wearing & Mann (2000)",
+  "description": "Thang đo lãnh đạo chuyển đổi toàn cục GTL 7 biến của Carless, Wearing và Mann (2000) dịch sẵn tiếng Việt, có bản gốc tiếng Anh, thay thế MLQ phải mua bản quyền.",
+  "name": "GTL",
+  "fullName": "Thang đo lãnh đạo chuyển đổi toàn cục (Global Transformational Leadership)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo lãnh đạo chuyển đổi",
+  "intro": "GTL do Carless, Wearing và Mann (2000) đề xuất như một thước đo ngắn của lãnh đạo chuyển đổi, gồm 7 hành vi: truyền đạt tầm nhìn, phát triển nhân viên, ghi nhận, khuyến khích tinh thần đồng đội, kích thích tư duy đổi mới, hành động nhất quán với giá trị, và tạo cảm hứng bằng năng lực của chính người lãnh đạo. Mỗi biến đại diện cho một hành vi, và thang đo lãnh đạo chuyển đổi như một khái niệm tổng. GTL hay được chọn thay cho MLQ, bộ phải mua bản quyền. Ở Việt Nam, GTL phù hợp với đề tài về ảnh hưởng của người quản lý tới gắn kết, hài lòng, sáng tạo và cam kết của nhân viên, kể cả trong trường học và bệnh viện.",
+  "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý, theo cách dùng của Hendrikx và cộng sự (1 = Không bao giờ … 5 = Thường xuyên, gần như luôn luôn); nhiều nghiên cứu khác dùng thang đồng ý 5 mức. Nhân viên đánh giá người quản lý trực tiếp; điểm là trung bình 7 biến.",
+  "constructs": [
+    {
+      "code": "TL",
+      "nameVi": "Lãnh đạo chuyển đổi",
+      "nameEn": "Transformational Leadership",
+      "definition": "Mức độ người lãnh đạo truyền cảm hứng bằng tầm nhìn, quan tâm phát triển từng nhân viên, khuyến khích tư duy mới và làm gương bằng giá trị, năng lực của mình.",
+      "source": "Carless, Wearing & Mann (2000), 7 biến; câu chữ TL1–TL6 theo Kloutsiniotis và cộng sự (chủ ngữ 'My manager'), TL7 theo Saif và cộng sự (chủ ngữ 'My leader').",
+      "items": [
+        { "code": "TL1", "en": "My manager communicates a clear and positive vision of the future", "vi": "Quản lý của tôi truyền đạt một tầm nhìn rõ ràng và tích cực về tương lai." },
+        { "code": "TL2", "en": "My manager treats staff as individuals, supports and encourages their development", "vi": "Quản lý của tôi đối xử với nhân viên như những cá nhân riêng biệt, hỗ trợ và khuyến khích họ phát triển." },
+        { "code": "TL3", "en": "My manager gives encouragement and recognition to staff", "vi": "Quản lý của tôi động viên và ghi nhận nhân viên." },
+        { "code": "TL4", "en": "My manager fosters trust, involvement and cooperation among team members", "vi": "Quản lý của tôi xây dựng sự tin tưởng, tham gia và hợp tác giữa các thành viên trong nhóm." },
+        { "code": "TL5", "en": "My manager encourages thinking about problems in new ways and questions assumptions", "vi": "Quản lý của tôi khuyến khích suy nghĩ về vấn đề theo cách mới và đặt câu hỏi với các giả định." },
+        { "code": "TL6", "en": "My manager is clear about his/her values and practices what he/she preaches", "vi": "Quản lý của tôi rõ ràng về giá trị của mình và làm đúng những gì mình nói." },
+        { "code": "TL7", "en": "My leader instills pride and respect in others and inspires me by being highly competent", "vi": "Quản lý của tôi khiến người khác tự hào và tôn trọng, và truyền cảm hứng cho tôi bằng năng lực vượt trội." }
+      ]
+    }
+  ],
+  "usage": [
+    "Các nghiên cứu đã đối chiếu dùng chủ ngữ khác nhau ('My manager', 'My leader', 'The school principal'); khi dịch, chọn một cách gọi người quản lý trực tiếp và dùng thống nhất cho cả 7 câu.",
+    "Có nhiều bản lưu hành bị sửa chữ (ví dụ 'Provides encouragement' thay 'gives encouragement', hoặc câu 6 bị viết lại thành câu khó hiểu); trước khi dùng một bản tiếng Việt có sẵn, so lại với câu tiếng Anh ở trên.",
+    "GTL đo lãnh đạo chuyển đổi như một nhân tố; nếu hội đồng yêu cầu tách các thành phần (ảnh hưởng lý tưởng, kích thích trí tuệ…), một biến cho mỗi hành vi không đủ để chạy riêng từng thành phần.",
+    "Khi nhiều nhân viên cùng đánh giá một người quản lý, báo cáo số người quản lý được đánh giá và cân nhắc kiểm tra mức đồng thuận trong nhóm trước khi gộp điểm."
+  ],
+  "sampleSize": {
+    "note": "GTL là thang đơn lẻ 7 biến, thường làm biến độc lập. Cỡ mẫu do biến phụ thuộc nhận nhiều mũi tên nhất trong mô hình quyết định; riêng EFA cho 7 biến cần tối thiểu 35 quan sát và nên từ 100 trở lên."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu như một lựa chọn thay MLQ. Không tìm thấy điều kiện mua bản quyền; khi dùng, trích dẫn Carless, Wearing và Mann (2000).",
+  "references": [
+    "Carless, S. A., Wearing, A. J., &amp; Mann, L. (2000). A short measure of transformational leadership. <em>Journal of Business and Psychology, 14</em>(3), 389–405. https://doi.org/10.1023/A:1022991115523"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8776468/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11200340/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9222929/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13445784/fullTextXML",
+    "https://api.crossref.org/works/10.1023/A:1022991115523"
+  ],
+  "related": ["lanh-dao-phuc-vu", "cam-ket-to-chuc-ocq", "hai-long-cong-viec"]
+}

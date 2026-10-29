@@ -14,7 +14,7 @@ export function fillPlaceholders(text: string, values: Record<string, string>): 
 
 export function citeOf(source: string): string {
   const m = source.match(
-    /([A-ZÀ-Ỹ][\p{L}.'\-]+(?:(?:, | & | và )[A-ZÀ-Ỹ][\p{L}.'\-]+)*(?: và cộng sự)?)\s*\((\d{4})/u
+    /((?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*[A-ZÀ-Ỹ][\p{L}.'\-]+(?:(?:, | & | và )(?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*[A-ZÀ-Ỹ][\p{L}.'\-]+)*(?: và cộng sự)?)\s*\((\d{4})/u
   );
   return m ? `${m[1].replace(/ & /g, " và ")} (${m[2]})` : source;
 }
@@ -23,7 +23,8 @@ export function citedBy(cite: string, ref: string): boolean {
   const m = cite.match(/^([^\s,]+)(.*)\((\d{4})\)$/);
   if (!m) return false;
   const solo = !/,| và /.test(m[2]);
-  return ref.startsWith(m[1]) && ref.includes(`(${m[3]})`) && (!solo || !ref.includes("&"));
+  const at = ref.indexOf(`(${m[3]})`);
+  return ref.startsWith(m[1]) && at > 0 && (!solo || !ref.slice(0, at).includes("&"));
 }
 
 export const isAgreementScale = (responseScale: string) => /^Likert/i.test(responseScale);

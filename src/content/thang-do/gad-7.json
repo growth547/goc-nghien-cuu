@@ -1,0 +1,48 @@
+{
+  "title": "Thang đo GAD-7 tiếng Việt: sàng lọc lo âu, Spitzer (2006)",
+  "description": "Thang đo GAD-7 sàng lọc mức độ lo âu dịch sẵn tiếng Việt: 7 biến, thang tần suất 0–3 trong 2 tuần qua, điểm tổng 0–21, mốc 5/10/15 và lưu ý khi dùng.",
+  "name": "GAD-7",
+  "fullName": "Thang đo rối loạn lo âu lan toả 7 biến (Generalized Anxiety Disorder-7)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo GAD-7",
+  "intro": "GAD-7 do Spitzer, Kroenke, Williams và Löwe (2006) xây dựng để sàng lọc rối loạn lo âu lan toả và đo mức độ triệu chứng lo âu, kiểm định trên 2.740 bệnh nhân chăm sóc ban đầu. Thang hỏi người trả lời bị làm phiền bởi 7 triệu chứng lo âu bao nhiêu ngày trong 2 tuần qua. GAD-7 cùng nhóm với PHQ-9, ngắn và miễn phí, nên hay được dùng song song để đo cả trầm cảm và lo âu. Ở Việt Nam, thang này xuất hiện trong đề tài về lo âu của sinh viên mùa thi, người lao động, nhân viên y tế và người bệnh.",
+  "responseScale": "Thang tần suất 4 mức, không phải Likert đồng ý, hỏi về 2 tuần qua: 0 = Hoàn toàn không (Not at all), 1 = Vài ngày (Several days), 2 = Hơn một nửa số ngày (More than half the days), 3 = Gần như mọi ngày (Nearly every day). Cộng 7 câu được điểm tổng 0–21; theo hướng dẫn của tác giả, các mốc 5, 10, 15 tương ứng mức nhẹ, vừa và nặng. Không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "GAD",
+      "nameVi": "Mức độ triệu chứng lo âu",
+      "nameEn": "Anxiety Severity",
+      "definition": "Tần suất người trả lời gặp các triệu chứng lo âu (bồn chồn, lo lắng khó kiểm soát, khó thư giãn, bứt rứt, dễ cáu, sợ điều tồi tệ xảy ra) trong 2 tuần qua.",
+      "source": "Spitzer, Kroenke, Williams & Löwe (2006), 7 biến.",
+      "items": [
+        { "code": "GAD1", "en": "Feeling nervous, anxious or on edge", "vi": "Cảm thấy bồn chồn, lo âu hoặc căng thẳng" },
+        { "code": "GAD2", "en": "Not being able to stop or control worrying", "vi": "Không thể dừng hoặc kiểm soát được sự lo lắng" },
+        { "code": "GAD3", "en": "Worrying too much about different things", "vi": "Lo lắng quá mức về nhiều chuyện khác nhau" },
+        { "code": "GAD4", "en": "Trouble relaxing", "vi": "Khó thư giãn" },
+        { "code": "GAD5", "en": "Being so restless that it is hard to sit still", "vi": "Bứt rứt tới mức khó ngồi yên" },
+        { "code": "GAD6", "en": "Becoming easily annoyed or irritable", "vi": "Dễ bực bội hoặc cáu kỉnh" },
+        { "code": "GAD7", "en": "Feeling afraid as if something awful might happen", "vi": "Cảm thấy sợ hãi như thể sắp có chuyện khủng khiếp xảy ra" }
+      ]
+    }
+  ],
+  "usage": [
+    "GAD-7 là công cụ sàng lọc và đo mức độ triệu chứng, không chẩn đoán rối loạn lo âu. Hướng dẫn của tác giả đề nghị điểm từ 10 trở lên là mốc cần đánh giá thêm bằng phỏng vấn lâm sàng; trong luận văn, viết 'có triệu chứng lo âu từ mức vừa trở lên' chứ không viết 'mắc rối loạn lo âu'.",
+    "Đề tài có hỏi về sức khoẻ tinh thần phải làm theo quy định đạo đức nghiên cứu của trường (xin duyệt nếu trường yêu cầu, có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ, ví dụ phòng tư vấn tâm lý của trường hoặc đường dây nóng hỗ trợ tâm lý, cho người trả lời cần giúp đỡ.",
+    "Chép đúng nhãn thang trả lời: mức thấp nhất là 'Not at all' (Hoàn toàn không). Nhiều bản GAD-7 lưu hành trên mạng ghi sai thành 'Not at all sure', lỗi này đã được chỉ ra trong y văn; kiểm tra lại trước khi in bảng hỏi.",
+    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định; chúng tôi chưa tìm thấy bài kiểm định GAD-7 tiếng Việt để dẫn. Nên dịch ngược, khảo sát thử 20–30 người, rồi chạy Cronbach's alpha và CFA một nhân tố.",
+    "Nếu đo cả trầm cảm, dùng kèm PHQ-9 vì cùng khung 2 tuần và cùng thang 0–3; hai câu đầu của GAD-7 và PHQ-9 ghép lại thành PHQ-4 dùng để sàng lọc siêu ngắn."
+  ],
+  "sampleSize": {
+    "note": "GAD-7 là thang đơn lẻ 7 biến. Theo Hair và cộng sự, EFA cần tối thiểu 50 quan sát (5 quan sát cho mỗi biến, không dưới 50) và nên từ 100 quan sát trở lên; nếu ước lượng tỷ lệ có triệu chứng thì tính cỡ mẫu theo công thức ước lượng tỷ lệ."
+  },
+  "license": "Theo hướng dẫn trên trang PHQ Screeners và chú thích in trên bảng hỏi, GAD-7 do Spitzer, Williams, Kroenke và cộng sự phát triển với tài trợ giáo dục của Pfizer, thuộc phạm vi công cộng: không cần xin phép để sao chép, dịch, trình bày hay phân phối.",
+  "references": [
+    "Spitzer, R. L., Kroenke, K., Williams, J. B. W., &amp; Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. <em>Archives of Internal Medicine, 166</em>(10), 1092–1097. https://doi.org/10.1001/archinte.166.10.1092"
+  ],
+  "verifiedFrom": [
+    "https://web.archive.org/web/20140418091818id_/http://www.phqscreeners.com/pdfs/03_GAD-7/English.pdf",
+    "https://web.archive.org/web/20131010210324id_/http://www.phqscreeners.com/instructions/instructions.pdf",
+    "https://camcops.readthedocs.io/en/latest/tasks/gad7.html"
+  ],
+  "related": ["phq-9", "dass-21", "cang-thang-pss-10"]
+}

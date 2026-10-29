@@ -1,0 +1,85 @@
+{
+  "title": "Thang đo DeLone & McLean: chất lượng hệ thống thông tin, có bản gốc",
+  "description": "Thang đo mô hình thành công hệ thống thông tin DeLone & McLean: chất lượng hệ thống, thông tin, dịch vụ và sự hài lòng người dùng, có bản gốc tiếng Anh.",
+  "name": "D&M IS Success",
+  "fullName": "Mô hình thành công của hệ thống thông tin DeLone & McLean (DeLone and McLean IS Success Model)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo DeLone McLean",
+  "intro": "DeLone & McLean (1992) đề xuất mô hình đo sự thành công của hệ thống thông tin, và bản cập nhật năm 2003 gồm chất lượng hệ thống, chất lượng thông tin, chất lượng dịch vụ, việc sử dụng, sự hài lòng người dùng và lợi ích ròng. Hai bài gốc là bài mô hình, không công bố một bộ biến quan sát cố định, nên các biến dưới đây lấy từ Cidral, Aparicio & Oliveira (2020), một nghiên cứu về thành công của hệ thống e-learning công bố đủ câu hỏi. Ở Việt Nam, mô hình hợp với đề tài đánh giá hệ thống LMS của trường, phần mềm kế toán, ERP, cổng dịch vụ công trực tuyến, hồ sơ bệnh án điện tử.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), theo Cidral, Aparicio & Oliveira (2020). Lưu ý US1–US3 viết dưới dạng câu hỏi mức độ; nếu giữ dạng câu hỏi thì nên dùng thang mức độ (1 = Rất thấp … 7 = Rất cao).",
+  "constructs": [
+    {
+      "code": "SysQ",
+      "nameVi": "Chất lượng hệ thống",
+      "nameEn": "System Quality",
+      "definition": "Mức độ hệ thống dễ dùng, dễ điều hướng, có cấu trúc tốt và giúp người dùng tìm được thứ cần tìm.",
+      "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
+      "items": [
+        { "code": "SysQ1", "en": "The [e-learning system] is easy to navigate.", "vi": "[Hệ thống] dễ điều hướng." },
+        { "code": "SysQ2", "en": "The [e-learning system] allows me to easily find the information I am looking for.", "vi": "[Hệ thống] giúp tôi dễ dàng tìm được thông tin mình cần." },
+        { "code": "SysQ3", "en": "The [e-learning system] is well structured.", "vi": "[Hệ thống] được tổ chức có cấu trúc tốt." },
+        { "code": "SysQ4", "en": "The [e-learning system] is easy to use.", "vi": "[Hệ thống] dễ sử dụng." }
+      ]
+    },
+    {
+      "code": "IQ",
+      "nameVi": "Chất lượng thông tin",
+      "nameEn": "Information Quality",
+      "definition": "Mức độ thông tin mà hệ thống cung cấp hữu ích, dễ hiểu, thú vị và đáng tin cậy.",
+      "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
+      "items": [
+        { "code": "IQ1", "en": "The information provided by the [e-learning system] is useful.", "vi": "Thông tin do [hệ thống] cung cấp là hữu ích." },
+        { "code": "IQ2", "en": "The information provided by the [e-learning system] understandable.", "vi": "Thông tin do [hệ thống] cung cấp dễ hiểu." },
+        { "code": "IQ3", "en": "The information provided by the [e-learning system] is interesting.", "vi": "Thông tin do [hệ thống] cung cấp là thú vị." },
+        { "code": "IQ4", "en": "The information provided by the [e-learning system] is reliable.", "vi": "Thông tin do [hệ thống] cung cấp là đáng tin cậy." }
+      ]
+    },
+    {
+      "code": "SerQ",
+      "nameVi": "Chất lượng dịch vụ",
+      "nameEn": "Service Quality",
+      "definition": "Mức độ bộ phận hỗ trợ của hệ thống sẵn lòng giúp đỡ, quan tâm tới từng người dùng, đúng hẹn và đủ kiến thức.",
+      "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
+      "items": [
+        { "code": "SerQ1", "en": "The responsible service personnel are always highly willing to help whenever I need support with the [e-learning system].", "vi": "Nhân viên phụ trách luôn rất sẵn lòng giúp đỡ mỗi khi tôi cần hỗ trợ về [hệ thống]." },
+        { "code": "SerQ2", "en": "The responsible service personnel provide personal attention when I experience problems with the [e-learning system].", "vi": "Nhân viên phụ trách quan tâm tới riêng tôi khi tôi gặp sự cố với [hệ thống]." },
+        { "code": "SerQ3", "en": "The responsible service personnel provide services related to the [e-learning system] at the promised time.", "vi": "Nhân viên phụ trách cung cấp các dịch vụ liên quan tới [hệ thống] đúng thời gian đã hứa." },
+        { "code": "SerQ4", "en": "The responsible service personnel have sufficient knowledge to answer my questions in respect of the [e-learning system].", "vi": "Nhân viên phụ trách có đủ kiến thức để trả lời các câu hỏi của tôi về [hệ thống]." }
+      ]
+    },
+    {
+      "code": "US",
+      "nameVi": "Sự hài lòng của người dùng",
+      "nameEn": "User Satisfaction",
+      "definition": "Mức độ người dùng thấy hệ thống đáp ứng tốt, hiệu quả cho công việc của mình và hài lòng với hệ thống nói chung.",
+      "source": "Cidral, Aparicio & Oliveira (2020), 4 biến, dựa trên DeLone & McLean (2003).",
+      "items": [
+        { "code": "US1", "en": "How adequately does the [e-learning system] support your area of study?", "vi": "[Hệ thống] hỗ trợ lĩnh vực học tập của bạn đầy đủ đến mức nào?" },
+        { "code": "US2", "en": "How efficient is the [e-learning system]?", "vi": "[Hệ thống] hoạt động hiệu quả đến mức nào?" },
+        { "code": "US3", "en": "How effective is the [e-learning system]?", "vi": "[Hệ thống] mang lại kết quả tốt đến mức nào?" },
+        { "code": "US4", "en": "Are you satisfied with the [e-learning system] on the whole?", "vi": "Nhìn chung, bạn có hài lòng với [hệ thống] không?" }
+      ]
+    }
+  ],
+  "usage": [
+    "Trích DeLone & McLean (1992, 2003) cho mô hình, và trích Cidral, Aparicio & Oliveira (2020) cho câu chữ các biến; đừng ghi các biến này là 'của DeLone & McLean' vì hai bài gốc không công bố bộ câu hỏi.",
+    "Nguyên văn đang theo bối cảnh e-learning; với ERP, phần mềm kế toán hay dịch vụ công, thay '[e-learning system]' và cụm 'area of study' ở US1 bằng công việc tương ứng.",
+    "IQ2 trong bài nguồn thiếu động từ 'is' ('…understandable'); đây là nguyên văn, khi dùng bản tiếng Anh có thể bổ sung 'is' và ghi chú đã sửa lỗi chính tả.",
+    "SerQ chỉ hợp khi hệ thống có bộ phận hỗ trợ mà người trả lời từng liên hệ; nếu không, thêm lựa chọn 'Chưa từng liên hệ' hoặc bỏ khái niệm này.",
+    "Mô hình đầy đủ còn có việc sử dụng và lợi ích ròng; nếu cần, lấy thêm biến Use và Net Benefits trong cùng phụ lục của Cidral và cộng sự (2020)."
+  ],
+  "sampleSize": {
+    "arrowsMax": 3,
+    "note": "Với 4 khái niệm trên, sự hài lòng nhận 3 mũi tên (từ SysQ, IQ, SerQ), nên theo G*Power (f² = 0,15, α = 5%, power 0,80) cần tối thiểu 77 quan sát. Mô hình đầy đủ năm 2003 thêm việc sử dụng tác động lên sự hài lòng thì là 4 mũi tên, cần 85."
+  },
+  "license": "Các biến được công bố trong bài báo truy cập mở (Heliyon, giấy phép CC BY-NC-ND 4.0). Khi dùng, trích dẫn Cidral, Aparicio & Oliveira (2020) và DeLone & McLean (1992, 2003); không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "DeLone, W. H., &amp; McLean, E. R. (1992). Information systems success: The quest for the dependent variable. <em>Information Systems Research, 3</em>(1), 60–95. https://doi.org/10.1287/isre.3.1.60",
+    "DeLone, W. H., &amp; McLean, E. R. (2003). The DeLone and McLean model of information systems success: A ten-year update. <em>Journal of Management Information Systems, 19</em>(4), 9–30. https://doi.org/10.1080/07421222.2003.11045748",
+    "Cidral, W., Aparicio, M., &amp; Oliveira, T. (2020). Students' long-term orientation role in e-learning success: A Brazilian study. <em>Heliyon, 6</em>(12), e05735. https://doi.org/10.1016/j.heliyon.2020.e05735"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7753911/fullTextXML"
+  ],
+  "related": ["tam", "ecm-tiep-tuc-su-dung", "servqual"]
+}

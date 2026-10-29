@@ -1,0 +1,70 @@
+{
+  "title": "Thang đo phù hợp cá nhân - tổ chức: Cable & DeRue (2002)",
+  "description": "Thang đo sự phù hợp cá nhân - tổ chức và cá nhân - công việc 9 biến của Cable và DeRue (2002) dịch sẵn tiếng Việt, có bản gốc và trích dẫn.",
+  "name": "P-O fit / P-J fit",
+  "fullName": "Thang đo cảm nhận sự phù hợp (Perceived Fit: Person-Organization, Needs-Supplies, Demands-Abilities)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo phù hợp cá nhân tổ chức",
+  "intro": "Cable và DeRue (2002) đo trực tiếp cảm nhận của người lao động về ba loại phù hợp: giữa giá trị cá nhân và giá trị tổ chức (P-O fit), giữa nhu cầu cá nhân và những gì công việc mang lại (needs-supplies fit), và giữa năng lực cá nhân với yêu cầu công việc (demands-abilities fit). Mỗi loại có 3 biến; hai loại sau thường được gộp thành phù hợp cá nhân - công việc (P-J fit). Bài gốc cho thấy ba loại phù hợp phân biệt được và dự báo các kết quả khác nhau. Ở Việt Nam, thang hợp với đề tài về tuyển dụng, gắn kết, sự hài lòng và ý định nghỉ việc.",
+  "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như nhiều nghiên cứu dùng lại; một số nghiên cứu dùng 5 mức.",
+  "constructs": [
+    {
+      "code": "POF",
+      "nameVi": "Phù hợp cá nhân - tổ chức",
+      "nameEn": "Person-Organization Fit",
+      "definition": "Mức độ giá trị của cá nhân tương đồng với giá trị và văn hoá của tổ chức.",
+      "source": "Cable & DeRue (2002), 3 biến.",
+      "items": [
+        { "code": "POF1", "en": "The things that I value in life are very similar to the things that my organization values.", "vi": "Những điều tôi coi trọng trong cuộc sống rất giống với những điều [công ty] coi trọng." },
+        { "code": "POF2", "en": "My personal values match my organization’s values and culture.", "vi": "Giá trị cá nhân của tôi phù hợp với giá trị và văn hoá của [công ty]." },
+        { "code": "POF3", "en": "My organization’s values and culture provide a good fit with the things that I value in life.", "vi": "Giá trị và văn hoá của [công ty] rất hợp với những điều tôi coi trọng trong cuộc sống." }
+      ]
+    },
+    {
+      "code": "NSF",
+      "nameVi": "Phù hợp nhu cầu - đáp ứng",
+      "nameEn": "Needs-Supplies Fit",
+      "definition": "Mức độ công việc đáp ứng những gì cá nhân mong muốn và cần từ công việc.",
+      "source": "Cable & DeRue (2002), 3 biến.",
+      "items": [
+        { "code": "NSF1", "en": "There is a good fit between what my job offers me and what I am looking for in a job.", "vi": "Những gì công việc mang lại cho tôi rất khớp với những gì tôi tìm kiếm ở một công việc." },
+        { "code": "NSF2", "en": "The attributes that I look for in a job are fulfilled very well by my present job.", "vi": "Công việc hiện tại đáp ứng rất tốt những đặc điểm tôi mong muốn ở một công việc." },
+        { "code": "NSF3", "en": "The job that I currently hold gives me just about everything that I want from a job.", "vi": "Công việc hiện tại cho tôi gần như mọi thứ tôi muốn từ một công việc." }
+      ]
+    },
+    {
+      "code": "DAF",
+      "nameVi": "Phù hợp yêu cầu - năng lực",
+      "nameEn": "Demands-Abilities Fit",
+      "definition": "Mức độ kỹ năng, năng lực và trình độ của cá nhân đáp ứng yêu cầu của công việc.",
+      "source": "Cable & DeRue (2002), 3 biến.",
+      "items": [
+        { "code": "DAF1", "en": "The match is very good between the demands of my job and my personal skills.", "vi": "Yêu cầu của công việc và kỹ năng của tôi rất khớp với nhau." },
+        { "code": "DAF2", "en": "My abilities and training are a good fit with the requirements of my job.", "vi": "Năng lực và quá trình đào tạo của tôi phù hợp với yêu cầu của công việc." },
+        { "code": "DAF3", "en": "My personal abilities and education provide a good match with the demands that my job places on me.", "vi": "Năng lực và học vấn của tôi đáp ứng tốt những đòi hỏi mà công việc đặt ra cho tôi." }
+      ]
+    }
+  ],
+  "usage": [
+    "Nếu đề tài chỉ nói 'phù hợp cá nhân - công việc', dùng 6 biến NSF và DAF; nếu chỉ nói 'phù hợp cá nhân - tổ chức', dùng 3 biến POF. Ghi rõ dùng thành phần nào của Cable và DeRue (2002).",
+    "Ba biến POF có câu chữ gần giống nhau, dễ cho Cronbach's alpha rất cao (trên 0,95); hội đồng có thể hỏi về biến thừa, nên giải thích đây là đặc điểm của thang gốc.",
+    "Đây là thang đo cảm nhận trực tiếp, không phải phương pháp tính độ lệch giữa hai bộ điểm; đừng trộn với cách đo gián tiếp trong cùng một luận văn.",
+    "Chạy CFA ba nhân tố và so với mô hình hai hoặc một nhân tố để chứng minh ba loại phù hợp phân biệt được trong mẫu của bạn.",
+    "Thay [công ty] bằng tên đơn vị cụ thể (bệnh viện, trường, chi nhánh) và dùng thống nhất cho cả ba biến POF."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm ba thành phần, không phải mô hình. Nếu dùng ba thành phần làm 3 biến dự báo cho một biến phụ thuộc thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo gốc trên Journal of Applied Psychology và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Cable, D. M., &amp; DeRue, D. S. (2002). The convergent and discriminant validity of subjective fit perceptions. <em>Journal of Applied Psychology, 87</em>(5), 875–884. https://doi.org/10.1037/0021-9010.87.5.875"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13189946/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11392862/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7581679/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5117123/fullTextXML",
+    "https://api.crossref.org/works/10.1037/0021-9010.87.5.875"
+  ],
+  "related": ["y-dinh-nghi-viec", "cam-ket-to-chuc-ocq", "hai-long-cong-viec"]
+}

@@ -21,7 +21,7 @@ check(norm(block(kitSrc, "math")) === norm(block(calcSrc, "math")), "math block 
 
 const api = new Function(
   `${block(kitSrc, "math")}${block(kitSrc, "kit")}
-   return { placeholdersOf, fillPlaceholders, citeOf, citedBy, isAgreementScale, kitSample };`
+   return { placeholdersOf, fillPlaceholders, citeOf, citedBy, isAgreementScale, kitSample, normText, expandQuery, indexConstruct, rankConstructs };`
 )();
 
 check(api.fillPlaceholders("Sử dụng [hệ thống] giúp tôi", { "hệ thống": "ví MoMo" }) === "Sử dụng ví MoMo giúp tôi", "fills a placeholder");
@@ -58,6 +58,16 @@ for (const f of readdirSync(dir).filter(f => f.endsWith(".json") && !f.startsWit
     check(plain.some(r => api.citedBy(cite, r)), `${f} ${c.code}: reference listed for ${cite}`);
   }
 }
+
+// Concept search: English, Vietnamese without diacritics, and synonyms reach the right constructs.
+const all = [...scales.values()].flatMap(s => s.constructs.map(c => ({ s, c })));
+const index = all.map(({ s, c }) => api.indexConstruct(s, c));
+const top = (q, n) => api.rankConstructs(q, index).slice(0, n).map(i => all[i].c.nameEn.toLowerCase());
+for (const [q, want] of [["trust", "trust"], ["niem tin", "trust"], ["hai long", "satisf"], ["intention to use", "intention"], ["perceived usefulness", "usefulness"], ["de su dung", "ease"], ["cang thang", "stress"], ["lanh dao", "lead"]]) {
+  const got = top(q, 5);
+  check(got.some(n => n.includes(want)), `search "${q}" finds ${want} in top 5 (got ${got.slice(0, 3).join(" | ")})`);
+}
+check(!api.expandQuery("gia tri").includes("chi phi"), "search: 'gia tri' does not pull in the price synonyms");
 
 // Template pages: every construct key resolves, every path joins listed constructs,
 // the model fits the precomputed power table, and every placeholder in its items is filled.

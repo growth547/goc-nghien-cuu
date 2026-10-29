@@ -1,0 +1,44 @@
+{
+  "title": "Thang đo sự thích thú cảm nhận: Davis, Bagozzi & Warshaw (1992)",
+  "description": "Thang đo sự thích thú cảm nhận (perceived enjoyment) 3 biến của Davis, Bagozzi & Warshaw (1992), dịch sẵn tiếng Việt, có bản gốc tiếng Anh và trích dẫn.",
+  "name": "Perceived Enjoyment",
+  "fullName": "Sự thích thú cảm nhận (Perceived Enjoyment)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo sự thích thú cảm nhận",
+  "intro": "Sự thích thú cảm nhận là động cơ nội tại: người dùng thấy việc dùng công nghệ tự nó vui, dễ chịu, ngoài lợi ích nó mang lại. Davis, Bagozzi & Warshaw (1992) đưa khái niệm này vào bên cạnh nhận thức sự hữu ích (động cơ bên ngoài) và cho thấy cả hai cùng tác động lên ý định sử dụng. Thang 3 biến này thường được ghép vào TAM, UTAUT hoặc ECM. Ở Việt Nam, nó hợp với đề tài về mạng xã hội, game, học trực tuyến, mua sắm qua livestream, ứng dụng giải trí.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như Luo, Lin & Yang (2021); Chao (2019) dùng Likert 5 mức.",
+  "constructs": [
+    {
+      "code": "ENJ",
+      "nameVi": "Sự thích thú cảm nhận",
+      "nameEn": "Perceived Enjoyment",
+      "definition": "Mức độ việc sử dụng hệ thống được cảm nhận là thú vị tự thân, không tính tới kết quả hay lợi ích mà nó mang lại.",
+      "source": "Davis, Bagozzi & Warshaw (1992), 3 biến; câu chữ đối chiếu qua bản trích trong Luo, Lin & Yang (2021), Bảng 4, và Chao (2019), Bảng A1.",
+      "items": [
+        { "code": "ENJ1", "en": "I find using [online self-regulated learning] to be enjoyable", "vi": "Tôi thấy việc sử dụng [hệ thống] là thú vị." },
+        { "code": "ENJ2", "en": "The actual process of using [online self-regulated learning] is pleasant", "vi": "Quá trình sử dụng [hệ thống] mang lại cảm giác dễ chịu." },
+        { "code": "ENJ3", "en": "I have fun using [online self-regulated learning]", "vi": "Tôi thấy vui khi sử dụng [hệ thống]." }
+      ]
+    }
+  ],
+  "usage": [
+    "Phần trong ngoặc vuông là đối tượng của nghiên cứu trích dẫn; thay bằng công nghệ trong đề tài của bạn, giữ nguyên phần còn lại của câu.",
+    "Hai cách dịch hay gặp lỗi: dịch 'enjoyable' thành 'hài lòng' (lẫn với sự hài lòng) hoặc 'hữu ích' (lẫn với PU). Giữ nghĩa 'vui, thú vị' để thang không tải chéo với sự hài lòng.",
+    "Chỉ có 3 biến nên nếu loại một biến sau EFA thì khái niệm còn 2 biến; cân nhắc giữ đủ 3 biến dù hệ số tải hơi thấp, và báo cáo CR, AVE.",
+    "Trong UTAUT2, khái niệm gần nghĩa là động lực hưởng thụ (hedonic motivation); không đưa cả hai vào cùng một mô hình vì các biến gần như trùng nhau."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, cỡ mẫu tính theo mô hình mà bạn ghép nó vào. Ví dụ ghép vào TAM với ý định nhận 3 mũi tên (PU, PEOU, ENJ) thì cần tối thiểu 77 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và được dùng lại rộng rãi trong nghiên cứu. Khi dùng, trích dẫn Davis, Bagozzi & Warshaw (1992); không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1992). Extrinsic and intrinsic motivation to use computers in the workplace. <em>Journal of Applied Social Psychology, 22</em>(14), 1111–1132. https://doi.org/10.1111/j.1559-1816.1992.tb00945.x",
+    "Luo, Y., Lin, J., &amp; Yang, Y. (2021). Students' motivation and continued intention with online self-regulated learning: A self-determination theory perspective. <em>Zeitschrift für Erziehungswissenschaft, 24</em>(6), 1379–1399. https://doi.org/10.1007/s11618-021-01042-3",
+    "Chao, C.-M. (2019). Factors determining the behavioral intention to use mobile learning: An application and extension of the UTAUT model. <em>Frontiers in Psychology, 10</em>, 1652. https://doi.org/10.3389/fpsyg.2019.01652"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8404548/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6646805/fullTextXML"
+  ],
+  "related": ["tam", "utaut2", "ecm-tiep-tuc-su-dung"]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Thang đo cô đơn 3 biến tiếng Việt: Hughes và cộng sự (2004)",
+  "description": "Thang đo cô đơn 3 biến rút từ UCLA của Hughes và cộng sự dịch sẵn tiếng Việt: thiếu bầu bạn, bị gạt ra ngoài, bị cô lập; thang tần suất 3 mức, điểm 3–9.",
+  "name": "Thang đo cô đơn 3 biến",
+  "fullName": "Thang đo cô đơn 3 biến (Three-Item Loneliness Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo cô đơn UCLA 3 biến",
+  "intro": "Hughes, Waite, Hawkley và Cacioppo (2004) rút 3 câu từ thang cô đơn UCLA bản sửa đổi 20 câu để đo cảm giác cô đơn trong các cuộc khảo sát lớn, nơi không đủ thời gian cho thang dài. Ba câu hỏi về cảm giác thiếu người bầu bạn, bị gạt ra ngoài và bị cô lập với người khác. Trong hai nghiên cứu dân số ở Mỹ, thang đạt alpha 0,72 và tương quan cao với bản 20 câu. Ở Việt Nam, thang hợp với đề tài về sinh viên xa nhà, người cao tuổi, người làm việc từ xa, hoặc dùng làm biến kết quả của việc dùng mạng xã hội.",
+  "responseScale": "Thang tần suất 3 mức, không phải Likert đồng ý: 1 = Hiếm khi (Hardly ever), 2 = Thỉnh thoảng (Some of the time), 3 = Thường xuyên (Often). Cộng 3 câu được điểm 3–9; điểm càng cao càng cô đơn. Không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "LON",
+      "nameVi": "Cảm giác cô đơn",
+      "nameEn": "Loneliness",
+      "definition": "Cảm nhận chủ quan rằng các mối quan hệ xã hội của mình thiếu hụt, thể hiện qua cảm giác thiếu bầu bạn, bị gạt ra ngoài và bị cô lập.",
+      "source": "Hughes, Waite, Hawkley & Cacioppo (2004), 3 biến.",
+      "items": [
+        { "code": "LON1", "en": "First, how often do you feel that you lack companionship: Hardly ever, some of the time, or often?", "vi": "Bạn có thường cảm thấy mình thiếu người bầu bạn không: hiếm khi, thỉnh thoảng hay thường xuyên?" },
+        { "code": "LON2", "en": "How often do you feel left out: Hardly ever, some of the time, or often?", "vi": "Bạn có thường cảm thấy mình bị gạt ra ngoài không: hiếm khi, thỉnh thoảng hay thường xuyên?" },
+        { "code": "LON3", "en": "How often do you feel isolated from others? (Is it hardly ever, some of the time, or often?)", "vi": "Bạn có thường cảm thấy bị cô lập với người khác không? (Hiếm khi, thỉnh thoảng hay thường xuyên?)" }
+      ]
+    }
+  ],
+  "usage": [
+    "Thang đo cảm giác cô đơn, không phải công cụ chẩn đoán trầm cảm hay bất kỳ rối loạn nào. Đề tài có hỏi về sức khoẻ tinh thần phải làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ, ví dụ phòng tư vấn tâm lý của trường hoặc đường dây nóng hỗ trợ tâm lý, ở cuối bảng hỏi.",
+    "Câu hỏi gốc được viết cho phỏng vấn qua điện thoại nên có đọc kèm các phương án trả lời. Với bảng hỏi tự điền, có thể bỏ phần phương án trong câu và hiển thị 3 phương án thành cột, nhưng giữ đúng 3 mức hiếm khi/thỉnh thoảng/thường xuyên và ghi rõ đã điều chỉnh hình thức trong chương phương pháp.",
+    "Không đổi sang thang đồng ý 5 hoặc 7 mức: câu hỏi là 'có thường... không', nên thang tần suất mới khớp nghĩa. Nếu cần độ phân giải cao hơn, dùng bản UCLA đầy đủ (Russell, Peplau & Cutrona, 1980, được Hughes và cộng sự trích) thay vì tự kéo dài thang 3 mức.",
+    "Thang chỉ có 3 biến nên EFA ít ý nghĩa; báo cáo Cronbach's alpha (bài gốc đạt 0,72) và, nếu đưa vào mô hình SEM, kiểm tra hệ số tải trong CFA. Dùng điểm tổng liên tục khi phân tích; nếu chia nhóm cô đơn cao/thấp, ghi rõ nguồn của điểm cắt.",
+    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. 'Left out' dễ dịch lệch thành 'bị bỏ rơi' (nặng hơn nghĩa gốc); nên khảo sát thử để chọn cách diễn đạt người trả lời hiểu đúng."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đơn lẻ 3 biến, thường là một biến trong mô hình lớn hơn; cỡ mẫu nên tính theo mô hình đó. Nếu chỉ mô tả mức cô đơn, tối thiểu khoảng 100 quan sát để ước lượng alpha ổn định."
+  },
+  "license": "Ba câu hỏi được công bố trong bài báo của Hughes và cộng sự (2004), bản toàn văn đọc miễn phí trên PubMed Central. Bài không nêu điều kiện sử dụng riêng; khi dùng cho nghiên cứu, trích dẫn bài gốc.",
+  "references": [
+    "Hughes, M. E., Waite, L. J., Hawkley, L. C., &amp; Cacioppo, J. T. (2004). A short scale for measuring loneliness in large surveys: Results from two population-based studies. <em>Research on Aging, 26</em>(6), 655–672. https://doi.org/10.1177/0164027504268574"
+  ],
+  "verifiedFrom": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC2394670/"
+  ],
+  "related": ["ho-tro-xa-hoi-mspss", "hai-long-cuoc-song-swls", "dass-21"]
+}

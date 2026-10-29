@@ -1,0 +1,48 @@
+{
+  "title": "Thang đo nghiện mạng xã hội BSMAS tiếng Việt: Andreassen và cộng sự",
+  "description": "Thang đo nghiện mạng xã hội Bergen (BSMAS) 6 biến dịch sẵn tiếng Việt, có bản gốc tiếng Anh, thang tần suất 1–5, điểm tổng 6–30 và lưu ý khi dùng.",
+  "name": "BSMAS",
+  "fullName": "Thang đo nghiện mạng xã hội Bergen (Bergen Social Media Addiction Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo nghiện mạng xã hội",
+  "intro": "BSMAS đo mức độ sử dụng mạng xã hội theo kiểu gây nghiện, dựa trên sáu thành phần của nghiện hành vi theo Griffiths: nổi trội, điều chỉnh tâm trạng, dung nạp, cai, xung đột và tái nghiện. Thang được Andreassen và cộng sự (2016) chuyển từ thang nghiện Facebook (BFAS) của Andreassen và cộng sự (2012), thay chữ 'Facebook' bằng 'mạng xã hội' nói chung. Ở Việt Nam, BSMAS hay dùng trong đề tài về nghiện Facebook, TikTok của sinh viên, liên quan giữa mạng xã hội với trầm cảm, lo âu, giấc ngủ và kết quả học tập.",
+  "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý: 1 = Rất hiếm khi, 2 = Hiếm khi, 3 = Thỉnh thoảng, 4 = Thường xuyên, 5 = Rất thường xuyên (bản dạng câu hỏi hỏi về năm vừa qua). Cộng 6 câu, điểm tổng từ 6 đến 30; điểm càng cao nguy cơ nghiện càng lớn. Không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "BSMAS",
+      "nameVi": "Nghiện mạng xã hội",
+      "nameEn": "Social Media Addiction",
+      "definition": "Mức độ một người sử dụng mạng xã hội theo kiểu gây nghiện: bận tâm quá mức, dùng để giải toả tâm trạng, cần dùng nhiều hơn, bứt rứt khi không được dùng, ảnh hưởng tới học tập hay công việc và khó cắt giảm.",
+      "source": "Andreassen và cộng sự (2016), 6 biến, mỗi biến ứng với một thành phần nghiện hành vi; câu chữ theo bản phát biểu dạng 'You …'.",
+      "items": [
+        { "code": "SM1", "en": "You spend a lot of time thinking about social media or planning how to use it.", "vi": "Bạn dành nhiều thời gian nghĩ về mạng xã hội hoặc tính xem sẽ dùng mạng xã hội thế nào." },
+        { "code": "SM2", "en": "You feel an urge to use social media more and more.", "vi": "Bạn thấy thôi thúc phải dùng mạng xã hội ngày càng nhiều hơn." },
+        { "code": "SM3", "en": "You use social media in order to forget about personal problems.", "vi": "Bạn dùng mạng xã hội để quên đi những vấn đề cá nhân." },
+        { "code": "SM4", "en": "You have tried to cut down on the use of social media without success.", "vi": "Bạn đã cố giảm thời gian dùng mạng xã hội nhưng không thành công." },
+        { "code": "SM5", "en": "You become restless or troubled if you are prohibited from using social media.", "vi": "Bạn trở nên bồn chồn hoặc khó chịu nếu bị cấm dùng mạng xã hội." },
+        { "code": "SM6", "en": "You use social media so much that it has had a negative impact on your job/studies.", "vi": "Bạn dùng mạng xã hội nhiều tới mức ảnh hưởng xấu tới công việc hoặc việc học của mình." }
+      ]
+    }
+  ],
+  "usage": [
+    "BSMAS có hai cách diễn đạt đang lưu hành: dạng phát biểu 'You …' (dùng ở đây) và dạng câu hỏi 'How often during the last year have you…'; chọn một dạng, dùng nhất quán và ghi rõ trong phương pháp.",
+    "Câu SM3 dễ bị người trả lời hiểu là dùng mạng xã hội để tìm bạn bè chia sẻ, một cách ứng phó lành mạnh; khi dịch nên làm rõ ý 'để quên đi', và nên phỏng vấn nhận thức vài người trước khi khảo sát chính thức.",
+    "BSMAS là công cụ sàng lọc, không phải chẩn đoán; các điểm cắt hay gặp trên mạng không thống nhất giữa các nghiên cứu, nếu phân nhóm nghiện thì phải trích nguồn điểm cắt và nói rõ giới hạn.",
+    "Có thể đổi 'mạng xã hội' thành một nền tảng cụ thể (TikTok, Facebook) nhưng giữ nguyên cấu trúc câu; khi đó ghi rõ đã điều chỉnh từ BSMAS.",
+    "Thang chỉ có 6 biến, 1 nhân tố; kiểm tra Cronbach's alpha và CFA, nếu đo cùng FoMO hay SAS-SV thì kiểm tra giá trị phân biệt (HTMT hoặc Fornell–Larcker)."
+  ],
+  "sampleSize": {
+    "note": "BSMAS là thang đơn lẻ 6 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (30) nhưng nên từ 100 quan sát trở lên; khi đưa vào mô hình với FoMO, trầm cảm hay kết quả học tập thì tính cỡ mẫu theo mô hình đó."
+  },
+  "license": "Các biến được công bố trong nghiên cứu học thuật và được dùng rộng rãi miễn phí cho nghiên cứu. Trang thư viện thang đo của University of Salford chỉ yêu cầu trích dẫn tác giả; khi dùng, trích dẫn Andreassen và cộng sự (2016) và thang gốc Andreassen và cộng sự (2012).",
+  "references": [
+    "Andreassen, C. S., Billieux, J., Griffiths, M. D., Kuss, D. J., Demetrovics, Z., Mazzoni, E., &amp; Pallesen, S. (2016). The relationship between addictive use of social media and video games and symptoms of psychiatric disorders: A large-scale cross-sectional study. <em>Psychology of Addictive Behaviors, 30</em>(2), 252–262. https://doi.org/10.1037/adb0000160",
+    "Andreassen, C. S., Torsheim, T., Brunborg, G. S., &amp; Pallesen, S. (2012). Development of a Facebook addiction scale. <em>Psychological Reports, 110</em>(2), 501–517. https://doi.org/10.2466/02.09.18.PR0.110.2.501-517"
+  ],
+  "verifiedFrom": [
+    "https://hub.salford.ac.uk/psytech/?p=2638",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC13191657/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9295229/"
+  ],
+  "related": ["fomo", "nghien-dien-thoai-sas-sv", "cang-thang-pss-10"]
+}

@@ -1,0 +1,85 @@
+{
+  "title": "Thang đo DASS-21 tiếng Việt: trầm cảm, lo âu, stress (1995)",
+  "description": "Thang đo DASS-21 của Lovibond & Lovibond dịch sẵn tiếng Việt: 21 biến chia 3 tiểu thang trầm cảm, lo âu, stress, thang 0–3, cách tính điểm nhân 2.",
+  "name": "DASS-21",
+  "fullName": "Thang đo trầm cảm, lo âu, stress 21 biến (Depression Anxiety Stress Scales)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo DASS-21",
+  "intro": "DASS do Lovibond và Lovibond (1995) xây dựng để đo ba trạng thái cảm xúc tiêu cực có liên quan với nhau: trầm cảm, lo âu và căng thẳng (stress). Bản đầy đủ có 42 biến; DASS-21 lấy 7 biến cho mỗi tiểu thang và mất khoảng một nửa thời gian trả lời. Trang chính thức của DASS khuyên dùng DASS-21 cho mục đích nghiên cứu. Ở Việt Nam, thang này hay xuất hiện trong đề tài về sức khoẻ tinh thần của sinh viên, nhân viên y tế, người lao động, và làm biến kết quả trong mô hình áp lực học tập hoặc áp lực công việc.",
+  "responseScale": "Thang mức độ 4 mức, không phải Likert đồng ý, hỏi về tuần vừa qua: 0 = Hoàn toàn không đúng với tôi (Did not apply to me at all), 1 = Đúng với tôi phần nào, hoặc thỉnh thoảng (Applied to me to some degree, or some of the time), 2 = Đúng với tôi phần nhiều, hoặc khá nhiều lúc (Applied to me to a considerable degree, or a good part of time), 3 = Rất đúng với tôi, hoặc hầu hết thời gian (Applied to me very much, or most of the time). Cộng 7 biến của mỗi tiểu thang rồi nhân 2 để so sánh được với DASS-42; mỗi tiểu thang có điểm từ 0 đến 42. Không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "D",
+      "nameVi": "Trầm cảm",
+      "nameEn": "Depression",
+      "definition": "Mức độ chán nản, mất hứng thú, thấy cuộc sống vô nghĩa và đánh giá thấp bản thân trong tuần vừa qua.",
+      "source": "Lovibond & Lovibond (1995), DASS-21, 7 biến (câu 3, 5, 10, 13, 16, 17, 21).",
+      "items": [
+        { "code": "D3", "en": "I couldn't seem to experience any positive feeling at all", "vi": "Tôi dường như không thể cảm nhận được bất kỳ cảm xúc tích cực nào." },
+        { "code": "D5", "en": "I found it difficult to work up the initiative to do things", "vi": "Tôi thấy khó tự thúc đẩy bản thân bắt tay vào làm việc gì đó." },
+        { "code": "D10", "en": "I felt that I had nothing to look forward to", "vi": "Tôi cảm thấy chẳng còn điều gì để mong đợi." },
+        { "code": "D13", "en": "I felt down-hearted and blue", "vi": "Tôi cảm thấy chán nản, buồn bã." },
+        { "code": "D16", "en": "I was unable to become enthusiastic about anything", "vi": "Tôi không thể hào hứng với bất cứ điều gì." },
+        { "code": "D17", "en": "I felt I wasn't worth much as a person", "vi": "Tôi cảm thấy bản thân mình không có mấy giá trị." },
+        { "code": "D21", "en": "I felt that life was meaningless", "vi": "Tôi cảm thấy cuộc sống vô nghĩa." }
+      ]
+    },
+    {
+      "code": "A",
+      "nameVi": "Lo âu",
+      "nameEn": "Anxiety",
+      "definition": "Mức độ kích thích sinh lý (khô miệng, khó thở, run, tim đập mạnh), sợ hãi và lo bị hoảng loạn trong tuần vừa qua.",
+      "source": "Lovibond & Lovibond (1995), DASS-21, 7 biến (câu 2, 4, 7, 9, 15, 19, 20).",
+      "items": [
+        { "code": "A2", "en": "I was aware of dryness of my mouth", "vi": "Tôi thấy mình bị khô miệng." },
+        { "code": "A4", "en": "I experienced breathing difficulty (eg, excessively rapid breathing, breathlessness in the absence of physical exertion)", "vi": "Tôi bị khó thở (ví dụ thở gấp bất thường, hụt hơi dù không vận động gắng sức)." },
+        { "code": "A7", "en": "I experienced trembling (eg, in the hands)", "vi": "Tôi bị run (ví dụ run tay)." },
+        { "code": "A9", "en": "I was worried about situations in which I might panic and make a fool of myself", "vi": "Tôi lo về những tình huống mà mình có thể hoảng loạn và tự làm mình bẽ mặt." },
+        { "code": "A15", "en": "I felt I was close to panic", "vi": "Tôi cảm thấy mình gần như sắp hoảng loạn." },
+        { "code": "A19", "en": "I was aware of the action of my heart in the absence of physical exertion (eg, sense of heart rate increase, heart missing a beat)", "vi": "Tôi cảm nhận rõ tim mình đập dù không vận động gắng sức (ví dụ thấy tim đập nhanh lên, hoặc hẫng một nhịp)." },
+        { "code": "A20", "en": "I felt scared without any good reason", "vi": "Tôi thấy sợ hãi mà không có lý do chính đáng." }
+      ]
+    },
+    {
+      "code": "S",
+      "nameVi": "Căng thẳng (stress)",
+      "nameEn": "Stress",
+      "definition": "Mức độ căng thẳng kéo dài, khó thư giãn, dễ kích động và dễ cáu trong tuần vừa qua.",
+      "source": "Lovibond & Lovibond (1995), DASS-21, 7 biến (câu 1, 6, 8, 11, 12, 14, 18).",
+      "items": [
+        { "code": "S1", "en": "I found it hard to wind down", "vi": "Tôi thấy khó mà thả lỏng, bình tĩnh lại." },
+        { "code": "S6", "en": "I tended to over-react to situations", "vi": "Tôi có xu hướng phản ứng thái quá với các tình huống." },
+        { "code": "S8", "en": "I felt that I was using a lot of nervous energy", "vi": "Tôi cảm thấy mình tiêu hao nhiều sức lực vì bồn chồn, căng thẳng." },
+        { "code": "S11", "en": "I found myself getting agitated", "vi": "Tôi thấy mình hay bứt rứt, dễ bị kích động." },
+        { "code": "S12", "en": "I found it difficult to relax", "vi": "Tôi thấy khó thư giãn." },
+        { "code": "S14", "en": "I was intolerant of anything that kept me from getting on with what I was doing", "vi": "Tôi không chịu được bất cứ điều gì cản trở mình tiếp tục việc đang làm." },
+        { "code": "S18", "en": "I felt that I was rather touchy", "vi": "Tôi cảm thấy mình khá dễ phật ý." }
+      ]
+    }
+  ],
+  "usage": [
+    "DASS-21 là công cụ sàng lọc mức độ triệu chứng, không dùng để chẩn đoán trầm cảm hay rối loạn lo âu; luận văn chỉ nên viết 'mức độ triệu chứng' chứ không viết 'tỷ lệ mắc'. Trang chính thức của DASS cũng khuyên dùng điểm liên tục khi phân tích thay vì chia mẫu thành nhóm bình thường và nhóm lâm sàng.",
+    "Đề tài có hỏi về sức khoẻ tinh thần phải làm theo quy định đạo đức nghiên cứu của trường (xin duyệt nếu trường yêu cầu, có phiếu đồng ý tham gia) và cuối bảng hỏi phải ghi một đầu mối hỗ trợ, ví dụ phòng tư vấn tâm lý của trường hoặc một đường dây nóng hỗ trợ tâm lý, cho người trả lời cần giúp đỡ.",
+    "Đặt 21 câu theo đúng thứ tự gốc 1–21 (mã biến ở đây giữ số thứ tự gốc), không gom theo tiểu thang. Nhớ nhân 2 điểm mỗi tiểu thang trước khi so với chuẩn hoặc mức phân loại của DASS-42, và ghi rõ trong bài là đã nhân. Trang của tác giả cho phép sao chép tự do nhưng không cho sửa câu hỏi.",
+    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. Trang chính thức của DASS liệt kê sẵn các bản dịch tiếng Việt; Tran, Tran và Fisher (2013) đã kiểm định DASS-21 tiếng Việt trên 221 phụ nữ nông thôn ở Hà Nam, thấy 21 câu cùng tải lên một nhân tố và điểm tổng từ 34 trở lên phát hiện rối loạn tâm thần phổ biến với độ nhạy 79,1%, độ đặc hiệu 77,0%. Nếu dùng bản đã công bố, trích dẫn bản đó.",
+    "Chạy CFA so sánh mô hình 3 nhân tố với mô hình 1 nhân tố chung và báo cáo kết quả; ba tiểu thang thường tương quan cao (0,6–0,7), nên khi đưa cả ba vào hồi quy cần kiểm tra đa cộng tuyến."
+  ],
+  "sampleSize": {
+    "note": "DASS-21 là thang đơn lẻ 21 biến. Theo Hair và cộng sự, EFA/CFA cần tối thiểu 5 quan sát cho mỗi biến, tức 105 quan sát; nên từ 200 trở lên nếu so sánh mô hình 3 nhân tố và 1 nhân tố."
+  },
+  "license": "Theo trang chính thức của DASS (Psychology Foundation of Australia, UNSW), bảng hỏi thuộc phạm vi công cộng, không cần xin phép; được tải và sao chép không hạn chế nhưng không được sửa đổi hay bán để kiếm lời. Sổ tay hướng dẫn (manual) phải mua riêng.",
+  "references": [
+    "Lovibond, S. H., &amp; Lovibond, P. F. (1995). <em>Manual for the Depression Anxiety Stress Scales</em> (2nd ed.). Psychology Foundation.",
+    "Tran, T. D., Tran, T., &amp; Fisher, J. (2013). Validation of the depression anxiety stress scales (DASS) 21 as a screening instrument for depression and anxiety in a rural community-based cohort of northern Vietnamese women. <em>BMC Psychiatry, 13</em>, 24. https://doi.org/10.1186/1471-244X-13-24"
+  ],
+  "verifiedFrom": [
+    "https://www2.psy.unsw.edu.au/dass/",
+    "https://www2.psy.unsw.edu.au/dass/down.htm",
+    "https://www2.psy.unsw.edu.au/dass/Download%20files/Dass21.pdf",
+    "https://www2.psy.unsw.edu.au/dass/Download%20files/Dass_template.pdf",
+    "https://www2.psy.unsw.edu.au/dass/DASSFAQ.htm",
+    "https://www2.psy.unsw.edu.au/dass/Vietnamese/Vietnamese.htm",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/"
+  ],
+  "related": ["phq-9", "gad-7", "cang-thang-pss-10"]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Thang đo công bằng tổ chức tiếng Việt: Colquitt (2001)",
+  "description": "Thang đo công bằng tổ chức 20 biến của Colquitt (2001) dịch sẵn tiếng Việt: công bằng thủ tục, phân phối, quan hệ cá nhân và thông tin, có bản gốc và trích dẫn.",
+  "name": "Công bằng tổ chức",
+  "fullName": "Thang đo công bằng tổ chức (Organizational Justice Measure)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo công bằng tổ chức",
+  "intro": "Colquitt (2001) kiểm định cấu trúc bốn thành phần của công bằng tổ chức và công bố bộ 20 biến: công bằng thủ tục (7 biến), phân phối (4 biến), quan hệ cá nhân (4 biến) và thông tin (5 biến). Mỗi biến là một câu hỏi về một kết quả cụ thể (lương, thưởng, đánh giá, thăng tiến) hoặc về người ra quyết định. Đây là bộ đo công bằng được trích nhiều nhất. Ở Việt Nam, thang hợp với đề tài về đánh giá thành tích, chính sách lương thưởng, ý định nghỉ việc, cam kết và hành vi công dân tổ chức.",
+  "responseScale": "Thang mức độ 5 mức (1 = Ở mức rất ít … 5 = Ở mức rất nhiều; tiếng Anh 'to a small extent' … 'to a large extent'). Biến được viết dạng câu hỏi nên không dùng nhãn đồng ý; nếu đổi thành câu khẳng định với thang đồng ý, ghi rõ trong phần phương pháp.",
+  "constructs": [
+    {
+      "code": "PJ",
+      "nameVi": "Công bằng thủ tục",
+      "nameEn": "Procedural Justice",
+      "definition": "Mức độ công bằng của các quy trình, thủ tục dùng để đi tới kết quả phân bổ.",
+      "source": "Colquitt (2001), 7 biến; câu hỏi dẫn nói về các thủ tục dùng để xác định [kết quả].",
+      "items": [
+        { "code": "PJ1", "en": "Have you been able to express your views and feelings during those procedures?", "vi": "Anh/chị có được nói lên quan điểm và cảm nhận của mình trong các thủ tục đó không?" },
+        { "code": "PJ2", "en": "Have you had influence over the (outcome) arrived at by those procedures?", "vi": "Anh/chị có ảnh hưởng tới [kết quả] được đưa ra qua các thủ tục đó không?" },
+        { "code": "PJ3", "en": "Have those procedures been applied consistently?", "vi": "Các thủ tục đó có được áp dụng nhất quán không?" },
+        { "code": "PJ4", "en": "Have those procedures been free of bias?", "vi": "Các thủ tục đó có khách quan, không thiên vị không?" },
+        { "code": "PJ5", "en": "Have those procedures been based on accurate information?", "vi": "Các thủ tục đó có dựa trên thông tin chính xác không?" },
+        { "code": "PJ6", "en": "Have you been able to appeal the (outcome) arrived at by those procedures?", "vi": "Anh/chị có thể khiếu nại [kết quả] được đưa ra qua các thủ tục đó không?" },
+        { "code": "PJ7", "en": "Have those procedures upheld ethical and moral standards?", "vi": "Các thủ tục đó có tuân thủ chuẩn mực đạo đức không?" }
+      ]
+    },
+    {
+      "code": "DJ",
+      "nameVi": "Công bằng phân phối",
+      "nameEn": "Distributive Justice",
+      "definition": "Mức độ công bằng của kết quả người lao động nhận được so với đóng góp của họ.",
+      "source": "Colquitt (2001), 4 biến; (outcome) thay bằng kết quả cụ thể như lương, thưởng.",
+      "items": [
+        { "code": "DJ1", "en": "Does your (outcome) reflect the effort you have put into your work?", "vi": "[Kết quả] của anh/chị có phản ánh đúng công sức anh/chị bỏ ra cho công việc không?" },
+        { "code": "DJ2", "en": "Is your (outcome) appropriate for the work you have completed?", "vi": "[Kết quả] của anh/chị có tương xứng với công việc anh/chị đã hoàn thành không?" },
+        { "code": "DJ3", "en": "Does your (outcome) reflect what you have contributed to the organization?", "vi": "[Kết quả] của anh/chị có phản ánh đúng những gì anh/chị đã đóng góp cho [công ty] không?" },
+        { "code": "DJ4", "en": "Is your (outcome) justified, given your performance?", "vi": "Xét theo kết quả làm việc của anh/chị, [kết quả] anh/chị nhận được có hợp lý không?" }
+      ]
+    },
+    {
+      "code": "IPJ",
+      "nameVi": "Công bằng quan hệ cá nhân",
+      "nameEn": "Interpersonal Justice",
+      "definition": "Mức độ người lao động được người ra quyết định đối xử lịch sự, tôn trọng.",
+      "source": "Colquitt (2001), 4 biến; (he/she) là người thực hiện thủ tục, thường là [quản lý].",
+      "items": [
+        { "code": "IPJ1", "en": "Has (he/she) treated you in a polite manner?", "vi": "[Quản lý] có đối xử lịch sự với anh/chị không?" },
+        { "code": "IPJ2", "en": "Has (he/she) treated you with dignity?", "vi": "[Quản lý] có đối xử với anh/chị một cách đàng hoàng, giữ thể diện cho anh/chị không?" },
+        { "code": "IPJ3", "en": "Has (he/she) treated you with respect?", "vi": "[Quản lý] có tôn trọng anh/chị không?" },
+        { "code": "IPJ4", "en": "Has (he/she) refrained from improper remarks or comments?", "vi": "[Quản lý] có tránh những lời nhận xét không phù hợp không?" }
+      ]
+    },
+    {
+      "code": "IFJ",
+      "nameVi": "Công bằng thông tin",
+      "nameEn": "Informational Justice",
+      "definition": "Mức độ người ra quyết định giải thích thủ tục và truyền đạt thông tin trung thực, đầy đủ, kịp thời.",
+      "source": "Colquitt (2001), 5 biến.",
+      "items": [
+        { "code": "IFJ1", "en": "Has (he/she) been candid in (his/her) communications with you?", "vi": "[Quản lý] có thẳng thắn khi trao đổi với anh/chị không?" },
+        { "code": "IFJ2", "en": "Has (he/she) explained the procedures thoroughly?", "vi": "[Quản lý] có giải thích kỹ các thủ tục không?" },
+        { "code": "IFJ3", "en": "Were (his/her) explanations regarding the procedures reasonable?", "vi": "Những giải thích của [quản lý] về các thủ tục có hợp lý không?" },
+        { "code": "IFJ4", "en": "Has (he/she) communicated details in a timely manner?", "vi": "[Quản lý] có thông báo chi tiết kịp thời không?" },
+        { "code": "IFJ5", "en": "Has (he/she) seemed to tailor (his/her) communications to individuals’ specific needs?", "vi": "[Quản lý] có điều chỉnh cách truyền đạt cho phù hợp với nhu cầu riêng của từng người không?" }
+      ]
+    }
+  ],
+  "usage": [
+    "Trước mỗi nhóm biến cần một câu dẫn nói rõ đối tượng: thủ tục nào, kết quả nào (ví dụ thu nhập, kết quả đánh giá cuối năm) và người ra quyết định là ai. Thay [kết quả] và [quản lý] thống nhất trong cả bảng hỏi.",
+    "Biến ở dạng câu hỏi có/không nhưng trả lời bằng thang mức độ; nếu chuyển thành câu khẳng định ('Tôi được nói lên quan điểm…'), giữ đúng ý và ghi rõ đã điều chỉnh.",
+    "'Dignity' (IPJ2) và 'respect' (IPJ3) dịch ra dễ trùng nghĩa; thử phỏng vấn sâu vài người để chắc người trả lời phân biệt được hai câu.",
+    "Chạy CFA bốn nhân tố và so với mô hình ba nhân tố (gộp quan hệ cá nhân và thông tin), như Colquitt (2001) đã làm, để chứng minh cấu trúc phù hợp với mẫu của bạn.",
+    "Nhiều đề tài chỉ dùng một hoặc hai thành phần; khi đó trích đúng số biến của thành phần đó và không gọi là 'công bằng tổ chức' chung chung."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm bốn thành phần, không phải mô hình. Nếu dùng bốn thành phần làm 4 biến dự báo cho một biến phụ thuộc thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 85 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo gốc trên Journal of Applied Psychology và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Colquitt, J. A. (2001). On the dimensionality of organizational justice: A construct validation of a measure. <em>Journal of Applied Psychology, 86</em>(3), 386–400. https://doi.org/10.1037/0021-9010.86.3.386"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11737683/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11700738/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9337234/fullTextXML",
+    "https://api.crossref.org/works/10.1037/0021-9010.86.3.386"
+  ],
+  "related": ["ho-tro-to-chuc-pos", "y-dinh-nghi-viec", "hanh-vi-cong-dan-to-chuc"]
+}

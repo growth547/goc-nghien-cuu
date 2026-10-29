@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo FoMO (sợ bỏ lỡ) tiếng Việt: Przybylski và cộng sự (2013)",
+  "description": "Thang đo nỗi sợ bỏ lỡ FoMO 10 biến dịch sẵn tiếng Việt, có bản gốc tiếng Anh, thang mức độ đúng 1–5, cách tính điểm và lưu ý khi dùng cho đề tài mạng xã hội.",
+  "name": "FoMOs",
+  "fullName": "Thang đo nỗi sợ bỏ lỡ (Fear of Missing Out Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo FoMO",
+  "intro": "FoMO (fear of missing out) là nỗi lo lan toả rằng người khác đang có những trải nghiệm thú vị mà mình không có mặt, đi kèm mong muốn luôn kết nối để biết người khác đang làm gì. Przybylski, Murayama, DeHaan và Gladwell (2013) là những người đầu tiên đo lường khái niệm này, rút từ 32 câu xuống thang 10 biến. Ở Việt Nam, thang FoMO hay dùng trong đề tài về nghiện mạng xã hội, nghiện điện thoại, sự xao nhãng trong học tập và hành vi mua sắm theo xu hướng của giới trẻ.",
+  "responseScale": "Thang mức độ đúng 5 mức, không phải Likert đồng ý: 1 = Hoàn toàn không đúng với tôi, 2 = Hơi đúng, 3 = Tương đối đúng, 4 = Rất đúng, 5 = Cực kỳ đúng với tôi. Tác giả tính điểm FoMO bằng trung bình 10 câu; không có câu đảo chiều.",
+  "constructs": [
+    {
+      "code": "FOMO",
+      "nameVi": "Nỗi sợ bỏ lỡ",
+      "nameEn": "Fear of Missing Out",
+      "definition": "Nỗi lo lan toả rằng người khác có thể đang có những trải nghiệm đáng giá mà mình không tham gia, kèm mong muốn liên tục kết nối với những gì người khác đang làm.",
+      "source": "Przybylski và cộng sự (2013), Phụ lục A, 10 biến.",
+      "items": [
+        { "code": "FO1", "en": "I fear others have more rewarding experiences than me.", "vi": "Tôi sợ rằng người khác có những trải nghiệm thú vị, đáng giá hơn tôi." },
+        { "code": "FO2", "en": "I fear my friends have more rewarding experiences than me.", "vi": "Tôi sợ rằng bạn bè tôi có những trải nghiệm thú vị, đáng giá hơn tôi." },
+        { "code": "FO3", "en": "I get worried when I find out my friends are having fun without me.", "vi": "Tôi thấy lo khi biết bạn bè đang vui vẻ mà không có tôi." },
+        { "code": "FO4", "en": "I get anxious when I don't know what my friends are up to.", "vi": "Tôi thấy bồn chồn khi không biết bạn bè đang làm gì." },
+        { "code": "FO5", "en": "It is important that I understand my friends \"in jokes\".", "vi": "Hiểu được những câu đùa riêng trong nhóm bạn là điều quan trọng với tôi." },
+        { "code": "FO6", "en": "Sometimes, I wonder if I spend too much time keeping up with what is going on.", "vi": "Đôi khi tôi tự hỏi liệu mình có dành quá nhiều thời gian để cập nhật những gì đang diễn ra không." },
+        { "code": "FO7", "en": "It bothers me when I miss an opportunity to meet up with friends.", "vi": "Tôi thấy khó chịu khi lỡ một dịp gặp gỡ bạn bè." },
+        { "code": "FO8", "en": "When I have a good time it is important for me to share the details online (e.g. updating status).", "vi": "Khi có khoảng thời gian vui vẻ, việc chia sẻ chi tiết lên mạng (ví dụ đăng trạng thái) là điều quan trọng với tôi." },
+        { "code": "FO9", "en": "When I miss out on a planned get-together it bothers me.", "vi": "Tôi thấy khó chịu khi lỡ một buổi tụ tập đã lên kế hoạch." },
+        { "code": "FO10", "en": "When I go on vacation, I continue to keep tabs on what my friends are doing.", "vi": "Khi đi du lịch, nghỉ dưỡng, tôi vẫn tiếp tục theo dõi xem bạn bè đang làm gì." }
+      ]
+    }
+  ],
+  "usage": [
+    "Nhiều bản trên mạng chép sai câu FO5 và FO8 (ví dụ 'I must understand my friend's in-jokes', 'I need to share the details online'); hãy dùng đúng câu chữ ở Phụ lục A của bài gốc và trích dẫn Przybylski và cộng sự (2013).",
+    "Giữ thang 'mức độ đúng với tôi' 1–5 và lời dẫn hỏi về trải nghiệm thường ngày; đổi sang thang đồng ý làm khó so sánh điểm trung bình với nghiên cứu khác.",
+    "Bản gốc là thang 1 nhân tố, nhưng vài nghiên cứu ở châu Á tách được 2 nhân tố (sợ bỏ lỡ thông tin và sợ bỏ lỡ cơ hội giao tiếp); chạy EFA và CFA rồi báo cáo cấu trúc tìm được.",
+    "FoMO thường là biến trung gian hoặc tiền đề của nghiện mạng xã hội; nếu đo cùng BSMAS hoặc SAS-SV trong một bảng hỏi, kiểm tra sai lệch phương pháp chung (Harman một nhân tố) vì các câu hỏi khá gần nhau."
+  ],
+  "sampleSize": {
+    "note": "FoMOs là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; khi đưa vào mô hình với nghiện mạng xã hội hay sức khoẻ tinh thần thì tính cỡ mẫu theo mô hình đó."
+  },
+  "license": "Thang đo được công bố đầy đủ trong Phụ lục A của bài báo học thuật Przybylski và cộng sự (2013) và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu trả phí cho mục đích nghiên cứu phi thương mại.",
+  "references": [
+    "Przybylski, A. K., Murayama, K., DeHaan, C. R., &amp; Gladwell, V. (2013). Motivational, emotional, and behavioral correlates of fear of missing out. <em>Computers in Human Behavior, 29</em>(4), 1841–1848. https://doi.org/10.1016/j.chb.2013.02.014"
+  ],
+  "verifiedFrom": [
+    "https://selfdeterminationtheory.org/wp-content/uploads/2014/04/2013_PrzybylskiMurayamaDeHaanGladwell_CIHB.pdf",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10693061/"
+  ],
+  "related": ["nghien-mang-xa-hoi-bsmas", "nghien-dien-thoai-sas-sv", "hai-long-cuoc-song-swls"]
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Thang đo PHQ-9 tiếng Việt: sàng lọc trầm cảm, Kroenke (2001)",
+  "description": "Thang đo PHQ-9 sàng lọc mức độ trầm cảm dịch sẵn tiếng Việt: 9 biến, thang tần suất 0–3 trong 2 tuần qua, điểm tổng 0–27, mốc 5/10/15/20 và lưu ý đạo đức.",
+  "name": "PHQ-9",
+  "fullName": "Bộ câu hỏi sức khoẻ bệnh nhân 9 biến (Patient Health Questionnaire-9)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo PHQ-9",
+  "intro": "PHQ-9 là phần trầm cảm gồm 9 câu của bộ Patient Health Questionnaire, do Kroenke, Spitzer và Williams (2001) kiểm định. Mỗi câu ứng với một tiêu chí triệu chứng trầm cảm theo DSM-IV, hỏi người trả lời bị làm phiền bao nhiêu ngày trong 2 tuần qua. Thang ngắn, miễn phí và có mốc mức độ rõ ràng nên được dùng rộng rãi để đo mức độ triệu chứng trầm cảm. Ở Việt Nam, PHQ-9 hay xuất hiện trong đề tài về sức khoẻ tinh thần của sinh viên, người lao động, người bệnh mạn tính, và làm biến kết quả cùng GAD-7.",
+  "responseScale": "Thang tần suất 4 mức, không phải Likert đồng ý, hỏi về 2 tuần qua: 0 = Hoàn toàn không (Not at all), 1 = Vài ngày (Several days), 2 = Hơn một nửa số ngày (More than half the days), 3 = Gần như mọi ngày (Nearly every day). Cộng 9 câu được điểm tổng 0–27; theo hướng dẫn của tác giả, các mốc 5, 10, 15, 20 tương ứng mức nhẹ, vừa, khá nặng và nặng. Không có câu đảo chiều. Câu hỏi thêm về mức độ khó khăn trong sinh hoạt ở cuối bảng không tính vào điểm.",
+  "constructs": [
+    {
+      "code": "PHQ",
+      "nameVi": "Mức độ triệu chứng trầm cảm",
+      "nameEn": "Depression Severity",
+      "definition": "Tần suất người trả lời gặp 9 triệu chứng trầm cảm (mất hứng thú, buồn chán, rối loạn giấc ngủ, mệt mỏi, ăn uống, tự đánh giá thấp, khó tập trung, chậm chạp hoặc bồn chồn, ý nghĩ tự hại) trong 2 tuần qua.",
+      "source": "Kroenke, Spitzer & Williams (2001), 9 biến.",
+      "items": [
+        { "code": "PHQ1", "en": "Little interest or pleasure in doing things", "vi": "Ít quan tâm hoặc ít thấy vui thích khi làm mọi việc" },
+        { "code": "PHQ2", "en": "Feeling down, depressed, or hopeless", "vi": "Cảm thấy buồn, chán nản hoặc tuyệt vọng" },
+        { "code": "PHQ3", "en": "Trouble falling or staying asleep, or sleeping too much", "vi": "Khó đi vào giấc ngủ hoặc khó ngủ liền giấc, hoặc ngủ quá nhiều" },
+        { "code": "PHQ4", "en": "Feeling tired or having little energy", "vi": "Cảm thấy mệt mỏi hoặc thiếu sức lực" },
+        { "code": "PHQ5", "en": "Poor appetite or overeating", "vi": "Ăn không ngon miệng hoặc ăn quá nhiều" },
+        { "code": "PHQ6", "en": "Feeling bad about yourself—or that you are a failure or have let yourself or your family down", "vi": "Cảm thấy tệ về bản thân, hoặc thấy mình là người thất bại, hoặc đã làm bản thân hay gia đình thất vọng" },
+        { "code": "PHQ7", "en": "Trouble concentrating on things, such as reading the newspaper or watching television", "vi": "Khó tập trung vào việc gì đó, chẳng hạn đọc báo hoặc xem tivi" },
+        { "code": "PHQ8", "en": "Moving or speaking so slowly that other people could have noticed? Or the opposite—being so fidgety or restless that you have been moving around a lot more than usual", "vi": "Đi lại hoặc nói năng chậm chạp tới mức người khác có thể nhận thấy? Hoặc ngược lại, bồn chồn, đứng ngồi không yên tới mức đi lại nhiều hơn hẳn bình thường" },
+        { "code": "PHQ9", "en": "Thoughts that you would be better off dead or of hurting yourself in some way", "vi": "Có ý nghĩ rằng mình chết đi thì tốt hơn, hoặc ý nghĩ tự làm hại bản thân theo cách nào đó" }
+      ]
+    }
+  ],
+  "usage": [
+    "PHQ-9 là công cụ sàng lọc và đo mức độ triệu chứng, không chẩn đoán trầm cảm. Hướng dẫn của tác giả coi điểm từ 10 là 'cờ vàng' cần lưu ý; chẩn đoán phải qua phỏng vấn lâm sàng. Trong luận văn, viết 'tỷ lệ có triệu chứng trầm cảm từ mức vừa trở lên' chứ không viết 'tỷ lệ mắc trầm cảm'.",
+    "Câu 9 hỏi về ý nghĩ chết hoặc tự làm hại bản thân. Đề tài phải làm theo quy định đạo đức nghiên cứu của trường, có phiếu đồng ý tham gia, và ghi một đầu mối hỗ trợ (phòng tư vấn tâm lý của trường, đường dây nóng hỗ trợ tâm lý) ngay trong bảng hỏi. Nếu khảo sát ẩn danh trực tuyến, không có cách liên hệ lại người trả lời, cân nhắc dùng PHQ-8: hướng dẫn của tác giả nói PHQ-8 bỏ câu 9, dùng chủ yếu trong nghiên cứu không chuyên về trầm cảm, và có mốc điểm giống PHQ-9.",
+    "Giữ nguyên khung '2 tuần qua' và thang tần suất 0–3; đổi sang thang đồng ý 5 mức làm mất các mốc 5/10/15/20 và không so sánh được với nghiên cứu khác.",
+    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. Vu và cộng sự (2022) đã dùng PHQ-9 trên 899 người dân ngoại thành ở Việt Nam và thấy cấu trúc 2 nhân tố 'cơ thể' và 'nhận thức/cảm xúc' (Cronbach's alpha 0,84 và 0,80); hãy chạy EFA/CFA và báo cáo cấu trúc tìm được thay vì mặc định 1 nhân tố."
+  ],
+  "sampleSize": {
+    "note": "PHQ-9 là thang đơn lẻ 9 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (45, làm tròn thành mức tối thiểu 50) và nên từ 100 quan sát trở lên; nếu ước lượng tỷ lệ có triệu chứng thì tính cỡ mẫu theo công thức ước lượng tỷ lệ."
+  },
+  "license": "Theo hướng dẫn trên trang PHQ Screeners và chú thích in trên bảng hỏi, PHQ-9 do Spitzer, Williams, Kroenke và cộng sự phát triển với tài trợ giáo dục của Pfizer, thuộc phạm vi công cộng: không cần xin phép để sao chép, dịch, trình bày hay phân phối.",
+  "references": [
+    "Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. W. (2001). The PHQ-9: Validity of a brief depression severity measure. <em>Journal of General Internal Medicine, 16</em>(9), 606–613. https://doi.org/10.1046/j.1525-1497.2001.016009606.x",
+    "Vu, L. G., Le, L. K., Dam, A. V. T., Nguyen, S. H., Vu, T. T. M., Trinh, T. T. H., Do, A. L., Do, N. M., Le, T. H., Latkin, C., Ho, R. C. M., &amp; Ho, C. S. H. (2022). Factor structures of Patient Health Questionnaire-9 instruments in exploring depressive symptoms of suburban population. <em>Frontiers in Psychiatry, 13</em>, 838747. https://doi.org/10.3389/fpsyt.2022.838747"
+  ],
+  "verifiedFrom": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC1495268/",
+    "https://depts.washington.edu/uwhatc/PDF/TF-%20CBT/pages/3%20Assessment/Standardized%20Measures/PHQ9-English.pdf",
+    "https://web.archive.org/web/20131010210324id_/http://www.phqscreeners.com/instructions/instructions.pdf",
+    "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2022.838747/full"
+  ],
+  "related": ["gad-7", "dass-21", "cang-thang-pss-10"]
+}

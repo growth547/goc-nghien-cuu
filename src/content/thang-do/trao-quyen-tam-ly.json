@@ -1,0 +1,81 @@
+{
+  "title": "Thang đo trao quyền tâm lý tiếng Việt: Spreitzer (1995)",
+  "description": "Thang đo trao quyền tâm lý 12 biến của Spreitzer (1995) dịch sẵn tiếng Việt: ý nghĩa, năng lực, quyền tự quyết và tác động, có bản gốc và trích dẫn.",
+  "name": "Trao quyền tâm lý",
+  "fullName": "Thang đo trao quyền tâm lý (Psychological Empowerment Instrument)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo trao quyền tâm lý",
+  "intro": "Spreitzer (1995) định nghĩa trao quyền tâm lý là động lực nội tại thể hiện qua bốn nhận thức về công việc: ý nghĩa, năng lực, quyền tự quyết và tác động, và xây dựng bộ 12 biến, mỗi thành phần 3 biến. Khác với trao quyền về mặt cơ cấu (giao quyền, phân cấp), thang này đo cảm nhận của chính người lao động. Ở Việt Nam, thang hợp với đề tài về lãnh đạo trao quyền, sự hài lòng, gắn kết, hiệu quả công việc và hành vi đổi mới của nhân viên.",
+  "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Một số nghiên cứu dùng 5 mức; ghi rõ số mức khi báo cáo.",
+  "constructs": [
+    {
+      "code": "ME",
+      "nameVi": "Ý nghĩa",
+      "nameEn": "Meaning",
+      "definition": "Mức độ người lao động thấy công việc phù hợp với giá trị, niềm tin của mình và có giá trị đối với bản thân.",
+      "source": "Spreitzer (1995), 3 biến.",
+      "items": [
+        { "code": "ME1", "en": "The work I do is very important to me.", "vi": "Công việc tôi làm rất quan trọng đối với tôi." },
+        { "code": "ME2", "en": "My job activities are personally meaningful to me.", "vi": "Các hoạt động trong công việc có ý nghĩa với cá nhân tôi." },
+        { "code": "ME3", "en": "The work I do is meaningful to me.", "vi": "Công việc tôi làm có ý nghĩa đối với tôi." }
+      ]
+    },
+    {
+      "code": "CO",
+      "nameVi": "Năng lực",
+      "nameEn": "Competence",
+      "definition": "Niềm tin của người lao động vào khả năng làm tốt công việc của mình.",
+      "source": "Spreitzer (1995), 3 biến.",
+      "items": [
+        { "code": "CO1", "en": "I am confident about my ability to do my job.", "vi": "Tôi tự tin vào khả năng làm tốt công việc của mình." },
+        { "code": "CO2", "en": "I am self-assured about my capabilities to perform my work activities.", "vi": "Tôi chắc chắn về năng lực thực hiện các hoạt động trong công việc của mình." },
+        { "code": "CO3", "en": "I have mastered the skills necessary for my job.", "vi": "Tôi đã thành thạo các kỹ năng cần thiết cho công việc." }
+      ]
+    },
+    {
+      "code": "SD",
+      "nameVi": "Quyền tự quyết",
+      "nameEn": "Self-determination",
+      "definition": "Cảm nhận của người lao động về quyền tự chủ trong việc bắt đầu và điều chỉnh cách làm việc.",
+      "source": "Spreitzer (1995), 3 biến.",
+      "items": [
+        { "code": "SD1", "en": "I have significant autonomy in determining how I do my job.", "vi": "Tôi có nhiều quyền tự chủ trong việc quyết định cách làm công việc của mình." },
+        { "code": "SD2", "en": "I can decide on my own how to go about doing my work.", "vi": "Tôi có thể tự quyết định cách tiến hành công việc của mình." },
+        { "code": "SD3", "en": "I have considerable opportunity for independence and freedom in how I do my job.", "vi": "Tôi có nhiều cơ hội làm việc độc lập và tự do theo cách của mình." }
+      ]
+    },
+    {
+      "code": "IM",
+      "nameVi": "Tác động",
+      "nameEn": "Impact",
+      "definition": "Mức độ người lao động thấy mình ảnh hưởng được tới kết quả chiến lược, quản lý hoặc vận hành của đơn vị.",
+      "source": "Spreitzer (1995), 3 biến.",
+      "items": [
+        { "code": "IM1", "en": "My impact on what happens in my department is large.", "vi": "Tôi có tác động lớn tới những gì diễn ra trong [bộ phận] của mình." },
+        { "code": "IM2", "en": "I have a great deal of control over what happens in my department.", "vi": "Tôi kiểm soát được nhiều điều diễn ra trong [bộ phận] của mình." },
+        { "code": "IM3", "en": "I have significant influence over what happens in my department.", "vi": "Tôi có ảnh hưởng đáng kể tới những gì diễn ra trong [bộ phận] của mình." }
+      ]
+    }
+  ],
+  "usage": [
+    "Ba biến ý nghĩa (ME1–ME3) gần như cùng câu chữ; khi dịch dễ ra ba câu giống hệt nhau. Giữ khác biệt 'quan trọng' và 'có ý nghĩa với cá nhân' để người trả lời không thấy bị hỏi lặp.",
+    "Thay [bộ phận] bằng đơn vị thực tế (phòng, khoa, chi nhánh) và dùng thống nhất cho cả ba biến tác động.",
+    "Chạy CFA bốn nhân tố bậc một và so với mô hình bậc hai (trao quyền chung); nếu giả thuyết dùng điểm tổng, cần chứng minh mô hình bậc hai phù hợp.",
+    "Với nhân viên tuyến đầu ít quyền ra quyết định, các biến tác động thường có trung bình thấp và phương sai lớn; đó không phải lỗi dịch, nhưng nên bàn trong phần thảo luận.",
+    "Nếu đề tài nói về lãnh đạo trao quyền, đừng nhầm thang này với thang hành vi lãnh đạo; đây là cảm nhận của nhân viên, còn hành vi lãnh đạo phải đo bằng thang khác."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm bốn thành phần, không phải mô hình. Nếu trao quyền tâm lý là một trong 3 biến dự báo của biến phụ thuộc thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Trang thông tin công cụ đo của NIOSH (CDC) ghi thang ở dạng public domain, không thu phí. Các biến cũng được công bố trong bài báo gốc; khi dùng, trích dẫn Spreitzer (1995).",
+  "references": [
+    "Spreitzer, G. M. (1995). Psychological empowerment in the workplace: Dimensions, measurement, and validation. <em>Academy of Management Journal, 38</em>(5), 1442–1465. https://doi.org/10.2307/256865"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8653410/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9434368/fullTextXML",
+    "https://archive.cdc.gov/www_cdc_gov/niosh/topics/workorg/detail056.html",
+    "https://api.crossref.org/works/10.2307/256865"
+  ],
+  "related": ["gan-ket-cong-viec-uwes", "hai-long-cong-viec", "hieu-qua-cong-viec"]
+}

@@ -1,0 +1,128 @@
+{
+  "title": "Thang đo E-S-QUAL tiếng Việt: Parasuraman và cộng sự (2005)",
+  "description": "Thang đo E-S-QUAL và E-RecS-QUAL dịch sẵn tiếng Việt: hiệu quả, sẵn sàng hệ thống, thực hiện đơn hàng, bảo mật, đáp ứng, bồi thường, liên hệ.",
+  "name": "E-S-QUAL",
+  "fullName": "Thang đo chất lượng dịch vụ điện tử E-S-QUAL và E-RecS-QUAL (Parasuraman, Zeithaml & Malhotra, 2005)",
+  "field": "Chất lượng dịch vụ",
+  "keyword": "thang đo E-S-QUAL",
+  "intro": "E-S-QUAL do Parasuraman, Zeithaml và Malhotra (2005) phát triển để đo chất lượng dịch vụ mà khách hàng cảm nhận khi mua sắm trên website. Thang chính có 22 biến thuộc 4 thành phần: hiệu quả, sẵn sàng của hệ thống, thực hiện đơn hàng và bảo mật. Thang phụ E-RecS-QUAL có 11 biến thuộc 3 thành phần (đáp ứng, bồi thường, liên hệ), chỉ hỏi những khách hàng đã từng gặp sự cố hoặc có thắc mắc khi giao dịch. Ở Việt Nam, E-S-QUAL hay được dùng cho đề tài về sàn thương mại điện tử, ứng dụng giao đồ ăn, website bán lẻ và ngân hàng số.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo phụ lục của bài gốc. Các biến được trộn ngẫu nhiên trên bảng hỏi, không xếp theo thành phần.",
+  "constructs": [
+    {
+      "code": "EFF",
+      "nameVi": "Hiệu quả",
+      "nameEn": "Efficiency",
+      "definition": "Mức độ dễ dàng và nhanh chóng khi truy cập và sử dụng website.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), 8 biến (EFF1–EFF8); câu chữ đối chiếu với bản MSI Working Paper 04-112.",
+      "items": [
+        { "code": "EFF1", "en": "This site makes it easy to find what I need.", "vi": "[Website] giúp tôi dễ dàng tìm thấy thứ mình cần." },
+        { "code": "EFF2", "en": "It makes it easy to get anywhere on the site.", "vi": "[Website] giúp tôi dễ dàng đi tới bất kỳ trang nào trên đó." },
+        { "code": "EFF3", "en": "It enables me to complete a transaction quickly.", "vi": "[Website] giúp tôi hoàn tất giao dịch nhanh chóng." },
+        { "code": "EFF4", "en": "Information at this site is well organized.", "vi": "Thông tin trên [website] được sắp xếp tốt." },
+        { "code": "EFF5", "en": "It loads its pages fast.", "vi": "[Website] tải trang nhanh." },
+        { "code": "EFF6", "en": "This site is simple to use.", "vi": "[Website] sử dụng đơn giản." },
+        { "code": "EFF7", "en": "This site enables me to get on to it quickly.", "vi": "Tôi có thể truy cập vào [website] một cách nhanh chóng." },
+        { "code": "EFF8", "en": "This site is well organized.", "vi": "[Website] được tổ chức tốt." }
+      ]
+    },
+    {
+      "code": "SYS",
+      "nameVi": "Sự sẵn sàng của hệ thống",
+      "nameEn": "System Availability",
+      "definition": "Website hoạt động đúng về mặt kỹ thuật: luôn truy cập được, không treo, không sập.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), 4 biến (SYS1–SYS4).",
+      "items": [
+        { "code": "SYS1", "en": "This site is always available for business.", "vi": "[Website] luôn sẵn sàng để giao dịch." },
+        { "code": "SYS2", "en": "This site launches and runs right away.", "vi": "[Website] khởi động và chạy ngay lập tức." },
+        { "code": "SYS3", "en": "This site does not crash.", "vi": "[Website] không bị sập." },
+        { "code": "SYS4", "en": "Pages at this site do not freeze after I enter my order information.", "vi": "Các trang của [website] không bị treo sau khi tôi nhập thông tin đặt hàng." }
+      ]
+    },
+    {
+      "code": "FUL",
+      "nameVi": "Thực hiện đơn hàng",
+      "nameEn": "Fulfillment",
+      "definition": "Mức độ website giữ đúng cam kết về giao hàng và có sẵn hàng hoá.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), 7 biến (FUL1–FUL7).",
+      "items": [
+        { "code": "FUL1", "en": "It delivers orders when promised.", "vi": "[Website] giao hàng đúng thời gian đã hứa." },
+        { "code": "FUL2", "en": "This site makes items available for delivery within a suitable time frame.", "vi": "[Website] chuẩn bị hàng để giao trong khoảng thời gian phù hợp." },
+        { "code": "FUL3", "en": "It quickly delivers what I order.", "vi": "[Website] giao nhanh những gì tôi đặt." },
+        { "code": "FUL4", "en": "It sends out the items ordered.", "vi": "[Website] gửi đúng những món hàng đã được đặt." },
+        { "code": "FUL5", "en": "It has in stock the items the company claims to have.", "vi": "[Website] có sẵn trong kho những món hàng mà công ty nói là có." },
+        { "code": "FUL6", "en": "It is truthful about its offerings.", "vi": "[Website] trung thực về những gì họ chào bán." },
+        { "code": "FUL7", "en": "It makes accurate promises about delivery of products.", "vi": "[Website] đưa ra cam kết chính xác về việc giao hàng." }
+      ]
+    },
+    {
+      "code": "PRI",
+      "nameVi": "Bảo mật",
+      "nameEn": "Privacy",
+      "definition": "Mức độ website an toàn và bảo vệ thông tin của khách hàng.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), 3 biến (PRI1–PRI3).",
+      "items": [
+        { "code": "PRI1", "en": "It protects information about my Web-shopping behavior.", "vi": "[Website] bảo vệ thông tin về hành vi mua sắm trực tuyến của tôi." },
+        { "code": "PRI2", "en": "It does not share my personal information with other sites.", "vi": "[Website] không chia sẻ thông tin cá nhân của tôi với các trang khác." },
+        { "code": "PRI3", "en": "This site protects information about my credit card.", "vi": "[Website] bảo vệ thông tin thẻ thanh toán của tôi." }
+      ]
+    },
+    {
+      "code": "RES",
+      "nameVi": "Sự đáp ứng (E-RecS-QUAL)",
+      "nameEn": "Responsiveness",
+      "definition": "Mức độ website xử lý hiệu quả sự cố và việc trả hàng.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), E-RecS-QUAL, 5 biến (RES1–RES5).",
+      "items": [
+        { "code": "RES1", "en": "It provides me with convenient options for returning items.", "vi": "[Website] cho tôi các lựa chọn trả hàng thuận tiện." },
+        { "code": "RES2", "en": "This site handles product returns well.", "vi": "[Website] xử lý việc trả hàng tốt." },
+        { "code": "RES3", "en": "This site offers a meaningful guarantee.", "vi": "[Website] đưa ra cam kết bảo đảm có giá trị thực." },
+        { "code": "RES4", "en": "It tells me what to do if my transaction is not processed.", "vi": "[Website] hướng dẫn tôi phải làm gì nếu giao dịch không được xử lý." },
+        { "code": "RES5", "en": "It takes care of problems promptly.", "vi": "[Website] giải quyết sự cố kịp thời." }
+      ]
+    },
+    {
+      "code": "COM",
+      "nameVi": "Bồi thường (E-RecS-QUAL)",
+      "nameEn": "Compensation",
+      "definition": "Mức độ website bù đắp cho khách hàng khi có sự cố.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), E-RecS-QUAL, 3 biến (COM1–COM3).",
+      "items": [
+        { "code": "COM1", "en": "This site compensates me for problems it creates.", "vi": "[Website] bồi thường cho tôi khi họ gây ra sự cố." },
+        { "code": "COM2", "en": "It compensates me when what I ordered doesn't arrive on time.", "vi": "[Website] bồi thường cho tôi khi hàng đặt không đến đúng hạn." },
+        { "code": "COM3", "en": "It picks up items I want to return from my home or business.", "vi": "[Website] đến tận nhà hoặc nơi làm việc của tôi để lấy hàng tôi muốn trả." }
+      ]
+    },
+    {
+      "code": "CON",
+      "nameVi": "Liên hệ (E-RecS-QUAL)",
+      "nameEn": "Contact",
+      "definition": "Khả năng khách hàng liên lạc được với người thật qua điện thoại hoặc trực tuyến.",
+      "source": "Parasuraman, Zeithaml & Malhotra (2005), E-RecS-QUAL, 3 biến (CON1–CON3).",
+      "items": [
+        { "code": "CON1", "en": "This site provides a telephone number to reach the company.", "vi": "[Website] cung cấp số điện thoại để liên lạc với công ty." },
+        { "code": "CON2", "en": "This site has customer service representatives available online.", "vi": "[Website] có nhân viên chăm sóc khách hàng trực tuyến." },
+        { "code": "CON3", "en": "It offers the ability to speak to a live person if there is a problem.", "vi": "[Website] cho phép tôi nói chuyện với người thật khi có sự cố." }
+      ]
+    }
+  ],
+  "usage": [
+    "Chỉ hỏi 11 biến E-RecS-QUAL với người đã từng gặp sự cố hoặc cần hỗ trợ khi giao dịch; đặt câu lọc trước phần này, nếu không sẽ có nhiều câu trả lời bỏ trống hoặc trả lời đại khái.",
+    "Thay 'this site' bằng tên nền tảng cụ thể (ví dụ ứng dụng Shopee, website Tiki). Với ứng dụng di động, các biến về 'trang' (EFF5, SYS4) cần dịch thành 'màn hình' hoặc 'ứng dụng' nhưng giữ ý.",
+    "Thành phần thực hiện đơn hàng gắn với hàng hoá vật chất; với dịch vụ thuần số như ví điện tử, nhiều nghiên cứu bỏ hoặc viết lại FUL, và phải ghi rõ điều chỉnh trong chương phương pháp.",
+    "Hiệu quả và sẵn sàng hệ thống dễ tải chéo; chạy EFA trước, rồi CFA kiểm tra giá trị phân biệt (Fornell-Larcker hoặc HTMT) trước khi đưa vào mô hình.",
+    "Bài gốc dùng thang 5 mức; nếu đổi sang 7 mức, ghi rõ lý do để hội đồng không hỏi."
+  ],
+  "sampleSize": {
+    "note": "E-S-QUAL là thang đo, không phải mô hình. Khi dùng 4 thành phần E-S-QUAL làm biến dự báo sự hài lòng hoặc lòng trung thành, phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 85 quan sát."
+  },
+  "license": "Các biến quan sát được công bố trong phụ lục bài báo gốc và bản MSI Working Paper 04-112, được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; chúng tôi không tìm thấy điều kiện cấp phép riêng cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Parasuraman, A., Zeithaml, V. A., &amp; Malhotra, A. (2005). E-S-QUAL: A multiple-item scale for assessing electronic service quality. <em>Journal of Service Research, 7</em>(3), 213–233. https://doi.org/10.1177/1094670504271156",
+    "Parasuraman, A., Zeithaml, V. A., &amp; Malhotra, A. (2004). <em>E-S-QUAL: A multiple-item scale for assessing electronic service quality</em> (MSI Report No. 04-112). Marketing Science Institute."
+  ],
+  "verifiedFrom": [
+    "https://www.msi.org/working-papers/esqual-a-multipleitem-scale-for-assessing-electronic-service-quality/",
+    "https://thearf-org-unified-admin.s3.amazonaws.com/MSI/2020/06/MSI_Report_04-112.pdf"
+  ],
+  "related": ["servqual", "servperf", "y-dinh-hanh-vi-khach-hang"]
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo LMX-7 tiếng Việt: Graen & Uhl-Bien (1995)",
+  "description": "Thang đo trao đổi lãnh đạo - thành viên LMX-7 của Graen và Uhl-Bien (1995) dịch sẵn tiếng Việt, đo chất lượng quan hệ giữa nhân viên và cấp trên, có bản gốc.",
+  "name": "LMX-7",
+  "fullName": "Thang đo trao đổi lãnh đạo - thành viên (Leader-Member Exchange, LMX-7)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo LMX",
+  "intro": "Lý thuyết trao đổi lãnh đạo - thành viên cho rằng mỗi người lãnh đạo xây dựng quan hệ với từng cấp dưới ở chất lượng khác nhau, từ quan hệ thuần hợp đồng tới quan hệ tin cậy, hỗ trợ lẫn nhau. Graen và Uhl-Bien (1995) tổng kết 25 năm nghiên cứu và đề xuất LMX-7, bộ 7 câu hỏi đo chất lượng quan hệ này, dùng được cho cả nhân viên lẫn người lãnh đạo trả lời. Ở Việt Nam, LMX hay xuất hiện trong đề tài về sự hài lòng, gắn kết, ý định nghỉ việc, hành vi công dân và hiệu quả công việc.",
+  "responseScale": "Thang 5 mức với nhãn riêng cho từng câu hỏi (ví dụ mức độ thường xuyên, mức độ hiểu, khả năng xảy ra, mức đồng ý, mức hiệu quả), theo phụ lục của Graen và Uhl-Bien (1995). Nhiều nghiên cứu sau dùng chung một thang đồng ý 5 hoặc 7 mức; nếu đổi, ghi rõ.",
+  "constructs": [
+    {
+      "code": "LMX",
+      "nameVi": "Chất lượng trao đổi lãnh đạo - thành viên",
+      "nameEn": "Leader-Member Exchange",
+      "definition": "Chất lượng mối quan hệ làm việc giữa một nhân viên và cấp trên trực tiếp, thể hiện qua sự thấu hiểu, tin cậy và sẵn lòng hỗ trợ.",
+      "source": "Graen & Uhl-Bien (1995), LMX-7, 7 biến, bản dành cho nhân viên trả lời về cấp trên.",
+      "items": [
+        { "code": "LMX1", "en": "Do you know where you stand with your leader. Do you usually know how satisfied your leader is with what you do?", "vi": "Anh/chị có biết vị trí của mình trong mắt [quản lý] không? Anh/chị có thường biết [quản lý] hài lòng thế nào với những gì anh/chị làm không?" },
+        { "code": "LMX2", "en": "How well does your leader understand your job problems and needs?", "vi": "[Quản lý] hiểu những khó khăn và nhu cầu trong công việc của anh/chị ở mức nào?" },
+        { "code": "LMX3", "en": "How well does your leader recognize your potential?", "vi": "[Quản lý] nhận ra tiềm năng của anh/chị ở mức nào?" },
+        { "code": "LMX4", "en": "Regardless of how much formal authority he/she has built into his/her position, what are the chances that your leader would use his/her power to help you solve problems in your work?", "vi": "Bất kể quyền hạn chính thức của vị trí [quản lý] lớn hay nhỏ, khả năng [quản lý] dùng quyền của mình để giúp anh/chị giải quyết vấn đề trong công việc là bao nhiêu?" },
+        { "code": "LMX5", "en": "Again, regardless of the amount of formal authority your leader has, what are the chances that he/she would “bail you out,” at his/her expense?", "vi": "Cũng bất kể quyền hạn chính thức của [quản lý], khả năng [quản lý] chịu thiệt về mình để gỡ rối cho anh/chị là bao nhiêu?" },
+        { "code": "LMX6", "en": "I have enough confidence in my leader that I would defend and justify his/her decision if he/she were not present to do so.", "vi": "Tôi đủ tin tưởng [quản lý] để bảo vệ và giải thích quyết định của [quản lý] khi [quản lý] không có mặt." },
+        { "code": "LMX7", "en": "How would you characterize your working relationship with your leader?", "vi": "Anh/chị đánh giá thế nào về mối quan hệ làm việc giữa mình và [quản lý]?" }
+      ]
+    }
+  ],
+  "usage": [
+    "Mỗi câu có bộ nhãn trả lời riêng; lấy đúng nhãn từ phụ lục bài gốc. Nếu dùng chung một thang đồng ý, phải viết lại các câu hỏi thành câu khẳng định, và đó là bản điều chỉnh cần ghi rõ.",
+    "Graen và Uhl-Bien (1995) có bản song song cho người lãnh đạo trả lời về cấp dưới ('your member'); dữ liệu cặp lãnh đạo - nhân viên mạnh hơn dữ liệu một phía.",
+    "'Bail you out' ở LMX5 là thành ngữ, nghĩa là giúp thoát khỏi rắc rối; dịch sát chữ là lỗi hay gặp.",
+    "LMX-7 là thang đơn hướng; nếu muốn tách các chiều (tình cảm, trung thành, đóng góp, tôn trọng nghề nghiệp), dùng LMX-MDM của Liden và Maslyn (1998) thay vì tự chia LMX-7.",
+    "Khi nhiều nhân viên cùng đánh giá một quản lý, dữ liệu có cấu trúc lồng; cân nhắc tính ICC và dùng mô hình đa cấp."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không phải mô hình. Nếu LMX là một trong 3 biến dự báo của biến phụ thuộc thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các câu hỏi được công bố trong phụ lục bài báo gốc trên The Leadership Quarterly và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Graen, G. B., &amp; Uhl-Bien, M. (1995). Relationship-based approach to leadership: Development of leader-member exchange (LMX) theory of leadership over 25 years: Applying a multi-level multi-domain perspective. <em>The Leadership Quarterly, 6</em>(2), 219–247. https://doi.org/10.1016/1048-9843(95)90036-5"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9220262/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9301325/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13050726/fullTextXML",
+    "https://api.crossref.org/works/10.1016/1048-9843(95)90036-5"
+  ],
+  "related": ["ho-tro-to-chuc-pos", "y-dinh-nghi-viec", "hanh-vi-cong-dan-to-chuc"]
+}

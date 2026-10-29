@@ -1,0 +1,79 @@
+{
+  "title": "Thang đo kiệt sức CBI tiếng Việt: Kristensen và cộng sự (2005)",
+  "description": "Thang đo kiệt sức Copenhagen Burnout Inventory (CBI) dịch sẵn tiếng Việt: kiệt sức cá nhân, do công việc, do khách hàng. 19 biến, có bản gốc và cách tính điểm.",
+  "name": "CBI",
+  "fullName": "Thang đo kiệt sức Copenhagen (Copenhagen Burnout Inventory)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo kiệt sức CBI",
+  "intro": "CBI do Kristensen, Borritz, Villadsen và Christensen (2005) xây dựng trong dự án PUMA tại Đan Mạch, định nghĩa kiệt sức là trạng thái mệt mỏi và cạn kiệt kéo dài về thể chất lẫn tinh thần. Thang tách ba phần: kiệt sức cá nhân (ai cũng trả lời được, kể cả người không đi làm), kiệt sức liên quan đến công việc và kiệt sức liên quan đến khách hàng. CBI được công bố công khai và hay được dùng thay MBI, vốn là bộ phải mua bản quyền. Ở Việt Nam, CBI phù hợp với đề tài về kiệt sức của điều dưỡng, bác sĩ, giáo viên, nhân viên ngân hàng, nhân viên chăm sóc khách hàng, và làm biến trung gian giữa áp lực công việc với ý định nghỉ việc.",
+  "responseScale": "Thang tần suất và mức độ, không phải Likert đồng ý. Câu hỏi 'How often…' dùng 5 mức Luôn luôn, Thường xuyên, Thỉnh thoảng, Hiếm khi, Không bao giờ/hầu như không; câu hỏi về mức độ dùng 5 mức Rất cao, Cao, Vừa phải, Thấp, Rất thấp. Quy điểm 100, 75, 50, 25, 0 rồi lấy trung bình từng phần; riêng WB7 đảo điểm. Theo tài liệu gốc, người trả lời dưới 3 câu (phần cá nhân, phần khách hàng) hoặc dưới 4 câu (phần công việc) bị coi là không trả lời phần đó.",
+  "constructs": [
+    {
+      "code": "PB",
+      "nameVi": "Kiệt sức cá nhân",
+      "nameEn": "Personal Burnout",
+      "definition": "Trạng thái mệt mỏi và cạn kiệt kéo dài về thể chất lẫn tinh thần, không gắn với nguồn cụ thể nào.",
+      "source": "Kristensen, Borritz, Villadsen & Christensen (2005), 6 biến, thang tần suất.",
+      "items": [
+        { "code": "PB1", "en": "How often do you feel tired?", "vi": "Bạn có thường cảm thấy mệt mỏi không?" },
+        { "code": "PB2", "en": "How often are you physically exhausted?", "vi": "Bạn có thường kiệt sức về thể chất không?" },
+        { "code": "PB3", "en": "How often are you emotionally exhausted?", "vi": "Bạn có thường kiệt sức về cảm xúc không?" },
+        { "code": "PB4", "en": "How often do you think: ”I can’t take it anymore”?", "vi": "Bạn có thường nghĩ: \"Tôi không chịu đựng nổi nữa\" không?" },
+        { "code": "PB5", "en": "How often do you feel worn out?", "vi": "Bạn có thường cảm thấy rã rời, cạn sức không?" },
+        { "code": "PB6", "en": "How often do you feel weak and susceptible to illness?", "vi": "Bạn có thường cảm thấy yếu và dễ ốm không?" }
+      ]
+    },
+    {
+      "code": "WB",
+      "nameVi": "Kiệt sức liên quan đến công việc",
+      "nameEn": "Work-related Burnout",
+      "definition": "Trạng thái mệt mỏi và cạn kiệt kéo dài về thể chất lẫn tinh thần mà người lao động cho là do công việc của mình gây ra.",
+      "source": "Kristensen, Borritz, Villadsen & Christensen (2005), 7 biến; WB1–WB3 thang mức độ, WB4–WB7 thang tần suất.",
+      "items": [
+        { "code": "WB1", "en": "Is your work emotionally exhausting?", "vi": "Công việc của bạn có làm bạn kiệt sức về cảm xúc không?" },
+        { "code": "WB2", "en": "Do you feel burnt out because of your work?", "vi": "Bạn có cảm thấy kiệt sức vì công việc của mình không?" },
+        { "code": "WB3", "en": "Does your work frustrate you?", "vi": "Công việc có khiến bạn bực bội, chán nản không?" },
+        { "code": "WB4", "en": "Do you feel worn out at the end of the working day?", "vi": "Bạn có cảm thấy rã rời vào cuối ngày làm việc không?" },
+        { "code": "WB5", "en": "Are you exhausted in the morning at the thought of another day at work?", "vi": "Buổi sáng, bạn có thấy mệt mỏi khi nghĩ đến một ngày làm việc nữa không?" },
+        { "code": "WB6", "en": "Do you feel that every working hour is tiring for you?", "vi": "Bạn có cảm thấy giờ làm việc nào cũng mệt mỏi không?" },
+        { "code": "WB7", "en": "Do you have enough energy for family and friends during leisure time?", "vi": "Lúc rảnh rỗi, bạn có còn đủ sức dành cho gia đình và bạn bè không?", "reverse": true }
+      ]
+    },
+    {
+      "code": "CB",
+      "nameVi": "Kiệt sức liên quan đến khách hàng",
+      "nameEn": "Client-related Burnout",
+      "definition": "Trạng thái mệt mỏi và cạn kiệt kéo dài về thể chất lẫn tinh thần mà người lao động cho là do việc làm với khách hàng (bệnh nhân, học sinh, người được phục vụ) gây ra.",
+      "source": "Kristensen, Borritz, Villadsen & Christensen (2005), 6 biến; CB1–CB4 thang mức độ, CB5–CB6 thang tần suất.",
+      "items": [
+        { "code": "CB1", "en": "Do you find it hard to work with clients?", "vi": "Bạn có thấy làm việc với [khách hàng] là khó khăn không?" },
+        { "code": "CB2", "en": "Do you find it frustrating to work with clients?", "vi": "Bạn có thấy bực bội khi làm việc với [khách hàng] không?" },
+        { "code": "CB3", "en": "Does it drain your energy to work with clients?", "vi": "Làm việc với [khách hàng] có làm bạn cạn kiệt sức lực không?" },
+        { "code": "CB4", "en": "Do you feel that you give more than you get back when you work with clients?", "vi": "Khi làm việc với [khách hàng], bạn có cảm thấy mình cho đi nhiều hơn nhận lại không?" },
+        { "code": "CB5", "en": "Are you tired of working with clients?", "vi": "Bạn có chán ngán việc làm với [khách hàng] không?" },
+        { "code": "CB6", "en": "Do you sometimes wonder how long you will be able to continue working with clients?", "vi": "Đôi khi bạn có tự hỏi mình còn có thể tiếp tục làm việc với [khách hàng] được bao lâu nữa không?" }
+      ]
+    }
+  ],
+  "usage": [
+    "Thay 'clients' bằng đối tượng phục vụ cụ thể: bệnh nhân với điều dưỡng, học sinh với giáo viên, khách hàng với nhân viên ngân hàng; phần kiệt sức do khách hàng chỉ dùng cho nghề có tiếp xúc trực tiếp với người được phục vụ.",
+    "Nhớ đảo điểm WB7 trước khi tính Cronbach's alpha và điểm trung bình; quên bước này làm alpha của phần công việc tụt bất thường.",
+    "Giữ hai loại thang trả lời như bản gốc (tần suất và mức độ); đổi hết sang thang đồng ý 1–5 làm mất khả năng so sánh điểm 0–100 với các nghiên cứu khác.",
+    "Tài liệu gốc khuyên không in các câu CBI liền nhau theo thứ tự trên mà trộn với câu hỏi khác để tránh trả lời theo quán tính.",
+    "Mốc 50 điểm trở lên được nhóm tác giả dùng để mô tả tỉ lệ kiệt sức cao trong mẫu PUMA; đây là mốc mô tả, không phải điểm cắt chẩn đoán."
+  ],
+  "sampleSize": {
+    "note": "CBI là thang đơn lẻ 19 biến chia ba phần. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (95 với cả 19 biến) và nên từ 100 quan sát trở lên; nếu chỉ dùng hai phần cá nhân và công việc thì 13 biến cần tối thiểu 65."
+  },
+  "license": "Viện Quốc gia về Môi trường Làm việc Đan Mạch (NFA) đăng công khai bản tiếng Anh cùng cách tính điểm trên website; tài liệu không ghi điều khoản hạn chế sử dụng. Thang được dùng rộng rãi như một công cụ không phải mua; khi dùng, trích dẫn Kristensen và cộng sự (2005).",
+  "references": [
+    "Kristensen, T. S., Borritz, M., Villadsen, E., &amp; Christensen, K. B. (2005). The Copenhagen Burnout Inventory: A new tool for the assessment of burnout. <em>Work &amp; Stress, 19</em>(3), 192–207. https://doi.org/10.1080/02678370500297720",
+    "Borritz, M., &amp; Kristensen, T. S. (2004). <em>Copenhagen Burnout Inventory: Normative data from a representative Danish population on Personal Burnout and results from the PUMA study on Personal Burnout, Work Burnout, and Client Burnout</em>. National Institute of Occupational Health."
+  ],
+  "verifiedFrom": [
+    "https://nfa.dk/media/a4wheblj/cbi-scales.pdf",
+    "https://nfa.dk/media/hl5nbers/cbi-first-edition.pdf",
+    "https://api.crossref.org/works/10.1080/02678370500297720"
+  ],
+  "related": ["cang-thang-pss-10", "gan-ket-cong-viec-uwes", "y-dinh-nghi-viec"]
+}

@@ -1,0 +1,110 @@
+{
+  "title": "Thang đo chất lượng dịch vụ ngân hàng điện tử: Malc và cộng sự (2023)",
+  "description": "Thang đo MPQe-BS chất lượng dịch vụ ngân hàng điện tử 25 biến, dịch sẵn tiếng Việt: hiệu quả, sẵn sàng, thiết kế, liên hệ, bảo mật, thực hiện cam kết.",
+  "name": "MPQe-BS",
+  "fullName": "Thang đo chất lượng dịch vụ ngân hàng điện tử MPQe-BS (Malc, Dlačić, Pisnik & Milfelner, 2023)",
+  "field": "Chất lượng dịch vụ",
+  "keyword": "thang đo chất lượng dịch vụ ngân hàng điện tử",
+  "intro": "MPQe-BS do Malc, Dlačić, Pisnik và Milfelner (2023) phát triển để đo chất lượng dịch vụ ngân hàng điện tử theo cảm nhận của khách hàng. Bộ biến ban đầu kế thừa E-S-QUAL, E-RecS-QUAL và các thang về bảo mật, thiết kế website; sau EFA và CFA trên mẫu khách hàng ở Croatia và Slovenia còn 25 biến thuộc 6 thành phần: hiệu quả, sự sẵn sàng, thiết kế, liên hệ, bảo mật và thực hiện cam kết. Bài báo công bố đủ 25 biến dưới giấy phép mở. Ở Việt Nam, thang này hợp với đề tài về internet banking, mobile banking và sự hài lòng hoặc lòng trung thành của khách hàng ngân hàng số.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), theo bài gốc.",
+  "constructs": [
+    {
+      "code": "EFF",
+      "nameVi": "Hiệu quả",
+      "nameEn": "Efficiency",
+      "definition": "Dịch vụ ngân hàng điện tử dễ dùng, hiệu quả và được tổ chức tốt.",
+      "source": "Malc và cộng sự (2023), 7 biến.",
+      "items": [
+        { "code": "EFF1", "en": "This e-banking site is simple to use.", "vi": "[Ứng dụng ngân hàng] sử dụng đơn giản." },
+        { "code": "EFF2", "en": "It is easy to get anywhere on this e-banking site.", "vi": "Tôi dễ dàng đi tới bất kỳ mục nào trên [ứng dụng ngân hàng]." },
+        { "code": "EFF3", "en": "This e-banking site is easy to access.", "vi": "[Ứng dụng ngân hàng] dễ truy cập." },
+        { "code": "EFF4", "en": "Information at this e-banking site is well organized.", "vi": "Thông tin trên [ứng dụng ngân hàng] được sắp xếp tốt." },
+        { "code": "EFF5", "en": "This e-banking site enables me to complete a transaction quickly.", "vi": "[Ứng dụng ngân hàng] giúp tôi hoàn tất giao dịch nhanh chóng." },
+        { "code": "EFF6", "en": "This e-banking site simplifies banking transactions.", "vi": "[Ứng dụng ngân hàng] giúp các giao dịch ngân hàng trở nên đơn giản hơn." },
+        { "code": "EFF7", "en": "This e-banking site is well organized.", "vi": "[Ứng dụng ngân hàng] được tổ chức tốt." }
+      ]
+    },
+    {
+      "code": "AVA",
+      "nameVi": "Sự sẵn sàng của hệ thống",
+      "nameEn": "Availability",
+      "definition": "Khách hàng truy cập và thực hiện được giao dịch khi cần, không gặp sự cố kỹ thuật.",
+      "source": "Malc và cộng sự (2023), 4 biến.",
+      "items": [
+        { "code": "AVA1", "en": "This e-banking site launches and works without issues.", "vi": "[Ứng dụng ngân hàng] khởi động và hoạt động không gặp sự cố." },
+        { "code": "AVA2", "en": "This e-banking site does not crash.", "vi": "[Ứng dụng ngân hàng] không bị sập." },
+        { "code": "AVA3", "en": "Pages at this e-banking site do not freeze after I enter the required information.", "vi": "Các màn hình của [ứng dụng ngân hàng] không bị treo sau khi tôi nhập thông tin cần thiết." },
+        { "code": "AVA4", "en": "This e-banking site is always available for business.", "vi": "[Ứng dụng ngân hàng] luôn sẵn sàng để giao dịch." }
+      ]
+    },
+    {
+      "code": "DES",
+      "nameVi": "Thiết kế",
+      "nameEn": "Design",
+      "definition": "Giao diện ngân hàng điện tử hiện đại, có tính tương tác và đẹp mắt.",
+      "source": "Malc và cộng sự (2023), 3 biến.",
+      "items": [
+        { "code": "DES1", "en": "This e-banking sites’ design is aesthetical.", "vi": "Thiết kế của [ứng dụng ngân hàng] có tính thẩm mỹ." },
+        { "code": "DES2", "en": "The e-banking site design is visually pleasing.", "vi": "Thiết kế của [ứng dụng ngân hàng] dễ nhìn, bắt mắt." },
+        { "code": "DES3", "en": "The e-banking site includes interactive features.", "vi": "[Ứng dụng ngân hàng] có các tính năng tương tác." }
+      ]
+    },
+    {
+      "code": "CON",
+      "nameVi": "Liên hệ",
+      "nameEn": "Contact",
+      "definition": "Khách hàng liên lạc được với ngân hàng khi gặp vấn đề với dịch vụ điện tử.",
+      "source": "Malc và cộng sự (2023), 4 biến.",
+      "items": [
+        { "code": "CON1", "en": "This e-banking site has online customer service available.", "vi": "[Ứng dụng ngân hàng] có dịch vụ chăm sóc khách hàng trực tuyến." },
+        { "code": "CON2", "en": "This e-banking site offers the ability to speak to a live person if there is a problem.", "vi": "[Ứng dụng ngân hàng] cho phép tôi nói chuyện với nhân viên khi có sự cố." },
+        { "code": "CON3", "en": "This e-banking site provides a telephone number to reach the company.", "vi": "[Ứng dụng ngân hàng] cung cấp số điện thoại để liên lạc với ngân hàng." },
+        { "code": "CON4", "en": "Quickly resolves online transaction problems.", "vi": "Nhanh chóng giải quyết các sự cố giao dịch trực tuyến." }
+      ]
+    },
+    {
+      "code": "SEC",
+      "nameVi": "Bảo mật",
+      "nameEn": "Security",
+      "definition": "Dịch vụ ngân hàng điện tử bảo vệ dữ liệu cá nhân, dữ liệu tài chính và giao dịch an toàn.",
+      "source": "Malc và cộng sự (2023), 3 biến.",
+      "items": [
+        { "code": "SEC1", "en": "My financial information is protected on this e-banking site.", "vi": "Thông tin tài chính của tôi được bảo vệ trên [ứng dụng ngân hàng]." },
+        { "code": "SEC2", "en": "My personal information is protected on this e-banking site.", "vi": "Thông tin cá nhân của tôi được bảo vệ trên [ứng dụng ngân hàng]." },
+        { "code": "SEC3", "en": "The transactions over this e-banking site are secured.", "vi": "Các giao dịch qua [ứng dụng ngân hàng] được bảo mật." }
+      ]
+    },
+    {
+      "code": "FUL",
+      "nameVi": "Thực hiện cam kết",
+      "nameEn": "Fulfilment",
+      "definition": "Dịch vụ ngân hàng điện tử được cung cấp đúng như đã hứa và đáp ứng mong đợi của khách hàng.",
+      "source": "Malc và cộng sự (2023), 4 biến.",
+      "items": [
+        { "code": "FUL1", "en": "This e-banking site is truthful about its offerings.", "vi": "[Ứng dụng ngân hàng] trung thực về các dịch vụ mình cung cấp." },
+        { "code": "FUL2", "en": "This e-banking site makes accurate promises about the services being delivered.", "vi": "[Ứng dụng ngân hàng] đưa ra cam kết chính xác về các dịch vụ được cung cấp." },
+        { "code": "FUL3", "en": "When this e-banking site promises to do something by a certain time, it does so.", "vi": "Khi [ứng dụng ngân hàng] hứa làm điều gì vào một thời điểm nhất định, họ làm đúng như vậy." },
+        { "code": "FUL4", "en": "This e-banking site takes care of problems promptly.", "vi": "[Ứng dụng ngân hàng] giải quyết sự cố kịp thời." }
+      ]
+    }
+  ],
+  "usage": [
+    "Bài gốc viết cho 'e-banking site'; với mobile banking, dịch 'site' thành 'ứng dụng' và 'pages' thành 'màn hình', nhưng giữ nguyên ý từng câu và ghi rõ điều chỉnh trong chương phương pháp.",
+    "CON4 trong bài gốc là câu thiếu chủ ngữ; khi dịch nên thêm chủ ngữ '[Ngân hàng]' cho tự nhiên và ghi chú rằng đây là điều chỉnh câu chữ.",
+    "Hiệu quả tương quan cao với sự sẵn sàng (khoảng 0,79 trong bài gốc). Sau CFA nên kiểm tra giá trị phân biệt bằng HTMT; nếu vượt ngưỡng, xem lại bản dịch các câu EFF3 và AVA4.",
+    "Tác giả mô hình hoá 6 thành phần như các biến bậc một của một khái niệm bậc hai 'chất lượng dịch vụ ngân hàng điện tử', rồi dự báo sự hài lòng. Nếu dùng cách này, chạy PLS-SEM hoặc CB-SEM với mô hình bậc hai thay vì hồi quy từng thành phần.",
+    "Nhiều câu kế thừa E-S-QUAL; nếu chương 2 trích E-S-QUAL, nói rõ thang này là bản điều chỉnh cho ngân hàng điện tử để hội đồng không hiểu nhầm là hai thang trùng nhau."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo, không phải mô hình. Khi dùng 6 thành phần làm biến dự báo sự hài lòng, phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 98 quan sát; nếu dùng mô hình bậc hai như bài gốc, sự hài lòng chỉ nhận 1 mũi tên nhưng nên giữ cỡ mẫu theo số biến quan sát."
+  },
+  "license": "Bài báo được công bố truy cập mở theo giấy phép Creative Commons Attribution (CC BY 4.0) trên tạp chí Sustainability; được dùng lại các biến khi trích dẫn đúng nguồn.",
+  "references": [
+    "Malc, D., Dlačić, J., Pisnik, A., &amp; Milfelner, B. (2023). The development of e-banking services quality measurement instrument: MPQe-BS. <em>Sustainability, 15</em>(16), 12659. https://doi.org/10.3390/su151612659",
+    "Parasuraman, A., Zeithaml, V. A., &amp; Malhotra, A. (2005). E-S-QUAL: A multiple-item scale for assessing electronic service quality. <em>Journal of Service Research, 7</em>(3), 213–233. https://doi.org/10.1177/1094670504271156"
+  ],
+  "verifiedFrom": [
+    "https://www.mdpi.com/2071-1050/15/16/12659"
+  ],
+  "related": ["e-s-qual", "servqual", "servperf"]
+}

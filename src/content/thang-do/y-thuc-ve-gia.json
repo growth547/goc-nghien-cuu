@@ -1,0 +1,61 @@
+{
+  "title": "Thang đo ý thức về giá tiếng Việt: Lichtenstein và cộng sự (1993)",
+  "description": "Thang đo ý thức về giá (price consciousness) và ý thức giá trị (value consciousness) của Lichtenstein và cộng sự (1993) dịch sẵn tiếng Việt, có bản gốc.",
+  "name": "Price Consciousness & Value Consciousness",
+  "fullName": "Thang đo ý thức về giá và ý thức giá trị (Price Consciousness, Value Consciousness)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo ý thức về giá",
+  "intro": "Lichtenstein, Ridgway và Netemeyer (1993) xây dựng một bộ thang đo các cảm nhận về giá của người tiêu dùng, trong đó hay được dùng nhất là ý thức về giá và ý thức giá trị. Ý thức về giá là mức độ một người chỉ tập trung vào việc trả giá thấp; ý thức giá trị là mức độ người đó quan tâm tới tương quan giữa giá và chất lượng nhận được. Bài gốc khảo sát người mua hàng tạp hoá tại Mỹ. Ở Việt Nam, thang hay dùng cho đề tài về săn khuyến mãi, mua hàng giảm giá trên sàn thương mại điện tử, chọn nhãn hàng riêng của siêu thị.",
+  "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý). Điểm càng cao, ý thức về giá hoặc ý thức giá trị càng mạnh (sau khi đã mã hoá ngược câu đảo chiều).",
+  "constructs": [
+    {
+      "code": "PC",
+      "nameVi": "Ý thức về giá",
+      "nameEn": "Price Consciousness",
+      "definition": "Mức độ người tiêu dùng chỉ tập trung vào việc trả mức giá thấp.",
+      "source": "Lichtenstein, Ridgway & Netemeyer (1993), 5 biến.",
+      "items": [
+        { "code": "PC1", "en": "I am not willing to go to extra effort to find lower prices.", "vi": "Tôi không sẵn lòng bỏ thêm công sức để tìm giá thấp hơn.", "reverse": true },
+        { "code": "PC2", "en": "I will grocery shop at more than one store to take advantage of low prices.", "vi": "Tôi sẽ đi mua đồ ở nhiều cửa hàng để tận dụng giá thấp." },
+        { "code": "PC3", "en": "The money saved by finding low prices is usually not worth the time and effort.", "vi": "Số tiền tiết kiệm được nhờ tìm giá thấp thường không đáng với thời gian và công sức bỏ ra.", "reverse": true },
+        { "code": "PC4", "en": "I would never shop at more than one store to find low prices.", "vi": "Tôi sẽ không bao giờ đi nhiều cửa hàng chỉ để tìm giá thấp.", "reverse": true },
+        { "code": "PC5", "en": "The time it takes to find low prices is usually not worth the effort.", "vi": "Thời gian bỏ ra để tìm giá thấp thường không đáng công sức.", "reverse": true }
+      ]
+    },
+    {
+      "code": "VC",
+      "nameVi": "Ý thức giá trị",
+      "nameEn": "Value Consciousness",
+      "definition": "Mức độ người tiêu dùng quan tâm tới việc trả giá thấp nhưng vẫn đạt một mức chất lượng nhất định.",
+      "source": "Lichtenstein, Ridgway & Netemeyer (1993), 7 biến.",
+      "items": [
+        { "code": "VC1", "en": "I am very concerned about low prices, but I am equally concerned about product quality.", "vi": "Tôi rất quan tâm đến giá thấp, nhưng cũng quan tâm không kém đến chất lượng sản phẩm." },
+        { "code": "VC2", "en": "When grocery shopping, I compare the prices of different brands to be sure I get the best value for the money.", "vi": "Khi mua hàng tiêu dùng, tôi so sánh giá giữa các thương hiệu để chắc chắn nhận được giá trị tốt nhất với số tiền bỏ ra." },
+        { "code": "VC3", "en": "When purchasing a product, I always try to maximize the quality I get for the money I spend.", "vi": "Khi mua một sản phẩm, tôi luôn cố gắng nhận được chất lượng cao nhất với số tiền mình chi." },
+        { "code": "VC4", "en": "When I buy products, I like to be sure that I am getting my money's worth.", "vi": "Khi mua sản phẩm, tôi muốn chắc chắn rằng nó đáng đồng tiền tôi bỏ ra." },
+        { "code": "VC5", "en": "I generally shop around for lower prices on products, but they still must meet certain quality requirements before I will buy them.", "vi": "Tôi thường tìm nơi bán giá thấp hơn, nhưng sản phẩm vẫn phải đạt một số yêu cầu chất lượng thì tôi mới mua." },
+        { "code": "VC6", "en": "When I shop, I usually compare the \"price per ounce\" information for brands I normally buy.", "vi": "Khi mua sắm, tôi thường so sánh giá trên một đơn vị khối lượng của các thương hiệu tôi hay mua." },
+        { "code": "VC7", "en": "I always check prices at the grocery store to be sure I get the best value for the money I spend.", "vi": "Tôi luôn kiểm tra giá ở cửa hàng để chắc chắn nhận được giá trị tốt nhất với số tiền mình chi." }
+      ]
+    }
+  ],
+  "usage": [
+    "Bốn trong năm biến ý thức về giá là câu đảo chiều (PC1, PC3, PC4, PC5); phải mã hoá ngược trước khi tính alpha. Thang có nhiều câu phủ định nên dễ tạo nhân tố phương pháp, kiểm tra kỹ trong CFA.",
+    "Bài gốc khảo sát người mua hàng tạp hoá; 'grocery' và 'price per ounce' cần chuyển sang bối cảnh Việt Nam (siêu thị, giá trên 100 g hoặc trên đơn vị) và ghi rõ là đã điều chỉnh.",
+    "Ý thức về giá và ý thức giá trị là hai khái niệm khác nhau; đừng gộp thành một thang 'nhạy cảm về giá'. Kiểm tra giá trị phân biệt (HTMT) giữa hai thang.",
+    "Với mua sắm trực tuyến, đổi 'đi nhiều cửa hàng' thành 'xem nhiều gian hàng/ứng dụng', giữ nguyên ý so sánh giá giữa nhiều nơi bán."
+  ],
+  "sampleSize": {
+    "note": "Đây là hai thang đo đặc điểm người tiêu dùng, không phải mô hình. Khi đưa vào mô hình, tính cỡ mẫu theo số mũi tên nhiều nhất trỏ vào một biến phụ thuộc; để chạy EFA, nên có ít nhất 5 quan sát cho mỗi biến đo."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Lichtenstein, D. R., Ridgway, N. M., &amp; Netemeyer, R. G. (1993). Price perceptions and consumer shopping behavior: A field study. <em>Journal of Marketing Research, 30</em>(2), 234–245. https://doi.org/10.1177/002224379303000208"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8710754/fullTextXML",
+    "https://marketingmanagementjournal.scholasticahq.com/article/150996.pdf",
+    "https://link.springer.com/content/pdf/10.1057/dbm.2012.30.pdf"
+  ],
+  "related": ["gia-tri-cam-nhan-perval", "y-dinh-mua", "mua-hang-ngau-hung"]
+}

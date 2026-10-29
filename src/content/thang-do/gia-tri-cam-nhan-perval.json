@@ -1,0 +1,91 @@
+{
+  "title": "Thang đo PERVAL tiếng Việt: giá trị cảm nhận, Sweeney & Soutar (2001)",
+  "description": "Thang đo giá trị cảm nhận PERVAL 19 biến dịch sẵn tiếng Việt: giá trị chất lượng, cảm xúc, giá cả và xã hội. Có bản gốc tiếng Anh, câu đảo chiều, trích dẫn.",
+  "name": "PERVAL",
+  "fullName": "Thang đo giá trị cảm nhận của người tiêu dùng (Perceived Value Scale, PERVAL)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo giá trị cảm nhận PERVAL",
+  "intro": "PERVAL do Sweeney và Soutar (2001) phát triển để đo giá trị mà người tiêu dùng cảm nhận được từ một sản phẩm lâu bền ở cấp thương hiệu. Thang có 19 biến chia thành bốn khía cạnh: giá trị chất lượng, giá trị cảm xúc, giá trị giá cả và giá trị xã hội. Điểm khác với cách đo giá trị một chiều (chất lượng so với giá) là PERVAL tách riêng phần cảm xúc và phần hình ảnh xã hội. Ở Việt Nam, thang hay dùng cho đề tài về ý định mua, sự hài lòng và lòng trung thành với điện thoại, mỹ phẩm, thời trang, thực phẩm hữu cơ.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý) là dạng thường gặp ở các nghiên cứu dùng lại PERVAL; nhiều nghiên cứu ở Việt Nam dùng 5 mức.",
+  "constructs": [
+    {
+      "code": "QV",
+      "nameVi": "Giá trị chất lượng",
+      "nameEn": "Quality Value (Functional Value, Performance/Quality)",
+      "definition": "Lợi ích người tiêu dùng nhận được từ chất lượng và độ bền ổn định mà họ cảm nhận ở sản phẩm.",
+      "source": "Sweeney & Soutar (2001), 6 biến. Bản gốc viết dưới dạng vế câu đứng sau tên sản phẩm; ở đây thêm [product] ở đầu câu.",
+      "items": [
+        { "code": "QV1", "en": "[Product] has consistent quality.", "vi": "[Sản phẩm] có chất lượng ổn định." },
+        { "code": "QV2", "en": "[Product] is well made.", "vi": "[Sản phẩm] được làm tốt." },
+        { "code": "QV3", "en": "[Product] has an acceptable standard of quality.", "vi": "[Sản phẩm] đạt tiêu chuẩn chất lượng chấp nhận được." },
+        { "code": "QV4", "en": "[Product] has poor workmanship.", "vi": "[Sản phẩm] được gia công kém.", "reverse": true },
+        { "code": "QV5", "en": "[Product] would not last a long time.", "vi": "[Sản phẩm] sẽ không dùng được lâu.", "reverse": true },
+        { "code": "QV6", "en": "[Product] would perform consistently.", "vi": "[Sản phẩm] sẽ hoạt động ổn định." }
+      ]
+    },
+    {
+      "code": "EV",
+      "nameVi": "Giá trị cảm xúc",
+      "nameEn": "Emotional Value",
+      "definition": "Lợi ích đến từ cảm xúc hay trạng thái tình cảm mà sản phẩm tạo ra cho người tiêu dùng.",
+      "source": "Sweeney & Soutar (2001), 5 biến. Bản gốc viết dưới dạng vế câu đứng sau tên sản phẩm; ở đây thêm [product] ở đầu câu.",
+      "items": [
+        { "code": "EV1", "en": "[Product] is one that I would enjoy.", "vi": "[Sản phẩm] là thứ tôi sẽ thích dùng." },
+        { "code": "EV2", "en": "[Product] would make me want to use it.", "vi": "[Sản phẩm] khiến tôi muốn sử dụng nó." },
+        { "code": "EV3", "en": "[Product] is one that I would feel relaxed about using.", "vi": "[Sản phẩm] là thứ tôi thấy thoải mái khi sử dụng." },
+        { "code": "EV4", "en": "[Product] would make me feel good.", "vi": "[Sản phẩm] sẽ khiến tôi cảm thấy dễ chịu." },
+        { "code": "EV5", "en": "[Product] would give me pleasure.", "vi": "[Sản phẩm] sẽ mang lại niềm vui cho tôi." }
+      ]
+    },
+    {
+      "code": "PV",
+      "nameVi": "Giá trị giá cả",
+      "nameEn": "Price Value (Functional Value, Price/Value for Money)",
+      "definition": "Lợi ích từ việc sản phẩm có giá hợp lý so với chi phí bỏ ra, ngắn hạn và dài hạn.",
+      "source": "Sweeney & Soutar (2001), 4 biến. Bản gốc viết dưới dạng vế câu đứng sau tên sản phẩm; ở đây thêm [product] ở đầu câu.",
+      "items": [
+        { "code": "PV1", "en": "[Product] is reasonably priced.", "vi": "[Sản phẩm] có giá hợp lý." },
+        { "code": "PV2", "en": "[Product] offers value for money.", "vi": "[Sản phẩm] đáng đồng tiền bỏ ra." },
+        { "code": "PV3", "en": "[Product] is a good product for the price.", "vi": "[Sản phẩm] là sản phẩm tốt so với mức giá." },
+        { "code": "PV4", "en": "[Product] would be economical.", "vi": "[Sản phẩm] sẽ giúp tôi tiết kiệm." }
+      ]
+    },
+    {
+      "code": "SV",
+      "nameVi": "Giá trị xã hội",
+      "nameEn": "Social Value",
+      "definition": "Lợi ích từ khả năng sản phẩm nâng cao hình ảnh của người dùng trong mắt người khác.",
+      "source": "Sweeney & Soutar (2001), 4 biến. Bản gốc viết dưới dạng vế câu đứng sau tên sản phẩm; ở đây thêm [product] ở đầu câu.",
+      "items": [
+        { "code": "SV1", "en": "[Product] would help me to feel acceptable.", "vi": "[Sản phẩm] giúp tôi cảm thấy được người khác chấp nhận." },
+        { "code": "SV2", "en": "[Product] would improve the way I am perceived.", "vi": "[Sản phẩm] giúp cải thiện cách người khác nhìn nhận tôi." },
+        { "code": "SV3", "en": "[Product] would make a good impression on other people.", "vi": "[Sản phẩm] giúp tôi tạo ấn tượng tốt với người khác." },
+        { "code": "SV4", "en": "[Product] would give its owner social approval.", "vi": "[Sản phẩm] giúp người sở hữu nó được xã hội tán thành." }
+      ]
+    }
+  ],
+  "usage": [
+    "Biến gốc là vế câu đứng sau tên thương hiệu (ví dụ 'has consistent quality'); khi dịch, đặt tên sản phẩm cụ thể vào [sản phẩm], ví dụ 'Điện thoại iPhone có chất lượng ổn định', và giữ nguyên ý từng vế.",
+    "QV4 và QV5 là câu đảo chiều; mã hoá ngược trước khi tính alpha. Hai câu này hay tải yếu hoặc tải chéo, nhiều nghiên cứu dùng lại đã phải loại chúng sau CFA.",
+    "Sweeney & Soutar đo trên sản phẩm lâu bền; với dịch vụ, nhiều tác giả dùng SERV-PERVAL của Petrick (2002) thay vì sửa chữ PERVAL. Không trộn hai bộ mà không ghi rõ nguồn từng biến.",
+    "Chạy CFA bốn nhân tố và kiểm tra giá trị phân biệt (HTMT) giữa giá trị chất lượng và giá trị giá cả, vì người trả lời Việt Nam hay gộp 'tốt' với 'đáng tiền'.",
+    "Nếu bảng hỏi dài, Walsh, Shiu & Hassan (2014) đã đề xuất bản rút gọn; dùng bản đó thì trích bài của họ và lấy đúng các biến họ giữ lại."
+  ],
+  "sampleSize": {
+    "note": "PERVAL là thang đo đa hướng, không phải mô hình. Khi đưa bốn khía cạnh làm biến độc lập dự báo ý định mua, có 4 mũi tên vào biến phụ thuộc, cần tối thiểu 85 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Sweeney, J. C., &amp; Soutar, G. N. (2001). Consumer perceived value: The development of a multiple item scale. <em>Journal of Retailing, 77</em>(2), 203–220. https://doi.org/10.1016/S0022-4359(01)00041-0",
+    "Walsh, G., Shiu, E., &amp; Hassan, L. M. (2014). Replicating, validating, and reducing the length of the consumer perceived value scale. <em>Journal of Business Research, 67</em>(3), 260–267. https://doi.org/10.1016/j.jbusres.2013.05.012",
+    "Ranaweera, C., &amp; Karjaluoto, H. (2017). The impact of service bundles on the mechanism through which functional value and price value affect WOM intent. <em>Journal of Service Management, 28</em>(4), 707–723. https://doi.org/10.1108/JOSM-03-2016-0065"
+  ],
+  "verifiedFrom": [
+    "https://jyx.jyu.fi/bitstreams/f960640d-04b3-4ea6-9b52-f3f13a68682b/download",
+    "https://link.springer.com/content/pdf/10.1057/s41262-024-00359-8.pdf",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8723156/fullTextXML",
+    "http://www.ccsenet.org/journal/index.php/ijms/article/download/68479/37942",
+    "https://api.openalex.org/works/doi:10.1016/S0022-4359(01)00041-0"
+  ],
+  "related": ["y-dinh-mua", "niem-tin-trung-thanh-thuong-hieu", "mua-hang-ngau-hung"]
+}

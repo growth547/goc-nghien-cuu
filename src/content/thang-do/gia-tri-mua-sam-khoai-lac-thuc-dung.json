@@ -1,0 +1,67 @@
+{
+  "title": "Thang đo giá trị mua sắm khoái lạc, thực dụng: Babin và cộng sự (1994)",
+  "description": "Thang đo giá trị mua sắm khoái lạc (hedonic) và thực dụng (utilitarian) của Babin, Darden và Griffin (1994) dịch sẵn tiếng Việt, có bản gốc và câu đảo chiều.",
+  "name": "Hedonic and Utilitarian Shopping Value",
+  "fullName": "Thang đo giá trị mua sắm khoái lạc và thực dụng (Personal Shopping Value Scale)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo giá trị mua sắm khoái lạc thực dụng",
+  "intro": "Babin, Darden và Griffin (1994) cho rằng một chuyến mua sắm mang lại hai loại giá trị: giá trị thực dụng khi người mua hoàn thành được việc cần mua, và giá trị khoái lạc khi bản thân việc đi mua đã vui. Thang gốc có 11 biến khoái lạc và 4 biến thực dụng, hỏi về một chuyến mua sắm cụ thể vừa diễn ra. Đây là thang nền của nhiều nghiên cứu về trải nghiệm mua sắm, sự hài lòng và ý định quay lại. Ở Việt Nam, thang hay dùng cho đề tài về trung tâm thương mại, siêu thị, mua sắm trên sàn thương mại điện tử và livestream.",
+  "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý). Người trả lời đánh giá một chuyến mua sắm cụ thể vừa thực hiện.",
+  "constructs": [
+    {
+      "code": "HSV",
+      "nameVi": "Giá trị mua sắm khoái lạc",
+      "nameEn": "Hedonic Shopping Value",
+      "definition": "Giá trị đến từ niềm vui, sự hứng thú và cảm giác thoát khỏi thường nhật trong chính quá trình mua sắm.",
+      "source": "Babin, Darden & Griffin (1994), 11 biến của thang cuối cùng.",
+      "items": [
+        { "code": "HSV1", "en": "This shopping trip was truly a joy.", "vi": "Chuyến mua sắm này thật sự là một niềm vui." },
+        { "code": "HSV2", "en": "Compared to other things I could have done, the time spent shopping was truly enjoyable.", "vi": "So với những việc khác tôi có thể làm, thời gian dành cho mua sắm thật sự thú vị." },
+        { "code": "HSV3", "en": "During the trip, I felt the excitement of the hunt.", "vi": "Trong chuyến đi, tôi cảm thấy hào hứng như đang săn tìm." },
+        { "code": "HSV4", "en": "This shopping trip truly felt like an escape.", "vi": "Chuyến mua sắm này thật sự giống như một lần thoát khỏi thường nhật." },
+        { "code": "HSV5", "en": "I enjoyed being immersed in exciting new products.", "vi": "Tôi thích được đắm mình giữa những sản phẩm mới hấp dẫn." },
+        { "code": "HSV6", "en": "I enjoyed this shopping trip for its own sake, not just for the items I may have purchased.", "vi": "Tôi thích bản thân chuyến mua sắm này, không chỉ vì những món đồ tôi có thể đã mua." },
+        { "code": "HSV7", "en": "I continued to shop, not because I had to, but because I wanted to.", "vi": "Tôi tiếp tục mua sắm không phải vì phải làm, mà vì tôi muốn." },
+        { "code": "HSV8", "en": "I had a good time because I was able to act on the \"spur of the moment.\"", "vi": "Tôi thấy vui vì được hành động theo hứng nhất thời." },
+        { "code": "HSV9", "en": "While shopping, I was able to forget my problems.", "vi": "Khi mua sắm, tôi quên được những chuyện phiền muộn của mình." },
+        { "code": "HSV10", "en": "While shopping, I felt a sense of adventure.", "vi": "Khi mua sắm, tôi có cảm giác như đang phiêu lưu." },
+        { "code": "HSV11", "en": "This shopping trip was not a very nice time out.", "vi": "Chuyến mua sắm này không phải là khoảng thời gian thư giãn dễ chịu.", "reverse": true }
+      ]
+    },
+    {
+      "code": "USV",
+      "nameVi": "Giá trị mua sắm thực dụng",
+      "nameEn": "Utilitarian Shopping Value",
+      "definition": "Giá trị đến từ việc hoàn thành mục đích mua sắm một cách hiệu quả, tìm được và mua được thứ mình cần.",
+      "source": "Babin, Darden & Griffin (1994), 4 biến của thang cuối cùng.",
+      "items": [
+        { "code": "USV1", "en": "I accomplished just what I wanted to on this shopping trip.", "vi": "Tôi đã làm được đúng điều mình muốn trong chuyến mua sắm này." },
+        { "code": "USV2", "en": "I couldn't buy what I really needed.", "vi": "Tôi đã không mua được thứ mình thật sự cần.", "reverse": true },
+        { "code": "USV3", "en": "While shopping, I found just the item(s) I was looking for.", "vi": "Khi mua sắm, tôi tìm được đúng món đồ mình đang tìm." },
+        { "code": "USV4", "en": "I was disappointed because I had to go to another store(s) to complete my shopping.", "vi": "Tôi thất vọng vì phải sang cửa hàng khác mới mua đủ đồ.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Các biến hỏi về 'chuyến mua sắm này'; trước bảng hỏi phải định rõ chuyến mua nào (ví dụ lần mua gần nhất trên Shopee). Với mua sắm trực tuyến, đổi 'cửa hàng' thành 'trang/ứng dụng' và ghi rõ là đã điều chỉnh.",
+    "Có 3 câu đảo chiều (HSV11, USV2, USV4); mã hoá ngược trước khi tính alpha. Câu phủ định như 'không phải là khoảng thời gian dễ chịu' dễ bị hiểu sai khi dịch, nên thử với 5–10 người trước.",
+    "Bài gốc thử nghiệm 20 biến rồi loại 5; một số luận văn chép nhầm cả 20 biến. Chỉ dùng 11 + 4 biến ở trên nếu trích là thang của Babin và cộng sự (1994).",
+    "Thang thực dụng chỉ có 4 biến, trong đó 2 câu đảo chiều, nên alpha thường thấp hơn thang khoái lạc. Kiểm tra hệ số tải trong CFA trước khi loại biến.",
+    "Giá trị khoái lạc thường là biến trung gian hoặc tiền đề của mua hàng ngẫu hứng; nếu mô hình có cả hai, xem thêm thang Rook & Fisher (1995)."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo hai khía cạnh, không phải mô hình. Khi cả hai khía cạnh cùng dự báo một biến kết quả (ví dụ sự hài lòng), có 2 mũi tên, cần tối thiểu 68 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Babin, B. J., Darden, W. R., &amp; Griffin, M. (1994). Work and/or fun: Measuring hedonic and utilitarian shopping value. <em>Journal of Consumer Research, 20</em>(4), 644–656. https://doi.org/10.1086/209376",
+    "Gertner, D., &amp; Diaz, A. N. (1999). Marketing na Internet e comportamento do consumidor: Investigando a dicotomia hedonismo vs. utilitarismo na WWW. <em>Revista de Administração Contemporânea, 3</em>(3), 131–156."
+  ],
+  "verifiedFrom": [
+    "https://www.scielo.br/j/rac/a/rghywWJhgKkM67cx9BBckkQ/?lang=pt&format=pdf",
+    "https://pure.manchester.ac.uk/ws/files/54559313/FULL_TEXT.PDF",
+    "https://link.springer.com/content/pdf/10.1186/s43093-026-00775-z.pdf",
+    "https://marketingmanagementjournal.scholasticahq.com/article/150938.pdf"
+  ],
+  "related": ["mua-hang-ngau-hung", "gia-tri-cam-nhan-perval", "y-dinh-mua"]
+}

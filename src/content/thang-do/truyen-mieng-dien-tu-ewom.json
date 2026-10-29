@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo truyền miệng điện tử eWOM: Jalilvand & Samiei (2012)",
+  "description": "Thang đo truyền miệng điện tử (eWOM) 6 biến của Jalilvand và Samiei (2012) dịch sẵn tiếng Việt: mức độ đọc và dựa vào đánh giá trực tuyến khi mua hàng.",
+  "name": "eWOM",
+  "fullName": "Thang đo truyền miệng điện tử (Electronic Word of Mouth, eWOM)",
+  "field": "Marketing & thương hiệu",
+  "keyword": "thang đo eWOM",
+  "intro": "Jalilvand và Samiei (2012) đo truyền miệng điện tử từ phía người nhận thông tin: mức độ một người đọc, tham khảo và dựa vào đánh giá sản phẩm trực tuyến của người tiêu dùng khác trước khi mua. Thang có 6 biến, phát triển từ thang của Bambauer-Sachse và Mangold (2011), và được dùng trong nghiên cứu về tác động của eWOM lên hình ảnh thương hiệu và ý định mua ô tô tại Iran. Ở Việt Nam, thang hay dùng cho đề tài về đánh giá trên Shopee, TikTok Shop, Google Maps, review mỹ phẩm, du lịch và ẩm thực.",
+  "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý).",
+  "constructs": [
+    {
+      "code": "EWOM",
+      "nameVi": "Truyền miệng điện tử",
+      "nameEn": "Electronic Word of Mouth",
+      "definition": "Mức độ người tiêu dùng tìm đọc và dựa vào đánh giá trực tuyến của người tiêu dùng khác khi ra quyết định mua.",
+      "source": "Jalilvand & Samiei (2012), 6 biến, phát triển từ Bambauer-Sachse & Mangold (2011).",
+      "items": [
+        { "code": "EWOM1", "en": "I often read other consumers' online product reviews to know what products/brands make good impressions on others.", "vi": "Tôi thường đọc đánh giá sản phẩm trực tuyến của người tiêu dùng khác để biết sản phẩm/thương hiệu nào tạo ấn tượng tốt với người khác." },
+        { "code": "EWOM2", "en": "To make sure I buy the right product/brand, I often read other consumers' online product reviews.", "vi": "Để chắc chắn mua đúng sản phẩm/thương hiệu, tôi thường đọc đánh giá sản phẩm trực tuyến của người tiêu dùng khác." },
+        { "code": "EWOM3", "en": "I often consult other consumers' online product reviews to help choose the right product/brand.", "vi": "Tôi thường tham khảo đánh giá sản phẩm trực tuyến của người tiêu dùng khác để chọn đúng sản phẩm/thương hiệu." },
+        { "code": "EWOM4", "en": "I frequently gather information from online consumers' product reviews before I buy a certain product/brand.", "vi": "Tôi thường thu thập thông tin từ đánh giá sản phẩm trực tuyến của người tiêu dùng trước khi mua một sản phẩm/thương hiệu nào đó." },
+        { "code": "EWOM5", "en": "If I don't read consumers' online product reviews when I buy a product/brand, I worry about my decision.", "vi": "Nếu không đọc đánh giá trực tuyến của người tiêu dùng khi mua một sản phẩm/thương hiệu, tôi thấy lo lắng về quyết định của mình." },
+        { "code": "EWOM6", "en": "When I buy a product/brand, consumers' online product reviews make me confident in purchasing the product/brand.", "vi": "Khi mua một sản phẩm/thương hiệu, đánh giá trực tuyến của người tiêu dùng giúp tôi tự tin khi mua sản phẩm/thương hiệu đó." }
+      ]
+    }
+  ],
+  "usage": [
+    "Thang đo phía người đọc eWOM (tiếp nhận), không đo việc người trả lời tự viết đánh giá. Nếu đề tài muốn đo hành vi chia sẻ, cần thang khác về ý định truyền miệng.",
+    "Thay 'sản phẩm/thương hiệu' bằng đối tượng cụ thể (ví dụ 'mỹ phẩm', 'nhà hàng') và nêu kênh đánh giá (Shopee, Google Maps, TikTok) trong phần hướng dẫn; ghi rõ là đã điều chỉnh từ thang gốc.",
+    "Các biến khá giống nhau về câu chữ (EWOM2 và EWOM3), dễ làm alpha cao bất thường và AVE tốt giả. Kiểm tra tương quan giữa các biến và cân nhắc loại biến trùng ý.",
+    "Thang thường đặt làm biến độc lập tác động lên hình ảnh thương hiệu, niềm tin và ý định mua; chạy CFA và kiểm tra HTMT với các thang đó."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo đơn hướng, không phải mô hình. Trong mô hình gốc của Jalilvand & Samiei (2012), ý định mua nhận 2 mũi tên (từ eWOM và hình ảnh thương hiệu), cần tối thiểu 68 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Jalilvand, M. R., &amp; Samiei, N. (2012). The effect of electronic word of mouth on brand image and purchase intention: An empirical study in the automobile industry in Iran. <em>Marketing Intelligence &amp; Planning, 30</em>(4), 460–476. https://doi.org/10.1108/02634501211231946",
+    "Bambauer-Sachse, S., &amp; Mangold, S. (2011). Brand equity dilution through negative online word-of-mouth communication. <em>Journal of Retailing and Consumer Services, 18</em>(1), 38–45. https://doi.org/10.1016/j.jretconser.2010.09.003"
+  ],
+  "verifiedFrom": [
+    "https://www.tujom.org/index.php/1/article/download/118/84",
+    "https://journalppw.com/index.php/jpsp/article/download/5450/3609",
+    "http://www.ccsenet.org/journal/index.php/ijms/article/download/0/0/38645/39357",
+    "https://jisem-journal.com/index.php/journal/article/download/10865/5017",
+    "https://api.openalex.org/works/doi:10.1108/02634501211231946"
+  ],
+  "related": ["y-dinh-mua", "niem-tin-trung-thanh-thuong-hieu", "tai-san-thuong-hieu"]
+}

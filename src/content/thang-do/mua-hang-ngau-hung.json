@@ -13,22 +13,61 @@
       "nameVi": "Xu hướng mua hàng ngẫu hứng",
       "nameEn": "Buying Impulsiveness",
       "definition": "Khuynh hướng của người tiêu dùng mua một cách tự phát, thiếu cân nhắc và ngay lập tức.",
-      "source": "Rook & Fisher (1995), thang 9 biến; ở đây có 7 biến đã đối chiếu được nguyên văn qua các nghiên cứu trích lại (Fenton-O'Creevy & Furnham, 2022; nghiên cứu ADHD trên PMC, 2024; Merdin-Uygur, 2018). 2 biến còn lại chưa đối chiếu được nên chưa đưa vào.",
+      "source": "Rook & Fisher (1995), 9 biến. Nguyên văn đối chiếu qua các nghiên cứu trích lại thang gốc (Fenton-O'Creevy & Furnham, 2022; các bài trên PubMed Central), không qua bản PDF gốc.",
       "items": [
-        { "code": "BI1", "en": "I often buy things spontaneously.", "vi": "Tôi thường mua đồ một cách tự phát." },
-        { "code": "BI2", "en": "\"Just do it\" describes the way I buy things.", "vi": "\"Cứ mua đã\" là cách tôi mua sắm." },
-        { "code": "BI3", "en": "I often buy things without thinking.", "vi": "Tôi thường mua đồ mà không suy nghĩ." },
-        { "code": "BI4", "en": "\"I see it, I buy it\" describes me.", "vi": "\"Thấy là mua\" đúng là tôi." },
-        { "code": "BI5", "en": "\"Buy now, think about it later\" describes me.", "vi": "\"Mua trước, tính sau\" đúng là tôi." },
-        { "code": "BI6", "en": "I buy things according to how I feel at the moment.", "vi": "Tôi mua đồ theo cảm xúc của mình lúc đó." },
-        { "code": "BI7", "en": "I carefully plan most of my purchases.", "vi": "Tôi lên kế hoạch cẩn thận cho hầu hết các lần mua sắm.", "reverse": true }
+        {
+          "code": "BI1",
+          "en": "I often buy things spontaneously.",
+          "vi": "Tôi thường mua đồ một cách tự phát."
+        },
+        {
+          "code": "BI2",
+          "en": "\"Just do it\" describes the way I buy things.",
+          "vi": "\"Cứ mua đã\" là cách tôi mua sắm."
+        },
+        {
+          "code": "BI3",
+          "en": "I often buy things without thinking.",
+          "vi": "Tôi thường mua đồ mà không suy nghĩ."
+        },
+        {
+          "code": "BI4",
+          "en": "\"I see it, I buy it\" describes me.",
+          "vi": "\"Thấy là mua\" đúng là tôi."
+        },
+        {
+          "code": "BI5",
+          "en": "\"Buy now, think about it later\" describes me.",
+          "vi": "\"Mua trước, tính sau\" đúng là tôi."
+        },
+        {
+          "code": "BI6",
+          "en": "Sometimes I feel like buying things on the spur-of-the-moment.",
+          "vi": "Đôi khi tôi muốn mua đồ theo hứng nhất thời."
+        },
+        {
+          "code": "BI7",
+          "en": "I buy things according to how I feel at the moment.",
+          "vi": "Tôi mua đồ theo cảm xúc của mình lúc đó."
+        },
+        {
+          "code": "BI8",
+          "en": "I carefully plan most of my purchases.",
+          "vi": "Tôi lên kế hoạch cẩn thận cho hầu hết các lần mua sắm.",
+          "reverse": true
+        },
+        {
+          "code": "BI9",
+          "en": "Sometimes I am a bit reckless about what I buy.",
+          "vi": "Đôi khi tôi hơi liều lĩnh trong chuyện mua sắm."
+        }
       ]
     }
   ],
   "usage": [
-    "Thang gốc có 9 biến; bản ở đây mới có 7 biến đã đối chiếu nguyên văn. Nếu cần đủ 9 biến, lấy 2 biến còn lại trực tiếp từ Bảng 1 của Rook & Fisher (1995) và ghi số trang.",
+    "Thang gốc có 9 biến, đơn hướng. Nguyên văn ở đây được đối chiếu qua các bài trích lại; khi trích trong luận văn, ghi nguồn là Rook & Fisher (1995) và nếu có thể, đối chiếu thêm Bảng 1 của bài gốc.",
     "Các câu khẩu hiệu như 'Just do it', 'I see it, I buy it' dịch sát chữ nghe gượng; nên dịch theo ý quen thuộc với người Việt ('cứ mua đã', 'thấy là mua') và chạy thử với 5–10 người trước khi khảo sát chính thức.",
-    "BI7 là câu đảo chiều; mã hoá ngược trước khi tính alpha và cộng điểm. Câu đảo chiều thường tải yếu trong EFA ở mẫu Việt Nam, cân nhắc loại nếu hệ số tải dưới 0,5.",
+    "BI8 là câu đảo chiều; mã hoá ngược trước khi tính alpha và cộng điểm. Câu đảo chiều thường tải yếu trong EFA ở mẫu Việt Nam, cân nhắc loại nếu hệ số tải dưới 0,5.",
     "Fenton-O'Creevy & Furnham (2022) rút gọn còn 5 biến tải mạnh nhất (BI1–BI5) và vẫn đạt alpha 0,90; có thể dùng bản này khi bảng hỏi dài.",
     "Đây là thang đo đặc điểm cá nhân; nếu đề tài đo một lần mua ngẫu hứng cụ thể (ví dụ trong buổi livestream), cần thêm thang hành vi mua ngẫu hứng riêng."
   ],
@@ -44,7 +83,14 @@
     "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0278047",
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC11636743/",
     "https://beykozakademi.beykoz.edu.tr/wp-content/uploads/2018/11/Cilt-6-Say%C4%B1-2-Y%C4%B1l-2018-Ezgi-MERD%C4%B0N-UYGUR.pdf",
-    "https://api.crossref.org/works/10.1086/209452"
+    "https://api.crossref.org/works/10.1086/209452",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9904223/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11698923/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9202452/fullTextXML"
   ],
-  "related": ["y-dinh-mua", "tpb", "niem-tin-trung-thanh-thuong-hieu"]
+  "related": [
+    "y-dinh-mua",
+    "tpb",
+    "niem-tin-trung-thanh-thuong-hieu"
+  ]
 }

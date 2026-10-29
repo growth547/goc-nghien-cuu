@@ -25,6 +25,16 @@
       @apply text-foreground;
     }
 
+    /* Keep running text at a readable measure even in wide containers. */
+    > p,
+    > ul,
+    > ol,
+    > section > p,
+    > section > ul,
+    > blockquote {
+      max-width: 75ch;
+    }
+
     h2 {
       @apply mt-12 mb-4 text-[1.45rem] font-bold sm:text-2xl;
       line-height: 1.32;

@@ -89,12 +89,12 @@ const ld = [
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[1])} />
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[2])} />
   <Header />
-  <Breadcrumb />
+  <Breadcrumb current={`Thang đo ${d.name.toLowerCase()}`} />
   <main id="main-content" class="app-layout pb-10" data-pagefind-body>
-    <p class="text-accent text-xs font-semibold tracking-wider uppercase">{d.field}</p>
-    <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">{d.title}</h1>
+    <p class="eyebrow">{d.field}</p>
+    <h1 class="text-foreground mt-2 max-w-4xl text-[1.75rem] font-bold sm:text-[2.25rem]">{d.title}</h1>
 
-    <dl class="border-border mt-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-xl border p-4 text-sm sm:grid-cols-4">
+    <dl class="border-border mt-6 grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl border p-5 text-sm sm:grid-cols-4">
       <div><dt class="text-muted-foreground">Khái niệm</dt><dd class="font-semibold">{d.name}</dd></div>
       <div><dt class="text-muted-foreground">Tiếng Anh</dt><dd class="font-semibold">{d.nameEn}</dd></div>
       <div><dt class="text-muted-foreground">Thang đo trong thư viện</dt><dd class="font-semibold">{parts.length}</dd></div>
@@ -106,7 +106,7 @@ const ld = [
 
       <h2>So sánh các thang đo</h2>
       <div class="overflow-x-auto">
-        <table>
+        <table class="min-w-[44rem]">
           <thead>
             <tr>
               <th>Thang đo</th>
@@ -160,7 +160,7 @@ const ld = [
                 <tbody>
                   {p.c.items.map(i => (
                     <tr>
-                      <td class="font-semibold whitespace-nowrap">
+                      <td class="text-accent font-semibold whitespace-nowrap">
                         {i.code}
                         {i.reverse && " (R)"}
                       </td>
@@ -210,16 +210,16 @@ const ld = [
 
     {
       related.length + sameField.length > 0 && (
-        <section data-pagefind-ignore class="border-border mt-10 border-t pt-6">
-          <h2 class="mb-4 text-xl font-semibold">Khái niệm liên quan</h2>
-          <ul class="grid gap-3 sm:grid-cols-2">
+        <section data-pagefind-ignore class="border-border mt-14 border-t pt-8">
+          <h2 class="text-foreground mb-4 text-xl font-bold">Khái niệm liên quan</h2>
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[...related, ...sameField].map(x => (
               <li>
                 <a
                   href={getRelativeLocaleUrl(locale, `khai-niem/${x.id}`)}
-                  class="border-border hover:border-accent block rounded-xl border p-4 transition-colors"
+                  class="card gap-1 p-4"
                 >
-                  <span class="font-semibold">Thang đo {x.data.name.toLowerCase()}</span>
+                  <span class="card-title">Thang đo {x.data.name.toLowerCase()}</span>
                   <span class="text-muted-foreground block text-sm">
                     {x.data.nameEn} · {x.data.constructs.length} thang đo
                   </span>

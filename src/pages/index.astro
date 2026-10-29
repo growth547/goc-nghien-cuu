@@ -240,7 +240,7 @@ const homePosts = [...featuredPosts, ...recentPosts].slice(
           </p>
           <h1
             id="hero-title"
-            class="text-foreground mt-5 text-[2.1rem] leading-[1.18] font-bold sm:text-5xl sm:leading-[1.15]"
+            class="text-foreground mt-5 text-[2.1rem] leading-[1.18] font-bold sm:text-5xl sm:leading-[1.15] lg:text-[2.85rem]"
           >
             Chọn khái niệm trong mô hình.
             <span class="text-accent block">1 phút có bảng hỏi và chương 3.</span>
@@ -360,10 +360,10 @@ const homePosts = [...featuredPosts, ...recentPosts].slice(
       <h2 id="journey-title" class="text-foreground text-lg font-bold sm:text-xl">
         Bạn đang ở bước nào của khoá luận?
       </h2>
-      <ol class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <ol class="-mx-4 mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-5">
         {
           journey.map((step, i) => (
-            <li>
+            <li class="w-[15.5rem] flex-none snap-start sm:w-auto">
               <a href={href(step.path)} class="card group gap-1 p-4">
                 <span class="flex items-center gap-2">
                   <span class="bg-warm-soft text-warm grid size-7 flex-none place-items-center rounded-full text-sm font-bold">

@@ -5,7 +5,7 @@ import { useTranslations } from "@/i18n";
 import config from "@/config";
 
 type Props = {
-  /** Readable label for the last crumb (otherwise the URL segment is shown). */
+  /** Readable label for the last crumb; without it a slug segment is left out. */
   current?: string;
 };
 const { current } = Astro.props;
@@ -70,43 +70,53 @@ if (breadcrumbList[0] === "tags" && !isNaN(Number(breadcrumbList[2]))) {
     }`
   );
 }
+
+// Build the trail. A detail page's last segment is a slug ("lam-phat"); unless the page
+// passes a readable `current` label, leave it out rather than show the raw slug.
+const crumbs: { label: string; href?: string }[] = [
+  { label: t.nav.home, href: getRelativeLocaleUrl(locale, "") },
+];
+breadcrumbList.forEach((segment, index) => {
+  const isLast = index + 1 === breadcrumbList.length;
+  const known = navLabels[segment];
+  if (isLast) {
+    const label = current ?? known ?? (index === 0 ? decodeSegment(segment) : undefined);
+    if (label) crumbs.push({ label });
+  } else {
+    crumbs.push({
+      label: known ?? decodeSegment(segment),
+      href: getRelativeLocaleUrl(locale, segment),
+    });
+  }
+});
 ---
 
-<nav class="app-layout pt-6 pb-1" aria-label="breadcrumb">
+<nav class="app-layout pt-6 pb-4" aria-label="breadcrumb">
   <ol
     class="text-muted-foreground flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm"
   >
-    <li class="flex items-center gap-x-1.5">
-      <a href={getRelativeLocaleUrl(locale, "")} class="hover:text-accent">
-        {t.nav.home}
-      </a>
-      <span aria-hidden="true" class="opacity-60">/</span>
-    </li>
     {
-      breadcrumbList.map((breadcrumb, index) =>
-        index + 1 === breadcrumbList.length ? (
-          <li class="min-w-0">
+      crumbs.map((crumb, index) => (
+        <li class="flex min-w-0 items-center gap-x-1.5">
+          {index > 0 && (
+            <span aria-hidden="true" class="opacity-60">
+              /
+            </span>
+          )}
+          {crumb.href ? (
+            <a href={crumb.href} class="hover:text-accent">
+              {crumb.label}
+            </a>
+          ) : (
             <span
               class="text-foreground block max-w-[60vw] truncate font-medium sm:max-w-md"
               aria-current="page"
             >
-              {current ?? navLabels[breadcrumb] ?? decodeSegment(breadcrumb)}
+              {crumb.label}
             </span>
-          </li>
-        ) : (
-          <li class="flex items-center gap-x-1.5">
-            <a
-              href={getRelativeLocaleUrl(locale, breadcrumb)}
-              class="hover:text-accent"
-            >
-              {navLabels[breadcrumb] ?? decodeSegment(breadcrumb)}
-            </a>
-            <span aria-hidden="true" class="opacity-60">
-              /
-            </span>
-          </li>
-        )
-      )
+          )}
+        </li>
+      ))
     }
   </ol>
 </nav>

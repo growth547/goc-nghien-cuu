@@ -34,4 +34,53 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { posts, pages };
+// Measurement scale library: one JSON file per published scale/model.
+const item = z.object({
+  code: z.string(),
+  en: z.string(),
+  vi: z.string(),
+  reverse: z.boolean().optional(),
+});
+const scales = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/thang-do" }),
+  schema: z.object({
+    title: z.string().max(70),
+    description: z.string().min(110).max(170),
+    name: z.string(),
+    fullName: z.string(),
+    field: z.enum([
+      "Công nghệ & hệ thống thông tin",
+      "Hành vi người tiêu dùng",
+      "Chất lượng dịch vụ",
+      "Marketing & thương hiệu",
+      "Quản trị nhân sự & tổ chức",
+      "Tâm lý & sức khoẻ tinh thần",
+    ]),
+    keyword: z.string(),
+    intro: z.string(),
+    responseScale: z.string(),
+    constructs: z
+      .array(
+        z.object({
+          code: z.string(),
+          nameVi: z.string(),
+          nameEn: z.string(),
+          definition: z.string(),
+          source: z.string(),
+          items: z.array(item).min(1),
+        })
+      )
+      .min(1),
+    usage: z.array(z.string()).min(2),
+    sampleSize: z.object({
+      arrowsMax: z.number().int().min(1).optional(),
+      note: z.string(),
+    }),
+    license: z.string(),
+    references: z.array(z.string()).min(1),
+    verifiedFrom: z.array(z.string().url()).min(1),
+    related: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { posts, pages, scales };

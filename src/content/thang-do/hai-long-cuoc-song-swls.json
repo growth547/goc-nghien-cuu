@@ -1,0 +1,45 @@
+{
+  "title": "Thang đo hài lòng cuộc sống SWLS tiếng Việt: Diener (1985)",
+  "description": "Thang đo hài lòng với cuộc sống SWLS 5 biến của Diener và cộng sự (1985) dịch sẵn tiếng Việt, có bản gốc, thang 7 mức, cách tính điểm và các mức diễn giải.",
+  "name": "SWLS",
+  "fullName": "Thang đo hài lòng với cuộc sống (Satisfaction With Life Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo hài lòng cuộc sống",
+  "intro": "SWLS do Diener, Emmons, Larsen và Griffin (1985) xây dựng để đo đánh giá tổng quát của một người về cuộc sống của chính mình, tức thành phần nhận thức của hạnh phúc chủ quan. Thang chỉ có 5 biến, một nhân tố, trả lời trong khoảng một phút. Ở Việt Nam, SWLS hay được dùng làm biến kết quả trong đề tài về sức khoẻ tinh thần sinh viên, cân bằng công việc và cuộc sống, người cao tuổi, hoặc tác động của mạng xã hội.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Hơi không đồng ý, 4 = Trung lập, 5 = Hơi đồng ý, 6 = Đồng ý, 7 = Hoàn toàn đồng ý). Điểm tổng là tổng 5 biến, từ 5 đến 35. Mức diễn giải kèm theo thang: 31–35 rất hài lòng; 26–30 hài lòng; 21–25 hơi hài lòng; 20 trung lập; 15–19 hơi không hài lòng; 10–14 không hài lòng; 5–9 rất không hài lòng.",
+  "constructs": [
+    {
+      "code": "SWLS",
+      "nameVi": "Hài lòng với cuộc sống",
+      "nameEn": "Satisfaction With Life",
+      "definition": "Đánh giá tổng quát, mang tính nhận thức, của một người về chất lượng cuộc sống của mình theo tiêu chuẩn do chính họ đặt ra.",
+      "source": "Diener, Emmons, Larsen & Griffin (1985), 5 biến.",
+      "items": [
+        { "code": "SWLS1", "en": "In most ways my life is close to my ideal.", "vi": "Xét trên hầu hết các mặt, cuộc sống của tôi gần với điều tôi lý tưởng." },
+        { "code": "SWLS2", "en": "The conditions of my life are excellent.", "vi": "Các điều kiện sống của tôi rất tốt." },
+        { "code": "SWLS3", "en": "I am satisfied with my life.", "vi": "Tôi hài lòng với cuộc sống của mình." },
+        { "code": "SWLS4", "en": "So far I have gotten the important things I want in life.", "vi": "Cho tới nay tôi đã có được những điều quan trọng tôi mong muốn trong cuộc sống." },
+        { "code": "SWLS5", "en": "If I could live my life over, I would change almost nothing.", "vi": "Nếu được sống lại cuộc đời mình, tôi gần như sẽ không thay đổi điều gì." }
+      ]
+    }
+  ],
+  "usage": [
+    "Không có câu đảo chiều; cộng thẳng 5 biến. Nếu báo cáo điểm trung bình (1–7) thay cho điểm tổng thì không dùng được các mức diễn giải 5–35, phải quy đổi lại.",
+    "SWLS5 ('nếu được sống lại') thường có hệ số tải thấp nhất vì người trẻ ít nghĩ theo kiểu nhìn lại cả đời; đừng vội loại biến, hãy xem Cronbach's alpha nếu loại biến và lý do lý thuyết.",
+    "Dịch 'ideal' thành 'lý tưởng' dễ bị hiểu là hoàn hảo; nên thử phỏng vấn nhận thức (cognitive interview) với 5–10 người trước khi khảo sát chính thức.",
+    "Thang một nhân tố: chạy Cronbach's alpha và EFA để kiểm tra tính đơn hướng; nếu đưa vào mô hình SEM cùng thang hạnh phúc khác, kiểm tra giá trị phân biệt (HTMT)."
+  ],
+  "sampleSize": {
+    "note": "SWLS là thang đơn lẻ 5 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (25) nhưng nên có từ 100 quan sát trở lên để kết quả độ tin cậy và phân tích nhân tố ổn định."
+  },
+  "license": "Thang có bản quyền của Ed Diener và các đồng tác giả nhưng được dùng miễn phí, không cần xin phép, cho mục đích phi thương mại (nghiên cứu, thực hành), với điều kiện trích dẫn đúng các tác giả, theo trang chính thức của Diener.",
+  "references": [
+    "Diener, E., Emmons, R. A., Larsen, R. J., &amp; Griffin, S. (1985). The Satisfaction With Life Scale. <em>Journal of Personality Assessment, 49</em>(1), 71–75. https://doi.org/10.1207/s15327752jpa4901_13"
+  ],
+  "verifiedFrom": [
+    "https://sabi.unc.edu/pdf/SWLS_Diener.pdf",
+    "https://eddiener.com/satisfaction-with-life-scale-swls/",
+    "https://labs.psychology.illinois.edu/~ediener/SWLS.html"
+  ],
+  "related": ["tu-trong-rosenberg", "cang-thang-pss-10", "hai-long-cong-viec"]
+}

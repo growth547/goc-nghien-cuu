@@ -1,0 +1,58 @@
+{
+  "title": "Thang đo hỗ trợ tổ chức POS tiếng Việt: Eisenberger (1986)",
+  "description": "Thang đo nhận thức hỗ trợ tổ chức SPOS bản rút gọn 16 biến dịch sẵn tiếng Việt, có bản gốc, đánh dấu câu đảo chiều và trích dẫn Eisenberger và cộng sự (1986).",
+  "name": "SPOS",
+  "fullName": "Thang đo nhận thức hỗ trợ tổ chức (Survey of Perceived Organizational Support)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo hỗ trợ tổ chức",
+  "intro": "SPOS đo niềm tin chung của người lao động về mức tổ chức coi trọng đóng góp và quan tâm tới đời sống của họ. Eisenberger, Huntington, Hutchison và Sowa (1986) xây dựng bản 36 biến và đánh dấu 16 biến giữ lại cho bản rút gọn; trang này trình bày bản 16 biến đó. Theo thuyết trao đổi xã hội, nhân viên thấy được tổ chức hỗ trợ sẽ đáp lại bằng cam kết, nỗ lực và ít nghỉ việc hơn. Ở Việt Nam, thang hợp với đề tài về cam kết, gắn kết, ý định nghỉ việc và hành vi công dân tổ chức.",
+  "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như Eisenberger và cộng sự (1986). Đảo điểm các câu đánh dấu đảo chiều trước khi tính điểm trung bình.",
+  "constructs": [
+    {
+      "code": "POS",
+      "nameVi": "Nhận thức hỗ trợ tổ chức",
+      "nameEn": "Perceived Organizational Support",
+      "definition": "Niềm tin chung của người lao động về mức tổ chức coi trọng đóng góp của họ và quan tâm tới đời sống của họ.",
+      "source": "Eisenberger, Huntington, Hutchison & Sowa (1986), Bảng 1, 16 biến được đánh dấu giữ lại cho bản rút gọn (câu 1, 2, 3, 4, 6, 7, 8, 9, 17, 20, 21, 22, 23, 25, 27, 35 của bản 36 biến). Phần thân bài viết 'bản rút gọn 17 biến' nhưng Bảng 1 chỉ đánh dấu 16 biến; trang này theo Bảng 1.",
+      "items": [
+        { "code": "POS1", "en": "The organization values my contribution to its well-being.", "vi": "[Công ty] coi trọng đóng góp của tôi cho sự phát triển của [công ty]." },
+        { "code": "POS2", "en": "If the organization could hire someone to replace me at a lower salary it would do so.", "vi": "Nếu thuê được người thay tôi với mức lương thấp hơn, [công ty] sẽ làm vậy.", "reverse": true },
+        { "code": "POS3", "en": "The organization fails to appreciate any extra effort from me.", "vi": "[Công ty] không ghi nhận bất kỳ nỗ lực thêm nào của tôi.", "reverse": true },
+        { "code": "POS4", "en": "The organization strongly considers my goals and values.", "vi": "[Công ty] rất quan tâm tới mục tiêu và giá trị của tôi." },
+        { "code": "POS5", "en": "The organization would ignore any complaint from me.", "vi": "[Công ty] sẽ phớt lờ mọi phàn nàn của tôi.", "reverse": true },
+        { "code": "POS6", "en": "The organization disregards my best interests when it makes decisions that affect me.", "vi": "Khi ra quyết định ảnh hưởng tới tôi, [công ty] không tính tới lợi ích của tôi.", "reverse": true },
+        { "code": "POS7", "en": "Help is available from the organization when I have a problem.", "vi": "Khi tôi gặp vấn đề, [công ty] sẵn sàng giúp đỡ." },
+        { "code": "POS8", "en": "The organization really cares about my well-being.", "vi": "[Công ty] thật sự quan tâm tới đời sống của tôi." },
+        { "code": "POS9", "en": "Even if I did the best job possible, the organization would fail to notice.", "vi": "Dù tôi làm việc tốt nhất có thể, [công ty] cũng không nhận ra.", "reverse": true },
+        { "code": "POS10", "en": "The organization is willing to help me when I need a special favor.", "vi": "[Công ty] sẵn lòng giúp khi tôi cần một sự giúp đỡ đặc biệt." },
+        { "code": "POS11", "en": "The organization cares about my general satisfaction at work.", "vi": "[Công ty] quan tâm tới mức hài lòng chung của tôi trong công việc." },
+        { "code": "POS12", "en": "If given the opportunity, the organization would take advantage of me.", "vi": "Nếu có cơ hội, [công ty] sẽ lợi dụng tôi.", "reverse": true },
+        { "code": "POS13", "en": "The organization shows very little concern for me.", "vi": "[Công ty] rất ít quan tâm tới tôi.", "reverse": true },
+        { "code": "POS14", "en": "The organization cares about my opinions.", "vi": "[Công ty] quan tâm tới ý kiến của tôi." },
+        { "code": "POS15", "en": "The organization takes pride in my accomplishments at work.", "vi": "[Công ty] tự hào về những thành tích công việc của tôi." },
+        { "code": "POS16", "en": "The organization tries to make my job as interesting as possible.", "vi": "[Công ty] cố gắng làm cho công việc của tôi thú vị nhất có thể." }
+      ]
+    }
+  ],
+  "usage": [
+    "Bảy câu đảo chiều (POS2, POS3, POS5, POS6, POS9, POS12, POS13) phải mã hoá ngược trước khi chạy Cronbach's alpha và EFA; các câu này đôi khi tách thành nhân tố riêng do hiệu ứng câu phủ định, nên chạy CFA kiểm tra.",
+    "Nhiều nghiên cứu dùng bản 8 biến hoặc ngắn hơn; Rhoades và Eisenberger (2002, tr. 699) cho rằng dùng bản ngắn không có vấn đề vì thang gốc đơn hướng và có độ tin cậy cao. Nếu tự rút gọn, nên giữ biến của cả hai mặt (coi trọng đóng góp, quan tâm tới đời sống) và ghi rõ chọn biến nào từ Bảng 1.",
+    "'Well-being' ở POS1 là sự phát triển, lợi ích của tổ chức, còn ở POS8 là đời sống, sức khoẻ của nhân viên; dịch sai hai chữ này là lỗi hay gặp.",
+    "Bản gốc dùng 'the organization'; thay [công ty] bằng đơn vị cụ thể, ví dụ 'bệnh viện', 'nhà trường', và dùng thống nhất cho mọi câu.",
+    "Eisenberger và cộng sự (1986) không công bố bản 8 biến; nếu dùng bản 8 biến theo một nghiên cứu sau, trích cả bài gốc lẫn nghiên cứu đã chọn 8 biến đó."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu hỗ trợ tổ chức là một trong 3 biến dự báo của biến phụ thuộc thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong Bảng 1 của bài báo gốc trên Journal of Applied Psychology và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Eisenberger, R., Huntington, R., Hutchison, S., &amp; Sowa, D. (1986). Perceived organizational support. <em>Journal of Applied Psychology, 71</em>(3), 500–507. https://doi.org/10.1037/0021-9010.71.3.500",
+    "Rhoades, L., &amp; Eisenberger, R. (2002). Perceived organizational support: A review of the literature. <em>Journal of Applied Psychology, 87</em>(4), 698–714. https://doi.org/10.1037/0021-9010.87.4.698"
+  ],
+  "verifiedFrom": [
+    "https://journal.untar.ac.id/index.php/jmishumsen/article/view/979/10702",
+    "https://sajip.co.za/index.php/sajip/article/download/754/869",
+    "https://api.crossref.org/works/10.1037/0021-9010.71.3.500"
+  ],
+  "related": ["cam-ket-to-chuc-ocq", "y-dinh-nghi-viec", "gan-ket-cong-viec-uwes"]
+}

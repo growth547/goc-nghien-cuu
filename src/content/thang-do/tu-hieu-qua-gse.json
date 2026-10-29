@@ -1,0 +1,50 @@
+{
+  "title": "Thang đo tự hiệu quả GSE tiếng Việt: Schwarzer & Jerusalem (1995)",
+  "description": "Thang đo năng lực tự hiệu quả tổng quát GSE 10 biến của Schwarzer và Jerusalem (1995) dịch sẵn tiếng Việt, có bản gốc, thang 4 mức và cách tính điểm 10–40.",
+  "name": "GSE",
+  "fullName": "Thang đo năng lực tự hiệu quả tổng quát (General Self-Efficacy Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo tự hiệu quả GSE",
+  "intro": "GSE do Ralf Schwarzer và Matthias Jerusalem xây dựng (bản tiếng Đức từ 1979, bản tiếng Anh công bố năm 1995) để đo niềm tin chung của một người rằng mình đối phó được với các tình huống khó khăn và yêu cầu mới. Khái niệm dựa trên lý thuyết tự hiệu quả của Bandura nhưng ở mức tổng quát, không gắn với một nhiệm vụ cụ thể. Ở Việt Nam, GSE được dùng trong đề tài về kết quả học tập, khả năng thích ứng của sinh viên năm nhất, ý định khởi nghiệp và ứng phó với căng thẳng.",
+  "responseScale": "Thang 4 mức mức độ đúng: 1 = Hoàn toàn không đúng, 2 = Hầu như không đúng, 3 = Đúng một phần, 4 = Hoàn toàn đúng. Không có câu đảo chiều; điểm tổng là tổng 10 câu, từ 10 đến 40, hoặc dùng điểm trung bình. Tác giả không đặt điểm cắt và không khuyến khích chia người trả lời thành nhóm cao, thấp.",
+  "constructs": [
+    {
+      "code": "GSE",
+      "nameVi": "Năng lực tự hiệu quả tổng quát",
+      "nameEn": "General Self-Efficacy",
+      "definition": "Niềm tin chung của một người vào năng lực của mình trong việc đối phó với nhiều loại tình huống khó khăn hoặc mới lạ.",
+      "source": "Schwarzer & Jerusalem (1995), 10 biến.",
+      "items": [
+        { "code": "GSE1", "en": "I can always manage to solve difficult problems if I try hard enough.", "vi": "Tôi luôn giải quyết được những vấn đề khó nếu tôi đủ cố gắng." },
+        { "code": "GSE2", "en": "If someone opposes me, I can find the means and ways to get what I want.", "vi": "Nếu có người phản đối, tôi vẫn tìm được cách để đạt điều mình muốn." },
+        { "code": "GSE3", "en": "It is easy for me to stick to my aims and accomplish my goals.", "vi": "Tôi dễ dàng kiên trì với mục tiêu và hoàn thành chúng." },
+        { "code": "GSE4", "en": "I am confident that I could deal efficiently with unexpected events.", "vi": "Tôi tin rằng mình có thể xử lý hiệu quả những sự việc bất ngờ." },
+        { "code": "GSE5", "en": "Thanks to my resourcefulness, I know how to handle unforeseen situations.", "vi": "Nhờ sự tháo vát, tôi biết cách xử lý những tình huống không lường trước." },
+        { "code": "GSE6", "en": "I can solve most problems if I invest the necessary effort.", "vi": "Tôi có thể giải quyết hầu hết các vấn đề nếu bỏ ra đủ công sức cần thiết." },
+        { "code": "GSE7", "en": "I can remain calm when facing difficulties because I can rely on my coping abilities.", "vi": "Tôi có thể bình tĩnh khi gặp khó khăn vì tin vào khả năng ứng phó của mình." },
+        { "code": "GSE8", "en": "When I am confronted with a problem, I can usually find several solutions.", "vi": "Khi đối mặt với một vấn đề, tôi thường tìm ra được vài cách giải quyết." },
+        { "code": "GSE9", "en": "If I am in trouble, I can usually think of a solution.", "vi": "Khi gặp rắc rối, tôi thường nghĩ ra được cách giải quyết." },
+        { "code": "GSE10", "en": "I can usually handle whatever comes my way.", "vi": "Tôi thường xử lý được bất cứ chuyện gì xảy đến với mình." }
+      ]
+    }
+  ],
+  "usage": [
+    "Trang chính thức của Schwarzer (userpage.fu-berlin.de/~health/selfscal.htm) có 32 bản dịch nhưng không có bản tiếng Việt; bạn cần tự dịch theo quy trình dịch xuôi, dịch ngược hoặc dùng một bản tiếng Việt đã được kiểm định và trích dẫn người dịch.",
+    "Không nhầm GSE với New General Self-Efficacy Scale (NGSE) của Chen, Gully và Eden (2001), một thang 8 biến khác; ghi rõ thang bạn dùng trong phần phương pháp.",
+    "Theo tài liệu hướng dẫn của tác giả, vẫn tính điểm nếu thiếu không quá 3 câu bằng cách lấy trung bình các câu còn lại; điểm trung bình ở nhiều mẫu quanh 2,9.",
+    "Giữ thang 4 mức 'mức độ đúng' như bản gốc; nếu đổi sang Likert đồng ý 5 mức, ghi rõ và không so sánh trực tiếp với chuẩn T của tác giả."
+  ],
+  "sampleSize": {
+    "note": "GSE là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên để kiểm tra tính đơn hướng và Cronbach's alpha."
+  },
+  "license": "Theo tài liệu FAQ của tác giả, không cần xin phép riêng: Schwarzer và Jerusalem cho phép dùng và sao chép thang GSE cho nghiên cứu, với điều kiện ghi rõ nguồn trong bài viết.",
+  "references": [
+    "Schwarzer, R., &amp; Jerusalem, M. (1995). Generalized Self-Efficacy scale. In J. Weinman, S. Wright, &amp; M. Johnston (Eds.), <em>Measures in health psychology: A user's portfolio. Causal and control beliefs</em> (pp. 35–37). NFER-NELSON."
+  ],
+  "verifiedFrom": [
+    "https://userpage.fu-berlin.de/~health/engscal.htm",
+    "https://userpage.fu-berlin.de/~health/faq_gse.pdf",
+    "http://userpage.fu-berlin.de/~health/selfscal.htm"
+  ],
+  "related": ["tu-trong-rosenberg", "cang-thang-pss-10", "gan-ket-cong-viec-uwes"]
+}

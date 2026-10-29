@@ -1,0 +1,87 @@
+{
+  "title": "Thang đo tính cách BFI-10 tiếng Việt: Rammstedt & John (2007)",
+  "description": "Thang đo tính cách Big Five rút gọn BFI-10 dịch sẵn tiếng Việt: 5 khía cạnh, mỗi khía cạnh 2 biến, 5 câu đảo chiều, bản gốc và khoá chấm điểm của tác giả.",
+  "name": "BFI-10",
+  "fullName": "Bảng kiểm Big Five 10 biến (Big Five Inventory-10)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo tính cách Big Five BFI-10",
+  "intro": "BFI-10 do Rammstedt và John (2007) rút gọn từ Big Five Inventory 44 biến, xây dựng song song bằng tiếng Anh và tiếng Đức, dành cho khảo sát mà thời gian trả lời rất hạn chế. Thang đo năm khía cạnh tính cách: hướng ngoại, dễ chịu, tận tâm, bất ổn cảm xúc và cởi mở, mỗi khía cạnh 2 câu, một câu thuận và một câu đảo chiều. Ở Việt Nam, BFI-10 hay được đưa vào làm biến kiểm soát hoặc biến điều tiết trong đề tài về hành vi tiêu dùng, ý định khởi nghiệp, sử dụng mạng xã hội và kết quả học tập.",
+  "responseScale": "Likert 5 mức, câu dẫn 'Tôi thấy mình là người…': 1 = Hoàn toàn không đồng ý, 2 = Hơi không đồng ý, 3 = Không đồng ý cũng không phản đối, 4 = Hơi đồng ý, 5 = Hoàn toàn đồng ý. Khoá chấm điểm của tác giả: Hướng ngoại 1R, 6; Dễ chịu 2, 7R; Tận tâm 3R, 8; Bất ổn cảm xúc 4R, 9; Cởi mở 5R, 10 (R = đảo điểm, 6 trừ điểm trả lời). Điểm khía cạnh là trung bình hoặc tổng 2 câu.",
+  "constructs": [
+    {
+      "code": "E",
+      "nameVi": "Hướng ngoại",
+      "nameEn": "Extraversion",
+      "definition": "Xu hướng hoà đồng, năng động, thích giao tiếp và tìm kiếm sự kích thích từ người khác.",
+      "source": "Rammstedt & John (2007), 2 biến (câu 1R, 6).",
+      "items": [
+        { "code": "BFI1", "en": "I see myself as someone who is reserved.", "vi": "Tôi thấy mình là người dè dặt, kín đáo.", "reverse": true },
+        { "code": "BFI6", "en": "I see myself as someone who is outgoing, sociable.", "vi": "Tôi thấy mình là người cởi mở, hoà đồng." }
+      ]
+    },
+    {
+      "code": "A",
+      "nameVi": "Dễ chịu",
+      "nameEn": "Agreeableness",
+      "definition": "Xu hướng tin tưởng, hợp tác, vị tha và dễ hoà hợp với người khác.",
+      "source": "Rammstedt & John (2007), 2 biến (câu 2, 7R).",
+      "items": [
+        { "code": "BFI2", "en": "I see myself as someone who is generally trusting.", "vi": "Tôi thấy mình là người nhìn chung dễ tin người." },
+        { "code": "BFI7", "en": "I see myself as someone who tends to find fault with others.", "vi": "Tôi thấy mình là người hay bắt lỗi người khác.", "reverse": true }
+      ]
+    },
+    {
+      "code": "C",
+      "nameVi": "Tận tâm",
+      "nameEn": "Conscientiousness",
+      "definition": "Xu hướng có tổ chức, kỷ luật, chu đáo và kiên trì với nhiệm vụ.",
+      "source": "Rammstedt & John (2007), 2 biến (câu 3R, 8).",
+      "items": [
+        { "code": "BFI3", "en": "I see myself as someone who tends to be lazy.", "vi": "Tôi thấy mình là người có xu hướng lười biếng.", "reverse": true },
+        { "code": "BFI8", "en": "I see myself as someone who does a thorough job.", "vi": "Tôi thấy mình là người làm việc kỹ lưỡng." }
+      ]
+    },
+    {
+      "code": "N",
+      "nameVi": "Bất ổn cảm xúc",
+      "nameEn": "Neuroticism",
+      "definition": "Xu hướng dễ lo âu, căng thẳng và trải nghiệm cảm xúc tiêu cực.",
+      "source": "Rammstedt & John (2007), 2 biến (câu 4R, 9).",
+      "items": [
+        { "code": "BFI4", "en": "I see myself as someone who is relaxed, handles stress well.", "vi": "Tôi thấy mình là người thoải mái, đối phó tốt với căng thẳng.", "reverse": true },
+        { "code": "BFI9", "en": "I see myself as someone who gets nervous easily.", "vi": "Tôi thấy mình là người dễ lo lắng, bồn chồn." }
+      ]
+    },
+    {
+      "code": "O",
+      "nameVi": "Cởi mở với trải nghiệm",
+      "nameEn": "Openness",
+      "definition": "Xu hướng tò mò, giàu trí tưởng tượng, quan tâm tới nghệ thuật và ý tưởng mới.",
+      "source": "Rammstedt & John (2007), 2 biến (câu 5R, 10).",
+      "items": [
+        { "code": "BFI5", "en": "I see myself as someone who has few artistic interests.", "vi": "Tôi thấy mình là người ít quan tâm tới nghệ thuật.", "reverse": true },
+        { "code": "BFI10", "en": "I see myself as someone who has an active imagination.", "vi": "Tôi thấy mình là người giàu trí tưởng tượng." }
+      ]
+    }
+  ],
+  "usage": [
+    "Giữ thứ tự câu 1 tới 10 như bản gốc (xen kẽ các khía cạnh) khi đưa vào bảng hỏi; mã BFI1–BFI10 ở đây theo đúng thứ tự đó. Bản gốc in câu dẫn 'I see myself as someone who…' một lần ở đầu.",
+    "Mỗi khía cạnh chỉ 2 câu, một thuận một nghịch, nên Cronbach's alpha thường thấp; báo cáo tương quan giữa 2 câu hoặc hệ số Spearman-Brown thay cho alpha, và giải thích điều này với hội đồng.",
+    "Tác giả đề xuất thêm câu dễ chịu thứ ba 'is considerate and kind to almost everyone' nếu khía cạnh dễ chịu quan trọng với đề tài; GESIS lưu ý BFI-10 không dùng để chẩn đoán cá nhân.",
+    "Không chạy EFA gộp 10 câu rồi kỳ vọng ra đúng 5 nhân tố; với 2 câu mỗi khía cạnh, nên tính điểm theo khoá chấm của tác giả và dùng như biến quan sát."
+  ],
+  "sampleSize": {
+    "note": "BFI-10 là thang đơn lẻ 10 biến, 5 khía cạnh. Theo Hair và cộng sự, cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; nếu dùng 5 khía cạnh làm biến dự báo trong hồi quy, tham khảo mốc G*Power 92 quan sát cho 5 biến dự báo."
+  },
+  "license": "Theo tài liệu ZIS của GESIS, thang được dùng miễn phí cho mục đích nghiên cứu phi thương mại; dùng cho mục đích khác hoặc ở dạng khác bản đã công bố thì cần sự đồng ý của tác giả. Phải trích dẫn nguồn trong mọi công bố.",
+  "references": [
+    "Rammstedt, B., &amp; John, O. P. (2007). Measuring personality in one minute or less: A 10-item short version of the Big Five Inventory in English and German. <em>Journal of Research in Personality, 41</em>(1), 203–212. https://doi.org/10.1016/j.jrp.2006.02.001",
+    "Rammstedt, B., Kemper, C. J., Klein, M. C., Beierlein, C., &amp; Kovaleva, A. (2013). A short scale for assessing the Big Five dimensions of personality: 10 Item Big Five Inventory (BFI-10). <em>Methoden, Daten, Analysen, 7</em>(2), 233–249. https://doi.org/10.12758/mda.2013.013"
+  ],
+  "verifiedFrom": [
+    "http://homepages.se.edu/cvonbergen/files/2013/01/Measuring-Personality-in-One-Minute-or-Less_A-10-Item-Short-Version-of-the-Big-Five-Inventory-in-English-and-German.pdf",
+    "https://access.gesis.org/zis/553",
+    "https://majournals.bib.uni-mannheim.de/mda/article/view/2013.013"
+  ],
+  "related": ["tu-trong-rosenberg", "hai-long-cuoc-song-swls", "chanh-niem-maas"]
+}

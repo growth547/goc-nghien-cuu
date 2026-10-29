@@ -1,0 +1,55 @@
+{
+  "title": "Thang đo chánh niệm MAAS tiếng Việt: Brown & Ryan (2003)",
+  "description": "Thang đo chánh niệm MAAS 15 biến của Brown và Ryan (2003) dịch sẵn tiếng Việt, có bản gốc, thang tần suất 6 mức và cách tính điểm trung bình theo tác giả.",
+  "name": "MAAS",
+  "fullName": "Thang đo chú ý và nhận biết chánh niệm (Mindful Attention Awareness Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo chánh niệm MAAS",
+  "intro": "MAAS do Brown và Ryan (2003) xây dựng để đo chánh niệm như một đặc điểm tính cách: mức độ một người chú ý và nhận biết những gì đang diễn ra ở hiện tại trong đời sống hằng ngày. Thang gồm 15 câu, một nhân tố, mô tả các trạng thái 'chạy tự động', thiếu chú ý; người trả lời cho biết trải nghiệm đó xảy ra thường xuyên tới đâu. Ở Việt Nam, MAAS được dùng trong đề tài về căng thẳng và sức khoẻ tinh thần sinh viên, kiệt sức nghề nghiệp, hiệu quả các chương trình thiền và tiêu dùng có ý thức.",
+  "responseScale": "Thang tần suất 6 mức: 1 = Gần như luôn luôn, 2 = Rất thường xuyên, 3 = Khá thường xuyên, 4 = Khá ít khi, 5 = Rất ít khi, 6 = Gần như không bao giờ. Điểm là trung bình 15 câu, từ 1 đến 6; điểm càng cao chánh niệm càng cao. Vì thang đã xếp 'gần như không bao giờ' ở mức 6, không cần đảo điểm câu nào.",
+  "constructs": [
+    {
+      "code": "MAAS",
+      "nameVi": "Chánh niệm (chú ý và nhận biết hiện tại)",
+      "nameEn": "Mindful Attention Awareness",
+      "definition": "Mức độ một người cởi mở chú ý và nhận biết những gì đang diễn ra trong hiện tại, cả bên trong lẫn bên ngoài bản thân.",
+      "source": "Brown & Ryan (2003), 15 biến.",
+      "items": [
+        { "code": "MAAS1", "en": "I could be experiencing some emotion and not be conscious of it until some time later.", "vi": "Tôi có thể đang trải qua một cảm xúc nào đó mà mãi một lúc sau mới nhận ra." },
+        { "code": "MAAS2", "en": "I break or spill things because of carelessness, not paying attention, or thinking of something else.", "vi": "Tôi làm vỡ hoặc làm đổ đồ vì bất cẩn, không chú ý hoặc đang nghĩ chuyện khác." },
+        { "code": "MAAS3", "en": "I find it difficult to stay focused on what's happening in the present.", "vi": "Tôi thấy khó tập trung vào những gì đang diễn ra ở hiện tại." },
+        { "code": "MAAS4", "en": "I tend to walk quickly to get where I'm going without paying attention to what I experience along the way.", "vi": "Tôi thường đi vội tới nơi cần đến mà không để ý tới những gì mình trải qua trên đường." },
+        { "code": "MAAS5", "en": "I tend not to notice feelings of physical tension or discomfort until they really grab my attention.", "vi": "Tôi thường không để ý tới cảm giác căng cứng hay khó chịu trong cơ thể cho tới khi chúng thực sự khiến tôi phải chú ý." },
+        { "code": "MAAS6", "en": "I forget a person's name almost as soon as I've been told it for the first time.", "vi": "Tôi quên tên một người gần như ngay sau khi được nghe lần đầu." },
+        { "code": "MAAS7", "en": "It seems I am \"running on automatic,\" without much awareness of what I'm doing.", "vi": "Dường như tôi đang \"chạy chế độ tự động\", không mấy nhận biết mình đang làm gì." },
+        { "code": "MAAS8", "en": "I rush through activities without being really attentive to them.", "vi": "Tôi làm vội các việc mà không thực sự chú tâm vào chúng." },
+        { "code": "MAAS9", "en": "I get so focused on the goal I want to achieve that I lose touch with what I'm doing right now to get there.", "vi": "Tôi tập trung vào mục tiêu muốn đạt tới đến mức không còn để ý mình đang làm gì lúc này để đạt được nó." },
+        { "code": "MAAS10", "en": "I do jobs or tasks automatically, without being aware of what I'm doing.", "vi": "Tôi làm các công việc một cách tự động, không nhận biết mình đang làm gì." },
+        { "code": "MAAS11", "en": "I find myself listening to someone with one ear, doing something else at the same time.", "vi": "Tôi thấy mình nghe người khác nói một cách nửa vời trong khi đang làm việc khác." },
+        { "code": "MAAS12", "en": "I drive places on \"automatic pilot\" and then wonder why I went there.", "vi": "Tôi lái xe đi đâu đó theo \"chế độ lái tự động\" rồi tự hỏi sao mình lại đến đó." },
+        { "code": "MAAS13", "en": "I find myself preoccupied with the future or the past.", "vi": "Tôi thấy mình bận tâm về tương lai hoặc quá khứ." },
+        { "code": "MAAS14", "en": "I find myself doing things without paying attention.", "vi": "Tôi thấy mình làm việc gì đó mà không để tâm." },
+        { "code": "MAAS15", "en": "I snack without being aware that I'm eating.", "vi": "Tôi ăn vặt mà không nhận biết là mình đang ăn." }
+      ]
+    }
+  ],
+  "usage": [
+    "Cả 15 câu đều mô tả trạng thái thiếu chánh niệm, nhưng thang trả lời đã xếp ngược (6 = gần như không bao giờ), nên không đảo điểm. Nếu bạn đổi thứ tự thang thành 1 = gần như không bao giờ thì phải đảo cả 15 câu.",
+    "MAAS12 nói về lái xe; với sinh viên Việt Nam nên hiểu là 'đi xe máy', và ghi rõ điều chỉnh này. Không thay câu bằng ý khác.",
+    "Tác giả hướng dẫn dùng điểm trung bình 1–6, không cộng tổng; giữ cách này để so sánh với các nghiên cứu khác.",
+    "Chạy Cronbach's alpha và EFA để kiểm tra tính đơn hướng; các câu dịch quá sát chữ ('nghe bằng một tai') dễ làm người trả lời hiểu sai, nên thử nghiệm bản dịch với một nhóm nhỏ trước."
+  ],
+  "sampleSize": {
+    "note": "MAAS là thang đơn lẻ 15 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (75) và nên từ 100 quan sát trở lên, tốt hơn khoảng 150 để kết quả ổn định."
+  },
+  "license": "Theo trang của Center for Self-Determination Theory, thang có bản quyền; mọi mục đích học thuật được phép dùng, còn dùng thương mại phải xin phép Center for Self-Determination Theory.",
+  "references": [
+    "Brown, K. W., &amp; Ryan, R. M. (2003). The benefits of being present: Mindfulness and its role in psychological well-being. <em>Journal of Personality and Social Psychology, 84</em>(4), 822–848. https://doi.org/10.1037/0022-3514.84.4.822"
+  ],
+  "verifiedFrom": [
+    "https://ppc.sas.upenn.edu/sites/default/files/mindfulnessscale.pdf",
+    "https://ppc.sas.upenn.edu/node/214",
+    "https://selfdeterminationtheory.org/mindfulness-attention-awareness/"
+  ],
+  "related": ["cang-thang-pss-10", "hai-long-cuoc-song-swls", "tinh-cach-bfi-10"]
+}

@@ -3,7 +3,7 @@ title: "Giới thiệu"
 description: "Góc Nghiên Cứu là kênh nội dung miễn phí về phương pháp nghiên cứu dành cho sinh viên, học viên và người làm nghiên cứu."
 ---
 
-**Góc Nghiên Cứu** là kênh nội dung miễn phí về phương pháp nghiên cứu, được [Genius Data](https://geniusdata.io/signup?ref=lab-web&utm_source=goc-nghien-cuu&utm_medium=home&utm_campaign=ai-lab&utm_content=about) đồng hành. Chúng tôi viết cho sinh viên làm khoá luận, học viên cao học, giảng viên và bất kỳ ai cần làm một cuộc khảo sát ra dữ liệu dùng được.
+**Góc Nghiên Cứu** là kênh nội dung miễn phí về phương pháp nghiên cứu. Chúng tôi tham gia chương trình giới thiệu (affiliate) của [Genius Data](https://geniusdata.io/signup?ref=lab-web&utm_source=goc-nghien-cuu&utm_medium=home&utm_campaign=ai-lab&utm_content=about): khi bạn đăng ký qua link trên trang, chúng tôi có thể nhận hoa hồng mà bạn không phải trả thêm. Điều đó không ảnh hưởng tới nội dung. Chúng tôi viết cho sinh viên làm khoá luận, học viên cao học, giảng viên và bất kỳ ai cần làm một cuộc khảo sát ra dữ liệu dùng được.
 
 Ở đây bạn sẽ tìm thấy:
 
@@ -12,4 +12,4 @@ description: "Góc Nghiên Cứu là kênh nội dung miễn phí về phương 
 
 Nội dung do ban biên tập độc lập biên soạn và hữu ích dù bạn dùng nền tảng khảo sát nào.
 
-Góp ý hoặc báo lỗi: hi@geniusdata.io
+Góp ý hoặc báo lỗi nội dung: mở một issue tại https://github.com/growth547/goc-nghien-cuu/issues

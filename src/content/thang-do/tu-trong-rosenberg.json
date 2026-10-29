@@ -1,0 +1,49 @@
+{
+  "title": "Thang đo lòng tự trọng Rosenberg tiếng Việt: RSES (1965)",
+  "description": "Thang đo lòng tự trọng Rosenberg (RSES) 10 biến dịch sẵn tiếng Việt, có bản gốc, 5 câu đảo chiều, thang 4 mức và cách tính điểm tổng 0–30 theo tác giả.",
+  "name": "RSES",
+  "fullName": "Thang đo lòng tự trọng Rosenberg (Rosenberg Self-Esteem Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo lòng tự trọng Rosenberg",
+  "intro": "Thang đo do Morris Rosenberg (1965) xây dựng trên mẫu hơn 5.000 học sinh trung học ở bang New York để đo lòng tự trọng tổng quát, tức thái độ tích cực hay tiêu cực của một người đối với bản thân. Thang gồm 10 câu, một nửa phát biểu tích cực, một nửa tiêu cực. Đây là thang tự trọng được dùng nhiều nhất thế giới; ở Việt Nam thường gặp trong đề tài về hình ảnh cơ thể, sử dụng mạng xã hội, bắt nạt học đường và sức khoẻ tinh thần sinh viên.",
+  "responseScale": "Thang 4 mức đồng ý, không có điểm giữa: Rất đồng ý (3), Đồng ý (2), Không đồng ý (1), Rất không đồng ý (0). Năm câu tiêu cực (RSE2, RSE5, RSE6, RSE8, RSE9) chấm ngược: Rất đồng ý = 0 … Rất không đồng ý = 3. Cộng 10 câu được điểm tổng 0–30, điểm càng cao lòng tự trọng càng cao. Một số nghiên cứu chấm 1–4, điểm tổng 10–40.",
+  "constructs": [
+    {
+      "code": "RSE",
+      "nameVi": "Lòng tự trọng",
+      "nameEn": "Self-Esteem",
+      "definition": "Thái độ tích cực hoặc tiêu cực chung của một người đối với bản thân, mức độ họ thấy mình có giá trị.",
+      "source": "Rosenberg (1965), 10 biến.",
+      "items": [
+        { "code": "RSE1", "en": "On the whole, I am satisfied with myself.", "vi": "Nhìn chung, tôi hài lòng với bản thân." },
+        { "code": "RSE2", "en": "At times, I think I am no good at all.", "vi": "Đôi khi tôi nghĩ mình chẳng ra gì cả.", "reverse": true },
+        { "code": "RSE3", "en": "I feel that I have a number of good qualities.", "vi": "Tôi thấy mình có nhiều phẩm chất tốt." },
+        { "code": "RSE4", "en": "I am able to do things as well as most other people.", "vi": "Tôi có thể làm mọi việc tốt như phần lớn những người khác." },
+        { "code": "RSE5", "en": "I feel I do not have much to be proud of.", "vi": "Tôi thấy mình không có nhiều điều để tự hào.", "reverse": true },
+        { "code": "RSE6", "en": "I certainly feel useless at times.", "vi": "Có những lúc tôi thực sự thấy mình vô dụng.", "reverse": true },
+        { "code": "RSE7", "en": "I feel that I'm a person of worth, at least on an equal plane with others.", "vi": "Tôi thấy mình là người có giá trị, ít nhất là ngang bằng với người khác." },
+        { "code": "RSE8", "en": "I wish I could have more respect for myself.", "vi": "Tôi ước mình có thể tôn trọng bản thân nhiều hơn.", "reverse": true },
+        { "code": "RSE9", "en": "All in all, I am inclined to feel that I am a failure.", "vi": "Nói chung, tôi có xu hướng cảm thấy mình là người thất bại.", "reverse": true },
+        { "code": "RSE10", "en": "I take a positive attitude toward myself.", "vi": "Tôi có thái độ tích cực với bản thân." }
+      ]
+    }
+  ],
+  "usage": [
+    "Thứ tự câu khác nhau giữa các tài liệu (có nơi xếp 5 câu tích cực trước), nên danh sách câu đảo chiều cũng khác theo. Hãy xác định câu đảo chiều theo nội dung (5 câu tiêu cực) chứ không theo số thứ tự.",
+    "RSE8 ('ước mình tôn trọng bản thân hơn') hay có hệ số tải thấp ở mẫu châu Á vì có thể được hiểu là mong muốn tự hoàn thiện; xem xét kỹ trước khi loại biến và báo cáo lý do.",
+    "Câu tích cực và tiêu cực thường tách thành hai nhân tố do hiệu ứng cách diễn đạt (method effect); với CFA, cân nhắc mô hình một nhân tố có tương quan sai số giữa các câu cùng chiều.",
+    "Giữ thang 4 mức không có điểm giữa như bản gốc; nếu đổi sang Likert 5 mức, ghi rõ trong phần phương pháp."
+  ],
+  "sampleSize": {
+    "note": "RSES là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; CFA kiểm tra cấu trúc hai chiều tích cực và tiêu cực nên có từ 200 quan sát."
+  },
+  "license": "Dùng miễn phí cho nghiên cứu và giáo dục, không cần xin phép, theo hướng dẫn của Khoa Xã hội học, Đại học Maryland (nơi giữ tư liệu của Rosenberg) được PsyToolkit trích lại; cần trích dẫn Rosenberg. Gia đình tác giả mong được biết về việc sử dụng.",
+  "references": [
+    "Rosenberg, M. (1965). <em>Society and the adolescent self-image</em>. Princeton University Press."
+  ],
+  "verifiedFrom": [
+    "https://www.ewi-psy.fu-berlin.de/psychologie/arbeitsbereiche/arbpsych/media/lehre/ss08/12736/rosenberg_self_esteem_scale.pdf",
+    "https://www.psytoolkit.org/survey-library/self-esteem-rosenberg.html"
+  ],
+  "related": ["tu-hieu-qua-gse", "hai-long-cuoc-song-swls", "tinh-cach-bfi-10"]
+}

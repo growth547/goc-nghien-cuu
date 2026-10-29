@@ -28,7 +28,7 @@ export default defineAstroPaperConfig({
     editPost: { enabled: false },
     search: "pagefind",
   },
-  socials: [{ name: "mail", url: "mailto:hi@geniusdata.io" }],
+  socials: [{ name: "github", url: "https://github.com/growth547/goc-nghien-cuu" }],
   shareLinks: [
     { name: "facebook", url: "https://www.facebook.com/sharer.php?u=" },
     { name: "telegram", url: "https://t.me/share/url?url=" },

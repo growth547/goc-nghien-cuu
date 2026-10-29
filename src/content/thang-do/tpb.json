@@ -1,0 +1,88 @@
+{
+  "title": "Thang đo TPB tiếng Việt: Ajzen (1991), có bản gốc",
+  "description": "Thang đo thuyết hành vi có hoạch định TPB dịch sẵn tiếng Việt: thái độ, chuẩn chủ quan, nhận thức kiểm soát hành vi, ý định. Có bản gốc và nguồn từng biến.",
+  "name": "TPB",
+  "fullName": "Thuyết hành vi có hoạch định (Theory of Planned Behavior)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo TPB",
+  "intro": "TPB do Ajzen (1991) đề xuất, mở rộng thuyết hành động hợp lý bằng cách thêm nhận thức kiểm soát hành vi. Ý định thực hiện một hành vi chịu tác động của ba yếu tố: thái độ đối với hành vi, chuẩn chủ quan và nhận thức kiểm soát hành vi; ý định là tiền đề trực tiếp của hành vi. Ajzen không công bố một bộ biến cố định mà hướng dẫn soạn biến theo từng hành vi cụ thể, nên các biến dưới đây lấy từ hướng dẫn của Ajzen và sổ tay của Francis và cộng sự (2004). Ở Việt Nam, TPB là khung nền của nhiều khoá luận về ý định mua thực phẩm hữu cơ, mua sắm trực tuyến, khởi nghiệp, tiêu dùng xanh.",
+  "responseScale": "Thang 7 mức. Thái độ đo bằng cặp tính từ đối lập (ví dụ có hại … có lợi); các khái niệm còn lại phần lớn dùng 1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý. Một số biến đặt đầu tiêu cực bên phải để tránh trả lời theo quán tính, cần mã hoá ngược khi tính điểm.",
+  "constructs": [
+    {
+      "code": "ATT",
+      "nameVi": "Thái độ đối với hành vi",
+      "nameEn": "Attitude toward the Behavior",
+      "definition": "Mức độ một người đánh giá việc thực hiện hành vi là tích cực hay tiêu cực.",
+      "source": "Francis và cộng sự (2004), Box 5.1, 4 cặp tính từ sau một câu dẫn chung; ví dụ gốc là chuyển bệnh nhân đi chụp X-quang. Ajzen (hướng dẫn xây dựng bảng hỏi TPB) cũng dùng cặp bad–good và pleasant–unpleasant.",
+      "items": [
+        { "code": "ATT1", "en": "[Performing the behavior] is: harmful 1 2 3 4 5 6 7 beneficial", "vi": "[Thực hiện hành vi] là: có hại 1 2 3 4 5 6 7 có lợi" },
+        { "code": "ATT2", "en": "[Performing the behavior] is: good 1 2 3 4 5 6 7 bad", "vi": "[Thực hiện hành vi] là: tốt 1 2 3 4 5 6 7 không tốt", "reverse": true },
+        { "code": "ATT3", "en": "[Performing the behavior] is: pleasant (for me) 1 2 3 4 5 6 7 unpleasant (for me)", "vi": "[Thực hiện hành vi] là: dễ chịu (với tôi) 1 2 3 4 5 6 7 khó chịu (với tôi)", "reverse": true },
+        { "code": "ATT4", "en": "[Performing the behavior] is: worthless 1 2 3 4 5 6 7 useful", "vi": "[Thực hiện hành vi] là: vô ích 1 2 3 4 5 6 7 hữu ích" }
+      ]
+    },
+    {
+      "code": "SN",
+      "nameVi": "Chuẩn chủ quan",
+      "nameEn": "Subjective Norm",
+      "definition": "Áp lực xã hội mà một người cảm nhận được về việc nên hay không nên thực hiện hành vi.",
+      "source": "SN1–SN4: Francis và cộng sự (2004), Box 6.1 (chuẩn mệnh lệnh). SN5: Ajzen, hướng dẫn xây dựng bảng hỏi TPB, biến chuẩn mô tả (descriptive norm).",
+      "items": [
+        { "code": "SN1", "en": "Most people who are important to me think that I should 1 2 3 4 5 6 7 I should not [perform the behavior].", "vi": "Hầu hết những người quan trọng với tôi nghĩ rằng tôi nên 1 2 3 4 5 6 7 không nên [thực hiện hành vi].", "reverse": true },
+        { "code": "SN2", "en": "It is expected of me that I [perform the behavior].", "vi": "Mọi người kỳ vọng tôi [thực hiện hành vi]." },
+        { "code": "SN3", "en": "I feel under social pressure to [perform the behavior].", "vi": "Tôi cảm thấy có áp lực xã hội phải [thực hiện hành vi]." },
+        { "code": "SN4", "en": "People who are important to me want me to [perform the behavior].", "vi": "Những người quan trọng với tôi muốn tôi [thực hiện hành vi]." },
+        { "code": "SN5", "en": "Most people like me [performed the behavior]. (unlikely 1 2 3 4 5 6 7 likely)", "vi": "Hầu hết những người giống tôi đã [thực hiện hành vi]. (khó có khả năng 1 … 7 rất có khả năng)" }
+      ]
+    },
+    {
+      "code": "PBC",
+      "nameVi": "Nhận thức kiểm soát hành vi",
+      "nameEn": "Perceived Behavioral Control",
+      "definition": "Mức độ một người tin rằng việc thực hiện hành vi là dễ hay khó và nằm trong tầm kiểm soát của mình.",
+      "source": "Francis và cộng sự (2004), Box 7.1: 2 biến tự tin (self-efficacy) và 2 biến khả năng kiểm soát (controllability). Box gốc đánh số 1, 2, 4, 5; không có biến số 3.",
+      "items": [
+        { "code": "PBC1", "en": "I am confident that I could [perform the behavior] if I wanted to.", "vi": "Tôi tin rằng tôi có thể [thực hiện hành vi] nếu tôi muốn." },
+        { "code": "PBC2", "en": "For me to [perform the behavior] is: easy 1 2 3 4 5 6 7 difficult", "vi": "Với tôi, [thực hiện hành vi] là: dễ 1 2 3 4 5 6 7 khó", "reverse": true },
+        { "code": "PBC3", "en": "The decision to [perform the behavior] is beyond my control.", "vi": "Quyết định [thực hiện hành vi] nằm ngoài tầm kiểm soát của tôi.", "reverse": true },
+        { "code": "PBC4", "en": "Whether I [perform the behavior] or not is entirely up to me.", "vi": "Việc tôi có [thực hiện hành vi] hay không hoàn toàn do tôi quyết định." }
+      ]
+    },
+    {
+      "code": "INT",
+      "nameVi": "Ý định hành vi",
+      "nameEn": "Behavioral Intention",
+      "definition": "Mức độ một người sẵn sàng và dự định thực hiện hành vi.",
+      "source": "Francis và cộng sự (2004), Box 4.2, 3 biến ý định tổng quát. Ajzen (hướng dẫn xây dựng bảng hỏi TPB) dùng câu 'I intend to …' tương tự INT3.",
+      "items": [
+        { "code": "INT1", "en": "I expect to [perform the behavior].", "vi": "Tôi dự kiến sẽ [thực hiện hành vi]." },
+        { "code": "INT2", "en": "I want to [perform the behavior].", "vi": "Tôi muốn [thực hiện hành vi]." },
+        { "code": "INT3", "en": "I intend to [perform the behavior].", "vi": "Tôi dự định [thực hiện hành vi]." }
+      ]
+    }
+  ],
+  "usage": [
+    "Định nghĩa hành vi thật cụ thể theo bốn yếu tố đối tượng, hành động, bối cảnh, thời gian (ví dụ 'mua rau hữu cơ tại siêu thị trong 3 tháng tới') rồi dùng đúng cụm đó ở mọi biến; Ajzen nhấn mạnh biến phải tương thích hoàn toàn với hành vi cần đo.",
+    "Các biến ATT2, ATT3, SN1, PBC2 có đầu tiêu cực bên phải, PBC3 là câu phủ định; phải mã hoá ngược (1 thành 7, 2 thành 6…) trước khi chạy Cronbach's alpha, nếu quên alpha sẽ thấp bất thường.",
+    "Ajzen khuyên làm khảo sát mở (elicitation) với khoảng 25 người trong tổng thể để tìm niềm tin nổi bật trước khi chốt bảng hỏi; khoá luận ít thời gian có thể bỏ phần đo gián tiếp nhưng nên giải thích trong phần phương pháp.",
+    "Nếu muốn so sánh với nghiên cứu khác, tránh tự thêm biến về lợi ích cụ thể vào thang thái độ; các niềm tin cụ thể thuộc phần đo gián tiếp (behavioral beliefs), không phải đo trực tiếp.",
+    "Chạy EFA và CFA để kiểm tra giá trị phân biệt giữa SN và PBC; theo Ajzen, có thể phải loại 1–2 biến mỗi khái niệm sau khảo sát thử."
+  ],
+  "sampleSize": {
+    "arrowsMax": 3,
+    "note": "Trong mô hình TPB gốc, ý định nhận 3 mũi tên (ATT, SN, PBC). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát; nếu đưa cả hành vi thực tế và biến mở rộng vào mô hình thì cần nhiều hơn."
+  },
+  "license": "Biến quan sát lấy từ tài liệu hướng dẫn công khai của Ajzen và sổ tay của Francis và cộng sự (2004), được phép dùng cho nghiên cứu, giảng dạy phi thương mại khi ghi rõ nguồn, theo trang lưu trữ City Research Online.",
+  "references": [
+    "Ajzen, I. (1991). The theory of planned behavior. <em>Organizational Behavior and Human Decision Processes, 50</em>(2), 179–211. https://doi.org/10.1016/0749-5978(91)90020-T",
+    "Ajzen, I. (n.d.). <em>Constructing a theory of planned behavior questionnaire</em>. University of Massachusetts Amherst. https://people.umass.edu/aizen/pdf/tpb.measurement.pdf",
+    "Francis, J. J., Eccles, M. P., Johnston, M., Walker, A., Grimshaw, J., Foy, R., Kaner, E. F. S., Smith, L., &amp; Bonetti, D. (2004). <em>Constructing questionnaires based on the theory of planned behaviour: A manual for health services researchers</em>. Centre for Health Services Research, University of Newcastle upon Tyne.",
+    "Fishbein, M., &amp; Ajzen, I. (2010). <em>Predicting and changing behavior: The reasoned action approach</em>. Psychology Press."
+  ],
+  "verifiedFrom": [
+    "https://people.umass.edu/aizen/pdf/tpb.measurement.pdf",
+    "https://openaccess.city.ac.uk/id/eprint/1735/1/TPB%20Manual%20FINAL%20May2004.pdf",
+    "https://api.crossref.org/works/10.1016/0749-5978(91)90020-T"
+  ],
+  "related": ["tam", "utaut", "y-dinh-mua"]
+}

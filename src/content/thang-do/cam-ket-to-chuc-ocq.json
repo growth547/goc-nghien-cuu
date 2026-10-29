@@ -1,0 +1,57 @@
+{
+  "title": "Thang đo cam kết tổ chức OCQ tiếng Việt: Mowday và cộng sự (1979)",
+  "description": "Thang đo cam kết tổ chức OCQ 15 biến của Mowday, Steers và Porter (1979) dịch sẵn tiếng Việt, có bản gốc, đánh dấu 6 câu đảo chiều và trích dẫn đầy đủ.",
+  "name": "OCQ",
+  "fullName": "Bảng hỏi cam kết tổ chức (Organizational Commitment Questionnaire)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo cam kết tổ chức",
+  "intro": "OCQ đo cam kết tổ chức theo nghĩa gắn bó về thái độ: tin và chấp nhận mục tiêu, giá trị của tổ chức, sẵn lòng nỗ lực vì tổ chức và mong muốn ở lại làm thành viên. Thang do nhóm Porter phát triển và được Mowday, Steers và Porter (1979) công bố cùng kết quả kiểm định trên 2.563 nhân viên ở 9 tổ chức. Tác giả coi đây là thang một khái niệm, dù một số nghiên cứu sau tách thành cam kết giá trị và cam kết ở lại. Ở Việt Nam, OCQ hợp với đề tài về hài lòng, lãnh đạo, hỗ trợ tổ chức và ý định nghỉ việc; nếu cần ba thành phần tình cảm, duy trì, chuẩn mực thì phải dùng thang khác.",
+  "responseScale": "Likert đồng ý 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Đảo điểm 6 câu đảo chiều rồi lấy trung bình 15 biến.",
+  "constructs": [
+    {
+      "code": "OC",
+      "nameVi": "Cam kết tổ chức",
+      "nameEn": "Organizational Commitment",
+      "definition": "Mức một người đồng nhất mình với tổ chức và gắn bó với tổ chức: tin vào mục tiêu, giá trị của tổ chức, sẵn lòng nỗ lực vì tổ chức và muốn tiếp tục là thành viên.",
+      "source": "Mowday, Steers & Porter (1979), 15 biến, 6 câu đảo chiều.",
+      "items": [
+        { "code": "OC1", "en": "I am willing to put in a great deal of effort beyond that normally expected in order to help this organization be successful.", "vi": "Tôi sẵn lòng nỗ lực nhiều hơn mức thường được kỳ vọng để giúp [công ty] thành công." },
+        { "code": "OC2", "en": "I talk up this organization to my friends as a great organization to work for.", "vi": "Tôi nói với bạn bè rằng [công ty] là nơi rất tốt để làm việc." },
+        { "code": "OC3", "en": "I feel very little loyalty to this organization.", "vi": "Tôi cảm thấy mình rất ít trung thành với [công ty].", "reverse": true },
+        { "code": "OC4", "en": "I would accept almost any type of job assignment in order to keep working for this organization.", "vi": "Tôi sẵn sàng nhận gần như bất kỳ việc nào được giao để được tiếp tục làm việc cho [công ty]." },
+        { "code": "OC5", "en": "I find that my values and the organization's values are very similar.", "vi": "Tôi thấy giá trị của tôi và giá trị của [công ty] rất giống nhau." },
+        { "code": "OC6", "en": "I am proud to tell others that I am part of this organization.", "vi": "Tôi tự hào nói với người khác rằng tôi là thành viên của [công ty]." },
+        { "code": "OC7", "en": "I could just as well be working for a different organization as long as the type of work was similar.", "vi": "Tôi làm cho một tổ chức khác cũng được, miễn là công việc tương tự.", "reverse": true },
+        { "code": "OC8", "en": "This organization really inspires the very best in me in the way of job performance.", "vi": "[Công ty] thật sự khơi dậy những gì tốt nhất ở tôi trong công việc." },
+        { "code": "OC9", "en": "It would take very little change in my present circumstances to cause me to leave this organization.", "vi": "Chỉ cần hoàn cảnh hiện tại của tôi thay đổi một chút là tôi có thể rời [công ty].", "reverse": true },
+        { "code": "OC10", "en": "I am extremely glad that I chose this organization to work for over others I was considering at the time I joined.", "vi": "Tôi rất vui vì đã chọn [công ty] thay vì những nơi khác tôi cân nhắc lúc xin việc." },
+        { "code": "OC11", "en": "There's not too much to be gained by sticking with this organization indefinitely.", "vi": "Gắn bó lâu dài với [công ty] cũng chẳng được lợi gì nhiều.", "reverse": true },
+        { "code": "OC12", "en": "Often, I find it difficult to agree with this organization's policies on important matters relating to its employees.", "vi": "Tôi thường thấy khó đồng ý với chính sách của [công ty] về những vấn đề quan trọng liên quan tới nhân viên.", "reverse": true },
+        { "code": "OC13", "en": "I really care about the fate of this organization.", "vi": "Tôi thật sự quan tâm tới tương lai của [công ty]." },
+        { "code": "OC14", "en": "For me this is the best of all possible organizations for which to work.", "vi": "Với tôi, [công ty] là nơi làm việc tốt nhất có thể." },
+        { "code": "OC15", "en": "Deciding to work for this organization was a definite mistake on my part.", "vi": "Quyết định làm việc cho [công ty] rõ ràng là một sai lầm của tôi.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Sáu câu đảo chiều (OC3, OC7, OC9, OC11, OC12, OC15) phải mã hoá ngược trước khi chạy Cronbach's alpha; nếu các câu này tải thành nhân tố riêng trong EFA, cân nhắc chạy lại với các câu thuận chiều và báo cáo rõ biến đã loại.",
+    "Một số câu (OC9, OC15) gần nghĩa với ý định nghỉ việc; nếu mô hình có cả cam kết và ý định nghỉ việc, kiểm tra giá trị phân biệt (HTMT hoặc Fornell-Larcker) cẩn thận.",
+    "Câu đảo chiều dịch sang tiếng Việt dễ thành phủ định kép, ví dụ OC11; đọc thử với vài người trả lời để chắc họ hiểu đúng chiều.",
+    "OCQ là thang một khái niệm. Nếu đề tài cần cam kết tình cảm, duy trì và chuẩn mực, đó là mô hình ba thành phần của Meyer và Allen, có bản thương mại phải mua quyền; không ghép OCQ vào để thay thế."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu cam kết tổ chức nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo gốc trên Journal of Vocational Behavior. Theo một nghiên cứu kiểm định thang lưu trên kho White Rose, không cần xin phép khi dùng OCQ vì tác giả chủ động không đăng ký bản quyền thang để khuyến khích sử dụng. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Mowday, R. T., Steers, R. M., &amp; Porter, L. W. (1979). The measurement of organizational commitment. <em>Journal of Vocational Behavior, 14</em>(2), 224–247. https://doi.org/10.1016/0001-8791(79)90072-1",
+    "Porter, L. W., Steers, R. M., Mowday, R. T., &amp; Boulian, P. V. (1974). Organizational commitment, job satisfaction, and turnover among psychiatric technicians. <em>Journal of Applied Psychology, 59</em>, 603–609."
+  ],
+  "verifiedFrom": [
+    "https://www.jil.go.jp/institute/reports/2012/documents/0147_02-2.pdf",
+    "https://eprints.whiterose.ac.uk/id/document/1047175",
+    "https://verdi.cs.ucl.ac.uk/constructDB/publications/mowday-measurement-1979.html",
+    "https://api.crossref.org/works/10.1016/0001-8791(79)90072-1"
+  ],
+  "related": ["ho-tro-to-chuc-pos", "hai-long-cong-viec", "y-dinh-nghi-viec"]
+}

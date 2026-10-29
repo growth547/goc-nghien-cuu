@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const scales = (await getCollection("scales")).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name, "vi")
+);
+const fields = [...new Set(scales.map(s => s.data.field))];
+const itemsOf = (s: (typeof scales)[number]) =>
+  s.data.constructs.reduce((n, c) => n + c.items.length, 0);
+---
+
+<Layout
+  title={`Thư viện thang đo nghiên cứu tiếng Việt | ${config.site.title}`}
+  description="Thư viện thang đo dịch sẵn sang tiếng Việt: TAM, UTAUT2, TPB, SERVQUAL, thương hiệu, nhân sự, tâm lý. Có biến quan sát, bản gốc, trích dẫn và cỡ mẫu gợi ý."
+>
+  <Header />
+  <Breadcrumb />
+  <Main
+    pageTitle="Thư viện thang đo"
+    pageDesc={`${scales.length} thang đo và mô hình hay dùng trong khoá luận, dịch sẵn sang tiếng Việt kèm bản gốc và trích dẫn.`}
+  >
+    {
+      fields.map(f => (
+        <section class="mb-8">
+          <h2 class="mb-3 text-xl font-semibold">{f}</h2>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {scales
+              .filter(s => s.data.field === f)
+              .map(s => (
+                <li>
+                  <a
+                    href={getRelativeLocaleUrl(locale, `thang-do/${s.id}`)}
+                    class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors"
+                  >
+                    <span class="font-semibold">{s.data.name}</span>
+                    <span class="text-muted-foreground block text-sm">
+                      {s.data.fullName}
+                    </span>
+                    <span class="text-muted-foreground mt-1 block text-xs">
+                      {s.data.constructs.length} khái niệm · {itemsOf(s)} biến
+                      quan sát
+                    </span>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ))
+    }
+  </Main>
+  <Footer />
+</Layout>

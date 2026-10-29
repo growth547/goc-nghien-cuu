@@ -1,0 +1,276 @@
+{
+  "title": "Thang đo UTAUT2 tiếng Việt: Venkatesh, Thong và Xu (2012)",
+  "description": "Thang đo UTAUT2 dịch sẵn tiếng Việt: hiệu quả kỳ vọng, nỗ lực kỳ vọng, ảnh hưởng xã hội, động lực hưởng thụ, giá trị giá cả, thói quen, ý định. Có bản gốc.",
+  "name": "UTAUT2",
+  "fullName": "Lý thuyết hợp nhất về chấp nhận và sử dụng công nghệ mở rộng (UTAUT2)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo UTAUT2",
+  "intro": "UTAUT2 do Venkatesh, Thong và Xu (2012) phát triển để đưa UTAUT từ bối cảnh tổ chức sang bối cảnh người tiêu dùng, kiểm định trên người dùng Internet di động ở Hồng Kông. Ngoài bốn yếu tố của UTAUT, mô hình thêm động lực hưởng thụ, giá trị giá cả và thói quen; thói quen tác động cả lên ý định lẫn hành vi sử dụng. Tuổi, giới tính và kinh nghiệm là biến điều tiết. Đây là mô hình phổ biến cho các khoá luận về ví điện tử, ứng dụng giao đồ ăn, mua sắm trên di động, học trực tuyến của người dùng cá nhân.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Hành vi sử dụng đo bằng tần suất, từ 'không bao giờ' tới 'nhiều lần mỗi ngày'.",
+  "constructs": [
+    {
+      "code": "PE",
+      "nameVi": "Hiệu quả kỳ vọng",
+      "nameEn": "Performance Expectancy",
+      "definition": "Mức độ người tiêu dùng tin rằng dùng công nghệ mang lại lợi ích khi thực hiện các hoạt động của mình.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến giữ lại (PE2 bị loại trong bài gốc).",
+      "items": [
+        {
+          "code": "PE1",
+          "en": "I find [mobile Internet] useful in my daily life.",
+          "vi": "Tôi thấy [dịch vụ] hữu ích trong cuộc sống hằng ngày."
+        },
+        {
+          "code": "PE3",
+          "en": "Using [mobile Internet] helps me accomplish things more quickly.",
+          "vi": "Sử dụng [dịch vụ] giúp tôi hoàn thành công việc nhanh hơn."
+        },
+        {
+          "code": "PE4",
+          "en": "Using [mobile Internet] increases my productivity.",
+          "vi": "Sử dụng [dịch vụ] làm tăng năng suất của tôi."
+        }
+      ]
+    },
+    {
+      "code": "EE",
+      "nameVi": "Nỗ lực kỳ vọng",
+      "nameEn": "Effort Expectancy",
+      "definition": "Mức độ dễ dàng mà người tiêu dùng cảm nhận khi sử dụng công nghệ.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 4 biến.",
+      "items": [
+        {
+          "code": "EE1",
+          "en": "Learning how to use [mobile Internet] is easy for me.",
+          "vi": "Tôi thấy học cách sử dụng [dịch vụ] là dễ dàng."
+        },
+        {
+          "code": "EE2",
+          "en": "My interaction with [mobile Internet] is clear and understandable.",
+          "vi": "Các thao tác của tôi với [dịch vụ] rõ ràng và dễ hiểu."
+        },
+        {
+          "code": "EE3",
+          "en": "I find [mobile Internet] easy to use.",
+          "vi": "Tôi thấy [dịch vụ] dễ sử dụng."
+        },
+        {
+          "code": "EE4",
+          "en": "It is easy for me to become skillful at using [mobile Internet].",
+          "vi": "Tôi dễ dàng trở nên thành thạo khi sử dụng [dịch vụ]."
+        }
+      ]
+    },
+    {
+      "code": "SI",
+      "nameVi": "Ảnh hưởng xã hội",
+      "nameEn": "Social Influence",
+      "definition": "Mức độ người tiêu dùng cảm nhận rằng những người quan trọng với mình (gia đình, bạn bè) cho rằng mình nên dùng công nghệ.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến.",
+      "items": [
+        {
+          "code": "SI1",
+          "en": "People who are important to me think that I should use [mobile Internet].",
+          "vi": "Những người quan trọng với tôi nghĩ rằng tôi nên sử dụng [dịch vụ]."
+        },
+        {
+          "code": "SI2",
+          "en": "People who influence my behavior think that I should use [mobile Internet].",
+          "vi": "Những người có ảnh hưởng tới hành vi của tôi nghĩ rằng tôi nên sử dụng [dịch vụ]."
+        },
+        {
+          "code": "SI3",
+          "en": "People whose opinions that I value prefer that I use [mobile Internet].",
+          "vi": "Những người mà tôi coi trọng ý kiến muốn tôi sử dụng [dịch vụ]."
+        }
+      ]
+    },
+    {
+      "code": "FC",
+      "nameVi": "Điều kiện thuận lợi",
+      "nameEn": "Facilitating Conditions",
+      "definition": "Mức độ người tiêu dùng cảm nhận có đủ nguồn lực và hỗ trợ để sử dụng công nghệ.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 4 biến.",
+      "items": [
+        {
+          "code": "FC1",
+          "en": "I have the resources necessary to use [mobile Internet].",
+          "vi": "Tôi có đủ nguồn lực cần thiết để sử dụng [dịch vụ]."
+        },
+        {
+          "code": "FC2",
+          "en": "I have the knowledge necessary to use [mobile Internet].",
+          "vi": "Tôi có đủ kiến thức cần thiết để sử dụng [dịch vụ]."
+        },
+        {
+          "code": "FC3",
+          "en": "[mobile Internet] is compatible with other technologies I use.",
+          "vi": "[Dịch vụ] tương thích với các công nghệ khác mà tôi đang dùng."
+        },
+        {
+          "code": "FC4",
+          "en": "I can get help from others when I have difficulties using [mobile Internet].",
+          "vi": "Tôi có thể nhận được sự giúp đỡ từ người khác khi gặp khó khăn trong việc sử dụng [dịch vụ]."
+        }
+      ]
+    },
+    {
+      "code": "HM",
+      "nameVi": "Động lực hưởng thụ",
+      "nameEn": "Hedonic Motivation",
+      "definition": "Niềm vui, sự thích thú mà người tiêu dùng có được khi sử dụng công nghệ.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến, điều chỉnh từ Kim và cộng sự (2005).",
+      "items": [
+        {
+          "code": "HM1",
+          "en": "Using [mobile Internet] is fun.",
+          "vi": "Sử dụng [dịch vụ] rất vui."
+        },
+        {
+          "code": "HM2",
+          "en": "Using [mobile Internet] is enjoyable.",
+          "vi": "Sử dụng [dịch vụ] mang lại cảm giác thích thú."
+        },
+        {
+          "code": "HM3",
+          "en": "Using [mobile Internet] is very entertaining.",
+          "vi": "Sử dụng [dịch vụ] rất giải trí."
+        }
+      ]
+    },
+    {
+      "code": "PV",
+      "nameVi": "Giá trị giá cả",
+      "nameEn": "Price Value",
+      "definition": "Sự đánh đổi trong nhận thức của người tiêu dùng giữa lợi ích nhận được và chi phí bằng tiền phải trả để dùng công nghệ.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến, điều chỉnh từ Dodds và cộng sự (1991).",
+      "items": [
+        {
+          "code": "PV1",
+          "en": "[mobile Internet] is reasonably priced.",
+          "vi": "[Dịch vụ] có giá hợp lý."
+        },
+        {
+          "code": "PV2",
+          "en": "[mobile Internet] is a good value for the money.",
+          "vi": "[Dịch vụ] xứng đáng với số tiền bỏ ra."
+        },
+        {
+          "code": "PV3",
+          "en": "At the current price, [mobile Internet] provides a good value.",
+          "vi": "Với mức giá hiện tại, [dịch vụ] mang lại giá trị tốt."
+        }
+      ]
+    },
+    {
+      "code": "HT",
+      "nameVi": "Thói quen",
+      "nameEn": "Habit",
+      "definition": "Mức độ người tiêu dùng có xu hướng thực hiện hành vi một cách tự động do đã học được từ trước.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến giữ lại (HT4 bị loại trong bài gốc), điều chỉnh từ Limayem và Hirt (2003).",
+      "items": [
+        {
+          "code": "HT1",
+          "en": "The use of [mobile Internet] has become a habit for me.",
+          "vi": "Việc sử dụng [dịch vụ] đã trở thành thói quen của tôi."
+        },
+        {
+          "code": "HT2",
+          "en": "I am addicted to using [mobile Internet].",
+          "vi": "Tôi bị nghiện sử dụng [dịch vụ]."
+        },
+        {
+          "code": "HT3",
+          "en": "I must use [mobile Internet].",
+          "vi": "Tôi phải sử dụng [dịch vụ]."
+        }
+      ]
+    },
+    {
+      "code": "BI",
+      "nameVi": "Ý định hành vi",
+      "nameEn": "Behavioral Intention",
+      "definition": "Mức độ người tiêu dùng dự định tiếp tục sử dụng công nghệ trong thời gian tới.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến.",
+      "items": [
+        {
+          "code": "BI1",
+          "en": "I intend to continue using [mobile Internet] in the future.",
+          "vi": "Tôi dự định tiếp tục sử dụng [dịch vụ] trong tương lai."
+        },
+        {
+          "code": "BI2",
+          "en": "I will always try to use [mobile Internet] in my daily life.",
+          "vi": "Tôi sẽ luôn cố gắng sử dụng [dịch vụ] trong cuộc sống hằng ngày."
+        },
+        {
+          "code": "BI3",
+          "en": "I plan to continue to use [mobile Internet] frequently.",
+          "vi": "Tôi có kế hoạch tiếp tục sử dụng [dịch vụ] thường xuyên."
+        }
+      ]
+    },
+    {
+      "code": "USE",
+      "nameVi": "Hành vi sử dụng",
+      "nameEn": "Use",
+      "definition": "Chỉ số cấu tạo (formative) gộp mức độ đa dạng và tần suất sử dụng các ứng dụng Internet di động; hỏi 'Hãy chọn tần suất bạn sử dụng từng ứng dụng sau', thang từ 'không bao giờ' tới 'nhiều lần mỗi ngày', đo sau khảo sát đầu bốn tháng.",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 6 ứng dụng đặc thù của Internet di động ở Hồng Kông năm 2008; cần thay bằng các chức năng của công nghệ trong đề tài.",
+      "items": [
+        {
+          "code": "USE1",
+          "en": "SMS",
+          "vi": "Dùng tin nhắn SMS"
+        },
+        {
+          "code": "USE2",
+          "en": "MMS",
+          "vi": "Nhắn tin đa phương tiện MMS"
+        },
+        {
+          "code": "USE3",
+          "en": "Ringtone and logo download",
+          "vi": "Tải nhạc chuông và hình nền"
+        },
+        {
+          "code": "USE4",
+          "en": "Java games",
+          "vi": "Chơi trò chơi Java"
+        },
+        {
+          "code": "USE5",
+          "en": "Browse websites",
+          "vi": "Duyệt trang web trên điện thoại"
+        },
+        {
+          "code": "USE6",
+          "en": "Mobile e-mail",
+          "vi": "Đọc và gửi thư điện tử trên di động"
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Bản gốc viết cho Internet di động; thay '[dịch vụ]' bằng công nghệ cụ thể (ví dụ ví MoMo, ứng dụng ngân hàng) nhưng giữ nguyên cấu trúc câu.",
+    "PE2 và HT4 đã bị loại trong bài gốc; nếu muốn dùng lại, phải ghi rõ và kiểm tra hệ số tải trước khi giữ.",
+    "Biến USE là chỉ số cấu tạo, không chạy Cronbach's alpha hay EFA cho nhóm này; nhiều khoá luận chỉ đo đến ý định hành vi, khi đó bỏ USE và nói rõ trong phần phạm vi.",
+    "HT2 ('nghiện') dễ khiến người trả lời ngại chọn mức cao; khi dịch nên thử nghiệm sơ bộ và cân nhắc diễn đạt nhẹ hơn, nhưng ghi rõ đã điều chỉnh.",
+    "Với dịch vụ miễn phí, giá trị giá cả không còn phù hợp; có thể bỏ PV hoặc thay bằng chi phí cảm nhận và giải thích lý do."
+  ],
+  "sampleSize": {
+    "arrowsMax": 7,
+    "note": "Ý định hành vi nhận nhiều nhất 7 mũi tên (PE, EE, SI, FC, HM, PV, HT). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 103 quan sát; thêm các tương tác điều tiết theo tuổi, giới tính, kinh nghiệm thì cần lớn hơn."
+  },
+  "license": "Các biến quan sát được công bố trong Phụ lục của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412",
+    "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540"
+  ],
+  "verifiedFrom": [
+    "https://moodle2.units.it/pluginfile.php/427815/mod_resource/content/1/consumer%20acceptance%20of%20technologies_Venkatesh%202012.pdf"
+  ],
+  "related": [
+    "utaut",
+    "tam"
+  ]
+}

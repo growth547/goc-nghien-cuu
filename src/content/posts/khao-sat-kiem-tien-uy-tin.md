@@ -7,7 +7,7 @@ tags: ["đáp viên"]
 ---
 
 <p>Làm khảo sát online để nhận tiền hoặc quà là có thật. Các công ty nghiên cứu thị trường, doanh nghiệp, giảng viên và sinh viên làm khoá luận đều cần người trả lời, và nhiều người sẵn sàng trả thưởng cho thời gian của bạn. Nhưng cụm từ "khảo sát kiếm tiền" cũng là mồi câu quen thuộc của các nhóm lừa đảo, vì nó nghe nhẹ nhàng và ai cũng làm được.</p>
-<p>Trước khi đọc tiếp, một điều cần nói rõ: trang Góc Nghiên Cứu này được Genius Data đồng hành, một nền tảng cũng trả thưởng cho người làm khảo sát. Vì vậy bài này tập trung vào tiêu chí bạn tự kiểm tra được với <strong>bất kỳ</strong> trang nào, kể cả với chúng tôi.</p>
+<p>Trước khi đọc tiếp, một điều cần nói rõ: Góc Nghiên Cứu là đối tác giới thiệu (affiliate) của Genius Data, một nền tảng cũng trả thưởng cho người làm khảo sát. Vì vậy bài này tập trung vào tiêu chí bạn tự kiểm tra được với <strong>bất kỳ</strong> trang nào, kể cả với chúng tôi.</p>
 
 <h2>Kỳ vọng thực tế trước đã</h2>
 <p>Khảo sát trả thưởng là một nguồn thu nhập phụ nhỏ. Mỗi phiếu thường mất vài phút đến vài chục phút, thưởng tính theo điểm, xu hoặc voucher, và cần tích luỹ một thời gian mới đổi được. Bạn sẽ không thay được tiền lương bằng việc trả lời khảo sát.</p>
@@ -58,7 +58,7 @@ tags: ["đáp viên"]
 <p>Nếu bạn đã qua được checklist này và muốn thử một nền tảng cụ thể, phần dưới là một lựa chọn.</p>
 
 
-<p>Genius Data, đơn vị đồng hành cùng trang này, là một lựa chọn: bạn tự chọn khảo sát phù hợp, làm lúc nào cũng được, tích GTOKEN từ các khảo sát hợp lệ và dùng GTOKEN để đổi quà hoặc voucher trong hệ sinh thái. Website đã thông báo với Bộ Công Thương và có email hỗ trợ hi@geniusdata.io. Hãy áp dụng đúng checklist ở trên cho chúng tôi như với mọi trang khác.</p>
+<p>Genius Data, nền tảng chúng tôi là đối tác giới thiệu, là một lựa chọn: bạn tự chọn khảo sát phù hợp, làm lúc nào cũng được, tích GTOKEN từ các khảo sát hợp lệ và dùng GTOKEN để đổi quà hoặc voucher trong hệ sinh thái. Website đã thông báo với Bộ Công Thương và có email hỗ trợ hi@geniusdata.io. Hãy áp dụng đúng checklist ở trên cho Genius Data như với mọi trang khác.</p>
 
 <h2>Làm sao để phiếu của bạn được tính</h2>
 <p>Ở các trang làm thật, phiếu điền bừa thường bị loại và không có thưởng. Một vài thói quen giúp bạn ít bị từ chối:</p>

@@ -1,0 +1,198 @@
+{
+  "title": "Thang đo SERVPERF tiếng Việt: Cronin & Taylor (1992)",
+  "description": "Thang đo SERVPERF dịch sẵn tiếng Việt: 22 biến cảm nhận chất lượng dịch vụ, 5 thành phần, không đo kỳ vọng. So sánh với SERVQUAL, có bản gốc và trích dẫn.",
+  "name": "SERVPERF",
+  "fullName": "Thang đo chất lượng dịch vụ dựa trên kết quả thực hiện SERVPERF (Cronin & Taylor, 1992)",
+  "field": "Chất lượng dịch vụ",
+  "keyword": "thang đo SERVPERF",
+  "intro": "SERVPERF do Cronin và Taylor (1992) đề xuất khi phản biện cách đo chất lượng dịch vụ bằng hiệu số cảm nhận trừ kỳ vọng của SERVQUAL. Hai tác giả cho rằng chỉ cần đo mức cảm nhận về kết quả thực hiện dịch vụ, nên SERVPERF giữ 22 biến phần cảm nhận của Parasuraman, Zeithaml và Berry (1988) và bỏ toàn bộ 22 câu kỳ vọng. Bảng hỏi vì thế ngắn bằng một nửa, người trả lời đỡ mệt và tránh được các vấn đề của điểm hiệu số. Ở Việt Nam, phần lớn khoá luận chỉ đo cảm nhận theo 5 thành phần nên thực chất đang dùng SERVPERF, thường để giải thích sự hài lòng hoặc lòng trung thành trong ngân hàng, bệnh viện, giáo dục, du lịch.",
+  "responseScale": "Likert 7 mức như phụ lục SERVQUAL gốc (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Nhiều nghiên cứu ở Việt Nam dùng thang 5 mức.",
+  "constructs": [
+    {
+      "code": "TAN",
+      "nameVi": "Phương tiện hữu hình",
+      "nameEn": "Tangibles",
+      "definition": "Cơ sở vật chất, trang thiết bị và diện mạo của nhân viên.",
+      "source": "Biến cảm nhận P1–P4 của Parasuraman, Zeithaml & Berry (1988), Cronin & Taylor (1992) dùng lại; 4 biến.",
+      "items": [
+        {
+          "code": "TAN1",
+          "en": "XYZ has up-to-date equipment.",
+          "vi": "[Công ty] có trang thiết bị hiện đại."
+        },
+        {
+          "code": "TAN2",
+          "en": "XYZ's physical facilities are visually appealing.",
+          "vi": "Cơ sở vật chất của [công ty] trông hấp dẫn."
+        },
+        {
+          "code": "TAN3",
+          "en": "XYZ's employees are well dressed and appear neat.",
+          "vi": "Nhân viên của [công ty] ăn mặc đẹp và trông gọn gàng."
+        },
+        {
+          "code": "TAN4",
+          "en": "The appearance of the physical facilities of XYZ is in keeping with the type of services provided.",
+          "vi": "Diện mạo cơ sở vật chất của [công ty] phù hợp với loại dịch vụ được cung cấp."
+        }
+      ]
+    },
+    {
+      "code": "REL",
+      "nameVi": "Sự tin cậy",
+      "nameEn": "Reliability",
+      "definition": "Khả năng thực hiện dịch vụ đã hứa một cách đáng tin cậy và chính xác.",
+      "source": "Biến cảm nhận P5–P9 của Parasuraman, Zeithaml & Berry (1988), Cronin & Taylor (1992) dùng lại; 5 biến.",
+      "items": [
+        {
+          "code": "REL1",
+          "en": "When XYZ promises to do something by a certain time, it does so.",
+          "vi": "Khi [công ty] hứa làm điều gì vào một thời điểm nhất định, họ làm đúng như vậy."
+        },
+        {
+          "code": "REL2",
+          "en": "When you have problems, XYZ is sympathetic and reassuring.",
+          "vi": "Khi bạn gặp vấn đề, [công ty] tỏ ra thông cảm và giúp bạn yên tâm."
+        },
+        {
+          "code": "REL3",
+          "en": "XYZ is dependable.",
+          "vi": "[Công ty] là nơi đáng tin cậy."
+        },
+        {
+          "code": "REL4",
+          "en": "XYZ provides its services at the time it promises to do so.",
+          "vi": "[Công ty] cung cấp dịch vụ đúng thời điểm đã hứa."
+        },
+        {
+          "code": "REL5",
+          "en": "XYZ keeps its records accurately.",
+          "vi": "[Công ty] lưu giữ hồ sơ một cách chính xác."
+        }
+      ]
+    },
+    {
+      "code": "RES",
+      "nameVi": "Sự đáp ứng",
+      "nameEn": "Responsiveness",
+      "definition": "Sự sẵn lòng giúp đỡ khách hàng và cung cấp dịch vụ nhanh chóng.",
+      "source": "Biến cảm nhận P10–P13 của Parasuraman, Zeithaml & Berry (1988), Cronin & Taylor (1992) dùng lại; 4 biến. Câu đảo chiều theo bản 1988.",
+      "items": [
+        {
+          "code": "RES1",
+          "en": "XYZ does not tell customers exactly when services will be performed.",
+          "vi": "[Công ty] không cho khách hàng biết chính xác khi nào dịch vụ sẽ được thực hiện.",
+          "reverse": true
+        },
+        {
+          "code": "RES2",
+          "en": "You do not receive prompt service from XYZ's employees.",
+          "vi": "Bạn không được nhân viên của [công ty] phục vụ nhanh chóng.",
+          "reverse": true
+        },
+        {
+          "code": "RES3",
+          "en": "Employees of XYZ are not always willing to help customers.",
+          "vi": "Nhân viên của [công ty] không phải lúc nào cũng sẵn lòng giúp đỡ khách hàng.",
+          "reverse": true
+        },
+        {
+          "code": "RES4",
+          "en": "Employees of XYZ are too busy to respond to customer requests promptly.",
+          "vi": "Nhân viên của [công ty] quá bận nên không đáp ứng kịp thời yêu cầu của khách hàng.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "code": "ASU",
+      "nameVi": "Sự đảm bảo",
+      "nameEn": "Assurance",
+      "definition": "Kiến thức, sự lịch sự của nhân viên và khả năng tạo niềm tin, sự tin tưởng cho khách hàng.",
+      "source": "Biến cảm nhận P14–P17 của Parasuraman, Zeithaml & Berry (1988), Cronin & Taylor (1992) dùng lại; 4 biến.",
+      "items": [
+        {
+          "code": "ASU1",
+          "en": "You can trust employees of XYZ.",
+          "vi": "Bạn có thể tin tưởng nhân viên của [công ty]."
+        },
+        {
+          "code": "ASU2",
+          "en": "You feel safe in your transactions with XYZ's employees.",
+          "vi": "Bạn cảm thấy an toàn khi giao dịch với nhân viên của [công ty]."
+        },
+        {
+          "code": "ASU3",
+          "en": "Employees of XYZ are polite.",
+          "vi": "Nhân viên của [công ty] lịch sự."
+        },
+        {
+          "code": "ASU4",
+          "en": "Employees get adequate support from XYZ to do their jobs well.",
+          "vi": "Nhân viên được [công ty] hỗ trợ đầy đủ để làm tốt công việc của mình."
+        }
+      ]
+    },
+    {
+      "code": "EMP",
+      "nameVi": "Sự đồng cảm",
+      "nameEn": "Empathy",
+      "definition": "Sự quan tâm, chăm sóc riêng đến từng khách hàng mà doanh nghiệp dành cho khách hàng.",
+      "source": "Biến cảm nhận P18–P22 của Parasuraman, Zeithaml & Berry (1988), Cronin & Taylor (1992) dùng lại; 5 biến. Câu đảo chiều theo bản 1988.",
+      "items": [
+        {
+          "code": "EMP1",
+          "en": "XYZ does not give you individual attention.",
+          "vi": "[Công ty] không dành sự quan tâm đến cá nhân bạn.",
+          "reverse": true
+        },
+        {
+          "code": "EMP2",
+          "en": "Employees of XYZ do not give you personal attention.",
+          "vi": "Nhân viên của [công ty] không quan tâm đến riêng bạn.",
+          "reverse": true
+        },
+        {
+          "code": "EMP3",
+          "en": "Employees of XYZ do not know what your needs are.",
+          "vi": "Nhân viên của [công ty] không biết nhu cầu của bạn là gì.",
+          "reverse": true
+        },
+        {
+          "code": "EMP4",
+          "en": "XYZ does not have your best interests at heart.",
+          "vi": "[Công ty] không thật lòng đặt lợi ích của bạn lên hàng đầu.",
+          "reverse": true
+        },
+        {
+          "code": "EMP5",
+          "en": "XYZ does not have operating hours convenient to all their customers.",
+          "vi": "[Công ty] không có giờ hoạt động thuận tiện cho tất cả khách hàng.",
+          "reverse": true
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Khác biệt với SERVQUAL nằm ở cách đo, không ở câu chữ: SERVPERF chỉ hỏi cảm nhận, không hỏi kỳ vọng. Nếu bảng hỏi chỉ có phần cảm nhận, gọi đúng tên là SERVPERF và trích cả Cronin & Taylor (1992) lẫn Parasuraman và cộng sự (1988) làm nguồn câu hỏi.",
+    "Các câu ở trang này theo bản SERVQUAL 1988, có 9 câu đảo chiều (TAN không có; RES1–RES4, EMP1–EMP5). Đảo điểm trước khi phân tích. Nếu muốn toàn câu thuận, dùng bản sửa của Parasuraman, Berry & Zeithaml (1991) và trích nguồn đó.",
+    "Thay XYZ bằng tên đơn vị cụ thể và điều chỉnh theo ngành, giữ nguyên ý từng biến. Cấu trúc 5 thành phần hay bị gộp hoặc tách khi chạy EFA ở bối cảnh Việt Nam, nên báo cáo EFA rồi mới CFA.",
+    "Khi so sánh SERVPERF với SERVQUAL trong cùng một nghiên cứu, cần thu cả phần kỳ vọng; so sánh khả năng giải thích phương sai của biến phụ thuộc (ví dụ hài lòng tổng thể) giữa hai cách tính."
+  ],
+  "sampleSize": {
+    "note": "SERVPERF là thang đo, không phải mô hình. Khi dùng 5 thành phần làm biến độc lập dự báo sự hài lòng, phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 92 quan sát."
+  },
+  "license": "Các biến quan sát là phần cảm nhận của SERVQUAL, công bố trong phụ lục bài báo gốc năm 1988 và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn cả Cronin & Taylor (1992) và Parasuraman và cộng sự (1988); chúng tôi không tìm thấy điều kiện cấp phép riêng.",
+  "references": [
+    "Cronin, J. J., &amp; Taylor, S. A. (1992). Measuring service quality: A reexamination and extension. <em>Journal of Marketing, 56</em>(3), 55–68. https://doi.org/10.1177/002224299205600304",
+    "Parasuraman, A., Zeithaml, V. A., &amp; Berry, L. L. (1988). SERVQUAL: A multiple-item scale for measuring consumer perceptions of service quality. <em>Journal of Retailing, 64</em>(1), 12–40."
+  ],
+  "verifiedFrom": [
+    "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf",
+    "https://api.crossref.org/works/10.1177/002224299205600304"
+  ],
+  "related": [
+    "servqual",
+    "y-dinh-hanh-vi-khach-hang"
+  ]
+}

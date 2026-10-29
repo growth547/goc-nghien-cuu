@@ -1,0 +1,43 @@
+{
+  "title": "Thang đo ý định nghỉ việc tiếng Việt: Cammann và cộng sự (1979)",
+  "description": "Thang đo ý định nghỉ việc 3 biến của Michigan Organizational Assessment Questionnaire, dịch sẵn tiếng Việt, có bản gốc, thang trả lời và trích dẫn đầy đủ.",
+  "name": "MOAQ-TI",
+  "fullName": "Thang đo ý định nghỉ việc của Michigan Organizational Assessment Questionnaire (Intention to Turnover)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo ý định nghỉ việc",
+  "intro": "Thang đo này đo mức người lao động đang nghĩ tới việc rời tổ chức và tìm việc mới trong thời gian tới. Ba biến thuộc mục Turnover của Michigan Organizational Assessment Questionnaire, do nhóm Quality of Work của Đại học Michigan phát triển và thường trích theo Cammann, Fichman, Jenkins và Klesh (1979). Ý định nghỉ việc là biến kết quả quen thuộc trong mô hình về hài lòng công việc, cam kết tổ chức, hỗ trợ tổ chức và kiệt sức. Ở Việt Nam, thang hay dùng cho đề tài về nhân viên ngân hàng, công nghệ thông tin, điều dưỡng, giáo viên trường tư.",
+  "responseScale": "Bộ MOAQ năm 1975 dùng thang 7 mức: TI2 và TI3 hỏi mức đồng ý, TI1 hỏi mức khả năng xảy ra. Nhiều nghiên cứu sau đưa cả 3 biến về Likert đồng ý 5 hoặc 7 mức; nếu làm vậy, ghi rõ trong phần phương pháp.",
+  "constructs": [
+    {
+      "code": "TI",
+      "nameVi": "Ý định nghỉ việc",
+      "nameEn": "Intention to Turnover",
+      "definition": "Mức người lao động có ý định rời tổ chức hiện tại và tìm công việc khác trong thời gian tới.",
+      "source": "Cammann, Fichman, Jenkins & Klesh (1979), MOAQ, 3 biến.",
+      "items": [
+        { "code": "TI1", "en": "How likely is it that you will actively look for a new job in the next year?", "vi": "Khả năng bạn sẽ chủ động tìm một công việc mới trong năm tới là bao nhiêu?" },
+        { "code": "TI2", "en": "I often think about quitting.", "vi": "Tôi thường nghĩ đến chuyện nghỉ việc." },
+        { "code": "TI3", "en": "I will probably look for a new job in the next year.", "vi": "Có lẽ tôi sẽ tìm một công việc mới trong năm tới." }
+      ]
+    }
+  ],
+  "usage": [
+    "TI1 là câu hỏi về khả năng, không phải câu khẳng định; nếu muốn dùng chung thang đồng ý, có thể viết lại thành 'Tôi sẽ chủ động tìm một công việc mới trong năm tới', nhưng phải ghi là đã điều chỉnh từ bản gốc.",
+    "Cả 3 biến cùng chiều, không có câu đảo chiều; điểm cao nghĩa là ý định nghỉ việc cao. Khi đặt cạnh thang hài lòng hay cam kết (điểm cao là tích cực), kiểm tra dấu hệ số cho đúng giả thuyết.",
+    "Câu hỏi nhạy cảm với người đang đi làm; nên khảo sát ẩn danh và không phát qua quản lý trực tiếp để giảm sai lệch do mong muốn xã hội.",
+    "'Trong năm tới' là mốc thời gian của bản gốc; nếu đổi mốc (ví dụ 6 tháng), giữ thống nhất ở TI1 và TI3."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu ý định nghỉ việc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong tài liệu MOAQ của Đại học Michigan, bản báo cáo năm 1975 được Paul Spector lưu trữ trên trang của ông; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Cammann và cộng sự.",
+  "references": [
+    "Cammann, C., Fichman, M., Jenkins, D., &amp; Klesh, J. (1979). <em>The Michigan Organizational Assessment Questionnaire</em> [Unpublished manuscript]. University of Michigan.",
+    "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1983). Assessing the attitudes and perceptions of organizational members. In S. E. Seashore, E. E. Lawler, P. H. Mirvis, &amp; C. Cammann (Eds.), <em>Assessing organizational change: A guide to methods, measures, and practices</em>. Wiley."
+  ],
+  "verifiedFrom": [
+    "https://paulspector.com/assessment-files/other/moaq.pdf",
+    "https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/"
+  ],
+  "related": ["hai-long-cong-viec", "cam-ket-to-chuc-ocq", "ho-tro-to-chuc-pos"]
+}

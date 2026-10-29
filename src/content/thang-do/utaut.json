@@ -1,0 +1,97 @@
+{
+  "title": "Thang đo UTAUT tiếng Việt: Venkatesh và cộng sự (2003)",
+  "description": "Thang đo UTAUT dịch sẵn tiếng Việt: hiệu quả kỳ vọng, nỗ lực kỳ vọng, ảnh hưởng xã hội, điều kiện thuận lợi, ý định hành vi. Có bản gốc và trích dẫn.",
+  "name": "UTAUT",
+  "fullName": "Lý thuyết hợp nhất về chấp nhận và sử dụng công nghệ (Unified Theory of Acceptance and Use of Technology)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo UTAUT",
+  "intro": "UTAUT do Venkatesh, Morris, Davis và Davis (2003) đề xuất sau khi so sánh tám mô hình chấp nhận công nghệ, trong đó có TAM, TPB và lý thuyết khuếch tán đổi mới. Mô hình giữ lại bốn yếu tố chính: hiệu quả kỳ vọng, nỗ lực kỳ vọng và ảnh hưởng xã hội tác động lên ý định hành vi; điều kiện thuận lợi tác động trực tiếp lên hành vi sử dụng. Giới tính, tuổi, kinh nghiệm và tính tự nguyện đóng vai trò biến điều tiết. Ở Việt Nam, UTAUT hay được dùng cho đề tài về phần mềm trong doanh nghiệp, chính phủ điện tử, hệ thống học tập trực tuyến của trường.",
+  "responseScale": "Likert 7 mức, 1 là đầu tiêu cực và 7 là đầu tích cực của thang (thường ghi 1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Nhiều nghiên cứu ở Việt Nam chuyển sang thang 5 mức.",
+  "constructs": [
+    {
+      "code": "PE",
+      "nameVi": "Hiệu quả kỳ vọng",
+      "nameEn": "Performance Expectancy",
+      "definition": "Mức độ một người tin rằng dùng hệ thống sẽ giúp mình đạt kết quả tốt hơn trong công việc.",
+      "source": "Venkatesh và cộng sự (2003), Bảng 16, 4 biến (mã gốc U6, RA1, RA5, OE7).",
+      "items": [
+        { "code": "PE1", "en": "I would find [system] useful in my job.", "vi": "Tôi thấy [hệ thống] hữu ích cho công việc của mình." },
+        { "code": "PE2", "en": "Using [system] enables me to accomplish tasks more quickly.", "vi": "Sử dụng [hệ thống] giúp tôi hoàn thành công việc nhanh hơn." },
+        { "code": "PE3", "en": "Using [system] increases my productivity.", "vi": "Sử dụng [hệ thống] làm tăng năng suất của tôi." },
+        { "code": "PE4", "en": "If I use [system], I will increase my chances of getting a raise.", "vi": "Nếu sử dụng [hệ thống], tôi sẽ có nhiều cơ hội được tăng lương hơn." }
+      ]
+    },
+    {
+      "code": "EE",
+      "nameVi": "Nỗ lực kỳ vọng",
+      "nameEn": "Effort Expectancy",
+      "definition": "Mức độ dễ dàng mà một người cảm nhận khi sử dụng hệ thống.",
+      "source": "Venkatesh và cộng sự (2003), Bảng 16, 4 biến (mã gốc EOU3, EOU5, EOU6, EU4).",
+      "items": [
+        { "code": "EE1", "en": "My interaction with [system] would be clear and understandable.", "vi": "Các thao tác của tôi với [hệ thống] rõ ràng và dễ hiểu." },
+        { "code": "EE2", "en": "It would be easy for me to become skillful at using [system].", "vi": "Tôi dễ dàng trở nên thành thạo khi sử dụng [hệ thống]." },
+        { "code": "EE3", "en": "I would find [system] easy to use.", "vi": "Tôi thấy [hệ thống] dễ sử dụng." },
+        { "code": "EE4", "en": "Learning to operate [system] is easy for me.", "vi": "Tôi thấy học cách sử dụng [hệ thống] là dễ dàng." }
+      ]
+    },
+    {
+      "code": "SI",
+      "nameVi": "Ảnh hưởng xã hội",
+      "nameEn": "Social Influence",
+      "definition": "Mức độ một người cảm nhận rằng những người quan trọng với mình cho rằng mình nên dùng hệ thống.",
+      "source": "Venkatesh và cộng sự (2003), Bảng 16, 4 biến (mã gốc SN1, SN2, SF2, SF4).",
+      "items": [
+        { "code": "SI1", "en": "People who influence my behavior think that I should use [system].", "vi": "Những người có ảnh hưởng tới hành vi của tôi nghĩ rằng tôi nên sử dụng [hệ thống]." },
+        { "code": "SI2", "en": "People who are important to me think that I should use [system].", "vi": "Những người quan trọng với tôi nghĩ rằng tôi nên sử dụng [hệ thống]." },
+        { "code": "SI3", "en": "The senior management of this business has been helpful in the use of [system].", "vi": "Ban lãnh đạo cấp cao của [công ty] đã hỗ trợ việc sử dụng [hệ thống]." },
+        { "code": "SI4", "en": "In general, the organization has supported the use of [system].", "vi": "Nhìn chung, tổ chức đã ủng hộ việc sử dụng [hệ thống]." }
+      ]
+    },
+    {
+      "code": "FC",
+      "nameVi": "Điều kiện thuận lợi",
+      "nameEn": "Facilitating Conditions",
+      "definition": "Mức độ một người tin rằng có sẵn hạ tầng tổ chức và kỹ thuật để hỗ trợ việc dùng hệ thống.",
+      "source": "Venkatesh và cộng sự (2003), Bảng 16, 4 biến (mã gốc PBC2, PBC3, PBC5, FC3).",
+      "items": [
+        { "code": "FC1", "en": "I have the resources necessary to use [system].", "vi": "Tôi có đủ nguồn lực cần thiết để sử dụng [hệ thống]." },
+        { "code": "FC2", "en": "I have the knowledge necessary to use [system].", "vi": "Tôi có đủ kiến thức cần thiết để sử dụng [hệ thống]." },
+        { "code": "FC3", "en": "[system] is not compatible with other systems I use.", "vi": "[Hệ thống] không tương thích với các hệ thống khác mà tôi đang dùng.", "reverse": true },
+        { "code": "FC4", "en": "A specific person (or group) is available for assistance with system difficulties.", "vi": "Có một người (hoặc nhóm) cụ thể sẵn sàng hỗ trợ khi tôi gặp khó khăn với [hệ thống]." }
+      ]
+    },
+    {
+      "code": "BI",
+      "nameVi": "Ý định hành vi",
+      "nameEn": "Behavioral Intention",
+      "definition": "Mức độ một người dự định sẽ sử dụng hệ thống trong thời gian tới.",
+      "source": "Venkatesh và cộng sự (2003), Bảng 16, 3 biến, điều chỉnh từ Davis và cộng sự (1989).",
+      "items": [
+        { "code": "BI1", "en": "I intend to use [system] in the next <n> months.", "vi": "Tôi dự định sử dụng [hệ thống] trong [n] tháng tới." },
+        { "code": "BI2", "en": "I predict I would use [system] in the next <n> months.", "vi": "Tôi nghĩ mình sẽ sử dụng [hệ thống] trong [n] tháng tới." },
+        { "code": "BI3", "en": "I plan to use [system] in the next <n> months.", "vi": "Tôi lên kế hoạch sử dụng [hệ thống] trong [n] tháng tới." }
+      ]
+    }
+  ],
+  "usage": [
+    "FC3 là câu phát biểu phủ định, cần mã hoá ngược trước khi tính Cronbach's alpha; nếu câu này làm giảm độ tin cậy sau khi dịch, có thể viết lại theo chiều thuận nhưng phải ghi rõ đã điều chỉnh.",
+    "SI3 và SI4 viết cho bối cảnh tổ chức; với người tiêu dùng, thay bằng các biến ảnh hưởng xã hội của UTAUT2 (Venkatesh và cộng sự, 2012) thay vì tự sửa câu.",
+    "Thay <n> bằng số tháng cụ thể (ví dụ 3 hoặc 6) và giữ thống nhất trong cả bảng hỏi.",
+    "Trong mô hình gốc, điều kiện thuận lợi tác động lên hành vi sử dụng chứ không lên ý định; nếu đề tài chỉ đo ý định mà vẫn vẽ mũi tên FC → BI thì cần giải thích lý do.",
+    "Các biến điều tiết (giới tính, tuổi, kinh nghiệm, tính tự nguyện) là phần quan trọng của UTAUT; nếu bỏ, nên nói rõ trong phần hạn chế."
+  ],
+  "sampleSize": {
+    "arrowsMax": 3,
+    "note": "Ý định hành vi nhận nhiều nhất 3 mũi tên (từ PE, EE, SI). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát; thêm các tương tác điều tiết thì số biến dự báo tăng và cỡ mẫu phải lớn hơn."
+  },
+  "license": "Các biến quan sát được công bố trong Bảng 16 của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540",
+    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003."
+  ],
+  "verifiedFrom": [
+    "https://eclass.hmu.gr/modules/document/file.php/DSH314/006%20%CE%97%CE%B3%CE%B5%CF%83%CE%AF%CE%B1%20%CE%BA%CE%B1%CE%B9%20%CE%B1%CE%BB%CE%BB%CE%B1%CE%B3%CE%AE%2014%20%CE%99%CE%B1%CE%BD%202026/Venkatesh%202003_UTAUT.pdf",
+    "https://cdn.clinicaltrials.gov/large-docs/25/NCT04656925/Prot_000.pdf"
+  ],
+  "related": ["tam", "utaut2", "tpb"]
+}

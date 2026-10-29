@@ -1,0 +1,88 @@
+{
+  "title": "Thang đo ý định hành vi khách hàng: Zeithaml và cộng sự (1996)",
+  "description": "Thang đo ý định hành vi 13 biến dịch sẵn tiếng Việt: trung thành, chuyển đổi, sẵn lòng trả giá cao, phản ứng bên ngoài, phản ứng bên trong. Có bản gốc và trích dẫn.",
+  "name": "Behavioral-Intentions Battery",
+  "fullName": "Bộ đo ý định hành vi của khách hàng (Zeithaml, Berry & Parasuraman, 1996)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo ý định hành vi",
+  "intro": "Bộ đo ý định hành vi do Zeithaml, Berry và Parasuraman (1996) xây dựng để kiểm định chất lượng dịch vụ ảnh hưởng ra sao tới việc khách hàng ở lại hay rời bỏ doanh nghiệp. Bộ gồm 13 biến, sau phân tích nhân tố tách thành 5 thành phần: trung thành, chuyển đổi, sẵn lòng trả giá cao, phản ứng bên ngoài và phản ứng bên trong. Trung thành (5 biến) là thành phần ổn định nhất, với alpha từ 0,93 đến 0,94 trong nghiên cứu gốc. Ở Việt Nam, thang này hay được dùng làm biến phụ thuộc trong các đề tài chất lượng dịch vụ, sự hài lòng và lòng trung thành của khách hàng ngân hàng, khách sạn, bán lẻ, viễn thông.",
+  "responseScale": "Thang khả năng 7 mức (1 = Hoàn toàn không có khả năng … 7 = Rất có khả năng) theo Zeithaml và cộng sự (1996). Câu hỏi dẫn thường là 'Khả năng bạn sẽ … là bao nhiêu?'.",
+  "constructs": [
+    {
+      "code": "LOY",
+      "nameVi": "Lòng trung thành",
+      "nameEn": "Loyalty",
+      "definition": "Ý định nói tốt, giới thiệu, ưu tiên lựa chọn và tiếp tục giao dịch nhiều hơn với doanh nghiệp.",
+      "source": "Zeithaml, Berry & Parasuraman (1996), 5 biến (I1–I5).",
+      "items": [
+        { "code": "LOY1", "en": "Say positive things about XYZ to other people.", "vi": "Nói những điều tích cực về [công ty] với người khác." },
+        { "code": "LOY2", "en": "Recommend XYZ to someone who seeks your advice.", "vi": "Giới thiệu [công ty] cho người hỏi ý kiến của bạn." },
+        { "code": "LOY3", "en": "Encourage friends and relatives to do business with XYZ.", "vi": "Khuyến khích bạn bè và người thân giao dịch với [công ty]." },
+        { "code": "LOY4", "en": "Consider XYZ your first choice to buy --- services.", "vi": "Xem [công ty] là lựa chọn đầu tiên khi mua dịch vụ [loại dịch vụ]." },
+        { "code": "LOY5", "en": "Do more business with XYZ in the next few years.", "vi": "Giao dịch nhiều hơn với [công ty] trong vài năm tới." }
+      ]
+    },
+    {
+      "code": "SWI",
+      "nameVi": "Ý định chuyển đổi",
+      "nameEn": "Switch",
+      "definition": "Ý định giảm giao dịch hoặc chuyển một phần sang đối thủ.",
+      "source": "Zeithaml, Berry & Parasuraman (1996), 2 biến (I6–I7), được đảo điểm trong nghiên cứu gốc.",
+      "items": [
+        { "code": "SWI1", "en": "Do less business with XYZ in the next few years.", "vi": "Giao dịch ít hơn với [công ty] trong vài năm tới.", "reverse": true },
+        { "code": "SWI2", "en": "Take some of your business to a competitor that offers better prices.", "vi": "Chuyển một phần giao dịch sang đối thủ có giá tốt hơn.", "reverse": true }
+      ]
+    },
+    {
+      "code": "PAY",
+      "nameVi": "Sẵn lòng trả giá cao hơn",
+      "nameEn": "Pay More",
+      "definition": "Ý định tiếp tục giao dịch dù giá tăng và chấp nhận trả giá cao hơn đối thủ.",
+      "source": "Zeithaml, Berry & Parasuraman (1996), 2 biến (I8–I9).",
+      "items": [
+        { "code": "PAY1", "en": "Continue to do business with XYZ if its prices increase somewhat.", "vi": "Tiếp tục giao dịch với [công ty] nếu giá tăng lên một chút." },
+        { "code": "PAY2", "en": "Pay a higher price than competitors charge for the benefits you currently receive from XYZ.", "vi": "Trả giá cao hơn giá của đối thủ để có những lợi ích bạn đang nhận được từ [công ty]." }
+      ]
+    },
+    {
+      "code": "EXT",
+      "nameVi": "Phản ứng bên ngoài",
+      "nameEn": "External Response",
+      "definition": "Ý định chuyển sang đối thủ hoặc phàn nàn ra bên ngoài khi gặp sự cố dịch vụ.",
+      "source": "Zeithaml, Berry & Parasuraman (1996), 3 biến (I10–I12).",
+      "items": [
+        { "code": "EXT1", "en": "Switch to a competitor if you experience a problem with XYZ's service.", "vi": "Chuyển sang đối thủ nếu bạn gặp sự cố với dịch vụ của [công ty]." },
+        { "code": "EXT2", "en": "Complain to other customers if you experience a problem with XYZ's service.", "vi": "Phàn nàn với những khách hàng khác nếu bạn gặp sự cố với dịch vụ của [công ty]." },
+        { "code": "EXT3", "en": "Complain to external agencies, such as the Better Business Bureau, if you experience a problem with XYZ's service.", "vi": "Khiếu nại lên các cơ quan bên ngoài, ví dụ hội bảo vệ người tiêu dùng, nếu bạn gặp sự cố với dịch vụ của [công ty]." }
+      ]
+    },
+    {
+      "code": "INT",
+      "nameVi": "Phản ứng bên trong",
+      "nameEn": "Internal Response",
+      "definition": "Ý định phàn nàn trực tiếp với nhân viên doanh nghiệp khi gặp sự cố dịch vụ.",
+      "source": "Zeithaml, Berry & Parasuraman (1996), 1 biến (I13); tác giả loại khỏi các phân tích sau vì chỉ có một biến và khó diễn giải.",
+      "items": [
+        { "code": "INT1", "en": "Complain to XYZ's employees if you experience a problem with XYZ's service.", "vi": "Phàn nàn với nhân viên của [công ty] nếu bạn gặp sự cố với dịch vụ của [công ty]." }
+      ]
+    }
+  ],
+  "usage": [
+    "Hai biến chuyển đổi (SWI1, SWI2) được đảo điểm khi tác giả gộp cả bộ thành ý định hành vi tổng. Nếu đo 'ý định chuyển đổi' như một khái niệm riêng thì giữ nguyên chiều điểm và diễn giải điểm cao là ý định rời bỏ cao.",
+    "Các câu là cụm hành động, không phải câu khẳng định. Dùng câu dẫn 'Khả năng bạn sẽ … là bao nhiêu?' với thang khả năng; nếu đổi sang thang đồng ý thì phải viết lại thành câu 'Tôi sẽ …' và ghi rõ đã điều chỉnh.",
+    "Phản ứng bên trong chỉ có 1 biến và đã bị tác giả loại; không nên đưa vào mô hình SEM. Thang chuyển đổi và trả giá cao chỉ có 2 biến, alpha trong nghiên cứu gốc có lúc dưới 0,6, nên cân nhắc bổ sung biến và ghi rõ nguồn.",
+    "Thay 'Better Business Bureau' bằng cơ quan tương đương ở Việt Nam (hội bảo vệ quyền lợi người tiêu dùng, cơ quan quản lý ngành), và thay '---' ở LOY4 bằng loại dịch vụ cụ thể."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo kết quả, không phải mô hình. Khi đặt lòng trung thành làm biến phụ thuộc của 5 thành phần SERVQUAL, phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 92 quan sát."
+  },
+  "license": "Các biến quan sát được công bố trong bảng 1 của bài báo gốc và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; chúng tôi không tìm thấy điều kiện cấp phép riêng cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Zeithaml, V. A., Berry, L. L., &amp; Parasuraman, A. (1996). The behavioral consequences of service quality. <em>Journal of Marketing, 60</em>(2), 31–46. https://doi.org/10.1177/002224299606000203"
+  ],
+  "verifiedFrom": [
+    "https://www.researchgate.net/publication/329258469_The_Behavioral_Consequences_of_Service_Quality",
+    "https://api.crossref.org/works/10.1177/002224299606000203"
+  ],
+  "related": ["servqual", "servperf", "tai-san-thuong-hieu"]
+}

@@ -1,0 +1,138 @@
+{
+  "title": "Thang đo ý định mua tiếng Việt: Dodds, Monroe & Grewal (1991)",
+  "description": "Thang đo ý định mua (willingness to buy) của Dodds, Monroe và Grewal (1991) dịch sẵn tiếng Việt, kèm chất lượng cảm nhận và giá trị cảm nhận. Có bản gốc.",
+  "name": "Ý định mua (WTB)",
+  "fullName": "Thang đo sẵn lòng mua (Willingness to Buy) của Dodds, Monroe và Grewal (1991)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo ý định mua",
+  "intro": "Dodds, Monroe và Grewal (1991) nghiên cứu cách giá, thương hiệu và tên cửa hàng ảnh hưởng tới đánh giá sản phẩm của người mua. Trong mô hình, giá và thông tin thương hiệu, cửa hàng tác động lên chất lượng cảm nhận và hy sinh cảm nhận; hai yếu tố này tạo nên giá trị cảm nhận, và giá trị cảm nhận dẫn tới sự sẵn lòng mua. Thang đo sẵn lòng mua 5 biến của bài này là một trong những thang ý định mua được trích nhiều nhất. Ở Việt Nam, thang thường dùng cho đề tài về ý định mua mỹ phẩm, đồ điện tử, thời trang, hàng nội địa, sản phẩm khuyến mãi.",
+  "responseScale": "Thang 7 mức. Bản gốc dùng cả hai dạng: cặp đầu mút 'very high … very low' và 'strongly agree … strongly disagree'. Nhiều nghiên cứu sau quy về thang đồng ý 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý).",
+  "constructs": [
+    {
+      "code": "WTB",
+      "nameVi": "Sẵn lòng mua (ý định mua)",
+      "nameEn": "Willingness to Buy",
+      "definition": "Khả năng người mua dự định mua sản phẩm.",
+      "source": "Dodds, Monroe & Grewal (1991), 5 biến; câu chữ đối chiếu qua bản trích nguyên văn trong Atilgan, Kangal & Talaslioglu (2024), Bảng 1.",
+      "items": [
+        {
+          "code": "WTB1",
+          "en": "The likelihood of purchasing this product is (very high … very low).",
+          "vi": "Khả năng tôi mua [sản phẩm] này là (rất cao … rất thấp)."
+        },
+        {
+          "code": "WTB2",
+          "en": "If I were going to buy this product, I would consider buying this model at the price shown.",
+          "vi": "Nếu định mua loại [sản phẩm] này, tôi sẽ cân nhắc mua mẫu này với mức giá đang niêm yết."
+        },
+        {
+          "code": "WTB3",
+          "en": "At the price shown, I would consider buying the product.",
+          "vi": "Với mức giá đang niêm yết, tôi sẽ cân nhắc mua [sản phẩm] này."
+        },
+        {
+          "code": "WTB4",
+          "en": "The probability that I would consider buying the product is (very high … very low).",
+          "vi": "Khả năng tôi cân nhắc mua [sản phẩm] này là (rất cao … rất thấp)."
+        },
+        {
+          "code": "WTB5",
+          "en": "My willingness to buy the product is (very high … very low).",
+          "vi": "Mức độ sẵn lòng mua [sản phẩm] này của tôi là (rất cao … rất thấp)."
+        }
+      ]
+    },
+    {
+      "code": "PQ",
+      "nameVi": "Chất lượng cảm nhận",
+      "nameEn": "Perceived Quality",
+      "definition": "Đánh giá của người mua về độ tin cậy, tay nghề chế tạo và độ bền của sản phẩm.",
+      "source": "Dodds, Monroe & Grewal (1991), 5 biến; câu chữ đối chiếu qua Atilgan, Kangal & Talaslioglu (2024), Bảng 1.",
+      "items": [
+        {
+          "code": "PQ1",
+          "en": "The likelihood that the product would be reliable is (very high … very low).",
+          "vi": "Khả năng [sản phẩm] này đáng tin cậy là (rất cao … rất thấp)."
+        },
+        {
+          "code": "PQ2",
+          "en": "The workmanship of product would be (very high … very low).",
+          "vi": "Chất lượng gia công của [sản phẩm] này là (rất cao … rất thấp)."
+        },
+        {
+          "code": "PQ3",
+          "en": "This product should be of (very good quality … very poor quality).",
+          "vi": "[Sản phẩm] này hẳn có chất lượng (rất tốt … rất kém)."
+        },
+        {
+          "code": "PQ4",
+          "en": "The likelihood that this product is dependable is (very high … very low).",
+          "vi": "Khả năng [sản phẩm] này hoạt động ổn định, đáng tin là (rất cao … rất thấp)."
+        },
+        {
+          "code": "PQ5",
+          "en": "This product would seem to be durable.",
+          "vi": "[Sản phẩm] này có vẻ bền."
+        }
+      ]
+    },
+    {
+      "code": "PV",
+      "nameVi": "Giá trị cảm nhận",
+      "nameEn": "Perceived Value",
+      "definition": "Đánh giá của người mua về việc sản phẩm có đáng với số tiền phải trả hay không.",
+      "source": "Dodds, Monroe & Grewal (1991, tr. 318), 5 biến; câu chữ đối chiếu qua Li & Green, Journal of Management and Marketing Research.",
+      "items": [
+        {
+          "code": "PV1",
+          "en": "This product is a: (very good … very poor) value for the money.",
+          "vi": "Xét theo số tiền bỏ ra, [sản phẩm] này (rất đáng … rất không đáng) giá trị."
+        },
+        {
+          "code": "PV2",
+          "en": "At the price shown the product is: (very economical … very uneconomical).",
+          "vi": "Với mức giá niêm yết, [sản phẩm] này (rất tiết kiệm … rất không tiết kiệm)."
+        },
+        {
+          "code": "PV3",
+          "en": "The product is considered to be a very good buy.",
+          "vi": "[Sản phẩm] này được xem là một món hàng rất đáng mua."
+        },
+        {
+          "code": "PV4",
+          "en": "The price shown for the product is: (very acceptable … very unacceptable).",
+          "vi": "Mức giá niêm yết của [sản phẩm] này (rất chấp nhận được … rất không chấp nhận được)."
+        },
+        {
+          "code": "PV5",
+          "en": "The product appears to be a bargain.",
+          "vi": "[Sản phẩm] này có vẻ là một món hời."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Các biến gốc đặt đầu tích cực bên trái (very high … very low); khi chuyển sang thang đồng ý 1–7, đảo lại để 7 là mức cao nhất và ghi rõ đã điều chỉnh trong phần phương pháp.",
+    "Bản gốc gắn với một mẫu sản phẩm và mức giá cụ thể trong thí nghiệm ('this model', 'at the price shown'); khảo sát không có giá niêm yết thì sửa thành 'với mức giá hiện tại' và giữ nguyên ý.",
+    "Nhiều bài trích thang 'Dodds và cộng sự (1991)' nhưng chỉ dùng 3 biến; nếu rút gọn, ghi rõ giữ biến nào để hội đồng đối chiếu.",
+    "Chất lượng cảm nhận và giá trị cảm nhận dễ tải chéo khi dịch; chạy EFA và kiểm tra giá trị phân biệt (Fornell–Larcker hoặc HTMT) trước khi kiểm định mô hình."
+  ],
+  "sampleSize": {
+    "arrowsMax": 2,
+    "note": "Trong mô hình gốc, giá trị cảm nhận nhận nhiều nhất 2 mũi tên (chất lượng cảm nhận và hy sinh cảm nhận). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Dodds, W. B., Monroe, K. B., &amp; Grewal, D. (1991). Effects of price, brand, and store information on buyers' product evaluations. <em>Journal of Marketing Research, 28</em>(3), 307–319. https://doi.org/10.1177/002224379102800305",
+    "Atilgan, K. Ö., Kangal, E. E., &amp; Talaslioglu, M. (2024). Examination of consumers' perceived quality and willingness to buy in the context of price variability and frequency of price change: A study of retail products. <em>Gadjah Mada International Journal of Business, 26</em>(2), 165–183. https://doi.org/10.22146/gamaijb.70674"
+  ],
+  "verifiedFrom": [
+    "https://journal.ugm.ac.id/gamaijb/article/download/70674/39120",
+    "http://www.aabri.com/manuscripts/10627.pdf",
+    "https://api.crossref.org/works/10.1177/002224379102800305"
+  ],
+  "related": [
+    "tpb",
+    "y-dinh-hanh-vi-khach-hang"
+  ]
+}

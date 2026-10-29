@@ -42,10 +42,25 @@
         <input id="ss-N" type="number" min="0" step="1" placeholder="Để trống nếu rất lớn"></div>
     </div>
 
-    <div class="field"><label for="ss-q">Số câu hỏi trong bảng hỏi</label>
-      <input id="ss-q" type="number" min="1" value="25"><small>Chỉ dùng để ước tính chi phí thu mẫu.</small></div>
+    <div data-for="pls reg" class="field"><label for="ss-dv">Tên biến phụ thuộc (để viết đoạn văn)</label>
+      <input id="ss-dv" type="text" placeholder="Ví dụ: Ý định sử dụng ví điện tử"></div>
+    <div class="row">
+      <div class="field"><label for="ss-drop">Dự phòng phiếu bị loại (%)</label>
+        <input id="ss-drop" type="number" min="0" max="50" value="15"></div>
+      <div class="field"><label for="ss-q">Số câu hỏi trong bảng hỏi</label>
+        <input id="ss-q" type="number" min="1" value="25"></div>
+    </div>
+    <label class="row" style="align-items:center;gap:8px;font-size:.9rem"><input id="ss-strict" type="checkbox" style="width:auto"> <span id="ss-strict-label">Đối chiếu thêm tiêu chí thứ hai trong đoạn văn</span></label>
   </form>
   <div class="panel" id="ss-out" aria-live="polite"></div>
+</div>
+<div class="panel" style="margin-top:24px">
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <strong>Đoạn văn cho chương 3: Phương pháp xác định cỡ mẫu</strong>
+    <button type="button" class="btn" id="ss-copy">Sao chép đoạn văn</button>
+  </div>
+  <div id="ss-thesis" style="line-height:1.7"></div>
+  <small class="text-muted-foreground">Đoạn văn tự cập nhật theo lựa chọn ở trên. Kiểm tra lại số liệu và chỉnh câu chữ cho hợp với đề tài trước khi đưa vào luận văn.</small>
 </div>
 <p style="margin-top:20px">Cách chọn phương pháp và trích dẫn trong chương 3: xem <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">Cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>
 <script>
@@ -112,10 +127,79 @@
     if(refs.length) html+=`<div class="result"><span class="lbl">Đối chiếu</span>${refs.map(([l,v,h])=>`<span class="how"><b>${l}: ${fmt(v)}</b>. ${h}</span>`).join('')}</div>`;
     if(note) html+=`<div class="result"><span class="how">${note}</span></div>`;
     const q=num('ss-q');
-    if(q>0&&Number.isFinite(val)){const vnd=Math.round(val*q*0.4*1100/1000)*1000;
-      html+=`<div class="result"><span class="lbl">Chi phí thu ${fmt(val)} phiếu hợp lệ trên Genius Data</span><span class="num">${fmt(vnd)} đ</span><span class="how">${q} câu × 0,4 GP/câu (mức gợi ý) × 1.100 đ/GP. Chỉ trả cho phiếu được duyệt; mức thấp nhất là 0,15 GP/câu.</span></div>`;}
+    if(q>0&&Number.isFinite(val)){
+      // Range from the platform's minimum reward (0,15 GP/câu) to its suggested one (0,4 GP/câu); 1 GP = 1.100 đ.
+      const cost=r=>val*q*r*1100, perLo=Math.round(q*0.15*1100/100)*100;
+      const money=v=>v>=1e6?`${d((Math.round(v/1e5)/10).toString())} triệu`:`${fmt(Math.round(v/1000))} nghìn`;
+      const range=(lo,hi)=>lo>=1e6?`${money(lo).replace(' triệu','')} – ${money(hi)}`:`${money(lo)} – ${money(hi)}`;
+      html+=`<div class="result"><span class="lbl">Nếu thuê thu mẫu trên Genius Data</span><span class="how">Khoảng <b>${range(cost(0.15),cost(0.4))} đ</b> cho ${fmt(val)} phiếu hợp lệ, tức từ khoảng ${fmt(perLo)} đ mỗi phiếu ${q} câu. Bạn tự chọn mức thưởng từ 0,15 tới 0,4 GP/câu và chỉ trả cho phiếu được duyệt.</span></div>`;}
     $('ss-out').innerHTML=html;
+    renderThesis(method,val);
   }
-  $('ss-form').addEventListener('input',render); render();
+
+  // ---- ready-to-paste methodology paragraph (Vietnamese, APA references) ----
+  const REF={
+    cochran:'Cochran, W. G. (1977). <em>Sampling techniques</em> (3rd ed.). John Wiley &amp; Sons.',
+    yamane:'Yamane, T. (1967). <em>Statistics: An introductory analysis</em> (2nd ed.). Harper &amp; Row.',
+    cohen88:'Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em> (2nd ed.). Lawrence Erlbaum Associates.',
+    cohen92:'Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1), 155–159. https://doi.org/10.1037/0033-2909.112.1.155',
+    faul:'Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <em>Behavior Research Methods, 41</em>(4), 1149–1160. https://doi.org/10.3758/BRM.41.4.1149',
+    hair10:'Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.',
+    hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
+    kock:'Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131',
+    tf:'Tabachnick, B. G., &amp; Fidell, L. S. (2013). <em>Using multivariate statistics</em> (6th ed.). Pearson.',
+  };
+  const F2NAME={'0.02':'nhỏ','0.15':'trung bình','0.35':'lớn'};
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function renderThesis(method,val){
+    const strict=$('ss-strict').checked, drop=Math.max(0,num('ss-drop')||0)/100;
+    const lbl={pls:'Đối chiếu thêm phương pháp căn bậc hai nghịch đảo (Kock & Hadaya, 2018)',reg:'Đối chiếu thêm quy tắc của Tabachnick & Fidell (2013)',efa:'Dùng mức khuyến nghị 10:1 thay cho mức tối thiểu 5:1',prop:'Đối chiếu thêm công thức Slovin/Yamane (cần N)'}[method];
+    $('ss-strict-label').textContent=lbl;
+    if(!Number.isFinite(val)){ $('ss-thesis').innerHTML=''; return; }
+    const ps=[]; let refs=[]; let target=val;
+    if(method==='pls'||method==='reg'){
+      const m=num('ss-m'),f2=$('ss-f2').value,alpha=num('ss-alpha'),power=num('ss-power');
+      const dv=esc($('ss-dv').value.trim()||'phụ thuộc chính');
+      const dvText=$('ss-dv').value.trim()?`biến “${dv}”`:'biến phụ thuộc chính';
+      const powerSentence=`Cỡ mẫu tối thiểu được xác định bằng phân tích power thống kê trên phần mềm G*Power 3.1 (Faul và cộng sự, 2009), sử dụng kiểm định F cho hồi quy tuyến tính bội với ${m} biến dự báo, cỡ hiệu ứng f² = ${d(f2)} (mức ${F2NAME[f2]} theo Cohen, 1988), mức ý nghĩa α = ${d(alpha)} và power thống kê ${d(power.toFixed(2))} (Cohen, 1992). Kết quả cho thấy cỡ mẫu tối thiểu cần đạt là ${fmt(val)} quan sát.`;
+      if(method==='pls'){
+        ps.push(`Nghiên cứu sử dụng phương pháp mô hình cấu trúc bình phương tối thiểu riêng phần (PLS-SEM) để kiểm định mô hình nghiên cứu. Trong mô hình, ${dvText} nhận nhiều nhất ${m} mũi tên từ các biến tiềm ẩn khác. ${powerSentence}`);
+        refs=['faul','cohen88','cohen92'];
+        if(strict){const pmin=num('ss-pmin'),k=isrN(pmin,alpha,power);target=Math.max(val,k);
+          ps.push(`Bên cạnh đó, theo phương pháp căn bậc hai nghịch đảo do Kock và Hadaya (2018) đề xuất và được Hair và cộng sự (2022) khuyến nghị cho PLS-SEM, với hệ số đường dẫn nhỏ nhất kỳ vọng có ý nghĩa thống kê là ${d(pmin)}, cỡ mẫu tối thiểu là ${fmt(k)} quan sát. Để đáp ứng đồng thời hai tiêu chí, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(target)} quan sát.`);
+          refs.push('hair22','kock');}
+      } else {
+        ps.push(`Nghiên cứu sử dụng phân tích hồi quy tuyến tính bội để kiểm định tác động của ${m} biến độc lập lên ${dvText}. ${powerSentence}`);
+        refs=['faul','cohen88','cohen92'];
+        if(strict){const t=Math.max(50+8*m,104+m);target=Math.max(val,t);
+          ps.push(`Đối chiếu với quy tắc của Tabachnick và Fidell (2013), cỡ mẫu cho hồi quy bội cần đạt tối thiểu 50 + 8m = ${50+8*m} để kiểm định mô hình tổng thể và 104 + m = ${104+m} để kiểm định từng biến độc lập. Vì vậy, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(target)} quan sát.`);
+          refs.push('tf');}
+      }
+    } else if(method==='efa'){
+      const k=num('ss-items');
+      target=strict?Math.max(100,10*k):val;
+      ps.push(`Nghiên cứu sử dụng phân tích nhân tố khám phá (EFA) với ${k} biến quan sát. Theo Hair và cộng sự (2010), cỡ mẫu cho phân tích nhân tố nên tối thiểu là 50, tốt hơn từ 100 trở lên, và số quan sát nên gấp ít nhất 5 lần số biến quan sát. ${strict?`Nghiên cứu áp dụng tỷ lệ khuyến nghị 10:1, do đó cỡ mẫu tối thiểu là 10 × ${k} = ${fmt(target)} quan sát.`:`Với ${k} biến quan sát, cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`}`);
+      refs=['hair10'];
+    } else {
+      const z=num('ss-conf'),e=num('ss-e')/100,p=num('ss-p')/100,N=num('ss-N'),hasN=Number.isFinite(N)&&N>0;
+      const conf={1.645:'90%',1.96:'95%',2.576:'99%'}[z]; const n0=z*z*p*(1-p)/(e*e);
+      let s=`Cỡ mẫu được xác định theo công thức của Cochran (1977): n₀ = z²·p(1 − p)/e², trong đó z = ${d(z)} tương ứng độ tin cậy ${conf}, p = ${d(p)} là tỷ lệ ước lượng${p===0.5?' (chọn 0,5 để cỡ mẫu đạt mức lớn nhất khi chưa có thông tin trước)':''} và e = ${d(e)} là sai số cho phép. Thay số, n₀ = ${d(n0.toFixed(2))}.`;
+      if(hasN) s+=` Do tổng thể nghiên cứu có quy mô N = ${fmt(N)}, cỡ mẫu được hiệu chỉnh theo công thức n = n₀/(1 + (n₀ − 1)/N), cho kết quả ${fmt(val)} quan sát.`;
+      else s+=` Làm tròn lên, cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`;
+      ps.push(s); refs=['cochran'];
+      if(strict&&hasN){const sl=Math.ceil(N/(1+N*e*e));target=Math.max(val,sl);ps.push(`Đối chiếu theo công thức Slovin (Yamane, 1967) n = N/(1 + N·e²), cỡ mẫu tối thiểu là ${fmt(sl)} quan sát. Nghiên cứu chọn cỡ mẫu tối thiểu ${fmt(target)} quan sát.`);refs.push('yamane');}
+    }
+    if(drop>0) ps.push(`Để dự phòng khoảng ${d(Math.round(drop*100))}% phiếu trả lời không hợp lệ, số phiếu khảo sát dự kiến phát ra là ${fmt(Math.ceil(target/(1-drop)))} phiếu.`);
+    const order=['cochran','cohen88','cohen92','faul','hair10','hair22','kock','tf','yamane'];
+    refs=[...new Set(refs)].sort((a,b)=>order.indexOf(a)-order.indexOf(b));
+    $('ss-thesis').innerHTML=ps.map(p=>`<p>${p}</p>`).join('')+`<p><strong>Tài liệu tham khảo</strong></p><ul>${refs.map(r=>`<li>${REF[r]}</li>`).join('')}</ul>`;
+  }
+  $('ss-copy').addEventListener('click',()=>{
+    const el=$('ss-thesis'),b=$('ss-copy'),t=el.innerText;
+    const done=()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent='Sao chép đoạn văn',1500)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Đã chọn, nhấn Ctrl+C'};
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+  $('ss-form').addEventListener('input',render); $('ss-form').addEventListener('change',render); render();
 })();
 </script>

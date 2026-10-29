@@ -1,0 +1,50 @@
+{
+  "title": "Thang đo mua hàng ngẫu hứng tiếng Việt: Rook & Fisher (1995)",
+  "description": "Thang đo xu hướng mua hàng ngẫu hứng (buying impulsiveness) của Rook và Fisher (1995) dịch sẵn tiếng Việt, có bản gốc tiếng Anh, câu đảo chiều và trích dẫn.",
+  "name": "Buying Impulsiveness Scale",
+  "fullName": "Thang đo xu hướng mua hàng ngẫu hứng (Buying Impulsiveness Scale)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo mua hàng ngẫu hứng",
+  "intro": "Rook và Fisher (1995) định nghĩa xu hướng mua ngẫu hứng là khuynh hướng mua một cách tự phát, không suy nghĩ, ngay lập tức, bị cuốn theo sức hút cảm xúc với sản phẩm. Thang đo gốc có 9 biến, đơn hướng, đo đặc điểm cá nhân chứ không đo một lần mua cụ thể. Bài gốc trên Journal of Consumer Research dùng thang này để kiểm tra vai trò điều tiết của chuẩn mực xã hội lên hành vi mua ngẫu hứng. Ở Việt Nam, thang hay dùng cho đề tài mua sắm ngẫu hứng trên sàn thương mại điện tử, livestream bán hàng, mua sắm của Gen Z.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý) là dạng được các nghiên cứu sau dùng nhiều nhất; một số nghiên cứu dùng 7 mức. Điểm càng cao, xu hướng mua ngẫu hứng càng mạnh.",
+  "constructs": [
+    {
+      "code": "BI",
+      "nameVi": "Xu hướng mua hàng ngẫu hứng",
+      "nameEn": "Buying Impulsiveness",
+      "definition": "Khuynh hướng của người tiêu dùng mua một cách tự phát, thiếu cân nhắc và ngay lập tức.",
+      "source": "Rook & Fisher (1995), thang 9 biến; ở đây có 7 biến đã đối chiếu được nguyên văn qua các nghiên cứu trích lại (Fenton-O'Creevy & Furnham, 2022; nghiên cứu ADHD trên PMC, 2024; Merdin-Uygur, 2018). 2 biến còn lại chưa đối chiếu được nên chưa đưa vào.",
+      "items": [
+        { "code": "BI1", "en": "I often buy things spontaneously.", "vi": "Tôi thường mua đồ một cách tự phát." },
+        { "code": "BI2", "en": "\"Just do it\" describes the way I buy things.", "vi": "\"Cứ mua đã\" là cách tôi mua sắm." },
+        { "code": "BI3", "en": "I often buy things without thinking.", "vi": "Tôi thường mua đồ mà không suy nghĩ." },
+        { "code": "BI4", "en": "\"I see it, I buy it\" describes me.", "vi": "\"Thấy là mua\" đúng là tôi." },
+        { "code": "BI5", "en": "\"Buy now, think about it later\" describes me.", "vi": "\"Mua trước, tính sau\" đúng là tôi." },
+        { "code": "BI6", "en": "I buy things according to how I feel at the moment.", "vi": "Tôi mua đồ theo cảm xúc của mình lúc đó." },
+        { "code": "BI7", "en": "I carefully plan most of my purchases.", "vi": "Tôi lên kế hoạch cẩn thận cho hầu hết các lần mua sắm.", "reverse": true }
+      ]
+    }
+  ],
+  "usage": [
+    "Thang gốc có 9 biến; bản ở đây mới có 7 biến đã đối chiếu nguyên văn. Nếu cần đủ 9 biến, lấy 2 biến còn lại trực tiếp từ Bảng 1 của Rook & Fisher (1995) và ghi số trang.",
+    "Các câu khẩu hiệu như 'Just do it', 'I see it, I buy it' dịch sát chữ nghe gượng; nên dịch theo ý quen thuộc với người Việt ('cứ mua đã', 'thấy là mua') và chạy thử với 5–10 người trước khi khảo sát chính thức.",
+    "BI7 là câu đảo chiều; mã hoá ngược trước khi tính alpha và cộng điểm. Câu đảo chiều thường tải yếu trong EFA ở mẫu Việt Nam, cân nhắc loại nếu hệ số tải dưới 0,5.",
+    "Fenton-O'Creevy & Furnham (2022) rút gọn còn 5 biến tải mạnh nhất (BI1–BI5) và vẫn đạt alpha 0,90; có thể dùng bản này khi bảng hỏi dài.",
+    "Đây là thang đo đặc điểm cá nhân; nếu đề tài đo một lần mua ngẫu hứng cụ thể (ví dụ trong buổi livestream), cần thêm thang hành vi mua ngẫu hứng riêng."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo đơn lẻ, không phải mô hình. Khi đưa vào mô hình, tính cỡ mẫu theo số mũi tên trỏ vào biến phụ thuộc lớn nhất; để chạy EFA, nên có ít nhất 5 quan sát cho mỗi biến đo."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Rook, D. W., &amp; Fisher, R. J. (1995). Normative influences on impulsive buying behavior. <em>Journal of Consumer Research, 22</em>(3), 305–313. https://doi.org/10.1086/209452",
+    "Fenton-O'Creevy, M., &amp; Furnham, A. (2022). Money attitudes, financial capabilities, and impulsiveness as predictors of wealth accumulation. <em>PLOS ONE</em>. https://doi.org/10.1371/journal.pone.0278047"
+  ],
+  "verifiedFrom": [
+    "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0278047",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11636743/",
+    "https://beykozakademi.beykoz.edu.tr/wp-content/uploads/2018/11/Cilt-6-Say%C4%B1-2-Y%C4%B1l-2018-Ezgi-MERD%C4%B0N-UYGUR.pdf",
+    "https://api.crossref.org/works/10.1086/209452"
+  ],
+  "related": ["y-dinh-mua", "tpb", "niem-tin-trung-thanh-thuong-hieu"]
+}

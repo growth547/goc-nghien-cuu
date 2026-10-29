@@ -1,0 +1,82 @@
+{
+  "title": "Thang đo tài sản thương hiệu tiếng Việt: Yoo & Donthu (2001)",
+  "description": "Thang đo tài sản thương hiệu dựa trên khách hàng dịch sẵn tiếng Việt: trung thành, chất lượng cảm nhận, nhận biết/liên tưởng, tài sản tổng thể. Có bản gốc.",
+  "name": "MBE/OBE",
+  "fullName": "Thang đo tài sản thương hiệu dựa trên khách hàng (Yoo & Donthu, 2001)",
+  "field": "Marketing & thương hiệu",
+  "keyword": "thang đo tài sản thương hiệu",
+  "intro": "Yoo và Donthu (2001) phát triển thang đo tài sản thương hiệu dựa trên khách hàng theo hướng của Aaker và Keller, kiểm định trên nhiều mẫu và nhiều nhóm sản phẩm. Thang đa chiều (MBE) gồm 10 biến thuộc 3 thành phần: lòng trung thành thương hiệu, chất lượng cảm nhận, nhận biết và liên tưởng thương hiệu. Tài sản thương hiệu tổng thể (OBE) gồm 4 biến, đo mức khách hàng vẫn chọn thương hiệu dù thương hiệu khác tương đương. Ở Việt Nam, thang này hay dùng cho đề tài về tài sản thương hiệu của điện thoại, mỹ phẩm, đồ uống, ngân hàng, điểm đến du lịch, và tác động của quảng cáo, mạng xã hội lên thương hiệu.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), theo bảng hỏi mẫu trên trang của tác giả.",
+  "constructs": [
+    {
+      "code": "BL",
+      "nameVi": "Lòng trung thành thương hiệu",
+      "nameEn": "Brand Loyalty",
+      "definition": "Mức độ khách hàng gắn bó và ưu tiên chọn thương hiệu.",
+      "source": "Yoo & Donthu (2001), 3 biến.",
+      "items": [
+        { "code": "BL1", "en": "I consider myself to be loyal to [brand].", "vi": "Tôi tự cho mình là khách hàng trung thành của [thương hiệu]." },
+        { "code": "BL2", "en": "[brand] would be my first choice.", "vi": "[Thương hiệu] sẽ là lựa chọn đầu tiên của tôi." },
+        { "code": "BL3", "en": "I will not buy other brands if [brand] is available at the store.", "vi": "Tôi sẽ không mua thương hiệu khác nếu cửa hàng có bán [thương hiệu]." }
+      ]
+    },
+    {
+      "code": "PQ",
+      "nameVi": "Chất lượng cảm nhận",
+      "nameEn": "Perceived Quality",
+      "definition": "Đánh giá chủ quan của khách hàng về chất lượng tổng thể của thương hiệu.",
+      "source": "Yoo & Donthu (2001), 2 biến dùng trong thang MBE.",
+      "items": [
+        { "code": "PQ1", "en": "The likely quality of [brand] is extremely high.", "vi": "Chất lượng của [thương hiệu] có lẽ là rất cao." },
+        { "code": "PQ2", "en": "The likelihood that [brand] would be functional is very high.", "vi": "Khả năng [thương hiệu] hoạt động tốt đúng công năng là rất cao." }
+      ]
+    },
+    {
+      "code": "BAA",
+      "nameVi": "Nhận biết và liên tưởng thương hiệu",
+      "nameEn": "Brand Awareness/Associations",
+      "definition": "Khả năng khách hàng nhận ra, nhớ tới và hình dung được thương hiệu.",
+      "source": "Yoo & Donthu (2001), 5 biến, có 1 câu đảo chiều.",
+      "items": [
+        { "code": "BAA1", "en": "I can recognize [brand] among other competing brands.", "vi": "Tôi có thể nhận ra [thương hiệu] giữa các thương hiệu cạnh tranh." },
+        { "code": "BAA2", "en": "I am aware of [brand].", "vi": "Tôi biết đến [thương hiệu]." },
+        { "code": "BAA3", "en": "Some characteristics of [brand] come to my mind quickly.", "vi": "Một vài đặc điểm của [thương hiệu] hiện ra trong đầu tôi rất nhanh." },
+        { "code": "BAA4", "en": "I can quickly recall the symbol or logo of [brand].", "vi": "Tôi có thể nhanh chóng nhớ ra biểu tượng hoặc logo của [thương hiệu]." },
+        { "code": "BAA5", "en": "I have difficulty in imagining [brand] in my mind.", "vi": "Tôi thấy khó hình dung ra [thương hiệu] trong đầu.", "reverse": true }
+      ]
+    },
+    {
+      "code": "OBE",
+      "nameVi": "Tài sản thương hiệu tổng thể",
+      "nameEn": "Overall Brand Equity",
+      "definition": "Sự khác biệt trong lựa chọn của khách hàng giữa thương hiệu và một sản phẩm không thương hiệu có cùng đặc tính.",
+      "source": "Yoo, Donthu & Lee (2000); Yoo & Donthu (2001), 4 biến.",
+      "items": [
+        { "code": "OBE1", "en": "It makes sense to buy [brand] instead of any other brand, even if they are the same.", "vi": "Mua [thương hiệu] thay vì thương hiệu khác là hợp lý, kể cả khi chúng giống nhau." },
+        { "code": "OBE2", "en": "Even if another brand has same features as [brand], I would prefer to buy [brand].", "vi": "Dù thương hiệu khác có cùng tính năng như [thương hiệu], tôi vẫn thích mua [thương hiệu] hơn." },
+        { "code": "OBE3", "en": "If there is another brand as good as [brand], I prefer to buy [brand].", "vi": "Nếu có thương hiệu khác tốt ngang [thương hiệu], tôi vẫn thích mua [thương hiệu] hơn." },
+        { "code": "OBE4", "en": "If another brand is not different from [brand] in any way, it seems smarter to purchase [brand].", "vi": "Nếu thương hiệu khác không khác gì [thương hiệu], mua [thương hiệu] vẫn có vẻ là lựa chọn khôn ngoan hơn." }
+      ]
+    }
+  ],
+  "usage": [
+    "Tác giả hướng dẫn tính MBE bằng trung bình 10 biến BL, PQ, BAA và OBE bằng trung bình 4 biến OBE; BAA5 phải đảo điểm (7 thành 1, 1 thành 7) trước khi tính.",
+    "Trong mô hình SEM, phổ biến nhất là để BL, PQ, BAA tác động lên OBE. Nhận biết và liên tưởng gộp chung một thành phần trong bản gốc; nếu tách riêng liên tưởng thương hiệu thì cần thêm biến và ghi rõ nguồn.",
+    "Thay [thương hiệu] bằng tên cụ thể và trộn ngẫu nhiên thứ tự câu hỏi như tác giả khuyến nghị. Người trả lời phải biết hoặc đã dùng thương hiệu, nên thêm câu hỏi sàng lọc ở đầu bảng hỏi.",
+    "Câu OBE dịch dễ bị lủng củng vì cấu trúc giả định; đọc thử với vài người trả lời và kiểm tra tính giá trị phân biệt giữa BL và OBE, hai khái niệm này thường tương quan cao."
+  ],
+  "sampleSize": {
+    "arrowsMax": 3,
+    "note": "Trong mô hình phổ biến, tài sản thương hiệu tổng thể nhận 3 mũi tên (từ BL, PQ, BAA). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát; mô hình thêm tiền tố marketing thì con số này tăng."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật; tác giả Boonghee Yoo đăng bảng hỏi mẫu và hướng dẫn tính điểm trên trang cá nhân tại Hofstra University. Khi dùng, trích dẫn bài gốc.",
+  "references": [
+    "Yoo, B., &amp; Donthu, N. (2001). Developing and validating a multidimensional consumer-based brand equity scale. <em>Journal of Business Research, 52</em>(1), 1–14. https://doi.org/10.1016/S0148-2963(99)00098-3",
+    "Yoo, B., Donthu, N., &amp; Lee, S. (2000). An examination of selected marketing mix elements and brand equity. <em>Journal of the Academy of Marketing Science, 28</em>(2), 195–211. https://doi.org/10.1177/0092070300282002"
+  ],
+  "verifiedFrom": [
+    "https://sites.hofstra.edu/boonghee-yoo/yoo-and-donthus-brand-equity-scale/",
+    "https://api.crossref.org/works/10.1016/S0148-2963(99)00098-3"
+  ],
+  "related": ["niem-tin-trung-thanh-thuong-hieu", "y-dinh-mua", "y-dinh-hanh-vi-khach-hang"]
+}

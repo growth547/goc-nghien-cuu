@@ -1,0 +1,74 @@
+{
+  "title": "Thang đo TAM tiếng Việt: Davis (1989), có bản gốc",
+  "description": "Thang đo mô hình chấp nhận công nghệ TAM dịch sẵn tiếng Việt: nhận thức sự hữu ích, nhận thức tính dễ sử dụng, ý định sử dụng. Có bản gốc và trích dẫn.",
+  "name": "TAM",
+  "fullName": "Mô hình chấp nhận công nghệ (Technology Acceptance Model)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo TAM",
+  "intro": "TAM do Davis (1989) đề xuất để giải thích vì sao người dùng chấp nhận hay từ chối một công nghệ. Hai niềm tin cốt lõi là nhận thức sự hữu ích và nhận thức tính dễ sử dụng; nhận thức tính dễ sử dụng tác động lên sự hữu ích, và cả hai cùng dẫn tới ý định sử dụng. Đây là mô hình nền của rất nhiều khoá luận về ví điện tử, ngân hàng số, học trực tuyến, thương mại điện tử.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý). Davis (1989) gốc dùng thang 7 mức từ 'rất không có khả năng' tới 'rất có khả năng'; phần lớn nghiên cứu sau chuyển sang thang đồng ý 5 hoặc 7 mức.",
+  "constructs": [
+    {
+      "code": "PU",
+      "nameVi": "Nhận thức sự hữu ích",
+      "nameEn": "Perceived Usefulness",
+      "definition": "Mức độ một người tin rằng dùng hệ thống sẽ cải thiện kết quả công việc của mình.",
+      "source": "Davis (1989), 6 biến.",
+      "items": [
+        { "code": "PU1", "en": "Using [system] in my job would enable me to accomplish tasks more quickly.", "vi": "Sử dụng [hệ thống] giúp tôi hoàn thành công việc nhanh hơn." },
+        { "code": "PU2", "en": "Using [system] would improve my job performance.", "vi": "Sử dụng [hệ thống] giúp cải thiện kết quả công việc của tôi." },
+        { "code": "PU3", "en": "Using [system] in my job would increase my productivity.", "vi": "Sử dụng [hệ thống] giúp tăng năng suất làm việc của tôi." },
+        { "code": "PU4", "en": "Using [system] would enhance my effectiveness on the job.", "vi": "Sử dụng [hệ thống] giúp tôi làm việc hiệu quả hơn." },
+        { "code": "PU5", "en": "Using [system] would make it easier to do my job.", "vi": "Sử dụng [hệ thống] khiến công việc của tôi dễ dàng hơn." },
+        { "code": "PU6", "en": "I would find [system] useful in my job.", "vi": "Tôi thấy [hệ thống] hữu ích cho công việc của mình." }
+      ]
+    },
+    {
+      "code": "PEOU",
+      "nameVi": "Nhận thức tính dễ sử dụng",
+      "nameEn": "Perceived Ease of Use",
+      "definition": "Mức độ một người tin rằng dùng hệ thống không đòi hỏi nhiều công sức.",
+      "source": "Davis (1989), 6 biến.",
+      "items": [
+        { "code": "PEOU1", "en": "Learning to operate [system] would be easy for me.", "vi": "Tôi thấy học cách sử dụng [hệ thống] là dễ dàng." },
+        { "code": "PEOU2", "en": "I would find it easy to get [system] to do what I want it to do.", "vi": "Tôi dễ dàng khiến [hệ thống] làm được điều tôi muốn." },
+        { "code": "PEOU3", "en": "My interaction with [system] would be clear and understandable.", "vi": "Các thao tác của tôi với [hệ thống] rõ ràng và dễ hiểu." },
+        { "code": "PEOU4", "en": "I would find [system] to be flexible to interact with.", "vi": "Tôi thấy [hệ thống] linh hoạt khi tương tác." },
+        { "code": "PEOU5", "en": "It would be easy for me to become skillful at using [system].", "vi": "Tôi dễ dàng trở nên thành thạo khi sử dụng [hệ thống]." },
+        { "code": "PEOU6", "en": "I would find [system] easy to use.", "vi": "Tôi thấy [hệ thống] dễ sử dụng." }
+      ]
+    },
+    {
+      "code": "BI",
+      "nameVi": "Ý định sử dụng",
+      "nameEn": "Behavioral Intention to Use",
+      "definition": "Mức độ một người dự định sẽ sử dụng hệ thống trong thời gian tới.",
+      "source": "Venkatesh & Davis (2000), TAM2, 2 biến.",
+      "items": [
+        { "code": "BI1", "en": "Assuming I have access to the system, I intend to use it.", "vi": "Nếu được tiếp cận [hệ thống], tôi dự định sẽ sử dụng nó." },
+        { "code": "BI2", "en": "Given that I have access to the system, I predict that I would use it.", "vi": "Khi đã được tiếp cận [hệ thống], tôi nghĩ mình sẽ sử dụng nó." }
+      ]
+    }
+  ],
+  "usage": [
+    "Thang chỉ có 2 biến (như BI) dễ bị hội đồng hỏi về độ tin cậy; nhiều nghiên cứu bổ sung 1–2 biến tự phát triển hoặc lấy từ Venkatesh và cộng sự (2003), và phải ghi rõ nguồn từng biến.",
+    "Davis đo trong bối cảnh công việc; với người tiêu dùng, đổi 'công việc' thành việc cụ thể, ví dụ 'thanh toán', 'học tập', nhưng giữ nguyên ý của biến.",
+    "Nếu mô hình thêm thái độ (Attitude), trích Davis, Bagozzi & Warshaw (1989); nếu mở rộng sang chuẩn chủ quan, xem TAM2 hoặc UTAUT.",
+    "Chạy Cronbach's alpha và EFA cho từng khái niệm trước khi phân tích mô hình; PU và PEOU có thể tải chéo nếu bản dịch chưa đủ rõ."
+  ],
+  "sampleSize": {
+    "arrowsMax": 2,
+    "note": "Trong mô hình TAM cơ bản, ý định sử dụng nhận nhiều nhất 2 mũi tên (từ PU và PEOU). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát; mô hình mở rộng thêm biến thì con số này tăng."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. <em>MIS Quarterly, 13</em>(3), 319–340. https://doi.org/10.2307/249008",
+    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003.",
+    "Venkatesh, V., &amp; Davis, F. D. (2000). A theoretical extension of the technology acceptance model: Four longitudinal field studies. <em>Management Science, 46</em>(2), 186–204. https://doi.org/10.1287/mnsc.46.2.186.11926"
+  ],
+  "verifiedFrom": [
+    "https://doi.org/10.2307/249008",
+    "https://doi.org/10.1287/mnsc.46.2.186.11926"
+  ],
+  "related": ["utaut", "utaut2", "tpb"]
+}

@@ -7,17 +7,22 @@ const tools = [
   {
     path: "cong-cu/tinh-co-mau",
     title: "Máy tính cỡ mẫu",
-    desc: "PLS-SEM (G*Power, Kock & Hadaya), hồi quy, EFA, Cochran. Có công thức và trích dẫn để đưa vào chương 3.",
+    desc: "PLS-SEM (G*Power, Kock & Hadaya), hồi quy, EFA, Cochran. Tự viết sẵn đoạn chọn mẫu cho chương 3, kèm tài liệu tham khảo.",
   },
   {
     path: "cong-cu/cronbach-alpha",
     title: "Tính Cronbach's alpha",
     desc: "Dán dữ liệu từ Excel hoặc SPSS, ra alpha, tương quan biến–tổng và alpha nếu loại biến.",
   },
+  {
+    path: "thang-do",
+    title: "Thư viện thang đo",
+    desc: "TAM, UTAUT2, TPB, SERVQUAL, thương hiệu, nhân sự, tâm lý: biến quan sát dịch sẵn, kèm bản gốc và trích dẫn.",
+  },
 ];
 ---
 
-<ul class="grid gap-4 sm:grid-cols-2">
+<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
   {
     tools.map(t => (
       <li>
@@ -25,7 +30,7 @@ const tools = [
           href={getRelativeLocaleUrl(locale, t.path)}
           class="border-border hover:border-accent bg-background flex h-full flex-col gap-2 rounded-xl border p-5 transition-colors"
         >
-          <span class="text-accent text-xs font-semibold tracking-wider uppercase">Công cụ miễn phí</span>
+          <span class="text-accent text-xs font-semibold tracking-wider uppercase">{t.path === "thang-do" ? "Tra cứu" : "Công cụ miễn phí"}</span>
           <span class="text-lg font-semibold">{t.title}</span>
           <span class="text-muted-foreground text-sm">{t.desc}</span>
         </a>

@@ -1,0 +1,125 @@
+{
+  "title": "Thang đo niềm tin và trung thành thương hiệu: Chaudhuri & Holbrook",
+  "description": "Thang đo niềm tin thương hiệu, cảm xúc thương hiệu, trung thành hành vi và trung thành thái độ của Chaudhuri và Holbrook (2001) dịch sẵn tiếng Việt, có bản gốc.",
+  "name": "Brand Trust, Brand Affect & Brand Loyalty",
+  "fullName": "Niềm tin thương hiệu, cảm xúc thương hiệu và lòng trung thành thương hiệu (Chaudhuri & Holbrook, 2001)",
+  "field": "Marketing & thương hiệu",
+  "keyword": "thang đo niềm tin thương hiệu",
+  "intro": "Chaudhuri và Holbrook (2001) đề xuất chuỗi tác động từ niềm tin thương hiệu và cảm xúc thương hiệu tới lòng trung thành, rồi tới kết quả kinh doanh của thương hiệu. Niềm tin và cảm xúc cùng dẫn tới trung thành hành vi (mua lặp lại) và trung thành thái độ (cam kết, sẵn lòng trả giá cao hơn); trung thành hành vi gắn với thị phần, trung thành thái độ gắn với giá tương đối. Dữ liệu gốc gồm 107 thương hiệu từ ba đợt khảo sát người tiêu dùng và quản lý thương hiệu. Ở Việt Nam, bộ thang này hay dùng cho đề tài về lòng trung thành với thương hiệu mỹ phẩm, cà phê, điện thoại, ngân hàng.",
+  "responseScale": "Likert 7 mức (1 = Rất không đồng ý … 7 = Rất đồng ý), theo bài gốc.",
+  "constructs": [
+    {
+      "code": "BT",
+      "nameVi": "Niềm tin thương hiệu",
+      "nameEn": "Brand Trust",
+      "definition": "Mức độ người tiêu dùng sẵn lòng dựa vào khả năng của thương hiệu trong việc thực hiện đúng chức năng đã hứa.",
+      "source": "Chaudhuri & Holbrook (2001), 4 biến.",
+      "items": [
+        {
+          "code": "BT1",
+          "en": "I trust this brand.",
+          "vi": "Tôi tin tưởng [thương hiệu] này."
+        },
+        {
+          "code": "BT2",
+          "en": "I rely on this brand.",
+          "vi": "Tôi trông cậy vào [thương hiệu] này."
+        },
+        {
+          "code": "BT3",
+          "en": "This is an honest brand.",
+          "vi": "Đây là một thương hiệu trung thực."
+        },
+        {
+          "code": "BT4",
+          "en": "This brand is safe.",
+          "vi": "[Thương hiệu] này an toàn."
+        }
+      ]
+    },
+    {
+      "code": "BA",
+      "nameVi": "Cảm xúc thương hiệu",
+      "nameEn": "Brand Affect",
+      "definition": "Khả năng thương hiệu tạo ra phản ứng cảm xúc tích cực ở người tiêu dùng khi sử dụng.",
+      "source": "Chaudhuri & Holbrook (2001), 3 biến.",
+      "items": [
+        {
+          "code": "BA1",
+          "en": "I feel good when I use this brand.",
+          "vi": "Tôi cảm thấy dễ chịu khi dùng [thương hiệu] này."
+        },
+        {
+          "code": "BA2",
+          "en": "This brand makes me happy.",
+          "vi": "[Thương hiệu] này làm tôi vui."
+        },
+        {
+          "code": "BA3",
+          "en": "This brand gives me pleasure.",
+          "vi": "[Thương hiệu] này mang lại cho tôi niềm thích thú."
+        }
+      ]
+    },
+    {
+      "code": "PL",
+      "nameVi": "Trung thành hành vi (mua lặp lại)",
+      "nameEn": "Purchase Loyalty",
+      "definition": "Mức độ người tiêu dùng sẵn lòng tiếp tục mua lại thương hiệu.",
+      "source": "Chaudhuri & Holbrook (2001), 2 biến.",
+      "items": [
+        {
+          "code": "PL1",
+          "en": "I will buy this brand the next time I buy [product name].",
+          "vi": "Lần tới khi mua [sản phẩm], tôi sẽ mua [thương hiệu] này."
+        },
+        {
+          "code": "PL2",
+          "en": "I intend to keep purchasing this brand.",
+          "vi": "Tôi dự định tiếp tục mua [thương hiệu] này."
+        }
+      ]
+    },
+    {
+      "code": "AL",
+      "nameVi": "Trung thành thái độ",
+      "nameEn": "Attitudinal Loyalty",
+      "definition": "Mức độ cam kết với thương hiệu, thể hiện qua việc sẵn lòng trả giá cao hơn so với thương hiệu khác.",
+      "source": "Chaudhuri & Holbrook (2001), 2 biến.",
+      "items": [
+        {
+          "code": "AL1",
+          "en": "I am committed to this brand.",
+          "vi": "Tôi gắn bó với [thương hiệu] này."
+        },
+        {
+          "code": "AL2",
+          "en": "I would be willing to pay a higher price for this brand over other brands.",
+          "vi": "Tôi sẵn lòng trả giá cao hơn cho [thương hiệu] này so với các thương hiệu khác."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Trung thành hành vi và trung thành thái độ mỗi khái niệm chỉ có 2 biến; hội đồng hay hỏi về độ tin cậy, nên bổ sung 1–2 biến từ thang khác (ví dụ Yoo & Donthu, 2001) và ghi rõ nguồn từng biến.",
+    "Bài gốc phân tích ở cấp thương hiệu (trung bình 30 người cho mỗi thương hiệu); khoá luận phân tích ở cấp cá nhân nên phải chạy lại CFA, không lấy hệ số alpha của bài gốc làm bằng chứng.",
+    "'Committed' dịch là 'cam kết' nghe cứng với người tiêu dùng; 'gắn bó' tự nhiên hơn nhưng phải giữ ý sẵn lòng ở lại với thương hiệu.",
+    "Thị phần và giá tương đối trong mô hình gốc lấy từ quản lý thương hiệu, không hỏi người tiêu dùng; đề tài chỉ khảo sát khách hàng thường dừng ở hai loại trung thành hoặc thay bằng ý định giới thiệu, ý định mua lại."
+  ],
+  "sampleSize": {
+    "arrowsMax": 2,
+    "note": "Ở phần khảo sát khách hàng, mỗi loại trung thành nhận 2 mũi tên (từ niềm tin và cảm xúc thương hiệu). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Chaudhuri, A., &amp; Holbrook, M. B. (2001). The chain of effects from brand trust and brand affect to brand performance: The role of brand loyalty. <em>Journal of Marketing, 65</em>(2), 81–93. https://doi.org/10.1509/jmkg.65.2.81.18255"
+  ],
+  "verifiedFrom": [
+    "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf",
+    "https://api.crossref.org/works/10.1509/jmkg.65.2.81.18255"
+  ],
+  "related": [
+    "tai-san-thuong-hieu",
+    "y-dinh-hanh-vi-khach-hang"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Thang đo căng thẳng PSS-10 tiếng Việt: Cohen (1983, 1988)",
+  "description": "Thang đo căng thẳng cảm nhận PSS-10 của Cohen dịch sẵn tiếng Việt: 10 biến, thang tần suất 0–4, 4 câu đảo chiều, cách tính điểm tổng 0–40 và lưu ý khi dùng.",
+  "name": "PSS-10",
+  "fullName": "Thang đo căng thẳng cảm nhận 10 biến (Perceived Stress Scale)",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "keyword": "thang đo căng thẳng PSS-10",
+  "intro": "PSS do Cohen, Kamarck và Mermelstein (1983) xây dựng để đo mức độ một người cảm thấy cuộc sống của mình khó lường, khó kiểm soát và quá tải trong tháng vừa qua. Bản gốc có 14 biến; Cohen và Williamson (1988) rút gọn thành 10 biến và đây là bản được dùng phổ biến nhất. Ở Việt Nam, PSS-10 hay xuất hiện trong đề tài về áp lực học tập của sinh viên, căng thẳng nghề nghiệp của nhân viên y tế, ngân hàng, giáo viên, và làm biến trung gian giữa áp lực công việc với ý định nghỉ việc.",
+  "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý: 0 = Không bao giờ, 1 = Hầu như không, 2 = Thỉnh thoảng, 3 = Khá thường xuyên, 4 = Rất thường xuyên, hỏi về tháng vừa qua. Đảo điểm 4 câu PSS4, PSS5, PSS7, PSS8 (0 thành 4, 1 thành 3, 2 giữ nguyên, 3 thành 1, 4 thành 0) rồi cộng cả 10 biến, điểm tổng từ 0 đến 40; điểm càng cao căng thẳng càng nhiều. Tác giả không công bố điểm cắt chẩn đoán.",
+  "constructs": [
+    {
+      "code": "PSS",
+      "nameVi": "Căng thẳng cảm nhận",
+      "nameEn": "Perceived Stress",
+      "definition": "Mức độ một người đánh giá các tình huống trong cuộc sống của mình là khó lường, khó kiểm soát và vượt quá khả năng ứng phó.",
+      "source": "Cohen, Kamarck & Mermelstein (1983); bản 10 biến của Cohen & Williamson (1988).",
+      "items": [
+        { "code": "PSS1", "en": "In the last month, how often have you been upset because of something that happened unexpectedly?", "vi": "Trong tháng vừa qua, bạn có thường bực bội, khó chịu vì một chuyện xảy ra ngoài dự tính không?" },
+        { "code": "PSS2", "en": "In the last month, how often have you felt that you were unable to control the important things in your life?", "vi": "Trong tháng vừa qua, bạn có thường cảm thấy mình không kiểm soát được những việc quan trọng trong cuộc sống không?" },
+        { "code": "PSS3", "en": "In the last month, how often have you felt nervous and \"stressed\"?", "vi": "Trong tháng vừa qua, bạn có thường cảm thấy bồn chồn và \"căng thẳng\" không?" },
+        { "code": "PSS4", "en": "In the last month, how often have you felt confident about your ability to handle your personal problems?", "vi": "Trong tháng vừa qua, bạn có thường cảm thấy tự tin vào khả năng giải quyết các vấn đề cá nhân của mình không?", "reverse": true },
+        { "code": "PSS5", "en": "In the last month, how often have you felt that things were going your way?", "vi": "Trong tháng vừa qua, bạn có thường cảm thấy mọi việc diễn ra theo ý mình không?", "reverse": true },
+        { "code": "PSS6", "en": "In the last month, how often have you found that you could not cope with all the things that you had to do?", "vi": "Trong tháng vừa qua, bạn có thường thấy mình không thể xoay xở hết những việc phải làm không?" },
+        { "code": "PSS7", "en": "In the last month, how often have you been able to control irritations in your life?", "vi": "Trong tháng vừa qua, bạn có thường kiểm soát được những điều gây bực mình trong cuộc sống không?", "reverse": true },
+        { "code": "PSS8", "en": "In the last month, how often have you felt that you were on top of things?", "vi": "Trong tháng vừa qua, bạn có thường cảm thấy mình làm chủ được mọi việc không?", "reverse": true },
+        { "code": "PSS9", "en": "In the last month, how often have you been angered because of things that were outside of your control?", "vi": "Trong tháng vừa qua, bạn có thường nổi giận vì những việc nằm ngoài tầm kiểm soát của mình không?" },
+        { "code": "PSS10", "en": "In the last month, how often have you felt difficulties were piling up so high that you could not overcome them?", "vi": "Trong tháng vừa qua, bạn có thường cảm thấy khó khăn chồng chất tới mức mình không thể vượt qua không?" }
+      ]
+    }
+  ],
+  "usage": [
+    "Nhớ đảo điểm PSS4, PSS5, PSS7, PSS8 trước khi tính Cronbach's alpha và điểm tổng; quên bước này là lỗi phổ biến nhất, làm alpha thấp bất thường hoặc âm.",
+    "Giữ đúng thang tần suất 0–4 và khung thời gian 'trong tháng vừa qua'; đổi sang thang đồng ý 1–5 làm mất khả năng so sánh với các nghiên cứu khác.",
+    "Nhiều nghiên cứu thấy EFA tách 4 câu tích cực và 6 câu tiêu cực thành hai nhân tố (bất lực cảm nhận và tự tin ứng phó); hãy báo cáo cấu trúc tìm được thay vì ép thành một nhân tố.",
+    "Các mốc 0–13 thấp, 14–26 trung bình, 27–40 cao hay thấy trên mạng không phải do Cohen công bố; nếu dùng phải ghi rõ nguồn và chỉ coi là mô tả, không phải chẩn đoán.",
+    "Bản dịch sang ngôn ngữ khác thuộc sở hữu trí tuệ của người dịch theo phòng thí nghiệm của Cohen; nếu dùng một bản tiếng Việt đã công bố, trích dẫn và xin phép người dịch."
+  ],
+  "sampleSize": {
+    "note": "PSS-10 là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; nếu so sánh nhóm (giới tính, năm học) thì mỗi nhóm cũng nên đủ cỡ này."
+  },
+  "license": "Phòng thí nghiệm của Sheldon Cohen (Carnegie Mellon University) yêu cầu gửi đề nghị sử dụng PSS qua nền tảng ePROVIDE của Mapi Research Trust; việc gửi đề nghị miễn phí và không ràng buộc mua bảng hỏi. Bản dịch thuộc quyền của người dịch, cần xin phép người dịch.",
+  "references": [
+    "Cohen, S., Kamarck, T., &amp; Mermelstein, R. (1983). A global measure of perceived stress. <em>Journal of Health and Social Behavior, 24</em>(4), 385–396. https://doi.org/10.2307/2136404",
+    "Cohen, S., &amp; Williamson, G. (1988). Perceived stress in a probability sample of the United States. In S. Spacapan &amp; S. Oskamp (Eds.), <em>The social psychology of health</em>. Sage."
+  ],
+  "verifiedFrom": [
+    "https://www.cmu.edu/dietrich/psychology/stress-immunity-disease-lab/scales/html/pss.html",
+    "https://www.cmu.edu/dietrich/psychology/stress-immunity-disease-lab/scales/.doc/pss_scoring_and_information.doc",
+    "https://www.cmu.edu/dietrich/psychology/stress-immunity-disease-lab/scales/index.html",
+    "https://www.cmu.edu/common-cold-project/measures-by-study/psychological-and-social-constructs/stress-measures/perceived-stress.html"
+  ],
+  "related": ["chanh-niem-maas", "hai-long-cuoc-song-swls", "tu-hieu-qua-gse"]
+}

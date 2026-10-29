@@ -1,0 +1,71 @@
+{
+  "title": "Thang đo gắn kết công việc UWES-9 tiếng Việt: Schaufeli (2006)",
+  "description": "Thang đo gắn kết công việc UWES-9 dịch sẵn tiếng Việt: sức sống, cống hiến, say mê. Có bản gốc, thang tần suất 0–6, điều kiện sử dụng và trích dẫn.",
+  "name": "UWES-9",
+  "fullName": "Thang đo gắn kết công việc Utrecht, bản rút gọn 9 biến (Utrecht Work Engagement Scale)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo gắn kết công việc UWES",
+  "intro": "UWES đo gắn kết công việc (work engagement), một trạng thái tích cực gồm ba mặt: sức sống (vigor), cống hiến (dedication) và say mê (absorption). Schaufeli và Bakker xây dựng bản 17 biến, sau đó Schaufeli, Bakker và Salanova (2006) rút gọn còn 9 biến, mỗi mặt 3 biến, và kiểm định trên dữ liệu 10 quốc gia. Bản 9 biến ngắn nên hay được dùng trong khảo sát nhân viên. Ở Việt Nam, UWES-9 hợp với đề tài về lãnh đạo, nguồn lực công việc, kiệt sức và hiệu quả làm việc của nhân viên y tế, giáo viên, nhân viên ngân hàng.",
+  "responseScale": "Thang tần suất 7 mức từ 0 đến 6: 0 = Không bao giờ, 1 = Hầu như không (vài lần một năm hoặc ít hơn), 2 = Hiếm khi (một lần một tháng hoặc ít hơn), 3 = Thỉnh thoảng (vài lần một tháng), 4 = Thường xuyên (một lần một tuần), 5 = Rất thường xuyên (vài lần một tuần), 6 = Luôn luôn (hằng ngày). Điểm mỗi mặt là trung bình 3 biến.",
+  "constructs": [
+    {
+      "code": "VI",
+      "nameVi": "Sức sống",
+      "nameEn": "Vigor",
+      "definition": "Mức năng lượng và sự bền bỉ về tinh thần khi làm việc, sẵn lòng bỏ công sức kể cả khi gặp khó khăn.",
+      "source": "Schaufeli, Bakker & Salanova (2006), UWES-9, 3 biến.",
+      "items": [
+        { "code": "VI1", "en": "At my work, I feel bursting with energy.", "vi": "Ở nơi làm việc, tôi thấy mình tràn đầy năng lượng." },
+        { "code": "VI2", "en": "At my job, I feel strong and vigorous.", "vi": "Khi làm việc, tôi thấy mình khoẻ khoắn và sung sức." },
+        { "code": "VI3", "en": "When I get up in the morning, I feel like going to work.", "vi": "Sáng thức dậy, tôi thấy muốn đi làm." }
+      ]
+    },
+    {
+      "code": "DE",
+      "nameVi": "Cống hiến",
+      "nameEn": "Dedication",
+      "definition": "Mức một người thấy công việc có ý nghĩa, hào hứng, tự hào và được truyền cảm hứng từ công việc.",
+      "source": "Schaufeli, Bakker & Salanova (2006), UWES-9, 3 biến.",
+      "items": [
+        { "code": "DE1", "en": "I am enthusiastic about my job.", "vi": "Tôi hào hứng với công việc của mình." },
+        { "code": "DE2", "en": "My job inspires me.", "vi": "Công việc truyền cảm hứng cho tôi." },
+        { "code": "DE3", "en": "I am proud of the work that I do.", "vi": "Tôi tự hào về công việc mình làm." }
+      ]
+    },
+    {
+      "code": "AB",
+      "nameVi": "Say mê",
+      "nameEn": "Absorption",
+      "definition": "Mức một người tập trung trọn vẹn và đắm mình vào công việc, thấy thời gian trôi nhanh.",
+      "source": "Schaufeli, Bakker & Salanova (2006), UWES-9, 3 biến.",
+      "items": [
+        { "code": "AB1", "en": "I feel happy when I am working intensely.", "vi": "Tôi thấy vui khi làm việc tập trung cao độ." },
+        { "code": "AB2", "en": "I am immersed in my work.", "vi": "Tôi đắm mình vào công việc." },
+        { "code": "AB3", "en": "I get carried away when I'm working.", "vi": "Tôi bị cuốn đi khi đang làm việc." }
+      ]
+    }
+  ],
+  "usage": [
+    "Giữ thang tần suất 0–6 như bản gốc nếu muốn so với chuẩn (norms) trong sổ tay UWES; đổi sang Likert đồng ý 5 mức thì không so được với chuẩn và phải ghi rõ trong luận văn.",
+    "Trên bảng hỏi gốc, thứ tự câu là VI1, VI2, DE1, DE2, VI3, AB1, DE3, AB2, AB3, và tên bảng hỏi là 'Work & Well-being Survey' để tránh người trả lời đoán chủ đề; nên giữ như vậy.",
+    "Ba mặt tương quan rất cao; nhiều nghiên cứu dùng điểm tổng 9 biến. Chạy CFA so sánh mô hình 1 nhân tố và 3 nhân tố rồi chọn theo dữ liệu và lý thuyết.",
+    "'Carried away' (AB3) và 'immersed' (AB2) dễ dịch thành nghĩa tiêu cực hoặc quá văn chương; nên phỏng vấn thử vài người để chắc họ hiểu là bị cuốn vào công việc theo hướng tích cực.",
+    "Bản dành cho sinh viên (UWES-S) có câu chữ khác; nếu khảo sát sinh viên thì dùng bản đó thay vì tự sửa từ 'công việc' thành 'học tập'."
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu gắn kết công việc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Theo trang của Wilmar Schaufeli, UWES được dùng miễn phí cho mục đích học thuật phi thương mại (luận án, bài báo khoa học); mục đích khác cần ký hợp đồng với tác giả. Người dùng đồng ý chia sẻ một phần dữ liệu (điểm thô, tuổi, giới tính, nghề nghiệp) với tác giả để kiểm định thang đo.",
+  "references": [
+    "Schaufeli, W. B., Bakker, A. B., &amp; Salanova, M. (2006). The measurement of work engagement with a short questionnaire: A cross-national study. <em>Educational and Psychological Measurement, 66</em>(4), 701–716. https://doi.org/10.1177/0013164405282471",
+    "Schaufeli, W., &amp; Bakker, A. (2004). <em>Utrecht Work Engagement Scale: Preliminary manual</em> (Version 1.1). Occupational Health Psychology Unit, Utrecht University."
+  ],
+  "verifiedFrom": [
+    "https://www.wilmarschaufeli.nl/publications/Schaufeli/Tests/UWES_GB_9.pdf",
+    "https://www.wilmarschaufeli.nl/publications/Schaufeli/Test%20Manuals/Test_manual_UWES_English.pdf",
+    "https://www.wilmarschaufeli.nl/downloads/",
+    "https://www.wilmarschaufeli.nl/tests/",
+    "https://api.crossref.org/works/10.1177/0013164405282471"
+  ],
+  "related": ["hai-long-cong-viec", "ho-tro-to-chuc-pos", "cam-ket-to-chuc-ocq"]
+}

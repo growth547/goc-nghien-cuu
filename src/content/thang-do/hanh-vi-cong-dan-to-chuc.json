@@ -1,11 +1,11 @@
 {
-  "title": "Thang đo hành vi công dân tổ chức OCB: Lee & Allen (2002)",
+  "title": "Thang đo hành vi công dân tổ chức OCB tiếng Việt: Lee & Allen (2002)",
   "description": "Thang đo hành vi công dân tổ chức OCB của Lee và Allen (2002) dịch sẵn tiếng Việt: OCB hướng tới cá nhân và OCB hướng tới tổ chức, có bản gốc và trích dẫn.",
   "name": "OCB",
   "fullName": "Hành vi công dân tổ chức (Organizational Citizenship Behavior)",
   "field": "Quản trị nhân sự & tổ chức",
   "keyword": "thang đo hành vi công dân tổ chức",
-  "intro": "Hành vi công dân tổ chức là những việc người lao động tự nguyện làm ngoài phần việc được giao, có lợi cho đồng nghiệp hoặc cho tổ chức. Lee và Allen (2002) xây dựng bộ 16 biến theo cách chia của Williams và Anderson (1991): OCBI hướng tới cá nhân và OCBO hướng tới tổ chức, mỗi nhóm 8 biến, và chọn câu chữ sao cho không trùng với hành vi lệch chuẩn. Trang này trình bày 15 biến đã đối chiếu được nguyên văn. Ở Việt Nam, thang hay dùng làm biến kết quả trong đề tài về lãnh đạo, hỗ trợ tổ chức, cam kết, gắn kết công việc.",
+  "intro": "Hành vi công dân tổ chức là những việc người lao động tự nguyện làm ngoài phần việc được giao, có lợi cho đồng nghiệp hoặc cho tổ chức. Lee và Allen (2002) xây dựng bộ 16 biến theo cách chia của Williams và Anderson (1991): OCBI hướng tới cá nhân và OCBO hướng tới tổ chức, mỗi nhóm 8 biến, và chọn câu chữ sao cho không trùng với hành vi lệch chuẩn. Trang này trình bày đủ 16 biến. Ở Việt Nam, thang hay dùng làm biến kết quả trong đề tài về lãnh đạo, hỗ trợ tổ chức, cam kết, gắn kết công việc.",
   "responseScale": "Thang tần suất 7 mức (1 = Không bao giờ … 7 = Luôn luôn); người trả lời cho biết mình thường làm mỗi việc ở mức nào. Một số nghiên cứu sau đổi sang thang đồng ý 5 hoặc 7 mức; nếu đổi, ghi rõ trong phần phương pháp.",
   "responseScaleShort": "Tần suất 1–7",
   "constructs": [
@@ -14,12 +14,12 @@
       "nameVi": "Hành vi công dân hướng tới cá nhân",
       "nameEn": "OCB directed at individuals (OCBI)",
       "definition": "Những hành vi tự nguyện giúp ích trực tiếp cho đồng nghiệp cụ thể, qua đó gián tiếp có lợi cho tổ chức.",
-      "source": "Lee & Allen (2002), 7 trên 8 biến OCBI; biến thứ tám (chia sẻ đồ dùng cá nhân để giúp đồng nghiệp làm việc) chưa đối chiếu được nguyên văn nên không đưa vào.",
+      "source": "Lee & Allen (2002), 8 biến. OCBI1–OCBI7 theo câu chữ gốc dạng mệnh lệnh; OCBI8 lấy nguyên văn từ bảng thang đo của Sun, Luo & Zhao (2026), nơi các câu được viết ở ngôi thứ nhất ('I share…').",
       "items": [
         {
           "code": "OCBI1",
           "en": "Help others who have been absent.",
-          "vi": "Tôi giúp đỡ những đồng nghiệp đã nghỉ vắng."
+          "vi": "Tôi giúp đỡ (làm thay) phần việc của đồng nghiệp vắng mặt."
         },
         {
           "code": "OCBI2",
@@ -50,6 +50,11 @@
           "code": "OCBI7",
           "en": "Assist others with their duties.",
           "vi": "Tôi hỗ trợ đồng nghiệp làm phần việc của họ."
+        },
+        {
+          "code": "OCBI8",
+          "en": "I share personal property with others to help their work.",
+          "vi": "Tôi chia sẻ đồ dùng cá nhân với đồng nghiệp để giúp họ làm việc."
         }
       ]
     },
@@ -105,7 +110,7 @@
   ],
   "usage": [
     "Bản gốc là câu mệnh lệnh đi sau câu hỏi chung 'Bạn có thường xuyên…'; khi dịch nên đưa về ngôi thứ nhất ('Tôi…') hoặc giữ câu hỏi dẫn chung, nhưng thống nhất cho mọi biến.",
-    "Lee và Allen (2002) có 8 biến OCBI; biến thứ tám nói về việc chia sẻ đồ dùng cá nhân để giúp đồng nghiệp làm việc. Nếu muốn đủ 16 biến, lấy nguyên văn từ phụ lục bài gốc và ghi rõ nguồn.",
+    "OCBI8 viết ở ngôi thứ nhất vì nguồn đối chiếu được viết như vậy; khi đưa vào bảng hỏi, viết cả 16 câu theo cùng một ngôi ('Tôi …') và giữ nguyên ý.",
     "OCB tự đánh giá dễ bị thiên lệch mong muốn xã hội; nếu có thể, cho quản lý hoặc đồng nghiệp đánh giá, khi đó đổi chủ ngữ thành '[Nhân viên]'.",
     "Chạy CFA hai nhân tố OCBI và OCBO và so với mô hình một nhân tố; hai nhóm thường tương quan cao nên cần kiểm tra giá trị phân biệt (HTMT, Fornell-Larcker).",
     "Đừng gộp chung với thang hiệu quả công việc trong vai trò; Williams và Anderson (1991) tách rõ hành vi trong vai trò và hành vi công dân."
@@ -116,6 +121,7 @@
   "license": "Các biến được công bố trong bài báo gốc trên Journal of Applied Psychology và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
   "references": [
     "Lee, K., &amp; Allen, N. J. (2002). Organizational citizenship behavior and workplace deviance: The role of affect and cognitions. <em>Journal of Applied Psychology, 87</em>(1), 131–142. https://doi.org/10.1037/0021-9010.87.1.131",
+    "Sun, M., Luo, L. T., &amp; Zhao, D. N. (2026). The contingency effects of abusive supervision of coworker on helping behaviors: The relationships among the perpetrator, the victim, and the third party. <em>Frontiers in Psychology, 17</em>, Article 1755436. https://doi.org/10.3389/fpsyg.2026.1755436",
     "Williams, L. J., &amp; Anderson, S. E. (1991). Job satisfaction and organizational commitment as predictors of organizational citizenship and in-role behaviors. <em>Journal of Management, 17</em>(3), 601–617. https://doi.org/10.1177/014920639101700305"
   ],
   "verifiedFrom": [
@@ -126,7 +132,9 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8356080/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8403081/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7345164/fullTextXML",
-    "https://api.crossref.org/works/10.1037/0021-9010.87.1.131"
+    "https://api.crossref.org/works/10.1037/0021-9010.87.1.131",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12953142/fullTextXML",
+    "https://api.crossref.org/works/10.3389/fpsyg.2026.1755436"
   ],
   "related": [
     "ho-tro-to-chuc-pos",

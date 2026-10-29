@@ -40,12 +40,14 @@
   },
   "license": "Theo tài liệu FAQ của tác giả, không cần xin phép riêng: Schwarzer và Jerusalem cho phép dùng và sao chép thang GSE cho nghiên cứu, với điều kiện ghi rõ nguồn trong bài viết.",
   "references": [
+    "Chen, G., Gully, S. M., &amp; Eden, D. (2001). Validation of a new general self-efficacy scale. <em>Organizational Research Methods, 4</em>(1), 62–83. https://doi.org/10.1177/109442810141004",
     "Schwarzer, R., &amp; Jerusalem, M. (1995). Generalized Self-Efficacy scale. In J. Weinman, S. Wright, &amp; M. Johnston (Eds.), <em>Measures in health psychology: A user's portfolio. Causal and control beliefs</em> (pp. 35–37). NFER-NELSON."
   ],
   "verifiedFrom": [
     "https://userpage.fu-berlin.de/~health/engscal.htm",
     "https://userpage.fu-berlin.de/~health/faq_gse.pdf",
-    "http://userpage.fu-berlin.de/~health/selfscal.htm"
+    "http://userpage.fu-berlin.de/~health/selfscal.htm",
+    "https://api.crossref.org/works/10.1177/109442810141004"
   ],
   "related": ["tu-trong-rosenberg", "cang-thang-pss-10", "gan-ket-cong-viec-uwes", "dong-luc-hoc-tap-mslq"]
 }

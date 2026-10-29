@@ -15,7 +15,7 @@
       "nameVi": "Xu hướng mua hàng ngẫu hứng",
       "nameEn": "Buying Impulsiveness",
       "definition": "Khuynh hướng của người tiêu dùng mua một cách tự phát, thiếu cân nhắc và ngay lập tức.",
-      "source": "Rook & Fisher (1995), 9 biến. Nguyên văn đối chiếu qua các nghiên cứu trích lại thang gốc (Fenton-O'Creevy & Furnham, 2022; các bài trên PubMed Central), không qua bản PDF gốc.",
+      "source": "Rook & Fisher (1995), 9 biến. Nguyên văn đối chiếu qua các nghiên cứu trích lại thang gốc (Fenton-O'Creevy & Furnham, 2022; Li và cộng sự, 2022; Einarsson và cộng sự, 2024; Gong và cộng sự, 2024), không qua bản PDF gốc.",
       "items": [
         {
           "code": "BI1",
@@ -78,8 +78,11 @@
   },
   "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
   "references": [
-    "Rook, D. W., &amp; Fisher, R. J. (1995). Normative influences on impulsive buying behavior. <em>Journal of Consumer Research, 22</em>(3), 305–313. https://doi.org/10.1086/209452",
-    "Fenton-O'Creevy, M., &amp; Furnham, A. (2022). Money attitudes, financial capabilities, and impulsiveness as predictors of wealth accumulation. <em>PLOS ONE</em>. https://doi.org/10.1371/journal.pone.0278047"
+    "Einarsson, S. B., Sigurðsson, B. H., Kjartansdóttir, S. H., Magnússon, P., &amp; Sigurðsson, J. F. (2024). Impulsive buying and deferment of gratification among adults with ADHD. <em>Clinical Psychology in Europe, 6</em>(3), Article e9339. https://doi.org/10.32872/cpe.9339",
+    "Fenton-O'Creevy, M., &amp; Furnham, A. (2022). Money attitudes, financial capabilities, and impulsiveness as predictors of wealth accumulation. <em>PLOS ONE</em>. https://doi.org/10.1371/journal.pone.0278047",
+    "Gong, X., Yee, C. L., Lee, S. Y., Saif, A. N. M., Liu, M., &amp; Anonthi, F. (2024). Unveiling the enigma of blind box impulse buying curiosity: The moderating role of price consciousness. <em>Heliyon, 10</em>(24), Article e40564. https://doi.org/10.1016/j.heliyon.2024.e40564",
+    "Li, H. X., Hassan, K., Malik, H. A., Anuar, M. M., Khan, T. I., &amp; Yaacob, M. R. (2022). Impulsive and compulsive buying tendencies and consumer resistance to digital innovations: The moderating role of perceived threat of COVID-19. <em>Frontiers in Psychology, 13</em>, Article 912051. https://doi.org/10.3389/fpsyg.2022.912051",
+    "Rook, D. W., &amp; Fisher, R. J. (1995). Normative influences on impulsive buying behavior. <em>Journal of Consumer Research, 22</em>(3), 305–313. https://doi.org/10.1086/209452"
   ],
   "verifiedFrom": [
     "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0278047",

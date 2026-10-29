@@ -14,7 +14,7 @@
       "nameVi": "Lãnh đạo phục vụ",
       "nameEn": "Servant Leadership",
       "definition": "Mức độ người quản lý trực tiếp đặt sự phát triển và lợi ích của cấp dưới lên trước, trao quyền, quan tâm tới cộng đồng và hành xử có đạo đức.",
-      "source": "Liden và cộng sự (2015), 7 biến; câu chữ đối chiếu theo phụ lục của Wang, Kang & Choi (2021), nơi chủ ngữ là 'My supervisor'.",
+      "source": "Liden và cộng sự (2015), 7 biến; câu chữ đối chiếu theo phụ lục của Wang, Kang & Choi (2022), nơi chủ ngữ là 'My supervisor'.",
       "items": [
         { "code": "SL1", "en": "My supervisor can tell if something work-related is going wrong", "vi": "Quản lý của tôi nhận ra khi có vấn đề trong công việc." },
         { "code": "SL2", "en": "My supervisor makes my career development a priority", "vi": "Quản lý của tôi coi việc phát triển sự nghiệp của tôi là ưu tiên." },
@@ -37,14 +37,16 @@
   },
   "license": "Các biến được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Không tìm thấy điều kiện mua bản quyền; khi dùng, trích dẫn Liden và cộng sự (2015).",
   "references": [
-    "Liden, R. C., Wayne, S. J., Meuser, J. D., Hu, J., Wu, J., &amp; Liao, C. (2015). Servant leadership: Validation of a short form of the SL-28. <em>The Leadership Quarterly, 26</em>(2), 254–269. https://doi.org/10.1016/j.leaqua.2014.12.002"
+    "Liden, R. C., Wayne, S. J., Meuser, J. D., Hu, J., Wu, J., &amp; Liao, C. (2015). Servant leadership: Validation of a short form of the SL-28. <em>The Leadership Quarterly, 26</em>(2), 254–269. https://doi.org/10.1016/j.leaqua.2014.12.002",
+    "Wang, W., Kang, S. W., &amp; Choi, S. B. (2022). Servant leadership and creativity: A study of the sequential mediating roles of psychological safety and employee well-being. <em>Frontiers in Psychology, 12</em>, Article 807070. https://doi.org/10.3389/fpsyg.2021.807070"
   ],
   "verifiedFrom": [
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8854215/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9858640/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11317245/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7084789/fullTextXML",
-    "https://api.crossref.org/works/10.1016/j.leaqua.2014.12.002"
+    "https://api.crossref.org/works/10.1016/j.leaqua.2014.12.002",
+    "https://api.crossref.org/works/10.3389/fpsyg.2021.807070"
   ],
   "related": ["lanh-dao-chuyen-doi-glts", "gan-ket-cong-viec-uwes", "ho-tro-to-chuc-pos", "trao-quyen-tam-ly"]
 }

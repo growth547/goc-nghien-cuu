@@ -6,7 +6,7 @@
   "field": "Quản trị nhân sự & tổ chức",
   "keyword": "thang đo hài lòng công việc",
   "intro": "Thang đo này đo mức hài lòng chung của người lao động với công việc, không tách theo khía cạnh như lương, đồng nghiệp hay cấp trên. Ba biến thuộc bộ Michigan Organizational Assessment Questionnaire do nhóm Quality of Work của Đại học Michigan phát triển giữa thập niên 1970, thường trích theo Cammann, Fichman, Jenkins và Klesh (1979, 1983). Bowling và Hammond (2008) tổng hợp hơn 70 nghiên cứu và xác nhận thang có giá trị cấu trúc tốt. Ở Việt Nam, thang hợp với đề tài về hài lòng, gắn kết và ý định nghỉ việc của nhân viên ngân hàng, giáo viên, điều dưỡng, nhân viên văn phòng.",
-  "responseScale": "Likert đồng ý. Bộ MOAQ năm 1975 dùng thang 7 mức; bản do Paul Spector lưu trữ dùng 6 mức (1 = Rất không đồng ý … 6 = Rất đồng ý). Nhiều nghiên cứu sau dùng 5 hoặc 7 mức; cộng hoặc lấy trung bình 3 biến sau khi đảo chiều JS2.",
+  "responseScale": "Likert đồng ý. Bộ MOAQ năm 1975 dùng thang 7 mức; bản trong kho thang đo của Paul Spector (Spector, n.d.) dùng 6 mức (1 = Rất không đồng ý … 6 = Rất đồng ý). Nhiều nghiên cứu sau dùng 5 hoặc 7 mức; cộng hoặc lấy trung bình 3 biến sau khi đảo chiều JS2.",
   "responseScaleShort": "Likert 6–7 mức",
   "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–6: điểm mới = 1 + 6 − điểm = 7 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
@@ -34,9 +34,10 @@
   },
   "license": "Các biến được công bố trong tài liệu MOAQ và bài báo học thuật, và được Paul Spector lưu trữ trong mục thang đo trên trang của ông; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Cammann và cộng sự.",
   "references": [
-    "Cammann, C., Fichman, M., Jenkins, D., &amp; Klesh, J. (1979). <em>The Michigan Organizational Assessment Questionnaire</em> [Unpublished manuscript]. University of Michigan.",
+    "Bowling, N. A., &amp; Hammond, G. D. (2008). A meta-analytic examination of the construct validity of the Michigan Organizational Assessment Questionnaire Job Satisfaction Subscale. <em>Journal of Vocational Behavior, 73</em>(1), 63–77. https://doi.org/10.1016/j.jvb.2008.01.004",
+    "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1979). <em>The Michigan Organizational Assessment Questionnaire</em> [Unpublished manuscript]. University of Michigan.",
     "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1983). Assessing the attitudes and perceptions of organizational members. In S. E. Seashore, E. E. Lawler, P. H. Mirvis, &amp; C. Cammann (Eds.), <em>Assessing organizational change: A guide to methods, measures, and practices</em>. Wiley.",
-    "Bowling, N. A., &amp; Hammond, G. D. (2008). A meta-analytic examination of the construct validity of the Michigan Organizational Assessment Questionnaire Job Satisfaction Subscale. <em>Journal of Vocational Behavior, 73</em>(1), 63–77. https://doi.org/10.1016/j.jvb.2008.01.004"
+    "Spector, P. E. (n.d.). <em>Michigan Organizational Assessment Questionnaire (MOAQ)</em> [Assessment archive]. Retrieved October 30, 2026, from https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/"
   ],
   "verifiedFrom": [
     "https://paulspector.com/assessment-files/other/moaq-job-satisfaction.docx",

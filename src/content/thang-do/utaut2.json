@@ -168,7 +168,7 @@
       "nameVi": "Thói quen",
       "nameEn": "Habit",
       "definition": "Mức độ người tiêu dùng có xu hướng thực hiện hành vi một cách tự động do đã học được từ trước.",
-      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến giữ lại (HT4 bị loại trong bài gốc), điều chỉnh từ Limayem và Hirt (2003).",
+      "source": "Venkatesh và cộng sự (2012), Phụ lục, 3 biến giữ lại (HT4 bị loại trong bài gốc), điều chỉnh từ Limayem & Hirt (2003).",
       "items": [
         {
           "code": "HT1",
@@ -264,11 +264,18 @@
   },
   "license": "Các biến quan sát được công bố trong Phụ lục của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
   "references": [
-    "Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412",
-    "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540"
+    "Dodds, W. B., Monroe, K. B., &amp; Grewal, D. (1991). Effects of price, brand, and store information on buyers' product evaluations. <em>Journal of Marketing Research, 28</em>(3), 307–319. https://doi.org/10.1177/002224379102800305",
+    "Kim, S. S., Malhotra, N. K., &amp; Narasimhan, S. (2005). Two competing perspectives on automatic use: A theoretical and empirical comparison. <em>Information Systems Research, 16</em>(4), 418–432. https://doi.org/10.1287/isre.1050.0070",
+    "Limayem, M., &amp; Hirt, S. G. (2003). Force of habit and information systems usage: Theory and initial validation. <em>Journal of the Association for Information Systems, 4</em>(1), 65–97. https://doi.org/10.17705/1jais.00030",
+    "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540",
+    "Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412"
   ],
   "verifiedFrom": [
-    "https://moodle2.units.it/pluginfile.php/427815/mod_resource/content/1/consumer%20acceptance%20of%20technologies_Venkatesh%202012.pdf"
+    "https://moodle2.units.it/pluginfile.php/427815/mod_resource/content/1/consumer%20acceptance%20of%20technologies_Venkatesh%202012.pdf",
+    "https://api.crossref.org/works/10.2307/41410412",
+    "https://api.crossref.org/works/10.1287/isre.1050.0070",
+    "https://api.crossref.org/works/10.1177/002224379102800305",
+    "https://api.crossref.org/works/10.17705/1jais.00030"
   ],
   "related": [
     "utaut",

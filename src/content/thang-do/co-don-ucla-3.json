@@ -1,5 +1,5 @@
 {
-  "title": "Thang đo cô đơn 3 biến tiếng Việt: Hughes và cộng sự (2004)",
+  "title": "Thang đo cô đơn UCLA 3 biến tiếng Việt: Hughes và cộng sự (2004)",
   "description": "Thang đo cô đơn 3 biến rút từ UCLA của Hughes và cộng sự dịch sẵn tiếng Việt: thiếu bầu bạn, bị gạt ra ngoài, bị cô lập; thang tần suất 3 mức, điểm 3–9.",
   "name": "Thang đo cô đơn 3 biến",
   "fullName": "Thang đo cô đơn 3 biến (Three-Item Loneliness Scale)",
@@ -34,10 +34,12 @@
   },
   "license": "Ba câu hỏi được công bố trong bài báo của Hughes và cộng sự (2004), bản toàn văn đọc miễn phí trên PubMed Central. Bài không nêu điều kiện sử dụng riêng; khi dùng cho nghiên cứu, trích dẫn bài gốc.",
   "references": [
-    "Hughes, M. E., Waite, L. J., Hawkley, L. C., &amp; Cacioppo, J. T. (2004). A short scale for measuring loneliness in large surveys: Results from two population-based studies. <em>Research on Aging, 26</em>(6), 655–672. https://doi.org/10.1177/0164027504268574"
+    "Hughes, M. E., Waite, L. J., Hawkley, L. C., &amp; Cacioppo, J. T. (2004). A short scale for measuring loneliness in large surveys: Results from two population-based studies. <em>Research on Aging, 26</em>(6), 655–672. https://doi.org/10.1177/0164027504268574",
+    "Russell, D., Peplau, L. A., &amp; Cutrona, C. E. (1980). The revised UCLA Loneliness Scale: Concurrent and discriminant validity evidence. <em>Journal of Personality and Social Psychology, 39</em>(3), 472–480. https://doi.org/10.1037/0022-3514.39.3.472"
   ],
   "verifiedFrom": [
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC2394670/"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC2394670/",
+    "https://api.crossref.org/works/10.1037/0022-3514.39.3.472"
   ],
   "related": ["ho-tro-xa-hoi-mspss", "hai-long-cuoc-song-swls", "dass-21"]
 }

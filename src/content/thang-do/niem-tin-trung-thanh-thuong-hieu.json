@@ -1,5 +1,5 @@
 {
-  "title": "Thang đo niềm tin và trung thành thương hiệu: Chaudhuri & Holbrook",
+  "title": "Thang đo niềm tin thương hiệu và trung thành: Chaudhuri & Holbrook",
   "description": "Thang đo niềm tin thương hiệu, cảm xúc thương hiệu, trung thành hành vi và trung thành thái độ của Chaudhuri và Holbrook (2001) dịch sẵn tiếng Việt, có bản gốc.",
   "name": "Brand Trust, Brand Affect & Brand Loyalty",
   "fullName": "Niềm tin thương hiệu, cảm xúc thương hiệu và lòng trung thành thương hiệu (Chaudhuri & Holbrook, 2001)",
@@ -113,11 +113,13 @@
   },
   "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
   "references": [
-    "Chaudhuri, A., &amp; Holbrook, M. B. (2001). The chain of effects from brand trust and brand affect to brand performance: The role of brand loyalty. <em>Journal of Marketing, 65</em>(2), 81–93. https://doi.org/10.1509/jmkg.65.2.81.18255"
+    "Chaudhuri, A., &amp; Holbrook, M. B. (2001). The chain of effects from brand trust and brand affect to brand performance: The role of brand loyalty. <em>Journal of Marketing, 65</em>(2), 81–93. https://doi.org/10.1509/jmkg.65.2.81.18255",
+    "Yoo, B., &amp; Donthu, N. (2001). Developing and validating a multidimensional consumer-based brand equity scale. <em>Journal of Business Research, 52</em>(1), 1–14. https://doi.org/10.1016/S0148-2963(99)00098-3"
   ],
   "verifiedFrom": [
     "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf",
-    "https://api.crossref.org/works/10.1509/jmkg.65.2.81.18255"
+    "https://api.crossref.org/works/10.1509/jmkg.65.2.81.18255",
+    "https://api.crossref.org/works/10.1016/S0148-2963(99)00098-3"
   ],
   "related": [
     "tai-san-thuong-hieu",

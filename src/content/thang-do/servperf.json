@@ -187,6 +187,7 @@
   "license": "Các biến quan sát là phần cảm nhận của SERVQUAL, công bố trong phụ lục bài báo gốc năm 1988 và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn cả Cronin & Taylor (1992) và Parasuraman và cộng sự (1988); chúng tôi không tìm thấy điều kiện cấp phép riêng.",
   "references": [
     "Cronin, J. J., &amp; Taylor, S. A. (1992). Measuring service quality: A reexamination and extension. <em>Journal of Marketing, 56</em>(3), 55–68. https://doi.org/10.1177/002224299205600304",
+    "Parasuraman, A., Berry, L. L., &amp; Zeithaml, V. A. (1991). Refinement and reassessment of the SERVQUAL scale. <em>Journal of Retailing, 67</em>(4), 420–450.",
     "Parasuraman, A., Zeithaml, V. A., &amp; Berry, L. L. (1988). SERVQUAL: A multiple-item scale for measuring consumer perceptions of service quality. <em>Journal of Retailing, 64</em>(1), 12–40."
   ],
   "verifiedFrom": [

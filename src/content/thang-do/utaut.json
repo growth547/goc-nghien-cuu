@@ -165,8 +165,9 @@
   },
   "license": "Các biến quan sát được công bố trong Bảng 16 của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
   "references": [
+    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003. https://doi.org/10.1287/mnsc.35.8.982",
     "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540",
-    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003."
+    "Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412"
   ],
   "verifiedFrom": [
     "https://eclass.hmu.gr/modules/document/file.php/DSH314/006%20%CE%97%CE%B3%CE%B5%CF%83%CE%AF%CE%B1%20%CE%BA%CE%B1%CE%B9%20%CE%B1%CE%BB%CE%BB%CE%B1%CE%B3%CE%AE%2014%20%CE%99%CE%B1%CE%BD%202026/Venkatesh%202003_UTAUT.pdf",

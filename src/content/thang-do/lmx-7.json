@@ -66,13 +66,15 @@
   },
   "license": "Các câu hỏi được công bố trong phụ lục bài báo gốc trên The Leadership Quarterly và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
   "references": [
-    "Graen, G. B., &amp; Uhl-Bien, M. (1995). Relationship-based approach to leadership: Development of leader-member exchange (LMX) theory of leadership over 25 years: Applying a multi-level multi-domain perspective. <em>The Leadership Quarterly, 6</em>(2), 219–247. https://doi.org/10.1016/1048-9843(95)90036-5"
+    "Graen, G. B., &amp; Uhl-Bien, M. (1995). Relationship-based approach to leadership: Development of leader-member exchange (LMX) theory of leadership over 25 years: Applying a multi-level multi-domain perspective. <em>The Leadership Quarterly, 6</em>(2), 219–247. https://doi.org/10.1016/1048-9843(95)90036-5",
+    "Liden, R. C., &amp; Maslyn, J. M. (1998). Multidimensionality of leader-member exchange: An empirical assessment through scale development. <em>Journal of Management, 24</em>(1), 43–72. https://doi.org/10.1177/014920639802400105"
   ],
   "verifiedFrom": [
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9220262/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9301325/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13050726/fullTextXML",
-    "https://api.crossref.org/works/10.1016/1048-9843(95)90036-5"
+    "https://api.crossref.org/works/10.1016/1048-9843(95)90036-5",
+    "https://api.crossref.org/works/10.1177/014920639802400105"
   ],
   "related": [
     "ho-tro-to-chuc-pos",

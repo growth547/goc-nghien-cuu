@@ -82,7 +82,7 @@
       "nameVi": "Giá trị cảm nhận",
       "nameEn": "Perceived Value",
       "definition": "Đánh giá của người mua về việc sản phẩm có đáng với số tiền phải trả hay không.",
-      "source": "Dodds, Monroe & Grewal (1991, tr. 318), 5 biến; câu chữ đối chiếu qua Li & Green, Journal of Management and Marketing Research.",
+      "source": "Dodds, Monroe & Grewal (1991, tr. 318), 5 biến; câu chữ đối chiếu qua Li & Green (2011).",
       "items": [
         {
           "code": "PV1",
@@ -124,13 +124,15 @@
   },
   "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
   "references": [
+    "Atilgan, K. Ö., Kangal, E. E., &amp; Talaslioglu, M. (2024). Examination of consumers' perceived quality and willingness to buy in the context of price variability and frequency of price change: A study of retail products. <em>Gadjah Mada International Journal of Business, 26</em>(2), 165–183. https://doi.org/10.22146/gamaijb.70674",
     "Dodds, W. B., Monroe, K. B., &amp; Grewal, D. (1991). Effects of price, brand, and store information on buyers' product evaluations. <em>Journal of Marketing Research, 28</em>(3), 307–319. https://doi.org/10.1177/002224379102800305",
-    "Atilgan, K. Ö., Kangal, E. E., &amp; Talaslioglu, M. (2024). Examination of consumers' perceived quality and willingness to buy in the context of price variability and frequency of price change: A study of retail products. <em>Gadjah Mada International Journal of Business, 26</em>(2), 165–183. https://doi.org/10.22146/gamaijb.70674"
+    "Li, M.-L., &amp; Green, R. D. (2011). A mediating influence on customer loyalty: The role of perceived value. <em>Journal of Management and Marketing Research, 7</em>. http://www.aabri.com/manuscripts/10627.pdf"
   ],
   "verifiedFrom": [
     "https://journal.ugm.ac.id/gamaijb/article/download/70674/39120",
     "http://www.aabri.com/manuscripts/10627.pdf",
-    "https://api.crossref.org/works/10.1177/002224379102800305"
+    "https://api.crossref.org/works/10.1177/002224379102800305",
+    "https://www.aabri.com/jmmr.html"
   ],
   "related": [
     "tpb",

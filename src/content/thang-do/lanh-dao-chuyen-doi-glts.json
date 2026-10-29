@@ -1,12 +1,12 @@
 {
-  "title": "Thang đo lãnh đạo chuyển đổi GTL: Carless, Wearing & Mann (2000)",
+  "title": "Thang đo lãnh đạo chuyển đổi GTL tiếng Việt: Carless và cộng sự (2000)",
   "description": "Thang đo lãnh đạo chuyển đổi toàn cục GTL 7 biến của Carless, Wearing và Mann (2000) dịch sẵn tiếng Việt, có bản gốc tiếng Anh, thay thế MLQ phải mua bản quyền.",
   "name": "GTL",
   "fullName": "Thang đo lãnh đạo chuyển đổi toàn cục (Global Transformational Leadership)",
   "field": "Quản trị nhân sự & tổ chức",
   "keyword": "thang đo lãnh đạo chuyển đổi",
   "intro": "GTL do Carless, Wearing và Mann (2000) đề xuất như một thước đo ngắn của lãnh đạo chuyển đổi, gồm 7 hành vi: truyền đạt tầm nhìn, phát triển nhân viên, ghi nhận, khuyến khích tinh thần đồng đội, kích thích tư duy đổi mới, hành động nhất quán với giá trị, và tạo cảm hứng bằng năng lực của chính người lãnh đạo. Mỗi biến đại diện cho một hành vi, và thang đo lãnh đạo chuyển đổi như một khái niệm tổng. GTL hay được chọn thay cho MLQ, bộ phải mua bản quyền. Ở Việt Nam, GTL phù hợp với đề tài về ảnh hưởng của người quản lý tới gắn kết, hài lòng, sáng tạo và cam kết của nhân viên, kể cả trong trường học và bệnh viện.",
-  "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý, theo cách dùng của Hendrikx và cộng sự (1 = Không bao giờ … 5 = Thường xuyên, gần như luôn luôn); nhiều nghiên cứu khác dùng thang đồng ý 5 mức. Nhân viên đánh giá người quản lý trực tiếp; điểm là trung bình 7 biến.",
+  "responseScale": "Thang tần suất 5 mức, không phải Likert đồng ý, theo cách dùng của Hendrikx và cộng sự, 2022 (1 = Không bao giờ … 5 = Thường xuyên, gần như luôn luôn); nhiều nghiên cứu khác dùng thang đồng ý 5 mức. Nhân viên đánh giá người quản lý trực tiếp; điểm là trung bình 7 biến.",
   "responseScaleShort": "Tần suất 1–5",
   "constructs": [
     {
@@ -14,7 +14,7 @@
       "nameVi": "Lãnh đạo chuyển đổi",
       "nameEn": "Transformational Leadership",
       "definition": "Mức độ người lãnh đạo truyền cảm hứng bằng tầm nhìn, quan tâm phát triển từng nhân viên, khuyến khích tư duy mới và làm gương bằng giá trị, năng lực của mình.",
-      "source": "Carless, Wearing & Mann (2000), 7 biến; câu chữ TL1–TL6 theo Kloutsiniotis và cộng sự (chủ ngữ 'My manager'), TL7 theo Saif và cộng sự (chủ ngữ 'My leader').",
+      "source": "Carless, Wearing & Mann (2000), 7 biến; câu chữ TL1–TL6 theo Kloutsiniotis và cộng sự (2022), chủ ngữ 'My manager'; TL7 theo Saif và cộng sự (2024), chủ ngữ 'My leader'.",
       "items": [
         {
           "code": "TL1",
@@ -65,14 +65,20 @@
   },
   "license": "Các biến được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu như một lựa chọn thay MLQ. Không tìm thấy điều kiện mua bản quyền; khi dùng, trích dẫn Carless, Wearing và Mann (2000).",
   "references": [
-    "Carless, S. A., Wearing, A. J., &amp; Mann, L. (2000). A short measure of transformational leadership. <em>Journal of Business and Psychology, 14</em>(3), 389–405. https://doi.org/10.1023/A:1022991115523"
+    "Carless, S. A., Wearing, A. J., &amp; Mann, L. (2000). A short measure of transformational leadership. <em>Journal of Business and Psychology, 14</em>(3), 389–405. https://doi.org/10.1023/A:1022991115523",
+    "Hendrikx, I. E. M., Vermeulen, S. C. G., Wientjens, V. L. W., &amp; Mannak, R. S. (2022). Is team resilience more than the sum of its parts? A quantitative study on emergency healthcare teams during the COVID-19 pandemic. <em>International Journal of Environmental Research and Public Health, 19</em>(12), Article 6968. https://doi.org/10.3390/ijerph19126968",
+    "Kloutsiniotis, P. V., Mihail, D. M., Mylonas, N., &amp; Pateli, A. (2022). Transformational leadership, HRM practices and burnout during the COVID-19 pandemic: The role of personal stress, anxiety, and workplace loneliness. <em>International Journal of Hospitality Management, 102</em>, Article 103177. https://doi.org/10.1016/j.ijhm.2022.103177",
+    "Saif, N., Amelia, Goh, G. G. G., Rubin, A., Shaheen, I., &amp; Murtaza, M. (2024). Influence of transformational leadership on innovative work behavior and task performance of individuals: The mediating role of knowledge sharing. <em>Heliyon, 10</em>(11), Article e32280. https://doi.org/10.1016/j.heliyon.2024.e32280"
   ],
   "verifiedFrom": [
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8776468/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11200340/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9222929/fullTextXML",
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13445784/fullTextXML",
-    "https://api.crossref.org/works/10.1023/A:1022991115523"
+    "https://api.crossref.org/works/10.1023/A:1022991115523",
+    "https://api.crossref.org/works/10.1016/j.ijhm.2022.103177",
+    "https://api.crossref.org/works/10.1016/j.heliyon.2024.e32280",
+    "https://api.crossref.org/works/10.3390/ijerph19126968"
   ],
   "related": [
     "lanh-dao-phuc-vu",

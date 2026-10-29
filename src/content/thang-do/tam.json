@@ -120,8 +120,9 @@
   "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
   "references": [
     "Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. <em>MIS Quarterly, 13</em>(3), 319–340. https://doi.org/10.2307/249008",
-    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003.",
-    "Venkatesh, V., &amp; Davis, F. D. (2000). A theoretical extension of the technology acceptance model: Four longitudinal field studies. <em>Management Science, 46</em>(2), 186–204. https://doi.org/10.1287/mnsc.46.2.186.11926"
+    "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003. https://doi.org/10.1287/mnsc.35.8.982",
+    "Venkatesh, V., &amp; Davis, F. D. (2000). A theoretical extension of the technology acceptance model: Four longitudinal field studies. <em>Management Science, 46</em>(2), 186–204. https://doi.org/10.1287/mnsc.46.2.186.11926",
+    "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540"
   ],
   "verifiedFrom": [
     "https://doi.org/10.2307/249008",

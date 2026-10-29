@@ -1,5 +1,5 @@
 {
-  "title": "Thang đo hoạt động marketing mạng xã hội: Kim & Ko (2012)",
+  "title": "Thang đo marketing mạng xã hội tiếng Việt: Kim & Ko (2012)",
   "description": "Thang đo hoạt động marketing trên mạng xã hội của Kim và Ko (2012) dịch sẵn tiếng Việt: giải trí, tương tác, xu hướng, cá nhân hoá, truyền miệng. Có bản gốc.",
   "name": "SMMA",
   "fullName": "Hoạt động marketing trên mạng xã hội (Social Media Marketing Activities)",
@@ -123,11 +123,13 @@
   },
   "license": "Các biến quan sát được công bố trong bảng CFA của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
   "references": [
+    "Godey, B., Manthiou, A., Pederzoli, D., Rokka, J., Aiello, G., Donvito, R., &amp; Singh, R. (2016). Social media marketing efforts of luxury brands: Influence on brand equity and consumer behavior. <em>Journal of Business Research, 69</em>(12), 5833–5841. https://doi.org/10.1016/j.jbusres.2016.04.181",
     "Kim, A. J., &amp; Ko, E. (2012). Do social media marketing activities enhance customer equity? An empirical study of luxury fashion brand. <em>Journal of Business Research, 65</em>(10), 1480–1486. https://doi.org/10.1016/j.jbusres.2011.10.014"
   ],
   "verifiedFrom": [
     "https://doi.org/10.1016/j.jbusres.2011.10.014",
-    "https://api.crossref.org/works/10.1016/j.jbusres.2011.10.014"
+    "https://api.crossref.org/works/10.1016/j.jbusres.2011.10.014",
+    "https://api.crossref.org/works/10.1016/j.jbusres.2016.04.181"
   ],
   "related": [
     "tai-san-thuong-hieu",

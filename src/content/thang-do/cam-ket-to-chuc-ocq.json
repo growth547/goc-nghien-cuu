@@ -105,21 +105,24 @@
     "Sáu câu đảo chiều (OC3, OC7, OC9, OC11, OC12, OC15) phải mã hoá ngược trước khi chạy Cronbach's alpha; nếu các câu này tải thành nhân tố riêng trong EFA, cân nhắc chạy lại với các câu thuận chiều và báo cáo rõ biến đã loại.",
     "Một số câu (OC9, OC15) gần nghĩa với ý định nghỉ việc; nếu mô hình có cả cam kết và ý định nghỉ việc, kiểm tra giá trị phân biệt (HTMT hoặc Fornell-Larcker) cẩn thận.",
     "Câu đảo chiều dịch sang tiếng Việt dễ thành phủ định kép, ví dụ OC11; đọc thử với vài người trả lời để chắc họ hiểu đúng chiều.",
-    "OCQ là thang một khái niệm. Nếu đề tài cần cam kết tình cảm, duy trì và chuẩn mực, đó là mô hình ba thành phần của Meyer và Allen, có bản thương mại phải mua quyền; không ghép OCQ vào để thay thế."
+    "OCQ là thang một khái niệm. Nếu đề tài cần cam kết tình cảm, duy trì và chuẩn mực, đó là mô hình ba thành phần của Meyer và Allen (1991), có bản thương mại phải mua quyền; không ghép OCQ vào để thay thế."
   ],
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu cam kết tổ chức nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
   "license": "Các biến được công bố trong bài báo gốc trên Journal of Vocational Behavior. Theo một nghiên cứu kiểm định thang lưu trên kho White Rose, không cần xin phép khi dùng OCQ vì tác giả chủ động không đăng ký bản quyền thang để khuyến khích sử dụng. Khi dùng, trích dẫn bài gốc.",
   "references": [
+    "Meyer, J. P., &amp; Allen, N. J. (1991). A three-component conceptualization of organizational commitment. <em>Human Resource Management Review, 1</em>(1), 61–89. https://doi.org/10.1016/1053-4822(91)90011-Z",
     "Mowday, R. T., Steers, R. M., &amp; Porter, L. W. (1979). The measurement of organizational commitment. <em>Journal of Vocational Behavior, 14</em>(2), 224–247. https://doi.org/10.1016/0001-8791(79)90072-1",
-    "Porter, L. W., Steers, R. M., Mowday, R. T., &amp; Boulian, P. V. (1974). Organizational commitment, job satisfaction, and turnover among psychiatric technicians. <em>Journal of Applied Psychology, 59</em>, 603–609."
+    "Porter, L. W., Steers, R. M., Mowday, R. T., &amp; Boulian, P. V. (1974). Organizational commitment, job satisfaction, and turnover among psychiatric technicians. <em>Journal of Applied Psychology, 59</em>(5), 603–609. https://doi.org/10.1037/h0037335"
   ],
   "verifiedFrom": [
     "https://www.jil.go.jp/institute/reports/2012/documents/0147_02-2.pdf",
     "https://eprints.whiterose.ac.uk/id/document/1047175",
     "https://verdi.cs.ucl.ac.uk/constructDB/publications/mowday-measurement-1979.html",
-    "https://api.crossref.org/works/10.1016/0001-8791(79)90072-1"
+    "https://api.crossref.org/works/10.1016/0001-8791(79)90072-1",
+    "https://api.crossref.org/works/10.1037/h0037335",
+    "https://api.crossref.org/works/10.1016/1053-4822(91)90011-Z"
   ],
   "related": [
     "ho-tro-to-chuc-pos",

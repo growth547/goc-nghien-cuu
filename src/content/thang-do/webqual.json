@@ -1,5 +1,5 @@
 {
-  "title": "Thang đo SITEQUAL chất lượng website: Yoo & Donthu (2001)",
+  "title": "Thang đo chất lượng website SITEQUAL tiếng Việt: Yoo & Donthu (2001)",
   "description": "Thang đo SITEQUAL 9 biến đo chất lượng website bán hàng, dịch sẵn tiếng Việt: dễ sử dụng, thiết kế thẩm mỹ, tốc độ xử lý, bảo mật. Kèm thang chất lượng tổng thể.",
   "name": "SITEQUAL",
   "fullName": "Thang đo chất lượng cảm nhận của website mua sắm trực tuyến SITEQUAL (Yoo & Donthu, 2001)",
@@ -127,7 +127,7 @@
     "Thay 'this site' bằng tên website hoặc ứng dụng cụ thể. Với ứng dụng di động, có thể dịch 'site' thành 'ứng dụng' nhưng giữ nguyên ý từng câu.",
     "Q6 và Q7 viết khá chung chung; khi dịch nên đọc thử với 5–10 người để chắc họ hiểu đây là tốc độ xử lý chứ không phải dễ sử dụng.",
     "OSQ4 là câu đảo chiều, phải đảo điểm (1 thành 7, 7 thành 1) trước khi tính độ tin cậy và EFA.",
-    "Tên slug là 'webqual' nhưng trang này dùng SITEQUAL của Yoo & Donthu (2001); WebQual của Loiacono và cộng sự (2007) hay Barnes & Vidgen (2002) là các thang khác, không trộn câu chữ giữa các thang mà không ghi nguồn."
+    "Trang này trình bày SITEQUAL của Yoo & Donthu (2001). WebQual của Loiacono và cộng sự (2007) là một thang khác cũng đo chất lượng website, với các khái niệm và câu chữ riêng; nếu dùng câu của cả hai thang, ghi nguồn cho từng biến."
   ],
   "sampleSize": {
     "arrowsMax": 4,
@@ -135,10 +135,12 @@
   },
   "license": "Các biến được công bố trong bài báo gốc và được tác giả Boonghee Yoo đăng công khai trên trang cá nhân tại Hofstra University. Khi dùng, trích dẫn bài gốc; chúng tôi không tìm thấy điều kiện cấp phép riêng cho mục đích học thuật phi thương mại.",
   "references": [
+    "Loiacono, E. T., Watson, R. T., &amp; Goodhue, D. L. (2007). WebQual: An instrument for consumer evaluation of web sites. <em>International Journal of Electronic Commerce, 11</em>(3), 51–87. https://doi.org/10.2753/JEC1086-4415110302",
     "Yoo, B., &amp; Donthu, N. (2001). Developing a scale to measure the perceived quality of an Internet shopping site (SITEQUAL). <em>Quarterly Journal of Electronic Commerce, 2</em>(1), 31–47."
   ],
   "verifiedFrom": [
-    "https://sites.hofstra.edu/boonghee-yoo/yoo-and-donthus-2001-sitequal/"
+    "https://sites.hofstra.edu/boonghee-yoo/yoo-and-donthus-2001-sitequal/",
+    "https://api.crossref.org/works/10.2753/JEC1086-4415110302"
   ],
   "related": [
     "e-s-qual",

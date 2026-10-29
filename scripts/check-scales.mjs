@@ -15,7 +15,7 @@ const FIELDS = [
 ];
 let errors = 0;
 // Title/keyword and prose-citation checks: switched on once existing files comply.
-const STRICT = false;
+const STRICT = true;
 const plain = html => html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&");
 // "Davis (1989)", "Davis, Bagozzi & Warshaw (1989)", "Venkatesh và cộng sự (2003)", "(Yoo & Donthu, 2001)".
 const NAME = String.raw`(?<!\p{L})(?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*\p{Lu}[\p{L}'\-]+`;

@@ -1,0 +1,46 @@
+{
+  "title": "Mẫu bảng hỏi niềm tin, cảm xúc và lòng trung thành thương hiệu",
+  "description": "Mẫu bảng hỏi khảo sát lòng trung thành thương hiệu theo Chaudhuri và Holbrook (2001): niềm tin, cảm xúc thương hiệu, trung thành hành vi và thái độ, kèm cỡ mẫu.",
+  "topic": "Niềm tin và lòng trung thành thương hiệu",
+  "audience": "Người tiêu dùng",
+  "intro": "Lòng trung thành thương hiệu (mỹ phẩm, thời trang, đồ uống, điện thoại) là đề tài marketing được chọn nhiều. Mô hình của Chaudhuri và Holbrook (2001) tách niềm tin và cảm xúc thương hiệu, và tách trung thành mua lặp lại với trung thành thái độ.",
+  "modelNote": "Mô hình theo Chaudhuri và Holbrook (2001): niềm tin thương hiệu và cảm xúc thương hiệu cùng tác động lên lòng trung thành hành vi (mua lặp lại) và lòng trung thành thái độ.",
+  "placeholders": {
+    "thương hiệu": "thương hiệu này",
+    "sản phẩm": "sản phẩm của thương hiệu này"
+  },
+  "constructs": [
+    "niem-tin-trung-thanh-thuong-hieu:BT",
+    "niem-tin-trung-thanh-thuong-hieu:BA",
+    "niem-tin-trung-thanh-thuong-hieu:PL",
+    "niem-tin-trung-thanh-thuong-hieu:AL"
+  ],
+  "paths": [
+    {
+      "from": "niem-tin-trung-thanh-thuong-hieu:BT",
+      "to": "niem-tin-trung-thanh-thuong-hieu:PL",
+      "sign": "+"
+    },
+    {
+      "from": "niem-tin-trung-thanh-thuong-hieu:BT",
+      "to": "niem-tin-trung-thanh-thuong-hieu:AL",
+      "sign": "+"
+    },
+    {
+      "from": "niem-tin-trung-thanh-thuong-hieu:BA",
+      "to": "niem-tin-trung-thanh-thuong-hieu:PL",
+      "sign": "+"
+    },
+    {
+      "from": "niem-tin-trung-thanh-thuong-hieu:BA",
+      "to": "niem-tin-trung-thanh-thuong-hieu:AL",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Lòng trung thành hành vi và thái độ chỉ có 2 biến mỗi khái niệm; báo cáo thêm độ tin cậy tổng hợp và giải thích giới hạn này.",
+    "Chọn một thương hiệu cụ thể và chỉ khảo sát người đã mua, vì câu hỏi giả định người trả lời đã dùng thương hiệu.",
+    "Có thể thêm biến kết quả như mức giá cao hơn chấp nhận được nếu tổng quan ủng hộ."
+  ]
+}

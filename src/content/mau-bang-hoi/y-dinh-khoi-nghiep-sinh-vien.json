@@ -1,0 +1,40 @@
+{
+  "title": "Mẫu bảng hỏi ý định khởi nghiệp của sinh viên (TPB)",
+  "description": "Mẫu bảng hỏi khảo sát ý định khởi nghiệp của sinh viên theo thuyết hành vi có kế hoạch TPB: thái độ, chuẩn chủ quan, kiểm soát hành vi, ý định, kèm cỡ mẫu.",
+  "topic": "Ý định khởi nghiệp của sinh viên",
+  "audience": "Sinh viên năm cuối",
+  "intro": "Ý định khởi nghiệp là đề tài phổ biến ở các trường kinh tế và kỹ thuật. Thuyết hành vi có kế hoạch (TPB) là khung lý thuyết được dùng nhiều nhất cho đề tài này, với bảng hỏi xây dựng theo hướng dẫn của Francis và cộng sự (2004).",
+  "modelNote": "Mô hình theo thuyết hành vi có kế hoạch (TPB): thái độ, chuẩn chủ quan và nhận thức kiểm soát hành vi cùng tác động lên ý định.",
+  "placeholders": {
+    "thực hiện hành vi": "khởi nghiệp kinh doanh sau khi tốt nghiệp"
+  },
+  "constructs": [
+    "tpb:ATT",
+    "tpb:SN",
+    "tpb:PBC",
+    "tpb:INT"
+  ],
+  "paths": [
+    {
+      "from": "tpb:ATT",
+      "to": "tpb:INT",
+      "sign": "+"
+    },
+    {
+      "from": "tpb:SN",
+      "to": "tpb:INT",
+      "sign": "+"
+    },
+    {
+      "from": "tpb:PBC",
+      "to": "tpb:INT",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Thái độ trong TPB đo bằng cặp tính từ đối lập (ví dụ có hại … có lợi), không phải câu đồng ý; giữ dạng này.",
+    "Hành vi cần được định nghĩa cụ thể về hành động, đối tượng, bối cảnh và thời gian, ví dụ 'khởi nghiệp trong 2 năm sau khi tốt nghiệp'.",
+    "Có thể thêm biến như giáo dục khởi nghiệp nếu tổng quan ủng hộ, nhưng phải tìm thang đo có nguồn."
+  ]
+}

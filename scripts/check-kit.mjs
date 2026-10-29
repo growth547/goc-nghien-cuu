@@ -39,16 +39,42 @@ check(spss.pow === 92 && spss.second === 150 && spss.min === 150, `SPSS, 5 predi
 
 check(api.citedBy("Davis (1989)", "Davis, F. D. (1989). Perceived usefulness") && !api.citedBy("Davis (1989)", "Davis, F. D., Bagozzi, R. P., & Warshaw, P. R. (1989). User acceptance"), "citedBy: single author does not match a co-authored paper");
 
+// The static template pages use src/utils/kit.ts; it must agree with the browser copy.
+const ts = await import("../src/utils/kit.ts");
+for (let m = 1; m <= 8; m++) check(ts.POWER_N[m] === api.kitSample("pls", m, 1).pow, `POWER_N[${m}] = ${ts.POWER_N[m]} matches G*Power computation`);
+check(ts.ISR_N === api.kitSample("pls", 1, 1).second, "ISR_N matches Kock & Hadaya computation");
+
 // Every published construct must yield a real citation, not the raw source note.
 const dir = "src/content/thang-do";
+const scales = new Map();
 for (const f of readdirSync(dir).filter(f => f.endsWith(".json") && !f.startsWith("_"))) {
   const s = JSON.parse(readFileSync(`${dir}/${f}`, "utf8"));
+  scales.set(f.slice(0, -5), s);
   for (const c of s.constructs) {
     const cite = api.citeOf(c.source);
     check(/\(\d{4}\)$/.test(cite) && cite.length < 80, `${f} ${c.code}: ${cite}`);
+    check(ts.citeOf(c.source) === cite, `${f} ${c.code}: kit.ts gives the same citation`);
     const plain = s.references.map(r => r.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&"));
     check(plain.some(r => api.citedBy(cite, r)), `${f} ${c.code}: reference listed for ${cite}`);
   }
+}
+
+// Template pages: every construct key resolves, every path joins listed constructs,
+// the model fits the precomputed power table, and every placeholder in its items is filled.
+const tdir = "src/content/mau-bang-hoi";
+for (const f of readdirSync(tdir).filter(f => f.endsWith(".json") && !f.startsWith("_"))) {
+  const t = JSON.parse(readFileSync(`${tdir}/${f}`, "utf8"));
+  const items = [];
+  for (const key of t.constructs) {
+    const [slug, code] = key.split(":");
+    const c = scales.get(slug)?.constructs.find(x => x.code === code);
+    check(Boolean(c), `${f}: construct ${key} exists`);
+    if (c) items.push(...c.items);
+  }
+  check(t.paths.every(p => t.constructs.includes(p.from) && t.constructs.includes(p.to)), `${f}: paths use listed constructs`);
+  check(ts.maxIndegree(t.paths) <= 8, `${f}: at most 8 arrows into one construct`);
+  const left = items.map(i => ts.fillPlaceholders(i.vi, t.placeholders)).filter(v => /\[[^\]]+\]/.test(v));
+  check(!left.length, `${f}: all placeholders filled${left.length ? ` (left: ${left[0]})` : ""}`);
 }
 
 if (failed) {

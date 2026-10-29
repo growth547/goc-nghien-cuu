@@ -1,0 +1,53 @@
+{
+  "title": "Mẫu bảng hỏi chất lượng dịch vụ và lòng trung thành (SERVPERF)",
+  "description": "Mẫu bảng hỏi khảo sát chất lượng dịch vụ theo SERVPERF với 5 thành phần và lòng trung thành khách hàng của Zeithaml và cộng sự (1996). Có mô hình, cỡ mẫu, chương 3.",
+  "topic": "Chất lượng dịch vụ và lòng trung thành khách hàng",
+  "audience": "Khách hàng",
+  "intro": "Chất lượng dịch vụ của quán cà phê, nhà hàng, siêu thị, khách sạn hay ngân hàng là đề tài khoá luận kinh điển. SERVPERF chỉ đo cảm nhận thực tế nên bảng hỏi ngắn hơn SERVQUAL, phù hợp khảo sát khách hàng tại chỗ.",
+  "modelNote": "Mô hình gợi ý: năm thành phần chất lượng dịch vụ (Parasuraman và cộng sự, 1988; Cronin và Taylor, 1992) tác động lên lòng trung thành, đo bằng ý định hành vi của Zeithaml, Berry và Parasuraman (1996).",
+  "placeholders": {
+    "công ty": "cửa hàng này",
+    "loại dịch vụ": "dịch vụ này"
+  },
+  "constructs": [
+    "servperf:TAN",
+    "servperf:REL",
+    "servperf:RES",
+    "servperf:ASU",
+    "servperf:EMP",
+    "y-dinh-hanh-vi-khach-hang:LOY"
+  ],
+  "paths": [
+    {
+      "from": "servperf:TAN",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "servperf:REL",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "servperf:RES",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "servperf:ASU",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "servperf:EMP",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Bản gốc 1988 có 9 câu đảo chiều; nhiều nghiên cứu sau viết lại thành câu thuận, nếu làm vậy phải ghi rõ trong chương 3.",
+    "Thay 'cửa hàng này' bằng tên doanh nghiệp cụ thể và chỉ khảo sát người đã dùng dịch vụ.",
+    "Một số câu (ví dụ về trang phục nhân viên) cần điều chỉnh cho dịch vụ online; giữ nguyên ý đo của từng thành phần."
+  ]
+}

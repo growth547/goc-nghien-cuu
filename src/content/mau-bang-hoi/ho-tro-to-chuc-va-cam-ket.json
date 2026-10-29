@@ -1,0 +1,39 @@
+{
+  "title": "Mẫu bảng hỏi hỗ trợ tổ chức, hài lòng công việc và cam kết",
+  "description": "Mẫu bảng hỏi khảo sát cam kết tổ chức của nhân viên: hỗ trợ từ tổ chức (POS), hài lòng công việc (MOAQ), cam kết tổ chức (OCQ). Có mô hình, cỡ mẫu, chương 3.",
+  "topic": "Cam kết với tổ chức của nhân viên",
+  "audience": "Nhân viên",
+  "intro": "Cam kết với tổ chức là biến kết quả quen thuộc trong đề tài quản trị nhân lực. Mẫu này dùng OCQ của Mowday, Steers và Porter (1979), là thang đo công bố trong bài báo và dùng được cho nghiên cứu học thuật.",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan: hỗ trợ từ tổ chức làm tăng hài lòng công việc và cam kết tổ chức; hài lòng công việc làm tăng cam kết tổ chức.",
+  "placeholders": {
+    "công ty": "công ty"
+  },
+  "constructs": [
+    "ho-tro-to-chuc-pos:POS",
+    "hai-long-cong-viec:JS",
+    "cam-ket-to-chuc-ocq:OC"
+  ],
+  "paths": [
+    {
+      "from": "ho-tro-to-chuc-pos:POS",
+      "to": "hai-long-cong-viec:JS",
+      "sign": "+"
+    },
+    {
+      "from": "ho-tro-to-chuc-pos:POS",
+      "to": "cam-ket-to-chuc-ocq:OC",
+      "sign": "+"
+    },
+    {
+      "from": "hai-long-cong-viec:JS",
+      "to": "cam-ket-to-chuc-ocq:OC",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "OCQ và POS đều có nhiều câu đảo chiều; kiểm tra lại mã hoá trước khi chạy độ tin cậy.",
+    "Không dùng bộ TCM thương mại của Meyer và Allen nếu chưa mua quyền; OCQ là lựa chọn công bố tự do trong bài báo.",
+    "Bảng hỏi khá dài (34 câu đo lường); cân nhắc thời gian trả lời khi khảo sát nhân viên trong giờ làm."
+  ]
+}

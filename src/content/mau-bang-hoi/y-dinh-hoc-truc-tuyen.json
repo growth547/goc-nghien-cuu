@@ -1,0 +1,42 @@
+{
+  "title": "Mẫu bảng hỏi ý định sử dụng hệ thống học trực tuyến (UTAUT)",
+  "description": "Mẫu bảng hỏi khảo sát ý định sử dụng hệ thống học trực tuyến theo UTAUT của Venkatesh và cộng sự (2003): mô hình, giả thuyết, cỡ mẫu và đoạn chương 3.",
+  "topic": "Ý định sử dụng hệ thống học trực tuyến",
+  "audience": "Sinh viên",
+  "intro": "Học trực tuyến và hệ thống quản lý học tập (LMS) của trường là đề tài dễ thu mẫu vì đối tượng chính là sinh viên. UTAUT gom các yếu tố hiệu quả, nỗ lực và ảnh hưởng xã hội vào một mô hình đã được kiểm định rộng rãi.",
+  "modelNote": "Mô hình theo UTAUT (Venkatesh và cộng sự, 2003): hiệu quả mong đợi, nỗ lực mong đợi và ảnh hưởng xã hội tác động lên ý định hành vi. Trong UTAUT gốc, điều kiện thuận lợi tác động lên hành vi sử dụng chứ không lên ý định, nên không đưa vào mô hình ý định.",
+  "placeholders": {
+    "hệ thống": "hệ thống học trực tuyến",
+    "công ty": "nhà trường",
+    "n": "3"
+  },
+  "constructs": [
+    "utaut:PE",
+    "utaut:EE",
+    "utaut:SI",
+    "utaut:BI"
+  ],
+  "paths": [
+    {
+      "from": "utaut:PE",
+      "to": "utaut:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut:EE",
+      "to": "utaut:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut:SI",
+      "to": "utaut:BI",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Câu hỏi gốc viết cho bối cảnh công việc; đổi 'công việc' thành 'việc học' nhưng giữ đúng ý của biến.",
+    "Nếu trường bắt buộc dùng hệ thống, ý định sử dụng ít biến thiên; cân nhắc đo sự hài lòng hoặc ý định tiếp tục sử dụng.",
+    "Ghi rõ tên hệ thống cụ thể (ví dụ LMS của trường, Google Classroom) trong câu sàng lọc."
+  ]
+}

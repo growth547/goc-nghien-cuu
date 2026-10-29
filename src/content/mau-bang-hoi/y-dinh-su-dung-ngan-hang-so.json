@@ -1,0 +1,64 @@
+{
+  "title": "Mẫu bảng hỏi ý định sử dụng ngân hàng số (UTAUT2)",
+  "description": "Mẫu bảng hỏi khảo sát ý định sử dụng ngân hàng số theo UTAUT2 của Venkatesh và cộng sự (2012): 8 khái niệm, mô hình, giả thuyết, cỡ mẫu, đoạn chương 3.",
+  "topic": "Ý định sử dụng ngân hàng số",
+  "audience": "Người dùng dịch vụ ngân hàng",
+  "intro": "Ngân hàng số và ứng dụng mobile banking là đề tài quen thuộc của sinh viên ngành tài chính ngân hàng. UTAUT2 phù hợp vì đo cả yếu tố hữu dụng lẫn thói quen, động lực hưởng thụ và giá trị giá cả của người dùng cá nhân.",
+  "modelNote": "Mô hình theo UTAUT2 (Venkatesh và cộng sự, 2012): bảy yếu tố cùng tác động lên ý định hành vi.",
+  "placeholders": {
+    "dịch vụ": "ứng dụng ngân hàng số"
+  },
+  "constructs": [
+    "utaut2:PE",
+    "utaut2:EE",
+    "utaut2:SI",
+    "utaut2:FC",
+    "utaut2:HM",
+    "utaut2:PV",
+    "utaut2:HT",
+    "utaut2:BI"
+  ],
+  "paths": [
+    {
+      "from": "utaut2:PE",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:EE",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:SI",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:FC",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:HM",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:PV",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:HT",
+      "to": "utaut2:BI",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Giá trị giá cả (PV) chỉ có nghĩa khi người dùng trả phí; nếu ứng dụng miễn phí, cân nhắc bỏ PV và giải thích trong chương 2.",
+    "Ý định hành vi nhận 7 mũi tên nên cỡ mẫu theo power cao hơn mô hình TAM; đừng thu dưới mức tối thiểu.",
+    "Bản gốc có biến điều tiết giới tính, tuổi, kinh nghiệm; nếu đưa vào mô hình thì cần thêm câu hỏi và cỡ mẫu lớn hơn."
+  ]
+}

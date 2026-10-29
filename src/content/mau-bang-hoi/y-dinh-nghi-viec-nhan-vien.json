@@ -1,0 +1,39 @@
+{
+  "title": "Mẫu bảng hỏi ý định nghỉ việc: hỗ trợ tổ chức, hài lòng công việc",
+  "description": "Mẫu bảng hỏi khảo sát ý định nghỉ việc của nhân viên: hỗ trợ từ tổ chức (POS), hài lòng công việc và ý định nghỉ việc từ thang đo gốc, kèm cỡ mẫu, chương 3.",
+  "topic": "Ý định nghỉ việc của nhân viên",
+  "audience": "Nhân viên văn phòng",
+  "intro": "Ý định nghỉ việc là đề tài phổ biến của ngành quản trị nhân lực. Mẫu này nối hỗ trợ từ tổ chức với sự hài lòng công việc và ý định nghỉ việc, dùng thang đo của Eisenberger và cộng sự (1986) và bộ MOAQ của Cammann và cộng sự (1979).",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan (thường dựa trên lý thuyết trao đổi xã hội): hỗ trợ từ tổ chức làm tăng sự hài lòng công việc, còn hỗ trợ từ tổ chức và hài lòng công việc làm giảm ý định nghỉ việc.",
+  "placeholders": {
+    "công ty": "công ty"
+  },
+  "constructs": [
+    "ho-tro-to-chuc-pos:POS",
+    "hai-long-cong-viec:JS",
+    "y-dinh-nghi-viec:TI"
+  ],
+  "paths": [
+    {
+      "from": "ho-tro-to-chuc-pos:POS",
+      "to": "hai-long-cong-viec:JS",
+      "sign": "+"
+    },
+    {
+      "from": "hai-long-cong-viec:JS",
+      "to": "y-dinh-nghi-viec:TI",
+      "sign": "-"
+    },
+    {
+      "from": "ho-tro-to-chuc-pos:POS",
+      "to": "y-dinh-nghi-viec:TI",
+      "sign": "-"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Thang POS có 16 câu, nhiều câu đảo chiều; nhớ đảo điểm trước khi chạy Cronbach's alpha.",
+    "Người lao động thường ngại trả lời thật về ý định nghỉ việc; nhấn mạnh ẩn danh trong lời mở đầu và không thu tên, email.",
+    "Nếu khảo sát trong một công ty, xin phép bộ phận nhân sự và ghi rõ trong phần đạo đức nghiên cứu."
+  ]
+}

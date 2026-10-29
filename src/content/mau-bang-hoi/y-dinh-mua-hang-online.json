@@ -1,0 +1,34 @@
+{
+  "title": "Mẫu bảng hỏi ý định mua hàng: chất lượng và giá trị cảm nhận",
+  "description": "Mẫu bảng hỏi khảo sát ý định mua theo Dodds, Monroe và Grewal (1991): chất lượng cảm nhận, giá trị cảm nhận, sẵn lòng mua. Có mô hình, cỡ mẫu, chương 3.",
+  "topic": "Ý định mua sản phẩm",
+  "audience": "Người tiêu dùng",
+  "intro": "Đề tài ý định mua sản phẩm (mỹ phẩm, thời trang, đồ công nghệ, hàng trên sàn thương mại điện tử) cần một chuỗi lập luận rõ từ cảm nhận chất lượng tới giá trị và quyết định mua. Mẫu này dùng thang đo kinh điển của Dodds, Monroe và Grewal (1991).",
+  "modelNote": "Mô hình gợi ý theo lập luận của Dodds, Monroe và Grewal (1991): chất lượng cảm nhận làm tăng giá trị cảm nhận, và giá trị cảm nhận làm tăng sự sẵn lòng mua. Có thể thêm đường trực tiếp từ chất lượng tới ý định mua nếu tổng quan ủng hộ.",
+  "placeholders": {
+    "sản phẩm": "sản phẩm này"
+  },
+  "constructs": [
+    "y-dinh-mua:PQ",
+    "y-dinh-mua:PV",
+    "y-dinh-mua:WTB"
+  ],
+  "paths": [
+    {
+      "from": "y-dinh-mua:PQ",
+      "to": "y-dinh-mua:PV",
+      "sign": "+"
+    },
+    {
+      "from": "y-dinh-mua:PV",
+      "to": "y-dinh-mua:WTB",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Thay 'sản phẩm này' bằng sản phẩm cụ thể và cho người trả lời xem hình hoặc mô tả, vì thang đo gốc hỏi về một sản phẩm có giá cụ thể.",
+    "Bản gốc dùng cả câu dạng đồng ý và cặp đầu mút; khi đồng nhất về Likert 5 mức, ghi rõ trong chương 3.",
+    "Với PLS-SEM, kiểm tra thêm tác động gián tiếp của chất lượng qua giá trị cảm nhận."
+  ]
+}

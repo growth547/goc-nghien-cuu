@@ -83,4 +83,25 @@ const scales = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, scales };
+// Ready-made questionnaires for common thesis topics, assembled from the scale library.
+// Constructs are referenced as "<scale slug>:<construct code>"; paths define the suggested model.
+const templates = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/mau-bang-hoi" }),
+  schema: z.object({
+    title: z.string().max(70),
+    description: z.string().min(110).max(170),
+    topic: z.string(),
+    audience: z.string(),
+    intro: z.string(),
+    modelNote: z.string(),
+    placeholders: z.record(z.string(), z.string()),
+    constructs: z.array(z.string().regex(/^[a-z0-9-]+:[A-Za-z0-9]+$/)).min(2),
+    paths: z
+      .array(z.object({ from: z.string(), to: z.string(), sign: z.enum(["+", "-"]).default("+") }))
+      .min(1),
+    method: z.enum(["pls", "spss"]).default("pls"),
+    tips: z.array(z.string()).min(2),
+  }),
+});
+
+export const collections = { posts, pages, scales, templates };

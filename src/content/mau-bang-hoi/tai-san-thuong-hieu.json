@@ -1,0 +1,40 @@
+{
+  "title": "Mẫu bảng hỏi tài sản thương hiệu theo Yoo và Donthu (2001)",
+  "description": "Mẫu bảng hỏi khảo sát tài sản thương hiệu: nhận biết và liên tưởng, chất lượng cảm nhận, trung thành thương hiệu và tài sản thương hiệu tổng thể, kèm cỡ mẫu.",
+  "topic": "Tài sản thương hiệu",
+  "audience": "Người tiêu dùng",
+  "intro": "Tài sản thương hiệu dựa trên khách hàng là đề tài quen thuộc của ngành marketing, áp dụng cho điện thoại, xe máy, đồ uống, chuỗi bán lẻ. Thang đo đa chiều của Yoo và Donthu (2001) được kiểm định ở nhiều nền văn hoá và có bản gốc đầy đủ.",
+  "modelNote": "Mô hình theo Yoo và Donthu (2001): nhận biết và liên tưởng thương hiệu, chất lượng cảm nhận và trung thành thương hiệu cùng tác động lên tài sản thương hiệu tổng thể.",
+  "placeholders": {
+    "thương hiệu": "thương hiệu này"
+  },
+  "constructs": [
+    "tai-san-thuong-hieu:BAA",
+    "tai-san-thuong-hieu:PQ",
+    "tai-san-thuong-hieu:BL",
+    "tai-san-thuong-hieu:OBE"
+  ],
+  "paths": [
+    {
+      "from": "tai-san-thuong-hieu:BAA",
+      "to": "tai-san-thuong-hieu:OBE",
+      "sign": "+"
+    },
+    {
+      "from": "tai-san-thuong-hieu:PQ",
+      "to": "tai-san-thuong-hieu:OBE",
+      "sign": "+"
+    },
+    {
+      "from": "tai-san-thuong-hieu:BL",
+      "to": "tai-san-thuong-hieu:OBE",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Thang tài sản thương hiệu tổng thể (OBE) so sánh với một thương hiệu khác cùng tính năng; nêu rõ thương hiệu so sánh hoặc để người trả lời tự hình dung.",
+    "Chất lượng cảm nhận chỉ có 2 biến trong thang MBE; cân nhắc báo cáo độ tin cậy tổng hợp.",
+    "Chọn thương hiệu đủ quen để người trả lời có trải nghiệm thật."
+  ]
+}

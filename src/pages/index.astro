@@ -18,6 +18,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
 
 const posts = await getCollection("posts");
+const templates = (await getCollection("templates")).sort((a, b) => a.data.topic.localeCompare(b.data.topic, "vi"));
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
@@ -56,6 +57,23 @@ const homePath = getRelativeLocaleUrl(locale, "");
     <section id="tools" class="border-border border-b pt-10 pb-10">
       <h2 class="mb-5 text-2xl font-semibold tracking-wide">Công cụ miễn phí</h2>
       <ToolCards />
+    </section>
+
+    <section id="templates" class="border-border border-b pt-10 pb-10">
+      <h2 class="mb-2 text-2xl font-semibold tracking-wide">Mẫu bảng hỏi theo đề tài</h2>
+      <p class="text-muted-foreground mb-5">Có sẵn mô hình, câu hỏi từ thang đo gốc, cỡ mẫu và đoạn chương 3. Mở ra chỉnh tiếp trong Bộ khảo sát.</p>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {
+          templates.map(t => (
+            <li>
+              <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${t.id}`)} class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors">
+                <span class="font-semibold">{t.data.topic}</span>
+                <span class="text-muted-foreground block text-sm">{t.data.audience}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     {

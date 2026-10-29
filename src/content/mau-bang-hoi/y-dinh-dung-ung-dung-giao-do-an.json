@@ -1,0 +1,58 @@
+{
+  "title": "Mẫu bảng hỏi ý định sử dụng ứng dụng giao đồ ăn (UTAUT2)",
+  "description": "Mẫu bảng hỏi khảo sát ý định sử dụng ứng dụng giao đồ ăn (GrabFood, ShopeeFood…) theo UTAUT2: hiệu quả, nỗ lực, xã hội, hưởng thụ, giá, thói quen.",
+  "topic": "Ý định sử dụng ứng dụng giao đồ ăn",
+  "audience": "Người dùng ứng dụng",
+  "intro": "Ứng dụng giao đồ ăn là đề tài gần gũi, dễ tìm người trả lời và hợp với UTAUT2 vì người dùng tự trả tiền và dùng theo thói quen. Mẫu này bỏ điều kiện thuận lợi để bảng hỏi gọn hơn; có thể thêm lại nếu tổng quan cần.",
+  "modelNote": "Mô hình rút gọn từ UTAUT2 (Venkatesh và cộng sự, 2012): sáu yếu tố tác động lên ý định hành vi.",
+  "placeholders": {
+    "dịch vụ": "ứng dụng giao đồ ăn"
+  },
+  "constructs": [
+    "utaut2:PE",
+    "utaut2:EE",
+    "utaut2:SI",
+    "utaut2:HM",
+    "utaut2:PV",
+    "utaut2:HT",
+    "utaut2:BI"
+  ],
+  "paths": [
+    {
+      "from": "utaut2:PE",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:EE",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:SI",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:HM",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:PV",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:HT",
+      "to": "utaut2:BI",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Nêu rõ trong chương 2 vì sao bỏ điều kiện thuận lợi, nếu không hội đồng sẽ hỏi.",
+    "Giá trị giá cả hỏi về phí giao hàng và giá món; điều chỉnh câu chữ cho rõ nhưng giữ ý gốc.",
+    "Chỉ khảo sát người đã dùng ứng dụng ít nhất một lần, vì thói quen và hưởng thụ cần trải nghiệm thật."
+  ]
+}

@@ -35,3 +35,11 @@ Người đọc sẽ chép nguyên các biến quan sát vào luận văn. Một
 ## Danh sách slug (dùng đúng slug)
 
 tam (đã có), utaut, utaut2, ecm-tiep-tuc-su-dung, niem-tin-thuong-mai-dien-tu, rui-ro-cam-nhan, tpb, y-dinh-mua, mua-hang-ngau-hung, gia-tri-cam-nhan-perval, niem-tin-trung-thanh-thuong-hieu, servqual, servperf, e-s-qual, y-dinh-hanh-vi-khach-hang, tai-san-thuong-hieu, hai-long-cong-viec, gan-ket-cong-viec-uwes, y-dinh-nghi-viec, ho-tro-to-chuc-pos, hanh-vi-cong-dan-to-chuc, cam-ket-to-chuc-ocq, hai-long-cuoc-song-swls, cang-thang-pss-10, tu-trong-rosenberg, tu-hieu-qua-gse, tinh-cach-bfi-10, chanh-niem-maas
+
+## Bổ sung (đợt mở rộng 30/10/2026)
+
+- `source` của mỗi khái niệm phải **bắt đầu** bằng trích dẫn dạng `Tác giả (năm)`, ví dụ `Bhattacherjee (2001), 3 biến.` hoặc `Kim & Ko (2012), 2 biến.` hoặc `Venkatesh và cộng sự (2012), …`. Tác giả đầu và năm trong `source` phải trùng một mục trong `references` (cùng họ tác giả đầu, cùng năm). Công cụ Bộ khảo sát dùng trích dẫn này để viết chương 3; `node scripts/check-kit.mjs` sẽ báo lỗi nếu không khớp.
+- `responseScale` bắt đầu bằng "Likert" chỉ khi thang trả lời là mức độ đồng ý. Thang tần suất, mức độ đúng, khả năng… thì viết rõ, không bắt đầu bằng "Likert".
+- Mỗi biến `en` phải là nguyên văn nhìn thấy trên trang trong `verifiedFrom`. Nếu chỉ thấy bản diễn giải, không dùng.
+- `related`: chỉ dùng slug đã có file trong `src/content/thang-do/` (xem bằng `ls`).
+- Kiểm tra bằng cả hai lệnh: `node scripts/check-scales.mjs <slug>` và `node scripts/check-kit.mjs`.

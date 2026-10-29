@@ -233,6 +233,12 @@
   $('bk-search').addEventListener('input',renderList);
   $('bk-form').addEventListener('change',e=>{if(!e.target.dataset.key)render()});
   $('bk-form').addEventListener('input',e=>{if(e.target.id!=='bk-search'&&!e.target.dataset.ph&&!e.target.dataset.key)render()});
-  renderList();render();
+  // Preset from a link, e.g. a template page: ?c=tam:PU,tam:BI&ph=hệ thống=ví MoMo&a=2&m=pls
+  const qs=new URLSearchParams(location.search);
+  (qs.get('c')||'').split(',').filter(k=>CONSTRUCTS.some(x=>x.key===k)).forEach(k=>state.selected.add(k));
+  (qs.get('ph')||'').split(';').forEach(p=>{const i=p.indexOf('=');if(i>0)state.ph[p.slice(0,i).toLowerCase()]=p.slice(i+1)});
+  if(qs.get('m')==='spss'||qs.get('m')==='pls')$('bk-method').value=qs.get('m');
+  $('bk-arrows').value=Math.max(1,parseInt(qs.get('a'))||state.selected.size-1||1);
+  renderList();renderPh();render();
 })();
 </script>

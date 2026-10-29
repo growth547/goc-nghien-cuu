@@ -1,0 +1,38 @@
+{
+  "title": "Mẫu bảng hỏi căng thẳng, lòng tự trọng và hài lòng cuộc sống",
+  "description": "Mẫu bảng hỏi khảo sát sinh viên: căng thẳng cảm nhận PSS-10, lòng tự trọng Rosenberg, tự hiệu quả GSE và hài lòng cuộc sống SWLS. Có mô hình, cỡ mẫu, chương 3.",
+  "topic": "Căng thẳng và hài lòng cuộc sống của sinh viên",
+  "audience": "Sinh viên",
+  "intro": "Đề tài sức khoẻ tinh thần sinh viên ngày càng nhiều ở các ngành tâm lý, giáo dục và quản trị. Bốn thang đo trong mẫu đều ngắn, được dùng rộng rãi và có bản gốc công bố, giúp bảng hỏi gọn mà vẫn chuẩn.",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan: căng thẳng cảm nhận làm giảm sự hài lòng cuộc sống, còn lòng tự trọng và niềm tin vào năng lực bản thân làm tăng sự hài lòng cuộc sống.",
+  "placeholders": {},
+  "constructs": [
+    "cang-thang-pss-10:PSS",
+    "tu-trong-rosenberg:RSE",
+    "tu-hieu-qua-gse:GSE",
+    "hai-long-cuoc-song-swls:SWLS"
+  ],
+  "paths": [
+    {
+      "from": "cang-thang-pss-10:PSS",
+      "to": "hai-long-cuoc-song-swls:SWLS",
+      "sign": "-"
+    },
+    {
+      "from": "tu-trong-rosenberg:RSE",
+      "to": "hai-long-cuoc-song-swls:SWLS",
+      "sign": "+"
+    },
+    {
+      "from": "tu-hieu-qua-gse:GSE",
+      "to": "hai-long-cuoc-song-swls:SWLS",
+      "sign": "+"
+    }
+  ],
+  "method": "spss",
+  "tips": [
+    "Mỗi thang đo có thang trả lời riêng (tần suất, mức độ đúng, đồng ý); giữ nguyên thang gốc, đừng ép tất cả về Likert 5 mức.",
+    "Đề tài về sức khoẻ tinh thần cần tuân thủ quy định đạo đức nghiên cứu của trường và nên ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi.",
+    "PSS-10 và Rosenberg có câu đảo chiều; đảo điểm trước khi tính điểm tổng."
+  ]
+}

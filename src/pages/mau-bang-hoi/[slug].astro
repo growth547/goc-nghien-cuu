@@ -1,0 +1,187 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+import { appLink } from "@/utils/appLink";
+import { fillPlaceholders, citeOf, citedBy, stripHtml, isAgreementScale, POWER_N, ISR_N, maxIndegree } from "@/utils/kit";
+
+export async function getStaticPaths() {
+  const [templates, scales] = await Promise.all([getCollection("templates"), getCollection("scales")]);
+  return templates.map(t => ({ params: { slug: t.id }, props: { t, scales, templates } }));
+}
+
+type Props = {
+  t: CollectionEntry<"templates">;
+  scales: CollectionEntry<"scales">[];
+  templates: CollectionEntry<"templates">[];
+};
+const { t, scales, templates } = Astro.props;
+const d = t.data;
+const locale = Astro.currentLocale ?? config.site.lang;
+
+// Resolve "<scale>:<code>" keys; check-kit.mjs fails the build input if any key is unknown.
+const parts = d.constructs.map(key => {
+  const [slug, code] = key.split(":");
+  const scale = scales.find(s => s.id === slug)!;
+  const c = scale.data.constructs.find(x => x.code === code)!;
+  return { key, scale, c, cite: citeOf(c.source) };
+});
+const byKey = new Map(parts.map(p => [p.key, p]));
+const items = parts.flatMap(p => p.c.items.map(i => ({ ...i, vi: fillPlaceholders(i.vi, d.placeholders) })));
+const arrows = maxIndegree(d.paths);
+const pow = POWER_N[arrows];
+const second = d.method === "pls" ? ISR_N : Math.max(50, 5 * items.length);
+const minN = Math.max(pow, second);
+const issue = Math.ceil(minN / 0.85);
+const ownScale = [...new Set(parts.filter(p => !isAgreementScale(p.scale.data.responseScale)).map(p => p.scale.data.name))];
+const reverse = items.filter(i => i.reverse).map(i => i.code);
+const refs = [
+  ...new Set(
+    parts.flatMap(p => p.scale.data.references.filter(r => citedBy(p.cite, stripHtml(r))))
+  ),
+].sort((a, b) => stripHtml(a).localeCompare(stripHtml(b), "en"));
+
+const kitParams = new URLSearchParams({
+  c: d.constructs.join(","),
+  ph: Object.entries(d.placeholders).map(([k, v]) => `${k}=${v}`).join(";"),
+  a: String(arrows),
+  m: d.method,
+});
+const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${kitParams}`;
+const others = templates.filter(x => x.id !== t.id).slice(0, 6);
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: d.title,
+  description: d.description,
+  inLanguage: "vi",
+  mainEntityOfPage: url,
+  author: { "@type": "Organization", name: config.site.author },
+  publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
+  citation: refs.map(stripHtml),
+};
+---
+
+<Layout title={`${d.title} | ${config.site.title}`} description={d.description}>
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <Header />
+  <Breadcrumb />
+  <main id="main-content" class="app-layout pb-10" data-pagefind-body>
+    <p class="text-accent text-xs font-semibold tracking-wider uppercase">Mẫu bảng hỏi khoá luận</p>
+    <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">{d.title}</h1>
+
+    <dl class="border-border mt-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-xl border p-4 text-sm sm:grid-cols-4">
+      <div><dt class="text-muted-foreground">Khái niệm</dt><dd class="font-semibold">{parts.length}</dd></div>
+      <div><dt class="text-muted-foreground">Biến quan sát</dt><dd class="font-semibold">{items.length}</dd></div>
+      <div><dt class="text-muted-foreground">Cỡ mẫu tối thiểu</dt><dd class="font-semibold">{minN}</dd></div>
+      <div><dt class="text-muted-foreground">Đối tượng khảo sát</dt><dd class="font-semibold">{d.audience}</dd></div>
+    </dl>
+
+    <div class="mt-5 flex flex-wrap gap-3">
+      <a class="btn" href={kitHref}>Mở trong Bộ khảo sát để chỉnh và tải Word</a>
+    </div>
+
+    <div class="app-prose mt-6 max-w-none">
+      <p>{d.intro}</p>
+
+      <h2>Mô hình nghiên cứu gợi ý</h2>
+      <p>{d.modelNote}</p>
+      <ul>
+        {
+          d.paths.map((p, i) => (
+            <li>
+              <strong>H{i + 1}:</strong> {byKey.get(p.from)!.c.nameVi} ({byKey.get(p.from)!.c.code}) tác động{" "}
+              {p.sign === "-" ? "ngược chiều" : "cùng chiều"} tới {byKey.get(p.to)!.c.nameVi} ({byKey.get(p.to)!.c.code}).
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Bảng hỏi: các phát biểu đo lường</h2>
+      <p class="text-sm">
+        Các phát biểu dạng đồng ý dùng thang Likert 5 mức: 1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý.{ownScale.length > 0 && ` Riêng ${ownScale.join(", ")} giữ thang trả lời gốc, ghi ngay dưới bảng.`}
+        Nên thêm một câu sàng lọc (đã từng sử dụng {Object.values(d.placeholders)[0]} chưa) và một câu kiểm tra sự chú ý;
+        Bộ khảo sát tự thêm hai câu này và phần thông tin cá nhân.
+      </p>
+      {
+        parts.map(p => (
+          <section>
+            <h3>{p.c.nameVi} ({p.c.code})</h3>
+            <div class="overflow-x-auto">
+              <table>
+                <thead><tr><th>Mã</th><th>Phát biểu</th></tr></thead>
+                <tbody>
+                  {p.c.items.map(i => (
+                    <tr>
+                      <td class="font-semibold whitespace-nowrap">{i.code}{i.reverse && " (R)"}</td>
+                      <td>{fillPlaceholders(i.vi, d.placeholders)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {!isAgreementScale(p.scale.data.responseScale) && <p class="text-sm"><strong>Thang trả lời:</strong> {p.scale.data.responseScale}</p>}
+            <p class="text-muted-foreground text-sm">
+              Nguồn: {p.cite}. Xem bản gốc tiếng Anh: <a href={getRelativeLocaleUrl(locale, `thang-do/${p.scale.id}`)}>thang đo {p.scale.data.name}</a>.
+            </p>
+          </section>
+        ))
+      }
+      {reverse.length > 0 && <p class="text-sm">(R): câu đảo chiều, đảo điểm trước khi phân tích (thang 5 mức: 6 − điểm).</p>}
+
+      <h2>Cỡ mẫu</h2>
+      <p>
+        Khái niệm nhận nhiều mũi tên nhất trong mô hình có {arrows} mũi tên. Phân tích power theo G*Power (f² = 0,15, α = 0,05, power 0,80) cho tối thiểu {pow} quan sát;{" "}
+        {d.method === "pls"
+          ? `phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) với hệ số đường dẫn nhỏ nhất 0,2 cho ${second}.`
+          : `quy tắc 5 quan sát cho mỗi biến của Hair và cộng sự (2010) cho ${second}.`}{" "}
+        Cỡ mẫu tối thiểu là <strong>{minN}</strong>; dự phòng 15% phiếu loại thì cần thu khoảng <strong>{issue} phiếu</strong>.
+      </p>
+
+      <h2>Đoạn văn chương 3 (bản rút gọn)</h2>
+      <blockquote>
+        <p>
+          Bảng hỏi gồm {parts.length} khái niệm với {items.length} biến quan sát kế thừa từ các nghiên cứu trước:{" "}
+          {parts.map((p, i) => `${p.c.nameVi} (${p.c.code}, ${p.c.items.length} biến) theo ${p.cite}${i < parts.length - 1 ? "; " : "."}`)}{" "}
+          Các phát biểu dạng đồng ý được đo bằng thang Likert 5 mức{ownScale.length > 0 ? `; ${ownScale.join(", ")} giữ thang trả lời của nghiên cứu gốc.` : "."}{reverse.length > 0 && ` Các biến ${reverse.join(", ")} là câu đảo chiều và được đảo điểm trước khi phân tích.`}{" "}
+          Thang đo được dịch xuôi và dịch ngược (Brislin, 1970) và khảo sát thử trước khi khảo sát chính thức.
+        </p>
+      </blockquote>
+      <p class="text-sm">Bản đầy đủ, có phần cỡ mẫu và tài liệu tham khảo định dạng sẵn: mở trong <a href={kitHref}>Bộ khảo sát</a>.</p>
+
+      <h2>Lưu ý khi dùng mẫu này</h2>
+      <ul>{d.tips.map(tip => <li>{tip}</li>)}</ul>
+      <p class="text-sm">
+        Cần {issue} người trả lời đúng đối tượng? Có thể thu mẫu trên{" "}
+        <a href={appLink("blog", `mau-${t.id}`, "/app/forms")} rel="noopener">Genius Data</a> (link giới thiệu), chỉ trả cho phiếu được duyệt.
+      </p>
+
+      <h2>Tài liệu tham khảo</h2>
+      <ul class="text-sm">{refs.map(r => <li set:html={r} />)}</ul>
+    </div>
+
+    {
+      others.length > 0 && (
+        <section data-pagefind-ignore class="border-border mt-10 border-t pt-6">
+          <h2 class="mb-4 text-xl font-semibold">Mẫu bảng hỏi khác</h2>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {others.map(o => (
+              <li>
+                <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${o.id}`)} class="border-border hover:border-accent block rounded-xl border p-4 transition-colors">
+                  <span class="font-semibold">{o.data.topic}</span>
+                  <span class="text-muted-foreground block text-sm">{o.data.audience}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+  <Footer />
+</Layout>

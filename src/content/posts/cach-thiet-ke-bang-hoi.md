@@ -1,7 +1,7 @@
 ---
 title: "Cách thiết kế bảng hỏi khảo sát: lỗi thường gặp và cách sửa"
 description: "Cách thiết kế bảng hỏi khảo sát cho khoá luận: tránh câu hỏi kép, câu hỏi dẫn dắt, sắp thứ tự câu hợp lý, giữ form vừa đủ ngắn và chạy pilot test trước khi thu."
-pubDatetime: 2026-10-29T15:00:00+07:00
+pubDatetime: 2026-10-29T02:00:00+07:00
 featured: false
 tags: ["bảng hỏi","thang đo"]
 ---

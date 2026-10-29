@@ -1,7 +1,7 @@
 ---
 title: "Cách lọc phiếu khảo sát không hợp lệ trước khi chạy SPSS"
 description: "Hướng dẫn lọc phiếu khảo sát không hợp lệ: điền rập khuôn, làm quá nhanh, trượt câu kiểm tra chú ý, trùng lặp, mâu thuẫn. Có quy trình 8 bước trước SPSS."
-pubDatetime: 2026-10-29T17:00:00+07:00
+pubDatetime: 2026-10-29T04:00:00+07:00
 featured: false
 tags: ["làm sạch dữ liệu","SPSS"]
 ---

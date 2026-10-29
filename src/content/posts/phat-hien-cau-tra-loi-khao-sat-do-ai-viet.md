@@ -1,7 +1,7 @@
 ---
 title: "Phát hiện câu trả lời khảo sát do AI viết: dấu hiệu và cách phòng"
 description: "Cách phát hiện câu trả lời khảo sát do AI viết bằng mắt thường, và cách thiết kế câu hỏi tự luận khiến việc nhờ ChatGPT trả lời trở nên khó và vô ích."
-pubDatetime: 2026-10-29T14:00:00+07:00
+pubDatetime: 2026-10-29T01:00:00+07:00
 featured: false
 tags: ["làm sạch dữ liệu","AI"]
 ---

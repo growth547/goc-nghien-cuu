@@ -1,7 +1,7 @@
 ---
 title: "Cronbach's alpha là gì? Cách đọc kết quả SPSS từng bảng"
 description: "Cronbach's alpha là gì, ngưỡng bao nhiêu là đạt, cách đọc bảng SPSS: alpha tổng, Corrected Item-Total Correlation dưới 0,3, Cronbach's Alpha if Item Deleted."
-pubDatetime: 2026-10-29T18:00:00+07:00
+pubDatetime: 2026-10-29T05:00:00+07:00
 featured: false
 tags: ["độ tin cậy","SPSS"]
 ---

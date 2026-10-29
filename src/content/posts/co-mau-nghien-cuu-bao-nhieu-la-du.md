@@ -1,7 +1,7 @@
 ---
 title: "Cỡ mẫu nghiên cứu bao nhiêu là đủ? Từ Cochran tới G*Power, PLS-SEM"
 description: "Cỡ mẫu tối thiểu theo phương pháp phân tích: Cochran, EFA của Hair, hồi quy, PLS-SEM với power G*Power và Kock & Hadaya, kèm đoạn mẫu chương 3."
-pubDatetime: 2026-10-29T20:00:00+07:00
+pubDatetime: 2026-10-29T07:00:00+07:00
 featured: true
 tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 ---

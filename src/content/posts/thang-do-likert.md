@@ -1,7 +1,7 @@
 ---
 title: "Thang đo Likert 5 mức, 7 mức: chọn loại nào và dùng sao cho đúng"
 description: "Thang đo Likert 5 mức, 7 mức khác nhau thế nào, có nên giữ mức trung lập, cách viết câu, mã hoá câu đảo chiều và phân tích dữ liệu Likert trong khoá luận."
-pubDatetime: 2026-10-29T16:00:00+07:00
+pubDatetime: 2026-10-29T03:00:00+07:00
 featured: false
 tags: ["thang đo","bảng hỏi"]
 ---

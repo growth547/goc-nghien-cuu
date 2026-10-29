@@ -1,7 +1,7 @@
 ---
 title: "Cách thu mẫu khảo sát khoá luận: 6 bước đủ số, đúng người"
 description: "Cách thu mẫu khảo sát khoá luận đủ số lượng, đúng đối tượng: chọn phương pháp chọn mẫu, kênh phát phiếu, câu gạn lọc, theo dõi hạn ngạch, lọc phiếu."
-pubDatetime: 2026-10-29T19:00:00+07:00
+pubDatetime: 2026-10-29T06:00:00+07:00
 featured: true
 tags: ["thu mẫu","khoá luận"]
 ---

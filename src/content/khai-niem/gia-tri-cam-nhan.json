@@ -1,0 +1,61 @@
+{
+  "name": "Giá trị cảm nhận",
+  "nameEn": "Perceived Value",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo giá trị cảm nhận tiếng Việt: PERVAL và Dodds (1991)",
+  "description": "Thang đo giá trị cảm nhận dịch sẵn tiếng Việt: PERVAL 4 thành phần của Sweeney và Soutar (2001), giá trị cảm nhận của Dodds (1991) và giá trị giá cả UTAUT2.",
+  "keyword": "thang đo giá trị cảm nhận",
+  "intro": "Giá trị cảm nhận là đánh giá của khách hàng về những gì nhận được so với những gì phải bỏ ra, gồm tiền, thời gian và công sức. Zeithaml (1988) định nghĩa đây là sự đánh đổi giữa lợi ích và chi phí; Sweeney và Soutar (2001) mở rộng thành bốn thành phần: chất lượng, cảm xúc, giá cả và xã hội. Khái niệm này nằm trong mô hình giá, chất lượng, giá trị của Dodds và cộng sự (1991), thuyết giá trị tiêu dùng của Sheth và UTAUT2. Đề tài thường gặp: giá trị cảm nhận với thực phẩm sạch, hàng thời trang, dịch vụ gọi xe, ví điện tử.",
+  "constructs": [
+    {
+      "key": "gia-tri-cam-nhan-perval:QV",
+      "note": "Chọn khi đo giá trị đa thành phần theo PERVAL; QV là thành phần chất lượng, nên dùng cùng EV, PV, SV."
+    },
+    {
+      "key": "gia-tri-cam-nhan-perval:EV",
+      "note": "Chọn khi sản phẩm mang yếu tố cảm xúc, thích thú, như thời trang, mỹ phẩm, du lịch."
+    },
+    {
+      "key": "gia-tri-cam-nhan-perval:PV",
+      "note": "Chọn khi muốn tách riêng đánh giá về giá trong mô hình PERVAL."
+    },
+    {
+      "key": "gia-tri-cam-nhan-perval:SV",
+      "note": "Chọn khi sản phẩm gắn với hình ảnh bản thân trước người khác, như hàng hiệu, điện thoại cao cấp."
+    },
+    {
+      "key": "y-dinh-mua:PV",
+      "note": "Chọn khi cần giá trị cảm nhận đơn hướng trong mô hình giá, chất lượng, ý định mua của Dodds và cộng sự."
+    },
+    {
+      "key": "utaut2:PV",
+      "note": "Chọn khi đề tài về công nghệ có trả phí theo UTAUT2, ví dụ ứng dụng học tiếng Anh hay dịch vụ phát nhạc."
+    }
+  ],
+  "tips": [
+    "PERVAL có 19 biến chia 4 thành phần. Nếu chỉ cần một khái niệm giá trị tổng thể, dùng 5 biến của Dodds và cộng sự cho bảng hỏi ngắn hơn.",
+    "Câu QV4 và QV5 của PERVAL là câu đảo chiều (gia công kém, không dùng được lâu). Đảo điểm trước khi phân tích.",
+    "Thang PV của Dodds dùng cặp đầu mút (rất đáng … rất không đáng). Khi chuyển sang Likert đồng ý, viết lại thành phát biểu khẳng định và đặt điểm cao là giá trị cao.",
+    "Thay [Sản phẩm] bằng tên sản phẩm cụ thể; câu chữ chung chung làm người trả lời khó hình dung."
+  ],
+  "faq": [
+    {
+      "q": "Giá trị cảm nhận là khái niệm đơn hướng hay đa hướng?",
+      "a": "Cả hai cách đều được dùng. Dodds và cộng sự (1991) đo giá trị như một khái niệm đơn hướng. Sweeney và Soutar (2001) đo bằng 4 thành phần. Chọn theo câu hỏi nghiên cứu: muốn biết thành phần nào quan trọng thì dùng PERVAL."
+    },
+    {
+      "q": "Giá trị cảm nhận khác giá cả cảm nhận thế nào?",
+      "a": "Giá cả cảm nhận chỉ là đánh giá về mức giá. Giá trị cảm nhận so sánh lợi ích nhận được với chi phí bỏ ra, nên một sản phẩm đắt vẫn có thể có giá trị cảm nhận cao."
+    },
+    {
+      "q": "Dùng PERVAL trong PLS-SEM như thế nào?",
+      "a": "Có thể đưa 4 thành phần như 4 biến độc lập riêng, hoặc xây giá trị cảm nhận là khái niệm bậc hai với 4 thành phần bậc một. Cách thứ hai cần nêu rõ phương pháp (lặp chỉ báo hoặc hai giai đoạn)."
+    }
+  ],
+  "related": [
+    "y-dinh-mua",
+    "chat-luong-cam-nhan",
+    "long-trung-thanh",
+    "su-hai-long-khach-hang"
+  ]
+}

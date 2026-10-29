@@ -1,0 +1,48 @@
+{
+  "name": "Nhận thức kiểm soát hành vi",
+  "nameEn": "Perceived Behavioral Control",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo nhận thức kiểm soát hành vi tiếng Việt (TPB)",
+  "description": "Thang đo nhận thức kiểm soát hành vi theo TPB (Francis và cộng sự, 2004) và điều kiện thuận lợi trong UTAUT, UTAUT2, dịch sẵn tiếng Việt, có câu đảo chiều.",
+  "keyword": "thang đo nhận thức kiểm soát hành vi",
+  "intro": "Nhận thức kiểm soát hành vi là mức độ một người tin rằng việc thực hiện hành vi là dễ hay khó và nằm trong khả năng của mình. Ajzen bổ sung khái niệm này vào TRA để tạo thành Thuyết hành vi có kế hoạch (TPB), và nó gồm hai phần: sự tự tin (gần với tự hiệu quả) và khả năng kiểm soát. Trong UTAUT và UTAUT2, khái niệm gần nhất là điều kiện thuận lợi, đo nguồn lực, kiến thức và hỗ trợ sẵn có. Đề tài thường gặp: ý định khởi nghiệp, ý định mua sản phẩm xanh, ý định dùng ngân hàng số, ý định học trực tuyến.",
+  "constructs": [
+    {
+      "key": "tpb:PBC",
+      "note": "Chọn khi mô hình theo TPB; 4 biến gồm cả tự tin và khả năng kiểm soát, áp dụng cho hầu hết hành vi."
+    },
+    {
+      "key": "utaut2:FC",
+      "note": "Chọn khi đề tài là công nghệ tiêu dùng theo UTAUT2; đo nguồn lực, kiến thức, tương thích và sự giúp đỡ."
+    },
+    {
+      "key": "utaut:FC",
+      "note": "Chọn khi đề tài là công nghệ trong tổ chức theo UTAUT; FC4 hỏi về người hoặc nhóm hỗ trợ cụ thể."
+    }
+  ],
+  "tips": [
+    "PBC2 và PBC3 của TPB là câu đảo chiều; FC3 của UTAUT cũng vậy. Đánh dấu rõ trong file nhập liệu để đảo điểm trước khi chạy alpha.",
+    "Phần tự tin và phần kiểm soát đôi khi tách thành hai nhân tố khi chạy EFA. Nếu xảy ra, báo cáo và cân nhắc giữ phần có hệ số tải cao hơn.",
+    "Viết hành vi trong câu giống hệt câu ở thang ý định và chuẩn chủ quan để người trả lời không hiểu thành hai hành vi khác nhau."
+  ],
+  "faq": [
+    {
+      "q": "Nhận thức kiểm soát hành vi và điều kiện thuận lợi có giống nhau không?",
+      "a": "Không hoàn toàn. Nhận thức kiểm soát hành vi là niềm tin của người trả lời rằng họ làm được hành vi. Điều kiện thuận lợi đo các nguồn lực và hỗ trợ bên ngoài. Venkatesh và cộng sự (2003) xây điều kiện thuận lợi một phần từ các câu đo nhận thức kiểm soát."
+    },
+    {
+      "q": "Nhận thức kiểm soát hành vi có tác động trực tiếp tới hành vi không?",
+      "a": "Có. Trong TPB, nhận thức kiểm soát hành vi tác động tới ý định và có thể tác động trực tiếp tới hành vi thực tế. Nếu khoá luận chỉ đo ý định thì chỉ cần mũi tên tới ý định."
+    },
+    {
+      "q": "Có thể dùng thang tự hiệu quả thay cho nhận thức kiểm soát hành vi không?",
+      "a": "Có thể nếu đề tài nhấn mạnh sự tự tin, nhưng cần lập luận rõ. Thang tự hiệu quả tổng quát (GSE) đo niềm tin vào năng lực nói chung, không gắn với một hành vi cụ thể như PBC."
+    }
+  ],
+  "related": [
+    "chuan-chu-quan",
+    "thai-do",
+    "niem-tin-vao-nang-luc-ban-than",
+    "y-dinh-su-dung"
+  ]
+}

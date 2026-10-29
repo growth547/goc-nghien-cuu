@@ -1,0 +1,45 @@
+{
+  "name": "Trầm cảm",
+  "nameEn": "Depression",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo trầm cảm tiếng Việt: PHQ-9 và tiểu thang DASS-21",
+  "description": "Thang đo trầm cảm dịch sẵn tiếng Việt: PHQ-9 của Kroenke và cộng sự (2001) và tiểu thang trầm cảm DASS-21 (Lovibond, 1995). Có cách chấm điểm và khi nào dùng.",
+  "keyword": "thang đo trầm cảm",
+  "intro": "Trầm cảm là trạng thái buồn chán, mất hứng thú kéo dài, kèm thay đổi giấc ngủ, ăn uống, năng lượng và suy nghĩ tiêu cực về bản thân. PHQ-9 bám sát 9 tiêu chí chẩn đoán trầm cảm của DSM-IV, còn tiểu thang trầm cảm DASS-21 đo cảm giác vô vọng, mất động lực và tự đánh giá thấp. Đề tài thường gặp ở Việt Nam: trầm cảm ở sinh viên, người cao tuổi, nhân viên y tế, mối liên hệ với nghiện điện thoại, mạng xã hội và hỗ trợ xã hội.",
+  "constructs": [
+    {
+      "key": "phq-9:PHQ",
+      "note": "Chọn khi trầm cảm là biến chính và cần ngưỡng sàng lọc gắn với tiêu chí chẩn đoán; hỏi về 2 tuần vừa qua."
+    },
+    {
+      "key": "dass-21:D",
+      "note": "Chọn khi cần đo cùng lúc trầm cảm, lo âu và căng thẳng; hỏi về tuần vừa qua."
+    }
+  ],
+  "tips": [
+    "PHQ-9 chấm từ 0 đến 3 mỗi câu, tổng 0 đến 27. Ngưỡng 5, 10, 15, 20 tương ứng nhẹ, vừa, khá nặng, nặng.",
+    "Câu PHQ9 hỏi về ý nghĩ tự hại. Ghi đầu mối hỗ trợ ngay trong bảng hỏi; nếu khảo sát ẩn danh trực tuyến, cân nhắc dùng PHQ-8 (bỏ câu 9) như hướng dẫn của tác giả.",
+    "Điểm tiểu thang trầm cảm DASS-21 phải nhân 2 trước khi so với ngưỡng phân loại.",
+    "Khảo sát về trầm cảm thường cần được hội đồng đạo đức hoặc giảng viên hướng dẫn duyệt trước. Kiểm tra quy định của trường."
+  ],
+  "faq": [
+    {
+      "q": "PHQ-9 có dùng được cho sinh viên Việt Nam không?",
+      "a": "Có, nhưng nên kiểm tra lại cấu trúc. Vu và cộng sự (2022) dùng PHQ-9 trên 899 người dân ngoại thành ở Việt Nam và thấy cấu trúc 2 nhân tố. Hãy chạy EFA hoặc CFA và báo cáo cấu trúc tìm được thay vì mặc định 1 nhân tố."
+    },
+    {
+      "q": "Có thể chẩn đoán trầm cảm bằng PHQ-9 không?",
+      "a": "Không. PHQ-9 là công cụ sàng lọc. Kết quả chỉ cho biết mức độ triệu chứng; chẩn đoán cần bác sĩ hoặc chuyên gia tâm lý."
+    },
+    {
+      "q": "Nên báo cáo trầm cảm theo điểm tổng hay theo mức độ?",
+      "a": "Cả hai. Dùng điểm tổng khi chạy hồi quy hay SEM, và báo cáo tỷ lệ theo mức độ trong phần thống kê mô tả."
+    }
+  ],
+  "related": [
+    "lo-au",
+    "cang-thang",
+    "kiet-suc",
+    "niem-tin-vao-nang-luc-ban-than"
+  ]
+}

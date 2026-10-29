@@ -1,0 +1,73 @@
+{
+  "name": "Chất lượng dịch vụ",
+  "nameEn": "Service Quality",
+  "field": "Chất lượng dịch vụ",
+  "title": "Thang đo chất lượng dịch vụ tiếng Việt: SERVPERF và E-S-QUAL",
+  "description": "Thang đo chất lượng dịch vụ dịch sẵn tiếng Việt: 5 thành phần SERVPERF (Parasuraman, 1988) và 4 thành phần E-S-QUAL cho dịch vụ trực tuyến, kèm cách chọn.",
+  "keyword": "thang đo chất lượng dịch vụ",
+  "intro": "Chất lượng dịch vụ là đánh giá của khách hàng về mức độ xuất sắc của dịch vụ được cung cấp. Parasuraman, Zeithaml và Berry (1988) xây dựng SERVQUAL với năm thành phần: phương tiện hữu hình, tin cậy, đáp ứng, đảm bảo và đồng cảm; Cronin và Taylor (1992) đề xuất SERVPERF chỉ đo cảm nhận thực tế. Với dịch vụ trực tuyến, Parasuraman và cộng sự (2005) phát triển E-S-QUAL. Đề tài thường gặp ở Việt Nam: chất lượng dịch vụ ngân hàng, bệnh viện, khách sạn, giao đồ ăn, sàn thương mại điện tử và ảnh hưởng tới sự hài lòng.",
+  "constructs": [
+    {
+      "key": "servperf:TAN",
+      "note": "Chọn khi dịch vụ có cơ sở vật chất trực tiếp như ngân hàng, khách sạn, bệnh viện."
+    },
+    {
+      "key": "servperf:REL",
+      "note": "Thành phần cốt lõi của SERVPERF; luôn giữ khi đo dịch vụ truyền thống."
+    },
+    {
+      "key": "servperf:RES",
+      "note": "Dùng cùng các thành phần SERVPERF khác; lưu ý cách viết câu đảo chiều trong bản gốc."
+    },
+    {
+      "key": "servperf:ASU",
+      "note": "Dùng cùng các thành phần SERVPERF khác; đo sự an tâm và năng lực của nhân viên."
+    },
+    {
+      "key": "servperf:EMP",
+      "note": "Dùng cùng các thành phần SERVPERF khác; đo sự quan tâm tới từng khách hàng."
+    },
+    {
+      "key": "e-s-qual:EFF",
+      "note": "Chọn khi dịch vụ diễn ra trên website hoặc ứng dụng, như sàn thương mại điện tử; đo sự dễ dùng và nhanh."
+    },
+    {
+      "key": "e-s-qual:SYS",
+      "note": "Dùng cùng E-S-QUAL khi lỗi kỹ thuật, treo ứng dụng là vấn đề đáng quan tâm."
+    },
+    {
+      "key": "e-s-qual:FUL",
+      "note": "Dùng cùng E-S-QUAL khi có giao hàng hoặc thực hiện đơn hàng."
+    },
+    {
+      "key": "e-s-qual:PRI",
+      "note": "Dùng cùng E-S-QUAL khi người dùng cung cấp thông tin cá nhân hoặc thanh toán."
+    }
+  ],
+  "tips": [
+    "SERVPERF có 22 biến, E-S-QUAL có 22 biến. Chọn một bộ phù hợp với kênh cung cấp dịch vụ, không gộp cả hai trừ khi dịch vụ vừa trực tiếp vừa trực tuyến.",
+    "Các câu thành phần đáp ứng và đồng cảm trong SERVQUAL gốc viết theo hướng phủ định. Nhiều nghiên cứu sau viết lại thành khẳng định; nếu giữ bản gốc, đảo điểm trước khi phân tích.",
+    "Đổi [công ty] thành tên loại hình cụ thể (ngân hàng, bệnh viện) và bỏ các câu không phù hợp, ví dụ câu về lưu giữ hồ sơ với dịch vụ ăn uống. Ghi rõ biến đã loại trong chương 3.",
+    "SERVQUAL đo cả kỳ vọng và cảm nhận, nên bảng hỏi dài gấp đôi. Khoá luận thường dùng SERVPERF cho gọn và vẫn trích dẫn Parasuraman và cộng sự (1988)."
+  ],
+  "faq": [
+    {
+      "q": "Nên dùng SERVQUAL hay SERVPERF?",
+      "a": "SERVPERF chỉ đo cảm nhận thực tế nên bảng hỏi ngắn hơn một nửa, và Cronin và Taylor (1992) cho thấy nó giải thích phương sai tốt hơn. Phần lớn khoá luận hiện nay dùng SERVPERF với 5 thành phần của SERVQUAL."
+    },
+    {
+      "q": "Dịch vụ trực tuyến có dùng SERVQUAL được không?",
+      "a": "Không phù hợp lắm vì SERVQUAL viết cho dịch vụ có nhân viên tiếp xúc trực tiếp. Với website và ứng dụng, dùng E-S-QUAL hoặc thang chất lượng dịch vụ ngân hàng điện tử trong thư viện."
+    },
+    {
+      "q": "Có cần giữ đủ 5 thành phần SERVPERF không?",
+      "a": "Không bắt buộc. Có thể bỏ thành phần không phù hợp với bối cảnh nếu có lý do và nêu trong chương 3. Tuy vậy, giữ đủ 5 thành phần giúp so sánh với các nghiên cứu trước dễ hơn."
+    }
+  ],
+  "related": [
+    "su-hai-long-khach-hang",
+    "long-trung-thanh",
+    "chat-luong-cam-nhan",
+    "niem-tin"
+  ]
+}

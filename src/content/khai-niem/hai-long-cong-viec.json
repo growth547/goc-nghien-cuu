@@ -1,0 +1,41 @@
+{
+  "name": "Sự hài lòng trong công việc",
+  "nameEn": "Job Satisfaction",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo sự hài lòng trong công việc tiếng Việt (MOAQ 1979)",
+  "description": "Thang đo sự hài lòng trong công việc 3 biến của Cammann và cộng sự (1979), dịch sẵn tiếng Việt, có câu đảo chiều, cách chấm điểm và gợi ý dùng trong khoá luận nhân sự.",
+  "keyword": "thang đo sự hài lòng trong công việc",
+  "intro": "Sự hài lòng trong công việc là mức độ người lao động cảm thấy tích cực về công việc của mình nói chung. Khái niệm này gắn với thuyết hai nhân tố của Herzberg, mô hình đặc điểm công việc và lý thuyết trao đổi xã hội. Trong khoá luận ngành quản trị nhân lực ở Việt Nam, hài lòng công việc thường là biến trung gian giữa lương thưởng, phong cách lãnh đạo, môi trường làm việc và ý định nghỉ việc hay gắn kết với tổ chức. Đề tài phổ biến: hài lòng của nhân viên ngân hàng, giáo viên, điều dưỡng, nhân viên văn phòng.",
+  "constructs": [
+    {
+      "key": "hai-long-cong-viec:JS",
+      "note": "Chọn khi cần đo hài lòng tổng thể ngắn gọn; 3 biến, phù hợp mô hình có nhiều khái niệm và bảng hỏi đã dài."
+    }
+  ],
+  "tips": [
+    "Câu JS2 là câu đảo chiều. Với thang 7 mức, mã hoá lại bằng 8 trừ điểm; thang 5 mức thì 6 trừ điểm.",
+    "Thang MOAQ đo hài lòng tổng thể, không đo từng khía cạnh như lương, đồng nghiệp hay cấp trên. Nếu đề tài cần các khía cạnh này, các yếu tố đó nên là biến độc lập riêng.",
+    "Thang chỉ có 3 biến nên một biến yếu có thể kéo alpha xuống. Chạy thử với 30 người trước khi khảo sát chính thức.",
+    "Thay 'ở đây' trong JS3 bằng tên đơn vị nếu khảo sát nội bộ một công ty để người trả lời hiểu đúng đối tượng."
+  ],
+  "faq": [
+    {
+      "q": "Thang hài lòng công việc 3 biến có đủ cho khoá luận không?",
+      "a": "Đủ cho một khái niệm đơn hướng khi chạy Cronbach's alpha và PLS-SEM. Thang MOAQ được dùng rộng rãi trong các bài báo quốc tế. Nếu hội đồng yêu cầu nhiều biến hơn, có thể bổ sung câu tự viết và nêu rõ nguồn."
+    },
+    {
+      "q": "Hài lòng công việc và gắn kết công việc khác nhau thế nào?",
+      "a": "Hài lòng là đánh giá công việc có làm mình thoả mãn hay không. Gắn kết công việc (UWES) đo trạng thái tràn đầy năng lượng, cống hiến và say mê khi làm việc. Hai khái niệm tương quan nhưng không trùng nhau."
+    },
+    {
+      "q": "Nên dùng thang 5 hay 7 mức?",
+      "a": "Bản gốc dùng 7 mức. Nhiều nghiên cứu ở Việt Nam dùng 5 mức cho dễ trả lời. Chọn một thang và dùng thống nhất cho các khái niệm, ghi rõ trong chương 3."
+    }
+  ],
+  "related": [
+    "y-dinh-nghi-viec",
+    "gan-ket-cong-viec",
+    "cam-ket-to-chuc",
+    "kiet-suc"
+  ]
+}

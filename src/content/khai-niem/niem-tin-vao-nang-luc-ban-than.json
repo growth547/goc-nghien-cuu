@@ -1,0 +1,49 @@
+{
+  "name": "Niềm tin vào năng lực bản thân",
+  "nameEn": "Self-Efficacy",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo niềm tin vào năng lực bản thân (tự hiệu quả) tiếng Việt",
+  "description": "Thang đo niềm tin vào năng lực bản thân dịch sẵn tiếng Việt: GSE của Schwarzer và Jerusalem (1995), tự tin trong học tập MSLQ và năng lực trong công việc.",
+  "keyword": "thang đo niềm tin vào năng lực bản thân",
+  "intro": "Niềm tin vào năng lực bản thân, hay tự hiệu quả, là niềm tin của một người rằng mình có thể thực hiện thành công các hành động cần thiết để đạt kết quả mong muốn. Khái niệm do Bandura đưa ra trong lý thuyết nhận thức xã hội và được dùng lại trong TPB, mô hình động lực học tập và lý thuyết trao quyền tâm lý. Trong khoá luận ở Việt Nam, khái niệm này xuất hiện ở các đề tài về kết quả học tập của sinh viên, ý định khởi nghiệp, căng thẳng học đường và hiệu quả công việc.",
+  "constructs": [
+    {
+      "key": "tu-hieu-qua-gse:GSE",
+      "note": "Chọn khi đo niềm tin vào năng lực nói chung, không gắn với một lĩnh vực; dùng được cho sinh viên và người đi làm."
+    },
+    {
+      "key": "dong-luc-hoc-tap-mslq:SE",
+      "note": "Chọn khi đề tài về học tập và gắn với một môn học hay khoá học cụ thể."
+    },
+    {
+      "key": "trao-quyen-tam-ly:CO",
+      "note": "Chọn khi đề tài về người lao động; 3 biến đo tự tin vào năng lực làm việc trong mô hình trao quyền của Spreitzer (1995)."
+    }
+  ],
+  "tips": [
+    "GSE dùng thang 4 mức mức độ đúng (1 = Hoàn toàn không đúng … 4 = Hoàn toàn đúng), không có điểm giữa. Giữ đúng thang gốc nếu muốn so sánh với các nghiên cứu khác.",
+    "Thang MSLQ hỏi về 'môn học này'. Ghi rõ tên môn ở đầu phần câu hỏi để người trả lời không trả lời chung cho cả chương trình.",
+    "GSE có 10 biến, không có câu đảo chiều; điểm tổng từ 10 đến 40. Có thể báo cáo điểm trung bình bên cạnh kết quả SEM.",
+    "Tự hiệu quả theo Bandura gắn với từng lĩnh vực. Nếu đề tài về một hành vi cụ thể (ví dụ khởi nghiệp), cân nhắc dùng thang riêng của lĩnh vực đó hoặc PBC của TPB."
+  ],
+  "faq": [
+    {
+      "q": "Tự hiệu quả và lòng tự trọng khác nhau thế nào?",
+      "a": "Tự hiệu quả là niềm tin mình làm được việc. Lòng tự trọng là đánh giá chung về giá trị bản thân. Một người có thể tự tin làm tốt một việc nhưng vẫn đánh giá thấp bản thân."
+    },
+    {
+      "q": "Thang GSE đã có bản tiếng Việt chính thức chưa?",
+      "a": "Trang chính thức của Schwarzer có nhiều bản dịch nhưng không có bản tiếng Việt. Bản trên trang này do ban biên tập dịch để tham khảo; khi dùng cho nghiên cứu, nên dịch ngược, chạy thử và trích dẫn người dịch nếu dùng bản tiếng Việt đã công bố."
+    },
+    {
+      "q": "Nên dùng GSE hay thang tự tin của MSLQ cho sinh viên?",
+      "a": "Nếu đề tài về kết quả của một môn học cụ thể, dùng MSLQ vì câu hỏi gắn với môn học. Nếu đề tài về sức khoẻ tinh thần hay khả năng thích ứng chung, dùng GSE."
+    }
+  ],
+  "related": [
+    "dong-luc-hoc-tap",
+    "nhan-thuc-kiem-soat-hanh-vi",
+    "cang-thang",
+    "gan-ket-cong-viec"
+  ]
+}

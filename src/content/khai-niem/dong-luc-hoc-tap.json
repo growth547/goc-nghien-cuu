@@ -1,0 +1,49 @@
+{
+  "name": "Động lực học tập",
+  "nameEn": "Learning Motivation",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo động lực học tập tiếng Việt: MSLQ (Pintrich, 1991)",
+  "description": "Thang đo động lực học tập dịch sẵn tiếng Việt từ MSLQ của Pintrich và cộng sự (1991): định hướng mục tiêu nội tại, giá trị nhiệm vụ, tự tin vào năng lực học tập.",
+  "keyword": "thang đo động lực học tập",
+  "intro": "Động lực học tập là các lý do và niềm tin thúc đẩy người học tham gia, duy trì nỗ lực và theo đuổi mục tiêu học tập. Bộ MSLQ của Pintrich và cộng sự (1991) dựa trên mô hình kỳ vọng, giá trị, đo động lực theo ba nhóm: giá trị (mục tiêu nội tại, giá trị nhiệm vụ), kỳ vọng (tự tin vào năng lực) và cảm xúc. Thuyết tự quyết của Deci và Ryan cũng hay được dùng để giải thích động lực nội tại và bên ngoài. Đề tài thường gặp: động lực học tập của sinh viên, ảnh hưởng của học trực tuyến, phương pháp giảng dạy và kết quả học tập.",
+  "constructs": [
+    {
+      "key": "dong-luc-hoc-tap-mslq:IGO",
+      "note": "Chọn khi muốn đo động lực nội tại: học vì thích thử thách và muốn hiểu sâu."
+    },
+    {
+      "key": "dong-luc-hoc-tap-mslq:TV",
+      "note": "Chọn khi muốn đo mức sinh viên thấy môn học quan trọng, hữu ích và đáng học."
+    },
+    {
+      "key": "dong-luc-hoc-tap-mslq:SE",
+      "note": "Chọn khi muốn đo phần kỳ vọng: sinh viên tin mình học tốt môn này đến đâu."
+    }
+  ],
+  "tips": [
+    "MSLQ dùng thang 7 mức mức độ đúng (1 = Hoàn toàn không đúng với tôi … 7 = Hoàn toàn đúng với tôi), không phải Likert đồng ý.",
+    "Câu hỏi gắn với một môn học cụ thể. Ghi tên môn ở đầu phần câu hỏi hoặc đổi 'môn học này' thành 'chương trình học' và nêu rõ việc điều chỉnh.",
+    "Ba khái niệm này có thể dùng riêng lẻ. Nếu chỉ cần một biến động lực, IGO và TV thường được chọn trước.",
+    "Nếu đề tài theo thuyết tự quyết (động lực nội tại và bên ngoài), xem thêm thang động lực làm việc MWMS trong thư viện để tham khảo cấu trúc."
+  ],
+  "faq": [
+    {
+      "q": "MSLQ có bao nhiêu câu và có phải dùng hết không?",
+      "a": "MSLQ đầy đủ có 81 câu chia thành phần động lực và phần chiến lược học tập. Pintrich và cộng sự thiết kế để có thể dùng từng tiểu thang riêng, nên khoá luận thường chỉ chọn các tiểu thang cần thiết."
+    },
+    {
+      "q": "Động lực học tập là khái niệm đơn hướng hay đa hướng?",
+      "a": "Thường được đo đa hướng. Với MSLQ, mỗi tiểu thang là một khái niệm riêng. Có thể xây động lực học tập là khái niệm bậc hai nếu có lập luận lý thuyết."
+    },
+    {
+      "q": "Có thể dùng MSLQ cho học sinh phổ thông không?",
+      "a": "MSLQ được xây dựng cho sinh viên đại học, nhưng nhiều nghiên cứu đã dùng cho học sinh trung học. Nên điều chỉnh câu chữ cho dễ hiểu và chạy thử trước."
+    }
+  ],
+  "related": [
+    "niem-tin-vao-nang-luc-ban-than",
+    "dong-luc-lam-viec",
+    "cang-thang",
+    "gan-ket-cong-viec"
+  ]
+}

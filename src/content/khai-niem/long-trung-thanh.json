@@ -1,0 +1,53 @@
+{
+  "name": "Lòng trung thành",
+  "nameEn": "Loyalty",
+  "field": "Marketing & thương hiệu",
+  "title": "Thang đo lòng trung thành khách hàng và thương hiệu tiếng Việt",
+  "description": "Thang đo lòng trung thành dịch sẵn tiếng Việt: Zeithaml và cộng sự (1996), Yoo và Donthu (2001), Chaudhuri và Holbrook (2001). So sánh số biến, thang trả lời, cách chọn.",
+  "keyword": "thang đo lòng trung thành",
+  "intro": "Lòng trung thành là xu hướng khách hàng tiếp tục chọn, mua lại và giới thiệu một thương hiệu hay doanh nghiệp thay vì chuyển sang đối thủ. Lý thuyết phân biệt trung thành hành vi (mua lặp lại) và trung thành thái độ (gắn bó, sẵn lòng trả giá cao hơn). Khái niệm này xuất hiện trong mô hình tài sản thương hiệu của Aaker và Yoo, Donthu, trong chuỗi chất lượng dịch vụ, hài lòng, trung thành, và trong các nghiên cứu về niềm tin thương hiệu. Đề tài thường gặp: lòng trung thành với ngân hàng, chuỗi cà phê, nhà mạng, sàn thương mại điện tử.",
+  "constructs": [
+    {
+      "key": "y-dinh-hanh-vi-khach-hang:LOY",
+      "note": "Chọn cho ngành dịch vụ khi trung thành gồm cả nói tốt, giới thiệu và giao dịch nhiều hơn; dùng thang khả năng 7 mức."
+    },
+    {
+      "key": "tai-san-thuong-hieu:BL",
+      "note": "Chọn khi mô hình là tài sản thương hiệu (nhận biết, chất lượng cảm nhận, trung thành) cho sản phẩm tiêu dùng."
+    },
+    {
+      "key": "niem-tin-trung-thanh-thuong-hieu:AL",
+      "note": "Chọn khi muốn tách trung thành thái độ (gắn bó, sẵn lòng trả giá cao hơn) khỏi hành vi mua lặp lại."
+    },
+    {
+      "key": "niem-tin-trung-thanh-thuong-hieu:PL",
+      "note": "Chọn cùng AL khi mô hình phân biệt hai loại trung thành theo Chaudhuri và Holbrook (2001)."
+    }
+  ],
+  "tips": [
+    "Thang LOY của Zeithaml và cộng sự hỏi khả năng thực hiện hành vi (1 = Hoàn toàn không có khả năng … 7 = Rất có khả năng), không phải mức đồng ý. Giữ đúng nhãn này khi dịch.",
+    "AL và PL chỉ có 2 biến mỗi khái niệm. Nếu chạy CFA, gộp thành một khái niệm 4 biến hoặc bổ sung câu cho đủ 3 biến.",
+    "Câu BL3 phù hợp hàng tiêu dùng có bán ở cửa hàng. Với dịch vụ như ngân hàng hay nhà mạng, sửa thành 'Tôi sẽ không chuyển sang [đối thủ] nếu [thương hiệu] vẫn đáp ứng nhu cầu' và ghi rõ đã điều chỉnh.",
+    "Khảo sát lòng trung thành chỉ có nghĩa với người đã dùng thương hiệu. Thêm câu sàng lọc về thời gian sử dụng ở đầu bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "Trung thành thái độ và trung thành hành vi khác nhau thế nào?",
+      "a": "Trung thành hành vi là việc khách hàng tiếp tục mua lại. Trung thành thái độ là sự gắn bó và ưu tiên về mặt tình cảm, thể hiện qua việc sẵn lòng trả giá cao hơn hay giới thiệu cho người khác. Một khách hàng có thể mua lặp lại vì tiện mà không gắn bó."
+    },
+    {
+      "q": "Lòng trung thành có phải biến phụ thuộc cuối cùng của mô hình không?",
+      "a": "Thường là vậy trong mô hình chất lượng dịch vụ, hài lòng, trung thành. Một số đề tài đặt trung thành làm biến trung gian dẫn tới truyền miệng hay sẵn lòng trả giá cao hơn."
+    },
+    {
+      "q": "Có thể dùng thang trung thành cho khách hàng mới không?",
+      "a": "Không nên. Người chưa dùng hoặc mới dùng một lần chưa có cơ sở trả lời. Với nhóm này nên đo ý định mua hoặc ý định sử dụng."
+    }
+  ],
+  "related": [
+    "su-hai-long-khach-hang",
+    "niem-tin",
+    "truyen-mieng",
+    "chat-luong-dich-vu"
+  ]
+}

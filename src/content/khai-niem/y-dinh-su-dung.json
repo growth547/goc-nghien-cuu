@@ -1,0 +1,53 @@
+{
+  "name": "Ý định sử dụng",
+  "nameEn": "Behavioral Intention to Use",
+  "field": "Công nghệ & hệ thống thông tin",
+  "title": "Thang đo ý định sử dụng công nghệ tiếng Việt: TAM, UTAUT, ECM",
+  "description": "Thang đo ý định sử dụng và ý định tiếp tục sử dụng dịch sẵn tiếng Việt từ TAM, UTAUT (2003), UTAUT2 (2012) và ECM. So sánh câu chữ, số biến và khi nào dùng.",
+  "keyword": "thang đo ý định sử dụng",
+  "intro": "Ý định sử dụng là mức độ một người dự định dùng một công nghệ, ứng dụng hay dịch vụ trong thời gian tới. Đây là biến phụ thuộc trung tâm của TAM (Davis, 1989), UTAUT (Venkatesh và cộng sự, 2003) và UTAUT2 (2012); với người đã dùng, ECM của Bhattacherjee (2001) đo ý định tiếp tục sử dụng. Đề tài thường gặp ở Việt Nam: ý định sử dụng ví điện tử, ngân hàng số, ứng dụng học trực tuyến, ChatGPT trong học tập, dịch vụ gọi xe.",
+  "constructs": [
+    {
+      "key": "tam:BI",
+      "note": "Chọn khi mô hình theo TAM và người trả lời chưa hoặc mới bắt đầu dùng hệ thống."
+    },
+    {
+      "key": "utaut:BI",
+      "note": "Chọn khi mô hình theo UTAUT; câu hỏi có khung thời gian [n] tháng tới."
+    },
+    {
+      "key": "utaut2:BI",
+      "note": "Chọn khi mô hình theo UTAUT2 với người tiêu dùng đã quen với dịch vụ; câu hỏi nhấn vào tiếp tục và thường xuyên."
+    },
+    {
+      "key": "ecm-tiep-tuc-su-dung:CI",
+      "note": "Chọn khi người trả lời đã dùng và câu hỏi là có tiếp tục hay bỏ; có câu đảo chiều CI3."
+    }
+  ],
+  "tips": [
+    "Tách rõ người chưa dùng và người đã dùng bằng câu sàng lọc. Ý định sử dụng hợp với người chưa dùng; ý định tiếp tục sử dụng hợp với người đã dùng.",
+    "Thang TAM chỉ có 2 biến. Nếu chạy CFA, bổ sung 1 câu từ thang UTAUT để đủ 3 biến và ghi nguồn.",
+    "Thay [n] trong thang UTAUT bằng số tháng cụ thể (thường 3 hoặc 6) và giữ giống nhau ở các câu.",
+    "Câu CI3 của ECM là câu đảo chiều. Đảo điểm trước khi phân tích."
+  ],
+  "faq": [
+    {
+      "q": "Ý định sử dụng và ý định tiếp tục sử dụng khác nhau thế nào?",
+      "a": "Ý định sử dụng nói về việc chấp nhận một công nghệ mới. Ý định tiếp tục sử dụng nói về việc người đã dùng có tiếp tục hay bỏ. Bhattacherjee (2001) cho thấy hai giai đoạn này có yếu tố tác động khác nhau, nên chọn thang theo đối tượng khảo sát."
+    },
+    {
+      "q": "Nên dùng TAM hay UTAUT2 cho đề tài ví điện tử?",
+      "a": "UTAUT2 được xây dựng cho người tiêu dùng nên phù hợp hơn với ví điện tử, vì có thêm động lực hưởng thụ, giá trị giá cả và thói quen. TAM gọn hơn nếu bảng hỏi cần ngắn."
+    },
+    {
+      "q": "Có cần đo hành vi sử dụng thực tế không?",
+      "a": "Không bắt buộc. Phần lớn khoá luận dừng ở ý định vì dữ liệu cắt ngang khó đo hành vi. Nếu muốn đo, UTAUT2 có thang hành vi sử dụng tần suất."
+    }
+  ],
+  "related": [
+    "nhan-thuc-su-huu-ich",
+    "nhan-thuc-de-su-dung",
+    "chuan-chu-quan",
+    "nhan-thuc-kiem-soat-hanh-vi"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Niềm tin",
+  "nameEn": "Trust",
+  "field": "Marketing & thương hiệu",
+  "title": "Thang đo niềm tin tiếng Việt: mua hàng online, thương hiệu, KOL",
+  "description": "Thang đo niềm tin dịch sẵn tiếng Việt: niềm tin vào người bán trực tuyến (Gefen, 2003), niềm tin thương hiệu (Chaudhuri, 2001), độ đáng tin của KOL (Ohanian, 1990).",
+  "keyword": "thang đo niềm tin",
+  "intro": "Niềm tin là sự sẵn lòng dựa vào một bên khác vì tin rằng bên đó trung thực, có năng lực và quan tâm tới lợi ích của mình. Trong thương mại điện tử, Gefen và cộng sự (2003) tích hợp niềm tin vào mô hình TAM; trong marketing, niềm tin thương hiệu dẫn tới lòng trung thành theo Chaudhuri và Holbrook (2001); trong nghiên cứu người ảnh hưởng, sự đáng tin là một phần của độ tin cậy nguồn tin. Đề tài thường gặp ở Việt Nam: niềm tin khi mua hàng trên sàn thương mại điện tử, niềm tin vào ví điện tử, niềm tin vào KOL và ý định mua.",
+  "constructs": [
+    {
+      "key": "niem-tin-thuong-mai-dien-tu:TR",
+      "note": "Chọn khi đối tượng là người bán hoặc cửa hàng trực tuyến và người trả lời đã từng mua ở đó."
+    },
+    {
+      "key": "niem-tin-trung-thanh-thuong-hieu:BT",
+      "note": "Chọn khi đối tượng là một thương hiệu và mô hình dẫn tới lòng trung thành."
+    },
+    {
+      "key": "do-tin-cay-nguon-ohanian:TRU",
+      "note": "Chọn khi đo mức đáng tin của người nổi tiếng, KOL hoặc người đánh giá sản phẩm."
+    }
+  ],
+  "tips": [
+    "Thang của Gefen và cộng sự mở đầu mỗi câu bằng 'Dựa trên trải nghiệm trước đây'. Với người chưa mua, bỏ cụm này hoặc khảo sát chỉ người đã mua.",
+    "Thang sự đáng tin của Ohanian dùng cặp tính từ đối nghĩa 7 mức. Cho người trả lời xem tên hoặc ảnh người quảng bá cụ thể trước câu hỏi.",
+    "Thang niềm tin thương hiệu chỉ có 4 biến ngắn, phù hợp mô hình có nhiều khái niệm.",
+    "Niềm tin có thể gồm nhiều thành phần (năng lực, thiện chí, chính trực). Nếu đề tài cần tách các thành phần, cần thang đa hướng khác."
+  ],
+  "faq": [
+    {
+      "q": "Niềm tin và rủi ro cảm nhận có phải hai mặt của một khái niệm không?",
+      "a": "Không. Niềm tin là kỳ vọng tích cực vào bên kia, còn rủi ro cảm nhận là khả năng xảy ra kết quả xấu. Nhiều mô hình thương mại điện tử đo cả hai và cho niềm tin làm giảm rủi ro cảm nhận."
+    },
+    {
+      "q": "Nên đo niềm tin vào nền tảng hay vào người bán?",
+      "a": "Tuỳ câu hỏi nghiên cứu. Trên sàn thương mại điện tử, niềm tin vào sàn (Shopee, Lazada) và niềm tin vào người bán là hai đối tượng khác nhau. Ghi rõ đối tượng trong câu hỏi."
+    },
+    {
+      "q": "Niềm tin có tác động trực tiếp tới ý định mua không?",
+      "a": "Hầu hết nghiên cứu cho thấy có, và niềm tin thường làm trung gian giữa các yếu tố như danh tiếng, chất lượng website với ý định mua."
+    }
+  ],
+  "related": [
+    "long-trung-thanh",
+    "y-dinh-mua",
+    "truyen-mieng",
+    "thai-do"
+  ]
+}

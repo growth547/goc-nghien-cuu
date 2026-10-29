@@ -1,0 +1,49 @@
+{
+  "name": "Kiệt sức (burnout)",
+  "nameEn": "Burnout",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo kiệt sức (burnout) tiếng Việt: CBI 2005",
+  "description": "Thang đo kiệt sức Copenhagen Burnout Inventory (Kristensen và cộng sự, 2005) dịch sẵn tiếng Việt: kiệt sức cá nhân, liên quan công việc và liên quan khách hàng.",
+  "keyword": "thang đo kiệt sức",
+  "intro": "Kiệt sức là trạng thái mệt mỏi kéo dài về thể chất và tinh thần, thường gắn với công việc hoặc việc học. Maslach định nghĩa kiệt sức gồm ba phần: kiệt quệ cảm xúc, thái độ tiêu cực và giảm thành tựu; Kristensen và cộng sự (2005) xây dựng CBI tập trung vào sự mệt mỏi và quy nó theo ba lĩnh vực. Trong khoá luận ở Việt Nam, kiệt sức hay xuất hiện ở các đề tài về nhân viên y tế, giáo viên, nhân viên ngân hàng, và trong mô hình yêu cầu, nguồn lực công việc cùng với gắn kết công việc.",
+  "constructs": [
+    {
+      "key": "kiet-suc-cbi:PB",
+      "note": "Chọn khi đo mệt mỏi chung, không quy cho công việc; dùng được cho cả sinh viên và người nghỉ hưu."
+    },
+    {
+      "key": "kiet-suc-cbi:WB",
+      "note": "Chọn khi đề tài về người lao động và muốn quy sự mệt mỏi cho công việc."
+    },
+    {
+      "key": "kiet-suc-cbi:CB",
+      "note": "Chọn khi người trả lời làm việc trực tiếp với khách hàng, người bệnh hoặc học sinh."
+    }
+  ],
+  "tips": [
+    "CBI dùng hai loại thang: tần suất (Luôn luôn … Không bao giờ) và mức độ (Rất nhiều … Rất ít). Giữ đúng loại thang cho từng câu như ghi trong trang thang đo.",
+    "Câu WB7 là câu đảo chiều. Đảo điểm trước khi tính điểm trung bình.",
+    "Thay 'khách hàng' trong tiểu thang CB bằng đối tượng cụ thể như người bệnh, học sinh hay khách hàng ngân hàng.",
+    "Ba tiểu thang được tính điểm riêng, không cộng thành một điểm kiệt sức chung."
+  ],
+  "faq": [
+    {
+      "q": "CBI khác MBI (Maslach Burnout Inventory) thế nào?",
+      "a": "MBI có bản quyền và phải mua giấy phép, gồm ba thành phần kiệt quệ cảm xúc, thái độ tiêu cực, giảm thành tựu. CBI miễn phí, chỉ đo sự mệt mỏi và quy nó cho cá nhân, công việc hay khách hàng."
+    },
+    {
+      "q": "Có cần dùng cả 3 tiểu thang CBI không?",
+      "a": "Không bắt buộc. Kristensen và cộng sự thiết kế để có thể chọn tiểu thang phù hợp. Đề tài về nhân viên văn phòng ít tiếp xúc khách hàng có thể bỏ tiểu thang CB."
+    },
+    {
+      "q": "Kiệt sức và căng thẳng khác nhau thế nào?",
+      "a": "Căng thẳng là phản ứng trước áp lực, có thể ngắn hạn. Kiệt sức là hậu quả của căng thẳng kéo dài, biểu hiện bằng sự mệt mỏi dai dẳng. Trong mô hình, căng thẳng thường đứng trước kiệt sức."
+    }
+  ],
+  "related": [
+    "cang-thang",
+    "gan-ket-cong-viec",
+    "y-dinh-nghi-viec",
+    "hai-long-cong-viec"
+  ]
+}

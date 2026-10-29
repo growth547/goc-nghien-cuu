@@ -1,0 +1,41 @@
+{
+  "name": "Ý định nghỉ việc",
+  "nameEn": "Turnover Intention",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo ý định nghỉ việc tiếng Việt (MOAQ, Cammann 1979)",
+  "description": "Thang đo ý định nghỉ việc 3 biến của Cammann và cộng sự (1979) trong bộ MOAQ, dịch sẵn tiếng Việt, có thang trả lời gốc và gợi ý dùng trong khoá luận nhân sự.",
+  "keyword": "thang đo ý định nghỉ việc",
+  "intro": "Ý định nghỉ việc là mức độ người lao động có suy nghĩ và kế hoạch rời bỏ tổ chức hiện tại trong thời gian tới. Đây là biến phụ thuộc phổ biến trong nghiên cứu nhân sự vì nghỉ việc thực tế khó quan sát, còn ý định là yếu tố dự báo gần nhất. Khái niệm này xuất hiện trong mô hình của Mobley, lý thuyết trao đổi xã hội và mô hình yêu cầu, nguồn lực công việc. Đề tài thường gặp ở Việt Nam: ý định nghỉ việc của nhân viên ngân hàng, điều dưỡng, nhân viên công nghệ thông tin, giáo viên, và vai trò của hài lòng, căng thẳng, lãnh đạo.",
+  "constructs": [
+    {
+      "key": "y-dinh-nghi-viec:TI",
+      "note": "Chọn cho hầu hết đề tài; 3 biến ngắn gọn, đo cả suy nghĩ lẫn kế hoạch tìm việc mới trong năm tới."
+    }
+  ],
+  "tips": [
+    "Bộ MOAQ năm 1975 dùng hai loại thang: TI1 hỏi khả năng, TI2 và TI3 hỏi mức đồng ý. Có thể thống nhất về Likert đồng ý và viết lại TI1 thành phát biểu, ghi rõ việc điều chỉnh.",
+    "Không có câu đảo chiều; điểm cao là ý định nghỉ việc cao.",
+    "Người trả lời có thể ngại trả lời thật khi khảo sát qua công ty. Nhấn mạnh tính ẩn danh và không thu tên, mã nhân viên.",
+    "Với nhóm làm việc theo hợp đồng ngắn hạn, đổi 'trong năm tới' thành khung thời gian phù hợp như 6 tháng tới."
+  ],
+  "faq": [
+    {
+      "q": "Thang ý định nghỉ việc 3 biến có đủ cho PLS-SEM không?",
+      "a": "Đủ. Ba biến là mức tối thiểu để đánh giá độ tin cậy và giá trị hội tụ, và thang của Cammann và cộng sự được dùng rộng rãi trong nghiên cứu nhân sự. Kiểm tra lại alpha và hệ số tải trên dữ liệu của bạn."
+    },
+    {
+      "q": "Những yếu tố nào hay được đưa vào mô hình ý định nghỉ việc?",
+      "a": "Thường gặp: hài lòng công việc, cam kết tổ chức, căng thẳng hoặc kiệt sức, lương thưởng, phong cách lãnh đạo, cơ hội thăng tiến, cân bằng công việc và cuộc sống. Hài lòng và cam kết thường là biến trung gian."
+    },
+    {
+      "q": "Ý định nghỉ việc và ý định ở lại có đo bằng cùng thang không?",
+      "a": "Không nên đảo ngược thang nghỉ việc để đo ý định ở lại. Hai khái niệm có lý thuyết khác nhau; nếu đề tài nói về giữ chân nhân viên, nên dùng thang ý định ở lại riêng."
+    }
+  ],
+  "related": [
+    "hai-long-cong-viec",
+    "kiet-suc",
+    "cam-ket-to-chuc",
+    "gan-ket-cong-viec"
+  ]
+}

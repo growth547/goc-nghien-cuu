@@ -1,0 +1,49 @@
+{
+  "name": "Sự hài lòng của khách hàng",
+  "nameEn": "Customer Satisfaction",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo sự hài lòng của khách hàng tiếng Việt",
+  "description": "Thang đo sự hài lòng của khách hàng dịch sẵn tiếng Việt: hài lòng sau sử dụng theo ECM, hài lòng người dùng hệ thống thông tin, hài lòng người bệnh PSQ-18.",
+  "keyword": "thang đo sự hài lòng của khách hàng",
+  "intro": "Sự hài lòng của khách hàng là đánh giá tổng thể của khách hàng sau khi so sánh trải nghiệm thực tế với điều họ kỳ vọng. Khái niệm này là trung tâm của lý thuyết xác nhận kỳ vọng (Oliver, 1980), mô hình tiếp tục sử dụng ECM của Bhattacherjee (2001) và mô hình thành công hệ thống thông tin của DeLone và McLean (2003). Trong khoá luận ở Việt Nam, hài lòng thường là biến trung gian giữa chất lượng dịch vụ và lòng trung thành, với các đề tài như hài lòng với ngân hàng số, ứng dụng giao đồ ăn, hệ thống học trực tuyến hay bệnh viện.",
+  "constructs": [
+    {
+      "key": "ecm-tiep-tuc-su-dung:SAT",
+      "note": "Chọn khi đo hài lòng tổng thể sau khi dùng một ứng dụng hay dịch vụ số; 4 cặp tính từ đối nghĩa, không gắn với ngành cụ thể."
+    },
+    {
+      "key": "chat-luong-he-thong-thong-tin:US",
+      "note": "Chọn khi mô hình theo DeLone và McLean, ví dụ hài lòng với hệ thống e-learning hay phần mềm quản lý."
+    },
+    {
+      "key": "chat-luong-dich-vu-y-te:GS",
+      "note": "Chọn khi khảo sát người bệnh; chỉ có 2 biến nên dùng như thước đo bổ sung, không nên làm biến phụ thuộc duy nhất."
+    }
+  ],
+  "tips": [
+    "Thang SAT của ECM dùng cặp tính từ đối nghĩa 7 mức, khác Likert đồng ý. Đặt một câu dẫn chung như 'Cảm nhận của bạn về việc sử dụng [dịch vụ] là:' trước 4 cặp tính từ.",
+    "Thang hài lòng người dùng của Cidral và cộng sự viết cho môi trường học trực tuyến (US1). Khi dùng cho ngành khác, sửa câu này theo bối cảnh và ghi rõ đã điều chỉnh.",
+    "Thang PSQ-18 có câu đảo chiều (PSQ17). Đảo điểm trước khi tính Cronbach's alpha, nếu không hệ số sẽ thấp bất thường.",
+    "Thư viện chưa có thang hài lòng khách hàng tổng quát cho bán lẻ hay khách sạn. Với các ngành này, nhiều khoá luận dùng thang SAT của ECM và đổi tên đối tượng."
+  ],
+  "faq": [
+    {
+      "q": "Hài lòng khách hàng và chất lượng dịch vụ khác nhau thế nào?",
+      "a": "Chất lượng dịch vụ là đánh giá về từng khía cạnh của dịch vụ (tin cậy, đáp ứng, đồng cảm...). Hài lòng là cảm nhận tổng thể sau khi dùng dịch vụ. Trong mô hình, chất lượng dịch vụ thường là biến độc lập tác động tới hài lòng."
+    },
+    {
+      "q": "Thang hài lòng nên có bao nhiêu biến?",
+      "a": "Từ 3 đến 5 biến là đủ cho một khái niệm đơn hướng. Thang SAT của ECM và thang hài lòng người dùng của DeLone và McLean đều có 4 biến."
+    },
+    {
+      "q": "Có thể dùng một câu duy nhất để đo hài lòng không?",
+      "a": "Có thể trong khảo sát ứng dụng, nhưng khoá luận chạy PLS-SEM hay CFA cần thang nhiều biến để kiểm định độ tin cậy và giá trị hội tụ. Nên dùng thang 3 biến trở lên."
+    }
+  ],
+  "related": [
+    "chat-luong-dich-vu",
+    "long-trung-thanh",
+    "gia-tri-cam-nhan",
+    "y-dinh-su-dung"
+  ]
+}

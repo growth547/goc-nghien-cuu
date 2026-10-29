@@ -1,0 +1,49 @@
+{
+  "name": "Chất lượng cảm nhận",
+  "nameEn": "Perceived Quality",
+  "field": "Marketing & thương hiệu",
+  "title": "Thang đo chất lượng cảm nhận tiếng Việt: Dodds (1991), Yoo (2001)",
+  "description": "Thang đo chất lượng cảm nhận dịch sẵn tiếng Việt: Dodds và cộng sự (1991), Yoo và Donthu (2001) trong tài sản thương hiệu, giá trị chất lượng PERVAL (2001).",
+  "keyword": "thang đo chất lượng cảm nhận",
+  "intro": "Chất lượng cảm nhận là đánh giá chủ quan của người tiêu dùng về mức độ tốt và đáng tin của một sản phẩm, khác với chất lượng kỹ thuật thực tế. Zeithaml (1988) xem đây là yếu tố dẫn tới giá trị cảm nhận; Aaker và Yoo, Donthu đặt nó là một thành phần của tài sản thương hiệu. Đề tài thường gặp ở Việt Nam: chất lượng cảm nhận với hàng Việt, thực phẩm hữu cơ, mỹ phẩm, điện thoại, và tác động tới ý định mua hay lòng trung thành.",
+  "constructs": [
+    {
+      "key": "y-dinh-mua:PQ",
+      "note": "Chọn khi mô hình giá, chất lượng, giá trị, ý định mua theo Dodds và cộng sự cho một sản phẩm cụ thể."
+    },
+    {
+      "key": "tai-san-thuong-hieu:PQ",
+      "note": "Chọn khi mô hình tài sản thương hiệu theo Yoo và Donthu; chỉ 2 biến, đánh giá ở cấp thương hiệu."
+    },
+    {
+      "key": "gia-tri-cam-nhan-perval:QV",
+      "note": "Chọn khi dùng PERVAL; đo chất lượng như một thành phần của giá trị."
+    }
+  ],
+  "tips": [
+    "Thang của Dodds dùng cặp đầu mút 'rất cao … rất thấp'. Khi đưa vào bảng hỏi, đặt điểm cao là chất lượng cao.",
+    "Thang của Yoo và Donthu chỉ có 2 biến. Nếu chạy CFA hoặc PLS-SEM, bổ sung câu từ thang Dodds để đủ 3 biến.",
+    "Câu QV4 và QV5 của PERVAL là câu đảo chiều, cần đảo điểm trước khi phân tích.",
+    "Ghi rõ đối tượng là sản phẩm hay thương hiệu. Chất lượng cảm nhận của một mẫu điện thoại khác chất lượng cảm nhận của cả thương hiệu."
+  ],
+  "faq": [
+    {
+      "q": "Chất lượng cảm nhận và chất lượng dịch vụ khác nhau thế nào?",
+      "a": "Chất lượng cảm nhận thường dùng cho sản phẩm hữu hình và được đo như một khái niệm đơn hướng. Chất lượng dịch vụ đo nhiều thành phần như tin cậy, đáp ứng, đồng cảm."
+    },
+    {
+      "q": "Chất lượng cảm nhận tác động tới biến nào?",
+      "a": "Thường tác động tới giá trị cảm nhận, hài lòng, ý định mua và lòng trung thành. Trong mô hình Dodds, chất lượng cảm nhận dẫn tới giá trị cảm nhận rồi tới ý định mua."
+    },
+    {
+      "q": "Có nên dùng thang 2 biến của Yoo và Donthu không?",
+      "a": "Có thể nếu mô hình là tài sản thương hiệu, nhưng nên bổ sung ít nhất 1 biến để đủ 3 biến cho phân tích nhân tố."
+    }
+  ],
+  "related": [
+    "gia-tri-cam-nhan",
+    "y-dinh-mua",
+    "chat-luong-dich-vu",
+    "long-trung-thanh"
+  ]
+}

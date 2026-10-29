@@ -146,4 +146,32 @@ const datasets = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, scales, templates, datasets };
+// One landing page per construct ("thang đo <khái niệm>"), aggregating matching constructs
+// from the scale library as "<scale slug>:<construct code>" keys; checked by check-concepts.mjs.
+const concepts = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/khai-niem" }),
+  schema: z.object({
+    title: z.string().max(70),
+    description: z.string().min(110).max(170),
+    name: z.string(),
+    nameEn: z.string(),
+    field: z.enum([
+      "Công nghệ & hệ thống thông tin",
+      "Hành vi người tiêu dùng",
+      "Chất lượng dịch vụ",
+      "Marketing & thương hiệu",
+      "Quản trị nhân sự & tổ chức",
+      "Tâm lý & sức khoẻ tinh thần",
+    ]),
+    keyword: z.string(),
+    intro: z.string(),
+    constructs: z
+      .array(z.object({ key: z.string().regex(/^[a-z0-9-]+:[A-Za-z0-9]+$/), note: z.string() }))
+      .min(1),
+    tips: z.array(z.string()).min(3).max(5),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).length(3),
+    related: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { posts, pages, scales, templates, datasets, concepts };

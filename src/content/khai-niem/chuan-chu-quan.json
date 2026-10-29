@@ -1,0 +1,49 @@
+{
+  "name": "Chuẩn chủ quan",
+  "nameEn": "Subjective Norm",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo chuẩn chủ quan tiếng Việt: TPB và ảnh hưởng xã hội",
+  "description": "Thang đo chuẩn chủ quan dịch sẵn tiếng Việt theo TPB của Ajzen (Francis và cộng sự, 2004) và ảnh hưởng xã hội trong UTAUT, UTAUT2. Có câu đảo chiều và cách chọn.",
+  "keyword": "thang đo chuẩn chủ quan",
+  "intro": "Chuẩn chủ quan là nhận thức của một người về việc những người quan trọng với họ có muốn họ thực hiện hành vi hay không. Đây là một trong ba yếu tố dẫn tới ý định trong Thuyết hành động hợp lý (TRA) và Thuyết hành vi có kế hoạch (TPB) của Ajzen. Trong UTAUT và UTAUT2, khái niệm tương ứng được gọi là ảnh hưởng xã hội. Đề tài thường gặp ở Việt Nam: ý định mua sản phẩm xanh, ý định khởi nghiệp của sinh viên, ý định tiêm vắc xin, ý định dùng ví điện tử.",
+  "constructs": [
+    {
+      "key": "tpb:SN",
+      "note": "Chọn khi mô hình theo TPB hoặc TRA; có cả chuẩn mệnh lệnh và chuẩn mô tả (SN5), áp dụng cho hầu hết hành vi."
+    },
+    {
+      "key": "utaut2:SI",
+      "note": "Chọn khi đề tài về công nghệ tiêu dùng theo UTAUT2; 3 biến chỉ hỏi về người quan trọng, không có yếu tố tổ chức."
+    },
+    {
+      "key": "utaut:SI",
+      "note": "Chọn khi đề tài về công nghệ trong tổ chức; SI3 và SI4 hỏi về sự ủng hộ của ban lãnh đạo."
+    }
+  ],
+  "tips": [
+    "Câu SN1 của TPB dùng cặp đầu mút 'nên … không nên' và phải đảo điểm. Nếu chuyển sang Likert đồng ý, viết lại thành 'Hầu hết những người quan trọng với tôi nghĩ rằng tôi nên…'.",
+    "SN3 (áp lực xã hội) thường có hệ số tải thấp. Nếu loại biến, báo cáo lý do trong chương 4.",
+    "Thay [thực hiện hành vi] bằng hành vi cụ thể kèm thời gian, giống cách viết ở thang ý định, để các khái niệm TPB khớp nhau.",
+    "Không dùng SI3, SI4 của UTAUT cho người tiêu dùng cá nhân vì không có ban lãnh đạo hay tổ chức đứng sau."
+  ],
+  "faq": [
+    {
+      "q": "Chuẩn chủ quan và ảnh hưởng xã hội có giống nhau không?",
+      "a": "Gần như giống nhau. Venkatesh và cộng sự (2003) gộp chuẩn chủ quan, nhân tố xã hội và hình ảnh thành ảnh hưởng xã hội trong UTAUT. Nếu mô hình theo TPB, gọi là chuẩn chủ quan; nếu theo UTAUT, gọi là ảnh hưởng xã hội."
+    },
+    {
+      "q": "Chuẩn mô tả là gì và có nên đưa vào không?",
+      "a": "Chuẩn mô tả là nhận thức về việc những người giống mình có đang làm hành vi đó không (câu SN5). Ajzen khuyến nghị đo cả hai loại. Nếu hệ số tải của SN5 thấp, có thể tách thành khái niệm riêng."
+    },
+    {
+      "q": "Vì sao chuẩn chủ quan hay không có ý nghĩa thống kê?",
+      "a": "Nhiều nghiên cứu TPB cho thấy chuẩn chủ quan là yếu tố dự báo yếu nhất của ý định, đặc biệt với hành vi mang tính cá nhân. Kết quả không có ý nghĩa vẫn là phát hiện hợp lệ và nên được thảo luận."
+    }
+  ],
+  "related": [
+    "thai-do",
+    "nhan-thuc-kiem-soat-hanh-vi",
+    "y-dinh-mua",
+    "y-dinh-su-dung"
+  ]
+}

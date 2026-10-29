@@ -1,0 +1,49 @@
+{
+  "name": "Ý định mua",
+  "nameEn": "Purchase Intention",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo ý định mua tiếng Việt: Dodds (1991) và TPB",
+  "description": "Thang đo ý định mua dịch sẵn tiếng Việt: sẵn lòng mua của Dodds và cộng sự (1991), ý định hành vi theo TPB, ý định mua lại thương hiệu. Có biến quan sát và nguồn.",
+  "keyword": "thang đo ý định mua",
+  "intro": "Ý định mua là mức độ một người sẵn sàng và có kế hoạch mua một sản phẩm hay dịch vụ trong thời gian tới. Đây là biến phụ thuộc hay gặp nhất trong khoá luận ngành marketing và kinh doanh, thường được đặt cuối mô hình. Khái niệm này xuất hiện trong Thuyết hành vi có kế hoạch (TPB) của Ajzen, trong mô hình giá, chất lượng và giá trị của Dodds, Monroe và Grewal (1991), và trong các nghiên cứu về lòng trung thành thương hiệu. Đề tài thường gặp ở Việt Nam: ý định mua thực phẩm hữu cơ, mỹ phẩm thuần chay, mua hàng qua livestream, mua sản phẩm thời trang bền vững.",
+  "constructs": [
+    {
+      "key": "y-dinh-mua:WTB",
+      "note": "Chọn khi đề tài xét giá, chất lượng cảm nhận và quyết định mua một sản phẩm cụ thể có giá niêm yết."
+    },
+    {
+      "key": "tpb:INT",
+      "note": "Chọn khi mô hình dựa trên TPB; ghi rõ hành vi và khung thời gian, ví dụ mua mỹ phẩm thuần chay trong 3 tháng tới."
+    },
+    {
+      "key": "niem-tin-trung-thanh-thuong-hieu:PL",
+      "note": "Chọn khi người trả lời đã dùng thương hiệu và bạn muốn đo ý định mua lại, không phải mua lần đầu."
+    }
+  ],
+  "tips": [
+    "Ý định mua nên có ít nhất 3 biến quan sát để chạy Cronbach's alpha và CFA ổn định; thang mua lại 2 biến của Chaudhuri và Holbrook nên bổ sung thêm 1 câu tự viết và nêu rõ trong chương 3.",
+    "Ghi rõ đối tượng và thời gian trong câu hỏi (sản phẩm nào, trong bao lâu). Câu hỏi chung chung như 'tôi sẽ mua' cho dữ liệu kém phân tán.",
+    "Thang của Dodds và cộng sự dùng cặp đầu mút 'rất cao … rất thấp'. Nếu chuyển sang Likert đồng ý, đảo thứ tự để điểm cao là ý định cao và ghi chú việc điều chỉnh.",
+    "Nếu người trả lời chưa từng mua sản phẩm, đặt một câu sàng lọc ở đầu bảng hỏi để tách nhóm mua lần đầu và nhóm mua lại."
+  ],
+  "faq": [
+    {
+      "q": "Nên dùng thang ý định mua của Dodds hay của TPB?",
+      "a": "Nếu mô hình của bạn có thái độ, chuẩn chủ quan và nhận thức kiểm soát hành vi thì dùng 3 biến ý định của TPB cho thống nhất. Nếu mô hình xoay quanh giá, chất lượng cảm nhận và giá trị cảm nhận thì dùng thang sẵn lòng mua của Dodds và cộng sự (1991)."
+    },
+    {
+      "q": "Ý định mua có cần bao nhiêu biến quan sát?",
+      "a": "Tối thiểu 3 biến để đánh giá độ tin cậy và giá trị hội tụ. Thang của Dodds có 5 biến, thang TPB có 3 biến, đều đáp ứng yêu cầu này."
+    },
+    {
+      "q": "Có thể đo ý định mua bằng thang Likert 5 mức không?",
+      "a": "Được. Nhiều khoá luận chuyển thang 7 mức gốc sang Likert 5 mức cho dễ trả lời. Hãy ghi rõ thang trả lời đã dùng trong chương 3 và giữ cùng một thang cho các khái niệm trong mô hình nếu có thể."
+    }
+  ],
+  "related": [
+    "gia-tri-cam-nhan",
+    "thai-do",
+    "chuan-chu-quan",
+    "niem-tin"
+  ]
+}

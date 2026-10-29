@@ -1,0 +1,45 @@
+{
+  "name": "Căng thẳng (stress)",
+  "nameEn": "Stress",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo căng thẳng (stress) tiếng Việt: PSS-10 và DASS-21",
+  "description": "Thang đo căng thẳng dịch sẵn tiếng Việt: PSS-10 của Cohen và cộng sự (1983, 1988) và tiểu thang stress DASS-21 (Lovibond, 1995). So sánh cách chấm điểm và cách chọn.",
+  "keyword": "thang đo căng thẳng",
+  "intro": "Căng thẳng là trạng thái một người cảm thấy yêu cầu của môi trường vượt quá khả năng ứng phó của mình. Theo mô hình đánh giá nhận thức của Lazarus và Folkman, căng thẳng phụ thuộc vào cách cá nhân nhìn nhận tình huống, và PSS-10 được xây dựng theo hướng này. DASS-21 đo căng thẳng như một trạng thái cảm xúc tiêu cực bên cạnh trầm cảm và lo âu. Đề tài thường gặp ở Việt Nam: căng thẳng học tập của sinh viên, áp lực công việc của nhân viên y tế, căng thẳng mùa thi và các yếu tố ảnh hưởng.",
+  "constructs": [
+    {
+      "key": "cang-thang-pss-10:PSS",
+      "note": "Chọn khi đo mức căng thẳng cảm nhận trong tháng vừa qua; 10 biến, có 4 câu đảo chiều, dùng được cho mọi nhóm."
+    },
+    {
+      "key": "dass-21:S",
+      "note": "Chọn khi cần đo cùng lúc trầm cảm, lo âu và căng thẳng; tiểu thang stress 7 biến hỏi về tuần vừa qua."
+    }
+  ],
+  "tips": [
+    "PSS-10 có 4 câu đảo chiều (PSS4, PSS5, PSS7, PSS8). Đảo điểm bằng 4 trừ điểm vì thang chấm từ 0 đến 4.",
+    "Điểm tiểu thang stress của DASS-21 phải nhân 2 trước khi so với ngưỡng phân loại mức độ (bình thường, nhẹ, vừa, nặng, rất nặng).",
+    "Cả hai thang dùng thang tần suất, không phải Likert đồng ý. Giữ nguyên nhãn trả lời khi đưa vào bảng hỏi chung.",
+    "Thang sàng lọc không thay cho chẩn đoán. Nếu khảo sát sinh viên, nên ghi kèm thông tin hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "Nên dùng PSS-10 hay DASS-21 để đo stress?",
+      "a": "PSS-10 đo mức độ cảm thấy cuộc sống khó kiểm soát và quá tải, phù hợp khi căng thẳng là biến chính. DASS-21 phù hợp khi cần đo cùng lúc trầm cảm, lo âu và căng thẳng với một bảng hỏi ngắn."
+    },
+    {
+      "q": "Cách tính điểm PSS-10 như thế nào?",
+      "a": "Đảo điểm 4 câu PSS4, PSS5, PSS7, PSS8, sau đó cộng 10 câu. Tổng điểm từ 0 đến 40; điểm càng cao thì căng thẳng cảm nhận càng cao."
+    },
+    {
+      "q": "Có bản DASS-21 tiếng Việt đã được kiểm định không?",
+      "a": "Có. Tran, Tran và Fisher (2013) đã kiểm định DASS-21 tiếng Việt trên phụ nữ nông thôn ở Hà Nam, và trang chính thức của DASS liệt kê các bản dịch tiếng Việt. Bản trên trang này do ban biên tập dịch; nếu dùng bản đã công bố, hãy trích dẫn bản đó."
+    }
+  ],
+  "related": [
+    "kiet-suc",
+    "lo-au",
+    "tram-cam",
+    "niem-tin-vao-nang-luc-ban-than"
+  ]
+}

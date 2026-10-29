@@ -1,0 +1,45 @@
+{
+  "name": "Lo âu",
+  "nameEn": "Anxiety",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo lo âu tiếng Việt: GAD-7 và tiểu thang lo âu DASS-21",
+  "description": "Thang đo lo âu dịch sẵn tiếng Việt: GAD-7 của Spitzer và cộng sự (2006) và tiểu thang lo âu DASS-21 (Lovibond, 1995). Có cách chấm điểm, ngưỡng và khi nào dùng.",
+  "keyword": "thang đo lo âu",
+  "intro": "Lo âu là trạng thái lo lắng, căng thẳng quá mức kèm các biểu hiện cơ thể như tim đập nhanh, khó thở. GAD-7 được xây dựng để sàng lọc rối loạn lo âu lan toả theo tiêu chí DSM-IV, còn tiểu thang lo âu của DASS-21 tập trung vào kích thích sinh lý và cảm giác sợ hãi. Trong khoá luận ở Việt Nam, lo âu thường đi cùng căng thẳng và trầm cảm trong các đề tài về sức khoẻ tinh thần của sinh viên, nhân viên y tế, người dùng mạng xã hội.",
+  "constructs": [
+    {
+      "key": "gad-7:GAD",
+      "note": "Chọn khi lo âu là biến chính và cần ngưỡng sàng lọc rõ ràng; hỏi về 2 tuần vừa qua."
+    },
+    {
+      "key": "dass-21:A",
+      "note": "Chọn khi cần đo cùng lúc trầm cảm, lo âu và căng thẳng; hỏi về tuần vừa qua."
+    }
+  ],
+  "tips": [
+    "GAD-7 chấm từ 0 đến 3 mỗi câu, tổng 0 đến 21. Ngưỡng 5, 10, 15 tương ứng lo âu nhẹ, vừa, nặng.",
+    "Điểm tiểu thang lo âu DASS-21 phải nhân 2 trước khi so với ngưỡng phân loại.",
+    "Cả hai thang dùng thang tần suất 4 mức. Không chuyển sang Likert đồng ý vì sẽ mất ngưỡng so sánh.",
+    "Đây là công cụ sàng lọc, không thay chẩn đoán. Ghi kèm thông tin hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "Nên dùng GAD-7 hay DASS-21 để đo lo âu?",
+      "a": "GAD-7 đo triệu chứng lo âu lan toả và có ngưỡng sàng lọc được dùng rộng rãi trong y tế. DASS-21 phù hợp khi đề tài cần đo cả ba trạng thái trầm cảm, lo âu, căng thẳng trong một bảng hỏi."
+    },
+    {
+      "q": "GAD-7 có miễn phí không?",
+      "a": "Có. GAD-7 được phát hành miễn phí, không cần xin phép để dùng."
+    },
+    {
+      "q": "Cỡ mẫu bao nhiêu là đủ cho nghiên cứu lo âu ở sinh viên?",
+      "a": "Nếu mục tiêu là ước lượng tỷ lệ lo âu, tính theo công thức ước lượng tỷ lệ. Nếu chạy hồi quy hay SEM, dùng máy tính cỡ mẫu theo số biến độc lập."
+    }
+  ],
+  "related": [
+    "cang-thang",
+    "tram-cam",
+    "kiet-suc",
+    "niem-tin-vao-nang-luc-ban-than"
+  ]
+}

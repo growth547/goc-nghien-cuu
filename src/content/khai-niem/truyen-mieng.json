@@ -1,0 +1,45 @@
+{
+  "name": "Truyền miệng",
+  "nameEn": "Word of Mouth",
+  "field": "Marketing & thương hiệu",
+  "title": "Thang đo truyền miệng điện tử (eWOM) tiếng Việt",
+  "description": "Thang đo truyền miệng dịch sẵn tiếng Việt: tiếp nhận eWOM của Jalilvand và Samiei (2012) và truyền miệng trên mạng xã hội của Kim và Ko (2012). Có cách chọn.",
+  "keyword": "thang đo truyền miệng điện tử",
+  "intro": "Truyền miệng là việc người tiêu dùng chia sẻ thông tin, nhận xét về sản phẩm, thương hiệu với người khác; truyền miệng điện tử (eWOM) diễn ra qua đánh giá trực tuyến, mạng xã hội, diễn đàn. Cần phân biệt hai hướng: tiếp nhận eWOM (đọc đánh giá trước khi mua) và lan truyền eWOM (chia sẻ, đăng lại). Khái niệm này thường được đặt trong TPB, mô hình chấp nhận thông tin hoặc mô hình marketing mạng xã hội. Đề tài thường gặp: ảnh hưởng của đánh giá trực tuyến tới ý định mua mỹ phẩm, du lịch, ăn uống.",
+  "constructs": [
+    {
+      "key": "truyen-mieng-dien-tu-ewom:EWOM",
+      "note": "Chọn khi đo mức người tiêu dùng đọc và dựa vào đánh giá trực tuyến trước khi mua."
+    },
+    {
+      "key": "marketing-mang-xa-hoi:WOM",
+      "note": "Chọn khi đo ý muốn chia sẻ, đăng lại nội dung thương hiệu trên mạng xã hội; 2 biến."
+    }
+  ],
+  "tips": [
+    "Thang của Jalilvand và Samiei đo tiếp nhận eWOM, không đo việc người trả lời tự viết đánh giá. Ghi đúng hướng trong giả thuyết.",
+    "Thang WOM của Kim và Ko chỉ có 2 biến. Nếu dùng làm biến riêng trong SEM, bổ sung 1 câu.",
+    "Đổi 'sản phẩm/thương hiệu' thành loại sản phẩm cụ thể (ví dụ khách sạn, mỹ phẩm) để câu tự nhiên hơn.",
+    "Nếu đề tài cần đo nói tốt và giới thiệu cho người khác, các câu LOY1 đến LOY3 trong thang ý định hành vi của Zeithaml và cộng sự (1996) có thể tham khảo."
+  ],
+  "faq": [
+    {
+      "q": "Truyền miệng và truyền miệng điện tử khác nhau thế nào?",
+      "a": "Truyền miệng truyền thống diễn ra trực tiếp giữa người quen. Truyền miệng điện tử diễn ra trên Internet, có thể tới người lạ, được lưu lại và lan rộng hơn."
+    },
+    {
+      "q": "eWOM là biến độc lập hay phụ thuộc?",
+      "a": "Tuỳ hướng. Tiếp nhận eWOM thường là biến độc lập tác động tới ý định mua. Lan truyền eWOM thường là biến phụ thuộc, kết quả của hài lòng hoặc trung thành."
+    },
+    {
+      "q": "Thang eWOM của Jalilvand và Samiei có mấy biến?",
+      "a": "6 biến, dùng Likert đồng ý 5 hoặc 7 mức, phát triển từ Bambauer-Sachse và Mangold (2011)."
+    }
+  ],
+  "related": [
+    "niem-tin",
+    "long-trung-thanh",
+    "y-dinh-mua",
+    "thai-do"
+  ]
+}

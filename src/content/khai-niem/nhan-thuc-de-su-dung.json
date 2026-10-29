@@ -1,0 +1,52 @@
+{
+  "name": "Nhận thức tính dễ sử dụng",
+  "nameEn": "Perceived Ease of Use",
+  "field": "Công nghệ & hệ thống thông tin",
+  "title": "Thang đo nhận thức tính dễ sử dụng tiếng Việt: TAM, UTAUT, SITEQUAL",
+  "description": "Thang đo nhận thức tính dễ sử dụng dịch sẵn tiếng Việt từ TAM của Davis (1989), nỗ lực kỳ vọng UTAUT, UTAUT2 và dễ sử dụng website SITEQUAL (2001).",
+  "keyword": "thang đo nhận thức tính dễ sử dụng",
+  "intro": "Nhận thức tính dễ sử dụng là mức độ một người tin rằng dùng một hệ thống không đòi hỏi nhiều công sức. Davis (1989) đưa khái niệm này vào TAM như yếu tố tác động tới nhận thức sự hữu ích và ý định sử dụng. Trong UTAUT và UTAUT2, khái niệm tương ứng là nỗ lực kỳ vọng; trong nghiên cứu chất lượng website, dễ sử dụng là một thành phần của SITEQUAL. Đề tài thường gặp: ứng dụng ngân hàng, ví điện tử, nền tảng học trực tuyến, website bán hàng.",
+  "constructs": [
+    {
+      "key": "tam:PEOU",
+      "note": "Chọn khi mô hình theo TAM; 6 biến gốc của Davis."
+    },
+    {
+      "key": "utaut:EE",
+      "note": "Chọn khi mô hình theo UTAUT trong tổ chức; 4 biến."
+    },
+    {
+      "key": "utaut2:EE",
+      "note": "Chọn khi mô hình theo UTAUT2 cho người tiêu dùng; 4 biến."
+    },
+    {
+      "key": "webqual:EOU",
+      "note": "Chọn khi đo chất lượng website và chỉ cần một thành phần dễ sử dụng ngắn (2 biến)."
+    }
+  ],
+  "tips": [
+    "Tác động của tính dễ sử dụng thường giảm khi người trả lời đã quen công nghệ. Nếu khảo sát người dùng lâu năm, kết quả không có ý nghĩa là bình thường.",
+    "Thang SITEQUAL chỉ có 2 biến. Nếu dùng làm khái niệm riêng trong PLS-SEM, bổ sung 1 câu để đủ 3 biến.",
+    "Thay [hệ thống] bằng tên ứng dụng cụ thể. Không dùng tên chung chung như 'công nghệ số'."
+  ],
+  "faq": [
+    {
+      "q": "Nhận thức tính dễ sử dụng và nỗ lực kỳ vọng có khác nhau không?",
+      "a": "Gần như giống nhau. UTAUT xây nỗ lực kỳ vọng từ tính dễ sử dụng của TAM và độ phức tạp. Chọn tên theo mô hình gốc."
+    },
+    {
+      "q": "Tính dễ sử dụng tác động tới biến nào trong TAM?",
+      "a": "Trong TAM, tính dễ sử dụng tác động tới nhận thức sự hữu ích và tới thái độ hoặc ý định sử dụng. Khoá luận thường kiểm định cả hai đường."
+    },
+    {
+      "q": "Có thể dùng thang dễ sử dụng cho website không?",
+      "a": "Có. Thang TAM dùng được cho website khi thay [hệ thống] bằng tên website. Nếu đề tài về chất lượng website, thành phần dễ sử dụng của SITEQUAL phù hợp hơn."
+    }
+  ],
+  "related": [
+    "nhan-thuc-su-huu-ich",
+    "y-dinh-su-dung",
+    "chat-luong-dich-vu",
+    "nhan-thuc-kiem-soat-hanh-vi"
+  ]
+}

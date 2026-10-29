@@ -1,0 +1,41 @@
+{
+  "name": "Cam kết với tổ chức",
+  "nameEn": "Organizational Commitment",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo cam kết với tổ chức tiếng Việt: OCQ (Mowday, 1979)",
+  "description": "Thang đo cam kết với tổ chức OCQ 15 biến của Mowday, Steers và Porter (1979), dịch sẵn tiếng Việt, có 6 câu đảo chiều và gợi ý dùng trong khoá luận nhân sự.",
+  "keyword": "thang đo cam kết với tổ chức",
+  "intro": "Cam kết với tổ chức, còn gọi là gắn kết với tổ chức, là mức độ người lao động đồng nhất với mục tiêu, giá trị của tổ chức và mong muốn tiếp tục là thành viên. Mowday, Steers và Porter (1979) xây dựng OCQ theo hướng cam kết tình cảm; Meyer và Allen sau đó tách thành ba thành phần tình cảm, duy trì và chuẩn mực. Đề tài thường gặp ở Việt Nam: gắn kết với tổ chức của nhân viên ngân hàng, công chức, giáo viên, và tác động của lãnh đạo, văn hoá doanh nghiệp, hỗ trợ tổ chức.",
+  "constructs": [
+    {
+      "key": "cam-ket-to-chuc-ocq:OC",
+      "note": "Chọn khi đo cam kết tình cảm tổng thể; 15 biến, có thể rút gọn bản 9 câu khẳng định."
+    }
+  ],
+  "tips": [
+    "OCQ có 6 câu đảo chiều (OC3, OC7, OC9, OC11, OC12, OC15). Với thang 7 mức, đảo bằng 8 trừ điểm.",
+    "Nhiều nghiên cứu dùng bản 9 câu chỉ gồm các câu khẳng định để tránh lỗi do câu đảo chiều. Nếu rút gọn, ghi rõ trong chương 3.",
+    "15 biến khá dài. Nếu mô hình có nhiều khái niệm, cân nhắc bản 9 câu.",
+    "Thay [công ty] bằng tên đơn vị hoặc 'cơ quan' với khu vực công."
+  ],
+  "faq": [
+    {
+      "q": "Cam kết với tổ chức và gắn kết công việc khác nhau thế nào?",
+      "a": "Cam kết với tổ chức là sự gắn bó với nơi làm việc. Gắn kết công việc là trạng thái năng lượng và say mê khi làm việc. Một người có thể say mê công việc nhưng không gắn bó với công ty hiện tại."
+    },
+    {
+      "q": "Nên dùng OCQ hay thang ba thành phần của Meyer và Allen?",
+      "a": "Nếu đề tài chỉ cần cam kết tình cảm, OCQ là lựa chọn có nguồn rõ ràng. Nếu đề tài cần phân biệt ở lại vì gắn bó, vì chi phí hay vì nghĩa vụ, cần thang ba thành phần, hiện chưa có trong thư viện."
+    },
+    {
+      "q": "OCQ có được dùng miễn phí không?",
+      "a": "OCQ được công bố trong bài báo năm 1979 và được dùng rộng rãi trong nghiên cứu học thuật. Xem mục bản quyền trên trang thang đo để biết chi tiết."
+    }
+  ],
+  "related": [
+    "gan-ket-cong-viec",
+    "hai-long-cong-viec",
+    "y-dinh-nghi-viec",
+    "dong-luc-lam-viec"
+  ]
+}

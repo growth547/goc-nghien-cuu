@@ -1,0 +1,60 @@
+{
+  "name": "Động lực làm việc",
+  "nameEn": "Work Motivation",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo động lực làm việc tiếng Việt: MWMS (Gagné, 2015)",
+  "description": "Thang đo động lực làm việc đa chiều MWMS của Gagné và cộng sự (2015), dịch sẵn tiếng Việt theo thuyết tự quyết: động lực nội tại, điều tiết đồng nhất, bên ngoài.",
+  "keyword": "thang đo động lực làm việc",
+  "intro": "Động lực làm việc là các lý do khiến người lao động bỏ công sức vào công việc. Thuyết tự quyết của Deci và Ryan phân biệt động lực theo mức độ tự chủ: từ không có động lực, điều tiết bên ngoài vì vật chất hay xã hội, điều tiết nội nhập, điều tiết đồng nhất, tới động lực nội tại. MWMS của Gagné và cộng sự (2015) được kiểm định ở 7 ngôn ngữ và 9 quốc gia theo cấu trúc này. Đề tài thường gặp ở Việt Nam: động lực làm việc của nhân viên văn phòng, công chức, nhân viên y tế và ảnh hưởng của lương thưởng, lãnh đạo.",
+  "constructs": [
+    {
+      "key": "dong-luc-lam-viec-mwms:IM",
+      "note": "Chọn khi muốn đo làm việc vì thích thú; thường là biến chính trong mô hình động lực."
+    },
+    {
+      "key": "dong-luc-lam-viec-mwms:ID",
+      "note": "Chọn khi muốn đo làm việc vì thấy công việc có ý nghĩa, quan trọng với bản thân."
+    },
+    {
+      "key": "dong-luc-lam-viec-mwms:IJ",
+      "note": "Chọn khi muốn đo làm việc vì áp lực nội tâm như xấu hổ, muốn chứng tỏ bản thân."
+    },
+    {
+      "key": "dong-luc-lam-viec-mwms:EMA",
+      "note": "Chọn khi đề tài về lương thưởng, phúc lợi và muốn đo làm việc vì lợi ích vật chất."
+    },
+    {
+      "key": "dong-luc-lam-viec-mwms:ESO",
+      "note": "Chọn khi muốn đo làm việc để được người khác công nhận hoặc tránh bị chỉ trích."
+    },
+    {
+      "key": "dong-luc-lam-viec-mwms:AM",
+      "note": "Chọn khi muốn đo tình trạng không có động lực, thường dùng cùng các thành phần khác."
+    }
+  ],
+  "tips": [
+    "MWMS dùng câu dẫn 'Vì sao bạn bỏ (hoặc sẽ bỏ) công sức vào công việc hiện tại?' và thang 7 điểm từ 'Hoàn toàn không' tới 'Hoàn toàn đúng'. Đặt câu dẫn ở đầu phần.",
+    "Không cần dùng đủ 6 thành phần. Chọn theo giả thuyết; ví dụ đề tài lương thưởng có thể dùng EMA, IM và ID.",
+    "Không cộng tất cả thành phần thành một điểm động lực chung vì chúng có ý nghĩa khác nhau, thậm chí ngược chiều."
+  ],
+  "faq": [
+    {
+      "q": "Động lực làm việc nên đo bằng MWMS hay thang theo thuyết hai nhân tố?",
+      "a": "Nhiều khoá luận ở Việt Nam đo các yếu tố tạo động lực (lương, đồng nghiệp, cấp trên) theo Herzberg hoặc Kovach. Đó là các nhân tố tác động, không phải bản thân động lực. MWMS đo chính động lực và lý do làm việc theo thuyết tự quyết."
+    },
+    {
+      "q": "MWMS có bao nhiêu câu?",
+      "a": "19 câu chia thành 6 thành phần: không có động lực (3), điều tiết bên ngoài vì xã hội (3), vì vật chất (3), điều tiết nội nhập (4), điều tiết đồng nhất (3), động lực nội tại (3)."
+    },
+    {
+      "q": "Có thể gộp thành động lực tự chủ và động lực bị kiểm soát không?",
+      "a": "Có. Gagné và cộng sự gợi ý gộp động lực nội tại và điều tiết đồng nhất thành động lực tự chủ, điều tiết nội nhập và bên ngoài thành động lực bị kiểm soát. Nêu rõ cách gộp trong chương 3."
+    }
+  ],
+  "related": [
+    "gan-ket-cong-viec",
+    "hai-long-cong-viec",
+    "cam-ket-to-chuc",
+    "dong-luc-hoc-tap"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Thái độ",
+  "nameEn": "Attitude",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo thái độ tiếng Việt: với hành vi (TPB), quảng cáo, thương hiệu",
+  "description": "Thang đo thái độ dịch sẵn tiếng Việt: thái độ đối với hành vi theo TPB, thái độ với quảng cáo (MacKenzie và Lutz, 1989), thái độ với thương hiệu (Spears và Singh, 2004).",
+  "keyword": "thang đo thái độ",
+  "intro": "Thái độ là đánh giá tích cực hay tiêu cực của một người đối với một đối tượng hoặc một hành vi. Trong TRA và TPB, thái độ đối với hành vi là một trong ba yếu tố dẫn tới ý định; trong nghiên cứu quảng cáo, thái độ với quảng cáo và thái độ với thương hiệu là các biến trung gian giữa nội dung quảng cáo và ý định mua. Thái độ thường được đo bằng cặp tính từ đối nghĩa. Đề tài thường gặp ở Việt Nam: thái độ với sản phẩm xanh, quảng cáo trên TikTok, người nổi tiếng quảng bá, thanh toán không tiền mặt.",
+  "constructs": [
+    {
+      "key": "tpb:ATT",
+      "note": "Chọn khi đối tượng của thái độ là một hành vi (mua, sử dụng, khởi nghiệp) trong mô hình TPB."
+    },
+    {
+      "key": "thai-do-voi-quang-cao:AAD",
+      "note": "Chọn khi đề tài về hiệu quả quảng cáo và người trả lời vừa xem một quảng cáo cụ thể."
+    },
+    {
+      "key": "thai-do-voi-quang-cao:AB",
+      "note": "Chọn khi muốn đo đánh giá chung về một thương hiệu, thường đặt sau thái độ với quảng cáo."
+    }
+  ],
+  "tips": [
+    "Cả ba thang dùng cặp tính từ đối nghĩa 7 mức. Trình bày dạng bảng với hai tính từ ở hai đầu, không chuyển thành câu đồng ý.",
+    "Thang thái độ TPB có ATT2 và ATT3 đặt tính từ tích cực ở bên trái, nên phải đảo điểm. Có thể sắp lại để tính từ tích cực luôn ở bên phải và ghi rõ việc điều chỉnh.",
+    "Với thái độ với quảng cáo, cho người trả lời xem quảng cáo ngay trước câu hỏi (ảnh hoặc video) để họ đánh giá cùng một đối tượng.",
+    "Thái độ với hành vi và thái độ với sản phẩm khác nhau. Một người có thể thích sản phẩm hữu cơ nhưng thấy việc mua chúng là bất tiện."
+  ],
+  "faq": [
+    {
+      "q": "Thái độ nên đo bằng Likert hay cặp tính từ đối nghĩa?",
+      "a": "Ajzen và các thang thái độ gốc dùng cặp tính từ đối nghĩa. Nhiều khoá luận chuyển sang câu Likert như 'Tôi thấy việc mua sản phẩm xanh là tốt'. Cả hai đều chấp nhận được nếu bạn ghi rõ nguồn và cách điều chỉnh."
+    },
+    {
+      "q": "Thái độ trong TPB cần bao nhiêu cặp tính từ?",
+      "a": "Francis và cộng sự (2004) gợi ý từ 4 đến 6 cặp, gồm cả tính từ về công cụ (có lợi, hữu ích) và về cảm xúc (dễ chịu). Thang trong thư viện có 4 cặp."
+    },
+    {
+      "q": "Thái độ với quảng cáo có ảnh hưởng tới ý định mua không?",
+      "a": "Theo mô hình của MacKenzie và Lutz (1989), thái độ với quảng cáo ảnh hưởng tới thái độ với thương hiệu, từ đó ảnh hưởng tới ý định mua. Khoá luận thường kiểm định chuỗi trung gian này."
+    }
+  ],
+  "related": [
+    "chuan-chu-quan",
+    "nhan-thuc-kiem-soat-hanh-vi",
+    "y-dinh-mua",
+    "niem-tin"
+  ]
+}

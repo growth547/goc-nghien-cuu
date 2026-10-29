@@ -1,0 +1,52 @@
+{
+  "name": "Nhận thức sự hữu ích",
+  "nameEn": "Perceived Usefulness",
+  "field": "Công nghệ & hệ thống thông tin",
+  "title": "Thang đo nhận thức sự hữu ích tiếng Việt: TAM (Davis 1989), UTAUT",
+  "description": "Thang đo nhận thức sự hữu ích dịch sẵn tiếng Việt từ TAM của Davis (1989), ECM, và hiệu quả kỳ vọng trong UTAUT, UTAUT2. So sánh số biến và khi nào nên dùng.",
+  "keyword": "thang đo nhận thức sự hữu ích",
+  "intro": "Nhận thức sự hữu ích là mức độ một người tin rằng dùng một hệ thống sẽ giúp cải thiện kết quả công việc hay cuộc sống của mình. Davis (1989) đưa ra khái niệm này trong TAM, và nó là yếu tố dự báo mạnh nhất của ý định sử dụng trong nhiều nghiên cứu. UTAUT và UTAUT2 gọi khái niệm tương ứng là hiệu quả kỳ vọng; ECM dùng nó cho giai đoạn sau khi đã sử dụng. Đề tài thường gặp: ví điện tử, ngân hàng số, phần mềm kế toán, học trực tuyến, công cụ AI.",
+  "constructs": [
+    {
+      "key": "tam:PU",
+      "note": "Chọn khi mô hình theo TAM, đặc biệt với công nghệ dùng trong công việc; 6 biến gốc của Davis."
+    },
+    {
+      "key": "utaut:PE",
+      "note": "Chọn khi mô hình theo UTAUT trong tổ chức; 4 biến gọn hơn TAM."
+    },
+    {
+      "key": "utaut2:PE",
+      "note": "Chọn khi mô hình theo UTAUT2 cho người tiêu dùng; câu hỏi nói về cuộc sống hằng ngày thay vì công việc."
+    },
+    {
+      "key": "ecm-tiep-tuc-su-dung:PU",
+      "note": "Chọn khi mô hình ECM với người đã dùng; câu gốc viết cho quản lý tài chính cá nhân, cần sửa theo bối cảnh."
+    }
+  ],
+  "tips": [
+    "Các câu của TAM và UTAUT nói về công việc. Với người tiêu dùng hay sinh viên, đổi 'công việc' thành 'việc học' hoặc 'việc mua sắm' và ghi rõ đã điều chỉnh.",
+    "Không có câu đảo chiều. Thang 7 mức gốc có thể chuyển sang Likert 5 mức.",
+    "Nếu mô hình có cả nhận thức sự hữu ích và hiệu quả kỳ vọng, chỉ giữ một vì hai khái niệm trùng nhau về nội dung."
+  ],
+  "faq": [
+    {
+      "q": "Nhận thức sự hữu ích và hiệu quả kỳ vọng có khác nhau không?",
+      "a": "Về nội dung gần như giống nhau. Venkatesh và cộng sự (2003) xây hiệu quả kỳ vọng từ nhận thức sự hữu ích của TAM và một số khái niệm tương tự. Dùng tên nào tuỳ mô hình gốc bạn chọn."
+    },
+    {
+      "q": "Thang PU của TAM có bao nhiêu câu?",
+      "a": "Bản gốc của Davis (1989) có 6 câu. Nhiều nghiên cứu dùng 4 câu cho gọn; nếu rút gọn, ghi rõ các câu đã giữ."
+    },
+    {
+      "q": "Vì sao nhận thức sự hữu ích thường có tác động mạnh nhất?",
+      "a": "Người dùng chủ yếu chấp nhận công nghệ vì nó giúp họ làm việc tốt hơn. Davis (1989) và nhiều phân tích tổng hợp cho thấy tác động của sự hữu ích lên ý định mạnh hơn tác động của tính dễ sử dụng."
+    }
+  ],
+  "related": [
+    "nhan-thuc-de-su-dung",
+    "y-dinh-su-dung",
+    "chuan-chu-quan",
+    "su-hai-long-khach-hang"
+  ]
+}

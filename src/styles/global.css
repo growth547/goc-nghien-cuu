@@ -121,3 +121,9 @@ tr.flagged td {
 .cta-label {
   @apply text-muted-foreground text-xs font-semibold tracking-wider uppercase;
 }
+.panel input[type="checkbox"] {
+  @apply accent-accent mt-1 h-4 w-4 flex-none p-0;
+}
+.check {
+  @apply flex items-start gap-2 text-sm font-normal;
+}

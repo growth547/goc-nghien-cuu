@@ -28,8 +28,8 @@
         <input id="bk-who" type="text" placeholder="Ví dụ: sinh viên năm 4, Trường Đại học …"></div>
     </div>
     <div class="field"><label>Thêm vào bảng hỏi</label>
-      <label class="row" style="gap:8px;align-items:center;font-size:.9rem"><input id="bk-screen" type="checkbox" checked style="width:auto"> Câu hỏi sàng lọc (đã từng sử dụng/trải nghiệm đối tượng chưa)</label>
-      <label class="row" style="gap:8px;align-items:center;font-size:.9rem"><input id="bk-attn" type="checkbox" checked style="width:auto"> Câu kiểm tra sự chú ý (để lọc phiếu điền bừa)</label>
+      <label class="check"><input id="bk-screen" type="checkbox" checked> Câu hỏi sàng lọc (đã từng sử dụng/trải nghiệm đối tượng chưa)</label>
+      <label class="check"><input id="bk-attn" type="checkbox" checked> Câu kiểm tra sự chú ý (để lọc phiếu điền bừa)</label>
       <div id="bk-demo" class="row" style="gap:12px;font-size:.9rem;flex-wrap:wrap"></div></div>
   </form>
 
@@ -114,7 +114,7 @@
     ['income','Thu nhập hằng tháng',['Dưới 5 triệu đồng','5–10 triệu đồng','10–20 triệu đồng','Trên 20 triệu đồng']],
     ['edu','Trình độ học vấn',['Trung học phổ thông','Cao đẳng','Đại học','Sau đại học']],
   ];
-  $('bk-demo').innerHTML=DEMO.map(([k,l],i)=>`<label class="row" style="gap:6px;align-items:center"><input type="checkbox" data-demo="${k}" ${i<3?'checked':''} style="width:auto"> ${l}</label>`).join('');
+  $('bk-demo').innerHTML=DEMO.map(([k,l],i)=>`<label class="check"><input type="checkbox" data-demo="${k}" ${i<3?'checked':''}> ${l}</label>`).join('');
 
   const state={selected:new Set(),ph:{}};
   function renderList(){
@@ -122,7 +122,7 @@
     $('bk-list').innerHTML=DATA.map(s=>{
       const rows=s.constructs.filter(c=>!q||[s.name,s.fullName,c.nameVi,c.nameEn,c.code].join(' ').toLowerCase().includes(q));
       if(!rows.length)return '';
-      return `<div style="margin:8px 0"><strong style="font-size:.9rem">${esc(s.name)}</strong> <span class="text-muted-foreground" style="font-size:.8rem">${esc(s.field)}</span>${rows.map(c=>{const k=`${s.slug}:${c.code}`;return `<label class="row" style="gap:8px;align-items:flex-start;font-size:.92rem;margin:4px 0"><input type="checkbox" data-key="${esc(k)}" ${state.selected.has(k)?'checked':''} style="width:auto;margin-top:4px"><span>${esc(c.nameVi)} <span class="text-muted-foreground">(${esc(c.code)}, ${c.items.length} câu · ${esc(citeOf(c.source))})</span></span></label>`}).join('')}</div>`;
+      return `<div style="margin:8px 0"><strong style="font-size:.9rem">${esc(s.name)}</strong> <span class="text-muted-foreground" style="font-size:.8rem">${esc(s.field)}</span>${rows.map(c=>{const k=`${s.slug}:${c.code}`;return `<label class="check" style="margin:4px 0"><input type="checkbox" data-key="${esc(k)}" ${state.selected.has(k)?'checked':''}><span>${esc(c.nameVi)} <span class="text-muted-foreground">(${esc(c.code)}, ${c.items.length} câu · ${esc(citeOf(c.source))})</span></span></label>`}).join('')}</div>`;
     }).join('')||'<p class="text-muted-foreground">Không tìm thấy khái niệm nào.</p>';
   }
   // Keep the order the student ticked, which usually follows their model.

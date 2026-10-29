@@ -33,7 +33,7 @@ const fields = [...new Set(concepts.map(x => x.data.field))].sort((a, b) => a.lo
     {
       fields.map(f => (
         <section class="mb-12" data-filter-group>
-          <h2 class="text-foreground mb-4 flex items-center gap-3 text-xl font-bold">
+          <h2 class="text-foreground mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-bold">
             {f}
             <span class="badge neutral">{concepts.filter(x => x.data.field === f).length}</span>
           </h2>

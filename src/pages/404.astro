@@ -2,7 +2,6 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import LinkButton from "@/components/LinkButton.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
@@ -18,16 +17,23 @@ const t = useTranslations(locale);
     id="main-content"
     class="app-layout my-1 flex flex-1 items-center justify-center"
   >
-    <div class="mb-14 flex flex-col items-center justify-center">
-      <h1 class="text-accent text-9xl font-bold">404</h1>
-      <span aria-hidden="true"> ¯\_(ツ)_/¯ </span>
-      <p class="mt-4 text-2xl sm:text-3xl">{t.notFound.message}</p>
-      <LinkButton
-        href={getRelativeLocaleUrl(locale, "")}
-        class="my-6 text-lg underline decoration-dashed underline-offset-8"
-      >
-        {t.notFound.goHome}
-      </LinkButton>
+    <div class="my-16 flex max-w-lg flex-col items-center text-center">
+      <p class="badge warm">Lỗi 404</p>
+      <h1 class="text-foreground mt-4 text-3xl font-bold sm:text-4xl">{t.notFound.message}</h1>
+      <p class="text-muted-foreground mt-3">
+        Đường dẫn có thể đã đổi. Thử một trong các mục dưới đây hoặc tìm kiếm.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a class="btn" href={getRelativeLocaleUrl(locale, "")}>{t.notFound.goHome}</a>
+        <a class="btn ghost" href={getRelativeLocaleUrl(locale, "search")}>Tìm kiếm</a>
+      </div>
+      <ul class="text-muted-foreground mt-8 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium">
+        <li><a class="hover:text-accent" href={getRelativeLocaleUrl(locale, "cong-cu")}>Công cụ</a></li>
+        <li><a class="hover:text-accent" href={getRelativeLocaleUrl(locale, "thang-do")}>Thang đo</a></li>
+        <li><a class="hover:text-accent" href={getRelativeLocaleUrl(locale, "mau-bang-hoi")}>Mẫu bảng hỏi</a></li>
+        <li><a class="hover:text-accent" href={getRelativeLocaleUrl(locale, "du-lieu")}>Dữ liệu</a></li>
+        <li><a class="hover:text-accent" href={getRelativeLocaleUrl(locale, "posts")}>Bài viết</a></li>
+      </ul>
     </div>
   </main>
 

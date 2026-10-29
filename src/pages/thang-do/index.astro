@@ -54,7 +54,7 @@ const fieldId = (f: string) => `linh-vuc-${fields.indexOf(f) + 1}`;
     {
       fields.map(f => (
         <section class="mb-12" data-filter-group aria-labelledby={fieldId(f)}>
-          <h2 id={fieldId(f)} class="text-foreground mb-4 flex items-center gap-3 text-xl font-bold">
+          <h2 id={fieldId(f)} class="text-foreground mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-bold">
             {f}
             <span class="badge neutral">{scales.filter(s => s.data.field === f).length}</span>
           </h2>

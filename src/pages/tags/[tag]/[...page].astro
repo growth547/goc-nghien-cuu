@@ -39,7 +39,7 @@ const t = useTranslations(locale);
 
 <Layout
   title={`${t.pages.tagTitle}: ${tagName}${page.currentPage > 1 ? ` (${t.pagination.page} ${page.currentPage})` : ""} | ${config.site.title}`}
-  description={`${t.pages.tagDesc} "${tagName}"${page.currentPage > 1 ? `, ${t.pagination.page.toLowerCase()} ${page.currentPage}/${page.lastPage}` : ""}.`}
+  description={`${page.total} bài viết hướng dẫn về chủ đề "${tagName}" trên Góc Nghiên Cứu: ${page.data.slice(0, 2).map(p => p.data.title).join("; ")}${page.currentPage > 1 ? ` (trang ${page.currentPage}/${page.lastPage})` : ""}.`.slice(0, 160)}
   noindex
 >
   <Header />

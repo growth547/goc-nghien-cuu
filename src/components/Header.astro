@@ -25,9 +25,8 @@ const pathWithoutTrailingSlash =
 const currentPath = stripLocale(pathWithoutTrailingSlash, locale);
 const firstSegment = currentPath.split("/").filter(p => p.trim())[0] ?? "";
 
-// Concept pages belong to the scale library; tags and archives to the articles.
+// Tags and archives belong to the articles.
 const sectionOf: Record<string, string> = {
-  "khai-niem": "thang-do",
   tags: "posts",
   archives: "posts",
 };
@@ -36,6 +35,7 @@ const activeSection = sectionOf[firstSegment] ?? firstSegment;
 const navItems = [
   { path: "cong-cu", label: "Công cụ" },
   { path: "thang-do", label: "Thang đo" },
+  { path: "khai-niem", label: "Khái niệm" },
   { path: "mau-bang-hoi", label: "Mẫu bảng hỏi" },
   { path: "du-lieu", label: "Dữ liệu" },
   { path: "posts", label: t.nav.posts },
@@ -74,7 +74,7 @@ const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
                 href={getRelativeLocaleUrl(locale, item.path)}
                 aria-current={activeSection === item.path ? "page" : undefined}
                 class:list={[
-                  "hover:text-accent hover:bg-accent-soft/60 block rounded-lg px-3 py-2 text-[0.94rem] font-medium transition-colors",
+                  "hover:text-accent hover:bg-accent-soft/60 block rounded-lg px-2.5 py-2 text-[0.92rem] font-medium whitespace-nowrap transition-colors",
                   activeSection === item.path
                     ? "active-nav"
                     : "text-foreground/80",

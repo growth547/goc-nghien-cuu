@@ -125,6 +125,7 @@
   }
   .card-title {
     @apply text-foreground leading-snug font-semibold;
+    text-wrap: balance;
   }
   a.card:hover .card-title {
     @apply text-accent;

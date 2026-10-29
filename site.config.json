@@ -1,0 +1,13 @@
+{
+  "siteName": "Góc Nghiên Cứu",
+  "siteUrl": "https://example.github.io/goc-nghien-cuu",
+  "basePath": "/goc-nghien-cuu",
+  "appUrl": "https://geniusdata.io",
+  "refCodes": {
+    "home": "lab-web",
+    "blog": "lab-blog",
+    "tool": "lab-tool"
+  },
+  "googleSiteVerification": "",
+  "indexNowKey": "2f2cbadc79d54eb53f597aaf9e947665"
+}

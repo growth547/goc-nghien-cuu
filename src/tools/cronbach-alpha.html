@@ -1,0 +1,72 @@
+<!--
+{"title":"Tính Cronbach's alpha online: dán dữ liệu, ra kết quả ngay",
+ "description":"Công cụ tính hệ số Cronbach's alpha miễn phí: dán dữ liệu từ Excel hoặc SPSS, nhận alpha, tương quan biến–tổng hiệu chỉnh và alpha nếu loại biến. Không cần cài phần mềm.",
+ "h1":"Tính Cronbach's alpha online",
+ "lede":"Dán dữ liệu một thang đo từ Excel hoặc SPSS (mỗi dòng một người trả lời, mỗi cột một biến quan sát). Kết quả giống bảng Reliability Statistics và Item-Total Statistics của SPSS."}
+-->
+<div class="tool">
+  <div class="panel">
+    <div class="field"><label for="ca-data">Dữ liệu thang đo</label>
+      <textarea id="ca-data" spellcheck="false"></textarea>
+      <small>Cột cách nhau bằng tab, dấu phẩy hoặc dấu chấm phẩy. Dòng đầu là tên biến thì cứ để nguyên. Dòng thiếu giá trị sẽ bị loại (listwise). Dữ liệu chỉ xử lý trong trình duyệt của bạn, không gửi đi đâu.</small></div>
+    <div class="row"><button type="button" class="btn" id="ca-run">Tính alpha</button><button type="button" class="btn ghost" id="ca-sample">Nạp dữ liệu mẫu</button></div>
+  </div>
+  <div class="panel" id="ca-out" aria-live="polite"></div>
+</div>
+<p style="margin-top:20px">Cách đọc từng con số: xem <a href="/bai-viet/cronbach-alpha-la-gi/">Cronbach's alpha là gì và đọc kết quả thế nào</a>.</p>
+{{CTA}}
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  // Example: 12 respondents x 5 items of one Likert scale (HL = hài lòng); HL5 is deliberately weak.
+  const SAMPLE=`HL1\tHL2\tHL3\tHL4\tHL5
+4\t4\t5\t4\t2
+3\t3\t3\t4\t5
+5\t5\t4\t5\t3
+2\t2\t3\t2\t4
+4\t5\t4\t4\t1
+3\t3\t2\t3\t3
+5\t4\t5\t5\t2
+2\t3\t2\t2\t5
+4\t4\t4\t3\t4
+3\t2\t3\t3\t2
+5\t5\t5\t4\t3
+1\t2\t2\t1\t4`;
+  const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+  const variance=a=>{const m=mean(a);return a.reduce((s,x)=>s+(x-m)**2,0)/(a.length-1)};
+  const corr=(a,b)=>{const ma=mean(a),mb=mean(b);let sab=0,saa=0,sbb=0;for(let i=0;i<a.length;i++){const da=a[i]-ma,db=b[i]-mb;sab+=da*db;saa+=da*da;sbb+=db*db}return sab/Math.sqrt(saa*sbb)};
+  const alpha=cols=>{const k=cols.length;const tot=cols[0].map((_,i)=>cols.reduce((s,c)=>s+c[i],0));return k/(k-1)*(1-cols.reduce((s,c)=>s+variance(c),0)/variance(tot))};
+  const f3=x=>Number.isFinite(x)?x.toFixed(3).replace('.',','):'—';
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function parse(text){
+    const lines=text.trim().split(/\r?\n/).filter(l=>l.trim());
+    const t=lines.join('\n'); const sep=t.includes('\t')?'\t':t.includes(';')?';':t.includes(',')?',':/\s+/;
+    const split=l=>l.trim().split(sep).map(x=>x.trim()).filter(x=>x!=='');
+    let rows=lines.map(split); let names=null;
+    if(rows.length&&rows[0].some(c=>isNaN(parseFloat(c.replace(',','.'))))){names=rows.shift()}
+    const k=Math.max(0,...rows.map(r=>r.length));
+    let dropped=0; const clean=[];
+    for(const r of rows){const v=r.map(c=>parseFloat(c.replace(',','.')));if(v.length===k&&v.every(Number.isFinite))clean.push(v);else dropped++}
+    if(!names||names.length!==k)names=Array.from({length:k},(_,i)=>'Biến '+(i+1));
+    return {names,rows:clean,dropped,k};
+  }
+  function run(){
+    const out=$('ca-out'); const {names,rows,dropped,k}=parse($('ca-data').value);
+    if(k<2){out.innerHTML='<p class="err">Cần ít nhất 2 cột (2 biến quan sát) để tính alpha.</p>';return}
+    if(rows.length<3){out.innerHTML='<p class="err">Cần ít nhất 3 dòng dữ liệu hợp lệ. Kiểm tra lại dấu phân cách cột.</p>';return}
+    const cols=names.map((_,j)=>rows.map(r=>r[j]));
+    if(cols.some(c=>variance(c)===0)){out.innerHTML='<p class="err">Có biến mà mọi người trả lời giống hệt nhau (phương sai bằng 0). Loại biến đó rồi tính lại.</p>';return}
+    const a=alpha(cols); const tot=rows.map(r=>r.reduce((s,x)=>s+x,0));
+    const stats=cols.map((c,j)=>{const rest=tot.map((t,i)=>t-c[i]);return {name:names[j],m:mean(c),citc:corr(c,rest),aid:k>2?alpha(cols.filter((_,x)=>x!==j)):NaN}});
+    const verdict=a>=0.9?'Rất cao. Trên 0,95 nên xem có câu hỏi trùng ý không.':a>=0.8?'Tốt.':a>=0.7?'Chấp nhận được (Nunnally, 1978).':a>=0.6?'Tạm chấp nhận với nghiên cứu khám phá hoặc thang đo mới.':'Thấp. Xem lại các biến bị đánh dấu.';
+    let html=`<div class="result"><span class="lbl">Cronbach's alpha</span><span class="num">${f3(a)}</span><span class="how">${verdict} N = ${rows.length} phiếu, ${k} biến${dropped?`; đã loại ${dropped} dòng thiếu hoặc lỗi`:''}.</span></div>`;
+    html+=`<div class="table-wrap"><table><thead><tr><th>Biến</th><th>Trung bình</th><th>Tương quan biến–tổng hiệu chỉnh</th><th>Alpha nếu loại biến</th></tr></thead><tbody>`;
+    for(const s of stats){const bad=s.citc<0.3||s.aid>a;html+=`<tr class="${bad?'flagged':''}"><td>${esc(s.name)}</td><td>${f3(s.m)}</td><td>${f3(s.citc)}${s.citc<0.3?' <span class="flag">&lt; 0,3</span>':''}</td><td>${f3(s.aid)}${s.aid>a?' <span class="flag">tăng</span>':''}</td></tr>`}
+    html+='</tbody></table></div><p class="how" style="margin:0;font-size:.85rem;color:var(--muted)">Dòng tô màu: tương quan biến–tổng dưới 0,3 hoặc loại biến làm alpha tăng. Cân nhắc loại, nhưng xét cả nội dung lý thuyết trước khi bỏ.</p>';
+    out.innerHTML=html;
+  }
+  $('ca-run').addEventListener('click',run);
+  $('ca-sample').addEventListener('click',()=>{$('ca-data').value=SAMPLE;run()});
+  $('ca-data').value=SAMPLE; run();
+})();
+</script>

@@ -1,7 +1,8 @@
 ---
 title: "Cronbach's alpha là gì? Cách đọc kết quả SPSS từng bảng"
-description: "Cronbach's alpha là gì, ngưỡng bao nhiêu là đạt, cách đọc bảng SPSS: alpha tổng, Corrected Item-Total Correlation dưới 0,3, Cronbach's Alpha if Item Deleted."
+description: "Cronbach's alpha là gì, ngưỡng bao nhiêu là đạt, cách đọc bảng SPSS từng cột, khi nào loại câu, alpha khác omega và CR thế nào, kèm FAQ và trích dẫn APA."
 pubDatetime: 2026-10-29T05:00:00+07:00
+modDatetime: 2026-10-30T02:23:14+07:00
 featured: false
 tags: ["độ tin cậy","SPSS"]
 ---
@@ -35,6 +36,7 @@ tags: ["độ tin cậy","SPSS"]
 <tr><td>Dưới 0,6</td><td>Không đạt</td><td>Kiểm tra mã hoá câu đảo chiều, xem lại nội dung câu hỏi</td></tr>
 </tbody>
 </table>
+<p>Mốc 0,7 của Nunnally thực ra gắn với mục đích sử dụng. Lance và cộng sự (2006) đọc lại sách gốc và chỉ ra rằng Nunnally (1978) đề nghị khoảng 0,7 cho giai đoạn đầu của một hướng nghiên cứu, 0,8 cho nghiên cứu cơ bản, và từ 0,9 trở lên khi điểm số được dùng để ra quyết định về từng cá nhân (ví dụ tuyển dụng, chẩn đoán). Khoá luận khảo sát thái độ, hành vi thuộc nhóm đầu, nên 0,7 là mốc hợp lý; nhưng đừng viết "Nunnally cho rằng 0,7 là đủ cho mọi trường hợp".</p>
 
 <h2>Chạy Cronbach's alpha trong SPSS</h2>
 <ol>
@@ -44,7 +46,7 @@ tags: ["độ tin cậy","SPSS"]
 <li>Bấm <code>Statistics</code>, tích <code>Scale if item deleted</code> trong mục Descriptives for.</li>
 <li>Bấm <code>Continue</code> rồi <code>OK</code>.</li>
 </ol>
-<p>Trước khi chạy, chắc chắn các câu đảo chiều đã được mã hoá lại (thang 5 mức: 6 − giá trị cũ). Cách làm có trong bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a>.</p>
+<p>Trước khi chạy, chắc chắn các câu đảo chiều đã được mã hoá lại (thang 5 mức: 6 − giá trị cũ). Cách làm có trong bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a>, còn cách đặt tên biến và ghi câu đảo chiều vào bảng mã hoá có ở bài <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
 
 <h2>Đọc bảng Reliability Statistics</h2>
 <p>Bảng này có ba cột: <code>Cronbach's Alpha</code>, <code>Cronbach's Alpha Based on Standardized Items</code> và <code>N of Items</code>. Số bạn báo cáo là cột đầu tiên. Cột thứ hai tính trên dữ liệu chuẩn hoá; với thang Likert cùng số mức, hai số thường rất gần nhau. N of Items là số câu, kiểm tra lại cho khớp với số câu bạn định đưa vào.</p>
@@ -72,6 +74,27 @@ tags: ["độ tin cậy","SPSS"]
 <p>Cách đọc: alpha tổng 0,748 đã vượt 0,7, nhưng HL4 có tương quan biến tổng 0,147, dưới mốc 0,3. Nếu bỏ HL4, alpha tăng lên 0,822. Bốn câu còn lại đều có tương quan biến tổng trên 0,5 và nếu bỏ bất kỳ câu nào trong số đó thì alpha đều giảm so với 0,748. Kết luận: cân nhắc loại HL4.</p>
 <p>Sau khi loại HL4 và chạy lại, alpha của 4 câu còn lại là 0,822; tương quan biến tổng lần lượt là 0,639; 0,600; 0,673; 0,670, đều trên 0,3; alpha nếu loại từng câu nằm trong khoảng 0,763 đến 0,796, đều thấp hơn 0,822. Thang đo dừng ở đây.</p>
 
+<h2>Alpha, omega hay độ tin cậy tổng hợp (CR)?</h2>
+<p>Alpha giả định mọi câu trong thang đo có hệ số tải lên khái niệm bằng nhau (giả định tau tương đương). Thang đo thực tế hiếm khi như vậy: có câu tải 0,85, có câu tải 0,6. Khi hệ số tải chênh nhau, alpha thường ước lượng thấp hơn độ tin cậy thật. Vì vậy nhiều tác giả khuyên báo cáo thêm, hoặc thay bằng, hệ số dựa trên hệ số tải (Dunn và cộng sự, 2014; Hayes &amp; Coutts, 2020).</p>
+<table>
+<thead>
+<tr><th>Hệ số</th><th>Tính từ đâu</th><th>Thường gặp trong</th><th>Ngưỡng hay dùng</th></tr>
+</thead>
+<tbody>
+<tr><td>Cronbach's alpha</td><td>Phương sai từng câu và phương sai điểm tổng</td><td>SPSS, khoá luận chạy EFA và hồi quy</td><td>Từ 0,7</td></tr>
+<tr><td>McDonald's omega (ω)</td><td>Hệ số tải và phương sai sai số của mô hình một nhân tố</td><td>JASP, jamovi, gói R psych</td><td>Từ 0,7, đọc như alpha</td></tr>
+<tr><td>Độ tin cậy tổng hợp (CR, rho_C)</td><td>Hệ số tải chuẩn hoá từ CFA hoặc PLS-SEM</td><td>AMOS, SmartPLS</td><td>0,70 đến 0,95 (Hair và cộng sự, 2019)</td></tr>
+</tbody>
+</table>
+<p>Với hệ số tải chuẩn hoá λ, omega của mô hình một nhân tố và CR theo Fornell và Larcker (1981) có cùng công thức:</p>
+<p><code>CR = (Σλ)² / ((Σλ)² + Σ(1 − λ²))</code></p>
+<p>Ví dụ tính tay với 4 câu có hệ số tải 0,75; 0,70; 0,80; 0,72:</p>
+<ol>
+<li>Σλ = 0,75 + 0,70 + 0,80 + 0,72 = 2,97; bình phương được 8,8209.</li>
+<li>Phương sai sai số từng câu là 1 − λ²: 0,4375; 0,51; 0,36; 0,4816; tổng là 1,7891.</li>
+<li>CR = 8,8209 / (8,8209 + 1,7891) = 8,8209 / 10,61 = 0,831.</li>
+</ol>
+<p>Cùng bộ hệ số tải đó, phương sai trích trung bình AVE = (0,5625 + 0,49 + 0,64 + 0,5184) / 4 = 0,553, trên ngưỡng 0,5. Trong SmartPLS, CR hiện ở cột rho_c, kèm rho_a nằm giữa alpha và CR. Nếu khoá luận của bạn chỉ chạy SPSS để làm EFA và hồi quy, alpha vẫn là hệ số hội đồng chờ đợi; nếu chạy CFA hoặc PLS-SEM, hãy báo cáo cả alpha và CR, cộng AVE cho giá trị hội tụ.</p>
 
 <h2>Quy trình loại câu hỏi đúng cách</h2>
 <ol>
@@ -90,6 +113,31 @@ tags: ["độ tin cậy","SPSS"]
 <li><strong>Chạy trên mẫu thử quá nhỏ rồi kết luận.</strong> Với 20 đến 30 phiếu chạy thử, alpha dao động khá mạnh. Dùng kết quả để phát hiện câu có vấn đề và sửa câu chữ, còn kết luận chính thức dựa trên mẫu đầy đủ.</li>
 </ul>
 
+<h2>Câu hỏi thường gặp</h2>
+<h3>Alpha 0,6 có được không?</h3>
+<p>Được chấp nhận trong nghiên cứu khám phá (Hair và cộng sự, 2010), nhưng bạn phải nói rõ đề tài là khám phá và đã xem bảng Item-Total. Nếu thang đo được lấy nguyên từ một nghiên cứu đã công bố với alpha 0,85 mà của bạn chỉ 0,6, hãy kiểm tra mã hoá câu đảo chiều và bản dịch trước khi viện dẫn lý do "khám phá".</p>
+<h3>Thang đo chỉ có 2 câu thì tính gì?</h3>
+<p>Với 2 câu, alpha thường thấp và không phải ước lượng tốt. Eisinga và cộng sự (2013) khuyên dùng hệ số Spearman-Brown: <code>ρ = 2r / (1 + r)</code>, với r là tương quan Pearson giữa hai câu. Ví dụ r = 0,55 thì ρ = 1,10 / 1,55 = 0,71. Tốt hơn nữa là tránh thang đo 2 câu ngay từ lúc thiết kế, vì EFA và CFA đều cần từ 3 câu cho mỗi khái niệm.</p>
+<h3>Alpha cao trên 0,95 có tốt không?</h3>
+<p>Chưa chắc. Alpha rất cao thường do các câu gần như lặp lại nhau (ví dụ "Tôi hài lòng" và "Tôi cảm thấy hài lòng"), hoặc do thang đo quá dài. Xem lại các cặp câu có tương quan trên 0,8 và cân nhắc bỏ một câu thừa.</p>
+<h3>Có nên chạy alpha trước hay sau EFA?</h3>
+<p>Thông lệ ở khoá luận Việt Nam là chạy alpha trước để loại câu yếu, rồi mới đưa các câu còn lại vào EFA. Nếu EFA làm một câu chuyển sang nhân tố khác hoặc bị loại, chạy lại alpha cho nhân tố đã thay đổi. Cách đọc EFA có ở bài <a href="/goc-nghien-cuu/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trên SPSS</a>.</p>
+
 <h2>Câu mẫu khi viết vào chương 4</h2>
 <blockquote>Thang đo Sự hài lòng ban đầu gồm 5 biến quan sát, có hệ số Cronbach's alpha 0,748. Biến HL4 có hệ số tương quan biến tổng 0,147, nhỏ hơn 0,3, nên bị loại. Sau khi loại HL4, hệ số Cronbach's alpha của thang đo là 0,822 và các biến còn lại có hệ số tương quan biến tổng từ 0,600 đến 0,673, đạt yêu cầu về độ tin cậy.</blockquote>
 <p>Không có SPSS trong tay, hoặc muốn kiểm tra nhanh dữ liệu chạy thử? Dán dữ liệu vào <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để có alpha tổng, tương quan biến tổng và alpha nếu loại biến cho từng câu, đúng như hai cột bạn vừa học cách đọc ở trên. Khi đã có đủ dữ liệu cho mọi thang đo, tải file Excel lên <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ chạy alpha cho từng khái niệm cùng lúc, kèm EFA, tương quan, hồi quy và viết sẵn đoạn chương 4 theo đúng mẫu câu ở trên.</p>
+
+<p>Bảng alpha của mọi thang đo nên được gom vào mục 4.2 của chương 4, xem cách trình bày ở bài <a href="/goc-nghien-cuu/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>. Nếu bạn đang chọn thang đo, mỗi trang trong <a href="/goc-nghien-cuu/thang-do/">thư viện thang đo</a> có câu hỏi gốc và nguồn trích dẫn để bạn tra alpha mà nghiên cứu gốc đã báo cáo, ví dụ <a href="/goc-nghien-cuu/thang-do/hai-long-cong-viec/">thang đo hài lòng công việc</a>; định nghĩa khái niệm "sự hài lòng" có ở trang <a href="/goc-nghien-cuu/khai-niem/su-hai-long-khach-hang/">sự hài lòng của khách hàng</a>.</p>
+
+<h2>Tài liệu tham khảo</h2>
+<ul>
+<li>Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. <em>Psychometrika, 16</em>(3), 297–334. https://doi.org/10.1007/BF02310555</li>
+<li>Dunn, T. J., Baguley, T., &amp; Brunsden, V. (2014). From alpha to omega: A practical solution to the pervasive problem of internal consistency estimation. <em>British Journal of Psychology, 105</em>(3), 399–412. https://doi.org/10.1111/bjop.12046</li>
+<li>Eisinga, R., te Grotenhuis, M., &amp; Pelzer, B. (2013). The reliability of a two-item scale: Pearson, Cronbach, or Spearman-Brown? <em>International Journal of Public Health, 58</em>(4), 637–642. https://doi.org/10.1007/s00038-012-0416-3</li>
+<li>Fornell, C., &amp; Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and measurement error. <em>Journal of Marketing Research, 18</em>(1), 39–50. https://doi.org/10.2307/3151312</li>
+<li>Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson.</li>
+<li>Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203</li>
+<li>Hayes, A. F., &amp; Coutts, J. J. (2020). Use omega rather than Cronbach's alpha for estimating reliability. But… <em>Communication Methods and Measures, 14</em>(1), 1–24. https://doi.org/10.1080/19312458.2020.1718629</li>
+<li>Lance, C. E., Butts, M. M., &amp; Michels, L. C. (2006). The sources of four commonly reported cutoff criteria: What did they really say? <em>Organizational Research Methods, 9</em>(2), 202–220. https://doi.org/10.1177/1094428105284919</li>
+<li>Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.). McGraw-Hill.</li>
+</ul>

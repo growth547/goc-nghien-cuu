@@ -1,7 +1,7 @@
 ---
 title: "Mẫu phiếu khảo sát khoá luận: bố cục 6 phần và ví dụ đầy đủ"
 description: "Mẫu phiếu khảo sát khoá luận: lời chào, cam kết bảo mật, câu gạn lọc, thang đo chính, thông tin cá nhân, lời cảm ơn, kèm một phiếu hoàn chỉnh để sửa lại."
-pubDatetime: 2026-10-30T10:00:00+07:00
+pubDatetime: 2026-10-30T01:02:00+07:00
 featured: false
 tags: ["bảng hỏi","khoá luận"]
 ---

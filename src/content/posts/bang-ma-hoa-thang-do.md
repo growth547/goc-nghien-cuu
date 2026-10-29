@@ -1,7 +1,7 @@
 ---
 title: "Bảng mã hoá thang đo: cách lập cho chương 3 và SPSS"
 description: "Cách lập bảng mã hoá thang đo cho chương 3 và Variable View trong SPSS: đặt mã biến, câu đảo chiều, biến nhân khẩu học, giá trị thiếu, kèm bảng mẫu, cú pháp."
-pubDatetime: 2026-10-30T12:00:00+07:00
+pubDatetime: 2026-10-30T01:04:00+07:00
 featured: false
 tags: ["thang đo","SPSS","khoá luận"]
 ---

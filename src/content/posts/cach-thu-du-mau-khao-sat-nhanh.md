@@ -1,7 +1,7 @@
 ---
 title: "Cách thu đủ mẫu khảo sát nhanh mà không làm hỏng dữ liệu"
 description: "Cách thu đủ mẫu khảo sát khoá luận nhanh: lập lịch ngược từ hạn nộp, so sánh kênh, ưu nhược điểm điền form chéo, quà tặng, panel trả phí, kiểm tra chất lượng."
-pubDatetime: 2026-10-30T11:00:00+07:00
+pubDatetime: 2026-10-30T01:03:00+07:00
 featured: false
 tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 ---

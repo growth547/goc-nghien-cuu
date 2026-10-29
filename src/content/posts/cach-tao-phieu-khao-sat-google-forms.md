@@ -1,7 +1,7 @@
 ---
 title: "Cách tạo phiếu khảo sát Google Forms cho khoá luận: từng bước"
 description: "Tạo phiếu khảo sát khoá luận bằng Google Forms: lưới Likert hay trắc nghiệm, bắt buộc trả lời, chia phần, câu gạn lọc, câu kiểm tra chú ý, xuất sang SPSS."
-pubDatetime: 2026-10-30T09:00:00+07:00
+pubDatetime: 2026-10-30T01:01:00+07:00
 featured: false
 tags: ["Google Forms","bảng hỏi","SPSS"]
 ---

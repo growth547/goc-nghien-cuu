@@ -1,7 +1,7 @@
 ---
 title: "Cách đọc kết quả EFA trong SPSS: KMO, phương sai, ma trận xoay"
 description: "Đọc kết quả EFA trong SPSS từng bảng: KMO, Bartlett, Communalities, Total Variance Explained, Rotated Component Matrix, xử lý biến tải chéo, ngưỡng có nguồn."
-pubDatetime: 2026-10-30T13:00:00+07:00
+pubDatetime: 2026-10-30T01:05:00+07:00
 featured: false
 tags: ["EFA","SPSS","phân tích dữ liệu"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Cách viết chương 4 kết quả nghiên cứu: cấu trúc và câu mẫu"
 description: "Cách viết chương 4 khoá luận định lượng: mô tả mẫu, Cronbach's alpha, EFA, tương quan, hồi quy hoặc PLS-SEM, kiểm định giả thuyết, thảo luận, kèm câu mẫu."
-pubDatetime: 2026-10-30T14:00:00+07:00
+pubDatetime: 2026-10-30T01:06:00+07:00
 featured: false
 tags: ["khoá luận","SPSS","PLS-SEM"]
 ---

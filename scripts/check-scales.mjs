@@ -66,6 +66,9 @@ for (const file of all) {
   if (hasReverse && !/điểm mới =/.test(d.reverseRule ?? "")) fail(slug, "scale has (R) items: reverseRule must give the recode for this scale's range, e.g. 'Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.'");
   if (!hasReverse && d.reverseRule) fail(slug, "reverseRule set but no item is reverse-scored");
   if (STRICT && d.title && d.keyword && !d.title.toLowerCase().includes(d.keyword.toLowerCase())) fail(slug, `title must contain keyword "${d.keyword}"`);
+  // Search results cut titles at ~60 visible characters (same limit as scripts/check-seo.mjs).
+  const titleLen = d.title ? [...new Intl.Segmenter("vi", { granularity: "grapheme" }).segment(d.title)].length : 0;
+  if (STRICT && titleLen > 60) fail(slug, `title is ${titleLen} characters; keep it within 60`);
 
   // Optional depth sections.
   // A study listed in vietnamStudies is fully cited on the page, so it counts as a reference too.

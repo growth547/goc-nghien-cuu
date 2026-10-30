@@ -86,7 +86,7 @@ function titleOf(ind, first, last) {
           `${cap(s)} Việt Nam ${first}–${last}`,
           `${cap(s)} Việt Nam`,
         ];
-  return pick(cands, t => t.length <= 65);
+  return pick(cands, t => t.length <= 60);
 }
 
 function descriptionOf(ind, first, last, hasPeers) {
@@ -108,7 +108,7 @@ function descriptionOf(ind, first, last, hasPeers) {
     cands = base;
   }
   const padded = cands.map(d => (d.length < 110 ? `${d} Miễn phí cho khoá luận, luận văn.` : d));
-  return pick(padded, d => d.length >= 110 && d.length <= 170);
+  return pick(padded, d => d.length >= 110 && d.length <= 160);
 }
 
 function varNameOf(ind) {

@@ -1,6 +1,6 @@
 {
   "title": "Thang đo PHQ-9 tiếng Việt: sàng lọc trầm cảm, Kroenke (2001)",
-  "description": "Thang đo PHQ-9 sàng lọc mức độ trầm cảm dịch sẵn tiếng Việt: 9 biến quan sát, thang tần suất 0–3 trong 2 tuần qua, điểm tổng 0–27, mốc 5/10/15/20 và lưu ý đạo đức.",
+  "description": "Thang đo PHQ-9 sàng lọc trầm cảm dịch sẵn tiếng Việt: 9 biến quan sát, thang tần suất 0–3 trong 2 tuần qua, điểm tổng 0–27, mốc 5/10/15/20, lưu ý đạo đức.",
   "name": "PHQ-9",
   "fullName": "Bộ câu hỏi sức khoẻ bệnh nhân 9 biến (Patient Health Questionnaire-9)",
   "field": "Tâm lý & sức khoẻ tinh thần",

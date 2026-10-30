@@ -1,5 +1,5 @@
 ---
-title: "Hồi quy tuyến tính bội SPSS: cách chạy và đọc kết quả từng bảng"
+title: "Hồi quy tuyến tính bội SPSS: cách chạy và đọc kết quả"
 description: "Hồi quy tuyến tính bội trong SPSS: thiết lập từng hộp thoại, đọc Model Summary, ANOVA, Coefficients, kiểm tra giả định, VIF, Cook, ví dụ số và câu mẫu chương 4."
 pubDatetime: 2026-10-30T09:14:00+07:00
 featured: false

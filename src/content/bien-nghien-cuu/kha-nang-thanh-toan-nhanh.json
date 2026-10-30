@@ -1,5 +1,5 @@
 {
-  "title": "Khả năng thanh toán nhanh: công thức (TSNH − tồn kho) / nợ NH",
+  "title": "Khả năng thanh toán nhanh: công thức và cách tính từ BCTC",
   "description": "QR (Quick ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
   "name": "Khả năng thanh toán nhanh",
   "nameEn": "Quick ratio",

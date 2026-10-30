@@ -1,5 +1,5 @@
 ---
-title: "Nghiên cứu sơ bộ là gì? Khảo sát thử (pilot test) bao nhiêu mẫu"
+title: "Nghiên cứu sơ bộ là gì? Pilot test bao nhiêu mẫu là đủ"
 description: "Nghiên cứu sơ bộ là gì, khác nghiên cứu chính thức ra sao, khảo sát thử pilot test cần bao nhiêu mẫu, có chạy Cronbach sơ bộ không, câu mẫu chương 3."
 pubDatetime: 2026-10-30T09:08:00+07:00
 featured: false

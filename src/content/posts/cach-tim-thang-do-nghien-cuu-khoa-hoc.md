@@ -1,5 +1,5 @@
 ---
-title: "Cách tìm thang đo trong nghiên cứu khoa học: 7 nguồn, từng bước"
+title: "Cách tìm thang đo nghiên cứu khoa học: 7 nguồn, từng bước"
 description: "Cách tìm thang đo trong nghiên cứu khoa học: từ khoá Google Scholar, đọc phụ lục bài báo, truy ngược nguồn gốc, sổ tay thang đo, tiêu chí chọn, ví dụ thật."
 pubDatetime: 2026-10-30T09:06:00+07:00
 featured: false

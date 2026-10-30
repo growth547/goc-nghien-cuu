@@ -650,7 +650,7 @@ export const WDI_MORE = [
     slug: "chi-phi-khong-chinh-thuc",
     code: "IC.FRM.CORR.ZS",
     theme: "Doanh nghiệp & môi trường kinh doanh",
-    shortVi: "tỷ lệ doanh nghiệp phải trả chi phí không chính thức",
+    shortVi: "chi phí không chính thức của doanh nghiệp",
     nameVi: "Tỷ lệ doanh nghiệp được kỳ vọng phải chi trả không chính thức cho cán bộ (Enterprise Surveys)",
     ...pct(1),
     explanation:
@@ -678,7 +678,7 @@ export const WDI_MORE = [
     slug: "doanh-nghiep-canh-tranh-phi-chinh-thuc",
     code: "IC.FRM.CMPU.ZS",
     theme: "Doanh nghiệp & môi trường kinh doanh",
-    shortVi: "doanh nghiệp bị cạnh tranh bởi khu vực phi chính thức",
+    shortVi: "cạnh tranh từ khu vực phi chính thức",
     nameVi: "Tỷ lệ doanh nghiệp phải cạnh tranh với cơ sở không đăng ký kinh doanh (Enterprise Surveys)",
     ...pct(1),
     explanation:

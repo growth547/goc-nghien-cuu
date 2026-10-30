@@ -1,5 +1,5 @@
 ---
-title: "Phát hiện câu trả lời khảo sát do AI viết: dấu hiệu và cách phòng"
+title: "Phát hiện câu trả lời khảo sát do AI viết và cách phòng"
 description: "Cách phát hiện câu trả lời khảo sát do AI viết bằng mắt thường, và cách thiết kế câu hỏi tự luận khiến việc nhờ ChatGPT trả lời trở nên khó và vô ích."
 pubDatetime: 2026-10-29T01:00:00+07:00
 modDatetime: 2026-10-30T09:04:50+07:00

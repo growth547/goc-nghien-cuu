@@ -1,5 +1,5 @@
 {
-  "title": "Sở hữu tập trung: đo bằng cổ đông lớn nhất và chỉ số Herfindahl",
+  "title": "Sở hữu tập trung: cổ đông lớn nhất và chỉ số Herfindahl",
   "description": "CONC (Ownership concentration): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
   "name": "Mức độ tập trung sở hữu",
   "nameEn": "Ownership concentration",

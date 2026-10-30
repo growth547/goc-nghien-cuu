@@ -1,5 +1,5 @@
 ---
-title: "Back translation là gì? Quy trình dịch thang đo sang tiếng Việt"
+title: "Back translation là gì? Cách dịch thang đo sang tiếng Việt"
 description: "Back translation (dịch ngược) là gì, quy trình dịch thang đo sang tiếng Việt theo Brislin và Beaton, nhật ký dịch mẫu, lỗi hay gặp, câu mẫu chương 3, FAQ."
 pubDatetime: 2026-10-30T09:01:00+07:00
 featured: false

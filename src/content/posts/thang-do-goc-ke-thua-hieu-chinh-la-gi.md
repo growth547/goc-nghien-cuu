@@ -1,5 +1,5 @@
 ---
-title: "Thang đo gốc là gì? Thang đo kế thừa và hiệu chỉnh khác gì nhau"
+title: "Thang đo gốc là gì? Kế thừa và hiệu chỉnh khác gì nhau"
 description: "Thang đo gốc, thang đo kế thừa, thang đo hiệu chỉnh khác nhau thế nào, sửa đến mức nào thì phải kiểm định lại, cách ghi nguồn trong chương 3, kèm ví dụ TAM."
 pubDatetime: 2026-10-30T09:00:00+07:00
 featured: false

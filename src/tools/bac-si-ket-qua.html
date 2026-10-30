@@ -1,0 +1,840 @@
+<style>
+.bs-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.bs-sec{border-top:1px solid var(--border,#ddd);padding-top:12px}
+.bs-sec>summary{cursor:pointer;font-weight:600}
+.bs-sec>summary small{font-weight:400;color:var(--muted-foreground,#666)}
+.bs-sec[open]>summary{margin-bottom:12px}
+.bs-tbl input,.bs-tbl select{min-width:72px;padding:6px 8px!important}
+.bs-tbl td.x{width:1%;white-space:nowrap}
+.bs-mini{font:inherit;font-size:.78rem;line-height:1.2;padding:4px 9px;border:1px solid var(--border-strong,#bbb);border-radius:6px;background:var(--surface,#fff);color:inherit;cursor:pointer}
+.bs-mini:hover{border-color:var(--accent,#06c)}
+.bs-status{font-size:.85rem;color:var(--muted-foreground,#666);margin:0}
+.bs-sum{display:flex;flex-wrap:wrap;gap:8px}
+.bs-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:600;border:1px solid currentColor;white-space:nowrap}
+.bs-s3{color:#b42318}.bs-s2{color:#b54708}.bs-s1{color:#175cd3}.bs-s0{color:var(--muted-foreground,#666)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bs-s3{color:#fda29b}:root:not([data-theme="light"]) .bs-s2{color:#fec84b}:root:not([data-theme="light"]) .bs-s1{color:#84caff}}
+:root[data-theme="dark"] .bs-s3{color:#fda29b}:root[data-theme="dark"] .bs-s2{color:#fec84b}:root[data-theme="dark"] .bs-s1{color:#84caff}
+.bs-f{border:1px solid var(--border,#ddd);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.bs-f h3{margin:0;font-size:1.05rem;line-height:1.35}
+.bs-f p{margin:0}
+.bs-ev{font-variant-numeric:tabular-nums;font-size:.9rem}
+.bs-acts{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:10px}
+.bs-acts li{padding-left:2px}
+.bs-acts .t{font-weight:600}
+.bs-acts dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:4px 0 0;font-size:.88rem}
+.bs-acts dt{font-weight:600;color:var(--muted-foreground,#666)}
+.bs-acts dd{margin:0}
+@media (max-width:560px){.bs-acts dl{grid-template-columns:1fr}.bs-acts dd{margin-bottom:4px}}
+.bs-done{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px;font-size:.85rem}
+.bs-done input[type=text]{flex:1 1 200px;width:auto!important}
+.bs-warn{border-left:3px solid #b42318;padding:4px 0 4px 10px;font-size:.88rem}
+.bs-ref{font-size:.8rem;color:var(--muted-foreground,#666)}
+.bs-refs{font-size:.85rem;padding-left:1.2rem}
+.bs-refs li{margin-bottom:4px;overflow-wrap:anywhere}
+#bs-chapter p{margin:0 0 10px;line-height:1.7}
+#bs-log td{font-size:.82rem}
+</style>
+<div class="panel">
+  <strong>1. Bối cảnh nghiên cứu</strong>
+  <div class="bs-grid">
+    <div class="field"><label for="bs-n">Số phiếu hợp lệ đã phân tích (N)</label><input id="bs-n" type="number" min="1" inputmode="numeric" placeholder="ví dụ: 142"></div>
+    <div class="field"><label for="bs-target">Cỡ mẫu đã đặt ở chương 3</label><input id="bs-target" type="number" min="1" inputmode="numeric" placeholder="để trống nếu chưa có"><small>Con số bạn ghi trong đề cương, trước khi thu dữ liệu.</small></div>
+    <div class="field"><label for="bs-items">Tổng số biến quan sát (câu Likert)</label><input id="bs-items" type="number" min="1" inputmode="numeric" placeholder="tự tính từ các thang đo"></div>
+    <div class="field"><label for="bs-method">Phân tích chính</label><select id="bs-method"><option value="reg">SPSS: Cronbach, EFA, hồi quy</option><option value="pls">PLS-SEM (SmartPLS)</option><option value="cb">CFA / CB-SEM (AMOS)</option></select></div>
+    <div class="field"><label for="bs-origin">Nguồn thang đo</label><select id="bs-origin"><option value="translated">Dịch hoặc hiệu chỉnh từ thang đo nước ngoài</option><option value="adopted">Giữ nguyên thang đo tiếng Việt đã kiểm định</option><option value="new">Tự xây dựng, thang đo mới</option></select></div>
+    <div class="field"><label for="bs-reverse">Bảng hỏi có câu đảo chiều?</label><select id="bs-reverse"><option value="unknown">Không chắc</option><option value="yes">Có, đã mã hoá ngược</option><option value="yes-not">Có, chưa mã hoá ngược</option><option value="no">Không có</option></select></div>
+    <div class="field"><label for="bs-channel">Kênh thu dữ liệu</label><select id="bs-channel"><option value="open">Link mở chia sẻ trên Facebook, Zalo, nhóm lớp</option><option value="targeted">Gửi trực tiếp đúng đối tượng (danh sách, email)</option><option value="offline">Phát phiếu giấy, phỏng vấn trực tiếp</option><option value="panel">Nền tảng thu mẫu có kiểm soát chất lượng</option></select></div>
+    <div class="field"><label for="bs-screened">Đã lọc phiếu kém chất lượng?</label><select id="bs-screened"><option value="no">Chưa lọc</option><option value="yes">Đã lọc theo quy tắc khai báo trước</option></select></div>
+  </div>
+</div>
+
+<div class="panel" style="margin-top:24px">
+  <div class="field"><label for="bs-paste">2. Dán bảng kết quả từ SPSS hoặc SmartPLS (không bắt buộc)</label>
+    <textarea id="bs-paste" spellcheck="false" style="min-height:10rem" placeholder="Bấm chuột phải vào bảng trong SPSS Output → Copy, rồi dán vào đây. Dán được nhiều bảng một lúc."></textarea>
+    <small>Đọc được: Reliability Statistics, Item-Total Statistics, KMO and Bartlett's Test, Total Variance Explained, Rotated Component Matrix / Pattern Matrix, Model Summary, ANOVA, Coefficients, Descriptive Statistics (Skewness, Kurtosis); SmartPLS: Construct reliability and validity, HTMT (ma trận hoặc danh sách), Outer loadings, Path coefficients / P values, VIF. Số liệu chỉ xử lý trong trình duyệt của bạn.</small></div>
+  <div class="row"><button type="button" class="btn ghost" id="bs-read">Đọc bảng vào ô nhập</button><button type="button" class="btn ghost" id="bs-ex-spss">Mẫu: SPSS</button><button type="button" class="btn ghost" id="bs-ex-pls">Mẫu: SmartPLS</button></div>
+  <p class="bs-status" id="bs-read-status" aria-live="polite"></p>
+</div>
+
+<div class="panel" style="margin-top:24px">
+  <strong>3. Số liệu bạn nhận được <span class="text-muted-foreground" style="font-weight:400">(điền phần nào có, bỏ trống phần không làm)</span></strong>
+  <details class="bs-sec" open><summary>Độ tin cậy Cronbach's alpha <small>(Item-Total Statistics)</small></summary>
+    <div class="table-wrap"><table class="bs-tbl" id="bs-g-scales"></table></div>
+    <button type="button" class="bs-mini" data-add="scales" style="margin-top:8px">+ Thêm thang đo</button>
+  </details>
+  <details class="bs-sec"><summary>EFA <small>(KMO, Bartlett, ma trận xoay)</small></summary>
+    <div class="bs-grid">
+      <div class="field"><label for="bs-kmo">KMO</label><input id="bs-kmo" inputmode="decimal" placeholder="0,684"></div>
+      <div class="field"><label for="bs-bart">Bartlett Sig.</label><input id="bs-bart" inputmode="decimal" placeholder="0,000"></div>
+      <div class="field"><label for="bs-fexp">Số nhân tố theo mô hình</label><input id="bs-fexp" type="number" min="1"></div>
+      <div class="field"><label for="bs-fext">Số nhân tố SPSS trích được</label><input id="bs-fext" type="number" min="1"></div>
+      <div class="field"><label for="bs-var">Tổng phương sai trích (%)</label><input id="bs-var" inputmode="decimal" placeholder="58,2"></div>
+      <div class="field"><label for="bs-cross">Biến tải chéo</label><input id="bs-cross" placeholder="ví dụ: TC4, DU2"></div>
+      <div class="field"><label for="bs-low">Biến có hệ số tải thấp</label><input id="bs-low" placeholder="ví dụ: HL5"></div>
+      <div class="field"><label for="bs-neg">Biến có hệ số tải âm</label><input id="bs-neg" placeholder="ví dụ: HL5"></div>
+    </div>
+    <p class="bs-status" id="bs-rot-note"></p>
+  </details>
+  <details class="bs-sec"><summary>PLS-SEM / CFA <small>(AVE, CR, HTMT, outer loadings)</small></summary>
+    <div class="table-wrap"><table class="bs-tbl" id="bs-g-constructs"></table></div>
+    <button type="button" class="bs-mini" data-add="constructs" style="margin-top:8px">+ Thêm khái niệm</button>
+    <div class="table-wrap" style="margin-top:12px"><table class="bs-tbl" id="bs-g-htmt"></table></div>
+    <button type="button" class="bs-mini" data-add="htmt" style="margin-top:8px">+ Thêm cặp HTMT</button>
+    <div class="field" style="margin-top:12px"><label for="bs-ol">Outer loadings dưới 0,708</label><input id="bs-ol" placeholder="ví dụ: HL4 0,52; TC3 0,38"></div>
+  </details>
+  <details class="bs-sec"><summary>Hồi quy / mô hình cấu trúc <small>(R², β, p, VIF)</small></summary>
+    <div class="bs-grid">
+      <div class="field"><label for="bs-r2">R²</label><input id="bs-r2" inputmode="decimal"></div>
+      <div class="field"><label for="bs-adj">R² hiệu chỉnh</label><input id="bs-adj" inputmode="decimal"></div>
+      <div class="field"><label for="bs-fp">Sig. của F (bảng ANOVA)</label><input id="bs-fp" inputmode="decimal"></div>
+      <div class="field"><label for="bs-dv">Biến phụ thuộc</label><input id="bs-dv" placeholder="ví dụ: YD"></div>
+    </div>
+    <div class="table-wrap" style="margin-top:12px"><table class="bs-tbl" id="bs-g-coefs"></table></div>
+    <button type="button" class="bs-mini" data-add="coefs" style="margin-top:8px">+ Thêm biến / đường dẫn</button>
+  </details>
+  <details class="bs-sec"><summary>Phân phối và sai lệch phương pháp chung <small>(skewness, kurtosis, Harman, VIF toàn phần)</small></summary>
+    <div class="bs-grid">
+      <div class="field"><label for="bs-skew">|Skewness| lớn nhất</label><input id="bs-skew" inputmode="decimal"></div>
+      <div class="field"><label for="bs-kurt">|Kurtosis| lớn nhất</label><input id="bs-kurt" inputmode="decimal"><small>Kurtosis của SPSS là độ nhọn dư (phân phối chuẩn = 0).</small></div>
+      <div class="field"><label for="bs-normp">Sig. kiểm định chuẩn (Shapiro–Wilk, K–S)</label><input id="bs-normp" inputmode="decimal"></div>
+      <div class="field"><label for="bs-harman">Harman: % phương sai của nhân tố đầu</label><input id="bs-harman" inputmode="decimal"></div>
+      <div class="field"><label for="bs-fvif">VIF toàn phần lớn nhất (Kock)</label><input id="bs-fvif" inputmode="decimal"></div>
+    </div>
+  </details>
+  <div class="row"><button type="button" class="btn" id="bs-run">Chẩn đoán</button><button type="button" class="btn ghost" id="bs-clear">Xoá hết</button></div>
+</div>
+
+<div id="bs-out" aria-live="polite"></div>
+
+<div class="panel" id="bs-logpanel" style="margin-top:24px" hidden>
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <strong>Nhật ký thay đổi (đưa giảng viên hướng dẫn xem, đặt ở phụ lục)</strong>
+    <div class="row"><button type="button" class="btn ghost" id="bs-copylog">Sao chép bảng</button><button type="button" class="btn" id="bs-word">Tải file Word</button></div>
+  </div>
+  <p class="bs-status">Đánh dấu “Tôi đã làm bước này” ở từng hướng xử lý và ghi kết quả sau khi chạy lại. Vấn đề chưa xử lý vẫn nằm trong nhật ký, kèm hướng trình bày ở phần hạn chế.</p>
+  <div class="table-wrap"><table id="bs-log"></table></div>
+  <strong style="margin-top:8px">Đoạn mô tả cho chương 3 hoặc chương 4</strong>
+  <div id="bs-chapter"></div>
+  <small class="text-muted-foreground">Đoạn văn chỉ mô tả thủ tục bạn đã làm, bằng chính số liệu bạn nhập. Đọc lại, sửa tên khái niệm cho đúng luận văn và bỏ câu nào không đúng với việc bạn thật sự làm.</small>
+</div>
+<p style="margin-top:20px">Chạy lại Cronbach sau khi kiểm tra mã hoá: <a href="../cronbach-alpha/">Tính Cronbach's alpha</a>. Kiểm tra cỡ mẫu: <a href="../tinh-co-mau/">Máy tính cỡ mẫu</a>. Lọc phiếu đúng cách: <a href="../../posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</p>
+<script>
+(function(){
+  //#doctor-start
+  const CTA_URL='https://geniusdata.io/signup?ref=lab-tool&next=%2Fapp%2Fforms&utm_source=goc-nghien-cuu&utm_medium=tool&utm_campaign=ai-lab&utm_content=bac-si-ket-qua';
+  const Rf=(cite,text,doi)=>({cite,text,doi});
+  // Every entry has a DOI checked against api.crossref.org (scripts/check-doctor.mjs --online; fixture scripts/fixtures/doctor-crossref.json).
+  const REFS={
+    aguinis:Rf('Aguinis và cộng sự, 2013','Aguinis, H., Gottfredson, R. K., &amp; Joo, H. (2013). Best-practice recommendations for defining, identifying, and handling outliers. <em>Organizational Research Methods, 16</em>(2), 270–301.','10.1177/1094428112470848'),
+    altman:Rf('Altman và Bland, 1995','Altman, D. G., &amp; Bland, J. M. (1995). Absence of evidence is not evidence of absence. <em>BMJ, 311</em>(7003), 485.','10.1136/bmj.311.7003.485'),
+    brislin:Rf('Brislin, 1970','Brislin, R. W. (1970). Back-translation for cross-cultural research. <em>Journal of Cross-Cultural Psychology, 1</em>(3), 185–216.','10.1177/135910457000100301'),
+    cohen92:Rf('Cohen, 1992','Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1), 155–159.','10.1037/0033-2909.112.1.155'),
+    cronbach:Rf('Cronbach, 1951','Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. <em>Psychometrika, 16</em>(3), 297–334.','10.1007/BF02310555'),
+    curran:Rf('Curran, 2016','Curran, P. G. (2016). Methods for the detection of carelessly invalid responses in survey data. <em>Journal of Experimental Social Psychology, 66</em>, 4–19.','10.1016/j.jesp.2015.07.006'),
+    dziuban:Rf('Dziuban và Shirkey, 1974','Dziuban, C. D., &amp; Shirkey, E. C. (1974). When is a correlation matrix appropriate for factor analysis? Some decision rules. <em>Psychological Bulletin, 81</em>(6), 358–361.','10.1037/h0036316'),
+    eisinga:Rf('Eisinga và cộng sự, 2013','Eisinga, R., Grotenhuis, M. te, &amp; Pelzer, B. (2013). The reliability of a two-item scale: Pearson, Cronbach, or Spearman-Brown? <em>International Journal of Public Health, 58</em>(4), 637–642.','10.1007/s00038-012-0416-3'),
+    fabrigar:Rf('Fabrigar và cộng sự, 1999','Fabrigar, L. R., Wegener, D. T., MacCallum, R. C., &amp; Strahan, E. J. (1999). Evaluating the use of exploratory factor analysis in psychological research. <em>Psychological Methods, 4</em>(3), 272–299.','10.1037/1082-989X.4.3.272'),
+    fanelli:Rf('Fanelli, 2009','Fanelli, D. (2009). How many scientists fabricate and falsify research? A systematic review and meta-analysis of survey data. <em>PLoS ONE, 4</em>(5), e5738.','10.1371/journal.pone.0005738'),
+    faul:Rf('Faul và cộng sự, 2009','Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <em>Behavior Research Methods, 41</em>(4), 1149–1160.','10.3758/BRM.41.4.1149'),
+    fornell:Rf('Fornell và Larcker, 1981','Fornell, C., &amp; Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and measurement error. <em>Journal of Marketing Research, 18</em>(1), 39–50.','10.1177/002224378101800104'),
+    ghasemi:Rf('Ghasemi và Zahediasl, 2012','Ghasemi, A., &amp; Zahediasl, S. (2012). Normality tests for statistical analysis: A guide for non-statisticians. <em>International Journal of Endocrinology and Metabolism, 10</em>(2), 486–489.','10.5812/ijem.3505'),
+    green:Rf('Green, 1991','Green, S. B. (1991). How many subjects does it take to do a regression analysis? <em>Multivariate Behavioral Research, 26</em>(3), 499–510.','10.1207/s15327906mbr2603_7'),
+    hair19:Rf('Hair và cộng sự, 2019','Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review, 31</em>(1), 2–24.','10.1108/EBR-11-2018-0203'),
+    hayes:Rf('Hayes và Coutts, 2020','Hayes, A. F., &amp; Coutts, J. J. (2020). Use omega rather than Cronbach’s alpha for estimating reliability. But…. <em>Communication Methods and Measures, 14</em>(1), 1–24.','10.1080/19312458.2020.1718629'),
+    henseler:Rf('Henseler và cộng sự, 2015','Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135.','10.1007/s11747-014-0403-8'),
+    horn:Rf('Horn, 1965','Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. <em>Psychometrika, 30</em>(2), 179–185.','10.1007/BF02289447'),
+    howard:Rf('Howard, 2016','Howard, M. C. (2016). A review of exploratory factor analysis decisions and overview of current practices: What we are doing and how can we improve? <em>International Journal of Human–Computer Interaction, 32</em>(1), 51–62.','10.1080/10447318.2015.1087664'),
+    john:Rf('John và cộng sự, 2012','John, L. K., Loewenstein, G., &amp; Prelec, D. (2012). Measuring the prevalence of questionable research practices with incentives for truth telling. <em>Psychological Science, 23</em>(5), 524–532.','10.1177/0956797611430953'),
+    kaiser:Rf('Kaiser, 1974','Kaiser, H. F. (1974). An index of factorial simplicity. <em>Psychometrika, 39</em>(1), 31–36.','10.1007/BF02291575'),
+    kerr:Rf('Kerr, 1998','Kerr, N. L. (1998). HARKing: Hypothesizing after the results are known. <em>Personality and Social Psychology Review, 2</em>(3), 196–217.','10.1207/s15327957pspr0203_4'),
+    kim13:Rf('Kim, 2013','Kim, H.-Y. (2013). Statistical notes for clinical researchers: Assessing normal distribution (2) using skewness and kurtosis. <em>Restorative Dentistry &amp; Endodontics, 38</em>(1), 52–54.','10.5395/rde.2013.38.1.52'),
+    kock15:Rf('Kock, 2015','Kock, N. (2015). Common method bias in PLS-SEM: A full collinearity assessment approach. <em>International Journal of e-Collaboration, 11</em>(4), 1–10.','10.4018/ijec.2015100101'),
+    kockHadaya:Rf('Kock và Hadaya, 2018','Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261.','10.1111/isj.12131'),
+    lakens:Rf('Lakens, 2017','Lakens, D. (2017). Equivalence tests: A practical primer for t tests, correlations, and meta-analyses. <em>Social Psychological and Personality Science, 8</em>(4), 355–362.','10.1177/1948550617697177'),
+    little:Rf('Little và cộng sự, 1999','Little, T. D., Lindenberger, U., &amp; Nesselroade, J. R. (1999). On selecting indicators for multivariate measurement and modeling with latent variables: When “good” indicators are bad and “bad” indicators are good. <em>Psychological Methods, 4</em>(2), 192–211.','10.1037/1082-989X.4.2.192'),
+    lumley:Rf('Lumley và cộng sự, 2002','Lumley, T., Diehr, P., Emerson, S., &amp; Chen, L. (2002). The importance of the normality assumption in large public health data sets. <em>Annual Review of Public Health, 23</em>, 151–169.','10.1146/annurev.publhealth.23.100901.140546'),
+    maccallum:Rf('MacCallum và cộng sự, 1999','MacCallum, R. C., Widaman, K. F., Zhang, S., &amp; Hong, S. (1999). Sample size in factor analysis. <em>Psychological Methods, 4</em>(1), 84–99.','10.1037/1082-989X.4.1.84'),
+    marsh:Rf('Marsh và cộng sự, 1998','Marsh, H. W., Hau, K.-T., Balla, J. R., &amp; Grayson, D. (1998). Is more ever too much? The number of indicators per factor in confirmatory factor analysis. <em>Multivariate Behavioral Research, 33</em>(2), 181–220.','10.1207/s15327906mbr3302_1'),
+    mcneish:Rf('McNeish, 2018','McNeish, D. (2018). Thanks coefficient alpha, we’ll take it from here. <em>Psychological Methods, 23</em>(3), 412–433.','10.1037/met0000144'),
+    meade:Rf('Meade và Craig, 2012','Meade, A. W., &amp; Craig, S. B. (2012). Identifying careless responses in survey data. <em>Psychological Methods, 17</em>(3), 437–455.','10.1037/a0028085'),
+    newman:Rf('Newman, 2014','Newman, D. A. (2014). Missing data: Five practical guidelines. <em>Organizational Research Methods, 17</em>(4), 372–411.','10.1177/1094428114548590'),
+    nosek:Rf('Nosek và cộng sự, 2018','Nosek, B. A., Ebersole, C. R., DeHaven, A. C., &amp; Mellor, D. T. (2018). The preregistration revolution. <em>Proceedings of the National Academy of Sciences, 115</em>(11), 2600–2606.','10.1073/pnas.1708274114'),
+    obrien:Rf('O’Brien, 2007','O’Brien, R. M. (2007). A caution regarding rules of thumb for variance inflation factors. <em>Quality &amp; Quantity, 41</em>(5), 673–690.','10.1007/s11135-006-9018-6'),
+    peterson:Rf('Peterson, 2000','Peterson, R. A. (2000). A meta-analysis of variance accounted for and factor loadings in exploratory factor analysis. <em>Marketing Letters, 11</em>(3), 261–275.','10.1023/A:1008191211004'),
+    podsakoff:Rf('Podsakoff và cộng sự, 2003','Podsakoff, P. M., MacKenzie, S. B., Lee, J.-Y., &amp; Podsakoff, N. P. (2003). Common method biases in behavioral research: A critical review of the literature and recommended remedies. <em>Journal of Applied Psychology, 88</em>(5), 879–903.','10.1037/0021-9010.88.5.879'),
+    schmidt:Rf('Schmidt và Finan, 2018','Schmidt, A. F., &amp; Finan, C. (2018). Linear regression and the normality assumption. <em>Journal of Clinical Epidemiology, 98</em>, 146–151.','10.1016/j.jclinepi.2017.12.006'),
+    simmons:Rf('Simmons và cộng sự, 2011','Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2011). False-positive psychology: Undisclosed flexibility in data collection and analysis allows presenting anything as significant. <em>Psychological Science, 22</em>(11), 1359–1366.','10.1177/0956797611417632'),
+    tavakol:Rf('Tavakol và Dennick, 2011','Tavakol, M., &amp; Dennick, R. (2011). Making sense of Cronbach’s alpha. <em>International Journal of Medical Education, 2</em>, 53–55.','10.5116/ijme.4dfb.8dfd'),
+    tzelgov:Rf('Tzelgov và Henik, 1991','Tzelgov, J., &amp; Henik, A. (1991). Suppression situations in psychological research: Definitions, implications, and applications. <em>Psychological Bulletin, 109</em>(3), 524–536.','10.1037/0033-2909.109.3.524'),
+    wasserstein:Rf('Wasserstein và Lazar, 2016','Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. <em>The American Statistician, 70</em>(2), 129–133.','10.1080/00031305.2016.1154108'),
+    weijters:Rf('Weijters và Baumgartner, 2012','Weijters, B., &amp; Baumgartner, H. (2012). Misresponse to reversed and negated items in surveys: A review. <em>Journal of Marketing Research, 49</em>(5), 737–747.','10.1509/jmr.11.0368'),
+  };
+  const cite=keys=>keys.map(k=>REFS[k].cite).join('; ');
+
+  // Practices the tool never suggests; shown with every report.
+  const ETHICS=[
+    {text:'Không sửa, thêm, xoá hay “cân” bất kỳ câu trả lời nào để số liệu đẹp hơn, không tự điền phiếu, không nhân bản phiếu. Đó là bịa đặt và làm sai lệch dữ liệu, loại gian lận nặng nhất trong nghiên cứu; tổng hợp khảo sát cho thấy nó không hiếm như người ta nghĩ.',refs:['fanelli']},
+    {text:'Không thử loại lần lượt từng biến, từng phiếu hay từng nhóm phiếu rồi giữ tổ hợp cho kết quả đạt. Mỗi lần “thử xem sao” là một lần tăng xác suất kết quả dương tính giả, dù từng bước nhìn có vẻ hợp lý.',refs:['simmons','john']},
+    {text:'Không đổi phương pháp (hồi quy sang PLS-SEM, một phía sang hai phía, Pearson sang Spearman…) chỉ vì phương pháp mới cho p < 0,05. Nếu đổi vì giả định không thoả, ghi lý do và báo cáo cả hai kết quả.',refs:['simmons','wasserstein']},
+    {text:'Không sửa giả thuyết sau khi thấy kết quả rồi trình bày như thể đã dự đoán từ đầu (HARKing). Giả thuyết không được ủng hộ là một kết quả hợp lệ.',refs:['kerr','nosek']},
+    {text:'Hội đồng nhận ra số liệu “làm đẹp” qua những dấu hiệu như: mọi α đều trên 0,9, mọi giả thuyết đều được ủng hộ với p rất nhỏ, độ lệch chuẩn nhỏ bất thường, phân phối quá đều, hoặc không thể chạy lại ra đúng số khi được yêu cầu nộp file dữ liệu.',refs:['john']},
+  ];
+
+  const fx=(x,d=3)=>{if(!Number.isFinite(x))return '—';let s=x.toFixed(d);if(/^-0\.?0*$/.test(s))s=s.slice(1);return s.replace('.',',').replace(/^-/,'−')};
+  const fp=p=>!Number.isFinite(p)?'—':p<0.001?'< 0,001':fx(p,3);
+  const list=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' và '+a[a.length-1];
+
+  // "0,812", ".812", "0.812", ".712a" (SPSS footnote), "<.001", "1,234.5", "1.234,5", "−0,12", "56,7%".
+  function num(s){
+    if(s==null)return NaN;
+    let t=String(s).trim().replace(/[−–—]/g,'-').replace(/[ \s]/g,'');
+    t=t.replace(/(\d)(?:[a-z]|\*{1,3})$/i,'$1').replace(/%$/,'');
+    let lt=false;if(/^[<≤]/.test(t)){lt=true;t=t.slice(1)}
+    if(!/^[-+]?(?:\d+(?:[.,]\d*)?|[.,]\d+)$/.test(t)&&!/^[-+]?\d{1,3}(?:[.,]\d{3})+(?:[.,]\d+)?$/.test(t))return NaN;
+    const c=t.lastIndexOf(','),p=t.lastIndexOf('.');
+    if(c>=0&&p>=0){t=c>p?t.replace(/\./g,'').replace(',','.'):t.replace(/,/g,'')}
+    else if(c>=0){t=/^[-+]?[1-9]\d{0,2}(?:,\d{3})+$/.test(t)?t.replace(/,/g,''):t.replace(',','.')}
+    else if((t.match(/\./g)||[]).length>1)t=t.replace(/\./g,'');
+    const v=parseFloat(t);return lt?v/2:v;
+  }
+  const isNum=c=>Number.isFinite(num(c));
+  function cellsOf(line){
+    if(line.includes('\t'))return {cells:line.split('\t').map(c=>c.trim()),tab:true};
+    const t=line.trim();if(!t)return {cells:[],tab:false};
+    let parts=t.split(/\s{2,}|\s*\|\s*/).filter((c,i,a)=>c!==''||(i>0&&i<a.length-1));
+    if(parts.length<2){const w=t.split(/\s+/);let i=0;while(i<w.length&&!isNum(w[i]))i++;parts=i>0?[w.slice(0,i).join(' '),...w.slice(i)]:w}
+    return {cells:parts.map(c=>c.trim()),tab:false};
+  }
+  function rowOf(line){
+    const {cells,tab}=cellsOf(line);let li=-1;
+    for(let i=0;i<cells.length;i++)if(cells[i]!==''&&!isNum(cells[i])){li=i;break}
+    const vals=cells.map((c,i)=>i<=li||c===''?null:num(c));
+    const nums=vals.slice(li+1).filter(v=>v!=null&&Number.isFinite(v));
+    const text=cells.filter((c,i)=>i>li&&c!==''&&!isNum(c));
+    return {cells,tab,li,label:li>=0?cells[li]:'',vals,nums,text,empty:!cells.some(c=>c!=='')};
+  }
+  // Code prefix: HL1, HL_2, hl 3, HL5R all belong to "HL".
+  function stem(n){const s=String(n).trim();const m=s.match(/^(.*?\D)[\s_.\-]*0*\d+[a-z]?$/i);return m?m[1].replace(/[\s_.\-]+$/,''):s}
+
+  const MODES=[
+    ['itt',/corrected item|item-total|tương quan biến[ –-]*tổng|alpha if item deleted/i],
+    ['rel',/reliability statistics|n of items|thống kê độ tin cậy/i],
+    ['kmo',/kaiser|\bkmo\b|bartlett/i],
+    ['tve',/total variance explained|tổng phương sai trích|initial eigenvalues/i],
+    ['rot',/rotated (?:component|factor) matrix|pattern matrix|ma trận xoay|ma trận mẫu/i],
+    ['htmt',/heterotrait|\bhtmt\b/i],
+    ['crv',/construct reliability|average variance extracted|\(ave\)|composite reliability|rho_a/i],
+    ['ol',/outer loadings|hệ số tải ngoài/i],
+    ['vif',/collinearity statistics \(vif\)|inner model|outer model|^vif$/i],
+    ['path',/path coefficients|original sample|p values|total effects|specific indirect/i],
+    ['ms',/model summary|r square|r-square|tóm tắt mô hình/i],
+    ['anova',/^anova|sum of squares/i],
+    ['coef',/^coefficients|unstandardized|standardized coefficients|collinearity statistics/i],
+    ['desc',/descriptive statistics|skewness|kurtosis/i],
+  ];
+  const SKIP=/^(?:extraction method|rotation method|a\.|b\.|c\.|valid n|model$|mô hình$|total$|tổng$)|converged|phương pháp/i;
+
+  // Reads SPSS / SmartPLS tables copied as text. Returns only what it recognised; everything is optional.
+  function parseOutput(text){
+    const out={scales:[],efa:{rows:[],nf:0},pls:{constructs:[],htmt:[],loadings:[]},reg:{coefs:[]},norm:{},found:[]};
+    const lines=String(text||'').replace(/^﻿/,'').split(/\r?\n/);
+    let mode='',hdr=[],lastHdr=false,pendRel=null,cur=null,tve=[],names=[];
+    const found=m=>{if(m&&!out.found.includes(m))out.found.push(m)};
+    const endScale=()=>{if(cur&&cur.items.length){cur.k=cur.items.length;cur.name=cur.name||stem(cur.items[0].name);out.scales.push(cur)}cur=null};
+    const setMode=m=>{if(m===mode)return;if(mode==='itt')endScale();mode=m;hdr=[];names=[];found(m)};
+    const col=re=>{for(let i=0;i<hdr.length;i++)if(hdr[i]&&re.test(hdr[i]))return i;return -1};
+    const at=(r,i)=>i>=0&&r.tab&&r.vals[i]!=null&&Number.isFinite(r.vals[i])?r.vals[i]:NaN;
+    const pick=(a,b)=>Number.isFinite(a)?a:b;
+    const coef=name=>{let c=out.reg.coefs.find(x=>x.name===name);if(!c){c={name,beta:NaN,p:NaN,vif:NaN};out.reg.coefs.push(c)}return c};
+    for(const line of lines){
+      if(!line.trim())continue;
+      const r=rowOf(line),words=r.cells.filter(c=>c!==''&&!isNum(c)).join(' ');
+      const dv=line.match(/dependent variable:\s*(.+)$/i);if(dv){out.reg.dv=dv[1].trim();continue}
+      const hit=MODES.find(([,re])=>re.test(words));
+      const isHdr=!r.empty&&r.nums.length===0&&r.cells.filter(c=>c!=='').every(c=>!isNum(c));
+      if(hit&&!(r.label&&/->|<-/.test(r.label)))setMode(hit[0]);
+      if(isHdr){
+        if(!lastHdr)hdr=[];
+        r.cells.forEach((c,i)=>{if(c)hdr[i]=hdr[i]?hdr[i]+' '+c:c});
+        if(mode==='htmt'&&!hit&&r.cells.filter(c=>c!=='').length>=2)names=r.cells.map(c=>c.trim());
+        if(mode==='rel'||mode==='itt'){if(mode==='itt'&&cur&&cur.items.length&&!hit)endScale()}
+        lastHdr=true;continue;
+      }
+      lastHdr=false;
+      if(SKIP.test(r.label.trim()))continue;
+      const arrow=/(?:<->|->|→|<-)/.test(r.label);
+      if(mode==='kmo'){
+        if(/kaiser|kmo/i.test(words)&&r.nums.length)out.efa.kmo=r.nums.at(-1);
+        else if(/\bsig|mức ý nghĩa/i.test(words)&&r.nums.length)out.efa.bartP=r.nums.at(-1);
+        continue;
+      }
+      if(mode==='rel'&&r.nums.length>=1&&!r.label){pendRel={alpha:r.nums[0],k:r.nums.length>1&&Number.isInteger(r.nums.at(-1))?r.nums.at(-1):NaN};continue}
+      if(mode==='itt'&&r.label&&r.nums.length>=3){
+        if(!cur){cur={name:'',alpha:pendRel?pendRel.alpha:NaN,k:0,k0:NaN,items:[]};pendRel=null}
+        const n=r.nums;
+        cur.items.push({name:r.label,citc:pick(at(r,col(/corrected item|tương quan biến/i)),n.length>=4?n[2]:n[0]),aid:pick(at(r,col(/alpha if item|alpha nếu loại/i)),n.at(-1))});
+        continue;
+      }
+      if(mode==='tve'&&!r.label&&r.nums.length>=4&&Number.isInteger(r.nums[0])){tve.push(r.nums);continue}
+      if(mode==='rot'){
+        if(!r.label){if(r.nums.length&&r.nums.every((v,i)=>v===i+1))out.efa.nf=r.nums.length;continue}
+        if(!r.nums.length)continue;
+        const loads=r.tab?r.vals.slice(r.li+1).map(v=>v==null||!Number.isFinite(v)?null:v):r.nums.slice();
+        while(loads.length&&loads[loads.length-1]==null)loads.pop();
+        out.efa.rows.push({name:r.label,loads,pos:r.tab});continue;
+      }
+      if(mode==='ms'&&r.nums.length>=2){
+        if(r.label&&!/^\d+$/.test(r.label)){out.reg.r2=r.nums[0];out.reg.adj=r.nums[1];if(!out.reg.dv)out.reg.dv=r.label;continue}
+        const n=r.nums,off=Number.isInteger(n[0])&&n.length>=4?1:0;
+        out.reg.r2=pick(at(r,col(/^r square$|^r bình phương$/i)),n[off+1]);
+        out.reg.adj=pick(at(r,col(/adjusted|hiệu chỉnh/i)),n[off+2]);continue;
+      }
+      if(mode==='anova'&&/regression|hồi quy/i.test(r.label)&&r.nums.length){out.reg.fP=pick(at(r,col(/^sig|mức ý nghĩa/i)),r.nums.at(-1));continue}
+      if(mode==='coef'&&r.label&&r.nums.length>=3){
+        if(/constant|hằng số/i.test(r.label))continue;
+        const n=r.nums,c=coef(r.label);
+        c.beta=pick(at(r,col(/beta/i)),n.length>=5?n[2]:NaN);
+        c.p=pick(at(r,col(/^sig|mức ý nghĩa/i)),n.length>=5?n[4]:n.at(-1));
+        c.vif=pick(at(r,col(/vif/i)),n.length>=7?n[6]:NaN);
+        continue;
+      }
+      if(mode==='desc'&&r.label&&r.nums.length>=5){
+        const n=r.nums,sk=pick(at(r,col(/skew|độ lệch/i)),n[n.length-4]),ku=pick(at(r,col(/kurt|độ nhọn/i)),n[n.length-2]);
+        if(!(Math.abs(sk)<=Math.abs(out.norm.skew??-1))){out.norm.skew=Math.abs(sk);out.norm.skewVar=r.label}
+        if(!(Math.abs(ku)<=Math.abs(out.norm.kurt??-1))){out.norm.kurt=Math.abs(ku);out.norm.kurtVar=r.label}
+        continue;
+      }
+      if(mode==='crv'&&r.label&&r.nums.length>=2&&!arrow){
+        const n=r.nums;let ci=col(/rho_c/i);if(ci<0)ci=hdr.findIndex(h=>h&&/composite reliability/i.test(h)&&!/rho_a/i.test(h));
+        out.pls.constructs.push({name:r.label,alpha:pick(at(r,col(/cronbach/i)),n[0]),cr:pick(at(r,ci),n.length>=4?n[2]:n.length===3?n[1]:NaN),ave:pick(at(r,col(/average variance|\bave\b/i)),n.at(-1))});
+        continue;
+      }
+      if(mode==='htmt'&&r.label&&r.nums.length){
+        if(/<->/.test(r.label)){const [a,b]=r.label.split(/\s*<->\s*/);out.pls.htmt.push({a,b,v:r.nums[0]});continue}
+        if(r.tab){r.vals.forEach((v,j)=>{if(j>r.li&&v!=null&&Number.isFinite(v)&&names[j]&&names[j]!==r.label&&v!==1)out.pls.htmt.push({a:r.label,b:names[j],v})})}
+        else{const nm=names.filter(Boolean);r.nums.forEach((v,j)=>{if(nm[j]&&nm[j]!==r.label&&v!==1)out.pls.htmt.push({a:r.label,b:nm[j],v})})}
+        continue;
+      }
+      if(mode==='ol'&&r.label&&r.nums.length){out.pls.loadings.push({name:r.label.split(/\s*(?:<-|->)\s*/)[0],v:r.nums[0]});continue}
+      if(arrow&&r.nums.length&&!/<->/.test(r.label)){
+        const c=coef(r.label.replace(/\s*(?:->|→)\s*/,' -> '));
+        if(mode==='vif'&&r.nums.length===1){c.vif=r.nums[0];continue}
+        c.beta=pick(at(r,col(/original sample/i)),r.nums[0]);
+        if(r.nums.length>=4)c.p=pick(at(r,col(/p value/i)),r.nums.at(-1));
+        found('path');continue;
+      }
+      if(mode==='vif'&&r.label&&r.nums.length===1&&!arrow)continue;
+    }
+    if(mode==='itt')endScale();
+    if(tve.length){const ext=tve.filter(n=>n.length>=7);out.efa.eig1=tve.filter(n=>n[1]>1).length;if(ext.length){out.efa.extracted=ext.length;out.efa.variance=ext.at(-1)[6]}}
+    out.pls.htmt=out.pls.htmt.filter((h,i,a)=>a.findIndex(x=>(x.a===h.a&&x.b===h.b)||(x.a===h.b&&x.b===h.a))===i);
+    out.found=out.found.filter(m=>m!=='rel'||out.scales.length||pendRel);
+    return out;
+  }
+
+  // Rotated / pattern matrix: Howard's (2016) .40–.30–.20 rule; with column positions also checks whether items of one code
+  // prefix split across factors, or several prefixes merge into one factor.
+  function analyzeRot(rows){
+    const out={cross:[],low:[],neg:[],split:[],merge:[]};
+    const pos=rows.length>0&&rows.every(r=>r.pos);const prim=new Map();
+    for(const r of rows){
+      const v=r.loads.map((x,i)=>({x,i})).filter(o=>o.x!=null&&Number.isFinite(o.x)).sort((a,b)=>Math.abs(b.x)-Math.abs(a.x));
+      if(!v.length){out.low.push({name:r.name,p:0});continue}
+      const p=v[0],s=v[1];
+      if(p.x<0)out.neg.push({name:r.name,p:p.x});
+      if(Math.abs(p.x)<0.4)out.low.push({name:r.name,p:Math.abs(p.x)});
+      else if(s&&Math.abs(s.x)>=0.3&&Math.abs(p.x)-Math.abs(s.x)<0.2)out.cross.push({name:r.name,p:Math.abs(p.x),s:Math.abs(s.x)});
+      else if(pos)prim.set(r.name,p.i+1);
+    }
+    if(pos){
+      const byStem=new Map(),byF=new Map();
+      for(const [name,f] of prim){const st=stem(name);if(!byStem.has(st))byStem.set(st,new Set());byStem.get(st).add(f);if(!byF.has(f))byF.set(f,new Set());byF.get(f).add(st)}
+      if(byStem.size>=2&&[...byStem.keys()].every(s=>/^[A-Za-zĐđ]{1,8}$/.test(s))){
+        for(const [st,fs] of byStem)if(fs.size>1)out.split.push({stem:st,factors:[...fs].sort((a,b)=>a-b)});
+        for(const [f,sts] of byF)if(sts.size>1)out.merge.push({factor:f,stems:[...sts]});
+      }
+    }
+    return out;
+  }
+
+  function requiredN(inp){
+    const c=inp.ctx||{},rules=[];
+    const sumK=(inp.scales||[]).reduce((s,x)=>s+(Number.isFinite(x.k)?x.k:(x.items||[]).length),0);
+    const items=Number.isFinite(c.items)&&c.items>0?c.items:sumK;
+    if(items&&c.method!=='pls')rules.push({n:Math.max(100,5*items),rule:`EFA: quy tắc kinh nghiệm 5 quan sát cho mỗi biến quan sát (${items} × 5) và không dưới 100; cỡ mẫu thật sự cần còn tuỳ mức communality`,ref:'maccallum'});
+    const m=(inp.reg&&inp.reg.coefs||[]).filter(x=>x.name).length;
+    if(m&&c.method==='reg')rules.push({n:Math.max(50+8*m,104+m),rule:`Hồi quy với ${m} biến độc lập: 50 + 8 × ${m} để kiểm định R², 104 + ${m} để kiểm định từng hệ số`,ref:'green'});
+    if(c.method==='pls')rules.push({n:155,rule:'PLS-SEM: phương pháp căn bậc hai nghịch đảo, hệ số đường dẫn nhỏ nhất cần phát hiện 0,2, mức ý nghĩa 5%',ref:'kockHadaya'});
+    if(Number.isFinite(c.target)&&c.target>0)rules.push({n:c.target,rule:'Cỡ mẫu bạn đã đặt ở chương 3 trước khi thu dữ liệu',ref:null});
+    return {rules,need:rules.length?Math.max(...rules.map(r=>r.n)):0};
+  }
+
+  // ---- valid options. Each has: what to do, when it is legitimate, what follows, how to report it, references ----
+  const ACT={
+    reverse:items=>({key:'reverse',order:1,title:'Kiểm tra câu đảo chiều đã được mã hoá ngược chưa',
+      how:`Mở lại bảng hỏi gốc và tìm câu phát biểu theo hướng ngược${items?` (bắt đầu với ${items})`:''}, ví dụ “Tôi thấy ứng dụng này khó dùng” nằm trong thang đo dễ sử dụng. Nếu có và chưa mã hoá, đổi điểm theo công thức điểm mới = (điểm thấp nhất + điểm cao nhất) − điểm cũ (thang 1–5 là 6 − điểm cũ) rồi chạy lại toàn bộ phân tích.`,
+      when:'Chỉ khi câu đó thật sự được viết theo hướng ngược trong bảng hỏi đã phát. Không đảo điểm một câu chỉ vì nó làm kết quả xấu.',
+      effect:'Nếu đúng là quên mã hoá ngược, tương quan biến–tổng chuyển sang dương và độ tin cậy tăng một cách hợp lệ. Nếu câu không phải câu đảo mà vẫn tương quan âm, câu hỏi có vấn đề về nội dung: chuyển sang bước xem lại câu chữ.',
+      report:'Chương 3: “Các biến X, Y được phát biểu theo hướng ngược và được mã hoá lại trước khi phân tích.”',
+      say:`Kiểm tra bảng hỏi cho thấy ${items||'các câu đảo chiều'} được phát biểu theo hướng ngược; các biến này được mã hoá lại trước khi phân tích (${REFS.weijters.cite}).`,
+      refs:['weijters']}),
+    entry:()=>({key:'entry',order:2,title:'Kiểm tra nhập liệu và mã giá trị thiếu',
+      how:'Chạy Frequencies cho từng biến: tìm giá trị ngoài thang (0, 6 trên thang 1–5, 33 do gõ nhầm), mã thiếu như 9 hoặc 99 chưa được khai báo trong Missing Values, cột bị lệch khi ghép file, và dòng trùng lặp. Sửa về đúng giá trị trong phiếu gốc hoặc khai báo là giá trị thiếu.',
+      when:'Chỉ sửa khi đối chiếu được với phiếu gốc (file xuất từ Google Forms, phiếu giấy). Không đoán, không điền giá trị “hợp lý” vào ô thiếu.',
+      effect:'Mã thiếu 99 bị tính như một câu trả lời có thể kéo lệch trung bình, tương quan và α rất mạnh. Sửa lỗi nhập liệu là bắt buộc, không phải là chọn lựa.',
+      report:'Chương 3: “Dữ liệu được kiểm tra giá trị ngoài thang và giá trị thiếu; N ô được sửa theo phiếu gốc, M ô được khai báo là giá trị thiếu.”',
+      say:`Dữ liệu được kiểm tra giá trị ngoài thang đo, mã giá trị thiếu và dòng trùng lặp, đối chiếu với phiếu gốc trước khi phân tích lại (${REFS.newman.cite}).`,
+      refs:['newman','aguinis']}),
+    quality:()=>({key:'quality',order:3,title:'Lọc phiếu kém chất lượng theo quy tắc khai báo trước',
+      how:'Viết ra các quy tắc trước khi xem lại kết quả: trượt câu kiểm tra chú ý, trả lời một mức cho cả khối câu hỏi, thời gian làm quá ngắn, phiếu trùng. Áp dụng một lần cho toàn bộ dữ liệu.',
+      when:'Quy tắc phải dựa trên hành vi trả lời (không dựa vào việc phiếu đó có làm α hay p xấu đi) và áp dụng như nhau cho mọi phiếu.',
+      effect:'Phiếu điền bừa làm yếu tương quan giữa các biến, làm α và KMO thấp đi. Lọc theo quy tắc là hợp lệ; lọc từng phiếu để kết quả đẹp là thao túng dữ liệu. Sau khi lọc, N giảm, nên kiểm tra lại cỡ mẫu.',
+      report:'Chương 3: “Từ N phiếu thu về, loại A phiếu trượt câu kiểm tra, B phiếu trả lời một mức, C phiếu dưới X giây; còn M phiếu hợp lệ.”',
+      say:`Phiếu trả lời được lọc theo các quy tắc khai báo trước (câu kiểm tra chú ý, trả lời một mức, thời gian làm bài), áp dụng một lần cho toàn bộ dữ liệu (${REFS.meade.cite}; ${REFS.curran.cite}).`,
+      refs:['meade','curran']}),
+    wording:what=>({key:'wording',order:4,title:'Xem lại câu chữ và bản dịch của câu hỏi',
+      how:`Đọc lại ${what||'các biến bị đánh dấu'} cạnh bản gốc tiếng Anh: câu có hai ý trong một (“nhanh và rẻ”), có phủ định kép, dùng từ khác nghĩa với bản gốc, hay hỏi điều người trả lời không biết? Nếu có, ghi nhận điều này.`,
+      when:'Đây là bước giải thích, không phải bước sửa số liệu. Câu đã phát không thể sửa lại; phát hiện ở đây dùng làm căn cứ cho việc loại biến (nếu đủ điều kiện) và cho phần hạn chế.',
+      effect:'Cho bạn lý do nội dung để giải thích với hội đồng vì sao một biến hoạt động kém, thay vì chỉ dựa vào con số.',
+      report:'Chương 4 hoặc 5: “Biến X được dịch là … ; cách diễn đạt này có thể khiến người trả lời hiểu khác với thang đo gốc.”',
+      say:`Nội dung ${what||'các biến bị đánh dấu'} được đối chiếu lại với thang đo gốc để tìm nguyên nhân về cách diễn đạt và bản dịch (${REFS.brislin.cite}).`,
+      refs:['brislin']}),
+    drop:d=>d.allowed?({key:'drop',order:5,title:`Cân nhắc loại ${d.item} (một biến, một lần, có lý do nội dung)`,
+      how:`Quy tắc báo trước: loại biến có ${d.metric}. ${d.item} thoả quy tắc này (${d.value}). Trước khi loại, kiểm tra ${d.scale} sau khi loại vẫn còn ${d.left} biến và vẫn bao phủ đủ định nghĩa của khái niệm. Loại một biến rồi chạy lại; không loại tiếp nếu các biến còn lại đã đạt.${d.extra?' '+d.extra:''}`,
+      when:`${d.scale} còn từ 3 biến trở lên sau khi loại, biến này có lý do nội dung để loại (dịch tối nghĩa, hỏi lệch khái niệm), và bạn chấp nhận báo cáo cả kết quả trước và sau khi loại.`,
+      effect:'Độ tin cậy hoặc giá trị hội tụ có thể cải thiện, nhưng khái niệm hẹp lại. Không so sánh trực tiếp được với nghiên cứu dùng đủ thang đo gốc.',
+      report:`Chương 4: “Biến ${d.item} không đạt quy tắc đã khai báo (${d.metric}; giá trị ${d.value}); sau khi xem xét nội dung, biến này được loại, ${d.scale} còn ${d.left} biến.” Đưa bảng trước và sau khi loại vào phụ lục.`,
+      say:`Biến ${d.item} không đạt quy tắc đã khai báo (${d.metric}; giá trị ${d.value}); sau khi xem xét nội dung, biến này được loại khỏi ${d.scale}, còn lại ${d.left} biến (${cite(d.refs)}).`,
+      refs:d.refs}):({key:'drop',order:5,title:`Không nên loại thêm biến ở ${d.scale}`,
+      how:d.why,
+      when:'Loại biến chỉ hợp lệ khi khái niệm vẫn còn đủ biến và đủ nội dung để đo.',
+      effect:'Giữ nguyên thang đo nghĩa là chấp nhận chỉ số chưa đạt ngưỡng và giải thích nó, thay vì làm khái niệm méo đi.',
+      report:'Báo cáo chỉ số thật và đưa vào phần hạn chế.',
+      say:`${d.scale} được giữ nguyên số biến vì loại thêm sẽ làm thang đo còn quá ít biến để đo đủ nội dung khái niệm (${cite(['marsh','little'])}).`,
+      refs:['marsh','little']}),
+    omega:()=>({key:'omega',order:6,title:'Báo cáo thêm hệ số omega (ω) cùng với α',
+      how:'Tính McDonald’s ω (JASP, jamovi hoặc R gói psych) và báo cáo cạnh α. α giả định mọi biến có hệ số tải như nhau; khi giả định này sai, α đánh giá thấp độ tin cậy.',
+      when:'Báo cáo cả hai chỉ số, không thay α bằng ω chỉ vì ω đạt ngưỡng. Nếu ω cũng thấp, kết luận vẫn là độ tin cậy thấp.',
+      effect:'Ước lượng độ tin cậy chính xác hơn; không biến một thang đo kém thành thang đo tốt.',
+      report:'Chương 4: thêm cột ω vào bảng độ tin cậy, nêu lý do báo cáo ω.',
+      say:`Bên cạnh Cronbach’s α, hệ số ω được báo cáo vì α giả định các biến có hệ số tải bằng nhau (${REFS.mcneish.cite}; ${REFS.hayes.cite}).`,
+      refs:['mcneish','hayes']}),
+    parallel:()=>({key:'parallel',order:6,title:'Xác định số nhân tố bằng parallel analysis và lý thuyết',
+      how:'Thay cho quy tắc eigenvalue > 1 (thường trích quá nhiều nhân tố), chạy parallel analysis (jamovi, JASP, R) và đặt số nhân tố theo mô hình lý thuyết. Báo cáo cả hai lời giải nếu khác nhau.',
+      when:'Số nhân tố được chọn dựa trên tiêu chí nêu trước (lý thuyết, parallel analysis), không chọn lời giải nào cho ma trận “đẹp” nhất.',
+      effect:'Lời giải có thể vẫn không khớp mô hình. Điều đó là thông tin về thang đo trong bối cảnh của bạn, không phải lỗi cần che đi.',
+      report:'Chương 4: “Số nhân tố được xác định bằng parallel analysis (Horn, 1965) và mô hình lý thuyết; kết quả …”',
+      say:`Số nhân tố được xác định bằng parallel analysis kết hợp với mô hình lý thuyết thay cho quy tắc eigenvalue lớn hơn 1 (${REFS.horn.cite}; ${REFS.fabrigar.cite}).`,
+      refs:['horn','fabrigar']}),
+    discrim:(a,b)=>({key:'discrim',order:4,title:`Xem lại định nghĩa của ${a} và ${b}`,
+      how:`Đặt định nghĩa của hai khái niệm và các câu hỏi của chúng cạnh nhau. Có câu nào của ${a} cũng đọc được như câu của ${b}? Với PLS-SEM, chạy bootstrap để xem khoảng tin cậy của HTMT có chứa 1 không.`,
+      when:'Chỉ gộp hai khái niệm hoặc bỏ câu trùng ý khi có lý do lý thuyết. Gộp khái niệm là đổi mô hình, phải nói rõ là thay đổi so với đề cương.',
+      effect:'Nếu hai khái niệm thật sự khác nhau nhưng người trả lời không phân biệt được, kết luận về từng tác động riêng sẽ yếu. Ghi nhận điều đó thay vì ép số liệu đạt.',
+      report:'Chương 4: nêu giá trị HTMT, khoảng tin cậy bootstrap và lập luận về sự khác biệt giữa hai khái niệm.',
+      say:`Giá trị phân biệt giữa ${a} và ${b} được xem xét lại bằng cách đối chiếu định nghĩa và câu hỏi của hai khái niệm, kèm khoảng tin cậy bootstrap của HTMT (${REFS.henseler.cite}).`,
+      refs:['henseler']}),
+    vif:names=>({key:'vif',order:4,title:'Tìm nguyên nhân đa cộng tuyến',
+      how:`Xem ma trận tương quan giữa ${names||'các biến độc lập'}: hai biến có tương quan trên 0,8 thường là đo cùng một điều. Nếu mô hình có biến tương tác, đa cộng tuyến giữa biến gốc và biến tích là chuyện bình thường; chuẩn hoá hoặc trừ trung bình trước khi nhân.`,
+      when:'Không bỏ một biến có giả thuyết chỉ để VIF đẹp. Chỉ gộp hoặc bỏ khi có lý do lý thuyết, và khi đó phải nói rõ giả thuyết nào không còn được kiểm định.',
+      effect:'VIF cao làm sai số chuẩn lớn, hệ số kém ổn định và có thể đổi dấu. Báo cáo trung thực tốt hơn là xoá biến để giấu nó.',
+      report:'Chương 4: bảng VIF, giải thích nguyên nhân và cách xử lý (nếu có).',
+      say:`Đa cộng tuyến được đánh giá qua VIF và ma trận tương quan giữa các biến độc lập; ngưỡng VIF được diễn giải thận trọng (${REFS.obrien.cite}; ${REFS.hair19.cite}).`,
+      refs:['obrien','hair19']}),
+    sign:names=>({key:'sign',order:3,title:'Kiểm tra vì sao hệ số đổi dấu',
+      how:`Với ${names||'biến này'}: (1) xem tương quan đơn biến với biến phụ thuộc có cùng dấu với giả thuyết không; (2) kiểm tra mã hoá ngược của cả biến độc lập và biến phụ thuộc; (3) xem VIF. Tương quan đơn dương nhưng hệ số hồi quy âm, kèm VIF cao, là dấu hiệu của hiện tượng ức chế (suppression) do các biến độc lập chồng lấn nhau.`,
+      when:'Dấu ngược do lỗi mã hoá thì sửa mã hoá. Dấu ngược thật thì giữ nguyên, báo cáo, và giải thích ở chương 5.',
+      effect:'Kết quả trái dự đoán có thể là phát hiện đáng thảo luận nhất của luận văn, nếu bạn giải thích được.',
+      report:'Chương 4: báo cáo đúng dấu và p. Chương 5: giải thích theo bối cảnh và nghiên cứu trước có kết quả tương tự.',
+      say:`Hệ số của ${names||'biến này'} có dấu ngược với giả thuyết; kiểm tra tương quan đơn biến, mã hoá và đa cộng tuyến được thực hiện để phân biệt lỗi dữ liệu với hiện tượng ức chế (${REFS.tzelgov.cite}).`,
+      refs:['tzelgov']}),
+    robust:()=>({key:'robust',order:4,title:'Dùng khoảng tin cậy bootstrap, kiểm tra phần dư thay vì biến gốc',
+      how:'Giả định chuẩn của hồi quy là về phần dư, không phải từng biến. Xem histogram và P-P plot của phần dư; báo cáo thêm khoảng tin cậy bootstrap của hệ số. PLS-SEM không yêu cầu phân phối chuẩn.',
+      when:'Phương pháp bổ sung được chọn vì giả định, và kết quả của cả hai cách được báo cáo, không chỉ cách cho p nhỏ hơn.',
+      effect:'Với mẫu vừa và lớn, hồi quy khá vững trước vi phạm phân phối chuẩn; bootstrap cho khoảng tin cậy không dựa vào giả định đó.',
+      report:'Chương 4: “Phần dư lệch nhẹ (skewness = …); khoảng tin cậy bootstrap 5.000 mẫu cho kết luận tương tự.”',
+      say:`Do phân phối lệch, giả định chuẩn được kiểm tra trên phần dư và khoảng tin cậy bootstrap được báo cáo bên cạnh kết quả thông thường (${REFS.schmidt.cite}; ${REFS.lumley.cite}).`,
+      refs:['schmidt','lumley','kim13']}),
+    cmb:()=>({key:'cmb',order:4,title:'Báo cáo sai lệch phương pháp chung đầy đủ',
+      how:'Mô tả các biện pháp thủ tục đã dùng (ẩn danh, tách biến độc lập và phụ thuộc trong bảng hỏi, thang đo khác nhau). Với PLS-SEM, báo cáo VIF toàn phần. Kiểm định Harman chỉ là kiểm tra thô, không chứng minh được là không có sai lệch.',
+      when:'Báo cáo đúng con số đã có; không chạy lại với tập biến khác cho tới khi nhân tố đầu dưới 50%.',
+      effect:'Hội đồng thấy bạn hiểu giới hạn của dữ liệu tự báo cáo từ một nguồn, một thời điểm.',
+      report:'Chương 4: kết quả kiểm tra; chương 5: nêu là hạn chế, gợi ý thu biến phụ thuộc ở thời điểm khác cho nghiên cứu sau.',
+      say:`Sai lệch phương pháp chung được đánh giá bằng kiểm định Harman và VIF toàn phần, đồng thời ghi nhận giới hạn của các kiểm tra này (${REFS.podsakoff.cite}; ${REFS.kock15.cite}).`,
+      refs:['podsakoff','kock15']}),
+    notsupported:hs=>({key:'notsupported',order:2,title:'Báo cáo giả thuyết không được ủng hộ như một kết quả',
+      how:`Ghi rõ trong bảng kiểm định giả thuyết: ${hs||'giả thuyết'} “Không ủng hộ”, kèm hệ số và p thật. Chương 5: so với nghiên cứu trước có kết quả tương tự hoặc trái ngược, giải thích theo bối cảnh (đối tượng, ngành, thời điểm), đo lường và cỡ mẫu.`,
+      when:'Luôn hợp lệ. Không đổi giả thuyết, không bỏ giả thuyết khỏi mô hình, không đổi sang kiểm định một phía sau khi thấy kết quả.',
+      effect:'p ≥ 0,05 nghĩa là dữ liệu chưa đủ bằng chứng cho tác động, không có nghĩa là chứng minh không có tác động. Nếu muốn kết luận “không có tác động đáng kể”, cần kiểm định tương đương.',
+      report:'Chương 4: “Giả thuyết H… không được ủng hộ (β = …; p = …).” Chương 5: một đoạn thảo luận riêng cho mỗi giả thuyết không được ủng hộ.',
+      say:'',
+      refs:['altman','lakens','kerr']}),
+    limit:what=>({key:'limit',order:8,title:'Trình bày là hạn chế của nghiên cứu',
+      how:`Nêu ${what||'chỉ số chưa đạt'} cùng con số thật ở phần hạn chế (chương 5), giải thích ảnh hưởng tới kết luận và đề xuất cho nghiên cứu sau.`,
+      when:'Luôn hợp lệ, và là lựa chọn đúng khi các bước trước không có căn cứ để thay đổi gì.',
+      effect:'Kết luận được diễn đạt thận trọng hơn. Hội đồng đánh giá cao việc tự nhận ra hạn chế hơn là phát hiện ra nó khi phản biện.',
+      report:'Chương 5, mục hạn chế: “Chỉ số … của … chỉ đạt …, thấp hơn ngưỡng …; vì vậy kết quả liên quan tới … cần được diễn giải thận trọng.”',
+      say:'',
+      refs:['wasserstein']}),
+    more:(n,need,short)=>({key:'more',order:7,cta:true,title:`Thu thêm mẫu cho đủ cỡ mẫu đã định (còn thiếu ${short} phiếu)`,
+      how:`Bạn có ${n} phiếu hợp lệ, trong khi cỡ mẫu cần là ${need}. Thu thêm ${short} phiếu đúng đối tượng, cùng bảng hỏi, cùng quy tắc lọc, rồi phân tích lại một lần trên toàn bộ dữ liệu.`,
+      when:'Chỉ khi chưa đạt cỡ mẫu đã định trước. Không thu thêm từng đợt rồi xem p sau mỗi đợt để dừng khi có ý nghĩa: đó là “dừng tuỳ ý”, làm tăng mạnh tỷ lệ dương tính giả.',
+      effect:'Mẫu đủ lớn làm ước lượng ổn định hơn và giảm khả năng bỏ sót tác động có thật. Kết quả có thể vẫn không có ý nghĩa, và khi đó đó là câu trả lời của dữ liệu.',
+      report:'Chương 3: “Dữ liệu được thu thành hai đợt (… và …), cùng bảng hỏi và quy tắc lọc; tổng cộng N phiếu hợp lệ.”',
+      say:`Do số phiếu hợp lệ ban đầu (${n}) thấp hơn cỡ mẫu tối thiểu (${need}), dữ liệu được thu bổ sung theo cùng bảng hỏi và quy tắc lọc, sau đó phân tích một lần trên toàn bộ mẫu (${REFS.faul.cite}; ${REFS.simmons.cite}).`,
+      refs:['faul','simmons','cohen92']}),
+  };
+
+  const AREA_ORDER={sample:0,data:1,rel:2,efa:3,pls:4,reg:5,norm:6,cmb:7};
+  function diagnose(inp){
+    const c=inp.ctx||{},F=[];
+    const add=(id,area,sev,title,evidence,meaning,actions,extra={})=>F.push({id,area,sev,title,evidence,meaning,actions:actions.filter(Boolean).sort((a,b)=>a.order-b.order),refs:extra.refs||[],warn:extra.warn||'',subject:extra.subject||title,template:extra.template||null,cta:actions.some(a=>a&&a.cta)});
+    const n=c.n,{rules,need}=requiredN(inp);
+    const short=Number.isFinite(n)&&need>n?need-n:0;
+    const more=short?ACT.more(n,need,short):null;
+    const reverseFirst=c.reverse!=='no';
+    const unscreened=c.screened!=='yes'&&(c.channel==='open'||!c.channel);
+
+    if(c.reverse==='yes-not')
+      add('revctx','data',3,'Có câu đảo chiều chưa được mã hoá ngược','Bạn cho biết bảng hỏi có câu đảo chiều chưa mã hoá ngược.',
+        'Mọi chỉ số tính trên dữ liệu này (α, EFA, hồi quy) đều sai cho tới khi các câu đó được mã hoá lại. Làm bước này trước mọi bước khác rồi chạy lại toàn bộ phân tích.',
+        [ACT.reverse(''),ACT.entry()],{refs:['weijters']});
+    if(short){
+      const r=rules.filter(x=>x.n>n);
+      add('sample','sample',n<0.8*need?3:2,`Cỡ mẫu chưa đủ: ${n} phiếu, cần tối thiểu ${need}`,
+        r.map(x=>`${x.rule}: ${x.n}`).join('; '),
+        'Mẫu nhỏ làm hệ số kém ổn định, KMO thấp, và giảm khả năng phát hiện tác động có thật (lực kiểm định thấp). Thiếu mẫu là vấn đề của thiết kế, không sửa được bằng cách xử lý số liệu.',
+        [more,ACT.limit('cỡ mẫu nhỏ hơn mức tối thiểu')],{refs:r.map(x=>x.ref).filter(Boolean)});
+    }
+    if(unscreened&&(inp.scales||[]).length+(inp.reg&&inp.reg.coefs||[]).length>0)
+      add('screen','data',1,'Dữ liệu từ link mở chưa được lọc phiếu kém chất lượng','Kênh thu: link chia sẻ công khai; chưa lọc phiếu.',
+        'Khảo sát qua link mở thường có một phần phiếu điền bừa hoặc trả lời một mức. Những phiếu này làm yếu tương quan thật, nên α, KMO và hệ số hồi quy đều có thể thấp hơn thực tế.',
+        [ACT.quality(),ACT.limit('việc chưa lọc phiếu')]);
+
+    // ---- reliability ----
+    for(const s of inp.scales||[]){
+      const items=(s.items||[]).filter(i=>i&&Number.isFinite(i.citc));
+      const k=Number.isFinite(s.k)&&s.k>0?s.k:items.length,k0=Number.isFinite(s.k0)&&s.k0>=k?s.k0:k,a=s.alpha,name=s.name||'Thang đo';
+      if(!Number.isFinite(a)&&!items.length)continue;
+      const neg=items.filter(i=>i.citc<0),weak=items.filter(i=>i.citc>=0&&i.citc<0.3).sort((x,y)=>x.citc-y.citc);
+      const ev=`α = ${fx(a)}; ${k} biến${k0>k?` (ban đầu ${k0})`:''}${items.length?'; tương quan biến–tổng thấp nhất: '+items.slice().sort((x,y)=>x.citc-y.citc).slice(0,2).map(i=>`${i.name} = ${fx(i.citc)}`).join(', '):''}`;
+      const two=k===2?` Thang đo chỉ có 2 biến: nên báo cáo hệ số Spearman–Brown thay cho α (${REFS.eisinga.cite}).`:'';
+      if(a<0||neg.length){
+        const nm=neg.map(i=>i.name);
+        add(`rel-neg-${name}`,'rel',3,`${name}: có biến tương quan âm với tổng thang đo${nm.length?' ('+list(nm)+')':''}`,ev,
+          `Tương quan biến–tổng âm gần như luôn do câu đảo chiều chưa mã hoá ngược hoặc lỗi nhập liệu. Đừng loại biến này trước khi kiểm tra mã hoá: loại đi là che mất một lỗi dữ liệu có thể sửa đúng.${two}`,
+          [ACT.reverse(list(nm)),ACT.entry(),ACT.wording(list(nm)),ACT.limit(`độ tin cậy của ${name}`)],{refs:['cronbach','weijters'],subject:name});
+        continue;
+      }
+      let sev=0,why='';
+      if(a<0.6){sev=3;why=`α dưới 0,6: các câu hỏi của ${name} chưa đo cùng một điều một cách nhất quán.`}
+      else if(a<0.7){sev=2;why=`α trong khoảng 0,6–0,7: thấp hơn mức 0,7 thường yêu cầu; một số tác giả chấp nhận khoảng này cho nghiên cứu khám phá${c.origin!=='adopted'?' (thang đo dịch hoặc mới xây dựng)':''}, nhưng phải nói rõ và lấy ý kiến giảng viên hướng dẫn (${REFS.hair19.cite}).`}
+      else if(weak.length){sev=1;why=`α đạt, nhưng có biến tương quan biến–tổng dưới 0,3. Không bắt buộc phải loại: chỉ cân nhắc nếu biến đó có vấn đề về nội dung.`}
+      else if(a>0.95){sev=1;why=`α trên 0,95 thường không phải là “rất tốt” mà là dấu hiệu các câu hỏi trùng ý nhau; hội đồng cũng hay nghi ngờ khi mọi α đều rất cao (${REFS.tavakol.cite}).`}
+      if(!sev)continue;
+      const acts=[];
+      if(a<0.7&&reverseFirst)acts.push(ACT.reverse(''));
+      if(a<0.7)acts.push(ACT.entry());
+      if(a<0.7&&unscreened)acts.push(ACT.quality());
+      if(a<=0.95)acts.push(ACT.wording(weak.length?list(weak.map(i=>i.name)):`các câu của ${name}`));
+      const w=weak[0];
+      if(w){
+        const left=k-1,removed=k0-k;
+        if(left<3)acts.push(ACT.drop({allowed:false,scale:name,why:`${name} hiện có ${k} biến; loại ${w.name} sẽ chỉ còn ${left}. Khái niệm đo bằng dưới 3 biến khó bảo đảm giá trị nội dung và không ước lượng được riêng trong CFA (${REFS.marsh.cite}).`}));
+        else acts.push(ACT.drop({allowed:true,scale:name,item:w.name,left,metric:'tương quan biến–tổng hiệu chỉnh dưới 0,3',value:fx(w.citc),refs:['marsh','little','tavakol'],
+          extra:(Number.isFinite(w.aid)&&Number.isFinite(a)&&w.aid<=a?`Lưu ý: α nếu loại ${w.name} là ${fx(w.aid)}, không cao hơn α hiện tại, nên loại biến này không cải thiện độ tin cậy; chỉ loại nếu có lý do nội dung.`:'')+(removed>0?` ${name} đã bị loại ${removed} biến; loại thêm cần giảng viên hướng dẫn đồng ý và phải nêu ở phần hạn chế.`:'')}));
+      }
+      if(a<0.7)acts.push(ACT.omega());
+      if(a>0.95)acts.push(ACT.wording(`các câu của ${name} (có câu nào gần như lặp lại câu khác?)`));
+      acts.push(ACT.limit(`độ tin cậy của ${name}`));
+      add(`rel-${name}`,'rel',sev,`${name}: ${a>0.95?'α cao bất thường':a<0.7?'Cronbach’s α thấp':'có biến tương quan biến–tổng thấp'}`,ev,why+two,
+        acts.filter((x,i,arr)=>arr.findIndex(y=>y.key===x.key)===i),
+        {refs:['cronbach'],subject:name,warn:a<0.7?'Không loại lần lượt từng biến rồi chọn phương án cho α cao nhất. Quy tắc loại phải có trước, áp dụng một lần, và luôn báo cáo kết quả trước khi loại.':''});
+    }
+
+    // ---- EFA ----
+    const e=inp.efa||{},rot=e.rows&&e.rows.length?analyzeRot(e.rows):null;
+    if(Number.isFinite(e.kmo)&&e.kmo<0.6){
+      add('kmo','efa',e.kmo<0.5?3:2,`KMO = ${fx(e.kmo)}: ${e.kmo<0.5?'không đủ điều kiện phân tích nhân tố':'tạm được (Kaiser gọi là “tầm thường”)'}`,`KMO = ${fx(e.kmo)}; N = ${Number.isFinite(n)?n:'—'}`,
+        `KMO đo mức các biến có tương quan chung với nhau. Theo Kaiser (1974): dưới 0,5 là không chấp nhận được, 0,5–0,6 rất kém, 0,6–0,7 tầm thường. Nguyên nhân thường gặp: mẫu nhỏ, câu đảo chiều chưa mã hoá, phiếu điền bừa, hoặc có biến không liên quan tới các biến khác (xem bảng Anti-image, MSA của từng biến).`,
+        [reverseFirst&&ACT.reverse(''),ACT.entry(),unscreened&&ACT.quality(),ACT.wording('các biến có MSA dưới 0,5 trong bảng Anti-image'),more,ACT.limit('mức KMO')],{refs:['kaiser','dziuban']});
+    }
+    if(Number.isFinite(e.bartP)&&e.bartP>=0.05)
+      add('bartlett','efa',3,`Kiểm định Bartlett không có ý nghĩa (Sig. = ${fp(e.bartP)})`,`Bartlett Sig. = ${fp(e.bartP)}`,
+        'Chưa bác bỏ được giả thuyết ma trận tương quan là ma trận đơn vị: các biến gần như không tương quan với nhau, nên không có nhân tố chung để trích. Thường do mẫu rất nhỏ hoặc dữ liệu có lỗi nghiêm trọng (nhập sai cột, mã thiếu bị tính là điểm).',
+        [ACT.entry(),reverseFirst&&ACT.reverse(''),unscreened&&ACT.quality(),more,ACT.limit('kết quả kiểm định Bartlett')],{refs:['dziuban']});
+    const fexp=e.expected,fext=Number.isFinite(e.extracted)?e.extracted:NaN;
+    if(Number.isFinite(fexp)&&Number.isFinite(fext)&&fexp!==fext){
+      const det=rot?[...rot.split.map(s=>`các biến ${s.stem} tách ra nhân tố ${s.factors.join(' và ')}`),...rot.merge.map(m=>`nhân tố ${m.factor} gom biến của ${list(m.stems)}`)]:[];
+      add('nfactors','efa',2,`EFA trích ${fext} nhân tố, mô hình có ${fexp}`,`Số nhân tố trích: ${fext}; kỳ vọng: ${fexp}${det.length?'; '+det.join('; '):''}`,
+        `${fext>fexp?'Trích nhiều hơn mô hình thường do quy tắc eigenvalue > 1 trích thừa, hoặc các câu đảo chiều tự tạo thành một nhân tố riêng (nhân tố phương pháp).':'Trích ít hơn mô hình nghĩa là người trả lời không phân biệt được một số khái niệm: các câu hỏi của chúng gom chung một nhân tố.'} Đây là thông tin về thang đo trong bối cảnh của bạn.`,
+        [reverseFirst&&fext>fexp&&ACT.reverse(''),ACT.wording('các biến nằm sai nhân tố'),fext<fexp&&rot&&rot.merge.length&&ACT.discrim(list(rot.merge[0].stems.slice(0,1)),list(rot.merge[0].stems.slice(1))),ACT.parallel(),ACT.limit('cấu trúc nhân tố khác mô hình')],
+        {refs:['horn','fabrigar'],warn:'Không xoá lần lượt từng biến rồi chạy lại cho tới khi ma trận xoay “sạch”. Mỗi lần xoá phải theo quy tắc báo trước và có lý do nội dung, và ghi vào nhật ký.'});
+    }
+    const listOf=s=>String(s||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean);
+    const crossN=rot?rot.cross.map(x=>x.name):listOf(e.cross),lowN=rot?rot.low.map(x=>x.name):listOf(e.low),negN=rot?rot.neg.map(x=>x.name):listOf(e.neg);
+    if(negN.length)
+      add('efa-neg','efa',3,`Hệ số tải âm: ${list(negN)}`,rot?rot.neg.map(x=>`${x.name} = ${fx(x.p)}`).join(', '):list(negN),
+        'Trong khi các biến cùng nhân tố tải dương, một biến tải âm gần như chắc chắn là câu đảo chiều chưa mã hoá ngược.',
+        [ACT.reverse(list(negN)),ACT.entry(),ACT.limit('biến tải âm')],{refs:['weijters']});
+    if(crossN.length)
+      add('efa-cross','efa',2,`Biến tải chéo: ${list(crossN)}`,rot?rot.cross.map(x=>`${x.name}: ${fx(x.p)} và ${fx(x.s)}`).join('; '):list(crossN),
+        `Biến tải từ 0,3 trở lên ở hai nhân tố với chênh lệch dưới 0,2 không phân biệt rõ khái niệm (quy tắc 0,40–0,30–0,20 của ${REFS.howard.cite}). Thường do câu hỏi có nội dung giao thoa giữa hai khái niệm.`,
+        [ACT.wording(list(crossN)),crossN.length&&ACT.drop({allowed:true,scale:'nhân tố chứa biến này',item:crossN[0],left:'ít nhất 3',metric:'tải chéo theo quy tắc 0,40–0,30–0,20',value:rot&&rot.cross[0]?`${fx(rot.cross[0].p)} và ${fx(rot.cross[0].s)}`:'tải chéo',refs:['howard','little']}),ACT.limit('các biến tải chéo')],
+        {refs:['howard'],warn:'Mỗi lần chỉ loại một biến, chạy lại EFA, rồi mới xét biến tiếp theo; ghi lại từng vòng.'});
+    if(lowN.length)
+      add('efa-low','efa',2,`Hệ số tải thấp (dưới 0,40): ${list(lowN)}`,rot?rot.low.map(x=>`${x.name}: ${fx(x.p)}`).join(', '):list(lowN),
+        `Biến có hệ số tải cao nhất dưới 0,40 không đóng góp rõ cho nhân tố nào (${REFS.howard.cite}). Nhiều trường dùng ngưỡng 0,5; theo quy định của khoa và giảng viên hướng dẫn.`,
+        [reverseFirst&&ACT.reverse(''),ACT.wording(list(lowN)),ACT.drop({allowed:true,scale:'nhân tố chứa biến này',item:lowN[0],left:'ít nhất 3',metric:'hệ số tải dưới ngưỡng đã khai báo',value:rot&&rot.low[0]?fx(rot.low[0].p):'dưới ngưỡng',refs:['howard','little']}),ACT.limit('các biến có hệ số tải thấp')],{refs:['howard']});
+    if(Number.isFinite(e.variance)&&e.variance<50)
+      add('efa-var','efa',1,`Tổng phương sai trích ${fx(e.variance,1)}%, dưới mốc 50%`,`Tổng phương sai trích = ${fx(e.variance,1)}%`,
+        `Mốc 50% là quy ước, không phải điều kiện bắt buộc; tổng hợp các EFA đã công bố cho thấy phương sai trích dao động rộng (${REFS.peterson.cite}). Báo cáo con số thật và giải thích.`,
+        [ACT.parallel(),ACT.limit('tổng phương sai trích')],{refs:['peterson']});
+
+    // ---- PLS-SEM / CFA measurement ----
+    const p=inp.pls||{};
+    for(const k of p.constructs||[]){
+      if(Number.isFinite(k.ave)&&k.ave<0.5){
+        const lenient=k.ave>=0.4&&Number.isFinite(k.cr)&&k.cr>=0.6;
+        add(`ave-${k.name}`,'pls',lenient?1:2,`${k.name}: AVE = ${fx(k.ave)}, dưới 0,5`,`AVE = ${fx(k.ave)}; CR = ${fx(k.cr)}`,
+          `AVE dưới 0,5 nghĩa là khái niệm giải thích chưa tới một nửa phương sai của các biến quan sát (${REFS.fornell.cite}).${lenient?' Một số nghiên cứu chấp nhận AVE 0,4–0,5 khi CR trên 0,6, dựa theo Fornell và Larcker (1981); nếu dùng ngưỡng nới này, nêu rõ.':''}`,
+          [reverseFirst&&ACT.reverse(''),ACT.wording(`các biến của ${k.name} có outer loading thấp`),ACT.drop({allowed:true,scale:k.name,item:`biến có outer loading thấp nhất của ${k.name}`,left:'ít nhất 3',metric:'outer loading dưới 0,708, và loại biến làm tăng AVE hoặc CR',value:'dưới 0,708',refs:['hair19','little']}),ACT.limit(`giá trị hội tụ của ${k.name}`)],
+          {refs:['fornell','hair19'],subject:k.name});
+      }
+      if(Number.isFinite(k.cr)&&(k.cr<0.7||k.cr>0.95))
+        add(`cr-${k.name}`,'pls',k.cr<0.6?3:1,`${k.name}: CR = ${fx(k.cr)}${k.cr>0.95?', cao bất thường':''}`,`CR (rho_c) = ${fx(k.cr)}`,
+          k.cr>0.95?`CR trên 0,95 cho thấy các biến gần như lặp lại nhau, và có thể có kiểu trả lời theo quán tính (${REFS.hair19.cite}).`:`CR 0,6–0,7 chấp nhận được trong nghiên cứu khám phá; dưới 0,6 là thiếu độ tin cậy (${REFS.hair19.cite}).`,
+          [k.cr<0.7&&reverseFirst&&ACT.reverse(''),ACT.wording(`các câu của ${k.name}`),ACT.limit(`độ tin cậy tổng hợp của ${k.name}`)],{refs:['hair19'],subject:k.name});
+    }
+    const ol=(p.loadings||[]).filter(x=>Number.isFinite(x.v)&&x.v<0.708);
+    if(ol.length){
+      const vlow=ol.filter(x=>x.v<0.4);
+      add('ol','pls',vlow.length?2:1,`Outer loading dưới 0,708: ${list(ol.map(x=>x.name))}`,ol.map(x=>`${x.name} = ${fx(x.v)}`).join(', '),
+        `Hair và cộng sự (2019) khuyến nghị outer loading từ 0,708. Biến thấp hơn không tự động bị loại: chỉ cân nhắc loại khi AVE hoặc CR của khái niệm chưa đạt và việc loại cải thiện được chúng, đồng thời khái niệm vẫn đủ nội dung.${vlow.length?` Biến dưới 0,4 (${list(vlow.map(x=>x.name))}) đóng góp rất ít.`:''}`,
+        [vlow.length&&reverseFirst&&ACT.reverse(list(vlow.map(x=>x.name))),ACT.wording(list(ol.map(x=>x.name))),ACT.drop({allowed:true,scale:'khái niệm chứa biến này',item:ol.slice().sort((a,b)=>a.v-b.v)[0].name,left:'ít nhất 3',metric:'outer loading dưới 0,708 và AVE/CR của khái niệm chưa đạt',value:fx(ol.slice().sort((a,b)=>a.v-b.v)[0].v),refs:['hair19','little']}),ACT.limit('các biến có outer loading thấp')],
+        {refs:['hair19']});
+    }
+    for(const h of p.htmt||[]){
+      if(!(Number.isFinite(h.v)&&h.v>0.85))continue;
+      add(`htmt-${h.a}-${h.b}`,'pls',h.v>0.9?3:2,`HTMT giữa ${h.a} và ${h.b} = ${fx(h.v)}`,`HTMT(${h.a}, ${h.b}) = ${fx(h.v)}`,
+        `HTMT trên 0,85 (hoặc 0,90 với hai khái niệm rất gần nhau về lý thuyết) cho thấy người trả lời không phân biệt rõ hai khái niệm (${REFS.henseler.cite}).`,
+        [ACT.discrim(h.a,h.b),ACT.wording(`các câu của ${h.a} và ${h.b}`),ACT.limit(`giá trị phân biệt giữa ${h.a} và ${h.b}`)],
+        {refs:['henseler'],warn:'Không bỏ câu hỏi lần lượt cho tới khi HTMT dưới ngưỡng nếu không có lý do nội dung. Nếu gộp hai khái niệm, mô hình đã khác đề cương và phải nói rõ.'});
+    }
+
+    // ---- regression / structural model ----
+    const g=inp.reg||{},coefs=(g.coefs||[]).filter(x=>x.name);
+    const isPls=c.method==='pls';
+    const vh=coefs.filter(x=>Number.isFinite(x.vif)&&x.vif>=(isPls?3.3:5));
+    if(vh.length){
+      const mx=Math.max(...vh.map(x=>x.vif));
+      add('vif','reg',mx>=10?3:mx>=5?2:1,`Đa cộng tuyến: VIF ${list(vh.map(x=>`${x.name} = ${fx(x.vif,2)}`))}`,vh.map(x=>`${x.name}: VIF = ${fx(x.vif,2)}`).join('; '),
+        `VIF từ 5 trở lên là đa cộng tuyến đáng kể; với PLS-SEM nên dưới 3 (${REFS.hair19.cite}). Ngưỡng 10 hay dùng trong hồi quy là quy tắc kinh nghiệm và nên diễn giải thận trọng (${REFS.obrien.cite}).`,
+        [ACT.vif(list(vh.map(x=>x.name))),ACT.wording(list(vh.map(x=>x.name))),ACT.limit('mức đa cộng tuyến')],{refs:['obrien','hair19']});
+    }
+    const flip=coefs.filter(x=>(x.sign==='+'||x.sign==='−'||x.sign==='-')&&Number.isFinite(x.beta)&&x.beta!==0&&(x.sign==='+'?x.beta<0:x.beta>0));
+    const flipSig=flip.filter(x=>Number.isFinite(x.p)&&x.p<0.05);
+    if(flipSig.length)
+      add('sign','reg',2,`Hệ số ngược dấu giả thuyết: ${list(flipSig.map(x=>x.name))}`,flipSig.map(x=>`${x.h?x.h+': ':''}${x.name}: β = ${fx(x.beta)}, p = ${fp(x.p)}, kỳ vọng ${x.sign==='+'?'dương':'âm'}`).join('; '),
+        'Tác động có ý nghĩa nhưng ngược chiều dự đoán. Có thể do lỗi mã hoá, do đa cộng tuyến (hiện tượng ức chế), hoặc là kết quả thật trong bối cảnh của bạn.',
+        [ACT.reverse(list(flipSig.map(x=>x.name))),ACT.sign(list(flipSig.map(x=>x.name))),ACT.notsupported(list(flipSig.map(x=>x.h||x.name))),ACT.limit('kết quả ngược dấu')],
+        {refs:['tzelgov'],warn:'Không bỏ biến khỏi mô hình hay thêm bớt biến kiểm soát để hệ số đổi lại đúng dấu.'});
+    const ns=coefs.filter(x=>Number.isFinite(x.p)&&x.p>=0.05);
+    if(ns.length){
+      const tpl=ns.map(x=>`${x.h?`Giả thuyết ${x.h}`:'Giả thuyết'} (${x.name}${g.dv&&!/->/.test(x.name)?` → ${g.dv}`:''}) không được ủng hộ (β = ${fx(x.beta)}; p = ${fp(x.p)}).`);
+      add('ns','reg',short?2:1,`Giả thuyết không được ủng hộ: ${list(ns.map(x=>x.h||x.name))}`,ns.map(x=>`${x.h?x.h+': ':''}${x.name}: β = ${fx(x.beta)}, p = ${fp(x.p)}`).join('; '),
+        `Đây là một kết quả hợp lệ, không phải lỗi. p ≥ 0,05 nghĩa là dữ liệu chưa cho đủ bằng chứng về tác động, không chứng minh được là không có tác động (${REFS.altman.cite}).${short?' Mẫu của bạn còn nhỏ hơn mức tối thiểu, nên khả năng bỏ sót tác động thật là đáng kể.':''}`,
+        [ACT.notsupported(list(ns.map(x=>x.h||x.name))),more,ACT.limit('lực kiểm định với các giả thuyết không được ủng hộ')],
+        {refs:['altman','wasserstein'],template:tpl,warn:'Không đổi giả thuyết sau khi thấy kết quả, không bỏ giả thuyết khỏi mô hình, không đổi sang kiểm định một phía hay phương pháp khác chỉ để có p < 0,05.'});
+    }
+    if(Number.isFinite(g.fP)&&g.fP>=0.05)
+      add('fsig','reg',2,`Mô hình hồi quy chung không có ý nghĩa (Sig. F = ${fp(g.fP)})`,`Sig. F = ${fp(g.fP)}; R² = ${fx(g.r2)}`,
+        'Các biến độc lập cùng nhau chưa giải thích được biến phụ thuộc một cách có ý nghĩa. Báo cáo như vậy; xem lại cỡ mẫu và đo lường trước khi kết luận.',
+        [ACT.notsupported('các giả thuyết của mô hình'),more,ACT.limit('mức ý nghĩa của mô hình')],{refs:['wasserstein']});
+    const r2=Number.isFinite(g.r2)?g.r2:g.adj;
+    if(Number.isFinite(r2)&&r2<(isPls?0.25:0.1))
+      add('r2','reg',1,`R² = ${fx(r2)}: mô hình giải thích ít biến thiên`,`R² = ${fx(g.r2)}; R² hiệu chỉnh = ${fx(g.adj)}`,
+        `R² thấp không làm kết quả sai: hành vi con người chịu tác động của nhiều yếu tố ngoài mô hình. ${isPls?`Với PLS-SEM, R² 0,25 / 0,50 / 0,75 thường được mô tả là yếu / trung bình / mạnh (${REFS.hair19.cite}).`:''} Không thêm biến vào mô hình sau khi thấy kết quả chỉ để tăng R².`,
+        [ACT.limit('mức giải thích của mô hình (R²)')],{refs:['hair19']});
+
+    // ---- distribution ----
+    const nm=inp.norm||{};
+    if((Number.isFinite(nm.skew)&&nm.skew>2)||(Number.isFinite(nm.kurt)&&nm.kurt>7))
+      add('norm','norm',2,'Phân phối lệch mạnh',`|Skewness| lớn nhất = ${fx(nm.skew,2)}${nm.skewVar?` (${nm.skewVar})`:''}; |Kurtosis| lớn nhất = ${fx(nm.kurt,2)}${nm.kurtVar?` (${nm.kurtVar})`:''}`,
+        `|Skewness| trên 2 hoặc |kurtosis| trên 7 là lệch đáng kể (${REFS.kim13.cite}). Kiểm tra giá trị ngoại lai và lỗi nhập liệu trước; nếu dữ liệu đúng, đây là đặc điểm thật của mẫu.`,
+        [ACT.entry(),ACT.robust(),ACT.limit('phân phối của dữ liệu')],{refs:['kim13','aguinis'],warn:'Không xoá quan sát ngoại lai chỉ vì chúng làm kết quả xấu; nếu loại, phải theo định nghĩa báo trước và báo cáo cả hai kết quả.'});
+    else if(Number.isFinite(nm.normP)&&nm.normP<0.05)
+      add('normtest','norm',0,`Kiểm định phân phối chuẩn có ý nghĩa (Sig. = ${fp(nm.normP)})`,`Sig. = ${fp(nm.normP)}`,
+        `Với mẫu vài trăm phiếu, Shapiro–Wilk và K–S gần như luôn có ý nghĩa dù độ lệch rất nhỏ; nên xem skewness, kurtosis và đồ thị (${REFS.ghasemi.cite}). Dữ liệu Likert hiếm khi chuẩn hoàn toàn.`,
+        [ACT.robust()],{refs:['ghasemi']});
+
+    // ---- common method bias ----
+    const cm=inp.cmb||{};
+    if(Number.isFinite(cm.harman)&&cm.harman>50)
+      add('harman','cmb',2,`Nhân tố đầu giải thích ${fx(cm.harman,1)}% phương sai (kiểm định Harman)`,`Harman = ${fx(cm.harman,1)}%`,
+        `Một nhân tố chiếm quá nửa phương sai gợi ý sai lệch phương pháp chung, thường gặp khi mọi biến được đo bằng một bảng hỏi tự báo cáo, cùng thời điểm (${REFS.podsakoff.cite}).`,
+        [unscreened&&ACT.quality(),ACT.cmb(),ACT.limit('sai lệch phương pháp chung')],{refs:['podsakoff']});
+    if(Number.isFinite(cm.fullVif)&&cm.fullVif>3.3)
+      add('fullvif','cmb',2,`VIF toàn phần = ${fx(cm.fullVif,2)}, trên 3,3`,`VIF toàn phần lớn nhất = ${fx(cm.fullVif,2)}`,
+        `Theo Kock (2015), VIF toàn phần trên 3,3 là dấu hiệu của sai lệch phương pháp chung hoặc đa cộng tuyến giữa các khái niệm.`,
+        [ACT.cmb(),ACT.limit('sai lệch phương pháp chung')],{refs:['kock15']});
+
+    F.sort((a,b)=>b.sev-a.sev||AREA_ORDER[a.area]-AREA_ORDER[b.area]);
+    const used=new Set();for(const f of F){f.refs.forEach(k=>used.add(k));f.actions.forEach(a=>a.refs.forEach(k=>used.add(k)))}
+    ETHICS.forEach(x=>x.refs.forEach(k=>used.add(k)));
+    return {findings:F,n,need,rules,cta:short?{shortfall:short,need,n,url:CTA_URL}:null,refs:[...used].sort()};
+  }
+
+  const keyOf=(f,a)=>f.id+'|'+a.key;
+  // Change log rows: every action the student ticked, plus every finding left as it was.
+  function changeLog(res,done){
+    const rows=[];
+    for(const f of res.findings){
+      const acts=f.actions.filter(a=>done[keyOf(f,a)]);
+      if(!acts.length){if(f.sev>=1)rows.push({problem:f.title,before:f.evidence,action:'Chưa thay đổi gì. Nếu giữ nguyên, trình bày ở phần hạn chế.',rule:'',after:'',refs:''});continue}
+      for(const a of acts)rows.push({problem:f.title,before:f.evidence,action:a.title,rule:a.when,after:(done[keyOf(f,a)].after||'').trim(),refs:cite(a.refs)});
+    }
+    return rows.map((r,i)=>({step:i+1,...r}));
+  }
+  // Procedure paragraph for chapter 3/4, built only from what the student entered and ticked.
+  function chapterText(res,done,inp){
+    const c=inp.ctx||{},P=[];
+    const CH={open:'đường link khảo sát trực tuyến chia sẻ công khai',targeted:'khảo sát gửi trực tiếp tới đối tượng',offline:'phiếu giấy và phỏng vấn trực tiếp',panel:'nền tảng thu mẫu có kiểm soát chất lượng'};
+    if(Number.isFinite(c.n))P.push(`Bộ dữ liệu dùng để phân tích gồm ${c.n} phiếu hợp lệ${CH[c.channel]?`, thu qua ${CH[c.channel]}`:''}.`);
+    const seen=new Set(),body=[];
+    for(const f of res.findings)for(const a of f.actions){
+      const d=done[keyOf(f,a)];if(!d)continue;
+      if(a.key==='notsupported'||a.key==='limit')continue;
+      if(!seen.has(a.say)){seen.add(a.say);body.push(a.say)}
+      if(d.after&&d.after.trim())body.push(`Kết quả sau bước này (${f.subject}): ${d.after.trim().replace(/[.\s]+$/,'')}.`);
+    }
+    if(body.length)P.push(body.join(' '));
+    else if(res.findings.length)P.push('Không có thay đổi nào được thực hiện trên dữ liệu hoặc thang đo sau khi xem kết quả; các chỉ số được báo cáo đúng như kết quả phân tích.');
+    const ns=res.findings.find(f=>f.id==='ns');
+    if(ns)P.push(`${ns.template.join(' ')} Các kết quả này được giữ nguyên và thảo luận ở chương 5; việc không bác bỏ được giả thuyết H0 không đồng nghĩa với việc không có tác động (${REFS.altman.cite}).`);
+    const open=res.findings.filter(f=>f.sev>=1&&f.id!=='ns'&&!f.actions.some(a=>done[keyOf(f,a)]&&a.key!=='limit'));
+    if(open.length)P.push(`Các điểm sau chưa được xử lý và được nêu ở phần hạn chế: ${open.map(f=>f.title).join('; ')}.`);
+    P.push('Mọi thay đổi so với kế hoạch phân tích ban đầu được ghi trong nhật ký thay đổi ở phụ lục.');
+    return P;
+  }
+  //#doctor-end
+
+  // ================= UI =================
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s??'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+  const unhtml=s=>String(s).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');
+  const S={scales:[],constructs:[],htmt:[],coefs:[],efaRows:null};
+  const GRIDS={
+    scales:[['name','Thang đo','text'],['k','Số biến hiện tại','num'],['k0','Số biến ban đầu','num'],['alpha','Cronbach α','num'],['wItem','Biến yếu nhất','text'],['wCitc','Tương quan biến–tổng','num'],['wAid','α nếu loại biến đó','num']],
+    constructs:[['name','Khái niệm','text'],['alpha','α','num'],['cr','CR (rho_c)','num'],['ave','AVE','num']],
+    htmt:[['a','Khái niệm A','text'],['b','Khái niệm B','text'],['v','HTMT','num']],
+    coefs:[['h','Giả thuyết','text'],['name','Biến độc lập / đường dẫn','text'],['sign','Dấu kỳ vọng','sel',['','+','−']],['beta','β chuẩn hoá','num'],['p','p (Sig.)','num'],['vif','VIF','num']],
+  };
+  const show=v=>v==null||v===''?'':typeof v==='number'?(Number.isFinite(v)?String(+v.toFixed(4)).replace('.',','):''):String(v);
+  function renderGrid(g){
+    const cols=GRIDS[g],rows=S[g];
+    let h='<thead><tr>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'<th></th></tr></thead><tbody>';
+    rows.forEach((r,i)=>{h+='<tr>'+cols.map(([k,lab,t,opts])=>`<td>${t==='sel'?`<select data-g="${g}" data-i="${i}" data-k="${k}" aria-label="${lab}">${opts.map(o=>`<option${r[k]===o?' selected':''}>${o}</option>`).join('')}</select>`:`<input data-g="${g}" data-i="${i}" data-k="${k}" aria-label="${lab}" value="${esc(show(r[k]))}"${t==='num'?' inputmode="decimal"':''}>`}</td>`).join('')+`<td class="x"><button type="button" class="bs-mini" data-del="${g}" data-i="${i}" aria-label="Xoá dòng">×</button></td></tr>`});
+    if(!rows.length)h+=`<tr><td colspan="${cols.length+1}" class="text-muted-foreground" style="font-size:.85rem">Chưa có dòng nào.</td></tr>`;
+    $('bs-g-'+g).innerHTML=h+'</tbody>';
+  }
+  const renderAll=()=>Object.keys(GRIDS).forEach(renderGrid);
+  document.addEventListener('input',ev=>{const t=ev.target;if(!t.dataset||!t.dataset.g)return;const r=S[t.dataset.g][+t.dataset.i];r[t.dataset.k]=t.value;if(t.dataset.g==='scales'&&/^w/.test(t.dataset.k))delete r.items});
+  document.addEventListener('change',ev=>{const t=ev.target;if(t.dataset&&t.dataset.g&&t.tagName==='SELECT')S[t.dataset.g][+t.dataset.i][t.dataset.k]=t.value});
+  document.addEventListener('click',ev=>{const t=ev.target.closest&&ev.target.closest('[data-add],[data-del]');if(!t)return;
+    if(t.dataset.add){S[t.dataset.add].push({});renderGrid(t.dataset.add);const ins=$('bs-g-'+t.dataset.add).querySelectorAll('input');if(ins.length)ins[ins.length-GRIDS[t.dataset.add].filter(c=>c[2]!=='sel').length].focus()}
+    else{S[t.dataset.del].splice(+t.dataset.i,1);renderGrid(t.dataset.del)}});
+  renderAll();
+
+  const v=id=>num($(id).value);
+  function gather(){
+    const n=v('bs-n');
+    return {
+      ctx:{n:Number.isFinite(n)?Math.round(n):NaN,target:v('bs-target'),items:v('bs-items'),method:$('bs-method').value,origin:$('bs-origin').value,reverse:$('bs-reverse').value==='no'?'no':$('bs-reverse').value,channel:$('bs-channel').value,screened:$('bs-screened').value},
+      scales:S.scales.filter(r=>r.name||r.alpha||r.items).map(r=>({name:r.name||'Thang đo',k:num(r.k),k0:num(r.k0),alpha:num(r.alpha),items:r.items||(r.wItem||Number.isFinite(num(r.wCitc))?[{name:r.wItem||'biến yếu nhất',citc:num(r.wCitc),aid:num(r.wAid)}]:[])})),
+      efa:{kmo:v('bs-kmo'),bartP:v('bs-bart'),expected:v('bs-fexp'),extracted:v('bs-fext'),variance:v('bs-var'),cross:$('bs-cross').value,low:$('bs-low').value,neg:$('bs-neg').value,rows:S.efaRows&&$('bs-cross').dataset.auto===$('bs-cross').value&&$('bs-low').dataset.auto===$('bs-low').value&&$('bs-neg').dataset.auto===$('bs-neg').value?S.efaRows:null},
+      pls:{constructs:S.constructs.filter(r=>r.name).map(r=>({name:r.name,alpha:num(r.alpha),cr:num(r.cr),ave:num(r.ave)})),htmt:S.htmt.filter(r=>r.a&&r.b).map(r=>({a:r.a,b:r.b,v:num(r.v)})),
+        loadings:String($('bs-ol').value).split(/[;\n]+/).map(s=>s.trim()).filter(Boolean).map(s=>{const m=s.match(/^(.*?)[\s:=]+([−-]?[\d.,]+)$/);return m?{name:m[1].trim(),v:num(m[2])}:null}).filter(Boolean)},
+      reg:{r2:v('bs-r2'),adj:v('bs-adj'),fP:v('bs-fp'),dv:$('bs-dv').value.trim(),coefs:S.coefs.filter(r=>r.name).map(r=>({h:(r.h||'').trim(),name:r.name.trim(),sign:r.sign||'',beta:num(r.beta),p:num(r.p),vif:num(r.vif)}))},
+      norm:{skew:Math.abs(v('bs-skew')),kurt:Math.abs(v('bs-kurt')),normP:v('bs-normp')},
+      cmb:{harman:v('bs-harman'),fullVif:v('bs-fvif')},
+    };
+  }
+  const setv=(id,x)=>{if(Number.isFinite(x))$(id).value=show(x)};
+  $('bs-read').addEventListener('click',()=>{
+    const o=parseOutput($('bs-paste').value),NAMES={rel:'Reliability Statistics',itt:'Item-Total Statistics',kmo:'KMO và Bartlett',tve:'Total Variance Explained',rot:'ma trận xoay',ms:'Model Summary / R²',anova:'ANOVA',coef:'Coefficients',desc:'Descriptive Statistics',crv:'Construct reliability and validity',htmt:'HTMT',ol:'Outer loadings',vif:'VIF',path:'hệ số đường dẫn'};
+    if(!o.found.length){$('bs-read-status').textContent='Không nhận ra bảng nào. Hãy copy cả dòng tiêu đề của bảng (ví dụ “Item-Total Statistics” hoặc dòng tên cột).';return}
+    if(o.scales.length){S.scales=o.scales.map(s=>{const w=s.items.slice().sort((a,b)=>a.citc-b.citc)[0];return {name:s.name,k:s.k,k0:s.k,alpha:s.alpha,wItem:w.name,wCitc:w.citc,wAid:w.aid,items:s.items}})}
+    setv('bs-kmo',o.efa.kmo);setv('bs-bart',o.efa.bartP);setv('bs-fext',o.efa.extracted);setv('bs-var',o.efa.variance);
+    if(o.efa.rows.length){S.efaRows=o.efa.rows;const r=analyzeRot(o.efa.rows);
+      for(const [id,arr] of [['bs-cross',r.cross],['bs-low',r.low],['bs-neg',r.neg]]){$(id).value=arr.map(x=>x.name).join(', ');$(id).dataset.auto=$(id).value}
+      if(!$('bs-fext').value&&o.efa.nf)$('bs-fext').value=o.efa.nf;
+      $('bs-rot-note').textContent=`Đã đọc ma trận xoay: ${o.efa.rows.length} biến${o.efa.nf?`, ${o.efa.nf} nhân tố`:''}.`+(r.split.length?' Tách nhân tố: '+r.split.map(s=>`${s.stem} ở nhân tố ${s.factors.join(', ')}`).join('; ')+'.':'')+(r.merge.length?' Gộp nhân tố: '+r.merge.map(m=>`nhân tố ${m.factor} gồm ${m.stems.join(', ')}`).join('; ')+'.':'');
+      if(!$('bs-fexp').value){const st=new Set(o.efa.rows.map(x=>stem(x.name)));if(st.size>=2&&st.size<o.efa.rows.length)$('bs-fexp').value=st.size}}
+    if(o.pls.constructs.length)S.constructs=o.pls.constructs;
+    if(o.pls.htmt.length)S.htmt=o.pls.htmt;
+    if(o.pls.loadings.length)$('bs-ol').value=o.pls.loadings.filter(x=>x.v<0.708).map(x=>`${x.name} ${show(x.v)}`).join('; ');
+    setv('bs-r2',o.reg.r2);setv('bs-adj',o.reg.adj);setv('bs-fp',o.reg.fP);if(o.reg.dv)$('bs-dv').value=o.reg.dv;
+    if(o.reg.coefs.length)S.coefs=o.reg.coefs.map((x,i)=>({h:'H'+(i+1),name:x.name,sign:'+',beta:x.beta,p:x.p,vif:x.vif}));
+    setv('bs-skew',o.norm.skew);setv('bs-kurt',o.norm.kurt);
+    if(!$('bs-items').value&&(o.scales.length||o.efa.rows.length))$('bs-items').value=Math.max(o.scales.reduce((s,x)=>s+x.k,0),o.efa.rows.length);
+    renderAll();
+    document.querySelectorAll('.bs-sec').forEach((d,i)=>{if([o.scales.length,o.efa.kmo!=null||o.efa.rows.length,o.pls.constructs.length||o.pls.htmt.length,o.reg.coefs.length||o.reg.r2!=null,o.norm.skew!=null][i])d.open=true});
+    $('bs-read-status').textContent=`Đã đọc: ${o.found.map(m=>NAMES[m]||m).join(', ')}.${o.reg.coefs.length?' Kiểm tra cột “Giả thuyết” và “Dấu kỳ vọng” (mặc định H1, H2… và dấu +).':''} Xem lại các ô bên dưới rồi bấm Chẩn đoán.`;
+  });
+
+  let last=null,done={};
+  const SEV=['Thông tin','Lưu ý','Cần xử lý','Nghiêm trọng'];
+  const refLink=k=>`<a href="https://doi.org/${REFS[k].doi}" rel="noopener" target="_blank">${esc(REFS[k].cite)}</a>`;
+  function run(){
+    const inp=gather();last={inp,res:diagnose(inp)};done={};
+    const {res}=last,F=res.findings;
+    let h='<div class="panel" style="margin-top:24px">';
+    if(!F.length){h+=`<strong>Không phát hiện vấn đề nào theo các quy tắc của công cụ.</strong><p class="bs-status">Kiểm tra lại xem bạn đã nhập đủ số liệu chưa. Nếu các chỉ số đều đạt, cứ báo cáo đúng như kết quả.</p>`}
+    else{
+      const cnt=[3,2,1,0].map(s=>[s,F.filter(f=>f.sev===s).length]).filter(x=>x[1]);
+      h+=`<strong>Chẩn đoán: ${F.length} điểm cần xem</strong><div class="bs-sum">${cnt.map(([s,c])=>`<span class="bs-pill bs-s${s}">${SEV[s]}: ${c}</span>`).join('')}</div><p class="bs-status">Xếp theo mức độ. Trong mỗi điểm, các hướng xử lý xếp theo thứ tự nên làm: kiểm tra lỗi dữ liệu trước, rồi mới tới thay đổi thang đo, cuối cùng là báo cáo hạn chế.</p>`;
+    }
+    h+='</div>';
+    if(res.cta)h+=`<aside class="cta" style="margin-top:24px"><span class="cta-label">Khi vấn đề là thiếu mẫu</span><strong>Thu thêm ${res.cta.shortfall} phiếu đúng đối tượng</strong><p>Bạn có ${res.cta.n} phiếu hợp lệ, cỡ mẫu tối thiểu là ${res.cta.need}. Nếu cần người trả lời, Genius Data cho chọn nhóm đối tượng và chỉ tính phí phiếu được duyệt. Dùng cùng bảng hỏi và cùng quy tắc lọc, rồi phân tích lại một lần trên toàn bộ dữ liệu.</p><p><a class="text-accent underline underline-offset-4" href="${CTA_URL}" rel="sponsored noopener" target="_blank">Thu thêm mẫu trên Genius Data</a> <span class="text-muted-foreground" style="font-size:.85rem">(link giới thiệu)</span></p></aside>`;
+    h+='<div class="panel" style="margin-top:24px">';
+    F.forEach((f,fi)=>{
+      h+=`<article class="bs-f"><div class="bs-sum"><span class="bs-pill bs-s${f.sev}">${SEV[f.sev]}</span></div><h3>${esc(f.title)}</h3><p class="bs-ev"><b>Số liệu:</b> ${esc(f.evidence)}</p><p>${esc(f.meaning)}</p>`;
+      if(f.template)h+=`<p><b>Câu mẫu cho chương 4:</b> ${esc(f.template.join(' '))}</p><p><b>Chương 5:</b> viết một đoạn riêng cho mỗi giả thuyết: (1) nhắc lại kết quả; (2) so với nghiên cứu trước cùng chiều và trái chiều; (3) giải thích theo bối cảnh, đối tượng, cách đo; (4) nêu hướng kiểm định lại. Không viết lại giả thuyết cho khớp kết quả.</p>`;
+      if(f.warn)h+=`<p class="bs-warn">${esc(f.warn)}</p>`;
+      h+='<ol class="bs-acts">';
+      f.actions.forEach((a,ai)=>{const id=`bs-d-${fi}-${ai}`;
+        h+=`<li><span class="t">${esc(a.title)}</span><dl><dt>Làm gì</dt><dd>${esc(a.how)}</dd><dt>Hợp lệ khi</dt><dd>${esc(a.when)}</dd><dt>Hệ quả</dt><dd>${esc(a.effect)}</dd><dt>Ghi trong luận văn</dt><dd>${esc(a.report)}</dd><dt>Nguồn</dt><dd class="bs-ref">${a.refs.map(refLink).join('; ')}</dd></dl>`+
+        (a.cta?`<p style="margin-top:4px;font-size:.88rem">Cần người trả lời đúng đối tượng: <a class="text-accent underline underline-offset-4" href="${CTA_URL}" rel="sponsored noopener" target="_blank">Thu thêm mẫu</a> <span class="text-muted-foreground">(link giới thiệu)</span></p>`:'')+
+        `<div class="bs-done"><label class="check"><input type="checkbox" id="${id}" data-f="${fi}" data-a="${ai}"> Tôi đã làm bước này</label><input type="text" data-after="${fi}-${ai}" placeholder="Kết quả sau khi làm (ví dụ: α tăng từ 0,642 lên 0,781)" aria-label="Kết quả sau khi làm" hidden></div></li>`});
+      h+=`</ol>${f.refs.length?`<p class="bs-ref">Căn cứ: ${f.refs.map(refLink).join('; ')}</p>`:''}</article>`;
+    });
+    h+=`<div class="bs-f"><h3>Những việc công cụ này không bao giờ gợi ý</h3><ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:6px">${ETHICS.map(x=>`<li>${esc(x.text)} <span class="bs-ref">(${x.refs.map(refLink).join('; ')})</span></li>`).join('')}</ul></div>`;
+    h+=`<details><summary style="cursor:pointer;font-weight:600">Tài liệu tham khảo (${res.refs.length})</summary><ul class="bs-refs">${res.refs.map(k=>`<li>${REFS[k].text} https://doi.org/${REFS[k].doi}</li>`).join('')}</ul></details>`;
+    if(res.rules.length)h+=`<p class="bs-status">Cỡ mẫu tối thiểu được tính theo: ${esc(res.rules.map(r=>`${r.rule} → ${r.n}`).join('; '))}.</p>`;
+    h+='</div>';
+    $('bs-out').innerHTML=h;$('bs-logpanel').hidden=!F.length;renderLog();
+  }
+  function renderLog(){
+    if(!last)return;
+    const rows=changeLog(last.res,done);
+    $('bs-log').innerHTML='<thead><tr><th>#</th><th>Vấn đề</th><th>Số liệu ban đầu</th><th>Việc đã làm</th><th>Điều kiện / quy tắc</th><th>Kết quả sau</th><th>Căn cứ</th></tr></thead><tbody>'+rows.map(r=>`<tr><td>${r.step}</td><td>${esc(r.problem)}</td><td>${esc(r.before)}</td><td>${esc(r.action)}</td><td>${esc(r.rule)}</td><td>${esc(r.after)}</td><td>${esc(r.refs)}</td></tr>`).join('')+'</tbody>';
+    $('bs-chapter').innerHTML=chapterText(last.res,done,last.inp).map(p=>`<p>${esc(p)}</p>`).join('');
+  }
+  $('bs-out').addEventListener('change',ev=>{const t=ev.target;if(t.type!=='checkbox'||t.dataset.f==null)return;const f=last.res.findings[+t.dataset.f],a=f.actions[+t.dataset.a],k=keyOf(f,a),inp=$('bs-out').querySelector(`[data-after="${t.dataset.f}-${t.dataset.a}"]`);
+    if(t.checked)done[k]={after:inp.value};else delete done[k];inp.hidden=!t.checked;renderLog()});
+  $('bs-out').addEventListener('input',ev=>{const t=ev.target;if(!t.dataset.after)return;const [fi,ai]=t.dataset.after.split('-').map(Number),f=last.res.findings[fi],k=keyOf(f,f.actions[ai]);if(done[k]){done[k].after=t.value;renderLog()}});
+  $('bs-run').addEventListener('click',()=>{run();$('bs-out').scrollIntoView({behavior:'smooth',block:'start'})});
+  $('bs-clear').addEventListener('click',()=>{document.querySelectorAll('.panel input:not([type=checkbox]),.panel textarea').forEach(x=>{x.value='';delete x.dataset.auto});S.scales=[];S.constructs=[];S.htmt=[];S.coefs=[];S.efaRows=null;$('bs-rot-note').textContent='';$('bs-read-status').textContent='';renderAll();$('bs-out').innerHTML='';$('bs-logpanel').hidden=true;last=null});
+  $('bs-copylog').addEventListener('click',ev=>{if(!last)return;const b=ev.currentTarget,rows=changeLog(last.res,done);const t=['#\tVấn đề\tSố liệu ban đầu\tViệc đã làm\tĐiều kiện / quy tắc\tKết quả sau\tCăn cứ',...rows.map(r=>[r.step,r.problem,r.before,r.action,r.rule,r.after,r.refs].map(x=>String(x).replace(/[\t\n]+/g,' ')).join('\t'))].join('\n');
+    const ok=()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent='Sao chép bảng',1500)};try{navigator.clipboard.writeText(t).then(ok,()=>{b.textContent='Không sao chép được'})}catch(e){b.textContent='Không sao chép được'}});
+  $('bs-word').addEventListener('click',()=>{if(!last)return;const rows=changeLog(last.res,done),P=chapterText(last.res,done,last.inp);
+    const doc=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>body{font-family:'Times New Roman';font-size:13pt;line-height:1.5}table{border-collapse:collapse;font-size:11pt}td,th{border:1px solid #000;padding:4px;vertical-align:top}</style></head><body><h2>Nhật ký thay đổi trong phân tích dữ liệu</h2><table><tr><th>#</th><th>Vấn đề</th><th>Số liệu ban đầu</th><th>Việc đã làm</th><th>Điều kiện / quy tắc</th><th>Kết quả sau</th><th>Căn cứ</th></tr>${rows.map(r=>`<tr><td>${r.step}</td><td>${esc(r.problem)}</td><td>${esc(r.before)}</td><td>${esc(r.action)}</td><td>${esc(r.rule)}</td><td>${esc(r.after)}</td><td>${esc(r.refs)}</td></tr>`).join('')}</table><h2>Mô tả quy trình xử lý</h2>${P.map(p=>`<p>${esc(p)}</p>`).join('')}<h2>Tài liệu tham khảo</h2>${last.res.refs.map(k=>`<p>${REFS[k].text} https://doi.org/${REFS[k].doi}</p>`).join('')}</body></html>`;
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿',doc],{type:'application/msword'}));a.download='nhat-ky-thay-doi.doc';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
+
+  const EX_SPSS=['Reliability Statistics',"Cronbach's Alpha\tN of Items",'.642\t5','','Item-Total Statistics',"\tScale Mean if Item Deleted\tScale Variance if Item Deleted\tCorrected Item-Total Correlation\tCronbach's Alpha if Item Deleted",'HL1\t13.10\t6.412\t.561\t.512','HL2\t13.25\t6.203\t.598\t.493','HL3\t13.18\t6.551\t.537\t.524','HL4\t13.31\t7.012\t.402\t.585','HL5\t13.40\t9.118\t-.124\t.781','','KMO and Bartlett\'s Test','Kaiser-Meyer-Olkin Measure of Sampling Adequacy.\t\t.684',"Bartlett's Test of Sphericity\tApprox. Chi-Square\t812.334",'\tdf\t78','\tSig.\t.000','','Total Variance Explained','Component\tInitial Eigenvalues\t\t\tExtraction Sums of Squared Loadings\t\t\tRotation Sums of Squared Loadings','\tTotal\t% of Variance\tCumulative %\tTotal\t% of Variance\tCumulative %\tTotal\t% of Variance\tCumulative %','1\t3.912\t30.092\t30.092\t3.912\t30.092\t30.092\t2.701\t20.777\t20.777','2\t2.105\t16.192\t46.284\t2.105\t16.192\t46.284\t2.488\t19.138\t39.915','3\t1.214\t9.338\t55.622\t1.214\t9.338\t55.622\t1.802\t13.862\t53.777','4\t1.021\t7.854\t63.476\t1.021\t7.854\t63.476\t1.261\t9.700\t63.477','5\t.812\t6.246\t69.722','','Rotated Component Matrixa','\tComponent','\t1\t2\t3\t4','HL1\t.802\t\t\t','HL2\t.788\t\t\t','HL3\t.741\t\t\t','HL4\t.512\t\t.448\t','HL5\t\t\t\t-.701','TC1\t\t.812\t\t','TC2\t\t.776\t\t','TC3\t\t.701\t\t','TC4\t\t.689\t\t','DU1\t\t\t.788\t','DU2\t\t\t.745\t','DU3\t\t.355\t.401\t','DU4\t\t\t.692\t','','Model Summaryb','Model\tR\tR Square\tAdjusted R Square\tStd. Error of the Estimate','1\t.427a\t.182\t.165\t.61234','','ANOVAa','Model\t\tSum of Squares\tdf\tMean Square\tF\tSig.','1\tRegression\t11.512\t3\t3.837\t10.234\t.000b','','Coefficientsa','Model\t\tUnstandardized Coefficients\t\tStandardized Coefficients\tt\tSig.\tCollinearity Statistics','\t\tB\tStd. Error\tBeta\t\t\tTolerance\tVIF','1\t(Constant)\t1.212\t.334\t\t3.629\t.000','\tHL\t.312\t.071\t.341\t4.394\t.000\t.812\t1.232','\tTC\t.098\t.074\t.107\t1.324\t.188\t.745\t1.342','\tDU\t-.051\t.069\t-.058\t-.739\t.461\t.789\t1.267','a. Dependent Variable: YD'].join('\n');
+  const EX_PLS=['Construct reliability and validity',"\tCronbach's alpha\tComposite reliability (rho_a)\tComposite reliability (rho_c)\tAverage variance extracted (AVE)",'HL\t0.812\t0.818\t0.869\t0.571','TC\t0.701\t0.712\t0.801\t0.452','YD\t0.843\t0.851\t0.894\t0.678','','Heterotrait-monotrait ratio (HTMT) - Matrix','\tHL\tTC\tYD','HL\t\t\t','TC\t0.612\t\t','YD\t0.913\t0.588\t','','Outer loadings - Matrix','\tHL\tTC\tYD','HL1\t0.802\t\t','TC1\t\t0.781\t','TC2\t\t0.752\t','TC3\t\t0.512\t','TC4\t\t0.498\t','','Path coefficients - Mean, STDEV, T values, p values','\tOriginal sample (O)\tSample mean (M)\tStandard deviation (STDEV)\tT statistics (|O/STDEV|)\tP values','HL -> YD\t0.512\t0.509\t0.071\t7.211\t0.000','TC -> YD\t0.081\t0.085\t0.066\t1.227\t0.220','','Collinearity statistics (VIF) - Inner model - List','\tVIF','HL -> YD\t1.601','TC -> YD\t1.601'].join('\n');
+  const loadEx=(t,ctx)=>{$('bs-clear').click();$('bs-paste').value=t;$('bs-n').value=ctx.n;$('bs-target').value=ctx.target||'';$('bs-method').value=ctx.method;$('bs-reverse').value='unknown';$('bs-channel').value='open';$('bs-screened').value='no';$('bs-read').click()};
+  $('bs-ex-spss').addEventListener('click',()=>loadEx(EX_SPSS,{n:142,target:200,method:'reg'}));
+  $('bs-ex-pls').addEventListener('click',()=>loadEx(EX_PLS,{n:118,target:'',method:'pls'}));
+})();
+</script>

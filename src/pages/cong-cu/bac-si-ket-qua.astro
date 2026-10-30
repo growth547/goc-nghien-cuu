@@ -1,0 +1,128 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/bac-si-ket-qua.html?raw";
+---
+
+<ToolLayout
+  slug="bac-si-ket-qua"
+  title="Cronbach thấp, KMO không đạt, giả thuyết bị bác bỏ: làm gì cho đúng?"
+  h1="Bác sĩ kết quả: chạy không đạt thì làm gì"
+  description="Nhập hoặc dán kết quả SPSS, SmartPLS (Cronbach, KMO, ma trận xoay, AVE, HTMT, VIF, R², p). Nhận chẩn đoán theo quy tắc, các cách xử lý hợp lệ có trích dẫn, nhật ký thay đổi và đoạn văn cho chương 3, 4."
+  lede="Cronbach dưới 0,7, KMO dưới 0,5, ma trận xoay lộn xộn, HTMT vượt ngưỡng hay giả thuyết không được ủng hộ? Nhập con số bạn nhận được hoặc dán bảng từ SPSS, SmartPLS. Công cụ chẩn đoán theo quy tắc cố định và chỉ đưa ra những cách xử lý hợp lệ về phương pháp, kèm điều kiện, hệ quả, cách ghi trong luận văn và nguồn trích dẫn."
+  html={html}
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        Điền <strong>bối cảnh</strong>: số phiếu hợp lệ, cỡ mẫu đã đặt ở chương 3,
+        phương pháp phân tích, nguồn thang đo, có câu đảo chiều hay không và kênh thu
+        dữ liệu. Những thông tin này quyết định thứ tự các bước nên làm.
+      </li>
+      <li>
+        Trong SPSS Output, bấm chuột phải vào bảng, chọn Copy rồi dán vào ô
+        <strong>Dán bảng kết quả</strong>. Có thể dán nhiều bảng một lúc: Reliability
+        Statistics, Item-Total Statistics, KMO, ma trận xoay, Coefficients… hoặc các bảng
+        của SmartPLS 4. Bấm <strong>Đọc bảng vào ô nhập</strong>, kiểm tra lại các ô,
+        sửa cột "Giả thuyết" và "Dấu kỳ vọng" cho đúng mô hình. Không có bảng thì nhập
+        tay phần mình có; phần nào bỏ trống thì không được chẩn đoán.
+      </li>
+      <li>
+        Bấm <strong>Chẩn đoán</strong>. Mỗi vấn đề có mức độ, con số làm căn cứ, ý
+        nghĩa và các hướng xử lý xếp theo thứ tự nên làm. Làm bước nào thì đánh dấu và
+        ghi kết quả sau khi chạy lại; nhật ký thay đổi và đoạn văn tự cập nhật để đưa
+        giảng viên hướng dẫn xem.
+      </li>
+    </ol>
+    <p>Mọi xử lý chạy trong trình duyệt của bạn; số liệu không được gửi đi đâu.</p>
+
+    <h2>Vì sao thứ tự xử lý quan trọng</h2>
+    <p>
+      Nhiều kết quả "không đạt" do dữ liệu có lỗi chưa được phát hiện, nên công cụ luôn
+      đề xuất kiểm tra theo thứ tự:
+    </p>
+    <ol>
+      <li>
+        <strong>Câu đảo chiều chưa mã hoá ngược.</strong> Tương quan biến–tổng âm hoặc
+        hệ số tải âm gần như chắc chắn là do lỗi này. Loại biến đó đi là che mất một lỗi
+        có thể sửa đúng.
+      </li>
+      <li>
+        <strong>Nhập liệu và mã giá trị thiếu.</strong> Mã 99 chưa khai báo trong
+        Missing Values hay giá trị ngoài thang làm mọi chỉ số sai lệch.
+      </li>
+      <li>
+        <strong>Phiếu kém chất lượng.</strong> Phiếu điền bừa làm yếu tương quan thật.
+        Chỉ lọc theo quy tắc viết ra trước (câu kiểm tra chú ý, trả lời một mức, thời
+        gian quá ngắn) và áp dụng một lần cho toàn bộ dữ liệu.
+      </li>
+      <li>
+        <strong>Câu chữ và bản dịch.</strong> Câu hai ý hay dịch lệch nghĩa giải thích
+        vì sao một biến hoạt động kém.
+      </li>
+      <li>
+        <strong>Loại biến có lý do lý thuyết.</strong> Chỉ khi có quy tắc báo trước
+        (ví dụ tương quan biến–tổng dưới 0,3), thang đo còn từ 3 biến trở lên, nội dung
+        khái niệm vẫn đủ, mỗi lần loại một biến và báo cáo cả kết quả trước và sau.
+      </li>
+      <li>
+        <strong>Báo cáo là hạn chế.</strong> Khi không có căn cứ để thay đổi gì, giữ
+        nguyên con số và giải thích.
+      </li>
+      <li>
+        <strong>Thu thêm mẫu</strong>, chỉ khi số phiếu hợp lệ thấp hơn cỡ mẫu tối
+        thiểu hoặc cỡ mẫu đã đặt ở chương 3. Thu đủ phần còn thiếu rồi phân tích lại một
+        lần, không thu từng đợt và xem p sau mỗi đợt.
+      </li>
+    </ol>
+
+    <h2>Giả thuyết không được ủng hộ không phải là thất bại</h2>
+    <p>
+      p &gt; 0,05 không có nghĩa là luận văn hỏng. Đây là một kết quả hợp lệ: dữ liệu
+      chưa đủ bằng chứng cho tác động đó trong bối cảnh của bạn. Cách viết đúng là ghi "Không ủng hộ" trong bảng kiểm
+      định giả thuyết kèm β và p thật, rồi ở chương 5 viết một đoạn riêng cho mỗi giả
+      thuyết: so với nghiên cứu trước cùng chiều và trái chiều, giải thích theo đối
+      tượng, ngành, thời điểm và cách đo, nêu hướng kiểm định lại. Lưu ý p ≥ 0,05 không
+      chứng minh là không có tác động; muốn kết luận như vậy cần kiểm định tương đương.
+    </p>
+
+    <h2>Những việc tuyệt đối không làm</h2>
+    <ul>
+      <li>
+        Sửa, thêm, xoá hay "cân" câu trả lời, tự điền phiếu, nhân bản phiếu. Đó là bịa
+        đặt dữ liệu, loại gian lận nặng nhất trong nghiên cứu.
+      </li>
+      <li>
+        Thử loại lần lượt từng biến, từng phiếu rồi giữ tổ hợp cho kết quả đẹp. Mỗi lần
+        thử làm tăng xác suất dương tính giả; đây chính là p-hacking.
+      </li>
+      <li>
+        Đổi phương pháp (hồi quy sang PLS-SEM, hai phía sang một phía) chỉ vì phương
+        pháp mới cho p &lt; 0,05.
+      </li>
+      <li>
+        Viết lại giả thuyết cho khớp kết quả rồi trình bày như dự đoán từ đầu (HARKing).
+      </li>
+    </ul>
+    <p>
+      Hội đồng nhận ra số liệu "làm đẹp" qua những dấu hiệu quen thuộc: mọi α đều trên
+      0,9, mọi giả thuyết đều được ủng hộ với p rất nhỏ, hoặc không chạy lại ra đúng số
+      khi được yêu cầu nộp file dữ liệu.
+    </p>
+
+    <h2>Ngưỡng công cụ dùng</h2>
+    <ul>
+      <li>Cronbach's α: dưới 0,6 nghiêm trọng, 0,6–0,7 cần xử lý, trên 0,95 nghi trùng ý; tương quan biến–tổng dưới 0,3.</li>
+      <li>KMO theo Kaiser (1974): dưới 0,5 không đạt, 0,5–0,6 kém. Bartlett có Sig. từ 0,05 trở lên là không đạt.</li>
+      <li>Ma trận xoay: quy tắc 0,40–0,30–0,20 của Howard (2016) cho hệ số tải thấp và tải chéo.</li>
+      <li>AVE từ 0,5, CR từ 0,7, outer loading từ 0,708, HTMT dưới 0,85 hoặc 0,90.</li>
+      <li>VIF từ 5 (PLS-SEM từ 3,3), |skewness| trên 2, |kurtosis| trên 7.</li>
+      <li>Cỡ mẫu: 5 quan sát mỗi biến cho EFA, Green (1991) cho hồi quy, 155 cho PLS-SEM (Kock và Hadaya, 2018).</li>
+    </ul>
+    <p>
+      Đây là các ngưỡng phổ biến, không phải luật. Nếu khoa dùng ngưỡng khác (ví dụ hệ
+      số tải 0,5), theo quy định của khoa và ghi rõ ngưỡng trong chương 3. Tài liệu
+      tham khảo có DOI nằm cuối phần kết quả chẩn đoán.
+    </p>
+  </Fragment>
+</ToolLayout>

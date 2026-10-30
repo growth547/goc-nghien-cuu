@@ -1,0 +1,346 @@
+{
+ "10.1177/1094428112470848": {
+  "family": "Aguinis",
+  "authors": 3,
+  "year": 2013,
+  "volume": "16",
+  "page": "270-301",
+  "title": "Best-Practice Recommendations for Defining, Identifying, and Handling Outliers"
+ },
+ "10.1136/bmj.311.7003.485": {
+  "family": "Altman",
+  "authors": 2,
+  "year": 1995,
+  "volume": "311",
+  "page": "485",
+  "title": "Statistics notes: Absence of evidence is not evidence of absence"
+ },
+ "10.1177/135910457000100301": {
+  "family": "Brislin",
+  "authors": 1,
+  "year": 1970,
+  "volume": "1",
+  "page": "185-216",
+  "title": "Back-Translation for Cross-Cultural Research"
+ },
+ "10.1037/0033-2909.112.1.155": {
+  "family": "Cohen",
+  "authors": 1,
+  "year": 1992,
+  "volume": "112",
+  "page": "155-159",
+  "title": "A power primer."
+ },
+ "10.1007/BF02310555": {
+  "family": "Cronbach",
+  "authors": 1,
+  "year": 1951,
+  "volume": "16",
+  "page": "297-334",
+  "title": "Coefficient Alpha and the Internal Structure of Tests"
+ },
+ "10.1016/j.jesp.2015.07.006": {
+  "family": "Curran",
+  "authors": 1,
+  "year": 2016,
+  "volume": "66",
+  "page": "4-19",
+  "title": "Methods for the detection of carelessly invalid responses in survey data"
+ },
+ "10.1037/h0036316": {
+  "family": "Dziuban",
+  "authors": 2,
+  "year": 1974,
+  "volume": "81",
+  "page": "358-361",
+  "title": "When is a correlation matrix appropriate for factor analysis? Some decision rules."
+ },
+ "10.1007/s00038-012-0416-3": {
+  "family": "Eisinga",
+  "authors": 3,
+  "year": 2013,
+  "volume": "58",
+  "page": "637-642",
+  "title": "The reliability of a two-item scale: Pearson, Cronbach, or Spearman-Brown?"
+ },
+ "10.1037/1082-989X.4.3.272": {
+  "family": "Fabrigar",
+  "authors": 4,
+  "year": 1999,
+  "volume": "4",
+  "page": "272-299",
+  "title": "Evaluating the use of exploratory factor analysis in psychological research."
+ },
+ "10.1371/journal.pone.0005738": {
+  "family": "Fanelli",
+  "authors": 1,
+  "year": 2009,
+  "volume": "4",
+  "page": "e5738",
+  "title": "How Many Scientists Fabricate and Falsify Research? A Systematic Review and Meta-Analysis of Survey Data"
+ },
+ "10.3758/BRM.41.4.1149": {
+  "family": "Faul",
+  "authors": 4,
+  "year": 2009,
+  "volume": "41",
+  "page": "1149-1160",
+  "title": "Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses"
+ },
+ "10.1177/002224378101800104": {
+  "family": "Fornell",
+  "authors": 2,
+  "year": 1981,
+  "volume": "18",
+  "page": "39-50",
+  "title": "Evaluating Structural Equation Models with Unobservable Variables and Measurement Error"
+ },
+ "10.5812/ijem.3505": {
+  "family": "Ghasemi",
+  "authors": 2,
+  "year": 2012,
+  "volume": "10",
+  "page": "486-489",
+  "title": "Normality Tests for Statistical Analysis: A Guide for Non-Statisticians"
+ },
+ "10.1207/s15327906mbr2603_7": {
+  "family": "Green",
+  "authors": 1,
+  "year": 1991,
+  "volume": "26",
+  "page": "499-510",
+  "title": "How Many Subjects Does It Take To Do A Regression Analysis"
+ },
+ "10.1108/EBR-11-2018-0203": {
+  "family": "Hair",
+  "authors": 4,
+  "year": 2019,
+  "volume": "31",
+  "page": "2-24",
+  "title": "When to use and how to report the results of PLS-SEM"
+ },
+ "10.1080/19312458.2020.1718629": {
+  "family": "Hayes",
+  "authors": 2,
+  "year": 2020,
+  "volume": "14",
+  "page": "1-24",
+  "title": "Use Omega Rather than Cronbach’s Alpha for Estimating Reliability. But…"
+ },
+ "10.1007/s11747-014-0403-8": {
+  "family": "Henseler",
+  "authors": 3,
+  "year": 2015,
+  "volume": "43",
+  "page": "115-135",
+  "title": "A new criterion for assessing discriminant validity in variance-based structural equation modeling"
+ },
+ "10.1007/BF02289447": {
+  "family": "Horn",
+  "authors": 1,
+  "year": 1965,
+  "volume": "30",
+  "page": "179-185",
+  "title": "A Rationale and Test for the Number of Factors in Factor Analysis"
+ },
+ "10.1080/10447318.2015.1087664": {
+  "family": "Howard",
+  "authors": 1,
+  "year": 2016,
+  "volume": "32",
+  "page": "51-62",
+  "title": "A Review of Exploratory Factor Analysis Decisions and Overview of Current Practices: What We Are Doing and How Can We Improve?"
+ },
+ "10.1177/0956797611430953": {
+  "family": "John",
+  "authors": 3,
+  "year": 2012,
+  "volume": "23",
+  "page": "524-532",
+  "title": "Measuring the Prevalence of Questionable Research Practices With Incentives for Truth Telling"
+ },
+ "10.1007/BF02291575": {
+  "family": "Kaiser",
+  "authors": 1,
+  "year": 1974,
+  "volume": "39",
+  "page": "31-36",
+  "title": "An Index of Factorial Simplicity"
+ },
+ "10.1207/s15327957pspr0203_4": {
+  "family": "Kerr",
+  "authors": 1,
+  "year": 1998,
+  "volume": "2",
+  "page": "196-217",
+  "title": "HARKing: Hypothesizing After the Results are Known"
+ },
+ "10.5395/rde.2013.38.1.52": {
+  "family": "Kim",
+  "authors": 1,
+  "year": 2013,
+  "volume": "38",
+  "page": "52",
+  "title": "Statistical notes for clinical researchers: assessing normal distribution (2) using skewness and kurtosis"
+ },
+ "10.4018/ijec.2015100101": {
+  "family": "Kock",
+  "authors": 1,
+  "year": 2015,
+  "volume": "11",
+  "page": "1-10",
+  "title": "Common Method Bias in PLS-SEM"
+ },
+ "10.1111/isj.12131": {
+  "family": "Kock",
+  "authors": 2,
+  "year": 2018,
+  "volume": "28",
+  "page": "227-261",
+  "title": "Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods"
+ },
+ "10.1177/1948550617697177": {
+  "family": "Lakens",
+  "authors": 1,
+  "year": 2017,
+  "volume": "8",
+  "page": "355-362",
+  "title": "Equivalence Tests"
+ },
+ "10.1037/1082-989X.4.2.192": {
+  "family": "Little",
+  "authors": 3,
+  "year": 1999,
+  "volume": "4",
+  "page": "192-211",
+  "title": "On selecting indicators for multivariate measurement and modeling with latent variables: When \"good\" indicators are bad and \"bad\" indicators are good."
+ },
+ "10.1146/annurev.publhealth.23.100901.140546": {
+  "family": "Lumley",
+  "authors": 4,
+  "year": 2002,
+  "volume": "23",
+  "page": "151-169",
+  "title": "The Importance of the Normality Assumption in Large Public Health Data Sets"
+ },
+ "10.1037/1082-989X.4.1.84": {
+  "family": "MacCallum",
+  "authors": 4,
+  "year": 1999,
+  "volume": "4",
+  "page": "84-99",
+  "title": "Sample size in factor analysis."
+ },
+ "10.1207/s15327906mbr3302_1": {
+  "family": "Marsh",
+  "authors": 4,
+  "year": 1998,
+  "volume": "33",
+  "page": "181-220",
+  "title": "Is More Ever Too Much? The Number of Indicators per Factor in Confirmatory Factor Analysis"
+ },
+ "10.1037/met0000144": {
+  "family": "McNeish",
+  "authors": 1,
+  "year": 2018,
+  "volume": "23",
+  "page": "412-433",
+  "title": "Thanks coefficient alpha, we’ll take it from here."
+ },
+ "10.1037/a0028085": {
+  "family": "Meade",
+  "authors": 2,
+  "year": 2012,
+  "volume": "17",
+  "page": "437-455",
+  "title": "Identifying careless responses in survey data."
+ },
+ "10.1177/1094428114548590": {
+  "family": "Newman",
+  "authors": 1,
+  "year": 2014,
+  "volume": "17",
+  "page": "372-411",
+  "title": "Missing Data"
+ },
+ "10.1073/pnas.1708274114": {
+  "family": "Nosek",
+  "authors": 4,
+  "year": 2018,
+  "volume": "115",
+  "page": "2600-2606",
+  "title": "The preregistration revolution"
+ },
+ "10.1007/s11135-006-9018-6": {
+  "family": "O’brien",
+  "authors": 1,
+  "year": 2007,
+  "volume": "41",
+  "page": "673-690",
+  "title": "A Caution Regarding Rules of Thumb for Variance Inflation Factors"
+ },
+ "10.1023/A:1008191211004": {
+  "family": "Peterson",
+  "authors": 1,
+  "year": 2000,
+  "volume": "11",
+  "page": "261-275",
+  "title": "A Meta-Analysis of Variance Accounted for and Factor Loadings in Exploratory Factor Analysis"
+ },
+ "10.1037/0021-9010.88.5.879": {
+  "family": "Podsakoff",
+  "authors": 4,
+  "year": 2003,
+  "volume": "88",
+  "page": "879-903",
+  "title": "Common method biases in behavioral research: A critical review of the literature and recommended remedies."
+ },
+ "10.1016/j.jclinepi.2017.12.006": {
+  "family": "Schmidt",
+  "authors": 2,
+  "year": 2018,
+  "volume": "98",
+  "page": "146-151",
+  "title": "Linear regression and the normality assumption"
+ },
+ "10.1177/0956797611417632": {
+  "family": "Simmons",
+  "authors": 3,
+  "year": 2011,
+  "volume": "22",
+  "page": "1359-1366",
+  "title": "False-Positive Psychology"
+ },
+ "10.5116/ijme.4dfb.8dfd": {
+  "family": "Tavakol",
+  "authors": 2,
+  "year": 2011,
+  "volume": "2",
+  "page": "53-55",
+  "title": "Making sense of Cronbach's alpha"
+ },
+ "10.1037/0033-2909.109.3.524": {
+  "family": "Tzelgov",
+  "authors": 2,
+  "year": 1991,
+  "volume": "109",
+  "page": "524-536",
+  "title": "Suppression situations in psychological research: Definitions, implications, and applications."
+ },
+ "10.1080/00031305.2016.1154108": {
+  "family": "Wasserstein",
+  "authors": 2,
+  "year": 2016,
+  "volume": "70",
+  "page": "129-133",
+  "title": "The ASA Statement on p -Values: Context, Process, and Purpose"
+ },
+ "10.1509/jmr.11.0368": {
+  "family": "Weijters",
+  "authors": 2,
+  "year": 2012,
+  "volume": "49",
+  "page": "737-747",
+  "title": "Misresponse to Reversed and Negated Items in Surveys: A Review"
+ }
+}

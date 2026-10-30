@@ -1,0 +1,631 @@
+<div class="panel" id="ps-in">
+  <div class="field"><span class="ps-lbl">1. Đưa dữ liệu khảo sát vào</span>
+    <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+      <input id="ps-file" class="ps-file" type="file" accept=".xlsx,.xls,.csv,.tsv,.txt">
+      <label for="ps-file" class="btn" style="cursor:pointer">Tải file Excel hoặc CSV</label>
+      <button type="button" class="btn ghost" id="ps-sample">Dùng dữ liệu mẫu (300 phiếu)</button>
+    </div>
+    <small>Mỗi dòng là một phiếu, mỗi cột một biến quan sát. Đặt tên cột theo mã khái niệm + số (CL1, CL2, HL1…) để công cụ tự nhóm. Dữ liệu được xử lý ngay trên trình duyệt của bạn, không gửi lên máy chủ.</small>
+    <div id="ps-status" role="status" aria-live="polite" style="font-size:.9rem;margin-top:6px"></div></div>
+</div>
+
+<div class="panel" id="ps-setup" hidden style="margin-top:20px">
+  <div class="row">
+    <div class="field"><label for="ps-hdr">Dòng tiêu đề (tên cột)</label><select id="ps-hdr"></select></div>
+    <div class="field"><label for="ps-min">Thang đo: điểm thấp nhất và cao nhất</label>
+      <span class="row" style="gap:8px"><input id="ps-min" type="number" step="1" value="1" style="width:5em"><input id="ps-max" type="number" step="1" value="5" style="width:5em" aria-label="Điểm cao nhất của thang đo"></span>
+      <small>Chỉ dùng để đảo điểm câu đảo chiều.</small></div>
+  </div>
+  <div class="field"><label for="ps-groups">2. Mô hình đo lường: khái niệm và biến quan sát</label>
+    <textarea id="ps-groups" rows="5" style="min-height:0"></textarea>
+    <small>Mỗi dòng một khái niệm: <code>MÃ: biến1 biến2 …</code>. Công cụ đã tự nhóm theo tên cột; bỏ các biến đã loại, sửa nếu cần. Khái niệm một biến (ví dụ biến kiểm soát) cũng được.</small></div>
+  <div class="row">
+    <div class="field"><label for="ps-rev">Câu đảo chiều (đảo điểm trước khi phân tích)</label><input id="ps-rev" type="text" placeholder="Ví dụ: HL4"></div>
+    <div class="field"><label for="ps-formative">Khái niệm cấu tạo (formative, Mode B)</label><input id="ps-formative" type="text" placeholder="Để trống nếu mọi khái niệm là kết quả (reflective)">
+      <small>Mặc định mọi khái niệm là reflective (Mode A), như hầu hết khoá luận. Chỉ ghi mã khái niệm formative khi thang đo gốc thiết kế như vậy.</small></div>
+  </div>
+  <div class="field"><label for="ps-paths">3. Mô hình cấu trúc: các đường dẫn (giả thuyết)</label>
+    <textarea id="ps-paths" rows="5" style="min-height:0" placeholder="CL -> HL&#10;HL -> TT"></textarea>
+    <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px">
+      <select id="ps-from" aria-label="Khái niệm tác động" style="width:auto"></select><span aria-hidden="true">→</span>
+      <select id="ps-to" aria-label="Khái niệm chịu tác động" style="width:auto"></select>
+      <button type="button" class="btn ghost" id="ps-add">Thêm đường</button>
+      <button type="button" class="btn ghost" id="ps-vm">Lấy mô hình từ Vẽ mô hình</button>
+    </div>
+    <small>Mỗi dòng một đường <code>X -&gt; Y</code>, theo thứ tự giả thuyết H1, H2…; thêm <code>(-)</code> ở cuối dòng nếu giả thuyết là tác động ngược chiều. Có thể viết <code>X, Z -&gt; Y</code>. Đã vẽ mô hình ở <a class="text-accent underline" href="/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a> trên trình duyệt này thì bấm “Lấy mô hình từ Vẽ mô hình”, hoặc dán link mô hình vào ô trên.</small>
+    <div id="ps-pathmsg" style="font-size:.9rem;margin-top:4px"></div></div>
+  <div class="row">
+    <div class="field"><label for="ps-miss">Giá trị thiếu</label>
+      <select id="ps-miss"><option value="mean" selected>Thay bằng trung bình của biến (mặc định SmartPLS)</option><option value="listwise">Loại phiếu thiếu (listwise)</option></select></div>
+    <div class="field"><label for="ps-b">Số mẫu bootstrap</label>
+      <select id="ps-b"><option value="0">Không chạy bootstrap</option><option value="500">500 (thử nhanh)</option><option value="1000">1.000</option><option value="2000">2.000</option><option value="5000" selected>5.000</option><option value="10000">10.000</option></select></div>
+    <div class="field"><label for="ps-seed">Seed (để tái lập kết quả)</label><input id="ps-seed" type="number" step="1" min="1" value="20261030"></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="ps-ci">Khoảng tin cậy bootstrap</label>
+      <select id="ps-ci"><option value="perc" selected>Percentile</option><option value="bca">Bias-corrected and accelerated (BCa)</option></select></div>
+    <div class="field"><label for="ps-conf">Độ tin cậy (kiểm định hai phía)</label>
+      <select id="ps-conf"><option value="0.9">90%</option><option value="0.95" selected>95%</option><option value="0.99">99%</option></select></div>
+    <div class="field"><label for="ps-d">Khoảng cách bỏ D (Q², blindfolding)</label><input id="ps-d" type="number" min="5" max="12" step="1" value="7"></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="ps-sec">Số mục chương 4</label><input id="ps-sec" type="text" value="4.3"></div>
+    <div class="field"><label for="ps-tab">Bảng đầu tiên là Bảng 4.</label><input id="ps-tab" type="number" min="1" step="1" value="5"></div>
+    <div class="field"><label for="ps-fig">Hình kết quả là Hình 4.</label><input id="ps-fig" type="number" min="1" step="1" value="2"></div>
+  </div>
+  <div class="row" style="gap:8px;align-items:center">
+    <button type="button" class="btn" id="ps-run">Chạy PLS-SEM</button>
+    <button type="button" class="btn ghost" id="ps-stop" hidden>Dừng bootstrap</button>
+    <progress id="ps-prog" max="1" value="0" hidden style="flex:1 1 160px"></progress>
+  </div>
+  <div id="ps-msg" role="alert"></div>
+</div>
+
+<div id="ps-out" hidden style="margin-top:20px">
+  <div class="panel">
+    <div id="ps-warn" hidden></div>
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <strong>Kết quả và đoạn văn chương 4</strong>
+      <span class="row" style="gap:8px;flex-wrap:wrap"><button type="button" class="btn" id="ps-doc">Tải Word</button><button type="button" class="btn ghost" id="ps-csv">Tải bảng (CSV)</button><button type="button" class="btn ghost" id="ps-scores">Điểm khái niệm (CSV)</button><button type="button" class="btn ghost" id="ps-copy">Sao chép</button></span>
+    </div>
+    <div id="ps-report" class="ps-report" style="line-height:1.65"></div>
+    <small class="text-muted-foreground">Kết quả tính theo thuật toán PLS chuẩn (Lohmöller, 1989) với các thiết lập mặc định của SmartPLS: lược đồ trọng số đường dẫn, dữ liệu chuẩn hoá, trọng số khởi đầu bằng 1, tiêu chí dừng 10⁻⁷, tối đa 300 vòng lặp. Ước lượng điểm khớp hai gói R seminr và cSEM tới ít nhất 9 chữ số thập phân, nên chỉ có thể lệch SmartPLS ở phần làm tròn (riêng f² tính từ điểm khái niệm của mô hình đầy đủ như cSEM; phần mềm ước lượng lại mô hình khi bỏ từng đường, như seminr, có thể lệch ở chữ số thứ ba); số bootstrap khác nhau một chút giữa các phần mềm vì mỗi phần mềm rút mẫu ngẫu nhiên khác nhau. Bạn vẫn là người chịu trách nhiệm diễn giải kết quả và kiểm tra câu chữ trước khi đưa vào luận văn.</small>
+  </div>
+</div>
+<style>
+.ps-lbl{font-weight:600}
+#ps-in .ps-file{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ps-file:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+.ps-report .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 14px;max-width:100%}
+.ps-report table{border-collapse:collapse;font-size:.88rem;width:100%}
+.ps-report th,.ps-report td{border-bottom:1px solid var(--border);padding:4px 8px;text-align:right;white-space:nowrap}
+.ps-report th:first-child,.ps-report td:first-child,.ps-report td.l,.ps-report th.l{text-align:left}
+.ps-report tr.grp td{font-weight:600;padding-top:10px;white-space:normal}
+.ps-report td.own{font-weight:700}
+.ps-report caption{text-align:left;font-weight:600;padding:4px 0;white-space:normal}
+.ps-report .note{font-size:.85rem;color:var(--muted-foreground);margin-top:-6px}
+.ps-report h3{font-size:1.1rem;font-weight:700;margin:1.4em 0 .4em}.ps-report h4{font-size:1rem;font-weight:600;font-style:italic;margin:1em 0 .3em}.ps-report p{margin:.5em 0}
+.ps-report .bad{color:var(--warm);font-weight:600}
+.ps-report figure{margin:12px 0 18px}
+.ps-report figure .cap{font-weight:600;margin-bottom:4px}
+.ps-report figure svg{width:100%;max-width:760px;height:auto;display:block;border:1px solid var(--border);border-radius:6px}
+.ps-report .svgdl{font-size:.85rem}
+#ps-warn{border-left:3px solid var(--warm);padding:4px 12px;margin-bottom:12px}
+#ps-warn ul{margin:4px 0;padding-left:18px}
+#ps-pathmsg .err,#ps-msg.err,#ps-status .err{color:var(--warm)}
+</style>
+
+<script>
+(function(){
+  //#pls-start
+  // PLS-SEM (Lohmöller, 1989; Wold, 1982) on the correlation matrix of standardised indicators:
+  // path weighting scheme, Mode A / Mode B outer estimation, stop when Σ|Δw| < 1e-7 or after 300 iterations
+  // (the SmartPLS and seminr defaults). Self-contained: the Web Worker is built from PLS_ENGINE.toString(),
+  // and scripts/check-pls.mjs evaluates this block against seminr, cSEM and an independent numpy implementation.
+  function PLS_ENGINE(){
+    function lgamma(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,t=x+5.5;t-=(x+0.5)*Math.log(t);let s=1.000000000190015;for(const ci of c)s+=ci/++y;return -t+Math.log(2.5066282746310005*s/x)}
+    function betacf(a,b,x){const MAXIT=300,EPS=3e-14,FPMIN=1e-300;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=MAXIT;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<EPS)break}return h}
+    function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(lgamma(a+b)-lgamma(a)-lgamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(a,b,x)/a:1-bt*betacf(b,a,1-x)/b}
+    function gammaQ(a,x){if(x<=0)return 1;const gln=lgamma(a);if(x<a+1){let ap=a,sum=1/a,del=sum;for(let n=0;n<500;n++){ap++;del*=x/ap;sum+=del;if(Math.abs(del)<Math.abs(sum)*3e-14)break}return 1-sum*Math.exp(-x+a*Math.log(x)-gln)}
+      let b=x+1-a,c=1e300,d=1/b,h=d;for(let i=1;i<500;i++){const an=-i*(i-a);b+=2;d=an*d+b;if(Math.abs(d)<1e-300)d=1e-300;c=b+an/c;if(Math.abs(c)<1e-300)c=1e-300;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<3e-14)break}return Math.exp(-x+a*Math.log(x)-gln)*h}
+    const tP=(t,df)=>Number.isNaN(t)?NaN:Number.isFinite(t)?ibeta(df/(df+t*t),df/2,0.5):0;   // two-tailed p of a t statistic
+    // Standard normal CDF (via the incomplete gamma function) and its inverse (Acklam, refined by one Halley step).
+    const pnorm=z=>Number.isNaN(z)?NaN:z>=0?1-0.5*gammaQ(0.5,z*z/2):0.5*gammaQ(0.5,z*z/2);
+    function qnorm(p){if(!(p>0))return -Infinity;if(!(p<1))return Infinity;
+      const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],
+        c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416];
+      let x;if(p<0.02425){const q=Math.sqrt(-2*Math.log(p));x=(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}
+      else if(p>1-0.02425){const q=Math.sqrt(-2*Math.log(1-p));x=-(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}
+      else{const q=p-0.5,r=q*q;x=(((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
+      const e=pnorm(x)-p,u=e*Math.sqrt(2*Math.PI)*Math.exp(x*x/2);return x-u/(1+x*u/2)}
+    // Seedable PRNG (mulberry32), the same as the mediation tool; the Python reference replays it.
+    function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}}
+    // Quantile of a sorted array with linear interpolation (R type 7, numpy default).
+    function quantile(s,p){const h=(s.length-1)*p,lo=Math.floor(h);return lo+1<s.length?s[lo]+(h-lo)*(s[lo+1]-s[lo]):s[lo]}
+    function sdOf(a){let m=0;for(let i=0;i<a.length;i++)m+=a[i];m/=a.length;let s=0;for(let i=0;i<a.length;i++){const d=a[i]-m;s+=d*d}return Math.sqrt(s/(a.length-1))}
+    // Small dense systems: Gaussian elimination with partial pivoting; null when (numerically) singular.
+    function solve(A,b){const k=b.length,M=A.map((r,i)=>[...r,b[i]]);
+      for(let c=0;c<k;c++){let piv=c;for(let r=c+1;r<k;r++)if(Math.abs(M[r][c])>Math.abs(M[piv][c]))piv=r;
+        if(!(Math.abs(M[piv][c])>1e-12))return null;if(piv!==c){const t=M[c];M[c]=M[piv];M[piv]=t}
+        for(let r=c+1;r<k;r++){const f=M[r][c]/M[c][c];if(f)for(let j=c;j<=k;j++)M[r][j]-=f*M[c][j]}}
+      const x=new Array(k);for(let i=k-1;i>=0;i--){let s=M[i][k];for(let j=i+1;j<k;j++)s-=M[i][j]*x[j];x[i]=s/M[i][i]}return x}
+    function inverse(A){const k=A.length,cols=[];for(let j=0;j<k;j++){const e=new Array(k).fill(0);e[j]=1;const x=solve(A,e);if(!x)return null;cols.push(x)}return A.map((_,i)=>cols.map(c=>c[i]))}
+    const sub=(S,p,rows,cols)=>rows.map(a=>cols.map(c=>S[a*p+c]));
+
+    // o: {cols: [Float64Array per indicator, NaN = missing], items: [names], cons: [{name, idx: [indicator positions], mode: 'A'|'B'}],
+    //     paths: [[from, to, sign]] (construct positions, sign −1 for a hypothesised negative effect), missing: 'mean'|'listwise'}
+    function prepare(o){
+      const cols=o.cols,p=cols.length,N=p?cols[0].length:0,m=o.cons.length,miss=o.missing==='listwise'?'listwise':'mean';
+      if(m<2)throw new Error('Cần ít nhất hai khái niệm.');
+      const owner=new Array(p).fill(-1);o.cons.forEach((c,j)=>{if(!c.idx.length)throw new Error(`Khái niệm ${c.name} chưa có biến quan sát.`);c.idx.forEach(k=>{if(owner[k]>=0)throw new Error(`Biến ${o.items[k]} thuộc hai khái niệm.`);owner[k]=j})});
+      if(owner.some(v=>v<0))throw new Error('Có biến quan sát không thuộc khái niệm nào.');
+      const pred=Array.from({length:m},()=>[]),succ=Array.from({length:m},()=>[]),paths=[],seen=new Set();
+      for(const [f,t,s] of o.paths){if(f===t)throw new Error(`Đường ${o.cons[f].name} → ${o.cons[f].name} trỏ vào chính nó.`);const k=f+'>'+t;if(seen.has(k))continue;
+        if(seen.has(t+'>'+f))throw new Error(`Có cả ${o.cons[f].name} → ${o.cons[t].name} và chiều ngược lại; PLS-SEM chỉ ước lượng mô hình đệ quy (không vòng lặp).`);
+        seen.add(k);paths.push({from:f,to:t,sign:s<0?-1:1});pred[t].push(f);succ[f].push(t)}
+      // Recursive (acyclic) model: topological order by Kahn's algorithm.
+      const indeg=pred.map(a=>a.length),order=[],q=[];indeg.forEach((d,j)=>{if(!d)q.push(j)});
+      while(q.length){const j=q.shift();order.push(j);for(const t of succ[j])if(!--indeg[t])q.push(t)}
+      if(order.length<m)throw new Error('Mô hình cấu trúc có vòng lặp (A → B → … → A). PLS-SEM chỉ ước lượng mô hình đệ quy.');
+      const lonely=o.cons.filter((c,j)=>!pred[j].length&&!succ[j].length).map(c=>c.name);
+      if(lonely.length)throw new Error(`Khái niệm ${lonely.join(', ')} chưa nối với khái niệm nào. Thêm đường dẫn hoặc bỏ khái niệm khỏi mô hình.`);
+      // Missing values: listwise deletion, or replacement by the indicator mean (the SmartPLS and seminr default).
+      let keep=[],nImp=0;
+      for(let i=0;i<N;i++){let ok=true;for(let k=0;k<p;k++)if(!Number.isFinite(cols[k][i])){ok=false;break}if(ok||miss==='mean')keep.push(i)}
+      const n=keep.length;if(n<10)throw new Error(`Chỉ còn ${n} phiếu đủ dữ liệu.`);
+      const Z=new Float64Array(n*p),mu=new Float64Array(p),sd=new Float64Array(p);
+      for(let k=0;k<p;k++){let s=0,c=0;for(const i of keep){const v=cols[k][i];if(Number.isFinite(v)){s+=v;c++}}if(!c)throw new Error(`Biến ${o.items[k]} không có giá trị số.`);const mk=s/c;
+        let ss=0;keep.forEach((i,r)=>{let v=cols[k][i];if(!Number.isFinite(v)){v=mk;nImp++}Z[r*p+k]=v;ss+=(v-mk)*(v-mk)});
+        const sk=Math.sqrt(ss/(n-1));if(!(sk>1e-12))throw new Error(`Biến ${o.items[k]} không biến thiên (mọi phiếu cùng một giá trị).`);
+        mu[k]=mk;sd[k]=sk;for(let r=0;r<n;r++)Z[r*p+k]=(Z[r*p+k]-mk)/sk}
+      const endo=order.filter(j=>pred[j].length);
+      // Every causal chain of length ≥ 2 (specific indirect effects), found by depth-first search.
+      const chains=[];const dfs=path=>{const last=path[path.length-1];if(path.length>=3)chains.push(path.slice());if(chains.length>500)return;for(const t of succ[last])dfs([...path,t])};
+      for(let j=0;j<m;j++)dfs([j]);
+      const pairs=[];for(const a of order)for(const b of order)if(a!==b&&chains.some(c=>c[0]===a&&c[c.length-1]===b))pairs.push([a,b]);
+      const reach=[];for(const a of order)for(const b of order)if(a!==b&&(seen.has(a+'>'+b)||pairs.some(x=>x[0]===a&&x[1]===b)))reach.push([a,b]);
+      return {n,N,nDropped:N-n,nImputed:nImp,missing:miss,p,m,Z,mu,sd,items:o.items.slice(),names:o.cons.map(c=>c.name),blk:o.cons.map(c=>c.idx.slice()),
+        mode:o.cons.map(c=>c.mode==='B'&&c.idx.length>1?'B':'A'),pred,succ,paths,order,endo,chains:chains.slice(0,500),pairs,reach,owner}}
+
+    // Correlation matrix of the rows of Z (row-major n × p) with multiplicities w (null = every row once).
+    function corrOf(Z,n,p,w){const G=new Float64Array(n*p),c=new Float64Array(n),s=new Float64Array(p),S=new Float64Array(p*p);let r=0,tot=0;
+      for(let i=0;i<n;i++){const ci=w?w[i]:1;if(!ci)continue;c[r]=ci;tot+=ci;const o=i*p;for(let k=0;k<p;k++){const v=Z[o+k];G[k*n+r]=v;s[k]+=ci*v}r++}
+      for(let k=0;k<p;k++)s[k]/=tot;
+      // Centred weighted cross-products over the r distinct rows, column by column (contiguous memory).
+      for(let k=0;k<p;k++){const ok=k*n,mk=s[k];for(let i=0;i<r;i++)G[ok+i]-=mk}
+      const v=new Float64Array(p);
+      for(let k=0;k<p;k++){const ok=k*n;for(let l=k;l<p;l++){const ol=l*n;let a=0;for(let i=0;i<r;i++)a+=c[i]*G[ok+i]*G[ol+i];S[k*p+l]=a}v[k]=S[k*p+k];if(!(v[k]>1e-12*tot))return null}
+      for(let k=0;k<p;k++){S[k*p+k]=1;for(let l=k+1;l<p;l++){const x=S[k*p+l]/Math.sqrt(v[k]*v[l]);S[k*p+l]=S[l*p+k]=x}}
+      return S}
+
+    // The PLS algorithm on a correlation matrix S. W0: starting outer weights (default 1 for every indicator).
+    function core(S,pr,W0,maxIt=300,tol=1e-7){
+      const {p,m,blk,mode,pred,succ}=pr;
+      const norm=(w,j)=>{const b=blk[j];let v=0;for(let a=0;a<b.length;a++)for(let c=0;c<b.length;c++)v+=w[a]*w[c]*S[b[a]*p+b[c]];const s=Math.sqrt(v);for(let a=0;a<b.length;a++)w[a]/=s;return s>0};
+      const inv=blk.map((b,j)=>mode[j]==='B'?inverse(sub(S,p,b,b)):null);if(inv.some((v,j)=>mode[j]==='B'&&!v))return null;
+      let W=blk.map((b,j)=>W0?Float64Array.from(W0[j]):new Float64Array(b.length).fill(1));for(let j=0;j<m;j++)if(!norm(W[j],j))return null;
+      const SW=new Float64Array(p*m),C=Array.from({length:m},()=>new Float64Array(m));
+      const scores=()=>{for(let k=0;k<p;k++)for(let j=0;j<m;j++){const b=blk[j],w=W[j];let s=0;for(let a=0;a<b.length;a++)s+=S[k*p+b[a]]*w[a];SW[k*m+j]=s}
+        for(let i=0;i<m;i++)for(let j=0;j<m;j++){const b=blk[i],w=W[i];let s=0;for(let a=0;a<b.length;a++)s+=w[a]*SW[b[a]*m+j];C[i][j]=s}};
+      let it=0,diff=Infinity,conv=false;
+      for(it=1;it<=maxIt;it++){scores();const Wn=[];
+        for(let j=0;j<m;j++){const e=new Float64Array(m);for(const i of succ[j])e[i]=C[i][j];
+          const P=pred[j];if(P.length){const bb=solve(P.map(a=>P.map(c=>C[a][c])),P.map(a=>C[a][j]));if(!bb)return null;P.forEach((a,t)=>e[a]=bb[t])}
+          const b=blk[j],c=new Float64Array(b.length);for(let t=0;t<b.length;t++){let s=0;for(let i=0;i<m;i++)if(e[i])s+=e[i]*SW[b[t]*m+i];c[t]=s}
+          let w=c;if(mode[j]==='B'){const M=inv[j];w=new Float64Array(b.length);for(let a=0;a<b.length;a++){let s=0;for(let t=0;t<b.length;t++)s+=M[a][t]*c[t];w[a]=s}}
+          if(!norm(w,j))return null;Wn.push(w)}
+        diff=0;for(let j=0;j<m;j++)for(let a=0;a<Wn[j].length;a++)diff+=Math.abs(Wn[j][a]-W[j][a]);W=Wn;
+        if(diff<tol){conv=true;break}}
+      scores();return {W,SW,C:C.map(r=>Array.from(r)),iter:Math.min(it,maxIt),conv,diff}}
+
+    // Structural model from the construct correlations C: OLS of each endogenous construct on its predecessors.
+    function structural(C,pr,full){const {m,pred,endo}=pr,B=Array.from({length:m},()=>new Array(m).fill(0)),eq={};
+      const fit=(j,P)=>{if(!P.length)return {b:[],r2:0};const b=solve(P.map(a=>P.map(c=>C[a][c])),P.map(a=>C[a][j]));if(!b)return null;let r2=0;P.forEach((a,t)=>r2+=b[t]*C[a][j]);return {b,r2}};
+      for(const j of endo){const P=pred[j],f=fit(j,P);if(!f)return null;P.forEach((a,t)=>B[a][j]=f.b[t]);eq[j]={pred:P,b:f.b,r2:f.r2};
+        if(full){const k=P.length,n=pr.n;eq[j].r2adj=1-(1-f.r2)*(n-1)/(n-k-1);
+          eq[j].f2=P.map(a=>{const g=fit(j,P.filter(x=>x!==a));return (f.r2-g.r2)/(1-f.r2)});
+          const Ci=k>1?inverse(P.map(a=>P.map(c=>C[a][c]))):[[1]];eq[j].vif=P.map((_,t)=>Ci?Ci[t][t]:NaN)}}
+      return {B,eq}}
+    // Specific indirect effects (one per causal chain), total indirect and total effects from the path matrix B.
+    function effects(B,pr){const spec=pr.chains.map(c=>{let v=1;for(let t=0;t+1<c.length;t++)v*=B[c[t]][c[t+1]];return v}),ti={},te={};
+      pr.chains.forEach((c,i)=>{const k=c[0]+'>'+c[c.length-1];ti[k]=(ti[k]||0)+spec[i]});
+      for(const [a,b] of pr.reach){const k=a+'>'+b;te[k]=B[a][b]+(ti[k]||0)}return {spec,ti,te}}
+    // HTMT (Henseler et al., 2015; absolute correlations, as SmartPLS and seminr) for every pair of reflective constructs with at least two indicators.
+    const htmtPairs=pr=>{const ok=pr.blk.map((b,j)=>pr.mode[j]==='A'&&b.length>1),out=[];for(let i=0;i<pr.m;i++)for(let j=i+1;j<pr.m;j++)if(ok[i]&&ok[j])out.push([i,j]);return out};
+    function htmt(S,pr){const p=pr.p,mono=b=>{let s=0,c=0;for(let a=0;a<b.length;a++)for(let d=a+1;d<b.length;d++){s+=Math.abs(S[b[a]*p+b[d]]);c++}return s/c},mo=pr.blk.map(b=>b.length>1?mono(b):NaN),out={};
+      for(const [i,j] of htmtPairs(pr)){let s=0;for(const a of pr.blk[i])for(const d of pr.blk[j])s+=Math.abs(S[a*p+d]);out[i+','+j]=(s/(pr.blk[i].length*pr.blk[j].length))/Math.sqrt(mo[i]*mo[j])}return out}
+
+    // Full-sample estimation.
+    function estimate(pr,opt={}){const {p,m,blk,mode}=pr,S=corrOf(pr.Z,pr.n,p,null);if(!S)throw new Error('Có biến quan sát không biến thiên.');
+      const cr=core(S,pr,null,opt.maxIt||300,opt.tol||1e-7);if(!cr)throw new Error('Không ước lượng được mô hình: các biến của một khái niệm cấu tạo (formative) trùng nhau hoặc phụ thuộc tuyến tính, hoặc các khái niệm dự báo trùng nhau.');
+      const st=structural(cr.C,pr,true);if(!st)throw new Error('Không ước lượng được mô hình cấu trúc: hai khái niệm dự báo tương quan hoàn toàn.');
+      const load=new Float64Array(p),weight=new Float64Array(p),ovif=new Float64Array(p).fill(NaN);
+      blk.forEach((b,j)=>{b.forEach((k,a)=>{load[k]=cr.SW[k*m+j];weight[k]=cr.W[j][a]});
+        if(b.length>1){const Si=inverse(sub(S,p,b,b));b.forEach((k,a)=>ovif[k]=Si?Si[a][a]:Infinity)}else ovif[b[0]]=1});
+      const rel=blk.map((b,j)=>{if(mode[j]==='B'||b.length<2)return null;const k=b.length,L=b.map(i=>load[i]),w=b.map(i=>weight[i]);
+        let tot=0;for(const a of b)for(const c of b)tot+=S[a*p+c];const alpha=k/(k-1)*(1-k/tot);
+        const sl=L.reduce((s,v)=>s+v,0),se=L.reduce((s,v)=>s+1-v*v,0),rhoC=sl*sl/(sl*sl+se),ave=L.reduce((s,v)=>s+v*v,0)/k;
+        // ρA (Dijkstra & Henseler, 2015): (w'w)² · w'(S − diag S)w / w'(ww' − diag ww')w.
+        let ww=0,num=0,den=0;for(let a=0;a<k;a++)ww+=w[a]*w[a];
+        for(let a=0;a<k;a++)for(let c=0;c<k;c++)if(a!==c){num+=w[a]*w[c]*S[b[a]*p+b[c]];den+=w[a]*w[c]*w[a]*w[c]}
+        return {alpha,rhoA:ww*ww*num/den,rhoC,ave}});
+      const ef=effects(st.B,pr);
+      const scores=new Float64Array(pr.n*m);for(let i=0;i<pr.n;i++)for(let j=0;j<m;j++){let s=0;blk[j].forEach((k,a)=>s+=pr.Z[i*p+k]*cr.W[j][a]);scores[i*m+j]=s}
+      return {S,iter:cr.iter,conv:cr.conv,diff:cr.diff,W:cr.W,C:cr.C,cross:cr.SW,load,weight,ovif,rel,B:st.B,eq:st.eq,...ef,htmt:htmt(S,pr),scores}}
+
+    // Statistics that are bootstrapped, in a fixed order.
+    // Loadings and weights of single-item constructs are 1 in every resample, so they are left out.
+    const multi=pr=>{const o=[];for(let i=0;i<pr.p;i++)if(pr.blk[pr.owner[i]].length>1)o.push(i);return o};
+    function statKeys(pr){const k=[],mi=multi(pr);pr.paths.forEach(x=>k.push('p:'+x.from+'>'+x.to));mi.forEach(i=>k.push('l:'+i));mi.forEach(i=>k.push('w:'+i));
+      pr.endo.forEach(j=>k.push('r2:'+j));pr.pairs.forEach(([a,b])=>k.push('ti:'+a+'>'+b));pr.chains.forEach((_,i)=>k.push('si:'+i));pr.reach.forEach(([a,b])=>k.push('te:'+a+'>'+b));
+      htmtPairs(pr).forEach(([i,j])=>k.push('h:'+i+','+j));return k}
+    function statsOf(S,pr,W0){const cr=core(S,pr,W0);if(!cr||!cr.conv)return null;const st=structural(cr.C,pr,false);if(!st)return null;const ef=effects(st.B,pr),h=htmt(S,pr),v=[];
+      const mi=multi(pr);pr.paths.forEach(x=>v.push(st.B[x.from][x.to]));mi.forEach(i=>v.push(cr.SW[i*pr.m+pr.owner[i]]));
+      mi.forEach(i=>{const j=pr.owner[i];v.push(cr.W[j][pr.blk[j].indexOf(i)])})
+      pr.endo.forEach(j=>v.push(st.eq[j].r2));pr.pairs.forEach(([a,b])=>v.push(ef.ti[a+'>'+b]));ef.spec.forEach(x=>v.push(x));pr.reach.forEach(([a,b])=>v.push(ef.te[a+'>'+b]));
+      htmtPairs(pr).forEach(([i,j])=>v.push(h[i+','+j]));return v}
+
+    // Bootstrap: B resamples of the rows with replacement (mulberry32 stream: idx = ⌊u·n⌋), PLS re-run from the full-sample
+    // weights; resamples that do not converge in 300 iterations or are singular are redrawn and counted.
+    // conf: two-sided confidence level. bca: also bias-corrected and accelerated intervals (Efron, 1987; jackknife acceleration).
+    // Split into start / step / finish so the page can run it in slices when Web Workers are unavailable.
+    function bootStart(pr,est,B,seed,o={}){const keys=statKeys(pr);return {pr,W0:est.W,theta:statsOf(est.S,pr,est.W),keys,draws:keys.map(()=>new Float64Array(B)),B,seed,o,b:0,redraw:0,rnd:mulberry32(seed>>>0),w:new Int32Array(pr.n)}}
+    function bootStep(s,count){const {pr,W0,draws,w,rnd}=s,n=pr.n,K=s.keys.length,end=Math.min(s.B,s.b+count);
+      while(s.b<end){w.fill(0);for(let i=0;i<n;i++)w[Math.floor(rnd()*n)]++;
+        const S=corrOf(pr.Z,n,pr.p,w),v=S?statsOf(S,pr,W0):null;
+        if(!v||v.some(x=>!Number.isFinite(x))){if(++s.redraw>s.B)throw new Error('Quá nhiều mẫu bootstrap không ước lượng được (dữ liệu quá ít hoặc biến gần như hằng số).');continue}
+        for(let j=0;j<K;j++)draws[j][s.b]=v[j];s.b++}
+      return s.b>=s.B}
+    function bootFinish(s){const {pr,W0,keys,draws,theta,B,o}=s,K=keys.length,n=pr.n,conf=o.conf||0.95,al=(1-conf)/2;let acc=null;
+      if(o.bca){// Jackknife: leave each row out once.
+        acc=new Float64Array(K);const jk=keys.map(()=>new Float64Array(n)),wj=new Int32Array(n).fill(1);
+        for(let i=0;i<n;i++){wj[i]=0;const S=corrOf(pr.Z,n,pr.p,wj),v=S?statsOf(S,pr,W0):null;wj[i]=1;if(!v){acc=null;break}for(let j=0;j<K;j++)jk[j][i]=v[j]}
+        if(acc)for(let j=0;j<K;j++){let mb=0;for(let i=0;i<n;i++)mb+=jk[j][i];mb/=n;let s2=0,s3=0;for(let i=0;i<n;i++){const d=mb-jk[j][i];s2+=d*d;s3+=d*d*d}acc[j]=s2>0?s3/(6*Math.pow(s2,1.5)):0}}
+      const stats={};
+      keys.forEach((k,j)=>{const d=draws[j],srt=Float64Array.from(d).sort(),se=sdOf(d);let mean=0;for(let b=0;b<B;b++)mean+=d[b];mean/=B;
+        const t=Math.abs(theta[j])/se,r={est:theta[j],mean,se,t,p:tP(t,B-1),lo:quantile(srt,al),hi:quantile(srt,1-al),q95:quantile(srt,0.95)};
+        if(acc){let below=0;for(let b=0;b<B;b++)if(d[b]<theta[j])below++;const z0=qnorm(below/B),a=acc[j],za=qnorm(al),
+            adj=z=>pnorm(z0+(z0+z)/(1-a*(z0+z)));r.z0=z0;r.a=a;
+          if(Number.isFinite(z0)){r.bcLo=quantile(srt,adj(za));r.bcHi=quantile(srt,adj(-za))}else{r.bcLo=NaN;r.bcHi=NaN}}
+        stats[k]=r});
+      return {B,seed:s.seed,redraw:s.redraw,conf,bca:!!acc,stats}}
+    function bootstrap(pr,est,B,seed,o={},onProgress){const s=bootStart(pr,est,B,seed,o);while(!bootStep(s,100))if(onProgress)onProgress(s.b/B);return bootFinish(s)}
+
+    // Q² by blindfolding (Stone, 1974; Geisser, 1974): construct cross-validated redundancy for each reflective endogenous
+    // construct. Data points of its indicators are numbered case by case (case 1: items 1…K, case 2: …); in round d every
+    // D-th point starting at d is omitted and replaced by the mean of the remaining values, the model is re-estimated,
+    // and each omitted point is predicted by loading × (Σ path × predecessor score). Q² = 1 − ΣSSE / ΣSSO.
+    function blindfold(pr,D=7){const {n,p,m,blk,pred}=pr,out={};
+      for(const j of pr.endo){if(pr.mode[j]!=='A')continue;const b=blk[j],K=b.length;let sse=0,sso=0,ok=true;
+        for(let d=0;d<D&&ok;d++){const Zd=Float64Array.from(pr.Z),om=(i,t)=>(i*K+t)%D===d,cm=new Float64Array(K),cs=new Float64Array(K);
+          b.forEach((k,t)=>{let s=0,c=0;for(let i=0;i<n;i++)if(!om(i,t)){s+=pr.Z[i*p+k];c++}const mk=s/c;for(let i=0;i<n;i++)if(om(i,t))Zd[i*p+k]=mk;
+            let mm=0;for(let i=0;i<n;i++)mm+=Zd[i*p+k];mm/=n;let ss=0;for(let i=0;i<n;i++)ss+=(Zd[i*p+k]-mm)**2;const sk=Math.sqrt(ss/(n-1));cm[t]=mm;cs[t]=sk;
+            for(let i=0;i<n;i++)Zd[i*p+k]=(Zd[i*p+k]-mm)/sk});
+          const S=corrOf(Zd,n,p,null),cr=S?core(S,pr,null):null,st=cr?structural(cr.C,pr,false):null;if(!st){ok=false;break}
+          const P=pred[j],bj=st.eq[j].b;
+          for(let i=0;i<n;i++){let yh=0;P.forEach((a,t)=>{let s=0;blk[a].forEach((k,u)=>s+=Zd[i*p+k]*cr.W[a][u]);yh+=bj[t]*s});
+            b.forEach((k,t)=>{if(!om(i,t))return;const x=cr.SW[k*m+j]*yh*cs[t]+cm[t],z=pr.Z[i*p+k];sse+=(z-x)**2;sso+=z*z})}}
+        out[j]=ok?{q2:1-sse/sso,sse,sso}:null}
+      return out}
+
+    return {tP,pnorm,qnorm,mulberry32,quantile,solve,inverse,prepare,corrOf,core,structural,effects,htmt,htmtPairs,estimate,statKeys,statsOf,bootStart,bootStep,bootFinish,bootstrap,blindfold}
+  }
+  //#pls-end
+
+  //#data-start
+  // ---- reading files (same conventions as the survey analysis tool) ----
+  const normText=s=>String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();
+  function parseCSV(text){
+    text=String(text).replace(/^﻿/,'');
+    let first='';{let q=false,start=0;for(let i=0;i<=text.length;i++){const c=text[i];if(c==='"')q=!q;else if(!q&&(c==='\n'||i===text.length)){const l=text.slice(start,i);if(l.trim()){first=l;break}start=i+1}}}
+    const count=ch=>{let q=false,n=0;for(const c of first){if(c==='"')q=!q;else if(!q&&c===ch)n++}return n};
+    const d=count('\t')>0?'\t':count(';')>count(',')?';':',';
+    const rows=[];let row=[],f='',q=false,quoted=false;
+    for(let i=0;i<text.length;i++){const c=text[i];
+      if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c;continue}
+      if(c==='"'&&!quoted&&f.trim()===''){q=true;quoted=true;f='';continue}
+      if(c===d){row.push(f);f='';quoted=false;continue}
+      if(c==='\r')continue;
+      if(c==='\n'){row.push(f);rows.push(row);row=[];f='';quoted=false;continue}
+      f+=c}
+    if(f!==''||row.length){row.push(f);rows.push(row)}
+    return rows.map(r=>r.map(v=>v.trim())).filter(r=>r.some(v=>v!==''));
+  }
+  // The variable code in a header: "CL1", "CL1. Nhân viên…", "Mức độ đồng ý [CL1. …]" (Google Forms grid), "… (CL1)".
+  function extractCode(h){
+    const s=String(h==null?'':h).normalize('NFC').replace(/\s+/g,' ').trim();
+    if(/^[\p{L}][\p{L}\p{N}_.]*$/u.test(s))return s;
+    let m=s.match(/\[\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)\]–-]/u);if(m)return m[1];
+    m=s.match(/^([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)–-]\s*\S/u);if(m)return m[1];
+    m=s.match(/[[(]\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[\])]\s*$/u);if(m)return m[1];
+    return s;
+  }
+  const ITEM_RE=/^([\p{L}][\p{L}\p{N}_.]*?)[_.]?(\d+)$/u;
+  const groupOf=c=>{const m=String(c).match(ITEM_RE);return m?m[1].replace(/[_.]+$/,'').toLocaleUpperCase('vi'):null};
+  const isNumStr=s=>/^[-+]?\d+(?:[.,]\d+)?$/.test(s);
+  function pickHeaderRow(raw){let best=0,bs=-Infinity;for(let r=0;r<Math.min(6,raw.length);r++){const cells=raw[r].map(v=>String(v==null?'':v).trim()).filter(Boolean);if(!cells.length)continue;
+      const codes=cells.filter(v=>groupOf(extractCode(v))).length,text=cells.filter(v=>!isNumStr(v)).length,score=codes*2+text-(cells.length-text)*3;if(score>bs){bs=score;best=r}}return best}
+  function buildTable(raw,hi){const head=(raw[hi]||[]).map(v=>String(v==null?'':v).trim());let width=head.length;for(let r=hi+1;r<Math.min(raw.length,hi+50);r++)width=Math.max(width,raw[r].length);
+    const header=[],seen=new Map();
+    for(let j=0;j<width;j++){const orig=head[j]||'';let c=orig?extractCode(orig):`Cột ${j+1}`;const k=c.toLowerCase();if(seen.has(k)){seen.set(k,seen.get(k)+1);c=`${c}_dup${seen.get(k)}`}else seen.set(k,1);header.push(c)}
+    const rows=[];for(let r=hi+1;r<raw.length;r++){const x=raw[r];if(!x||!x.some(v=>String(v==null?'':v).trim()!==''))continue;const row=new Array(width);for(let j=0;j<width;j++)row[j]=x[j]==null?'':x[j];rows.push(row)}
+    return {header,rows}}
+  const LIKERT=new Map([['hoan toan khong dong y',1],['rat khong dong y',1],['khong dong y',2],['trung lap',3],['binh thuong',3],['phan van',3],['khong y kien',3],['trung dung',3],
+    ['khong dong y cung khong phan doi',3],['dong y',4],['hoan toan dong y',5],['rat dong y',5],
+    ['strongly disagree',1],['disagree',2],['neutral',3],['neither agree nor disagree',3],['agree',4],['strongly agree',5]]);
+  function toNum(v){if(typeof v==='number')return Number.isFinite(v)?v:NaN;const s=String(v==null?'':v).trim();if(!s)return NaN;if(isNumStr(s))return parseFloat(s.replace(',','.'));
+    const m=s.match(/^(\d+)\s*[-–—:.)=]\s*\p{L}/u);return m?+m[1]:NaN}
+  const likertNum=v=>{const x=toNum(v);if(!Number.isNaN(x))return x;return LIKERT.get(normText(v))||NaN};
+  const parseGroups=text=>String(text).split('\n').map(l=>{const i=l.indexOf(':');return i<0?null:[l.slice(0,i),l.slice(i+1)]}).filter(Boolean)
+    .map(([g,v])=>({code:g.trim(),items:v.trim().split(/[\s,;]+/).filter(Boolean)})).filter(g=>g.code&&g.items.length);
+  function suggestGroups(header){const g={};header.forEach(h=>{const k=groupOf(h);if(k)(g[k]=g[k]||[]).push(h)});return Object.entries(g).filter(([,it])=>it.length>=2).map(([code,items])=>({code,items}))}
+  const codeList=s=>String(s||'').split(/[\s,;]+/).filter(Boolean);
+  // Engine input from the table: indicator columns (NaN = blank or not a number), constructs with their mode.
+  function buildInput(tbl,groups,rev,lo,hi,formative){const H=tbl.header,ix=new Map(H.map((h,j)=>[h,j])),low=new Map(H.map((h,j)=>[h.toLowerCase(),j])),notes=[],errors=[];
+    const find=h=>ix.has(h)?ix.get(h):low.has(h.toLowerCase())?low.get(h.toLowerCase()):-1;
+    const revSet=new Set(codeList(rev).map(s=>s.toLowerCase())),fSet=new Set(codeList(formative).map(s=>s.toUpperCase())),cols=[],items=[],cons=[],used=new Set(),names=new Set();
+    for(const g of groups){const key=g.code.toUpperCase();if(names.has(key)){errors.push(`Khái niệm ${g.code} được khai báo hai lần.`);continue}names.add(key);
+      const idx=[];for(const it of g.items){const j=find(it);if(j<0){errors.push(`Khái niệm ${g.code}: không tìm thấy cột ${it}.`);continue}
+        if(used.has(j)){errors.push(`Biến ${H[j]} được xếp vào hai khái niệm.`);continue}used.add(j);
+        const flip=revSet.has(H[j].toLowerCase());let bad=0;
+        const v=Float64Array.from(tbl.rows,r=>{const x=likertNum(r[j]);if(!Number.isFinite(x)){if(String(r[j]==null?'':r[j]).trim()!=='')bad++;return NaN}return flip?lo+hi-x:x});
+        if(bad)notes.push(`Cột ${H[j]}: ${bad} ô không phải số, được coi là giá trị thiếu.`);
+        idx.push(cols.length);cols.push(v);items.push(H[j])}
+      if(idx.length)cons.push({name:g.code,idx,mode:fSet.has(key)?'B':'A'})}
+    [...fSet].filter(c=>!names.has(c)).forEach(c=>errors.push(`Khái niệm cấu tạo ${c} không có trong mô hình đo lường.`));
+    cons.filter(c=>c.mode==='B'&&c.idx.length<2).forEach(c=>notes.push(`Khái niệm ${c.name} chỉ có một biến nên được ước lượng như khái niệm một biến.`));
+    return {cols,items,cons,notes,errors}}
+  // Structural paths: "X -> Y", "X, Z -> Y", "X → Y (-)"; names matched to the constructs without regard to case.
+  function parsePaths(text,names){const map=new Map(names.map((n,i)=>[n.toUpperCase(),i])),paths=[],errors=[],seen=new Set();
+    String(text).split('\n').forEach((line,li)=>{const l=line.replace(/#m=[\w-]+/,'').trim();if(!l||/^(\/\/|#)/.test(l))return;
+      const neg=/\(\s*[-−–]\s*\)\s*$/.test(l),body=l.replace(/\(\s*[-−–+]\s*\)\s*$/,''),parts=body.split(/\s*(?:->|→|=>|>)\s*/);
+      if(parts.length<2){errors.push(`Dòng ${li+1} “${l}” chưa có mũi tên (->).`);return}
+      for(let s=0;s+1<parts.length;s++){const A=codeList(parts[s]),Bs=codeList(parts[s+1]);
+        for(const a of A)for(const b of Bs){const ia=map.get(a.toUpperCase()),ib=map.get(b.toUpperCase());
+          if(ia==null||ib==null){errors.push(`Dòng ${li+1}: không có khái niệm ${[ia==null?a:null,ib==null?b:null].filter(Boolean).join(', ')} trong mô hình đo lường.`);continue}
+          const k=ia+'>'+ib;if(seen.has(k))continue;seen.add(k);paths.push([ia,ib,neg?-1:1])}}});
+    return {paths,errors}}
+  // Model from the drawing tool (/cong-cu/ve-mo-hinh/): its compact JSON {n:[[id, name, …]], e:[[from, to, −1?]], mo:[…]}.
+  function fromDrawing(json,names){const o=typeof json==='string'?JSON.parse(json):json,map=new Map(names.map(n=>[n.toUpperCase(),n])),notes=[];
+    const nodes=(Array.isArray(o&&o.n)?o.n:[]).filter(Array.isArray),code=new Map(),miss=[];
+    for(const a of nodes){const [id,name,,, ,ext]=a;if(ext&&typeof ext==='object'&&ext.h){notes.push(`Khái niệm bậc hai ${name} chưa được hỗ trợ; khai báo các khái niệm thành phần trực tiếp.`);continue}
+      const hit=map.get(String(id).toUpperCase())||map.get(String(name).toUpperCase());if(hit)code.set(String(id),hit);else miss.push(`${name} (${id})`)}
+    if(miss.length)notes.push(`Chưa khớp với cột dữ liệu: ${miss.join(', ')}. Đặt mã khái niệm ở mục 2 trùng với mã trong sơ đồ.`);
+    if(Array.isArray(o&&o.mo)&&o.mo.length)notes.push('Sơ đồ có biến điều tiết; công cụ này chưa ước lượng tương tác, dùng công cụ trung gian và điều tiết cho phần đó.');
+    const lines=[];for(const e of Array.isArray(o&&o.e)?o.e:[]){if(!Array.isArray(e))continue;const a=code.get(String(e[0])),b=code.get(String(e[1]));if(a&&b)lines.push(`${a} -> ${b}${e[2]<0?' (-)':''}`)}
+    return {text:lines.join('\n'),notes,count:lines.length}}
+  const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
+
+  // Synthetic service-quality data (300 phiếu): CL → GT, CL → HL, GT → HL, HL → NT, HL → TT, NT → TT, CL → TT. Fixed seed, reproducible.
+  function sampleData(){let s=20261031;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,norm=()=>Math.sqrt(-2*Math.log(rnd()+1e-12))*Math.cos(2*Math.PI*rnd());
+    const lik=v=>Math.min(5,Math.max(1,Math.round(3.4+v))),rep=(k,f)=>Array.from({length:k},f),it=(l,x)=>lik(l*x+0.55*norm());
+    const head=['STT','GIOITINH',...rep(4,(_,i)=>'CL'+(i+1)),...rep(3,(_,i)=>'GT'+(i+1)),...rep(4,(_,i)=>'HL'+(i+1)),...rep(3,(_,i)=>'NT'+(i+1)),...rep(4,(_,i)=>'TT'+(i+1))],out=[head];
+    for(let i=1;i<=300;i++){const cl=norm(),gt=0.6*cl+0.75*norm(),hl=0.45*cl+0.35*gt+0.65*norm(),nt=0.65*hl+0.7*norm(),tt=0.1*cl+0.4*hl+0.35*nt+0.6*norm();
+      out.push([i,rnd()<0.55?'Nữ':'Nam',...[0.85,0.8,0.75,0.7].map(l=>it(l,cl)),...[0.8,0.75,0.8].map(l=>it(l,gt)),...[0.85,0.8,0.8,0.6].map(l=>it(l,hl)),...[0.8,0.85,0.75].map(l=>it(l,nt)),...[0.8,0.8,0.75,0.7].map(l=>it(l,tt))])}
+    return out}
+  const SAMPLE_PATHS='CL -> GT\nCL -> HL\nGT -> HL\nHL -> NT\nHL -> TT\nNT -> TT\nCL -> TT';
+  //#data-end
+
+  //#report-start
+  const fx=(x,dp)=>{if(!Number.isFinite(x))return '—';const s=Math.abs(x).toFixed(dp),[i,f]=s.split('.');return (x<0&&+s!==0?'−':'')+i.replace(/\B(?=(\d{3})+(?!\d))/g,'.')+(f?','+f:'')};
+  const f3=x=>fx(x,3),f2=x=>fx(x,2);
+  const pf=p=>!Number.isFinite(p)?'—':p<0.001?'&lt; 0,001':fx(p,3);
+  const escH=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const listVi=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' và '+a[a.length-1];
+  const T_MEAS='/nguong-chap-nhan/#pls-do-luong',T_STRUC='/nguong-chap-nhan/#pls-cau-truc';
+  // Every DOI was checked on api.crossref.org.
+  const REF={
+    cohen88:'Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em> (2nd ed.). Lawrence Erlbaum Associates. https://doi.org/10.4324/9780203771587',
+    dijkstra15:'Dijkstra, T. K., &amp; Henseler, J. (2015). Consistent partial least squares path modeling. <em>MIS Quarterly, 39</em>(2), 297–316. https://doi.org/10.25300/MISQ/2015/39.2.02',
+    efron87:'Efron, B. (1987). Better bootstrap confidence intervals. <em>Journal of the American Statistical Association, 82</em>(397), 171–185. https://doi.org/10.1080/01621459.1987.10478410',
+    fornell81:'Fornell, C., &amp; Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and measurement error. <em>Journal of Marketing Research, 18</em>(1), 39–50. https://doi.org/10.1177/002224378101800104',
+    geisser74:'Geisser, S. (1974). A predictive approach to the random effect model. <em>Biometrika, 61</em>(1), 101–107. https://doi.org/10.1093/biomet/61.1.101',
+    hair11:'Hair, J. F., Ringle, C. M., &amp; Sarstedt, M. (2011). PLS-SEM: Indeed a silver bullet. <em>Journal of Marketing Theory and Practice, 19</em>(2), 139–152. https://doi.org/10.2753/MTP1069-6679190202',
+    hair19:'Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203',
+    hair21:'Hair, J. F., Hult, G. T. M., Ringle, C. M., Sarstedt, M., Danks, N. P., &amp; Ray, S. (2021). <em>Partial least squares structural equation modeling (PLS-SEM) using R: A workbook</em>. Springer. https://doi.org/10.1007/978-3-030-80519-7',
+    hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
+    henseler15:'Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8',
+    lohmoller89:'Lohmöller, J.-B. (1989). <em>Latent variable path modeling with partial least squares</em>. Physica-Verlag. https://doi.org/10.1007/978-3-642-52512-4',
+    stone74:'Stone, M. (1974). Cross-validatory choice and assessment of statistical predictions. <em>Journal of the Royal Statistical Society: Series B (Methodological), 36</em>(2), 111–133. https://doi.org/10.1111/j.2517-6161.1974.tb00994.x',
+    streukens16:'Streukens, S., &amp; Leroi-Werelds, S. (2016). Bootstrapping and PLS-SEM: A step-by-step guide to get more out of your bootstrap results. <em>European Management Journal, 34</em>(6), 618–632. https://doi.org/10.1016/j.emj.2016.06.003',
+    zhao10:'Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. <em>Journal of Consumer Research, 37</em>(2), 197–206. https://doi.org/10.1086/651257',
+  };
+
+  // ---- path diagram (plain SVG, white background so it prints and pastes the same in light and dark themes) ----
+  function svgModel(pr,est,boot,alpha){const N=pr.names,depth=new Array(pr.m).fill(0);for(const j of pr.order)for(const t of pr.succ[j])depth[t]=Math.max(depth[t],depth[j]+1);
+    const cols=[];pr.order.forEach(j=>{(cols[depth[j]]=cols[depth[j]]||[]).push(j)});const BW=128,BH=52,GX=110,GY=44,nc=cols.length,maxR=Math.max(...cols.map(c=>c.length));
+    const W=40+nc*BW+(nc-1)*GX,H=Math.max(260,40+maxR*BH+(maxR-1)*GY),pos={};
+    cols.forEach((c,ci)=>{const tot=c.length*BH+(c.length-1)*GY,y0=(H-tot)/2;c.forEach((j,r)=>pos[j]={x:20+ci*(BW+GX),y:y0+r*(BH+GY)})});
+    let s=`<rect width="${W}" height="${H}" fill="#fff"/><defs><marker id="ps-ar" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#222"/></marker></defs>`;
+    const edge=(a,b)=>{const A=pos[a],Bp=pos[b],ax=A.x+BW/2,ay=A.y+BH/2,bx=Bp.x+BW/2,by=Bp.y+BH/2,dx=bx-ax,dy=by-ay;
+      const clip=(x,y,ux,uy)=>{const tx=ux?(BW/2)/Math.abs(ux):Infinity,ty=uy?(BH/2)/Math.abs(uy):Infinity,t=Math.min(tx,ty);return [x+ux*t,y+uy*t]};
+      const L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,[x1,y1]=clip(ax,ay,ux,uy),[x2,y2]=clip(bx,by,-ux,-uy);return {x1,y1,x2,y2,mx:(x1+x2)/2,my:(y1+y2)/2,ux,uy}};
+    pr.paths.forEach(p=>{const e=edge(p.from,p.to),b=est.B[p.from][p.to],st=boot&&boot.stats['p:'+p.from+'>'+p.to],sig=st?st.p<alpha:true;
+      s+=`<line x1="${e.x1.toFixed(1)}" y1="${e.y1.toFixed(1)}" x2="${e.x2.toFixed(1)}" y2="${e.y2.toFixed(1)}" stroke="#222" stroke-width="1.6"${sig?'':' stroke-dasharray="5 4"'} marker-end="url(#ps-ar)"/>`;
+      const ox=-e.uy*11,oy=e.ux*11;s+=`<text x="${(e.mx+ox).toFixed(1)}" y="${(e.my+oy+4).toFixed(1)}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222" paint-order="stroke" stroke="#fff" stroke-width="4">${f3(b)}${st?(st.p<0.001?'***':st.p<0.01?'**':st.p<0.05?'*':''):''}</text>`});
+    pr.order.forEach(j=>{const P=pos[j],r2=est.eq[j]?est.eq[j].r2:null;
+      s+=`<rect x="${P.x}" y="${P.y}" width="${BW}" height="${BH}" rx="${pr.mode[j]==='B'?2:24}" fill="#fff" stroke="#222" stroke-width="1.5"/><text x="${P.x+BW/2}" y="${P.y+(r2==null?BH/2+5:BH/2-2)}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#222">${escH(N[j])}</text>`;
+      if(r2!=null)s+=`<text x="${P.x+BW/2}" y="${P.y+BH/2+15}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222">R² = ${f3(r2)}</text>`});
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Sơ đồ kết quả mô hình cấu trúc">${s}</svg>`}
+
+  // ---- chapter 4 text: pure, returns {html, warnings, figs} ----
+  // boot may be null (no bootstrap or not finished yet); q2 from blindfold(); opt: {sec, tab, fig, conf, ci: 'perc'|'bca', D}.
+  function report(pr,est,boot,q2,opt){
+    const N=pr.names,I=pr.items,W=[],refs=new Set(['hair22','hair19','lohmoller89']),figs=[],conf=boot?boot.conf:(opt.conf||0.95),cp=Math.round(conf*100),alpha=1-conf;
+    let tno=(opt.tab||1)-1,fno=(opt.fig||1)-1,html='',sub=0;const E=escH,nm=j=>E(N[j]);
+    const tbl=(cap,head,body,note)=>`<div class="table-wrap"><table><caption>Bảng 4.${++tno}. ${cap}</caption><thead><tr>${head.map((h,i)=>Array.isArray(h)?`<th class="${h[1]}">${h[0]}</th>`:`<th${i?'':' class="l"'}>${h}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table></div>${note?`<p class="note">${note}</p>`:''}`;
+    const tr=cells=>`<tr>${cells.map(c=>Array.isArray(c)?`<td class="${c[1]}">${c[0]}</td>`:`<td>${c}</td>`).join('')}</tr>`;
+    const lastTab=()=>`Bảng 4.${tno}`;
+    const sec=t=>`<h3>${E(opt.sec||'4.x')}.${++sub}. ${t}</h3>`;
+    const bca=!!(boot&&boot.bca&&opt.ci==='bca'),ciName=bca?'BCa':'percentile';
+    const st=k=>boot?boot.stats[k]:null,lo=s=>bca?s.bcLo:s.lo,hi=s=>bca?s.bcHi:s.hi,ci=s=>s?`[${f3(lo(s))}; ${f3(hi(s))}]`:'—';
+    const isSig=s=>!!s&&s.p<alpha&&(lo(s)>0||hi(s)<0);
+    const refl=pr.blk.map((b,j)=>pr.mode[j]==='A'&&b.length>1),form=pr.mode.map(v=>v==='B');
+    const bootTxt=boot?`bootstrap với ${fx(boot.B,0)} mẫu lặp (seed = ${boot.seed}), khoảng tin cậy ${ciName} ${cp}%`:'';
+    if(boot){refs.add('streukens16');if(bca)refs.add('efron87')}
+
+    // Sample and algorithm.
+    html+=sec('Phương pháp ước lượng')+`<p>Mô hình nghiên cứu được ước lượng bằng phương pháp mô hình phương trình cấu trúc bình phương tối thiểu riêng phần (PLS-SEM) với thuật toán PLS (Lohmöller, 1989): lược đồ trọng số đường dẫn (path weighting scheme), dữ liệu chuẩn hoá, tiêu chí dừng 10⁻⁷ và tối đa 300 vòng lặp. ${est.conv?`Thuật toán hội tụ sau ${est.iter} vòng lặp`:`<span class="bad">Thuật toán chưa hội tụ sau ${est.iter} vòng lặp</span>`}. Dữ liệu gồm ${fx(pr.n,0)} phiếu${pr.nDropped?` (đã loại ${fx(pr.nDropped,0)} phiếu thiếu dữ liệu)`:''}${pr.nImputed?`; ${fx(pr.nImputed,0)} giá trị thiếu được thay bằng trung bình của biến`:''}. Mô hình đo lường có ${pr.m} khái niệm với ${pr.p} biến quan sát${form.some(Boolean)?`, trong đó ${listVi(N.filter((_,j)=>form[j]).map(E))} là khái niệm cấu tạo (formative, Mode B)`:''}; mô hình cấu trúc có ${pr.paths.length} đường dẫn. Đánh giá mô hình theo hướng dẫn của Hair và cộng sự (2019, 2022)${boot?`; mức ý nghĩa của các hệ số được kiểm định bằng ${bootTxt}`:''}.</p>`;
+    if(!est.conv)W.push(`Thuật toán PLS chưa hội tụ sau ${est.iter} vòng lặp; kết quả chưa dùng được. Kiểm tra lại mô hình (biến trùng lặp, khái niệm cấu tạo có biến phụ thuộc tuyến tính).`);
+
+    // ---- measurement model ----
+    html+=sec('Đánh giá mô hình đo lường');
+    if(refl.some(Boolean)||pr.blk.some((b,j)=>!form[j])){
+      let body='',low=[],drop=[];
+      pr.blk.forEach((b,j)=>{if(form[j])return;body+=`<tr class="grp"><td colspan="${boot?6:4}">${nm(j)}</td></tr>`;
+        b.forEach(k=>{const L=est.load[k],s=st('l:'+k);if(b.length>1){if(L<0.4)drop.push(I[k]);else if(L<0.708)low.push(I[k])}
+          body+=tr([[E(I[k]),'l'],[f3(L),b.length>1&&L<0.708?'bad':''],f3(L*L),...(boot?[s?f2(s.t):'—',s?pf(s.p):'—']:[]),b.length>1?[f3(est.ovif[k]),est.ovif[k]>=5?'bad':'']:'—'])})});
+      html+=`<h4>Hệ số tải ngoài và độ tin cậy biến quan sát</h4>`+tbl('Hệ số tải ngoài (outer loadings) của các khái niệm kết quả',['Biến quan sát','Hệ số tải','Độ tin cậy biến (λ²)',...(boot?['t','p']:[]),'VIF'],body,`Ghi chú: ngưỡng hệ số tải ≥ 0,708; VIF &lt; 5 (<a href="${T_MEAS}">ngưỡng chấp nhận</a>).${boot?` t và p từ ${bootTxt}.`:''}`);
+      html+=`<p>Theo Hair và cộng sự (2019), hệ số tải ngoài từ 0,708 trở lên cho thấy khái niệm giải thích được hơn 50% phương sai của biến quan sát. ${!low.length&&!drop.length?`Mọi biến quan sát của các khái niệm kết quả đều có hệ số tải từ 0,708 trở lên (thấp nhất ${f3(Math.min(...pr.blk.flatMap((b,j)=>form[j]||b.length<2?[]:b.map(k=>est.load[k]))))}), nên đạt độ tin cậy biến quan sát.`:`${low.length?`Biến ${listVi(low.map(E))} có hệ số tải trong khoảng 0,40–0,708; theo Hair và cộng sự (2022), chỉ loại các biến này khi việc loại làm độ tin cậy tổng hợp hoặc AVE tăng lên trên ngưỡng, đồng thời cân nhắc giá trị nội dung của thang đo.`:''}${drop.length?` Biến ${listVi(drop.map(E))} có hệ số tải dưới 0,40 và nên được loại khỏi mô hình.`:''}`}</p>`;
+      if(low.length)W.push(`Biến ${listVi(low.map(E))} có hệ số tải dưới 0,708. Chỉ loại khi CR hoặc AVE chưa đạt và việc loại cải thiện chúng; ghi lại quyết định trong luận văn.`);
+      if(drop.length)W.push(`Biến ${listVi(drop.map(E))} có hệ số tải dưới 0,40: nên loại rồi chạy lại.`);
+    }
+    if(refl.some(Boolean)){refs.add('dijkstra15').add('fornell81');
+      const rows=[],bad=[],hiR=[];pr.blk.forEach((b,j)=>{const r=est.rel[j];if(!r)return;const v=x=>x<0.6||x>0.95,cls=x=>v(x)?'bad':'';
+        if([r.alpha,r.rhoA,r.rhoC].some(x=>x<0.7)||r.ave<0.5)bad.push(N[j]);if([r.alpha,r.rhoA,r.rhoC].some(x=>x>0.95))hiR.push(N[j]);
+        rows.push(tr([[nm(j),'l'],[f3(r.alpha),cls(r.alpha)],[f3(r.rhoA),cls(r.rhoA)],[f3(r.rhoC),cls(r.rhoC)],[f3(r.ave),r.ave<0.5?'bad':''],[r.ave>=0.5&&[r.alpha,r.rhoA,r.rhoC].every(x=>x>=0.7&&x<=0.95)?'Đạt':r.ave>=0.5&&[r.alpha,r.rhoA,r.rhoC].every(x=>x>=0.6&&x<=0.95)?'Chấp nhận (nghiên cứu khám phá)':'Cần xem xét','l']]))});
+      html+=`<h4>Độ tin cậy nhất quán nội tại và giá trị hội tụ</h4>`+tbl('Độ tin cậy và giá trị hội tụ',['Khái niệm',"Cronbach's alpha",'ρA','Độ tin cậy tổng hợp (ρc)','AVE',['Đánh giá','l']],rows.join(''),`Ghi chú: α, ρA, ρc ≥ 0,70 (0,60 trong nghiên cứu khám phá) và không vượt 0,95; AVE ≥ 0,50 (<a href="${T_MEAS}">ngưỡng chấp nhận</a>). α tính trên dữ liệu chuẩn hoá như SmartPLS.`);
+      const rr=pr.blk.map((b,j)=>est.rel[j]).filter(Boolean),mn=k=>Math.min(...rr.map(r=>r[k])),mx=k=>Math.max(...rr.map(r=>r[k]));
+      html+=`<p>Độ tin cậy nhất quán nội tại được đánh giá bằng Cronbach's alpha, ρA (Dijkstra &amp; Henseler, 2015) và độ tin cậy tổng hợp ρc; giá trị hội tụ được đánh giá bằng phương sai trung bình được trích (AVE; Fornell &amp; Larcker, 1981). Cronbach's alpha nằm trong khoảng ${f3(mn('alpha'))}–${f3(mx('alpha'))}, ρA từ ${f3(mn('rhoA'))} đến ${f3(mx('rhoA'))}, ρc từ ${f3(mn('rhoC'))} đến ${f3(mx('rhoC'))} và AVE từ ${f3(mn('ave'))} đến ${f3(mx('ave'))}. ${bad.length?`Khái niệm ${listVi(bad.map(E))} chưa đạt ít nhất một ngưỡng (0,70 cho độ tin cậy, 0,50 cho AVE), cần xem lại các biến có hệ số tải thấp.`:'Mọi khái niệm đều đạt ngưỡng 0,70 cho độ tin cậy và 0,50 cho AVE, nên thang đo đạt độ tin cậy và giá trị hội tụ (Hair và cộng sự, 2019).'}${hiR.length?` Độ tin cậy của ${listVi(hiR.map(E))} vượt 0,95, dấu hiệu các biến quan sát trùng lặp nội dung.`:''}</p>`;
+      if(bad.length)W.push(`Khái niệm ${listVi(bad.map(E))} chưa đạt ngưỡng độ tin cậy hoặc AVE.`);
+
+      // Discriminant validity: Fornell–Larcker, HTMT, cross-loadings.
+      refs.add('henseler15');const R=est.C,idx=pr.order.filter(j=>true);let flBad=[];
+      const flRows=idx.map((j,a)=>tr([[nm(j),'l'],...idx.slice(0,a+1).map((i,b)=>{if(i===j){const r=est.rel[j];return r?[f3(Math.sqrt(r.ave)),'own']:'—'}const v=R[j][i];
+        const rj=est.rel[j],ri=est.rel[i];if((rj&&Math.abs(v)>=Math.sqrt(rj.ave))||(ri&&Math.abs(v)>=Math.sqrt(ri.ave))){flBad.push(`${N[j]}–${N[i]}`);return [f3(v),'bad']}return f3(v)}),...idx.slice(a+1).map(()=>'')])).join('');
+      html+=`<h4>Giá trị phân biệt</h4>`+tbl('Tiêu chí Fornell–Larcker',['Khái niệm',...idx.map(nm)],flRows,'Ghi chú: số in đậm trên đường chéo là căn bậc hai AVE; các ô còn lại là tương quan giữa các khái niệm.');
+      const hp=Object.keys(est.htmt);let hBad=[],hMid=[];
+      if(hp.length){const hRows=idx.filter(j=>refl[j]).map((j,a,arr)=>tr([[nm(j),'l'],...arr.slice(0,a).map(i=>{const k=Math.min(i,j)+','+Math.max(i,j),v=est.htmt[k],s=st('h:'+k);
+          if(v>=0.9||(s&&s.q95>=0.9))hBad.push(`${N[i]}–${N[j]}`);else if(v>=0.85||(s&&s.q95>=0.85))hMid.push(`${N[i]}–${N[j]}`);
+          return [f3(v)+(s?` <small>[${f3(s.q95)}]</small>`:''),v>=0.9?'bad':'']}),...arr.slice(a).map(()=>'')])).join('');
+        const ar=idx.filter(j=>refl[j]);
+        html+=tbl('Hệ số HTMT',['Khái niệm',...ar.map(nm)],hRows,`Ghi chú: HTMT &lt; 0,85 (hoặc &lt; 0,90 khi hai khái niệm gần nghĩa; Henseler và cộng sự, 2015; <a href="${T_MEAS}">ngưỡng chấp nhận</a>).${boot?` Số trong ngoặc vuông là cận trên khoảng tin cậy bootstrap 95% một phía (phân vị 95, ${fx(boot.B,0)} mẫu).`:''}`);
+        const hv=hp.map(k=>est.htmt[k]);
+        html+=`<p>Giá trị phân biệt được đánh giá bằng tiêu chí Fornell–Larcker và hệ số HTMT (Henseler và cộng sự, 2015). ${flBad.length?`Theo Fornell–Larcker, căn bậc hai AVE chưa lớn hơn tương quan ở cặp ${listVi(flBad.map(E))}.`:'Căn bậc hai AVE của mỗi khái niệm đều lớn hơn tương quan của khái niệm đó với các khái niệm còn lại, nên tiêu chí Fornell–Larcker được thoả mãn.'} HTMT của các cặp khái niệm nằm trong khoảng ${f3(Math.min(...hv))}–${f3(Math.max(...hv))}${hBad.length?`; cặp ${listVi(hBad.map(E))} có HTMT${boot?' hoặc cận trên khoảng tin cậy':''} từ 0,90 trở lên, nên chưa đạt giá trị phân biệt`:hMid.length?`; cặp ${listVi(hMid.map(E))} có HTMT${boot?' hoặc cận trên khoảng tin cậy':''} trong khoảng 0,85–0,90, chỉ chấp nhận được khi hai khái niệm gần nghĩa về lý thuyết`:`, đều nhỏ hơn 0,85${boot?' và cận trên khoảng tin cậy bootstrap cũng nhỏ hơn 0,85':''}, nên các khái niệm đạt giá trị phân biệt`}. Henseler và cộng sự (2015) cho thấy HTMT nhạy hơn Fornell–Larcker trong việc phát hiện thiếu giá trị phân biệt, nên kết luận chủ yếu dựa vào HTMT.</p>`;
+        if(hBad.length)W.push(`HTMT của ${listVi(hBad.map(E))} từ 0,90 trở lên: hai khái niệm khó phân biệt. Xem bài HTMT và Bác sĩ kết quả để biết cách xử lý hợp lệ.`)}
+      // Cross-loadings.
+      let crossBad=[];const crow=[];pr.blk.forEach((b,j)=>b.forEach(k=>{const own=est.cross[k*pr.m+j];crow.push(tr([[E(I[k]),'l'],...idx.map(i=>{const v=est.cross[k*pr.m+i];if(i===j)return [f3(v),'own'];if(Math.abs(v)>=Math.abs(own)&&!form[j]){crossBad.push(I[k]);return [f3(v),'bad']}return f3(v)})]))}));
+      html+=tbl('Hệ số tải chéo (cross-loadings)',['Biến quan sát',...idx.map(nm)],crow.join(''),'Ghi chú: số in đậm là hệ số tải lên khái niệm của chính biến đó; mỗi hệ số này cần lớn hơn hệ số tải lên các khái niệm khác.');
+      html+=`<p>${crossBad.length?`Biến ${listVi([...new Set(crossBad)].map(E))} tải lên khái niệm khác mạnh hơn hoặc bằng khái niệm của chính nó, cần xem lại nội dung câu hỏi.`:'Mỗi biến quan sát đều tải lên khái niệm của chính nó cao hơn lên các khái niệm khác (bảng hệ số tải chéo).'}</p>`;
+    }
+    if(form.some(Boolean)){let body='';const weak=[],coll=[];
+      pr.blk.forEach((b,j)=>{if(!form[j])return;body+=`<tr class="grp"><td colspan="${boot?7:4}">${nm(j)}</td></tr>`;
+        b.forEach(k=>{const s=st('w:'+k),ls=st('l:'+k);if(est.ovif[k]>=3)coll.push(I[k]);if(s&&!isSig(s)&&est.load[k]<0.5)weak.push(I[k]);
+          body+=tr([[E(I[k]),'l'],f3(est.weight[k]),...(boot?[s?f2(s.t):'—',s?pf(s.p):'—',ci(s)]:[]),f3(est.load[k]),[f3(est.ovif[k]),est.ovif[k]>=5?'bad':'']])})});
+      html+=`<h4>Khái niệm cấu tạo (formative)</h4>`+tbl('Trọng số ngoài (outer weights) của khái niệm cấu tạo',['Biến quan sát','Trọng số',...(boot?['t','p',`KTC ${cp}%`]:[]),'Hệ số tải','VIF'],body,`Ghi chú: VIF &lt; 3 là lý tưởng, 3–5 có thể có cộng tuyến, từ 5 là nghiêm trọng (<a href="${T_STRUC}">ngưỡng chấp nhận</a>).`);
+      html+=`<p>Với khái niệm cấu tạo, Hair và cộng sự (2022) đánh giá đa cộng tuyến giữa các biến (VIF), ý nghĩa và độ lớn của trọng số ngoài. ${coll.length?`Biến ${listVi(coll.map(E))} có VIF từ 3 trở lên, có dấu hiệu cộng tuyến.`:'VIF của các biến đều nhỏ hơn 3, không có dấu hiệu cộng tuyến.'} ${boot?weak.length?`Biến ${listVi(weak.map(E))} có trọng số không có ý nghĩa thống kê và hệ số tải dưới 0,50; cân nhắc loại nếu lý thuyết cho phép, vì loại biến thay đổi nội dung của khái niệm cấu tạo.`:'Mỗi biến hoặc có trọng số có ý nghĩa thống kê, hoặc có hệ số tải từ 0,50 trở lên, nên được giữ lại.':''}</p>`}
+
+    // ---- structural model ----
+    html+=sec('Đánh giá mô hình cấu trúc');
+    const endo=pr.endo;
+    {let rows='',maxV=0;endo.forEach(j=>{const e=est.eq[j];if(e.pred.length<2)return;e.pred.forEach((a,t)=>{maxV=Math.max(maxV,e.vif[t]);rows+=tr([[`${nm(a)} → ${nm(j)}`,'l'],[f3(e.vif[t]),e.vif[t]>=5?'bad':'']])})});
+      if(rows){html+=`<h4>Đa cộng tuyến</h4>`+tbl('Hệ số VIF giữa các khái niệm (inner VIF)',[['Quan hệ','l'],'VIF'],rows,`Ghi chú: VIF &lt; 3 là lý tưởng, 3–5 có thể có cộng tuyến, từ 5 là nghiêm trọng (Hair và cộng sự, 2019; <a href="${T_STRUC}">ngưỡng chấp nhận</a>).`);
+        html+=`<p>VIF giữa các khái niệm dự báo lớn nhất là ${f3(maxV)}, ${maxV<3?'nhỏ hơn 3, nên không có dấu hiệu đa cộng tuyến ảnh hưởng tới ước lượng hệ số đường dẫn':maxV<5?'trong khoảng 3–5, có thể có cộng tuyến; cần thận trọng khi diễn giải các hệ số liên quan':'từ 5 trở lên, cho thấy đa cộng tuyến nghiêm trọng giữa các khái niệm dự báo'} (Hair và cộng sự, 2019).</p>`;if(maxV>=5)W.push('Inner VIF từ 5 trở lên: các khái niệm dự báo cộng tuyến mạnh.')}}
+    // Path coefficients and hypotheses.
+    {const hyp=pr.paths.map((p,i)=>{const b=est.B[p.from][p.to],s=st('p:'+p.from+'>'+p.to),ok=s?isSig(s)&&Math.sign(b)===p.sign:null;return {h:'H'+(i+1),p,b,s,ok}});
+      const rows=hyp.map(x=>tr([x.h,[`${nm(x.p.from)} → ${nm(x.p.to)}${x.p.sign<0?' (−)':''}`,'l'],f3(x.b),...(boot?[f3(x.s.mean),f3(x.s.se),f2(x.s.t),pf(x.s.p),ci(x.s),[x.ok?'Chấp nhận':`Bác bỏ${isSig(x.s)?' (ngược dấu)':''}`,x.ok?'l':'l bad']]:[])])).join('');
+      html+=`<h4>Hệ số đường dẫn và kiểm định giả thuyết</h4>`+tbl('Kết quả kiểm định giả thuyết',['Giả thuyết',['Đường dẫn','l'],'β',...(boot?['Trung bình mẫu','Độ lệch chuẩn','t','p',`KTC ${cp}% (${ciName})`,['Kết luận','l']]:[])],rows,boot?`Ghi chú: ${bootTxt}; kiểm định hai phía. Giả thuyết được chấp nhận khi p &lt; ${fx(alpha,2)}, khoảng tin cậy không chứa 0 và hệ số cùng dấu với kỳ vọng.`:'Ghi chú: chưa có bootstrap nên chưa kiểm định được ý nghĩa thống kê.');
+      if(boot){const acc=hyp.filter(x=>x.ok),rej=hyp.filter(x=>!x.ok);
+        html+=`<p>Kết quả bootstrap cho thấy ${hyp.map(x=>`${nm(x.p.from)} ${isSig(x.s)?`có tác động ${x.b>0?'cùng chiều':'ngược chiều'} có ý nghĩa thống kê tới`:'không có tác động có ý nghĩa thống kê tới'} ${nm(x.p.to)} (β = ${f3(x.b)}, t = ${f2(x.s.t)}, p ${x.s.p<0.001?'&lt; 0,001':'= '+fx(x.s.p,3)})`).join('; ')}. ${acc.length?`Như vậy, ${acc.length>1?'các giả thuyết':'giả thuyết'} ${listVi(acc.map(x=>x.h))} được chấp nhận`:'Không giả thuyết nào được chấp nhận'}${rej.length?`; ${rej.length>1?'các giả thuyết':'giả thuyết'} ${listVi(rej.map(x=>x.h))} bị bác bỏ`:''}.</p>`;
+        W.push(`Giả thuyết được đánh số ${hyp.length>1?`H1–H${hyp.length}`:'H1'} theo thứ tự các dòng ở mục 3; sắp lại các dòng cho khớp chương 2 trước khi dùng.`)}
+      const svg=svgModel(pr,est,boot,alpha);fno++;figs.push({svg,no:fno});
+      html+=`<figure data-fig="${figs.length-1}"><div class="cap">Hình 4.${fno}. Kết quả mô hình cấu trúc</div>${svg}<p class="note">Ghi chú: số trên mũi tên là hệ số đường dẫn β${boot?'; *** p &lt; 0,001, ** p &lt; 0,01, * p &lt; 0,05; nét đứt là đường không có ý nghĩa thống kê':''}; R² dưới tên khái niệm nội sinh. Ô vuông góc là khái niệm cấu tạo. <a href="#" class="svgdl" data-fig="${figs.length-1}">Tải hình SVG</a></p></figure>`}
+    // R², f², Q².
+    {refs.add('hair11').add('cohen88');const lvl=r=>r>=0.75?'Mạnh':r>=0.5?'Trung bình':r>=0.25?'Yếu':'Dưới mức yếu',lvlTxt=r=>r>=0.25?`mức ${lvl(r).toLowerCase()}`:'dưới mức yếu 0,25';
+      const q=q2||{};if(Object.keys(q).length)refs.add('stone74').add('geisser74');
+      const rows=endo.map(j=>{const e=est.eq[j],s=st('r2:'+j),qq=q[j];return tr([[nm(j),'l'],f3(e.r2),f3(e.r2adj),...(boot?[ci(s)]:[]),[lvl(e.r2),'l'],qq?[f3(qq.q2),qq.q2<=0?'bad':'']:'—'])}).join('');
+      html+=`<h4>Hệ số xác định R², hệ số Q²</h4>`+tbl('Hệ số R², R² hiệu chỉnh và Q²',['Khái niệm nội sinh','R²','R² hiệu chỉnh',...(boot?[`KTC ${cp}% của R²`]:[]),['Mức giải thích','l'],`Q² (D = ${opt.D||7})`],rows,`Ghi chú: R² 0,75 / 0,50 / 0,25 là mạnh / trung bình / yếu (Hair và cộng sự, 2011); Q² &gt; 0 là mô hình có khả năng dự báo, 0,25 và 0,50 là mức vừa và lớn (Hair và cộng sự, 2019; <a href="${T_STRUC}">ngưỡng chấp nhận</a>). Q² theo blindfolding, phần dư chéo hợp lệ của khái niệm (construct cross-validated redundancy); không tính cho khái niệm cấu tạo.`);
+      const top=endo.slice().sort((a,b)=>est.eq[b].r2-est.eq[a].r2);
+      html+=`<p>Các khái niệm dự báo giải thích ${top.map(j=>`${fx(100*est.eq[j].r2,1)}% biến thiên của ${nm(j)} (R² = ${f3(est.eq[j].r2)}, R² hiệu chỉnh = ${f3(est.eq[j].r2adj)}; ${lvlTxt(est.eq[j].r2)})`).join('; ')}. ${Object.keys(q).length?(()=>{const qs=endo.filter(j=>q[j]),neg=qs.filter(j=>q[j].q2<=0);return `Hệ số Q² (Stone, 1974; Geisser, 1974) tính bằng blindfolding với khoảng cách bỏ D = ${opt.D||7} ${neg.length?`nhỏ hơn hoặc bằng 0 ở ${listVi(neg.map(nm))}, cho thấy mô hình chưa có khả năng dự báo cho ${neg.length>1?'các khái niệm':'khái niệm'} này`:`đều lớn hơn 0 (từ ${f3(Math.min(...qs.map(j=>q[j].q2)))} đến ${f3(Math.max(...qs.map(j=>q[j].q2)))}), nên mô hình có khả năng dự báo đối với các khái niệm nội sinh`}.`})():''}</p>`;
+      if(opt.D&&pr.n%opt.D===0)W.push(`Số phiếu (${pr.n}) chia hết cho khoảng cách bỏ D = ${opt.D}; Hair và cộng sự khuyên chọn D sao cho n/D không là số nguyên (ví dụ D = ${opt.D+1}).`);
+      const fr=[];endo.forEach(j=>est.eq[j].pred.forEach((a,t)=>{const v=est.eq[j].f2[t];fr.push(tr([[`${nm(a)} → ${nm(j)}`,'l'],f3(v),[v>=0.35?'Lớn':v>=0.15?'Vừa':v>=0.02?'Nhỏ':'Không đáng kể','l']]))}));
+      html+=tbl('Hệ số tác động f²',[['Quan hệ','l'],'f²',['Mức tác động','l']],fr.join(''),'Ghi chú: f² 0,02 / 0,15 / 0,35 là nhỏ / vừa / lớn (Cohen, 1988). f² = (R²<sub>có</sub> − R²<sub>không</sub>) / (1 − R²<sub>có</sub>).');
+      const big=endo.flatMap(j=>est.eq[j].pred.map((a,t)=>({a,j,v:est.eq[j].f2[t]}))).sort((x,y)=>y.v-x.v)[0];
+      if(big)html+=`<p>Theo hệ số f² (Cohen, 1988), tác động mạnh nhất là ${nm(big.a)} → ${nm(big.j)} (f² = ${f3(big.v)}, mức ${(big.v>=0.35?'lớn':big.v>=0.15?'vừa':big.v>=0.02?'nhỏ':'không đáng kể')}).</p>`}
+    // Indirect effects.
+    if(pr.chains.length){refs.add('zhao10');const rows=[],txt=[];
+      pr.chains.forEach((c,i)=>{const v=est.spec[i],s=st('si:'+i),x=c[0],y=c[c.length-1],dir=pr.paths.find(p=>p.from===x&&p.to===y),ds=dir?st('p:'+x+'>'+y):null;
+        let kind='—';if(s){if(!isSig(s))kind='Không có trung gian';else if(!dir)kind='Chỉ gián tiếp (mô hình không có đường trực tiếp)';else if(!isSig(ds))kind='Chỉ gián tiếp (trung gian toàn phần)';else kind=Math.sign(est.B[x][y])===Math.sign(v)?'Bổ sung (trung gian một phần)':'Cạnh tranh'}
+        rows.push(tr([[c.map(nm).join(' → '),'l'],f3(v),...(boot?[f3(s.se),f2(s.t),pf(s.p),ci(s),[kind,'l']]:[])]));
+        if(s)txt.push(`${c.map(nm).join(' → ')} (${f3(v)}, ${ci(s)}${isSig(s)?'':', không có ý nghĩa'})`)});
+      html+=`<h4>Tác động gián tiếp (trung gian)</h4>`+tbl('Tác động gián tiếp riêng (specific indirect effects)',[['Đường tác động','l'],'Ước lượng',...(boot?['Độ lệch chuẩn','t','p',`KTC ${cp}% (${ciName})`,['Loại trung gian','l']]:[])],rows.join(''),boot?'Ghi chú: tác động gián tiếp = tích các hệ số đường dẫn trên chuỗi; phân loại theo Zhao và cộng sự (2010).':'');
+      if(boot)html+=`<p>Tác động gián tiếp được kiểm định bằng khoảng tin cậy bootstrap, không cần các bước của Baron và Kenny (Zhao và cộng sự, 2010): tác động gián tiếp có ý nghĩa khi khoảng tin cậy không chứa 0. Kết quả: ${txt.join('; ')}.</p>`;
+      const te=pr.reach.map(([a,b])=>{const k=a+'>'+b,s=st('te:'+k),ti=est.ti[k],ts=st('ti:'+k);return tr([[`${nm(a)} → ${nm(b)}`,'l'],f3(est.B[a][b]),Number.isFinite(ti)?f3(ti):'—',...(boot?[ts?ci(ts):'—']:[]),f3(est.te[k]),...(boot?[ci(s)]:[])])});
+      html+=tbl('Tác động trực tiếp, gián tiếp tổng và tác động tổng',[['Quan hệ','l'],'Trực tiếp','Gián tiếp tổng',...(boot?[`KTC ${cp}% gián tiếp`]:[]),'Tổng',...(boot?[`KTC ${cp}% tổng`]:[])],te.join(''),'Ghi chú: tác động tổng = trực tiếp + gián tiếp tổng; trực tiếp bằng 0 khi mô hình không có đường dẫn đó.')}
+
+    const plain=s=>s.replace(/<[^>]+>|&amp;/g,'');
+    const keys=[...refs].sort((a,b)=>plain(REF[a]).localeCompare(plain(REF[b]),'en'));
+    html+=`<p><strong>Tài liệu tham khảo</strong></p><ul>${keys.map(r=>`<li>${REF[r]}</li>`).join('')}</ul>`;
+    return {html,warnings:W,figs,tables:tno-(opt.tab||1)+1}}
+  //#report-end
+
+  if(typeof document==='undefined')return;
+  const $=id=>document.getElementById(id),P=PLS_ENGINE();
+  let raw=null,tbl=null,worker=null,last=null,runId=0;
+  const setStatus=(t,isErr)=>{$('ps-status').innerHTML=t;$('ps-status').className=isErr?'err':''};
+  function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+  function useRaw(table,label,paths){raw=table.map(r=>(r||[]).map(v=>v==null?'':v));if(!raw.length){setStatus('File không có dữ liệu.',true);return}
+    const hi=pickHeaderRow(raw);
+    $('ps-hdr').innerHTML=raw.slice(0,Math.min(6,raw.length)).map((r,i)=>`<option value="${i}">Dòng ${i+1}: ${escH(r.slice(0,4).map(v=>String(v).slice(0,18)).join(' | '))}</option>`).join('');$('ps-hdr').value=String(hi);
+    setData(hi,label);if(paths!=null)$('ps-paths').value=paths;refreshNames()}
+  function setData(hi,label){tbl=buildTable(raw,hi);const gs=suggestGroups(tbl.header);
+    $('ps-groups').value=gs.map(g=>`${g.code}: ${g.items.join(' ')}`).join('\n');
+    let lo=Infinity,top=-Infinity;for(const g of gs)for(const h of g.items){const j=tbl.header.indexOf(h);for(const r of tbl.rows){const v=likertNum(r[j]);if(Number.isFinite(v)){if(v<lo)lo=v;if(v>top)top=v}}}
+    if(Number.isFinite(lo)){$('ps-min').value=lo;$('ps-max').value=top}
+    $('ps-setup').hidden=false;$('ps-out').hidden=true;$('ps-msg').textContent='';
+    setStatus(`${escH(label)}: ${fx(tbl.rows.length,0)} phiếu, ${tbl.header.length} cột, nhận ra ${gs.length} khái niệm (${gs.reduce((s,g)=>s+g.items.length,0)} biến quan sát).${gs.length?'':' <span class="err">Chưa nhận ra khái niệm nào: kiểm tra dòng tiêu đề hoặc tự khai báo ở mục 2.</span>'}`);
+    refreshNames()}
+  const conNames=()=>parseGroups($('ps-groups').value).map(g=>g.code);
+  function refreshNames(){const ns=conNames(),opts=ns.map(n=>`<option>${escH(n)}</option>`).join('');['ps-from','ps-to'].forEach((id,i)=>{const cur=$(id).value;$(id).innerHTML=opts;if(ns.includes(cur))$(id).value=cur;else if(ns.length)$(id).value=ns[Math.min(i,ns.length-1)]});checkPaths()}
+  // Paths typed or pasted (a drawing-tool link in the box is decoded in place).
+  function checkPaths(){const box=$('ps-paths'),m=box.value.match(/#m=([\w-]+)/);
+    if(m){try{const r=fromDrawing(b64d(m[1]),conNames());box.value=box.value.replace(/^.*#m=[\w-]+.*$/m,r.text);showPathMsg(r,'link')}catch(e){$('ps-pathmsg').innerHTML='<span class="err">Không đọc được link mô hình.</span>'}return}
+    const r=parsePaths(box.value,conNames());$('ps-pathmsg').innerHTML=r.errors.length?`<span class="err">${r.errors.map(escH).join('<br>')}</span>`:r.paths.length?`${r.paths.length} đường dẫn.`:'';return r}
+  function showPathMsg(r,src){$('ps-pathmsg').innerHTML=`${r.count?`Đã lấy ${r.count} đường dẫn từ ${src==='link'?'link':'Vẽ mô hình'}.`:'<span class="err">Không lấy được đường dẫn nào: mã khái niệm trong sơ đồ phải trùng mã ở mục 2.</span>'}${r.notes.length?'<br>'+r.notes.map(escH).join('<br>'):''}`}
+  let deb=0;const later=f=>{clearTimeout(deb);deb=setTimeout(f,300)};
+  $('ps-file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;setStatus('Đang đọc file…');
+    try{if(/\.(xlsx|xls)$/i.test(f.name)){if(!window.XLSX)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');const wb=XLSX.read(await f.arrayBuffer());useRaw(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:'',raw:true}),f.name)}
+      else useRaw(parseCSV(await f.text()),f.name)}catch(err){setStatus('Không đọc được file. Lưu lại dạng .xlsx hoặc .csv (UTF-8) rồi thử lại.',true)}});
+  $('ps-sample').addEventListener('click',()=>useRaw(sampleData(),'Dữ liệu mẫu',SAMPLE_PATHS));
+  $('ps-hdr').addEventListener('change',()=>setData(+$('ps-hdr').value,'Dữ liệu'));
+  $('ps-groups').addEventListener('input',()=>later(refreshNames));
+  $('ps-paths').addEventListener('input',()=>later(checkPaths));
+  $('ps-add').addEventListener('click',()=>{const a=$('ps-from').value,b=$('ps-to').value;if(!a||!b||a===b){$('ps-pathmsg').innerHTML='<span class="err">Chọn hai khái niệm khác nhau.</span>';return}
+    const box=$('ps-paths');box.value=(box.value.trim()?box.value.replace(/\s*$/,'')+'\n':'')+`${a} -> ${b}`;checkPaths()});
+  $('ps-vm').addEventListener('click',()=>{let s=null;try{s=localStorage.getItem('vm-state-v2')}catch(e){}
+    if(!s){$('ps-pathmsg').innerHTML='<span class="err">Trình duyệt này chưa có mô hình nào trong Vẽ mô hình. Vẽ ở <a class="text-accent underline" href="/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a> rồi quay lại, hoặc dán link mô hình vào ô đường dẫn.</span>';return}
+    try{const r=fromDrawing(s,conNames());if(r.count)$('ps-paths').value=r.text;showPathMsg(r,'vm')}catch(e){$('ps-pathmsg').innerHTML='<span class="err">Không đọc được mô hình đã lưu.</span>'}});
+
+  function workerURL(){return URL.createObjectURL(new Blob([`const P=(${PLS_ENGINE.toString()})();onmessage=e=>{try{const d=e.data;const r=P.bootstrap(d.pr,d.est,d.B,d.seed,d.o,f=>postMessage({progress:f}));postMessage({done:r})}catch(err){postMessage({error:String(err&&err.message||err)})}}`],{type:'text/javascript'}))}
+  function stop(msg){if(worker){worker.terminate();worker=null}$('ps-prog').hidden=true;$('ps-stop').hidden=true;$('ps-run').disabled=false;if(msg){$('ps-msg').className='err';$('ps-msg').textContent=msg}}
+  $('ps-stop').addEventListener('click',()=>{runId++;stop('Đã dừng bootstrap; kết quả bên dưới chưa có kiểm định ý nghĩa.')});
+  // Chunked fallback when Web Workers are blocked: same engine, run in slices so the page stays responsive.
+  function bootChunked(pr,est,B,seed,o,id,done,fail){let s;try{s=P.bootStart(pr,est,B,seed,o)}catch(e){fail(e.message);return}const step=()=>{if(id!==runId)return;try{const t=performance.now();let fin=false;while(!fin&&performance.now()-t<40)fin=P.bootStep(s,25);$('ps-prog').value=s.b/B;if(fin)done(P.bootFinish(s));else setTimeout(step,0)}catch(e){fail(e.message)}};setTimeout(step,0)}
+
+  function run(){const msg=$('ps-msg');msg.textContent='';msg.className='';const fail=t=>{msg.className='err';msg.innerHTML=t;$('ps-out').hidden=true;msg.scrollIntoView({behavior:'smooth',block:'center'})};
+    if(!tbl)return fail('Chưa có dữ liệu.');
+    const inp=buildInput(tbl,parseGroups($('ps-groups').value),$('ps-rev').value,+$('ps-min').value,+$('ps-max').value,$('ps-formative').value);
+    if(inp.errors.length)return fail(inp.errors.map(escH).join('<br>'));
+    const pp=parsePaths($('ps-paths').value,inp.cons.map(c=>c.name));if(pp.errors.length)return fail(pp.errors.map(escH).join('<br>'));
+    if(!pp.paths.length)return fail('Chưa có đường dẫn nào ở mục 3 (ví dụ <code>CL -&gt; HL</code>).');
+    let pr,est,q2;const t0=performance.now();
+    try{pr=P.prepare({cols:inp.cols,items:inp.items,cons:inp.cons,paths:pp.paths,missing:$('ps-miss').value});est=P.estimate(pr)}catch(e){return fail(escH(e.message))}
+    const D=Math.max(2,Math.min(30,Math.round(+$('ps-d').value||7)));try{q2=P.blindfold(pr,D)}catch(e){q2={}}
+    const opt={sec:$('ps-sec').value.trim(),tab:Math.max(1,+$('ps-tab').value||1),fig:Math.max(1,+$('ps-fig').value||1),conf:+$('ps-conf').value,ci:$('ps-ci').value,D};
+    const B=+$('ps-b').value,seed=Math.max(1,Math.floor(+$('ps-seed').value||1)),notes=inp.notes;
+    show(pr,est,null,q2,opt,notes,B>0);
+    if(!B){msg.textContent=`Đã ước lượng trên ${fx(pr.n,0)} phiếu trong ${fx((performance.now()-t0)/1000,1)} giây.`;return}
+    const id=++runId,o={conf:opt.conf,bca:opt.ci==='bca'},t1=performance.now();
+    stop();$('ps-run').disabled=true;$('ps-prog').hidden=false;$('ps-prog').value=0;$('ps-stop').hidden=false;msg.textContent=`Đang chạy ${fx(B,0)} mẫu bootstrap…`;
+    const done=boot=>{if(id!==runId)return;stop();show(pr,est,boot,q2,opt,notes,false);msg.textContent=`Đã chạy ${fx(B,0)} mẫu bootstrap trên ${fx(pr.n,0)} phiếu trong ${fx((performance.now()-t1)/1000,1)} giây${boot.redraw?` (${boot.redraw} mẫu không hội tụ được rút lại)`:''}.`};
+    const slow=e=>{if(worker){worker.terminate();worker=null}bootChunked(pr,est,B,seed,o,id,done,stop)};
+    const sendable={...pr,Z:pr.Z};const ests={W:est.W.map(w=>Array.from(w)),S:est.S};
+    try{worker=new Worker(workerURL());worker.onmessage=e=>{const d=e.data;if(d.progress!=null)$('ps-prog').value=d.progress;else if(d.done)done(d.done);else if(d.error)stop(d.error)};
+      worker.onerror=ev=>{ev.preventDefault&&ev.preventDefault();slow()};worker.postMessage({pr:sendable,est:ests,B,seed,o})}
+    catch(err){slow()}}
+  function show(pr,est,boot,q2,opt,notes,pending){const r=report(pr,est,boot,q2,opt);last={...r,pr,est};
+    const warn=[...(pending?['Bootstrap đang chạy: bảng giả thuyết và khoảng tin cậy sẽ hiện khi xong.']:[]),...notes.map(escH),...r.warnings];
+    $('ps-warn').hidden=!warn.length;$('ps-warn').innerHTML=warn.length?`<strong>Cần xem lại</strong><ul>${warn.map(w=>`<li>${w}</li>`).join('')}</ul>`:'';
+    $('ps-report').innerHTML=r.html;$('ps-out').hidden=false;if(!boot&&pending)$('ps-out').scrollIntoView({behavior:'smooth'})}
+  $('ps-run').addEventListener('click',run);
+
+  const save=(name,type,data)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)};
+  $('ps-report').addEventListener('click',e=>{const a=e.target.closest('a.svgdl');if(!a||!last)return;e.preventDefault();save(`hinh-ket-qua-pls-sem.svg`,'image/svg+xml',last.figs[+a.dataset.fig].svg)});
+  const q=v=>/[",;\n]/.test(v)?`"${v.replace(/"/g,'""')}"`:v;
+  $('ps-csv').addEventListener('click',()=>{const lines=[];$('ps-report').querySelectorAll('table').forEach(t=>{lines.push(q(t.caption?t.caption.innerText.trim():''));t.querySelectorAll('tr').forEach(r=>lines.push([...r.children].map(c=>q(c.innerText.trim())).join(',')));lines.push('')});
+    save('ket-qua-pls-sem.csv','text/csv;charset=utf-8','﻿'+lines.join('\r\n'))});
+  $('ps-scores').addEventListener('click',()=>{if(!last)return;const {pr,est}=last,m=pr.m,rows=[pr.names.map(q).join(',')];for(let i=0;i<pr.n;i++){const r=[];for(let j=0;j<m;j++)r.push(est.scores[i*m+j].toFixed(6));rows.push(r.join(','))}
+    save('diem-khai-niem-pls.csv','text/csv;charset=utf-8','﻿'+rows.join('\r\n'))});
+  // Figures go into Word as PNG (3× resolution) inside an MHTML document, which Word opens as a .doc.
+  const toPNG=svg=>new Promise(ok=>{const img=new Image(),url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));img.onload=()=>{try{const c=document.createElement('canvas');c.width=img.width*3;c.height=img.height*3;const g=c.getContext('2d');g.scale(3,3);g.drawImage(img,0,0);ok({b:c.toDataURL('image/png').split(',')[1],w:img.width,h:img.height})}catch(e){ok(null)}URL.revokeObjectURL(url)};img.onerror=()=>{URL.revokeObjectURL(url);ok(null)};img.src=url});
+  const b64=s=>{const u=new TextEncoder().encode(s);let bin='';for(let i=0;i<u.length;i+=8192)bin+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(bin).replace(/.{76}/g,'$&\r\n')};
+  $('ps-doc').addEventListener('click',async()=>{if(!last)return;const pngs=await Promise.all(last.figs.map(f=>toPNG(f.svg)));
+    const box=document.createElement('div');box.innerHTML=$('ps-report').innerHTML;box.querySelectorAll('.table-wrap').forEach(w=>w.replaceWith(...w.childNodes));box.querySelectorAll('a.svgdl').forEach(a=>a.remove());
+    box.querySelectorAll('figure').forEach(fg=>{const i=+fg.dataset.fig,svg=fg.querySelector('svg'),p=pngs[i];if(svg){const sc=p?Math.min(1,600/p.w):1;svg.replaceWith(Object.assign(document.createElement('p'),{innerHTML:p?`<img src="file:///C:/hinh${i+1}.png" width="${Math.round(p.w*sc)}" height="${Math.round(p.h*sc)}">`:'(Không chuyển được hình; tải SVG trên trang.)'}))}});
+    const html=`<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse;margin:6pt 0}td,th{border:1px solid #000;padding:3px 6px;text-align:right;vertical-align:top}td.l,th.l,td:first-child,th:first-child{text-align:left}td.own{font-weight:bold}caption{text-align:left;font-weight:bold;padding:4pt 0}.note{font-size:11pt}.cap{font-weight:bold}.bad{color:#b00020;font-weight:bold}tr.grp td{font-weight:bold}h3{font-size:13pt;font-weight:bold}h4{font-size:13pt;font-style:italic;font-weight:bold}p{text-align:justify;line-height:1.5}</style></head><body>${box.innerHTML}</body></html>`;
+    const bd='----=_NextPart_GocNC_'+Date.now();let mht=`MIME-Version: 1.0\r\nContent-Type: multipart/related; boundary="${bd}"; type="text/html"\r\n\r\n--${bd}\r\nContent-Type: text/html; charset="utf-8"\r\nContent-Transfer-Encoding: base64\r\nContent-Location: file:///C:/chuong4.htm\r\n\r\n${b64(html)}\r\n`;
+    pngs.forEach((p,i)=>{if(p)mht+=`--${bd}\r\nContent-Type: image/png\r\nContent-Transfer-Encoding: base64\r\nContent-Location: file:///C:/hinh${i+1}.png\r\n\r\n${p.b.replace(/.{76}/g,'$&\r\n')}\r\n`});
+    mht+=`--${bd}--\r\n`;save('pls-sem-chuong-4.doc','application/msword',mht)});
+  $('ps-copy').addEventListener('click',async()=>{const el=$('ps-report'),b=$('ps-copy');try{if(window.ClipboardItem){await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([el.innerHTML],{type:'text/html'}),'text/plain':new Blob([el.innerText],{type:'text/plain'})})])}else await navigator.clipboard.writeText(el.innerText);b.textContent='Đã sao chép'}catch(e){b.textContent='Không sao chép được'}setTimeout(()=>b.textContent='Sao chép',1500)});
+})();
+</script>

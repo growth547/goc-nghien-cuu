@@ -1,0 +1,199 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/pls-sem.html?raw";
+---
+
+<ToolLayout
+  slug="pls-sem"
+  title="Chạy PLS-SEM online miễn phí như SmartPLS"
+  h1="Chạy PLS-SEM online: mô hình đo lường, cấu trúc, bootstrap"
+  description="Chạy PLS-SEM online miễn phí trên trình duyệt: outer loadings, alpha, rho_A, CR, AVE, HTMT, hệ số đường dẫn, R², f², Q², bootstrap và chương 4 viết sẵn."
+  lede="Ước lượng mô hình PLS-SEM như SmartPLS ngay trên trình duyệt, không cần cài phần mềm hay mua giấy phép. Tải file khảo sát, khai báo khái niệm và các đường dẫn giả thuyết. Công cụ chạy thuật toán PLS với thiết lập mặc định của SmartPLS, đánh giá mô hình đo lường (hệ số tải, Cronbach's alpha, rho_A, CR, AVE, Fornell–Larcker, HTMT) và mô hình cấu trúc (VIF, hệ số đường dẫn, R², f², Q², tác động gián tiếp), kiểm định bằng bootstrap 5.000 mẫu, rồi viết sẵn mục kết quả cho chương 4 để tải về Word."
+  html={html}
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        <strong>Chuẩn bị file.</strong> Mỗi dòng một phiếu, mỗi cột một biến quan sát, tên cột theo mã khái niệm + số
+        (CL1, CL2, HL1…). File đã làm sạch bằng <a href="/cong-cu/lam-sach-du-lieu/">công cụ làm sạch dữ liệu</a> dùng
+        được ngay. Câu đảo chiều khai báo ở ô riêng để công cụ đảo điểm.
+      </li>
+      <li>
+        <strong>Mô hình đo lường.</strong> Công cụ tự nhóm biến theo tên cột; bỏ các biến đã loại. Mặc định mọi khái niệm
+        là kết quả (reflective, Mode A). Chỉ ghi vào ô “khái niệm cấu tạo” khi thang đo gốc thiết kế dạng formative.
+      </li>
+      <li>
+        <strong>Mô hình cấu trúc.</strong> Mỗi dòng một đường <code>X -&gt; Y</code> theo thứ tự giả thuyết H1, H2… Nếu
+        đã vẽ ở <a href="/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a>, bấm “Lấy mô hình từ Vẽ mô hình” để mang các mũi
+        tên sang (mã khái niệm trong sơ đồ phải trùng mã cột dữ liệu).
+      </li>
+      <li>
+        <strong>Bootstrap.</strong> Giữ 5.000 mẫu và ghi lại seed: cùng dữ liệu, cùng seed cho cùng kết quả. Bootstrap chạy
+        nền nên trang không bị treo; 300 phiếu, 18 biến mất vài giây trên máy tính thông thường.
+      </li>
+      <li>
+        <strong>Xuất kết quả.</strong> Tải Word (bảng, hình mô hình, đoạn diễn giải và tài liệu tham khảo), tải bảng dạng
+        CSV hoặc điểm khái niệm để chạy tiếp ở phần mềm khác. Đổi số mục, số bảng cho khớp chương 4.
+      </li>
+    </ol>
+
+    <h2>Công cụ tính những gì</h2>
+    <ul>
+      <li>
+        <strong>Thuật toán PLS</strong> (Lohmöller, 1989) với các mặc định của SmartPLS: lược đồ trọng số đường dẫn (path
+        weighting), dữ liệu chuẩn hoá, trọng số khởi đầu bằng 1, dừng khi tổng thay đổi trọng số nhỏ hơn 10⁻⁷ hoặc sau
+        300 vòng lặp; báo số vòng lặp và có hội tụ hay không. Giá trị thiếu thay bằng trung bình của biến (mặc định
+        SmartPLS) hoặc loại phiếu.
+      </li>
+      <li>
+        <strong>Mô hình đo lường:</strong> hệ số tải ngoài, trọng số ngoài, độ tin cậy biến quan sát (λ²), Cronbach's
+        alpha, rho_A (Dijkstra &amp; Henseler, 2015), độ tin cậy tổng hợp rho_c, AVE, Fornell–Larcker, HTMT, hệ số tải
+        chéo, VIF của biến quan sát; với khái niệm cấu tạo là trọng số, ý nghĩa của trọng số và VIF.
+      </li>
+      <li>
+        <strong>Mô hình cấu trúc:</strong> hệ số đường dẫn, R², R² hiệu chỉnh, f², VIF giữa các khái niệm, tác động gián
+        tiếp riêng theo từng chuỗi, gián tiếp tổng và tác động tổng; Q² bằng blindfolding (khoảng cách bỏ D = 7).
+      </li>
+      <li>
+        <strong>Bootstrap</strong> (mặc định 5.000 mẫu, seed cố định): độ lệch chuẩn, t, p hai phía, khoảng tin cậy
+        percentile hoặc BCa cho hệ số đường dẫn, hệ số tải, trọng số, R², tác động gián tiếp, tác động tổng và HTMT.
+      </li>
+    </ul>
+    <p>
+      Mỗi chỉ số được đánh giá theo ngưỡng ở trang <a href="/nguong-chap-nhan/#pls-do-luong">ngưỡng chấp nhận PLS-SEM</a> (Hair và cộng sự, 2019, 2022; Henseler và cộng sự, 2015), kèm nguồn để trích.
+    </p>
+
+    <h2>Đọc kết quả theo thứ tự nào</h2>
+    <ol>
+      <li>
+        <strong>Hệ số tải ngoài</strong> từ 0,708. Biến từ 0,40 đến 0,708 chỉ loại khi việc loại làm CR hoặc AVE đạt
+        ngưỡng; dưới 0,40 thì loại. Loại xong phải chạy lại.
+      </li>
+      <li>
+        <strong>Độ tin cậy</strong> (alpha, rho_A, rho_c) từ 0,70 và không vượt 0,95; <strong>AVE</strong> từ 0,50.
+      </li>
+      <li>
+        <strong>Giá trị phân biệt:</strong> HTMT dưới 0,85 (0,90 với khái niệm gần nghĩa) là tiêu chí chính; Fornell–Larcker
+        và hệ số tải chéo chỉ để tham khảo. Đọc thêm <a href="/posts/htmt-gia-tri-phan-biet/">HTMT và giá trị phân biệt</a>.
+      </li>
+      <li>
+        <strong>Mô hình cấu trúc:</strong> VIF giữa các khái niệm dưới 3, rồi hệ số đường dẫn và p (hoặc khoảng tin cậy
+        không chứa 0), R², f², Q². Tác động gián tiếp được kết luận theo khoảng tin cậy bootstrap, phân loại trung gian
+        theo Zhao và cộng sự (2010).
+      </li>
+    </ol>
+    <p>
+      Chỉ số nào không đạt, xem cách xử lý hợp lệ ở <a href="/cong-cu/bac-si-ket-qua/">Bác sĩ kết quả</a> thay vì đổi sang
+      ngưỡng lỏng hơn cho vừa kết quả.
+    </p>
+
+    <h2>Khác gì so với SmartPLS</h2>
+    <p>
+      Ước lượng điểm (hệ số tải, trọng số, hệ số đường dẫn, R², alpha, rho_A, rho_c, AVE, HTMT, VIF) theo đúng thuật
+      toán PLS chuẩn nên chỉ có thể lệch SmartPLS ở phần làm tròn. Bootstrap thì khác nhau một chút giữa mọi phần mềm, kể
+      cả giữa hai lần chạy SmartPLS với seed khác nhau, vì mẫu lặp được rút ngẫu nhiên; độ lệch chuẩn thường chỉ khác ở
+      chữ số thứ ba và kết luận giả thuyết hiếm khi đổi, trừ khi p sát 0,05. Q² bằng blindfolding có thể lệch nhẹ do cách
+      thay giá trị bị bỏ khác nhau giữa các phần mềm (SmartPLS 4 đã thay blindfolding bằng PLSpredict). Công cụ chưa có
+      PLSc, PLSpredict, mô hình bậc hai, biến điều tiết dạng tương tác và phân tích đa nhóm (MGA).
+    </p>
+    <p>
+      Công cụ tính đúng các con số; việc chọn mô hình, quyết định loại biến và diễn giải kết quả vẫn là trách nhiệm của
+      bạn. Nếu khoa yêu cầu kết quả từ SmartPLS, hãy dùng công cụ để kiểm tra trước rồi chạy SmartPLS với cùng mô hình.
+    </p>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Có cần cài SmartPLS không?</h3>
+    <p>
+      Không cần để ước lượng mô hình: thuật toán chạy ngay trong trình duyệt, không cần giấy phép, và dữ liệu không rời
+      khỏi máy bạn. Công cụ chưa có các phân tích nâng cao như PLSc, PLSpredict hay MGA; đề tài cần các phần đó vẫn phải
+      dùng SmartPLS hoặc gói seminr của R.
+    </p>
+    <h3>Cỡ mẫu bao nhiêu là đủ cho PLS-SEM?</h3>
+    <p>
+      Quy tắc “gấp 10 lần số mũi tên” đã bị phê phán; nên tính bằng phương pháp căn bậc hai nghịch đảo (Kock &amp; Hadaya)
+      hoặc G*Power ở <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.
+    </p>
+    <h3>Chọn PLS-SEM hay CB-SEM (AMOS)?</h3>
+    <p>
+      PLS-SEM hợp với mục tiêu dự báo, mô hình nhiều khái niệm, có khái niệm cấu tạo hoặc mẫu nhỏ; CB-SEM hợp khi kiểm
+      định lý thuyết và cần chỉ số phù hợp mô hình như CFI, RMSEA. Trả lời vài câu ở <a href="/cong-cu/chon-phuong-phap/">chọn phương pháp phân tích</a> để biết đề tài của bạn hợp cách nào.
+    </p>
+    <h3>Vì sao kết quả bootstrap của tôi khác bạn cùng nhóm?</h3>
+    <p>
+      Do seed hoặc số mẫu bootstrap khác nhau. Cùng dữ liệu, cùng mô hình, cùng số mẫu và cùng seed thì công cụ cho kết quả
+      giống hệt đến từng chữ số; ghi seed vào chương 3 để người khác tái lập được.
+    </p>
+    <h3>Biến trung gian có cần chạy PROCESS riêng không?</h3>
+    <p>
+      Không: trong PLS-SEM, tác động gián tiếp được kiểm định ngay trong mô hình bằng bootstrap. Công cụ <a href="/cong-cu/trung-gian-dieu-tiet/">trung gian và điều tiết kiểu PROCESS</a> dành cho đề tài dùng hồi quy
+      trên điểm trung bình, hoặc khi cần biến điều tiết.
+    </p>
+
+    <h2>Kiểm chứng</h2>
+    <p>
+      Bộ kiểm tra tự động (<code>scripts/check-pls.mjs</code>, chạy trước mỗi lần cập nhật trang) so lõi tính toán của công
+      cụ với hai gói R độc lập, seminr 2.6 và cSEM 0.7, và một bản cài đặt riêng bằng Python/numpy, trên dữ liệu mẫu của
+      trang và một bộ dữ liệu mô phỏng có khái niệm cấu tạo, khái niệm một biến và giá trị thiếu. Hệ số tải, trọng số, hệ số
+      tải chéo, hệ số đường dẫn, R², R² hiệu chỉnh, alpha, rho_A, rho_c, AVE, Fornell–Larcker, HTMT, VIF, tác động tổng và
+      gián tiếp khớp seminr với sai lệch lớn nhất cỡ 10⁻¹⁴ và khớp cSEM tới 10⁻⁹; f² khớp cSEM tới 10⁻¹⁰. Q² và khoảng tin
+      cậy BCa khớp bản Python tới 10⁻⁹. Bootstrap khớp bản Python tuyệt đối khi dùng cùng chuỗi số ngẫu nhiên; so với
+      bootstrap 5.000 mẫu của seminr (bộ sinh số khác), độ lệch chuẩn chênh tối đa 3,3% và cận khoảng tin cậy chênh dưới
+      0,16 lần độ lệch chuẩn, đúng mức sai số Monte Carlo.
+    </p>
+    <p>
+      Riêng f²: công cụ tính từ điểm khái niệm của mô hình đầy đủ, như cSEM. seminr ước lượng lại toàn bộ mô hình khi bỏ
+      từng đường dẫn nên f² của nó lệch tới 0,004; nếu số f² của bạn ở phần mềm khác lệch ở chữ số thứ ba, đó là lý do,
+      còn mức nhỏ, vừa, lớn hầu như không đổi.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Dijkstra, T. K., &amp; Henseler, J. (2015). Consistent partial least squares path modeling. <em>MIS Quarterly, 39</em>(2),
+        297–316. https://doi.org/10.25300/MISQ/2015/39.2.02
+      </li>
+      <li>
+        Efron, B. (1987). Better bootstrap confidence intervals. <em>Journal of the American Statistical Association, 82</em>(397),
+        171–185. https://doi.org/10.1080/01621459.1987.10478410
+      </li>
+      <li>
+        Fornell, C., &amp; Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and
+        measurement error. <em>Journal of Marketing Research, 18</em>(1), 39–50. https://doi.org/10.1177/002224378101800104
+      </li>
+      <li>
+        Geisser, S. (1974). A predictive approach to the random effect model. <em>Biometrika, 61</em>(1), 101–107.
+        https://doi.org/10.1093/biomet/61.1.101
+      </li>
+      <li>
+        Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural
+        equation modeling (PLS-SEM)</em> (3rd ed.). Sage.
+      </li>
+      <li>
+        Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of
+        PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203
+      </li>
+      <li>
+        Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in
+        variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135.
+        https://doi.org/10.1007/s11747-014-0403-8
+      </li>
+      <li>
+        Lohmöller, J.-B. (1989). <em>Latent variable path modeling with partial least squares</em>. Physica-Verlag.
+        https://doi.org/10.1007/978-3-642-52512-4
+      </li>
+      <li>
+        Stone, M. (1974). Cross-validatory choice and assessment of statistical predictions. <em>Journal of the Royal
+        Statistical Society: Series B (Methodological), 36</em>(2), 111–133. https://doi.org/10.1111/j.2517-6161.1974.tb00994.x
+      </li>
+      <li>
+        Streukens, S., &amp; Leroi-Werelds, S. (2016). Bootstrapping and PLS-SEM: A step-by-step guide to get more out of your
+        bootstrap results. <em>European Management Journal, 34</em>(6), 618–632. https://doi.org/10.1016/j.emj.2016.06.003
+      </li>
+      <li>
+        Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation
+        analysis. <em>Journal of Consumer Research, 37</em>(2), 197–206. https://doi.org/10.1086/651257
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

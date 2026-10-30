@@ -36,7 +36,7 @@
     <button type="button" class="btn" id="fr-copy">Sao chép đoạn văn</button>
   </div>
   <div id="fr-thesis" style="line-height:1.7"></div>
-  <small class="text-muted-foreground">Chỉ giữ lại những biến có trong mô hình của bạn. Định nghĩa đầy đủ, biến thể và code Stata/R của từng biến: <a href="/goc-nghien-cuu/bien-nghien-cuu/">thư viện biến nghiên cứu</a>.</small>
+  <small class="text-muted-foreground">Chỉ giữ lại những biến có trong mô hình của bạn. Định nghĩa đầy đủ, biến thể và code Stata/R của từng biến: <a href="{BASE}bien-nghien-cuu/">thư viện biến nghiên cứu</a>.</small>
 </div>
 <script>
 (function(){
@@ -493,7 +493,7 @@ NHA\t2023\t1250000\t820000\t11500\t930000\t105000\t1160000\t80000\t33000\t43000\
     html+=`<div class="row" style="justify-content:space-between;align-items:center;margin-top:8px"><strong>Thống kê mô tả${o.winsor?' (sau winsorize)':''}</strong><button type="button" class="btn ghost" id="fr-copystats">Sao chép bảng</button></div><div class="table-wrap"><table><thead><tr><th>Biến</th><th>N</th><th>Trung bình</th><th>Độ lệch chuẩn</th><th>Nhỏ nhất</th><th>Trung vị</th><th>Lớn nhất</th></tr></thead><tbody>${st.map(s=>`<tr><td>${esc(s.sym)}</td><td>${s.n}</td><td>${f4(s.mean)}</td><td>${f4(s.sd)}</td><td>${f4(s.min)}</td><td>${f4(s.p50)}</td><td>${f4(s.max)}</td></tr>`).join('')}</tbody></table></div>`;
     if(o.winsor){const b=u.map(v=>({v,b:res.bounds[v.id]})).filter(x=>x.b);html+=`<details><summary style="cursor:pointer;font-weight:600">Ngưỡng winsorize từng biến</summary><div class="table-wrap"><table><thead><tr><th>Biến</th><th>Phân vị ${o.winsor}</th><th>Phân vị ${100-o.winsor}</th><th>Số giá trị bị thay (dưới / trên)</th></tr></thead><tbody>${b.map(x=>`<tr><td>${esc(x.v.sym)}</td><td>${f4(x.b.lo)}</td><td>${f4(x.b.hi)}</td><td>${x.b.nlo} / ${x.b.nhi}</td></tr>`).join('')}</tbody></table></div></details>`;
       if(res.rows.length<100)html+=`<p class="how">Mẫu có ${res.rows.length} quan sát: winsorize ${o.winsor}% chỉ chạm tới khoảng ${Math.max(1,Math.round(res.rows.length*o.winsor/100))} giá trị mỗi đầu.</p>`}
-    html+=`<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Công thức đã dùng</summary><div class="table-wrap"><table><thead><tr><th>Biến</th><th>Cột CSV</th><th>Công thức</th><th>Nguồn</th></tr></thead><tbody>${u.map(v=>`<tr><td><a href="/goc-nghien-cuu/bien-nghien-cuu/${v.slug}/">${esc(v.sym)}</a></td><td><code>${esc(colOf(v))}</code></td><td>${esc(v.formula)}${o.avg&&v.bal?' (số dư bình quân)':''}</td><td>${esc(REFS[v.cite].cite)}</td></tr>`).join('')}</tbody></table></div></details>`;
+    html+=`<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Công thức đã dùng</summary><div class="table-wrap"><table><thead><tr><th>Biến</th><th>Cột CSV</th><th>Công thức</th><th>Nguồn</th></tr></thead><tbody>${u.map(v=>`<tr><td><a href="{BASE}bien-nghien-cuu/${v.slug}/">${esc(v.sym)}</a></td><td><code>${esc(colOf(v))}</code></td><td>${esc(v.formula)}${o.avg&&v.bal?' (số dư bình quân)':''}</td><td>${esc(REFS[v.cite].cite)}</td></tr>`).join('')}</tbody></table></div></details>`;
     if(missing.length)html+=`<p class="how">Chưa tính được: ${esc(missing.join('; '))}.</p>`;
     out.innerHTML=html;th.innerHTML=measurementText(res,o).html;
     const cc=csvColumns(p.data,res,tpl);

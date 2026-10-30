@@ -6,8 +6,9 @@ import rawHtml from "@/tools/tinh-chi-so-tai-chinh.html?raw";
 
 // Listed-bank panel from /du-lieu/ngan-hang-niem-yet/ (when that dataset exists): the first CSV endpoint or static CSV
 // whose path names it. The tool shows its "Nạp bộ dữ liệu ngân hàng niêm yết" button only when a URL is found.
+// Site base path ("/" or "/goc-nghien-cuu/"); the tool HTML writes internal links as {BASE}.
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 function bankCsvUrl(): string {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const found: string[] = [];
   const scan = (dir: string, prefix: string, ext: string) => {
     if (!existsSync(dir)) return;
@@ -22,7 +23,7 @@ function bankCsvUrl(): string {
           e.name.startsWith("ngan-hang-niem-yet"))
       )
         found.push(
-          `${base}/du-lieu/${prefix}${e.name.slice(0, -ext.length)}.csv`
+          `${base}du-lieu/${prefix}${e.name.slice(0, -ext.length)}.csv`
         );
     }
   };
@@ -36,10 +37,9 @@ function bankCsvUrl(): string {
     )[0] ?? ""
   );
 }
-const html = rawHtml.replace(
-  'data-bank-csv=""',
-  `data-bank-csv="${bankCsvUrl()}"`
-);
+const html = rawHtml
+  .replace('data-bank-csv=""', `data-bank-csv="${bankCsvUrl()}"`)
+  .replaceAll("{BASE}", base);
 ---
 
 <ToolLayout
@@ -153,8 +153,8 @@ const html = rawHtml.replace(
     <p>
       Bảng "Công thức đã dùng" dưới kết quả liệt kê công thức và tên cột CSV của
       từng biến; trang của từng biến trong
-      <a href="/goc-nghien-cuu/bien-nghien-cuu/">thư viện biến nghiên cứu</a> ghi
-      biến thể, dấu kỳ vọng và code Stata, R. Một số quy ước cần ghi vào chương 3:
+      <a href={`${base}bien-nghien-cuu/`}>thư viện biến nghiên cứu</a> ghi biến thể,
+      dấu kỳ vọng và code Stata, R. Một số quy ước cần ghi vào chương 3:
     </p>
     <ul>
       <li>
@@ -227,7 +227,7 @@ const html = rawHtml.replace(
       của từng chỉ tiêu. Điều khoản của các trang tổng hợp như FiinGroup,
       Vietstock, VNDIRECT, SSI cấm sao chép hoặc phân phối lại dữ liệu, nên đừng
       đăng kèm khoá luận dữ liệu tải từ các nguồn đó. Khi mục <a
-        href="/goc-nghien-cuu/du-lieu/">dữ liệu</a
+        href={`${base}du-lieu/`}>dữ liệu</a
       > có bộ số liệu ngân hàng niêm yết, nút "Nạp bộ dữ liệu ngân hàng niêm yết"
       hiện ngay dưới ô nhập để nạp thẳng vào công cụ.
     </p>

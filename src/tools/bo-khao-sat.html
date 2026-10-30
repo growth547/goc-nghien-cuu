@@ -117,8 +117,9 @@
       <li>Xoá đoạn mã có sẵn, dán đoạn dưới đây vào.</li>
       <li>Bấm Chạy (hàm <code>taoBangHoi</code>).</li>
       <li>Cấp quyền khi Google hỏi (nếu thấy “Google chưa xác minh ứng dụng này”, bấm Nâng cao rồi Đi tới dự án). Link form và bảng tính hiện trong Nhật ký thực thi.</li>
+      <li>Thu xong dữ liệu: mở lại dự án này, chọn hàm <code>xuatDuLieu</code> ở ô cạnh nút Chạy rồi bấm Chạy. Bảng tính có thêm trang “Du lieu ma hoa”: mỗi cột một mã biến, giá trị là số theo Bảng mã hoá, đã bỏ phiếu không qua sàng lọc. Tải trang đó về dạng CSV để mở bằng SPSS hoặc SmartPLS.</li>
     </ol>
-    <small>Đoạn mã chạy trong tài khoản Google của bạn; dữ liệu không đi qua máy chủ của Góc Nghiên Cứu. Mỗi khái niệm là một phần, mỗi hàng bắt đầu bằng mã biến (ví dụ “PU1. …”) để cột xuất ra khớp với SPSS. Câu trả lời tự lưu vào một Google Sheets mới.</small>
+    <small>Đoạn mã chạy trong tài khoản Google của bạn; dữ liệu không đi qua máy chủ của Góc Nghiên Cứu. Mỗi khái niệm là một phần, mỗi hàng bắt đầu bằng mã biến (ví dụ “PU1. …”). Câu trả lời tự lưu vào một Google Sheets mới. Câu đảo chiều chưa được đảo điểm, phiếu sai câu kiểm tra chú ý chưa bị loại: nhật ký thực thi báo số phiếu sai để bạn loại.</small>
     <textarea id="bk-gform-code" readonly aria-label="Đoạn Apps Script tạo Google Form"></textarea>
     <button type="button" class="btn" id="bk-gform-copy">Sao chép đoạn mã</button>
   </div>
@@ -503,6 +504,8 @@
       }
       list.push({key:'x'+(xi+1),label,opts:opts.length>=2?opts:'text',role,groups:null,custom:true});
     });
+    // A grouping variable given without its groups compares the question's options, "Khác" left out.
+    list.forEach(g=>{if(g.role==='grp'&&!g.groups&&Array.isArray(g.opts))g.groups=g.opts.filter(o=>!/^Khác(\s|$)/i.test(o))});
     return list;
   }
 
@@ -546,8 +549,8 @@
       label:label.replace('{addr}',addr==='Bạn'?'bạn':'Anh/Chị').replace('{target}',target||'[đối tượng nghiên cứu]'),
       type:opts==='text'?'text':'single',options:opts==='text'?[]:opts,required:opts!=='text'||Boolean(role)}));
     // Multigroup comparison: the first grouping variable with at least two groups.
-    const gq0=demos.find(d=>d.role==='grp'&&(d.groups||d.options).length>=2);
-    const mga=gq0?{code:gq0.code,name:gq0.label,groups:(gq0.groups||gq0.options).map(x=>x.replace(/\s*\(ghi rõ\)$/,''))}:null;
+    const gq0=demos.find(d=>d.role==='grp'&&d.groups&&d.groups.length>=2);
+    const mga=gq0?{code:gq0.code,name:gq0.label,groups:gq0.groups}:null;
     const nItems=constructs.reduce((n,c)=>n+c.nItems,0);
     const nQ=nItems+(ac?1:0)+(screening?1:0)+demos.length;
     const minutes=Math.max(3,Math.ceil((nItems*8+demos.length*6+(screening?8:0)+(ac?8:0)+40)/60));
@@ -669,7 +672,8 @@
   }
 
   // ---- GDF (Genius Data import format) ----
-  const gq=s=>String(s).replace(/\s+/g,' ').trim().replace(/\|/g,'\\|').replace(/->/g,'\\->');
+  // One line; "|" and "->" escaped; "{{" would be read as an insertion tag, so it is split.
+  const gq=s=>String(s).replace(/\s+/g,' ').trim().replace(/\|/g,'\\|').replace(/->/g,'\\->').replace(/\{\{/g,'{ {').replace(/\}\}/g,'} }');
   const slugOf=s=>normText(s).replace(/ /g,'-').slice(0,40).replace(/-+$/,'')||'phan';
   function toGDF(sv){
     const L=[],labels=new Set();let q=0;
@@ -923,11 +927,11 @@
     const opts=x.opts.split(/[;\n]/).map(t=>t.trim()).filter(Boolean);
     const G=generalQuestions(st.aud||'td',[],[extraInput()[i]])[0];
     const head=G&&!G.custom?`Dùng câu có sẵn “${G.label.replace('{addr} ','').replace(/ \{target\}/,'')}” (${G.opts==='text'?'tự điền':G.opts.length+' lựa chọn'}).`:opts.length>=2?`${opts.length} lựa chọn.`:'Người trả lời tự điền; muốn có lựa chọn thì gõ các lựa chọn, ngăn bằng dấu chấm phẩy.';
-    const g=x.role==='grp'?(G&&(G.groups||(G.opts!=='text'&&G.opts))||[]):null;
-    return head+(x.role==='grp'?(g.length>=2?` So sánh ${g.length} nhóm; cỡ mẫu nhân theo số nhóm.`:' Biến phân nhóm cần ít nhất hai nhóm: gõ tên nhóm, ngăn bằng dấu chấm phẩy (ví dụ: Nam; Nữ).'):'');
+    const g=x.role==='grp'?(G&&G.groups)||[]:null, firstGrp=st.extra.findIndex(y=>y.role==='grp')===i;
+    return head+(x.role==='grp'?(!firstGrp?' Chỉ biến phân nhóm đầu tiên được dùng để tính cỡ mẫu.':g.length>=2?` So sánh ${g.length} nhóm (${g.join(', ')}); cỡ mẫu tối thiểu nhân theo số nhóm.`:' Biến phân nhóm cần ít nhất hai nhóm: gõ tên nhóm, ngăn bằng dấu chấm phẩy (ví dụ: Nam; Nữ).'):'');
   }
   function renderDemos(){
-    if(!st.aud){$('bk-demo').innerHTML='<small>Chọn đối tượng khảo sát trước.</small>';return}
+    if(!st.aud){$('bk-demo').innerHTML=`<small>Chọn đối tượng khảo sát trước.${st.extra.length?` Các câu hỏi thêm (${esc(viJoin(st.extra.map(x=>x.label).filter(Boolean)))}) sẽ hiện ở đây.`:''}</small>`;return}
     const on=st.demos||DEMO_DEFAULT[st.aud], G=generalQuestions(st.aud,on,extraInput());
     // A ready-made question pulled in by a question below is asked even when not ticked here.
     const tag=k=>{const g=G.find(x=>x.key===k);if(!g)return '';const r=g.role?ROLE_NAME[g.role].toLowerCase():'';

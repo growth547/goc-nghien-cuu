@@ -439,6 +439,16 @@ checkSurvey("no agreement block (PSS-10, GAD-7)", input(["cang-thang-pss-10:PSS"
   check(cbh.filter(r => r[1] === "Biến kiểm soát").length === 3 && cbh.some(r => r[1] === "Biến phân nhóm" && /So sánh đa nhóm: Nhà nước, Tư nhân trong nước/.test(r[8])), "codebook marks control and grouping variables");
   check(/# TT\d+: biến phân nhóm/.test(api.toGDF(hr)), "GDF notes the grouping variable");
   check(/Q\d+ \[text\] Quy mô doanh nghiệp/.test(api.toGDF(hr)) && /"TT4\. Quy mô doanh nghiệp"\)\.setRequired\(true\)/.test(api.appsScript(hr)), "a free-answer control variable is required on GDF and Google Form");
+  const gOnly = api.buildSurvey(input(["tam:PU"], { aud: "td", extra: [{ label: "Giới tính", options: [], role: "grp" }] }));
+  check(gOnly.mga && gOnly.mga.groups.join("|") === "Nam|Nữ" && gOnly.demos.filter(d => d.key === "gender").length === 1, `grp without groups compares the question's options minus "Khác" (${gOnly.mga && gOnly.mga.groups.join(", ")})`);
+  const gNone = api.buildSurvey(input(["tam:PU"], { aud: "td", extra: [{ label: "Khu vực sống", options: [], role: "grp" }] }));
+  check(gNone.mga === null, "a free-answer grouping variable has no groups, so no multigroup sample");
+  const odd = api.buildSurvey(input(["tam:PU"], { aud: "td", topic: "Đề tài {{brand}} | A -> B", extra: [{ label: "Kênh mua | online -> offline {{x}}", options: ["A | B", "C -> D", "Khác (ghi rõ)"], role: "grp" }, { label: "Một lựa chọn", options: ["Chỉ một"], role: "" }] }));
+  const og = api.toGDF(odd), ov = validateGDF(og);
+  check(!ov.errs.length && !/\{\{/.test(og), `GDF stays valid with |, -> and {{ in labels typed by the student${ov.errs.length ? ` (${ov.errs[0]})` : ""}`);
+  check(odd.demos.find(d => d.label === "Một lựa chọn").type === "text", "a typed question with one option becomes a free answer");
+  const or = runAppsScript(api.appsScript(odd));
+  check(!or.errs.length, `Apps Script runs with odd characters in typed questions${or.errs.length ? ` (${or.errs[0]})` : ""}`);
   const refsOf = c => scales.get(c.scale.slug).references;
   const plain = h => h.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const ss = api.kitSample("pls", 3, hr.nItems);

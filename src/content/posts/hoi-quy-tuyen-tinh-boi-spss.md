@@ -53,6 +53,7 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 </tbody>
 </table>
 <p>Kiểm định F trả lời câu hỏi: ít nhất một biến độc lập có tác động khác 0 không? Sig. &lt; 0,05 nên mô hình có ý nghĩa. F tính được từ R²: (0,512 / 4) / (0,488 / 245) = 0,128 / 0,00199 = 64,3. Bậc tự do là (k, n − k − 1) = (4, 245). Báo cáo đầy đủ: F(4, 245) = 64,26; p &lt; 0,001.</p>
+<p>Bảng ANOVA trong hồi quy khác với One-way ANOVA dùng để so sánh trung bình giữa các nhóm; cách chạy và đọc kiểm định đó có ở bài <a href="/posts/kiem-dinh-t-test-anova-spss/">kiểm định T-test và ANOVA trong SPSS</a>.</p>
 
 <h2>Bảng 3: Coefficients</h2>
 <table>

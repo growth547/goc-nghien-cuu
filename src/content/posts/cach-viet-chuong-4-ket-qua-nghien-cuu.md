@@ -108,7 +108,7 @@ tags: ["khoá luận","SPSS","PLS-SEM"]
 <p>Nếu giảng viên yêu cầu tiêu chí Fornell và Larcker (1981), báo cáo thêm, nhưng dựa kết luận vào HTMT. Nên báo cáo kiểm tra sai lệch phương pháp chung bằng VIF toàn phần, ngưỡng 3,3 (Kock, 2015).</p>
 
 <h2>4.8 Kiểm định khác biệt theo nhóm (nếu có)</h2>
-<p>Independent-samples t-test cho biến hai nhóm, One-way ANOVA cho biến nhiều nhóm. Đọc Levene trước; nếu phương sai không đồng nhất, dùng dòng "Equal variances not assumed" (t-test) hoặc Welch (ANOVA). Chỉ đưa mục này khi có câu hỏi nghiên cứu tương ứng.</p>
+<p>Independent-samples t-test cho biến hai nhóm, One-way ANOVA cho biến nhiều nhóm. Đọc Levene trước; nếu phương sai không đồng nhất, dùng dòng "Equal variances not assumed" (t-test) hoặc Welch (ANOVA). Chỉ đưa mục này khi có câu hỏi nghiên cứu tương ứng. Ví dụ số đầy đủ, cách chọn Tukey hay Games-Howell có ở bài <a href="/posts/kiem-dinh-t-test-anova-spss/">kiểm định T-test và ANOVA trong SPSS</a>.</p>
 <blockquote><p>Kết quả kiểm định t cho thấy không có khác biệt có ý nghĩa thống kê về ý định hành vi giữa nam và nữ (t(321) = 1,24; p = 0,216).</p></blockquote>
 
 <h2>4.9 Thảo luận kết quả</h2>

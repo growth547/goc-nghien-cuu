@@ -1,6 +1,6 @@
 ---
-title: "Biến trung gian và biến điều tiết là gì? Khác nhau thế nào, kiểm định ra sao"
-description: "Biến trung gian (mediator) và biến điều tiết (moderator) là gì, khác nhau ở đâu, cách viết giả thuyết, kiểm định bằng bootstrap và tương tác, ví dụ số, bảng mẫu và câu viết chương 4."
+title: "Biến trung gian và biến điều tiết là gì? Khác nhau thế nào"
+description: "Biến trung gian và biến điều tiết là gì, khác nhau ở đâu, kiểm định bằng bootstrap và biến tương tác, ví dụ số, bảng mẫu và câu viết chương 4."
 pubDatetime: 2026-10-30T15:45:00+07:00
 featured: false
 tags: ["mô hình nghiên cứu","phân tích dữ liệu","khoá luận"]

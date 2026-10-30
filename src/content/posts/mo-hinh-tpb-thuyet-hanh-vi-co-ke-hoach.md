@@ -1,6 +1,6 @@
 ---
-title: "Mô hình TPB (Ajzen 1991) là gì? Thuyết hành vi có kế hoạch cho khoá luận"
-description: "Mô hình TPB của Ajzen (1991): ba yếu tố thái độ, chuẩn chủ quan, nhận thức kiểm soát hành vi, khác TRA và TAM thế nào, cách mở rộng đúng, thang đo, giả thuyết mẫu và kết quả ví dụ."
+title: "Mô hình TPB (Ajzen 1991) là gì? Thuyết hành vi có kế hoạch"
+description: "Mô hình TPB của Ajzen (1991): thái độ, chuẩn chủ quan, nhận thức kiểm soát hành vi; khác TRA, TAM; cách mở rộng, thang đo và kết quả ví dụ."
 pubDatetime: 2026-10-30T16:15:00+07:00
 featured: false
 tags: ["mô hình nghiên cứu","thang đo","khoá luận"]

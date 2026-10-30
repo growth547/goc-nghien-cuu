@@ -1,6 +1,6 @@
 ---
 title: "Hàm ý quản trị là gì? Cách viết chương 5 khoá luận có ví dụ"
-description: "Hàm ý quản trị là gì, khác giải pháp ở đâu, cách viết chương 5 (kết luận, thảo luận, hàm ý, hạn chế) dựa trên hệ số hồi quy và điểm trung bình, ma trận ưu tiên IPA, ví dụ và đoạn mẫu."
+description: "Hàm ý quản trị là gì, khác giải pháp ở đâu, cách viết chương 5 dựa trên hệ số hồi quy và điểm trung bình, ma trận ưu tiên IPA, ví dụ và đoạn mẫu."
 pubDatetime: 2026-10-30T16:45:00+07:00
 featured: false
 tags: ["khoá luận","bảo vệ khoá luận"]

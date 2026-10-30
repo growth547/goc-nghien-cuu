@@ -1,6 +1,6 @@
 ---
-title: "Kiểm định T-test và ANOVA trong SPSS: cách chạy và đọc kết quả"
-description: "Kiểm định Independent Samples T-test và One-way ANOVA trong SPSS: chọn đúng dòng theo Levene, khi nào dùng Welch, Tukey hay Games-Howell, ví dụ số, bảng mẫu và câu viết chương 4."
+title: "Kiểm định T-test và ANOVA trong SPSS: chạy và đọc kết quả"
+description: "T-test độc lập và One-way ANOVA trong SPSS: đọc Levene, khi nào dùng Welch, Tukey hay Games-Howell, ví dụ số, bảng mẫu và câu viết chương 4."
 pubDatetime: 2026-10-30T15:30:00+07:00
 featured: false
 tags: ["SPSS","phân tích dữ liệu","khoá luận"]

@@ -1,6 +1,6 @@
 ---
-title: "HTMT là gì? Đánh giá giá trị phân biệt bằng HTMT và Fornell-Larcker"
-description: "HTMT là gì, ngưỡng 0,85 hay 0,90, cách tính tay từ ma trận tương quan, khác Fornell-Larcker ở đâu, đọc bảng SmartPLS, xử lý khi HTMT vượt ngưỡng, ví dụ số và câu viết chương 4."
+title: "HTMT là gì? Đánh giá giá trị phân biệt và Fornell-Larcker"
+description: "HTMT là gì, ngưỡng 0,85 hay 0,90, cách tính tay, khác Fornell-Larcker ở đâu, kiểm định bootstrap, xử lý khi vượt ngưỡng và câu viết chương 4."
 pubDatetime: 2026-10-30T16:00:00+07:00
 featured: false
 tags: ["PLS-SEM","thang đo","khoá luận"]

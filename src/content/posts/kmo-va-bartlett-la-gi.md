@@ -1,6 +1,6 @@
 ---
-title: "KMO là gì? Kiểm định KMO và Bartlett trong SPSS, cách tính và xử lý khi thấp"
-description: "Hệ số KMO và kiểm định Bartlett là gì, ngưỡng KMO ≥ 0,5 (Kaiser 1974), công thức và ví dụ tính tay, MSA từng biến trong Anti-image, xử lý KMO thấp, lỗi not positive definite."
+title: "KMO là gì? Kiểm định KMO và Bartlett trong SPSS"
+description: "KMO và kiểm định Bartlett là gì, ngưỡng KMO ≥ 0,5 (Kaiser 1974), ví dụ tính tay, MSA từng biến, xử lý KMO thấp và lỗi not positive definite."
 pubDatetime: 2026-10-30T16:30:00+07:00
 featured: false
 tags: ["EFA","SPSS","phân tích dữ liệu"]

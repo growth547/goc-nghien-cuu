@@ -6,18 +6,9 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 
 ## Chờ viết
 
-- thang-do-likert-5-muc-hay-7-muc | thang đo likert 5 mức độ của ai, likert 5 hay 7 mức | trích Likert 1932, Preston & Colman 2000
-- likert-la-thang-do-khoang-hay-thu-bac | likert là thang đo khoảng cách hay thứ bậc | Norman 2010, Carifio & Perla
-- thang-do-goc-ke-thua-hieu-chinh-la-gi | thang đo gốc là gì, thang đo kế thừa, thang đo hiệu chỉnh | dẫn sang thư viện thang đo
-- cach-tim-thang-do-nghien-cuu-khoa-hoc | cách tìm thang đo trong nghiên cứu khoa học | Google Scholar, phụ lục, thư viện
-- dich-nguoc-back-translation-la-gi | back translation là gì, dịch thang đo | Brislin 1970, quy trình chi tiết
-- nghien-cuu-so-bo-la-gi | nghiên cứu sơ bộ, khảo sát thử pilot test | cỡ mẫu pilot, Cronbach sơ bộ
-- cach-xay-dung-mo-hinh-nghien-cuu | xây dựng mô hình nghiên cứu, mô hình nghiên cứu đề xuất | dẫn sang công cụ vẽ mô hình
-- cach-dat-gia-thuyet-nghien-cuu | cách viết giả thuyết nghiên cứu | ví dụ H1 H2, cùng chiều/ngược chiều
 - chay-spss-can-bao-nhieu-mau | chạy spss cần bao nhiêu mẫu | dẫn sang máy tính cỡ mẫu
 - cach-tinh-co-mau-theo-cong-thuc-slovin | công thức slovin, yamane | khi nào không nên dùng
 - bang-krejcie-morgan | bảng krejcie morgan | Krejcie & Morgan 1970
-- hoi-quy-tuyen-tinh-boi-spss | hồi quy tuyến tính bội spss, đọc kết quả hồi quy | dẫn sang công cụ phân tích
 - kiem-dinh-t-test-anova-spss | t-test, anova spss | Levene, Welch
 - phan-tich-tuong-quan-pearson | tương quan pearson spss | ngưỡng Cohen 1988
 - pls-sem-la-gi-smartpls | pls-sem là gì, smartpls | Hair 2019, 2022
@@ -47,6 +38,18 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - cach-trinh-bay-bang-bieu-luan-van | trình bày bảng biểu luận văn |
 - mau-de-cuong-khoa-luan | mẫu đề cương khoá luận, đề cương nghiên cứu |
 
+## Đang viết (đã có người nhận, tác vụ khác bỏ qua)
+
+- cach-tim-thang-do-nghien-cuu-khoa-hoc | cách tìm thang đo trong nghiên cứu khoa học | Google Scholar, phụ lục, thư viện
+- nghien-cuu-so-bo-la-gi | nghiên cứu sơ bộ, khảo sát thử pilot test | cỡ mẫu pilot, Cronbach sơ bộ
+- cach-xay-dung-mo-hinh-nghien-cuu | xây dựng mô hình nghiên cứu, mô hình nghiên cứu đề xuất | dẫn sang công cụ vẽ mô hình
+- cach-dat-gia-thuyet-nghien-cuu | cách viết giả thuyết nghiên cứu | ví dụ H1 H2, cùng chiều/ngược chiều
+- hoi-quy-tuyen-tinh-boi-spss | hồi quy tuyến tính bội spss, đọc kết quả hồi quy | dẫn sang công cụ phân tích
+
 ## Đã viết
 
+- thang-do-likert-5-muc-hay-7-muc | thang đo likert 5 mức độ của ai, likert 5 hay 7 mức | trích Likert 1932, Preston & Colman 2000 | trùng bài có sẵn: /posts/thang-do-likert/
+- likert-la-thang-do-khoang-hay-thu-bac | likert là thang đo khoảng cách hay thứ bậc | Norman 2010, Carifio & Perla | đã viết: /posts/likert-la-thang-do-khoang-hay-thu-bac/
+- thang-do-goc-ke-thua-hieu-chinh-la-gi | thang đo gốc là gì, thang đo kế thừa, thang đo hiệu chỉnh | dẫn sang thư viện thang đo | đã viết: /posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/
+- dich-nguoc-back-translation-la-gi | back translation là gì, dịch thang đo | Brislin 1970, quy trình chi tiết | đã viết: /posts/dich-nguoc-back-translation-la-gi/
 - (xem git log của src/content/posts)

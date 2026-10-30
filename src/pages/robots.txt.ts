@@ -2,8 +2,7 @@ import type { APIRoute } from "astro";
 
 // Search engines and AI assistants are welcome: the site wants to be found and cited.
 // A crawler obeys only the most specific group that names it, so every named group repeats "Allow: /".
-// Note: robots.txt only counts at the host root (https://<domain>/robots.txt); under a project path
-// such as /goc-nghien-cuu/ it is ignored until the site moves to its own domain.
+// robots.txt counts only at the host root, which this site now is (https://gocnghiencuu.com/robots.txt).
 const AGENTS = [
   "Googlebot", // Google Search, incl. AI Overviews / AI Mode
   "Google-Extended", // Gemini apps and grounding

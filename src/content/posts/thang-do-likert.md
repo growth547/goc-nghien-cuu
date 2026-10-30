@@ -14,7 +14,7 @@ tags: ["thang đo","bảng hỏi"]
 <p>Có hai khái niệm hay bị dùng lẫn:</p>
 <ul>
 <li><strong>Câu Likert (Likert item):</strong> một nhận định đơn lẻ kèm các mức trả lời, ví dụ "Ứng dụng này dễ sử dụng".</li>
-<li><strong>Thang đo Likert (Likert scale):</strong> một nhóm câu cùng đo một khái niệm, điểm của khái niệm là tổng hoặc trung bình các câu. Ví dụ khái niệm <a href="/goc-nghien-cuu/khai-niem/nhan-thuc-de-su-dung/">nhận thức tính dễ sử dụng</a> đo bằng 6 câu trong <a href="/goc-nghien-cuu/thang-do/tam/">thang đo TAM</a> gốc của Davis (1989).</li>
+<li><strong>Thang đo Likert (Likert scale):</strong> một nhóm câu cùng đo một khái niệm, điểm của khái niệm là tổng hoặc trung bình các câu. Ví dụ khái niệm <a href="/khai-niem/nhan-thuc-de-su-dung/">nhận thức tính dễ sử dụng</a> đo bằng 6 câu trong <a href="/thang-do/tam/">thang đo TAM</a> gốc của Davis (1989).</li>
 </ul>
 <p>Phân biệt này quan trọng khi phân tích. Một câu đơn lẻ là dữ liệu thứ bậc với 5 hoặc 7 giá trị. Điểm trung bình của cả thang đo có nhiều giá trị hơn và thường được xử lý như biến liên tục.</p>
 
@@ -33,7 +33,7 @@ tags: ["thang đo","bảng hỏi"]
 <tr><td>7</td><td></td><td>Hoàn toàn đồng ý</td></tr>
 </tbody>
 </table>
-<p>Bộ nhãn này khớp với <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> và các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi</a> trên trang. Mức giữa có thể ghi "Trung lập", "Phân vân" hoặc "Bình thường". Chọn một cách và dùng thống nhất. Tránh ghi "Không biết" ở mức giữa, vì không biết là chưa có ý kiến, còn trung lập là có ý kiến ở giữa hai chiều.</p>
+<p>Bộ nhãn này khớp với <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> và các <a href="/mau-bang-hoi/">mẫu bảng hỏi</a> trên trang. Mức giữa có thể ghi "Trung lập", "Phân vân" hoặc "Bình thường". Chọn một cách và dùng thống nhất. Tránh ghi "Không biết" ở mức giữa, vì không biết là chưa có ý kiến, còn trung lập là có ý kiến ở giữa hai chiều.</p>
 
 <h2>Nhãn cho câu hỏi không phải mức đồng ý</h2>
 <p>Không phải câu nào cũng hỏi mức đồng ý. Khi hỏi tần suất, mức độ quan trọng hay mức hài lòng, dùng bộ nhãn khớp với câu hỏi thay vì ép thành "đồng ý". Các bộ dưới đây là bản tiếng Việt của những bộ nhãn tiếng Anh hay dùng, được Vagias (2006) tổng hợp:</p>
@@ -49,7 +49,7 @@ tags: ["thang đo","bảng hỏi"]
 <tr><td>5</td><td>Rất thường xuyên</td><td>Rất quan trọng</td><td>Rất hài lòng</td></tr>
 </tbody>
 </table>
-<p>Nhãn tần suất là chỗ dễ mơ hồ nhất: "thường xuyên" của sinh viên khác "thường xuyên" của người đi làm. Nếu câu hỏi về hành vi cụ thể, gắn mốc vào nhãn, ví dụ "Hiếm khi (1–2 lần/tháng)", "Thường xuyên (vài lần/tuần)", hoặc hỏi thẳng số lần. Nếu bạn kế thừa thang đo có nhãn riêng (ví dụ thang <a href="/goc-nghien-cuu/thang-do/cang-thang-pss-10/">PSS-10</a> dùng thang tần suất từ 0 đến 4), giữ nguyên nhãn và điểm của tác giả gốc.</p>
+<p>Nhãn tần suất là chỗ dễ mơ hồ nhất: "thường xuyên" của sinh viên khác "thường xuyên" của người đi làm. Nếu câu hỏi về hành vi cụ thể, gắn mốc vào nhãn, ví dụ "Hiếm khi (1–2 lần/tháng)", "Thường xuyên (vài lần/tuần)", hoặc hỏi thẳng số lần. Nếu bạn kế thừa thang đo có nhãn riêng (ví dụ thang <a href="/thang-do/cang-thang-pss-10/">PSS-10</a> dùng thang tần suất từ 0 đến 4), giữ nguyên nhãn và điểm của tác giả gốc.</p>
 
 <h2>5 mức hay 7 mức</h2>
 <p>Không có con số đúng cho mọi đề tài. Những gì nghiên cứu đã cho thấy khá nhất quán là thang quá ít mức (2 đến 4 mức) kém hơn về độ tin cậy và khả năng phân biệt, ví dụ trong nghiên cứu so sánh của Preston &amp; Colman (2000, Acta Psychologica). Giữa 5 và 7 mức, khác biệt nhỏ hơn nhiều, nên quyết định nên dựa vào bối cảnh của bạn:</p>
@@ -73,7 +73,7 @@ tags: ["thang đo","bảng hỏi"]
 <p>Thang chẵn (4 hoặc 6 mức) ép người trả lời nghiêng về một phía. Cách này đôi khi được dùng khi nhà nghiên cứu lo người trả lời chọn mức giữa cho nhanh. Đổi lại, người thực sự trung lập bị buộc chọn bừa, và điều đó cũng là sai số. Với khoá luận, giữ mức trung lập là lựa chọn an toàn và dễ bảo vệ hơn, trừ khi thang đo gốc dùng số mức chẵn.</p>
 
 <h2>Viết câu Likert: những lỗi làm hỏng dữ liệu</h2>
-<p>Cách an toàn nhất là kế thừa câu hỏi từ thang đo gốc đã kiểm định, ví dụ trong <a href="/goc-nghien-cuu/thang-do/">thư viện thang đo</a>. Khi buộc phải tự viết hoặc chỉnh câu, tránh các lỗi sau:</p>
+<p>Cách an toàn nhất là kế thừa câu hỏi từ thang đo gốc đã kiểm định, ví dụ trong <a href="/thang-do/">thư viện thang đo</a>. Khi buộc phải tự viết hoặc chỉnh câu, tránh các lỗi sau:</p>
 <ul>
 <li><strong>Câu hai ý:</strong> "Nhân viên thân thiện và phục vụ nhanh". Người thấy thân thiện nhưng chậm không biết chọn gì. Tách thành hai câu.</li>
 <li><strong>Câu phủ định kép:</strong> "Tôi không cho rằng giá không hợp lý". Người đọc phải dừng lại giải mã, và nhiều người giải sai.</li>
@@ -89,7 +89,7 @@ tags: ["thang đo","bảng hỏi"]
 <li>Thang 5 mức: giá trị mới = 6 − giá trị cũ (1 thành 5, 2 thành 4, 3 giữ nguyên).</li>
 <li>Thang 7 mức: giá trị mới = 8 − giá trị cũ.</li>
 </ul>
-<p>Trong SPSS, dùng <code>Transform &gt; Recode into Different Variables</code> để tạo biến mới, giữ biến gốc để đối chiếu. Đánh dấu câu đảo chiều ngay trong bảng mã hoá (cột "Đảo chiều") để không quên bước này, xem mẫu ở bài <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>. Quên bước này là nguyên nhân phổ biến nhất khiến Cronbach's alpha thấp bất thường hoặc âm, chi tiết trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>. <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu khảo sát</a> cho khai báo danh sách câu đảo chiều và tự đảo điểm trước khi tính.</p>
+<p>Trong SPSS, dùng <code>Transform &gt; Recode into Different Variables</code> để tạo biến mới, giữ biến gốc để đối chiếu. Đánh dấu câu đảo chiều ngay trong bảng mã hoá (cột "Đảo chiều") để không quên bước này, xem mẫu ở bài <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>. Quên bước này là nguyên nhân phổ biến nhất khiến Cronbach's alpha thấp bất thường hoặc âm, chi tiết trong bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>. <a href="/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu khảo sát</a> cho khai báo danh sách câu đảo chiều và tự đảo điểm trước khi tính.</p>
 
 <h2>Phân tích dữ liệu Likert: thứ bậc hay khoảng</h2>
 <p>Đây là tranh luận lâu năm trong phương pháp học. Jamieson (2004, Medical Education) cho rằng dữ liệu Likert là thứ bậc nên phải dùng thống kê phi tham số như trung vị và tần suất. Norman (2010, Advances in Health Sciences Education) lập luận rằng các kiểm định tham số như t-test, ANOVA, hồi quy vẫn cho kết quả đáng tin với dữ liệu Likert, đặc biệt khi phân tích điểm tổng hợp của cả thang đo.</p>
@@ -108,14 +108,14 @@ tags: ["thang đo","bảng hỏi"]
 <li>Chia khối dài thành nhiều trang, mỗi trang tối đa khoảng 6 đến 8 câu.</li>
 <li>Chèn một câu kiểm tra sự chú ý ở nửa sau phiếu, ví dụ "Để xác nhận bạn đang đọc kỹ, vui lòng chọn mức "2 – Không đồng ý" cho câu này". Đáp án đúng không nằm ở hai đầu thang và không phải mức giữa, để người chọn cùng một cột cho cả khối không vô tình trả lời đúng.</li>
 <li>Có ít nhất một câu đảo chiều trong khối để phát hiện phiếu chọn cùng một mức.</li>
-<li>Lọc phiếu trước khi phân tích, theo hướng dẫn trong bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</li>
+<li>Lọc phiếu trước khi phân tích, theo hướng dẫn trong bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</li>
 </ul>
 
 <h2>Câu hỏi thường gặp</h2>
 <h3>Thang đo gốc 7 mức, em đổi thành 5 mức có được không?</h3>
 <p>Được, nhưng đó là một thay đổi so với thang gốc. Ghi rõ trong chương 3: thang gốc bao nhiêu mức, bạn dùng bao nhiêu mức và vì sao (ví dụ đa số trả lời trên điện thoại, đồng bộ với các thang đo khác trong bảng hỏi). Khi so sánh điểm trung bình của bạn với nghiên cứu gốc, phải quy đổi về cùng thang trước, ví dụ đổi điểm thang 7 về thang 5 bằng <code>(x − 1) × 4 / 6 + 1</code>.</p>
 <h3>Có cần ghi số cạnh nhãn không?</h3>
-<p>Nên ghi, ví dụ "1 – Hoàn toàn không đồng ý". Người trả lời thấy rõ chiều của thang, còn bạn đỡ một bước đổi chữ sang số khi xử lý dữ liệu Google Forms. Cách làm cụ thể có ở bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a>.</p>
+<p>Nên ghi, ví dụ "1 – Hoàn toàn không đồng ý". Người trả lời thấy rõ chiều của thang, còn bạn đỡ một bước đổi chữ sang số khi xử lý dữ liệu Google Forms. Cách làm cụ thể có ở bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a>.</p>
 <h3>Điểm của khái niệm là tổng hay trung bình các câu?</h3>
 <p>Dùng trung bình. Trung bình giữ điểm trong khoảng 1 đến 5 nên dễ diễn giải, và so sánh được giữa các khái niệm có số câu khác nhau. Kết quả kiểm định tương quan và hồi quy không đổi khi dùng tổng hay trung bình, chỉ có hệ số chưa chuẩn hoá thay đổi theo đơn vị.</p>
 <h3>Tính trung bình cho từng câu Likert có sai không?</h3>
@@ -131,7 +131,7 @@ tags: ["thang đo","bảng hỏi"]
 <li>Khối lưới không quá dài trên một trang, xem thử trên điện thoại.</li>
 <li>Đã chạy thử với vài chục người và xem phân phối từng câu có bị dồn hết về một mức không.</li>
 </ol>
-<p>Số câu Likert trong bảng hỏi cũng quyết định cỡ mẫu nếu bạn chạy EFA. Với 25 câu, quy tắc 10:1 đòi 250 phiếu hợp lệ, xem cách tính trong bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>. Muốn xem một phiếu hoàn chỉnh đặt thang Likert vào đúng chỗ, kèm lời dẫn và câu kiểm tra chú ý, đọc bài <a href="/goc-nghien-cuu/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.</p>
+<p>Số câu Likert trong bảng hỏi cũng quyết định cỡ mẫu nếu bạn chạy EFA. Với 25 câu, quy tắc 10:1 đòi 250 phiếu hợp lệ, xem cách tính trong bài <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>. Muốn xem một phiếu hoàn chỉnh đặt thang Likert vào đúng chỗ, kèm lời dẫn và câu kiểm tra chú ý, đọc bài <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

@@ -4,11 +4,11 @@ Site nội dung về phương pháp nghiên cứu cho sinh viên, học viên: c
 
 ```bash
 pnpm install
-pnpm dev                        # http://localhost:4321/goc-nghien-cuu/
+pnpm dev                        # http://localhost:4321/
 node scripts/check-power.mjs    # kiểm tra công thức cỡ mẫu so với G*Power
 ```
 
-Đẩy lên nhánh `main` là GitHub Actions tự build và deploy lên https://growth547.github.io/goc-nghien-cuu/.
+Đẩy lên nhánh `main` là GitHub Actions tự build và deploy lên https://gocnghiencuu.com/.
 
 - Bài viết: `src/content/posts/*.md` (frontmatter: title, description, pubDatetime, tags). Hướng dẫn giọng văn: `docs/BRIEF.md`.
 - Công cụ: `src/tools/*.html`, trang ở `src/pages/cong-cu/`.

@@ -6,7 +6,7 @@ import rawHtml from "@/tools/tinh-chi-so-tai-chinh.html?raw";
 
 // Listed-bank panel from /du-lieu/ngan-hang-niem-yet/ (when that dataset exists): the first CSV endpoint or static CSV
 // whose path names it. The tool shows its "Nạp bộ dữ liệu ngân hàng niêm yết" button only when a URL is found.
-// Site base path ("/" or "/goc-nghien-cuu/"); the tool HTML writes internal links as {BASE}.
+// Site base path ("/" or "/"); the tool HTML writes internal links as {BASE}.
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 function bankCsvUrl(): string {
   const found: string[] = [];

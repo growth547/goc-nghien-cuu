@@ -81,7 +81,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 <li>Số quan sát ít nhất gấp 5 lần số biến được phân tích (5:1), mức dễ chấp nhận hơn là 10:1.</li>
 </ul>
 <p>"Biến" ở đây là biến quan sát, tức là từng câu hỏi trong thang đo, không phải số khái niệm. Mô hình có 5 khái niệm độc lập với tổng cộng 22 câu, cộng 4 câu của biến phụ thuộc, là 26 biến quan sát. Theo 5:1 cần 26 × 5 = 130 phiếu; theo 10:1 cần 26 × 10 = 260 phiếu.</p>
-<p>Các quy tắc tỉ lệ này chỉ là mức sàn. MacCallum và cộng sự (1999) cho thấy cỡ mẫu cần cho EFA phụ thuộc nhiều vào communality của các biến và số biến trên mỗi nhân tố: khi communality cao và mỗi nhân tố có nhiều biến, mẫu nhỏ vẫn cho nghiệm ổn định; khi communality thấp, cần mẫu lớn hơn nhiều. Chạy xong EFA, cách đọc KMO, Bartlett và ma trận xoay có ở bài <a href="/goc-nghien-cuu/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trên SPSS</a>.</p>
+<p>Các quy tắc tỉ lệ này chỉ là mức sàn. MacCallum và cộng sự (1999) cho thấy cỡ mẫu cần cho EFA phụ thuộc nhiều vào communality của các biến và số biến trên mỗi nhân tố: khi communality cao và mỗi nhân tố có nhiều biến, mẫu nhỏ vẫn cho nghiệm ổn định; khi communality thấp, cần mẫu lớn hơn nhiều. Chạy xong EFA, cách đọc KMO, Bartlett và ma trận xoay có ở bài <a href="/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trên SPSS</a>.</p>
 
 <h2>Khi chạy CFA hoặc CB-SEM (AMOS): nhìn số khái niệm và communality</h2>
 <p>Nhiều khoá luận áp luôn quy tắc 5:1 của EFA cho CFA. Hai phân tích này khác nhau: CFA và CB-SEM ước lượng cả mô hình cùng lúc, nên cỡ mẫu phụ thuộc vào độ phức tạp của mô hình và độ mạnh của hệ số tải. Hair và cộng sự (2010, chương về SEM) đưa ra mức tối thiểu như sau:</p>
@@ -124,7 +124,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 <tr><td>6</td><td>688</td><td>98</td><td>46</td></tr>
 </tbody>
 </table>
-<p>Bảng tính với α = 5% và power = 0,80; mức f² 0,02, 0,15, 0,35 theo quy ước của Cohen (1988, 1992). Phần lớn luận văn chọn f² = 0,15. Bạn tự tính cho mô hình của mình bằng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>, kết quả khớp với G*Power.</p>
+<p>Bảng tính với α = 5% và power = 0,80; mức f² 0,02, 0,15, 0,35 theo quy ước của Cohen (1988, 1992). Phần lớn luận văn chọn f² = 0,15. Bạn tự tính cho mô hình của mình bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>, kết quả khớp với G*Power.</p>
 <h3>Phương pháp căn bậc hai nghịch đảo của Kock &amp; Hadaya</h3>
 <p>Kock &amp; Hadaya (2018, <em>Information Systems Journal</em>) đề xuất một công thức riêng cho PLS-SEM, dựa trên hệ số đường dẫn nhỏ nhất mà bạn kỳ vọng có ý nghĩa thống kê (p<sub>min</sub>):</p>
 <p><code>n_min &gt; (2,486 / |p_min|)²</code> với α = 5% và power = 0,80.</p>
@@ -159,7 +159,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 <tr><td>Ước lượng tỷ lệ</td><td>Cochran (1977)</td><td>385</td></tr>
 </tbody>
 </table>
-<p>Cỡ mẫu tối thiểu được tính trên số phiếu hợp lệ còn lại sau khi lọc. Khi lên kế hoạch phát phiếu, cộng thêm phần dự phòng cho phiếu bị loại: với 15% phiếu bị loại và mức tối thiểu 92, nên phát khoảng 92 / 0,85 = 108,2, làm tròn lên 109 phiếu. Công thức chung là số phiếu cần phát = n / (1 − r), với r là tỉ lệ phiếu dự kiến bị loại; bảng tính sẵn cho nhiều mức r có ở bài <a href="/goc-nghien-cuu/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu khảo sát nhanh</a>. Đừng cộng thẳng 15% (92 × 1,15 = 105,8, tức 106), vì cách đó cho số thấp hơn mức cần.</p>
+<p>Cỡ mẫu tối thiểu được tính trên số phiếu hợp lệ còn lại sau khi lọc. Khi lên kế hoạch phát phiếu, cộng thêm phần dự phòng cho phiếu bị loại: với 15% phiếu bị loại và mức tối thiểu 92, nên phát khoảng 92 / 0,85 = 108,2, làm tròn lên 109 phiếu. Công thức chung là số phiếu cần phát = n / (1 − r), với r là tỉ lệ phiếu dự kiến bị loại; bảng tính sẵn cho nhiều mức r có ở bài <a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu khảo sát nhanh</a>. Đừng cộng thẳng 15% (92 × 1,15 = 105,8, tức 106), vì cách đó cho số thấp hơn mức cần.</p>
 
 <p>Có con số rồi thì việc khó là thu đủ phiếu hợp lệ. Nếu không muốn đi xin điền form khắp các group, một lựa chọn là <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=co-mau-nghien-cuu-bao-nhieu-la-du" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng cho mỗi câu hỏi và chỉ trả tiền cho phiếu được duyệt.</p>
 
@@ -175,7 +175,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 
 <h2>Năm lỗi hay gặp khi trình bày cỡ mẫu</h2>
 <ol>
-<li><strong>Dùng Slovin nhưng không có N.</strong> Ghi "N là toàn bộ người dùng mạng xã hội tại Việt Nam" mà không có nguồn số liệu thì công thức mất căn cứ. Nếu cần quy mô tổng thể cấp quốc gia, lấy từ nguồn chính thức và ghi năm, ví dụ <a href="/goc-nghien-cuu/du-lieu/dan-so/">dân số Việt Nam</a> và <a href="/goc-nghien-cuu/du-lieu/nguoi-dung-internet/">tỉ lệ người dùng internet</a> theo Ngân hàng Thế giới; với tổng thể vài triệu người trở lên, phần hiệu chỉnh gần như không đổi kết quả.</li>
+<li><strong>Dùng Slovin nhưng không có N.</strong> Ghi "N là toàn bộ người dùng mạng xã hội tại Việt Nam" mà không có nguồn số liệu thì công thức mất căn cứ. Nếu cần quy mô tổng thể cấp quốc gia, lấy từ nguồn chính thức và ghi năm, ví dụ <a href="/du-lieu/dan-so/">dân số Việt Nam</a> và <a href="/du-lieu/nguoi-dung-internet/">tỉ lệ người dùng internet</a> theo Ngân hàng Thế giới; với tổng thể vài triệu người trở lên, phần hiệu chỉnh gần như không đổi kết quả.</li>
 <li><strong>Tính đúng cỡ mẫu xác suất rồi chọn mẫu thuận tiện.</strong> Công thức Cochran giả định mẫu ngẫu nhiên. Nếu bạn phát link qua mạng xã hội, hãy nói rõ con số chỉ là tham chiếu, và nêu hạn chế về tính đại diện.</li>
 <li><strong>Đếm nhầm m.</strong> Trong 50 + 8m, m là số biến độc lập, không phải số câu hỏi. Ngược lại, trong quy tắc của Hair, cái cần đếm là số câu hỏi.</li>
 <li><strong>Quên phần phiếu bị loại.</strong> Thu đúng 260 phiếu rồi loại 30 phiếu thì bạn đã dưới mức 10:1.</li>
@@ -184,7 +184,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 
 <h2>Đoạn văn mẫu cho chương 3</h2>
 <blockquote>Mô hình nghiên cứu được phân tích bằng PLS-SEM, trong đó biến phụ thuộc nhận nhiều nhất 5 mũi tên. Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009) với cỡ hiệu ứng trung bình f² = 0,15, mức ý nghĩa 5% và power 0,80 (Cohen, 1992), cho kết quả 92 quan sát. Đối chiếu theo phương pháp căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018) với hệ số đường dẫn nhỏ nhất kỳ vọng 0,2, cỡ mẫu tối thiểu là 155. Nghiên cứu thu được 180 phiếu hợp lệ, đáp ứng cả hai tiêu chí.</blockquote>
-<p>Nếu bạn ghép bảng hỏi trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a>, đoạn “Thang đo và cỡ mẫu” được viết sẵn theo đúng mô hình và số mũi tên bạn chọn, kèm danh mục tài liệu tham khảo.</p>
+<p>Nếu bạn ghép bảng hỏi trong <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a>, đoạn “Thang đo và cỡ mẫu” được viết sẵn theo đúng mô hình và số mũi tên bạn chọn, kèm danh mục tài liệu tham khảo.</p>
 <h2>Tài liệu tham khảo</h2>
 <ul>
 <li>Cochran, W. G. (1977). <em>Sampling Techniques</em> (3rd ed.). Wiley.</li>
@@ -203,4 +203,4 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 <li>Wolf, E. J., Harrington, K. M., Clark, S. L., &amp; Miller, M. W. (2013). Sample size requirements for structural equation models: An evaluation of power, bias, and solution propriety. <em>Educational and Psychological Measurement, 73</em>(6), 913–934. https://doi.org/10.1177/0013164413495237</li>
 <li>Yamane, T. (1967). <em>Statistics: An Introductory Analysis</em> (2nd ed.). Harper &amp; Row.</li>
 </ul>
-<p>Muốn thử nhanh với số biến của mình, dùng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a>: chọn phương pháp phân tích, nhập số biến là ra cỡ mẫu tối thiểu kèm trích dẫn. Có con số rồi thì bước tiếp theo là lên kế hoạch phát phiếu, xem bài <a href="/goc-nghien-cuu/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>. Và vì cỡ mẫu tính trên phiếu hợp lệ, bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a> sẽ giúp bạn biết phải dự phòng bao nhiêu.</p>
+<p>Muốn thử nhanh với số biến của mình, dùng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a>: chọn phương pháp phân tích, nhập số biến là ra cỡ mẫu tối thiểu kèm trích dẫn. Có con số rồi thì bước tiếp theo là lên kế hoạch phát phiếu, xem bài <a href="/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>. Và vì cỡ mẫu tính trên phiếu hợp lệ, bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a> sẽ giúp bạn biết phải dự phòng bao nhiêu.</p>

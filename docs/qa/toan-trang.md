@@ -14,7 +14,7 @@ node scripts/crawl-check.mjs --json out.json      # also dump raw results
 
 Exit 1 = at least one P0. Severity rules:
 
-- **P0:** non-200 internal URL, missing `<title>`, invalid JSON-LD, broken internal asset, link escaping `/goc-nghien-cuu/`, or a visible placeholder (`undefined`, `NaN`, `[object Object]`, `[tên …]`, `{{…}}`).
+- **P0:** non-200 internal URL, missing `<title>`, invalid JSON-LD, broken internal asset, link escaping `/`, or a visible placeholder (`undefined`, `NaN`, `[object Object]`, `[tên …]`, `{{…}}`).
 - **P1:** missing description, canonical or H1; multiple H1; duplicate title or description; raw entity in text; external 4xx; visible `null` (except "giả thuyết null").
 - **P2:** length rules, missing alt, redirects, external 5xx or timeouts, weight above 1.5 MB.
 

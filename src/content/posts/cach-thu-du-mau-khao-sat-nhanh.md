@@ -7,7 +7,7 @@ featured: false
 tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 ---
 
-<p>Thu mẫu chậm thường không phải do thiếu người, mà do bắt đầu muộn, chỉ dùng một kênh, và không tính trước số phiếu sẽ bị loại. Bài này đi theo thứ tự bạn cần làm: tính số phiếu thô cần thu, lập lịch ngược từ ngày phải chạy số liệu, chọn kênh theo tốc độ và rủi ro, rồi kiểm tra chất lượng ngay trong lúc thu để không phát hiện vấn đề khi đã quá muộn. Nếu bạn chưa có phương pháp chọn mẫu và cỡ mẫu, đọc trước bài <a href="/goc-nghien-cuu/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a> và <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a>.</p>
+<p>Thu mẫu chậm thường không phải do thiếu người, mà do bắt đầu muộn, chỉ dùng một kênh, và không tính trước số phiếu sẽ bị loại. Bài này đi theo thứ tự bạn cần làm: tính số phiếu thô cần thu, lập lịch ngược từ ngày phải chạy số liệu, chọn kênh theo tốc độ và rủi ro, rồi kiểm tra chất lượng ngay trong lúc thu để không phát hiện vấn đề khi đã quá muộn. Nếu bạn chưa có phương pháp chọn mẫu và cỡ mẫu, đọc trước bài <a href="/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a> và <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a>.</p>
 
 <h2>Bước 1: Tính số phiếu thô, không phải số phiếu hợp lệ</h2>
 <p>Cỡ mẫu trong chương 3 là số phiếu <em>hợp lệ</em>. Số phiếu bạn phải thu nhiều hơn, vì một phần sẽ bị loại ở câu gạn lọc, câu kiểm tra chú ý, trả lời rập khuôn hay trùng lặp. Công thức:</p>
@@ -110,7 +110,7 @@ tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 <tr><td>Phân bố đặc điểm mẫu</td><td>Đếm theo giới tính, tuổi, nghề</td><td>Lệch xa so với hạn ngạch hoặc tổng thể</td></tr>
 </tbody>
 </table>
-<p>Curran (2016) và Meade và Craig (2012) mô tả các chỉ số này chi tiết hơn. Quy tắc quan trọng nhất: định tiêu chí loại phiếu trước khi xem kết quả phân tích, và áp dụng như nhau cho mọi kênh. Hướng dẫn từng tiêu chí có trong bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</p>
+<p>Curran (2016) và Meade và Craig (2012) mô tả các chỉ số này chi tiết hơn. Quy tắc quan trọng nhất: định tiêu chí loại phiếu trước khi xem kết quả phân tích, và áp dụng như nhau cho mọi kênh. Hướng dẫn từng tiêu chí có trong bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</p>
 <p>Nếu một kênh có tỉ lệ loại cao bất thường, dừng kênh đó sớm và chuyển nguồn lực sang kênh khác, thay vì tiếp tục thu rồi loại.</p>
 
 <h2>Ghi vào chương 3 thế nào</h2>
@@ -139,7 +139,7 @@ tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 <h3>Có cần loại hết phiếu từ nhóm điền chéo không?</h3>
 <p>Không. Áp dụng cùng tiêu chí lọc như mọi kênh. Phiếu đạt tiêu chí thì giữ, và báo cáo tỉ lệ phiếu đến từ mỗi kênh.</p>
 <h3>Chưa có bảng hỏi thì bắt đầu từ đâu?</h3>
-<p>Tính cỡ mẫu tối thiểu bằng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>, rồi ghép bảng hỏi từ thang đo gốc trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> hoặc chọn một trong các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a>. Bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách đưa bảng hỏi lên form để dữ liệu xuất ra dùng được ngay.</p>
+<p>Tính cỡ mẫu tối thiểu bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>, rồi ghép bảng hỏi từ thang đo gốc trong <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> hoặc chọn một trong các <a href="/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a>. Bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách đưa bảng hỏi lên form để dữ liệu xuất ra dùng được ngay.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

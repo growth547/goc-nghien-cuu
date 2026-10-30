@@ -7,17 +7,17 @@ featured: false
 tags: ["Google Forms","bảng hỏi","SPSS"]
 ---
 
-<p>Các hướng dẫn Google Forms phổ biến dạy bạn bấm nút "Thêm câu hỏi". Bài này tập trung vào những thứ quyết định dữ liệu có dùng được không: loại câu hỏi cho thang Likert, câu gạn lọc, câu kiểm tra chú ý, trộn thứ tự câu, và đưa dữ liệu từ Google Sheets vào SPSS. Bài giả định bạn đã có nội dung bảng hỏi hoàn chỉnh. Nếu chưa, đọc trước bài <a href="/goc-nghien-cuu/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a> và <a href="/goc-nghien-cuu/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi</a>.</p>
+<p>Các hướng dẫn Google Forms phổ biến dạy bạn bấm nút "Thêm câu hỏi". Bài này tập trung vào những thứ quyết định dữ liệu có dùng được không: loại câu hỏi cho thang Likert, câu gạn lọc, câu kiểm tra chú ý, trộn thứ tự câu, và đưa dữ liệu từ Google Sheets vào SPSS. Bài giả định bạn đã có nội dung bảng hỏi hoàn chỉnh. Nếu chưa, đọc trước bài <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a> và <a href="/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi</a>.</p>
 <p>Tên nút trong bài theo giao diện tiếng Việt, kèm tên tiếng Anh ở những chỗ hay được dịch khác nhau giữa các phiên bản.</p>
 
 <h2>Bước 0: Chuẩn bị bản Word cuối cùng và mã biến</h2>
-<p>Đừng soạn câu hỏi trực tiếp trên Google Forms. Hãy có một bản Word đã được giảng viên duyệt, trong đó mỗi phát biểu Likert có sẵn mã biến (PE1, PE2, EE1...). Mã này sẽ thành tên cột trong SPSS và tên biến trong <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a> ở chương 3. Ghi luôn vào bản này luồng chuyển phần của câu gạn lọc và đáp án đúng của câu kiểm tra chú ý.</p>
+<p>Đừng soạn câu hỏi trực tiếp trên Google Forms. Hãy có một bản Word đã được giảng viên duyệt, trong đó mỗi phát biểu Likert có sẵn mã biến (PE1, PE2, EE1...). Mã này sẽ thành tên cột trong SPSS và tên biến trong <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a> ở chương 3. Ghi luôn vào bản này luồng chuyển phần của câu gạn lọc và đáp án đúng của câu kiểm tra chú ý.</p>
 
 <h2>Bước 1: Tạo biểu mẫu, tiêu đề và lời chào</h2>
 <ol>
 <li>Vào forms.google.com, chọn <strong>Biểu mẫu trống</strong>, bằng tài khoản Google cá nhân (tài khoản trường có thể bị khoá sau khi tốt nghiệp).</li>
 <li>Tiêu đề: ngắn, dễ hiểu với người ngoài ngành. "Khảo sát thói quen dùng ứng dụng giao đồ ăn" tốt hơn "Các nhân tố ảnh hưởng đến ý định hành vi theo UTAUT2".</li>
-<li>Phần mô tả ngay dưới tiêu đề: dán lời chào, mục đích, thời gian làm bài ước tính, cam kết ẩn danh và thông tin liên hệ. Mẫu câu chữ có trong bài <a href="/goc-nghien-cuu/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.</li>
+<li>Phần mô tả ngay dưới tiêu đề: dán lời chào, mục đích, thời gian làm bài ước tính, cam kết ẩn danh và thông tin liên hệ. Mẫu câu chữ có trong bài <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.</li>
 </ol>
 <p>Thời gian ước tính phải là con số đo được khi chạy thử. Hứa 5 phút mà mất 12 phút sẽ làm người trả lời bỏ ngang.</p>
 
@@ -71,7 +71,7 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <ul>
 <li>Một đến hai câu cho phiếu 30 đến 50 câu, đặt ở nửa sau phiếu.</li>
 <li>Đáp án đúng nên là một mức không nằm ở hai đầu và không phải mức giữa, để người chọn bừa cùng một cột bị lộ.</li>
-<li>Ghi tiêu chí loại phiếu vào kế hoạch xử lý số liệu <em>trước</em> khi thu. Quy trình chi tiết ở bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</li>
+<li>Ghi tiêu chí loại phiếu vào kế hoạch xử lý số liệu <em>trước</em> khi thu. Quy trình chi tiết ở bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</li>
 </ul>
 
 <h2>Bước 7: Trộn thứ tự câu, nhưng không trộn thứ tự mức</h2>
@@ -114,7 +114,7 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <li><strong>Tệp</strong>, <strong>Tải xuống</strong>, chọn Microsoft Excel (.xlsx). Trong SPSS: <strong>File</strong>, <strong>Import Data</strong>, <strong>Excel</strong>, tích "Read variable names from the first row of data".</li>
 <li>Khai báo Values, Measure, Missing trong Variable View theo bảng mã hoá.</li>
 </ol>
-<p>Muốn xem nhanh Cronbach's alpha và EFA trước khi mở SPSS, dán dữ liệu đã đổi sang số vào <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</p>
+<p>Muốn xem nhanh Cronbach's alpha và EFA trước khi mở SPSS, dán dữ liệu đã đổi sang số vào <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</p>
 <h3>Google Forms không ghi thời gian bắt đầu</h3>
 <p>Cột "Dấu thời gian" chỉ ghi lúc bấm gửi, không ghi lúc bắt đầu làm. Vì vậy bạn không tính được thời gian hoàn thành, và tiêu chí "loại phiếu làm dưới 2 phút" không áp dụng được. Dựa vào câu kiểm tra chú ý, trả lời rập khuôn và cặp câu mâu thuẫn, hoặc dùng nền tảng có ghi thời lượng.</p>
 
@@ -141,7 +141,7 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <p>Không. Tải file .xlsx rồi dùng File, Import Data, Excel trong SPSS là đủ.</p>
 
 <h3>Có cách nào không phải gõ lại từng câu vào Google Forms?</h3>
-<p>Nếu bảng hỏi của bạn ghép từ các thang đo có trong thư viện, <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> xuất được một đoạn Google Apps Script tạo form với lưới Likert, câu gạn lọc và câu kiểm tra AC1. Sau khi chạy, vẫn rà lại từng câu theo các bước ở trên. Nếu chưa có bảng hỏi, xem các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a>.</p>
+<p>Nếu bảng hỏi của bạn ghép từ các thang đo có trong thư viện, <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> xuất được một đoạn Google Apps Script tạo form với lưới Likert, câu gạn lọc và câu kiểm tra AC1. Sau khi chạy, vẫn rà lại từng câu theo các bước ở trên. Nếu chưa có bảng hỏi, xem các <a href="/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

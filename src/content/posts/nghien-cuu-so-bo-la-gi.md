@@ -56,7 +56,7 @@ tags: ["bảng hỏi","thu mẫu","khoá luận"]
 <ol>
 <li><strong>Thời gian làm bài</strong>: lấy trung vị, không lấy trung bình. Thời gian này dùng để viết lời mời ("khoảng 7 phút") và làm ngưỡng lọc phiếu quá nhanh.</li>
 <li><strong>Logic rẽ nhánh</strong>: người bị loại ở câu gạn lọc có kết thúc đúng chỗ không.</li>
-<li><strong>Xuất dữ liệu</strong>: tải về, nhập vào SPSS, kiểm tra mã hoá từng cột. Hướng dẫn chi tiết cho Google Forms ở bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">tạo phiếu khảo sát Google Forms</a>.</li>
+<li><strong>Xuất dữ liệu</strong>: tải về, nhập vào SPSS, kiểm tra mã hoá từng cột. Hướng dẫn chi tiết cho Google Forms ở bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">tạo phiếu khảo sát Google Forms</a>.</li>
 <li><strong>Phân phối từng câu</strong>: câu nào gần như ai cũng chọn cùng một mức thì ít thông tin.</li>
 <li><strong>Cronbach's alpha sơ bộ</strong> và tương quan biến tổng (xem phần dưới).</li>
 <li><strong>Câu hỏi mở cuối phiếu</strong>: "Có câu nào bạn thấy khó hiểu không?". Đây thường là phần cho nhiều thông tin nhất.</li>
@@ -73,7 +73,7 @@ tags: ["bảng hỏi","thu mẫu","khoá luận"]
 <tr><td>Alpha rất cao, trên 0,95</td><td>Các câu gần như lặp ý</td><td>Xem có câu trùng nghĩa để rút gọn</td></tr>
 </tbody>
 </table>
-<p>Không loại câu khỏi thang đo kế thừa chỉ vì alpha sơ bộ thấp. Quyết định loại câu dựa trên dữ liệu chính thức, như hướng dẫn trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>. Tính nhanh trên dữ liệu pilot bằng <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a>.</p>
+<p>Không loại câu khỏi thang đo kế thừa chỉ vì alpha sơ bộ thấp. Quyết định loại câu dựa trên dữ liệu chính thức, như hướng dẫn trong bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>. Tính nhanh trên dữ liệu pilot bằng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a>.</p>
 
 <h2>Có gộp dữ liệu pilot vào mẫu chính không</h2>
 <p>Nguyên tắc an toàn là không gộp. Lý do: nếu bạn đã sửa câu hỏi sau pilot, hai nhóm trả lời hai phiếu khác nhau. Kể cả khi không sửa gì, người tham gia pilot thường được chọn khác cách (bạn bè, người quen của nhóm) và một số đã được phỏng vấn thêm, nên trả lời không độc lập như mẫu chính. Nếu vì lý do đặc biệt bạn gộp, chỉ gộp khi phiếu giữ nguyên hoàn toàn và phải ghi rõ trong chương 3.</p>
@@ -89,7 +89,7 @@ tags: ["bảng hỏi","thu mẫu","khoá luận"]
 <tr><td>9</td><td>Chốt phiếu, phát chính thức</td></tr>
 </tbody>
 </table>
-<p>Pilot cần người trả lời nghiêm túc thuộc đúng đối tượng, ngoài nhóm bạn cùng lớp. Nếu mạng quen biết không đủ đa dạng, có thể dùng <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=nghien-cuu-so-bo-la-gi" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng mỗi câu và chỉ trả cho phiếu được duyệt. Các bước còn lại để thu đủ mẫu chính thức có trong bài <a href="/goc-nghien-cuu/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>.</p>
+<p>Pilot cần người trả lời nghiêm túc thuộc đúng đối tượng, ngoài nhóm bạn cùng lớp. Nếu mạng quen biết không đủ đa dạng, có thể dùng <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=nghien-cuu-so-bo-la-gi" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng mỗi câu và chỉ trả cho phiếu được duyệt. Các bước còn lại để thu đủ mẫu chính thức có trong bài <a href="/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>.</p>
 
 <h2>Câu mẫu cho chương 3</h2>
 <blockquote><p>Nghiên cứu được thực hiện qua hai giai đoạn: nghiên cứu sơ bộ và nghiên cứu chính thức. Nghiên cứu sơ bộ định tính gồm thảo luận với 3 giảng viên chuyên ngành và phỏng vấn nhận thức với 8 sinh viên, qua đó 3 câu hỏi được điều chỉnh từ ngữ và 1 câu được bổ sung ví dụ minh hoạ. Nghiên cứu sơ bộ định lượng được thực hiện với 40 sinh viên để kiểm tra bảng hỏi; thời gian trả lời trung vị là 6 phút, hệ số Cronbach's alpha sơ bộ của các thang đo nằm trong khoảng 0,72 đến 0,88. Dữ liệu sơ bộ không được gộp vào mẫu chính thức.</p></blockquote>

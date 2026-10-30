@@ -12,7 +12,7 @@ tags: ["bảng hỏi","thang đo"]
 
 <h2>Bắt đầu từ mô hình nghiên cứu</h2>
 <p>Trước khi viết câu đầu tiên, liệt kê các khái niệm trong mô hình nghiên cứu và thang đo bạn dùng cho từng khái niệm. Mỗi câu trong bảng hỏi phải trả lời được: câu này đo biến nào, sẽ dùng trong phân tích nào? Câu nào không trả lời được thì bỏ.</p>
-<p>Nên kế thừa thang đo đã được kiểm định trong các nghiên cứu trước và ghi rõ nguồn. <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> có câu hỏi gốc tiếng Anh, bản tiếng Việt tham khảo và trích dẫn cho các mô hình hay dùng như <a href="/goc-nghien-cuu/thang-do/tam/">TAM</a> hay <a href="/goc-nghien-cuu/thang-do/servqual/">SERVQUAL</a>; nếu đã có mô hình, <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> ghép sẵn bảng hỏi từ các thang đo đó. Khi dịch từ tiếng Anh, hãy dịch rồi nhờ người khác dịch ngược lại để so nghĩa (Brislin, 1970). Một thang đo dịch vụng thường là nguyên nhân khiến Cronbach's alpha thấp, xem thêm bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Nên kế thừa thang đo đã được kiểm định trong các nghiên cứu trước và ghi rõ nguồn. <a href="/thang-do/">Thư viện thang đo</a> có câu hỏi gốc tiếng Anh, bản tiếng Việt tham khảo và trích dẫn cho các mô hình hay dùng như <a href="/thang-do/tam/">TAM</a> hay <a href="/thang-do/servqual/">SERVQUAL</a>; nếu đã có mô hình, <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> ghép sẵn bảng hỏi từ các thang đo đó. Khi dịch từ tiếng Anh, hãy dịch rồi nhờ người khác dịch ngược lại để so nghĩa (Brislin, 1970). Một thang đo dịch vụng thường là nguyên nhân khiến Cronbach's alpha thấp, xem thêm bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 
 <h2>Các lỗi câu hỏi hay gặp</h2>
 <table>
@@ -36,7 +36,7 @@ tags: ["bảng hỏi","thang đo"]
 <p>Câu hỏi kép hỏi hai thứ trong một câu. Người thấy nhân viên nhanh nhưng không thân thiện sẽ không biết chọn mức nào, và bạn không biết con số 3 của họ nghĩa là gì. Cách phát hiện: tìm chữ "và", "hoặc", "cũng như" trong câu. Không phải câu nào có chữ "và" cũng là câu kép, nhưng đó là chỗ nên đọc lại.</p>
 
 <h3>Câu hỏi dẫn dắt</h3>
-<p>Câu hỏi dẫn dắt gợi ý đáp án mong muốn. Có ba dạng thường gặp: mở đầu bằng "Bạn có đồng ý rằng…", gắn thêm thông tin thiên vị ("Nhiều chuyên gia cho rằng X tốt, bạn nghĩ sao?"), hoặc chỉ đưa ra đáp án tích cực. Với thang Likert, viết câu dưới dạng một nhận định trung tính và để thang điểm làm phần còn lại. Bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> giải thích cách chọn số mức và cách đặt nhãn.</p>
+<p>Câu hỏi dẫn dắt gợi ý đáp án mong muốn. Có ba dạng thường gặp: mở đầu bằng "Bạn có đồng ý rằng…", gắn thêm thông tin thiên vị ("Nhiều chuyên gia cho rằng X tốt, bạn nghĩ sao?"), hoặc chỉ đưa ra đáp án tích cực. Với thang Likert, viết câu dưới dạng một nhận định trung tính và để thang điểm làm phần còn lại. Bài <a href="/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> giải thích cách chọn số mức và cách đặt nhãn.</p>
 
 <h2>Thứ tự câu hỏi</h2>
 <p>Thứ tự câu ảnh hưởng tới cách người ta trả lời. Một trình tự an toàn cho bảng hỏi khoá luận:</p>
@@ -57,7 +57,7 @@ tags: ["bảng hỏi","thang đo"]
 <li>Nhờ ba người thuộc đối tượng làm thử và bấm giờ. Thời gian của bạn luôn ngắn hơn của họ.</li>
 <li>Ghi thời gian dự kiến trung thực ở lời giới thiệu.</li>
 <li>Rà lại từng câu theo câu hỏi ở đầu bài: câu này dùng cho phân tích nào? Câu "để cho đủ" thì bỏ.</li>
-<li>Cỡ mẫu và số biến quan sát liên quan với nhau: quy tắc của Hair và cộng sự (2010) cho EFA tính cỡ mẫu theo số biến quan sát, nên thêm câu cũng là thêm phiếu phải thu. Dùng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để thấy rõ.</li>
+<li>Cỡ mẫu và số biến quan sát liên quan với nhau: quy tắc của Hair và cộng sự (2010) cho EFA tính cỡ mẫu theo số biến quan sát, nên thêm câu cũng là thêm phiếu phải thu. Dùng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để thấy rõ.</li>
 </ul>
 
 <h2>Câu kiểm tra và câu đối chiếu</h2>
@@ -67,9 +67,9 @@ tags: ["bảng hỏi","thang đo"]
 <li><strong>Câu đảo chiều:</strong> một vài câu viết theo chiều ngược trong thang đo, nếu thang đo gốc có.</li>
 <li><strong>Cặp câu đối chiếu:</strong> ví dụ câu gạn lọc "đã dùng sản phẩm" và câu tần suất sử dụng, để phát hiện trả lời mâu thuẫn.</li>
 </ul>
-<p>Cách dùng các câu này khi lọc được trình bày trong bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</p>
+<p>Cách dùng các câu này khi lọc được trình bày trong bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</p>
 
-<p>Muốn xem các nguyên tắc trên ghép thành một phiếu hoàn chỉnh, từ lời giới thiệu tới phần nhân khẩu học, đọc bài <a href="/goc-nghien-cuu/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>. Khi đưa phiếu lên mạng, bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách làm câu gạn lọc, câu kiểm tra và lưới Likert để dữ liệu xuất ra dùng được ngay.</p>
+<p>Muốn xem các nguyên tắc trên ghép thành một phiếu hoàn chỉnh, từ lời giới thiệu tới phần nhân khẩu học, đọc bài <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>. Khi đưa phiếu lên mạng, bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách làm câu gạn lọc, câu kiểm tra và lưới Likert để dữ liệu xuất ra dùng được ngay.</p>
 
 <p>Nếu bạn thu mẫu qua một nền tảng, hãy kiểm tra xem nó hỗ trợ những gì bạn vừa thiết kế. Hai tính năng nên có: câu gạn lọc (chọn đáp án bị loại thì form kết thúc, không tính thưởng) và câu kiểm tra chất lượng có đáp án đúng bắt buộc.</p>
 
@@ -83,7 +83,7 @@ tags: ["bảng hỏi","thang đo"]
 <li>Cách liên hệ với bạn khi có thắc mắc.</li>
 <li>Một câu xác nhận đồng ý (ví dụ "Tôi đã đọc thông tin trên và đồng ý tham gia") trước khi vào phần chính.</li>
 </ul>
-<p>Nếu bạn thu thông tin có thể nhận diện người trả lời như email, số điện thoại hay mã sinh viên, hãy hỏi chỉ khi thật cần (ví dụ để gửi quà), tách khỏi phần trả lời khi phân tích và nói rõ mục đích. Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ 01/01/2026, nên đây không còn chỉ là chuyện đạo đức nghiên cứu. Nhiều trường còn yêu cầu thủ tục xét duyệt đạo đức riêng với đề tài hỏi về sức khoẻ, tâm lý hay đối tượng dưới 18 tuổi; hãy hỏi giảng viên hướng dẫn trước khi phát phiếu. Lời giới thiệu mẫu có sẵn trong bài <a href="/goc-nghien-cuu/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.</p>
+<p>Nếu bạn thu thông tin có thể nhận diện người trả lời như email, số điện thoại hay mã sinh viên, hãy hỏi chỉ khi thật cần (ví dụ để gửi quà), tách khỏi phần trả lời khi phân tích và nói rõ mục đích. Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ 01/01/2026, nên đây không còn chỉ là chuyện đạo đức nghiên cứu. Nhiều trường còn yêu cầu thủ tục xét duyệt đạo đức riêng với đề tài hỏi về sức khoẻ, tâm lý hay đối tượng dưới 18 tuổi; hãy hỏi giảng viên hướng dẫn trước khi phát phiếu. Lời giới thiệu mẫu có sẵn trong bài <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.</p>
 
 <h2>Pilot test: bước hay bị bỏ qua nhất</h2>
 <p>Chạy thử là cách rẻ nhất để phát hiện lỗi. Làm theo hai vòng:</p>
@@ -94,7 +94,7 @@ tags: ["bảng hỏi","thang đo"]
 <li>Kiểm tra logic rẽ nhánh: chọn đáp án bị loại ở câu gạn lọc có kết thúc form đúng không?</li>
 <li>Xuất dữ liệu ra Excel và thử mã hoá, thử chạy vài phép tính. Nhiều lỗi chỉ lộ ra ở bước này, ví dụ câu hỏi nhiều lựa chọn bị dồn vào một ô.</li>
 <li>Xem thời gian làm bài thực tế.</li>
-<li>Chạy thử Cronbach's alpha bằng <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để phát hiện câu có tương quan biến–tổng âm (thường là câu đảo chiều quên mã hoá ngược hoặc câu bị hiểu sai). Với mẫu nhỏ, kết quả chỉ mang tính tham khảo.</li>
+<li>Chạy thử Cronbach's alpha bằng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để phát hiện câu có tương quan biến–tổng âm (thường là câu đảo chiều quên mã hoá ngược hoặc câu bị hiểu sai). Với mẫu nhỏ, kết quả chỉ mang tính tham khảo.</li>
 </ul>
 <p>Phiếu trong vòng pilot thường không gộp vào mẫu chính nếu bạn đã sửa bảng hỏi sau đó.</p>
 <h3>Vòng chạy thử cần bao nhiêu người?</h3>
@@ -112,7 +112,7 @@ tags: ["bảng hỏi","thang đo"]
 <h3>Có nên bắt buộc trả lời mọi câu?</h3>
 <p>Với các câu thang đo dùng để phân tích, nên bắt buộc để tránh dữ liệu thiếu làm SPSS loại cả phiếu. Với câu nhạy cảm như thu nhập, thêm lựa chọn "Không muốn trả lời" thay vì để trống, để người trả lời không phải bỏ cả form hoặc chọn bừa.</p>
 <h3>Có cần câu tự luận không?</h3>
-<p>Không bắt buộc. Nếu có, chỉ một hai câu ở cuối phần chính và phải có kế hoạch dùng chúng, ví dụ trích dẫn minh hoạ trong chương thảo luận. Câu tự luận còn là chỗ dễ gặp câu trả lời do AI viết, xem bài <a href="/goc-nghien-cuu/posts/phat-hien-cau-tra-loi-khao-sat-do-ai-viet/">phát hiện câu trả lời khảo sát do AI viết</a>.</p>
+<p>Không bắt buộc. Nếu có, chỉ một hai câu ở cuối phần chính và phải có kế hoạch dùng chúng, ví dụ trích dẫn minh hoạ trong chương thảo luận. Câu tự luận còn là chỗ dễ gặp câu trả lời do AI viết, xem bài <a href="/posts/phat-hien-cau-tra-loi-khao-sat-do-ai-viet/">phát hiện câu trả lời khảo sát do AI viết</a>.</p>
 
 <h2>Checklist trước khi phát form</h2>
 <ul>
@@ -125,7 +125,7 @@ tags: ["bảng hỏi","thang đo"]
 <li>Thời gian dự kiến được ghi trung thực trong lời giới thiệu.</li>
 <li>Đã phỏng vấn nhận thức và chạy thử, đã xuất thử dữ liệu.</li>
 </ul>
-<p>Muốn xem toàn bộ quá trình từ bảng hỏi tới lúc thu đủ mẫu, đọc thêm <a href="/goc-nghien-cuu/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>. Nếu đề tài của bạn trùng với một chủ đề phổ biến, các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> đã ghép sẵn thang đo gốc, ví dụ <a href="/goc-nghien-cuu/mau-bang-hoi/y-dinh-mua-hang-online/">ý định mua hàng online</a>.</p>
+<p>Muốn xem toàn bộ quá trình từ bảng hỏi tới lúc thu đủ mẫu, đọc thêm <a href="/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>. Nếu đề tài của bạn trùng với một chủ đề phổ biến, các <a href="/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> đã ghép sẵn thang đo gốc, ví dụ <a href="/mau-bang-hoi/y-dinh-mua-hang-online/">ý định mua hàng online</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

@@ -1,6 +1,6 @@
 # QA bài viết: Góc Nghiên Cứu /posts/
 
-Ngày audit: 2026-10-30 (01:55 giờ VN). Phạm vi: 15 file `src/content/posts/*.md`, `PostLayout.astro`, bản live tại https://growth547.github.io/goc-nghien-cuu/posts/. Chỉ đọc, không sửa nguồn.
+Ngày audit: 2026-10-30 (01:55 giờ VN). Phạm vi: 15 file `src/content/posts/*.md`, `PostLayout.astro`, bản live tại https://gocnghiencuu.com/posts/. Chỉ đọc, không sửa nguồn.
 
 Cách kiểm: đọc toàn văn từng bài; tính lại mọi phép tính (Cochran, Yamane, hiệu chỉnh tổng thể, số phiếu thô, df, bảng G*Power chạy lại bằng scipy noncentral F); đối chiếu 25 DOI qua api.crossref.org; curl mọi link nội bộ và link Genius Data; đọc HTML live của 9 bài đang lên để kiểm heading, HTML thô và thuộc tính rel; đọc CSS bảng trong `typography.css` cho hiển thị trên điện thoại.
 

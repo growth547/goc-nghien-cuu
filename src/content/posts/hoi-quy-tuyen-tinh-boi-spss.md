@@ -17,10 +17,10 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 <p>Biến độc lập và phụ thuộc phải là biến tổng hợp đã tạo bằng Compute (trung bình các câu của mỗi thang đo) sau khi kiểm định độ tin cậy, không phải từng câu riêng lẻ.</p>
 
 <h2>Cỡ mẫu tối thiểu</h2>
-<p>Green (1991) đề xuất hai quy tắc: N ≥ 50 + 8m để kiểm định toàn bộ mô hình và N ≥ 104 + m để kiểm định từng hệ số, với m là số biến độc lập. Với 4 biến độc lập: 50 + 8 × 4 = 82 và 104 + 4 = 108. Lấy số lớn hơn, 108, làm mức tối thiểu cho phần hồi quy. Các quy tắc này giả định mức tác động trung bình; nếu bạn kỳ vọng tác động nhỏ, cần mẫu lớn hơn nhiều. <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a> tính theo power cho hồi quy, và bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a> so sánh các quy tắc.</p>
+<p>Green (1991) đề xuất hai quy tắc: N ≥ 50 + 8m để kiểm định toàn bộ mô hình và N ≥ 104 + m để kiểm định từng hệ số, với m là số biến độc lập. Với 4 biến độc lập: 50 + 8 × 4 = 82 và 104 + 4 = 108. Lấy số lớn hơn, 108, làm mức tối thiểu cho phần hồi quy. Các quy tắc này giả định mức tác động trung bình; nếu bạn kỳ vọng tác động nhỏ, cần mẫu lớn hơn nhiều. <a href="/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a> tính theo power cho hồi quy, và bài <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a> so sánh các quy tắc.</p>
 
 <h2>Bộ dữ liệu ví dụ</h2>
-<p>Khảo sát 250 sinh viên về ý định sử dụng ví điện tử (BI). Bốn biến độc lập: nhận thức sự hữu ích (PU), nỗ lực kỳ vọng (EE), ảnh hưởng xã hội (SI), niềm tin (TR). Thang đo lấy từ <a href="/goc-nghien-cuu/thang-do/tam/">TAM</a>, <a href="/goc-nghien-cuu/thang-do/utaut2/">UTAUT2</a> và <a href="/goc-nghien-cuu/thang-do/niem-tin-thuong-mai-dien-tu/">thang đo niềm tin thương mại điện tử</a>, Likert 5 mức. Mọi con số dưới đây là số minh hoạ, được tính cho khớp nhau để bạn thấy cách đọc.</p>
+<p>Khảo sát 250 sinh viên về ý định sử dụng ví điện tử (BI). Bốn biến độc lập: nhận thức sự hữu ích (PU), nỗ lực kỳ vọng (EE), ảnh hưởng xã hội (SI), niềm tin (TR). Thang đo lấy từ <a href="/thang-do/tam/">TAM</a>, <a href="/thang-do/utaut2/">UTAUT2</a> và <a href="/thang-do/niem-tin-thuong-mai-dien-tu/">thang đo niềm tin thương mại điện tử</a>, Likert 5 mức. Mọi con số dưới đây là số minh hoạ, được tính cho khớp nhau để bạn thấy cách đọc.</p>
 
 <h2>Thiết lập trong SPSS</h2>
 <p>Vào <strong>Analyze → Regression → Linear</strong>.</p>
@@ -89,14 +89,14 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 <h3>VIF bao nhiêu là có vấn đề</h3>
 <p>Ngưỡng 10 được trích nhiều nhất; nhiều tác giả dùng ngưỡng chặt hơn là 5 hoặc 3. O'Brien (2007) cho thấy các ngưỡng này không nên áp máy móc: VIF cao chỉ làm sai số chuẩn lớn lên, và việc nó có đáng lo hay không còn tuỳ cỡ mẫu và độ lớn hệ số. Cách viết an toàn: nêu ngưỡng bạn dùng kèm nguồn, và nếu có VIF trên 3, xem lại hai biến có tương quan cao có đo trùng khái niệm không (kiểm tra lại EFA).</p>
 <h3>Cook's distance</h3>
-<p>Cook (1977) đề xuất thước đo ảnh hưởng của từng quan sát lên toàn bộ hệ số. Mốc thường dùng là 1. Sắp xếp cột COO_1 giảm dần; nếu có phiếu vượt mốc, kiểm tra phiếu đó có lỗi nhập liệu hay trả lời rập khuôn không. Quy trình lọc phiếu nên làm trước khi chạy hồi quy, xem bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">lọc phiếu khảo sát không hợp lệ</a>.</p>
+<p>Cook (1977) đề xuất thước đo ảnh hưởng của từng quan sát lên toàn bộ hệ số. Mốc thường dùng là 1. Sắp xếp cột COO_1 giảm dần; nếu có phiếu vượt mốc, kiểm tra phiếu đó có lỗi nhập liệu hay trả lời rập khuôn không. Quy trình lọc phiếu nên làm trước khi chạy hồi quy, xem bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">lọc phiếu khảo sát không hợp lệ</a>.</p>
 
 <h2>Thêm biến kiểm soát: hồi quy phân cấp</h2>
 <p>Nếu muốn kiểm soát giới tính, năm học, thu nhập: trong hộp thoại Linear, đưa các biến kiểm soát vào Block 1, bấm Next, đưa bốn biến chính vào Block 2. Tích R squared change. Bảng Model Summary có thêm cột R² Change và Sig. F Change cho Block 2: phần biến thiên mà các biến chính giải thích thêm ngoài biến kiểm soát. Biến định tính có nhiều nhóm phải tạo biến giả, giữ một nhóm làm nhóm tham chiếu.</p>
 
 <h2>Câu mẫu cho chương 4</h2>
 <blockquote><p>Phân tích hồi quy tuyến tính bội với phương pháp Enter được thực hiện với ý định sử dụng ví điện tử là biến phụ thuộc và bốn biến độc lập. Mô hình có ý nghĩa thống kê (F(4, 245) = 64,26; p &lt; 0,001) và giải thích 50,4% biến thiên của ý định sử dụng (R² hiệu chỉnh = 0,504). Hệ số VIF của các biến độc lập nằm trong khoảng 1,41 đến 1,97, cho thấy đa cộng tuyến không phải vấn đề nghiêm trọng (O'Brien, 2007). Đồ thị phân tán phần dư chuẩn hoá theo giá trị dự đoán chuẩn hoá không cho thấy dấu hiệu phương sai thay đổi, biểu đồ tần số phần dư có dạng gần chuẩn, và không có quan sát nào có Cook's distance lớn hơn 1. Nhận thức sự hữu ích (β = 0,312; p &lt; 0,001), niềm tin (β = 0,235; p &lt; 0,001) và ảnh hưởng xã hội (β = 0,226; p &lt; 0,001) có tác động cùng chiều đến ý định sử dụng; H1, H3 và H4 được ủng hộ. Tác động của nỗ lực kỳ vọng không có ý nghĩa thống kê ở mức 5% (β = 0,098; p = 0,060); H2 không được ủng hộ.</p></blockquote>
-<p>Cấu trúc toàn chương 4, từ mô tả mẫu tới kiểm định giả thuyết, có trong bài <a href="/goc-nghien-cuu/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>. Nếu không có SPSS, <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a> chạy hồi quy, kiểm tra giả định và gợi ý đoạn văn chương 4 ngay trên trình duyệt.</p>
+<p>Cấu trúc toàn chương 4, từ mô tả mẫu tới kiểm định giả thuyết, có trong bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>. Nếu không có SPSS, <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a> chạy hồi quy, kiểm tra giả định và gợi ý đoạn văn chương 4 ngay trên trình duyệt.</p>
 
 <h2>Lỗi thường gặp</h2>
 <ul>
@@ -119,7 +119,7 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 <h3>Báo cáo p = 0,000 có được không?</h3>
 <p>SPSS hiển thị 0,000 do làm tròn; p không bao giờ bằng 0. Viết p &lt; 0,001.</p>
 <h3>Dữ liệu Likert có chạy hồi quy tuyến tính được không?</h3>
-<p>Được, trên điểm tổng hợp của thang đo nhiều câu. Lập luận và nguồn có trong bài <a href="/goc-nghien-cuu/posts/likert-la-thang-do-khoang-hay-thu-bac/">Likert là thang đo khoảng hay thứ bậc</a>.</p>
+<p>Được, trên điểm tổng hợp của thang đo nhiều câu. Lập luận và nguồn có trong bài <a href="/posts/likert-la-thang-do-khoang-hay-thu-bac/">Likert là thang đo khoảng hay thứ bậc</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

@@ -63,21 +63,21 @@ tags: ["thang đo","SPSS","khoá luận"]
 <tr><td>PLS-SEM (SmartPLS)</td><td>Các câu</td><td>Xử lý như biến liên tục là thực hành chuẩn của phương pháp này</td></tr>
 </tbody>
 </table>
-<p>Nếu bạn dùng <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a> của Góc Nghiên Cứu, các bước tạo biến tổng hợp, Cronbach, EFA và hồi quy đã đi theo đúng thứ tự trên.</p>
+<p>Nếu bạn dùng <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a> của Góc Nghiên Cứu, các bước tạo biến tổng hợp, Cronbach, EFA và hồi quy đã đi theo đúng thứ tự trên.</p>
 
 <h2>Khai báo Measure trong SPSS</h2>
 <p>Trong Variable View, cột Measure có ba lựa chọn: Scale, Ordinal, Nominal. Hai điều cần biết:</p>
 <ol>
 <li>Lựa chọn Measure không thay đổi phép tính của Regression, T-test hay Correlate. SPSS vẫn tính trung bình của biến Ordinal nếu bạn yêu cầu. Measure chủ yếu ảnh hưởng tới Chart Builder, Custom Tables và một số thủ tục tự chọn kiểm định.</li>
-<li>Cách khai báo rõ ràng nhất: từng câu Likert (HL1, HL2...) để Ordinal; biến tổng hợp tính bằng Compute (HL = MEAN(HL1 TO HL4)) để Scale. Bảng mã hoá của bạn nên ghi đúng như vậy. Xem cách lập trong bài <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</li>
+<li>Cách khai báo rõ ràng nhất: từng câu Likert (HL1, HL2...) để Ordinal; biến tổng hợp tính bằng Compute (HL = MEAN(HL1 TO HL4)) để Scale. Bảng mã hoá của bạn nên ghi đúng như vậy. Xem cách lập trong bài <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</li>
 </ol>
 
 <h2>Điều kiện để xử lý điểm tổng hợp như khoảng</h2>
 <p>Không có ngưỡng chính thức, nhưng các điều kiện sau làm lập luận của bạn vững hơn. Mỗi điều đều kiểm tra được và ghi được vào chương 3 hoặc 4:</p>
 <ul>
 <li><strong>Thang có từ 5 mức trở lên.</strong> Rhemtulla và cộng sự (2012) cho thấy từ 5 mức, phương pháp cho biến liên tục hoạt động gần tương đương phương pháp cho biến thứ bậc trong mô hình SEM.</li>
-<li><strong>Mỗi khái niệm đo bằng nhiều câu</strong>, thường từ 3 câu, và đạt độ tin cậy. Kiểm tra bằng <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a>; cách đọc kết quả có trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</li>
-<li><strong>Nhãn mức trả lời cân đối</strong>: số mức đồng ý bằng số mức không đồng ý, mức giữa trung lập thật sự. Nhãn lệch như "Kém, Trung bình, Khá, Tốt, Rất tốt" làm khoảng cách giữa các mức kém đều. Bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> có bộ nhãn chuẩn.</li>
+<li><strong>Mỗi khái niệm đo bằng nhiều câu</strong>, thường từ 3 câu, và đạt độ tin cậy. Kiểm tra bằng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a>; cách đọc kết quả có trong bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</li>
+<li><strong>Nhãn mức trả lời cân đối</strong>: số mức đồng ý bằng số mức không đồng ý, mức giữa trung lập thật sự. Nhãn lệch như "Kém, Trung bình, Khá, Tốt, Rất tốt" làm khoảng cách giữa các mức kém đều. Bài <a href="/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> có bộ nhãn chuẩn.</li>
 <li><strong>Phân phối không dồn hết về một đầu.</strong> Xem skewness, kurtosis và biểu đồ tần suất của biến tổng hợp. Khi hơn một nửa mẫu chọn mức cao nhất, cả trung bình lẫn kiểm định tham số đều kém tin cậy.</li>
 </ul>
 
@@ -103,7 +103,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 <h3>Có bắt buộc kiểm định phân phối chuẩn trước khi chạy t-test không?</h3>
 <p>Giả định chuẩn áp dụng cho phần dư hoặc cho phân phối mẫu của trung bình, không phải cho từng câu Likert. Với mỗi nhóm khoảng 30 người trở lên, t-test thường bền. Vẫn nên xem histogram để phát hiện phân phối dồn về một đầu.</p>
 <h3>Hội đồng hỏi "Likert là thứ bậc sao em tính trung bình?" thì trả lời gì?</h3>
-<p>"Dạ, em tính trung bình trên thang đo nhiều câu đã đạt độ tin cậy, không trên câu đơn. Theo Norman (2010) và Carifio và Perla (2008), kiểm định tham số trên điểm tổng hợp như vậy cho kết quả đáng tin. Với từng câu em báo cáo tần suất." Xem thêm các câu hội đồng hay hỏi trong bài <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hỏi gì về phần khảo sát</a>.</p>
+<p>"Dạ, em tính trung bình trên thang đo nhiều câu đã đạt độ tin cậy, không trên câu đơn. Theo Norman (2010) và Carifio và Perla (2008), kiểm định tham số trên điểm tổng hợp như vậy cho kết quả đáng tin. Với từng câu em báo cáo tần suất." Xem thêm các câu hội đồng hay hỏi trong bài <a href="/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hỏi gì về phần khảo sát</a>.</p>
 <h3>Cách chia mức "1,00 đến 1,80 là rất thấp" có nguồn không?</h3>
 <p>Đó là quy ước diễn giải phổ biến ở Việt Nam, tính bằng (5 − 1) / 5 = 0,8, không có trong Likert (1932) hay Stevens (1946). Dùng được nếu ghi rõ là quy ước.</p>
 

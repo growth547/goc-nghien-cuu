@@ -36,7 +36,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <h2>Cùng chiều hay ngược chiều: quyết định thế nào</h2>
 <p>Chiều của giả thuyết đến từ lý thuyết, nhưng phải khớp với cách câu hỏi được viết trong bảng hỏi. Ba trường hợp hay gây lúng túng:</p>
 <ul>
-<li><strong>Giá.</strong> Trong UTAUT2, khái niệm là "giá trị giá cả" (price value), đo bằng các câu như "ứng dụng đáng đồng tiền", nên giả thuyết là cùng chiều (Venkatesh và cộng sự, 2012). Nếu bạn đo "giá cao" hoặc "chi phí cảm nhận", giả thuyết thành ngược chiều. Xem câu hỏi trên trang <a href="/goc-nghien-cuu/thang-do/utaut2/">thang đo UTAUT2</a>.</li>
+<li><strong>Giá.</strong> Trong UTAUT2, khái niệm là "giá trị giá cả" (price value), đo bằng các câu như "ứng dụng đáng đồng tiền", nên giả thuyết là cùng chiều (Venkatesh và cộng sự, 2012). Nếu bạn đo "giá cao" hoặc "chi phí cảm nhận", giả thuyết thành ngược chiều. Xem câu hỏi trên trang <a href="/thang-do/utaut2/">thang đo UTAUT2</a>.</li>
 <li><strong>Rủi ro, lo ngại, căng thẳng.</strong> Khái niệm mang nghĩa tiêu cực, điểm cao là tệ, nên tác động lên ý định hay sự hài lòng thường là ngược chiều.</li>
 <li><strong>Câu đảo chiều trong thang đo.</strong> Sau khi mã hoá lại, điểm cao của cả thang đo vẫn mang nghĩa của khái niệm. Chiều giả thuyết dựa trên nghĩa của khái niệm, không dựa trên từng câu.</li>
 </ul>
@@ -49,7 +49,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <li><strong>Lý do trong bối cảnh của bạn</strong>: vì sao quan hệ này đáng kiểm định ở đây.</li>
 <li><strong>Câu giả thuyết</strong>, in đậm hoặc in nghiêng, đánh số.</li>
 </ol>
-<p>Ví dụ cho giả thuyết niềm tin trong mô hình ý định tiếp tục sử dụng ví điện tử (mô hình đầy đủ ở bài <a href="/goc-nghien-cuu/posts/cach-xay-dung-mo-hinh-nghien-cuu/">cách xây dựng mô hình nghiên cứu</a>):</p>
+<p>Ví dụ cho giả thuyết niềm tin trong mô hình ý định tiếp tục sử dụng ví điện tử (mô hình đầy đủ ở bài <a href="/posts/cach-xay-dung-mo-hinh-nghien-cuu/">cách xây dựng mô hình nghiên cứu</a>):</p>
 <blockquote><p>Niềm tin phản ánh việc người dùng tin rằng nhà cung cấp dịch vụ trung thực, quan tâm tới khách hàng và đủ năng lực thực hiện cam kết (Gefen và cộng sự, 2003). Khi giao dịch diễn ra trực tuyến, người dùng không kiểm soát được hành vi của nhà cung cấp, nên niềm tin làm giảm cảm nhận bất định và khiến họ sẵn sàng tiếp tục giao dịch. Gefen và cộng sự (2003) cho thấy niềm tin tác động cùng chiều tới ý định mua hàng trực tuyến bên cạnh các yếu tố của TAM. Với ví điện tử, người dùng gửi tiền và dữ liệu thanh toán cho nhà cung cấp, nên lo ngại mất tiền hoặc lộ thông tin là một cân nhắc thường trực khi quyết định có dùng tiếp hay không. Do đó, giả thuyết sau được đề xuất:</p><p><em>H6: Niềm tin có tác động cùng chiều đến ý định tiếp tục sử dụng ví điện tử của sinh viên.</em></p></blockquote>
 <p>Trong khoá luận thật, phần bằng chứng thực nghiệm nên có thêm các nghiên cứu về ví điện tử hoặc thanh toán di động, ưu tiên nghiên cứu tại Việt Nam hoặc châu Á.</p>
 
@@ -73,7 +73,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <tr><td>H6</td><td>Niềm tin → Ý định tiếp tục</td><td>0,07</td><td>0,240</td><td>Không ủng hộ</td></tr>
 </tbody>
 </table>
-<p>Các con số trong bảng là ví dụ minh hoạ cách trình bày. Dùng "ủng hộ" và "không ủng hộ" (supported, not supported), tránh "chấp nhận" và "bác bỏ" giả thuyết nghiên cứu, vì về mặt thống kê, cái bị bác bỏ hay không là H0. Kèm theo β, p, và nếu dùng PLS-SEM thì thêm khoảng tin cậy bootstrap và f². Cách trình bày chương 4 đầy đủ có trong bài <a href="/goc-nghien-cuu/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>.</p>
+<p>Các con số trong bảng là ví dụ minh hoạ cách trình bày. Dùng "ủng hộ" và "không ủng hộ" (supported, not supported), tránh "chấp nhận" và "bác bỏ" giả thuyết nghiên cứu, vì về mặt thống kê, cái bị bác bỏ hay không là H0. Kèm theo β, p, và nếu dùng PLS-SEM thì thêm khoảng tin cậy bootstrap và f². Cách trình bày chương 4 đầy đủ có trong bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>.</p>
 <p>Giả thuyết không được ủng hộ không phải là thất bại. Đó là kết quả cần thảo luận: vì sao ở bối cảnh của bạn quan hệ này không xuất hiện. Hội đồng đánh giá phần giải thích, không đánh giá số giả thuyết được ủng hộ.</p>
 
 <h2>Không sửa giả thuyết sau khi thấy kết quả</h2>
@@ -83,7 +83,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <ul>
 <li><strong>Giả thuyết ghép hai quan hệ</strong>: "X và Z có tác động cùng chiều đến Y". Tách thành hai giả thuyết.</li>
 <li><strong>Tên khái niệm trong giả thuyết khác tên trong mô hình và bảng hỏi.</strong></li>
-<li><strong>Đánh số không khớp hình vẽ.</strong> H3 trên hình phải là H3 trong bài và trong bảng kết quả. <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Công cụ vẽ mô hình nghiên cứu</a> đánh số giả thuyết theo mũi tên và sinh sẵn câu giả thuyết tiếng Việt để bạn chỉnh sửa.</li>
+<li><strong>Đánh số không khớp hình vẽ.</strong> H3 trên hình phải là H3 trong bài và trong bảng kết quả. <a href="/cong-cu/ve-mo-hinh/">Công cụ vẽ mô hình nghiên cứu</a> đánh số giả thuyết theo mũi tên và sinh sẵn câu giả thuyết tiếng Việt để bạn chỉnh sửa.</li>
 <li><strong>Giả thuyết không có lập luận</strong>, chỉ có một trích dẫn.</li>
 <li><strong>Viết "giả thuyết được chứng minh".</strong> Dùng "được ủng hộ".</li>
 <li><strong>Giả thuyết về biến nhân khẩu học không có lý thuyết</strong>, chỉ để có thêm kiểm định.</li>
@@ -99,7 +99,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <h3>Hệ số có ý nghĩa ở mức 10% thì kết luận thế nào?</h3>
 <p>Theo mức ý nghĩa bạn đã khai báo trong chương 3. Nếu khai báo 5% thì p = 0,08 là không ủng hộ; có thể bình luận "có xu hướng" trong phần thảo luận nhưng không đổi kết luận.</p>
 <h3>Hội đồng hỏi "sao giả thuyết này bị bác bỏ" thì trả lời thế nào?</h3>
-<p>Nêu kết quả đúng thuật ngữ (không được ủng hộ), rồi đưa một hai giải thích có cơ sở: đặc điểm mẫu, bối cảnh, đo lường. Xem thêm các tình huống trong bài <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hỏi gì về phần khảo sát</a>.</p>
+<p>Nêu kết quả đúng thuật ngữ (không được ủng hộ), rồi đưa một hai giải thích có cơ sở: đặc điểm mẫu, bối cảnh, đo lường. Xem thêm các tình huống trong bài <a href="/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hỏi gì về phần khảo sát</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

@@ -1,6 +1,6 @@
 # QA audit: thư viện thang đo (/thang-do/)
 
-Date: 2026-10-30. Scope: index + 60 live pages at https://growth547.github.io/goc-nghien-cuu/thang-do/, `src/content/thang-do/*.json`, `src/pages/thang-do/[slug].astro`.
+Date: 2026-10-30. Scope: index + 60 live pages at https://gocnghiencuu.com/thang-do/, `src/content/thang-do/*.json`, `src/pages/thang-do/[slug].astro`.
 
 Method: scripted crawl of all 60 pages and 145 internal links; scan of rendered `<main>` for leftover entities and placeholders; H2 and title/description extraction; automated JSON checks (item count in `source` against the actual items, reverse flags against negatively worded items, author/year in `source` against `references`, sample-size numbers against the f² = 0.15 power table); every reference DOI resolved through Crossref/DataCite; manual read of all 816 EN/VI item pairs; a mobile (375 px) render of `kiet-suc-cbi`.
 
@@ -33,7 +33,7 @@ What passed:
 
 ## P0: wrong or broken
 
-**P0-1. The RSS link returns 404 on every page (site-wide).** The `<link rel="alternate">` points to `https://growth547.github.io/goc-nghien-cuu/rss.xml/`, which returns 404. The same path without the trailing slash returns 200. The cause is that `getRelativeLocaleUrl(…, "rss.xml")` adds the trailing slash.
+**P0-1. The RSS link returns 404 on every page (site-wide).** The `<link rel="alternate">` points to `https://gocnghiencuu.com/rss.xml/`, which returns 404. The same path without the trailing slash returns 200. The cause is that `getRelativeLocaleUrl(…, "rss.xml")` adds the trailing slash.
 File: `src/layouts/Layout.astro` lines 42–45 and 93. Change:
 ```astro
 const rssHref = getAssetPath("rss.xml");   // same helper already used for sitemap-index.xml

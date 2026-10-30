@@ -15,7 +15,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <li>Tên tiếng Anh chính và các tên gần nghĩa: trust, online trust, trust in e-vendor, perceived trustworthiness.</li>
 <li>Đối tượng và bối cảnh: người mua hàng trên sàn thương mại điện tử.</li>
 </ul>
-<p>Thư viện <a href="/goc-nghien-cuu/khai-niem/">khái niệm nghiên cứu</a> có định nghĩa kèm nguồn và tên tiếng Anh cho các khái niệm hay gặp, ví dụ trang <a href="/goc-nghien-cuu/khai-niem/niem-tin/">niềm tin</a>.</p>
+<p>Thư viện <a href="/khai-niem/">khái niệm nghiên cứu</a> có định nghĩa kèm nguồn và tên tiếng Anh cho các khái niệm hay gặp, ví dụ trang <a href="/khai-niem/niem-tin/">niềm tin</a>.</p>
 
 <h2>Bảy nguồn tìm thang đo, theo thứ tự nên thử</h2>
 <table>
@@ -32,7 +32,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 </table>
 
 <h3>1. Thư viện thang đo</h3>
-<p><a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> của Góc Nghiên Cứu có hơn 60 thang đo với câu gốc tiếng Anh, bản tiếng Việt, thang trả lời và tài liệu gốc đã đối chiếu, xếp theo lĩnh vực: công nghệ, marketing, nhân sự, sức khoẻ tâm thần, giáo dục. Nếu khái niệm của bạn có ở đây, bạn đã tiết kiệm được các bước 2 đến 4. Vẫn nên mở bài gốc trong mục tài liệu tham khảo để tự kiểm tra.</p>
+<p><a href="/thang-do/">Thư viện thang đo</a> của Góc Nghiên Cứu có hơn 60 thang đo với câu gốc tiếng Anh, bản tiếng Việt, thang trả lời và tài liệu gốc đã đối chiếu, xếp theo lĩnh vực: công nghệ, marketing, nhân sự, sức khoẻ tâm thần, giáo dục. Nếu khái niệm của bạn có ở đây, bạn đã tiết kiệm được các bước 2 đến 4. Vẫn nên mở bài gốc trong mục tài liệu tham khảo để tự kiểm tra.</p>
 
 <h3>2. Google Scholar: cú pháp tìm hiệu quả</h3>
 <p>Thêm các từ chỉ phần đo lường vào tên khái niệm. Một số chuỗi tìm kiếm dùng được:</p>
@@ -55,13 +55,13 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <p>Ghi lại số trang hoặc số bảng nơi bạn lấy câu hỏi. Khi hội đồng hỏi, bạn chỉ được ngay.</p>
 
 <h3>4. Truy ngược tới thang đo gốc</h3>
-<p>Bài bạn tìm được thường ghi "items were adapted from X (năm)". Mở X, kiểm tra X có tự phát triển thang đo hay lại kế thừa từ Y. Dừng lại khi tới bài báo đầu tiên đưa ra bộ câu hỏi và kiểm định nó. Bài đó là thang đo gốc; các bài trung gian là nguồn tham khảo bối cảnh. Phân biệt các vai trò này trong bài <a href="/goc-nghien-cuu/posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/">thang đo gốc, kế thừa và hiệu chỉnh</a>.</p>
+<p>Bài bạn tìm được thường ghi "items were adapted from X (năm)". Mở X, kiểm tra X có tự phát triển thang đo hay lại kế thừa từ Y. Dừng lại khi tới bài báo đầu tiên đưa ra bộ câu hỏi và kiểm định nó. Bài đó là thang đo gốc; các bài trung gian là nguồn tham khảo bối cảnh. Phân biệt các vai trò này trong bài <a href="/posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/">thang đo gốc, kế thừa và hiệu chỉnh</a>.</p>
 
 <h3>5. Sổ tay thang đo</h3>
 <p>Với marketing và hành vi người tiêu dùng, <em>Handbook of Marketing Scales</em> (Bearden và cộng sự, 2011) tập hợp nhiều thang đo nhiều câu, mỗi thang có mô tả khái niệm, câu hỏi, độ tin cậy và bằng chứng giá trị trong nghiên cứu gốc. Tâm lý học có cơ sở dữ liệu APA PsycTests, thường truy cập qua thư viện trường. Hỏi thư viện xem trường có quyền truy cập không trước khi mất thời gian tìm bản lậu.</p>
 
 <h3>6. Luận văn và bài báo trong nước</h3>
-<p>Hữu ích để xem bản tiếng Việt đã được dùng thế nào và cho Cronbach's alpha bao nhiêu với người Việt. Nhưng luôn đối chiếu với câu gốc tiếng Anh: lỗi dịch và lỗi ghi nguồn được sao chép qua nhiều khoá. Nếu bản tiếng Việt chưa qua quy trình dịch có kiểm soát, xem cách làm trong bài <a href="/goc-nghien-cuu/posts/dich-nguoc-back-translation-la-gi/">dịch ngược thang đo</a>.</p>
+<p>Hữu ích để xem bản tiếng Việt đã được dùng thế nào và cho Cronbach's alpha bao nhiêu với người Việt. Nhưng luôn đối chiếu với câu gốc tiếng Anh: lỗi dịch và lỗi ghi nguồn được sao chép qua nhiều khoá. Nếu bản tiếng Việt chưa qua quy trình dịch có kiểm soát, xem cách làm trong bài <a href="/posts/dich-nguoc-back-translation-la-gi/">dịch ngược thang đo</a>.</p>
 
 <h3>7. Email cho tác giả</h3>
 <p>Một email ngắn, lịch sự bằng tiếng Anh thường đủ: giới thiệu bạn là sinh viên, tên đề tài, thang đo bạn cần, mục đích phi thương mại. Gửi tới email tác giả liên hệ ghi trên bài báo. Đặt thời hạn chờ khoảng một tuần, trong lúc đó tìm phương án thay thế.</p>
@@ -71,7 +71,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <li>Định nghĩa: niềm tin vào người bán trực tuyến gồm trung thực, quan tâm tới khách hàng và năng lực.</li>
 <li>Tìm trên Google Scholar <code>"trust" "online vendor" TAM</code> ra bài Gefen, Karahanna và Straub (2003) trên <em>MIS Quarterly</em>, bài được trích rất nhiều trong nghiên cứu thương mại điện tử.</li>
 <li>Bài có phần mô tả thang đo; câu hỏi dạng "Based on my experience with [the online vendor] in the past, I know it is honest". Thang niềm tin gồm 7 câu.</li>
-<li>Kiểm tra đã có bản tiếng Việt chưa: trang <a href="/goc-nghien-cuu/thang-do/niem-tin-thuong-mai-dien-tu/">thang đo niềm tin thương mại điện tử</a> có đủ 7 câu gốc và bản dịch.</li>
+<li>Kiểm tra đã có bản tiếng Việt chưa: trang <a href="/thang-do/niem-tin-thuong-mai-dien-tu/">thang đo niềm tin thương mại điện tử</a> có đủ 7 câu gốc và bản dịch.</li>
 <li>Đánh giá phù hợp: các câu bắt đầu bằng "dựa trên trải nghiệm trước đây", nên đối tượng phải là người đã từng mua ở người bán đó. Nếu mẫu của bạn gồm cả người chưa mua, cần câu gạn lọc hoặc chọn thang khác.</li>
 </ol>
 <p>Bước 5 là bước hay bị bỏ qua nhất: thang đo đúng khái niệm nhưng sai đối tượng vẫn là thang đo sai.</p>
@@ -92,14 +92,14 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <p>Boateng và cộng sự (2018) nhấn mạnh rằng độ tin cậy cao trong bài gốc không đảm bảo thang đo phù hợp với quần thể của bạn; bối cảnh và định nghĩa quan trọng không kém con số alpha.</p>
 
 <h2>Bảng ghi chép khi tìm thang đo</h2>
-<p>Lập một bảng tính với các cột sau ngay từ đầu. Bảng này về sau thành bảng nguồn trong chương 3 và <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>:</p>
+<p>Lập một bảng tính với các cột sau ngay từ đầu. Bảng này về sau thành bảng nguồn trong chương 3 và <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>:</p>
 <table>
 <thead><tr><th>Khái niệm</th><th>Thang đo gốc</th><th>Số câu</th><th>Thang trả lời</th><th>Độ tin cậy trong bài gốc</th><th>Vị trí câu hỏi</th><th>Bản tiếng Việt</th><th>Ghi chú</th></tr></thead>
 <tbody>
 <tr><td>Niềm tin</td><td>Gefen và cộng sự (2003)</td><td>7</td><td>Likert 7 mức</td><td>Ghi theo bài gốc</td><td>Phần đo lường của bài</td><td>Thư viện thang đo Góc Nghiên Cứu</td><td>Chỉ hỏi người đã mua</td></tr>
 </tbody>
 </table>
-<p>Khi đã đủ thang đo cho mọi khái niệm, <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">công cụ tạo bảng hỏi</a> ghép chúng thành phiếu khảo sát hoàn chỉnh. Nếu đề tài của bạn trùng với một chủ đề phổ biến, xem trước các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi</a> đã ghép sẵn thang đo.</p>
+<p>Khi đã đủ thang đo cho mọi khái niệm, <a href="/cong-cu/bo-khao-sat/">công cụ tạo bảng hỏi</a> ghép chúng thành phiếu khảo sát hoàn chỉnh. Nếu đề tài của bạn trùng với một chủ đề phổ biến, xem trước các <a href="/mau-bang-hoi/">mẫu bảng hỏi</a> đã ghép sẵn thang đo.</p>
 
 <h2>Lỗi thường gặp</h2>
 <ul>

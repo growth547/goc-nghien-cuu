@@ -263,8 +263,8 @@ const tk = T.parse("firm\tyear\tta\tni\nvnm\t2022\t100\t5\nVNM \t2023\t110\t6", 
 ok(new Set(tk.data.map(r => r.firm)).size === 1, "tickers vnm and VNM are one firm");
 near(get("VNM", 2023, "growth", T.compute(T.parse("firm\tyear\trev\nvnm\t2022\t100\nVNM\t2023\t110", "firm").data, "firm", false)), 0.1, "lag found across ticker case");
 
-// ---- internal links follow the site base path (the page replaces {BASE}); no hard-coded /goc-nghien-cuu/ ----
-ok(!src.includes("/goc-nghien-cuu/") && src.includes("{BASE}bien-nghien-cuu/"), "tool links use {BASE}, not a hard-coded base path");
+// ---- internal links follow the site base path (the page replaces {BASE}); no hard-coded old base path ----
+ok(!src.includes("goc-nghien-cuu/") && src.includes("{BASE}bien-nghien-cuu/"), "tool links use {BASE}, not a hard-coded base path");
 
 if (fails) { console.log(`\n${fails} of ${n} checks failed`); process.exit(1); }
 console.log(`OK ${n} calculator checks`);

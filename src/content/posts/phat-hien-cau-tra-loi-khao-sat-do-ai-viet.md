@@ -83,7 +83,7 @@ tags: ["làm sạch dữ liệu","AI"]
 <ul>
 <li><strong>Đánh dấu, đừng xoá ngay.</strong> Thêm cột flag và ghi lý do.</li>
 <li><strong>Cần ít nhất hai dấu hiệu.</strong> Ví dụ: văn phong lệch so với các câu khác và nội dung mâu thuẫn với câu trắc nghiệm.</li>
-<li><strong>Xem cả phiếu.</strong> Phiếu có câu tự luận do AI viết thường cũng có dấu hiệu khác như làm quá nhanh hay điền rập khuôn. Xem bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a> để áp dụng cùng lúc.</li>
+<li><strong>Xem cả phiếu.</strong> Phiếu có câu tự luận do AI viết thường cũng có dấu hiệu khác như làm quá nhanh hay điền rập khuôn. Xem bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a> để áp dụng cùng lúc.</li>
 <li><strong>Nếu chỉ câu tự luận có vấn đề</strong> mà phần trắc nghiệm hợp lý, bạn có thể giữ phần định lượng và bỏ câu tự luận đó khỏi phân tích định tính. Ghi rõ quyết định này trong phần phương pháp.</li>
 <li><strong>Không công kích đáp viên.</strong> Nếu bạn liên hệ lại, hỏi một câu cụ thể về trải nghiệm của họ thay vì buộc tội.</li>
 </ul>
@@ -91,7 +91,7 @@ tags: ["làm sạch dữ liệu","AI"]
 <h2>Báo cáo trong chương 3 và chương 4</h2>
 <p>Hội đồng sẽ hỏi "dựa vào đâu em nói câu này do AI viết?". Vì không có công cụ dò đáng tin, câu trả lời phải là một tiêu chí bạn viết ra trước và áp dụng nhất quán. Ví dụ đoạn chương 3:</p>
 <blockquote>Các câu trả lời tự luận được hai người đọc độc lập. Một câu bị đánh dấu nghi do công cụ AI tạo ra khi có ít nhất hai trong các dấu hiệu sau: còn sót định dạng hoặc lời dẫn của chatbot; cấu trúc bài luận trong ô trả lời ngắn; văn phong lệch rõ so với các câu khác trong cùng phiếu; nội dung mâu thuẫn với câu trắc nghiệm; độ dài không tương xứng với thời gian làm phiếu. Không sử dụng phần mềm phát hiện văn bản AI do độ chính xác chưa được kiểm chứng (Liang và cộng sự, 2023). Với phiếu bị đánh dấu, câu tự luận được loại khỏi phân tích định tính; toàn bộ phiếu chỉ bị loại khi đồng thời có dấu hiệu trả lời bất cẩn ở phần định lượng (Meade &amp; Craig, 2012).</blockquote>
-<p>Ở mục 4.1 của chương 4, ghi số câu tự luận bị loại và số phiếu bị loại hẳn vì lý do này, tách riêng với các lý do khác như trượt câu kiểm tra chú ý. Cách trình bày bảng số phiếu bị loại có ở bài <a href="/goc-nghien-cuu/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>.</p>
+<p>Ở mục 4.1 của chương 4, ghi số câu tự luận bị loại và số phiếu bị loại hẳn vì lý do này, tách riêng với các lý do khác như trượt câu kiểm tra chú ý. Cách trình bày bảng số phiếu bị loại có ở bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>.</p>
 
 <h2>Checklist cho câu hỏi tự luận</h2>
 <ul>
@@ -102,7 +102,7 @@ tags: ["làm sạch dữ liệu","AI"]
 <li>Số câu tự luận đã giảm tới mức tối thiểu chưa?</li>
 <li>Có câu trắc nghiệm nào để đối chiếu với câu tự luận không?</li>
 </ul>
-<p>Nếu bảng hỏi của bạn còn đang ở giai đoạn soạn, đọc thêm <a href="/goc-nghien-cuu/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi khảo sát</a> để xử lý các lỗi khác như câu hỏi kép và câu hỏi dẫn dắt. Ví dụ ở bài này lấy chủ đề giao đồ ăn; nếu đề tài của bạn cũng vậy, <a href="/goc-nghien-cuu/mau-bang-hoi/y-dinh-dung-ung-dung-giao-do-an/">mẫu bảng hỏi ý định dùng ứng dụng giao đồ ăn</a> có sẵn thang đo gốc để bạn thêm một hai câu tự luận theo các nguyên tắc trên.</p>
+<p>Nếu bảng hỏi của bạn còn đang ở giai đoạn soạn, đọc thêm <a href="/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi khảo sát</a> để xử lý các lỗi khác như câu hỏi kép và câu hỏi dẫn dắt. Ví dụ ở bài này lấy chủ đề giao đồ ăn; nếu đề tài của bạn cũng vậy, <a href="/mau-bang-hoi/y-dinh-dung-ung-dung-giao-do-an/">mẫu bảng hỏi ý định dùng ứng dụng giao đồ ăn</a> có sẵn thang đo gốc để bạn thêm một hai câu tự luận theo các nguyên tắc trên.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

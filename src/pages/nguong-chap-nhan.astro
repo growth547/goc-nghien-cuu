@@ -15,7 +15,7 @@ import config from "@/config";
 import data from "@/data/nguong.json";
 
 // The results-doctor tool is linked only once it is live (checked when this page was shipped).
-const DOCTOR_LIVE = false;
+const DOCTOR_LIVE = true;
 
 type Source = { cite: string; apa: string; doi?: string; url?: string; urlLabel?: string };
 const sources = data.sources as Record<string, Source>;

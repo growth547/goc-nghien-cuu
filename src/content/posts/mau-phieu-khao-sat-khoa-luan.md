@@ -38,15 +38,15 @@ tags: ["bảng hỏi","khoá luận"]
 <li>Yếu: "Bạn có biết ứng dụng giao đồ ăn không?" (ai cũng chọn Có)</li>
 <li>Tốt: "Trong 3 tháng gần đây, bạn có đặt đồ ăn qua ứng dụng giao đồ ăn ít nhất một lần không?"</li>
 </ul>
-<p>Mốc thời gian quan trọng vì thói quen hay giá trị cảm nhận cần trải nghiệm gần đây. Trên Google Forms, câu gạn lọc dùng tuỳ chọn chuyển phần để đưa người trả lời "Không" đến trang cảm ơn, chi tiết ở bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát Google Forms</a>.</p>
+<p>Mốc thời gian quan trọng vì thói quen hay giá trị cảm nhận cần trải nghiệm gần đây. Trên Google Forms, câu gạn lọc dùng tuỳ chọn chuyển phần để đưa người trả lời "Không" đến trang cảm ơn, chi tiết ở bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát Google Forms</a>.</p>
 
 <h2>Phần 4: Phần chính</h2>
 <p>Phần chính gồm các thang đo cho từng khái niệm trong mô hình. Bốn nguyên tắc:</p>
 <ol>
-<li><strong>Thang đo có nguồn.</strong> Mỗi khái niệm lấy từ một thang đo đã công bố, dịch và hiệu chỉnh có ghi chép. Quy trình dịch xuôi, dịch ngược của Brislin (1970) là cách hay được chấp nhận. <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> có câu gốc tiếng Anh, bản tiếng Việt tham khảo và trích dẫn.</li>
+<li><strong>Thang đo có nguồn.</strong> Mỗi khái niệm lấy từ một thang đo đã công bố, dịch và hiệu chỉnh có ghi chép. Quy trình dịch xuôi, dịch ngược của Brislin (1970) là cách hay được chấp nhận. <a href="/thang-do/">Thư viện thang đo</a> có câu gốc tiếng Anh, bản tiếng Việt tham khảo và trích dẫn.</li>
 <li><strong>Nhóm theo khái niệm, có tiêu đề ngắn.</strong> Mỗi khối một khái niệm giúp người trả lời giữ mạch suy nghĩ. Tiêu đề khối dùng ngôn ngữ đời thường ("Về chi phí"), không dùng tên khái niệm học thuật.</li>
 <li><strong>Biến phụ thuộc tách khỏi biến độc lập.</strong> Đặt khối biến phụ thuộc ở cuối phần chính, có tiêu đề riêng. Đây là một biện pháp thủ tục giảm sai lệch do phương pháp chung (Podsakoff và cộng sự, 2003).</li>
-<li><strong>Một bộ nhãn thang cho cả phiếu.</strong> Cùng số mức, cùng chiều, cùng chữ. Xem bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> để chọn.</li>
+<li><strong>Một bộ nhãn thang cho cả phiếu.</strong> Cùng số mức, cùng chiều, cùng chữ. Xem bài <a href="/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a> để chọn.</li>
 </ol>
 <p>Chèn một câu kiểm tra chú ý ở nửa sau phần chính. Meade và Craig (2012) cho thấy các câu chỉ dẫn kiểu "vui lòng chọn Không đồng ý ở dòng này" giúp phát hiện người trả lời cẩu thả.</p>
 
@@ -57,7 +57,7 @@ tags: ["bảng hỏi","khoá luận"]
 <p>Một đến hai câu, kèm email liên hệ. Trên Google Forms, đặt vào mục tin nhắn xác nhận.</p>
 
 <h2>Ví dụ đầy đủ: phiếu khảo sát ý định tiếp tục dùng ứng dụng giao đồ ăn</h2>
-<p>Mô hình rút gọn từ UTAUT2 (Venkatesh và cộng sự, 2012): hiệu quả kỳ vọng, nỗ lực kỳ vọng, ảnh hưởng xã hội, giá trị giá cả và thói quen tác động lên ý định hành vi. Các phát biểu lấy từ bản tiếng Việt trong <a href="/goc-nghien-cuu/thang-do/utaut2/">thang đo UTAUT2</a>, thay "[dịch vụ]" bằng "ứng dụng giao đồ ăn". Bản đầy đủ có thêm động lực hưởng thụ nằm ở <a href="/goc-nghien-cuu/mau-bang-hoi/y-dinh-dung-ung-dung-giao-do-an/">mẫu bảng hỏi ứng dụng giao đồ ăn</a>.</p>
+<p>Mô hình rút gọn từ UTAUT2 (Venkatesh và cộng sự, 2012): hiệu quả kỳ vọng, nỗ lực kỳ vọng, ảnh hưởng xã hội, giá trị giá cả và thói quen tác động lên ý định hành vi. Các phát biểu lấy từ bản tiếng Việt trong <a href="/thang-do/utaut2/">thang đo UTAUT2</a>, thay "[dịch vụ]" bằng "ứng dụng giao đồ ăn". Bản đầy đủ có thêm động lực hưởng thụ nằm ở <a href="/mau-bang-hoi/y-dinh-dung-ung-dung-giao-do-an/">mẫu bảng hỏi ứng dụng giao đồ ăn</a>.</p>
 
 <h3>PHIẾU KHẢO SÁT VỀ THÓI QUEN SỬ DỤNG ỨNG DỤNG GIAO ĐỒ ĂN</h3>
 <p><strong>Lời chào.</strong> Xin chào anh/chị. Tôi là Nguyễn Văn A, sinh viên năm cuối ngành Quản trị kinh doanh, Trường Đại học X. Tôi đang thực hiện khoá luận tốt nghiệp về cách người dùng lựa chọn và sử dụng các ứng dụng giao đồ ăn. Phiếu khảo sát gồm 27 câu, mất khoảng 6 phút. Không có câu trả lời đúng hay sai, tôi chỉ mong nhận được suy nghĩ thật của anh/chị.</p>
@@ -124,12 +124,12 @@ tags: ["bảng hỏi","khoá luận"]
 
 <h2>Cách sửa mẫu theo đề tài của bạn</h2>
 <ol>
-<li>Thay mô hình: chọn các khái niệm của bạn, lấy thang đo gốc tương ứng. <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> làm bước này tự động: chọn khái niệm, nhận bảng hỏi tiếng Việt có trích dẫn, cỡ mẫu tối thiểu, đoạn văn chương 3, và tải về Word, Excel.</li>
+<li>Thay mô hình: chọn các khái niệm của bạn, lấy thang đo gốc tương ứng. <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> làm bước này tự động: chọn khái niệm, nhận bảng hỏi tiếng Việt có trích dẫn, cỡ mẫu tối thiểu, đoạn văn chương 3, và tải về Word, Excel.</li>
 <li>Thay câu gạn lọc theo định nghĩa đối tượng của bạn, luôn có mốc thời gian hoặc điều kiện cụ thể.</li>
 <li>Thay phần D bằng những biến bạn thực sự phân tích. Bỏ câu nào bạn không dùng ở chương 4.</li>
 <li>Chạy thử với 20 đến 30 người, đo thời gian thực, sửa câu khó hiểu, cập nhật con số trong lời chào.</li>
 </ol>
-<p>Nếu đề tài của bạn gần với các chủ đề phổ biến như ví điện tử, mua sắm online, ý định nghỉ việc, chất lượng dịch vụ, xem các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> có sẵn mô hình, cỡ mẫu và nguồn thang đo.</p>
+<p>Nếu đề tài của bạn gần với các chủ đề phổ biến như ví điện tử, mua sắm online, ý định nghỉ việc, chất lượng dịch vụ, xem các <a href="/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> có sẵn mô hình, cỡ mẫu và nguồn thang đo.</p>
 
 <h2>Lỗi thường gặp</h2>
 <table>
@@ -152,7 +152,7 @@ tags: ["bảng hỏi","khoá luận"]
 <h3>Có được sửa câu chữ của thang đo gốc không?</h3>
 <p>Được điều chỉnh từ ngữ cho phù hợp bối cảnh (thay "[dịch vụ]" bằng tên dịch vụ, dùng từ quen thuộc với người Việt), nhưng giữ nguyên ý. Ghi lại mọi điều chỉnh trong chương 3 và phụ lục.</p>
 <h3>Phụ lục khoá luận có cần cả mã biến không?</h3>
-<p>Phiếu phát cho người trả lời không cần mã biến. Bản trong phụ lục có thể giữ mã để hội đồng đối chiếu với <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a> ở chương 3.</p>
+<p>Phiếu phát cho người trả lời không cần mã biến. Bản trong phụ lục có thể giữ mã để hội đồng đối chiếu với <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a> ở chương 3.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

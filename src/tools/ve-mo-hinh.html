@@ -249,7 +249,7 @@
   </aside>
 </div>
 
-<p style="margin-top:20px">Có mô hình rồi, đọc thêm: <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a> và <a href="/goc-nghien-cuu/cong-cu/chon-phuong-phap/">chọn phương pháp phân tích</a> phù hợp với mô hình.</p>
+<p style="margin-top:20px">Có mô hình rồi, đọc thêm: <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a> và <a href="/cong-cu/chon-phuong-phap/">chọn phương pháp phân tích</a> phù hợp với mô hình.</p>
 
 <script>
 (function(){
@@ -781,7 +781,7 @@
   const CONSTRUCTS=[];DATA.forEach(s=>s.constructs.forEach(c=>CONSTRUCTS.push({key:`${s.slug}:${c.code}`,scale:s,c})));
   const BYKEY=new Map(CONSTRUCTS.map(x=>[x.key,x]));
   const INDEX=CONSTRUCTS.map(x=>indexConstruct(x.scale,x.c));
-  const KIT='/goc-nghien-cuu/cong-cu/bo-khao-sat/';
+  const KIT='/cong-cu/bo-khao-sat/';
   const isKey=k=>BYKEY.has(k), itemsOf=n=>n.key&&BYKEY.has(n.key)?BYKEY.get(n.key).c.items.length:null;
 
   const app=$('vm-app'),stage=$('vm-stage'),svg=$('vm-canvas'),vp=$('vm-vp'),gE=$('vm-elayer'),gN=$('vm-nlayer'),gL=$('vm-llayer'),gO=$('vm-olayer');
@@ -941,7 +941,7 @@
       html+=`<div class="result"><span class="lbl">Nhiều biến dự báo nhất vào một khái niệm</span><span class="num">${s.arrows}</span><span class="how">${s.at.map(id=>esc(byId.get(id).name)+(byId.get(id).name!==id?' ('+esc(id)+')':'')+esc(parts(id))).join('; ')}</span></div>
       <div class="result"><span class="lbl">Cỡ mẫu tối thiểu${s.groups?' mỗi nhóm':''}</span><span class="num">${fmt(s.min)}</span><span class="how">Số lớn hơn giữa G*Power (${fmt(s.pow)}: hồi quy bội, f² = 0,15, α = 0,05, power = 0,80, ${s.arrows} biến dự báo) và phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) (${fmt(s.isr)}, hệ số đường dẫn nhỏ nhất 0,20)${s.mod&&s.mod.on?`, và ${fmt(s.mod.n)} để phát hiện hiệu ứng điều tiết f² = 0,02`:''}.</span></div>`;
       if(s.groups)html+=`<div class="result"><span class="lbl">Tổng cỡ mẫu (${s.groups} nhóm)</span><span class="num">${fmt(s.total)}</span><span class="how">Mỗi nhóm ${esc(model.mga.groups.join(', '))} phải tự đạt ${fmt(s.min)} quan sát hợp lệ, vì mô hình được ước lượng riêng trên từng nhóm.</span></div>`;
-      html+=`<div class="result"><span class="lbl">Số phiếu nên thu</span><span class="num">${fmt(s.send)}</span><span class="how">Dự phòng 15% phiếu bị loại: ${fmt(s.total)} ÷ 0,85${s.groups?'; nhóm nào thiếu thì thu thêm cho nhóm đó':''}. Đổi giả định ở <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.</span></div>`;
+      html+=`<div class="result"><span class="lbl">Số phiếu nên thu</span><span class="num">${fmt(s.send)}</span><span class="how">Dự phòng 15% phiếu bị loại: ${fmt(s.total)} ÷ 0,85${s.groups?'; nhóm nào thiếu thì thu thêm cho nhóm đó':''}. Đổi giả định ở <a class="text-accent underline" href="/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.</span></div>`;
       if(s.mod)html+=`<p class="vm-note warn"><b>Hiệu ứng điều tiết thường rất nhỏ</b> (f² khoảng 0,005–0,035; tổng quan 30 năm của Aguinis và cộng sự (2005) có f² trung bình chỉ 0,009), nhỏ hơn nhiều so với f² = 0,15 ở trên. Với f² = 0,02, kiểm định biến tương tác vào ${esc(s.mod.at)} (${s.mod.k} biến dự báo) cần <b>${fmt(s.mod.n)}</b> quan sát${s.groups?' mỗi nhóm':''} (G*Power, R² tăng thêm, 1 biến kiểm định).</p>
         <label class="check" style="margin-top:4px"><input type="checkbox" id="vm-modf2" ${modF2?'checked':''}> Tính cỡ mẫu cho giả thuyết điều tiết với f² = 0,02</label>
         <p class="vm-note">Ước lượng bằng cách tiếp cận hai giai đoạn (Becker, Ringle và Sarstedt, 2018): giai đoạn 1 lấy điểm của X và W, giai đoạn 2 đưa X, W và X×W vào ${esc(s.mod.at)}.</p>`;
@@ -954,7 +954,7 @@
     const lib=model.nodes.filter(x=>x.key&&!x.type),free=model.nodes.filter(x=>!x.key&&!x.type),extra=[...cs.map(c=>c.name),...(model.mga&&model.mga.name?[model.mga.name]:[])];
     const extraNote=extra.length?` Kèm theo ${extra.map(x=>'“'+esc(x)+'”').join(', ')} (${[cs.length?'biến kiểm soát':'',model.mga?'biến phân nhóm':''].filter(Boolean).join(', ')}) để thành câu hỏi ở phần thông tin chung của phiếu; kiểm tra lại phương án trả lời ở đó.`:'';
     const hocNote=model.nodes.some(isHoc)?' Khái niệm bậc cao không có câu hỏi riêng: phiếu đo các khái niệm thành phần của nó.':'';
-    $('vm-kitbox').innerHTML=lib.length?`<a class="btn" href="${KIT}${kitQuery(model)}">Mở trong Bộ khảo sát</a><small class="text-muted-foreground" style="display:block;margin-top:6px;font-size:.78rem">Mang sang ${lib.length} khái niệm từ thư viện (${lib.map(x=>esc(x.id)).join(', ')}), số biến dự báo lớn nhất và biến phụ thuộc để ra bảng hỏi, cỡ mẫu và đoạn chương 3.${hocNote}${extraNote}${free.length?` Khái niệm tự đặt tên (${free.map(x=>esc(x.id)).join(', ')}) chưa có thang đo: tìm thang đo gần nghĩa trong Bộ khảo sát hoặc <a class="text-accent underline" href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>.`:''} Thu xong dữ liệu: chạy Cronbach, EFA, hồi quy bằng <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</small>`
+    $('vm-kitbox').innerHTML=lib.length?`<a class="btn" href="${KIT}${kitQuery(model)}">Mở trong Bộ khảo sát</a><small class="text-muted-foreground" style="display:block;margin-top:6px;font-size:.78rem">Mang sang ${lib.length} khái niệm từ thư viện (${lib.map(x=>esc(x.id)).join(', ')}), số biến dự báo lớn nhất và biến phụ thuộc để ra bảng hỏi, cỡ mẫu và đoạn chương 3.${hocNote}${extraNote}${free.length?` Khái niệm tự đặt tên (${free.map(x=>esc(x.id)).join(', ')}) chưa có thang đo: tìm thang đo gần nghĩa trong Bộ khảo sát hoặc <a class="text-accent underline" href="/thang-do/">Thư viện thang đo</a>.`:''} Thu xong dữ liệu: chạy Cronbach, EFA, hồi quy bằng <a class="text-accent underline" href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</small>`
       :model.nodes.length?`<small class="text-muted-foreground" style="font-size:.78rem">Các khái niệm đang là tên tự đặt. Thêm khái niệm từ thư viện để mở tiếp trong <a class="text-accent underline" href="${KIT}">Bộ khảo sát</a> với thang đo gốc có trích dẫn.</small>`:'';
     if(document.activeElement!==$('vm-text'))$('vm-text').value=edgesToText(model);
   }

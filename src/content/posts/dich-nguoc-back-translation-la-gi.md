@@ -46,7 +46,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <p>Thời gian thực tế: khoảng một tuần cho thang đo 20 đến 30 câu, phần lâu nhất là chờ người dịch ngược.</p>
 
 <h2>Nhật ký dịch mẫu</h2>
-<p>Nhật ký dịch là bằng chứng bạn đưa vào phụ lục. Ví dụ với ba câu từ thang <a href="/goc-nghien-cuu/thang-do/dass-21/">DASS-21</a> và <a href="/goc-nghien-cuu/thang-do/cang-thang-pss-10/">PSS-10</a>:</p>
+<p>Nhật ký dịch là bằng chứng bạn đưa vào phụ lục. Ví dụ với ba câu từ thang <a href="/thang-do/dass-21/">DASS-21</a> và <a href="/thang-do/cang-thang-pss-10/">PSS-10</a>:</p>
 <table>
 <thead><tr><th>Câu gốc</th><th>T1</th><th>T2</th><th>T12</th><th>Dịch ngược</th><th>Quyết định</th></tr></thead>
 <tbody>
@@ -56,7 +56,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 </tbody>
 </table>
 <p>Lưu ý dòng đầu: bản dịch ngược "discouraged and sad" không trùng chữ với "down-hearted and blue", nhưng đó là dấu hiệu tốt. Mục tiêu là tương đương nghĩa, không phải trùng từ.</p>
-<p>Với các thang đo đã có bản tiếng Việt được kiểm định, như DASS-21 (Tran và cộng sự, 2013), bạn nên dùng bản đã kiểm định thay vì tự dịch lại. <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> ghi rõ nguồn bản tiếng Việt cho từng thang.</p>
+<p>Với các thang đo đã có bản tiếng Việt được kiểm định, như DASS-21 (Tran và cộng sự, 2013), bạn nên dùng bản đã kiểm định thay vì tự dịch lại. <a href="/thang-do/">Thư viện thang đo</a> ghi rõ nguồn bản tiếng Việt cho từng thang.</p>
 
 <h2>Dùng máy dịch hay AI được không</h2>
 <p>Được dùng để có bản nháp, với hai điều kiện. Thứ nhất, bản nháp máy chỉ thay cho một trong hai bản dịch xuôi, không thay cho bước tổng hợp do người làm. Thứ hai, bước dịch ngược phải do người làm, hoặc ít nhất do một hệ thống khác với hệ thống đã dịch xuôi. Dùng cùng một công cụ dịch xuôi rồi dịch ngược gần như luôn cho kết quả khớp, nên không kiểm tra được gì. Khi viết chương 3, ghi trung thực công cụ đã dùng.</p>
@@ -71,7 +71,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <li><strong>Chỉ có một bản dịch xuôi.</strong> Một người dịch dễ mang thói quen dùng từ của mình vào cả thang đo.</li>
 <li><strong>Dịch sát chữ để dịch ngược khớp đẹp.</strong> Đây là đúng cái bẫy Brislin (1970) cảnh báo. Câu tiếng Việt phải tự nhiên với người trả lời.</li>
 <li><strong>Không ghi lại quá trình.</strong> Hội đồng hỏi "em sửa những câu nào" mà không có nhật ký thì không trả lời được.</li>
-<li><strong>Bỏ qua bước thử với người thật.</strong> Đối chiếu bản dịch chỉ kiểm tra được nghĩa từ ngữ; chỉ người trả lời mới cho biết họ hiểu câu thế nào. Xem thêm cách làm trong bài <a href="/goc-nghien-cuu/posts/cach-thiet-ke-bang-hoi/">thiết kế bảng hỏi</a>.</li>
+<li><strong>Bỏ qua bước thử với người thật.</strong> Đối chiếu bản dịch chỉ kiểm tra được nghĩa từ ngữ; chỉ người trả lời mới cho biết họ hiểu câu thế nào. Xem thêm cách làm trong bài <a href="/posts/cach-thiet-ke-bang-hoi/">thiết kế bảng hỏi</a>.</li>
 <li><strong>Dịch lại thang đo đã có bản tiếng Việt chuẩn</strong> rồi so kết quả với nghiên cứu dùng bản chuẩn.</li>
 </ul>
 
@@ -81,7 +81,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <h3>Người dịch ngược cần bằng cấp gì?</h3>
 <p>Không có yêu cầu bằng cấp chính thức. Điều quan trọng là người đó giỏi tiếng Anh, độc lập với người dịch xuôi và không xem bản gốc. Beaton và cộng sự (2000) khuyên người dịch ngược không có chuyên môn về lĩnh vực được đo, để họ không "đoán" theo khái niệm.</p>
 <h3>Dùng thang đo từ một nghiên cứu tiếng Việt khác thì có phải dịch ngược không?</h3>
-<p>Không cần nếu nghiên cứu đó đã mô tả quy trình dịch. Bạn trích nguồn bản dịch và vẫn nên đối chiếu từng câu với bản gốc tiếng Anh. Phân biệt các loại nguồn trong bài <a href="/goc-nghien-cuu/posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/">thang đo gốc, kế thừa và hiệu chỉnh</a>.</p>
+<p>Không cần nếu nghiên cứu đó đã mô tả quy trình dịch. Bạn trích nguồn bản dịch và vẫn nên đối chiếu từng câu với bản gốc tiếng Anh. Phân biệt các loại nguồn trong bài <a href="/posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/">thang đo gốc, kế thừa và hiệu chỉnh</a>.</p>
 <h3>Thang đo gốc có câu không phù hợp văn hoá Việt Nam thì sao?</h3>
 <p>Sửa câu đó cho tương đương về trải nghiệm hoặc khái niệm, ghi rõ lý do. Nếu không có cách sửa hợp lý, cân nhắc bỏ câu và báo cáo như một hiệu chỉnh.</p>
 <h3>Có cần gửi bản dịch cho tác giả gốc không?</h3>

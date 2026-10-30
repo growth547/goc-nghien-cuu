@@ -5,7 +5,7 @@
 // Exit code: 1 if any P0 problem was found, 0 otherwise (2 on crawler crash).
 //
 // Options:
-//   --sitemap <url>      sitemap index (default: https://growth547.github.io/goc-nghien-cuu/sitemap-index.xml)
+//   --sitemap <url>      sitemap index (default: https://gocnghiencuu.com/sitemap-index.xml)
 //   --base <url>         crawl scope prefix (default: derived from the sitemap URL's directory)
 //   --no-external        skip external link checks
 //   --no-assets          skip asset (css/js/img) size + status checks
@@ -24,7 +24,7 @@ const opt = (name, def) => {
   return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith("--") ? argv[i + 1] : def;
 };
 const flag = name => argv.includes(`--${name}`);
-const SITEMAP = opt("sitemap", "https://growth547.github.io/goc-nghien-cuu/sitemap-index.xml");
+const SITEMAP = opt("sitemap", "https://gocnghiencuu.com/sitemap-index.xml");
 const BASE = opt("base", SITEMAP.slice(0, SITEMAP.lastIndexOf("/") + 1));
 const CHECK_EXTERNAL = !flag("no-external");
 const CHECK_ASSETS = !flag("no-assets");

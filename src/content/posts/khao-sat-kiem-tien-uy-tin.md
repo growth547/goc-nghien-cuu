@@ -75,7 +75,7 @@ tags: ["đáp viên"]
 <li>Câu tự luận viết bằng lời của bạn, ngắn cũng được. Đừng dán từ ChatGPT: người làm nghiên cứu cần trải nghiệm của bạn, và nhiều nền tảng có cách nhận ra câu trả lời do AI viết.</li>
 <li>Khai thông tin hồ sơ trung thực. Khai sai để vào được nhiều khảo sát hơn sẽ khiến câu trả lời của bạn mâu thuẫn và dễ bị loại.</li>
 </ul>
-<p>Nếu tò mò người làm nghiên cứu lọc phiếu như thế nào, bạn có thể đọc <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Hiểu cách họ nhìn dữ liệu sẽ giúp bạn biết vì sao một phiếu bị từ chối.</p>
+<p>Nếu tò mò người làm nghiên cứu lọc phiếu như thế nào, bạn có thể đọc <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Hiểu cách họ nhìn dữ liệu sẽ giúp bạn biết vì sao một phiếu bị từ chối.</p>
 
 <h2>Lỡ gặp lừa đảo thì làm gì</h2>
 <ol>
@@ -92,4 +92,4 @@ tags: ["đáp viên"]
 <h3>Vì sao làm được nửa khảo sát thì bị dừng?</h3>
 <p>Thường là do câu gạn lọc: người làm nghiên cứu chỉ cần một nhóm đối tượng cụ thể. Đây là điều bình thường. Trang uy tín sẽ dừng bạn sớm, ở vài câu đầu, để không lãng phí thời gian của bạn.</p>
 <h3>Tôi là sinh viên, có nên giúp bạn bè làm khảo sát khoá luận không?</h3>
-<p>Có, nếu bạn thuộc đúng đối tượng và trả lời nghiêm túc. Câu trả lời cẩu thả làm dữ liệu của bạn mình sai lệch, có khi còn tệ hơn không trả lời. Muốn hiểu vì sao số lượng phiếu lại quan trọng với họ, xem <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>
+<p>Có, nếu bạn thuộc đúng đối tượng và trả lời nghiêm túc. Câu trả lời cẩu thả làm dữ liệu của bạn mình sai lệch, có khi còn tệ hơn không trả lời. Muốn hiểu vì sao số lượng phiếu lại quan trọng với họ, xem <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>

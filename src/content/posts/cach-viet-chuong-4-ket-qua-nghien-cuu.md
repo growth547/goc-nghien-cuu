@@ -40,12 +40,12 @@ tags: ["khoá luận","SPSS","PLS-SEM"]
 <h2>4.3 Độ tin cậy thang đo (Cronbach's alpha)</h2>
 <p>Ngưỡng: alpha từ 0,7 là chấp nhận được (Nunnally, 1978); tương quan biến tổng hiệu chỉnh (Corrected Item-Total Correlation) dưới khoảng 0,3 cho thấy biến không tương quan tốt với thang đo (Field, 2018). Trình bày một bảng tổng hợp cho mọi nhân tố: số biến, alpha, khoảng tương quan biến tổng, alpha nhỏ nhất nếu loại biến, biến bị loại.</p>
 <blockquote><p>Cả sáu thang đo đều có hệ số Cronbach's alpha từ 0,781 (SI) đến 0,893 (BI), vượt ngưỡng 0,7 (Nunnally, 1978). Hệ số tương quan biến tổng hiệu chỉnh của các biến quan sát nằm trong khoảng 0,542 đến 0,812, đều lớn hơn 0,3 (Field, 2018). Không có biến nào mà việc loại bỏ làm tăng đáng kể độ tin cậy của thang đo, vì vậy toàn bộ 19 biến quan sát được giữ lại cho phân tích nhân tố khám phá.</p></blockquote>
-<p>Cách đọc từng cột của bảng SPSS có trong bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Cách đọc từng cột của bảng SPSS có trong bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 
 <h2>4.4 Phân tích nhân tố khám phá (EFA)</h2>
 <p>Báo cáo: phương pháp trích và phép xoay, KMO, Bartlett, số nhân tố và tổng phương sai trích, ma trận xoay, các biến bị loại qua từng lần chạy. Ngưỡng KMO từ 0,5 (Kaiser, 1974; Hair và cộng sự, 2010), eigenvalue lớn hơn 1 (Kaiser, 1960), hệ số tải từ 0,5 (Hair và cộng sự, 2010).</p>
 <blockquote><p>Kết quả EFA cho các biến độc lập với phương pháp trích Principal Components và phép xoay Varimax cho thấy KMO = 0,855 và kiểm định Bartlett có ý nghĩa thống kê (χ² = 2.701,3; df = 105; p &lt; 0,001). Năm nhân tố có eigenvalue lớn hơn 1 được trích, giải thích 72,8% tổng phương sai. Sau khi loại biến EE4 do tải chéo, các biến quan sát còn lại đều có hệ số tải từ 0,5 trở lên trên đúng nhân tố đề xuất.</p></blockquote>
-<p>Hướng dẫn đọc từng bảng EFA và xử lý biến tải chéo ở bài <a href="/goc-nghien-cuu/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trong SPSS</a>. Sau EFA, tạo biến đại diện cho mỗi nhân tố bằng trung bình các biến quan sát được giữ lại, và ghi rõ cách tạo.</p>
+<p>Hướng dẫn đọc từng bảng EFA và xử lý biến tải chéo ở bài <a href="/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trong SPSS</a>. Sau EFA, tạo biến đại diện cho mỗi nhân tố bằng trung bình các biến quan sát được giữ lại, và ghi rõ cách tạo.</p>
 
 <h2>4.5 Phân tích tương quan Pearson</h2>
 <p>Mục đích kép: kiểm tra biến độc lập có tương quan với biến phụ thuộc không, và cảnh báo sớm đa cộng tuyến giữa các biến độc lập. Có thể diễn giải độ lớn theo Cohen (1988): khoảng 0,1 là nhỏ, 0,3 là trung bình, 0,5 là lớn.</p>
@@ -138,9 +138,9 @@ tags: ["khoá luận","SPSS","PLS-SEM"]
 <h3>Giả thuyết không được ủng hộ có làm khoá luận bị đánh giá thấp không?</h3>
 <p>Không, nếu bạn báo cáo trung thực và giải thích có căn cứ trong phần thảo luận. Sửa dữ liệu hay đổi giả thuyết sau khi thấy kết quả mới là vấn đề.</p>
 <h3>Có công cụ nào tạo sẵn đoạn văn chương 4 không?</h3>
-<p><a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> nhận file Excel khảo sát, chạy lọc phiếu, Cronbach's alpha, EFA, tương quan, hồi quy và sinh đoạn văn chương 4 viết sẵn. Dùng nó để đối chiếu với SPSS và làm bản nháp, rồi viết lại theo giọng văn và bối cảnh đề tài của bạn.</p>
+<p><a href="/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> nhận file Excel khảo sát, chạy lọc phiếu, Cronbach's alpha, EFA, tương quan, hồi quy và sinh đoạn văn chương 4 viết sẵn. Dùng nó để đối chiếu với SPSS và làm bản nháp, rồi viết lại theo giọng văn và bối cảnh đề tài của bạn.</p>
 <h3>Hội đồng thường hỏi gì về chương 4?</h3>
-<p>Hay gặp nhất: vì sao loại biến, có đa cộng tuyến không, R² có thấp không, giả thuyết bị bác giải thích thế nào. Câu trả lời mẫu cho từng câu có ở bài <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hay hỏi gì về phần khảo sát</a>. Tiêu chí loại phiếu ở mục 4.1 phải khớp với chương 3; cách đặt tiêu chí có ở bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Nguồn và câu hỏi gốc của các thang đo UTAUT2 dùng trong ví dụ có ở <a href="/goc-nghien-cuu/thang-do/utaut2/">trang thang đo UTAUT2</a>.</p>
+<p>Hay gặp nhất: vì sao loại biến, có đa cộng tuyến không, R² có thấp không, giả thuyết bị bác giải thích thế nào. Câu trả lời mẫu cho từng câu có ở bài <a href="/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hay hỏi gì về phần khảo sát</a>. Tiêu chí loại phiếu ở mục 4.1 phải khớp với chương 3; cách đặt tiêu chí có ở bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Nguồn và câu hỏi gốc của các thang đo UTAUT2 dùng trong ví dụ có ở <a href="/thang-do/utaut2/">trang thang đo UTAUT2</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

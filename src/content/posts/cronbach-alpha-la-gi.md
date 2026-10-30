@@ -46,7 +46,7 @@ tags: ["độ tin cậy","SPSS"]
 <li>Bấm <code>Statistics</code>, tích <code>Scale if item deleted</code> trong mục Descriptives for.</li>
 <li>Bấm <code>Continue</code> rồi <code>OK</code>.</li>
 </ol>
-<p>Trước khi chạy, chắc chắn các câu đảo chiều đã được mã hoá lại (thang 5 mức: 6 − giá trị cũ). Cách làm có trong bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a>, còn cách đặt tên biến và ghi câu đảo chiều vào bảng mã hoá có ở bài <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
+<p>Trước khi chạy, chắc chắn các câu đảo chiều đã được mã hoá lại (thang 5 mức: 6 − giá trị cũ). Cách làm có trong bài <a href="/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a>, còn cách đặt tên biến và ghi câu đảo chiều vào bảng mã hoá có ở bài <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
 
 <h2>Đọc bảng Reliability Statistics</h2>
 <p>Bảng này có ba cột: <code>Cronbach's Alpha</code>, <code>Cronbach's Alpha Based on Standardized Items</code> và <code>N of Items</code>. Số bạn báo cáo là cột đầu tiên. Cột thứ hai tính trên dữ liệu chuẩn hoá; với thang Likert cùng số mức, hai số thường rất gần nhau. N of Items là số câu, kiểm tra lại cho khớp với số câu bạn định đưa vào.</p>
@@ -109,7 +109,7 @@ tags: ["độ tin cậy","SPSS"]
 <ul>
 <li><strong>Alpha âm.</strong> SPSS hiện cảnh báo giá trị âm do hiệp phương sai trung bình giữa các câu âm. Gần như luôn do có câu đảo chiều chưa mã hoá lại. Tìm câu có Corrected Item-Total Correlation âm.</li>
 <li><strong>Chạy alpha cho cả bảng hỏi.</strong> Alpha chỉ có nghĩa khi tính cho các câu cùng đo một khái niệm. Mỗi khái niệm chạy riêng.</li>
-<li><strong>Alpha cao do phiếu rập khuôn.</strong> Phiếu chọn cùng một mức cho cả khối làm các câu tương quan cao giả tạo. Lọc phiếu trước, xem bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</li>
+<li><strong>Alpha cao do phiếu rập khuôn.</strong> Phiếu chọn cùng một mức cho cả khối làm các câu tương quan cao giả tạo. Lọc phiếu trước, xem bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>.</li>
 <li><strong>Chạy trên mẫu thử quá nhỏ rồi kết luận.</strong> Với 20 đến 30 phiếu chạy thử, alpha dao động khá mạnh. Dùng kết quả để phát hiện câu có vấn đề và sửa câu chữ, còn kết luận chính thức dựa trên mẫu đầy đủ.</li>
 </ul>
 
@@ -121,13 +121,13 @@ tags: ["độ tin cậy","SPSS"]
 <h3>Alpha cao trên 0,95 có tốt không?</h3>
 <p>Chưa chắc. Alpha rất cao thường do các câu gần như lặp lại nhau (ví dụ "Tôi hài lòng" và "Tôi cảm thấy hài lòng"), hoặc do thang đo quá dài. Xem lại các cặp câu có tương quan trên 0,8 và cân nhắc bỏ một câu thừa.</p>
 <h3>Có nên chạy alpha trước hay sau EFA?</h3>
-<p>Thông lệ ở khoá luận Việt Nam là chạy alpha trước để loại câu yếu, rồi mới đưa các câu còn lại vào EFA. Nếu EFA làm một câu chuyển sang nhân tố khác hoặc bị loại, chạy lại alpha cho nhân tố đã thay đổi. Cách đọc EFA có ở bài <a href="/goc-nghien-cuu/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trên SPSS</a>.</p>
+<p>Thông lệ ở khoá luận Việt Nam là chạy alpha trước để loại câu yếu, rồi mới đưa các câu còn lại vào EFA. Nếu EFA làm một câu chuyển sang nhân tố khác hoặc bị loại, chạy lại alpha cho nhân tố đã thay đổi. Cách đọc EFA có ở bài <a href="/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA trên SPSS</a>.</p>
 
 <h2>Câu mẫu khi viết vào chương 4</h2>
 <blockquote>Thang đo Sự hài lòng ban đầu gồm 5 biến quan sát, có hệ số Cronbach's alpha 0,748. Biến HL4 có hệ số tương quan biến tổng 0,147, nhỏ hơn 0,3, nên bị loại. Sau khi loại HL4, hệ số Cronbach's alpha của thang đo là 0,822 và các biến còn lại có hệ số tương quan biến tổng từ 0,600 đến 0,673, đạt yêu cầu về độ tin cậy.</blockquote>
-<p>Không có SPSS trong tay, hoặc muốn kiểm tra nhanh dữ liệu chạy thử? Dán dữ liệu vào <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để có alpha tổng, tương quan biến tổng và alpha nếu loại biến cho từng câu, đúng như hai cột bạn vừa học cách đọc ở trên. Khi đã có đủ dữ liệu cho mọi thang đo, tải file Excel lên <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ chạy alpha cho từng khái niệm cùng lúc, kèm EFA, tương quan, hồi quy và viết sẵn đoạn chương 4 theo đúng mẫu câu ở trên.</p>
+<p>Không có SPSS trong tay, hoặc muốn kiểm tra nhanh dữ liệu chạy thử? Dán dữ liệu vào <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để có alpha tổng, tương quan biến tổng và alpha nếu loại biến cho từng câu, đúng như hai cột bạn vừa học cách đọc ở trên. Khi đã có đủ dữ liệu cho mọi thang đo, tải file Excel lên <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ chạy alpha cho từng khái niệm cùng lúc, kèm EFA, tương quan, hồi quy và viết sẵn đoạn chương 4 theo đúng mẫu câu ở trên.</p>
 
-<p>Bảng alpha của mọi thang đo nên được gom vào mục 4.2 của chương 4, xem cách trình bày ở bài <a href="/goc-nghien-cuu/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>. Nếu bạn đang chọn thang đo, mỗi trang trong <a href="/goc-nghien-cuu/thang-do/">thư viện thang đo</a> có câu hỏi gốc và nguồn trích dẫn để bạn tra alpha mà nghiên cứu gốc đã báo cáo, ví dụ <a href="/goc-nghien-cuu/thang-do/hai-long-cong-viec/">thang đo hài lòng công việc</a>; định nghĩa khái niệm "sự hài lòng" có ở trang <a href="/goc-nghien-cuu/khai-niem/su-hai-long-khach-hang/">sự hài lòng của khách hàng</a>.</p>
+<p>Bảng alpha của mọi thang đo nên được gom vào mục 4.2 của chương 4, xem cách trình bày ở bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>. Nếu bạn đang chọn thang đo, mỗi trang trong <a href="/thang-do/">thư viện thang đo</a> có câu hỏi gốc và nguồn trích dẫn để bạn tra alpha mà nghiên cứu gốc đã báo cáo, ví dụ <a href="/thang-do/hai-long-cong-viec/">thang đo hài lòng công việc</a>; định nghĩa khái niệm "sự hài lòng" có ở trang <a href="/khai-niem/su-hai-long-khach-hang/">sự hài lòng của khách hàng</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

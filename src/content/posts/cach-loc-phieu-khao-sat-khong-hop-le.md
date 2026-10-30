@@ -24,15 +24,15 @@ tags: ["làm sạch dữ liệu","SPSS"]
 <li>Excel: <code>=STDEV.P(D2:M2)</code> cho khối từ cột D đến M.</li>
 <li>SPSS: <code>COMPUTE sd_khoi1 = SD(Q1 TO Q10).</code> rồi <code>EXECUTE.</code></li>
 </ul>
-<p>Đếm xem mỗi phiếu có bao nhiêu khối bằng 0. Phiếu rập khuôn ở hầu hết các khối là ứng viên loại. Xem thêm bài <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a>.</p>
+<p>Đếm xem mỗi phiếu có bao nhiêu khối bằng 0. Phiếu rập khuôn ở hầu hết các khối là ứng viên loại. Xem thêm bài <a href="/posts/thang-do-likert/">thang đo Likert 5 mức, 7 mức</a>.</p>
 
 <h2>2. Thời gian làm bài quá nhanh</h2>
-<p>Google Forms không ghi thời gian bắt đầu, chỉ có dấu thời gian lúc nộp (xem thêm bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a>). Nếu công cụ của bạn ghi được thời lượng, đây là tiêu chí khách quan nhất. Huang và cộng sự (2012) đề xuất mốc khoảng 2 giây cho mỗi câu: đọc và hiểu một câu Likert nhanh hơn thế gần như không khả thi. Với form 40 câu, phiếu dưới 80 giây rất đáng ngờ.</p>
+<p>Google Forms không ghi thời gian bắt đầu, chỉ có dấu thời gian lúc nộp (xem thêm bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a>). Nếu công cụ của bạn ghi được thời lượng, đây là tiêu chí khách quan nhất. Huang và cộng sự (2012) đề xuất mốc khoảng 2 giây cho mỗi câu: đọc và hiểu một câu Likert nhanh hơn thế gần như không khả thi. Với form 40 câu, phiếu dưới 80 giây rất đáng ngờ.</p>
 <p>Một cách thực dụng khác là lấy trung vị thời gian của cả mẫu, rồi xem xét kỹ những phiếu nhanh hơn rất nhiều so với trung vị. Đừng dùng trung bình: vài người mở form rồi bỏ đó cả tiếng sẽ kéo nó lên.</p>
 <p>Thời gian nhanh nên đi kèm một tiêu chí khác trước khi loại. Người đọc nhanh vẫn có thể trả lời nghiêm túc.</p>
 
 <h2>3. Trượt câu kiểm tra chú ý</h2>
-<p>Câu kiểm tra chú ý (attention check) là câu có đáp án đúng duy nhất, ví dụ: <em>"Để xác nhận bạn đang đọc kỹ, vui lòng chọn mức "2 – Không đồng ý" cho câu này."</em> Đặt nó lẫn trong một khối Likert ở nửa sau phiếu, không đặt ở câu đầu hay câu cuối. Đáp án đúng nên là một mức không nằm ở hai đầu thang và không phải mức giữa: người chọn cùng một cột cho cả khối, dù là cột đầu, cột cuối hay cột giữa, đều sẽ trượt. Đây cũng là cách câu AC1 trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> được viết. Oppenheimer và cộng sự (2009) gọi dạng câu này là instructional manipulation check.</p>
+<p>Câu kiểm tra chú ý (attention check) là câu có đáp án đúng duy nhất, ví dụ: <em>"Để xác nhận bạn đang đọc kỹ, vui lòng chọn mức "2 – Không đồng ý" cho câu này."</em> Đặt nó lẫn trong một khối Likert ở nửa sau phiếu, không đặt ở câu đầu hay câu cuối. Đáp án đúng nên là một mức không nằm ở hai đầu thang và không phải mức giữa: người chọn cùng một cột cho cả khối, dù là cột đầu, cột cuối hay cột giữa, đều sẽ trượt. Đây cũng là cách câu AC1 trong <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> được viết. Oppenheimer và cộng sự (2009) gọi dạng câu này là instructional manipulation check.</p>
 <p>Một vài lưu ý:</p>
 <ul>
 <li>Dùng 1–2 câu cho một form, đủ để bắt người không đọc mà không làm đáp viên khó chịu.</li>
@@ -41,7 +41,7 @@ tags: ["làm sạch dữ liệu","SPSS"]
 </ul>
 
 <h2>4. Câu hỏi đảo chiều trả lời ngược logic</h2>
-<p>Thang đo tốt thường có vài câu đảo chiều. Ví dụ trong một thang đo hài lòng công việc (xem các thang đo thật ở <a href="/goc-nghien-cuu/thang-do/hai-long-cong-viec/">trang thang đo hài lòng công việc</a>):</p>
+<p>Thang đo tốt thường có vài câu đảo chiều. Ví dụ trong một thang đo hài lòng công việc (xem các thang đo thật ở <a href="/thang-do/hai-long-cong-viec/">trang thang đo hài lòng công việc</a>):</p>
 <ul>
 <li>Q3: "Tôi thấy công việc hiện tại thú vị."</li>
 <li>Q7 (đảo chiều): "Tôi thường thấy chán khi làm việc."</li>
@@ -65,7 +65,7 @@ tags: ["làm sạch dữ liệu","SPSS"]
 <li>Trả lời "chưa từng dùng ứng dụng X" ở câu gạn lọc nhưng chấm điểm chi tiết từng tính năng của X.</li>
 <li>Chọn thu nhập "dưới 5 triệu/tháng" nhưng chi tiêu mua sắm trực tuyến "trên 10 triệu/tháng".</li>
 </ul>
-<p>Khi thiết kế bảng hỏi, hãy đánh dấu sẵn các cặp câu có thể đối chiếu. Lúc lọc, viết công thức <code>IF</code> cho từng cặp. Câu tự luận cũng cần đọc lướt: câu trả lời vô nghĩa ("abc", "ok", "không biết" cho mọi câu) hoặc lạc đề là dấu hiệu rõ. Câu tự luận còn có một vấn đề mới là văn bản do AI viết, xem bài <a href="/goc-nghien-cuu/posts/phat-hien-cau-tra-loi-khao-sat-do-ai-viet/">phát hiện câu trả lời khảo sát do AI viết</a>.</p>
+<p>Khi thiết kế bảng hỏi, hãy đánh dấu sẵn các cặp câu có thể đối chiếu. Lúc lọc, viết công thức <code>IF</code> cho từng cặp. Câu tự luận cũng cần đọc lướt: câu trả lời vô nghĩa ("abc", "ok", "không biết" cho mọi câu) hoặc lạc đề là dấu hiệu rõ. Câu tự luận còn có một vấn đề mới là văn bản do AI viết, xem bài <a href="/posts/phat-hien-cau-tra-loi-khao-sat-do-ai-viet/">phát hiện câu trả lời khảo sát do AI viết</a>.</p>
 
 <h2>7. Hai chỉ số bổ sung: longstring và khoảng cách Mahalanobis</h2>
 <p>Độ lệch chuẩn bằng 0 chỉ bắt được phiếu chọn y hệt nhau cho cả khối. Hai chỉ số dưới đây bắt được những dạng tinh vi hơn. Curran (2016) và Meade và Craig (2012) đều xếp chúng vào bộ công cụ phát hiện phản hồi bất cẩn.</p>
@@ -117,23 +117,23 @@ EXECUTE.</code></pre>
 <li>Xuất dữ liệu, lưu một bản gốc chỉ đọc.</li>
 <li>Loại phiếu không đạt câu gạn lọc (sai đối tượng).</li>
 <li>Loại phiếu trùng lặp.</li>
-<li>Tạo cột flag cho: trượt câu kiểm tra, quá nhanh, rập khuôn, longstring cao, đảo chiều lệch, mâu thuẫn, Mahalanobis. Mỗi cột ghi 0 hoặc 1. Các cột flag này nên có sẵn tên trong <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá</a>.</li>
+<li>Tạo cột flag cho: trượt câu kiểm tra, quá nhanh, rập khuôn, longstring cao, đảo chiều lệch, mâu thuẫn, Mahalanobis. Mỗi cột ghi 0 hoặc 1. Các cột flag này nên có sẵn tên trong <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá</a>.</li>
 <li>Loại phiếu trượt câu kiểm tra chú ý theo quy tắc ở mục 3. Với các phiếu còn lại, cộng các cột flag: loại phiếu có tổng flag từ 2 trở lên, phiếu có đúng 1 flag thì đọc lại bằng mắt.</li>
 <li>Mã hoá ngược các câu đảo chiều.</li>
-<li>Kiểm tra cỡ mẫu còn lại so với yêu cầu. Nếu thiếu, thu thêm thay vì nới tiêu chí. Dùng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để biết bạn cần bao nhiêu.</li>
-<li>Chạy Cronbach's alpha trên dữ liệu sạch. Bạn có thể dán dữ liệu vào <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để so sánh trước và sau khi lọc.</li>
+<li>Kiểm tra cỡ mẫu còn lại so với yêu cầu. Nếu thiếu, thu thêm thay vì nới tiêu chí. Dùng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để biết bạn cần bao nhiêu.</li>
+<li>Chạy Cronbach's alpha trên dữ liệu sạch. Bạn có thể dán dữ liệu vào <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> để so sánh trước và sau khi lọc.</li>
 </ol>
-<p>Phần trượt câu kiểm tra chú ý, phiếu rập khuôn, mã hoá ngược câu đảo chiều và chạy alpha (bước 4, 6 và 8) có thể làm tự động bằng <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ ghi rõ số phiếu bị loại theo từng lý do để bạn đưa vào chương 4. Các tiêu chí còn lại như thời gian làm bài hay mâu thuẫn giữa các câu vẫn cần lọc tay theo bảng ở trên.</p>
+<p>Phần trượt câu kiểm tra chú ý, phiếu rập khuôn, mã hoá ngược câu đảo chiều và chạy alpha (bước 4, 6 và 8) có thể làm tự động bằng <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ ghi rõ số phiếu bị loại theo từng lý do để bạn đưa vào chương 4. Các tiêu chí còn lại như thời gian làm bài hay mâu thuẫn giữa các câu vẫn cần lọc tay theo bảng ở trên.</p>
 
 <h2>Đoạn mẫu báo cáo phiếu bị loại trong chương 3</h2>
 <p>Viết tiêu chí lọc ở chương 3 (phương pháp), còn số phiếu cụ thể bị loại theo từng lý do đưa vào mục 4.1 của chương 4. Ví dụ đoạn chương 3:</p>
 <blockquote>Dữ liệu được làm sạch theo các tiêu chí xác định trước khi phân tích, dựa trên Meade và Craig (2012) và Curran (2016). Phiếu bị loại khi (1) không thuộc đối tượng khảo sát theo câu gạn lọc, (2) trùng lặp, (3) trả lời sai câu kiểm tra chú ý, hoặc (4) có từ hai dấu hiệu trả lời bất cẩn trở lên trong số: thời gian hoàn thành dưới 2 giây cho mỗi câu (Huang và cộng sự, 2012), chọn cùng một mức cho mọi câu của tất cả các khối Likert, chuỗi trả lời giống nhau dài hơn một khối, và trả lời mâu thuẫn ở các cặp câu đảo chiều.</blockquote>
-<p>Ví dụ đoạn chương 4 tương ứng: "Thu về 402 phiếu. Sau khi loại 38 phiếu không thuộc đối tượng khảo sát, 29 phiếu trả lời sai câu kiểm tra chú ý và 12 phiếu chọn cùng một mức cho mọi phát biểu, còn lại 323 phiếu hợp lệ (80,3%)." Cách trình bày bảng tỉ lệ loại và đặc điểm mẫu có ở bài <a href="/goc-nghien-cuu/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>.</p>
+<p>Ví dụ đoạn chương 4 tương ứng: "Thu về 402 phiếu. Sau khi loại 38 phiếu không thuộc đối tượng khảo sát, 29 phiếu trả lời sai câu kiểm tra chú ý và 12 phiếu chọn cùng một mức cho mọi phát biểu, còn lại 323 phiếu hợp lệ (80,3%)." Cách trình bày bảng tỉ lệ loại và đặc điểm mẫu có ở bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4 kết quả nghiên cứu</a>.</p>
 
 <h2>Lọc bao nhiêu là vừa?</h2>
 <p>Không có tỉ lệ chuẩn. Điều quan trọng là tiêu chí nhất quán và được báo cáo. Nếu bạn loại quá nửa mẫu, vấn đề nằm ở khâu thu mẫu hoặc bảng hỏi, và lọc mạnh tay hơn không giải quyết được.</p>
 <p>Một mẹo cuối: chạy phân tích chính hai lần, với dữ liệu đầy đủ và dữ liệu đã lọc. Nếu kết luận giống nhau, bạn có thêm một đoạn kiểm tra độ vững cho chương kết quả. Nếu khác nhau, đó là bằng chứng cho thấy việc lọc là cần thiết.</p>
-<p>Cách tốt nhất để lọc ít là thiết kế bảng hỏi tốt từ đầu: ngắn vừa đủ, câu rõ nghĩa, có sẵn câu kiểm tra và câu đối chiếu. Xem thêm <a href="/goc-nghien-cuu/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi khảo sát</a>.</p>
+<p>Cách tốt nhất để lọc ít là thiết kế bảng hỏi tốt từ đầu: ngắn vừa đủ, câu rõ nghĩa, có sẵn câu kiểm tra và câu đối chiếu. Xem thêm <a href="/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi khảo sát</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

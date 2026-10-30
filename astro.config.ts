@@ -41,7 +41,7 @@ const SITEMAP_EXCLUDE = /\/(search|tags|bai-viet|404)(\/|$)/;
 
 export default defineConfig({
   site: config.site.url,
-  base: "/goc-nghien-cuu",
+  base: "/",
   trailingSlash: "ignore",
   // Old URLs from the first version of the site (already submitted to search engines).
   redirects: Object.fromEntries(
@@ -54,7 +54,7 @@ export default defineConfig({
       "phat-hien-cau-tra-loi-khao-sat-do-ai-viet",
       "khao-sat-kiem-tien-uy-tin",
       "cach-thiet-ke-bang-hoi",
-    ].map(slug => [`/bai-viet/${slug}`, `/goc-nghien-cuu/posts/${slug}/`])
+    ].map(slug => [`/bai-viet/${slug}`, `/posts/${slug}/`])
   ),
   integrations: [
     mdx(),

@@ -30,7 +30,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <thead><tr><th>Kiểu hiệu chỉnh</th><th>Ví dụ</th><th>Rủi ro</th><th>Việc cần làm thêm</th></tr></thead>
 <tbody>
 <tr><td>Thay tên đối tượng trong ngoặc vuông</td><td>[system] thành "ứng dụng Shopee"</td><td>Thấp</td><td>Ghi rõ trong bảng nguồn</td></tr>
-<tr><td>Dịch sang tiếng Việt</td><td>Toàn bộ thang</td><td>Thấp đến trung bình, tuỳ chất lượng dịch</td><td>Dịch xuôi, dịch ngược, đối chiếu (xem bài <a href="/goc-nghien-cuu/posts/dich-nguoc-back-translation-la-gi/">dịch ngược thang đo</a>)</td></tr>
+<tr><td>Dịch sang tiếng Việt</td><td>Toàn bộ thang</td><td>Thấp đến trung bình, tuỳ chất lượng dịch</td><td>Dịch xuôi, dịch ngược, đối chiếu (xem bài <a href="/posts/dich-nguoc-back-translation-la-gi/">dịch ngược thang đo</a>)</td></tr>
 <tr><td>Đổi bối cảnh (công việc sang học tập, tổ chức sang cá nhân)</td><td>"in my job" thành "trong việc học"</td><td>Trung bình</td><td>Phỏng vấn thử 5 đến 10 người để chắc câu vẫn có nghĩa</td></tr>
 <tr><td>Viết lại từ ngữ cho dễ hiểu</td><td>Bỏ từ chuyên môn, tách câu dài</td><td>Trung bình</td><td>Giải thích lý do, thảo luận chuyên gia</td></tr>
 <tr><td>Đổi thang trả lời</td><td>Thang 7 mức thành 5 mức; thang tần suất thành thang đồng ý</td><td>Trung bình</td><td>Nêu rõ; không so sánh trực tiếp điểm trung bình với nghiên cứu gốc</td></tr>
@@ -42,7 +42,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <p>Nguyên tắc rút ra: càng xa thang đo gốc, bạn càng phải tự cung cấp nhiều bằng chứng hơn. Nếu thay đổi lớn tới mức hơn một nửa số câu là câu mới, nên gọi đúng tên là "thang đo phát triển dựa trên..." thay vì "kế thừa".</p>
 
 <h2>Ví dụ: hiệu chỉnh thang đo nhận thức sự hữu ích của TAM</h2>
-<p>Đề tài: ý định sử dụng ví điện tử của sinh viên. Thang đo gốc là nhận thức sự hữu ích (Perceived Usefulness) của Davis (1989), 6 câu, viết cho bối cảnh công việc. Bản tiếng Việt đầy đủ có trên trang <a href="/goc-nghien-cuu/thang-do/tam/">thang đo TAM</a>, định nghĩa khái niệm ở trang <a href="/goc-nghien-cuu/khai-niem/nhan-thuc-su-huu-ich/">nhận thức sự hữu ích</a>.</p>
+<p>Đề tài: ý định sử dụng ví điện tử của sinh viên. Thang đo gốc là nhận thức sự hữu ích (Perceived Usefulness) của Davis (1989), 6 câu, viết cho bối cảnh công việc. Bản tiếng Việt đầy đủ có trên trang <a href="/thang-do/tam/">thang đo TAM</a>, định nghĩa khái niệm ở trang <a href="/khai-niem/nhan-thuc-su-huu-ich/">nhận thức sự hữu ích</a>.</p>
 <p>Câu gốc PU2: "Using [system] would improve my job performance." Sinh viên không đi làm, nên "job performance" không còn nghĩa. Bản hiệu chỉnh: "Sử dụng ví điện tử giúp tôi quản lý chi tiêu hiệu quả hơn." Đây là thay đổi bối cảnh, mức rủi ro trung bình, và phải được ghi lại.</p>
 <p>Mẫu bảng nguồn cho chương 3 (trích 3 câu):</p>
 <table>
@@ -53,18 +53,18 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <tr><td>PU3</td><td>Nhìn chung, ví điện tử hữu ích với tôi.</td><td>I would find [system] useful in my job.</td><td>Davis (1989)</td><td>Bỏ "in my job"</td></tr>
 </tbody>
 </table>
-<p>Hai câu gốc về "productivity" và "effectiveness on the job" bị bỏ vì không có nghĩa tương đương trong bối cảnh tiêu dùng cá nhân. Lý do này phải viết ra. Bảng trên cũng là đầu vào cho <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
+<p>Hai câu gốc về "productivity" và "effectiveness on the job" bị bỏ vì không có nghĩa tương đương trong bối cảnh tiêu dùng cá nhân. Lý do này phải viết ra. Bảng trên cũng là đầu vào cho <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
 
 <h2>Quy trình 6 bước để hiệu chỉnh có kiểm soát</h2>
 <ol>
-<li><strong>Chốt định nghĩa khái niệm</strong> theo một tác giả cụ thể. Thang đo phải khớp định nghĩa đó. Thư viện <a href="/goc-nghien-cuu/khai-niem/">khái niệm nghiên cứu</a> có định nghĩa kèm nguồn cho các khái niệm phổ biến.</li>
+<li><strong>Chốt định nghĩa khái niệm</strong> theo một tác giả cụ thể. Thang đo phải khớp định nghĩa đó. Thư viện <a href="/khai-niem/">khái niệm nghiên cứu</a> có định nghĩa kèm nguồn cho các khái niệm phổ biến.</li>
 <li><strong>Chọn thang đo gốc</strong> từ bài báo đã kiểm định, đọc bảng câu hỏi trong bài hoặc phụ lục, ghi lại số câu, thang trả lời, câu đảo chiều, độ tin cậy trong bài gốc.</li>
 <li><strong>Dịch</strong>, tối thiểu là một người dịch xuôi, một người khác dịch ngược mà không xem bản gốc, rồi đối chiếu (Beaton và cộng sự, 2000).</li>
 <li><strong>Hiệu chỉnh và ghi lý do</strong> cho từng thay đổi vào cột "Hiệu chỉnh". Không có lý do thì không sửa.</li>
 <li><strong>Kiểm tra với người thật</strong>: thảo luận với 2 đến 3 giảng viên hoặc chuyên gia lĩnh vực, sau đó phỏng vấn thử 5 đến 10 người thuộc đối tượng khảo sát, hỏi họ hiểu mỗi câu thế nào.</li>
-<li><strong>Kiểm định trên dữ liệu chính thức</strong>: Cronbach's alpha, EFA (xem <a href="/goc-nghien-cuu/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA</a>), và nếu dùng SEM thì CFA hoặc đánh giá mô hình đo lường. Với các câu bạn tự thêm, đây là bằng chứng chính.</li>
+<li><strong>Kiểm định trên dữ liệu chính thức</strong>: Cronbach's alpha, EFA (xem <a href="/posts/cach-doc-ket-qua-efa-spss/">cách đọc kết quả EFA</a>), và nếu dùng SEM thì CFA hoặc đánh giá mô hình đo lường. Với các câu bạn tự thêm, đây là bằng chứng chính.</li>
 </ol>
-<p>Nếu muốn rút ngắn bước 2 và 3, <a href="/goc-nghien-cuu/thang-do/">thư viện thang đo</a> của Góc Nghiên Cứu có sẵn câu gốc tiếng Anh, bản tiếng Việt và trích dẫn cho hơn 60 thang đo; <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">công cụ tạo bảng hỏi</a> ghép các thang đó thành phiếu hoàn chỉnh kèm bảng nguồn.</p>
+<p>Nếu muốn rút ngắn bước 2 và 3, <a href="/thang-do/">thư viện thang đo</a> của Góc Nghiên Cứu có sẵn câu gốc tiếng Anh, bản tiếng Việt và trích dẫn cho hơn 60 thang đo; <a href="/cong-cu/bo-khao-sat/">công cụ tạo bảng hỏi</a> ghép các thang đó thành phiếu hoàn chỉnh kèm bảng nguồn.</p>
 
 <h2>Câu mẫu cho chương 3</h2>
 <blockquote><p>Thang đo nhận thức sự hữu ích được kế thừa từ Davis (1989) và hiệu chỉnh cho bối cảnh sử dụng ví điện tử của sinh viên. Thang đo gốc gồm 6 biến quan sát; nghiên cứu giữ lại 4 biến, loại 2 biến đề cập tới năng suất và hiệu quả công việc vì không phù hợp với đối tượng chưa đi làm. Các câu hỏi được dịch sang tiếng Việt theo quy trình dịch xuôi, dịch ngược và đối chiếu, sau đó được điều chỉnh từ ngữ dựa trên ý kiến của 2 giảng viên và kết quả phỏng vấn thử với 8 sinh viên. Chi tiết câu gốc, câu sử dụng và nội dung hiệu chỉnh được trình bày tại Bảng 3.2.</p></blockquote>

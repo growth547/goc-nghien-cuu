@@ -17,7 +17,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <li><strong>Rotation</strong>: <em>Varimax</em> (đi với Principal components) hoặc <em>Promax</em> (đi với Principal axis factoring).</li>
 <li><strong>Options</strong>: tích <em>Sorted by size</em> và <em>Suppress small coefficients</em>, đặt <em>Absolute value below</em> là 0,3. Đây chỉ là ẩn bớt số cho dễ đọc, không ảnh hưởng kết quả.</li>
 </ul>
-<p>Chạy Cronbach's alpha trước và loại các biến có tương quan biến tổng thấp (xem bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>). Câu đảo chiều phải được đảo điểm trước, nếu không chúng sẽ có hệ số tải âm. Biến phụ thuộc thường được chạy EFA riêng ở bước sau.</p>
+<p>Chạy Cronbach's alpha trước và loại các biến có tương quan biến tổng thấp (xem bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>). Câu đảo chiều phải được đảo điểm trước, nếu không chúng sẽ có hệ số tải âm. Biến phụ thuộc thường được chạy EFA riêng ở bước sau.</p>
 
 <h2>Bảng 1: KMO and Bartlett's Test</h2>
 <p>Bảng này trả lời câu hỏi: dữ liệu có đủ tương quan để phân tích nhân tố không?</p>
@@ -88,7 +88,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 </table>
 <p>Phần lớn khoá luận dùng ngưỡng 0,5 bất kể cỡ mẫu, vì nó vừa có ý nghĩa thực tiễn vừa an toàn với mẫu từ 120 trở lên. Chọn một ngưỡng, ghi rõ trong chương 3 kèm nguồn, và áp dụng nhất quán.</p>
 <h3>Hệ số tải âm</h3>
-<p>Hệ số tải âm lớn trong khi các biến cùng nhóm dương gần như chắc chắn là câu đảo chiều chưa đảo điểm. Quay lại bước mã hoá, đừng loại biến. Xem bài <a href="/goc-nghien-cuu/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
+<p>Hệ số tải âm lớn trong khi các biến cùng nhóm dương gần như chắc chắn là câu đảo chiều chưa đảo điểm. Quay lại bước mã hoá, đừng loại biến. Xem bài <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
 
 <h2>Biến tải chéo: xử lý từng bước</h2>
 <p>Biến tải chéo là biến có hệ số tải đáng kể lên hai nhân tố trở lên. Nó cho thấy người trả lời không phân biệt rõ câu đó thuộc khái niệm nào, làm yếu giá trị phân biệt. Hair và cộng sự (2010) coi biến tải chéo là ứng viên để loại. Quy trình hợp lý:</p>
@@ -116,7 +116,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <h2>Đoạn văn mẫu cho chương 4</h2>
 <blockquote><p>Phân tích nhân tố khám phá được thực hiện với 16 biến quan sát của 5 nhân tố độc lập, sử dụng phương pháp trích Principal Components và phép xoay Varimax. Ở lần chạy thứ nhất, biến EE4 tải lên hai nhân tố với mức chênh lệch hệ số tải 0,05 nên bị loại. Kết quả lần chạy thứ hai với 15 biến cho thấy hệ số KMO = 0,855, thuộc mức rất tốt theo Kaiser (1974); kiểm định Bartlett có ý nghĩa thống kê (χ² = 2.701,3; df = 105; p &lt; 0,001), cho thấy dữ liệu phù hợp để phân tích nhân tố. Năm nhân tố có eigenvalue lớn hơn 1 được trích, giải thích 72,8% tổng phương sai. Tất cả biến quan sát có hệ số tải từ 0,5 trở lên trên nhân tố tương ứng (Hair và cộng sự, 2010) và không có biến tải chéo, các biến hội tụ đúng vào nhân tố đã đề xuất trong mô hình.</p></blockquote>
 <p>df của Bartlett bằng k × (k − 1) / 2 với k là số biến; 15 biến cho df = 105.</p>
-<p><a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> chạy EFA với Principal Components và Varimax trên file Excel của bạn, xuất KMO, Bartlett, ma trận xoay, đánh dấu biến có hệ số tải dưới 0,5 và biến tải từ 0,3 trở lên trên hơn một nhân tố, kèm đoạn văn viết sẵn để bạn đối chiếu với SPSS.</p>
+<p><a href="/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> chạy EFA với Principal Components và Varimax trên file Excel của bạn, xuất KMO, Bartlett, ma trận xoay, đánh dấu biến có hệ số tải dưới 0,5 và biến tải từ 0,3 trở lên trên hơn một nhân tố, kèm đoạn văn viết sẵn để bạn đối chiếu với SPSS.</p>
 
 <h2>Lỗi thường gặp</h2>
 <table>
@@ -139,9 +139,9 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <h3>Đã chạy PLS-SEM thì có cần EFA không?</h3>
 <p>Không bắt buộc, vì mô hình đo lường trong PLS-SEM đã đánh giá hệ số tải, độ tin cậy, giá trị hội tụ và phân biệt (Hair và cộng sự, 2019). Một số giảng viên vẫn yêu cầu EFA như bước sơ bộ; khi đó báo cáo ngắn gọn.</p>
 <h3>Loại biến ở EFA có cần chạy lại Cronbach's alpha không?</h3>
-<p>Có, cho nhân tố bị loại biến hoặc bị gộp, tách. Báo cáo alpha cuối cùng, cách đọc ở bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Có, cho nhân tố bị loại biến hoặc bị gộp, tách. Báo cáo alpha cuối cùng, cách đọc ở bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 <h3>Cỡ mẫu bao nhiêu thì chạy được EFA?</h3>
-<p>Quy tắc hay dùng là ít nhất 5 quan sát cho mỗi biến, tốt hơn là 10 (Hair và cộng sự, 2010). Với 16 biến như ví dụ, tối thiểu 80, tốt hơn 160. Bảng so sánh với CFA và các phương pháp khác ở bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>, tính nhanh bằng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>. Các biến trong ví dụ lấy từ <a href="/goc-nghien-cuu/thang-do/utaut2/">thang đo UTAUT2</a>.</p>
+<p>Quy tắc hay dùng là ít nhất 5 quan sát cho mỗi biến, tốt hơn là 10 (Hair và cộng sự, 2010). Với 16 biến như ví dụ, tối thiểu 80, tốt hơn 160. Bảng so sánh với CFA và các phương pháp khác ở bài <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>, tính nhanh bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>. Các biến trong ví dụ lấy từ <a href="/thang-do/utaut2/">thang đo UTAUT2</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

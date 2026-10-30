@@ -27,7 +27,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 </ol>
 
 <h2>Bước 2: Lập bảng mã hoá cho chương 3</h2>
-<p>Bảng chương 3 thường có năm cột: khái niệm, mã, phát biểu, nguồn, và ghi chú (câu đảo chiều, câu đã điều chỉnh). Ví dụ với đề tài ý định tiếp tục dùng ứng dụng giao đồ ăn theo UTAUT2 (Venkatesh và cộng sự, 2012), câu chữ lấy từ <a href="/goc-nghien-cuu/thang-do/utaut2/">thang đo UTAUT2 tiếng Việt</a>:</p>
+<p>Bảng chương 3 thường có năm cột: khái niệm, mã, phát biểu, nguồn, và ghi chú (câu đảo chiều, câu đã điều chỉnh). Ví dụ với đề tài ý định tiếp tục dùng ứng dụng giao đồ ăn theo UTAUT2 (Venkatesh và cộng sự, 2012), câu chữ lấy từ <a href="/thang-do/utaut2/">thang đo UTAUT2 tiếng Việt</a>:</p>
 <p><em>Bảng 3.x. Bảng mã hoá thang đo</em></p>
 <table>
 <thead><tr><th>Khái niệm</th><th>Mã</th><th>Phát biểu</th><th>Nguồn</th></tr></thead>
@@ -48,7 +48,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 </table>
 <p>Ghi chú dưới bảng: thang đo Likert 5 mức, 1 = Hoàn toàn không đồng ý đến 5 = Hoàn toàn đồng ý. PE1, PE2, PE3 tương ứng PE1, PE3, PE4 trong bài gốc. Nguồn: tác giả tổng hợp.</p>
 <p>Nếu khoa của bạn quen dùng bảng có thêm cột "Phát biểu gốc (tiếng Anh)", thêm cột đó. Nó giúp hội đồng kiểm tra chất lượng bản dịch ngay trên bảng.</p>
-<p><a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> tạo sẵn bảng này: chọn các khái niệm trong mô hình, bấm "Tải bảng mã hoá (Excel)" để nhận file có các cột Mã, Khái niệm, Phát biểu (tiếng Việt), Phát biểu gốc, Đảo điểm, Nguồn và Thang trả lời. Bạn chỉ cần xoá cột không dùng và dán vào Word.</p>
+<p><a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> tạo sẵn bảng này: chọn các khái niệm trong mô hình, bấm "Tải bảng mã hoá (Excel)" để nhận file có các cột Mã, Khái niệm, Phát biểu (tiếng Việt), Phát biểu gốc, Đảo điểm, Nguồn và Thang trả lời. Bạn chỉ cần xoá cột không dùng và dán vào Word.</p>
 
 <h2>Bước 3: Lập bảng mã hoá dữ liệu đầy đủ (phụ lục)</h2>
 <p>Bảng này nói rõ mỗi câu trả lời thành số nào. Với câu Likert, một dòng cho cả nhóm là đủ. Với câu nhân khẩu học, liệt kê từng giá trị:</p>
@@ -73,10 +73,10 @@ tags: ["thang đo","SPSS","khoá luận"]
 </ul>
 
 <h2>Bước 4: Câu đảo chiều và cách đảo điểm</h2>
-<p>Câu đảo chiều là câu mà đồng ý nhiều nghĩa là khái niệm thấp, ví dụ "Tôi thấy ứng dụng khó sử dụng" trong thang đo sự dễ dùng. Thang đo UTAUT2 trong ví dụ không có câu đảo chiều, nhưng nhiều thang đo tâm lý có (<a href="/goc-nghien-cuu/thang-do/tu-trong-rosenberg/">thang tự trọng Rosenberg</a>, <a href="/goc-nghien-cuu/thang-do/cang-thang-pss-10/">thang căng thẳng PSS-10</a>). Trước khi chạy Cronbach's alpha, phải đảo điểm theo công thức:</p>
+<p>Câu đảo chiều là câu mà đồng ý nhiều nghĩa là khái niệm thấp, ví dụ "Tôi thấy ứng dụng khó sử dụng" trong thang đo sự dễ dùng. Thang đo UTAUT2 trong ví dụ không có câu đảo chiều, nhưng nhiều thang đo tâm lý có (<a href="/thang-do/tu-trong-rosenberg/">thang tự trọng Rosenberg</a>, <a href="/thang-do/cang-thang-pss-10/">thang căng thẳng PSS-10</a>). Trước khi chạy Cronbach's alpha, phải đảo điểm theo công thức:</p>
 <p><code>Điểm sau khi đảo = (số mức + 1) − điểm gốc</code></p>
 <p>Với thang 5 mức: 1 thành 5, 2 thành 4, 3 giữ nguyên, 4 thành 2, 5 thành 1. Với thang 7 mức: lấy 8 trừ điểm gốc.</p>
-<p>Trong SPSS: <strong>Transform</strong>, <strong>Recode into Different Variables</strong>, chọn biến, đặt tên mới có hậu tố _R, khai báo từng cặp giá trị cũ và mới. Luôn đảo sang biến mới, không ghi đè biến gốc, để còn kiểm tra lại. Quên đảo điểm là nguyên nhân hay gặp khiến hệ số tương quan biến tổng bị âm và Cronbach's alpha thấp bất thường; xem thêm bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<p>Trong SPSS: <strong>Transform</strong>, <strong>Recode into Different Variables</strong>, chọn biến, đặt tên mới có hậu tố _R, khai báo từng cặp giá trị cũ và mới. Luôn đảo sang biến mới, không ghi đè biến gốc, để còn kiểm tra lại. Quên đảo điểm là nguyên nhân hay gặp khiến hệ số tương quan biến tổng bị âm và Cronbach's alpha thấp bất thường; xem thêm bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 
 <h2>Bước 5: Khai báo Variable View trong SPSS</h2>
 <p>Mỗi dòng trong Variable View là một biến, mỗi cột là một thuộc tính. Đối chiếu với bảng mã hoá như sau (Field, 2018; Hoàng Trọng &amp; Chu Nguyễn Mộng Ngọc, 2008):</p>
@@ -133,7 +133,7 @@ EXECUTE.</code></pre>
 <p>Không bắt buộc, nhưng nên. Label giúp bảng kết quả SPSS dễ đọc khi đối chiếu, và bạn có thể tắt hiển thị Label nếu bảng quá rộng.</p>
 
 <h3>Các cột flag lọc phiếu đặt tên thế nào?</h3>
-<p>Dùng tiền tố chung như F_AC (trượt câu kiểm tra), F_NHANH (làm quá nhanh), F_RAPKHUON (rập khuôn), F_LONGSTR (chuỗi trả lời giống nhau dài) và một cột F_TONG cộng các flag. Ghi chúng vào bảng mã hoá như biến bình thường, với giá trị 0 = không, 1 = có. Cách tính từng flag có ở bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>; nếu dữ liệu đến từ Google Forms, bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách đổi nhãn chữ sang số trước khi áp bảng mã hoá.</p>
+<p>Dùng tiền tố chung như F_AC (trượt câu kiểm tra), F_NHANH (làm quá nhanh), F_RAPKHUON (rập khuôn), F_LONGSTR (chuỗi trả lời giống nhau dài) và một cột F_TONG cộng các flag. Ghi chúng vào bảng mã hoá như biến bình thường, với giá trị 0 = không, 1 = có. Cách tính từng flag có ở bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>; nếu dữ liệu đến từ Google Forms, bài <a href="/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách đổi nhãn chữ sang số trước khi áp bảng mã hoá.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

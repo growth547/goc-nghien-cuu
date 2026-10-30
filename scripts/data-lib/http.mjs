@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-const UA = "goc-nghien-cuu-data-bot/1.0 (+https://growth547.github.io/goc-nghien-cuu/du-lieu/)";
+const UA = "goc-nghien-cuu-data-bot/1.0 (+https://gocnghiencuu.com/du-lieu/)";
 
 async function withRetry(url, fn, tries = 4, timeoutMs = 120000) {
   for (let i = 1; ; i++) {

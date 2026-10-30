@@ -4,7 +4,7 @@ Nghiên cứu ngày 30/10/2026. Chỉ dùng nguồn đọc được mà không c
 
 ## 0. Site hiện có gì (để tránh làm trùng)
 
-Theo trang chủ, `/cong-cu/` và `llms.txt` (https://growth547.github.io/goc-nghien-cuu/):
+Theo trang chủ, `/cong-cu/` và `llms.txt` (https://gocnghiencuu.com/):
 
 - **9 công cụ:** Bộ khảo sát khoá luận, Phân tích dữ liệu + chương 4 (Cronbach, EFA, tương quan, hồi quy), Vẽ mô hình, Chọn phương pháp phân tích, Máy tính cỡ mẫu, Trích dẫn APA 7, Cronbach's alpha, Chỉ số tài chính từ BCTC, Thư viện thang đo.
 - **Nội dung:** 60 thang đo gốc (757 biến quan sát), khoảng 165 khái niệm đo lường, 40 trang so sánh khái niệm, 18 mẫu bảng hỏi, 204 chỉ số World Bank, biến nghiên cứu tài chính, 23 bài viết (gần như toàn bộ về bảng hỏi, mẫu, SPSS cơ bản).

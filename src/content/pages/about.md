@@ -12,6 +12,6 @@ description: "Góc Nghiên Cứu là kênh nội dung miễn phí về phương 
 
 Nội dung do ban biên tập Góc Nghiên Cứu biên soạn và hữu ích dù bạn dùng nền tảng khảo sát nào.
 
-Thang đo được chép nguyên văn từ nguồn đã mở và ghi lại đường link đối chiếu, tài liệu tham khảo được kiểm qua Crossref, công cụ thống kê được so với giá trị tham chiếu ở mỗi lần cập nhật. Chi tiết tại [Phương pháp biên soạn và kiểm chứng](/goc-nghien-cuu/phuong-phap-bien-soan/).
+Thang đo được chép nguyên văn từ nguồn đã mở và ghi lại đường link đối chiếu, tài liệu tham khảo được kiểm qua Crossref, công cụ thống kê được so với giá trị tham chiếu ở mỗi lần cập nhật. Chi tiết tại [Phương pháp biên soạn và kiểm chứng](/phuong-phap-bien-soan/).
 
 Góp ý hoặc báo lỗi nội dung: mở một issue tại https://github.com/growth547/goc-nghien-cuu/issues

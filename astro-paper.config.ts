@@ -2,12 +2,12 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://growth547.github.io/goc-nghien-cuu/",
+    url: "https://gocnghiencuu.com/",
     title: "Góc Nghiên Cứu",
     description:
       "Công cụ tính cỡ mẫu, Cronbach's alpha và hướng dẫn thu mẫu khảo sát miễn phí cho sinh viên làm khoá luận, học viên cao học và người làm nghiên cứu.",
     author: "Ban biên tập Góc Nghiên Cứu",
-    profile: "https://growth547.github.io/goc-nghien-cuu/about/",
+    profile: "https://gocnghiencuu.com/about/",
     ogImage: "default-og.png",
     lang: "vi",
     timezone: "Asia/Ho_Chi_Minh",

@@ -22,7 +22,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <tr><td>ECM (Bhattacherjee, 2001)</td><td>Ý định tiếp tục sử dụng</td><td>Sự xác nhận, nhận thức sự hữu ích, sự hài lòng</td><td>Người đã dùng, câu hỏi là có dùng tiếp không</td></tr>
 </tbody>
 </table>
-<p>Câu hỏi đầu tiên để chọn: đối tượng của bạn đã dùng hay chưa dùng? Người chưa dùng phù hợp với TAM, UTAUT2; người đã dùng phù hợp với ECM. Thang đo tiếng Việt cho từng mô hình có ở <a href="/goc-nghien-cuu/thang-do/tam/">TAM</a>, <a href="/goc-nghien-cuu/thang-do/tpb/">TPB</a>, <a href="/goc-nghien-cuu/thang-do/utaut2/">UTAUT2</a> và <a href="/goc-nghien-cuu/thang-do/ecm-tiep-tuc-su-dung/">ECM</a>.</p>
+<p>Câu hỏi đầu tiên để chọn: đối tượng của bạn đã dùng hay chưa dùng? Người chưa dùng phù hợp với TAM, UTAUT2; người đã dùng phù hợp với ECM. Thang đo tiếng Việt cho từng mô hình có ở <a href="/thang-do/tam/">TAM</a>, <a href="/thang-do/tpb/">TPB</a>, <a href="/thang-do/utaut2/">UTAUT2</a> và <a href="/thang-do/ecm-tiep-tuc-su-dung/">ECM</a>.</p>
 
 <h2>Quy trình 7 bước</h2>
 <h3>Bước 1: Chốt biến phụ thuộc từ câu hỏi nghiên cứu</h3>
@@ -35,13 +35,13 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <p>Đọc các nghiên cứu gần đề tài và lập bảng: hàng là nghiên cứu, cột là khái niệm, ô ghi kết quả (có tác động, không tác động, không xét). Ma trận cho thấy khái niệm nào được ủng hộ nhất quán và khái niệm nào kết quả còn trái chiều, tức là chỗ đáng kiểm định. Ma trận này cũng là xương sống của phần tổng quan tài liệu.</p>
 
 <h3>Bước 4: Chọn khái niệm, mở rộng có lý do</h3>
-<p>Giữ các khái niệm của lý thuyết nền. Mở rộng thêm một hoặc hai khái niệm khi bối cảnh của bạn có đặc điểm mà lý thuyết nền chưa xét. Mỗi khái niệm mở rộng cần ba điều: lý do từ bối cảnh, nghiên cứu trước ủng hộ, và một thang đo có sẵn. Trang <a href="/goc-nghien-cuu/khai-niem/">khái niệm nghiên cứu</a> có định nghĩa và thang đo gợi ý cho các khái niệm phổ biến.</p>
+<p>Giữ các khái niệm của lý thuyết nền. Mở rộng thêm một hoặc hai khái niệm khi bối cảnh của bạn có đặc điểm mà lý thuyết nền chưa xét. Mỗi khái niệm mở rộng cần ba điều: lý do từ bối cảnh, nghiên cứu trước ủng hộ, và một thang đo có sẵn. Trang <a href="/khai-niem/">khái niệm nghiên cứu</a> có định nghĩa và thang đo gợi ý cho các khái niệm phổ biến.</p>
 
 <h3>Bước 5: Viết lập luận cho từng mũi tên</h3>
 <p>Mỗi mũi tên cần một đoạn văn gồm: lý thuyết giải thích cơ chế, ít nhất hai nghiên cứu trước có kết quả ủng hộ, và lý do quan hệ này đáng kiểm định trong bối cảnh của bạn. Kết thúc đoạn bằng giả thuyết. Đoạn nào không viết được là mũi tên nên bỏ.</p>
 
 <h3>Bước 6: Vẽ mô hình</h3>
-<p>Quy ước chung: mỗi khái niệm là một hình (hình elip với mô hình SEM, hình chữ nhật cũng được chấp nhận rộng rãi), mũi tên một chiều từ nguyên nhân tới kết quả, mỗi mũi tên ghi nhãn H1, H2... đúng thứ tự giả thuyết trong bài. Biến phụ thuộc đặt bên phải, biến độc lập bên trái, biến trung gian ở giữa. Biến điều tiết được vẽ bằng mũi tên chỉ vào mũi tên (Baron &amp; Kenny, 1986). <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Công cụ vẽ mô hình nghiên cứu</a> làm sẵn các quy ước này, đánh số giả thuyết tự động và xuất hình PNG, SVG.</p>
+<p>Quy ước chung: mỗi khái niệm là một hình (hình elip với mô hình SEM, hình chữ nhật cũng được chấp nhận rộng rãi), mũi tên một chiều từ nguyên nhân tới kết quả, mỗi mũi tên ghi nhãn H1, H2... đúng thứ tự giả thuyết trong bài. Biến phụ thuộc đặt bên phải, biến độc lập bên trái, biến trung gian ở giữa. Biến điều tiết được vẽ bằng mũi tên chỉ vào mũi tên (Baron &amp; Kenny, 1986). <a href="/cong-cu/ve-mo-hinh/">Công cụ vẽ mô hình nghiên cứu</a> làm sẵn các quy ước này, đánh số giả thuyết tự động và xuất hình PNG, SVG.</p>
 
 <h3>Bước 7: Kiểm tra tính khả thi</h3>
 <table>
@@ -49,7 +49,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <tbody>
 <tr><td>Số khái niệm</td><td>Bảng hỏi có quá dài không (số khái niệm × 4 đến 5 câu)?</td><td>Bỏ khái niệm ít lý do nhất</td></tr>
 <tr><td>Phương pháp phân tích</td><td>Có biến trung gian, chuỗi quan hệ?</td><td>Hồi quy một phương trình không đủ; dùng PLS-SEM hoặc CB-SEM</td></tr>
-<tr><td>Cỡ mẫu</td><td>Có thu đủ mẫu tối thiểu cho phương pháp đó?</td><td>Tính bằng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a> trước khi chốt mô hình</td></tr>
+<tr><td>Cỡ mẫu</td><td>Có thu đủ mẫu tối thiểu cho phương pháp đó?</td><td>Tính bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a> trước khi chốt mô hình</td></tr>
 <tr><td>Thang đo</td><td>Mỗi khái niệm có thang đo đã kiểm định?</td><td>Đổi khái niệm hoặc tìm thang đo khác</td></tr>
 </tbody>
 </table>
@@ -66,7 +66,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 </tbody>
 </table>
 <p>Trong khoá luận thật, bảng này có thêm 10 đến 20 nghiên cứu thực nghiệm gần bối cảnh, và cột ghi kết quả từng quan hệ.</p>
-<p><strong>Mở rộng:</strong> ví điện tử giữ tiền và dữ liệu thanh toán của người dùng, nên rủi ro mất tiền là mối quan tâm mà ECM gốc không xét. Thêm khái niệm niềm tin, thang đo kế thừa từ Gefen và cộng sự (2003), có bản tiếng Việt tại trang <a href="/goc-nghien-cuu/thang-do/niem-tin-thuong-mai-dien-tu/">thang đo niềm tin thương mại điện tử</a>.</p>
+<p><strong>Mở rộng:</strong> ví điện tử giữ tiền và dữ liệu thanh toán của người dùng, nên rủi ro mất tiền là mối quan tâm mà ECM gốc không xét. Thêm khái niệm niềm tin, thang đo kế thừa từ Gefen và cộng sự (2003), có bản tiếng Việt tại trang <a href="/thang-do/niem-tin-thuong-mai-dien-tu/">thang đo niềm tin thương mại điện tử</a>.</p>
 <p><strong>Các quan hệ và giả thuyết:</strong></p>
 <table>
 <thead><tr><th>Giả thuyết</th><th>Quan hệ</th><th>Nguồn lập luận</th></tr></thead>
@@ -79,7 +79,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <tr><td>H6</td><td>Niềm tin → Ý định tiếp tục sử dụng</td><td>Gefen và cộng sự (2003), mở rộng cho bối cảnh ví điện tử</td></tr>
 </tbody>
 </table>
-<p><strong>Kiểm tra khả thi:</strong> 5 khái niệm, khoảng 18 câu hỏi; mô hình có chuỗi quan hệ (sự xác nhận qua sự hài lòng tới ý định) nên dùng PLS-SEM. Biến ý định tiếp tục nhận nhiều mũi tên nhất (3 mũi tên: H4, H5, H6), đây là thông số đầu vào khi tính cỡ mẫu tối thiểu. Cách viết đoạn lập luận và câu giả thuyết cho H1 đến H6 có trong bài <a href="/goc-nghien-cuu/posts/cach-dat-gia-thuyet-nghien-cuu/">cách đặt giả thuyết nghiên cứu</a>.</p>
+<p><strong>Kiểm tra khả thi:</strong> 5 khái niệm, khoảng 18 câu hỏi; mô hình có chuỗi quan hệ (sự xác nhận qua sự hài lòng tới ý định) nên dùng PLS-SEM. Biến ý định tiếp tục nhận nhiều mũi tên nhất (3 mũi tên: H4, H5, H6), đây là thông số đầu vào khi tính cỡ mẫu tối thiểu. Cách viết đoạn lập luận và câu giả thuyết cho H1 đến H6 có trong bài <a href="/posts/cach-dat-gia-thuyet-nghien-cuu/">cách đặt giả thuyết nghiên cứu</a>.</p>
 
 <h2>Lỗi thường gặp</h2>
 <ul>

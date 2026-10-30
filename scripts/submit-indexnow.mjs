@@ -1,5 +1,5 @@
 // After a deploy, tell Bing/Yandex (IndexNow) about every page in the live sitemap: `node scripts/submit-indexnow.mjs`
-const SITE = "https://growth547.github.io/goc-nghien-cuu";
+const SITE = "https://gocnghiencuu.com";
 const KEY = "2f2cbadc79d54eb53f597aaf9e947665"; // matches public/<KEY>.txt
 
 const xml = await (await fetch(`${SITE}/sitemap-0.xml`)).text();

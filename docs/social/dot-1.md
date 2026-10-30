@@ -61,7 +61,7 @@ Tín hiệu đầu vào gồm:
 
 > Gỡ rối phần số liệu khoá luận: cỡ mẫu, thang đo, Cronbach, PLS-SEM. Hỏi gì cứ hỏi, mình trả lời có trích dẫn.
 
-Link: `https://growth547.github.io/goc-nghien-cuu/?utm_source=threads&utm_content=bio`
+Link: `https://gocnghiencuu.com/?utm_source=threads&utm_content=bio`
 
 ## 5. Bài đăng đợt 1 (không link)
 

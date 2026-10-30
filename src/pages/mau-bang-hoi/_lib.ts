@@ -107,13 +107,17 @@ export function layoutModel(
   nodes: { key: string; name: string; code: string }[],
   paths: { from: string; to: string; sign?: "+" | "-" }[]
 ): Diagram {
-  const W = 204,
-    H = 58,
-    GX = 112,
-    GY = 22,
-    M = 12;
   const keys = nodes.map(n => n.key);
   const layer = layersOf(keys, paths);
+  const nIns = (k: string) => paths.filter(p => p.to === k).length,
+    nOuts = (k: string) => paths.filter(p => p.from === k).length;
+  // Many-to-many arrows between two columns need a wider gap so their labels can be staggered.
+  const dense = paths.some(p => nIns(p.to) > 1 && nOuts(p.from) > 1);
+  const W = 204,
+    H = 62,
+    GX = dense ? 280 : 112,
+    GY = 22,
+    M = 12;
   const nLayers = Math.max(...keys.map(k => layer.get(k) ?? 0)) + 1;
   const cols: string[][] = Array.from({ length: nLayers }, () => []);
   keys.forEach(k => cols[layer.get(k) ?? 0].push(k));
@@ -170,7 +174,7 @@ export function layoutModel(
     const nIn = ins.get(p.to)!.length,
       nOut = outs.get(p.from)!.length;
     const t =
-      nIn > 1 && nOut === 1 ? 0.2 : nOut > 1 && nIn === 1 ? 0.8 : nIn > 1 ? 0.3 + (0.4 * ins.get(p.to)!.indexOf(i)) / (nIn - 1) : 0.5;
+      nIn > 1 && nOut === 1 ? 0.2 : nOut > 1 && nIn === 1 ? 0.8 : nIn > 1 ? 0.45 + (0.4 * ins.get(p.to)!.indexOf(i)) / (nIn - 1) : 0.5;
     const bz = (u: number, p0: number, p1: number, p2: number, p3: number) =>
       (1 - u) ** 3 * p0 + 3 * (1 - u) ** 2 * u * p1 + 3 * (1 - u) * u ** 2 * p2 + u ** 3 * p3;
     return {

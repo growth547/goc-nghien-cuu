@@ -1,0 +1,118 @@
+{
+  "title": "Mẫu bảng hỏi nghiện mạng xã hội, hỗ trợ xã hội và DASS-21",
+  "description": "Mẫu bảng hỏi khảo sát sinh viên: nghiện mạng xã hội BSMAS, hỗ trợ xã hội MSPSS và trầm cảm, lo âu, căng thẳng DASS-21. Có mô hình, cỡ mẫu, lưu ý đạo đức.",
+  "topic": "Nghiện mạng xã hội và sức khoẻ tinh thần sinh viên",
+  "audience": "Sinh viên",
+  "intro": "Mạng xã hội và sức khoẻ tinh thần sinh viên là đề tài được quan tâm ở các ngành tâm lý, y tế công cộng và truyền thông. Mẫu này ghép BSMAS của Andreassen và cộng sự (2016), MSPSS của Zimet và cộng sự (1988) và DASS-21 của Lovibond và Lovibond (1995), đều là thang ngắn có bản gốc công bố.",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan: nghiện mạng xã hội làm tăng trầm cảm, lo âu và căng thẳng; hỗ trợ từ gia đình và bạn bè làm giảm ba trạng thái này. Dữ liệu cắt ngang chỉ cho thấy liên hệ, không chứng minh nhân quả; viết giả thuyết và kết luận cho đúng mức này.",
+  "placeholders": {},
+  "constructs": [
+    "nghien-mang-xa-hoi-bsmas:BSMAS",
+    "ho-tro-xa-hoi-mspss:FAM",
+    "ho-tro-xa-hoi-mspss:FRI",
+    "dass-21:D",
+    "dass-21:A",
+    "dass-21:S"
+  ],
+  "paths": [
+    {
+      "from": "nghien-mang-xa-hoi-bsmas:BSMAS",
+      "to": "dass-21:D",
+      "sign": "+"
+    },
+    {
+      "from": "nghien-mang-xa-hoi-bsmas:BSMAS",
+      "to": "dass-21:A",
+      "sign": "+"
+    },
+    {
+      "from": "nghien-mang-xa-hoi-bsmas:BSMAS",
+      "to": "dass-21:S",
+      "sign": "+"
+    },
+    {
+      "from": "ho-tro-xa-hoi-mspss:FAM",
+      "to": "dass-21:D",
+      "sign": "-"
+    },
+    {
+      "from": "ho-tro-xa-hoi-mspss:FAM",
+      "to": "dass-21:A",
+      "sign": "-"
+    },
+    {
+      "from": "ho-tro-xa-hoi-mspss:FAM",
+      "to": "dass-21:S",
+      "sign": "-"
+    },
+    {
+      "from": "ho-tro-xa-hoi-mspss:FRI",
+      "to": "dass-21:D",
+      "sign": "-"
+    },
+    {
+      "from": "ho-tro-xa-hoi-mspss:FRI",
+      "to": "dass-21:A",
+      "sign": "-"
+    },
+    {
+      "from": "ho-tro-xa-hoi-mspss:FRI",
+      "to": "dass-21:S",
+      "sign": "-"
+    }
+  ],
+  "method": "spss",
+  "tips": [
+    "Ba thang có ba thang trả lời khác nhau: BSMAS tần suất 1–5, MSPSS đồng ý 7 mức, DASS-21 mức độ đúng 0–3 hỏi về tuần vừa qua. Giữ nguyên từng thang gốc.",
+    "Điểm từng tiểu thang DASS-21 phải nhân 2 trước khi so với ngưỡng phân loại mức độ; nếu chỉ chạy hồi quy với điểm liên tục thì ghi rõ cách tính.",
+    "Mẫu này dùng hai nguồn hỗ trợ (gia đình, bạn bè); nếu thêm 'người đặc biệt' của MSPSS, đặt 12 câu theo đúng thứ tự gốc.",
+    "BSMAS và DASS-21 là công cụ sàng lọc, không phải chẩn đoán. Làm theo quy định đạo đức nghiên cứu của trường, có phiếu đồng ý tham gia và ghi đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "studies": [
+    {
+      "authors": "Duong, Bui, Duong và Duong",
+      "year": 2026,
+      "title": "Optimal Cut-Offs for Digital Addiction Scales as Preliminary Screening Proxies for Psychological Distress Symptoms Among Vietnamese Medical Students: A Single-Centre ROC Curve Analysis",
+      "journal": "International Journal of Environmental Research and Public Health, 23(8), 950",
+      "url": "https://doi.org/10.3390/ijerph23080950",
+      "sample": "600 sinh viên y khoa ở miền Nam; BSMAS và DASS-21",
+      "reliability": "BSMAS α 0,849; DASS-21 trầm cảm 0,832, lo âu 0,838, căng thẳng 0,823 (phần Phương pháp)"
+    },
+    {
+      "authors": "Doan, Le, Nguyen, Nguyen, Le, Vu, Latkin, Ho, Ho và Zhang",
+      "year": 2022,
+      "title": "Social Media Addiction among Vietnam Youths: Patterns and Correlated Factors",
+      "journal": "International Journal of Environmental Research and Public Health, 19(21), 14416",
+      "url": "https://doi.org/10.3390/ijerph192114416",
+      "sample": "173 người trẻ 16–30 tuổi, mẫu trực tuyến; BSMAS",
+      "reliability": "BSMAS α 0,81 (phần Phương pháp)"
+    },
+    {
+      "authors": "Le, Tran, Holton, Nguyen, Wolfe và Fisher",
+      "year": 2017,
+      "title": "Reliability, convergent validity and factor structure of the DASS-21 in a sample of Vietnamese adolescents",
+      "journal": "PLOS ONE, 12(7), e0180557",
+      "url": "https://doi.org/10.1371/journal.pone.0180557",
+      "sample": "1.387 học sinh THPT ở Hà Nội; thẩm định DASS-21",
+      "reliability": "α 0,761–0,906 (tóm tắt)"
+    },
+    {
+      "authors": "Tran, Tran và Fisher",
+      "year": 2013,
+      "title": "Validation of the depression anxiety stress scales (DASS) 21 as a screening instrument for depression and anxiety in a rural community-based cohort of northern Vietnamese women",
+      "journal": "BMC Psychiatry, 13, 24",
+      "url": "https://doi.org/10.1186/1471-244X-13-24",
+      "sample": "221 phụ nữ nông thôn có con nhỏ ở Hà Nam; thẩm định DASS-21",
+      "reliability": "α 0,70 (căng thẳng) đến 0,88 (tổng) (tóm tắt)"
+    },
+    {
+      "authors": "Kieu, Vuong và Dung",
+      "year": 2023,
+      "title": "Validation of Multidimensional Scale of Perceived Social Support (MSPSS) in Vietnamese Among People Living with HIV/AIDS",
+      "journal": "AIDS and Behavior, 27(8), 2488–2496",
+      "url": "https://doi.org/10.1007/s10461-022-03974-1",
+      "sample": "500 người sống chung với HIV; thẩm định MSPSS tiếng Việt",
+      "reliability": "α 0,90; ICC lặp lại 0,95 (tóm tắt)"
+    }
+  ]
+}

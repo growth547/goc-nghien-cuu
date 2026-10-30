@@ -1,0 +1,84 @@
+{
+  "title": "Mẫu bảng hỏi ý định dùng ChatGPT, AI trong học tập (UTAUT2)",
+  "description": "Mẫu bảng hỏi khảo sát ý định sử dụng ChatGPT và công cụ AI tạo sinh trong học tập của sinh viên theo UTAUT2: hiệu quả, nỗ lực, xã hội, điều kiện, hưởng thụ, thói quen.",
+  "topic": "Ý định dùng ChatGPT và AI trong học tập",
+  "audience": "Sinh viên",
+  "intro": "Việc sinh viên dùng ChatGPT và các công cụ AI tạo sinh để học là đề tài mới và được nhiều khoa quan tâm. UTAUT2 của Venkatesh, Thong và Xu (2012) phù hợp vì người dùng tự chọn dùng, có yếu tố hưởng thụ và thói quen. Mẫu bỏ giá trị giá cả vì phần lớn sinh viên dùng bản miễn phí.",
+  "modelNote": "Mô hình theo UTAUT2 (Venkatesh và cộng sự, 2012), bỏ giá trị giá cả: hiệu quả kỳ vọng, nỗ lực kỳ vọng, ảnh hưởng xã hội, điều kiện thuận lợi, động lực hưởng thụ và thói quen tác động lên ý định hành vi.",
+  "placeholders": {
+    "dịch vụ": "ChatGPT hoặc công cụ AI tạo sinh"
+  },
+  "constructs": [
+    "utaut2:PE",
+    "utaut2:EE",
+    "utaut2:SI",
+    "utaut2:FC",
+    "utaut2:HM",
+    "utaut2:HT",
+    "utaut2:BI"
+  ],
+  "paths": [
+    {
+      "from": "utaut2:PE",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:EE",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:SI",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:FC",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:HM",
+      "to": "utaut2:BI",
+      "sign": "+"
+    },
+    {
+      "from": "utaut2:HT",
+      "to": "utaut2:BI",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "itemOverrides": {
+    "utaut2:PE1": "Tôi thấy [dịch vụ] hữu ích cho việc học của mình.",
+    "utaut2:PE3": "Sử dụng [dịch vụ] giúp tôi hoàn thành các nhiệm vụ học tập nhanh hơn.",
+    "utaut2:PE4": "Sử dụng [dịch vụ] giúp tôi học hiệu quả hơn.",
+    "utaut2:HT3": "Tôi cảm thấy mình không thể không sử dụng [dịch vụ]."
+  },
+  "tips": [
+    "Nêu rõ trong chương 2 vì sao bỏ giá trị giá cả; nếu mẫu có nhiều người trả phí bản nâng cao, giữ lại PV.",
+    "Hiệu quả kỳ vọng gốc hỏi về cuộc sống hằng ngày và năng suất; mẫu này viết lại theo việc học và giữ câu gốc để đối chiếu.",
+    "Ý định dùng AI trong học tập dễ bị ảnh hưởng bởi quy định của giảng viên và nhà trường; cân nhắc hỏi thêm về quy định này và đảm bảo ẩn danh để sinh viên trả lời thật.",
+    "Bài Việt Nam dùng UTAUT2 cho ChatGPT có một số khái niệm đạt Cronbach's alpha dưới 0,70; chạy thử với 30–50 sinh viên trước khi khảo sát chính thức."
+  ],
+  "studies": [
+    {
+      "authors": "Duong, Bui, Pham, Vu và Nguyen",
+      "year": 2023,
+      "title": "How effort expectancy and performance expectancy interact to trigger higher education students' uses of ChatGPT for learning",
+      "journal": "Interactive Technology and Smart Education, 21(3), 356–380",
+      "url": "https://doi.org/10.1108/ITSE-05-2023-0096",
+      "sample": "1.461 sinh viên đại học ở Việt Nam; UTAUT; hồi quy đa thức và phân tích bề mặt"
+    },
+    {
+      "authors": "Nguyễn Thị Thanh Thúy và cộng sự",
+      "year": 2025,
+      "title": "Các yếu tố ảnh hưởng đến ý định sử dụng ChatGPT trong học tập và nghiên cứu của sinh viên Đại học Đà Nẵng",
+      "journal": "Tạp chí Khoa học Kinh tế, Trường Đại học Kinh tế – Đại học Đà Nẵng, 11(04), 102–117",
+      "url": "https://vjol.info.vn/due/article/view/106702",
+      "sample": "300 sinh viên Đại học Đà Nẵng; UTAUT2; hồi quy",
+      "reliability": "α 0,608–0,804 (Bảng 3), vài khái niệm dưới 0,70"
+    }
+  ]
+}

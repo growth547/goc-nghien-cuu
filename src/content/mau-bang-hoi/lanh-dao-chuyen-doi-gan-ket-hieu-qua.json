@@ -1,0 +1,90 @@
+{
+  "title": "Mẫu bảng hỏi lãnh đạo chuyển đổi, gắn kết và hiệu quả công việc",
+  "description": "Mẫu bảng hỏi khảo sát nhân viên: lãnh đạo chuyển đổi GTL, gắn kết công việc UWES-9 và hiệu quả công việc trong vai trò (Williams và Anderson, 1991). Có mô hình, cỡ mẫu.",
+  "topic": "Lãnh đạo chuyển đổi, gắn kết và hiệu quả công việc",
+  "audience": "Nhân viên",
+  "intro": "Ảnh hưởng của người quản lý tới gắn kết và hiệu quả của nhân viên là đề tài quản trị nhân lực phổ biến ở doanh nghiệp, bệnh viện và khu vực công. Mẫu này dùng GTL của Carless, Wearing và Mann (2000) thay cho MLQ phải mua bản quyền, UWES-9 của Schaufeli, Bakker và Salanova (2006) và thang hiệu quả trong vai trò của Williams và Anderson (1991).",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan (thường dựa trên mô hình nguồn lực và yêu cầu công việc): lãnh đạo chuyển đổi làm tăng sức sống, sự cống hiến và say mê trong công việc; ba thành phần gắn kết và lãnh đạo chuyển đổi cùng làm tăng hiệu quả công việc.",
+  "placeholders": {
+    "nhân viên": "tôi"
+  },
+  "constructs": [
+    "lanh-dao-chuyen-doi-glts:TL",
+    "gan-ket-cong-viec-uwes:VI",
+    "gan-ket-cong-viec-uwes:DE",
+    "gan-ket-cong-viec-uwes:AB",
+    "hieu-qua-cong-viec:IRB"
+  ],
+  "paths": [
+    {
+      "from": "lanh-dao-chuyen-doi-glts:TL",
+      "to": "gan-ket-cong-viec-uwes:VI",
+      "sign": "+"
+    },
+    {
+      "from": "lanh-dao-chuyen-doi-glts:TL",
+      "to": "gan-ket-cong-viec-uwes:DE",
+      "sign": "+"
+    },
+    {
+      "from": "lanh-dao-chuyen-doi-glts:TL",
+      "to": "gan-ket-cong-viec-uwes:AB",
+      "sign": "+"
+    },
+    {
+      "from": "gan-ket-cong-viec-uwes:VI",
+      "to": "hieu-qua-cong-viec:IRB",
+      "sign": "+"
+    },
+    {
+      "from": "gan-ket-cong-viec-uwes:DE",
+      "to": "hieu-qua-cong-viec:IRB",
+      "sign": "+"
+    },
+    {
+      "from": "gan-ket-cong-viec-uwes:AB",
+      "to": "hieu-qua-cong-viec:IRB",
+      "sign": "+"
+    },
+    {
+      "from": "lanh-dao-chuyen-doi-glts:TL",
+      "to": "hieu-qua-cong-viec:IRB",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Thang hiệu quả công việc gốc do quản lý đánh giá; mẫu này để nhân viên tự đánh giá ('Tôi …'), nên ghi rõ là hiệu quả tự đánh giá và kiểm tra sai lệch phương pháp chung.",
+    "UWES-9 dùng thang tần suất 0–6, GTL dùng thang tần suất 5 mức; giữ nguyên thang gốc của từng thang.",
+    "Ba thành phần của UWES-9 thường tương quan rất cao; nếu HTMT vượt ngưỡng, cân nhắc gộp thành một khái niệm gắn kết và giải thích trong chương 4.",
+    "IRB6 và IRB7 là câu đảo chiều; đảo điểm trước khi chạy độ tin cậy."
+  ],
+  "studies": [
+    {
+      "authors": "Thanh, Quang và Anh",
+      "year": 2022,
+      "title": "The relationship between leadership style and staff work engagement: An empirical analysis of the public sector in Vietnam",
+      "journal": "Humanities and Social Sciences Communications, 9(1), 340",
+      "url": "https://doi.org/10.1057/s41599-022-01354-7",
+      "sample": "378 cán bộ cấp phòng khu vực công; MLQ-5X, UWES-9 và hiệu quả nhiệm vụ",
+      "reliability": "α 0,82–0,92 (phần Kết quả)"
+    },
+    {
+      "authors": "Huynh Thi Xuan, Dao Huan, Nguyen Thi Dung và Pham Dinh",
+      "year": 2025,
+      "title": "How transformational leadership affects job performance among hospital employees: Does power distance matter?",
+      "journal": "Problems and Perspectives in Management, 23(2), 482–497",
+      "url": "https://doi.org/10.21511/ppm.23(2).2025.35",
+      "sample": "341 nhân viên bệnh viện ở Đồng bằng sông Cửu Long; MLQ, UWES; PLS-SEM",
+      "reliability": "α và CR 0,841–0,930 (Bảng 3)"
+    },
+    {
+      "authors": "Thanh và Quang",
+      "year": 2022,
+      "title": "Transformational, Transactional, Laissez-faire Leadership Styles and Employee Engagement: Evidence From Vietnam's Public Sector",
+      "journal": "SAGE Open, 12(2), 21582440221094606",
+      "url": "https://doi.org/10.1177/21582440221094606",
+      "sample": "325 lãnh đạo và công chức khu vực công cấp tỉnh"
+    }
+  ]
+}

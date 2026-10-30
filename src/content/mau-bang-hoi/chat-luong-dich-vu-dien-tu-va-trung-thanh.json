@@ -1,0 +1,72 @@
+{
+  "title": "Mẫu bảng hỏi chất lượng dịch vụ điện tử E-S-QUAL và lòng trung thành",
+  "description": "Mẫu bảng hỏi khảo sát chất lượng dịch vụ của sàn thương mại điện tử theo E-S-QUAL (Parasuraman và cộng sự, 2005) và lòng trung thành khách hàng. Có mô hình, cỡ mẫu.",
+  "topic": "Chất lượng dịch vụ điện tử và lòng trung thành trên sàn TMĐT",
+  "audience": "Khách hàng mua sắm trực tuyến",
+  "intro": "Chất lượng dịch vụ của Shopee, Lazada, Tiki hay TikTok Shop là đề tài thay thế cho SERVQUAL khi dịch vụ diễn ra trên mạng. E-S-QUAL của Parasuraman, Zeithaml và Malhotra (2005) đo bốn thành phần cốt lõi: hiệu quả, sự sẵn sàng của hệ thống, thực hiện đơn hàng và bảo mật.",
+  "modelNote": "Mô hình gợi ý: bốn thành phần của E-S-QUAL tác động lên ý định trung thành, đo bằng ý định hành vi của Zeithaml, Berry và Parasuraman (1996). Parasuraman và cộng sự (2005) cũng dùng ý định trung thành để kiểm tra giá trị của E-S-QUAL. Thư viện chưa có thang hài lòng khách hàng tổng quát; nếu thêm sự hài lòng làm trung gian, cần dẫn nguồn thang riêng.",
+  "placeholders": {
+    "website": "sàn thương mại điện tử này",
+    "công ty": "sàn thương mại điện tử này",
+    "loại dịch vụ": "mua sắm trực tuyến"
+  },
+  "constructs": [
+    "e-s-qual:EFF",
+    "e-s-qual:SYS",
+    "e-s-qual:FUL",
+    "e-s-qual:PRI",
+    "y-dinh-hanh-vi-khach-hang:LOY"
+  ],
+  "paths": [
+    {
+      "from": "e-s-qual:EFF",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "e-s-qual:SYS",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "e-s-qual:FUL",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    },
+    {
+      "from": "e-s-qual:PRI",
+      "to": "y-dinh-hanh-vi-khach-hang:LOY",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "itemOverrides": {
+    "y-dinh-hanh-vi-khach-hang:LOY4": "Xem [công ty] là lựa chọn đầu tiên khi mua sắm trực tuyến."
+  },
+  "tips": [
+    "Chọn một sàn cụ thể và chỉ khảo sát người đã mua trên sàn đó trong một khoảng thời gian gần (ví dụ 6 tháng).",
+    "Ba thành phần E-RecS-QUAL (đáp ứng, bồi thường, liên hệ) chỉ dành cho người đã gặp sự cố; nếu dùng, hỏi thêm câu sàng lọc và tách nhóm người trả lời.",
+    "Lòng trung thành dùng thang khả năng 7 mức với câu dẫn 'Khả năng bạn sẽ…'; giữ đúng thang này hoặc ghi rõ nếu đổi sang Likert đồng ý.",
+    "Câu gốc nói 'website'; với ứng dụng di động, thay bằng 'ứng dụng' và ghi rõ đã điều chỉnh."
+  ],
+  "studies": [
+    {
+      "authors": "Nguyen và Uong",
+      "year": 2024,
+      "title": "The impact of e-service quality on customer satisfaction and trust in online shopping – A case study of the generation Z (bài viết bằng tiếng Việt)",
+      "journal": "Tạp chí Phát triển Khoa học và Công nghệ – Kinh tế, Luật và Quản lý, 8(1), 5017–5028",
+      "url": "https://doi.org/10.32508/stdjelm.v8i1.1305",
+      "sample": "428 người mua sắm thế hệ Z trên Tiki, Shopee, Lazada; 4 thành phần E-S-QUAL và 3 thành phần E-RecS-QUAL; PLS-SEM",
+      "reliability": "α 0,784–0,844 (Bảng 3)"
+    },
+    {
+      "authors": "Vo và Phan",
+      "year": 2023,
+      "title": "E-service quality and the repurchase intention towards online retailers in Vietnam: A case study of young consumer in Ho Chi Minh City",
+      "journal": "American Journal of Multidisciplinary Research & Development, 5(1), 27–33",
+      "url": "https://www.ajmrd.com/wp-content/uploads/2023/01/D512733.pdf",
+      "sample": "324 người tiêu dùng trẻ ở TP.HCM; E-S-QUAL → ý định mua lại",
+      "reliability": "α 0,753–0,898; CR 0,754–0,901 (Bảng 3)"
+    }
+  ]
+}

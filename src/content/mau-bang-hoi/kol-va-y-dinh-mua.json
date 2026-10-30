@@ -1,0 +1,75 @@
+{
+  "title": "Mẫu bảng hỏi KOL, influencer và ý định mua (Ohanian)",
+  "description": "Mẫu bảng hỏi khảo sát tác động của KOL, influencer lên ý định mua: độ tin cậy nguồn Ohanian (1990), thái độ với thương hiệu, sẵn lòng mua. Có mô hình, cỡ mẫu.",
+  "topic": "KOL, influencer và ý định mua",
+  "audience": "Người tiêu dùng",
+  "intro": "Đề tài về KOL, KOC và livestream bán hàng rất phổ biến trong khoá luận marketing. Mẫu này dùng thang độ tin cậy nguồn của Ohanian (1990) để đánh giá người đại diện, nối với thái độ với thương hiệu và sự sẵn lòng mua theo Dodds, Monroe và Grewal (1991).",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan: sức hấp dẫn, sự đáng tin và chuyên môn của người đại diện (Ohanian, 1990) làm tăng thái độ tích cực với thương hiệu (Spears và Singh, 2004), và thái độ với thương hiệu làm tăng sự sẵn lòng mua.",
+  "placeholders": {
+    "sản phẩm": "sản phẩm này"
+  },
+  "constructs": [
+    "do-tin-cay-nguon-ohanian:ATT",
+    "do-tin-cay-nguon-ohanian:TRU",
+    "do-tin-cay-nguon-ohanian:EXP",
+    "thai-do-voi-quang-cao:AB",
+    "y-dinh-mua:WTB"
+  ],
+  "paths": [
+    {
+      "from": "do-tin-cay-nguon-ohanian:ATT",
+      "to": "thai-do-voi-quang-cao:AB",
+      "sign": "+"
+    },
+    {
+      "from": "do-tin-cay-nguon-ohanian:TRU",
+      "to": "thai-do-voi-quang-cao:AB",
+      "sign": "+"
+    },
+    {
+      "from": "do-tin-cay-nguon-ohanian:EXP",
+      "to": "thai-do-voi-quang-cao:AB",
+      "sign": "+"
+    },
+    {
+      "from": "thai-do-voi-quang-cao:AB",
+      "to": "y-dinh-mua:WTB",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "tips": [
+    "Chọn một người đại diện và một sản phẩm cụ thể, cho người trả lời xem ảnh hoặc clip, và hỏi một câu sàng lọc về việc đã biết người đó.",
+    "Thang Ohanian và thang thái độ với thương hiệu là cặp tính từ đối nghĩa, không phải câu đồng ý; trang này và Bộ khảo sát hiện chúng thành thang đối nghĩa 5 mức.",
+    "Nếu tổng quan ủng hộ, thêm đường trực tiếp từ sự đáng tin tới sẵn lòng mua và kiểm tra vai trò trung gian của thái độ.",
+    "Sức hấp dẫn và sự đáng tin đôi khi tải chéo ở mẫu Việt Nam; kiểm tra giá trị phân biệt bằng HTMT."
+  ],
+  "studies": [
+    {
+      "authors": "Khuong An, Thuy An Ngo, Tu Tran và Thy Nguyen",
+      "year": 2024,
+      "title": "Investigating the influence of social media influencer credibility on beauty product purchase behaviors: a case study from Vietnam",
+      "journal": "Innovative Marketing, 20(3), 261–276",
+      "url": "https://doi.org/10.21511/im.20(3).2024.21",
+      "sample": "269 người tiêu dùng; ba thành phần của Ohanian → ý định mua → hành vi mua mỹ phẩm",
+      "reliability": "α 0,768–0,859; CR 0,833–0,912 (Bảng 1)"
+    },
+    {
+      "authors": "Le, Vu và Le",
+      "year": 2024,
+      "title": "Source credibility of beauty vloggers and consumer purchases of vegan cosmetics: The mediating role of cognitive and affective attitude",
+      "journal": "Innovative Marketing, 20(3), 14–27",
+      "url": "https://doi.org/10.21511/im.20(3).2024.02",
+      "sample": "382 người xem YouTube; Ohanian (1990) → thái độ nhận thức và cảm xúc → ý định mua",
+      "reliability": "α 0,804–0,904; CR 0,884–0,932 (Bảng 3)"
+    },
+    {
+      "authors": "Tran, Ta, Luu, Ta, Vo và Pham",
+      "year": 2025,
+      "title": "Effect of KOLs' persuasiveness on impulsive buying behaviors: live streaming commerce",
+      "journal": "Cogent Business & Management, 12(1), 2476709",
+      "url": "https://doi.org/10.1080/23311975.2025.2476709",
+      "sample": "360 người thuộc thế hệ Z; sức hấp dẫn, sự đáng tin, chuyên môn của KOL → sức thuyết phục → mua ngẫu hứng"
+    }
+  ]
+}

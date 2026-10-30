@@ -1,0 +1,68 @@
+{
+  "title": "Mẫu bảng hỏi mua hàng ngẫu hứng: giá trị khoái lạc và FoMO",
+  "description": "Mẫu bảng hỏi khảo sát mua hàng ngẫu hứng trên TikTok Shop, sàn thương mại điện tử: giá trị mua sắm khoái lạc, nỗi sợ bỏ lỡ FoMO và xu hướng mua ngẫu hứng.",
+  "topic": "Mua hàng ngẫu hứng trên sàn thương mại điện tử",
+  "audience": "Sinh viên",
+  "intro": "Mua hàng ngẫu hứng trên TikTok Shop, Shopee hay trong livestream là đề tài được sinh viên chọn nhiều. Mẫu này nối giá trị mua sắm khoái lạc của Babin, Darden và Griffin (1994) và nỗi sợ bỏ lỡ của Przybylski và cộng sự (2013) với xu hướng mua ngẫu hứng của Rook và Fisher (1995).",
+  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan: niềm vui khi mua sắm (giá trị khoái lạc) và nỗi sợ bỏ lỡ làm tăng xu hướng mua ngẫu hứng. Thang của Rook và Fisher (1995) đo xu hướng cá nhân, nên chương 2 cần giải thích vì sao đặt nó làm biến phụ thuộc, hoặc thêm thang hành vi mua ngẫu hứng có nguồn riêng.",
+  "placeholders": {},
+  "constructs": [
+    "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV",
+    "fomo:FOMO",
+    "mua-hang-ngau-hung:BI"
+  ],
+  "paths": [
+    {
+      "from": "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV",
+      "to": "mua-hang-ngau-hung:BI",
+      "sign": "+"
+    },
+    {
+      "from": "fomo:FOMO",
+      "to": "mua-hang-ngau-hung:BI",
+      "sign": "+"
+    }
+  ],
+  "method": "pls",
+  "itemOverrides": {
+    "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV1": "Mua sắm trên sàn thương mại điện tử thật sự là một niềm vui với tôi.",
+    "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV4": "Mua sắm trên sàn thương mại điện tử thật sự giống như một dịp thoát khỏi nhịp sống thường ngày.",
+    "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV6": "Tôi thích bản thân việc lướt mua sắm trên sàn, không chỉ vì những món đồ tôi có thể đã mua.",
+    "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV11": "Mua sắm trên sàn thương mại điện tử không phải là khoảng thời gian thư giãn dễ chịu với tôi."
+  },
+  "tips": [
+    "Thang giá trị khoái lạc gốc hỏi về một chuyến mua sắm cụ thể tại cửa hàng; mẫu này viết lại bốn câu nhắc 'chuyến mua sắm này' theo bối cảnh sàn thương mại điện tử và giữ câu gốc để đối chiếu.",
+    "FoMO dùng thang mức độ đúng 1–5 (hoàn toàn không đúng … cực kỳ đúng với tôi), không phải Likert đồng ý; giữ đúng nhãn khi đưa vào bảng hỏi.",
+    "BI8 và HSV11 là câu đảo chiều; đảo điểm trước khi tính Cronbach's alpha.",
+    "Nếu muốn đo hành vi mua ngẫu hứng trong một buổi livestream cụ thể, thêm thang hành vi có nguồn riêng thay vì chỉ dùng thang xu hướng."
+  ],
+  "studies": [
+    {
+      "authors": "Nguyen và Ha",
+      "year": 2021,
+      "title": "Predictors of fast-fashion-oriented impulse buying: The case of Vietnamese millennials",
+      "journal": "Management Science Letters, 11, 2021–2032",
+      "url": "https://doi.org/10.5267/j.msl.2021.3.007",
+      "sample": "322 phiếu hợp lệ, 18–35 tuổi ở Bình Dương; giá trị khoái lạc và cảm xúc → mua ngẫu hứng, dẫn Rook và Fisher (1995), Babin và cộng sự (1994)",
+      "reliability": "α 0,759–0,882 (Bảng 3)"
+    },
+    {
+      "authors": "Truong",
+      "year": 2025,
+      "title": "Fear of missing out (FOMO) and impulsive buying on TikTok shop: A study using the stimulus-organism-response (SOR) model",
+      "journal": "SEARCH Journal of Media and Communication Research, 17(2), 87–104",
+      "url": "https://doi.org/10.58946/search-17.2.P6",
+      "sample": "336 người, phương pháp hỗn hợp, tại một trường đại học",
+      "reliability": "α 0,89 (tóm tắt)"
+    },
+    {
+      "authors": "Cho, Ching và Luong",
+      "year": 2014,
+      "title": "Impulse buying behavior of Vietnamese consumers in supermarket setting",
+      "journal": "International Journal of Research Studies in Management, 3(2), 33–50",
+      "url": "https://doi.org/10.5861/ijrsm.2014.775",
+      "sample": "241 người mua ở siêu thị; dẫn Rook và Fisher (1995)",
+      "reliability": "α 0,664–0,889 (Bảng 3 và 5)"
+    }
+  ]
+}

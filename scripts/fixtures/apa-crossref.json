@@ -969,5 +969,1374 @@
     "family": "Polosukhin"
    }
   ]
+ },
+ "10.1177/002224378101800104": {
+  "type": "journal-article",
+  "title": [
+   "Evaluating Structural Equation Models with Unobservable Variables and Measurement Error"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Marketing Research"
+  ],
+  "publisher": "SAGE Publications",
+  "author": [
+   {
+    "given": "Claes",
+    "family": "Fornell"
+   },
+   {
+    "given": "David F.",
+    "family": "Larcker"
+   }
+  ],
+  "DOI": "10.1177/002224378101800104",
+  "issued": {
+   "date-parts": [
+    [
+     1981,
+     2
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1981,
+     2
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1981,
+     2
+    ]
+   ]
+  },
+  "page": "39-50",
+  "published-online": {
+   "date-parts": [
+    [
+     1981,
+     2,
+     1
+    ]
+   ]
+  },
+  "volume": "18",
+  "issue": "1"
+ },
+ "10.1007/s11747-014-0403-8": {
+  "type": "journal-article",
+  "title": [
+   "A new criterion for assessing discriminant validity in variance-based structural equation modeling"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of the Academy of Marketing Science"
+  ],
+  "publisher": "Springer Science and Business Media LLC",
+  "author": [
+   {
+    "given": "Jörg",
+    "family": "Henseler"
+   },
+   {
+    "given": "Christian M.",
+    "family": "Ringle"
+   },
+   {
+    "given": "Marko",
+    "family": "Sarstedt"
+   }
+  ],
+  "DOI": "10.1007/s11747-014-0403-8",
+  "issued": {
+   "date-parts": [
+    [
+     2014,
+     8,
+     22
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2015,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2014,
+     8,
+     22
+    ]
+   ]
+  },
+  "page": "115-135",
+  "published-online": {
+   "date-parts": [
+    [
+     2014,
+     8,
+     22
+    ]
+   ]
+  },
+  "volume": "43",
+  "issue": "1"
+ },
+ "10.1037/0021-9010.88.5.879": {
+  "type": "journal-article",
+  "title": [
+   "Common method biases in behavioral research: A critical review of the literature and recommended remedies."
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Applied Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "author": [
+   {
+    "given": "Philip M.",
+    "family": "Podsakoff"
+   },
+   {
+    "given": "Scott B.",
+    "family": "MacKenzie"
+   },
+   {
+    "given": "Jeong-Yeon",
+    "family": "Lee"
+   },
+   {
+    "given": "Nathan P.",
+    "family": "Podsakoff"
+   }
+  ],
+  "DOI": "10.1037/0021-9010.88.5.879",
+  "issued": {
+   "date-parts": [
+    [
+     2003
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2003
+    ]
+   ]
+  },
+  "page": "879-903",
+  "published-online": {
+   "date-parts": [
+    [
+     2003
+    ]
+   ]
+  },
+  "volume": "88",
+  "issue": "5"
+ },
+ "10.1016/0749-5978(91)90020-t": {
+  "type": "journal-article",
+  "title": [
+   "The theory of planned behavior"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Organizational Behavior and Human Decision Processes"
+  ],
+  "publisher": "Elsevier BV",
+  "author": [
+   {
+    "given": "Icek",
+    "family": "Ajzen"
+   }
+  ],
+  "DOI": "10.1016/0749-5978(91)90020-t",
+  "issued": {
+   "date-parts": [
+    [
+     1991,
+     12
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1991,
+     12
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1991,
+     12
+    ]
+   ]
+  },
+  "page": "179-211",
+  "volume": "50",
+  "issue": "2"
+ },
+ "10.1037/0022-3514.51.6.1173": {
+  "type": "journal-article",
+  "title": [
+   "The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations."
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Personality and Social Psychology"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "author": [
+   {
+    "given": "Reuben M.",
+    "family": "Baron"
+   },
+   {
+    "given": "David A.",
+    "family": "Kenny"
+   }
+  ],
+  "DOI": "10.1037/0022-3514.51.6.1173",
+  "issued": {
+   "date-parts": [
+    [
+     1986
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1986
+    ]
+   ]
+  },
+  "page": "1173-1182",
+  "published-online": {
+   "date-parts": [
+    [
+     1986
+    ]
+   ]
+  },
+  "volume": "51",
+  "issue": "6"
+ },
+ "10.1080/10705519909540118": {
+  "type": "journal-article",
+  "title": [
+   "Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Structural Equation Modeling: A Multidisciplinary Journal"
+  ],
+  "publisher": "Informa UK Limited",
+  "author": [
+   {
+    "given": "Li‐tze",
+    "family": "Hu"
+   },
+   {
+    "given": "Peter M.",
+    "family": "Bentler"
+   }
+  ],
+  "DOI": "10.1080/10705519909540118",
+  "issued": {
+   "date-parts": [
+    [
+     1999,
+     1
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1999,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1999,
+     1
+    ]
+   ]
+  },
+  "page": "1-55",
+  "volume": "6",
+  "issue": "1"
+ },
+ "10.1191/1478088706qp063oa": {
+  "type": "journal-article",
+  "title": [
+   "Using thematic analysis in psychology"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Qualitative Research in Psychology"
+  ],
+  "publisher": "Informa UK Limited",
+  "author": [
+   {
+    "given": "Virginia",
+    "family": "Braun"
+   },
+   {
+    "given": "Victoria",
+    "family": "Clarke"
+   }
+  ],
+  "DOI": "10.1191/1478088706qp063oa",
+  "issued": {
+   "date-parts": [
+    [
+     2006,
+     1
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2006,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2006,
+     1
+    ]
+   ]
+  },
+  "page": "77-101",
+  "published-online": {
+   "date-parts": [
+    [
+     2008,
+     7,
+     21
+    ]
+   ]
+  },
+  "volume": "3",
+  "issue": "2"
+ },
+ "10.1007/bf02310555": {
+  "type": "journal-article",
+  "title": [
+   "Coefficient Alpha and the Internal Structure of Tests"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Psychometrika"
+  ],
+  "publisher": "Cambridge University Press (CUP)",
+  "author": [
+   {
+    "given": "Lee J.",
+    "family": "Cronbach"
+   }
+  ],
+  "DOI": "10.1007/bf02310555",
+  "issued": {
+   "date-parts": [
+    [
+     1951,
+     9
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1951,
+     9
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1951,
+     9
+    ]
+   ]
+  },
+  "page": "297-334",
+  "published-online": {
+   "date-parts": [
+    [
+     2025,
+     1,
+     1
+    ]
+   ]
+  },
+  "volume": "16",
+  "issue": "3"
+ },
+ "10.25073/2588-1108/vnueab.4279": {
+  "type": "journal-article",
+  "title": [
+   "Internal service quality, external service quality, employee Satisfaction and customer Satisfaction for Vietnamese hotels:  A Theoretical Approach"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "VNU Journal of Science: Economics and Business"
+  ],
+  "publisher": "Vietnam National University Journal of Science",
+  "author": [
+   {
+    "given": "Nguyen Thu",
+    "family": "Ha"
+   },
+   {
+    "given": "Cung Lan",
+    "family": "Anh"
+   }
+  ],
+  "DOI": "10.25073/2588-1108/vnueab.4279",
+  "issued": {
+   "date-parts": [
+    [
+     2019,
+     12,
+     20
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019,
+     12,
+     20
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2019,
+     12,
+     20
+    ]
+   ]
+  },
+  "volume": "35",
+  "issue": "4"
+ },
+ "10.22144/ctu.jsi.2019.104": {
+  "type": "journal-article",
+  "title": [
+   ". Phát triển năng lực tạo lập văn bản thuyết minh cho học sinh thông qua phân tích mẫu trong dạy đọc hiểu"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Can Tho University Journal of Science"
+  ],
+  "publisher": "Can Tho University",
+  "author": [
+   {
+    "given": "Nguyễn Thị Hồng",
+    "family": "Hạnh"
+   },
+   {
+    "given": "Đỗ Thanh",
+    "family": "An"
+   }
+  ],
+  "DOI": "10.22144/ctu.jsi.2019.104",
+  "issued": {
+   "date-parts": [
+    [
+     2019
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2019
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019
+    ]
+   ]
+  },
+  "page": "89",
+  "volume": "55(Khoa học Giáo dục)"
+ },
+ "10.1108/jm2-08-2025-0447": {
+  "type": "journal-article",
+  "title": [
+   "Modeling the impact of servant leadership on frugal innovation: sequential mediation of collaborative culture and corporate social responsibility to employees"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Modelling in Management"
+  ],
+  "publisher": "Emerald",
+  "author": [
+   {
+    "given": "Anh",
+    "family": "Truong Thi Phuong"
+   },
+   {
+    "given": "Ngoc Duy",
+    "family": "Pham"
+   }
+  ],
+  "DOI": "10.1108/jm2-08-2025-0447",
+  "issued": {
+   "date-parts": [
+    [
+     2026,
+     5,
+     19
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2026,
+     5,
+     19
+    ]
+   ]
+  },
+  "page": "1-26",
+  "published-online": {
+   "date-parts": [
+    [
+     2026,
+     5,
+     19
+    ]
+   ]
+  }
+ },
+ "10.33301/jed-p-2018-20-02-03": {
+  "type": "journal-article",
+  "title": [
+   "A Stochastic Analysis of Vietnam Bilateral Trade Efficiency"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Economics and Development"
+  ],
+  "publisher": "Emerald",
+  "author": [
+   {
+    "given": "Bao",
+    "family": "Dinh Ho"
+   },
+   {
+    "given": "Minh",
+    "family": "Van Pham"
+   },
+   {
+    "given": "Thai",
+    "family": "Vinh Pham"
+   },
+   {
+    "given": "Hieu",
+    "family": "Nhu Truong"
+   }
+  ],
+  "DOI": "10.33301/jed-p-2018-20-02-03",
+  "issued": {
+   "date-parts": [
+    [
+     2018,
+     8,
+     15
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2018,
+     8,
+     15
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2018,
+     8,
+     15
+    ]
+   ]
+  },
+  "page": "50-64"
+ },
+ "10.1177/1073274821989320": {
+  "type": "journal-article",
+  "title": [
+   "Risk factors of Pancreatic Cancer in Vietnam: A Matched Case–Control Hospital-Based Study"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Cancer Control"
+  ],
+  "publisher": "SAGE Publications",
+  "author": [
+   {
+    "given": "Thuan",
+    "family": "Van Tran"
+   },
+   {
+    "given": "Tu",
+    "family": "Van Dao"
+   },
+   {
+    "given": "Khac-Dung",
+    "family": "Nguyen"
+   },
+   {
+    "given": "To",
+    "family": "van TA"
+   },
+   {
+    "given": "Khanh Truong",
+    "family": "Vu"
+   },
+   {
+    "given": "Son Hong",
+    "family": "Trinh"
+   },
+   {
+    "given": "Hoang Cong",
+    "family": "Nguyen"
+   },
+   {
+    "given": "Oanh Thi",
+    "family": "Bui"
+   },
+   {
+    "given": "Quang Tien",
+    "family": "Nguyen"
+   },
+   {
+    "given": "Hoan Duc",
+    "family": "Vu"
+   },
+   {
+    "given": "Hiep Le",
+    "family": "Nguyen"
+   },
+   {
+    "given": "Huong Thanh",
+    "family": "Tran"
+   }
+  ],
+  "DOI": "10.1177/1073274821989320",
+  "issued": {
+   "date-parts": [
+    [
+     2021,
+     1,
+     1
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2021,
+     1,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2021,
+     1,
+     1
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2021,
+     2,
+     1
+    ]
+   ]
+  },
+  "volume": "28",
+  "article-number": "1073274821989320"
+ },
+ "10.46223/hcmcoujs.soci.en.14.4.2951.2024": {
+  "type": "journal-article",
+  "title": [
+   "Attitudes of English majors towards the use of the Quizizz platform in English language learning"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "HO CHI MINH CITY OPEN UNIVERSITY JOURNAL OF SCIENCE - SOCIAL SCIENCES"
+  ],
+  "publisher": "Ho Chi Minh City Open University Journal of Science",
+  "author": [
+   {
+    "given": "Nga Thi Tuyet",
+    "family": "Phan"
+   }
+  ],
+  "DOI": "10.46223/hcmcoujs.soci.en.14.4.2951.2024",
+  "issued": {
+   "date-parts": [
+    [
+     2024,
+     4,
+     2
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2024,
+     4,
+     2
+    ]
+   ]
+  },
+  "page": "69-83",
+  "published-online": {
+   "date-parts": [
+    [
+     2024,
+     4,
+     2
+    ]
+   ]
+  },
+  "volume": "14",
+  "issue": "4"
+ },
+ "10.46223/hcmcoujs.econ.vi.17.4.2025.2022": {
+  "type": "journal-article",
+  "title": [
+   "Các mô hình hồi quy cơ bản trong quản trị kinh doanh"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "TẠP CHÍ KHOA HỌC ĐẠI HỌC MỞ THÀNH PHỐ HỒ CHÍ MINH - KINH TẾ VÀ QUẢN TRỊ KINH DOANH"
+  ],
+  "publisher": "Ho Chi Minh City Open University Journal of Science",
+  "author": [
+   {
+    "given": "Ma Thế",
+    "family": "Ngàn"
+   }
+  ],
+  "DOI": "10.46223/hcmcoujs.econ.vi.17.4.2025.2022",
+  "issued": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     24
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     24
+    ]
+   ]
+  },
+  "page": "150-158",
+  "published-online": {
+   "date-parts": [
+    [
+     2023,
+     3,
+     24
+    ]
+   ]
+  },
+  "volume": "17",
+  "issue": "4"
+ },
+ "10.1596/2070-8416-0001": {
+  "type": "report",
+  "title": [
+   "Cotton in the Global Context"
+  ],
+  "subtitle": [],
+  "container-title": [],
+  "publisher": "World Bank",
+  "author": [
+   {
+    "given": "Marc",
+    "family": "Sadler"
+   }
+  ],
+  "DOI": "10.1596/2070-8416-0001",
+  "issued": {
+   "date-parts": [
+    [
+     2008,
+     9,
+     25
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2008,
+     9,
+     25
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2008,
+     9,
+     25
+    ]
+   ]
+  }
+ },
+ "10.32657/10356/19917": {
+  "type": "dissertation",
+  "title": [
+   "Fouling mitigation in coagulation microfiltration hybrid system for drinking water treatment"
+  ],
+  "subtitle": [],
+  "container-title": [],
+  "publisher": "Nanyang Technological University",
+  "author": [
+   {
+    "given": "Sara",
+    "family": "Sadreddini"
+   }
+  ],
+  "DOI": "10.32657/10356/19917",
+  "issued": {
+   "date-parts": [
+    [
+     null
+    ]
+   ]
+  },
+  "institution": [
+   {
+    "name": "Nanyang Technological University"
+   }
+  ]
+ },
+ "csl:10.5281/zenodo.3509134": {
+  "type": "software",
+  "title": "pandas-dev/pandas: Pandas",
+  "publisher": "Zenodo",
+  "author": [
+   {
+    "family": "The pandas development team"
+   }
+  ],
+  "DOI": "10.5281/ZENODO.3509134",
+  "issued": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     22
+    ]
+   ]
+  },
+  "version": "v3.1.0"
+ },
+ "10.13106/jafeb.2019.vol6.no4.261": {
+  "type": "journal-article",
+  "title": [
+   "The Relationship between the Perceived Mental Benefits, Online Trust, and Personal Information Disclosure in Online Shopping"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "The Journal of Asian Finance, Economics and Business"
+  ],
+  "publisher": "Korea Distribution Science Association",
+  "author": [
+   {
+    "name": "Ho Chi Minh City Open University"
+   },
+   {
+    "given": "Ha Minh",
+    "family": "NGUYEN"
+   },
+   {
+    "given": "Bui Thanh",
+    "family": "KHOA"
+   }
+  ],
+  "DOI": "10.13106/jafeb.2019.vol6.no4.261",
+  "issued": {
+   "date-parts": [
+    [
+     2019,
+     11,
+     30
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2019,
+     11,
+     30
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019,
+     11,
+     30
+    ]
+   ]
+  },
+  "page": "261-270",
+  "volume": "6",
+  "issue": "4"
+ },
+ "10.1108/jabes-05-2020-0053": {
+  "type": "journal-article",
+  "title": [
+   "The drivers of omni-channel shopping intention: a case study for fashion retailing sector in Danang, Vietnam"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Asian Business and Economic Studies"
+  ],
+  "publisher": "Emerald",
+  "author": [
+   {
+    "given": "Thi Hieu Hanh",
+    "family": "Truong"
+   }
+  ],
+  "DOI": "10.1108/jabes-05-2020-0053",
+  "issued": {
+   "date-parts": [
+    [
+     2020,
+     10,
+     14
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2021,
+     6,
+     8
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2020,
+     10,
+     14
+    ]
+   ]
+  },
+  "page": "143-159",
+  "published-online": {
+   "date-parts": [
+    [
+     2020,
+     10,
+     14
+    ]
+   ]
+  },
+  "volume": "28",
+  "issue": "2"
+ },
+ "10.1108/apjml-01-2017-0010": {
+  "type": "journal-article",
+  "title": [
+   "Consumer intention and credit card adoption in Vietnam"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Asia Pacific Journal of Marketing and Logistics"
+  ],
+  "publisher": "Emerald",
+  "author": [
+   {
+    "given": "Oanh Dinh Yen",
+    "family": "Nguyen"
+   },
+   {
+    "given": "John F.",
+    "family": "Cassidy"
+   }
+  ],
+  "DOI": "10.1108/apjml-01-2017-0010",
+  "issued": {
+   "date-parts": [
+    [
+     2018,
+     10,
+     17
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2018,
+     11,
+     5
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2018,
+     10,
+     17
+    ]
+   ]
+  },
+  "page": "779-796",
+  "published-online": {
+   "date-parts": [
+    [
+     2018,
+     10,
+     17
+    ]
+   ]
+  },
+  "volume": "30",
+  "issue": "4"
+ },
+ "10.1007/978-3-319-05542-8_15-1": {
+  "type": "book-chapter",
+  "title": [
+   "Partial Least Squares Structural Equation Modeling"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Handbook of Market Research"
+  ],
+  "publisher": "Springer International Publishing",
+  "author": [
+   {
+    "given": "Marko",
+    "family": "Sarstedt"
+   },
+   {
+    "given": "Christian M.",
+    "family": "Ringle"
+   },
+   {
+    "given": "Joseph F.",
+    "family": "Hair"
+   }
+  ],
+  "DOI": "10.1007/978-3-319-05542-8_15-1",
+  "issued": {
+   "date-parts": [
+    [
+     2017
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2017
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2017
+    ]
+   ]
+  },
+  "page": "1-40",
+  "published-online": {
+   "date-parts": [
+    [
+     2017,
+     8,
+     22
+    ]
+   ]
+  }
+ },
+ "10.2753/mtp1069-6679190202": {
+  "type": "journal-article",
+  "title": [
+   "PLS-SEM: Indeed a Silver Bullet"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Journal of Marketing Theory and Practice"
+  ],
+  "publisher": "Informa UK Limited",
+  "author": [
+   {
+    "given": "Joe F.",
+    "family": "Hair"
+   },
+   {
+    "given": "Christian M.",
+    "family": "Ringle"
+   },
+   {
+    "given": "Marko",
+    "family": "Sarstedt"
+   }
+  ],
+  "DOI": "10.2753/mtp1069-6679190202",
+  "issued": {
+   "date-parts": [
+    [
+     2011,
+     4
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2011,
+     4
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2011,
+     4
+    ]
+   ]
+  },
+  "page": "139-152",
+  "published-online": {
+   "date-parts": [
+    [
+     2014,
+     12,
+     8
+    ]
+   ]
+  },
+  "volume": "19",
+  "issue": "2"
+ },
+ "10.1038/s41586-020-2649-2": {
+  "type": "journal-article",
+  "title": [
+   "Array programming with NumPy"
+  ],
+  "subtitle": [],
+  "container-title": [
+   "Nature"
+  ],
+  "publisher": "Springer Science and Business Media LLC",
+  "author": [
+   {
+    "given": "Charles R.",
+    "family": "Harris"
+   },
+   {
+    "given": "K. Jarrod",
+    "family": "Millman"
+   },
+   {
+    "given": "Stéfan J.",
+    "family": "van der Walt"
+   },
+   {
+    "given": "Ralf",
+    "family": "Gommers"
+   },
+   {
+    "given": "Pauli",
+    "family": "Virtanen"
+   },
+   {
+    "given": "David",
+    "family": "Cournapeau"
+   },
+   {
+    "given": "Eric",
+    "family": "Wieser"
+   },
+   {
+    "given": "Julian",
+    "family": "Taylor"
+   },
+   {
+    "given": "Sebastian",
+    "family": "Berg"
+   },
+   {
+    "given": "Nathaniel J.",
+    "family": "Smith"
+   },
+   {
+    "given": "Robert",
+    "family": "Kern"
+   },
+   {
+    "given": "Matti",
+    "family": "Picus"
+   },
+   {
+    "given": "Stephan",
+    "family": "Hoyer"
+   },
+   {
+    "given": "Marten H.",
+    "family": "van Kerkwijk"
+   },
+   {
+    "given": "Matthew",
+    "family": "Brett"
+   },
+   {
+    "given": "Allan",
+    "family": "Haldane"
+   },
+   {
+    "given": "Jaime Fernández",
+    "family": "del Río"
+   },
+   {
+    "given": "Mark",
+    "family": "Wiebe"
+   },
+   {
+    "given": "Pearu",
+    "family": "Peterson"
+   },
+   {
+    "given": "Pierre",
+    "family": "Gérard-Marchant"
+   },
+   {
+    "given": "Kevin",
+    "family": "Sheppard"
+   },
+   {
+    "given": "Tyler",
+    "family": "Reddy"
+   },
+   {
+    "given": "Warren",
+    "family": "Weckesser"
+   },
+   {
+    "given": "Hameer",
+    "family": "Abbasi"
+   },
+   {
+    "given": "Christoph",
+    "family": "Gohlke"
+   },
+   {
+    "given": "Travis E.",
+    "family": "Oliphant"
+   }
+  ],
+  "DOI": "10.1038/s41586-020-2649-2",
+  "issued": {
+   "date-parts": [
+    [
+     2020,
+     9,
+     16
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2020,
+     9,
+     17
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2020,
+     9,
+     16
+    ]
+   ]
+  },
+  "page": "357-362",
+  "published-online": {
+   "date-parts": [
+    [
+     2020,
+     9,
+     16
+    ]
+   ]
+  },
+  "volume": "585",
+  "issue": "7825"
  }
 }

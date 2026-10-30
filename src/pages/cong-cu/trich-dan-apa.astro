@@ -5,40 +5,38 @@ import html from "@/tools/trich-dan-apa.html?raw";
 
 <ToolLayout
   slug="trich-dan-apa"
-  title="Tạo trích dẫn APA 7 từ DOI hoặc tên bài, có “và cộng sự”"
+  title="Tạo trích dẫn APA 7: DOI, sách, luận văn, web, văn bản pháp luật"
   h1="Tạo trích dẫn APA 7"
-  description="Dán DOI hoặc tên bài báo, nhận danh mục tài liệu tham khảo APA 7 xếp A–Z và trích dẫn trong bài (và cộng sự hoặc et al.). Dữ liệu từ Crossref, giữ chữ nghiêng khi dán vào Word. Miễn phí."
-  lede="Dán DOI hoặc tên bài, mỗi dòng một tài liệu. Công cụ lấy thông tin từ Crossref, viết tài liệu tham khảo đúng APA 7 (tên bài kiểu câu, tạp chí và số tập in nghiêng, link DOI), xếp A–Z và cho sẵn trích dẫn trong bài kiểu tiếng Việt “và cộng sự” hoặc tiếng Anh “et al.”."
+  description="Dán DOI hoặc tên bài, hoặc nhập tay sách, luận văn, trang web, văn bản pháp luật không có DOI. Nhận danh mục APA 7 xếp A–Z, tên tác giả Việt đúng chuẩn, trích dẫn “và cộng sự”, xuất Word, RIS, BibTeX. Miễn phí."
+  lede="Dán DOI hoặc tên bài, mỗi dòng một tài liệu, hoặc nhập tay tài liệu không có DOI: bài tạp chí trong nước, sách, chương sách, luận văn, báo cáo, trang web, báo điện tử, luật và nghị định. Công cụ viết tài liệu tham khảo đúng APA 7, sửa tên tác giả Việt bị đảo trên Crossref, gộp tài liệu trùng, cho sẵn trích dẫn trong bài và xuất ra Word, RIS, BibTeX."
   html={html}
 >
   <Fragment slot="guide">
     <h2>Cách dùng</h2>
     <ol>
       <li>
-        <strong>Dán danh sách.</strong> Mỗi dòng là DOI (10.2307/249008), link
-        doi.org, link bài báo có chứa DOI, hoặc tên bài. Có thể dán nguyên danh
-        mục tham khảo cũ: công cụ tự tách DOI trong từng dòng, dòng không có DOI
-        thì tìm theo tên.
+        <strong>Tài liệu có DOI: dán vào thẻ “DOI hoặc tên bài”.</strong> Mỗi dòng
+        là DOI (10.2307/249008), link doi.org, link bài báo có chứa DOI, hoặc tên
+        bài. Có thể dán nguyên danh mục tham khảo cũ: công cụ tự tách DOI trong từng
+        dòng, dòng không có DOI thì tìm theo tên trên Crossref (Hendricks và cộng
+        sự, 2020). DOI của arXiv, Zenodo, OSF thuộc DataCite được tra qua doi.org.
       </li>
       <li>
-        <strong>Bấm “Tạo trích dẫn”.</strong> Công cụ tra Crossref, cơ sở dữ
-        liệu DOI mà phần lớn nhà xuất bản đăng ký (Hendricks và cộng sự, 2020).
-        DOI của arXiv, Zenodo, OSF thuộc DataCite được tra qua doi.org.
+        <strong>Tài liệu không có DOI: dùng thẻ “Nhập tay”.</strong> Chọn loại tài
+        liệu, điền các ô hiện ra, xem trước trích dẫn rồi bấm “Thêm vào danh mục”.
+        Dòng tìm theo tên mà Crossref không có, hoặc link trang web dán ở thẻ đầu,
+        có nút “Nhập tay” mở sẵn biểu mẫu.
       </li>
       <li>
-        <strong>Kiểm tra dòng tìm theo tên.</strong> Tìm theo tên trả về bài
-        gần khớp nhất, kèm ô chọn bốn bài gần khớp khác. Đối chiếu tác giả, năm
-        trước khi dùng.
+        <strong>Đọc dòng cảnh báo màu cam</strong> (thiếu trang cuối, thiếu chủ biên,
+        tên Việt bị đảo đã được sửa) và bấm “Sửa” để bổ sung. Tài liệu tìm theo tên
+        có ô chọn bốn bài gần khớp khác: đối chiếu tác giả, năm trước khi dùng.
       </li>
       <li>
-        <strong>Đọc dòng cảnh báo màu cam</strong> (thiếu trang cuối, thiếu tác
-        giả) và sửa tay trong Word.
-      </li>
-      <li>
-        <strong>Bấm “Sao chép tất cả”</strong> rồi dán vào mục Tài liệu tham
-        khảo. Chữ nghiêng và thụt lề treo 0,5 inch được giữ khi dán vào Word
-        hoặc Google Docs. “Chép trích dẫn trong bài” cho cả hai dạng: trong
-        ngoặc và đứng đầu câu.
+        <strong>Lấy kết quả.</strong> “Sao chép tất cả” giữ chữ nghiêng và thụt lề
+        treo 0,5 inch khi dán vào Word hoặc Google Docs. “Tải Word (.docx)” cho trang
+        Tài liệu tham khảo dựng sẵn: Times New Roman 12, giãn dòng đôi. RIS nhập vào
+        Zotero, Mendeley, EndNote; BibTeX dùng cho LaTeX.
       </li>
     </ol>
 
@@ -51,21 +49,166 @@ import html from "@/tools/trich-dan-apa.html?raw";
       https://doi.org/10.1111/isj.12131
     </p>
     <p>
-      Trong bài: “(Kock và Hadaya, 2018)” hoặc “Kock và Hadaya (2018) cho rằng…”.
-      Bài này đăng trực tuyến năm 2016 nhưng in trong tập 28 năm 2018; APA lấy
-      năm của số tạp chí, và công cụ làm đúng như vậy. Với ba tác giả trở lên,
-      APA 7 chỉ ghi tác giả đầu: “Venkatesh và cộng sự (2003)” hay “Venkatesh et
-      al. (2003)” ngay từ lần trích đầu tiên.
+      Trong bài: “(Kock và Hadaya, 2018)” hoặc “Kock và Hadaya (2018) cho
+      rằng…”. Bài này đăng trực tuyến năm 2016 nhưng in trong tập 28 năm 2018;
+      APA lấy năm của số tạp chí, và công cụ làm đúng như vậy.
     </p>
+    <p>Nhập tay một bài tạp chí trong nước không có DOI:</p>
+    <p style="padding-left:2em;text-indent:-2em">
+      Nguyễn, T. T. H., &amp; Trần, V. A. (2020). Các nhân tố ảnh hưởng đến ý
+      định mua sắm trực tuyến của người tiêu dùng tại Thành phố Hồ Chí Minh.
+      <em>Tạp chí Kinh tế và Phát triển</em>, <em>280</em>(2), 12–21.
+    </p>
+    <p>Và một văn bản pháp luật:</p>
+    <p style="padding-left:2em;text-indent:-2em">
+      Quốc hội. (2020). <em>Luật Doanh nghiệp số 59/2020/QH14</em>.
+      https://vbpl.vn/…
+    </p>
+
+    <h2>Mẫu APA 7 cho từng loại tài liệu</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Loại</th><th>Mẫu</th></tr></thead>
+        <tbody>
+          <tr
+            ><td>Bài tạp chí</td><td
+              >Tác giả. (Năm). Tên bài. <em>Tên tạp chí</em>, <em>tập</em>(kỳ),
+              trang. DOI hoặc URL</td
+            ></tr
+          >
+          <tr
+            ><td>Sách</td><td
+              >Tác giả. (Năm). <em>Tên sách</em> (Xuất bản lần thứ 2). Nhà xuất bản.</td
+            ></tr
+          >
+          <tr
+            ><td>Sách do chủ biên</td><td
+              >Chủ biên (Chủ biên). (Năm). <em>Tên sách</em>. Nhà xuất bản.</td
+            ></tr
+          >
+          <tr
+            ><td>Chương sách</td><td
+              >Tác giả. (Năm). Tên chương. Trong V. T. Nguyễn (Chủ biên), <em
+                >Tên sách</em
+              > (tr. 120–150). Nhà xuất bản.</td
+            ></tr
+          >
+          <tr
+            ><td>Kỷ yếu hội thảo</td><td
+              >Tác giả. (Năm). Tên bài. Trong <em>Tên kỷ yếu</em> (tr. 45–58). Nhà
+              xuất bản.</td
+            ></tr
+          >
+          <tr
+            ><td>Luận văn chưa xuất bản</td><td
+              >Tác giả. (Năm). <em>Tên luận văn</em> [Luận văn thạc sĩ chưa xuất bản].
+              Tên trường.</td
+            ></tr
+          >
+          <tr
+            ><td>Luận án có link</td><td
+              >Tác giả. (Năm). <em>Tên luận án</em> [Luận án tiến sĩ, Tên trường].
+              Kho lưu trữ. URL</td
+            ></tr
+          >
+          <tr
+            ><td>Báo cáo</td><td
+              >Cơ quan. (Năm). <em>Tên báo cáo</em> (Báo cáo số …). Đơn vị phát hành
+              nếu khác tác giả. URL</td
+            ></tr
+          >
+          <tr
+            ><td>Trang web</td><td
+              >Tác giả. (Năm, ngày 4 tháng 5). <em>Tên trang</em>. Tên website
+              nếu khác tác giả. URL</td
+            ></tr
+          >
+          <tr
+            ><td>Báo điện tử</td><td
+              >Tác giả. (Năm, ngày 12 tháng 1). Tên bài. <em>Tên báo</em>. URL</td
+            ></tr
+          >
+          <tr
+            ><td>Văn bản pháp luật</td><td
+              >Cơ quan ban hành. (Năm). <em>Tên văn bản số hiệu</em>. URL</td
+            ></tr
+          >
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Tài liệu tiếng Việt dùng nhãn tiếng Việt (Trong, tr., Chủ biên, Xuất bản
+      lần thứ), tài liệu tiếng Anh giữ nhãn gốc (In, pp., Eds., 2nd ed.). Công
+      cụ tự chọn theo ngôn ngữ của tên bài; đổi ở ô “Ngôn ngữ tài liệu”.
+    </p>
+
+    <h2>Tên tác giả Việt Nam theo APA 7</h2>
+    <ul>
+      <li>
+        APA ghi họ, rồi viết tắt tên đệm và tên: Nguyễn Thị Thu Hà thành
+        <strong>Nguyễn, T. T. H.</strong>; trích trong bài chỉ dùng họ: (Nguyễn,
+        2020). Họ người Việt vốn đứng đầu nên không đảo thứ tự, chỉ thêm dấu
+        phẩy sau họ.
+      </li>
+      <li>
+        Hai tác giả đứng đầu khác nhau mà cùng họ (rất hay gặp với Nguyễn, Trần,
+        Lê): APA thêm chữ viết tắt tên vào mọi trích dẫn trong bài, (T. T. H.
+        Nguyễn, 2020) và (V. B. Nguyễn, 2021). Công cụ tự làm.
+      </li>
+      <li>
+        Nhiều trường yêu cầu giữ đủ họ tên tác giả Việt, ví dụ Nguyễn Thị Thu Hà
+        (2020). Chọn “Giữ đủ họ tên” ở ô Tên tác giả Việt Nam; tác giả nước
+        ngoài vẫn theo APA.
+      </li>
+      <li>
+        Crossref thường lưu tên Việt theo thứ tự phương Tây: họ “Ha”, tên
+        “Nguyen Thu”, hay họ “Van Pham”, tên “Minh”. Công cụ nhận ra và sửa
+        thành Nguyen, T. H. và Pham, V. M., kèm dòng ghi chú để bạn kiểm tra.
+        Bài tiếng Anh in tên không dấu thì giữ không dấu như bài in.
+      </li>
+    </ul>
 
     <h2>Công cụ áp dụng những quy tắc APA 7 nào?</h2>
     <ul>
-      <li>Liệt kê đủ tới 20 tác giả; từ 21 tác giả ghi 19 tác giả đầu, dấu ba chấm, rồi tác giả cuối.</li>
-      <li>Tên đệm viết tắt, giữ gạch nối (Lang, A.-G.), giữ hậu tố Jr. và tiền tố họ (de Groot).</li>
-      <li>Tên bài, tên sách viết kiểu câu; tên tạp chí giữ viết hoa từng chữ; tạp chí và số tập in nghiêng, số kỳ không in nghiêng.</li>
-      <li>Bài có số bài thay số trang ghi “Article 1021”; sách ghi lần xuất bản “(3rd ed.)”; chương sách ghi “In … (pp. 1–29)”; bản thảo ghi “[Preprint]”.</li>
-      <li>Cùng tác giả, cùng năm thêm a, b theo tên bài (2021a, 2021b), cả ở danh mục lẫn trích dẫn trong bài.</li>
-      <li>Xếp danh mục theo họ tác giả đầu, so từng chữ cái của cả danh sách tác giả, rồi tới năm (American Psychological Association, 2020).</li>
+      <li>
+        Liệt kê đủ tới 20 tác giả; từ 21 tác giả ghi 19 tác giả đầu, dấu ba
+        chấm, rồi tác giả cuối.
+      </li>
+      <li>
+        Tên đệm viết tắt, giữ gạch nối (Lang, A.-G.), giữ hậu tố Jr. và tiền tố
+        họ (van der Walt, del Río).
+      </li>
+      <li>
+        Tên bài, tên sách viết kiểu câu, chữ đầu sau dấu hai chấm viết hoa; tên
+        tạp chí giữ viết hoa từng chữ; tạp chí và số tập in nghiêng, số kỳ không
+        in nghiêng.
+      </li>
+      <li>
+        Bài có số bài thay số trang ghi “Article 1021”; bài chưa vào số tạp chí
+        ghi “Advance online publication”; sách ghi lần xuất bản “(3rd ed.)”;
+        chương sách ghi “In … (Eds.), … (pp. 1–29)”.
+      </li>
+      <li>
+        Tác giả là tổ chức trùng nhà xuất bản thì bỏ nhà xuất bản; trang web
+        trùng tên tác giả thì bỏ tên trang.
+      </li>
+      <li>
+        Cùng tác giả, cùng năm thêm a, b theo tên bài (2021a, 2021b). Hai nhóm
+        tác giả khác nhau cùng rút gọn thành “Kapoor et al., 2017” thì ghi thêm
+        tên tới khi phân biệt được.
+      </li>
+      <li>
+        Trích dẫn nhóm nhiều tài liệu trong một ngoặc xếp A–Z, ngăn bằng dấu
+        chấm phẩy: (Davis, 1989; Hair et al., 2019, 2021a).
+      </li>
+      <li>
+        Xếp danh mục theo họ tác giả đầu, so từng chữ cái của cả danh sách tác
+        giả, rồi tới năm (American Psychological Association, 2020).
+      </li>
+      <li>
+        Tài liệu trùng (cùng DOI, hoặc cùng tên và năm) được gộp làm một, bản
+        bạn đã sửa tay được giữ.
+      </li>
     </ul>
 
     <h2>Câu hỏi thường gặp</h2>
@@ -75,41 +218,54 @@ import html from "@/tools/trich-dan-apa.html?raw";
       sự” trong câu tiếng Việt và giữ nguyên danh mục tham khảo theo APA với dấu
       “&amp;”. Chọn ở ô “Trích dẫn trong bài”; danh mục tham khảo không đổi.
     </p>
+    <h3>Trích dẫn kèm số trang thế nào?</h3>
+    <p>
+      Khi trích nguyên văn, thêm trang sau năm: (Davis, 1989, tr. 320) trong bài
+      tiếng Việt, (Davis, 1989, p. 320) trong bài tiếng Anh; nhiều trang ghi tr.
+      320–321 hoặc pp. 320–321.
+    </p>
     <h3>Vì sao tên bài bị đổi chữ hoa?</h3>
     <p>
       APA 7 viết tên bài báo và tên sách kiểu câu: chỉ viết hoa chữ đầu, chữ đầu
       sau dấu hai chấm và danh từ riêng. Crossref thường lưu tên bài viết hoa
-      từng chữ. Công cụ giữ nguyên từ viết tắt (PLS-SEM, COVID-19) và tên quốc
-      gia, mạng xã hội, nhưng có thể viết thường nhầm tên riêng hiếm gặp; bỏ dấu
-      tích “Viết tên bài kiểu câu” nếu muốn giữ nguyên.
+      từng chữ. Công cụ giữ nguyên từ viết tắt (PLS-SEM, COVID-19), tên quốc
+      gia, địa danh Việt Nam, mạng xã hội, nhưng có thể viết thường nhầm tên
+      riêng hiếm gặp; bỏ dấu tích “Viết tên bài kiểu câu” nếu muốn giữ nguyên.
     </p>
-    <h3>Tài liệu không có DOI thì sao?</h3>
+    <h3>Văn bản pháp luật Việt Nam trích theo APA thế nào?</h3>
     <p>
-      Sách in, giáo trình, luận văn trong nước thường không có DOI. Thử tìm theo
-      tên; nếu Crossref không có, viết tay theo mẫu sách:
-      Tác giả. (Năm). <em>Tên sách</em> (lần xuất bản). Nhà xuất bản.
+      APA 7 chỉ có mẫu cho luật Hoa Kỳ, nên các trường Việt Nam thường dùng mẫu
+      của báo cáo: cơ quan ban hành làm tác giả, tên văn bản kèm số hiệu in
+      nghiêng, link tới Cơ sở dữ liệu quốc gia về văn bản pháp luật nếu có.
+      Trong bài: (Quốc hội, 2020) hoặc (Chính phủ, 2023). Nếu cùng cơ quan ban
+      hành nhiều văn bản trong một năm, công cụ thêm a, b.
     </p>
     <h3>Trích dẫn thang đo trong bảng hỏi thế nào?</h3>
     <p>
-      Mỗi thang đo trong <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>
-      có sẵn tài liệu gốc theo APA. <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a>
-      ghép bảng hỏi và viết đoạn “Thang đo” cho chương 3 kèm danh mục tham khảo,
-      còn <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a>
+      Mỗi thang đo trong <a href="/goc-nghien-cuu/thang-do/"
+        >Thư viện thang đo</a
+      >
+      có sẵn tài liệu gốc theo APA. <a
+        href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a
+      >
+      ghép bảng hỏi và viết đoạn “Thang đo” cho chương 3 kèm danh mục tham khảo, còn
+      <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a>
       giúp trình bày mô hình và giả thuyết ở chương 2.
     </p>
     <h3>Công cụ có lưu danh sách của tôi không?</h3>
     <p>
-      Không. Trình duyệt gửi DOI hoặc tên bài thẳng tới Crossref và doi.org, không
-      qua máy chủ của Góc Nghiên Cứu, không kèm email hay thông tin cá nhân.
-      Chỉ lựa chọn hiển thị được nhớ trên máy bạn.
+      Danh mục chỉ được nhớ trong trình duyệt trên máy bạn, để mở lại trang vẫn
+      còn; bấm “Xóa danh mục” để xóa. Trình duyệt gửi DOI hoặc tên bài thẳng tới
+      Crossref và doi.org, không qua máy chủ của Góc Nghiên Cứu, không kèm email
+      hay thông tin cá nhân. Tài liệu nhập tay không gửi đi đâu cả.
     </p>
 
     <h2>Tài liệu tham khảo</h2>
     <ul class="text-sm">
       <li>
-        American Psychological Association. (2020). <em>Publication manual of the
-        American Psychological Association</em> (7th ed.).
-        https://doi.org/10.1037/0000165-000
+        American Psychological Association. (2020). <em
+          >Publication manual of the American Psychological Association</em
+        > (7th ed.). https://doi.org/10.1037/0000165-000
       </li>
       <li>
         Hendricks, G., Tkaczyk, D., Lin, J., &amp; Feeney, P. (2020). Crossref:

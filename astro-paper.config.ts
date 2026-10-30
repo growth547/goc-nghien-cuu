@@ -14,7 +14,7 @@ export default defineAstroPaperConfig({
     dir: "ltr",
     googleVerification: "e95tgeuTukw0ZwNNlfND3Ho7UVcpzN5bbgE6OWzEmkU",
     // GA4 measurement ID from analytics.google.com (Admin > Data streams); empty = no analytics tag.
-    gaMeasurementId: "",
+    gaMeasurementId: "G-FXE0951K7Y",
   },
   posts: {
     perPage: 8,

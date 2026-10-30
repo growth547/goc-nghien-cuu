@@ -11,9 +11,10 @@ import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
 import config from "@/config";
 
 export async function getStaticPaths() {
-  const [scales, templates] = await Promise.all([
+  const [scales, templates, concepts] = await Promise.all([
     getCollection("scales"),
     getCollection("templates"),
+    getCollection("concepts"),
   ]);
   return scales.map(scale => ({
     params: { slug: scale.id },
@@ -24,6 +25,10 @@ export async function getStaticPaths() {
       usedIn: templates
         .filter(t => t.data.constructs.some(k => k.split(":")[0] === scale.id))
         .sort((a, b) => a.data.topic.localeCompare(b.data.topic, "vi")),
+      // Concept pages (/khai-niem/<slug>/) that compare this scale with others measuring the same construct.
+      conceptsOf: concepts
+        .filter(c => c.data.constructs.some(k => k.key.split(":")[0] === scale.id))
+        .sort((a, b) => a.data.name.localeCompare(b.data.name, "vi")),
     },
   }));
 }
@@ -32,8 +37,9 @@ type Props = {
   scale: CollectionEntry<"scales">;
   all: CollectionEntry<"scales">[];
   usedIn: CollectionEntry<"templates">[];
+  conceptsOf: CollectionEntry<"concepts">[];
 };
-const { scale, all, usedIn } = Astro.props;
+const { scale, all, usedIn, conceptsOf } = Astro.props;
 const d = scale.data;
 const locale = Astro.currentLocale ?? config.site.lang;
 const itemCount = d.constructs.reduce((n, c) => n + c.items.length, 0);
@@ -341,7 +347,21 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
           href="/cong-cu/ve-mo-hinh/">công cụ vẽ mô hình nghiên cứu</a
         >; mô hình có biến trung gian hoặc điều tiết thì kiểm định bằng <a href="/cong-cu/trung-gian-dieu-tiet/"
           >công cụ kiểm định biến trung gian, điều tiết</a
-        >. Muốn so sánh với thang đo khác cùng khái niệm, xem <a href="/khai-niem/">thang đo theo khái niệm</a>.
+        >. Muốn so sánh với thang đo khác cùng khái niệm, xem {
+          conceptsOf.length > 0 ? (
+            <>
+              {conceptsOf.map((c, i) => (
+                <>
+                  {i > 0 && (i === conceptsOf.length - 1 ? " và " : ", ")}
+                  <a href={`/khai-niem/${c.id}/`}>{c.data.keyword}</a>
+                </>
+              ))}{" "}
+              (trang so sánh các thang đo cùng khái niệm) hoặc toàn bộ <a href="/khai-niem/">thang đo theo khái niệm</a>
+            </>
+          ) : (
+            <a href="/khai-niem/">thang đo theo khái niệm</a>
+          )
+        }.
       </p>
 
       <h2>Bản quyền và quyền sử dụng {d.name}</h2>

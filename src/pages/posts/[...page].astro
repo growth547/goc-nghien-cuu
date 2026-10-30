@@ -45,7 +45,8 @@ const listDescription = clip(isFirstPage
       .join("; ")}.`);
 ---
 
-<Layout title={listTitle} description={listDescription}>
+{/* Page 2+ is only a list of cards (the last one can hold a single post): crawl it, do not index it. */}
+<Layout title={listTitle} description={listDescription} noindex={!isFirstPage}>
   <Header />
 
   <Breadcrumb />

@@ -9,6 +9,10 @@ export const GET: APIRoute = async ({ site }) => {
   const lines = [
     ...header(base),
     "",
+    `## Bài viết / Guides (${posts.length})`,
+    "",
+    ...posts.map(p => `- [${p.data.title}](${u(`posts/${p.id.split("/").pop()}`)}): ${oneLine(p.data.description)}`),
+    "",
     `## Thư viện thang đo / Scale library (${scales.length})`,
     "",
     "Mỗi trang: biến quan sát nguyên văn tiếng Anh, bản dịch tiếng Việt, câu đảo chiều, nguồn đã đối chiếu, tài liệu tham khảo APA. Each page lists original English items, Vietnamese translation, reverse-scored items and verified sources.",
@@ -29,8 +33,7 @@ export const GET: APIRoute = async ({ site }) => {
     "",
     "## Optional",
     "",
-    `- [Toàn văn tóm tắt dữ kiện / Full facts file](${new URL("llms-full.txt", base).href}): số biến, nguồn, giấy phép của từng thang đo; giá trị dữ liệu`,
-    ...posts.map(p => `- [${p.data.title}](${u(`posts/${p.id.split("/").pop()}`)}): ${oneLine(p.data.description)}`),
+    `- [Toàn văn tóm tắt dữ kiện / Full facts file](${new URL("llms-full.txt", base).href}): câu trả lời mở đầu của từng bài viết; số biến, nguồn, giấy phép của từng thang đo; giá trị dữ liệu`,
     "",
   ];
   return new Response(lines.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });

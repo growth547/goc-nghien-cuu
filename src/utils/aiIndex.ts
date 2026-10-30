@@ -1,15 +1,22 @@
 // Shared data for /llms.txt and /llms-full.txt (llmstxt.org format), built from the collections.
 // Everything here is read from content files; nothing is written by hand except the tool list
-// (kept in sync with src/components/ToolCards.astro) and the site summary.
+// (kept in sync with src/components/ToolCards.astro and the /cong-cu/ hub) and the site summary.
 import { getCollection, type CollectionEntry } from "astro:content";
 import { DATASET_THEMES } from "@/content.config";
 import { postFilter } from "@/utils/postFilter";
 
 export const TOOLS = [
   ["cong-cu/bo-khao-sat", "Bộ khảo sát khoá luận / Thesis survey kit", "Chọn khái niệm trong mô hình, ra bảng hỏi tiếng Việt từ thang đo gốc, cỡ mẫu và đoạn chương 3, tải về Word."],
-  ["cong-cu/phan-tich-du-lieu", "Phân tích dữ liệu, viết chương 4 / Data analysis", "Tải file Excel khảo sát: lọc phiếu, Cronbach cho mọi thang đo, EFA, tương quan, hồi quy và chương 4 viết sẵn, không cần SPSS."],
-  ["cong-cu/tinh-co-mau", "Máy tính cỡ mẫu / Sample size calculator", "PLS-SEM (G*Power, Kock & Hadaya), hồi quy, EFA, Cochran; viết sẵn đoạn chọn mẫu cho chương 3 kèm tài liệu tham khảo."],
-  ["cong-cu/cronbach-alpha", "Tính Cronbach's alpha / Cronbach's alpha calculator", "Dán dữ liệu từ Excel hoặc SPSS, ra alpha, tương quan biến–tổng và alpha nếu loại biến."],
+  ["cong-cu/tinh-co-mau", "Máy tính cỡ mẫu / Sample size calculator", "Cỡ mẫu tối thiểu cho PLS-SEM (G*Power, Kock & Hadaya), hồi quy, EFA và công thức Cochran; viết sẵn đoạn chọn mẫu cho chương 3 kèm tài liệu tham khảo."],
+  ["cong-cu/ve-mo-hinh", "Vẽ mô hình nghiên cứu / Research model drawer", "Nối các khái niệm bằng mũi tên, tải hình PNG/SVG cho chương 2, tự viết giả thuyết H1, H2… và tính cỡ mẫu theo số mũi tên."],
+  ["cong-cu/chon-phuong-phap", "Chọn phương pháp phân tích / Method chooser", "Trả lời vài câu về biến và câu hỏi nghiên cứu, biết nên dùng t-test, ANOVA, hồi quy, logistic, EFA, PLS-SEM hay CB-SEM, kèm giả định và cỡ mẫu có nguồn."],
+  ["cong-cu/lam-sach-du-lieu", "Làm sạch dữ liệu Google Forms → SPSS / Survey data cleaner", "Đặt mã biến, đổi nhãn Likert thành số, đảo câu ngược, lọc phiếu theo quy tắc khai báo trước; ra CSV, cú pháp SPSS và đoạn chương 3."],
+  ["cong-cu/cronbach-alpha", "Tính Cronbach's alpha online / Cronbach's alpha calculator", "Dán dữ liệu từ Excel hoặc SPSS, ra alpha, tương quan biến–tổng và alpha nếu loại biến; mốc được trích nhiều nhất là 0,7 (Nunnally, 1978)."],
+  ["cong-cu/phan-tich-du-lieu", "Phân tích dữ liệu khảo sát, viết chương 4 / Data analysis", "Tải file Excel khảo sát: lọc phiếu, Cronbach cho mọi thang đo, EFA, tương quan, hồi quy và chương 4 viết sẵn, không cần SPSS."],
+  ["cong-cu/trung-gian-dieu-tiet", "Kiểm định biến trung gian, điều tiết / Mediation and moderation (PROCESS-style)", "Model 4, 6, 1, 7 của Hayes: bootstrap 5.000 lần cho tác động gián tiếp, simple slopes, Johnson–Neyman, đồ thị tương tác và đoạn chương 4."],
+  ["cong-cu/bac-si-ket-qua", "Bác sĩ kết quả / Results doctor", "Khi Cronbach thấp, KMO, HTMT, VIF không đạt hoặc giả thuyết bị bác bỏ: chẩn đoán theo quy tắc và chỉ các cách xử lý hợp lệ có trích dẫn."],
+  ["cong-cu/tinh-chi-so-tai-chinh", "Tính chỉ số tài chính từ BCTC / Financial ratio calculator", "Dán số liệu báo cáo tài chính nhiều doanh nghiệp, nhiều năm: ROA, ROE, đòn bẩy, Altman Z, Tobin's Q, NIM, nợ xấu; tải dữ liệu bảng."],
+  ["cong-cu/trich-dan-apa", "Tạo trích dẫn APA 7 online / APA 7 citation generator", "Dán DOI hoặc nhập sách, luận văn, trang web, văn bản pháp luật: ra danh mục tài liệu tham khảo APA 7 xếp A–Z, tên tác giả Việt đúng chuẩn."],
 ] as const;
 
 export const SUMMARY_VI =
@@ -57,6 +64,22 @@ export const latestValue = (d: CollectionEntry<"datasets">) => {
 };
 
 export const oneLine = (s: string) => s.replace(/\s+/g, " ").trim();
+
+/** Plain text of a post's first paragraph: its direct answer to the title question. */
+export const postLede = (p: CollectionEntry<"posts">) => {
+  const m = (p.body ?? "").match(/<p>([\s\S]*?)<\/p>/);
+  return m
+    ? oneLine(
+        m[1]
+          .replace(/<[^>]*>/g, "")
+          .replace(/&nbsp;/g, " ")
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
+          .replace(/&quot;/g, '"')
+          .replace(/&amp;/g, "&")
+      )
+    : "";
+};
 
 export function header(site: URL) {
   const u = (p: string) => pageUrl(site, p);

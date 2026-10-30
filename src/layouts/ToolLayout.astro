@@ -9,6 +9,62 @@ import config from "@/config";
 type Props = { slug: string; title: string; h1: string; description: string; lede: string; html: string };
 const { slug, title, h1, description, lede, html } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site).href;
+// "What comes next" for each tool, in thesis order: [path, anchor, rest of the sentence].
+const NEXT: Record<string, [string, string, string][]> = {
+  "bo-khao-sat": [
+    ["/cong-cu/tinh-co-mau/", "tính cỡ mẫu nghiên cứu", "theo số mũi tên của mô hình"],
+    ["/cong-cu/ve-mo-hinh/", "vẽ mô hình nghiên cứu", "cho chương 2"],
+    ["/cong-cu/trich-dan-apa/", "tạo trích dẫn APA 7", "cho bài gốc của từng thang đo"],
+    ["/posts/cach-tao-phieu-khao-sat-google-forms/", "đưa bảng hỏi lên Google Form", "đúng cách cho thang Likert"],
+  ],
+  "lam-sach-du-lieu": [
+    ["/cong-cu/cronbach-alpha/", "tính Cronbach's alpha", "cho từng thang đo"],
+    ["/cong-cu/phan-tich-du-lieu/", "phân tích dữ liệu khảo sát", "(EFA, tương quan, hồi quy)"],
+    ["/posts/phat-hien-cau-tra-loi-khao-sat-do-ai-viet/", "soát câu trả lời tự luận do AI viết", "trước khi giữ phiếu"],
+  ],
+  "phan-tich-du-lieu": [
+    ["/cong-cu/bac-si-ket-qua/", "chẩn đoán kết quả không đạt", "khi alpha, KMO hay VIF lệch ngưỡng"],
+    ["/cong-cu/trung-gian-dieu-tiet/", "kiểm định biến trung gian, điều tiết", "nếu mô hình có biến M hoặc W"],
+    ["/cong-cu/trich-dan-apa/", "định dạng tài liệu tham khảo APA 7", "cho chương 4"],
+    ["/posts/ham-y-quan-tri-cach-viet-chuong-5/", "viết hàm ý quản trị ở chương 5", "từ hệ số hồi quy và điểm trung bình"],
+  ],
+  "bac-si-ket-qua": [
+    ["/cong-cu/phan-tich-du-lieu/", "chạy lại phân tích dữ liệu", "sau khi xử lý"],
+    ["/cong-cu/trung-gian-dieu-tiet/", "kiểm định trung gian, điều tiết", "khi giả thuyết trực tiếp bị bác bỏ nhưng có lý thuyết về cơ chế gián tiếp"],
+    ["/posts/ham-y-quan-tri-cach-viet-chuong-5/#khi-gia-thuyet-bi-bac-bo", "viết chương 5 khi giả thuyết bị bác bỏ", ""],
+  ],
+  "trung-gian-dieu-tiet": [
+    ["/cong-cu/ve-mo-hinh/", "vẽ mô hình có biến trung gian, điều tiết", ""],
+    ["/cong-cu/tinh-co-mau/", "tính cỡ mẫu", "cho mô hình nhiều đường dẫn"],
+    ["/cong-cu/trich-dan-apa/", "trích dẫn Hayes (2022) theo APA 7", ""],
+  ],
+  "ve-mo-hinh": [
+    ["/cong-cu/bo-khao-sat/", "tạo bảng hỏi từ các khái niệm trong mô hình", ""],
+    ["/cong-cu/trung-gian-dieu-tiet/", "kiểm định biến trung gian, điều tiết", "sau khi có dữ liệu"],
+  ],
+  "chon-phuong-phap": [
+    ["/cong-cu/tinh-co-mau/", "tính cỡ mẫu", "cho phương pháp đã chọn"],
+    ["/cong-cu/trung-gian-dieu-tiet/", "kiểm định trung gian, điều tiết kiểu PROCESS", "nếu câu hỏi nghiên cứu là cơ chế hay điều kiện"],
+  ],
+  "tinh-co-mau": [
+    ["/cong-cu/bo-khao-sat/", "tạo bảng hỏi khảo sát", "từ thang đo gốc"],
+    ["/cong-cu/trich-dan-apa/", "trích dẫn APA 7", "cho nguồn công thức cỡ mẫu"],
+    ["/posts/cach-thu-du-mau-khao-sat-nhanh/", "thu đủ số phiếu đó nhanh", "mà không làm hỏng dữ liệu"],
+  ],
+  "trich-dan-apa": [
+    ["/thang-do/", "thư viện thang đo", "(mỗi thang đo có sẵn tài liệu tham khảo APA)"],
+    ["/cong-cu/bo-khao-sat/", "bộ khảo sát khoá luận", "(xuất Word kèm trích dẫn thang đo)"],
+  ],
+  "cronbach-alpha": [
+    ["/cong-cu/phan-tich-du-lieu/", "phân tích EFA và hồi quy", "cho toàn bộ file khảo sát"],
+    ["/cong-cu/bac-si-ket-qua/", "xử lý Cronbach's alpha thấp", "đúng quy tắc"],
+  ],
+  "tinh-chi-so-tai-chinh": [
+    ["/bien-nghien-cuu/", "định nghĩa biến nghiên cứu tài chính", "kèm code Stata"],
+    ["/cong-cu/trich-dan-apa/", "trích dẫn báo cáo tài chính, thông tư theo APA 7", ""],
+  ],
+};
+const next = NEXT[slug] ?? [];
 const ld = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -51,7 +107,23 @@ const crumbsLd = {
         </div>
       )
     }
-    <p class="text-muted-foreground mt-8 max-w-3xl text-sm">Tính xong cỡ mẫu, cần người trả lời đúng đối tượng? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")} rel="sponsored noopener">Genius Data</a>.</p>
+    <p class="text-muted-foreground mt-8 max-w-3xl text-sm">
+      {next.length > 0 && (
+        <>
+          Bước tiếp theo:{" "}
+          {next.map(([href, anchor, rest], i) => (
+            <>
+              {i > 0 && "; "}
+              <a class="text-accent underline underline-offset-4" href={href}>{anchor}</a>
+              {rest && ` ${rest}`}
+            </>
+          ))}
+          .{" "}
+        </>
+      )}
+      Đây là một trong {Object.keys(NEXT).length} <a class="text-accent underline underline-offset-4" href="/cong-cu/">công cụ nghiên cứu khoa học miễn phí</a> của Góc Nghiên Cứu.
+    </p>
+    <p class="text-muted-foreground mt-4 max-w-3xl text-sm">Tính xong cỡ mẫu, cần người trả lời đúng đối tượng? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")} rel="sponsored noopener">Genius Data</a>.</p>
   </main>
   <Footer />
 </Layout>

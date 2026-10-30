@@ -18,6 +18,7 @@ import {
 } from "@shikijs/transformers";
 import { readdirSync, readFileSync } from "node:fs";
 import { transformerFileName } from "./src/utils/transformers/fileName";
+import rehypeA11y from "./src/utils/transformers/rehypeA11y";
 import config from "./astro-paper.config";
 
 // Sitemap <lastmod>: posts use modDatetime (or pubDatetime) from their front
@@ -36,8 +37,8 @@ for (const file of readdirSync(POSTS_DIR)) {
   const date = field("modDatetime") ?? field("pubDatetime");
   if (date) postLastmod.set(file.replace(/\.mdx?$/, ""), date);
 }
-// Thin or utility pages kept out of the sitemap (they are also noindex).
-const SITEMAP_EXCLUDE = /\/(search|tags|bai-viet|404)(\/|$)/;
+// Thin or utility pages kept out of the sitemap (they are also noindex), incl. /posts/2/, /posts/3/…
+const SITEMAP_EXCLUDE = /\/(search|tags|bai-viet|404)(\/|$)|\/posts\/\d+\/?$/;
 
 export default defineConfig({
   site: config.site.url,
@@ -83,7 +84,7 @@ export default defineConfig({
         remarkToc,
         [remarkCollapse, { test: "Table of contents" }],
       ],
-      rehypePlugins: [rehypeCallouts],
+      rehypePlugins: [rehypeCallouts, rehypeA11y],
     }),
     shikiConfig: {
       themes: { light: "min-light", dark: "night-owl" },

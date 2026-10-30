@@ -1,7 +1,7 @@
 // /llms-full.txt: the llms.txt map plus concise, source-backed facts for every scale, construct page,
 // template and indicator. Every fact is copied from the content collections; nothing is generated.
 import type { APIRoute } from "astro";
-import { header, itemCount, latestValue, loadIndex, oneLine, pageUrl } from "@/utils/aiIndex";
+import { header, itemCount, latestValue, loadIndex, oneLine, pageUrl, postLede } from "@/utils/aiIndex";
 
 export const GET: APIRoute = async ({ site }) => {
   const base = site!;
@@ -66,8 +66,18 @@ export const GET: APIRoute = async ({ site }) => {
   out.push("");
 
   out.push(`## Bài viết / Guides (${posts.length})`, "");
-  for (const p of posts) out.push(`- [${p.data.title}](${u(`posts/${p.id.split("/").pop()}`)}): ${oneLine(p.data.description)}`);
-  out.push("");
+  for (const p of posts) {
+    const lede = postLede(p);
+    out.push(
+      `### ${p.data.title}`,
+      "",
+      `- URL: ${u(`posts/${p.id.split("/").pop()}`)}`,
+      `- Tóm tắt / Summary: ${oneLine(p.data.description)}`,
+      ...(lede ? [`- Trả lời ngắn / Short answer: ${lede}`] : []),
+      `- Cập nhật / Updated: ${(p.data.modDatetime ?? p.data.pubDatetime).toISOString().slice(0, 10)}`,
+      ""
+    );
+  }
 
   return new Response(out.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 };

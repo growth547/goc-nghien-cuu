@@ -221,6 +221,15 @@ const ld = [
           >Công cụ chọn phương pháp phân tích dữ liệu</a
         > gợi ý theo cấu trúc dữ liệu và câu hỏi nghiên cứu. Cần biến vĩ mô làm biến kiểm soát (tăng trưởng GDP,
         lạm phát, lãi suất)? Lấy từ <a href="/du-lieu/">dữ liệu kinh tế vĩ mô Việt Nam qua các năm</a>.
+        {
+          d.group === "Ngân hàng" && (
+            <>
+              Muốn xem trước số liệu thật trước khi tự thu thập, mở <a href="/du-lieu/ngan-hang-niem-yet/"
+                >dữ liệu BCTC ngân hàng niêm yết 2015–2025</a
+              > (bảng CSV có số trang của báo cáo gốc).
+            </>
+          )
+        }
       </p>
 
       <h2>Code Stata và R</h2>

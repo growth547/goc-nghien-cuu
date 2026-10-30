@@ -5,6 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
 import ToolCards from "@/components/ToolCards.astro";
+import JsonLd from "@/components/JsonLd.astro";
 import Icon from "@/components/Icon.astro";
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -12,12 +13,79 @@ import config from "@/config";
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const [datasets, templates] = await Promise.all([getCollection("datasets"), getCollection("templates")]);
+
+// The tools in thesis order, each with what it answers; rendered as the intro list and as ItemList JSON-LD.
+const steps: { stage: string; tools: [string, string, string][] }[] = [
+  {
+    stage: "Chương 2–3: mô hình, bảng hỏi, cỡ mẫu",
+    tools: [
+      ["chon-phuong-phap", "Chọn phương pháp phân tích", "trả lời vài câu về biến và câu hỏi nghiên cứu, biết nên dùng t-test, ANOVA, hồi quy, EFA hay PLS-SEM"],
+      ["ve-mo-hinh", "Vẽ mô hình nghiên cứu", "nối các khái niệm, tải hình PNG/SVG và tự viết giả thuyết H1, H2…"],
+      ["bo-khao-sat", "Bộ khảo sát khoá luận", "chọn khái niệm, nhận bảng hỏi tiếng Việt từ thang đo gốc kèm đoạn chương 3, tải Word"],
+      ["tinh-co-mau", "Máy tính cỡ mẫu", "cỡ mẫu tối thiểu cho PLS-SEM, hồi quy, EFA hoặc công thức Cochran, có đoạn viết sẵn và tài liệu tham khảo"],
+    ],
+  },
+  {
+    stage: "Chương 4: làm sạch và phân tích dữ liệu",
+    tools: [
+      ["lam-sach-du-lieu", "Làm sạch dữ liệu Google Forms → SPSS", "đặt mã biến, đổi nhãn Likert thành số, đảo câu ngược, lọc phiếu không hợp lệ"],
+      ["cronbach-alpha", "Tính Cronbach's alpha online", "alpha, tương quan biến–tổng và alpha nếu loại biến cho từng thang đo"],
+      ["phan-tich-du-lieu", "Phân tích dữ liệu khảo sát", "Cronbach, EFA, tương quan, hồi quy và chương 4 viết sẵn từ file Excel, không cần SPSS"],
+      ["trung-gian-dieu-tiet", "Kiểm định biến trung gian, điều tiết", "Model 4, 6, 1, 7 kiểu PROCESS của Hayes, bootstrap tác động gián tiếp, simple slopes"],
+      ["bac-si-ket-qua", "Bác sĩ kết quả", "Cronbach thấp, KMO, HTMT, VIF không đạt hay giả thuyết bị bác bỏ thì xử lý thế nào cho hợp lệ"],
+      ["tinh-chi-so-tai-chinh", "Tính chỉ số tài chính từ BCTC", "ROA, ROE, đòn bẩy, Altman Z, Tobin's Q cho đề tài dữ liệu thứ cấp"],
+    ],
+  },
+  {
+    stage: "Hoàn thiện",
+    tools: [
+      ["trich-dan-apa", "Tạo trích dẫn APA 7 online", "dán DOI hoặc nhập sách, luận văn, văn bản pháp luật, nhận danh mục tài liệu tham khảo xếp A–Z"],
+    ],
+  },
+];
+const hubUrl = new URL("cong-cu/", config.site.url).href;
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Công cụ nghiên cứu khoa học miễn phí (Góc Nghiên Cứu)",
+  url: hubUrl,
+  itemListElement: steps
+    .flatMap(s => s.tools)
+    .map(([slug, name], i) => ({ "@type": "ListItem", position: i + 1, name, url: new URL(slug + "/", hubUrl).href })),
+};
 ---
 
 <Layout title="Công cụ nghiên cứu khoa học miễn phí cho khoá luận" description="Công cụ miễn phí cho khoá luận định lượng: tạo bảng hỏi, tính cỡ mẫu, Cronbach's alpha, phân tích dữ liệu, vẽ mô hình, trích dẫn APA 7. Không cần cài đặt.">
+  <JsonLd slot="head" data={itemListLd} />
   <Header />
   <Breadcrumb />
   <Main pageTitle="Công cụ nghiên cứu khoa học miễn phí" pageDesc="Công cụ cho khoá luận, luận văn định lượng, từ bảng hỏi, cỡ mẫu tới Cronbach's alpha, phân tích dữ liệu và trích dẫn APA. Miễn phí, chạy ngay trong trình duyệt, không cần cài phần mềm.">
+    <section class="app-prose max-w-app mb-10" aria-labelledby="theo-thu-tu">
+      <p>
+        Đây là bộ công cụ nghiên cứu khoa học miễn phí cho khoá luận và luận văn định lượng: mỗi công cụ làm một
+        việc cụ thể trong quy trình, chạy trên trình duyệt (file khảo sát được xử lý ngay trên máy bạn), ghi nguồn cho ngưỡng và
+        công thức, và xuất ra đoạn văn hoặc file dùng thẳng trong bài.
+      </p>
+      <h2 id="theo-thu-tu">Dùng công cụ nào ở bước nào</h2>
+      {
+        steps.map(s => (
+          <>
+            <h3>{s.stage}</h3>
+            <ul>
+              {s.tools.map(([slug, name, what]) => (
+                <li>
+                  <a href={`/cong-cu/${slug}/`}>{name}</a>: {what}.
+                </li>
+              ))}
+            </ul>
+          </>
+        ))
+      }
+      <p>
+        Thang đo để đưa vào bảng hỏi lấy từ <a href="/thang-do/">thư viện thang đo dịch sẵn</a>; ngưỡng của mọi chỉ số
+        (Cronbach, KMO, AVE, HTMT, VIF) tra ở <a href="/nguong-chap-nhan/">bảng ngưỡng chấp nhận</a>.
+      </p>
+    </section>
     <ToolCards />
     <h2 class="text-foreground mt-14 mb-4 text-xl font-bold">Đi kèm công cụ</h2>
     <ul class="grid gap-4 sm:grid-cols-2">

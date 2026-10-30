@@ -15,15 +15,24 @@ import BackButton from "./_components/BackButton.astro";
 import BackToTopButton from "./_components/BackToTopButton.astro";
 import AdjacentPostNav from "./_components/AdjacentPostNav.astro";
 import config from "@/config";
+import { postFaq } from "@/utils/postFaq";
+import { relatedPosts } from "@/utils/relatedPosts";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   const sortedPosts = getSortedPosts(posts);
+  const related = relatedPosts(sortedPosts);
 
   return sortedPosts.map((post, index) => ({
     params: { slug: getPostSlug(post.id, post.filePath) },
     props: {
       post,
+      related: (related.get(post.id.split("/").pop()!) ?? []).map(p => ({
+        id: p.id,
+        title: p.data.title,
+        description: p.data.description,
+        filePath: p.filePath,
+      })),
       // sortedPosts is newest-first, so "older" (prev) is a higher index
       // and "newer" (next) is a lower index.
       prevPost:
@@ -54,11 +63,12 @@ type AdjacentPost = {
 
 type Props = {
   post: CollectionEntry<"posts">;
+  related: { id: string; title: string; description: string; filePath: string | undefined }[];
   prevPost: AdjacentPost;
   nextPost: AdjacentPost;
 };
 
-const { post, prevPost, nextPost } = Astro.props;
+const { post, related, prevPost, nextPost } = Astro.props;
 const locale = Astro.currentLocale ?? config.site.lang;
 
 const {
@@ -104,6 +114,8 @@ const ogImage = ogImageUrl
   canonicalURL={canonicalURL}
   pubDatetime={pubDatetime}
   modDatetime={modDatetime}
+  faq={postFaq(post.body)}
+  tags={tags}
 >
   <Header />
 
@@ -146,6 +158,22 @@ const ogImage = ogImageUrl
     >
       <Content />
     </article>
+
+    {
+      related.length > 0 && (
+        <section class="mt-10" aria-labelledby="bai-lien-quan" data-pagefind-ignore>
+          <h2 id="bai-lien-quan" class="text-foreground text-xl font-bold">Bài liên quan</h2>
+          <ul class="mt-4 space-y-3">
+            {related.map(r => (
+              <li>
+                <a class="text-accent font-medium underline underline-offset-4" href={getPostUrl(r.id, r.filePath, locale)}>{r.title}</a>
+                <p class="text-muted-foreground mt-1 text-sm">{r.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <hr class="my-8 border-dashed" />
 
@@ -201,15 +229,24 @@ const ogImage = ogImageUrl
   updateScrollProgress();
 
   function addHeadingLinks() {
+    // Only article headings with an id (ids come from rehypeA11y at build time); the link needs a
+    // name because its visible "#" is hidden from screen readers.
     const headings = Array.from(
-      document.querySelectorAll("h2, h3, h4, h5, h6")
+      document.querySelectorAll(
+        "#article h2[id], #article h3[id], #article h4[id], #article h5[id], #article h6[id]"
+      )
     );
     for (const heading of headings) {
+      if (heading.querySelector(".heading-link")) continue;
       heading.classList.add("group");
       const link = document.createElement("a");
       link.className =
         "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
       link.href = "#" + heading.id;
+      link.setAttribute(
+        "aria-label",
+        "Liên kết tới mục: " + (heading.textContent || "").trim()
+      );
 
       const span = document.createElement("span");
       span.ariaHidden = "true";

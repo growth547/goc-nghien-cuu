@@ -2,6 +2,7 @@
 import Layout from "./Layout.astro";
 import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
 import config from "@/config";
+import type { Faq } from "@/utils/postFaq";
 
 type Props = {
   /** Full <title>, usually "<post title> | <site title>". */
@@ -13,6 +14,10 @@ type Props = {
   canonicalURL?: string;
   pubDatetime?: Date;
   modDatetime?: Date | null;
+  /** Questions from the post's visible "Câu hỏi thường gặp" section (FAQPage JSON-LD). */
+  faq?: Faq;
+  /** Post tags, used as JSON-LD keywords. */
+  tags?: string[];
 };
 
 const { site } = config;
@@ -25,6 +30,8 @@ const {
   canonicalURL,
   pubDatetime,
   modDatetime,
+  faq = [],
+  tags = [],
 } = Astro.props;
 
 const pageUrl = canonicalURL ?? new URL(Astro.url.pathname, Astro.site).href;
@@ -46,9 +53,12 @@ const structuredData = {
   url: pageUrl,
   ...(pubDatetime && { datePublished: pubDatetime.toISOString() }),
   ...(lastModified && { dateModified: lastModified.toISOString() }),
+  ...(tags.length && { keywords: tags.join(", ") }),
+  isAccessibleForFree: true,
+  // The byline is the editorial team, not a person.
   author: [
     {
-      "@type": "Person",
+      "@type": "Organization",
       name: site.author,
       ...(site.profile && { url: site.profile }),
     },
@@ -63,6 +73,22 @@ const structuredData = {
     },
   },
 };
+
+const faqData = faq.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      url: pageUrl,
+      inLanguage: "vi",
+      mainEntity: faq.map(q => ({
+        "@type": "Question",
+        name: q.question,
+        acceptedAnswer: { "@type": "Answer", text: q.answer },
+      })),
+    }
+  : null;
+const ld = (data: unknown) =>
+  JSON.stringify(data).replace(/</g, "\\u003c");
 ---
 
 <Layout {title} {description} {ogImage} {canonicalURL} ogType="article">
@@ -87,8 +113,13 @@ const structuredData = {
     <script
       type="application/ld+json"
       is:inline
-      set:html={JSON.stringify(structuredData)}
+      set:html={ld(structuredData)}
     />
+    {
+      faqData && (
+        <script type="application/ld+json" is:inline set:html={ld(faqData)} />
+      )
+    }
   </Fragment>
 
   <slot />

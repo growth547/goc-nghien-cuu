@@ -1,0 +1,207 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/trung-gian-dieu-tiet.html?raw";
+---
+
+<ToolLayout
+  slug="trung-gian-dieu-tiet"
+  title="Kiểm định trung gian và điều tiết online (kiểu PROCESS Model 4, 6, 1, 7) có bootstrap"
+  h1="Kiểm định biến trung gian và biến điều tiết"
+  description="Chạy trung gian đơn, song song, nối tiếp, điều tiết và trung gian có điều tiết theo PROCESS của Hayes ngay trong trình duyệt: bootstrap 5.000 lần, simple slopes, Johnson–Neyman, đồ thị tương tác và đoạn chương 4 tiếng Việt."
+  lede="Tải file khảo sát, chọn X, M, W, Y và biến kiểm soát. Công cụ ước lượng bằng hồi quy OLS như PROCESS (Model 4, 6, 1, 7), tính khoảng tin cậy bootstrap cho tác động gián tiếp, vẽ đồ thị tương tác và Johnson–Neyman, rồi viết sẵn mục kiểm định cho chương 4 để tải về Word."
+  html={html}
+>
+  <Fragment slot="guide">
+    <h2>Chọn mô hình nào</h2>
+    <ul>
+      <li>
+        <strong>Model 4, trung gian đơn hoặc song song.</strong> Giả thuyết dạng
+        “X tác động lên Y thông qua M”. Có thể đưa 2–4 biến trung gian cùng lúc
+        khi chúng không tác động lẫn nhau, ví dụ chất lượng dịch vụ → (hài lòng,
+        niềm tin) → trung thành. Nên ước lượng đồng thời thay vì chạy từng biến riêng (Preacher &amp; Hayes, 2008).
+      </li>
+      <li>
+        <strong>Model 6, trung gian nối tiếp.</strong> Khi lý thuyết nói M1 dẫn
+        đến M2, ví dụ hài lòng → niềm tin → trung thành. Kết quả có ba tác động
+        gián tiếp: qua M1, qua chuỗi M1 → M2, và qua M2. Thứ tự M1, M2 phải lấy từ
+        lý thuyết, không chọn theo kết quả.
+      </li>
+      <li>
+        <strong>Model 1, điều tiết.</strong> Giả thuyết dạng “tác động của X lên
+        Y mạnh hơn (hoặc yếu hơn) khi W cao”. W có thể là điểm một khái niệm hoặc
+        biến nhị phân như giới tính.
+      </li>
+      <li>
+        <strong>Model 7, trung gian có điều tiết giai đoạn đầu.</strong> W điều
+        tiết đường X → M, nên tác động gián tiếp X → M → Y thay đổi theo W. Kết
+        luận dựa trên chỉ số trung gian có điều tiết (Hayes, 2015).
+      </li>
+    </ul>
+    <p>
+      Giả thuyết phải có trước khi chạy; đừng thử mọi tổ hợp X, M, W rồi chọn tổ hợp có ý nghĩa.
+    </p>
+
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        Tải file Excel hoặc CSV, mỗi dòng một phiếu. Biến quan sát đặt tên theo
+        mã khái niệm + số (CL1, CL2…), công cụ tính điểm mỗi khái niệm bằng trung
+        bình các biến. Bỏ các biến đã loại ở bước Cronbach's alpha và EFA, khai báo câu đảo chiều.
+      </li>
+      <li>
+        Chọn mô hình, X, Y, biến trung gian, biến điều tiết và biến kiểm soát.
+        Biến kiểm soát được đưa vào mọi phương trình, giống mặc định của PROCESS.
+      </li>
+      <li>
+        Giữ 5.000 mẫu bootstrap và ghi lại seed. Cùng dữ liệu, cùng seed cho cùng
+        kết quả đến từng chữ số. Bootstrap chạy nền nên trang không bị treo.
+      </li>
+      <li>
+        Tải Word gồm bảng, đồ thị (PNG) và đoạn diễn giải; đặt số mục, bảng, hình cho khớp chương 4.
+      </li>
+    </ol>
+    <p>
+      Phiếu thiếu giá trị ở biến trong mô hình bị loại (listwise), như PROCESS.
+    </p>
+
+    <h2>Đọc kết quả trung gian</h2>
+    <p>
+      Kết luận về trung gian dựa trên khoảng tin cậy bootstrap của tác động gián
+      tiếp a × b: khoảng không chứa 0 là có tác động gián tiếp. Không cần tác động
+      tổng c có ý nghĩa trước, và không cần các bước của Baron và Kenny (1986)
+      (Zhao, Lynch &amp; Chen, 2010; Hayes, 2022). Công cụ phân loại theo Zhao và
+      cộng sự (2010):
+    </p>
+    <ul>
+      <li>
+        <strong>Trung gian bổ sung</strong>: gián tiếp và trực tiếp đều có ý
+        nghĩa, cùng dấu (cách gọi cũ: trung gian một phần).
+      </li>
+      <li>
+        <strong>Trung gian cạnh tranh</strong>: cả hai có ý nghĩa nhưng ngược
+        dấu.
+      </li>
+      <li>
+        <strong>Chỉ gián tiếp</strong>: gián tiếp có ý nghĩa, trực tiếp không
+        (cách gọi cũ: trung gian toàn phần).
+      </li>
+      <li>
+        <strong>Chỉ trực tiếp</strong> hoặc <strong>không có tác động</strong>:
+        không có trung gian.
+      </li>
+    </ul>
+    <p>
+      Kiểm định Sobel (1982) chỉ in kèm để tham khảo: nó giả định a × b có phân phối chuẩn và kém nhạy hơn bootstrap. Tác động gián tiếp chuẩn hoá hoàn
+      toàn (ab × SD<sub>X</sub>/SD<sub>Y</sub>) giúp so sánh độ lớn; khi X là biến
+      nhị phân chỉ có bản chuẩn hoá một phần (ab/SD<sub>Y</sub>).
+    </p>
+
+    <h2>Đọc kết quả điều tiết</h2>
+    <p>
+      Điều tiết có ý nghĩa khi hệ số của biến tích X × W có ý nghĩa, tương đương
+      kiểm định F của ΔR² khi thêm biến tích. Sau đó “thăm dò” tương tác bằng hai
+      cách:
+    </p>
+    <ul>
+      <li>
+        <strong>Độ dốc đơn (simple slopes)</strong>: tác động của X tại W thấp,
+        trung bình, cao (trung bình ± 1 SD theo Aiken &amp; West, 1991; hoặc phân
+        vị 16, 50, 84 như mặc định PROCESS 4). Nếu trung bình − 1 SD nằm ngoài
+        miền dữ liệu, công cụ cảnh báo và bạn nên chọn phân vị.
+      </li>
+      <li>
+        <strong>Johnson–Neyman</strong>: giá trị chính xác của W mà tại đó tác
+        động của X chuyển từ không có ý nghĩa sang có ý nghĩa, kèm tỉ lệ mẫu nằm
+        trong vùng có ý nghĩa (Hayes &amp; Matthes, 2009).
+      </li>
+    </ul>
+    <p>
+      Trung tâm hoá X và W không thay đổi hệ số tương tác hay kết luận điều tiết;
+      nó chỉ làm hệ số của X dễ đọc hơn (tác động của X tại W trung bình). Với
+      Model 7, hãy dựa vào chỉ số trung gian có điều tiết: nếu khoảng tin cậy của
+      chỉ số chứa 0, đừng kết luận có điều tiết chỉ vì tác động gián tiếp có ý
+      nghĩa ở W cao mà không có ý nghĩa ở W thấp (Hayes, 2015).
+    </p>
+
+    <h2>Giả định và giới hạn</h2>
+    <ul>
+      <li>
+        <strong>Đây là hồi quy trên biến quan sát, không phải SEM.</strong> Điểm
+        khái niệm là trung bình các biến quan sát, sai số đo lường không được tách
+        ra, nên hệ số thường thấp hơn so với SEM biến tiềm ẩn. Nếu hội đồng yêu cầu
+        biến tiềm ẩn, dùng CB-SEM hoặc PLS-SEM.
+      </li>
+      <li>
+        Giả định của hồi quy OLS vẫn áp dụng: quan hệ tuyến tính, phần dư độc lập, phương sai đồng nhất. Sai số chuẩn của hệ số là OLS thông thường, như PROCESS mặc định.
+      </li>
+      <li>
+        Dữ liệu cắt ngang không chứng minh quan hệ nhân quả: viết “kết quả ủng hộ giả thuyết”, tránh “chứng minh”.
+      </li>
+      <li>
+        Kiểm định tương tác cần mẫu lớn hơn hiệu ứng chính; công cụ cảnh báo khi dưới 20 phiếu cho mỗi biến giải thích.
+      </li>
+    </ul>
+
+    <h2>Kiểm chứng</h2>
+    <p>
+      Bộ kiểm tra tự động so công cụ với một bản cài đặt độc lập bằng Python/numpy trên 10 tình huống: hệ số, sai số chuẩn, p, R², ΔR², Sobel khớp tới 7–8 chữ số; tại điểm Johnson–Neyman p đúng bằng 0,05; khoảng tin cậy bootstrap khớp tuyệt đối khi cùng chuỗi lấy mẫu và nằm trong sai số Monte Carlo khi khác bộ sinh số ngẫu nhiên. Với bộ dữ liệu công bố <code>mtcars</code> (Henderson &amp;
+      Velleman, 1981), hệ số của mô hình mpg = hp × wt khớp kết quả hàm
+      <code>lm</code> của R: 49,808; −0,120; −8,217; 0,028 (R² = 0,885).
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Aiken, L. S., &amp; West, S. G. (1991). <em
+          >Multiple regression: Testing and interpreting interactions</em
+        >. Sage.
+      </li>
+      <li>
+        Baron, R. M., &amp; Kenny, D. A. (1986). The moderator–mediator variable
+        distinction in social psychological research: Conceptual, strategic, and
+        statistical considerations. <em
+          >Journal of Personality and Social Psychology, 51</em
+        >(6), 1173–1182. https://doi.org/10.1037/0022-3514.51.6.1173
+      </li>
+      <li>
+        Hayes, A. F. (2015). An index and test of linear moderated mediation. <em
+          >Multivariate Behavioral Research, 50</em
+        >(1), 1–22. https://doi.org/10.1080/00273171.2014.962683
+      </li>
+      <li>
+        Hayes, A. F. (2022). <em
+          >Introduction to mediation, moderation, and conditional process
+          analysis: A regression-based approach</em
+        > (3rd ed.). Guilford Press.
+      </li>
+      <li>
+        Hayes, A. F., &amp; Matthes, J. (2009). Computational procedures for
+        probing interactions in OLS and logistic regression: SPSS and SAS
+        implementations. <em>Behavior Research Methods, 41</em>(3), 924–936.
+        https://doi.org/10.3758/BRM.41.3.924
+      </li>
+      <li>
+        Henderson, H. V., &amp; Velleman, P. F. (1981). Building multiple
+        regression models interactively. <em>Biometrics, 37</em>(2), 391–411.
+        https://doi.org/10.2307/2530428
+      </li>
+      <li>
+        Preacher, K. J., &amp; Hayes, A. F. (2008). Asymptotic and resampling
+        strategies for assessing and comparing indirect effects in multiple
+        mediator models. <em>Behavior Research Methods, 40</em>(3), 879–891.
+        https://doi.org/10.3758/BRM.40.3.879
+      </li>
+      <li>
+        Sobel, M. E. (1982). Asymptotic confidence intervals for indirect effects
+        in structural equation models. <em>Sociological Methodology, 13</em>,
+        290–312. https://doi.org/10.2307/270723
+      </li>
+      <li>
+        Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron
+        and Kenny: Myths and truths about mediation analysis. <em
+          >Journal of Consumer Research, 37</em
+        >(2), 197–206. https://doi.org/10.1086/651257
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

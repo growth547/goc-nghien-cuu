@@ -1,0 +1,594 @@
+<div class="panel" id="tg-in">
+  <div class="field"><span class="tg-lbl">1. Đưa dữ liệu khảo sát vào</span>
+    <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+      <input id="tg-file" class="tg-file" type="file" accept=".xlsx,.xls,.csv,.tsv,.txt">
+      <label for="tg-file" class="btn" style="cursor:pointer">Tải file Excel hoặc CSV</label>
+      <button type="button" class="btn ghost" id="tg-sample">Dùng dữ liệu mẫu (300 phiếu)</button>
+    </div>
+    <small>Mỗi dòng là một phiếu. Đặt tên biến quan sát theo mã khái niệm + số (CL1, CL2, HL1…) để công cụ tính điểm trung bình của từng khái niệm. Cột khác như tuổi, thu nhập, giới tính (mã 0/1 hoặc hai nhãn chữ) dùng được làm biến kiểm soát hoặc biến điều tiết. Dữ liệu chỉ được xử lý trong trình duyệt, không gửi lên máy chủ.</small>
+    <div id="tg-status" role="status" aria-live="polite" style="font-size:.9rem;margin-top:6px"></div></div>
+</div>
+
+<div class="panel" id="tg-setup" hidden style="margin-top:20px">
+  <div class="row">
+    <div class="field"><label for="tg-hdr">Dòng tiêu đề (tên cột)</label><select id="tg-hdr"></select></div>
+    <div class="field"><label for="tg-min">Thang đo: điểm thấp nhất và cao nhất</label>
+      <span class="row" style="gap:8px"><input id="tg-min" type="number" step="1" value="1" style="width:5em"><input id="tg-max" type="number" step="1" value="5" style="width:5em" aria-label="Điểm cao nhất của thang đo"></span>
+      <small>Dùng để đảo điểm câu đảo chiều.</small></div>
+  </div>
+  <div class="field"><label for="tg-groups">2. Khái niệm và biến quan sát (điểm khái niệm = trung bình các biến)</label>
+    <textarea id="tg-groups" rows="4" style="min-height:0"></textarea>
+    <small>Mỗi dòng một khái niệm: <code>MÃ: biến1 biến2 …</code>. Nên giữ đúng các biến còn lại sau Cronbach's alpha và EFA.</small></div>
+  <div class="field"><label for="tg-rev">Câu đảo chiều (đảo điểm trước khi tính trung bình)</label>
+    <input id="tg-rev" type="text" placeholder="Ví dụ: CP3"></div>
+  <div class="field"><label for="tg-model">3. Mô hình</label>
+    <select id="tg-model">
+      <option value="4" selected>Model 4: trung gian đơn hoặc song song (X → M → Y)</option>
+      <option value="6">Model 6: trung gian nối tiếp (X → M1 → M2 → Y)</option>
+      <option value="1">Model 1: điều tiết (W điều tiết X → Y)</option>
+      <option value="7">Model 7: trung gian có điều tiết giai đoạn đầu (W điều tiết X → M)</option>
+    </select>
+    <small id="tg-model-help"></small></div>
+  <div class="row">
+    <div class="field"><label for="tg-x">Biến độc lập X</label><select id="tg-x"></select></div>
+    <div class="field"><label for="tg-y">Biến phụ thuộc Y</label><select id="tg-y"></select></div>
+  </div>
+  <div class="row" id="tg-mrow">
+    <div class="field"><label for="tg-m1">Trung gian M1</label><select id="tg-m1"></select></div>
+    <div class="field tg-mx"><label for="tg-m2">M2</label><select id="tg-m2"></select></div>
+    <div class="field tg-mx tg-m34"><label for="tg-m3">M3</label><select id="tg-m3"></select></div>
+    <div class="field tg-mx tg-m34"><label for="tg-m4">M4</label><select id="tg-m4"></select></div>
+  </div>
+  <div class="row" id="tg-wrow">
+    <div class="field"><label for="tg-w">Biến điều tiết W</label><select id="tg-w"></select></div>
+    <div class="field"><label for="tg-probe">Điểm khảo sát tác động có điều kiện (W liên tục)</label>
+      <select id="tg-probe"><option value="sd" selected>Trung bình − 1 SD, trung bình, + 1 SD</option><option value="pct">Phân vị 16, 50, 84 (mặc định của PROCESS 4)</option></select></div>
+  </div>
+  <label class="check" id="tg-cenrow"><input id="tg-center" type="checkbox" checked> Trung tâm hoá X và W liên tục (trừ trung bình) trước khi tạo biến tích X × W</label>
+  <div class="field"><span class="tg-lbl" style="font-size:.875rem">Biến kiểm soát (đưa vào mọi phương trình)</span>
+    <div id="tg-cov" class="tg-cov"></div></div>
+  <div class="row">
+    <div class="field"><label for="tg-b">Số mẫu bootstrap</label>
+      <select id="tg-b"><option value="1000">1.000 (thử nhanh)</option><option value="5000" selected>5.000</option><option value="10000">10.000</option></select></div>
+    <div class="field"><label for="tg-seed">Seed (để tái lập kết quả)</label><input id="tg-seed" type="number" step="1" min="1" value="20261030"></div>
+    <div class="field"><label for="tg-conf">Độ tin cậy</label>
+      <select id="tg-conf"><option value="0.9">90%</option><option value="0.95" selected>95%</option><option value="0.99">99%</option></select></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="tg-sec">Số mục chương 4</label><input id="tg-sec" type="text" value="4.7"></div>
+    <div class="field"><label for="tg-tab">Bảng đầu tiên là Bảng 4.</label><input id="tg-tab" type="number" min="1" step="1" value="15"></div>
+    <div class="field"><label for="tg-fig">Hình đầu tiên là Hình 4.</label><input id="tg-fig" type="number" min="1" step="1" value="2"></div>
+  </div>
+  <div class="row" style="gap:8px;align-items:center">
+    <button type="button" class="btn" id="tg-run">Chạy mô hình</button>
+    <button type="button" class="btn ghost" id="tg-stop" hidden>Dừng bootstrap</button>
+    <progress id="tg-prog" max="1" value="0" hidden style="flex:1 1 160px"></progress>
+  </div>
+  <div id="tg-msg" role="alert"></div>
+</div>
+
+<div id="tg-out" hidden style="margin-top:20px">
+  <div class="panel">
+    <div id="tg-warn" hidden></div>
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <strong>Kết quả và đoạn văn chương 4</strong>
+      <span class="row" style="gap:8px"><button type="button" class="btn" id="tg-doc">Tải Word</button><button type="button" class="btn ghost" id="tg-copy">Sao chép</button></span>
+    </div>
+    <div id="tg-report" class="tg-report" style="line-height:1.65"></div>
+    <small class="text-muted-foreground">Ước lượng bằng hồi quy OLS trên điểm trung bình của biến quan sát, cùng cách tính với PROCESS của Hayes (sai số chuẩn OLS thông thường, khoảng tin cậy bootstrap phân vị). Đây không phải SEM với biến tiềm ẩn. Hãy kiểm tra câu chữ trước khi đưa vào luận văn.</small>
+  </div>
+</div>
+<style>
+.tg-lbl{font-weight:600}
+#tg-in .tg-file{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tg-file:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+.tg-cov{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.9rem}
+.tg-cov label{display:inline-flex;gap:6px;align-items:center;font-weight:400}
+.tg-cov input{width:auto}
+#tg-setup .check{display:flex;gap:8px;align-items:flex-start;font-size:.9rem}
+#tg-setup .check input{width:auto;margin-top:4px}
+.tg-report .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 14px;max-width:100%}
+.tg-report table{border-collapse:collapse;font-size:.88rem;width:100%}
+.tg-report th,.tg-report td{border-bottom:1px solid var(--border);padding:4px 8px;text-align:right;white-space:nowrap}
+.tg-report th:first-child,.tg-report td:first-child,.tg-report td.l,.tg-report th.l{text-align:left}
+.tg-report tr.grp td{font-weight:600;padding-top:10px;white-space:normal}
+.tg-report caption{text-align:left;font-weight:600;padding:4px 0;white-space:normal}
+.tg-report .note{font-size:.85rem;color:var(--muted-foreground);margin-top:-6px}
+.tg-report figure{margin:12px 0 18px}
+.tg-report figure .cap{font-weight:600;margin-bottom:4px}
+.tg-report figure svg{width:100%;max-width:620px;height:auto;display:block;border:1px solid var(--border);border-radius:6px}
+.tg-report .svgdl{font-size:.85rem}
+.tg-report .box{border-left:3px solid var(--accent);padding:4px 12px;margin:8px 0;font-size:.92rem}
+#tg-warn{border-left:3px solid var(--warm);padding:4px 12px;margin-bottom:12px}
+#tg-warn ul{margin:4px 0;padding-left:18px}
+</style>
+
+<script>
+(function(){
+  //#process-start
+  // Conditional process models (Hayes PROCESS models 1, 4, 6, 7) by OLS, with percentile bootstrap.
+  // Self-contained: the Web Worker is built from PROCESS_ENGINE.toString(), and scripts/check-process.mjs evaluates this block.
+  function PROCESS_ENGINE(){
+    function lgamma(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,t=x+5.5;t-=(x+0.5)*Math.log(t);let s=1.000000000190015;for(const ci of c)s+=ci/++y;return -t+Math.log(2.5066282746310005*s/x)}
+    function betacf(a,b,x){const MAXIT=300,EPS=3e-14,FPMIN=1e-300;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=MAXIT;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<EPS)break}return h}
+    function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(lgamma(a+b)-lgamma(a)-lgamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(a,b,x)/a:1-bt*betacf(b,a,1-x)/b}
+    function gammaQ(a,x){if(x<=0)return 1;const gln=lgamma(a);if(x<a+1){let ap=a,sum=1/a,del=sum;for(let n=0;n<500;n++){ap++;del*=x/ap;sum+=del;if(Math.abs(del)<Math.abs(sum)*3e-14)break}return 1-sum*Math.exp(-x+a*Math.log(x)-gln)}
+      let b=x+1-a,c=1e300,d=1/b,h=d;for(let i=1;i<500;i++){const an=-i*(i-a);b+=2;d=an*d+b;if(Math.abs(d)<1e-300)d=1e-300;c=b+an/c;if(Math.abs(c)<1e-300)c=1e-300;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<3e-14)break}return Math.exp(-x+a*Math.log(x)-gln)*h}
+    const tP=(t,df)=>Number.isNaN(t)?NaN:Number.isFinite(t)?ibeta(df/(df+t*t),df/2,0.5):0;      // two-tailed p of a t statistic
+    const fP=(F,d1,d2)=>Number.isNaN(F)?NaN:F<=0?1:F===Infinity?0:ibeta(d2/(d2+d1*F),d2/2,d1/2); // upper-tail p of an F statistic
+    const zP=z=>Number.isNaN(z)?NaN:Number.isFinite(z)?gammaQ(0.5,z*z/2):0;                       // two-tailed normal p
+    // Critical t for a two-sided interval (bisection on the tail probability).
+    function tCrit(df,conf){const a=1-conf;let lo=0,hi=1e4;for(let i=0;i<200;i++){const m=(lo+hi)/2;if(tP(m,df)>a)lo=m;else hi=m}return (lo+hi)/2}
+    function mean(a){let s=0;for(let i=0;i<a.length;i++)s+=a[i];return s/a.length}
+    function sd(a){const m=mean(a);let s=0;for(let i=0;i<a.length;i++){const d=a[i]-m;s+=d*d}return Math.sqrt(s/(a.length-1))}
+    // Quantile with linear interpolation (R type 7, numpy default).
+    function quantile(a,p){const s=Float64Array.from(a).sort(),h=(s.length-1)*p,lo=Math.floor(h);return lo+1<s.length?s[lo]+(h-lo)*(s[lo+1]-s[lo]):s[lo]}
+    const isBinary=a=>new Set(a).size===2;
+    // Small, fast, seedable PRNG (mulberry32); the Python reference re-implements it to replay the same resamples.
+    function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}}
+
+    // OLS by Householder QR on the raw design (constant first): coefficients, OLS standard errors, CIs, R², F.
+    function ols(y,X,conf){
+      const n=y.length,p=X.length+1;if(n<=p)return null;
+      const A=new Float64Array(n*p),qy=Float64Array.from(y),cn=new Float64Array(p);
+      for(let i=0;i<n;i++)A[i]=1;X.forEach((c,j)=>{for(let i=0;i<n;i++)A[(j+1)*n+i]=c[i]});
+      for(let j=0;j<p;j++){let s=0;for(let i=0;i<n;i++)s+=A[j*n+i]*A[j*n+i];cn[j]=Math.sqrt(s)}
+      const R=Array.from({length:p},()=>new Float64Array(p));
+      for(let k=0;k<p;k++){const o=k*n;let s=0;for(let i=k;i<n;i++)s+=A[o+i]*A[o+i];const nrm=Math.sqrt(s);
+        if(!(nrm>1e-9*cn[k]))return null;
+        const akk=A[o+k],alpha=akk>0?-nrm:nrm;A[o+k]=akk-alpha;const vv=s-akk*akk+A[o+k]*A[o+k];
+        for(let j=k+1;j<p;j++){const oj=j*n;let d=0;for(let i=k;i<n;i++)d+=A[o+i]*A[oj+i];const f=2*d/vv;for(let i=k;i<n;i++)A[oj+i]-=f*A[o+i]}
+        {let d=0;for(let i=k;i<n;i++)d+=A[o+i]*qy[i];const f=2*d/vv;for(let i=k;i<n;i++)qy[i]-=f*A[o+i]}
+        R[k][k]=alpha;for(let j=k+1;j<p;j++)R[k][j]=A[j*n+k]}
+      const b=new Float64Array(p);for(let k=p-1;k>=0;k--){let s=qy[k];for(let j=k+1;j<p;j++)s-=R[k][j]*b[j];b[k]=s/R[k][k]}
+      let sse=0;for(let i=p;i<n;i++)sse+=qy[i]*qy[i];
+      const Ri=Array.from({length:p},()=>new Float64Array(p));
+      for(let k=0;k<p;k++){Ri[k][k]=1/R[k][k];for(let i=k-1;i>=0;i--){let s=0;for(let j=i+1;j<=k;j++)s+=R[i][j]*Ri[j][k];Ri[i][k]=-s/R[i][i]}}
+      const df2=n-p,df1=p-1,mse=sse/df2,V=Array.from({length:p},(_,a)=>Array.from({length:p},(_,c)=>{let s=0;for(let k=Math.max(a,c);k<p;k++)s+=Ri[a][k]*Ri[c][k];return mse*s}));
+      const my=mean(y);let sst=0;for(let i=0;i<n;i++)sst+=(y[i]-my)**2;
+      const r2=1-sse/sst,F=df1?((sst-sse)/df1)/mse:NaN,tc=tCrit(df2,conf);
+      const coef=Array.from(b,(v,j)=>{const se=Math.sqrt(V[j][j]),t=v/se;return {b:v,se,t,p:tP(t,df2),lo:v-tc*se,hi:v+tc*se}});
+      return {n,coef,V,sse,sst,mse,r2,df1,df2,F,fp:fP(F,df1,df2),tc}}
+    // Normal equations by Cholesky from a cross-product matrix S (q × q, flat), predictors P, outcome o (bootstrap path).
+    function cholSolve(S,q,P,o){const k=P.length,L=new Float64Array(k*k),r=new Float64Array(k);
+      for(let i=0;i<k;i++)for(let j=0;j<=i;j++){let s=S[P[i]*q+P[j]];for(let m=0;m<j;m++)s-=L[i*k+m]*L[j*k+m];
+        if(i===j){if(!(s>1e-10*S[P[i]*q+P[i]]))return null;L[i*k+i]=Math.sqrt(s)}else L[i*k+j]=s/L[j*k+j]}
+      for(let i=0;i<k;i++){let s=S[P[i]*q+o];for(let m=0;m<i;m++)s-=L[i*k+m]*r[m];r[i]=s/L[i*k+i]}
+      for(let i=k-1;i>=0;i--){let s=r[i];for(let m=i+1;m<k;m++)s-=L[m*k+i]*r[m];r[i]=s/L[i*k+i]}
+      return r}
+
+    // raw: {X, Y, M: [..], W, C: [..]} numeric arrays (NaN = missing). o: {model, center, probe: 'sd'|'pct', conf}.
+    function prepare(raw,o){
+      const model=+o.model,M0=raw.M||[],C0=raw.C||[],cols={X:raw.X,Y:raw.Y};
+      if(model===1&&M0.length)throw new Error('Model 1 không có biến trung gian.');
+      if(model===4&&(M0.length<1||M0.length>4))throw new Error('Model 4 cần 1 đến 4 biến trung gian.');
+      if(model===6&&M0.length!==2)throw new Error('Model 6 cần đúng 2 biến trung gian theo thứ tự M1 → M2.');
+      if(model===7&&(M0.length<1||M0.length>4))throw new Error('Model 7 cần 1 đến 4 biến trung gian.');
+      if((model===1||model===7)&&!raw.W)throw new Error('Cần chọn biến điều tiết W.');
+      M0.forEach((m,j)=>cols['M'+(j+1)]=m);if(model===1||model===7)cols.W=raw.W;C0.forEach((c,j)=>cols['C'+(j+1)]=c);
+      const names=Object.keys(cols),N=raw.X.length,keep=[];
+      for(let i=0;i<N;i++)if(names.every(nm=>Number.isFinite(cols[nm][i])))keep.push(i);
+      const d={};names.forEach(nm=>d[nm]=Float64Array.from(keep,i=>cols[nm][i]));
+      const n=keep.length,k=M0.length,conf=o.conf||0.95,probe=o.probe==='pct'?'pct':'sd';
+      const xBin=isBinary(d.X),wBin=d.W?isBinary(d.W):false,cen=!!o.center&&(model===1||model===7);
+      const mx=cen&&!xBin?mean(d.X):0,mw=cen&&d.W&&!wBin?mean(d.W):0;
+      const X=d.X.map(v=>v-mx),vars={X,Y:d.Y};
+      for(let j=1;j<=k;j++)vars['M'+j]=d['M'+j];
+      if(d.W){vars.W=d.W.map(v=>v-mw);vars.XW=X.map((v,i)=>v*vars.W[i])}
+      C0.forEach((_,j)=>vars['C'+(j+1)]=d['C'+(j+1)]);
+      const probeVals=(a,bin)=>bin?[...new Set(a)].sort((x,y)=>x-y):probe==='pct'?[0.16,0.5,0.84].map(p=>quantile(a,p)):(()=>{const m=mean(a),s=sd(a);return [m-s,m,m+s]})();
+      const wOrig=d.W?probeVals(d.W,wBin):[],xOrig=probeVals(d.X,xBin);
+      const cv=C0.map((_,j)=>'C'+(j+1)),ms=Array.from({length:k},(_,j)=>'M'+(j+1)),eqs=[];
+      if(model===4){ms.forEach(m=>eqs.push({out:m,pred:['X',...cv]}));eqs.push({out:'Y',pred:['X',...ms,...cv]})}
+      if(model===6)eqs.push({out:'M1',pred:['X',...cv]},{out:'M2',pred:['X','M1',...cv]},{out:'Y',pred:['X','M1','M2',...cv]});
+      if(model===1)eqs.push({out:'Y',pred:['X','W','XW',...cv],mod:true});
+      if(model===7){ms.forEach(m=>eqs.push({out:m,pred:['X','W','XW',...cv],mod:true}));eqs.push({out:'Y',pred:['X',...ms,...cv]})}
+      const range=a=>{let lo=Infinity,hi=-Infinity;for(const v of a){if(v<lo)lo=v;if(v>hi)hi=v}return [lo,hi]};
+      return {model,k,n,nDropped:N-n,xBin,wBin,center:cen,mx,mw,conf,probe,wOrig,wModel:wOrig.map(v=>v-mw),xOrig,xModel:xOrig.map(v=>v-mx),
+        wRange:d.W?range(d.W):null,xRange:range(d.X),eqs,cv,vars,sdX:sd(d.X),sdY:sd(d.Y),
+        sdW:d.W?sd(d.W):NaN,meanW:d.W?mean(d.W):NaN,meanX:mean(d.X)}}
+
+    // Effects that are bootstrapped. coef(eq, name) → slope; sdX, sdY from the same (re)sample.
+    function effects(pr,coef,sdX,sdY){const out={},k=pr.k,std=v=>pr.xBin?v/sdY:v*sdX/sdY;
+      const finish=ind=>{ind.forEach((v,j)=>out['ind:'+(j+1)]=v);const tot=ind.reduce((s,v)=>s+v,0);if(ind.length>1)out['ind:total']=tot;
+        ind.forEach((v,j)=>out['std:'+(j+1)]=std(v));if(ind.length>1)out['std:total']=std(tot);
+        for(let i=0;i<ind.length;i++)for(let j=i+1;j<ind.length;j++)out[`con:${i+1}-${j+1}`]=ind[i]-ind[j]};
+      if(pr.model===4)finish(Array.from({length:k},(_,j)=>coef('M'+(j+1),'X')*coef('Y','M'+(j+1))));
+      if(pr.model===6){const a1=coef('M1','X'),a2=coef('M2','X'),d21=coef('M2','M1'),b1=coef('Y','M1'),b2=coef('Y','M2');finish([a1*b1,a1*d21*b2,a2*b2])}
+      if(pr.model===7)for(let j=1;j<=k;j++){const a1=coef('M'+j,'X'),a3=coef('M'+j,'XW'),b=coef('Y','M'+j);out['imm:'+j]=a3*b;pr.wModel.forEach((w,i)=>out[`cind:${j}:${i}`]=(a1+a3*w)*b)}
+      return out}
+
+    // Johnson–Neyman: values of W (model metric) where |b1 + b3·W| / SE = t_crit, i.e. the roots of A·W² + B·W + C = 0.
+    function jn(b1,b3,v11,v33,v13,tc,lo,hi){const t2=tc*tc,A=b3*b3-t2*v33,B=2*(b1*b3-t2*v13),C=b1*b1-t2*v11,roots=[];
+      if(Math.abs(A)<1e-14*(b3*b3+t2*v33)){if(B!==0)roots.push(-C/B)}
+      else{const D=B*B-4*A*C;if(D>=0){const q=-0.5*(B+(B>=0?1:-1)*Math.sqrt(D));roots.push(q/A);if(q!==0)roots.push(C/q)}}
+      const inside=roots.filter(r=>r>=lo&&r<=hi).sort((a,b)=>a-b),pts=[lo,...inside,hi],segs=[];
+      for(let i=0;i+1<pts.length;i++){const m=(pts[i]+pts[i+1])/2,th=b1+b3*m,se=Math.sqrt(v11+m*m*v33+2*m*v13);segs.push({from:pts[i],to:pts[i+1],sig:Math.abs(th/se)>tc,sign:Math.sign(th)})}
+      return {roots:inside,all:roots.sort((a,b)=>a-b),segs}}
+
+    function estimate(pr){const V=pr.vars,conf=pr.conf,res={eqs:[]};
+      for(const e of pr.eqs){const f=ols(V[e.out],e.pred.map(nm=>V[nm]),conf);if(!f)throw new Error(`Không ước lượng được phương trình của ${e.out} (biến không biến thiên hoặc trùng nhau, hoặc quá ít phiếu).`);
+        const r={out:e.out,pred:['const',...e.pred],fit:f,mod:!!e.mod};
+        if(e.mod){const red=ols(V[e.out],e.pred.filter(nm=>nm!=='XW').map(nm=>V[nm]),conf),dr2=f.r2-red.r2,Fc=dr2/((1-f.r2)/f.df2);r.change={dr2,F:Fc,df1:1,df2:f.df2,p:fP(Fc,1,f.df2)}}
+        res.eqs.push(r)}
+      if(pr.model===4||pr.model===6){const pred=['X',...pr.cv],f=ols(V.Y,pred.map(nm=>V[nm]),conf);res.total={out:'Y',pred:['const',...pred],fit:f}}
+      const eq=name=>res.eqs.find(r=>r.out===name),cf=(name,nm)=>{const r=eq(name);return r.fit.coef[r.pred.indexOf(nm)]};
+      res.effects=effects(pr,(e,nm)=>cf(e,nm).b,pr.sdX,pr.sdY);
+      // Sobel (first-order) for simple a·b paths only: secondary information.
+      res.sobel={};const sobel=(a,b)=>{const se=Math.sqrt(b.b*b.b*a.se*a.se+a.b*a.b*b.se*b.se),z=a.b*b.b/se;return {ab:a.b*b.b,se,z,p:zP(z)}};
+      if(pr.model===4)for(let j=1;j<=pr.k;j++)res.sobel[j]=sobel(cf('M'+j,'X'),cf('Y','M'+j));
+      if(pr.model===6){res.sobel[1]=sobel(cf('M1','X'),cf('Y','M1'));res.sobel[3]=sobel(cf('M2','X'),cf('Y','M2'))}
+      // Conditional effects of X at W, Johnson–Neyman and plot data for each moderated equation.
+      res.cond=[];
+      for(const r of res.eqs.filter(r=>r.mod)){const f=r.fit,ix=r.pred.indexOf('X'),iw=r.pred.indexOf('W'),ixw=r.pred.indexOf('XW'),b=f.coef.map(c=>c.b);
+        const b1=b[ix],b3=b[ixw],v11=f.V[ix][ix],v33=f.V[ixw][ixw],v13=f.V[ix][ixw];
+        const at=w=>{const th=b1+b3*w,se=Math.sqrt(v11+w*w*v33+2*w*v13),t=th/se;return {theta:th,se,t,p:tP(t,f.df2),lo:th-f.tc*se,hi:th+f.tc*se}};
+        const rows=pr.wModel.map((w,i)=>({wOrig:pr.wOrig[i],wModel:w,...at(w)}));
+        const covPart=r.pred.reduce((s,nm,j)=>/^C\d+$/.test(nm)?s+b[j]*mean(V[nm]):s,0);
+        const yhat=(x,w)=>b[0]+b1*x+b[iw]*w+b3*x*w+covPart;
+        const xs=pr.xBin?pr.xModel:[pr.xModel[0],pr.xModel[pr.xModel.length-1]];
+        const lines=pr.wModel.map((w,i)=>({wOrig:pr.wOrig[i],pts:xs.map(x=>[x+pr.mx,yhat(x,w)])}));
+        const c={out:r.out,rows,lines};
+        if(!pr.wBin){const lo=pr.wRange[0]-pr.mw,hi=pr.wRange[1]-pr.mw,J=jn(b1,b3,v11,v33,v13,f.tc,lo,hi),Wo=V.W;
+          const share=(a,z)=>{let m=0;for(const v of Wo)if(v>=a-1e-12&&v<=z+1e-12)m++;return m/Wo.length};
+          c.jn={roots:J.roots.map(v=>v+pr.mw),all:J.all.map(v=>v+pr.mw),rootRows:J.roots.map(v=>({w:v+pr.mw,...at(v)})),
+            segs:J.segs.map(s=>({from:s.from+pr.mw,to:s.to+pr.mw,sig:s.sig,sign:s.sign,share:share(s.from,s.to)})),
+            curve:Array.from({length:81},(_,i)=>{const w=lo+(hi-lo)*i/80,a=at(w);return [w+pr.mw,a.theta,a.lo,a.hi]})}}
+        res.cond.push(c)}
+      return res}
+
+    // S = Z[idx]ᵀ Z[idx] for row-major Z (n × q): gather the resampled rows column-wise into G, then dot products.
+    function crossprod(S,Z,G,idx,n,q){for(let i=0;i<n;i++){const o=idx[i]*q;for(let a=0;a<q;a++)G[a*n+i]=Z[o+a]}
+      for(let a=0;a<q;a++){const oa=a*n;for(let c=a;c<q;c++){const oc=c*n;let s=0;for(let i=0;i<n;i++)s+=G[oa+i]*G[oc+i];S[a*q+c]=S[c*q+a]=s}}}
+    // Percentile bootstrap: resample rows with replacement, refit every equation, keep the effects.
+    // Columns are centred once at the full-sample means (slopes unchanged, better conditioning of the cross-products).
+    function bootstrap(pr,B,seed,onProgress){
+      const list=[...new Set(pr.eqs.flatMap(e=>[e.out,...e.pred]))],q=list.length+1,n=pr.n,Z=new Float64Array(n*q);
+      for(let i=0;i<n;i++)Z[i*q]=1;
+      list.forEach((nm,j)=>{const v=pr.vars[nm],m=mean(v);for(let i=0;i<n;i++)Z[i*q+j+1]=v[i]-m});
+      const pos=nm=>list.indexOf(nm)+1,E=pr.eqs.map(e=>({name:e.out,o:pos(e.out),P:[0,...e.pred.map(pos)],pred:['const',...e.pred]})),ix=pos('X'),iy=pos('Y');
+      const keys=Object.keys(effects(pr,()=>1,1,1)),K=keys.length,draws=keys.map(()=>new Float64Array(B));
+      const rnd=mulberry32(seed>>>0),S=new Float64Array(q*q),G=new Float64Array(n*q),idx=new Int32Array(n),sol={};let redraw=0;
+      const coef=(eq,nm)=>{const e=E.find(x=>x.name===eq);return sol[eq][e.pred.indexOf(nm)]};
+      for(let b=0;b<B;){
+        for(let i=0;i<n;i++)idx[i]=Math.floor(rnd()*n);
+        crossprod(S,Z,G,idx,n,q);
+        let ok=true;for(const e of E){const r=cholSolve(S,q,e.P,e.o);if(!r){ok=false;break}sol[e.name]=r}
+        if(!ok){if(++redraw>B)throw new Error('Quá nhiều mẫu bootstrap không ước lượng được (biến nhị phân quá lệch hoặc quá ít phiếu).');continue}
+        const vx=(S[ix*q+ix]-S[ix]*S[ix]/n)/(n-1),vy=(S[iy*q+iy]-S[iy]*S[iy]/n)/(n-1),ef=effects(pr,coef,Math.sqrt(vx),Math.sqrt(vy));
+        for(let j=0;j<K;j++)draws[j][b]=ef[keys[j]];
+        b++;if(onProgress&&b%250===0)onProgress(b/B)}
+      // 95% with B = 5000: the 125th and 4876th sorted values, as in PROCESS.
+      const lo=Math.max(1,Math.floor(B*(1-pr.conf)/2+1e-9)),stats={};
+      keys.forEach((k,j)=>{const s=draws[j].slice().sort();stats[k]={se:sd(draws[j]),lo:s[lo-1],hi:s[B-lo]}});
+      return {B,seed,redraw,stats}}
+
+    return {tP,fP,zP,tCrit,mean,sd,quantile,mulberry32,ols,prepare,effects,jn,estimate,bootstrap}
+  }
+  //#process-end
+
+  //#data-start
+  // ---- reading files (same conventions as the survey analysis tool) ----
+  const normText=s=>String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();
+  function parseCSV(text){
+    text=String(text).replace(/^﻿/,'');
+    let first='';{let q=false,start=0;for(let i=0;i<=text.length;i++){const c=text[i];if(c==='"')q=!q;else if(!q&&(c==='\n'||i===text.length)){const l=text.slice(start,i);if(l.trim()){first=l;break}start=i+1}}}
+    const count=ch=>{let q=false,n=0;for(const c of first){if(c==='"')q=!q;else if(!q&&c===ch)n++}return n};
+    const d=count('\t')>0?'\t':count(';')>count(',')?';':',';
+    const rows=[];let row=[],f='',q=false,quoted=false;
+    for(let i=0;i<text.length;i++){const c=text[i];
+      if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c;continue}
+      if(c==='"'&&!quoted&&f.trim()===''){q=true;quoted=true;f='';continue}
+      if(c===d){row.push(f);f='';quoted=false;continue}
+      if(c==='\r')continue;
+      if(c==='\n'){row.push(f);rows.push(row);row=[];f='';quoted=false;continue}
+      f+=c}
+    if(f!==''||row.length){row.push(f);rows.push(row)}
+    return rows.map(r=>r.map(v=>v.trim())).filter(r=>r.some(v=>v!==''));
+  }
+  // The variable code in a header: "CL1", "CL1. Nhân viên…", "Mức độ đồng ý [CL1. …]" (Google Forms grid), "… (CL1)".
+  function extractCode(h){
+    const s=String(h==null?'':h).normalize('NFC').replace(/\s+/g,' ').trim();
+    if(/^[\p{L}][\p{L}\p{N}_.]*$/u.test(s))return s;
+    let m=s.match(/\[\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)\]–-]/u);if(m)return m[1];
+    m=s.match(/^([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)–-]\s*\S/u);if(m)return m[1];
+    m=s.match(/[[(]\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[\])]\s*$/u);if(m)return m[1];
+    return s;
+  }
+  const ITEM_RE=/^([\p{L}][\p{L}\p{N}_.]*?)[_.]?(\d+)$/u;
+  const groupOf=c=>{const m=String(c).match(ITEM_RE);return m?m[1].replace(/[_.]+$/,'').toLocaleUpperCase('vi'):null};
+  const isNumStr=s=>/^[-+]?\d+(?:[.,]\d+)?$/.test(s);
+  function pickHeaderRow(raw){let best=0,bs=-Infinity;for(let r=0;r<Math.min(6,raw.length);r++){const cells=raw[r].map(v=>String(v==null?'':v).trim()).filter(Boolean);if(!cells.length)continue;
+      const codes=cells.filter(v=>groupOf(extractCode(v))).length,text=cells.filter(v=>!isNumStr(v)).length,score=codes*2+text-(cells.length-text)*3;if(score>bs){bs=score;best=r}}return best}
+  function buildTable(raw,hi){const head=(raw[hi]||[]).map(v=>String(v==null?'':v).trim());let width=head.length;for(let r=hi+1;r<Math.min(raw.length,hi+50);r++)width=Math.max(width,raw[r].length);
+    const header=[],seen=new Map();
+    for(let j=0;j<width;j++){const orig=head[j]||'';let c=orig?extractCode(orig):`Cột ${j+1}`;const k=c.toLowerCase();if(seen.has(k)){seen.set(k,seen.get(k)+1);c=`${c}_dup${seen.get(k)}`}else seen.set(k,1);header.push(c)}
+    const rows=[];for(let r=hi+1;r<raw.length;r++){const x=raw[r];if(!x||!x.some(v=>String(v==null?'':v).trim()!==''))continue;const row=new Array(width);for(let j=0;j<width;j++)row[j]=x[j]==null?'':x[j];rows.push(row)}
+    return {header,rows}}
+  const LIKERT=new Map([['hoan toan khong dong y',1],['rat khong dong y',1],['khong dong y',2],['trung lap',3],['binh thuong',3],['phan van',3],['khong y kien',3],['trung dung',3],
+    ['khong dong y cung khong phan doi',3],['dong y',4],['hoan toan dong y',5],['rat dong y',5],
+    ['strongly disagree',1],['disagree',2],['neutral',3],['neither agree nor disagree',3],['agree',4],['strongly agree',5]]);
+  function toNum(v){if(typeof v==='number')return Number.isFinite(v)?v:NaN;const s=String(v==null?'':v).trim();if(!s)return NaN;if(isNumStr(s))return parseFloat(s.replace(',','.'));
+    const m=s.match(/^(\d+)\s*[-–—:.)=]\s*\p{L}/u);return m?+m[1]:NaN}
+  const likertNum=v=>{const x=toNum(v);if(!Number.isNaN(x))return x;return LIKERT.get(normText(v))||NaN};
+  const ID_RE=/^(id|stt|so thu tu|ma phieu|ma so|timestamp|dau thoi gian|thoi gian|email|ho ten|ten)$/;
+  const parseGroups=text=>String(text).split('\n').map(l=>{const i=l.indexOf(':');return i<0?null:[l.slice(0,i),l.slice(i+1)]}).filter(Boolean)
+    .map(([g,v])=>({code:g.trim(),items:v.trim().split(/[\s,;]+/).filter(Boolean)})).filter(g=>g.code&&g.items.length);
+  function suggestGroups(header){const g={};header.forEach(h=>{const k=groupOf(h);if(k)(g[k]=g[k]||[]).push(h)});return Object.entries(g).filter(([,it])=>it.length>=2).map(([code,items])=>({code,items}))}
+  // Analysis variables: construct scores (mean of items; missing if any item is missing) and other usable columns
+  // (numeric, or exactly two text labels coded 0/1).
+  function buildVars(tbl,groups,rev,lo,hi){const H=tbl.header,ix=new Map(H.map((h,j)=>[h,j])),n=tbl.rows.length,out=[],notes=[],used=new Set(),revSet=new Set(rev);
+    for(const g of groups){const miss=g.items.filter(h=>!ix.has(h));if(miss.length)notes.push(`Khái niệm ${g.code}: không tìm thấy cột ${miss.join(', ')}.`);
+      const its=g.items.filter(h=>ix.has(h));if(!its.length)continue;its.forEach(h=>used.add(h));
+      const v=new Float64Array(n);for(let i=0;i<n;i++){let s=0;for(const h of its){let x=likertNum(tbl.rows[i][ix.get(h)]);if(revSet.has(h))x=lo+hi-x;s+=x}v[i]=s/its.length}
+      out.push({name:g.code,kind:'construct',items:its,values:v})}
+    H.forEach((h,j)=>{if(used.has(h)||ID_RE.test(normText(h)))return;const vals=tbl.rows.map(r=>r[j]),ne=vals.filter(v=>String(v).trim()!=='');if(!ne.length)return;
+      const nums=ne.map(toNum);
+      if(nums.filter(Number.isFinite).length/ne.length>=0.9){const v=Float64Array.from(vals,toNum);
+        if(new Set(v.filter(Number.isFinite)).size<2)return;
+        let seq=true;for(let i=0;i<n;i++)if(v[i]!==i+1){seq=false;break}if(seq)return;
+        out.push({name:h,kind:new Set(v.filter(Number.isFinite)).size===2?'bin':'num',values:v});return}
+      const labs=[...new Set(ne.map(v=>String(v).trim()))];
+      if(labs.length===2){labs.sort((a,b)=>a.localeCompare(b,'vi'));const v=Float64Array.from(vals,x=>{const t=String(x).trim();return t===labs[0]?0:t===labs[1]?1:NaN});
+        out.push({name:h,kind:'bin',values:v,map:labs});notes.push(`Cột ${h} có hai nhãn nên được mã hoá ${labs[0]} = 0, ${labs[1]} = 1.`)}});
+    return {vars:out,notes}}
+  //#data-end
+
+  //#report-start
+  const fx=(x,dp)=>{if(!Number.isFinite(x))return '—';const s=Math.abs(x).toFixed(dp),[i,f]=s.split('.');return (x<0&&+s!==0?'−':'')+i.replace(/\B(?=(\d{3})+(?!\d))/g,'.')+(f?','+f:'')};
+  const f3=x=>fx(x,3),f2=x=>fx(x,2);
+  const pf=p=>!Number.isFinite(p)?'—':p<0.001?'&lt; 0,001':fx(p,3);
+  const sig=p=>!Number.isFinite(p)?'—':p<0.001?'&lt; 0,001':'= '+fx(p,3);
+  const escH=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const listVi=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' và '+a[a.length-1];
+  const REF={
+    aiken91:'Aiken, L. S., &amp; West, S. G. (1991). <em>Multiple regression: Testing and interpreting interactions</em>. Sage.',
+    baron86:'Baron, R. M., &amp; Kenny, D. A. (1986). The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations. <em>Journal of Personality and Social Psychology, 51</em>(6), 1173–1182. https://doi.org/10.1037/0022-3514.51.6.1173',
+    hayes09:'Hayes, A. F., &amp; Matthes, J. (2009). Computational procedures for probing interactions in OLS and logistic regression: SPSS and SAS implementations. <em>Behavior Research Methods, 41</em>(3), 924–936. https://doi.org/10.3758/BRM.41.3.924',
+    hayes15:'Hayes, A. F. (2015). An index and test of linear moderated mediation. <em>Multivariate Behavioral Research, 50</em>(1), 1–22. https://doi.org/10.1080/00273171.2014.962683',
+    hayes22:'Hayes, A. F. (2022). <em>Introduction to mediation, moderation, and conditional process analysis: A regression-based approach</em> (3rd ed.). Guilford Press.',
+    preacher08:'Preacher, K. J., &amp; Hayes, A. F. (2008). Asymptotic and resampling strategies for assessing and comparing indirect effects in multiple mediator models. <em>Behavior Research Methods, 40</em>(3), 879–891. https://doi.org/10.3758/BRM.40.3.879',
+    sobel82:'Sobel, M. E. (1982). Asymptotic confidence intervals for indirect effects in structural equation models. <em>Sociological Methodology, 13</em>, 290–312. https://doi.org/10.2307/270723',
+    zhao10:'Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. <em>Journal of Consumer Research, 37</em>(2), 197–206. https://doi.org/10.1086/651257',
+  };
+
+  // ---- figures: plain SVG in APA style (white background so they print and paste the same in light and dark themes) ----
+  function niceTicks(lo,hi,n){if(!(hi>lo)){lo-=1;hi+=1}const raw=(hi-lo)/n,mag=Math.pow(10,Math.floor(Math.log10(raw))),st=[1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=raw)||10*mag;
+    const a=Math.floor(lo/st)*st,b=Math.ceil(hi/st)*st,t=[];for(let v=a;v<=b+st*1e-9;v+=st)t.push(+v.toFixed(10));return {lo:a,hi:b,ticks:t,step:st}}
+  const tickLab=(v,step)=>fx(v,Math.max(0,Math.min(3,-Math.floor(Math.log10(step)+1e-9)+(String(step).includes('.25')||String(step).includes('.5')?1:0))));
+  function axes(W,H,L,R,T,Bm,xs,ys,xLab,yLab){const px=v=>L+(v-xs.lo)/(xs.hi-xs.lo)*(W-L-R),py=v=>H-Bm-(v-ys.lo)/(ys.hi-ys.lo)*(H-T-Bm);
+    let s=`<rect width="${W}" height="${H}" fill="#fff"/><g stroke="#222" stroke-width="1" fill="none"><path d="M${L} ${T}V${H-Bm}H${W-R}"/></g><g font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222">`;
+    xs.ticks.forEach(v=>{s+=`<line x1="${px(v)}" x2="${px(v)}" y1="${H-Bm}" y2="${H-Bm+5}" stroke="#222"/><text x="${px(v)}" y="${H-Bm+19}" text-anchor="middle">${tickLab(v,xs.step)}</text>`});
+    ys.ticks.forEach(v=>{s+=`<line x1="${L-5}" x2="${L}" y1="${py(v)}" y2="${py(v)}" stroke="#222"/><text x="${L-8}" y="${py(v)+4}" text-anchor="end">${tickLab(v,ys.step)}</text>`});
+    s+=`<text x="${(L+W-R)/2}" y="${H-8}" text-anchor="middle" font-size="13">${escH(xLab)}</text><text transform="translate(16 ${(T+H-Bm)/2}) rotate(-90)" text-anchor="middle" font-size="13">${escH(yLab)}</text></g>`;
+    return {s,px,py}}
+  function svgInteraction(c,lab,levelNames){const W=600,H=380,L=64,R=170,T=20,Bm=52,xsAll=c.lines.flatMap(l=>l.pts.map(p=>p[0])),ysAll=c.lines.flatMap(l=>l.pts.map(p=>p[1]));
+    const xs=niceTicks(Math.min(...xsAll),Math.max(...xsAll),5),ys=niceTicks(Math.min(...ysAll),Math.max(...ysAll),5),ax=axes(W,H,L,R,T,Bm,xs,ys,lab.x,lab.y);
+    const dash=['','7 4','2 3','10 3 2 3'],mk=['circle','rect','tri','circle'];let s=ax.s;
+    c.lines.forEach((l,i)=>{const d=l.pts.map((p,j)=>`${j?'L':'M'}${ax.px(p[0]).toFixed(1)} ${ax.py(p[1]).toFixed(1)}`).join('');
+      s+=`<path d="${d}" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="${dash[i%4]}"/>`;
+      l.pts.forEach(p=>{const x=ax.px(p[0]),y=ax.py(p[1]);s+=mk[i%4]==='rect'?`<rect x="${x-4}" y="${y-4}" width="8" height="8" fill="#fff" stroke="#222" stroke-width="1.5"/>`:mk[i%4]==='tri'?`<path d="M${x} ${y-5}L${x+5} ${y+4}L${x-5} ${y+4}Z" fill="#222"/>`:`<circle cx="${x}" cy="${y}" r="4" fill="${i?'#fff':'#222'}" stroke="#222" stroke-width="1.5"/>`});
+      const ly=T+14+i*22;s+=`<path d="M${W-R+14} ${ly}h30" stroke="#222" stroke-width="2" stroke-dasharray="${dash[i%4]}"/><text x="${W-R+50}" y="${ly+4}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222">${escH(levelNames[i])}</text>`});
+    s+=`<text x="${W-R+14}" y="${T}" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#222">${escH(lab.w)}</text>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Đồ thị tương tác">${s}</svg>`}
+  function svgJN(c,lab,conf){const W=600,H=380,L=64,R=20,T=20,Bm=52,cv=c.jn.curve,xs=niceTicks(cv[0][0],cv[cv.length-1][0],6),
+      ys=niceTicks(Math.min(0,...cv.map(p=>p[2])),Math.max(0,...cv.map(p=>p[3])),5),ax=axes(W,H,L,R,T,Bm,xs,ys,lab.w,lab.y);let s=ax.s;
+    const band=cv.map(p=>`${ax.px(p[0]).toFixed(1)} ${ax.py(p[3]).toFixed(1)}`).concat(cv.slice().reverse().map(p=>`${ax.px(p[0]).toFixed(1)} ${ax.py(p[2]).toFixed(1)}`));
+    s+=`<path d="M${band.join('L')}Z" fill="#d6d6d6" stroke="none"/>`;
+    s+=`<line x1="${L}" x2="${W-R}" y1="${ax.py(0)}" y2="${ax.py(0)}" stroke="#555" stroke-dasharray="4 3"/>`;
+    s+=`<path d="M${cv.map(p=>`${ax.px(p[0]).toFixed(1)} ${ax.py(p[1]).toFixed(1)}`).join('L')}" fill="none" stroke="#222" stroke-width="2"/>`;
+    c.jn.roots.forEach(r=>{s+=`<line x1="${ax.px(r)}" x2="${ax.px(r)}" y1="${T}" y2="${H-Bm}" stroke="#222" stroke-dasharray="2 3"/><text x="${ax.px(r)+4}" y="${T+12}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222">${escH(lab.wShort)} = ${f3(r)}</text>`});
+    s+=`<text x="${W-R}" y="${H-Bm-8}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#444">Vùng xám: KTC ${Math.round(conf*100)}% của tác động có điều kiện</text>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Đồ thị Johnson–Neyman">${s}</svg>`}
+
+  // ---- chapter 4 text ----
+  // nm: {X, Y, M:[..], W, C:[..]} display names. opt: {sec, tab, fig}. boot may be null (Model 1).
+  function report(pr,est,boot,nm,opt){
+    const conf=pr.conf,cp=Math.round(conf*100),alpha=1-conf,refs=new Set(['hayes22']),figs=[];let tno=(opt.tab||1)-1,fno=(opt.fig||1)-1,html='';
+    const lab=v=>v==='const'?'Hằng số':v==='X'?nm.X:v==='Y'?nm.Y:v==='W'?nm.W:v==='XW'?`${nm.X} × ${nm.W}`:/^M\d$/.test(v)?nm.M[+v[1]-1]:/^C\d+$/.test(v)?nm.C[+v.slice(1)-1]:v;
+    const E=x=>escH(x),L=v=>E(lab(v));
+    const tbl=(cap,head,body,note)=>`<div class="table-wrap"><table><caption>Bảng 4.${++tno}. ${cap}</caption><thead><tr>${head.map((h,i)=>`<th${i?'':' class="l"'}>${h}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table></div>${note?`<p class="note">${note}</p>`:''}`;
+    const tr=cells=>`<tr>${cells.map(c=>Array.isArray(c)?`<td class="${c[1]}">${c[0]}</td>`:`<td>${c}</td>`).join('')}</tr>`;
+    const ci=(lo,hi)=>`[${f3(lo)}; ${f3(hi)}]`,excl=s=>s&&(s.lo>0||s.hi<0);
+    const bs=k=>boot?boot.stats[k]:null,eq=o=>est.eqs.find(r=>r.out===o),cf=(o,v)=>{const r=eq(o);return r.fit.coef[r.pred.indexOf(v)]};
+    const sec=`<h3>${E(opt.sec||'4.x')}. `;
+    const mNames=nm.M.map(E),bootTxt=boot?`khoảng tin cậy bootstrap phân vị ${cp}% với ${fx(boot.B,0)} mẫu lặp (seed = ${boot.seed})`:'';
+    const cenVars=pr.center?[pr.xBin?null:E(nm.X),pr.wBin?null:E(nm.W)].filter(Boolean):[];
+    const centerTxt=cenVars.length?` Trước khi tạo biến tích, ${listVi(cenVars)} được trung tâm hoá (trừ đi giá trị trung bình) để hệ số của từng biến dễ diễn giải (Aiken &amp; West, 1991).`:'';
+    if(cenVars.length)refs.add('aiken91');
+    const covTxt=nm.C.length?` Các biến kiểm soát ${listVi(nm.C.map(E))} được đưa vào mọi phương trình.`:'';
+    const nTxt=`Dữ liệu gồm ${fx(pr.n,0)} phiếu hợp lệ${pr.nDropped?` (loại ${fx(pr.nDropped,0)} phiếu thiếu giá trị ở các biến trong mô hình)`:''}.`;
+    const coefTable=cap=>{let body='';const add=(r,title)=>{const f=r.fit;body+=`<tr class="grp"><td class="l" colspan="7">${title}: R² = ${f3(f.r2)}; F(${f.df1}, ${f.df2}) = ${f2(f.F)}; p ${sig(f.fp)}</td></tr>`;
+        r.pred.forEach((v,i)=>{const c=f.coef[i];body+=tr([[L(v),'l'],f3(c.b),f3(c.se),f2(c.t),pf(c.p),f3(c.lo),f3(c.hi)])})};
+      est.eqs.forEach(r=>add(r,`Biến phụ thuộc: ${L(r.out)}`));if(est.total)add(est.total,`Mô hình tác động tổng, biến phụ thuộc: ${L('Y')}`);
+      return tbl(cap,['Biến','B','SE','t','p',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],body,'Ghi chú: B là hệ số hồi quy chưa chuẩn hoá; SE là sai số chuẩn OLS; KTC là khoảng tin cậy của hệ số.')};
+    const pathName=k=>{if(pr.model===6)return [`${E(nm.X)} → ${mNames[0]} → ${E(nm.Y)}`,`${E(nm.X)} → ${mNames[0]} → ${mNames[1]} → ${E(nm.Y)}`,`${E(nm.X)} → ${mNames[1]} → ${E(nm.Y)}`][k-1];return `${E(nm.X)} → ${mNames[k-1]} → ${E(nm.Y)}`};
+    const nInd=pr.model===6?3:pr.k;
+    // Zhao, Lynch & Chen (2010) typology for one indirect effect against the direct effect c'.
+    const typology=(s,ind,dir)=>{const iS=excl(s),dS=dir.p<alpha;
+      if(iS&&dS)return ind*dir.b>0?'<strong>trung gian bổ sung</strong> (complementary mediation): tác động gián tiếp và tác động trực tiếp đều có ý nghĩa và cùng dấu; cách gọi cũ theo Baron và Kenny (1986) là “trung gian một phần”':'<strong>trung gian cạnh tranh</strong> (competitive mediation): tác động gián tiếp và tác động trực tiếp đều có ý nghĩa nhưng ngược dấu';
+      if(iS)return '<strong>trung gian chỉ gián tiếp</strong> (indirect-only mediation): tác động gián tiếp có ý nghĩa, tác động trực tiếp không có ý nghĩa; cách gọi cũ là “trung gian toàn phần”';
+      if(dS)return '<strong>không có trung gian, chỉ có tác động trực tiếp</strong> (direct-only non-mediation)';
+      return '<strong>không có trung gian và không có tác động trực tiếp</strong> (no-effect non-mediation)'};
+
+    if(pr.model===4||pr.model===6){refs.add('preacher08');refs.add('zhao10');
+      const title=pr.model===6?`Kiểm định vai trò trung gian nối tiếp của ${mNames[0]} và ${mNames[1]}`:pr.k>1?`Kiểm định vai trò trung gian song song của ${listVi(mNames)}`:`Kiểm định vai trò trung gian của ${mNames[0]}`;
+      html+=`${sec}${title}</h3>`;
+      html+=`<p>Vai trò trung gian được kiểm định bằng hồi quy OLS theo Model ${pr.model} của PROCESS (Hayes, 2022)${pr.model===6?', trong đó '+mNames[0]+' tác động lên '+mNames[1]+' (trung gian nối tiếp)':pr.k>1?', các biến trung gian được ước lượng đồng thời (trung gian song song; Preacher &amp; Hayes, 2008)':''}. ${nTxt} Điểm của mỗi khái niệm là trung bình các biến quan sát.${covTxt} Tác động gián tiếp được kiểm định bằng ${bootTxt}; tác động gián tiếp có ý nghĩa thống kê khi khoảng tin cậy không chứa 0 (Preacher &amp; Hayes, 2008; Hayes, 2022).</p>`;
+      html+=coefTable('Kết quả hồi quy các phương trình trong mô hình trung gian');
+      const c=est.total.fit.coef[1],d=cf('Y','X');let body=tr([['Tác động tổng (c)','l'],f3(c.b),f3(c.se),f2(c.t),pf(c.p),f3(c.lo),f3(c.hi)])+tr([['Tác động trực tiếp (c′)','l'],f3(d.b),f3(d.se),f2(d.t),pf(d.p),f3(d.lo),f3(d.hi)]);
+      for(let j=1;j<=nInd;j++){const s=bs('ind:'+j);body+=tr([[`Gián tiếp: ${pathName(j)}`,'l'],f3(est.effects['ind:'+j]),f3(s.se),'—','—',f3(s.lo),f3(s.hi)])}
+      if(nInd>1){const s=bs('ind:total');body+=tr([['Tổng tác động gián tiếp','l'],f3(est.effects['ind:total']),f3(s.se),'—','—',f3(s.lo),f3(s.hi)])}
+      html+=tbl(`Tác động tổng, trực tiếp và gián tiếp của ${E(nm.X)} lên ${E(nm.Y)}`,['Tác động','Ước lượng','SE','t','p',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],body,`Ghi chú: với tác động gián tiếp, SE là sai số chuẩn bootstrap và KTC là khoảng tin cậy bootstrap phân vị (${fx(boot.B,0)} mẫu, seed = ${boot.seed}). Tác động tổng = tác động trực tiếp + tổng tác động gián tiếp.`);
+      // standardized
+      let sb='';for(let j=1;j<=nInd;j++){const s=bs('std:'+j);sb+=tr([[pathName(j),'l'],f3(est.effects['std:'+j]),f3(s.se),f3(s.lo),f3(s.hi)])}
+      if(nInd>1){const s=bs('std:total');sb+=tr([['Tổng tác động gián tiếp','l'],f3(est.effects['std:total']),f3(s.se),f3(s.lo),f3(s.hi)])}
+      html+=tbl(pr.xBin?'Tác động gián tiếp chuẩn hoá một phần (X nhị phân)':'Tác động gián tiếp chuẩn hoá hoàn toàn',['Đường tác động','Ước lượng','Boot SE',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],sb,
+        pr.xBin?`Ghi chú: ${E(nm.X)} là biến nhị phân nên chỉ chuẩn hoá theo độ lệch chuẩn của ${E(nm.Y)} (ab / SD<sub>Y</sub>): chênh lệch giữa hai nhóm tính bằng số độ lệch chuẩn của ${E(nm.Y)}.`:`Ghi chú: ab × SD<sub>X</sub> / SD<sub>Y</sub>, tính lại trong từng mẫu bootstrap (Hayes, 2022).`);
+      // interpretation
+      let txt='';
+      for(let j=1;j<=nInd;j++){const s=bs('ind:'+j),v=est.effects['ind:'+j],ok=excl(s);
+        txt+=`<p>Tác động gián tiếp theo đường ${pathName(j)} bằng ${f3(v)} (Boot SE = ${f3(s.se)}; KTC ${cp}% ${ci(s.lo,s.hi)}). Khoảng tin cậy ${ok?'không chứa 0, nên tác động gián tiếp này có ý nghĩa thống kê':'chứa 0, nên chưa đủ bằng chứng về tác động gián tiếp này'}${ok?`: ${E(nm.X)} ${v>0?'làm tăng':'làm giảm'} ${E(nm.Y)} thông qua ${pr.model===6&&j===2?`chuỗi ${mNames[0]} → ${mNames[1]}`:mNames[pr.model===6?(j===1?0:1):j-1]}`:''}.`;
+        if(pr.model===4||j!==2)txt+=` Đối chiếu với tác động trực tiếp c′ = ${f3(d.b)} (p ${sig(d.p)}), theo phân loại của Zhao, Lynch và Chen (2010), kết quả thuộc dạng ${typology(s,v,d)}.`;
+        txt+='</p>'}
+      if(pr.model===6){refs.add('zhao10')}
+      const anyInd=Array.from({length:nInd},(_,j)=>excl(bs('ind:'+(j+1)))).some(Boolean);
+      if(anyInd&&!(c.p<alpha))txt+=`<p>Tác động tổng c không có ý nghĩa thống kê (p ${sig(c.p)}). Theo Zhao và cộng sự (2010) và Hayes (2022), tác động tổng có ý nghĩa không phải là điều kiện tiên quyết để kết luận có tác động gián tiếp, nên kết luận về trung gian dựa trên khoảng tin cậy bootstrap của tác động gián tiếp.</p>`;
+      if(anyInd&&d.p<alpha)txt+=`<p>Theo Zhao và cộng sự (2010), trung gian bổ sung hoặc cạnh tranh gợi ý có thể còn biến trung gian khác chưa có trong mô hình.</p>`;
+      html+=txt;
+      if(nInd>1){let cb='';for(let i=1;i<=nInd;i++)for(let j=i+1;j<=nInd;j++){const s=bs(`con:${i}-${j}`);cb+=tr([[`(${pathName(i)}) − (${pathName(j)})`,'l'],f3(est.effects[`con:${i}-${j}`]),f3(s.se),f3(s.lo),f3(s.hi)])}
+        html+=tbl('So sánh từng cặp tác động gián tiếp',['Hiệu','Ước lượng','Boot SE',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],cb,'Ghi chú: hai tác động gián tiếp khác nhau có ý nghĩa khi khoảng tin cậy của hiệu không chứa 0. Khi hai tác động trái dấu, hiệu này so sánh giá trị có dấu, không phải độ lớn (Hayes, 2022).')}
+      const sk=Object.keys(est.sobel);if(sk.length){refs.add('sobel82');let sb2='';sk.forEach(k=>{const s=est.sobel[k];sb2+=tr([[pathName(+k),'l'],f3(s.ab),f3(s.se),f2(s.z),pf(s.p)])});
+        html+=tbl('Kiểm định Sobel (thông tin phụ)',['Đường tác động','ab','SE','z','p'],sb2,'Ghi chú: kiểm định Sobel (1982) giả định tích ab có phân phối chuẩn, điều thường không đúng với mẫu vừa và nhỏ, nên kém nhạy hơn bootstrap. Chỉ dùng để tham khảo; kết luận dựa trên khoảng tin cậy bootstrap (Preacher &amp; Hayes, 2008; Hayes, 2022).'+(pr.model===6?' Tác động nối tiếp qua hai biến trung gian không có kiểm định Sobel.':''))}
+    }
+
+    const levelName=(i,c)=>pr.wBin?`${E(nm.W)} = ${fx(pr.wOrig[i],nm.Wmap?0:3)}${nm.Wmap?` (${E(nm.Wmap[pr.wOrig[i]]||'')})`:''}`:pr.probe==='pct'?`Phân vị ${[16,50,84][i]} (${E(nm.W)} = ${f3(pr.wOrig[i])})`:[`Thấp, TB − 1 SD (${E(nm.W)} = ${f3(pr.wOrig[0])})`,`Trung bình (${E(nm.W)} = ${f3(pr.wOrig[1])})`,`Cao, TB + 1 SD (${E(nm.W)} = ${f3(pr.wOrig[2])})`][i];
+    const levelShort=i=>pr.wBin?`${E(nm.W)} = ${fx(pr.wOrig[i],nm.Wmap?0:3)}${nm.Wmap?` (${E(nm.Wmap[pr.wOrig[i]]||'')})`:''}`:pr.probe==='pct'?`Phân vị ${[16,50,84][i]}`:['TB − 1 SD','Trung bình','TB + 1 SD'][i];
+    const condTable=(c,outName)=>{let body='';c.rows.forEach((r,i)=>body+=tr([[levelName(i),'l'],f3(r.theta),f3(r.se),f2(r.t),pf(r.p),f3(r.lo),f3(r.hi)]));
+      return tbl(`Tác động có điều kiện của ${E(nm.X)} lên ${E(outName)} tại các giá trị của ${E(nm.W)}`,[`Giá trị của ${E(nm.W)}`,'Tác động','SE','t','p',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],body,
+        pr.wBin?'':pr.probe==='pct'?'Ghi chú: các giá trị là phân vị 16, 50 và 84 của W (nội suy tuyến tính).':'Ghi chú: các giá trị là trung bình trừ 1 độ lệch chuẩn, trung bình và trung bình cộng 1 độ lệch chuẩn của W (Aiken &amp; West, 1991).')};
+    const interactionText=(r,outName)=>{const ch=r.change,b3=cf(r.out,'XW'),ok=ch.p<alpha;
+      return `<p>Hệ số của biến tích ${E(nm.X)} × ${E(nm.W)} trong phương trình của ${E(outName)} là B = ${f3(b3.b)} (SE = ${f3(b3.se)}; t = ${f2(b3.t)}; p ${sig(b3.p)}; KTC ${cp}% ${ci(b3.lo,b3.hi)}). Biến tích làm R² tăng thêm ΔR² = ${f3(ch.dr2)}, F(1, ${ch.df2}) = ${f2(ch.F)}, p ${sig(ch.p)}. ${ok?`Như vậy ${E(nm.W)} điều tiết tác động của ${E(nm.X)} lên ${E(outName)}: mỗi khi ${E(nm.W)} tăng một đơn vị, hệ số tác động của ${E(nm.X)} lên ${E(outName)} thay đổi ${f3(b3.b)} đơn vị.`:`Chưa đủ bằng chứng để kết luận ${E(nm.W)} điều tiết tác động của ${E(nm.X)} lên ${E(outName)} ở mức ý nghĩa ${fx(alpha*100,0)}%; các tác động có điều kiện dưới đây chỉ mang tính mô tả.`}</p>`};
+    const low=t=>pr.wBin?t:t.replace(/^./,ch=>ch.toLowerCase());
+    const slopeText=(c,outName,inter)=>{const rs=c.rows,a=rs[0],z=rs[rs.length-1],sg=r=>r.p<alpha,hiLo=pr.wBin?`ở nhóm ${levelShort(rs.length-1)} so với nhóm ${levelShort(0)}`:`khi ${E(nm.W)} ở mức cao so với mức thấp`;
+      let t=`<p>Phân tích độ dốc đơn (simple slopes) cho thấy: ${rs.map((r,i)=>`tại ${low(levelShort(i))}, tác động của ${E(nm.X)} lên ${E(outName)} là ${f3(r.theta)} (p ${sig(r.p)})`).join('; ')}.`;
+      if(inter&&(sg(a)||sg(z))){if(Math.sign(a.theta)===Math.sign(z.theta))t+=` Tác động ${a.theta>0?'cùng chiều':'ngược chiều'} của ${E(nm.X)} ${Math.abs(z.theta)>Math.abs(a.theta)?'mạnh hơn':'yếu hơn'} ${hiLo}.`;else t+=` Tác động của ${E(nm.X)} đổi chiều ${hiLo}.`}
+      return t+'</p>'};
+    const jnText=(c,outName)=>{if(!c.jn)return '';refs.add('hayes09');const J=c.jn,[wlo,whi]=pr.wRange,desc=s=>{const a=Math.abs(s.from-wlo)<1e-9,b=Math.abs(s.to-whi)<1e-9;return a&&b?'trên toàn bộ miền giá trị quan sát của '+E(nm.W):a?`khi ${E(nm.W)} ≤ ${f3(s.to)}`:b?`khi ${E(nm.W)} ≥ ${f3(s.from)}`:`khi ${f3(s.from)} ≤ ${E(nm.W)} ≤ ${f3(s.to)}`};
+      const sigSegs=J.segs.filter(s=>s.sig);let t=`<p>Phương pháp Johnson–Neyman (Hayes &amp; Matthes, 2009) xác định miền giá trị của ${E(nm.W)} mà tại đó tác động của ${E(nm.X)} lên ${E(outName)} có ý nghĩa ở mức ${fx(alpha*100,0)}%. `;
+      if(!J.roots.length)t+=sigSegs.length?`Tác động có ý nghĩa ${desc(sigSegs[0])}, không có điểm chuyển trong miền quan sát (${f3(wlo)} đến ${f3(whi)}).`:`Trong miền giá trị quan sát của ${E(nm.W)} (${f3(wlo)} đến ${f3(whi)}), tác động không có ý nghĩa ở bất kỳ giá trị nào.`;
+      else t+=`Điểm chuyển: ${J.roots.map(r=>`${E(nm.W)} = ${f3(r)}`).join(' và ')}. ${sigSegs.length?'Tác động có ý nghĩa '+sigSegs.map(s=>`${desc(s)} (tác động ${s.sign>0?'dương':'âm'}, chiếm ${fx(s.share*100,1)}% mẫu)`).join('; '):'Không có đoạn nào trong miền quan sát mà tác động có ý nghĩa'}.`;
+      return t+'</p>'};
+    const fig=(svg,cap)=>{figs.push({svg,cap:`Hình 4.${++fno}. ${cap}`});const i=figs.length-1;return `<figure data-fig="${i}"><div class="cap">Hình 4.${fno}. ${E(cap)}</div>${svg}<a href="#" class="svgdl" data-fig="${i}">Tải hình SVG</a></figure>`};
+    const plots=(c,outName)=>{let h=fig(svgInteraction(c,{x:nm.X,y:`${outName} (giá trị dự báo)`,w:nm.W},c.lines.map((_,i)=>levelShort(i).replace(/<[^>]+>/g,''))),`Tác động của ${nm.X} lên ${outName} tại các mức của ${nm.W}`);
+      if(c.jn)h+=fig(svgJN(c,{w:nm.W,wShort:nm.W,y:`Tác động của ${nm.X} lên ${outName}`},conf),`Tác động có điều kiện của ${nm.X} lên ${outName} theo ${nm.W} (Johnson–Neyman)`);return h};
+
+    if(pr.model===1){html+=`${sec}Kiểm định vai trò điều tiết của ${E(nm.W)}</h3>`;
+      html+=`<p>Vai trò điều tiết của ${E(nm.W)} trong mối quan hệ ${E(nm.X)} → ${E(nm.Y)} được kiểm định bằng hồi quy OLS có biến tích theo Model 1 của PROCESS (Hayes, 2022). ${nTxt}${centerTxt}${covTxt}${pr.wBin?` ${E(nm.W)} là biến nhị phân nên tác động có điều kiện được tính tại từng nhóm.`:''}</p>`;
+      html+=coefTable(`Kết quả hồi quy kiểm định vai trò điều tiết của ${E(nm.W)}`);
+      const r=est.eqs[0],c=est.cond[0];html+=interactionText(r,nm.Y)+condTable(c,nm.Y)+slopeText(c,nm.Y,r.change.p<alpha)+jnText(c,nm.Y)+plots(c,nm.Y);
+      html+=`<p class="note">Hệ số của ${E(nm.X)} trong bảng hồi quy là tác động của ${E(nm.X)} khi ${E(nm.W)} ${pr.center&&!pr.wBin?'ở mức trung bình (do đã trung tâm hoá)':"= 0"}, không phải “tác động chính” theo nghĩa của ANOVA (Hayes, 2022).</p>`}
+
+    if(pr.model===7){refs.add('hayes15');refs.add('preacher08');
+      html+=`${sec}Kiểm định trung gian có điều tiết: ${E(nm.W)} điều tiết tác động của ${E(nm.X)} lên ${listVi(mNames)}</h3>`;
+      html+=`<p>Mô hình trung gian có điều tiết ở giai đoạn đầu được ước lượng theo Model 7 của PROCESS (Hayes, 2022): ${E(nm.W)} điều tiết đường ${E(nm.X)} → ${listVi(mNames)}, còn ${listVi(mNames)} tác động lên ${E(nm.Y)}. ${nTxt}${centerTxt}${covTxt} Tác động gián tiếp có điều kiện và chỉ số trung gian có điều tiết (index of moderated mediation; Hayes, 2015) được kiểm định bằng ${bootTxt}.</p>`;
+      html+=coefTable('Kết quả hồi quy các phương trình trong mô hình trung gian có điều tiết');
+      est.eqs.filter(r=>r.mod).forEach((r,j)=>{html+=interactionText(r,nm.M[j])+condTable(est.cond[j],nm.M[j])});
+      const d=cf('Y','X');html+=`<p>Tác động trực tiếp của ${E(nm.X)} lên ${E(nm.Y)} (không bị điều tiết trong Model 7) là c′ = ${f3(d.b)} (SE = ${f3(d.se)}; p ${sig(d.p)}; KTC ${cp}% ${ci(d.lo,d.hi)}).</p>`;
+      let cb='',ib='';for(let j=1;j<=pr.k;j++){pr.wOrig.forEach((_,i)=>{const s=bs(`cind:${j}:${i}`);cb+=tr([[`${pathName(j)}, ${levelName(i)}`,'l'],f3(est.effects[`cind:${j}:${i}`]),f3(s.se),f3(s.lo),f3(s.hi)])});
+        const s=bs('imm:'+j);ib+=tr([[`Qua ${mNames[j-1]}`,'l'],f3(est.effects['imm:'+j]),f3(s.se),f3(s.lo),f3(s.hi)])}
+      html+=tbl(`Tác động gián tiếp có điều kiện của ${E(nm.X)} lên ${E(nm.Y)} tại các giá trị của ${E(nm.W)}`,['Đường tác động và giá trị W','Ước lượng','Boot SE',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],cb,`Ghi chú: SE và KTC bootstrap phân vị (${fx(boot.B,0)} mẫu, seed = ${boot.seed}).`);
+      html+=tbl('Chỉ số trung gian có điều tiết (index of moderated mediation)',['Biến trung gian','Chỉ số','Boot SE',`KTC ${cp}% dưới`,`KTC ${cp}% trên`],ib,`Ghi chú: chỉ số = a₃ × b, trong đó a₃ là hệ số của ${E(nm.X)} × ${E(nm.W)} trong phương trình của biến trung gian và b là hệ số của biến trung gian trong phương trình của ${E(nm.Y)} (Hayes, 2015).`);
+      for(let j=1;j<=pr.k;j++){const s=bs('imm:'+j),v=est.effects['imm:'+j],ok=excl(s);
+        html+=`<p>Với biến trung gian ${mNames[j-1]}, chỉ số trung gian có điều tiết bằng ${f3(v)} (Boot SE = ${f3(s.se)}; KTC ${cp}% ${ci(s.lo,s.hi)}). ${ok?`Khoảng tin cậy không chứa 0, nên tác động gián tiếp của ${E(nm.X)} lên ${E(nm.Y)} qua ${mNames[j-1]} phụ thuộc vào ${E(nm.W)} (có trung gian có điều tiết): mỗi khi ${E(nm.W)} tăng một đơn vị, tác động gián tiếp thay đổi ${f3(v)}. `:`Khoảng tin cậy chứa 0, nên chưa đủ bằng chứng cho thấy tác động gián tiếp qua ${mNames[j-1]} thay đổi theo ${E(nm.W)}. Theo Hayes (2015), khi đó không nên kết luận có điều tiết chỉ vì tác động gián tiếp có ý nghĩa ở mức này của W mà không có ý nghĩa ở mức khác. `}`;
+        html+=`Cụ thể, ${pr.wOrig.map((_,i)=>{const s2=bs(`cind:${j}:${i}`);return `tại ${low(levelShort(i))}, tác động gián tiếp là ${f3(est.effects[`cind:${j}:${i}`])} (KTC ${ci(s2.lo,s2.hi)}${excl(s2)?', có ý nghĩa':', chứa 0'})`}).join('; ')}.</p>`}
+      html+=plots(est.cond[0],nm.M[0]);
+      if(pr.k>1)html+=`<p class="note">Hình chỉ vẽ cho biến trung gian thứ nhất (${mNames[0]}); bảng hệ số cho đủ các biến trung gian.</p>`}
+
+    const warn=[];
+    if(!pr.wBin&&pr.wRange&&pr.probe==='sd'){if(pr.wOrig[0]<pr.wRange[0])warn.push(`Giá trị ${E(nm.W)} tại TB − 1 SD (${f3(pr.wOrig[0])}) thấp hơn giá trị nhỏ nhất quan sát được (${f3(pr.wRange[0])}); nên chọn phân vị 16, 50, 84.`);
+      if(pr.wOrig[2]>pr.wRange[1])warn.push(`Giá trị ${E(nm.W)} tại TB + 1 SD (${f3(pr.wOrig[2])}) cao hơn giá trị lớn nhất quan sát được (${f3(pr.wRange[1])}); nên chọn phân vị 16, 50, 84.`)}
+    if(boot&&boot.redraw)warn.push(`${fx(boot.redraw,0)} mẫu bootstrap không ước lượng được (ví dụ biến nhị phân chỉ còn một nhóm) và đã được rút lại.`);
+    const nPred=Math.max(...est.eqs.map(r=>r.pred.length-1));if(pr.n<20*nPred)warn.push(`Cỡ mẫu ${fx(pr.n,0)} là nhỏ so với ${nPred} biến giải thích trong phương trình lớn nhất; khoảng tin cậy sẽ rộng.`);
+
+    html+=`<div class="box"><strong>Lưu ý về phương pháp.</strong> Đây là mô hình hồi quy trên biến quan sát (điểm trung bình của các biến quan sát), không phải mô hình cấu trúc tuyến tính (SEM) với biến tiềm ẩn. Sai số đo lường không được tách ra, nên hệ số đường dẫn có xu hướng bị ước lượng thấp hơn so với SEM; nếu hội đồng yêu cầu biến tiềm ẩn, hãy dùng CB-SEM hoặc PLS-SEM. Dữ liệu cắt ngang chỉ cho thấy kết quả phù hợp với giả thuyết nhân quả, không tự chứng minh quan hệ nhân quả (Hayes, 2022).</div>`;
+    html+=`<h4>Tài liệu tham khảo cho mục này</h4><ul>${[...refs].sort().map(k=>`<li>${REF[k]}</li>`).join('')}</ul>`;
+    return {html,figs,warnings:warn}}
+  //#report-end
+
+  if(typeof document==='undefined')return;
+  const $=id=>document.getElementById(id),E=PROCESS_ENGINE();
+  let raw=null,tbl=null,VARS=[],worker=null,last=null;
+  const setStatus=(t,isErr)=>{$('tg-status').innerHTML=t;$('tg-status').className=isErr?'err':''};
+  function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+  function useRaw(table,label){raw=table.map(r=>(r||[]).map(v=>v==null?'':v));if(!raw.length){setStatus('File không có dữ liệu.',true);return}
+    const hi=pickHeaderRow(raw);
+    $('tg-hdr').innerHTML=raw.slice(0,Math.min(6,raw.length)).map((r,i)=>`<option value="${i}">Dòng ${i+1}: ${escH(r.slice(0,4).map(v=>String(v).slice(0,18)).join(' | '))}</option>`).join('');$('tg-hdr').value=String(hi);
+    setData(hi,label)}
+  function setData(hi,label){tbl=buildTable(raw,hi);const gs=suggestGroups(tbl.header);
+    $('tg-groups').value=gs.map(g=>`${g.code}: ${g.items.join(' ')}`).join('\n');
+    let lo=Infinity,top=-Infinity;for(const g of gs)for(const h of g.items){const j=tbl.header.indexOf(h);for(const r of tbl.rows){const v=likertNum(r[j]);if(Number.isFinite(v)){if(v<lo)lo=v;if(v>top)top=v}}}
+    if(Number.isFinite(lo)){$('tg-min').value=lo;$('tg-max').value=top}
+    $('tg-setup').hidden=false;$('tg-out').hidden=true;$('tg-msg').textContent='';
+    refreshVars(`${escH(label)}: ${fx(tbl.rows.length,0)} phiếu, ${tbl.header.length} cột, nhận ra ${gs.length} khái niệm.`)}
+  function refreshVars(head){if(!tbl)return;const rev=$('tg-rev').value.split(/[\s,;]+/).filter(Boolean),r=buildVars(tbl,parseGroups($('tg-groups').value),rev,+$('tg-min').value,+$('tg-max').value);VARS=r.vars;
+    const notes=[head||''].concat(r.notes.map(escH));const others=VARS.filter(v=>v.kind!=='construct');if(others.length)notes.push(`Biến khác dùng được: ${others.map(v=>escH(v.name)+(v.kind==='bin'?' (nhị phân)':'')).join(', ')}.`);
+    if(!VARS.some(v=>v.kind==='construct'))notes.push('<span class="err">Chưa nhận ra khái niệm nào. Kiểm tra dòng tiêu đề hoặc tự khai báo ở mục 2.</span>');
+    if(head!==null)setStatus(notes.filter(Boolean).join('<br>'));
+    const keep={};['x','y','m1','m2','m3','m4','w'].forEach(id=>keep[id]=$('tg-'+id).value);
+    const opts=(none)=>(none?'<option value="">(không)</option>':'')+VARS.map(v=>`<option value="${escH(v.name)}">${escH(v.name)}${v.kind==='construct'?` (${v.items.length} biến)`:v.kind==='bin'?' (nhị phân)':''}</option>`).join('');
+    ['x','y','w','m1'].forEach(id=>$('tg-'+id).innerHTML=opts(false));['m2','m3','m4'].forEach(id=>$('tg-'+id).innerHTML=opts(true));
+    const cons=VARS.filter(v=>v.kind==='construct').map(v=>v.name),has=n=>VARS.some(v=>v.name===n);
+    const def={x:cons[0],m1:cons[1]||cons[0],y:cons[cons.length-1],w:cons.length>3?cons[cons.length-2]:(VARS.find(v=>v.kind!=='construct')||{}).name,m2:'',m3:'',m4:''};
+    for(const id in keep){const v=keep[id]&&has(keep[id])?keep[id]:def[id];if(v!=null)$('tg-'+id).value=v}
+    const covKeep=new Set([...document.querySelectorAll('#tg-cov input:checked')].map(i=>i.value));
+    $('tg-cov').innerHTML=VARS.length?VARS.map((v,i)=>`<label><input type="checkbox" value="${escH(v.name)}"${covKeep.has(v.name)?' checked':''}> ${escH(v.name)}</label>`).join(''):'<small>Không có biến nào.</small>';
+    modelUI()}
+  const HELP={4:'X → M → Y. Chọn 1 biến trung gian (trung gian đơn) hoặc 2–4 biến (trung gian song song: các M không tác động lẫn nhau).',6:'X → M1 → M2 → Y. Thứ tự M1, M2 là thứ tự trong chuỗi; M1 cũng có thể tác động thẳng lên Y.',
+    1:'W làm thay đổi độ mạnh hoặc chiều tác động của X lên Y. W liên tục (điểm khái niệm) hoặc nhị phân (giới tính, nhóm).',7:'X → M → Y, trong đó W điều tiết đường X → M (giai đoạn đầu). Kết quả chính là chỉ số trung gian có điều tiết.'};
+  function modelUI(){const m=+$('tg-model').value;$('tg-model-help').textContent=HELP[m];
+    $('tg-mrow').hidden=m===1;$('tg-wrow').hidden=!(m===1||m===7);$('tg-cenrow').hidden=!(m===1||m===7);
+    document.querySelectorAll('.tg-mx').forEach(el=>el.hidden=false);document.querySelectorAll('.tg-m34').forEach(el=>el.hidden=m===6);
+    $('tg-mrow').querySelector('label[for=tg-m1]').textContent=m===6?'M1 (trước)':'Trung gian M1';$('tg-mrow').querySelector('label[for=tg-m2]').textContent=m===6?'M2 (sau)':'M2';
+    if(m===6&&!$('tg-m2').value){const used=new Set([$('tg-x').value,$('tg-y').value,$('tg-m1').value]),c=VARS.find(v=>v.kind==='construct'&&!used.has(v.name));if(c)$('tg-m2').value=c.name}}
+
+  $('tg-file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;setStatus('Đang đọc file…');
+    try{if(/\.(xlsx|xls)$/i.test(f.name)){if(!window.XLSX)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');const wb=XLSX.read(await f.arrayBuffer());useRaw(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:'',raw:true}),f.name)}
+      else useRaw(parseCSV(await f.text()),f.name)}catch(err){setStatus('Không đọc được file. Lưu lại dạng .xlsx hoặc .csv (UTF-8) rồi thử lại.',true)}});
+  $('tg-sample').addEventListener('click',()=>useRaw(sampleData(),'Dữ liệu mẫu'));
+  $('tg-hdr').addEventListener('change',()=>setData(+$('tg-hdr').value,'Dữ liệu'));
+  let deb=0;const later=f=>{clearTimeout(deb);deb=setTimeout(f,300)};
+  ['tg-groups','tg-rev','tg-min','tg-max'].forEach(id=>$(id).addEventListener('input',()=>later(()=>refreshVars(null))));
+  $('tg-model').addEventListener('change',modelUI);
+
+  // Synthetic service-quality data: CL → HL → NT → TT, CP (switching cost) moderates CL → HL. Fixed seed, reproducible.
+  function sampleData(){let s=20261030;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,norm=()=>Math.sqrt(-2*Math.log(rnd()+1e-12))*Math.cos(2*Math.PI*rnd());
+    const lik=v=>Math.min(5,Math.max(1,Math.round(3.3+v))),it=l=>lik(0.8*l+0.5*norm()),rep=(k,f)=>Array.from({length:k},f);
+    const head=['STT','GT','TUOI',...rep(4,(_,i)=>'CL'+(i+1)),...rep(3,(_,i)=>'HL'+(i+1)),...rep(3,(_,i)=>'NT'+(i+1)),...rep(3,(_,i)=>'CP'+(i+1)),...rep(3,(_,i)=>'TT'+(i+1))],out=[head];
+    for(let i=1;i<=300;i++){const cl=norm(),cp=0.2*cl+0.95*norm(),hl=0.5*cl+0.15*cp-0.22*cl*cp+0.75*norm(),nt=0.3*cl+0.4*hl+0.75*norm(),tt=0.15*cl+0.35*hl+0.3*nt+0.7*norm();
+      out.push([i,rnd()<0.56?'Nữ':'Nam',Math.round(19+Math.abs(norm())*8),...rep(4,()=>it(cl)),...rep(3,()=>it(hl)),...rep(3,()=>it(nt)),...rep(3,()=>it(cp)),...rep(3,()=>it(tt))])}
+    return out}
+
+  function workerURL(){return URL.createObjectURL(new Blob([`const E=(${PROCESS_ENGINE.toString()})();onmessage=e=>{try{const d=e.data;const r=E.bootstrap(d.pr,d.B,d.seed,f=>postMessage({progress:f}));postMessage({done:r})}catch(err){postMessage({error:String(err&&err.message||err)})}}`],{type:'text/javascript'}))}
+  function stop(msg){if(worker){worker.terminate();worker=null}$('tg-prog').hidden=true;$('tg-stop').hidden=true;$('tg-run').disabled=false;if(msg){$('tg-msg').className='err';$('tg-msg').textContent=msg}}
+  $('tg-stop').addEventListener('click',()=>stop('Đã dừng bootstrap.'));
+  function run(){const msg=$('tg-msg');msg.textContent='';msg.className='';
+    const m=+$('tg-model').value,get=n=>VARS.find(v=>v.name===n),xn=$('tg-x').value,yn=$('tg-y').value,wn=(m===1||m===7)?$('tg-w').value:'';
+    let ms=m===1?[]:['m1','m2','m3','m4'].slice(0,m===6?2:4).map(id=>$('tg-'+id).value).filter(Boolean);ms=ms.filter((v,i)=>ms.indexOf(v)===i);
+    const cov=[...document.querySelectorAll('#tg-cov input:checked')].map(i=>i.value).filter(v=>![xn,yn,wn,...ms].includes(v));
+    const fail=t=>{msg.className='err';msg.textContent=t};
+    if(!get(xn)||!get(yn))return fail('Chọn biến X và Y.');if(xn===yn)return fail('X và Y phải là hai biến khác nhau.');
+    if(ms.includes(xn)||ms.includes(yn))return fail('Biến trung gian phải khác X và Y.');
+    if(wn&&[xn,yn,...ms].includes(wn))return fail('Biến điều tiết W phải khác X, Y và biến trung gian.');
+    if(m===6&&ms.length!==2)return fail('Model 6 cần hai biến trung gian khác nhau: M1 và M2.');
+    const Wv=wn?get(wn):null,rawD={X:get(xn).values,Y:get(yn).values,M:ms.map(n=>get(n).values),W:Wv?Wv.values:null,C:cov.map(n=>get(n).values)};
+    let pr,est;try{pr=E.prepare(rawD,{model:m,center:$('tg-center').checked,probe:$('tg-probe').value,conf:+$('tg-conf').value});
+      if(pr.n<10)return fail(`Chỉ còn ${pr.n} phiếu đủ dữ liệu cho các biến đã chọn.`);est=E.estimate(pr)}catch(err){return fail(err.message)}
+    const nm={X:xn,Y:yn,M:ms,W:wn,C:cov,Wmap:Wv&&Wv.map?{0:Wv.map[0],1:Wv.map[1]}:null};
+    const opt={sec:$('tg-sec').value.trim(),tab:Math.max(1,+$('tg-tab').value||1),fig:Math.max(1,+$('tg-fig').value||1)};
+    if(m===1){show(pr,est,null,nm,opt);return}
+    const B=+$('tg-b').value,seed=Math.max(1,Math.floor(+$('tg-seed').value||1)),t0=performance.now();
+    stop();$('tg-run').disabled=true;$('tg-prog').hidden=false;$('tg-prog').value=0;$('tg-stop').hidden=false;msg.textContent=`Đang chạy ${fx(B,0)} mẫu bootstrap…`;
+    const done=boot=>{stop();show(pr,est,boot,nm,opt);msg.textContent=`Đã chạy ${fx(B,0)} mẫu bootstrap trên ${fx(pr.n,0)} phiếu trong ${fx((performance.now()-t0)/1000,1)} giây.`};
+    try{worker=new Worker(workerURL());worker.onmessage=e=>{const d=e.data;if(d.progress!=null)$('tg-prog').value=d.progress;else if(d.done)done(d.done);else if(d.error)stop(d.error)};
+      worker.onerror=()=>{stop();try{done(E.bootstrap(pr,B,seed))}catch(err){fail(err.message)}};worker.postMessage({pr,B,seed})}
+    catch(err){setTimeout(()=>{try{done(E.bootstrap(pr,B,seed))}catch(e2){stop(e2.message)}},20)}}
+  function show(pr,est,boot,nm,opt){const r=report(pr,est,boot,nm,opt);last=r;
+    $('tg-warn').hidden=!r.warnings.length;$('tg-warn').innerHTML=r.warnings.length?`<strong>Cần xem lại</strong><ul>${r.warnings.map(w=>`<li>${w}</li>`).join('')}</ul>`:'';
+    $('tg-report').innerHTML=r.html;$('tg-out').hidden=false;if(!boot)$('tg-msg').textContent=`Đã ước lượng trên ${fx(pr.n,0)} phiếu.`;$('tg-out').scrollIntoView({behavior:'smooth'})}
+  $('tg-run').addEventListener('click',run);
+  const save=(name,type,data)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)};
+  $('tg-report').addEventListener('click',e=>{const a=e.target.closest('a.svgdl');if(!a||!last)return;e.preventDefault();save(`hinh-${+a.dataset.fig+1}.svg`,'image/svg+xml',last.figs[+a.dataset.fig].svg)});
+  // Figures go into Word as PNG (3× resolution) inside an MHTML document, which Word opens as a .doc.
+  const toPNG=svg=>new Promise(ok=>{const img=new Image(),url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));img.onload=()=>{try{const c=document.createElement('canvas');c.width=img.width*3;c.height=img.height*3;const g=c.getContext('2d');g.scale(3,3);g.drawImage(img,0,0);ok(c.toDataURL('image/png').split(',')[1])}catch(e){ok(null)}URL.revokeObjectURL(url)};img.onerror=()=>{URL.revokeObjectURL(url);ok(null)};img.src=url});
+  const b64=s=>{const u=new TextEncoder().encode(s);let bin='';for(let i=0;i<u.length;i+=8192)bin+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(bin).replace(/.{76}/g,'$&\r\n')};
+  $('tg-doc').addEventListener('click',async()=>{if(!last)return;const pngs=await Promise.all(last.figs.map(f=>toPNG(f.svg)));
+    const box=document.createElement('div');box.innerHTML=$('tg-report').innerHTML;box.querySelectorAll('.table-wrap').forEach(w=>w.replaceWith(...w.childNodes));box.querySelectorAll('a.svgdl').forEach(a=>a.remove());
+    box.querySelectorAll('figure').forEach(fg=>{const i=+fg.dataset.fig,svg=fg.querySelector('svg');if(svg)svg.replaceWith(Object.assign(document.createElement('p'),{innerHTML:pngs[i]?`<img src="file:///C:/hinh${i+1}.png" width="600" height="380">`:'(Không chuyển được hình; tải SVG trên trang.)'}))});
+    const html=`<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse;margin:6pt 0}td,th{border:1px solid #000;padding:3px 6px;text-align:right;vertical-align:top}td.l,th.l,td:first-child,th:first-child{text-align:left}caption{text-align:left;font-weight:bold;padding:4pt 0}.note{font-size:11pt}.cap{font-weight:bold}.box{border-left:2pt solid #555;padding-left:8pt}</style></head><body>${box.innerHTML}</body></html>`;
+    const bd='----=_NextPart_GocNC_'+Date.now();let mht=`MIME-Version: 1.0\r\nContent-Type: multipart/related; boundary="${bd}"; type="text/html"\r\n\r\n--${bd}\r\nContent-Type: text/html; charset="utf-8"\r\nContent-Transfer-Encoding: base64\r\nContent-Location: file:///C:/chuong4.htm\r\n\r\n${b64(html)}\r\n`;
+    pngs.forEach((p,i)=>{if(p)mht+=`--${bd}\r\nContent-Type: image/png\r\nContent-Transfer-Encoding: base64\r\nContent-Location: file:///C:/hinh${i+1}.png\r\n\r\n${p.replace(/.{76}/g,'$&\r\n')}\r\n`});
+    mht+=`--${bd}--\r\n`;save('trung-gian-dieu-tiet.doc','application/msword',mht)});
+  $('tg-copy').addEventListener('click',async()=>{const el=$('tg-report'),b=$('tg-copy');try{if(window.ClipboardItem){await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([el.innerHTML],{type:'text/html'}),'text/plain':new Blob([el.innerText],{type:'text/plain'})})])}else await navigator.clipboard.writeText(el.innerText);b.textContent='Đã sao chép'}catch(e){b.textContent='Không sao chép được'}setTimeout(()=>b.textContent='Sao chép',1500)});
+})();
+</script>

@@ -31,7 +31,7 @@ tags: ["thu mẫu","khoá luận"]
 <tr><td>Ngẫu nhiên phân tầng</td><td>Có danh sách tổng thể, chia tầng, bốc ngẫu nhiên trong từng tầng</td><td>Khảo sát nội bộ một trường, một công ty có danh sách</td><td>Cần danh sách đầy đủ và tỉ lệ phản hồi cao</td></tr>
 </tbody>
 </table>
-<p>Etikan và cộng sự (2016) so sánh ngắn gọn mẫu thuận tiện và mẫu có mục đích, có thể trích khi viết chương 3. Với đa số đề tài hành vi người tiêu dùng, chọn mẫu thuận tiện kết hợp định mức là lựa chọn thực tế. Bạn đặt chỉ tiêu cho hai hoặc ba biến nhân khẩu học quan trọng, ví dụ tỉ lệ nam nữ và nhóm tuổi, rồi theo dõi để không ô nào bị thiếu.</p>
+<p>Etikan và cộng sự (2016) so sánh ngắn gọn mẫu thuận tiện và mẫu có mục đích, có thể trích khi viết chương 3. Định nghĩa và cách chọn đủ tám phương pháp, xác suất và phi xác suất, có trong bài <a href="/posts/phuong-phap-chon-mau/">phương pháp chọn mẫu trong nghiên cứu</a>. Với đa số đề tài hành vi người tiêu dùng, chọn mẫu thuận tiện kết hợp định mức là lựa chọn thực tế. Bạn đặt chỉ tiêu cho hai hoặc ba biến nhân khẩu học quan trọng, ví dụ tỉ lệ nam nữ và nhóm tuổi, rồi theo dõi để không ô nào bị thiếu.</p>
 
 <h2>Bước 3: Chuẩn bị bảng hỏi để còn lọc được phiếu</h2>
 <p>Một bảng hỏi sẵn sàng đi thu mẫu cần ba thứ mà nhiều bạn bỏ qua:</p>

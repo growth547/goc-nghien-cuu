@@ -64,7 +64,7 @@ tags: ["đáp viên"]
 <li>Chân trang ghi tên Công ty TNHH Nghiên cứu và Phát triển GR, mã số thuế 0319440277, địa chỉ và email hi@geniusdata.io.</li>
 <li>Logo Bộ Công Thương ở chân trang bấm vào dẫn tới <a href="https://online.gov.vn/Home/WebDetails/142371" rel="noopener">hồ sơ trên online.gov.vn</a>. Bạn có thể tự mở hồ sơ để đối chiếu tên doanh nghiệp và mã số thuế với chân trang, như checklist ở trên.</li>
 </ul>
-<p>Hãy áp dụng đúng checklist ở trên cho Genius Data như với mọi trang khác.</p>
+<p>Hãy áp dụng đúng checklist ở trên cho Genius Data như với mọi trang khác. Cách tự tính một khảo sát đáng bao nhiêu mỗi phút trước khi đổi voucher có trong bài <a href="/posts/lam-khao-sat-nhan-voucher/">làm khảo sát online nhận voucher</a>.</p>
 
 <h2>Làm sao để phiếu của bạn được tính</h2>
 <p>Ở các trang làm thật, phiếu điền bừa thường bị loại và không có thưởng. Một vài thói quen giúp bạn ít bị từ chối:</p>

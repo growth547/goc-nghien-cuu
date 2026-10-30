@@ -105,7 +105,7 @@ tags: ["khoá luận","SPSS","PLS-SEM"]
 </tbody>
 </table>
 <blockquote><p>Mô hình đo lường đạt yêu cầu: hệ số tải ngoài của các biến quan sát từ 0,732 đến 0,904; độ tin cậy tổng hợp từ 0,861 đến 0,927; AVE từ 0,612 đến 0,808, đều vượt ngưỡng 0,5 (Hair và cộng sự, 2019). Các giá trị HTMT đều nhỏ hơn 0,85 (Henseler và cộng sự, 2015), cho thấy các khái niệm đạt giá trị phân biệt.</p></blockquote>
-<p>Nếu giảng viên yêu cầu tiêu chí Fornell và Larcker (1981), báo cáo thêm, nhưng dựa kết luận vào HTMT. Nên báo cáo kiểm tra sai lệch phương pháp chung bằng VIF toàn phần, ngưỡng 3,3 (Kock, 2015).</p>
+<p>Nếu giảng viên yêu cầu tiêu chí Fornell và Larcker (1981), báo cáo thêm, nhưng dựa kết luận vào HTMT. Cách tính HTMT và xử lý khi vượt ngưỡng có ở bài <a href="/posts/htmt-gia-tri-phan-biet/">HTMT là gì</a>. Nên báo cáo kiểm tra sai lệch phương pháp chung bằng VIF toàn phần, ngưỡng 3,3 (Kock, 2015).</p>
 
 <h2>4.8 Kiểm định khác biệt theo nhóm (nếu có)</h2>
 <p>Independent-samples t-test cho biến hai nhóm, One-way ANOVA cho biến nhiều nhóm. Đọc Levene trước; nếu phương sai không đồng nhất, dùng dòng "Equal variances not assumed" (t-test) hoặc Welch (ANOVA). Chỉ đưa mục này khi có câu hỏi nghiên cứu tương ứng. Ví dụ số đầy đủ, cách chọn Tukey hay Games-Howell có ở bài <a href="/posts/kiem-dinh-t-test-anova-spss/">kiểm định T-test và ANOVA trong SPSS</a>.</p>

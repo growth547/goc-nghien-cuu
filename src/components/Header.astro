@@ -6,6 +6,7 @@ import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconX from "@/assets/icons/IconX.svg";
 import Wordmark from "./Wordmark.astro";
+import Icon from "./Icon.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
@@ -42,6 +43,13 @@ const navItems = [
   { path: "about", label: t.nav.about },
 ];
 const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
+// Phones: the menu opens on the tools people come for, one tap away.
+const quickTools = [
+  { path: "cong-cu/pls-sem", label: "Chạy PLS-SEM", icon: "graph" },
+  { path: "cong-cu/cronbach-alpha", label: "Cronbach's alpha", icon: "chart" },
+  { path: "cong-cu/tinh-co-mau", label: "Tính cỡ mẫu", icon: "users" },
+  { path: "cong-cu/ve-mo-hinh", label: "Vẽ mô hình", icon: "layers" },
+] as const;
 ---
 
 <a
@@ -54,9 +62,9 @@ const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
 
 <header
   id="site-header"
-  class="border-border bg-background/90 sticky top-0 z-40 border-b backdrop-blur-md"
+  class="border-border bg-background/85 sticky top-0 z-40 border-b backdrop-blur-md backdrop-saturate-150"
 >
-  <div class="app-layout flex h-16 items-center justify-between gap-3">
+  <div class="app-layout flex h-(--header-h) items-center justify-between gap-3">
     <a
       href={getRelativeLocaleUrl(locale, "")}
       class="flex items-center gap-2.5 rounded-lg py-1 whitespace-nowrap"
@@ -74,7 +82,7 @@ const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
                 href={getRelativeLocaleUrl(locale, item.path)}
                 aria-current={activeSection === item.path ? "page" : undefined}
                 class:list={[
-                  "hover:text-accent hover:bg-accent-soft/60 block rounded-lg px-2.5 py-2 text-[0.92rem] font-medium whitespace-nowrap transition-colors",
+                  "hover:text-accent hover:bg-accent-soft/60 block rounded-lg px-3 py-2 text-[0.92rem] font-medium whitespace-nowrap transition-colors",
                   activeSection === item.path
                     ? "active-nav"
                     : "text-foreground/80",
@@ -125,7 +133,7 @@ const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
       }
       <a
         href={kitHref}
-        class="btn ms-1 hidden min-h-10 px-4 py-2 text-sm sm:inline-flex lg:hidden"
+        class="btn sm ms-1 hidden sm:inline-flex lg:hidden xl:inline-flex"
       >
         Tạo bảng hỏi
       </a>
@@ -148,9 +156,28 @@ const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
   <nav
     id="menu-items"
     aria-label="Điều hướng chính"
-    class="border-border bg-background hidden border-t lg:hidden"
+    class="border-border bg-background hidden max-h-[calc(100svh-var(--header-h))] overflow-y-auto overscroll-contain border-t lg:hidden"
   >
-    <ul class="app-layout grid gap-1 py-3 sm:grid-cols-2">
+    <p class="app-layout text-muted-foreground pt-4 text-xs font-semibold tracking-wider uppercase">Công cụ hay dùng</p>
+    <ul class="app-layout mt-2 grid grid-cols-2 gap-2">
+      {
+        quickTools.map(tool => (
+          <li>
+            <a
+              href={getRelativeLocaleUrl(locale, tool.path)}
+              class="border-border bg-surface text-foreground hover:border-accent/60 hover:text-accent flex min-h-12 items-center gap-2.5 rounded-xl border px-3 text-[0.92rem] leading-tight font-semibold"
+              style="box-shadow: var(--shadow-xs)"
+            >
+              <span class="bg-accent-soft text-accent grid size-8 flex-none place-items-center rounded-lg">
+                <Icon name={tool.icon} class="size-[18px]" />
+              </span>
+              {tool.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="app-layout grid gap-0.5 pt-3 pb-3 sm:grid-cols-2">
       {
         navItems.map(item => (
           <li>
@@ -167,8 +194,8 @@ const kitHref = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
           </li>
         ))
       }
-      <li class="pt-2 pb-1 sm:col-span-2">
-        <a href={kitHref} class="btn w-full">Tạo bảng hỏi miễn phí</a>
+      <li class="pt-3 pb-2 sm:col-span-2">
+        <a href={kitHref} class="btn block">Tạo bảng hỏi miễn phí</a>
       </li>
     </ul>
   </nav>

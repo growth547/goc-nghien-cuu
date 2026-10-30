@@ -46,23 +46,22 @@
       <div class="field" data-for="cbsem"><label for="ss-k">Số cấu trúc (biến tiềm ẩn)</label>
         <input id="ss-k" type="number" min="1" max="30" step="1" value="5"></div>
     </div>
-    <div data-for="cbsem" class="row">
-      <div class="field"><label for="ss-minitems">Số biến quan sát ít nhất trong một cấu trúc</label>
-        <input id="ss-minitems" type="number" min="1" step="1" value="4"></div>
-      <div class="field"><label for="ss-comm">Communality kỳ vọng của biến quan sát</label>
-        <select id="ss-comm"><option value="high">Cao, từ 0,6 (hệ số tải từ 0,78)</option><option value="mid" selected>Vừa, khoảng 0,5 (hệ số tải khoảng 0,7)</option><option value="low">Thấp, dưới 0,45 (hệ số tải dưới 0,67)</option></select></div>
-    </div>
+    <div data-for="cbsem" class="field"><label for="ss-minitems">Số biến quan sát ít nhất trong một cấu trúc</label>
+      <input id="ss-minitems" type="number" min="1" step="1" value="4"></div>
+    <div data-for="cbsem" class="field"><label for="ss-comm">Communality kỳ vọng của biến quan sát</label>
+      <select id="ss-comm"><option value="high">Cao: từ 0,6 (hệ số tải từ 0,78)</option><option value="mid" selected>Vừa: khoảng 0,5 (hệ số tải khoảng 0,7)</option><option value="low">Thấp: dưới 0,45 (hệ số tải dưới 0,67)</option></select>
+      <small>Communality là bình phương hệ số tải chuẩn hoá. Chưa có số liệu thử nghiệm thì giữ mức vừa.</small></div>
     <div data-for="cbsem" class="field"><label for="ss-sdf">Bậc tự do (df) của mô hình, tùy chọn</label>
       <input id="ss-sdf" type="number" min="1" step="1" placeholder="Để trống: tự tính cho mô hình đo lường CFA"><small>Dùng cho phân tích power theo RMSEA. AMOS in df ở mục Notes for Model; nhập nếu bạn muốn tính cho mô hình cấu trúc thay vì CFA.</small></div>
 
     <div data-for="med" class="row">
       <div class="field"><label for="ss-a">Đường dẫn a (X → M), chuẩn hoá</label>
-        <select id="ss-a"><option value="0">0,14 (nhỏ)</option><option value="1" selected>0,26 (giữa nhỏ và vừa)</option><option value="2">0,39 (vừa)</option><option value="3">0,59 (lớn)</option></select></div>
+        <select id="ss-a"><option value="0">0,14 nhỏ</option><option value="1" selected>0,26 nhỏ–vừa</option><option value="2">0,39 vừa</option><option value="3">0,59 lớn</option></select></div>
       <div class="field"><label for="ss-b">Đường dẫn b (M → Y), chuẩn hoá</label>
-        <select id="ss-b"><option value="0">0,14 (nhỏ)</option><option value="1" selected>0,26 (giữa nhỏ và vừa)</option><option value="2">0,39 (vừa)</option><option value="3">0,59 (lớn)</option></select></div>
+        <select id="ss-b"><option value="0">0,14 nhỏ</option><option value="1" selected>0,26 nhỏ–vừa</option><option value="2">0,39 vừa</option><option value="3">0,59 lớn</option></select></div>
     </div>
     <div data-for="med" class="field"><label for="ss-medtest">Cách kiểm định tác động gián tiếp</label>
-      <select id="ss-medtest"><option value="perc" selected>Bootstrap phân vị (mặc định của SmartPLS 4, PROCESS)</option><option value="bc">Bootstrap hiệu chỉnh độ chệch (bias-corrected)</option><option value="joint">Ý nghĩa đồng thời của a và b</option><option value="sobel">Kiểm định Sobel</option></select>
+      <select id="ss-medtest"><option value="perc" selected>Bootstrap phân vị (SmartPLS 4, PROCESS)</option><option value="bc">Bootstrap bias-corrected</option><option value="joint">Ý nghĩa đồng thời của a và b</option><option value="sobel">Kiểm định Sobel</option></select>
       <small>Tra bảng mô phỏng của Fritz và MacKinnon (2007), cố định α = 5% và power 0,80.</small></div>
 
     <div data-for="ttest" class="row">
@@ -154,7 +153,8 @@
   // Regularized lower incomplete gamma, chi-square CDF and inverse, noncentral chi-square as a Poisson mixture.
   function gammaP(a,x){if(x<=0)return 0;const gl=lgamma(a);if(x<a+1){let ap=a,sum=1/a,del=sum;for(let n=0;n<2000;n++){ap++;del*=x/ap;sum+=del;if(Math.abs(del)<Math.abs(sum)*1e-15)break}return sum*Math.exp(-x+a*Math.log(x)-gl)}let b=x+1-a,c=1e300,dd=1/b,h=dd;for(let i=1;i<2000;i++){const an=-i*(i-a);b+=2;dd=an*dd+b;if(Math.abs(dd)<1e-300)dd=1e-300;c=b+an/c;if(Math.abs(c)<1e-300)c=1e-300;dd=1/dd;const del=dd*c;h*=del;if(Math.abs(del-1)<1e-15)break}return 1-Math.exp(-x+a*Math.log(x)-gl)*h}
   function chi2cdf(x,k){return gammaP(k/2,x/2)}
-  function ncx2cdf(x,k,lam){const h=lam/2,sd=Math.sqrt(h+1),a=Math.max(0,Math.floor(h-12*sd-40)),b=Math.ceil(h+12*sd+40);let s=0;for(let j=a;j<=b;j++)s+=Math.exp(-h+j*Math.log(h||1e-300)-lgamma(j+1))*chi2cdf(x,k+2*j);return s}
+  // Terms use P(a + 1, x) = P(a, x) − xᵃe⁻ˣ/Γ(a + 1) and Poisson weights by recurrence: one incomplete gamma per call.
+  function ncx2cdf(x,k,lam){const h=lam/2,sd=Math.sqrt(h+1),j0=Math.max(0,Math.floor(h-9*sd-10)),j1=Math.ceil(h+9*sd+10),y=x/2,ly=Math.log(y);let a=k/2+j0,P=gammaP(a,y),s=0,w=Math.exp(-h+j0*Math.log(h||1e-300)-lgamma(j0+1));for(let j=j0;j<=j1;j++){s+=w*Math.max(0,P);w*=h/(j+1);if(y>0)P-=Math.exp(a*ly-y-lgamma(a+1));a++}return s}
   function ncx2inv(p,k,lam){let lo=0,hi=k+lam+10;while(ncx2cdf(hi,k,lam)<p)hi*=2;for(let i=0;i<60;i++){const mid=(lo+hi)/2;ncx2cdf(mid,k,lam)<p?lo=mid:hi=mid}return (lo+hi)/2}
   // Smallest n ≥ lo+1 for which ok(n) holds (ok is monotone in n): double, then bisect.
   function minN(lo,ok){let hi=lo+1;while(!ok(hi)){lo=hi;hi*=2;if(hi>2e6)return NaN}while(hi-lo>1){const mid=(lo+hi)>>1;ok(mid)?hi=mid:lo=mid}return hi}
@@ -217,6 +217,7 @@
         const nInc=incN(q,m,f2,alpha,power),nAll=regN(m,0.15,alpha,power);Object.assign(p,{m,q,f2,alpha,power,val:nInc,second:nAll,base:strict?Math.max(nInc,nAll):nInc});
         p.main=['Phân tích power cho số hạng tương tác (G*Power)',nInc,`F-test mức tăng R², ${q} số hạng tương tác trong ${m} biến dự báo, f² = ${dn(f2)}, ${apw}. Faul và cộng sự (2009).`];
         p.refs.push(['Cả mô hình, R² khác 0 (f² = 0,15)',nAll,`Cỡ mẫu để kiểm định chung ${m} biến dự báo. Nhỏ hơn nhiều vì f² = 0,15 lớn gấp ${dn(0.15/f2,1)} lần f² của tương tác.`]);
+        p.note='Nếu mô hình chính là PLS-SEM hay hồi quy nhiều biến, lấy số lớn hơn giữa số này và cỡ mẫu của mô hình chính.';
         if(f2>=0.15)p.warn='f² = 0,15 cho số hạng tương tác là kỳ vọng rất lạc quan: Aguinis và cộng sự (2005) cho trung vị f² của tác động điều tiết chỉ 0,002. Hội đồng có thể hỏi căn cứ.';
       }else{
         const f2=num('ss-f2'),nPow=regN(m,f2,alpha,power);Object.assign(p,{m,f2,alpha,power,val:nPow,base:nPow});
@@ -382,7 +383,7 @@
       ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3 (Faul và cộng sự, 2007) cho kiểm định χ² trên bảng chéo với bậc tự do df = ${p.df}, cỡ hiệu ứng w = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`);
       refs=['faul07','cohen88'];
     }else if(p.method==='corr'){
-      ps.push(`Cỡ mẫu tối thiểu để kiểm định hệ số tương quan Pearson khác 0 (kiểm định hai phía) được tính theo biến đổi Fisher z (Cohen, 1988) với hệ số tương quan kỳ vọng r = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`);
+      ps.push(`Cỡ mẫu tối thiểu để kiểm định hệ số tương quan Pearson khác 0 (kiểm định hai phía) được tính theo biến đổi Fisher z với hệ số tương quan kỳ vọng r = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`);
       refs=['cohen88'];
     }else{
       const conf={1.645:'90%',1.96:'95%',2.576:'99%'}[p.z];

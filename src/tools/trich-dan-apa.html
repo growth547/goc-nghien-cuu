@@ -1,0 +1,318 @@
+<style>
+  #ap-list{list-style:none;margin:0;padding:0}
+  #ap-list>li{border-bottom:1px solid var(--border);padding:12px 0}
+  #ap-list>li:last-child{border-bottom:0}
+  .ap-ref{padding-left:2em;text-indent:-2em;line-height:1.6;overflow-wrap:anywhere}
+  .ap-meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:6px;font-size:.82rem}
+  .ap-meta code{font-size:.8rem}
+  .ap-mini{border:1px solid var(--border);border-radius:6px;padding:2px 10px;font-size:.8rem;background:transparent;cursor:pointer;min-height:32px}
+  .ap-meta select{width:auto;max-width:100%;padding:4px 6px;font-size:.8rem}
+  #ap-in{min-height:12rem}
+</style>
+
+<div class="tool">
+  <div class="panel">
+    <div class="field"><label for="ap-in">DOI hoặc tên bài, mỗi dòng một tài liệu</label>
+      <textarea id="ap-in" spellcheck="false" placeholder="10.2307/249008&#10;https://doi.org/10.1111/isj.12131&#10;When to use and how to report the results of PLS-SEM"></textarea>
+      <small>Dán DOI (dạng 10.xxxx/… hoặc link doi.org), link bài có chứa DOI, hoặc tên bài báo, cả dòng trích dẫn chép từ đâu đó cũng được. Thông tin lấy từ Crossref (và DataCite cho arXiv, Zenodo); không có dữ liệu cá nhân nào được gửi đi.</small></div>
+    <div class="row">
+      <div class="field"><label for="ap-lang">Trích dẫn trong bài</label>
+        <select id="ap-lang"><option value="vi">Tiếng Việt: “và cộng sự”</option><option value="en">Tiếng Anh: “et al.”</option></select></div>
+      <div class="field"><label for="ap-sort">Thứ tự danh mục</label>
+        <select id="ap-sort"><option value="az">A–Z theo tác giả (APA)</option><option value="in">Theo thứ tự đã dán</option></select></div>
+    </div>
+    <label class="check"><input type="checkbox" id="ap-sentence" checked> Viết tên bài kiểu câu (chỉ viết hoa chữ đầu, sau dấu hai chấm và danh từ riêng), đúng APA 7</label>
+    <div class="row"><button type="button" class="btn" id="ap-run">Tạo trích dẫn</button><button type="button" class="btn ghost" id="ap-sample">Nạp ví dụ</button></div>
+    <p id="ap-status" class="text-muted-foreground" style="margin:0;font-size:.85rem" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="panel">
+    <div class="row" style="justify-content:space-between;align-items:center;gap:8px">
+      <strong>Danh mục tài liệu tham khảo</strong>
+      <span class="row" style="gap:8px"><button type="button" class="btn" id="ap-copy">Sao chép tất cả</button><button type="button" class="btn ghost" id="ap-copy-cite">Chép trích dẫn trong bài</button></span>
+    </div>
+    <ul id="ap-list" aria-live="polite"><li class="text-muted-foreground">Dán DOI hoặc tên bài rồi bấm “Tạo trích dẫn”.</li></ul>
+    <div id="ap-errors"></div>
+    <small class="text-muted-foreground">Sao chép giữ chữ nghiêng khi dán vào Word hoặc Google Docs. Kiểm tra lại danh từ riêng trong tên bài, tên tạp chí và tên tác giả là tổ chức trước khi nộp.</small>
+  </div>
+</div>
+<p style="margin-top:20px">Trích dẫn thang đo cho bảng hỏi: mỗi thang đo trong <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> đã có sẵn tài liệu gốc theo APA, và <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> tự viết đoạn chương 3 kèm danh mục tham khảo.</p>
+
+<script>
+(function(){
+  // ---- APA 7 formatter (pure; unit-checked by scripts/check-apa.mjs with Crossref fixtures) ----
+  //#apa-start
+  const ENT={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' ',ndash:'–',mdash:'—'};
+  function cleanText(s){
+    return String(s||'').replace(/<[^>]+>/g,'').replace(/&(#x[0-9a-f]+|#\d+|\w+);/gi,(m,e)=>e[0]==='#'?String.fromCodePoint(e[1]==='x'||e[1]==='X'?parseInt(e.slice(2),16):+e.slice(1)):ENT[e.toLowerCase()]??m)
+      .replace(/[‐‑]/g,'-').replace(/\s+/g,' ').replace(/\s+([:;,.?!])/g,'$1').trim();
+  }
+  // Titles: drop a trailing period and a footnote digit glued to the last word ("Unified View1").
+  function cleanTitle(t,sub){
+    let s=cleanText(t).replace(/([a-z])[1-9*]$/,'$1').replace(/\.$/,'');
+    const st=cleanText(sub||'').replace(/\.$/,'');
+    if(st&&!s.toLowerCase().includes(st.toLowerCase()))s=`${s}: ${st[0].toUpperCase()}${st.slice(1)}`;
+    return s;
+  }
+  // Proper nouns kept capitalised when a Title Case title is turned into sentence case.
+  const PROPER=new Set(('vietnam viet nam vietnamese hanoi saigon asia asian asean europe european america american americans africa african australia australian china chinese japan japanese korea korean '+
+    'india indian indonesia indonesian malaysia malaysian thailand thai singapore philippines philippine taiwan taiwanese germany german france french spain spanish italy italian britain british england english '+
+    'canada canadian brazil brazilian russia russian mexico latin arab islamic muslim christian buddhist western eastern pacific atlantic covid internet facebook google youtube tiktok instagram twitter amazon '+
+    'shopee lazada tiki grab zalo momo uber airbnb netflix apple microsoft samsung likert cronbach pearson spearman bayesian gaussian markov monte carlo fisher wilcoxon kruskal wallis mann whitney poisson '+
+    'january february march april may june july august september october november december monday tuesday wednesday thursday friday saturday sunday').split(' '));
+  // Title Case = no lower-case content word after the first word ("with", "from"… may stay lower in Title Case).
+  const SMALL=new Set('a an and as at but by for from in into nor of off on onto or over per so than that the to up upon via vs with within without versus about among between through toward towards'.split(' '));
+  function isTitleCase(s){
+    const w=s.split(/[\s-]+/).slice(1).map(x=>x.replace(/^[^\p{L}]+|[^\p{L}'’]+$/gu,'')).filter(x=>/^\p{L}/u.test(x)&&!SMALL.has(x.toLowerCase()));
+    return w.length>=2&&w.every(x=>!/^\p{Ll}/u.test(x));
+  }
+  function sentenceCase(s){
+    if(!isTitleCase(s))return s;
+    const tok=s.split(' ');let start=true;
+    return tok.map(w=>{
+      const keep=start;start=/[:?!.]$/.test(w);
+      if(keep)return w;
+      return w.split('-').map((part,k)=>{
+        const m=part.match(/^([^\p{L}\d]*)([\p{L}][\p{L}'’]*)(.*)$/u);if(!m)return part;
+        const core=m[2];
+        if(core==='I'||PROPER.has(core.toLowerCase().replace(/['’]s$/,'')))return part;
+        if((core.length>1||core==='A')&&/^\p{Lu}[\p{Ll}'’]*$/u.test(core))return m[1]+core.toLowerCase()+m[3];
+        return part;
+      }).join('-');
+    }).join(' ');
+  }
+  function initials(given){
+    return String(given||'').replace(/\./g,'. ').split(/\s+/).filter(Boolean).filter(p=>!/^\(.*\)$/.test(p)).map(p=>p.split('-').map(x=>{const c=x.replace(/[^\p{L}]/gu,'');return c?c[0].toUpperCase()+'.':''}).filter(Boolean).join('-')).filter(Boolean).join(' ');
+  }
+  function fixCaps(f){return f&&f.length>2&&f===f.toUpperCase()&&/\p{L}/u.test(f)?f.toLowerCase().replace(/(^|[\s'-])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase()):f}
+  function person(a){
+    if(!a)return '';
+    if(!a.family)return cleanText(a.name||a.literal||a.given||'');
+    const fam=fixCaps(cleanText(a.family)), ini=initials(cleanText(a.given));
+    return (ini?`${fam}, ${ini}`:fam)+(a.suffix?`, ${a.suffix}`:'');
+  }
+  function editorName(a){if(!a.family)return cleanText(a.name||a.literal||'');const ini=initials(cleanText(a.given));return (ini?ini+' ':'')+fixCaps(cleanText(a.family))+(a.suffix?`, ${a.suffix}`:'')}
+  function joinList(xs,amp='&'){if(xs.length<=1)return xs.join('');if(xs.length===2)return `${xs[0]}, ${amp} ${xs[1]}`;return `${xs.slice(0,-1).join(', ')}, ${amp} ${xs[xs.length-1]}`}
+  // APA 7: up to 20 authors in full; from 21, the first 19, an ellipsis, then the last.
+  function authorList(list){
+    const xs=list.map(person).filter(Boolean);
+    if(xs.length>20)return `${xs.slice(0,19).join(', ')}, . . . ${xs[xs.length-1]}`;
+    return joinList(xs);
+  }
+  function yearOf(m){
+    const y=d=>d&&d['date-parts']&&d['date-parts'][0]&&d['date-parts'][0][0];
+    // The issue date wins over online-first when the article sits in a volume (Kock & Hadaya: online 2016, issue 2018).
+    return (m.volume&&y(m['published-print']))||y(m.issued)||y(m['published-print'])||y(m['published-online'])||y(m.published)||y(m.created)||null;
+  }
+  const KIND={'journal-article':'article','article-journal':'article','book':'book','monograph':'book','edited-book':'book','reference-book':'book','book-set':'book','book-series':'book',
+    'book-chapter':'chapter','book-section':'chapter','book-part':'chapter','chapter':'chapter','reference-entry':'chapter','entry':'chapter','entry-encyclopedia':'chapter','entry-dictionary':'chapter',
+    'proceedings-article':'proceedings','paper-conference':'proceedings','posted-content':'preprint','dataset':'dataset','report':'report','dissertation':'thesis','thesis':'thesis','article-newspaper':'article','article-magazine':'article'};
+  const first=x=>Array.isArray(x)?x[0]:x;
+  const last=x=>Array.isArray(x)?x[x.length-1]:x;
+  // One record shape for Crossref /works messages and CSL-JSON from doi.org (DataCite: arXiv, Zenodo, OSF).
+  function normalize(m){
+    let kind=KIND[m.type]||'other';
+    const publisher=cleanText(m.publisher||'');
+    const server=cleanText((m.institution&&m.institution[0]&&m.institution[0].name)||'');
+    if(m.type==='article'||m.subtype==='preprint'||(kind==='other'&&/arxiv|rxiv|ssrn|preprint|osf/i.test(publisher)))kind=/zenodo|figshare|dryad/i.test(publisher)&&!/preprint/i.test(m.subtype||'')?'other':'preprint';
+    // A book's container-title is its series; a chapter's book title is the last container title.
+    const container=kind==='book'?'':cleanText(kind==='chapter'?last(m['container-title']):first(m['container-title']));
+    let title=cleanTitle(first(m.title),first(m.subtitle));
+    let edition=m['edition-number']||m.edition||'';
+    const ed=title.match(/\s*\((\d+)(?:st|nd|rd|th) ed\.?\)$/i);if(ed){edition=edition||ed[1];title=title.slice(0,ed.index)}
+    return {kind,type:m.type||'',authors:(m.author||[]).filter(a=>a.family||a.name||a.literal),editors:(m.editor||[]).filter(a=>a.family||a.name||a.literal),
+      title,container,volume:cleanText(m.volume||''),issue:cleanText(m.issue||''),page:cleanText(m.page||'').replace(/\s*[-–—]+\s*/g,'–'),
+      artnum:cleanText(m['article-number']||''),year:yearOf(m),publisher,server:server||publisher,doi:cleanText(m.DOI||m.doi||'').replace(/^https?:\/\/(dx\.)?doi\.org\//i,''),edition:String(edition||'').replace(/\D/g,'')};
+  }
+  const ord=n=>{n=+n;const s=n%100>=11&&n%100<=13?'th':['th','st','nd','rd'][n%10]||'th';return n+(n%10>3?'th':s)};
+  // A reference as segments [{t, i}] (i = italic), so the same data gives HTML for Word and plain text.
+  function formatRef(r,o={}){
+    const sc=o.sentence!==false?sentenceCase:(x=>x), seg=[], add=(t,i=false)=>{if(t)seg.push({t,i})}, warn=[];
+    const title=sc(r.title||'');
+    const yr=(r.year||'n.d.')+(r.suffix||'');
+    const endP=t=>/[.?!]$/.test(t)?'':'.';
+    let auth=r.authors.length?authorList(r.authors):'';
+    let groupAuthor=false;
+    if(!auth&&r.editors.length&&(r.kind==='book')){auth=authorList(r.editors)+(r.editors.length>1?' (Eds.)':' (Ed.)')}
+    if(!auth&&(r.kind==='book'||r.kind==='report')&&r.publisher){auth=r.publisher;groupAuthor=true;warn.push('Không có tên tác giả: lấy nhà xuất bản làm tác giả tổ chức theo APA.')}
+    const italicTitle=['book','preprint','dataset','report','thesis','other'].includes(r.kind);
+    if(auth){add(`${auth}${endP(auth)} `.replace(/\.\. $/,'. '));add(`(${yr}). `)}
+    else{if(italicTitle){add(title,true);add(`${endP(title)} `)}else add(`${title}${endP(title)} `);add(`(${yr}). `);warn.push('Không có tên tác giả trên Crossref.')}
+    const tit=()=>{if(!auth)return;if(italicTitle)add(title,true);else add(title)};
+    const pages=p=>p?(/[–,]/.test(p)?`pp. ${p}`:`p. ${p}`):'';
+    const ed=r.edition&&+r.edition>1?` (${ord(r.edition)} ed.)`:'';
+    if(r.kind==='article'){
+      tit();if(auth)add(endP(title)+' ');
+      if(r.container){add(r.container,true);if(r.volume){add(', ');add(r.volume,true)}if(r.issue)add(`(${r.issue})`);
+        if(r.page)add(`, ${r.page}`);else if(r.artnum)add(`, Article ${r.artnum}`);add('.')}
+      else warn.push('Thiếu tên tạp chí.');
+      if(r.volume&&!r.page&&!r.artnum)warn.push('Thiếu số trang hoặc số bài.');
+      else if(r.page&&/^\d+$/.test(r.page)&&+r.page>1)warn.push('Crossref chỉ có trang đầu: bổ sung trang cuối theo bài gốc (dạng 1251–1271).');
+    }else if(r.kind==='chapter'||r.kind==='proceedings'){
+      tit();if(auth)add(endP(title)+' ');
+      add('In ');
+      if(r.editors.length){const es=r.editors.map(editorName);add(`${es.length>2?joinList(es):es.join(' & ')} (${es.length>1?'Eds.':'Ed.'}), `)}
+      add(r.container?(r.kind==='chapter'?sc(r.container):r.container):'[Tên sách]',true);
+      const p=pages(r.page);add(`${ed?ed.replace(')',p?`, ${p})`:')'):p?` (${p})`:''}.`);
+      if(r.publisher&&!new RegExp(r.publisher.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i').test(r.container))add(` ${r.publisher}${endP(r.publisher)}`);
+    }else if(r.kind==='preprint'){
+      tit();add(` [Preprint]. `.replace(/^ /,auth?' ':''));if(r.server)add(`${r.server}${endP(r.server)}`);
+    }else{
+      tit();
+      const tag=r.kind==='dataset'?' [Data set]':r.kind==='thesis'?' [Doctoral dissertation]':'';
+      add(`${ed}${tag}${auth?endP(title+ed+tag):''}`);
+      if(r.publisher&&!groupAuthor&&r.kind!=='thesis')add(` ${r.publisher}${endP(r.publisher)}`);
+      else if(r.kind==='thesis'&&r.server&&r.server!==r.publisher)add(` ${r.server}.`);
+    }
+    if(r.doi)add(` https://doi.org/${r.doi}`);
+    // tidy: "..", double spaces
+    const out=[];for(const s of seg){const p=out[out.length-1];if(p&&p.i===s.i)p.t+=s.t;else out.push({...s})}
+    out.forEach(s=>{s.t=s.t.replace(/ {2,}/g,' ')});
+    for(let i=1;i<out.length;i++)if(out[i].t.startsWith('.')&&/[.?!]$/.test(out[i-1].t))out[i].t=out[i].t.slice(1);
+    if(out.length)out[0].t=out[0].t.trimStart();
+    return {seg:out,warn};
+  }
+  const segText=seg=>seg.map(s=>s.t).join('');
+  const escH=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const segHtml=seg=>seg.map(s=>s.i?`<i>${escH(s.t)}</i>`:escH(s.t)).join('');
+  function surname(a){return a.family?fixCaps(cleanText(a.family)):cleanText(a.name||a.literal||'')}
+  function shortTitle(t){const w=t.split(' ');return w.length>4?w.slice(0,4).join(' ')+'…':t}
+  // In-text citations: vi uses "và" and "và cộng sự", en uses "and"/"&" and "et al." (APA 7: three or more authors cite the first only).
+  function citeIn(r,lang='vi'){
+    const yr=(r.year||'n.d.')+(r.suffix||''), vi=lang==='vi';
+    let names=r.authors.map(surname).filter(Boolean);
+    if(!names.length&&r.kind==='book'&&r.editors.length)names=r.editors.map(surname);
+    if(!names.length&&(r.kind==='book'||r.kind==='report')&&r.publisher)names=[r.publisher];
+    if(!names.length){const t=`“${shortTitle(sentenceCase(r.title||''))}”`;return {paren:`(${t}, ${yr})`,narr:`${t} (${yr})`}}
+    let narr,paren;
+    if(names.length===1){narr=names[0];paren=names[0]}
+    else if(names.length===2){narr=`${names[0]} ${vi?'và':'and'} ${names[1]}`;paren=`${names[0]} ${vi?'và':'&'} ${names[1]}`}
+    else{narr=paren=`${names[0]} ${vi?'và cộng sự':'et al.'}`}
+    return {paren:`(${paren}, ${yr})`,narr:`${narr} (${yr})`};
+  }
+  function fold(s){return String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase()}
+  function sortKey(r){
+    const names=r.authors.length?r.authors.map(a=>fold(surname(a))+' '+fold(initials(cleanText(a.given)))):r.publisher&&(r.kind==='book'||r.kind==='report')?[fold(r.publisher)]:[fold(sentenceCase(r.title||'').replace(/^(the|a|an) /i,''))];
+    return names.join('\u0001');
+  }
+  // Same authors, same year: 2020a, 2020b in title order. Returns a new sorted (or input-order) list.
+  function prepare(records,o={}){
+    const rs=records.map(r=>({...r,suffix:''}));
+    const groups=new Map();
+    rs.forEach(r=>{const k=sortKey(r)+'\u0002'+(r.year||'n.d.');(groups.get(k)||groups.set(k,[]).get(k)).push(r)});
+    groups.forEach(g=>{if(g.length>1){const seen=new Map();g.sort((a,b)=>fold(a.title).localeCompare(fold(b.title)));let n=0;g.forEach(r=>{if(seen.has(r.doi||r.title))r.suffix=seen.get(r.doi||r.title);else{r.suffix=(r.year?'':'-')+'abcdefghijklmnopqrstuvwxyz'[n++];seen.set(r.doi||r.title,r.suffix)}})}});
+    if(o.sort!=='in')rs.sort((a,b)=>{const ka=sortKey(a),kb=sortKey(b);if(ka!==kb)return ka<kb?-1:1;const ya=a.year||0,yb=b.year||0;if(ya!==yb)return ya-yb;return (a.suffix||'').localeCompare(b.suffix||'')});
+    return rs;
+  }
+  // Input lines: a DOI anywhere in the line wins; otherwise the line is a title or a pasted reference.
+  function parseLine(line){
+    let s=String(line).trim();if(!s)return null;
+    try{if(/%2F/i.test(s))s=decodeURIComponent(s)}catch(e){}
+    const m=s.match(/10\.\d{4,9}\/[^\s"<>]+/);
+    if(m){let d=m[0].replace(/[.,;:'"”’]+$/,'');
+      while(/[)\]]$/.test(d)&&(d.split('(').length<d.split(')').length||d.split('[').length<d.split(']').length))d=d.slice(0,-1);
+      d=d.replace(/[.,;]+$/,'');return {kind:'doi',doi:d,line:s}}
+    const q=s.replace(/^\s*(?:\[\d+\]|\d+\.)\s*/,'');
+    if(q.replace(/[^\p{L}]/gu,'').length<8)return {kind:'bad',line:s};
+    return {kind:'query',q,line:s};
+  }
+  //#apa-end
+
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const API='https://api.crossref.org/works';
+  const cache=new Map();
+  let entries=[];   // {line, rec, alts:[rec], pick, error}
+
+  async function getJSON(url,headers){
+    const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),20000);
+    try{const r=await fetch(url,{headers,signal:ctl.signal});if(r.status===404)return {notFound:true};if(!r.ok)throw new Error('HTTP '+r.status);return {json:await r.json()}}
+    finally{clearTimeout(t)}
+  }
+  async function byDoi(doi){
+    const k=doi.toLowerCase();if(cache.has(k))return cache.get(k);
+    const enc=doi.split('/').map(encodeURIComponent).join('/');
+    let res=await getJSON(`${API}/${enc}`);
+    let rec=null;
+    if(res.json&&res.json.message)rec=normalize(res.json.message);
+    else if(res.notFound){
+      // Not a Crossref DOI: ask doi.org for CSL-JSON (DataCite: arXiv, Zenodo, OSF…).
+      const r2=await getJSON(`https://doi.org/${enc}`,{Accept:'application/vnd.citationstyles.csl+json'}).catch(()=>({notFound:true}));
+      if(r2.json)rec=normalize(r2.json);
+    }
+    if(rec)cache.set(k,rec);
+    return rec;
+  }
+  async function byQuery(q){
+    const k='q:'+q;if(cache.has(k))return cache.get(k);
+    const res=await getJSON(`${API}?query.bibliographic=${encodeURIComponent(q.slice(0,300))}&rows=5`);
+    const items=(res.json&&res.json.message&&res.json.message.items)||[];
+    const recs=items.filter(m=>m.title&&m.title[0]).map(normalize);
+    cache.set(k,recs);return recs;
+  }
+
+  function render(){
+    const lang=$('ap-lang').value,sentence=$('ap-sentence').checked,sort=$('ap-sort').value;
+    const ok=entries.filter(e=>e.rec);
+    const prepared=prepare(ok.map(e=>({...e.rec,_e:e})),{sort});
+    if(!prepared.length){$('ap-list').innerHTML=`<li class="text-muted-foreground">${entries.length?'Chưa có tài liệu nào tìm được.':'Dán DOI hoặc tên bài rồi bấm “Tạo trích dẫn”.'}</li>`}
+    else $('ap-list').innerHTML=prepared.map((r,i)=>{
+      const f=formatRef(r,{sentence}),c=citeIn(r,lang),e=r._e,idx=entries.indexOf(e);
+      r._html=segHtml(f.seg);r._text=segText(f.seg);r._cite=c;
+      const alt=e.alts&&e.alts.length>1?`<label>Tìm theo tên, kiểm tra đúng bài: <select data-alt="${idx}" aria-label="Chọn bài đúng">${e.alts.map((a,k)=>`<option value="${k}" ${k===e.pick?'selected':''}>${esc((a.authors[0]?surname(a.authors[0]):'')+' ('+(a.year||'n.d.')+'). '+a.title.slice(0,90))}</option>`).join('')}</select></label>`:'';
+      return `<li><div class="ap-ref">${r._html}</div><div class="ap-meta"><span>Trong bài: <code>${esc(c.paren)}</code> · <code>${esc(c.narr)}</code></span><button type="button" class="ap-mini" data-copy="${i}" aria-label="${esc('Sao chép tài liệu '+(i+1))}">Chép</button><button type="button" class="ap-mini" data-del="${idx}" aria-label="${esc('Bỏ tài liệu '+(i+1))}">Bỏ</button>${alt}</div>${f.warn.length?`<div class="err" style="font-size:.8rem;margin-top:4px">${f.warn.map(esc).join(' ')}</div>`:''}</li>`;
+    }).join('');
+    $('ap-list')._prepared=prepared;
+    const bad=entries.filter(e=>e.error);
+    $('ap-errors').innerHTML=bad.length?`<p class="err" style="margin:8px 0 4px"><b>Chưa tìm được ${bad.length} dòng:</b></p><ul class="err" style="margin:0;padding-left:18px">${bad.map(e=>`<li><code>${esc(e.line.slice(0,120))}</code>: ${esc(e.error)}</li>`).join('')}</ul>`:'';
+  }
+
+  let running=0;
+  async function runAll(){
+    const lines=$('ap-in').value.split(/\r?\n/).map(parseLine).filter(Boolean);
+    const seen=new Set();const todo=lines.filter(l=>{const k=l.kind==='doi'?l.doi.toLowerCase():l.line;if(seen.has(k))return false;seen.add(k);return true});
+    if(!todo.length){$('ap-status').textContent='Chưa có dòng nào để tra.';return}
+    if(todo.length>100){$('ap-status').textContent='Tối đa 100 dòng mỗi lần; công cụ tra 100 dòng đầu.';todo.length=100}
+    const run=++running;entries=todo.map(l=>({line:l.line,item:l}));let done=0;
+    $('ap-run').disabled=true;$('ap-status').textContent=`Đang tra 0/${entries.length}…`;render();
+    const queue=[...entries];
+    const worker=async()=>{while(queue.length){const e=queue.shift();
+      try{
+        if(e.item.kind==='bad')e.error='Không có DOI và quá ngắn để tìm theo tên.';
+        else if(e.item.kind==='doi'){const r=await byDoi(e.item.doi);if(r)e.rec=r;else e.error='Không tìm thấy DOI này trên Crossref hay DataCite. Kiểm tra lại DOI (dán từ trang bài báo).'}
+        else{const rs=await byQuery(e.item.q);if(rs.length){e.alts=rs;e.pick=0;e.rec=rs[0]}else e.error='Không tìm thấy bài khớp tên. Thử dán DOI.'}
+      }catch(err){e.error=err&&err.name==='AbortError'?'Crossref phản hồi quá lâu, bấm Tạo trích dẫn để thử lại.':'Không kết nối được Crossref (mạng chặn hoặc đang quá tải). Thử lại sau ít phút.'}
+      if(run!==running)return;done++;$('ap-status').textContent=`Đang tra ${done}/${entries.length}…`;render()}};
+    await Promise.all([worker(),worker(),worker(),worker()]);
+    if(run!==running)return;
+    $('ap-run').disabled=false;
+    const nOk=entries.filter(e=>e.rec).length,nQ=entries.filter(e=>e.alts).length;
+    $('ap-status').textContent=`Xong: ${nOk}/${entries.length} tài liệu.${nQ?` ${nQ} tài liệu tìm theo tên: kiểm tra đúng bài ở ô chọn bên dưới.`:''}`;
+    render();
+  }
+
+  async function copyRich(html,text,btn,label){
+    try{
+      if(window.ClipboardItem&&navigator.clipboard&&navigator.clipboard.write){
+        await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]);
+      }else await navigator.clipboard.writeText(text);
+    }catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
+    if(btn){btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=label,1500)}
+  }
+  const hang='<p style="margin:0 0 0 0.5in;text-indent:-0.5in;line-height:2">';
+  $('ap-copy').addEventListener('click',e=>{const p=$('ap-list')._prepared||[];if(!p.length)return;
+    copyRich(p.map(r=>hang+r._html+'</p>').join(''),p.map(r=>r._text).join('\n'),e.currentTarget,'Sao chép tất cả')});
+  $('ap-copy-cite').addEventListener('click',e=>{const p=$('ap-list')._prepared||[];if(!p.length)return;
+    const t=p.map(r=>`${r._cite.paren}\t${r._cite.narr}`).join('\n');copyRich(`<p>${p.map(r=>esc(r._cite.paren)+' · '+esc(r._cite.narr)).join('<br>')}</p>`,t,e.currentTarget,'Chép trích dẫn trong bài')});
+  $('ap-list').addEventListener('click',e=>{
+    const c=e.target.closest('[data-copy]'),d=e.target.closest('[data-del]');
+    if(c){const r=$('ap-list')._prepared[+c.dataset.copy];copyRich(hang+r._html+'</p>',r._text,c,'Chép')}
+    if(d){entries.splice(+d.dataset.del,1);render()}
+  });
+  $('ap-list').addEventListener('change',e=>{const a=e.target.dataset.alt;if(a==null)return;const en=entries[+a];en.pick=+e.target.value;en.rec=en.alts[en.pick];render()});
+  ['ap-lang','ap-sentence','ap-sort'].forEach(id=>$(id).addEventListener('change',()=>{render();try{localStorage.setItem('ap-opts',JSON.stringify({l:$('ap-lang').value,s:$('ap-sentence').checked,o:$('ap-sort').value}))}catch(e){}}));
+  $('ap-run').addEventListener('click',runAll);
+  $('ap-sample').addEventListener('click',()=>{$('ap-in').value='10.2307/249008\nhttps://doi.org/10.1111/isj.12131\n10.1108/EBR-11-2018-0203\nVenkatesh Morris Davis Davis 2003 User acceptance of information technology: Toward a unified view';runAll()});
+  try{const o=JSON.parse(localStorage.getItem('ap-opts')||'null');if(o){$('ap-lang').value=o.l==='en'?'en':'vi';$('ap-sentence').checked=o.s!==false;$('ap-sort').value=o.o==='in'?'in':'az'}}catch(e){}
+})();
+</script>

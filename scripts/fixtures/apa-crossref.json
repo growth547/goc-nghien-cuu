@@ -1,0 +1,973 @@
+{
+ "10.1007/978-3-030-80519-7": {
+  "type": "book",
+  "title": [
+   "Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R"
+  ],
+  "subtitle": [
+   "A Workbook"
+  ],
+  "container-title": [
+   "Classroom Companion: Business"
+  ],
+  "publisher": "Springer International Publishing",
+  "author": [
+   {
+    "given": "Joseph F.",
+    "family": "Hair"
+   },
+   {
+    "given": "G. Tomas M.",
+    "family": "Hult"
+   },
+   {
+    "given": "Christian M.",
+    "family": "Ringle"
+   },
+   {
+    "given": "Marko",
+    "family": "Sarstedt"
+   },
+   {
+    "given": "Nicholas P.",
+    "family": "Danks"
+   },
+   {
+    "given": "Soumya",
+    "family": "Ray"
+   }
+  ],
+  "DOI": "10.1007/978-3-030-80519-7",
+  "issued": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  }
+ },
+ "10.1007/978-3-030-80519-7_1": {
+  "type": "book-chapter",
+  "title": [
+   "An Introduction to Structural Equation Modeling"
+  ],
+  "container-title": [
+   "Classroom Companion: Business",
+   "Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R"
+  ],
+  "publisher": "Springer International Publishing",
+  "author": [
+   {
+    "given": "Joseph F.",
+    "family": "Hair",
+    "suffix": "Jr."
+   },
+   {
+    "given": "G. Tomas M.",
+    "family": "Hult"
+   },
+   {
+    "given": "Christian M.",
+    "family": "Ringle"
+   },
+   {
+    "given": "Marko",
+    "family": "Sarstedt"
+   },
+   {
+    "given": "Nicholas P.",
+    "family": "Danks"
+   },
+   {
+    "given": "Soumya",
+    "family": "Ray"
+   }
+  ],
+  "page": "1-29",
+  "DOI": "10.1007/978-3-030-80519-7_1",
+  "issued": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2021,
+     11,
+     4
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  }
+ },
+ "10.1037/0000165-000": {
+  "type": "book",
+  "title": [
+   "Publication manual of the American Psychological Association (7th ed.)."
+  ],
+  "publisher": "American Psychological Association",
+  "DOI": "10.1037/0000165-000",
+  "issued": {
+   "date-parts": [
+    [
+     2020
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2020
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2020
+    ]
+   ]
+  }
+ },
+ "10.1037/0033-2909.112.1.155": {
+  "type": "journal-article",
+  "title": [
+   "A power primer."
+  ],
+  "container-title": [
+   "Psychological Bulletin"
+  ],
+  "publisher": "American Psychological Association (APA)",
+  "author": [
+   {
+    "given": "Jacob",
+    "family": "Cohen"
+   }
+  ],
+  "page": "155-159",
+  "volume": "112",
+  "issue": "1",
+  "DOI": "10.1037/0033-2909.112.1.155",
+  "issued": {
+   "date-parts": [
+    [
+     1992
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     1992
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1992
+    ]
+   ]
+  }
+ },
+ "10.1101/2020.02.07.937862": {
+  "type": "posted-content",
+  "subtype": "preprint",
+  "title": [
+   "<i>Severe acute respiratory syndrome-related coronavirus</i>\n                  : The species and its viruses – a statement of the Coronavirus Study Group"
+  ],
+  "publisher": "openRxiv",
+  "author": [
+   {
+    "given": "Alexander E.",
+    "family": "Gorbalenya"
+   },
+   {
+    "given": "Susan C.",
+    "family": "Baker"
+   },
+   {
+    "given": "Ralph S.",
+    "family": "Baric"
+   },
+   {
+    "given": "Raoul J.",
+    "family": "de Groot"
+   },
+   {
+    "given": "Christian",
+    "family": "Drosten"
+   },
+   {
+    "given": "Anastasia A.",
+    "family": "Gulyaeva"
+   },
+   {
+    "given": "Bart L.",
+    "family": "Haagmans"
+   },
+   {
+    "given": "Chris",
+    "family": "Lauber"
+   },
+   {
+    "given": "Andrey M",
+    "family": "Leontovich"
+   },
+   {
+    "given": "Benjamin W.",
+    "family": "Neuman"
+   },
+   {
+    "given": "Dmitry",
+    "family": "Penzar"
+   },
+   {
+    "given": "Stanley",
+    "family": "Perlman"
+   },
+   {
+    "given": "Leo L.M.",
+    "family": "Poon"
+   },
+   {
+    "given": "Dmitry",
+    "family": "Samborskiy"
+   },
+   {
+    "given": "Igor A.",
+    "family": "Sidorov"
+   },
+   {
+    "given": "Isabel",
+    "family": "Sola"
+   },
+   {
+    "given": "John",
+    "family": "Ziebuhr"
+   }
+  ],
+  "DOI": "10.1101/2020.02.07.937862",
+  "institution": [
+   {
+    "name": "bioRxiv"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     2020,
+     2,
+     11
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2020,
+     2,
+     11
+    ]
+   ]
+  }
+ },
+ "10.1108/ebr-11-2018-0203": {
+  "type": "journal-article",
+  "title": [
+   "When to use and how to report the results of PLS-SEM"
+  ],
+  "container-title": [
+   "European Business Review"
+  ],
+  "publisher": "Emerald",
+  "author": [
+   {
+    "given": "Joseph F.",
+    "family": "Hair"
+   },
+   {
+    "given": "Jeffrey J.",
+    "family": "Risher"
+   },
+   {
+    "given": "Marko",
+    "family": "Sarstedt"
+   },
+   {
+    "given": "Christian M.",
+    "family": "Ringle"
+   }
+  ],
+  "page": "2-24",
+  "volume": "31",
+  "issue": "1",
+  "DOI": "10.1108/ebr-11-2018-0203",
+  "issued": {
+   "date-parts": [
+    [
+     2019,
+     1,
+     14
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2019,
+     1,
+     14
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019,
+     1,
+     14
+    ]
+   ]
+  }
+ },
+ "10.1111/isj.12131": {
+  "type": "journal-article",
+  "title": [
+   "Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods"
+  ],
+  "container-title": [
+   "Information Systems Journal"
+  ],
+  "publisher": "Wiley",
+  "author": [
+   {
+    "given": "Ned",
+    "family": "Kock"
+   },
+   {
+    "given": "Pierre",
+    "family": "Hadaya"
+   }
+  ],
+  "page": "227-261",
+  "volume": "28",
+  "issue": "1",
+  "DOI": "10.1111/isj.12131",
+  "issued": {
+   "date-parts": [
+    [
+     2016,
+     11,
+     29
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2018,
+     1
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2016,
+     11,
+     29
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2016,
+     11,
+     29
+    ]
+   ]
+  }
+ },
+ "10.1111/j.1467-9280.2007.01882.x": {
+  "type": "journal-article",
+  "title": [
+   "Required Sample Size to Detect the Mediated Effect"
+  ],
+  "container-title": [
+   "Psychological Science"
+  ],
+  "publisher": "SAGE Publications",
+  "author": [
+   {
+    "given": "Matthew S.",
+    "family": "Fritz"
+   },
+   {
+    "given": "David P.",
+    "family": "MacKinnon"
+   }
+  ],
+  "page": "233-239",
+  "volume": "18",
+  "issue": "3",
+  "DOI": "10.1111/j.1467-9280.2007.01882.x",
+  "issued": {
+   "date-parts": [
+    [
+     2007,
+     3
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2007,
+     3
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2007,
+     3,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2007,
+     3
+    ]
+   ]
+  }
+ },
+ "10.1145/3290605.3300233": {
+  "type": "proceedings-article",
+  "title": [
+   "Guidelines for Human-AI Interaction"
+  ],
+  "container-title": [
+   "Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems"
+  ],
+  "publisher": "ACM",
+  "author": [
+   {
+    "given": "Saleema",
+    "family": "Amershi"
+   },
+   {
+    "given": "Dan",
+    "family": "Weld"
+   },
+   {
+    "given": "Mihaela",
+    "family": "Vorvoreanu"
+   },
+   {
+    "given": "Adam",
+    "family": "Fourney"
+   },
+   {
+    "given": "Besmira",
+    "family": "Nushi"
+   },
+   {
+    "given": "Penny",
+    "family": "Collisson"
+   },
+   {
+    "given": "Jina",
+    "family": "Suh"
+   },
+   {
+    "given": "Shamsi",
+    "family": "Iqbal"
+   },
+   {
+    "given": "Paul N.",
+    "family": "Bennett"
+   },
+   {
+    "given": "Kori",
+    "family": "Inkpen"
+   },
+   {
+    "given": "Jaime",
+    "family": "Teevan"
+   },
+   {
+    "given": "Ruth",
+    "family": "Kikin-Gil"
+   },
+   {
+    "given": "Eric",
+    "family": "Horvitz"
+   }
+  ],
+  "page": "1-13",
+  "DOI": "10.1145/3290605.3300233",
+  "issued": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     2
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     2
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     2
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     2
+    ]
+   ]
+  }
+ },
+ "10.1177/0013164413495237": {
+  "type": "journal-article",
+  "title": [
+   "Sample Size Requirements for Structural Equation Models"
+  ],
+  "subtitle": [
+   "An Evaluation of Power, Bias, and Solution Propriety"
+  ],
+  "container-title": [
+   "Educational and Psychological Measurement"
+  ],
+  "publisher": "SAGE Publications",
+  "author": [
+   {
+    "given": "Erika J.",
+    "family": "Wolf"
+   },
+   {
+    "given": "Kelly M.",
+    "family": "Harrington"
+   },
+   {
+    "given": "Shaunna L.",
+    "family": "Clark"
+   },
+   {
+    "given": "Mark W.",
+    "family": "Miller"
+   }
+  ],
+  "page": "913-934",
+  "volume": "73",
+  "issue": "6",
+  "DOI": "10.1177/0013164413495237",
+  "issued": {
+   "date-parts": [
+    [
+     2013,
+     7,
+     9
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2013,
+     12
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2013,
+     7,
+     9
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2013,
+     7,
+     9
+    ]
+   ]
+  }
+ },
+ "10.2307/1913827": {
+  "type": "journal-article",
+  "title": [
+   "Specification Tests in Econometrics"
+  ],
+  "container-title": [
+   "Econometrica"
+  ],
+  "publisher": "JSTOR",
+  "author": [
+   {
+    "given": "J. A.",
+    "family": "Hausman"
+   }
+  ],
+  "page": "1251",
+  "volume": "46",
+  "issue": "6",
+  "DOI": "10.2307/1913827",
+  "issued": {
+   "date-parts": [
+    [
+     1978,
+     11
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1978,
+     11
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1978,
+     11
+    ]
+   ]
+  }
+ },
+ "10.2307/249008": {
+  "type": "journal-article",
+  "title": [
+   "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology"
+  ],
+  "container-title": [
+   "MIS Quarterly"
+  ],
+  "publisher": "MIS Quarterly",
+  "author": [
+   {
+    "given": "Fred D.",
+    "family": "Davis"
+   }
+  ],
+  "page": "319-340",
+  "volume": "13",
+  "issue": "3",
+  "DOI": "10.2307/249008",
+  "issued": {
+   "date-parts": [
+    [
+     1989,
+     9,
+     1
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1989,
+     9,
+     1
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     1989,
+     9,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1989,
+     9,
+     1
+    ]
+   ]
+  }
+ },
+ "10.2307/30036540": {
+  "type": "journal-article",
+  "title": [
+   "User Acceptance of Information Technology: Toward A Unified View1"
+  ],
+  "container-title": [
+   "MIS Quarterly"
+  ],
+  "publisher": "MIS Quarterly",
+  "author": [
+   {
+    "given": "Viswanath",
+    "family": "Venkatesh"
+   },
+   {
+    "given": "Michael G.",
+    "family": "Morris"
+   },
+   {
+    "given": "Gordon B.",
+    "family": "Davis"
+   },
+   {
+    "given": "Fred D.",
+    "family": "Davis"
+   }
+  ],
+  "page": "425-478",
+  "volume": "27",
+  "issue": "3",
+  "DOI": "10.2307/30036540",
+  "issued": {
+   "date-parts": [
+    [
+     2003,
+     9,
+     1
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2003,
+     9,
+     1
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2003,
+     9,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2003,
+     9,
+     1
+    ]
+   ]
+  }
+ },
+ "10.3389/fpsyg.2019.01021": {
+  "type": "journal-article",
+  "title": [
+   "Biology Teachers’ Worldviews on the Global Distribution and Loss of Biodiversity: A GIS-Based Mental-Mapping Approach"
+  ],
+  "container-title": [
+   "Frontiers in Psychology"
+  ],
+  "publisher": "Frontiers Media SA",
+  "author": [
+   {
+    "given": "Florian",
+    "family": "Fiebelkorn"
+   },
+   {
+    "given": "Susanne",
+    "family": "Menzel"
+   }
+  ],
+  "volume": "10",
+  "article-number": "1021",
+  "DOI": "10.3389/fpsyg.2019.01021",
+  "issued": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     14
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     14
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     14
+    ]
+   ]
+  }
+ },
+ "10.3758/brm.41.4.1149": {
+  "type": "journal-article",
+  "title": [
+   "Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses"
+  ],
+  "container-title": [
+   "Behavior Research Methods"
+  ],
+  "publisher": "Springer Science and Business Media LLC",
+  "author": [
+   {
+    "given": "Franz",
+    "family": "Faul"
+   },
+   {
+    "given": "Edgar",
+    "family": "Erdfelder"
+   },
+   {
+    "given": "Axel",
+    "family": "Buchner"
+   },
+   {
+    "given": "Albert-Georg",
+    "family": "Lang"
+   }
+  ],
+  "page": "1149-1160",
+  "volume": "41",
+  "issue": "4",
+  "DOI": "10.3758/brm.41.4.1149",
+  "issued": {
+   "date-parts": [
+    [
+     2009,
+     11
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2009,
+     11
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2009,
+     11
+    ]
+   ]
+  }
+ },
+ "csl:10.48550/ARXIV.1706.03762": {
+  "type": "article",
+  "title": "Attention Is All You Need",
+  "publisher": "arXiv",
+  "DOI": "10.48550/ARXIV.1706.03762",
+  "issued": {
+   "date-parts": [
+    [
+     2017
+    ]
+   ]
+  },
+  "author": [
+   {
+    "given": "Ashish",
+    "family": "Vaswani"
+   },
+   {
+    "given": "Noam",
+    "family": "Shazeer"
+   },
+   {
+    "given": "Niki",
+    "family": "Parmar"
+   },
+   {
+    "given": "Jakob",
+    "family": "Uszkoreit"
+   },
+   {
+    "given": "Llion",
+    "family": "Jones"
+   },
+   {
+    "given": "Aidan N.",
+    "family": "Gomez"
+   },
+   {
+    "given": "Lukasz",
+    "family": "Kaiser"
+   },
+   {
+    "given": "Illia",
+    "family": "Polosukhin"
+   }
+  ]
+ }
+}

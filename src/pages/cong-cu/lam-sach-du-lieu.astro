@@ -1,0 +1,165 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/lam-sach-du-lieu.html?raw";
+---
+
+<ToolLayout
+  slug="lam-sach-du-lieu"
+  title="Làm sạch dữ liệu khảo sát Google Forms sang SPSS: lọc phiếu, mã hoá, cú pháp SPSS"
+  h1="Làm sạch dữ liệu khảo sát: Google Forms → SPSS"
+  description="Tải file Google Forms, Microsoft Forms hoặc Genius Data: tự đặt mã biến, đổi nhãn Likert thành số, đảo câu ngược, lọc phiếu không hợp lệ theo quy tắc khai báo trước, xuất CSV, cú pháp SPSS, bảng mã hoá và đoạn chương 3."
+  lede="Tải lên file câu trả lời xuất từ Google Forms. Công cụ đặt mã biến cho từng cột, đổi “Đồng ý”, “Hoàn toàn đồng ý” thành số, đảo điểm câu ngược, mã hoá thông tin chung, lọc phiếu theo các quy tắc bạn khai báo, rồi cho file CSV sạch, cú pháp SPSS có sẵn nhãn và đoạn mô tả quy trình làm sạch cho chương 3."
+  html={html}
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        <strong>Tải file câu trả lời.</strong> Trong Google Forms, mở thẻ Câu trả
+        lời, bấm dấu ba chấm, chọn Tải câu trả lời xuống (.csv). File Microsoft
+        Forms và Genius Data cũng đọc được; công cụ tự nhận ra nguồn file và bỏ các
+        cột email, tên, mã người trả lời khỏi file kết quả.
+      </li>
+      <li>
+        <strong>Kiểm tra mã biến.</strong> Tiêu đề cột của Google Forms là cả câu
+        hỏi. Nếu câu hỏi bắt đầu bằng mã, như “TT1. Giới tính” hay dòng lưới “Mức
+        độ đồng ý [PU1. Ứng dụng giúp tôi…]”, công cụ lấy mã đó. Form tạo bằng
+        <a href="../bo-khao-sat/">Bộ khảo sát</a> có sẵn mã:
+        AC1 hoặc ACHK là câu kiểm tra chú ý, SANGLOC là câu sàng lọc, TT1, TT2… là
+        thông tin chung. Form không có mã thì dán
+        <a href="../../posts/bang-ma-hoa-thang-do/">bảng mã hoá</a> để
+        công cụ khớp theo nội dung câu hỏi, hoặc sửa ô mã trong bảng.
+      </li>
+      <li>
+        <strong>Chọn thang trả lời.</strong> Công cụ tự nhận thang 5 hay 7 mức,
+        nhãn tiếng Việt hay tiếng Anh (đồng ý, hài lòng, tần suất). Nhãn khác thì
+        chọn Tuỳ chỉnh, mỗi dòng một cặp “nhãn = số”. Câu đảo chiều được đảo theo
+        khoảng thang đã khai báo: điểm mới = thấp nhất + cao nhất − điểm cũ, kể cả
+        khi không ai chọn mức 1 hay 5.
+      </li>
+      <li>
+        <strong>Khai báo quy tắc loại phiếu rồi mới bấm Làm sạch.</strong> Ghi
+        đúng các quy tắc đã viết trong đề cương, cùng cỡ mẫu mục tiêu. Kết quả
+        hiện số phiếu bị loại ở từng bước và số phiếu hợp lệ còn lại.
+      </li>
+      <li>
+        <strong>Tải kết quả.</strong> File sạch (CSV) chỉ gồm phiếu hợp lệ, giá
+        trị đều là số. Cú pháp SPSS (.sps) đọc file đó và khai báo nhãn biến, nhãn
+        giá trị, mã thiếu (mặc định 99). Bảng mã hoá dùng làm phụ lục; file “mọi
+        phiếu kèm lý do loại” để kiểm tra lại từng phiếu bị loại.
+      </li>
+    </ol>
+    <p>
+      Muốn thử trước, bấm “Dùng file mẫu” (dữ liệu giả lập). File của bạn được
+      đọc ngay trong trình duyệt, không gửi lên máy chủ nào.
+    </p>
+
+    <h2>Các quy tắc loại phiếu</h2>
+    <p>
+      Phiếu được xét lần lượt theo thứ tự dưới đây; mỗi phiếu chỉ bị tính ở quy tắc
+      đầu tiên nó vi phạm. Cột “Gắn cờ nếu xét riêng” cho biết mỗi quy tắc bắt được
+      bao nhiêu phiếu nếu đứng một mình.
+    </p>
+    <ul>
+      <li>
+        <strong>Không qua câu sàng lọc:</strong> người trả lời không thuộc đối
+        tượng khảo sát, ví dụ chọn “Chưa từng” ở câu SANGLOC.
+      </li>
+      <li>
+        <strong>Sai câu kiểm tra chú ý:</strong> câu yêu cầu chọn một đáp án định
+        sẵn để biết người trả lời có đọc câu hỏi hay không (Oppenheimer và cộng
+        sự, 2009). Bỏ trống câu này cũng tính là sai.
+      </li>
+      <li>
+        <strong>Làm quá nhanh:</strong> chỉ dùng được khi file có thời lượng
+        (Genius Data) hoặc thời điểm bắt đầu và hoàn thành (Microsoft Forms).
+        Google Forms chỉ ghi lúc nộp nên không áp dụng được quy tắc này. Ngưỡng gợi
+        ý là 2 giây cho mỗi câu (Huang và cộng sự, 2012).
+      </li>
+      <li>
+        <strong>Trả lời một chiều:</strong> chọn cùng một mức cho nhiều câu thang
+        đo liên tiếp (chỉ số longstring; Johnson, 2005). Mặc định chỉ loại phiếu
+        chọn một mức cho mọi câu. Muốn dùng ngưỡng thấp hơn thì ghi rõ con số trong
+        đề cương.
+      </li>
+      <li>
+        <strong>Trùng lặp:</strong> mọi câu trả lời đã mã hoá giống hệt một phiếu
+        gửi trước, thường do một người bấm gửi hai lần. Phiếu gửi trước được giữ
+        lại.
+      </li>
+      <li>
+        <strong>Thiếu câu trả lời:</strong> bỏ trống quá tỷ lệ câu thang đo đã khai
+        báo. Ngưỡng 0% tương đương loại theo listwise trong SPSS. Phiếu được giữ
+        mà vẫn còn ô trống thì ô đó ghi mã thiếu, không được điền giá trị nào thay
+        vào.
+      </li>
+    </ul>
+    <p>
+      Meade và Craig (2012) cùng Curran (2016) khuyên kết hợp nhiều dấu hiệu và
+      chọn ngưỡng từ trước. Đổi quy tắc sau khi xem kết quả là chọn lọc dữ liệu;
+      công cụ sẽ nhắc nếu bạn làm vậy.
+    </p>
+
+    <h2>Khi số phiếu hợp lệ chưa đủ</h2>
+    <p>
+      Nếu có nhập cỡ mẫu mục tiêu, báo cáo ghi rõ còn thiếu bao nhiêu phiếu. Cách
+      duy nhất để bù là thu thêm phiếu thật, rồi làm sạch phần thu thêm theo đúng
+      các quy tắc cũ. Công cụ không điền thay, nhân bản hay ước lượng câu trả lời
+      để đủ số; làm vậy là bịa dữ liệu. Cỡ mẫu tối thiểu tính bằng
+      <a href="../tinh-co-mau/">máy tính cỡ mẫu</a>; nên thu
+      dư 15–20% vì thường có một phần phiếu bị loại. Cách đặt câu kiểm tra và
+      các dấu hiệu phiếu không hợp lệ khác có trong bài
+      <a href="../../posts/cach-loc-phieu-khao-sat-khong-hop-le/"
+        >cách lọc phiếu khảo sát không hợp lệ</a
+      >.
+    </p>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Có tải thẳng sang công cụ phân tích được không?</h3>
+    <p>
+      Chưa. Tải “File sạch (CSV)” rồi tải file đó lên
+      <a href="../phan-tich-du-lieu/">Phân tích dữ liệu</a>
+      để chạy Cronbach's alpha, EFA và hồi quy. Câu đảo chiều trong file sạch đã
+      đảo điểm, nên đừng khai báo lại ở trang phân tích.
+    </p>
+    <h3>Vì sao không có file .sav?</h3>
+    <p>Chạy cú pháp xong, chọn File → Save As để lưu thành .sav.</p>
+    <h3>Mã thông tin chung được đặt theo thứ tự nào?</h3>
+    <p>
+      Theo bảng mã hoá nếu có. Nếu không, nhãn có số (“Dưới 3 triệu”, “Năm 2”) xếp
+      theo số, nhãn khác theo chữ cái, “Khác” xếp cuối.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Curran, P. G. (2016). Methods for the detection of carelessly invalid
+        responses in survey data. <em>Journal of Experimental Social Psychology,
+        66</em>, 4–19. https://doi.org/10.1016/j.jesp.2015.07.006
+      </li>
+      <li>
+        Huang, J. L., Curran, P. G., Keeney, J., Poposki, E. M., &amp; DeShon, R.
+        P. (2012). Detecting and deterring insufficient effort responding to
+        surveys. <em>Journal of Business and Psychology, 27</em>(1), 99–114.
+        https://doi.org/10.1007/s10869-011-9231-8
+      </li>
+      <li>
+        Johnson, J. A. (2005). Ascertaining the validity of individual protocols
+        from Web-based personality inventories. <em
+          >Journal of Research in Personality, 39</em
+        >(1), 103–129. https://doi.org/10.1016/j.jrp.2004.09.009
+      </li>
+      <li>
+        Meade, A. W., &amp; Craig, S. B. (2012). Identifying careless responses in
+        survey data. <em>Psychological Methods, 17</em>(3), 437–455.
+        https://doi.org/10.1037/a0028085
+      </li>
+      <li>
+        Oppenheimer, D. M., Meyvis, T., &amp; Davidenko, N. (2009). Instructional
+        manipulation checks: Detecting satisficing to increase statistical power.
+        <em>Journal of Experimental Social Psychology, 45</em>(4), 867–872.
+        https://doi.org/10.1016/j.jesp.2009.03.009
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

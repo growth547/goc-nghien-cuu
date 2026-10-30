@@ -1,0 +1,618 @@
+<div class="panel" id="ls-in">
+  <div class="field"><span class="ls-lbl">1. Tải file câu trả lời</span>
+    <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+      <input id="ls-file" class="ls-hide" type="file" accept=".xlsx,.xls,.csv,.tsv,.txt">
+      <label for="ls-file" class="btn" style="cursor:pointer">Tải file CSV hoặc Excel</label>
+      <button type="button" class="btn ghost" id="ls-sample">Dùng file mẫu (Google Forms, 240 phiếu)</button>
+    </div>
+    <small>File tải từ Google Forms (Câu trả lời → Tải xuống CSV, hoặc trang tính liên kết → Tải xuống .xlsx), Microsoft Forms (Mở trong Excel) hoặc Genius Data (Xuất CSV). File được đọc ngay trong trình duyệt, không gửi lên máy chủ nào.</small>
+    <div id="ls-status" role="status" aria-live="polite" style="font-size:.9rem;margin-top:6px"></div></div>
+</div>
+
+<div class="panel" id="ls-setup" hidden style="margin-top:20px">
+  <div class="field"><span class="ls-lbl">2. Đặt mã biến cho từng cột</span>
+    <small>Mã được đọc từ tiêu đề cột kiểu “TT1. Giới tính” hoặc “Mức độ đồng ý [PU1. …]”. Cột không có mã được đặt tạm Q + số cột; sửa thành mã của bạn, hoặc dán bảng mã hoá bên dưới để công cụ tự khớp theo nội dung câu hỏi.</small>
+    <details id="ls-cbbox" style="margin:6px 0 10px">
+      <summary style="cursor:pointer;font-weight:600;font-size:.9rem">Dán hoặc tải bảng mã hoá (không bắt buộc)</summary>
+      <div class="field" style="margin-top:8px"><label for="ls-cb">Bảng mã hoá CSV (cột Mã, Biến quan sát, Đảo điểm, Nhãn giá trị như file của Bộ khảo sát; hoặc hai cột: mã, nội dung câu hỏi)</label>
+        <textarea id="ls-cb" rows="4" spellcheck="false" style="min-height:0" placeholder="Mã,Biến quan sát&#10;PU1,Ứng dụng giúp tôi giao dịch nhanh hơn&#10;PU2,…"></textarea>
+        <span class="row" style="gap:8px;align-items:center;flex-wrap:wrap"><input id="ls-cbfile" class="ls-hide" type="file" accept=".csv,.txt"><label for="ls-cbfile" class="btn ghost" style="cursor:pointer">Tải file bảng mã hoá</label><button type="button" class="btn ghost" id="ls-cbapply">Áp dụng bảng mã</button></span>
+        <small id="ls-cbmsg" role="status" aria-live="polite"></small></div>
+    </details>
+    <div class="ls-wrap"><table class="ls-map" id="ls-map"></table></div>
+  </div>
+  <div class="row" style="margin-top:14px">
+    <div class="field"><label for="ls-scale">3. Thang trả lời của các câu thang đo</label>
+      <select id="ls-scale"><option value="vi5">5 mức, nhãn tiếng Việt</option><option value="en5">5 mức, nhãn tiếng Anh</option><option value="vi7">7 mức, nhãn tiếng Việt</option><option value="en7">7 mức, nhãn tiếng Anh</option><option value="custom">Tuỳ chỉnh</option></select>
+      <small>Nhãn chữ (Hoàn toàn không đồng ý … Hoàn toàn đồng ý; Rất không hài lòng … Rất hài lòng; Strongly disagree … Strongly agree) được đổi sang số. Ô đã là số (“4” hoặc “4 - Đồng ý”) giữ nguyên số.</small></div>
+    <div class="field"><label for="ls-min">Điểm thấp nhất và cao nhất</label>
+      <span class="row" style="gap:8px"><input id="ls-min" type="number" step="1" value="1" style="width:5em"><input id="ls-max" type="number" step="1" value="5" style="width:5em" aria-label="Điểm cao nhất"></span>
+      <small>Dùng để đảo điểm: điểm mới = thấp nhất + cao nhất − điểm cũ. Giá trị ngoài khoảng này bị coi là thiếu và được báo.</small></div>
+  </div>
+  <div class="field" id="ls-custombox" hidden><label for="ls-custom">Nhãn tuỳ chỉnh (mỗi dòng: nhãn = số)</label>
+    <textarea id="ls-custom" rows="5" spellcheck="false" style="min-height:0" placeholder="Rất không quan trọng = 1&#10;Không quan trọng = 2&#10;Bình thường = 3&#10;Quan trọng = 4&#10;Rất quan trọng = 5"></textarea></div>
+  <div class="field"><label for="ls-rev">Câu đảo chiều (đảo điểm trong file sạch)</label>
+    <input id="ls-rev" type="text" placeholder="Ví dụ: PEOU4 RSE2"></div>
+
+  <fieldset class="ls-rules">
+    <legend>4. Quy tắc loại phiếu, khai báo trước khi xem kết quả</legend>
+    <small>Ghi đúng quy tắc trong đề cương. Phiếu bị loại theo thứ tự dưới đây; mỗi phiếu chỉ tính cho quy tắc đầu tiên nó vi phạm.</small>
+    <div class="ls-rule"><label class="check"><input type="checkbox" id="ls-r-screen" checked> Không qua câu sàng lọc</label>
+      <input id="ls-screen" type="text" aria-label="Câu sàng lọc và đáp án bị loại" placeholder="SANGLOC=Chưa từng|Không phải"><small>Dạng <code>MÃ=đáp án bị loại</code>; nhiều đáp án cách nhau bằng |.</small></div>
+    <div class="ls-rule"><label class="check"><input type="checkbox" id="ls-r-attn" checked> Sai câu kiểm tra chú ý</label>
+      <input id="ls-attn" type="text" aria-label="Câu kiểm tra chú ý và đáp án đúng" placeholder="AC1=2"><small>Dạng <code>MÃ=đáp án đúng</code> (số hoặc nhãn). Bỏ trống câu này cũng tính là sai.</small></div>
+    <div class="ls-rule"><label class="check"><input type="checkbox" id="ls-r-speed" checked> Làm quá nhanh: dưới</label>
+      <span class="row" style="gap:6px;align-items:center"><input id="ls-speed" type="number" min="1" step="1" style="width:6em" aria-label="Số giây tối thiểu"> giây</span><small id="ls-speednote"></small></div>
+    <div class="ls-rule"><label class="check"><input type="checkbox" id="ls-r-straight" checked> Trả lời một chiều: chọn cùng một mức cho từ</label>
+      <span class="row" style="gap:6px;align-items:center"><input id="ls-straight" type="number" min="2" step="1" style="width:6em" aria-label="Số câu liên tiếp"> câu thang đo liên tiếp trở lên</span><small id="ls-straightnote"></small></div>
+    <div class="ls-rule"><label class="check"><input type="checkbox" id="ls-r-dup" checked> Trùng lặp: mọi câu trả lời giống hệt một phiếu gửi trước</label></div>
+    <div class="ls-rule"><label class="check"><input type="checkbox" id="ls-r-missing" checked> Thiếu câu trả lời: bỏ trống trên</label>
+      <span class="row" style="gap:6px;align-items:center"><input id="ls-missing" type="number" min="0" max="100" step="1" value="0" style="width:6em" aria-label="Phần trăm câu thang đo bỏ trống tối đa"> % câu thang đo</span><small>0 nghĩa là thiếu một câu cũng loại (giống listwise của SPSS).</small></div>
+  </fieldset>
+  <div class="row">
+    <div class="field"><label for="ls-target">Cỡ mẫu mục tiêu (phiếu hợp lệ)</label>
+      <input id="ls-target" type="number" min="1" step="1" placeholder="Ví dụ: 250">
+      <small>Lấy từ đề cương hoặc <a href="../tinh-co-mau/">máy tính cỡ mẫu</a>.</small></div>
+    <div class="field"><label for="ls-miss">Mã giá trị thiếu trong file SPSS</label>
+      <input id="ls-miss" type="number" step="1" value="99">
+      <small>Ô bỏ trống được ghi bằng mã này và khai báo MISSING VALUES.</small></div>
+  </div>
+  <button type="button" class="btn" id="ls-run" style="align-self:flex-start;margin-top:8px">Làm sạch dữ liệu</button>
+  <div id="ls-msg" role="alert" style="margin-top:6px"></div>
+</div>
+
+<div id="ls-out" hidden style="margin-top:20px">
+  <div class="panel">
+    <div id="ls-warn" hidden></div>
+    <div id="ls-report" class="ls-report"></div>
+    <div class="row ls-dl" style="gap:8px;flex-wrap:wrap;margin-top:12px">
+      <button type="button" class="btn" id="ls-csv">File sạch (CSV)</button>
+      <button type="button" class="btn ghost" id="ls-sps">Cú pháp SPSS (.sps)</button>
+      <button type="button" class="btn ghost" id="ls-book">Bảng mã hoá (CSV)</button>
+      <button type="button" class="btn ghost" id="ls-all">Mọi phiếu kèm lý do loại (CSV)</button>
+    </div>
+    <p class="ls-note">Mở trong SPSS: đặt file CSV và file .sps cùng một thư mục, mở file .sps (File → Open → Syntax), sửa đường dẫn ở dòng <code>CD</code> rồi chọn Run → All. SPSS đọc dữ liệu kèm nhãn biến, nhãn giá trị và mã thiếu.</p>
+    <p class="ls-note"><strong>Phân tích tiếp:</strong> <a href="../phan-tich-du-lieu/">công cụ Phân tích dữ liệu</a> chưa nhận dữ liệu chuyển thẳng từ trang này. Tải “File sạch (CSV)” rồi tải file đó lên trang phân tích. Câu đảo chiều trong file sạch đã được đảo điểm, nên đừng khai báo lại ở ô “Câu đảo chiều” bên đó.</p>
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:16px">
+      <strong>Đoạn mô tả làm sạch dữ liệu cho chương 3</strong>
+      <button type="button" class="btn ghost" id="ls-copy">Sao chép</button>
+    </div>
+    <div id="ls-ch3" class="ls-ch3"></div>
+  </div>
+</div>
+<style>
+.ls-lbl{font-weight:600}
+.ls-hide,.panel input.ls-hide{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ls-hide:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+.ls-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;max-height:28rem;overflow-y:auto;border:1px solid var(--border);border-radius:8px}
+.ls-map{border-collapse:collapse;font-size:.85rem;width:100%}
+.ls-map th,.ls-map td{border-bottom:1px solid var(--border);padding:4px 6px;text-align:left;vertical-align:middle}
+.ls-map th{position:sticky;top:0;background:var(--surface,var(--background));z-index:1}
+.ls-map td.h{min-width:12rem;max-width:26rem;overflow-wrap:anywhere}
+.ls-map input{width:7.5em;padding:2px 6px}
+.ls-map select{padding:2px 4px;max-width:13em}
+.ls-map tr.off td{opacity:.6}
+.ls-rules{border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:14px 0 6px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ls-rules legend{font-weight:600;padding:0 4px}
+.ls-rule{display:flex;flex-direction:column;gap:4px}
+.ls-rule .check{margin:0}
+.ls-rule input[type=text]{max-width:28rem}
+.ls-report table{border-collapse:collapse;font-size:.88rem;width:100%}
+.ls-report th,.ls-report td{border-bottom:1px solid var(--border);padding:4px 8px;text-align:right}
+.ls-report th:first-child,.ls-report td:first-child{text-align:left}
+.ls-report caption{text-align:left;font-weight:600;padding:4px 0}
+.ls-report .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:8px 0 14px}
+.ls-report tr.sum td{font-weight:600}
+.ls-bar{display:block;height:6px;border-radius:3px;background:var(--accent);margin-top:3px;min-width:2px}
+.ls-bar.cut{background:var(--warm)}
+.ls-kpi{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:6px 0 12px}
+.ls-kpi div{border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.ls-kpi b{display:block;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.ls-kpi span{font-size:.8rem;opacity:.8}
+.ls-short{border-left:3px solid var(--warm);padding:6px 12px;margin:8px 0 12px}
+.ls-short p{margin:4px 0}
+.ls-note{font-size:.88rem;margin:10px 0 0}
+.ls-ch3{line-height:1.65;margin-top:6px}
+.ls-ch3 p{margin:0 0 10px}
+.ls-ch3 ul{font-size:.9rem;padding-left:18px}
+#ls-warn{border-left:3px solid var(--warm);padding:4px 12px;margin-bottom:12px}
+#ls-warn ul{margin:4px 0;padding-left:18px}
+</style>
+
+<script>
+(function(){
+  //#clean-start
+  // ---- Survey data cleaning: Google Forms / Microsoft Forms / Genius Data export → coded CSV + SPSS syntax ----
+  // Everything below is pure (no DOM) so scripts/check-clean.mjs can run it in Node.
+  // Lower-case ASCII words: "Hoàn toàn đồng ý!" → "hoan toan dong y". Answers repeat a lot, so results are cached.
+  const NORM=new Map();
+  const normText=v=>{const s=String(v==null?'':v);let r=NORM.get(s);if(r!==undefined)return r;
+    r=s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();if(NORM.size>50000)NORM.clear();NORM.set(s,r);return r};
+  // RFC 4180 CSV; the delimiter (tab, semicolon, comma) is read from the first non-empty line.
+  function parseCSV(text){
+    text=String(text).replace(/^\uFEFF/,'');
+    let first='';{let q=false,start=0;for(let i=0;i<=text.length;i++){const c=text[i];if(c==='"')q=!q;else if(!q&&(c==='\n'||i===text.length)){const l=text.slice(start,i);if(l.trim()){first=l;break}start=i+1}}}
+    const count=ch=>{let q=false,n=0;for(const c of first){if(c==='"')q=!q;else if(!q&&c===ch)n++}return n};
+    const d=count('\t')>0?'\t':count(';')>count(',')?';':',';
+    const rows=[];let row=[],f='',q=false,quoted=false;
+    for(let i=0;i<text.length;i++){const c=text[i];
+      if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c;continue}
+      if(c==='"'&&!quoted&&f.trim()===''){q=true;quoted=true;f='';continue}
+      if(c===d){row.push(f);f='';quoted=false;continue}
+      if(c==='\r')continue;
+      if(c==='\n'){row.push(f);rows.push(row);row=[];f='';quoted=false;continue}
+      f+=c}
+    if(f!==''||row.length){row.push(f);rows.push(row)}
+    return rows.map(r=>r.map(v=>v.trim())).filter(r=>r.some(v=>v!==''));
+  }
+  const isNumStr=s=>/^[-+]?\d+(?:[.,]\d+)?$/.test(String(s).trim());
+  // "4", "3,5", "4 - Đồng ý", "Đồng ý (4)" → number; words and dates → NaN.
+  function toNum(v){if(typeof v==='number')return Number.isFinite(v)?v:NaN;const s=String(v==null?'':v).trim();if(!s)return NaN;if(isNumStr(s))return parseFloat(s.replace(',','.'));
+    let m=s.match(/^(\d+)\s*[-–—:.)=]\s*\p{L}/u);if(m)return +m[1];m=s.match(/\p{L}.*\(\s*(\d+)\s*\)$/u);return m?+m[1]:NaN}
+  const ATTN_RE=/^(ACHK(_\d+)?|AC|ATT|ATTN\d*|ATT_?CHECK\d*|ATTENTION(_?CHECK)?\d*|IMC\d*|KTCY\d*|KTCHUY\d*|CHUY\d*)$/i;
+  const SCREEN_RE=/^(SANGLOC\d*|SANG_LOC|SCREEN(ING)?\d*)$/i;
+  const ITEM_RE=/^([\p{L}][\p{L}\p{N}_]*?)_?(\d+)$/u;
+  const groupOf=c=>{const m=String(c).match(ITEM_RE);return m?m[1].replace(/_+$/,'').toUpperCase():null};
+  const CODE_ONLY=/^[\p{L}][\p{L}\p{N}_]*$/u;
+  // Variable code inside a header: "PU1", "TT1. Giới tính", "Mức độ đồng ý [PU1. …]" (Google grid),
+  // "5. Mức độ đồng ý [PU1. …]" (Genius Data numbers each question), "… (PU1)". No code → null.
+  function extractCode(h){
+    let s=String(h==null?'':h).normalize('NFC').replace(/\s+/g,' ').trim();if(!s)return null;
+    if(CODE_ONLY.test(s)&&s.length<=32)return s;
+    s=s.replace(/^\d+\s*[.)]\s+(?=\S)/,'');
+    if(CODE_ONLY.test(s)&&s.length<=32)return s;
+    let m=s.match(/\[\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)\]–-]/u);if(m)return m[1];
+    m=s.match(/^([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)–-]\s*\S/u);if(m)return m[1];
+    m=s.match(/[[(]\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[\])]\s*$/u);if(m)return m[1];
+    m=s.match(/(?:^|\[)\s*([A-Za-z][A-Za-z_]*)\s*[.:]\s*\S/);if(m&&(ATTN_RE.test(m[1])||SCREEN_RE.test(m[1])))return m[1];
+    return null;
+  }
+  // The question text without its code: "Mức độ đồng ý [PU1. Dễ dùng]" → "Dễ dùng"; "TT1. Giới tính" → "Giới tính".
+  function questionText(h,code){
+    let s=String(h==null?'':h).normalize('NFC').replace(/\s+/g,' ').trim().replace(/^\d+\s*[.)]\s+(?=\S)/,'');
+    const b=s.match(/\[([^\]]+)\]\s*$/);if(b)s=b[1].trim();
+    if(code){const esc=code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');s=s.replace(new RegExp(`^${esc}\\s*[.:)–-]\\s*`,'u'),'').replace(new RegExp(`\\s*[[(]\\s*${esc}\\s*[\\])]$`,'u'),'')}
+    return s===code?'':s;
+  }
+  // Which form service wrote the file.
+  function detectSource(head){
+    const n=head.map(normText);
+    if(n.includes('respondent code')||(n.includes('submitted at iso')&&n.includes('duration seconds')))return 'gd';
+    if(n.some(h=>h==='start time'||h==='thoi gian bat dau')&&n.some(h=>h==='completion time'||h==='thoi gian hoan thanh'))return 'ms';
+    if(/^(dau thoi gian|timestamp)$/.test(n[0]||''))return 'google';
+    return 'other';
+  }
+  const SOURCE_NAME={gd:'Genius Data',ms:'Microsoft Forms',google:'Google Forms',other:'bảng tính'};
+  const META={
+    timestamp:/^(dau thoi gian|timestamp|submitted at iso|submitted at|thoi gian gui|thoi diem gui|ngay gui)$/,
+    start:/^(start time|thoi gian bat dau)$/,
+    end:/^(completion time|thoi gian hoan thanh|end time|thoi gian ket thuc)$/,
+    duration:/^(duration seconds|duration|duration in seconds|thoi luong|thoi luong giay|thoi gian lam bai|thoi gian lam bai giay|thoi gian tra loi giay)$/,
+    meta:/^(no|stt|id|wave|respondent code|respondent email|email|email address|dia chi email|name|ten|ho ten|ho va ten|last modified time|thoi gian sua doi lan cuoi|quality score|passed|quality flags|rq label|rq score|rq follow up|rq behavior|score|total score|diem|tong diem|ma phieu|response id|ip|ip address|duoc boc.*)$/};
+  // ---- Likert labels → numbers ----
+  const SYN5=[[1,'hoan toan khong dong y','rat khong dong y','strongly disagree','rat khong hai long','hoan toan khong hai long','very dissatisfied','khong bao gio','never'],
+    [2,'khong dong y','disagree','khong hai long','dissatisfied','hiem khi','rarely'],
+    [3,'trung lap','binh thuong','phan van','khong y kien','trung dung','khong dong y cung khong phan doi','khong dong y cung khong phan bac','neutral','neither agree nor disagree','neither agree or disagree','neither satisfied nor dissatisfied','thinh thoang','sometimes'],
+    [4,'dong y','agree','hai long','satisfied','thuong xuyen','often'],
+    [5,'hoan toan dong y','rat dong y','strongly agree','rat hai long','hoan toan hai long','very satisfied','rat thuong xuyen','luon luon','always']];
+  const SYN7=[[1,'hoan toan khong dong y','rat khong dong y','strongly disagree'],[2,'khong dong y','disagree'],[3,'hoi khong dong y','tuong doi khong dong y','somewhat disagree'],
+    [4,'trung lap','binh thuong','phan van','khong y kien','trung dung','khong dong y cung khong phan doi','neutral','neither agree nor disagree','neither agree or disagree'],
+    [5,'hoi dong y','tuong doi dong y','somewhat agree'],[6,'dong y','agree'],[7,'hoan toan dong y','rat dong y','strongly agree']];
+  const mapOf=syn=>new Map(syn.flatMap(([v,...ks])=>ks.map(k=>[k,v])));
+  const MAP5=mapOf(SYN5),MAP7=mapOf(SYN7),ANY=new Map([...MAP7,...MAP5]);
+  const LABELS={vi5:['Hoàn toàn không đồng ý','Không đồng ý','Trung lập','Đồng ý','Hoàn toàn đồng ý'],
+    vi7:['Hoàn toàn không đồng ý','Không đồng ý','Hơi không đồng ý','Trung lập','Hơi đồng ý','Đồng ý','Hoàn toàn đồng ý'],
+    en5:['Strongly disagree','Disagree','Neutral','Agree','Strongly agree'],
+    en7:['Strongly disagree','Disagree','Somewhat disagree','Neutral','Somewhat agree','Agree','Strongly agree']};
+  function likertValue(v,map){const x=toNum(v);if(!Number.isNaN(x))return x;const n=normText(v);if(!n)return NaN;const y=(map||MAP5).get(n);return y===undefined?NaN:y}
+  // Scale of the item columns: 7 points when "Hơi đồng ý"/"somewhat" labels or numbers 6–7 appear; English when the labels are English.
+  function detectScale(cells){let seven=false,en=0,vi=0,lo=Infinity,hi=-Infinity,custom=0,words=0;
+    for(const c of cells){const x=toNum(c);if(Number.isFinite(x)){lo=Math.min(lo,x);hi=Math.max(hi,x)}
+      if(typeof c==='number')continue;const s=String(c==null?'':c).trim();if(!s||isNumStr(s))continue;const n=normText(s.replace(/^\d+\s*[-–—:.)=]\s*/,''));if(!n)continue;words++;
+      if(/^(hoi|tuong doi) (khong )?dong y$|^somewhat /.test(n))seven=true;if(/agree|disagree|neutral|satisf|never|rarely|sometimes|often|always/.test(n))en++;else vi++;if(!ANY.has(n))custom++}
+    if(Number.isFinite(hi)&&hi>5&&hi<=7)seven=true;
+    const points=seven?7:Number.isFinite(hi)&&hi>7?Math.round(hi):5,min=Number.isFinite(lo)&&lo===0?0:1;
+    return {points,min,max:points===5||points===7?points:Math.round(hi),lang:en>vi?'en':'vi',custom:words>0&&custom/words>0.5}}
+  // "Rất không quan trọng = 1" lines → label map and value labels.
+  function parseCustom(text){const map=new Map(),labels=[];String(text||'').split(/\r?\n/).forEach(l=>{const m=l.match(/^(.+?)\s*[=:]\s*(-?\d+)\s*$/);if(!m)return;const v=+m[2];map.set(normText(m[1]),v);if(!labels.some(x=>x[0]===v))labels.push([v,m[1].trim()])});labels.sort((a,b)=>a[0]-b[0]);return {map,labels}}
+  function scaleSpec(kind,custom,min,max){
+    if(kind==='custom'){const c=parseCustom(custom);return {kind,map:c.map,labels:c.labels,min,max,points:max-min+1}}
+    const pts=kind.endsWith('7')?7:5,base=LABELS[kind]||LABELS.vi5;
+    // Labels follow the declared range: 1–5 gets the five labels; a 0–4 range shifts them.
+    const labels=max-min+1===pts?base.map((l,i)=>[min+i,l]):[];
+    const map=new Map([...(pts===7?MAP7:MAP5)].map(([k,v])=>[k,v-1+min]));
+    return {kind,map,labels,min,max,points:pts};
+  }
+  // ---- codebook (the kit's "Bảng mã hoá" CSV, or two columns code,question) ----
+  function parseValueLabels(t){const s=String(t||'').replace(/\.\s*So sánh đa nhóm[\s\S]*$/,'');const out=[];s.split(';').forEach(p=>{const m=p.match(/^\s*(-?\d+)\s*=\s*(.+?)\s*$/);if(m)out.push([+m[1],m[2]])});return out}
+  function parseCodebook(text){
+    const rows=parseCSV(text),out=new Map();if(!rows.length)return out;
+    const h=rows[0].map(normText),find=(...ks)=>h.findIndex(x=>ks.includes(x));
+    let ci=find('ma','ma bien','code','variable','ten bien','bien','variable name'),li=find('bien quan sat tieng viet','cau hoi','noi dung','label','nhan bien','bien quan sat','question','noi dung cau hoi'),
+      ki=find('khai niem','construct','nhom'),ri=find('dao diem','reverse','dao chieu','dao nguoc'),vi=find('nhan gia tri','value labels','gia tri');
+    let start=1;if(ci<0){ci=0;li=1;start=0}else if(li<0)li=ci===0?1:0;
+    for(const r of rows.slice(start)){
+      const code=String(r[ci]||'').trim();if(!CODE_ONLY.test(code))continue;
+      const kn=normText(ki>=0?r[ki]:''),vt=String(vi>=0?r[vi]||'':''),vn=normText(vt);
+      const e={code,label:String(r[li]||'').trim(),construct:ki>=0?String(r[ki]||'').trim():'',reverse:ri>=0&&/^(co|yes|x|1|true|r|dao)\b/.test(normText(r[ri])),
+        values:parseValueLabels(vt),kind:null,attnAnswer:null,screenFail:[]};
+      if(/sang loc|screen/.test(kn)||SCREEN_RE.test(code)){e.kind='screen';e.screenFail=e.values.filter(([,l])=>/dung khao sat|bi loai|loai/.test(normText(l))).map(([c,l])=>l.replace(/\s*\((dừng khảo sát|bị loại|loại)\)\s*$/i,''));
+        e.values=e.values.map(([c,l])=>[c,l.replace(/\s*\((dừng khảo sát|bị loại|loại)\)\s*$/i,'')])}
+      else if(/kiem tra su chu y|kiem tra chu y|attention/.test(kn)||ATTN_RE.test(code)){e.kind='attn';const m=vn.match(/dap an dung (\d+)/)||vn.match(/correct (\d+)/);e.attnAnswer=m?+m[1]:null;e.values=[]}
+      else if(/^tu dien\b/.test(vn))e.kind='text';
+      else if(e.values.length)e.kind='demo';
+      else e.kind='item';
+      out.set(code.toUpperCase(),e);
+    }
+    return out;
+  }
+  // A header without a code is matched to the codebook entry whose question text it contains.
+  function matchCodebook(orig,cb){const n=normText(orig),inner=(String(orig).match(/\[([^\]]+)\]\s*$/)||[])[1],ni=inner?normText(inner):'';let best=null,bl=0;
+    for(const e of cb.values()){const l=normText(e.label);if(l.length<6)continue;if((n.includes(l)||(ni.length>=12&&l.includes(ni)))&&l.length>bl){best=e;bl=l.length}}return best}
+  const cellsOf=(rows,j)=>rows.map(r=>r[j]).filter(v=>String(v==null?'':v).trim()!=='');
+  // Role and code of every column. Roles: item | attn | screen | demo | num | text | timestamp | start | end | duration | meta | skip.
+  function guessColumns(head,rows,cb){
+    cb=cb||new Map();const used=new Set();
+    const cols=head.map((o,j)=>{const orig=String(o==null?'':o).trim(),n=normText(orig);let role=null;
+      if(/^⏱/.test(orig))role='skip';else for(const k of ['timestamp','start','end','duration','meta'])if(META[k].test(n)){role=k;break}
+      let code=role?null:extractCode(orig),src=code?'header':null,e=code?cb.get(code.toUpperCase()):null;
+      if(!role&&!code&&cb.size){e=matchCodebook(orig,cb);if(e){code=e.code;src='codebook'}}
+      return {j,orig,code,role,src,e:e||null}});
+    const gsize={};cols.forEach(c=>{if(c.code&&!c.role){const g=groupOf(c.code);if(g)gsize[g]=(gsize[g]||0)+1}});
+    cols.forEach(c=>{if(c.role)return;const v=cellsOf(rows,c.j);if(!v.length){c.role='skip';return}
+      if(c.e&&c.e.kind){c.role=c.e.kind;return}
+      const g=c.code?groupOf(c.code):null,size=g?gsize[g]:0;
+      if(c.code&&SCREEN_RE.test(c.code)){c.role='screen';return}
+      if(c.code&&(ATTN_RE.test(c.code)||(g&&size===1&&/^(AC|ATT)$/i.test(g)))){c.role='attn';return}
+      const u=new Set(v.map(x=>normText(x)||String(x))).size,lik=v.filter(x=>Number.isFinite(likertValue(x,ANY))).length/v.length,num=v.every(x=>Number.isFinite(toNum(x)));
+      if(g==='TT'){c.role=num&&u>15?'num':u<=15?'demo':'text';return}
+      if(lik>=0.8&&u<=11&&v.some(x=>Number.isFinite(toNum(x))&&toNum(x)>=1||ANY.has(normText(x)))){c.role='item';return}
+      if(num){c.role=u<=15?'demo':'num';return}
+      c.role=u<=15?'demo':'text'});
+    // Columns with no code get Q + column number; every code is unique.
+    cols.forEach(c=>{if(!c.code&&['item','attn','screen','demo','num','text'].includes(c.role))c.code=`Q${c.j+1}`;
+      if(c.code){let k=c.code,i=2;while(used.has(k.toUpperCase()))k=`${c.code}_${i++}`;c.code=k;used.add(k.toUpperCase())}});
+    return cols.map(({e,...c})=>c);
+  }
+  // ---- demographics → numeric codes ----
+  // With a codebook the codes follow it ("Khác" absorbs free-text "other" answers). Without one: labels with numbers
+  // ("Dưới 3 triệu", "Từ 3 đến dưới 5 triệu", "Năm 2") in numeric order, other labels alphabetically, "Khác" and failing answers last.
+  function recodeDemo(values,e,failRe){
+    const seen=new Map();for(const v of values){const s=String(v==null?'':v).trim();if(!s)continue;const n=normText(s)||s;if(!seen.has(n))seen.set(n,s)}
+    const map=new Map(),labels=[];
+    if(e&&e.values&&e.values.length){
+      e.values.forEach(([c,l])=>{labels.push([c,l]);map.set(normText(l),c);map.set(String(c),c)});
+      const other=e.values.find(([,l])=>/^(khac|other)\b/.test(normText(l)));let next=Math.max(...e.values.map(x=>x[0]))+1;
+      for(const [n,s] of seen){if(map.has(n))continue;const x=toNum(s);if(Number.isFinite(x)&&e.values.some(v=>v[0]===x)){map.set(n,x);continue}
+        if(other){map.set(n,other[0]);continue}map.set(n,next);labels.push([next,s]);next++}
+      return {code:v=>{const s=String(v==null?'':v).trim();if(!s)return NaN;const c=map.get(normText(s)||s);return c===undefined?NaN:c},labels,numeric:false};
+    }
+    const all=[...seen.values()];
+    if(all.length&&all.every(isNumStr))return {code:v=>toNum(v),labels:[],numeric:true};
+    const firstNum=s=>{const m=String(s).match(/\d+(?:[.,]\d+)?/);if(!m)return null;const n=normText(s);return parseFloat(m[0].replace(',','.'))+(/^(duoi|it hon|nho hon|under|less|below)\b/.test(n)?-0.5:/\b(tren|tro len|over|above|more)\b|\+/.test(n)?0.5:0)};
+    const last=s=>{const n=normText(s);return /^(khac|other)\b/.test(n)?2:failRe&&failRe.test(n)?1:0};
+    const nums=all.filter(s=>firstNum(s)!==null).length,byNum=nums*2>=all.length;
+    all.sort((a,b)=>last(a)-last(b)||(byNum?(firstNum(a)??Infinity)-(firstNum(b)??Infinity):0)||a.localeCompare(b,'vi'));
+    all.forEach((s,i)=>{map.set(normText(s)||s,i+1);labels.push([i+1,s])});
+    return {code:v=>{const s=String(v==null?'':v).trim();if(!s)return NaN;const c=map.get(normText(s)||s);return c===undefined?NaN:c},labels,numeric:false};
+  }
+  // ---- time columns ----
+  // Seconds since 1970 (UTC) from an Excel serial number, an ISO string or "d/m/yyyy h:mm:ss" (dayFirst) / "m/d/yyyy h:mm:ss AM".
+  function parseTime(v,dayFirst){
+    if(typeof v==='number'){if(!Number.isFinite(v))return NaN;if(v>1e11)return v/1000;if(v>1e8)return v;return (v-25569)*86400}
+    const s=String(v==null?'':v).trim();if(!s)return NaN;
+    if(/^\d{4}-\d{2}-\d{2}/.test(s)){const t=Date.parse(/[zZ]|[+-]\d{2}:?\d{2}$/.test(s)?s.replace(' ','T'):s.replace(' ','T')+'Z');return Number.isFinite(t)?t/1000:NaN}
+    const m=s.match(/^(\d{1,4})[/.-](\d{1,2})[/.-](\d{1,4})(?:[ T,]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM|SA|CH)?)?/i);if(!m)return NaN;
+    let y,mo,d;if(m[1].length===4){y=+m[1];mo=+m[2];d=+m[3]}else{y=+m[3];if(y<100)y+=2000;if(dayFirst){d=+m[1];mo=+m[2]}else{mo=+m[1];d=+m[2]}}
+    let hh=+(m[4]||0);const ap=(m[7]||'').toUpperCase();if((ap==='PM'||ap==='CH')&&hh<12)hh+=12;if((ap==='AM'||ap==='SA')&&hh===12)hh=0;
+    if(mo<1||mo>12||d<1||d>31)return NaN;return Date.UTC(y,mo-1,d,hh,+(m[5]||0),+(m[6]||0))/1000}
+  // d/m or m/d: a first number above 12 proves day-first, a second number above 12 proves month-first.
+  function guessDayFirst(strings,fallback){for(const s of strings){const m=String(s).match(/^(\d{1,2})[/.-](\d{1,2})[/.-]\d{2,4}/);if(!m)continue;if(+m[1]>12)return true;if(+m[2]>12)return false}return fallback}
+  function parseDuration(v){if(typeof v==='number')return !Number.isFinite(v)?NaN:v<1?v*86400:v;const s=String(v==null?'':v).trim();if(!s)return NaN;if(isNumStr(s))return toNum(s);
+    const m=s.match(/^(?:(\d+):)?(\d{1,2}):(\d{2})(?:[.,]\d+)?$/);return m?(+(m[1]||0))*3600+(+m[2])*60+(+m[3]):NaN}
+  // Longest run of the same answer in consecutive items (Johnson, 2005); a blank breaks the run.
+  function longstring(vals){let best=0,run=0,prev;for(const v of vals){if(!Number.isFinite(v)){run=0;prev=undefined;continue}run=v===prev?run+1:1;prev=v;if(run>best)best=run}return best}
+  // "AC1=2 ACHK=Không đồng ý", "SANGLOC=Chưa từng|Không phải" → [{code, values}].
+  function parseRuleSpec(t){const out=[];String(t||'').split(/[;\n]+|\s+(?=[\p{L}][\p{L}\p{N}_]*\s*=)/u).forEach(p=>{const m=p.match(/^\s*([\p{L}][\p{L}\p{N}_]*)\s*=\s*(.*?)\s*$/u);if(m)out.push({code:m[1],values:m[2].split('|').map(x=>x.trim()).filter(Boolean)})});return out}
+  // SPSS variable names: ASCII letter first, letters/digits/_/., at most 64 bytes, no reserved word, unique.
+  const RESERVED=new Set(['ALL','AND','BY','EQ','GE','GT','LE','LT','NE','NOT','OR','TO','WITH']);
+  function spssName(code,used){let s=String(code).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^A-Za-z0-9_.]/g,'_').replace(/^[^A-Za-z]+/,'').replace(/[._]+$/,'');
+    if(!s)s='V';if(RESERVED.has(s.toUpperCase()))s+='_V';s=s.slice(0,60);let n=s,k=2;while(used.has(n.toUpperCase()))n=`${s}_${k++}`;used.add(n.toUpperCase());return n}
+  const RULES=[
+    {key:'screen',label:'Không qua câu sàng lọc'},
+    {key:'attn',label:'Sai câu kiểm tra chú ý'},
+    {key:'speed',label:'Làm quá nhanh'},
+    {key:'straight',label:'Trả lời một chiều'},
+    {key:'dup',label:'Trùng lặp với phiếu gửi trước'},
+    {key:'missing',label:'Thiếu câu trả lời'}];
+  const FAIL_RE=/^(chua tung|chua|khong phai|khong|khong dung|no|never|not)\b/;
+  // The whole procedure. o = {cols, rows, scale:{map,min,max,labels}, reverse:[codes], rules, target, missingCode, cb, dayFirst}.
+  function clean(o){
+    const W=[],cb=o.cb||new Map(),rows=o.rows,keep=['item','attn','screen','demo','num'];
+    const TIME=['timestamp','start','end','duration'],cols=o.cols.filter(c=>c.role&&(c.code||TIME.includes(c.role))),by=r=>cols.filter(c=>c.role===r),items=by('item');
+    if(!items.length)return {error:'Chưa có cột nào là câu thang đo. Đổi loại cột ở bảng mục 2.'};
+    const sc=o.scale,R=o.rules,mc=Number.isFinite(o.missingCode)?o.missingCode:99;
+    const revList=(o.reverse||[]).map(s=>s.trim()).filter(Boolean),rev=new Set();
+    revList.forEach(r=>{const c=items.find(x=>x.code.toUpperCase()===r.toUpperCase());if(c)rev.add(c.code);else W.push(`Câu đảo chiều “${r}” không phải cột thang đo nào nên không được đảo.`)});
+    const rec={};[...by('demo'),...by('screen')].forEach(c=>{rec[c.code]=recodeDemo(rows.map(r=>r[c.j]),cb.get(c.code.toUpperCase()),c.role==='screen'?FAIL_RE:null)});
+    const durCol=by('duration')[0],st=by('start')[0],en=by('end')[0],ts=by('timestamp')[0];
+    const tstr=[st,en,ts].filter(Boolean).flatMap(c=>rows.map(r=>r[c.j]).filter(v=>typeof v==='string'));
+    const dayFirst=guessDayFirst(tstr,o.dayFirst!==false);
+    let oor=0;const oorCols=new Set();
+    const recs=rows.map((r,i)=>{const v={};
+      items.forEach(c=>{let x=likertValue(r[c.j],sc.map);if(Number.isFinite(x)&&(x<sc.min||x>sc.max)){oor++;oorCols.add(c.code);x=NaN}
+        else if(!Number.isFinite(x)&&String(r[c.j]==null?'':r[c.j]).trim()!==''){oor++;oorCols.add(c.code)}v[c.code]=x});
+      by('attn').forEach(c=>{v[c.code]=likertValue(r[c.j],sc.map)});
+      [...by('demo'),...by('screen')].forEach(c=>{v[c.code]=rec[c.code].code(r[c.j])});
+      by('num').forEach(c=>{v[c.code]=toNum(r[c.j])});
+      let dur=NaN;if(durCol)dur=parseDuration(r[durCol.j]);else if(st&&en){const a=parseTime(r[st.j],dayFirst),b=parseTime(r[en.j],dayFirst);if(Number.isFinite(a)&&Number.isFinite(b)&&b>=a)dur=b-a}
+      const t=ts?parseTime(r[ts.j],dayFirst):en?parseTime(r[en.j],dayFirst):NaN;
+      return {id:i+1,raw:r,v,dur,t}});
+    if(oor)W.push(`${oor} ô ở ${oorCols.size} cột thang đo (${[...oorCols].slice(0,6).join(', ')}${oorCols.size>6?'…':''}) không đổi được thành số trong khoảng ${sc.min}–${sc.max} và được coi là thiếu. Kiểm tra thang trả lời ở mục 3.`);
+    const colBy=code=>cols.find(c=>c.code&&c.code.toUpperCase()===String(code).toUpperCase());
+    const strip=s=>normText(String(s==null?'':s).replace(/^\d+\s*[-–—:.)=]\s*/,''));
+    const flags={},applied={};
+    // screening
+    const sSpec=R.screen&&R.screen.on?parseRuleSpec(R.screen.spec).filter(s=>{const c=colBy(s.code);if(!c){W.push(`Không có cột ${s.code} cho quy tắc sàng lọc.`);return false}if(!s.values.length){W.push(`Chưa ghi đáp án bị loại cho câu sàng lọc ${s.code}.`);return false}return true}):[];
+    applied.screen=sSpec;
+    flags.screen=recs.map(rc=>sSpec.some(s=>{const c=colBy(s.code),raw=rc.raw[c.j],n=strip(raw);if(!n&&!isNumStr(String(raw)))return false;return s.values.some(x=>isNumStr(x)?rc.v[c.code]===toNum(x)||toNum(raw)===toNum(x):strip(x)===n)}));
+    // attention check
+    const aSpec=R.attn&&R.attn.on?parseRuleSpec(R.attn.spec).filter(s=>{const c=colBy(s.code);if(!c){W.push(`Không có cột ${s.code} cho quy tắc kiểm tra chú ý.`);return false}if(!s.values.length){W.push(`Chưa ghi đáp án đúng cho câu kiểm tra chú ý ${s.code}, nên chưa lọc theo câu này.`);return false}return true}):[];
+    applied.attn=aSpec;
+    flags.attn=recs.map(rc=>aSpec.some(s=>{const c=colBy(s.code),raw=rc.raw[c.j],x=likertValue(raw,sc.map),n=strip(raw);return !s.values.some(a=>isNumStr(a)?x===toNum(a):n!==''&&strip(a)===n)}));
+    // completion time
+    const hasDur=recs.some(rc=>Number.isFinite(rc.dur)),sec=R.speed&&+R.speed.sec;
+    applied.speed=R.speed&&R.speed.on&&hasDur&&sec>0?sec:null;
+    if(R.speed&&R.speed.on&&!hasDur)W.push('File không có thời gian làm phiếu (Google Forms chỉ ghi thời điểm nộp), nên quy tắc làm quá nhanh không được áp dụng.');
+    flags.speed=recs.map(rc=>applied.speed!==null&&Number.isFinite(rc.dur)&&rc.dur<applied.speed);
+    // straight-lining (longstring)
+    const len=R.straight&&+R.straight.len;applied.straight=R.straight&&R.straight.on&&len>=2?Math.min(len,items.length):null;
+    if(R.straight&&R.straight.on&&len>items.length)W.push(`Ngưỡng trả lời một chiều (${len} câu) lớn hơn số câu thang đo (${items.length}); dùng ${items.length}.`);
+    const ls=recs.map(rc=>longstring(items.map(c=>rc.v[c.code])));
+    flags.straight=ls.map(x=>applied.straight!==null&&x>=applied.straight);
+    // missing
+    const pct=R.missing&&+R.missing.pct;applied.missing=R.missing&&R.missing.on&&pct>=0&&pct<100?pct:null;
+    const miss=recs.map(rc=>items.filter(c=>!Number.isFinite(rc.v[c.code])).length);
+    flags.missing=miss.map(m=>applied.missing!==null&&m/items.length*100>applied.missing+1e-9);
+    // duplicates: identical coded answers to every kept question (needs at least one item answered)
+    const keyCols=cols.filter(c=>keep.includes(c.role)&&c.code);
+    const dupKey=rc=>items.every(c=>!Number.isFinite(rc.v[c.code]))?null:keyCols.map(c=>Number.isFinite(rc.v[c.code])?rc.v[c.code]:'').join('|');
+    applied.dup=R.dup&&R.dup.on?true:null;
+    {const seen=new Set();flags.dup=recs.map(rc=>{const k=dupKey(rc);if(k===null||applied.dup===null)return false;if(seen.has(k))return true;seen.add(k);return false})}
+    // funnel, in the declared order
+    const alive=recs.map(()=>true),reason=recs.map(()=>null),stages=[];
+    for(const rule of RULES){
+      if(applied[rule.key]===null||applied[rule.key]===undefined||(Array.isArray(applied[rule.key])&&!applied[rule.key].length)){stages.push({...rule,on:false,removed:0,left:alive.filter(Boolean).length,flagged:0});continue}
+      let fl=flags[rule.key];
+      if(rule.key==='dup'){const seen=new Set();fl=recs.map((rc,i)=>{if(!alive[i])return false;const k=dupKey(rc);if(k===null)return false;if(seen.has(k))return true;seen.add(k);return false})}
+      let removed=0;recs.forEach((_,i)=>{if(alive[i]&&fl[i]){alive[i]=false;reason[i]=rule.key;removed++}});
+      stages.push({...rule,on:true,removed,left:alive.filter(Boolean).length,flagged:flags[rule.key].filter(Boolean).length});
+    }
+    const valid=recs.filter((_,i)=>alive[i]);
+    // output variables, file order; ID first, duration last
+    const used=new Set(['ID','THOIGIAN']),out=[{name:'ID',code:'ID',role:'id',label:'Số thứ tự phiếu trong file gốc',values:[],missing:false,fmt:'F8.0',level:'SCALE'}];
+    const revLabels=sc.labels.map(([v,l])=>[sc.min+sc.max-v,`${l} (đã đảo điểm)`]).sort((a,b)=>a[0]-b[0]);
+    for(const c of cols){if(!keep.includes(c.role)||!c.code)continue;const e=cb.get(c.code.toUpperCase()),qt=(e&&e.label)||questionText(c.orig,c.code)||c.code,isRev=rev.has(c.code);
+      const values=c.role==='item'?(isRev?revLabels:sc.labels):c.role==='attn'?sc.labels:c.role==='num'?[]:rec[c.code].labels;
+      const numeric=c.role==='num'||(rec[c.code]&&rec[c.code].numeric);
+      out.push({name:spssName(c.code,used),code:c.code,orig:c.orig,role:c.role,label:qt+(isRev?' (đã đảo điểm)':''),values,reversed:isRev,missing:!numeric,
+        fmt:numeric?'F8.2':'F3.0',level:c.role==='item'||c.role==='num'?'SCALE':c.role==='attn'?'ORDINAL':'NOMINAL',group:c.role==='item'?groupOf(c.code):null})}
+    if(hasDur)out.push({name:'THOIGIAN',code:'THOIGIAN',role:'duration',label:'Thời gian làm phiếu (giây)',values:[],missing:false,fmt:'F8.0',level:'SCALE'});
+    const clash=out.filter(c=>c.missing&&c.values.some(([v])=>v===mc));if(clash.length)W.push(`Mã thiếu ${mc} trùng với một giá trị có nghĩa ở ${clash.map(c=>c.name).join(', ')}. Đổi mã giá trị thiếu (ví dụ -9).`);
+    const cell=(rc,c)=>{if(c.role==='id')return rc.id;if(c.role==='duration')return Number.isFinite(rc.dur)?Math.round(rc.dur):NaN;let x=rc.v[c.code];if(c.reversed&&Number.isFinite(x))x=sc.min+sc.max-x;return x};
+    const times=recs.map(rc=>rc.t).filter(Number.isFinite);
+    const n0=recs.length,n=valid.length,target=o.target>0?Math.round(o.target):null;
+    return {n0,n,stages,valid,recs,reason,ls,miss,out,cell,missingCode:mc,warnings:W,scale:sc,reversed:[...rev],applied,nItems:items.length,
+      target,short:target&&n<target?target-n:0,source:o.source||'other',dateRange:times.length?[Math.min(...times),Math.max(...times)]:null};
+  }
+  // ---- exports ----
+  const csvCell=v=>{const s=String(v);return /[",\r\n]/.test(s)?`"${s.replace(/"/g,'""')}"`:s};
+  function toCleanCSV(res){const C=res.out,L=[C.map(c=>c.name).join(',')];
+    for(const rc of res.valid)L.push(C.map(c=>{const x=res.cell(rc,c);return Number.isFinite(x)?String(x):c.missing?String(res.missingCode):''}).join(','));
+    return L.join('\r\n')+'\r\n'}
+  const REASON_TEXT={screen:'Không qua câu sàng lọc',attn:'Sai câu kiểm tra chú ý',speed:'Làm quá nhanh',straight:'Trả lời một chiều',dup:'Trùng lặp với phiếu gửi trước',missing:'Thiếu câu trả lời'};
+  function toAllCSV(res){const C=res.out,L=[[...C.map(c=>c.name),'HOP_LE','LY_DO_LOAI','CHUOI_CUNG_MUC','SO_CAU_THIEU'].join(',')];
+    res.recs.forEach((rc,i)=>L.push([...C.map(c=>{const x=res.cell(rc,c);return Number.isFinite(x)?String(x):c.missing?String(res.missingCode):''}),res.reason[i]?0:1,csvCell(res.reason[i]?REASON_TEXT[res.reason[i]]:''),res.ls[i],res.miss[i]].join(',')));
+    return '\uFEFF'+L.join('\r\n')+'\r\n'}
+  const sq=s=>`'${String(s).replace(/'/g,"''")}'`;
+  const cut=(s,n)=>{s=String(s).replace(/\s+/g,' ').trim();return s.length>n?s.slice(0,n-1)+'…':s};
+  const wrapNames=(names,ind)=>{const L=[];for(let i=0;i<names.length;i+=8)L.push(ind+names.slice(i,i+8).join(' '));return L.join('\r\n')};
+  function spssSyntax(res,file){
+    const C=res.out,L=[],mc=res.missingCode;
+    L.push('* Encoding: UTF-8.');
+    L.push('* Cú pháp SPSS tạo bởi công cụ Làm sạch dữ liệu khảo sát (Góc Nghiên Cứu).');
+    L.push(`* ${res.n} phiếu hợp lệ trên ${res.n0} phiếu thu về. Câu đảo chiều đã được đảo điểm trong file CSV.`);
+    L.push(`* Đặt file này cùng thư mục với ${file}, sửa đường dẫn ở dòng CD thành thư mục đó, rồi chọn Run > All.`);
+    L.push("CD 'C:\\Users\\Ten\\Documents\\khoa-luan'.");
+    L.push('GET DATA','  /TYPE=TXT',`  /FILE=${sq(file)}`,"  /ENCODING='UTF8'",'  /DELCASE=LINE','  /DELIMITERS=","',`  /QUALIFIER='"'`,'  /ARRANGEMENT=DELIMITED','  /FIRSTCASE=2','  /VARIABLES=');
+    C.forEach((c,i)=>L.push(`  ${c.name} ${c.fmt}${i===C.length-1?'.':''}`));
+    L.push('DATASET NAME DuLieuSach WINDOW=FRONT.');
+    L.push('VARIABLE LABELS');
+    C.forEach((c,i)=>L.push(`  ${i?'/':''}${c.name} ${sq(cut(c.label||c.code,120))}${i===C.length-1?'.':''}`));
+    const sets=new Map();C.forEach(c=>{if(!c.values.length&&!c.missing)return;const vals=c.missing?[...c.values,[mc,'Không trả lời']]:c.values;const k=JSON.stringify(vals);if(!sets.has(k))sets.set(k,{vals,names:[]});sets.get(k).names.push(c.name)});
+    if(sets.size){L.push('VALUE LABELS');[...sets.values()].forEach((s,i)=>{L.push((i?'  /':'  ')+wrapNames(s.names,'    ').trimStart());s.vals.forEach(([v,l])=>L.push(`    ${v} ${sq(cut(l,60))}`))});L[L.length-1]+='.'}
+    const miss=C.filter(c=>c.missing).map(c=>c.name);if(miss.length)L.push('MISSING VALUES',wrapNames(miss,'  '),`  (${mc}).`);
+    const lv={};C.forEach(c=>{(lv[c.level]=lv[c.level]||[]).push(c.name)});
+    L.push('VARIABLE LEVEL');Object.entries(lv).forEach(([k,ns],i)=>L.push(`${i?'  /':'  '}${wrapNames(ns,'    ').trimStart()} (${k})`));L[L.length-1]+='.';
+    L.push('EXECUTE.');
+    const groups={};C.forEach(c=>{if(c.group)(groups[c.group]=groups[c.group]||[]).push(c.name)});
+    const gs=Object.entries(groups).filter(([g,ns])=>ns.length>=2&&g!=='Q');
+    if(gs.length){L.push('','* Sau khi kiểm định Cronbach và EFA, có thể tạo biến đại diện cho mỗi khái niệm: bỏ dấu * ở đầu các dòng dưới.');
+      gs.forEach(([g,ns])=>L.push(`* COMPUTE ${spssName(g+'_TB',new Set(C.map(c=>c.name.toUpperCase())))} = MEAN(${ns.join(', ')}).`));L.push('* EXECUTE.')}
+    return L.join('\r\n')+'\r\n'}
+  const ROLE_TEXT={id:'Mã phiếu',item:'Câu thang đo',attn:'Câu kiểm tra chú ý',screen:'Câu sàng lọc',demo:'Thông tin chung',num:'Biến số',duration:'Thời gian làm phiếu'};
+  function codebookCSV(res){const rows=[['Tên biến (SPSS)','Mã trong file gốc','Câu hỏi','Loại','Khái niệm (nhóm mã)','Đảo điểm','Nhãn giá trị','Giá trị thiếu','Tiêu đề cột gốc']];
+    res.out.forEach(c=>rows.push([c.name,c.code,c.label,ROLE_TEXT[c.role]||c.role,c.group||'',c.reversed?`Có: điểm mới = ${res.scale.min+res.scale.max} − điểm cũ`:c.role==='item'?'Không':'',
+      c.values.map(([v,l])=>`${v} = ${l}`).join('; '),c.missing?String(res.missingCode):'',c.orig||'']));
+    return '\uFEFF'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\r\n')+'\r\n'}
+  const REFS={
+    curran:'Curran, P. G. (2016). Methods for the detection of carelessly invalid responses in survey data. <em>Journal of Experimental Social Psychology, 66</em>, 4–19. https://doi.org/10.1016/j.jesp.2015.07.006',
+    huang:'Huang, J. L., Curran, P. G., Keeney, J., Poposki, E. M., &amp; DeShon, R. P. (2012). Detecting and deterring insufficient effort responding to surveys. <em>Journal of Business and Psychology, 27</em>(1), 99–114. https://doi.org/10.1007/s10869-011-9231-8',
+    johnson:'Johnson, J. A. (2005). Ascertaining the validity of individual protocols from Web-based personality inventories. <em>Journal of Research in Personality, 39</em>(1), 103–129. https://doi.org/10.1016/j.jrp.2004.09.009',
+    meade:'Meade, A. W., &amp; Craig, S. B. (2012). Identifying careless responses in survey data. <em>Psychological Methods, 17</em>(3), 437–455. https://doi.org/10.1037/a0028085',
+    oppenheimer:'Oppenheimer, D. M., Meyvis, T., &amp; Davidenko, N. (2009). Instructional manipulation checks: Detecting satisficing to increase statistical power. <em>Journal of Experimental Social Psychology, 45</em>(4), 867–872. https://doi.org/10.1016/j.jesp.2009.03.009'};
+  const fmtN=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+  const fmtP=(a,b)=>b?(Math.round(a/b*1000)/10).toFixed(1).replace('.',','):'0';
+  const fmtDate=t=>{const d=new Date(t*1000);return `${String(d.getUTCDate()).padStart(2,'0')}/${String(d.getUTCMonth()+1).padStart(2,'0')}/${d.getUTCFullYear()}`};
+  const escH=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  // Chapter 3 paragraph: the declared rules, how many responses each removed, and the coding. HTML (with <em>) and references.
+  function chapter3(res){
+    const A=res.applied,st=k=>res.stages.find(s=>s.key===k),refs=new Set(['meade','curran']),parts=[];
+    const n=x=>fmtN(x);
+    const say=(k,txt)=>{const s=st(k);if(!s||!s.on)return;parts.push(s.removed?`loại ${n(s.removed)} phiếu ${txt}`:`không có phiếu nào ${txt}`)};
+    if(A.screen&&A.screen.length)say('screen',`không thoả điều kiện ở câu sàng lọc ${A.screen.map(s=>s.code).join(', ')}`);
+    if(A.attn&&A.attn.length){refs.add('oppenheimer');say('attn',`trả lời sai câu kiểm tra chú ý ${A.attn.map(s=>s.code).join(', ')} (đáp án đúng: ${A.attn.map(s=>(A.attn.length>1?s.code+' = ':'')+s.values.join(' hoặc ')).join(', ')}; Oppenheimer và cộng sự, 2009)`)}
+    if(A.speed!==null&&A.speed!==undefined){refs.add('huang');const per=Math.round(A.speed/res.nItems*10)/10;say('speed',`có thời gian hoàn thành dưới ${n(A.speed)} giây, tức khoảng ${String(per).replace('.',',')} giây cho mỗi câu thang đo (Huang và cộng sự, 2012)`)}
+    if(A.straight!==null&&A.straight!==undefined){refs.add('johnson');say('straight',A.straight>=res.nItems?`chọn cùng một mức cho toàn bộ ${n(res.nItems)} câu thang đo (Johnson, 2005)`:`chọn cùng một mức cho từ ${n(A.straight)} câu thang đo liên tiếp trở lên (Johnson, 2005)`)}
+    if(A.dup)say('dup','trùng lặp hoàn toàn với một phiếu gửi trước đó');
+    if(A.missing!==null&&A.missing!==undefined)say('missing',A.missing===0?'bỏ trống ít nhất một câu thang đo':`bỏ trống trên ${n(A.missing)}% số câu thang đo`);
+    const src=SOURCE_NAME[res.source]||'biểu mẫu trực tuyến',P=[];
+    const when=res.dateRange?` từ ngày ${fmtDate(res.dateRange[0])} đến ngày ${fmtDate(res.dateRange[1])}`:'';
+    let p1=`Dữ liệu được thu thập bằng ${res.source==='other'?'biểu mẫu trực tuyến':src}${when}, thu về ${n(res.n0)} phiếu. Trước khi phân tích, các quy tắc loại phiếu được xác định từ trước, dựa trên các khuyến nghị về phát hiện câu trả lời thiếu cẩn trọng (Meade &amp; Craig, 2012; Curran, 2016), và áp dụng lần lượt theo thứ tự sau: `;
+    p1+=parts.length?parts.map((t,i)=>`(${i+1}) ${t}`).join('; ')+'.':'không áp dụng quy tắc loại phiếu nào.';
+    p1+=` Sau khi làm sạch, mẫu còn ${n(res.n)} phiếu hợp lệ, chiếm ${fmtP(res.n,res.n0)}% số phiếu thu về.`;
+    if(res.target)p1+=res.n>=res.target?` Số phiếu hợp lệ đáp ứng cỡ mẫu tối thiểu ${n(res.target)} phiếu đã xác định ở phần chọn mẫu.`:` Số phiếu hợp lệ còn thiếu ${n(res.target-res.n)} phiếu so với cỡ mẫu tối thiểu ${n(res.target)} phiếu đã xác định ở phần chọn mẫu.`;
+    P.push(p1);
+    const sc=res.scale,lo=sc.labels[0],hi=sc.labels[sc.labels.length-1];
+    let p2=`Các câu trả lời thang đo được mã hoá thành điểm từ ${sc.min}${lo?` (${lo[1]})`:''} đến ${sc.max}${hi?` (${hi[1]})`:''}.`;
+    if(res.reversed.length)p2+=` ${res.reversed.length>1?'Các biến quan sát':'Biến quan sát'} đảo chiều ${res.reversed.join(', ')} được đảo điểm theo công thức điểm mới = ${sc.min+sc.max} − điểm cũ để cùng chiều với các biến còn lại trong thang đo.`;
+    if(res.out.some(c=>c.role==='demo'))p2+=' Các câu hỏi thông tin chung được mã hoá thành số theo bảng mã hoá ở phụ lục.';
+    p2+=' Dữ liệu sau khi làm sạch được đưa vào phần mềm SPSS để phân tích.';
+    P.push(p2);
+    const keys=[...refs].sort((a,b)=>REFS[a].localeCompare(REFS[b],'en'));
+    return {paras:P,refs:keys.map(k=>REFS[k])};
+  }
+  // Demo file: a Google Forms export (Vietnamese) of a TAM survey with screening, an attention check and a few careless responses.
+  // Fixed seed so every visitor sees the same numbers. Labelled as sample data everywhere it appears.
+  function sampleExport(){let s=20261030;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,norm=()=>Math.sqrt(-2*Math.log(rnd()+1e-12))*Math.cos(2*Math.PI*rnd());
+    const L5=LABELS.vi5,grid='Mức độ đồng ý của Anh/Chị với các phát biểu sau';
+    const items=[['PU1','Ứng dụng giúp tôi giao dịch nhanh hơn'],['PU2','Ứng dụng giúp tôi quản lý tiền hiệu quả hơn'],['PU3','Ứng dụng hữu ích trong cuộc sống hằng ngày'],['PU4','Nhìn chung, ứng dụng có ích với tôi'],
+      ['PEOU1','Học cách dùng ứng dụng là dễ dàng'],['PEOU2','Thao tác trên ứng dụng rõ ràng, dễ hiểu'],['PEOU3','Tôi dễ dàng dùng ứng dụng thành thạo'],['PEOU4','Tôi thấy ứng dụng khó sử dụng'],
+      ['AC1','Để xác nhận Anh/Chị đang đọc kỹ, hãy chọn “Không đồng ý” cho câu này'],['BI1','Tôi sẽ tiếp tục dùng ứng dụng'],['BI2','Tôi sẽ giới thiệu ứng dụng cho người khác'],['BI3','Tôi dự định dùng ứng dụng thường xuyên hơn']];
+    const head=['Dấu thời gian','SANGLOC. Anh/Chị đã từng dùng ứng dụng ngân hàng số trong 6 tháng qua chưa?',...items.map(([c,t])=>`${grid} [${c}. ${t}]`),'TT1. Giới tính','TT2. Sinh viên năm thứ mấy?','TT3. Chi tiêu hằng tháng'];
+    const out=[head],start=Date.UTC(2026,9,5,8);let t=start;
+    const stamp=()=>{t+=Math.floor(1200+rnd()*6000);const d=new Date(t*1000-0);return `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getUTCFullYear()} ${d.getUTCHours()}:${String(d.getUTCMinutes()).padStart(2,'0')}:${String(d.getUTCSeconds()).padStart(2,'0')}`};
+    t=start/1000;const lik=v=>Math.min(5,Math.max(1,Math.round(3.4+v)));
+    for(let i=0;i<240;i++){const ts=stamp();
+      if(i%24===7){out.push([ts,'Chưa từng',...items.map(()=>''),'','',''],);continue}
+      const peou=norm(),pu=0.55*peou+0.8*norm(),bi=0.45*pu+0.3*peou+0.75*norm(),it=l=>lik(0.75*l+0.55*norm());
+      let v=[...[0,1,2,3].map(()=>it(pu)),...[0,1,2].map(()=>it(peou)),6-it(peou),rnd()<0.95?2:4,...[0,1,2].map(()=>it(bi))];
+      if(i%31===5)v=v.map((x,k)=>k===8?2:4);
+      if(i%37===11)v=v.map(()=>4);
+      const demo=[rnd()<0.6?'Nữ':rnd()<0.95?'Nam':'Khác',['Năm 1','Năm 2','Năm 3','Năm 4'][Math.floor(rnd()*4)],['Dưới 3 triệu','Từ 3 đến dưới 5 triệu','Từ 5 triệu trở lên'][Math.floor(rnd()*3)]];
+      const row=[ts,'Đã từng',...v.map(x=>L5[x-1]),...demo];
+      if(i%53===20)row[3+Math.floor(rnd()*4)]='';
+      out.push(row);
+      if(i%67===30){const dupRow=[stamp(),...row.slice(1)];out.push(dupRow);i++}}
+    return out}
+  //#clean-end
+
+  if(typeof document==='undefined')return;
+  const $=id=>document.getElementById(id);
+  const CTA='https://geniusdata.io/signup?ref=lab-tool&next=%2Fapp%2Fforms&utm_source=goc-nghien-cuu&utm_medium=tool&utm_campaign=ai-lab&utm_content=lam-sach-du-lieu';
+  const ROLES=[['item','Câu thang đo'],['demo','Thông tin chung (mã hoá số)'],['num','Số (giữ nguyên)'],['attn','Câu kiểm tra chú ý'],['screen','Câu sàng lọc'],['duration','Thời gian làm (giây)'],['start','Thời điểm bắt đầu'],['end','Thời điểm hoàn thành'],['timestamp','Dấu thời gian nộp'],['text','Câu tự điền (bỏ khỏi file)'],['meta','Thông tin quản trị (bỏ)'],['skip','Bỏ qua']];
+  let head=[],rows=[],cols=[],cb=new Map(),source='other',fileLabel='',firstRules=null,runs=0,last=null;
+  const setStatus=(t,isErr)=>{$('ls-status').innerHTML=t;$('ls-status').className=isErr?'err':''};
+  function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+  function download(name,type,text){const b=new Blob([text],{type}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+  function useRaw(table,label){
+    const t=(table||[]).map(r=>(r||[]).map(v=>v==null?'':v)).filter(r=>r.some(v=>String(v).trim()!==''));
+    if(t.length<2){setStatus('File không có dữ liệu (cần một dòng tiêu đề và ít nhất một phiếu).',true);return}
+    head=t[0].map(v=>String(v).trim());rows=t.slice(1);fileLabel=label;source=detectSource(head);firstRules=null;runs=0;
+    guess();
+  }
+  function guess(){
+    cols=guessColumns(head,rows,cb);renderMap();
+    const by=r=>cols.filter(c=>c.role===r),items=by('item');
+    const sd=detectScale(items.flatMap(c=>rows.map(r=>r[c.j])));
+    $('ls-scale').value=sd.custom?'custom':`${sd.lang}${sd.points===7?7:5}`;$('ls-min').value=sd.min;$('ls-max').value=sd.points===5||sd.points===7?sd.min+sd.points-1:sd.max;
+    $('ls-custombox').hidden=$('ls-scale').value!=='custom';
+    if(sd.custom&&!$('ls-custom').value.trim()){const seen=[...new Set(items.flatMap(c=>rows.map(r=>String(r[c.j]).trim())).filter(v=>v&&!isNumStr(v)))].slice(0,10);$('ls-custom').value=seen.map(v=>`${v} = `).join('\n')}
+    $('ls-rev').value=[...cb.values()].filter(e=>e.reverse&&cols.some(c=>c.code===e.code)).map(e=>e.code).join(' ');
+    const sc=by('screen');
+    $('ls-screen').value=sc.map(c=>{const e=cb.get(c.code.toUpperCase());let f=e&&e.screenFail.length?e.screenFail:[...new Set(rows.map(r=>String(r[c.j]).trim()).filter(v=>FAIL_RE.test(normText(v))))];if(!f.length)f=['Chưa từng','Không phải'];return `${c.code}=${f.join('|')}`}).join('; ');
+    $('ls-r-screen').checked=sc.length>0;
+    const at=by('attn');
+    $('ls-attn').value=at.map(c=>{const e=cb.get(c.code.toUpperCase());const ans=e&&e.attnAnswer!=null?e.attnAnswer:/^(AC\d*|ACHK(_\d+)?)$/i.test(c.code)?2:'';return `${c.code}=${ans}`}).join('; ');
+    $('ls-r-attn').checked=at.length>0;
+    const hasDur=by('duration').length||(by('start').length&&by('end').length);
+    $('ls-r-speed').checked=!!hasDur;$('ls-speed').value=hasDur?Math.max(30,2*items.length):'';
+    $('ls-speednote').textContent=hasDur?`Gợi ý 2 giây cho mỗi câu thang đo (Huang và cộng sự, 2012): ${items.length} câu × 2 = ${Math.max(30,2*items.length)} giây, tối thiểu 30 giây.`:'File không có cột thời lượng hoặc thời điểm bắt đầu (Google Forms chỉ ghi lúc nộp), nên chưa dùng được quy tắc này.';
+    $('ls-straight').value=items.length||'';$('ls-straightnote').textContent=items.length?`Mặc định ${items.length} = toàn bộ câu thang đo (chỉ loại phiếu chọn đúng một mức cho mọi câu). Có thể hạ ngưỡng nếu đề cương ghi rõ.`:'';
+    const nm=c=>escH(c.code),list=r=>by(r).map(nm).join(', ');
+    const notes=[`<strong>${escH(fileLabel)}</strong>: file ${SOURCE_NAME[source]}, ${fmtN(rows.length)} phiếu, ${head.length} cột. Nhận ra ${items.length} câu thang đo${by('demo').length?`, ${by('demo').length} câu thông tin chung (${list('demo')})`:''}${at.length?`, câu kiểm tra chú ý ${list('attn')}`:''}${sc.length?`, câu sàng lọc ${list('screen')}`:''}.`];
+    const auto=cols.filter(c=>/^Q\d+$/.test(c.code||'')&&c.src!=='header'&&['item','demo'].includes(c.role)).length;
+    if(auto)notes.push(`<span class="err">${auto} cột chưa có mã trong tiêu đề nên được đặt tạm Q + số cột. Sửa mã ở bảng dưới, hoặc dán bảng mã hoá để tự khớp.</span>`);
+    const fromCb=cols.filter(c=>c.src==='codebook').length;if(fromCb)notes.push(`${fromCb} cột được khớp mã theo bảng mã hoá.`);
+    setStatus(notes.join('<br>'));
+    $('ls-setup').hidden=false;$('ls-out').hidden=true;$('ls-msg').textContent='';
+  }
+  function renderMap(){
+    $('ls-map').innerHTML='<thead><tr><th>#</th><th>Tiêu đề cột trong file</th><th>Mã biến</th><th>Loại</th></tr></thead><tbody>'+cols.map((c,i)=>`<tr${['meta','skip','text'].includes(c.role)?' class="off"':''}><td>${c.j+1}</td><td class="h" title="${escH(c.orig)}">${escH(cut(c.orig,110))}</td><td><input data-i="${i}" data-k="code" value="${escH(c.code||'')}" aria-label="Mã biến cột ${c.j+1}"${['meta','skip','timestamp','start','end','duration'].includes(c.role)?' disabled':''}></td><td><select data-i="${i}" data-k="role" aria-label="Loại cột ${c.j+1}">${ROLES.map(([v,l])=>`<option value="${v}"${v===c.role?' selected':''}>${l}</option>`).join('')}</select></td></tr>`).join('')+'</tbody>';
+  }
+  $('ls-map').addEventListener('change',e=>{const el=e.target,i=+el.dataset.i;if(!cols[i])return;
+    if(el.dataset.k==='code')cols[i].code=el.value.trim();
+    else{cols[i].role=el.value;if(!cols[i].code&&['item','attn','screen','demo','num'].includes(el.value))cols[i].code=`Q${cols[i].j+1}`;renderMap()}});
+  function rulesNow(){return {screen:{on:$('ls-r-screen').checked,spec:$('ls-screen').value},attn:{on:$('ls-r-attn').checked,spec:$('ls-attn').value},
+    speed:{on:$('ls-r-speed').checked,sec:+$('ls-speed').value},straight:{on:$('ls-r-straight').checked,len:+$('ls-straight').value},dup:{on:$('ls-r-dup').checked},missing:{on:$('ls-r-missing').checked,pct:+$('ls-missing').value}}}
+  function run(){
+    const msg=$('ls-msg');msg.textContent='';msg.className='';
+    if(!rows.length){msg.className='err';msg.textContent='Chưa có dữ liệu.';return}
+    const kept=cols.filter(c=>['item','attn','screen','demo','num'].includes(c.role));
+    const bad=kept.filter(c=>!c.code);if(bad.length){msg.className='err';msg.textContent=`Cột ${bad.map(c=>c.j+1).join(', ')} chưa có mã biến.`;return}
+    const seen=new Set(),dupe=kept.filter(c=>{const k=c.code.toUpperCase();if(seen.has(k))return true;seen.add(k);return false});
+    if(dupe.length){msg.className='err';msg.textContent=`Mã bị trùng: ${[...new Set(dupe.map(c=>c.code))].join(', ')}. Mỗi cột cần một mã riêng.`;return}
+    const kind=$('ls-scale').value,min=+$('ls-min').value,max=+$('ls-max').value;
+    if(!(max>min)){msg.className='err';msg.textContent='Điểm cao nhất phải lớn hơn điểm thấp nhất.';return}
+    const scale=scaleSpec(kind,$('ls-custom').value,min,max);
+    if(kind==='custom'&&!scale.map.size){msg.className='err';msg.textContent='Chưa có nhãn tuỳ chỉnh nào dạng “nhãn = số”.';return}
+    const rules=rulesNow(),key=JSON.stringify(rules);
+    runs++;if(!firstRules)firstRules=key;
+    const res=clean({cols,rows,scale,reverse:$('ls-rev').value.split(/[\s,;]+/).filter(Boolean),rules,target:+$('ls-target').value,missingCode:+$('ls-miss').value,cb,source,dayFirst:source!=='ms'&&!/^timestamp$/i.test(head[0]||'')});
+    if(res.error){msg.className='err';msg.textContent=res.error;return}
+    last=res;render(res,key!==firstRules);
+  }
+  function render(res,changed){
+    const W=[...res.warnings];
+    if(changed)W.unshift('Quy tắc lọc đã thay đổi so với lần chạy đầu tiên với file này. Hãy dùng đúng quy tắc ghi trong đề cương: đổi quy tắc sau khi đã thấy kết quả để có số phiếu hay kết quả mong muốn là chọn lọc dữ liệu.');
+    $('ls-warn').hidden=!W.length;$('ls-warn').innerHTML=W.length?`<strong>Cần xem lại</strong><ul>${W.map(w=>`<li>${escH(w)}</li>`).join('')}</ul>`:'';
+    const max=res.n0||1,bar=(x,cls)=>`<span class="ls-bar${cls?' '+cls:''}" style="width:${Math.max(0.5,x/max*100)}%"></span>`;
+    const ruleTxt=s=>{const A=res.applied;if(!s.on)return '';if(s.key==='screen'||s.key==='attn')return ` (${A[s.key].map(x=>`${escH(x.code)}${s.key==='attn'?'='+escH(x.values.join('|')):''}`).join(', ')})`;
+      if(s.key==='speed')return ` (dưới ${A.speed} giây)`;if(s.key==='straight')return ` (từ ${A.straight} câu liên tiếp)`;if(s.key==='missing')return A.missing===0?' (thiếu từ 1 câu)':` (thiếu trên ${A.missing}%)`;return ''};
+    let h=`<div class="ls-kpi"><div><b>${fmtN(res.n0)}</b><span>phiếu thu về</span></div><div><b>${fmtN(res.n0-res.n)}</b><span>phiếu bị loại</span></div><div><b>${fmtN(res.n)}</b><span>phiếu hợp lệ (${fmtP(res.n,res.n0)}%)</span></div>${res.target?`<div><b>${fmtN(res.target)}</b><span>cỡ mẫu mục tiêu</span></div>`:''}</div>`;
+    h+=`<div class="tw"><table><caption>Quy trình lọc phiếu (theo thứ tự khai báo)</caption><thead><tr><th>Bước</th><th>Bị loại</th><th>Còn lại</th><th>Gắn cờ nếu xét riêng</th></tr></thead><tbody>`;
+    h+=`<tr><td>Phiếu thu về${bar(res.n0)}</td><td></td><td>${fmtN(res.n0)}</td><td></td></tr>`;
+    res.stages.forEach(s=>{h+=s.on?`<tr><td>${escH(s.label)}${ruleTxt(s)}${bar(s.left)}</td><td>${s.removed?'−'+fmtN(s.removed):'0'}</td><td>${fmtN(s.left)}</td><td>${fmtN(s.flagged)}</td></tr>`:`<tr class="off"><td>${escH(s.label)}: không áp dụng</td><td>–</td><td>${fmtN(s.left)}</td><td>–</td></tr>`});
+    h+=`<tr class="sum"><td>Phiếu hợp lệ</td><td></td><td>${fmtN(res.n)}</td><td></td></tr></tbody></table></div>`;
+    h+=`<small>Cột “Gắn cờ nếu xét riêng” đếm số phiếu vi phạm từng quy tắc khi không xét các quy tắc khác; một phiếu có thể vi phạm nhiều quy tắc nhưng chỉ bị tính ở quy tắc đầu tiên.</small>`;
+    if(res.target){
+      if(res.short){h+=`<div class="ls-short"><p><strong>Còn thiếu ${fmtN(res.short)} phiếu so với cỡ mẫu mục tiêu ${fmtN(res.target)}.</strong> Chỉ bù bằng phiếu thật thu thêm, làm sạch theo đúng các quy tắc trên. Không tự điền, nhân bản hay ước lượng phiếu cho đủ số: đó là bịa dữ liệu.</p>
+        <p>Nếu cần thu thêm nhanh đúng đối tượng, có thể tạo khảo sát trên <a href="${CTA}" rel="sponsored noopener" target="_blank">Genius Data</a> <small>(link giới thiệu)</small>: chọn nhóm người trả lời và chỉ trả tiền cho phiếu được duyệt. Cũng có thể gửi lại link Google Forms cho các nhóm chưa khảo sát.</p></div>`}
+      else h+=`<p>Đủ cỡ mẫu mục tiêu: ${fmtN(res.n)} / ${fmtN(res.target)} phiếu hợp lệ.</p>`;
+    }
+    const demos=res.out.filter(c=>(c.role==='demo'||c.role==='screen')&&c.values.length);
+    if(demos.length){h+='<p style="margin:14px 0 4px"><strong>Bảng mã hoá thông tin chung</strong> (số phiếu tính trên phiếu hợp lệ)</p>';
+      demos.forEach(c=>{const cnt=new Map();res.valid.forEach(rc=>{const x=res.cell(rc,c);cnt.set(x,(cnt.get(x)||0)+1)});
+        h+=`<div class="tw"><table><caption>${escH(c.name)}. ${escH(cut(c.label,90))}</caption><thead><tr><th>Mã</th><th>Nhãn</th><th>Số phiếu</th></tr></thead><tbody>${c.values.map(([v,l])=>`<tr><td>${v}</td><td style="text-align:left">${escH(l)}</td><td>${fmtN(cnt.get(v)||0)}</td></tr>`).join('')}${[...cnt.keys()].some(k=>!Number.isFinite(k))?`<tr><td>${res.missingCode}</td><td style="text-align:left">Không trả lời</td><td>${fmtN([...cnt].filter(([k])=>!Number.isFinite(k)).reduce((s,[,v])=>s+v,0))}</td></tr>`:''}</tbody></table></div>`});}
+    $('ls-report').innerHTML=h;
+    const ch=chapter3(res);
+    $('ls-ch3').innerHTML=ch.paras.map(p=>`<p>${p}</p>`).join('')+`<p><strong>Tài liệu tham khảo</strong></p><ul>${ch.refs.map(r=>`<li>${r}</li>`).join('')}</ul>`;
+    $('ls-out').hidden=false;$('ls-out').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('ls-file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;setStatus('Đang đọc file…');
+    try{if(/\.(xlsx|xls)$/i.test(f.name)){if(!window.XLSX)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');const wb=XLSX.read(await f.arrayBuffer());useRaw(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:'',raw:true}),f.name)}
+      else useRaw(parseCSV(await f.text()),f.name)}catch(err){setStatus('Không đọc được file. Lưu lại dạng .xlsx hoặc .csv (UTF-8) rồi thử lại.',true)}e.target.value=''});
+  $('ls-sample').addEventListener('click',()=>{useRaw(sampleExport(),'File mẫu (dữ liệu giả lập)');if(!$('ls-target').value)$('ls-target').value=220});
+  function applyCb(text){cb=parseCodebook(text);$('ls-cbmsg').textContent=cb.size?`Đọc được ${cb.size} mã trong bảng mã hoá.`:'Không đọc được mã nào. Cần cột Mã và cột nội dung câu hỏi.';if(rows.length&&cb.size)guess()}
+  $('ls-cbapply').addEventListener('click',()=>applyCb($('ls-cb').value));
+  $('ls-cbfile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;const t=await f.text();$('ls-cb').value=t;applyCb(t);e.target.value=''});
+  $('ls-scale').addEventListener('change',()=>{const v=$('ls-scale').value;$('ls-custombox').hidden=v!=='custom';if(v!=='custom'){const p=v.endsWith('7')?7:5;$('ls-max').value=+$('ls-min').value+p-1}});
+  $('ls-run').addEventListener('click',run);
+  const need=()=>{if(!last){$('ls-msg').textContent='Bấm “Làm sạch dữ liệu” trước.';return false}return true};
+  $('ls-csv').addEventListener('click',()=>{if(need())download('du-lieu-sach.csv','text/csv;charset=utf-8',toCleanCSV(last))});
+  $('ls-all').addEventListener('click',()=>{if(need())download('moi-phieu-kem-ly-do.csv','text/csv;charset=utf-8',toAllCSV(last))});
+  $('ls-sps').addEventListener('click',()=>{if(need())download('du-lieu-sach.sps','text/plain;charset=utf-8',spssSyntax(last,'du-lieu-sach.csv'))});
+  $('ls-book').addEventListener('click',()=>{if(need())download('bang-ma-hoa-du-lieu.csv','text/csv;charset=utf-8',codebookCSV(last))});
+  $('ls-copy').addEventListener('click',async()=>{const el=$('ls-ch3');try{await navigator.clipboard.writeText(el.innerText);$('ls-copy').textContent='Đã chép';setTimeout(()=>{$('ls-copy').textContent='Sao chép'},1500)}catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}});
+})();
+</script>

@@ -26,51 +26,90 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
   slug="ve-mo-hinh"
   title="Vẽ mô hình nghiên cứu online, tự viết giả thuyết H1, H2 và tính cỡ mẫu"
   h1="Vẽ mô hình nghiên cứu"
-  description="Chọn khái niệm từ thư viện thang đo, nối mũi tên, tải hình mô hình nghiên cứu (PNG, SVG), nhận giả thuyết H1…Hn tiếng Việt và cỡ mẫu tối thiểu PLS-SEM. Miễn phí."
-  lede="Thêm các khái niệm, nối mũi tên giữa chúng. Công cụ tự xếp hình gọn gàng để chèn vào chương 2, viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian), đếm số mũi tên nhiều nhất để ra cỡ mẫu tối thiểu, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
+  description="Kéo thả khái niệm từ thư viện thang đo, nối mũi tên như SmartPLS, tải hình mô hình nghiên cứu (PNG, SVG), nhận giả thuyết H1…Hn tiếng Việt và cỡ mẫu tối thiểu PLS-SEM. Miễn phí."
+  lede="Kéo khái niệm lên khung vẽ, kéo mũi tên từ ô này sang ô kia như trong SmartPLS. Công cụ viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian), đếm số mũi tên nhiều nhất để ra cỡ mẫu tối thiểu, xuất hình để chèn vào chương 2, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
   html={html}
 >
   <script is:inline type="application/json" id="vm-data" set:html={json} />
   <Fragment slot="guide">
     <h2>Cách dùng</h2>
+    <p>
+      Khung vẽ làm việc giống SmartPLS: khái niệm là các ô kéo thả được, mũi
+      tên kéo từ ô này sang ô kia, giả thuyết và cỡ mẫu cập nhật ngay ở cột bên
+      phải (bên dưới trên điện thoại).
+    </p>
     <ol>
       <li>
-        <strong>Thêm khái niệm.</strong> Gõ tên khái niệm vào ô tìm kiếm (tiếng
-        Việt hoặc tiếng Anh, có dấu hay không đều được), ví dụ “hữu ích; dễ sử
-        dụng; ý định”. Bấm vào kết quả để thêm. Khái niệm lấy từ
-        <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> mang theo mã
-        biến gốc (PU, PEOU, BI…) và thang đo có trích dẫn. Khái niệm chưa có
-        trong thư viện thì gõ vào ô “Tự đặt tên”.
+        <strong>Thêm khái niệm.</strong> Nhấp đúp vào chỗ trống trên khung (điện
+        thoại: chạm hai lần), gõ tên rồi Enter. Ô gõ gợi ý khái niệm gần nghĩa
+        trong <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>; chọn gợi
+        ý để có mã biến gốc (PU, PEOU, BI…), số biến quan sát và thang đo có
+        trích dẫn, hoặc giữ tên bạn gõ. Cũng có thể tìm ở ô “Thư viện khái niệm”
+        bên trái rồi <em>kéo</em> kết quả vào khung, hoặc bấm vào kết quả. Con số
+        ở góc ô là số biến quan sát của thang đo gốc; số màu cam là dưới 3 biến.
       </li>
       <li>
-        <strong>Nối mũi tên.</strong> Chọn “Từ” và “Tới” rồi bấm Nối, hoặc bấm
-        vào một ô trên hình rồi bấm ô đích. Muốn nhanh hơn, gõ danh sách vào ô
-        văn bản, mỗi dòng một quan hệ: <code>PEOU -&gt; PU</code>,
-        <code>PU, PEOU -&gt; BI</code>, <code>PR -&gt; BI (-)</code> cho quan hệ
-        ngược chiều.
+        <strong>Nối mũi tên.</strong> Rê chuột lên một ô, kéo chấm tròn bên phải
+        ô thả vào ô đích. Hoặc bật chế độ “Nối mũi tên” trên thanh công cụ rồi
+        kéo (hoặc bấm ô nguồn, bấm ô đích). Mũi tên đi thẳng giữa hai viền ô và
+        tự uốn cong khi có ô khác chắn đường.
       </li>
       <li>
-        <strong>Kiểm tra hình.</strong> Công cụ xếp biến độc lập bên trái, biến
-        trung gian ở giữa, biến phụ thuộc bên phải; mũi tên ngược chiều vẽ nét
-        đứt màu đỏ. Tải PNG (độ phân giải gấp 3 lần, đủ nét khi in) để chèn vào
-        Word, hoặc SVG để chỉnh tiếp trong PowerPoint, Inkscape, draw.io.
+        <strong>Đổi chiều, xoá, sắp xếp.</strong> Bấm nhãn <code>H1 +</code> trên
+        mũi tên để đổi giữa cùng chiều (+) và ngược chiều (−, nét đứt màu cam).
+        Chuột phải (điện thoại: giữ lâu) trên ô hoặc mũi tên để đổi tên, đổi mã
+        viết tắt, đảo hướng, đưa giả thuyết lên trước hoặc xoá. Kéo chỗ trống để
+        di chuyển khung, lăn chuột hoặc hai ngón để thu phóng; Shift + kéo để chọn
+        nhiều ô rồi kéo cả nhóm. “Xếp tự động” đặt biến độc lập bên trái, trung
+        gian ở giữa, phụ thuộc bên phải. Mọi thao tác hoàn tác được.
       </li>
       <li>
         <strong>Chép giả thuyết</strong> vào cuối chương 2 và viết lập luận cho
-        từng giả thuyết. Thứ tự H1, H2… theo thứ tự trong danh sách mũi tên; dùng
-        nút ↑ để đổi.
+        từng giả thuyết. Thứ tự H1, H2… là thứ tự nối mũi tên; dùng nút ↑ trong
+        danh sách giả thuyết để đổi. Cột bên phải cũng báo vòng lặp, khái niệm
+        chưa nối và thang đo dưới 3 biến.
       </li>
       <li>
-        <strong>Bấm “Mở trong Bộ khảo sát”.</strong> Các khái niệm từ thư viện,
-        số mũi tên lớn nhất và biến phụ thuộc được chuyển sang
+        <strong>Tải hình và mở tiếp.</strong> Tải PNG (độ phân giải gấp 3 lần, đủ
+        nét khi in) để chèn vào Word, hoặc SVG để chỉnh trong PowerPoint,
+        Inkscape, draw.io. Bấm “Mở trong Bộ khảo sát” để chuyển các khái niệm từ
+        thư viện, số mũi tên lớn nhất và biến phụ thuộc sang
         <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> để ghép
-        bảng hỏi tiếng Việt, tính cỡ mẫu và viết đoạn chương 3.
+        bảng hỏi, tính cỡ mẫu và viết đoạn chương 3.
       </li>
     </ol>
+    <p>
+      Quen gõ hơn kéo thả? Mở mục “Nhập bằng văn bản” ở cột bên phải, mỗi dòng
+      một quan hệ: <code>PEOU -&gt; PU</code>, <code>PU, PEOU -&gt; BI</code>,
+      <code>PR -&gt; BI (-)</code> cho quan hệ ngược chiều. Tên chưa có thành
+      khái niệm mới và được đặt vào chỗ trống trên khung.
+    </p>
+
+    <h3>Phím tắt</h3>
+    <div class="table-wrap" style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Phím</th><th>Tác dụng</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Chuyển qua các ô khái niệm rồi các nhãn mũi tên</td></tr>
+          <tr><td><kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></td><td>Di chuyển ô đang chọn một nấc lưới (thêm <kbd>Shift</kbd>: 1 điểm ảnh); không chọn ô thì di chuyển khung</td></tr>
+          <tr><td><kbd>Enter</kbd> hoặc <kbd>F2</kbd></td><td>Đổi tên ô; trên nhãn mũi tên: đổi chiều + / −</td></tr>
+          <tr><td><kbd>C</kbd> rồi <kbd>Tab</kbd> tới ô đích, <kbd>Enter</kbd></td><td>Nối mũi tên từ ô đang chọn tới ô đích</td></tr>
+          <tr><td><kbd>A</kbd></td><td>Thêm khái niệm ở giữa khung</td></tr>
+          <tr><td><kbd>V</kbd> / <kbd>C</kbd> (khi không chọn ô)</td><td>Chế độ Chọn / Nối mũi tên</td></tr>
+          <tr><td><kbd>Delete</kbd> hoặc <kbd>Backspace</kbd></td><td>Xoá ô hoặc mũi tên đang chọn</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>Hoàn tác / làm lại</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td>Chọn tất cả ô</td></tr>
+          <tr><td><kbd>+</kbd> / <kbd>−</kbd> / <kbd>0</kbd></td><td>Phóng to / thu nhỏ / vừa khung</td></tr>
+          <tr><td>Giữ <kbd>Space</kbd> + kéo</td><td>Di chuyển khung</td></tr>
+          <tr><td><kbd>Shift</kbd>+<kbd>F10</kbd> hoặc phím menu</td><td>Mở menu của ô hoặc mũi tên đang chọn</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Huỷ nối, bỏ chọn, về chế độ Chọn</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <h2>Ví dụ: mô hình TAM</h2>
     <p>
-      Bấm “Nạp ví dụ TAM”. Mô hình chấp nhận công nghệ của Davis (1989) có ba
+      Bấm “Nạp ví dụ TAM” ở cột trái. Mô hình chấp nhận công nghệ của Davis (1989) có ba
       khái niệm: Nhận thức tính dễ sử dụng (PEOU), Nhận thức sự hữu ích (PU) và
       Ý định sử dụng (BI), với ba mũi tên PEOU → PU, PU → BI và PEOU → BI. Công
       cụ viết ra:
@@ -134,8 +173,9 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
     </p>
     <h3>Dữ liệu mô hình có được gửi đi đâu không?</h3>
     <p>
-      Không. Mọi thứ chạy trong trình duyệt; mô hình được lưu trong đường link
-      (nút “Sao chép link”) và bộ nhớ của trình duyệt để lần sau mở lại.
+      Không. Mọi thứ chạy trong trình duyệt; mô hình (kể cả vị trí các ô) được lưu
+      trong đường link (nút Link trên thanh công cụ) và bộ nhớ của trình duyệt để
+      lần sau mở lại.
     </p>
 
     <h2>Tài liệu tham khảo</h2>

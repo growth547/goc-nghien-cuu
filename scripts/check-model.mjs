@@ -1,6 +1,7 @@
 // Unit check for the research-model drawer (src/tools/ve-mo-hinh.html): its statistics block is the
 // sample-size calculator's, its concept search ranks like the questionnaire kit, and the pure model
-// helpers (arrow list parser, layers, layout, hypotheses, sample size, kit link) behave.
+// helpers (arrow list parser, layers, layout, hypotheses, sample size, kit link) and the canvas editor's
+// pure parts (graph edits, undo/redo, geometry, warnings, link format) behave.
 import { readFileSync, readdirSync } from "node:fs";
 
 const block = (src, tag) => {
@@ -24,7 +25,9 @@ check(norm(block(src, "math")) === norm(block(calcSrc, "math")), "math block mat
 
 const api = new Function(
   `${block(src, "math")}${block(src, "search")}${block(src, "model")}
-   return { codeFrom, addNode, addEdge, removeNode, findNode, parseArrows, edgesToText, inDegree, maxArrows, backEdges, layersOf, layout, lcFirst, hypotheses, modelSample, kitQuery, rankConstructs, indexConstruct, citeOf, regN, isrN };`
+   return { codeFrom, addNode, addEdge, removeNode, findNode, parseArrows, edgesToText, inDegree, maxArrows, backEdges, layersOf, layout, lcFirst, hypotheses, modelSample, kitQuery, rankConstructs, indexConstruct, citeOf, regN, isrN,
+     GRID, BOX_W, snapTo, hasPos, boxOf, overlaps, freeSpot, autoArrange, placeNew, boundsOf, fitView, zoomAt, borderPoint, quadAt, routeEdge, routeAll, edgeIndex, nodesInRect,
+     removeNodes, removeEdge, toggleSign, reverseEdge, moveEdge, moveNodes, renameNode, recodeNode, modelWarnings, packModel, unpackModel, createHistory };`
 )();
 const kit = new Function(`${block(kitSrc, "math")}${block(kitSrc, "kit")} return { rankConstructs, indexConstruct, kitSample, citeOf };`)();
 
@@ -127,6 +130,147 @@ const keys = new Set(scales.flatMap(s => s.constructs.map(c => `${s.slug}:${c.co
 check(q.get("c").split(",").every(k => keys.has(k)), "kit link keys exist in the scale library");
 check(/else if\(qs\.get\('c'\)\)/.test(kitSrc) && /qs\.get\('dv'\)/.test(kitSrc) && /qs\.get\('a'\)/.test(kitSrc), "the kit still reads ?c=, ?a= and ?dv=");
 check(api.kitQuery({ nodes: [{ id: "A", name: "A", key: null }], edges: [] }) === "", "no library construct, no kit link");
+
+
+// ---- canvas editor: graph edits ----
+const tam = () => {
+  const m = { nodes: [], edges: [] };
+  api.parseArrows("PEOU -> PU\nPU -> BI\nPEOU -> BI", m).edges.forEach(e => api.addEdge(m, e.from, e.to, e.sign));
+  return m;
+};
+const g1 = tam();
+api.removeNodes(g1, ["PU"]);
+check(g1.nodes.map(n => n.id).join() === "PEOU,BI" && api.edgesToText(g1) === "PEOU -> BI", "deleting a construct drops its arrows");
+const g2 = tam();
+check(api.toggleSign(g2, 1) === -1 && g2.edges[1].sign === -1 && api.toggleSign(g2, 1) === 1, "toggleSign flips + and −");
+check(api.toggleSign(g2, 9) === 0, "toggleSign on a missing arrow does nothing");
+check(api.reverseEdge(g2, 0) === "reversed" && api.edgesToText(g2).split("\n")[0] === "PU -> PEOU", "reverseEdge turns an arrow around");
+api.addEdge(g2, "BI", "PU");
+check(api.reverseEdge(g2, 1) === "exists" && g2.edges[1].from === "PU", "reverseEdge refuses when the opposite arrow exists");
+const g3 = tam();
+check(api.moveEdge(g3, 2, -1) && api.edgesToText(g3) === "PEOU -> PU\nPEOU -> BI\nPU -> BI" && !api.moveEdge(g3, 0, -1), "moveEdge reorders arrows (and so H numbers)");
+check(api.removeEdge(g3, 0) && g3.edges.length === 2 && !api.removeEdge(g3, 5), "removeEdge");
+check(api.renameNode(g3, "BI", "  Ý định   tiếp tục sử dụng ") && g3.nodes.find(n => n.id === "BI").name === "Ý định tiếp tục sử dụng" && !api.renameNode(g3, "BI", "  "), "renameNode trims and refuses an empty name");
+check(api.recodeNode(g3, "BI", "CI") === "" && g3.edges.every(e => e.to !== "BI") && g3.edges.some(e => e.to === "CI"), "recodeNode renames the code in every arrow");
+check(/đã dùng/.test(api.recodeNode(g3, "CI", "pu")) && /bắt đầu bằng chữ/.test(api.recodeNode(g3, "CI", "1X")) && api.recodeNode(g3, "CI", "CI") === "", "recodeNode refuses a taken or malformed code");
+const g4 = tam();
+g4.nodes.forEach((n, i) => { n.x = i * 10; n.y = 0; });
+api.moveNodes(g4, ["PU", "BI"], 20, -40);
+check(g4.nodes.map(n => `${n.x},${n.y}`).join(" ") === "0,0 30,-40 40,-40", "moveNodes moves only the chosen constructs");
+
+// ---- hypotheses follow the edits ----
+const g5 = tam();
+api.toggleSign(g5, 0);
+const h5 = api.hypotheses(g5);
+check(/ngược chiều đến nhận thức sự hữu ích \(PU\)\.$/.test(h5[0].text) || /ngược chiều đến PU\.$/.test(h5[0].text), `a flipped arrow reads 'ngược chiều' (${h5[0].text})`);
+check(h5.filter(h => h.mediator === "PU").length === 1 && h5.map(h => h.h).join() === "1,2,3,4", "TAM: three direct and one mediation hypothesis");
+api.moveEdge(g5, 2, -1);
+check(api.hypotheses(g5)[1].text === "PEOU có tác động cùng chiều đến BI.", "moving an arrow up renumbers its hypothesis");
+
+// ---- warnings: cycles, isolated constructs, too few items ----
+const w1 = { nodes: [], edges: [] };
+api.parseArrows("A -> B\nB -> C\nC -> A", w1).edges.forEach(e => api.addEdge(w1, e.from, e.to, e.sign));
+api.addNode(w1, "Đứng riêng", null, "D");
+const ws = api.modelWarnings(w1, { itemsOf: n => ({ A: 2, B: 5 })[n.id] ?? null });
+check(ws.some(w => w.kind === "cycle" && /C → A/.test(w.text)), "warning: the loop C → A");
+check(ws.some(w => w.kind === "lone" && w.ids.join() === "D"), "warning: the isolated construct D");
+check(ws.some(w => w.kind === "items" && w.ids.join() === "A" && /A \(2 biến\)/.test(w.text)), "warning: A has fewer than 3 items, B does not");
+check(api.modelWarnings(tam(), { itemsOf: () => 4 }).length === 0, "no warnings for TAM with 4-item scales");
+check(api.modelWarnings({ nodes: [{ id: "A", name: "A" }], edges: [] }).length === 0, "a single construct is not flagged as isolated");
+// The library itself: warnings use the real item counts.
+const pu = all.find(x => x.s.slug === "tam" && x.c.code === "PU");
+check(pu && pu.c.items.length >= 3, "TAM PU has at least 3 items in the library");
+
+// ---- undo / redo ----
+const H = api.createHistory(3);
+H.reset("a");
+check(!H.canUndo() && !H.canRedo() && H.undo() === null, "fresh history: nothing to undo");
+H.push("b"); H.push("c");
+check(!H.push("c"), "pushing the same snapshot twice is a no-op");
+check(H.undo() === "b" && H.undo() === "a" && H.undo() === null && H.redo() === "b", "undo walks back, redo forward");
+H.push("x");
+check(!H.canRedo() && H.list.join() === "a,b,x", "a new edit after undo drops the redo branch");
+H.push("y");
+check(H.list.join() === "b,x,y" && H.undo() === "x", "history keeps at most the limit");
+// Undo/redo over real edits, as the page does it.
+const ed = tam(), hist = api.createHistory();
+api.placeNew(ed, {});
+hist.reset(api.packModel(ed));
+api.toggleSign(ed, 0); hist.push(api.packModel(ed));
+api.removeNodes(ed, ["PU"]); hist.push(api.packModel(ed));
+let back = api.unpackModel(hist.undo());
+check(back.nodes.length === 3 && back.edges[0].sign === -1, "undo brings a deleted construct back with its arrows");
+back = api.unpackModel(hist.undo());
+check(back.edges.every(e => e.sign === 1), "undo again restores the original sign");
+check(api.unpackModel(hist.redo()).edges[0].sign === -1, "redo replays the sign change");
+
+// ---- link / storage format ----
+const s1 = tam();
+s1.nodes[0].key = "tam:PEOU";
+api.placeNew(s1, {});
+api.toggleSign(s1, 2);
+const packed = api.packModel(s1);
+const s2 = api.unpackModel(packed, k => keys.has(k));
+check(api.packModel(s2) === packed && s2.nodes[0].key === "tam:PEOU" && s2.nodes.every(api.hasPos), "pack → unpack round-trips codes, names, keys, signs and positions");
+check(api.unpackModel(packed, () => false).nodes[0].key === null, "an unknown library key is dropped on load");
+const v1 = api.unpackModel('{"n":[["PU","Nhận thức sự hữu ích","tam:PU"],["BI","Ý định"]],"e":[["PU","BI",-1],["PU","ZZ"],"rác"]}');
+check(v1.nodes.length === 2 && v1.edges.length === 1 && v1.edges[0].sign === -1 && !v1.nodes.some(api.hasPos), "an old link (no positions) still loads; bad arrows are skipped");
+check(api.placeNew(v1, {}) === 2 && v1.nodes.every(api.hasPos) && v1.nodes[0].x < v1.nodes[1].x, "constructs without positions get the layered layout");
+check(api.unpackModel("{}").nodes.length === 0 && api.unpackModel('{"n":[["A","A"],["A","trùng"]]}').nodes.length === 1, "empty and duplicate entries are tolerated");
+
+// ---- geometry ----
+const R = (x, y, w = 176, h = 46) => ({ x, y, w, h });
+const a = R(0, 0), b = R(400, 0), mid = R(200, -10, 60, 66);
+const bp = api.borderPoint(a, 1000, 23);
+check(Math.abs(bp[0] - 176) < 1e-9 && Math.abs(bp[1] - 23) < 1e-9, "borderPoint: a ray to the right leaves through the right side");
+const straight = api.routeEdge(a, b, []);
+check(straight.off === 0 && /^M176\.0,23\.0 L400\.0,23\.0$/.test(straight.d), `routeEdge: straight between borders when clear (${straight.d})`);
+const around = api.routeEdge(a, b, [mid]);
+check(around.off !== 0 && around.hits === 0 && /Q/.test(around.d), `routeEdge: curves around a box in the way (offset ${around.off})`);
+const inside = Array.from({ length: 25 }, (_, i) => api.quadAt(around.p0, around.c, around.p1, i / 24)).some(([x, y]) => x > mid.x && x < mid.x + mid.w && y > mid.y && y < mid.y + mid.h);
+check(!inside, "routeEdge: the curve does not cut the box");
+const pair = { nodes: [{ id: "A", name: "A", x: 0, y: 0 }, { id: "B", name: "B", x: 400, y: 0 }], edges: [] };
+api.addEdge(pair, "A", "B"); api.addEdge(pair, "B", "A");
+const bx = new Map(pair.nodes.map(n => [n.id, api.boxOf(n)]));
+const [r1, r2] = api.routeAll(pair, bx);
+check(Math.abs(r1.label[1] - r2.label[1]) > 20, "A → B and B → A are drawn apart, labels do not overlap");
+const onBorder = (p, r) => (Math.abs(p[0] - r.x) < 0.01 || Math.abs(p[0] - r.x - r.w) < 0.01) && p[1] >= r.y - 0.01 && p[1] <= r.y + r.h + 0.01 || (Math.abs(p[1] - r.y) < 0.01 || Math.abs(p[1] - r.y - r.h) < 0.01) && p[0] >= r.x - 0.01 && p[0] <= r.x + r.w + 0.01;
+check(onBorder(r1.p1, bx.get("B")) && onBorder(r1.p0, bx.get("A")) && onBorder(around.p1, b), "arrows start and end on the box borders");
+const crowd = { nodes: [{ id: "A", name: "A", x: 0, y: 0 }, { id: "B", name: "B", x: 0, y: 200 }, { id: "C", name: "C", x: 400, y: 0 }, { id: "D", name: "D", x: 400, y: 200 }], edges: [] };
+api.addEdge(crowd, "A", "D"); api.addEdge(crowd, "B", "C");
+const cr = api.routeAll(crowd, new Map(crowd.nodes.map(n => [n.id, api.boxOf(n)])));
+check(Math.abs(cr[0].label[0] - cr[1].label[0]) >= 44 || Math.abs(cr[0].label[1] - cr[1].label[1]) >= 24, `crossing arrows keep their H labels apart (${cr.map(r => r.label.map(v => v.toFixed(0))).join(" / ")})`);
+const fv = api.fitView({ x: 100, y: 50, w: 800, h: 300 }, 600, 400, 40);
+const sx = v => v * fv.k + fv.x, sy = v => v * fv.k + fv.y;
+check(sx(100) >= 39.9 && sx(900) <= 560.1 && sy(50) >= 39.9 && sy(350) <= 360.1, `fitView puts the whole model inside the frame (k=${fv.k.toFixed(3)})`);
+check(api.fitView(null, 600, 400).k === 1 && api.fitView({ x: 0, y: 0, w: 10, h: 10 }, 600, 400).k === 1.25, "fitView: empty model at 100%, tiny model capped at 125%");
+const v0 = { k: 1, x: 30, y: -20 }, zv = api.zoomAt(v0, 2, 300, 200);
+check(Math.abs((300 - v0.x) / v0.k - (300 - zv.x) / zv.k) < 1e-9 && Math.abs((200 - v0.y) / v0.k - (200 - zv.y) / zv.k) < 1e-9 && zv.k === 2, "zoomAt keeps the point under the cursor still");
+check(api.zoomAt({ k: 2.4, x: 0, y: 0 }, 2, 0, 0).k === 2.5 && api.zoomAt({ k: 0.3, x: 0, y: 0 }, 0.1, 0, 0).k === 0.25, "zoom is clamped to 25%–250%");
+const spot = api.freeSpot([R(0, 0), R(0, 80)], 0, 0, 176, 46);
+check(![R(0, 0), R(0, 80)].some(r => api.overlaps({ x: spot[0], y: spot[1], w: 176, h: 46 }, r, 23)) && spot[0] % 20 === 0 && spot[1] % 20 === 0, `freeSpot finds a free grid spot (${spot})`);
+check(api.snapTo(29) === 20 && api.snapTo(31) === 40 && api.snapTo(-11) === -20, "snapTo the 20 px grid");
+check(api.nodesInRect(new Map([["A", R(0, 0)], ["B", R(300, 300)]]), { x: -10, y: -10, w: 50, h: 50 }).join() === "A", "rubber band picks the boxes it touches");
+const arr = tam();
+api.autoArrange(arr, { measure: t => t.length * 7 });
+const ab = arr.nodes.map(n => api.boxOf(n, { measure: t => t.length * 7 }));
+check(arr.nodes.every(n => n.x % 20 === 0 && n.y % 20 === 0) && !ab.some((p, i) => ab.some((q, j) => i !== j && api.overlaps(p, q))), "auto layout: snapped to the grid, no overlaps");
+check(arr.nodes.find(n => n.id === "PEOU").x < arr.nodes.find(n => n.id === "PU").x && arr.nodes.find(n => n.id === "PU").x < arr.nodes.find(n => n.id === "BI").x, "auto layout: PEOU left, PU middle, BI right");
+check(api.boxOf({ id: "X", name: "X" }).h === 46 && api.boxOf({ id: "PU", name: "Nhận thức sự hữu ích" }, { showCode: true, measure: t => t.length * 7 }).lines.join(" ") === "Nhận thức sự hữu ích (PU)", "boxOf: label with code, minimum height");
+const placed = tam();
+api.placeNew(placed, {});
+api.addNode(placed, "Rủi ro cảm nhận", null, "PR");
+check(api.placeNew(placed, {}) === 1 && api.hasPos(placed.nodes[3]), "a new construct gets a free spot beside the drawing");
+const pb = placed.nodes.map(n => api.boxOf(n));
+check(!pb.some((p, i) => pb.some((q, j) => i !== j && api.overlaps(p, q))), "…without overlapping the others");
+
+// ---- sample size after edits ----
+const ss = tam();
+check(api.modelSample(ss).min === kit.kitSample("pls", 2, 1).min, "TAM: sample size of 2 arrows into BI");
+api.parseArrows("PR, SN -> BI", ss).edges.forEach(e => api.addEdge(ss, e.from, e.to, e.sign));
+check(api.modelSample(ss).arrows === 4 && api.modelSample(ss).min === kit.kitSample("pls", 4, 1).min, "adding two causes of BI raises the sample to 4 arrows");
+api.removeNodes(ss, ["PR", "SN", "PU"]);
+check(api.modelSample(ss).arrows === 1, "deleting constructs lowers it again");
 
 console.log(`\n${passed} passed, ${failed} failed`);
 if (failed) process.exit(1);

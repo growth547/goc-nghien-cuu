@@ -1,86 +1,211 @@
 <style>
-  #vm-svgwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:#fff;min-height:120px}
-  #vm-svgwrap svg{display:block;max-width:100%;height:auto;margin:0 auto}
-  #vm-svgwrap svg .vm-node{cursor:pointer}
-  #vm-svgwrap svg .vm-node:focus{outline:none}
-  #vm-svgwrap svg .vm-node:focus-visible rect,#vm-svgwrap svg .vm-node.sel rect{stroke:#c2410c;stroke-width:3}
-  .vm-list{list-style:none;margin:0;padding:0}
-  .vm-list li{display:flex;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:.88rem}
-  .vm-list li:last-child{border-bottom:0}
-  .vm-list li .grow{flex:1;min-width:0}
-  .vm-list li input[type=text]{flex:1;min-width:0;padding:4px 8px}
-  .vm-list li select{width:auto;padding:4px 6px}
-  .vm-mini{border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-size:.8rem;background:transparent;cursor:pointer;min-width:32px;min-height:32px;flex:none}
-  .vm-hits{display:flex;flex-direction:column;gap:2px;max-height:18rem;overflow:auto}
-  .vm-hits button{text-align:left;border:1px solid transparent;border-radius:8px;padding:6px 8px;background:transparent;font-size:.85rem;line-height:1.4}
-  .vm-hits button:hover,.vm-hits button:focus-visible{border-color:var(--border)}
-  .vm-hits button[disabled]{opacity:.55;cursor:default}
-  .vm-code{font-family:ui-monospace,monospace;font-size:.8rem;font-weight:700}
-  #vm-text{min-height:9rem}
-  #vm-hyp p{margin:4px 0}
+  .vm-app{--vm-w:min(1440px,calc(100vw - 32px));width:var(--vm-w);margin-left:calc(50% - var(--vm-w) / 2);display:grid;gap:16px;grid-template-columns:minmax(0,1fr);grid-template-areas:"main" "pal" "side";align-items:start}
+  @media (min-width:768px){.vm-app{grid-template-columns:240px minmax(0,1fr);grid-template-areas:"pal main" "side side"}}
+  @media (min-width:1200px){.vm-app{grid-template-columns:250px minmax(0,1fr) 330px;grid-template-areas:"pal main side"}}
+  .vm-app .vm-pal{grid-area:pal;padding:14px;gap:12px}
+  .vm-app .vm-main{grid-area:main;padding:10px;gap:8px}
+  .vm-app .vm-side{grid-area:side;padding:16px;gap:14px}
+  @media (min-width:1200px){.vm-app .vm-pal,.vm-app .vm-side{position:sticky;top:76px;max-height:calc(100vh - 92px);overflow:auto}}
+  .vm-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  /* toolbar */
+  .vm-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .vm-grp{display:flex;flex-wrap:wrap;gap:2px;padding:2px;border:1px solid var(--border);border-radius:10px;background:var(--background)}
+  .vm-tb{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;min-width:36px;padding:0 9px;border-radius:8px;border:0;background:transparent;color:var(--foreground);font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap}
+  .vm-tb:hover{background:var(--muted);color:var(--foreground);text-decoration:none}
+  .vm-tb[aria-pressed=true]{background:var(--accent);color:var(--accent-foreground)}
+  .vm-tb:disabled,.vm-tb[aria-disabled=true]{opacity:.42;cursor:default;background:transparent}
+  .vm-tb:focus-visible,.vm-stage:focus-visible,.vm-hits button:focus-visible,.vm-mini:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .vm-tb svg,.vm-mini svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .vm-tb.primary{background:var(--accent-soft);color:var(--accent)}
+  .vm-tb.primary:hover{background:var(--accent);color:var(--accent-foreground)}
+  .vm-tb .t.opt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  @media (max-width:640px){.vm-tb .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.vm-tools{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}.vm-grp{flex-wrap:nowrap;flex:none}}
+  @media (pointer:coarse){.vm-tb{min-height:44px;min-width:44px}}
+  .vm-status{margin:0;min-height:1.3em;font-size:.82rem;color:var(--muted-foreground)}
+  /* canvas */
+  .vm-stage{position:relative;height:620px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background-color:var(--surface);background-image:radial-gradient(circle at 1px 1px,var(--border-strong) 1.15px,transparent 1.6px);outline:none;touch-action:none}
+  @media (max-width:767px){.vm-stage{height:min(68vh,540px)}}
+  .vm-stage.drop{box-shadow:inset 0 0 0 3px var(--accent)}
+  #vm-canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;font-family:Arial,Helvetica,sans-serif}
+  .vm-stage.mode-add #vm-canvas{cursor:crosshair}
+  .vm-stage.space #vm-canvas,.vm-stage.space .vm-n{cursor:grab}
+  .vm-stage.panning #vm-canvas,.vm-stage.panning .vm-n{cursor:grabbing}
+  .vm-n{cursor:move;outline:none}
+  .vm-stage.mode-connect .vm-n{cursor:crosshair}
+  .vm-box{fill:var(--surface);stroke:var(--foreground);stroke-width:1.5}
+  .vm-n.lib .vm-box{fill:var(--accent-soft)}
+  .vm-n text{fill:var(--foreground);font-size:13px}
+  .vm-ring{fill:none;stroke:none;pointer-events:none}
+  .vm-n:focus-visible .vm-ring{stroke:var(--accent);stroke-width:2;stroke-dasharray:5 3}
+  .vm-n.sel .vm-box{stroke:var(--accent);stroke-width:3}
+  .vm-n.pend .vm-box{stroke:var(--warm);stroke-width:3;stroke-dasharray:6 4}
+  .vm-n.tgt .vm-box{stroke:var(--accent);stroke-width:3.5}
+  .vm-badge rect{fill:var(--accent)}
+  .vm-badge text{fill:var(--accent-foreground);font-size:11px;font-weight:700}
+  .vm-badge.warn rect{fill:var(--warm)}
+  .vm-port{opacity:0;pointer-events:none;cursor:crosshair;transition:opacity .12s}
+  .vm-n:hover .vm-port,.vm-n.sel .vm-port,.vm-n:focus .vm-port,.vm-stage.mode-connect .vm-port{opacity:1;pointer-events:auto}
+  .vm-stage.dragging .vm-port{opacity:0!important;pointer-events:none!important}
+  .vm-port-hit{fill:transparent}
+  .vm-port-dot{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+  .vm-port path{fill:none;stroke:var(--accent-foreground);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .vm-e-line{fill:none;stroke:var(--muted-foreground);stroke-width:1.8}
+  .vm-e.neg .vm-e-line{stroke:var(--warm);stroke-dasharray:7 5}
+  .vm-e.sel .vm-e-line{stroke:var(--accent);stroke-width:3}
+  .vm-e-hit{fill:none;stroke:transparent;stroke-width:16;cursor:pointer;pointer-events:stroke}
+  #vm-ah path{fill:var(--muted-foreground)} #vm-ah-n path{fill:var(--warm)} #vm-ah-s path{fill:var(--accent)}
+  .vm-lab{cursor:pointer;outline:none}
+  .vm-lab rect{fill:var(--surface);stroke:var(--border-strong);stroke-width:1.2}
+  .vm-lab text{font-size:12px;font-weight:700;fill:var(--foreground)}
+  .vm-lab.neg text{fill:var(--warm)}
+  .vm-lab.sel rect{stroke:var(--accent);stroke-width:2}
+  .vm-lab:focus-visible rect{stroke:var(--accent);stroke-width:3}
+  .vm-band{fill:color-mix(in oklab,var(--accent) 12%,transparent);stroke:var(--accent);stroke-width:1;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+  #vm-olayer{pointer-events:none}
+  .vm-temp{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 4}
+  .vm-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;color:var(--muted-foreground);text-align:center;padding:24px;font-size:.92rem;line-height:1.6}
+  .vm-empty[hidden]{display:none}
+  .vm-zoom{position:absolute;right:10px;bottom:10px;display:flex;align-items:center;gap:2px;padding:2px;border:1px solid var(--border);border-radius:10px;background:var(--surface);box-shadow:var(--shadow)}
+  .vm-zoom .vm-tb{font-variant-numeric:tabular-nums;font-weight:500;min-width:52px}
+  .vm-zoom .vm-tb.ic{min-width:36px}
+  .vm-help{margin:0;font-size:.78rem;color:var(--muted-foreground);line-height:1.55}
+  .vm-help kbd,.vm-menu kbd{font-family:inherit;font-size:.72rem;padding:0 4px;border:1px solid var(--border-strong);border-radius:4px;background:var(--background)}
+  /* inline name box and context menu */
+  .vm-namebox{position:absolute;z-index:5;width:290px;max-width:calc(100% - 16px);background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;box-shadow:var(--shadow-lg);padding:6px}
+  .vm-namebox[hidden],.vm-menu[hidden]{display:none}
+  .vm-app .vm-namebox input{padding:7px 9px}
+  .vm-sg{list-style:none;margin:4px 0 0;padding:0;max-height:230px;overflow:auto}
+  .vm-sg li{padding:6px 8px;border-radius:6px;font-size:.82rem;cursor:pointer;line-height:1.35}
+  .vm-sg li[aria-selected=true]{background:var(--accent-soft)}
+  .vm-sg .m{color:var(--muted-foreground)}
+  .vm-nb-hint{font-size:.72rem;color:var(--muted-foreground);margin:4px 2px 0}
+  .vm-menu{position:absolute;z-index:6;min-width:230px;background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;box-shadow:var(--shadow-lg);padding:4px}
+  .vm-menu button{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;text-align:left;padding:7px 10px;border:0;border-radius:6px;background:transparent;color:var(--foreground);font:inherit;font-size:.85rem;cursor:pointer;min-height:36px}
+  .vm-menu button:hover,.vm-menu button:focus{background:var(--muted);outline:none}
+  .vm-menu button:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+  .vm-menu .danger{color:var(--warm)}
+  .vm-menu hr{border:0;border-top:1px solid var(--border);margin:4px 0}
+  @media (pointer:coarse){.vm-menu button{min-height:44px}}
+  .vm-ghost{position:fixed;z-index:60;pointer-events:none;max-width:220px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--accent);background:var(--accent-soft);color:var(--foreground);font-size:.84rem;font-weight:600;box-shadow:var(--shadow-lg);transform:translate(-50%,-50%)}
+  /* palette */
+  .vm-hits{display:flex;flex-direction:column;gap:2px;max-height:24rem;overflow:auto}
+  .vm-hits button{text-align:left;border:1px solid var(--border);border-radius:8px;padding:6px 8px;background:var(--surface);color:var(--foreground);font:inherit;font-size:.82rem;line-height:1.4;cursor:grab;touch-action:pan-y}
+  .vm-hits button:hover{border-color:var(--accent)}
+  .vm-hits button.had{opacity:.6;cursor:pointer}
+  .vm-hits .q{margin:8px 0 2px;font-weight:600;font-size:.82rem}
+  .vm-code{font-family:ui-monospace,monospace;font-size:.78rem;font-weight:700}
+  .vm-inline{display:flex;gap:6px}
+  .vm-inline input{flex:1;min-width:0}
+  .vm-inline .btn{padding:0 12px;min-height:40px}
+  /* side panel */
+  .vm-sec-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .vm-hyps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .vm-hyps li{border:1px solid transparent;border-radius:8px;padding:6px 8px;font-size:.86rem;line-height:1.55}
+  .vm-hyps li.e{cursor:pointer}
+  .vm-hyps li.e:hover{border-color:var(--border)}
+  .vm-hyps li.sel{border-color:var(--accent);background:color-mix(in oklab,var(--accent-soft) 60%,transparent)}
+  .vm-hyps li.med{color:var(--muted-foreground)}
+  .vm-hctl{display:flex;gap:4px;margin-top:4px}
+  .vm-mini{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:6px;padding:0 8px;font:inherit;font-size:.78rem;background:var(--surface);color:var(--foreground);cursor:pointer;min-width:32px;min-height:30px}
+  .vm-mini:hover{border-color:var(--accent)}
+  .vm-mini.neg{color:var(--warm);border-color:currentColor}
+  .vm-mini:disabled{opacity:.4;cursor:default}
+  .vm-mini svg{width:15px;height:15px}
+  @media (pointer:coarse){.vm-mini{min-height:40px;min-width:40px}}
+  .vm-warn{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+  .vm-side details summary{cursor:pointer;font-weight:600;font-size:.9rem}
+  .vm-app #vm-text{min-height:8rem;margin-top:8px}
+  .vm-side .result .num{font-size:1.6rem}
 </style>
 
-<div class="tool">
-  <div class="panel">
-    <div class="field"><label for="vm-search">1. Thêm khái niệm từ thư viện thang đo</label>
-      <input id="vm-search" type="search" placeholder="Ví dụ: hữu ích; dễ sử dụng; ý định" autocomplete="off">
-      <small>Gõ tiếng Việt hoặc tiếng Anh, có dấu hay không đều được; nhiều khái niệm thì ngăn bằng dấu chấm phẩy. Khái niệm lấy từ thư viện mang sẵn mã biến và thang đo gốc để mở tiếp trong Bộ khảo sát.</small></div>
+<div class="vm-app" id="vm-app">
+  <aside class="panel vm-pal" aria-label="Thêm khái niệm">
+    <div class="field"><label for="vm-search">Thư viện khái niệm</label>
+      <input id="vm-search" type="search" placeholder="Ví dụ: hữu ích; dễ sử dụng; ý định" autocomplete="off" aria-controls="vm-hits">
+      <small>Tiếng Việt hoặc tiếng Anh, có dấu hay không đều được; nhiều khái niệm thì ngăn bằng dấu chấm phẩy. <b>Kéo</b> kết quả vào khung vẽ hoặc <b>bấm</b> để thêm.</small></div>
     <div id="vm-hits" class="vm-hits" aria-live="polite"></div>
-    <div class="field"><label for="vm-free">Hoặc tự đặt tên khái niệm</label>
-      <div class="row" style="flex-wrap:nowrap"><input id="vm-free" type="text" placeholder="Ví dụ: Trải nghiệm livestream" style="flex:1"><button type="button" class="btn ghost" id="vm-free-add">Thêm</button></div>
-      <small>Dùng khi thư viện chưa có khái niệm bạn cần. Công cụ tự đặt mã viết tắt, bạn sửa được.</small></div>
-    <div class="field"><label>Khái niệm trong mô hình</label>
-      <ul id="vm-nodes" class="vm-list"></ul></div>
-    <div class="row"><button type="button" class="btn ghost" id="vm-example">Nạp ví dụ TAM</button><button type="button" class="btn ghost" id="vm-clear">Xoá mô hình</button></div>
-  </div>
+    <div class="field"><label for="vm-free">Khái niệm tự đặt tên</label>
+      <div class="vm-inline"><input id="vm-free" type="text" placeholder="Ví dụ: Trải nghiệm livestream"><button type="button" class="btn ghost" id="vm-free-add">Thêm</button></div>
+      <small>Khi thư viện chưa có. Công cụ tự đặt mã viết tắt; đổi mã bằng chuột phải (hoặc giữ lâu) trên ô.</small></div>
+    <button type="button" class="btn ghost" id="vm-example">Nạp ví dụ TAM</button>
+  </aside>
 
-  <div class="panel">
-    <div class="field"><label>2. Nối mũi tên (giả thuyết)</label>
-      <div class="row" style="align-items:flex-end">
-        <div class="field" style="flex:1 1 120px"><label for="vm-from" style="font-weight:400">Từ</label><select id="vm-from"></select></div>
-        <div class="field" style="flex:1 1 120px"><label for="vm-to" style="font-weight:400">Tới</label><select id="vm-to"></select></div>
-        <div class="field" style="flex:0 1 130px"><label for="vm-sign" style="font-weight:400">Chiều</label><select id="vm-sign"><option value="1">+ cùng chiều</option><option value="-1">− ngược chiều</option></select></div>
-        <button type="button" class="btn" id="vm-add-edge">Nối</button>
+  <section class="panel vm-main" aria-label="Khung vẽ mô hình nghiên cứu">
+    <div class="vm-tools" role="toolbar" aria-label="Công cụ vẽ">
+      <div class="vm-grp" role="group" aria-label="Chế độ">
+        <button type="button" class="vm-tb" data-mode="select" aria-pressed="true" title="Chọn và di chuyển (V)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l13 8-6 1.5L9 19z"/></svg><span class="t">Chọn</span></button>
+        <button type="button" class="vm-tb" data-mode="add" aria-pressed="false" title="Thêm khái niệm: bấm vào chỗ trống (A)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M12 9v6M9 12h6"/></svg><span class="t">Thêm khái niệm</span></button>
+        <button type="button" class="vm-tb" data-mode="connect" aria-pressed="false" title="Nối mũi tên: kéo từ khái niệm này sang khái niệm kia (C)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2"/><path d="M7 12h12M15 8l4 4-4 4"/></svg><span class="t">Nối mũi tên</span></button>
       </div>
-      <small>Hoặc bấm vào một khái niệm trên hình rồi bấm khái niệm đích.</small></div>
-    <ul id="vm-edges" class="vm-list"></ul>
-    <div class="field"><label for="vm-text">Hoặc gõ danh sách mũi tên</label>
-      <textarea id="vm-text" spellcheck="false" placeholder="PEOU -> PU&#10;PU, PEOU -> BI&#10;PR -> BI (-)"></textarea>
-      <small>Mỗi dòng một mũi tên, dùng mã hoặc tên khái niệm: <code>A -&gt; B</code>; nhiều biến cùng trỏ vào một biến: <code>A, B -&gt; C</code>; chuỗi: <code>A -&gt; M -&gt; Y</code>; ngược chiều thêm <code>(-)</code> ở cuối. Tên chưa có sẽ được thêm thành khái niệm mới.</small>
-      <span class="row"><button type="button" class="btn ghost" id="vm-apply">Áp dụng danh sách</button></span>
-      <p id="vm-text-msg" class="err" aria-live="polite" hidden></p></div>
-  </div>
-</div>
-
-<div class="panel" style="margin-top:24px">
-  <div class="row" style="justify-content:space-between;align-items:center;gap:8px">
-    <strong>Mô hình nghiên cứu đề xuất</strong>
-    <span class="row" style="gap:8px">
-      <button type="button" class="btn" id="vm-png">Tải ảnh PNG</button>
-      <button type="button" class="btn ghost" id="vm-svg">Tải SVG</button>
-      <button type="button" class="btn ghost" id="vm-link">Sao chép link</button>
-    </span>
-  </div>
-  <div class="row" style="gap:16px">
-    <label class="check"><input type="checkbox" id="vm-showcode" checked> Hiện mã viết tắt trong hình</label>
-    <label class="check"><input type="checkbox" id="vm-showh" checked> Ghi H1, H2… trên mũi tên</label>
-  </div>
-  <p id="vm-status" class="text-muted-foreground" style="margin:0;font-size:.85rem" role="status" aria-live="polite"></p>
-  <div id="vm-svgwrap"></div>
-  <small class="text-muted-foreground">Hình tự xếp: biến độc lập bên trái, biến trung gian ở giữa, biến phụ thuộc bên phải. Chú thích dưới hình trong luận văn: “Hình 2.x. Mô hình nghiên cứu đề xuất. Nguồn: Tác giả đề xuất”.</small>
-</div>
-
-<div class="tool" style="margin-top:24px">
-  <div class="panel">
-    <div class="row" style="justify-content:space-between;align-items:center">
-      <strong>Giả thuyết nghiên cứu</strong>
-      <button type="button" class="btn" id="vm-copy-h">Sao chép giả thuyết</button>
+      <div class="vm-grp" role="group" aria-label="Lịch sử">
+        <button type="button" class="vm-tb" id="vm-undo" title="Hoàn tác (Ctrl+Z)" aria-label="Hoàn tác"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 010 10h-3"/></svg></button>
+        <button type="button" class="vm-tb" id="vm-redo" title="Làm lại (Ctrl+Y)" aria-label="Làm lại"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H9a5 5 0 000 10h3"/></svg></button>
+      </div>
+      <div class="vm-grp" role="group" aria-label="Bố cục">
+        <button type="button" class="vm-tb" id="vm-layout" title="Xếp tự động: biến độc lập bên trái, trung gian ở giữa, phụ thuộc bên phải"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="6" height="5" rx="1"/><rect x="3" y="15" width="6" height="5" rx="1"/><rect x="15" y="9.5" width="6" height="5" rx="1"/><path d="M9 6.5h3v11H9M12 12h3"/></svg><span class="t">Xếp tự động</span></button>
+        <button type="button" class="vm-tb" id="vm-snap" aria-pressed="true" title="Bắt lưới khi kéo"><svg viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M5 5h.01M12 5h.01M19 5h.01M5 12h.01M12 12h.01M19 12h.01M5 19h.01M12 19h.01M19 19h.01"/></svg><span class="t opt">Bắt lưới</span></button>
+        <button type="button" class="vm-tb" id="vm-clear" title="Xoá toàn bộ mô hình (hoàn tác được)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg><span class="t opt">Xoá hết</span></button>
+      </div>
+      <div class="vm-grp" role="group" aria-label="Xuất và chia sẻ">
+        <button type="button" class="vm-tb" id="vm-png" title="Tải ảnh PNG (độ phân giải gấp 3)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg><span class="t">PNG</span></button>
+        <button type="button" class="vm-tb" id="vm-svg" title="Tải SVG để chỉnh trong PowerPoint, Inkscape, draw.io"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg><span class="t">SVG</span></button>
+        <button type="button" class="vm-tb" id="vm-link" title="Sao chép link mở lại đúng mô hình này"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg><span class="t opt">Link</span></button>
+        <button type="button" class="vm-tb" id="vm-copy-h" title="Sao chép giả thuyết H1…Hn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h3"/></svg><span class="t opt">Chép giả thuyết</span></button>
+        <a class="vm-tb primary" id="vm-kit" title="Mở các khái niệm từ thư viện trong Bộ khảo sát"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg><span class="t">Mở trong Bộ khảo sát</span></a>
+      </div>
     </div>
-    <label class="check"><input type="checkbox" id="vm-med" checked> Thêm giả thuyết trung gian khi có chuỗi X → M → Y</label>
-    <div id="vm-hyp" style="line-height:1.65"></div>
-    <small class="text-muted-foreground">Mỗi giả thuyết cần một đoạn lập luận ở chương 2: lý thuyết nền và nghiên cứu trước đã thấy quan hệ này. Thứ tự H theo thứ tự mũi tên trong danh sách.</small>
-  </div>
-  <div class="panel" id="vm-sample" aria-live="polite"></div>
+    <p id="vm-status" class="vm-status" role="status" aria-live="polite"></p>
+    <div class="vm-stage mode-select" id="vm-stage" tabindex="0" role="application" aria-roledescription="khung vẽ" aria-label="Khung vẽ mô hình" aria-describedby="vm-keys">
+      <svg id="vm-canvas" aria-hidden="false">
+        <defs>
+          <marker id="vm-ah" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="vm-ah-n" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="vm-ah-s" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="11" markerHeight="11" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <g id="vm-vp"><g id="vm-elayer"></g><g id="vm-nlayer"></g><g id="vm-llayer"></g><g id="vm-olayer"></g></g>
+      </svg>
+      <div class="vm-empty" id="vm-empty"><div><b>Khung vẽ trống.</b><br>Nhấp đúp (chạm hai lần) vào đây để thêm khái niệm,<br>kéo một khái niệm từ thư viện vào, hoặc bấm “Nạp ví dụ TAM”.</div></div>
+      <div class="vm-zoom" role="group" aria-label="Thu phóng">
+        <button type="button" class="vm-tb ic" id="vm-zout" title="Thu nhỏ (−)" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></button>
+        <button type="button" class="vm-tb" id="vm-z100" title="Về 100%" aria-label="Mức thu phóng, bấm để về 100%">100%</button>
+        <button type="button" class="vm-tb ic" id="vm-zin" title="Phóng to (+)" aria-label="Phóng to"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg></button>
+        <button type="button" class="vm-tb ic" id="vm-fit" title="Vừa khung (0)" aria-label="Vừa khung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+      <div class="vm-namebox" id="vm-namebox" hidden>
+        <label for="vm-nb-input" class="vm-sr" id="vm-nb-label">Tên khái niệm</label>
+        <input id="vm-nb-input" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="vm-sg" placeholder="Tên khái niệm, ví dụ: niềm tin">
+        <ul class="vm-sg" id="vm-sg" role="listbox" aria-label="Gợi ý từ thư viện"></ul>
+        <p class="vm-nb-hint" id="vm-nb-hint">↑↓ chọn gợi ý · Enter thêm · Esc huỷ</p>
+      </div>
+      <div class="vm-menu" id="vm-menu" role="menu" hidden></div>
+    </div>
+    <p class="vm-help" id="vm-keys"><b>Chuột:</b> nhấp đúp chỗ trống để thêm khái niệm · kéo ô để di chuyển · kéo chấm tròn bên phải ô sang ô khác để nối · bấm nhãn <b>+/−</b> trên mũi tên để đổi chiều · kéo chỗ trống để di chuyển khung, Shift + kéo để chọn nhiều, lăn chuột để thu phóng · chuột phải để mở menu. <b>Điện thoại:</b> chạm hai lần để thêm, giữ lâu để mở menu, hai ngón để thu phóng. <b>Bàn phím:</b> <kbd>Tab</kbd> qua các ô, <kbd>←↑↓→</kbd> di chuyển, <kbd>Enter</kbd> đổi tên, <kbd>C</kbd> rồi Tab tới ô đích và <kbd>Enter</kbd> để nối, <kbd>Delete</kbd> xoá.</p>
+  </section>
+
+  <aside class="panel vm-side" aria-label="Giả thuyết, cỡ mẫu và cảnh báo">
+    <div class="field" style="gap:8px">
+      <div class="vm-sec-h"><strong>Giả thuyết nghiên cứu</strong><span id="vm-hcount" class="text-muted-foreground" style="font-size:.8rem"></span></div>
+      <ol id="vm-hyps" class="vm-hyps"></ol>
+      <label class="check"><input type="checkbox" id="vm-med" checked> Thêm giả thuyết trung gian khi có chuỗi X → M → Y</label>
+    </div>
+    <div id="vm-sample"></div>
+    <div id="vm-warnbox"></div>
+    <div id="vm-kitbox"></div>
+    <div class="field" style="gap:6px">
+      <strong style="font-size:.9rem">Hình xuất ra</strong>
+      <label class="check"><input type="checkbox" id="vm-showcode" checked> Hiện mã viết tắt trong ô</label>
+      <label class="check"><input type="checkbox" id="vm-showh" checked> Ghi H1, H2… trên mũi tên</label>
+      <small class="text-muted-foreground">Chú thích dưới hình trong luận văn: “Hình 2.x. Mô hình nghiên cứu đề xuất. Nguồn: Tác giả đề xuất”.</small>
+    </div>
+    <details id="vm-textdet">
+      <summary>Nhập bằng văn bản (A -&gt; B)</summary>
+      <label for="vm-text" class="vm-sr">Danh sách mũi tên</label>
+      <textarea id="vm-text" spellcheck="false" placeholder="PEOU -> PU&#10;PU, PEOU -> BI&#10;PR -> BI (-)"></textarea>
+      <small class="text-muted-foreground" style="display:block;font-size:.75rem;margin:4px 0 8px">Mỗi dòng một mũi tên, dùng mã hoặc tên: <code>A -&gt; B</code>; nhiều biến cùng trỏ vào một biến: <code>A, B -&gt; C</code>; chuỗi: <code>A -&gt; M -&gt; Y</code>; ngược chiều thêm <code>(-)</code>. Tên chưa có thành khái niệm mới.</small>
+      <button type="button" class="btn ghost" id="vm-apply">Áp dụng danh sách</button>
+      <p id="vm-text-msg" class="err" aria-live="polite" hidden></p>
+    </details>
+  </aside>
 </div>
 
 <p style="margin-top:20px">Có mô hình rồi, đọc thêm: <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu bao nhiêu là đủ</a> và <a href="/goc-nghien-cuu/cong-cu/chon-phuong-phap/">chọn phương pháp phân tích</a> phù hợp với mô hình.</p>
@@ -311,6 +436,123 @@
     if(dv.length)p.push('dv='+encodeURIComponent(dv.join(',')));
     return '?'+p.join('&');
   }
+  // ---- canvas editor: geometry, graph edits, history and storage (pure; unit-checked) ----
+  // On the canvas every node also carries x, y: the top-left corner of its box in world units.
+  const GRID=20,BOX_W=176;
+  function snapTo(v,g=GRID){return Math.round(v/g)*g}
+  function hasPos(n){return Number.isFinite(n.x)&&Number.isFinite(n.y)}
+  function nodeLabel(n,showCode){return showCode!==false&&n.id!==n.name?`${n.name} (${n.id})`:n.name}
+  // Same box as layout(): fixed width, height from the wrapped label.
+  function boxOf(n,o={}){const measure=o.measure||(t=>t.length*7.2);const lines=wrapText(nodeLabel(n,o.showCode),BOX_W-20,measure);return {id:n.id,x:n.x||0,y:n.y||0,w:BOX_W,h:Math.max(46,lines.length*17+18),lines}}
+  function overlaps(a,b,m=0){return a.x<b.x+b.w+m&&b.x<a.x+a.w+m&&a.y<b.y+b.h+m&&b.y<a.y+a.h+m}
+  // Nearest grid spot to (x, y) where a w×h box keeps a gap to every other box.
+  function freeSpot(rects,x,y,w,h,gap=24){
+    const fits=(px,py)=>!rects.some(r=>overlaps({x:px,y:py,w,h},r,gap));
+    for(let r=0;r<40;r++)for(let i=-r;i<=r;i++)for(const [dx,dy] of [[i,-r],[i,r],[-r,i],[r,i]]){const px=snapTo(x+dx*GRID*2),py=snapTo(y+dy*GRID*2);if(fits(px,py))return [px,py]}
+    return [snapTo(x),snapTo(y)];
+  }
+  // The layered layout as positions on the canvas ("Xếp tự động").
+  function autoArrange(model,o={}){const L=layout(model,o);model.nodes.forEach(n=>{const b=L.box.get(n.id);n.x=snapTo(b.x);n.y=snapTo(b.y)});return L}
+  // Constructs without a position (from the arrow list or an old link) get one: all new, the layered layout; otherwise a free spot near o.at or right of the drawing.
+  function placeNew(model,o={}){
+    const missing=model.nodes.filter(n=>!hasPos(n));if(!missing.length)return 0;
+    if(missing.length===model.nodes.length){autoArrange(model,o);return missing.length}
+    const rects=model.nodes.filter(hasPos).map(n=>boxOf(n,o));
+    const at=o.at||[Math.max(...rects.map(r=>r.x+r.w))+60,Math.min(...rects.map(r=>r.y))];
+    missing.forEach(n=>{const b=boxOf(n,o);const [x,y]=freeSpot(rects,at[0],at[1],b.w,b.h);n.x=x;n.y=y;rects.push({...b,x,y})});
+    return missing.length;
+  }
+  function boundsOf(rects){if(!rects.length)return null;const x=Math.min(...rects.map(r=>r.x)),y=Math.min(...rects.map(r=>r.y));return {x,y,w:Math.max(...rects.map(r=>r.x+r.w))-x,h:Math.max(...rects.map(r=>r.y+r.h))-y}}
+  // View: screen = world × k + (x, y).
+  function clampK(k,min=0.25,max=2.5){return Math.min(max,Math.max(min,k))}
+  function fitView(bb,vw,vh,pad=40,maxK=1.25){
+    if(!bb||!vw||!vh)return {k:1,x:0,y:0};
+    const k=clampK(Math.min((vw-2*pad)/Math.max(bb.w,1),(vh-2*pad)/Math.max(bb.h,1),maxK));
+    return {k,x:vw/2-(bb.x+bb.w/2)*k,y:vh/2-(bb.y+bb.h/2)*k};
+  }
+  function zoomAt(v,f,sx,sy){const k=clampK(v.k*f),wx=(sx-v.x)/v.k,wy=(sy-v.y)/v.k;return {k,x:sx-wx*k,y:sy-wy*k}}
+  // Where the line from the box centre toward (px, py) leaves the box.
+  function borderPoint(r,px,py){
+    const cx=r.x+r.w/2,cy=r.y+r.h/2,dx=px-cx,dy=py-cy;if(!dx&&!dy)return [cx,cy];
+    const t=Math.min(dx?r.w/2/Math.abs(dx):Infinity,dy?r.h/2/Math.abs(dy):Infinity);return [cx+dx*t,cy+dy*t];
+  }
+  function quadAt(p0,c,p1,t){const u=1-t;return [u*u*p0[0]+2*u*t*c[0]+t*t*p1[0],u*u*p0[1]+2*u*t*c[1]+t*t*p1[1]]}
+  // An arrow from box a to box b: straight between the borders when nothing is in the way, otherwise
+  // the gentlest curve (to either side) that clears the other boxes. o.bend parts a pair A → B, B → A.
+  function routeEdge(a,b,obstacles=[],o={}){
+    const ca=[a.x+a.w/2,a.y+a.h/2],cb=[b.x+b.w/2,b.y+b.h/2],dx=cb[0]-ca[0],dy=cb[1]-ca[1],len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len,mx=(ca[0]+cb[0])/2,my=(ca[1]+cb[1])/2;
+    const base=o.bend||0;let best=null;
+    for(const s of [0,36,-36,72,-72,120,-120,180,-180,260,-260]){
+      const off=base+s,c=[mx+nx*off*2,my+ny*off*2],p0=borderPoint(a,c[0],c[1]),p1=borderPoint(b,c[0],c[1]);
+      let hits=0;for(let i=1;i<24;i++){const p=quadAt(p0,c,p1,i/24);for(const r of obstacles)if(p[0]>r.x-6&&p[0]<r.x+r.w+6&&p[1]>r.y-6&&p[1]<r.y+r.h+6)hits++}
+      if(!best||hits<best.hits)best={off,c,p0,p1,hits};
+      if(!hits)break;
+    }
+    const {off,c,p0,p1,hits}=best,f=v=>v.toFixed(1);
+    return {p0,p1,c,off,hits,label:quadAt(p0,c,p1,0.5),d:off?`M${f(p0[0])},${f(p0[1])} Q${f(c[0])},${f(c[1])} ${f(p1[0])},${f(p1[1])}`:`M${f(p0[0])},${f(p0[1])} L${f(p1[0])},${f(p1[1])}`};
+  }
+  function edgeIndex(model,from,to){return model.edges.findIndex(e=>e.from===from&&e.to===to)}
+  // Every arrow routed; a label that would sit on an earlier one (or on a box) slides along its own arrow.
+  function routeAll(model,boxes){
+    const all=[...boxes.values()],placed=[];
+    const clash=p=>placed.some(q=>Math.abs(q[0]-p[0])<44&&Math.abs(q[1]-p[1])<24)||all.some(r=>p[0]>r.x-14&&p[0]<r.x+r.w+14&&p[1]>r.y-11&&p[1]<r.y+r.h+11);
+    return model.edges.map((e,i)=>{
+      const a=boxes.get(e.from),b=boxes.get(e.to);if(!a||!b)return null;
+      const r={i,e,...routeEdge(a,b,all.filter(x=>x!==a&&x!==b),{bend:edgeIndex(model,e.to,e.from)>=0?22:0})};
+      for(const t of [0.5,0.38,0.62,0.3,0.7,0.24,0.76]){const p=quadAt(r.p0,r.c,r.p1,t);if(!clash(p)){r.label=p;break}}
+      placed.push(r.label);return r;
+    }).filter(Boolean);
+  }
+  function nodesInRect(boxes,r){const out=[];boxes.forEach((b,id)=>{if(overlaps(b,r))out.push(id)});return out}
+  function removeNodes(model,ids){const s=new Set(ids);model.nodes=model.nodes.filter(n=>!s.has(n.id));model.edges=model.edges.filter(e=>!s.has(e.from)&&!s.has(e.to))}
+  function removeEdge(model,i){if(!model.edges[i])return false;model.edges.splice(i,1);return true}
+  function toggleSign(model,i){const e=model.edges[i];if(!e)return 0;e.sign=e.sign<0?1:-1;return e.sign}
+  function reverseEdge(model,i){const e=model.edges[i];if(!e)return 'none';if(edgeIndex(model,e.to,e.from)>=0)return 'exists';[e.from,e.to]=[e.to,e.from];return 'reversed'}
+  function moveEdge(model,i,d){const j=i+d;if(!model.edges[i]||!model.edges[j])return false;[model.edges[i],model.edges[j]]=[model.edges[j],model.edges[i]];return true}
+  function moveNodes(model,ids,dx,dy){const s=new Set(ids);model.nodes.forEach(n=>{if(s.has(n.id)){n.x=(n.x||0)+dx;n.y=(n.y||0)+dy}})}
+  function renameNode(model,id,name){const n=model.nodes.find(x=>x.id===id);name=String(name).replace(/\s+/g,' ').trim();if(!n||!name||n.name===name)return false;n.name=name;return true}
+  // New short code for a construct; '' when done or unchanged, otherwise the reason it was refused.
+  function recodeNode(model,old,v){
+    v=String(v||'').replace(/\s+/g,'');const n=model.nodes.find(x=>x.id===old);
+    if(!n)return 'Không tìm thấy khái niệm.';if(!v||v===old)return '';
+    if(!/^[\p{L}][\p{L}0-9_]{0,9}$/u.test(v))return 'Mã chỉ gồm chữ, số và dấu gạch dưới, bắt đầu bằng chữ, tối đa 10 ký tự.';
+    if(model.nodes.some(x=>x!==n&&x.id.toUpperCase()===v.toUpperCase()))return 'Mã này đã dùng cho khái niệm khác.';
+    n.id=v;model.edges.forEach(e=>{if(e.from===old)e.from=v;if(e.to===old)e.to=v});return '';
+  }
+  // Warnings beside the canvas. itemsOf(node) gives the number of items of a library construct, or null.
+  function modelWarnings(model,o={}){
+    const out=[],back=backEdges(model),itemsOf=o.itemsOf||(()=>null);
+    if(back.size)out.push({kind:'cycle',ids:[...back].map(i=>model.edges[i].from+'>'+model.edges[i].to),text:`Mô hình có vòng lặp (${[...back].map(i=>`${model.edges[i].from} → ${model.edges[i].to}`).join(', ')}): PLS-SEM và hồi quy chỉ ước lượng mô hình một chiều. Bỏ một mũi tên trong vòng.`});
+    const lone=model.nodes.filter(n=>!model.edges.some(e=>e.from===n.id||e.to===n.id));
+    if(lone.length&&model.nodes.length>1)out.push({kind:'lone',ids:lone.map(n=>n.id),text:`Chưa nối: ${lone.map(n=>n.id).join(', ')}. Khái niệm không có mũi tên sẽ không có giả thuyết.`});
+    const few=model.nodes.map(n=>[n,itemsOf(n)]).filter(([,k])=>k!=null&&k<3);
+    if(few.length)out.push({kind:'items',ids:few.map(([n])=>n.id),text:`${few.map(([n,k])=>`${n.id} (${k} biến)`).join(', ')}: thang đo gốc có dưới 3 biến quan sát, chưa đủ để đánh giá độ tin cậy và giá trị hội tụ của khái niệm kết quả (reflective). Thêm biến hoặc chọn thang đo khác.`});
+    return out;
+  }
+  // Compact JSON for the link and this browser: {v:2, n:[[id, name, key|0, x, y]], e:[[from, to, -1?]]}; old links without positions still load.
+  function packModel(model){return JSON.stringify({v:2,n:model.nodes.map(n=>{const a=[n.id,n.name,n.key||0];if(hasPos(n))a.push(Math.round(n.x),Math.round(n.y));return a}),e:model.edges.map(e=>e.sign<0?[e.from,e.to,-1]:[e.from,e.to])})}
+  function unpackModel(json,isKey=()=>true){
+    const o=typeof json==='string'?JSON.parse(json):json,m={nodes:[],edges:[]};
+    for(const a of Array.isArray(o&&o.n)?o.n:[]){
+      if(!Array.isArray(a))continue;const [id,name,key,x,y]=a;
+      if(!id||!name||m.nodes.some(n=>n.id===String(id)))continue;
+      const n={id:String(id),name:String(name),key:key&&isKey(key)?String(key):null};
+      if(Number.isFinite(x)&&Number.isFinite(y)){n.x=x;n.y=y}
+      m.nodes.push(n);
+    }
+    for(const a of Array.isArray(o&&o.e)?o.e:[])if(Array.isArray(a)){const [f,t,s]=a;if(m.nodes.some(n=>n.id===f)&&m.nodes.some(n=>n.id===t))addEdge(m,f,t,s)}
+    return m;
+  }
+  // Undo/redo over packed snapshots; pushing the current snapshot again is a no-op.
+  function createHistory(limit=200){
+    const h={list:[],at:-1,
+      reset(s){h.list=[s];h.at=0},
+      push(s){if(h.list[h.at]===s)return false;h.list=h.list.slice(0,h.at+1);h.list.push(s);if(h.list.length>limit)h.list.shift();h.at=h.list.length-1;return true},
+      undo(){return h.at>0?h.list[--h.at]:null},
+      redo(){return h.at<h.list.length-1?h.list[++h.at]:null},
+      canUndo(){return h.at>0},canRedo(){return h.at<h.list.length-1}};
+    return h;
+  }
   //#model-end
 
   const DATA=JSON.parse(document.getElementById('vm-data').textContent);
@@ -321,200 +563,552 @@
   const BYKEY=new Map(CONSTRUCTS.map(x=>[x.key,x]));
   const INDEX=CONSTRUCTS.map(x=>indexConstruct(x.scale,x.c));
   const KIT='/goc-nghien-cuu/cong-cu/bo-khao-sat/';
+  const isKey=k=>BYKEY.has(k), itemsOf=n=>n.key&&BYKEY.has(n.key)?BYKEY.get(n.key).c.items.length:null;
 
-  let model={nodes:[],edges:[]}, selected=null;
-
-  // ---- state in the URL and in this browser ----
-  const b64e=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-  const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
-  const pack=()=>JSON.stringify({n:model.nodes.map(n=>n.key?[n.id,n.name,n.key]:[n.id,n.name]),e:model.edges.map(e=>e.sign<0?[e.from,e.to,-1]:[e.from,e.to])});
-  function unpack(json){
-    const o=JSON.parse(json),m={nodes:[],edges:[]};
-    for(const [id,name,key] of o.n||[])if(id&&name&&!m.nodes.some(n=>n.id===id))m.nodes.push({id:String(id),name:String(name),key:key&&BYKEY.has(key)?key:null});
-    for(const [f,t,s] of o.e||[])if(m.nodes.some(n=>n.id===f)&&m.nodes.some(n=>n.id===t))addEdge(m,f,t,s);
-    return m;
-  }
-  function save(){
-    const json=pack(), empty=!model.nodes.length;
-    try{history.replaceState(null,'',location.pathname+(empty?'':'?m='+b64e(json))+location.hash)}catch(e){}
-    try{localStorage.setItem('vm-state-v1',json)}catch(e){}
-  }
-  function load(){
-    const qs=new URLSearchParams(location.search);
-    try{if(qs.get('m'))return unpack(b64d(qs.get('m')))}catch(e){}
-    try{const s=localStorage.getItem('vm-state-v1');if(s)return unpack(s)}catch(e){}
-    return {nodes:[],edges:[]};
-  }
+  const app=$('vm-app'),stage=$('vm-stage'),svg=$('vm-canvas'),vp=$('vm-vp'),gE=$('vm-elayer'),gN=$('vm-nlayer'),gL=$('vm-llayer'),gO=$('vm-olayer');
+  const coarse=matchMedia('(pointer: coarse)').matches;
+  let model={nodes:[],edges:[]},view={k:1,x:0,y:0},mode='select',pending=null,snapOn=true,boxes=new Map();
+  const sel={nodes:new Set(),edge:null}; // edge selected by "from>to"
+  const hist=createHistory(200);
+  const ekey=e=>e.from+'>'+e.to;
 
   // ---- text width for wrapping labels in the boxes ----
   let ctx=null;try{ctx=document.createElement('canvas').getContext('2d');if(ctx)ctx.font='13px Arial, Helvetica, sans-serif'}catch(e){}
   const measure=t=>ctx&&ctx.measureText?ctx.measureText(t).width:t.length*7.2;
+  const opt=()=>({measure,showCode:$('vm-showcode').checked});
 
-  // ---- search ----
+  // ---- state in the URL hash and in this browser ----
+  const b64e=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
+  let saveT=0;
+  function flushSave(){
+    clearTimeout(saveT);const json=packModel(model),empty=!model.nodes.length;
+    try{const qs=new URLSearchParams(location.search);qs.delete('m');const q=qs.toString();
+      const hash=empty?(/^#m=/.test(location.hash)?'':location.hash):'#m='+b64e(json);
+      history.replaceState(null,'',location.pathname+(q?'?'+q:'')+hash)}catch(e){}
+    try{localStorage.setItem('vm-state-v2',json)}catch(e){}
+  }
+  const save=()=>{clearTimeout(saveT);saveT=setTimeout(flushSave,200)};
+  function load(){
+    const h=location.hash.match(/^#m=([\w-]+)/);try{if(h)return unpackModel(b64d(h[1]),isKey)}catch(e){}
+    const qs=new URLSearchParams(location.search);try{if(qs.get('m'))return unpackModel(b64d(qs.get('m')),isKey)}catch(e){}
+    for(const k of ['vm-state-v2','vm-state-v1']){try{const s=localStorage.getItem(k);if(s)return unpackModel(s,isKey)}catch(e){}}
+    return {nodes:[],edges:[]};
+  }
+  try{snapOn=localStorage.getItem('vm-snap')!=='0'}catch(e){}
+
+  function status(t){$('vm-status').textContent=t}
+  // Every finished edit: snapshot for undo, redraw, save.
+  function commit(msg){hist.push(packModel(model));renderAll();if(msg)status(msg)}
+  function restore(s){model=unpackModel(s,isKey);placeNew(model,opt());const ids=new Set(model.nodes.map(n=>n.id));sel.nodes=new Set([...sel.nodes].filter(id=>ids.has(id)));if(sel.edge&&!model.edges.some(e=>ekey(e)===sel.edge))sel.edge=null;pending=null;renderAll()}
+  function undo(){const s=hist.undo();if(s==null){status('Không còn bước nào để hoàn tác.');return}restore(s);status('Đã hoàn tác.')}
+  function redo(){const s=hist.redo();if(s==null){status('Không còn bước nào để làm lại.');return}restore(s);status('Đã làm lại.')}
+
+  // ---- view ----
+  let rafFns=new Set(),raf=0;
+  const frame=fn=>{rafFns.add(fn);if(!raf)raf=requestAnimationFrame(()=>{raf=0;const fs=[...rafFns];rafFns.clear();fs.forEach(f=>f())})};
+  function applyView(){
+    vp.setAttribute('transform',`translate(${view.x.toFixed(2)},${view.y.toFixed(2)}) scale(${view.k.toFixed(4)})`);
+    let g=GRID*view.k;while(g<10)g*=2;
+    stage.style.backgroundSize=`${g}px ${g}px`;stage.style.backgroundPosition=`${view.x.toFixed(1)}px ${view.y.toFixed(1)}px`;
+    $('vm-z100').textContent=Math.round(view.k*100)+'%';
+    if(nb)placeNamebox();
+  }
+  const stageSize=()=>[svg.clientWidth||stage.clientWidth,svg.clientHeight||stage.clientHeight];
+  // minK: on a phone the first view stays readable (pan to see the rest); the button fits everything.
+  function fit(minK){const bb=boundsOf([...boxes.values()]);const [w,h]=stageSize();view=bb?fitView(bb,w,h,w<500?16:48):{k:1,x:0,y:0};if(bb&&minK&&view.k<minK){const k=minK;view={k,x:w/2-(bb.x+bb.w/2)*k,y:h/2-(bb.y+bb.h/2)*k}}applyView()}
+  function zoomBy(f){const [w,h]=stageSize();view=zoomAt(view,f,w/2,h/2);applyView()}
+  const toWorld=(sx,sy)=>[(sx-view.x)/view.k,(sy-view.y)/view.k];
+  const centerWorld=()=>{const [w,h]=stageSize();return toWorld(w/2,h/2)};
+  function local(e){const r=svg.getBoundingClientRect();return {sx:e.clientX-r.left,sy:e.clientY-r.top}}
+
+  // ---- drawing ----
+  function computeBoxes(){const o=opt();boxes=new Map(model.nodes.map(n=>[n.id,boxOf(n,o)]))}
+  function roleOf(id){const i=model.edges.some(e=>e.to===id),o=model.edges.some(e=>e.from===id);return !i&&!o?'chưa nối':!i?'biến độc lập':!o?'biến phụ thuộc':'biến trung gian'}
+  function renderEdges(){
+    const showH=$('vm-showh').checked;let lines='',labs='';
+    for(const r of routeAll(model,boxes)){
+      const neg=r.e.sign<0,s=sel.edge===ekey(r.e),cls=`vm-e${neg?' neg':''}${s?' sel':''}`;
+      lines+=`<g class="${cls}" data-edge="${r.i}"><path class="vm-e-hit" d="${r.d}"/><path class="vm-e-line" d="${r.d}" marker-end="url(#vm-ah${s?'-s':neg?'-n':''})"/></g>`;
+      const t=(showH?`H${r.i+1} `:'')+(neg?'−':'+'),w=Math.max(24,measure(t)*0.95+14);
+      labs+=`<g class="${cls} vm-lab" data-edge="${r.i}" data-key="${esc(ekey(r.e))}" transform="translate(${r.label[0].toFixed(1)},${r.label[1].toFixed(1)})" tabindex="0" role="button" aria-label="${esc(`H${r.i+1}: ${r.e.from} tới ${r.e.to}, ${neg?'ngược chiều':'cùng chiều'}. Enter đổi chiều, Delete xoá.`)}"><rect x="${(-w/2).toFixed(1)}" y="-11" width="${w.toFixed(1)}" height="22" rx="11"/><text y="4.3" text-anchor="middle">${esc(t)}</text></g>`;
+    }
+    gE.innerHTML=lines;gL.innerHTML=labs;
+  }
+  function nodeHtml(n){
+    const b=boxes.get(n.id),s=sel.nodes.has(n.id),items=itemsOf(n),ty=b.h/2-(b.lines.length-1)*8.5+4.5,pr=coarse?12:8;
+    return `<g class="vm-n${s?' sel':''}${pending===n.id?' pend':''}${n.key?' lib':''}" data-node="${esc(n.id)}" transform="translate(${b.x},${b.y})" tabindex="0" role="button" aria-pressed="${s}" aria-label="${esc(`${n.name} (${n.id}), ${roleOf(n.id)}${items!=null?`, ${items} biến quan sát`:''}${pending&&pending!==n.id?`. Enter để nối ${pending} tới đây`:''}`)}">`+
+      `<rect class="vm-ring" x="-5" y="-5" width="${b.w+10}" height="${b.h+10}" rx="16"/><rect class="vm-box" width="${b.w}" height="${b.h}" rx="12"/>`+
+      `<text text-anchor="middle">${b.lines.map((l,k)=>`<tspan x="${b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text>`+
+      (items!=null?`<g class="vm-badge${items<3?' warn':''}" transform="translate(${b.w-8},0)"><title>${items} biến quan sát trong thang đo gốc</title><rect x="-13" y="-10" width="26" height="20" rx="10"/><text y="4" text-anchor="middle">${items}</text></g>`:'')+
+      `<g class="vm-port" data-port="${esc(n.id)}" transform="translate(${b.w},${b.h/2})"><title>Kéo để nối mũi tên</title><circle class="vm-port-hit" r="${pr+10}"/><circle class="vm-port-dot" r="${pr}"/><path d="M-4,0h7M0,-3.5l3.5,3.5l-3.5,3.5"/></g></g>`;
+  }
+  let restoring=false;
+  function renderCanvas(){
+    const a=document.activeElement,fn=a&&a.closest&&a.closest('#vm-canvas [data-node]'),fl=a&&a.closest&&a.closest('#vm-canvas .vm-lab');
+    const fid=fn?fn.dataset.node:null,fk=fl?fl.dataset.key:null;
+    computeBoxes();renderEdges();gN.innerHTML=model.nodes.map(nodeHtml).join('');
+    $('vm-empty').hidden=model.nodes.length>0;
+    if(fid||fk){const el=fid?gN.querySelector(`[data-node="${CSS.escape(fid)}"]`):gL.querySelector(`[data-key="${CSS.escape(fk)}"]`);
+      restoring=true;try{(el||stage).focus({preventScroll:true})}finally{restoring=false}}
+  }
+  // Selection changes only flip classes, so focus and hover stay put.
+  function refreshSel(){
+    gN.querySelectorAll('[data-node]').forEach(el=>{const s=sel.nodes.has(el.dataset.node);el.classList.toggle('sel',s);el.setAttribute('aria-pressed',s);el.classList.toggle('pend',pending===el.dataset.node)});
+    const neg=i=>model.edges[i]&&model.edges[i].sign<0;
+    gE.querySelectorAll('[data-edge]').forEach(el=>{const i=+el.dataset.edge,s=model.edges[i]&&sel.edge===ekey(model.edges[i]);el.classList.toggle('sel',s);el.querySelector('.vm-e-line').setAttribute('marker-end',`url(#vm-ah${s?'-s':neg(i)?'-n':''})`)});
+    gL.querySelectorAll('[data-edge]').forEach(el=>el.classList.toggle('sel',sel.edge===el.dataset.key));
+    $('vm-hyps').querySelectorAll('li[data-key]').forEach(li=>li.classList.toggle('sel',li.dataset.key===sel.edge));
+  }
+  function updateToolbar(){
+    $('vm-undo').disabled=!hist.canUndo();$('vm-redo').disabled=!hist.canRedo();
+    document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));
+    $('vm-snap').setAttribute('aria-pressed',snapOn);
+    const q=kitQuery(model),kit=$('vm-kit');
+    if(q){kit.href=KIT+q;kit.removeAttribute('aria-disabled')}else{kit.removeAttribute('href');kit.setAttribute('aria-disabled','true');kit.setAttribute('role','link');kit.tabIndex=0}
+  }
+
+  // ---- side panel: hypotheses, sample size, warnings ----
+  function renderSide(){
+    const hs=hypotheses(model,{mediation:$('vm-med').checked}),n=model.edges.length;
+    $('vm-hcount').textContent=hs.length?`${hs.length} giả thuyết`:'';
+    const up='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+    $('vm-hyps').innerHTML=hs.length?hs.map(h=>{
+      if(h.edge==null)return `<li class="med"><b>H${h.h}:</b> ${esc(h.text)}</li>`;
+      const e=model.edges[h.edge],k=ekey(e),neg=e.sign<0;
+      return `<li class="e${sel.edge===k?' sel':''}" data-key="${esc(k)}" data-i="${h.edge}"><b>H${h.h}:</b> ${esc(h.text)}<div class="vm-hctl"><button type="button" class="vm-mini${neg?' neg':''}" data-hsign="${h.edge}" aria-label="${esc(`H${h.h}: đổi sang ${neg?'cùng chiều':'ngược chiều'}`)}">${neg?'− ngược chiều':'+ cùng chiều'}</button><button type="button" class="vm-mini" data-hup="${h.edge}" ${h.edge?'':'disabled'} aria-label="${esc(`Đưa H${h.h} lên trước`)}" title="Đưa lên trước">${up}</button><button type="button" class="vm-mini" data-hdel="${h.edge}" aria-label="${esc(`Xoá mũi tên H${h.h}`)}" title="Xoá mũi tên">✕</button></div></li>`}).join('')
+      :`<li class="med">${model.nodes.length>1?'Nối mũi tên giữa các khái niệm để có giả thuyết.':'Thêm ít nhất hai khái niệm rồi nối mũi tên.'}</li>`;
+    const s=modelSample(model),byId=new Map(model.nodes.map(x=>[x.id,x]));
+    let html='<strong>Cỡ mẫu tối thiểu (PLS-SEM)</strong>';
+    if(!s)html+='<p class="text-muted-foreground" style="margin:4px 0 0;font-size:.86rem">Nối mũi tên để tính cỡ mẫu.</p>';
+    else html+=`<div class="result"><span class="lbl">Nhiều mũi tên nhất vào một khái niệm</span><span class="num">${s.arrows}</span><span class="how">${s.at.map(id=>esc(byId.get(id).name)+' ('+esc(id)+')').join(', ')}</span></div>
+      <div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${fmt(s.min)}</span><span class="how">Số lớn hơn giữa G*Power (${fmt(s.pow)}: hồi quy bội, f² = 0,15, α = 0,05, power = 0,80, ${s.arrows} biến dự báo) và phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) (${fmt(s.isr)}, hệ số đường dẫn nhỏ nhất 0,20).</span></div>
+      <div class="result"><span class="lbl">Số phiếu nên thu</span><span class="num">${fmt(s.send)}</span><span class="how">Dự phòng 15% phiếu bị loại: ${fmt(s.min)} ÷ 0,85. Đổi giả định ở <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.</span></div>`;
+    $('vm-sample').innerHTML=html;
+    const ws=modelWarnings(model,{itemsOf});
+    $('vm-warnbox').innerHTML=ws.length?`<strong style="font-size:.9rem">Cần xem lại</strong><ul class="err vm-warn">${ws.map(w=>`<li>${esc(w.text)}</li>`).join('')}</ul>`:'';
+    const lib=model.nodes.filter(x=>x.key),free=model.nodes.filter(x=>!x.key);
+    $('vm-kitbox').innerHTML=lib.length?`<a class="btn" href="${KIT}${kitQuery(model)}">Mở trong Bộ khảo sát</a><small class="text-muted-foreground" style="display:block;margin-top:6px;font-size:.78rem">Mang sang ${lib.length} khái niệm từ thư viện (${lib.map(x=>esc(x.id)).join(', ')}), số mũi tên và biến phụ thuộc để ra bảng hỏi, cỡ mẫu và đoạn chương 3.${free.length?` Khái niệm tự đặt tên (${free.map(x=>esc(x.id)).join(', ')}) chưa có thang đo: tìm thang đo gần nghĩa trong Bộ khảo sát hoặc <a class="text-accent underline" href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>.`:''} Thu xong dữ liệu: chạy Cronbach, EFA, hồi quy bằng <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</small>`
+      :model.nodes.length?`<small class="text-muted-foreground" style="font-size:.78rem">Các khái niệm đang là tên tự đặt. Thêm khái niệm từ thư viện để mở tiếp trong <a class="text-accent underline" href="${KIT}">Bộ khảo sát</a> với thang đo gốc có trích dẫn.</small>`:'';
+    if(document.activeElement!==$('vm-text'))$('vm-text').value=edgesToText(model);
+  }
+  function renderAll(){renderCanvas();renderSide();renderHits();updateToolbar();save()}
+
+  // ---- library search (palette) ----
   function renderHits(){
     const raw=$('vm-search').value.trim();
     if(!raw){$('vm-hits').innerHTML='';return}
     const phrases=raw.split(/[;\n]+/).map(p=>p.trim()).filter(Boolean),many=phrases.length>1;
     $('vm-hits').innerHTML=phrases.map(p=>{
       const hits=rankConstructs(p,INDEX,many?4:8);
-      const head=many?`<p style="margin:8px 0 2px;font-weight:600;font-size:.85rem">“${esc(p)}”</p>`:'';
-      return head+(hits.length?hits.map(i=>{const x=CONSTRUCTS[i],had=model.nodes.some(n=>n.key===x.key);
-        return `<button type="button" data-add="${esc(x.key)}" ${had?'disabled':''} aria-label="${esc((had?'Đã có ':'Thêm ')+x.c.nameVi+' ('+x.scale.name+')')}"><b>${had?'✓':'+'} ${esc(x.c.nameVi)}</b> <span class="vm-code">${esc(x.c.code)}</span> <span class="text-muted-foreground">· ${esc(x.c.nameEn)} (${esc(x.scale.name)}, ${esc(citeOf(x.c.source))})</span></button>`}).join('')
-        :`<p class="text-muted-foreground" style="font-size:.85rem;margin:4px 0">Không có khái niệm gần nghĩa cho “${esc(p)}”. Thêm bằng ô “Tự đặt tên” bên dưới.</p>`);
+      return (many?`<p class="q">“${esc(p)}”</p>`:'')+(hits.length?hits.map(i=>{const x=CONSTRUCTS[i],had=model.nodes.some(n=>n.key===x.key);
+        return `<button type="button" class="${had?'had':''}" data-add="${esc(x.key)}" aria-label="${esc((had?'Đã có trong mô hình: ':'Thêm ')+x.c.nameVi+' ('+x.scale.name+', '+x.c.items.length+' biến)')}"><b>${had?'✓':'+'} ${esc(x.c.nameVi)}</b> <span class="vm-code">${esc(x.c.code)}</span> <span class="text-muted-foreground">· ${esc(x.c.nameEn)} (${esc(x.scale.name)}, ${esc(citeOf(x.c.source))}) · ${x.c.items.length} biến</span></button>`}).join('')
+        :`<p class="text-muted-foreground" style="font-size:.82rem;margin:4px 0">Không có khái niệm gần nghĩa cho “${esc(p)}”. Thêm bằng ô “Tự đặt tên”.</p>`);
     }).join('');
   }
-  function addLib(key){const x=BYKEY.get(key);if(!x)return;addNode(model,x.c.nameVi,key,x.c.code);update()}
-
-  // ---- lists ----
-  function renderLists(){
-    const ind=inDegree(model),outd=outDegree(model);
-    $('vm-nodes').innerHTML=model.nodes.length?model.nodes.map(n=>{
-      const role=!ind.get(n.id)&&!outd.get(n.id)?'chưa nối':!ind.get(n.id)?'độc lập':!outd.get(n.id)?'phụ thuộc':'trung gian';
-      return `<li><span class="vm-code" title="Mã viết tắt">${esc(n.id)}</span><input type="text" data-rename="${esc(n.id)}" value="${esc(n.name)}" aria-label="${esc('Tên khái niệm '+n.id)}"><span class="text-muted-foreground" style="font-size:.78rem;flex:none">${role}${n.key?' · thư viện':''}</span><button type="button" class="vm-mini" data-recode="${esc(n.id)}" aria-label="${esc('Đổi mã '+n.id)}">Mã</button><button type="button" class="vm-mini" data-del="${esc(n.id)}" aria-label="${esc('Xoá '+n.name)}">✕</button></li>`}).join('')
-      :'<li class="text-muted-foreground">Chưa có khái niệm nào. Tìm trong thư viện, tự đặt tên, hoặc nạp ví dụ.</li>';
-    const opts=model.nodes.map(n=>`<option value="${esc(n.id)}">${esc(n.id)} · ${esc(n.name)}</option>`).join('');
-    const f=$('vm-from').value,t=$('vm-to').value;
-    $('vm-from').innerHTML=opts;$('vm-to').innerHTML=opts;
-    if(model.nodes.some(n=>n.id===f))$('vm-from').value=f;
-    if(model.nodes.some(n=>n.id===t))$('vm-to').value=t;else if(model.nodes.length>1)$('vm-to').value=model.nodes[model.nodes.length-1].id;
-    const hs=hypotheses(model,{mediation:false});
-    $('vm-edges').innerHTML=model.edges.map((e,i)=>`<li><b style="flex:none">H${i+1}</b><span class="grow">${esc(e.from)} → ${esc(e.to)}</span><select data-sign="${i}" aria-label="${esc(`Chiều tác động H${i+1}`)}"><option value="1" ${e.sign>0?'selected':''}>+ cùng chiều</option><option value="-1" ${e.sign<0?'selected':''}>− ngược chiều</option></select><button type="button" class="vm-mini" data-eup="${i}" aria-label="${esc(`Đưa H${i+1} lên`)}" ${i?'':'disabled'}>↑</button><button type="button" class="vm-mini" data-edel="${i}" aria-label="${esc(`Xoá mũi tên H${i+1}`)}">✕</button></li>`).join('');
-    if(document.activeElement!==$('vm-text'))$('vm-text').value=edgesToText(model);
-    return hs;
+  // Put a new box with its centre at world point w (or a free spot near the middle of the view).
+  function placeAt(n,w){
+    const b=boxOf(n,opt()),c=w||centerWorld(),rects=[...boxes.values()].filter(r=>r.id!==n.id);
+    let x=snapTo(c[0]-b.w/2),y=snapTo(c[1]-b.h/2);
+    if(!w||rects.some(r=>overlaps({x,y,w:b.w,h:b.h},r,8)))[x,y]=freeSpot(rects,x,y,b.w,b.h);
+    n.x=x;n.y=y;
+  }
+  function selectOnly(id){sel.nodes=new Set(id?[id]:[]);sel.edge=null}
+  function focusNode(id){const el=gN.querySelector(`[data-node="${CSS.escape(id)}"]`);if(el){restoring=true;try{el.focus({preventScroll:true})}finally{restoring=false}}}
+  function addLibAt(key,w){
+    const x=BYKEY.get(key);if(!x)return;
+    const had=model.nodes.find(n=>n.key===key);
+    if(had){selectOnly(had.id);refreshSel();focusNode(had.id);status(`${had.name} (${had.id}) đã có trong mô hình.`);return}
+    const n=addNode(model,x.c.nameVi,key,x.c.code);placeAt(n,w);selectOnly(n.id);
+    commit(`Đã thêm ${n.name} (${n.id}, ${x.c.items.length} biến). Kéo chấm tròn bên phải ô để nối mũi tên.`);focusNode(n.id);
+  }
+  function addFreeAt(name,w){
+    name=String(name).trim();name=name.charAt(0).toLocaleUpperCase('vi')+name.slice(1);
+    const n=addNode(model,name);if(!n)return;placeAt(n,w);selectOnly(n.id);
+    commit(`Đã thêm ${n.name} (${n.id}).`);focusNode(n.id);
   }
 
-  // ---- diagram ----
-  const INK='#1f2937',LINE='#374151',NEG='#b91c1c';
-  function svgOf(forExport){
-    const L=layout(model,{measure,showCode:$('vm-showcode').checked});
-    if(!model.nodes.length)return {svg:'',L};
-    const showH=$('vm-showh').checked, font='Arial, Helvetica, sans-serif';
-    const pathD=p=>p.segs.map((s,k)=>`${k?'':`M${s[0][0].toFixed(1)},${s[0][1].toFixed(1)}`} C${s[1].map(v=>v.toFixed(1))} ${s[2].map(v=>v.toFixed(1))} ${s[3].map(v=>v.toFixed(1))}`).join(' ');
-    let edges='',labels='';
-    L.paths.forEach(p=>{
-      const e=model.edges[p.i],neg=e.sign<0;
-      edges+=`<path d="${pathD(p)}" fill="none" stroke="${neg?NEG:LINE}" stroke-width="1.6"${neg?' stroke-dasharray="6 4"':''} marker-end="url(#${neg?'vm-ah-n':'vm-ah'})"/>`;
-      if(showH){const t=`H${p.i+1} (${neg?'−':'+'})`,w=measure(t)*0.92+10;
-        labels+=`<g><rect x="${(p.label[0]-w/2).toFixed(1)}" y="${(p.label[1]-10).toFixed(1)}" width="${w.toFixed(1)}" height="20" rx="4" fill="#fff"/><text x="${p.label[0].toFixed(1)}" y="${(p.label[1]+4.5).toFixed(1)}" text-anchor="middle" font-size="12" font-style="italic" fill="${neg?NEG:INK}">${esc(t)}</text></g>`}
-    });
-    let nodes='';
-    L.box.forEach(b=>{
-      const n=model.nodes.find(x=>x.id===b.id),sel=!forExport&&selected===b.id;
-      const ty=b.y+b.h/2-(b.lines.length-1)*8.5+4.5;
-      const attrs=forExport?'':` class="vm-node${sel?' sel':''}" data-node="${esc(b.id)}" tabindex="0" role="button" aria-pressed="${sel}" aria-label="${esc(`${n.name} (${n.id}). ${selected&&!sel?'Bấm để nối mũi tên từ '+selected+' tới đây.':'Bấm để bắt đầu nối mũi tên.'}`)}"`;
-      nodes+=`<g${attrs}><rect x="${b.x}" y="${b.y.toFixed(1)}" width="${b.w}" height="${b.h}" rx="10" fill="#f8fafc" stroke="${INK}" stroke-width="1.5"/>`+
-        `<text x="${b.x+b.w/2}" text-anchor="middle" font-size="13" fill="${INK}">${b.lines.map((l,k)=>`<tspan x="${b.x+b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text></g>`;
-    });
-    const mk=(id,c)=>`<marker id="${id}" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>`;
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${L.width}" height="${L.height}" viewBox="0 0 ${L.width} ${L.height}" font-family="${font}" role="img" aria-label="${esc('Mô hình nghiên cứu: '+model.edges.map(e=>`${e.from} tới ${e.to}`).join(', '))}"><defs>${mk('vm-ah',LINE)}${mk('vm-ah-n',NEG)}</defs><rect width="100%" height="100%" fill="#fff"/>${edges}${labels}${nodes}</svg>`;
-    return {svg,L};
+  // ---- inline name box (new construct with suggestions, or rename) ----
+  let nb=null,sg=[],sgAt=-1;
+  function openNamebox(o){
+    closeMenu();nb=o;const inp=$('vm-nb-input'),n=o.rename?model.nodes.find(x=>x.id===o.rename):null;
+    if(o.rename&&!n){nb=null;return}
+    inp.value=n?n.name:'';$('vm-nb-label').textContent=n?`Đổi tên ${n.id}`:'Tên khái niệm mới';
+    $('vm-nb-hint').textContent=n?'Enter lưu · Esc huỷ':'↑↓ chọn gợi ý · Enter thêm · Esc huỷ';
+    $('vm-namebox').hidden=false;placeNamebox();renderSuggest();inp.focus();inp.select();
   }
-  function renderDiagram(){
-    const {svg,L}=svgOf(false);
-    if(!svg){$('vm-svgwrap').innerHTML='<p class="text-muted-foreground" style="padding:24px;text-align:center;margin:0">Thêm ít nhất hai khái niệm và một mũi tên để vẽ mô hình.</p>';return L}
-    $('vm-svgwrap').innerHTML=svg;
-    if(selected){const g=$('vm-svgwrap').querySelector(`[data-node="${CSS.escape(selected)}"]`);if(g)g.focus({preventScroll:true})}
-    return L;
+  function placeNamebox(){
+    if(!nb)return;const box=$('vm-namebox'),[sw,sh]=stageSize();
+    let wx,wy;if(nb.rename){const b=boxes.get(nb.rename);if(!b)return;wx=b.x;wy=b.y+b.h/2-18}else{[wx,wy]=nb.at;wx-=BOX_W/2;wy-=18}
+    const x=Math.max(8,Math.min(sw-box.offsetWidth-8,wx*view.k+view.x)),y=Math.max(8,Math.min(sh-Math.min(box.offsetHeight,120)-8,wy*view.k+view.y));
+    box.style.left=x+'px';box.style.top=y+'px';
+  }
+  function renderSuggest(){
+    const v=$('vm-nb-input').value.trim(),list=$('vm-sg'),inp=$('vm-nb-input');
+    sg=[];if(!nb||nb.rename){list.innerHTML='';inp.setAttribute('aria-expanded','false');return}
+    const lib=v.length>=2?rankConstructs(v,INDEX,6).map(i=>({key:CONSTRUCTS[i].key})):[];
+    // Enter takes the library construct only when its name contains what was typed; otherwise the typed name.
+    const nv=normText(v),strong=lib.length&&nv&&[BYKEY.get(lib[0].key).c.nameVi,BYKEY.get(lib[0].key).c.nameEn,BYKEY.get(lib[0].key).c.code].some(t=>(' '+normText(t)+' ').includes(' '+nv+' '));
+    sg=v?(strong?[...lib,{free:v}]:[{free:v},...lib]):[];
+    sgAt=sg.length?0:-1;
+    list.innerHTML=sg.map((s,i)=>{if(s.free)return `<li id="vm-sg-${i}" role="option" data-i="${i}">Tự đặt tên: <b>${esc(s.free)}</b></li>`;
+      const x=BYKEY.get(s.key),had=model.nodes.some(n=>n.key===s.key);
+      return `<li id="vm-sg-${i}" role="option" data-i="${i}"><b>${esc(x.c.nameVi)}</b> <span class="vm-code">${esc(x.c.code)}</span>${had?' ✓':''}<br><span class="m">${esc(x.c.nameEn)} · ${esc(x.scale.name)} · ${x.c.items.length} biến</span></li>`}).join('');
+    inp.setAttribute('aria-expanded',String(sg.length>0));markSuggest();
+  }
+  function markSuggest(){$('vm-sg').querySelectorAll('li').forEach((li,i)=>li.setAttribute('aria-selected',i===sgAt));const inp=$('vm-nb-input');if(sgAt>=0){inp.setAttribute('aria-activedescendant','vm-sg-'+sgAt);const li=$('vm-sg-'+sgAt);if(li)li.scrollIntoView({block:'nearest'})}else inp.removeAttribute('aria-activedescendant')}
+  function closeNamebox(back=true){if(!nb)return;const o=nb;nb=null;$('vm-namebox').hidden=true;if(back){if(o.rename)focusNode(o.rename);else stage.focus({preventScroll:true})}}
+  function chooseName(i){
+    if(!nb)return;const o=nb,v=$('vm-nb-input').value.replace(/\s+/g,' ').trim();
+    closeNamebox(false);
+    if(o.rename){if(renameNode(model,o.rename,v))commit(`Đã đổi tên thành ${v}.`);focusNode(o.rename);return}
+    const s=sg[i!=null?i:sgAt];if(!s){stage.focus({preventScroll:true});return}
+    if(s.key)addLibAt(s.key,o.at);else addFreeAt(s.free,o.at);
+  }
+  $('vm-nb-input').addEventListener('input',renderSuggest);
+  $('vm-nb-input').addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){if(sg.length){e.preventDefault();sgAt=(sgAt+(e.key==='ArrowDown'?1:-1)+sg.length)%sg.length;markSuggest()}}
+    else if(e.key==='Enter'){e.preventDefault();chooseName()}
+    else if(e.key==='Escape'){e.preventDefault();closeNamebox()}
+  });
+  $('vm-sg').addEventListener('pointerdown',e=>e.preventDefault());
+  $('vm-sg').addEventListener('click',e=>{const li=e.target.closest('li[data-i]');if(li)chooseName(+li.dataset.i)});
+  $('vm-nb-input').addEventListener('blur',()=>setTimeout(()=>{if(nb&&!$('vm-namebox').contains(document.activeElement)){if($('vm-nb-input').value.trim())chooseName();else closeNamebox(false)}},0));
+
+  // ---- context menu ----
+  let menuAt=0,menuBack=null;
+  function openMenu(t,sx,sy){
+    if(nb)closeNamebox(false);
+    const items=[];menuBack=document.activeElement;
+    if(t.kind==='node'){
+      if(!sel.nodes.has(t.id)){selectOnly(t.id);refreshSel()}
+      const many=sel.nodes.size>1;
+      if(!many){items.push(['Đổi tên','Enter',()=>openNamebox({rename:t.id})],['Đổi mã viết tắt','',()=>recode(t.id)],['Nối mũi tên từ đây','C',()=>startPending(t.id)])}
+      items.push(null,[many?`Xoá ${sel.nodes.size} khái niệm`:'Xoá khái niệm','Delete',deleteSelection,'danger']);
+    }else if(t.kind==='edge'){
+      const e=model.edges[t.i];if(!e)return;sel.edge=ekey(e);sel.nodes.clear();refreshSel();
+      items.push([e.sign<0?'Đổi sang cùng chiều (+)':'Đổi sang ngược chiều (−)','Enter',()=>flipSign(t.i)],['Đảo hướng mũi tên','',()=>{const r=reverseEdge(model,t.i);if(r==='exists')status('Đã có mũi tên theo chiều ngược lại.');else{sel.edge=ekey(model.edges[t.i]);commit(`Đã đảo thành ${model.edges[t.i].from} → ${model.edges[t.i].to}.`)}}]);
+      if(t.i>0)items.push([`Đưa lên trước (thành H${t.i})`,'',()=>{moveEdge(model,t.i,-1);commit(`Đã đổi thứ tự: ${e.from} → ${e.to} là H${t.i}.`)}]);
+      items.push(null,['Xoá mũi tên','Delete',()=>deleteEdge(t.i),'danger']);
+    }else{
+      const w=t.w||toWorld(sx,sy);
+      items.push(['Thêm khái niệm ở đây','Nhấp đúp',()=>openNamebox({at:w})],['Xếp tự động','',arrange],['Vừa khung','0',()=>fit()]);
+      if(model.nodes.length)items.push(['Chọn tất cả','Ctrl+A',selectAll]);
+    }
+    const m=$('vm-menu');
+    m.innerHTML=items.map((it,i)=>it?`<button type="button" role="menuitem" tabindex="-1" data-mi="${i}" class="${it[3]||''}"><span>${esc(it[0])}</span>${it[1]?`<kbd>${esc(it[1])}</kbd>`:''}</button>`:'<hr>').join('');
+    m._items=items;m.hidden=false;menuAt=Date.now();
+    const [sw,sh]=stageSize();m.style.left=Math.max(4,Math.min(sw-m.offsetWidth-4,sx))+'px';m.style.top=Math.max(4,Math.min(sh-m.offsetHeight-4,sy))+'px';
+    const first=m.querySelector('button');if(first)first.focus();
+  }
+  function closeMenu(back){const m=$('vm-menu');if(m.hidden)return;m.hidden=true;if(back&&menuBack&&document.contains(menuBack))menuBack.focus({preventScroll:true});else if(back)stage.focus({preventScroll:true})}
+  $('vm-menu').addEventListener('click',e=>{const b=e.target.closest('[data-mi]');if(!b)return;const fn=$('vm-menu')._items[+b.dataset.mi][2];closeMenu(true);fn()});
+  $('vm-menu').addEventListener('keydown',e=>{
+    const bs=[...$('vm-menu').querySelectorAll('button')],i=bs.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();bs[(i+(e.key==='ArrowDown'?1:-1)+bs.length)%bs.length].focus()}
+    else if(e.key==='Home'){e.preventDefault();bs[0].focus()}else if(e.key==='End'){e.preventDefault();bs[bs.length-1].focus()}
+    else if(e.key==='Escape'||e.key==='Tab'){e.preventDefault();closeMenu(true)}
+    e.stopPropagation();
+  });
+  document.addEventListener('pointerdown',e=>{if(!$('vm-menu').hidden&&!(e.target instanceof Element&&e.target.closest('#vm-menu')))closeMenu(false)},true);
+
+  // ---- edits ----
+  function connect(f,t){
+    if(f===t){status('Chọn một khái niệm khác để nối.');return}
+    const i=edgeIndex(model,f,t);if(i>=0){sel.edge=ekey(model.edges[i]);sel.nodes.clear();refreshSel();status(`${f} → ${t} đã có (H${i+1}).`);return}
+    addEdge(model,f,t,1);sel.edge=f+'>'+t;sel.nodes.clear();
+    commit(`Đã nối ${f} → ${t} (H${model.edges.length}, cùng chiều). Bấm nhãn + trên mũi tên để đổi sang ngược chiều.`);
+  }
+  function startPending(id){pending=id;refreshSel();status(`Nối từ ${id}: bấm (hoặc Tab tới rồi Enter) khái niệm đích. Esc để huỷ.`)}
+  function flipSign(i){const s=toggleSign(model,i);if(!s)return;const e=model.edges[i];sel.edge=ekey(e);commit(`H${i+1} (${e.from} → ${e.to}) giờ là ${s<0?'ngược chiều (−)':'cùng chiều (+)'}.`)}
+  function deleteEdge(i){const e=model.edges[i];if(!e)return;removeEdge(model,i);if(sel.edge===ekey(e))sel.edge=null;commit(`Đã xoá mũi tên ${e.from} → ${e.to}. Ctrl+Z để hoàn tác.`);stage.focus({preventScroll:true})}
+  function deleteSelection(){
+    if(sel.nodes.size){const ids=[...sel.nodes];removeNodes(model,ids);sel.nodes.clear();if(ids.includes(pending))pending=null;commit(`Đã xoá ${ids.join(', ')}. Ctrl+Z để hoàn tác.`);stage.focus({preventScroll:true});return}
+    if(sel.edge){const i=model.edges.findIndex(e=>ekey(e)===sel.edge);if(i>=0)deleteEdge(i)}
+  }
+  function recode(id){
+    const v=prompt('Mã viết tắt mới (chữ và số, không dấu cách):',id);if(v==null)return;
+    const err=recodeNode(model,id,v);if(err){alert(err);return}
+    const nv=String(v).replace(/\s+/g,'');if(nv&&nv!==id){if(sel.nodes.delete(id))sel.nodes.add(nv);if(pending===id)pending=null;sel.edge=null;commit(`Đã đổi mã ${id} thành ${nv}.`);focusNode(nv)}
+  }
+  function selectAll(){sel.nodes=new Set(model.nodes.map(n=>n.id));sel.edge=null;refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.`)}
+  function arrange(){if(!model.nodes.length)return;autoArrange(model,opt());commit('Đã xếp tự động: biến độc lập bên trái, trung gian ở giữa, phụ thuộc bên phải.');fit()}
+  function setMode(m){
+    mode=m;stage.classList.remove('mode-select','mode-add','mode-connect');stage.classList.add('mode-'+m);
+    if(m!=='connect'&&pending){pending=null;refreshSel()}
+    updateToolbar();
+    status(m==='add'?'Thêm khái niệm: bấm vào chỗ trống trên khung để đặt ô mới. Esc hoặc V để quay lại chọn.':m==='connect'?'Nối mũi tên: kéo từ khái niệm nguồn thả vào khái niệm đích (hoặc bấm nguồn rồi bấm đích).':'Chọn: kéo ô để di chuyển, Shift + bấm để chọn nhiều.');
   }
 
-  // ---- hypotheses and sample size ----
-  function renderSide(L){
-    const hs=hypotheses(model,{mediation:$('vm-med').checked});
-    $('vm-hyp').innerHTML=hs.length?hs.map(h=>`<p><b>H${h.h}:</b> ${esc(h.text)}</p>`).join(''):'<p class="text-muted-foreground">Nối mũi tên để có giả thuyết.</p>';
-    const warns=[];
-    if(L&&L.back&&L.back.size)warns.push(`Mô hình có vòng lặp (${[...L.back].map(i=>`${model.edges[i].from} → ${model.edges[i].to}`).join(', ')}): PLS-SEM và hồi quy chỉ ước lượng mô hình một chiều. Bỏ một mũi tên trong vòng.`);
-    const lone=model.nodes.filter(n=>!model.edges.some(e=>e.from===n.id||e.to===n.id));
-    if(lone.length&&model.edges.length)warns.push(`Chưa nối: ${lone.map(n=>n.id).join(', ')}. Khái niệm không có mũi tên sẽ không có giả thuyết.`);
-    const s=modelSample(model);
-    const byId=new Map(model.nodes.map(n=>[n.id,n]));
-    let html='<strong>Cỡ mẫu tối thiểu (PLS-SEM)</strong>';
-    if(!s)html+='<p class="text-muted-foreground" style="margin:0">Nối mũi tên để tính cỡ mẫu.</p>';
-    else html+=`<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${fmt(s.min)}</span><span class="how">Lấy số lớn hơn giữa G*Power (${fmt(s.pow)}: hồi quy bội, f² = 0,15, α = 0,05, power = 0,80, ${s.arrows} biến dự báo vì ${s.at.map(id=>esc(byId.get(id).name)).join(', ')} nhận ${s.arrows} mũi tên) và phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) (${fmt(s.isr)}, hệ số đường dẫn nhỏ nhất 0,20).</span></div>
-      <div class="result"><span class="lbl">Số phiếu nên thu</span><span class="num">${fmt(s.send)}</span><span class="how">Dự phòng 15% phiếu bị loại: ${fmt(s.min)} ÷ 0,85. Đổi giả định (f², power, tỉ lệ dự phòng, SPSS) ở <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.</span></div>`;
-    if(warns.length)html+=`<ul class="err" style="margin:0;padding-left:18px">${warns.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>`;
-    const lib=model.nodes.filter(n=>n.key),free=model.nodes.filter(n=>!n.key);
-    if(lib.length){
-      html+=`<a class="btn" href="${KIT}${kitQuery(model)}">Mở trong Bộ khảo sát</a><small class="text-muted-foreground">Mang sang ${lib.length} khái niệm từ thư viện (${lib.map(n=>esc(n.id)).join(', ')}), số mũi tên và biến phụ thuộc để ra bảng hỏi, cỡ mẫu và đoạn chương 3.${free.length?` Khái niệm tự đặt tên (${free.map(n=>esc(n.id)).join(', ')}) chưa có thang đo: tìm thang đo gần nghĩa trong Bộ khảo sát hoặc <a class="text-accent underline" href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>.`:''}</small>`;
-    }else if(model.nodes.length)html+=`<small class="text-muted-foreground">Các khái niệm đang là tên tự đặt. Thêm khái niệm từ thư viện (ô tìm kiếm ở bước 1) để mở tiếp trong <a class="text-accent underline" href="${KIT}">Bộ khảo sát</a> với thang đo gốc có trích dẫn.</small>`;
-    html+=`<small class="text-muted-foreground">Thu xong dữ liệu: chạy Cronbach, EFA, hồi quy và viết chương 4 bằng <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</small>`;
-    $('vm-sample').innerHTML=html;
+  // ---- pointer: select, move, connect, pan, rubber band, pinch, double tap, long press ----
+  const pointers=new Map();let G=null,lp=0,lastTap=null,spaceDown=false;
+  const cancelLP=()=>{if(lp){clearTimeout(lp);lp=0}};
+  const dist=(a,b)=>Math.hypot(a.sx-b.sx,a.sy-b.sy),mid=(a,b)=>({sx:(a.sx+b.sx)/2,sy:(a.sy+b.sy)/2});
+  function targetOf(el){
+    const port=el.closest&&el.closest('[data-port]'),node=el.closest&&el.closest('#vm-canvas [data-node]'),edge=el.closest&&el.closest('#vm-canvas [data-edge]');
+    if(port)return {kind:'port',id:port.dataset.port};if(node)return {kind:'node',id:node.dataset.node};
+    if(edge)return {kind:'edge',i:+edge.dataset.edge,label:edge.classList.contains('vm-lab')};return {kind:'empty'};
   }
+  function longPress(t,p){cancelLP();lp=setTimeout(()=>{lp=0;if(G&&!G.moved){G=null;stage.classList.remove('dragging');openMenu(t.kind==='port'?{kind:'node',id:t.id}:t,p.sx,p.sy)}},550)}
+  svg.addEventListener('pointerdown',e=>{
+    if(e.button===2)return;
+    if(nb)chooseNameOrClose();closeMenu(false);
+    const p=local(e);pointers.set(e.pointerId,p);
+    try{svg.setPointerCapture(e.pointerId)}catch(_){}
+    if(pointers.size===2){cancelLP();if(G&&G.type==='node'&&G.moved&&G.ids)endMove(G);clearOverlay();const [a,b]=[...pointers.values()];G={type:'pinch',d0:Math.max(dist(a,b),1),m0:mid(a,b),v0:{...view}};return}
+    if(pointers.size>2)return;
+    const t=targetOf(e.target),w=toWorld(p.sx,p.sy);
+    const base={id:e.pointerId,sx:p.sx,sy:p.sy,w,moved:false,touch:e.pointerType!=='mouse',shift:e.shiftKey||e.metaKey||e.ctrlKey,t};
+    if(t.kind==='empty'||e.button===1||spaceDown)e.preventDefault();
+    if(t.kind==='empty'&&document.activeElement!==stage)stage.focus({preventScroll:true});
+    if(e.button===1||spaceDown){G={...base,type:'pan',v0:{...view}};return}
+    if(t.kind==='port'||(t.kind==='node'&&mode==='connect')){G={...base,type:'connect',from:t.id};e.preventDefault();if(base.touch)longPress(t,p);return}
+    if(t.kind==='node'){
+      if(!base.shift&&!sel.nodes.has(t.id)){selectOnly(t.id);refreshSel()}
+      G={...base,type:'node',node:t.id};if(base.touch)longPress(t,p);return}
+    if(t.kind==='edge'){G={...base,type:'edge',v0:{...view}};if(base.touch)longPress(t,p);return}
+    G={...base,type:'empty',v0:{...view}};if(base.touch)longPress(t,p);
+  });
+  function chooseNameOrClose(){if($('vm-nb-input').value.trim())chooseName();else closeNamebox(false)}
+  function clearOverlay(){gO.innerHTML='';gN.querySelectorAll('.tgt').forEach(x=>x.classList.remove('tgt'));stage.classList.remove('panning','dragging')}
+  function startMove(){
+    if(G.shift&&!sel.nodes.has(G.node)){sel.nodes.add(G.node);sel.edge=null;refreshSel()}
+    G.ids=sel.nodes.has(G.node)?[...sel.nodes]:[G.node];
+    G.orig=new Map(G.ids.map(id=>{const n=model.nodes.find(x=>x.id===id);return [id,[n.x,n.y]]}));
+    stage.classList.add('dragging');
+  }
+  function moveFrame(){
+    if(!G||G.type!=='node')return;
+    for(const id of G.ids){const n=model.nodes.find(x=>x.id===id),b=boxes.get(id);if(!n||!b)continue;b.x=n.x;b.y=n.y;const el=gN.querySelector(`[data-node="${CSS.escape(id)}"]`);if(el)el.setAttribute('transform',`translate(${n.x},${n.y})`)}
+    renderEdges();
+  }
+  function endMove(g){
+    stage.classList.remove('dragging');
+    const moved=g.ids.some(id=>{const n=model.nodes.find(x=>x.id===id),o=g.orig.get(id);return n&&(n.x!==o[0]||n.y!==o[1])});
+    if(moved)commit(g.ids.length>1?`Đã di chuyển ${g.ids.length} khái niệm.`:`Đã di chuyển ${g.ids[0]}.`);
+  }
+  svg.addEventListener('pointermove',e=>{
+    if(!pointers.has(e.pointerId))return;
+    const p=local(e);pointers.set(e.pointerId,p);if(!G)return;
+    if(G.type==='pinch'){if(pointers.size<2)return;const [a,b]=[...pointers.values()],m=mid(a,b),k=clampK(G.v0.k*dist(a,b)/G.d0),wx=(G.m0.sx-G.v0.x)/G.v0.k,wy=(G.m0.sy-G.v0.y)/G.v0.k;view={k,x:m.sx-wx*k,y:m.sy-wy*k};frame(applyView);return}
+    if(e.pointerId!==G.id)return;
+    const dx=p.sx-G.sx,dy=p.sy-G.sy;
+    if(!G.moved){if(Math.hypot(dx,dy)<(G.touch?9:4))return;G.moved=true;cancelLP();
+      if(G.type==='node')startMove();
+      else if(G.type==='empty'&&G.shift)G.type='band';
+      else if(G.type==='empty'||G.type==='edge')G.type='pan';
+      if(G.type==='pan')stage.classList.add('panning');
+      if(G.type==='connect')stage.classList.add('dragging');}
+    if(G.type==='pan'){view={k:view.k,x:G.v0.x+dx,y:G.v0.y+dy};frame(applyView);return}
+    const w=toWorld(p.sx,p.sy);
+    if(G.type==='node'){
+      const o=G.orig.get(G.node);let nx=o[0]+(w[0]-G.w[0]),ny=o[1]+(w[1]-G.w[1]);if(snapOn){nx=snapTo(nx);ny=snapTo(ny)}
+      const ddx=nx-o[0],ddy=ny-o[1];G.ids.forEach(id=>{const n=model.nodes.find(x=>x.id===id),q=G.orig.get(id);n.x=q[0]+ddx;n.y=q[1]+ddy});frame(moveFrame);return}
+    if(G.type==='band'){const x=Math.min(w[0],G.w[0]),y=Math.min(w[1],G.w[1]);G.rect={x,y,w:Math.abs(w[0]-G.w[0]),h:Math.abs(w[1]-G.w[1])};gO.innerHTML=`<rect class="vm-band" x="${x}" y="${y}" width="${G.rect.w}" height="${G.rect.h}"/>`;return}
+    if(G.type==='connect'){
+      const a=boxes.get(G.from);if(!a)return;const s=borderPoint(a,w[0],w[1]);
+      gO.innerHTML=`<path class="vm-temp" d="M${s[0].toFixed(1)},${s[1].toFixed(1)} L${w[0].toFixed(1)},${w[1].toFixed(1)}" marker-end="url(#vm-ah-s)"/>`;
+      const el=document.elementFromPoint(e.clientX,e.clientY),tn=el&&el.closest&&el.closest('#vm-canvas [data-node]');
+      gN.querySelectorAll('.tgt').forEach(x=>{if(x!==tn)x.classList.remove('tgt')});if(tn&&tn.dataset.node!==G.from)tn.classList.add('tgt');
+    }
+  });
+  function onUp(e,cancelled){
+    pointers.delete(e.pointerId);cancelLP();
+    if(!G)return;
+    if(G.type==='pinch'){if(!pointers.size)G=null;return}
+    if(e.pointerId!==G.id)return;
+    const g=G;G=null;stage.classList.remove('panning');
+    if(g.moved||cancelled){
+      if(g.type==='node'&&g.ids)endMove(g);
+      else if(g.type==='connect'&&!cancelled){const el=document.elementFromPoint(e.clientX,e.clientY),tn=el&&el.closest&&el.closest('#vm-canvas [data-node]');clearOverlay();if(tn)connect(g.from,tn.dataset.node);else status('Thả mũi tên vào một khái niệm khác để nối.')}
+      else if(g.type==='band'&&g.rect){const ids=nodesInRect(boxes,g.rect);ids.forEach(id=>sel.nodes.add(id));sel.edge=null;clearOverlay();refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.`)}
+      clearOverlay();return;
+    }
+    const p=local(e),now=Date.now(),tk=g.t.kind+':'+(g.t.id||g.t.i||''),dbl=lastTap&&now-lastTap.t<380&&Math.hypot(p.sx-lastTap.sx,p.sy-lastTap.sy)<24&&lastTap.k===tk;
+    lastTap=dbl?null:{t:now,sx:p.sx,sy:p.sy,k:tk};
+    if(g.type==='empty'){
+      if(pending){pending=null;refreshSel();status('Đã huỷ nối.');return}
+      if(dbl||mode==='add'){openNamebox({at:g.w});return}
+      if(sel.nodes.size||sel.edge){sel.nodes.clear();sel.edge=null;refreshSel()}
+    }else if(g.type==='node'){
+      if(dbl){openNamebox({rename:g.node});return}
+      if(pending&&pending!==g.node){const f=pending;pending=null;connect(f,g.node);return}
+      if(g.shift){sel.nodes.has(g.node)?sel.nodes.delete(g.node):sel.nodes.add(g.node);sel.edge=null}else selectOnly(g.node);
+      refreshSel();
+    }else if(g.type==='connect'){
+      if(pending&&pending!==g.from){const f=pending;pending=null;connect(f,g.from)}
+      else if(pending===g.from){pending=null;refreshSel();status('Đã huỷ nối.')}
+      else startPending(g.from);
+    }else if(g.type==='edge'){
+      const e2=model.edges[g.t.i];if(!e2)return;
+      if(g.t.label)flipSign(g.t.i);else{sel.edge=ekey(e2);sel.nodes.clear();refreshSel();status(`Đã chọn H${g.t.i+1}: ${e2.from} → ${e2.to}. Delete để xoá, bấm nhãn để đổi chiều.`)}
+    }
+  }
+  svg.addEventListener('pointerup',e=>onUp(e,false));
+  svg.addEventListener('pointercancel',e=>onUp(e,true));
+  svg.addEventListener('contextmenu',e=>{
+    e.preventDefault();if(Date.now()-menuAt<900&&!$('vm-menu').hidden)return;
+    cancelLP();G=null;const p=local(e),t=targetOf(e.target);
+    openMenu(t.kind==='port'?{kind:'node',id:t.id}:t.kind==='edge'?{kind:'edge',i:t.i}:t,p.sx,p.sy);
+  });
+  svg.addEventListener('wheel',e=>{e.preventDefault();const p=local(e),f=Math.exp(-e.deltaY*(e.deltaMode===1?16:1)*(e.ctrlKey?0.01:0.0015));view=zoomAt(view,f,p.sx,p.sy);frame(applyView)},{passive:false});
+  svg.addEventListener('dblclick',e=>e.preventDefault());
 
-  function update(){renderLists();const L=renderDiagram();renderSide(L);renderHits();save()}
-  function status(t){$('vm-status').textContent=t}
+  // ---- keyboard ----
+  stage.addEventListener('focusin',e=>{
+    if(restoring||pointers.size)return;
+    const t=targetOf(e.target);
+    if(t.kind==='node'&&!sel.nodes.has(t.id)){selectOnly(t.id);refreshSel()}
+    else if(t.kind==='edge'&&model.edges[t.i]&&sel.edge!==ekey(model.edges[t.i])){sel.edge=ekey(model.edges[t.i]);sel.nodes.clear();refreshSel()}
+  });
+  const typing=el=>el&&(/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)||el.isContentEditable);
+  stage.addEventListener('keydown',e=>{
+    if(typing(e.target)||e.target.closest('#vm-menu'))return;
+    const k=e.key,t=targetOf(e.target),mod=e.ctrlKey||e.metaKey;
+    if(mod&&(k==='a'||k==='A')){e.preventDefault();selectAll();return}
+    if(mod||e.altKey)return;
+    if(k==='Escape'){if(pending){pending=null;refreshSel();status('Đã huỷ nối.')}else if(mode!=='select')setMode('select');else{sel.nodes.clear();sel.edge=null;refreshSel()}return}
+    if(k==='ContextMenu'||(k==='F10'&&e.shiftKey)){e.preventDefault();const r=e.target.getBoundingClientRect(),s=svg.getBoundingClientRect();openMenu(t.kind==='port'?{kind:'node',id:t.id}:t,r.left-s.left+Math.min(40,r.width/2),r.top-s.top+Math.min(30,r.height/2));return}
+    // The focused construct is what arrow keys and Delete act on.
+    if(t.kind==='node'&&!sel.nodes.has(t.id)&&(k.startsWith('Arrow')||k==='Delete'||k==='Backspace')){selectOnly(t.id);refreshSel()}
+    if(k==='Delete'||k==='Backspace'){e.preventDefault();if(t.kind==='edge')deleteEdge(t.i);else deleteSelection();return}
+    if(k==='Enter'||k==='F2'||(k===' '&&t.kind==='edge')){
+      e.preventDefault();
+      if(t.kind==='node'&&pending&&pending!==t.id){const f=pending;pending=null;connect(f,t.id);return}
+      if(t.kind==='node'){openNamebox({rename:t.id});return}
+      if(t.kind==='edge'){flipSign(t.i);return}
+      if(k==='Enter'&&t.kind==='empty'){openNamebox({at:centerWorld()});return}
+      return;
+    }
+    if(k===' '){e.preventDefault();if(!spaceDown){spaceDown=true;stage.classList.add('space')}return}
+    if(k.startsWith('Arrow')){
+      e.preventDefault();const dx=k==='ArrowLeft'?-1:k==='ArrowRight'?1:0,dy=k==='ArrowUp'?-1:k==='ArrowDown'?1:0;
+      if(sel.nodes.size){const st=e.shiftKey?1:GRID;const ids=[...sel.nodes];if(snapOn&&!e.shiftKey)model.nodes.forEach(n=>{if(sel.nodes.has(n.id)){n.x=snapTo(n.x);n.y=snapTo(n.y)}});moveNodes(model,ids,dx*st,dy*st);commit();status(`Đã di chuyển ${ids.join(', ')}.`)}
+      else{view={...view,x:view.x-dx*60,y:view.y-dy*60};applyView()}
+      return;
+    }
+    const lk=k.toLowerCase();
+    if(lk==='c'){e.preventDefault();if(t.kind==='node')startPending(t.id);else setMode(mode==='connect'?'select':'connect');return}
+    if(lk==='v'){setMode('select');return}
+    if(lk==='a'){e.preventDefault();setMode('add');openNamebox({at:centerWorld()});return}
+    if(k==='+'||k==='='){zoomBy(1.2);return}
+    if(k==='-'||k==='_'){zoomBy(1/1.2);return}
+    if(k==='0'){fit();return}
+  });
+  stage.addEventListener('keyup',e=>{if(e.key===' '){spaceDown=false;stage.classList.remove('space')}});
+  window.addEventListener('blur',()=>{spaceDown=false;stage.classList.remove('space')});
+  // Undo/redo from anywhere in the editor or the page body (not while typing in a field).
+  document.addEventListener('keydown',e=>{
+    if(!(e.ctrlKey||e.metaKey)||e.altKey||typing(e.target))return;
+    if(!(e.target===document.body||app.contains(e.target)))return;
+    const k=e.key.toLowerCase();
+    if(k==='z'){e.preventDefault();e.shiftKey?redo():undo()}else if(k==='y'){e.preventDefault();redo()}
+  });
 
-  // ---- events ----
+  // ---- palette: click to add, drag onto the canvas ----
+  let pd=null,noClickUntil=0;
+  $('vm-hits').addEventListener('pointerdown',e=>{const b=e.target.closest('[data-add]');if(!b||e.button!==0)return;pd={key:b.dataset.add,sx:e.clientX,sy:e.clientY,id:e.pointerId,ghost:null,btn:b}});
+  function overStage(e){const r=stage.getBoundingClientRect();return e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom}
+  document.addEventListener('pointermove',e=>{
+    if(!pd||e.pointerId!==pd.id)return;
+    if(!pd.ghost){if(Math.hypot(e.clientX-pd.sx,e.clientY-pd.sy)<6)return;const x=BYKEY.get(pd.key);pd.ghost=document.createElement('div');pd.ghost.className='vm-ghost';pd.ghost.textContent=`${x.c.nameVi} (${x.c.code})`;document.body.appendChild(pd.ghost);try{pd.btn.setPointerCapture(pd.id)}catch(_){}}
+    pd.ghost.style.left=e.clientX+'px';pd.ghost.style.top=e.clientY+'px';stage.classList.toggle('drop',overStage(e));
+  });
+  function endPal(e,drop){
+    if(!pd||e.pointerId!==pd.id)return;const P=pd;pd=null;if(!P.ghost)return;
+    P.ghost.remove();stage.classList.remove('drop');noClickUntil=Date.now()+400;
+    if(drop&&overStage(e)){const p=local(e);addLibAt(P.key,toWorld(p.sx,p.sy))}
+  }
+  document.addEventListener('pointerup',e=>endPal(e,true));
+  document.addEventListener('pointercancel',e=>endPal(e,false));
+  $('vm-hits').addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(!b||Date.now()<noClickUntil)return;addLibAt(b.dataset.add,null);renderHits();const nb2=$('vm-hits').querySelector(`[data-add="${CSS.escape(b.dataset.add)}"]`);if(nb2)nb2.focus()});
   let timer=null;
   $('vm-search').addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(renderHits,120)});
-  $('vm-hits').addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b){addLib(b.dataset.add);status(`Đã thêm ${BYKEY.get(b.dataset.add).c.nameVi}.`)}});
-  const addFree=()=>{const v=$('vm-free').value.trim();if(!v)return;const n=addNode(model,v);$('vm-free').value='';update();if(n)status(`Đã thêm ${n.name} (${n.id}).`)};
+  const addFree=()=>{const v=$('vm-free').value.trim();if(!v)return;addFreeAt(v,null);$('vm-free').value=''};
   $('vm-free-add').addEventListener('click',addFree);
   $('vm-free').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addFree()}});
-  $('vm-nodes').addEventListener('change',e=>{const id=e.target.dataset.rename;if(id==null)return;const n=model.nodes.find(x=>x.id===id);const v=e.target.value.replace(/\s+/g,' ').trim();if(n&&v){n.name=v;update()}});
-  $('vm-nodes').addEventListener('click',e=>{
-    const del=e.target.closest('[data-del]'),rc=e.target.closest('[data-recode]');
-    if(del){removeNode(model,del.dataset.del);if(selected===del.dataset.del)selected=null;update()}
-    if(rc){const old=rc.dataset.recode;const v=(prompt('Mã viết tắt mới (chữ và số, không dấu cách):',old)||'').trim().replace(/\s+/g,'');
-      if(!v||v===old)return;if(!/^[\p{L}][\p{L}0-9_]{0,9}$/u.test(v)){alert('Mã chỉ gồm chữ, số và dấu gạch dưới, bắt đầu bằng chữ, tối đa 10 ký tự.');return}
-      if(model.nodes.some(n=>n.id.toUpperCase()===v.toUpperCase()&&n.id!==old)){alert('Mã này đã dùng cho khái niệm khác.');return}
-      model.nodes.find(n=>n.id===old).id=v;model.edges.forEach(x=>{if(x.from===old)x.from=v;if(x.to===old)x.to=v});if(selected===old)selected=v;update()}
+
+  // ---- toolbar and side panel ----
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',e=>{setMode(b.dataset.mode);if(b.dataset.mode==='add'&&e.detail===0)openNamebox({at:centerWorld()})}));
+  $('vm-undo').addEventListener('click',undo);$('vm-redo').addEventListener('click',redo);
+  $('vm-layout').addEventListener('click',arrange);
+  $('vm-snap').addEventListener('click',()=>{snapOn=!snapOn;try{localStorage.setItem('vm-snap',snapOn?'1':'0')}catch(e){}updateToolbar();status(snapOn?'Bắt lưới: bật.':'Bắt lưới: tắt.')});
+  $('vm-clear').addEventListener('click',()=>{if(!model.nodes.length)return;model={nodes:[],edges:[]};sel.nodes.clear();sel.edge=null;pending=null;$('vm-text-msg').hidden=true;commit('Đã xoá mô hình. Ctrl+Z (hoặc nút Hoàn tác) để lấy lại.')});
+  $('vm-zin').addEventListener('click',()=>zoomBy(1.2));$('vm-zout').addEventListener('click',()=>zoomBy(1/1.2));
+  $('vm-z100').addEventListener('click',()=>{const [w,h]=stageSize();view=zoomAt(view,1/view.k,w/2,h/2);applyView()});
+  $('vm-fit').addEventListener('click',()=>fit());
+  $('vm-kit').addEventListener('click',e=>{if($('vm-kit').getAttribute('aria-disabled')==='true'){e.preventDefault();status('Thêm ít nhất một khái niệm từ thư viện để mở trong Bộ khảo sát.')}});
+  $('vm-hyps').addEventListener('click',e=>{
+    const s=e.target.closest('[data-hsign]'),u=e.target.closest('[data-hup]'),d=e.target.closest('[data-hdel]');
+    if(s){flipSign(+s.dataset.hsign);return}
+    if(u){const i=+u.dataset.hup;if(moveEdge(model,i,-1))commit(`Đã đưa ${model.edges[i-1].from} → ${model.edges[i-1].to} lên H${i}.`);return}
+    if(d){deleteEdge(+d.dataset.hdel);return}
+    const li=e.target.closest('li[data-key]');if(li){sel.edge=li.dataset.key;sel.nodes.clear();refreshSel()}
   });
-  $('vm-add-edge').addEventListener('click',()=>{
-    const f=$('vm-from').value,t=$('vm-to').value;
-    if(!f||!t){status('Thêm ít nhất hai khái niệm trước.');return}
-    const r=addEdge(model,f,t,+$('vm-sign').value);
-    status(r==='self'?'Chọn hai khái niệm khác nhau.':r==='updated'?`Đã đổi chiều ${f} → ${t}.`:`Đã nối ${f} → ${t}.`);update();
-  });
-  $('vm-edges').addEventListener('change',e=>{const i=e.target.dataset.sign;if(i!=null){model.edges[+i].sign=+e.target.value;update()}});
-  $('vm-edges').addEventListener('click',e=>{
-    const d=e.target.closest('[data-edel]'),u=e.target.closest('[data-eup]');
-    if(d){model.edges.splice(+d.dataset.edel,1);update()}
-    if(u){const i=+u.dataset.eup;[model.edges[i-1],model.edges[i]]=[model.edges[i],model.edges[i-1]];update()}
-  });
+  ['vm-showcode','vm-showh'].forEach(id=>$(id).addEventListener('change',()=>renderAll()));
+  $('vm-med').addEventListener('change',renderSide);
   $('vm-apply').addEventListener('click',()=>{
     const m={nodes:model.nodes.map(n=>({...n})),edges:[]};
-    const r=parseArrows($('vm-text').value,m);
-    r.edges.forEach(x=>addEdge(m,x.from,x.to,x.sign));
-    model=m;const msg=$('vm-text-msg');
+    const r=parseArrows($('vm-text').value,m);r.edges.forEach(x=>addEdge(m,x.from,x.to,x.sign));
+    placeNew(m,opt());model=m;const msg=$('vm-text-msg');
     msg.hidden=!r.errors.length&&!r.added.length;
     msg.textContent=[...r.errors,r.added.length?`Đã thêm khái niệm mới: ${r.added.join(', ')}.`:''].filter(Boolean).join(' ');
-    $('vm-text').blur();update();status(`Đã áp dụng ${model.edges.length} mũi tên.`);
+    $('vm-text').blur();sel.nodes.clear();sel.edge=null;commit(`Đã áp dụng ${model.edges.length} mũi tên.`);if(r.added.length)fit();
   });
-  // Click-to-connect on the diagram (mouse, touch and keyboard).
-  function pick(id){
-    if(!selected){selected=id;status(`Đã chọn ${id}. Bấm khái niệm đích để nối mũi tên, bấm lại ${id} để bỏ chọn.`)}
-    else if(selected===id){selected=null;status('Đã bỏ chọn.')}
-    else{const f=selected;selected=null;const r=addEdge(model,f,id,1);status(r==='updated'?`${f} → ${id} đã có.`:`Đã nối ${f} → ${id} (cùng chiều). Đổi chiều trong danh sách mũi tên.`)}
-    update();
-  }
-  $('vm-svgwrap').addEventListener('click',e=>{const g=e.target.closest('[data-node]');if(g)pick(g.dataset.node)});
-  $('vm-svgwrap').addEventListener('keydown',e=>{const g=e.target.closest('[data-node]');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();pick(g.dataset.node)}if(e.key==='Escape'&&selected){selected=null;update()}});
-  ['vm-showcode','vm-showh','vm-med'].forEach(id=>$(id).addEventListener('change',update));
   $('vm-example').addEventListener('click',()=>{
-    model={nodes:[],edges:[]};selected=null;
-    ['tam:PEOU','tam:PU','tam:BI'].forEach(k=>BYKEY.has(k)?addLib(k):0);
-    if(model.nodes.length<3){addNode(model,'Nhận thức tính dễ sử dụng',null,'PEOU');addNode(model,'Nhận thức sự hữu ích',null,'PU');addNode(model,'Ý định sử dụng',null,'BI')}
-    addEdge(model,'PEOU','PU');addEdge(model,'PU','BI');addEdge(model,'PEOU','BI');update();status('Đã nạp mô hình TAM (Davis, 1989).');
+    model={nodes:[],edges:[]};sel.nodes.clear();sel.edge=null;pending=null;
+    ['tam:PEOU','tam:PU','tam:BI'].forEach(k=>{const x=BYKEY.get(k);if(x)addNode(model,x.c.nameVi,k,x.c.code)});
+    if(model.nodes.length<3){model={nodes:[],edges:[]};addNode(model,'Nhận thức tính dễ sử dụng',null,'PEOU');addNode(model,'Nhận thức sự hữu ích',null,'PU');addNode(model,'Ý định sử dụng',null,'BI')}
+    addEdge(model,'PEOU','PU');addEdge(model,'PU','BI');addEdge(model,'PEOU','BI');autoArrange(model,opt());
+    commit('Đã nạp mô hình TAM (Davis, 1989). Ctrl+Z để quay lại mô hình trước.');fit();
   });
-  $('vm-clear').addEventListener('click',()=>{if(model.nodes.length&&!confirm('Xoá toàn bộ khái niệm và mũi tên?'))return;model={nodes:[],edges:[]};selected=null;$('vm-text-msg').hidden=true;update()});
 
   // ---- downloads and copy ----
-  function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
-  $('vm-svg').addEventListener('click',()=>{const {svg}=svgOf(true);if(!svg){status('Chưa có mô hình để tải.');return}download(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n'+svg],{type:'image/svg+xml'}),'mo-hinh-nghien-cuu.svg')});
-  $('vm-png').addEventListener('click',()=>{
-    const {svg,L}=svgOf(true);if(!svg){status('Chưa có mô hình để tải.');return}
-    const img=new Image(),scale=3;
-    img.onload=()=>{const c=document.createElement('canvas');c.width=L.width*scale;c.height=L.height*scale;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(img,0,0,c.width,c.height);c.toBlob(b=>b?download(b,'mo-hinh-nghien-cuu.png'):status('Trình duyệt không xuất được PNG, hãy tải SVG.'),'image/png')};
-    img.onerror=()=>status('Trình duyệt không xuất được PNG, hãy tải SVG.');
-    img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-  });
-  async function copy(text,btn,label){
-    try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
-    btn.textContent='Đã sao chép';setTimeout(()=>btn.textContent=label,1500);
+  function exportSvg(){
+    if(!model.nodes.length)return null;
+    const o=opt(),bx=new Map(model.nodes.map(n=>[n.id,boxOf(n,o)])),rs=routeAll(model,bx),showH=$('vm-showh').checked;
+    const INK='#1f2937',LINE='#374151',NEG='#b91c1c',M=24;
+    const pts=[...bx.values()].flatMap(b=>[[b.x,b.y],[b.x+b.w,b.y+b.h]]);
+    rs.forEach(r=>{for(let i=0;i<=12;i++)pts.push(quadAt(r.p0,r.c,r.p1,i/12));if(showH){pts.push([r.label[0]-32,r.label[1]-12],[r.label[0]+32,r.label[1]+12])}});
+    const x0=Math.min(...pts.map(p=>p[0]))-M,y0=Math.min(...pts.map(p=>p[1]))-M,W=Math.ceil(Math.max(...pts.map(p=>p[0]))-x0+M),H=Math.ceil(Math.max(...pts.map(p=>p[1]))-y0+M);
+    let edges='',labels='',nodes='';
+    rs.forEach(r=>{const neg=r.e.sign<0;
+      edges+=`<path d="${r.d}" fill="none" stroke="${neg?NEG:LINE}" stroke-width="1.6"${neg?' stroke-dasharray="6 4"':''} marker-end="url(#${neg?'vm-ah-n':'vm-ah'})"/>`;
+      if(showH){const t=`H${r.i+1} (${neg?'−':'+'})`,w=measure(t)*0.92+10;labels+=`<g><rect x="${(r.label[0]-w/2).toFixed(1)}" y="${(r.label[1]-10).toFixed(1)}" width="${w.toFixed(1)}" height="20" rx="4" fill="#fff"/><text x="${r.label[0].toFixed(1)}" y="${(r.label[1]+4.5).toFixed(1)}" text-anchor="middle" font-size="12" font-style="italic" fill="${neg?NEG:INK}">${esc(t)}</text></g>`}});
+    bx.forEach(b=>{const ty=b.y+b.h/2-(b.lines.length-1)*8.5+4.5;
+      nodes+=`<g><rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" rx="10" fill="#f8fafc" stroke="${INK}" stroke-width="1.5"/><text x="${b.x+b.w/2}" text-anchor="middle" font-size="13" fill="${INK}">${b.lines.map((l,k)=>`<tspan x="${b.x+b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text></g>`});
+    const mk=(id,c)=>`<marker id="${id}" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>`;
+    const svgText=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="${x0.toFixed(1)} ${y0.toFixed(1)} ${W} ${H}" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="${esc('Mô hình nghiên cứu: '+model.edges.map(e=>`${e.from} tới ${e.to}`).join(', '))}"><defs>${mk('vm-ah',LINE)}${mk('vm-ah-n',NEG)}</defs><rect x="${x0.toFixed(1)}" y="${y0.toFixed(1)}" width="${W}" height="${H}" fill="#fff"/>${edges}${labels}${nodes}</svg>`;
+    return {svg:svgText,width:W,height:H};
   }
-  $('vm-copy-h').addEventListener('click',e=>{const hs=hypotheses(model,{mediation:$('vm-med').checked});if(hs.length)copy(hs.map(h=>`H${h.h}: ${h.text}`).join('\n'),e.currentTarget,'Sao chép giả thuyết')});
-  $('vm-link').addEventListener('click',e=>{save();copy(location.href,e.currentTarget,'Sao chép link')});
+  function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+  $('vm-svg').addEventListener('click',()=>{const x=exportSvg();if(!x){status('Chưa có mô hình để tải.');return}download(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n'+x.svg],{type:'image/svg+xml'}),'mo-hinh-nghien-cuu.svg');status('Đã tải SVG.')});
+  $('vm-png').addEventListener('click',()=>{
+    const x=exportSvg();if(!x){status('Chưa có mô hình để tải.');return}
+    const img=new Image(),scale=3;
+    img.onload=()=>{const c=document.createElement('canvas');c.width=x.width*scale;c.height=x.height*scale;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(img,0,0,c.width,c.height);c.toBlob(b=>{if(b){download(b,'mo-hinh-nghien-cuu.png');status('Đã tải PNG.')}else status('Trình duyệt không xuất được PNG, hãy tải SVG.')},'image/png')};
+    img.onerror=()=>status('Trình duyệt không xuất được PNG, hãy tải SVG.');
+    img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(x.svg);
+  });
+  async function copy(text,msg){
+    try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
+    status(msg);
+  }
+  $('vm-copy-h').addEventListener('click',()=>{const hs=hypotheses(model,{mediation:$('vm-med').checked});if(!hs.length){status('Chưa có giả thuyết: nối mũi tên trước.');return}copy(hs.map(h=>`H${h.h}: ${h.text}`).join('\n'),`Đã sao chép ${hs.length} giả thuyết.`)});
+  $('vm-link').addEventListener('click',()=>{flushSave();copy(location.href,'Đã sao chép link. Mở link này sẽ ra đúng mô hình và vị trí các ô.')});
 
-  model=load();update();
+  // ---- start ----
+  function boot(){
+    model=load();placeNew(model,opt());hist.reset(packModel(model));
+    renderAll();setMode('select');status('');
+    let first=true;
+    const ro=window.ResizeObserver?new ResizeObserver(()=>{if(first&&svg.clientWidth){first=false;fit(0.4)}}):null;
+    if(ro)ro.observe(stage);else fit(0.4);
+  }
+  window.addEventListener('hashchange',()=>{
+    const h=location.hash.match(/^#m=([\w-]+)/);if(!h)return;
+    try{const m=unpackModel(b64d(h[1]),isKey);if(packModel(m)===packModel(model))return;model=m;placeNew(model,opt());sel.nodes.clear();sel.edge=null;commit('Đã mở mô hình từ link.');fit()}catch(e){}
+  });
+  boot();
 })();
 </script>

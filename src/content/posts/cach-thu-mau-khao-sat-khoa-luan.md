@@ -7,6 +7,8 @@ featured: true
 tags: ["thu mẫu","khoá luận"]
 ---
 
+<p><strong>Thu mẫu khảo sát khoá luận đủ số và đúng người gồm sáu bước: chốt đối tượng và cỡ mẫu, chọn phương pháp chọn mẫu viết được vào chương 3, chuẩn bị bảng hỏi có câu gạn lọc và câu kiểm tra, chọn kênh phát phiếu và hiểu thiên lệch của từng kênh, theo dõi tiến độ theo hạn ngạch, và lọc phiếu trước khi chạy SPSS.</strong></p>
+
 <p>Tình huống quen thuộc: còn ba tuần nữa nộp bản thảo, bạn mới có 80 phiếu trên 300 phiếu cần, và một nửa trong số đó là bạn cùng lớp chứ không phải nhân viên văn phòng như đề tài yêu cầu. Thu mẫu là khâu sinh viên hay để muộn nhất và cũng là khâu dễ vỡ kế hoạch nhất. Bài này đi theo thứ tự công việc, từ lúc chốt cỡ mẫu tới lúc có dữ liệu sạch.</p>
 
 <h2>Bước 1: Chốt đối tượng và cỡ mẫu trước khi gửi link</h2>
@@ -47,7 +49,7 @@ tags: ["thu mẫu","khoá luận"]
 <li><strong>Nhóm lớp, nhóm Zalo, bạn bè:</strong> nhanh, miễn phí, nhưng gần như toàn sinh viên cùng tuổi. Chỉ hợp khi đối tượng nghiên cứu chính là sinh viên.</li>
 <li><strong>Nhóm Facebook theo chủ đề:</strong> tiếp cận được đúng sở thích (nhóm mẹ bỉm sữa, nhóm chạy bộ, nhóm review mỹ phẩm). Nhiều nhóm cấm đăng khảo sát, nên xin phép quản trị viên trước. Tỉ lệ phiếu điền bừa thường cao hơn kênh quen biết.</li>
 <li><strong>Nhờ giảng viên, doanh nghiệp, hội nhóm nghề nghiệp:</strong> chất lượng tốt, đúng đối tượng, nhưng phụ thuộc vào thiện chí người khác và thường chậm.</li>
-<li><strong>Phát trực tiếp:</strong> đứng ở siêu thị, quán cà phê, cổng bệnh viện. Mất công nhưng hợp với đối tượng ít dùng mạng xã hội, ví dụ người lớn tuổi.</li>
+<li><strong>Phát trực tiếp:</strong> đứng ở siêu thị, quán cà phê, cổng bệnh viện. Mất công nhưng hợp với đối tượng ít dùng mạng xã hội, ví dụ người lớn tuổi, hay người bệnh trong đề tài đo sự hài lòng bằng <a href="/thang-do/chat-luong-dich-vu-y-te/">thang đo PSQ-18</a>.</li>
 <li><strong>Nền tảng khảo sát có trả thưởng:</strong> bạn trả phí để tiếp cận cộng đồng người trả lời đã đăng ký. Hợp khi cần số lượng lớn trong thời gian ngắn hoặc đối tượng ngoài vòng quan hệ của bạn.</li>
 </ul>
 <p>Lấy ví dụ Genius Data. Theo trang bảng giá của Genius Data tại thời điểm viết (tháng 10/2026), người tạo khảo sát tự chọn mức thưởng cho mỗi câu: tối thiểu 0,15 GP/câu, mức gợi ý 0,4 GP/câu, 1 GP = 1.100 đ, giá đã gồm VAT, và chỉ trả cho phản hồi được duyệt. Với form 15 câu ở mức gợi ý, công cụ ước tính trên trang đó cho 6 GP mỗi phản hồi, tức khoảng 1.320.000 đ cho 200 phản hồi. Giá có thể thay đổi, nên hãy mở lại trang bảng giá trước khi lập ngân sách. Dù dùng nền tảng nào, hãy hỏi rõ ba điều: có chọn được đối tượng không, phiếu kém chất lượng xử lý ra sao, và bạn có phải trả tiền cho phiếu bị loại không.</p>

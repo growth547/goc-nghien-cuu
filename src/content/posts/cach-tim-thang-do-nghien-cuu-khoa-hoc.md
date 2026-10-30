@@ -6,6 +6,8 @@ featured: false
 tags: ["thang đo","bảng hỏi","khoá luận"]
 ---
 
+<p><strong>Cách tìm thang đo nghiên cứu khoa học: viết định nghĩa khái niệm và từ khoá tiếng Anh trước, rồi tìm theo thứ tự thư viện thang đo, Google Scholar, phần phương pháp và phụ lục của bài báo, truy ngược tới thang đo gốc, sổ tay thang đo, luận văn trong nước và cuối cùng là email cho tác giả.</strong> Khi có nhiều thang đo ứng viên, chọn bằng bảng tiêu chí: khớp định nghĩa, bằng chứng kiểm định trong bài gốc, bối cảnh gần với đề tài, số câu và quyền sử dụng.</p>
+
 <p>Bạn đã có mô hình nghiên cứu với năm khái niệm, giờ cần câu hỏi để đo từng khái niệm. Tìm "thang đo niềm tin" trên Google sẽ ra hàng trăm khoá luận với các bộ câu khác nhau, phần lớn không ghi rõ lấy từ đâu. Bài này trình bày quy trình tìm một thang đo có nguồn gốc rõ ràng: bắt đầu từ định nghĩa, tìm đúng chỗ trong bài báo, truy ngược tới bản gốc, và chọn giữa nhiều ứng viên bằng một bảng tiêu chí.</p>
 
 <h2>Bước 0: Viết định nghĩa và danh sách từ khoá tiếng Anh</h2>
@@ -32,7 +34,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 </table>
 
 <h3>1. Thư viện thang đo</h3>
-<p><a href="/thang-do/">Thư viện thang đo</a> của Góc Nghiên Cứu có hơn 60 thang đo với câu gốc tiếng Anh, bản tiếng Việt, thang trả lời và tài liệu gốc đã đối chiếu, xếp theo lĩnh vực: công nghệ, marketing, nhân sự, sức khoẻ tâm thần, giáo dục. Nếu khái niệm của bạn có ở đây, bạn đã tiết kiệm được các bước 2 đến 4. Vẫn nên mở bài gốc trong mục tài liệu tham khảo để tự kiểm tra.</p>
+<p><a href="/thang-do/">Thư viện thang đo</a> của Góc Nghiên Cứu có hơn 60 thang đo với câu gốc tiếng Anh, bản tiếng Việt, thang trả lời và tài liệu gốc đã đối chiếu, xếp theo lĩnh vực: công nghệ, marketing, nhân sự, sức khoẻ tâm thần, giáo dục, chất lượng dịch vụ (kể cả dịch vụ y tế, ví dụ <a href="/thang-do/chat-luong-dich-vu-y-te/">thang đo sự hài lòng người bệnh PSQ-18</a>). Nếu khái niệm của bạn có ở đây, bạn đã tiết kiệm được các bước 2 đến 4. Vẫn nên mở bài gốc trong mục tài liệu tham khảo để tự kiểm tra.</p>
 
 <h3>2. Google Scholar: cú pháp tìm hiệu quả</h3>
 <p>Thêm các từ chỉ phần đo lường vào tên khái niệm. Một số chuỗi tìm kiếm dùng được:</p>

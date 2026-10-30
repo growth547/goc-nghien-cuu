@@ -7,6 +7,8 @@ featured: false
 tags: ["làm sạch dữ liệu","SPSS"]
 ---
 
+<p><strong>Phiếu khảo sát không hợp lệ là phiếu không đúng đối tượng hoặc được điền cho xong, và nên lọc trước khi chạy SPSS theo tiêu chí khai báo từ trước:</strong> loại chắc chắn phiếu không qua câu gạn lọc và phiếu trùng lặp; loại phiếu trượt câu kiểm tra chú ý; với phiếu làm quá nhanh, điền rập khuôn hay trả lời câu đảo chiều ngược logic thì chỉ loại khi có thêm một dấu hiệu khác. Số phiếu loại theo từng tiêu chí phải được báo cáo trong chương 3.</p>
+
 <p>Bạn thu đủ 300 phiếu, mở SPSS chạy Cronbach's alpha và thấy một thang đo chỉ đạt 0,52. Chạy EFA thì các biến nhảy lung tung sang nhân tố khác. Trước khi nghi ngờ mô hình, hãy nghi ngờ dữ liệu. Trong rất nhiều bộ dữ liệu khoá luận, một phần phiếu được điền cho xong: chọn cùng một mức cho cả trang, bấm qua 40 câu trong một phút, hoặc trả lời mâu thuẫn với chính mình.</p>
 <p>Những phiếu này làm loãng tương quan giữa các biến, kéo alpha xuống và làm cấu trúc nhân tố méo đi. Meade và Craig (2012) gọi đây là phản hồi bất cẩn (careless responding). Bài này đi qua sáu loại phiếu cần soát, hai chỉ số thống kê bổ sung (longstring và khoảng cách Mahalanobis), một quy trình lọc bạn làm được bằng Excel hoặc SPSS và đoạn mẫu để báo cáo trong khoá luận.</p>
 

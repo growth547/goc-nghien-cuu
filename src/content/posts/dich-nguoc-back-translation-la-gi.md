@@ -31,7 +31,7 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <tr><td>ISPOR (Wild và cộng sự, 2005)</td><td>10 bước: chuẩn bị, dịch xuôi, hợp nhất, dịch ngược, rà soát bản dịch ngược, hài hoà giữa các ngôn ngữ, phỏng vấn nhận thức, hoàn thiện, đọc soát, báo cáo</td><td>Thang đo kết quả do bệnh nhân báo cáo, dự án đa quốc gia</td></tr>
 </tbody>
 </table>
-<p>Sousa và Rojjanasrirat (2011) và bộ hướng dẫn của Hội đồng Trắc nghiệm Quốc tế (International Test Commission, 2018) đi theo cùng tinh thần: nhiều người dịch độc lập, có bước đối chiếu bởi người hiểu khái niệm, và có bước thử với người trả lời thật.</p>
+<p>Sousa và Rojjanasrirat (2011) và bộ hướng dẫn của Hội đồng Trắc nghiệm Quốc tế (International Test Commission, 2018) đi theo cùng tinh thần: nhiều người dịch độc lập, có bước đối chiếu bởi người hiểu khái niệm, và có bước thử với người trả lời thật. Với đề tài y tế, có thể bắt đầu từ bản dịch đã có của <a href="/thang-do/chat-luong-dich-vu-y-te/">thang đo PSQ-18 về sự hài lòng của người bệnh</a>, kèm nguyên văn tiếng Anh để đối chiếu.</p>
 
 <h2>Quy trình 6 bước làm được trong khoá luận</h2>
 <p>Khoá luận đại học hiếm khi có ngân sách cho bốn người dịch chuyên nghiệp. Phiên bản dưới đây giữ các thành phần cốt lõi của Beaton và cộng sự (2000) và vẫn trình bày được vào chương 3.</p>

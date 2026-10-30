@@ -6,6 +6,8 @@ featured: false
 tags: ["thang đo","bảng hỏi","khoá luận"]
 ---
 
+<p><strong>Thang đo gốc là bộ câu hỏi do tác giả đầu tiên xây dựng và kiểm định trong một bài báo cụ thể. Kế thừa (adopted) là dùng lại nguyên thang đo gốc, chỉ dịch và thay tên đối tượng; kế thừa có hiệu chỉnh (adapted) là thêm, bớt, viết lại câu hoặc đổi thang trả lời, và mỗi thay đổi cần lý do cùng bằng chứng kiểm định.</strong></p>
+
 <p>Trong chương 3 gần như khoá luận nào cũng có câu "thang đo được kế thừa và hiệu chỉnh từ các nghiên cứu trước". Câu này đúng nhưng chưa đủ: hội đồng muốn biết thang đo gốc là của ai, bạn đã sửa những gì, vì sao sửa, và bạn có bằng chứng nào cho thấy bản đã sửa vẫn đo đúng khái niệm. Bài này định nghĩa ba thuật ngữ, phân loại các kiểu hiệu chỉnh theo mức rủi ro, và đưa ra mẫu bảng ghi nguồn bạn có thể dùng ngay.</p>
 
 <h2>Ba khái niệm trong một bảng</h2>

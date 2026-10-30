@@ -7,6 +7,8 @@ featured: false
 tags: ["Google Forms","bảng hỏi","SPSS"]
 ---
 
+<p><strong>Để tạo phiếu khảo sát trên Google Form cho khoá luận, dùng loại câu hỏi "Lưới trắc nghiệm" hoặc "Trắc nghiệm" cho thang Likert, đặt câu gạn lọc với "Chuyển đến phần dựa trên câu trả lời", chèn câu kiểm tra chú ý, trộn thứ tự câu nhưng không trộn thứ tự mức, chạy thử rồi mới phát link.</strong> Dữ liệu từ Google Sheets cần đổi nhãn thành số trước khi đưa vào SPSS.</p>
+
 <p>Các hướng dẫn Google Forms phổ biến dạy bạn bấm nút "Thêm câu hỏi". Bài này tập trung vào những thứ quyết định dữ liệu có dùng được không: loại câu hỏi cho thang Likert, câu gạn lọc, câu kiểm tra chú ý, trộn thứ tự câu, và đưa dữ liệu từ Google Sheets vào SPSS. Bài giả định bạn đã có nội dung bảng hỏi hoàn chỉnh. Nếu chưa, đọc trước bài <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a> và <a href="/posts/cach-thiet-ke-bang-hoi/">cách thiết kế bảng hỏi</a>.</p>
 <p>Tên nút trong bài theo giao diện tiếng Việt, kèm tên tiếng Anh ở những chỗ hay được dịch khác nhau giữa các phiên bản.</p>
 

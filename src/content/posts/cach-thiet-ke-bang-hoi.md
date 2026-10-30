@@ -7,6 +7,8 @@ featured: false
 tags: ["bảng hỏi","thang đo"]
 ---
 
+<p><strong>Thiết kế bảng hỏi khảo sát tốt là bắt đầu từ mô hình nghiên cứu (mỗi khái niệm một thang đo có nguồn), tránh câu hỏi kép, câu dẫn dắt và từ tuyệt đối, giữ form ngắn vừa đủ để người trả lời không làm qua loa ở nửa sau, và chạy thử hai vòng trước khi phát chính thức:</strong> phỏng vấn nhận thức với 5–10 người, rồi chạy form thật với một nhóm nhỏ.</p>
+
 <p>Phần lớn rắc rối khi phân tích dữ liệu khảo sát bắt nguồn từ bảng hỏi. Thang đo có alpha thấp vì một câu bị hiểu theo hai nghĩa. Phân tích hồi quy vô nghĩa vì câu hỏi ép người trả lời đồng ý. Tỉ lệ bỏ dở cao vì form dài 80 câu. Những lỗi này không sửa được sau khi đã thu xong 300 phiếu.</p>
 <p>Bài này đi qua các lỗi hay gặp, thứ tự câu, độ dài form, phần đồng ý tham gia, cách chạy thử và cỡ mẫu cho vòng chạy thử.</p>
 
@@ -57,7 +59,7 @@ tags: ["bảng hỏi","thang đo"]
 <li>Nhờ ba người thuộc đối tượng làm thử và bấm giờ. Thời gian của bạn luôn ngắn hơn của họ.</li>
 <li>Ghi thời gian dự kiến trung thực ở lời giới thiệu.</li>
 <li>Rà lại từng câu theo câu hỏi ở đầu bài: câu này dùng cho phân tích nào? Câu "để cho đủ" thì bỏ.</li>
-<li>Cỡ mẫu và số biến quan sát liên quan với nhau: quy tắc của Hair và cộng sự (2010) cho EFA tính cỡ mẫu theo số biến quan sát, nên thêm câu cũng là thêm phiếu phải thu. Dùng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để thấy rõ.</li>
+<li>Cỡ mẫu và số biến quan sát liên quan với nhau: quy tắc của Hair và cộng sự (2010) cho EFA tính cỡ mẫu theo số biến quan sát, nên thêm câu cũng là thêm phiếu phải thu. Dùng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a> để thấy rõ. Kế hoạch thu đủ số phiếu đó đúng hạn có trong bài <a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu khảo sát nhanh</a>.</li>
 </ul>
 
 <h2>Câu kiểm tra và câu đối chiếu</h2>

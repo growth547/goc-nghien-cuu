@@ -76,7 +76,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 </tbody>
 </table>
 <p>Các con số trong bảng là ví dụ minh hoạ cách trình bày. Dùng "ủng hộ" và "không ủng hộ" (supported, not supported), tránh "chấp nhận" và "bác bỏ" giả thuyết nghiên cứu, vì về mặt thống kê, cái bị bác bỏ hay không là H0. Kèm theo β, p, và nếu dùng PLS-SEM thì thêm khoảng tin cậy bootstrap và f². Cách trình bày chương 4 đầy đủ có trong bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>.</p>
-<p>Giả thuyết không được ủng hộ không phải là thất bại. Đó là kết quả cần thảo luận: vì sao ở bối cảnh của bạn quan hệ này không xuất hiện. Hội đồng đánh giá phần giải thích, không đánh giá số giả thuyết được ủng hộ.</p>
+<p>Giả thuyết không được ủng hộ không phải là thất bại. Đó là kết quả cần thảo luận: vì sao ở bối cảnh của bạn quan hệ này không xuất hiện. Hội đồng đánh giá phần giải thích, không đánh giá số giả thuyết được ủng hộ. Cách viết phần này ở chương 5 có trong mục "Khi giả thuyết bị bác bỏ" của bài <a href="/posts/ham-y-quan-tri-cach-viet-chuong-5/#khi-gia-thuyet-bi-bac-bo">hàm ý quản trị và cách viết chương 5</a>.</p>
 
 <p>Giả thuyết không được ủng hộ vẫn là một kết quả có giá trị nếu phương pháp đúng. <a href="/cong-cu/bac-si-ket-qua/">Bác sĩ kết quả</a> giúp kiểm tra những nguyên nhân kỹ thuật (cỡ mẫu, đa cộng tuyến, thang đo) trước khi viết phần thảo luận.</p>
 

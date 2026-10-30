@@ -7,6 +7,8 @@ featured: false
 tags: ["làm sạch dữ liệu","AI"]
 ---
 
+<p><strong>Không nên dựa vào máy dò văn bản AI để loại phiếu khảo sát, vì độ chính xác của chúng thấp (OpenAI đã ngừng công cụ phân loại của chính họ năm 2023).</strong> Câu trả lời do chatbot viết được nhận ra bằng nhiều dấu hiệu cùng lúc: văn quá trau chuốt so với phần còn lại của mẫu, cấu trúc "thứ nhất, thứ hai, cuối cùng", cụm từ lặp giữa các phiếu và không khớp với câu trả lời trắc nghiệm của chính người đó; cách phòng tốt nhất là hỏi về trải nghiệm cụ thể mà AI không biết.</p>
+
 <p>Bạn đọc phần trả lời tự luận của 200 phiếu. Phần lớn ngắn, có lỗi chính tả, viết kiểu nói chuyện. Rồi tới phiếu số 87: ba đoạn văn mạch lạc, có mở bài, có "thứ nhất, thứ hai, cuối cùng", kết bằng một câu tổng kết gọn gàng. Phiếu số 112 cũng vậy. Phiếu số 140 cũng vậy, và dùng gần đúng những cụm từ của phiếu 87.</p>
 <p>Câu trả lời do chatbot viết đã thành chuyện thường gặp trong khảo sát trực tuyến, nhất là khảo sát có trả thưởng. Câu trả lời như vậy không phản ánh trải nghiệm hay quan điểm của người được hỏi, nên không dùng được làm dữ liệu nghiên cứu. Bài này giúp bạn nhận diện bằng mắt và thiết kế câu hỏi để giảm vấn đề ngay từ đầu.</p>
 

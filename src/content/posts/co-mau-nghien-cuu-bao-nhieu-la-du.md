@@ -41,7 +41,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 </table>
 <p>Giảm sai số đi một nửa thì cỡ mẫu tăng gấp bốn, vì e nằm ở mẫu số dưới dạng bình phương. Nếu đổi sang độ tin cậy 99% với e = 0,05: 2,576² × 0,25 / 0,0025 = 663,58, làm tròn lên 664.</p>
 <h3>Hiệu chỉnh khi tổng thể nhỏ</h3>
-<p>Khi biết quy mô tổng thể N và N không quá lớn (ví dụ toàn bộ nhân viên một công ty), Cochran (1977) đưa ra công thức hiệu chỉnh:</p>
+<p>Khi biết quy mô tổng thể N và N không quá lớn (ví dụ toàn bộ nhân viên một công ty, hay người bệnh điều trị nội trú của một khoa khi khảo sát sự hài lòng bằng <a href="/thang-do/chat-luong-dich-vu-y-te/">thang đo PSQ-18</a>), Cochran (1977) đưa ra công thức hiệu chỉnh:</p>
 <p><code>n = n0 / (1 + (n0 − 1) / N)</code></p>
 <p>Với N = 2.000 và n0 = 384,16: (384,16 − 1) / 2.000 = 0,19158; mẫu số là 1,19158; n = 384,16 / 1,19158 = 322,40, làm tròn lên <strong>323</strong>. Với N = 500, kết quả là 217,49, làm tròn lên 218. Với tổng thể vài chục nghìn trở lên, phần hiệu chỉnh gần như không đổi kết quả, nên dùng thẳng 385.</p>
 

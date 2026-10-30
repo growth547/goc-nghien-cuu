@@ -69,7 +69,9 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 | `/du-lieu/` | không | DataCatalog chứa các Dataset | `dataCatalogLd(datasets, catalogUrl, d => url)` |
 | `/du-lieu/[slug]` | Dataset + DataDownload | giữ nguyên; bảo đảm có `license`, `temporalCoverage`, `creator` = World Bank | – |
 | `/mau-bang-hoi/[slug]` | Article | không cần thêm; có thể thêm `about` trỏ tới các `#<CODE>` của trang thang đo | – |
-| Công cụ (ToolLayout) | WebApplication | giữ nguyên | – |
+| Công cụ (ToolLayout) | WebApplication (offers giá 0, isAccessibleForFree), BreadcrumbList | giữ nguyên | – |
+| `/cong-cu/` | ItemList 11 công cụ theo thứ tự làm khoá luận | – | trong `src/pages/cong-cu/index.astro` |
+| Bài viết (PostLayout) | BlogPosting (author = Organization "Ban biên tập", publisher, dateModified, keywords = tags); FAQPage tự sinh từ mục "Câu hỏi thường gặp" (mỗi `<h3>` là một câu hỏi) | không thêm HowTo (Google đã bỏ rich result HowTo; bài "từng bước" vẫn là BlogPosting) | `src/utils/postFaq.ts` |
 | `/phuong-phap-bien-soan/` | AboutPage + Organization (publishingPrinciples, correctionsPolicy) | đã có | `publisherLd` |
 | Trang chủ | WebSite, Organization | thêm `publishingPrinciples` trỏ tới `/phuong-phap-bien-soan/` (dùng `publisherLd`) | `publisherLd` |
 

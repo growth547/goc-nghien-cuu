@@ -7,6 +7,8 @@ featured: false
 tags: ["thang đo","bảng hỏi"]
 ---
 
+<p><strong>Thang đo Likert là thang đo mức độ đồng ý với từng nhận định, do Rensis Likert giới thiệu năm 1932; khoá luận ở Việt Nam thường dùng 5 hoặc 7 mức.</strong> Thang quá ít mức (2 đến 4) kém hơn về độ tin cậy, còn giữa 5 và 7 mức khác biệt nhỏ, nên giữ đúng số mức của thang đo gốc, chọn 5 mức khi người trả lời lớn tuổi hoặc làm trên điện thoại, và nhớ mã hoá lại câu đảo chiều trước khi tính Cronbach's alpha.</p>
+
 <p>Gần như khoá luận định lượng nào về hành vi, thái độ hay sự hài lòng cũng dùng thang đo Likert. Vì quá quen nên nhiều bạn chọn 5 mức theo thói quen, chép nhãn từ một bài khác, rồi đến lúc chạy Cronbach's alpha mới phát hiện vài câu đảo chiều chưa mã hoá lại. Bài này giúp bạn quyết định từ đầu: bao nhiêu mức, nhãn ghi thế nào, viết câu ra sao và xử lý dữ liệu thế nào cho đúng.</p>
 
 <h2>Thang đo Likert là gì</h2>
@@ -83,7 +85,7 @@ tags: ["thang đo","bảng hỏi"]
 </ul>
 
 <h2>Câu đảo chiều và cách mã hoá lại</h2>
-<p>Câu đảo chiều là câu viết theo hướng ngược với khái niệm, ví dụ trong thang "Sự hài lòng" có câu "Tôi thường thấy thất vọng với dịch vụ này". Một hai câu đảo chiều giúp phát hiện người chọn cùng một mức cho cả khối câu. Nhưng câu đảo chiều cũng dễ bị đọc nhầm, nên đừng dùng quá nhiều, và câu đó phải viết rõ ràng.</p>
+<p>Câu đảo chiều là câu viết theo hướng ngược với khái niệm, ví dụ trong thang "Sự hài lòng" có câu "Tôi thường thấy thất vọng với dịch vụ này". Một hai câu đảo chiều giúp phát hiện người chọn cùng một mức cho cả khối câu. Nhưng câu đảo chiều cũng dễ bị đọc nhầm, nên đừng dùng quá nhiều, và câu đó phải viết rõ ràng. Một số thang đo được thiết kế cân bằng hai chiều, ví dụ <a href="/thang-do/chat-luong-dich-vu-y-te/">thang đo PSQ-18 về sự hài lòng của người bệnh</a> có 9 trong 18 câu đảo chiều, nên bước mã hoá lại là bắt buộc.</p>
 <p>Trước khi phân tích, phải mã hoá lại để điểm cao luôn có nghĩa là nhiều khái niệm hơn:</p>
 <ul>
 <li>Thang 5 mức: giá trị mới = 6 − giá trị cũ (1 thành 5, 2 thành 4, 3 giữ nguyên).</li>

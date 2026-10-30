@@ -1,5 +1,5 @@
 ---
-title: "Cách xây dựng mô hình nghiên cứu đề xuất: 7 bước có ví dụ"
+title: "Mô hình nghiên cứu đề xuất: cách xây dựng 7 bước, có ví dụ"
 description: "Cách xây dựng mô hình nghiên cứu đề xuất từ lý thuyết nền: chọn biến, lập ma trận nghiên cứu trước, lập luận từng mũi tên, vẽ mô hình, kiểm tra cỡ mẫu."
 pubDatetime: 2026-10-30T09:10:00+07:00
 featured: false
@@ -54,6 +54,8 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 </tbody>
 </table>
 
+<p>Mô hình có biến trung gian hoặc điều tiết thì phương pháp phân tích phải khớp với hình vẽ: <a href="/cong-cu/chon-phuong-phap/">công cụ chọn phương pháp phân tích</a> gợi ý PLS-SEM, CB-SEM hay hồi quy theo cấu trúc mô hình, còn mô hình nhỏ một trung gian hoặc một điều tiết có thể chạy thẳng bằng <a href="/cong-cu/trung-gian-dieu-tiet/">công cụ kiểm định trung gian, điều tiết</a>.</p>
+
 <h2>Ví dụ đầy đủ: ý định tiếp tục sử dụng ví điện tử</h2>
 <p><strong>Bối cảnh:</strong> sinh viên đã dùng ví điện tử ít nhất 3 tháng. Vì đối tượng đã dùng, lý thuyết nền là ECM.</p>
 <p><strong>Ma trận nguồn khái niệm:</strong></p>
@@ -99,7 +101,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <h3>Có được dùng mô hình y nguyên của một nghiên cứu khác?</h3>
 <p>Được, nếu bạn ghi rõ và đóng góp của bạn nằm ở bối cảnh, đối tượng hoặc thời điểm. Nên giải thích vì sao kết quả ở bối cảnh mới có thể khác.</p>
 <h3>Biến trung gian và biến điều tiết khác nhau thế nào trên hình vẽ?</h3>
-<p>Biến trung gian nằm giữa chuỗi X → M → Y. Biến điều tiết thay đổi độ mạnh của quan hệ X → Y, vẽ bằng mũi tên từ biến điều tiết chỉ vào mũi tên X → Y (Baron &amp; Kenny, 1986).</p>
+<p>Biến trung gian nằm giữa chuỗi X → M → Y. Biến điều tiết thay đổi độ mạnh của quan hệ X → Y, vẽ bằng mũi tên từ biến điều tiết chỉ vào mũi tên X → Y (Baron &amp; Kenny, 1986). Cách kiểm định từng loại kèm ví dụ số có ở bài <a href="/posts/bien-trung-gian-bien-dieu-tiet-la-gi/">biến trung gian và biến điều tiết là gì</a>.</p>
 <h3>Mô hình vẽ bằng gì để chèn vào Word?</h3>
 <p>Dùng công cụ vẽ trực tuyến xuất SVG hoặc PNG độ phân giải cao, hoặc SmartArt và Shapes trong Word. Giữ phông chữ trong hình giống phông của bài.</p>
 

@@ -58,7 +58,9 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <p>Cách kiểm định trung gian theo bốn bước của Baron và Kenny (1986) đã được xem lại: Zhao và cộng sự (2010) cho thấy điều kiện duy nhất cần cho trung gian là tác động gián tiếp X → M → Y có ý nghĩa, kiểm định bằng bootstrap; tác động tổng của X lên Y không cần có ý nghĩa. Vì vậy, viết giả thuyết trung gian theo tác động gián tiếp, như mẫu trong bảng trên, và báo cáo khoảng tin cậy bootstrap của tác động gián tiếp.</p>
 <p>Nếu mô hình có trung gian, giả thuyết trung gian thường được đánh số sau các giả thuyết trực tiếp (ví dụ H7, H8), hoặc ký hiệu H7a, H7b nếu có nhiều đường gián tiếp.</p>
 <h3>Điều tiết</h3>
-<p>Giả thuyết điều tiết nên nêu cả chiều điều tiết: quan hệ mạnh hơn hay yếu hơn ở nhóm nào. "W điều tiết quan hệ giữa X và Y" mà không nói chiều thì gần như không bác bỏ được, vì bất kỳ tương tác nào cũng "ủng hộ" nó.</p>
+<p>Giả thuyết điều tiết nên nêu cả chiều điều tiết: quan hệ mạnh hơn hay yếu hơn ở nhóm nào. "W điều tiết quan hệ giữa X và Y" mà không nói chiều thì gần như không bác bỏ được, vì bất kỳ tương tác nào cũng "ủng hộ" nó. Cách kiểm định giả thuyết điều tiết bằng biến tương tác và độ dốc đơn có ở bài <a href="/posts/bien-trung-gian-bien-dieu-tiet-la-gi/">biến trung gian và biến điều tiết là gì</a>.</p>
+
+<p>Khoảng tin cậy bootstrap cho tác động gián tiếp và đồ thị tương tác cho giả thuyết điều tiết tính được bằng <a href="/cong-cu/trung-gian-dieu-tiet/">công cụ kiểm định biến trung gian và điều tiết online</a>, theo các Model 4, 6, 1, 7 của PROCESS.</p>
 
 <h2>Có hướng hay không có hướng</h2>
 <p>"X có tác động đến Y" là giả thuyết không có hướng; "X có tác động cùng chiều đến Y" là có hướng. Khoá luận dựa trên lý thuyết nền nên dùng giả thuyết có hướng. Lưu ý khi kiểm định: SPSS và SmartPLS mặc định báo p hai phía. Nếu bạn dùng p một phía cho giả thuyết có hướng, ghi rõ trong chương 3; nếu không ghi gì, người đọc hiểu là hai phía. Một hệ số có ý nghĩa nhưng ngược dấu với giả thuyết có hướng nghĩa là giả thuyết <strong>không được ủng hộ</strong>, dù p nhỏ.</p>
@@ -75,6 +77,8 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 </table>
 <p>Các con số trong bảng là ví dụ minh hoạ cách trình bày. Dùng "ủng hộ" và "không ủng hộ" (supported, not supported), tránh "chấp nhận" và "bác bỏ" giả thuyết nghiên cứu, vì về mặt thống kê, cái bị bác bỏ hay không là H0. Kèm theo β, p, và nếu dùng PLS-SEM thì thêm khoảng tin cậy bootstrap và f². Cách trình bày chương 4 đầy đủ có trong bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>.</p>
 <p>Giả thuyết không được ủng hộ không phải là thất bại. Đó là kết quả cần thảo luận: vì sao ở bối cảnh của bạn quan hệ này không xuất hiện. Hội đồng đánh giá phần giải thích, không đánh giá số giả thuyết được ủng hộ.</p>
+
+<p>Giả thuyết không được ủng hộ vẫn là một kết quả có giá trị nếu phương pháp đúng. <a href="/cong-cu/bac-si-ket-qua/">Bác sĩ kết quả</a> giúp kiểm tra những nguyên nhân kỹ thuật (cỡ mẫu, đa cộng tuyến, thang đo) trước khi viết phần thảo luận.</p>
 
 <h2>Không sửa giả thuyết sau khi thấy kết quả</h2>
 <p>Kerr (1998) gọi việc viết lại giả thuyết sau khi biết kết quả là HARKing (hypothesizing after the results are known), ví dụ đổi "cùng chiều" thành "ngược chiều" vì hệ số ra âm, hoặc xoá giả thuyết không được ủng hộ khỏi chương 2. Việc này biến một phát hiện ngẫu nhiên thành "dự đoán thành công" và làm sai lệch kết luận. Cách tránh đơn giản: chốt và lưu bản chương 2 có ngày trước khi thu dữ liệu, giống tinh thần đăng ký trước mà Nosek và cộng sự (2018) đề xuất. Phát hiện bất ngờ vẫn được viết, nhưng trong phần thảo luận, ghi rõ là phát hiện ngoài giả thuyết.</p>

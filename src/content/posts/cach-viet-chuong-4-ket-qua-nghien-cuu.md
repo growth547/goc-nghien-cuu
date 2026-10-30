@@ -24,7 +24,7 @@ tags: ["khoá luận","SPSS","PLS-SEM"]
 <tr><td>4.9</td><td>Thảo luận kết quả</td><td></td></tr>
 </tbody>
 </table>
-<p>Một số trường tách thảo luận sang chương 5; nội dung cần viết vẫn như nhau.</p>
+<p>Một số trường tách thảo luận sang chương 5; nội dung cần viết vẫn như nhau. Cách biến kết quả chương 4 thành hàm ý có căn cứ ở chương 5 có ở bài <a href="/posts/ham-y-quan-tri-cach-viet-chuong-5/">hàm ý quản trị là gì</a>.</p>
 <p>Quy tắc cho mọi mục: <strong>bảng, rồi một đoạn diễn giải gồm ba ý</strong>: con số chính, so với ngưỡng nào (có nguồn), và kết luận dẫn sang bước sau. Không dán ảnh chụp màn hình SPSS; dựng lại bảng gọn trong Word, chỉ giữ các cột cần thiết.</p>
 
 <h2>4.1 Mô tả mẫu</h2>

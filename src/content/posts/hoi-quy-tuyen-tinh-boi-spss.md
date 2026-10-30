@@ -69,7 +69,7 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 <p>Đọc theo cột:</p>
 <ul>
 <li><strong>B (chưa chuẩn hoá)</strong>: khi PU tăng 1 điểm và các biến khác giữ nguyên, BI tăng trung bình 0,318 điểm. Dùng B để viết phương trình và diễn giải theo đơn vị thang đo.</li>
-<li><strong>Beta (chuẩn hoá)</strong>: dùng để so sánh mức tác động giữa các biến trong cùng mô hình. PU (0,312) mạnh nhất, tiếp theo TR (0,235) và SI (0,226).</li>
+<li><strong>Beta (chuẩn hoá)</strong>: dùng để so sánh mức tác động giữa các biến trong cùng mô hình. PU (0,312) mạnh nhất, tiếp theo TR (0,235) và SI (0,226). Thứ tự này cũng là thứ tự ưu tiên khi viết hàm ý ở chương 5, xem bài <a href="/posts/ham-y-quan-tri-cach-viet-chuong-5/">hàm ý quản trị là gì</a>.</li>
 <li><strong>t = B / Std. Error</strong>: 0,318 / 0,058 = 5,48.</li>
 <li><strong>Sig.</strong>: PU, SI, TR có p &lt; 0,05 nên giả thuyết tương ứng được ủng hộ. EE có p = 0,060 &gt; 0,05 nên không được ủng hộ ở mức 5%. Kiểm tra dấu của B khớp với chiều giả thuyết; hệ số ngược dấu thì giả thuyết không được ủng hộ dù p nhỏ.</li>
 <li><strong>Hằng số</strong> không có ý nghĩa thống kê thì không sao; nó không phải đối tượng kiểm định.</li>

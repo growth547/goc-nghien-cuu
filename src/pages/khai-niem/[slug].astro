@@ -43,7 +43,7 @@ const parts = d.constructs.map(({ key, note }) => {
 const hasReverse = parts.some(p => p.c.items.some(i => i.reverse));
 // One rule per scale that has reversed items, on that scale's own range (PSS-10: 4 − điểm, CBI: 100 − điểm…).
 const reverseRules = [
-  ...new Set(parts.filter(p => p.c.items.some(i => i.reverse)).map(p => `${p.scale.data.name}: ${reverseRule(p.scale.data.responseScale)}`)),
+  ...new Set(parts.filter(p => p.c.items.some(i => i.reverse)).map(p => `${p.scale.data.name}: ${p.scale.data.reverseRule ?? reverseRule(p.scale.data.responseScale)}`)),
 ];
 const kitBase = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
 const kitHref = (key: string) => `${kitBase}?c=${encodeURIComponent(key)}`;
@@ -182,7 +182,7 @@ const ld = [
             </div>
             {!isAgreementScale(p.scale.data.responseScale) && (
               <p class="text-sm">
-                <strong>Thang trả lời:</strong> {p.scale.data.responseScale}
+                <strong>Thang trả lời:</strong> {p.scale.data.responseScaleShort ?? p.scale.data.responseScale}
               </p>
             )}
             <p class="text-muted-foreground text-sm">

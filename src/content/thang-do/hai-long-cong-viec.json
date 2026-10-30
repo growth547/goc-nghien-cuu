@@ -29,6 +29,36 @@
     "'Ở đây' trong JS3 nghĩa là tổ chức đang làm việc; có thể đổi thành 'ở [công ty]' cho rõ, nhưng giữ đúng ý thích làm việc tại nơi này.",
     "Muốn đo hài lòng theo từng khía cạnh (lương, thăng tiến, đồng nghiệp…) thì cần thang khác như Job Descriptive Index hoặc Job Satisfaction Survey; thang này chỉ cho một điểm tổng."
   ],
+  "reliability": [
+    {
+      "construct": "Hài lòng công việc tổng thể (MOAQ-JSS, 3 biến), thang 1–5",
+      "value": "α = 0,78",
+      "sample": "n = 125 điều dưỡng một bệnh viện công ở Riyadh, Ả Rập Xê Út, năm 2024, trả lời bằng tiếng Anh",
+      "source": "Shaqiqi (2025), mục Instruments",
+      "url": "https://doi.org/10.1155/jonm/8062261"
+    },
+    {
+      "construct": "Hài lòng công việc tổng thể (MOAQ-JSS, 3 biến), thang 1–5",
+      "value": "α = 0,71",
+      "sample": "n = 141 điều dưỡng hai bệnh viện ở Ả Rập Xê Út",
+      "source": "Shaqiqi (2026), mục Instruments",
+      "url": "https://doi.org/10.1155/jonm/2960879"
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Thang chỉ có 3 biến, vậy có đủ để đo hài lòng công việc không?",
+      "a": "Đủ nếu đề tài cần mức hài lòng chung. Ba biến của Cammann và cộng sự (1979) đo hài lòng tổng thể, không đo từng khía cạnh như lương hay cấp trên, và đã được Bowling & Hammond (2008) tổng hợp bằng phân tích tổng hợp (meta-analysis) về giá trị cấu trúc. Nếu giả thuyết của em nói về từng khía cạnh, ví dụ lương ảnh hưởng tới ý định nghỉ việc, thì phải dùng thang đo theo khía cạnh, không dùng thang này."
+    },
+    {
+      "q": "Bản gốc dùng thang mấy mức? Em dùng 5 mức có được không?",
+      "a": "Bộ MOAQ năm 1975 dùng thang đồng ý 7 mức, bản trong kho của Spector (n.d.) dùng 6 mức, còn nhiều nghiên cứu sau dùng 5 mức, ví dụ Shaqiqi (2025) và Shaqiqi (2026) với điểm tổng từ 3 đến 15. Số mức không làm thay đổi nội dung câu hỏi, nhưng em phải ghi rõ số mức trong phần phương pháp và không so trực tiếp điểm trung bình với nghiên cứu dùng thang khác số mức."
+    },
+    {
+      "q": "Cronbach's alpha của em chỉ khoảng 0,7, có chấp nhận được không?",
+      "a": "Với thang 3 biến, alpha quanh 0,7 đến 0,8 là bình thường vì alpha phụ thuộc số biến; Shaqiqi (2026) báo cáo α = 0,71 và Shaqiqi (2025) α = 0,78 với chính thang này. Trước khi kết luận, em kiểm tra đã đảo điểm câu JS2 chưa, vì quên đảo sẽ làm alpha giảm mạnh và tương quan biến tổng của JS2 bị âm. Không nên bỏ biến vì thang chỉ còn 2 câu."
+    }
+  ],
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu hài lòng công việc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
@@ -37,13 +67,21 @@
     "Bowling, N. A., &amp; Hammond, G. D. (2008). A meta-analytic examination of the construct validity of the Michigan Organizational Assessment Questionnaire Job Satisfaction Subscale. <em>Journal of Vocational Behavior, 73</em>(1), 63–77. https://doi.org/10.1016/j.jvb.2008.01.004",
     "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1979). <em>The Michigan Organizational Assessment Questionnaire</em> [Unpublished manuscript]. University of Michigan.",
     "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1983). Assessing the attitudes and perceptions of organizational members. In S. E. Seashore, E. E. Lawler, P. H. Mirvis, &amp; C. Cammann (Eds.), <em>Assessing organizational change: A guide to methods, measures, and practices</em>. Wiley.",
+    "Shaqiqi, W. (2025). Job satisfaction as a predictor of emotional labor among nurses: A cross-sectional study. <em>Journal of Nursing Management, 2025</em>(1), 8062261. https://doi.org/10.1155/jonm/8062261",
+    "Shaqiqi, W. (2026). The mediating role of job satisfaction in the relationship between perceived organizational support and nurses' turnover intentions. <em>Journal of Nursing Management, 2026</em>(1), 2960879. https://doi.org/10.1155/jonm/2960879",
     "Spector, P. E. (n.d.). <em>Michigan Organizational Assessment Questionnaire (MOAQ)</em> [Assessment archive]. Retrieved October 30, 2026, from https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/"
   ],
   "verifiedFrom": [
     "https://paulspector.com/assessment-files/other/moaq-job-satisfaction.docx",
     "https://paulspector.com/assessment-files/other/moaq.pdf",
     "https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/",
-    "https://api.crossref.org/works/10.1016/j.jvb.2008.01.004"
+    "https://api.crossref.org/works/10.1016/j.jvb.2008.01.004",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(%22Michigan%20Organizational%20Assessment%20Questionnaire%22%20OR%20%22MOAQ%22)%20AND%20%22job%20satisfaction%22%20AND%20OPEN_ACCESS:y&format=json",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(Cammann%20OR%20%22Michigan%20Organizational%20Assessment%20Questionnaire%22)%20AND%20(Vietnam%20OR%20Vietnamese)%20AND%20OPEN_ACCESS:y&format=json",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12352989/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13392518/fullTextXML",
+    "https://api.crossref.org/works/10.1155/jonm/8062261",
+    "https://api.crossref.org/works/10.1155/jonm/2960879"
   ],
   "related": ["y-dinh-nghi-viec", "cam-ket-to-chuc-ocq", "gan-ket-cong-viec-uwes", "dong-luc-lam-viec-mwms"]
 }

@@ -125,6 +125,80 @@
     "SAT là thang đối nghĩa, không phải câu đồng ý; giữ dạng hai đầu mút trên bảng hỏi, đừng đổi thành 'Tôi hài lòng…' rồi vẫn ghi nguồn như bản gốc.",
     "ECM chỉ áp dụng cho người đã dùng hệ thống; thêm câu sàng lọc 'đã sử dụng [hệ thống] ít nhất một lần trong 3 tháng gần đây' để loại người chưa dùng."
   ],
+  "model": {
+    "paths": [
+      "Sự xác nhận kỳ vọng (CONF) → Nhận thức sự hữu ích (PU)",
+      "Sự xác nhận kỳ vọng (CONF) → Sự hài lòng (SAT)",
+      "Nhận thức sự hữu ích (PU) → Sự hài lòng (SAT)",
+      "Sự hài lòng (SAT) → Ý định tiếp tục sử dụng (CI)",
+      "Nhận thức sự hữu ích (PU) → Ý định tiếp tục sử dụng (CI)"
+    ],
+    "note": "Ý định tiếp tục do sự hài lòng và nhận thức sự hữu ích quyết định; sự hài lòng chịu ảnh hưởng của mức xác nhận kỳ vọng và sự hữu ích; sự hữu ích sau chấp nhận chịu ảnh hưởng của sự xác nhận. Bài gốc khảo sát khách hàng ngân hàng trực tuyến (n = 122), R² của ý định tiếp tục là 41%; bản lặp lại với ứng dụng mobile banking (n = 256) đạt 67%, cả năm giả thuyết đều được ủng hộ.",
+    "source": "Bhattacherjee (2001), phần tóm tắt; Vedadi & Warkentin (2016), Bảng 3, tr. 5."
+  },
+  "reliability": [
+    {
+      "construct": "PU / SAT / CI / CONF",
+      "value": "Độ tin cậy tổng hợp = 0,929 / 0,959 / 0,856 / 0,809",
+      "sample": "n = 256 sinh viên một trường đại học công lập Hoa Kỳ dùng ứng dụng mobile banking",
+      "source": "Vedadi & Warkentin (2016), Bảng 1, tr. 4",
+      "url": "https://dm.its.msstate.edu/cob/mw156/intellcont/VedadiWarkentin2016_AISTRR2_7_ContinuanceMobileBanking-1.pdf"
+    },
+    {
+      "construct": "CONF (10 biến) / PU (7 biến) / SAT (3 biến)",
+      "value": "α = 0,954 / 0,917 / 0,870",
+      "sample": "n = 205 sinh viên chuyên ngành tiếng Anh tại Cần Thơ, dùng ELSA Speak",
+      "source": "Pham & Pham (2025), Bảng 4",
+      "url": "https://doi.org/10.1371/journal.pone.0317378"
+    },
+    {
+      "construct": "CI (3 biến, chỉnh từ Bhattacherjee)",
+      "value": "α = 0,913",
+      "sample": "n = 336 người dùng chatbot ngân hàng tại Việt Nam",
+      "source": "Le & Nguyen (2024), mục Thiết kế thực nghiệm",
+      "url": "https://doi.org/10.1016/j.dib.2023.110025"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Le, X. C., & Nguyen, T. H.",
+      "year": 2024,
+      "title": "The effects of chatbot characteristics and customer experience on satisfaction and continuance intention toward banking chatbots: Data from Vietnam",
+      "journal": "Data in Brief, 52, 110025",
+      "url": "https://doi.org/10.1016/j.dib.2023.110025",
+      "note": "Thang ý định tiếp tục 3 biến chỉnh từ Bhattacherjee (2001), Likert 5 điểm, dịch sang tiếng Việt; n = 336 người đã dùng chatbot ngân hàng, α = 0,913."
+    },
+    {
+      "authors": "Pham, V. T. T., & Pham, A. T.",
+      "year": 2025,
+      "title": "English major students' satisfaction with ELSA Speak in English pronunciation courses",
+      "journal": "PLOS ONE, 20(1), e0317378",
+      "url": "https://doi.org/10.1371/journal.pone.0317378",
+      "note": "Kết hợp lý thuyết xác nhận kỳ vọng với TAM (PU, PEOU, sự xác nhận, sự hài lòng), n = 205 sinh viên; sự xác nhận là tiền đề quyết định của sự hài lòng; α từ 0,838 đến 0,954."
+    },
+    {
+      "authors": "Hoang, H., & Le Tan, T.",
+      "year": 2023,
+      "title": "Unveiling digital transformation: Investigating technology adoption in Vietnam's food delivery industry for enhanced customer experience",
+      "journal": "Heliyon, 9(9), e19719",
+      "url": "https://doi.org/10.1016/j.heliyon.2023.e19719",
+      "note": "Dựa một phần trên mô hình tiếp tục sử dụng của Bhattacherjee (sự hài lòng → ý định tiếp tục) cho ứng dụng giao đồ ăn, 346 phiếu hợp lệ, PLS-SEM; α của ý định tiếp tục 0,865 và sự hài lòng 0,880, HTMT dưới 0,90. Không đo sự xác nhận."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Đường PU → SAT yếu hoặc không có ý nghĩa thì giải thích thế nào?",
+      "a": "Đây là điểm đã được ghi nhận: theo Vedadi & Warkentin (2016), trong cả bài gốc lẫn bản lặp lại, PU → SAT là đường dẫn có hệ số nhỏ nhất, vì sự hài lòng phản ánh trải nghiệm đã qua còn sự hữu ích là lợi ích kỳ vọng trong tương lai. Đường CONF → PU mạnh hơn nhiều (0,525 ở bài gốc và 0,607 ở bản lặp lại)."
+    },
+    {
+      "q": "ECM khác TAM ở đâu, sao không dùng TAM cho đề tài này?",
+      "a": "TAM giải thích việc chấp nhận ban đầu, còn ECM giải thích việc tiếp tục dùng sau khi đã trải nghiệm. Bhattacherjee (2001) nhấn mạnh hai hành vi này khác nhau về bản chất và đưa sự xác nhận kỳ vọng và sự hài lòng vào để giải thích. Vì vậy mẫu phải là người đã dùng hệ thống, nên có câu sàng lọc ở đầu bảng hỏi."
+    },
+    {
+      "q": "Mô hình ECM chạy PLS-SEM cần bao nhiêu mẫu, kiểm tra phân biệt SAT và CI ra sao?",
+      "a": "Phân tích power cho mô hình 2 mũi tên vào mỗi biến phụ thuộc chỉ cần khoảng 68 quan sát, nhưng theo phương pháp căn bậc hai nghịch đảo của Kock & Hadaya (2018), với hệ số nhỏ nhất kỳ vọng 0,2 thì cần khoảng 155; đường PU → SAT thường nhỏ nên nên lấy mẫu lớn hơn. SAT và CI hay tương quan cao, nên báo cáo HTMT theo Henseler, Ringle & Sarstedt (2015), dưới 0,85 hoặc 0,90."
+    }
+  ],
   "sampleSize": {
     "arrowsMax": 2,
     "note": "Trong ECM gốc, ý định tiếp tục nhận 2 mũi tên (từ PU và SAT), sự hài lòng cũng nhận 2 (từ CONF và PU). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát."
@@ -132,11 +206,22 @@
   "license": "Các biến được công bố trong phụ lục bài báo học thuật (Vedadi & Warkentin, 2016) và trong bài gốc của Bhattacherjee (2001). Khi dùng, trích dẫn cả hai bài; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
   "references": [
     "Bhattacherjee, A. (2001). Understanding information systems continuance: An expectation-confirmation model. <em>MIS Quarterly, 25</em>(3), 351–370. https://doi.org/10.2307/3250921",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131",
     "Vedadi, A., &amp; Warkentin, M. (2016). Continuance intention on using mobile banking applications: A replication study of information systems continuance model. <em>AIS Transactions on Replication Research, 2</em>, Article 7. https://doi.org/10.17705/1atrr.00014"
   ],
   "verifiedFrom": [
     "https://dm.its.msstate.edu/cob/mw156/intellcont/VedadiWarkentin2016_AISTRR2_7_ContinuanceMobileBanking-1.pdf",
-    "https://aisel.aisnet.org/trr/vol2/iss1/7"
+    "https://aisel.aisnet.org/trr/vol2/iss1/7",
+    "https://api.crossref.org/works/10.2307/3250921",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10801293/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.dib.2023.110025",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11717304/fullTextXML",
+    "https://api.crossref.org/works/10.1371/journal.pone.0317378",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10559001/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.heliyon.2023.e19719",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8",
+    "https://api.crossref.org/works/10.1111/isj.12131"
   ],
   "related": [
     "tam",

@@ -181,18 +181,119 @@
     "Thay XYZ bằng tên đơn vị cụ thể và điều chỉnh theo ngành, giữ nguyên ý từng biến. Cấu trúc 5 thành phần hay bị gộp hoặc tách khi chạy EFA ở bối cảnh Việt Nam, nên báo cáo EFA rồi mới CFA.",
     "Khi so sánh SERVPERF với SERVQUAL trong cùng một nghiên cứu, cần thu cả phần kỳ vọng; so sánh khả năng giải thích phương sai của biến phụ thuộc (ví dụ hài lòng tổng thể) giữa hai cách tính."
   ],
+  "model": {
+    "paths": [
+      "Chất lượng dịch vụ (đo bằng SERVPERF) → Sự hài lòng của khách hàng",
+      "Sự hài lòng của khách hàng → Ý định mua (mua lại)",
+      "Chất lượng dịch vụ → Ý định mua (tác động yếu hơn so với sự hài lòng)"
+    ],
+    "note": "Cronin & Taylor (1992) kết luận thước đo dựa trên kết quả thực hiện có thể đo chất lượng dịch vụ tốt hơn, chất lượng dịch vụ là tiền đề của sự hài lòng, sự hài lòng tác động có ý nghĩa lên ý định mua, và chất lượng dịch vụ tác động lên ý định mua ít hơn so với sự hài lòng.",
+    "source": "Cronin & Taylor (1992), phần tóm tắt."
+  },
+  "reliability": [
+    {
+      "construct": "Phương tiện hữu hình (bản tiếng Việt cho bệnh viện)",
+      "value": "α = 0,85",
+      "sample": "n = 227 người bệnh nội trú, bệnh viện ung bướu công lập, Việt Nam, năm 2020; thang 5 mức",
+      "source": "Nguyen và cộng sự (2023), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9871976/"
+    },
+    {
+      "construct": "Sự tin cậy",
+      "value": "α = 0,86",
+      "sample": "n = 227 người bệnh nội trú, bệnh viện ung bướu công lập, Việt Nam",
+      "source": "Nguyen và cộng sự (2023), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9871976/"
+    },
+    {
+      "construct": "Sự đáp ứng",
+      "value": "α = 0,85",
+      "sample": "n = 227 người bệnh nội trú, bệnh viện ung bướu công lập, Việt Nam",
+      "source": "Nguyen và cộng sự (2023), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9871976/"
+    },
+    {
+      "construct": "Sự đảm bảo",
+      "value": "α = 0,76",
+      "sample": "n = 227 người bệnh nội trú, bệnh viện ung bướu công lập, Việt Nam",
+      "source": "Nguyen và cộng sự (2023), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9871976/"
+    },
+    {
+      "construct": "Sự đồng cảm",
+      "value": "α = 0,84",
+      "sample": "n = 227 người bệnh nội trú, bệnh viện ung bướu công lập, Việt Nam",
+      "source": "Nguyen và cộng sự (2023), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9871976/"
+    },
+    {
+      "construct": "Toàn thang 22 biến",
+      "value": "α = 0,94 (KMO = 0,92)",
+      "sample": "n = 227 người bệnh nội trú, bệnh viện ung bướu công lập, Việt Nam",
+      "source": "Nguyen và cộng sự (2023), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9871976/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Nguyen, D. T., Pham, Q. A., Pham, T. H. C., & Ha, T. M. N.",
+      "year": 2023,
+      "title": "Cross-cultural adaption and validation of SERVPERF tool for measuring healthcare quality in an oncology public hospital, Vietnam",
+      "journal": "INQUIRY: The Journal of Health Care Organization, Provision, and Financing, 60",
+      "url": "https://doi.org/10.1177/00469580221146826",
+      "note": "Chuyển ngữ và điều chỉnh 22 câu SERVPERF cho bệnh viện, thang 5 mức, n = 227 người bệnh nội trú; α toàn thang 0,94, CFA cho χ²/df = 3,79, CFI = 0,85, TLI = 0,83."
+    },
+    {
+      "authors": "Bui, T. T. H., Bui, T. T. Q., Nguyen, T. P. T., Cao, H. Q., Phung, V. T., & Nguyen, T. H.",
+      "year": 2022,
+      "title": "Does the SERVPERF instrument have reliability and validity in an academic setting: The results from Vietnam",
+      "journal": "Journal of Health and Development Studies, 6(2), 27–37",
+      "url": "https://doi.org/10.38148/jhds.0602skpt22-028",
+      "note": "Đánh giá chất lượng đào tạo ở Trường Đại học Y tế Công cộng bằng SERVPERF đã dịch và chuẩn hoá, n = 350 sinh viên; α toàn thang 0,91, các thành phần từ 0,7 đến 0,92; EFA ra 8 nhân tố, 5 nhân tố trùng cấu trúc lý thuyết."
+    },
+    {
+      "authors": "Truong, T. T. H., & Mai, X. P.",
+      "year": 2026,
+      "title": "Application of the SERVPERF model to evaluate citizen satisfaction with public administrative service quality: A case study of Hai Chau ward public administration service center, Da Nang City, Vietnam",
+      "journal": "Tạp chí Khoa học và Công nghệ Đại học Đà Nẵng, 24(6A), 120–125",
+      "url": "https://doi.org/10.31130/ud-jst.2026.24(6a).104e",
+      "note": "Dùng SERVPERF đo chất lượng dịch vụ hành chính công tại một trung tâm phường ở Đà Nẵng; Phương tiện hữu hình và Đáp ứng tác động mạnh nhất lên sự hài lòng, còn Tin cậy, Đảm bảo và Đồng cảm không có ý nghĩa thống kê."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Vì sao chọn SERVPERF mà không chọn SERVQUAL?",
+      "a": "SERVQUAL của Parasuraman, Zeithaml & Berry (1988) tính chất lượng bằng hiệu số cảm nhận trừ kỳ vọng, nên phải hỏi 44 câu. Cronin & Taylor (1992) cho rằng cách đo dựa trên kết quả thực hiện có thể là cách đo chất lượng dịch vụ tốt hơn, nên SERVPERF chỉ giữ 22 câu cảm nhận. Bảng hỏi ngắn bằng một nửa và tránh được các vấn đề của điểm hiệu số; đổi lại, không còn chỉ ra được khoảng cách giữa kỳ vọng và cảm nhận để chẩn đoán."
+    },
+    {
+      "q": "SERVPERF đã được kiểm định ở Việt Nam chưa?",
+      "a": "Đã có. Nguyen và cộng sự (2023) chuyển ngữ và điều chỉnh 22 câu cho bệnh viện ung bướu, n = 227, α toàn thang 0,94 và từng thành phần từ 0,76 đến 0,86. Bui và cộng sự (2022) kiểm định trong bối cảnh đào tạo đại học, n = 350, α toàn thang 0,91, nhưng EFA tách ra 8 nhân tố, cho thấy cấu trúc 5 thành phần không phải lúc nào cũng giữ nguyên. Vì vậy cần chạy EFA và CFA trên dữ liệu của chính đề tài."
+    },
+    {
+      "q": "Trong mô hình gốc, chất lượng dịch vụ và sự hài lòng đứng theo thứ tự nào?",
+      "a": "Cronin & Taylor (1992) kết luận chất lượng dịch vụ là tiền đề của sự hài lòng, sự hài lòng tác động có ý nghĩa lên ý định mua, còn tác động của chất lượng dịch vụ lên ý định mua yếu hơn. Đặt sự hài lòng làm biến trung gian giữa chất lượng dịch vụ và ý định quay lại là phù hợp với bài gốc."
+    }
+  ],
   "sampleSize": {
     "note": "SERVPERF là thang đo, không phải mô hình. Khi dùng 5 thành phần làm biến độc lập dự báo sự hài lòng, phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 92 quan sát."
   },
   "license": "Các biến quan sát là phần cảm nhận của SERVQUAL, công bố trong phụ lục bài báo gốc năm 1988 và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn cả Cronin & Taylor (1992) và Parasuraman và cộng sự (1988); chúng tôi không tìm thấy điều kiện cấp phép riêng.",
   "references": [
+    "Bui, T. T. H., Bui, T. T. Q., Nguyen, T. P. T., Cao, H. Q., Phung, V. T., &amp; Nguyen, T. H. (2022). Does the SERVPERF instrument have reliability and validity in an academic setting: The results from Vietnam. <em>Journal of Health and Development Studies, 6</em>(2), 27–37. https://doi.org/10.38148/jhds.0602skpt22-028",
     "Cronin, J. J., &amp; Taylor, S. A. (1992). Measuring service quality: A reexamination and extension. <em>Journal of Marketing, 56</em>(3), 55–68. https://doi.org/10.1177/002224299205600304",
+    "Nguyen, D. T., Pham, Q. A., Pham, T. H. C., &amp; Ha, T. M. N. (2023). Cross-cultural adaption and validation of SERVPERF tool for measuring healthcare quality in an oncology public hospital, Vietnam. <em>INQUIRY: The Journal of Health Care Organization, Provision, and Financing, 60</em>, 00469580221146826. https://doi.org/10.1177/00469580221146826",
     "Parasuraman, A., Berry, L. L., &amp; Zeithaml, V. A. (1991). Refinement and reassessment of the SERVQUAL scale. <em>Journal of Retailing, 67</em>(4), 420–450.",
     "Parasuraman, A., Zeithaml, V. A., &amp; Berry, L. L. (1988). SERVQUAL: A multiple-item scale for measuring consumer perceptions of service quality. <em>Journal of Retailing, 64</em>(1), 12–40."
   ],
   "verifiedFrom": [
     "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf",
-    "https://api.crossref.org/works/10.1177/002224299205600304"
+    "https://api.crossref.org/works/10.1177/002224299205600304",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9871976/fullTextXML",
+    "https://api.crossref.org/works/10.1177/00469580221146826",
+    "https://api.crossref.org/works/10.38148/jhds.0602skpt22-028",
+    "https://jhds.edu.vn/en/bai-bao/does-the-servperf-instrument-have-reliability-and-validity-in-an-academic-setting-the-results-from-vietnam-378.html",
+    "https://api.crossref.org/works/10.31130/ud-jst.2026.24(6a).104e",
+    "https://jst-ud.vn/jst-ud/article/view/10516"
   ],
   "related": [
     "servqual",

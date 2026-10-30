@@ -65,12 +65,100 @@
     "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. Trang chính thức của DASS liệt kê sẵn các bản dịch tiếng Việt; Tran, Tran và Fisher (2013) đã kiểm định DASS-21 tiếng Việt trên 221 phụ nữ nông thôn ở Hà Nam, thấy 21 câu cùng tải lên một nhân tố và điểm tổng từ 34 trở lên phát hiện rối loạn tâm thần phổ biến với độ nhạy 79,1%, độ đặc hiệu 77,0%. Nếu dùng bản đã công bố, trích dẫn bản đó.",
     "Chạy CFA so sánh mô hình 3 nhân tố với mô hình 1 nhân tố chung và báo cáo kết quả; ba tiểu thang thường tương quan cao (0,6–0,7), nên khi đưa cả ba vào hồi quy cần kiểm tra đa cộng tuyến."
   ],
+  "reliability": [
+    {
+      "construct": "Trầm cảm (D)",
+      "value": "α = 0,72",
+      "sample": "n = 221 phụ nữ nông thôn có con nhỏ ở Hà Nam, bản DASS21-V",
+      "source": "Tran, Tran & Fisher (2013), mục Internal reliability",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/"
+    },
+    {
+      "construct": "Lo âu (A)",
+      "value": "α = 0,77",
+      "sample": "n = 221 phụ nữ nông thôn có con nhỏ ở Hà Nam, bản DASS21-V",
+      "source": "Tran, Tran & Fisher (2013), mục Internal reliability",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/"
+    },
+    {
+      "construct": "Căng thẳng (S)",
+      "value": "α = 0,70",
+      "sample": "n = 221 phụ nữ nông thôn có con nhỏ ở Hà Nam, bản DASS21-V",
+      "source": "Tran, Tran & Fisher (2013), mục Internal reliability",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/"
+    },
+    {
+      "construct": "Toàn thang 21 biến",
+      "value": "α = 0,88",
+      "sample": "n = 221 phụ nữ nông thôn có con nhỏ ở Hà Nam, bản DASS21-V",
+      "source": "Tran, Tran & Fisher (2013), mục Internal reliability",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/"
+    },
+    {
+      "construct": "Trầm cảm / Lo âu (5 biến) / Căng thẳng (6 biến), bản DASS-18",
+      "value": "0,857 / 0,775 / 0,785; toàn thang 18 biến 0,912",
+      "sample": "n = 701 sinh viên đại học Việt Nam (mẫu Việt Nam trong nghiên cứu 3 quốc gia)",
+      "source": "Le và cộng sự (2025), Bảng 5",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12136928/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Tran, T. D., Tran, T., & Fisher, J.",
+      "year": 2013,
+      "title": "Validation of the depression anxiety stress scales (DASS) 21 as a screening instrument for depression and anxiety in a rural community-based cohort of northern Vietnamese women",
+      "journal": "BMC Psychiatry, 13, 24",
+      "url": "https://doi.org/10.1186/1471-244X-13-24",
+      "note": "Kiểm định DASS21-V so với phỏng vấn chẩn đoán SCID của bác sĩ tâm thần trên 221 phụ nữ ở Hà Nam: α từ 0,70 (stress) đến 0,88 (toàn thang), EFA cho 1 nhân tố chung, điểm tổng từ 34 trở lên phát hiện rối loạn tâm thần phổ biến với độ nhạy 79,1% và độ đặc hiệu 77,0%."
+    },
+    {
+      "authors": "Le, D. T. H., Chan, R. C. K., Hao, J., & Wilkinson, R. B.",
+      "year": 2025,
+      "title": "The mental health of Australian, Chinese and Vietnamese university students: A cross-cultural comparison of the DASS-21",
+      "journal": "International Journal of Psychology, 60(4), e70057",
+      "url": "https://doi.org/10.1002/ijop.70057",
+      "note": "So sánh DASS-21 trên sinh viên Úc, Trung Quốc và Việt Nam (mẫu Việt Nam n = 701); CFA ủng hộ mô hình 3 nhân tố nhưng phải bỏ 3 biến tải thấp, còn bản DASS-18 với α mẫu Việt Nam từ 0,775 đến 0,912."
+    },
+    {
+      "authors": "Nguyen, H.-P., Nguyen, T. T. P., Nguyen, N. Q., Van Bui, T., Le, H. A., Hoang, V. T., & Nguyen, T. L.",
+      "year": 2026,
+      "title": "Prevalence of depression, anxiety and stress and associated workplace stressors among healthcare workers in a tertiary hospital in Vietnam: A cross-sectional study",
+      "journal": "PLOS One, 21(4), e0347196",
+      "url": "https://doi.org/10.1371/journal.pone.0347196",
+      "note": "Dùng DASS-21 bản tiếng Việt đã kiểm định trên 505 nhân viên y tế một bệnh viện tuyến trung ương ở Hà Nội, coi điểm là mức độ triệu chứng chứ không phải chẩn đoán, phân tích bằng hồi quy logistic thứ bậc."
+    },
+    {
+      "authors": "Linh, H. N., Trang, L. T. T., Uyen, N. T. T., Tin, P. T., Nam, T. T., & Nghia, V. H.",
+      "year": 2025,
+      "title": "Prevalence and determinants of mental health problems among Vietnamese undergraduate students across academic disciplines",
+      "journal": "Indian Journal of Community Medicine, 50(Suppl 3), S417–S426",
+      "url": "https://doi.org/10.4103/ijcm.ijcm_810_24",
+      "note": "Khảo sát 572 sinh viên ở Đồng Tháp bằng DASS-21 với mốc phân loại của tác giả gốc; 33,4% có triệu chứng trầm cảm, 47,4% lo âu, 28,3% stress."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Vì sao phải nhân 2 điểm mỗi tiểu thang DASS-21?",
+      "a": "Mốc phân loại (bình thường, nhẹ, vừa, nặng, rất nặng) và chuẩn tham chiếu của Lovibond & Lovibond (1995) được xây trên bản DASS-42. Nhân 2 tổng 7 câu của DASS-21 đưa điểm về cùng thang 0–42 với DASS-42; Tran, Tran & Fisher (2013) cũng làm như vậy. Nếu chỉ phân tích tương quan hay hồi quy thì nhân hay không không đổi kết luận, nhưng khi dùng mốc phân loại thì bắt buộc phải nhân và phải ghi rõ trong bài."
+    },
+    {
+      "q": "Em dùng mốc 'trầm cảm nặng' của DASS-21 để báo cáo tỷ lệ mắc trầm cảm được không?",
+      "a": "Không. DASS-21 là công cụ sàng lọc mức độ triệu chứng, không phải công cụ chẩn đoán; chỉ phỏng vấn lâm sàng mới chẩn đoán được. Tran, Tran & Fisher (2013) so DASS-21 với phỏng vấn SCID ở Việt Nam và thấy mốc tối ưu khác mốc của Úc, đồng thời thang không phân biệt được người chỉ trầm cảm với người chỉ lo âu. Nên viết 'tỷ lệ có triệu chứng trầm cảm từ mức vừa trở lên theo DASS-21'."
+    },
+    {
+      "q": "Dữ liệu của em không tách được 3 nhân tố, có sai không?",
+      "a": "Không hẳn là sai. Tran, Tran & Fisher (2013) thấy 21 câu cùng tải lên 1 nhân tố ở phụ nữ nông thôn Việt Nam, còn Le và cộng sự (2025) trên 701 sinh viên Việt Nam thấy mô hình 3 nhân tố phù hợp hơn nhưng phải bỏ 3 câu tải thấp. Em nên chạy CFA so sánh mô hình 1 nhân tố và 3 nhân tố, báo cáo cả hai và giải thích lựa chọn; nếu ba tiểu thang tương quan rất cao, có thể dùng thêm điểm tổng làm chỉ số căng thẳng tâm lý chung."
+    }
+  ],
   "sampleSize": {
     "note": "DASS-21 là thang đơn lẻ 21 biến. Theo Hair và cộng sự, EFA/CFA cần tối thiểu 5 quan sát cho mỗi biến, tức 105 quan sát; nên từ 200 trở lên nếu so sánh mô hình 3 nhân tố và 1 nhân tố."
   },
   "license": "Theo trang chính thức của DASS (Psychology Foundation of Australia, UNSW), bảng hỏi thuộc phạm vi công cộng, không cần xin phép; được tải và sao chép không hạn chế nhưng không được sửa đổi hay bán để kiếm lời. Sổ tay hướng dẫn (manual) phải mua riêng.",
   "references": [
+    "Le, D. T. H., Chan, R. C. K., Hao, J., &amp; Wilkinson, R. B. (2025). The mental health of Australian, Chinese and Vietnamese university students: A cross-cultural comparison of the DASS-21. <em>International Journal of Psychology, 60</em>(4), e70057. https://doi.org/10.1002/ijop.70057",
+    "Linh, H. N., Trang, L. T. T., Uyen, N. T. T., Tin, P. T., Nam, T. T., &amp; Nghia, V. H. (2025). Prevalence and determinants of mental health problems among Vietnamese undergraduate students across academic disciplines. <em>Indian Journal of Community Medicine, 50</em>(Suppl 3), S417–S426. https://doi.org/10.4103/ijcm.ijcm_810_24",
     "Lovibond, S. H., &amp; Lovibond, P. F. (1995). <em>Manual for the Depression Anxiety Stress Scales</em> (2nd ed.). Psychology Foundation.",
+    "Nguyen, H.-P., Nguyen, T. T. P., Nguyen, N. Q., Van Bui, T., Le, H. A., Hoang, V. T., &amp; Nguyen, T. L. (2026). Prevalence of depression, anxiety and stress and associated workplace stressors among healthcare workers in a tertiary hospital in Vietnam: A cross-sectional study. <em>PLOS One, 21</em>(4), e0347196. https://doi.org/10.1371/journal.pone.0347196",
     "Tran, T. D., Tran, T., &amp; Fisher, J. (2013). Validation of the depression anxiety stress scales (DASS) 21 as a screening instrument for depression and anxiety in a rural community-based cohort of northern Vietnamese women. <em>BMC Psychiatry, 13</em>, 24. https://doi.org/10.1186/1471-244X-13-24"
   ],
   "verifiedFrom": [
@@ -80,7 +168,15 @@
     "https://www2.psy.unsw.edu.au/dass/Download%20files/Dass_template.pdf",
     "https://www2.psy.unsw.edu.au/dass/DASSFAQ.htm",
     "https://www2.psy.unsw.edu.au/dass/Vietnamese/Vietnamese.htm",
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3566910/",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3566910/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12136928/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13094995/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12815325/fullTextXML",
+    "https://api.crossref.org/works/10.1186/1471-244X-13-24",
+    "https://api.crossref.org/works/10.1002/ijop.70057",
+    "https://api.crossref.org/works/10.1371/journal.pone.0347196",
+    "https://api.crossref.org/works/10.4103/ijcm.ijcm_810_24"
   ],
   "related": ["phq-9", "gad-7", "cang-thang-pss-10"]
 }

@@ -114,18 +114,93 @@
     "Bản gốc dùng 'the organization'; thay [công ty] bằng đơn vị cụ thể, ví dụ 'bệnh viện', 'nhà trường', và dùng thống nhất cho mọi câu.",
     "Eisenberger và cộng sự (1986) không công bố bản 8 biến; nếu dùng bản 8 biến theo một nghiên cứu sau, trích cả bài gốc lẫn nghiên cứu đã chọn 8 biến đó."
   ],
+  "reliability": [
+    {
+      "construct": "Nhận thức hỗ trợ tổ chức (SPOS 8 biến), mẫu Việt Nam",
+      "value": "α = 0,87",
+      "sample": "Nhân viên y tế 15 cơ sở y tế ở TP.HCM (nghiên cứu theo dõi 3 đợt, tuyển 1.500 người), đợt 1 năm 2023",
+      "source": "Do & Le (2026), mục Social support (Measures)",
+      "url": "https://doi.org/10.1186/s40359-026-05279-7"
+    },
+    {
+      "construct": "Nhận thức hỗ trợ tổ chức (8 biến theo Eisenberger và cộng sự, 1986), mẫu Việt Nam",
+      "value": "α = 0,911; CR = 0,928; AVE = 0,617",
+      "sample": "n = 604 nhân viên ngành điện tử ở Việt Nam, 2022–2024",
+      "source": "Duong & Ho (2024), Bảng 3",
+      "url": "https://doi.org/10.1016/j.dib.2024.110428"
+    },
+    {
+      "construct": "Nhận thức hỗ trợ tổ chức (8 biến theo Eisenberger và cộng sự, 1986), mẫu Việt Nam",
+      "value": "α = 0,932; CR = 0,944; AVE = 0,680",
+      "sample": "n = 302 điều dưỡng ở Việt Nam, khảo sát trực tuyến",
+      "source": "Wang và cộng sự (2026), Bảng 2",
+      "url": "https://doi.org/10.1177/23779608261442399"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Duong, C. H., & Ho, Y.-H.",
+      "year": 2024,
+      "title": "Perceived organizational support and its impact on employee's intention to stay: Dataset from the electronics industry in Vietnam",
+      "journal": "Data in Brief, 54, 110428",
+      "url": "https://doi.org/10.1016/j.dib.2024.110428",
+      "note": "Dùng 8 biến POS dựa trên Eisenberger và cộng sự (1986) làm biến độc lập dự báo ý định ở lại (qua hài lòng công việc và cân bằng công việc cuộc sống), n = 604 nhân viên ngành điện tử, PLS-SEM, α = 0,911; bộ dữ liệu công khai trên Mendeley Data."
+    },
+    {
+      "authors": "Wang, C.-K., Duong, C. H., Ho, Y.-H., Do, D. L., Dang, Q. T., & Hoang, K. T. T.",
+      "year": 2026,
+      "title": "When support meets expectation: The negative moderating role of transformational leadership on nurses' intention to stay",
+      "journal": "SAGE Open Nursing, 12",
+      "url": "https://doi.org/10.1177/23779608261442399",
+      "note": "Dùng 8 biến POS của Eisenberger và cộng sự (1986) với gắn kết công việc làm biến trung gian và lãnh đạo chuyển đổi làm biến điều tiết, n = 302 điều dưỡng Việt Nam, PLS-SEM, α = 0,932; báo cáo cả Fornell-Larcker và HTMT."
+    },
+    {
+      "authors": "Do, H. P., & Le, T. H.",
+      "year": 2026,
+      "title": "Occupational stress, psychological resources, coping responses, and job satisfaction among healthcare workers in Ho Chi Minh City: a three-wave prospective cohort study",
+      "journal": "BMC Psychology, 14(1), 1398",
+      "url": "https://doi.org/10.1186/s40359-026-05279-7",
+      "note": "Dùng SPOS-8 (dẫn Eisenberger và cộng sự, 1986 và Rhoades & Eisenberger, 2002) làm nguồn lực tâm lý dự báo hài lòng công việc trong nghiên cứu theo dõi 3 đợt trên nhân viên y tế TP.HCM (tuyển 1.500 người), α = 0,87 ở đợt 1; có kiểm định bất biến đo lường theo thời gian."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Bản gốc có 36 biến, sao em chỉ dùng 16 (hoặc 8) biến?",
+      "a": "Eisenberger và cộng sự (1986) xây dựng 36 biến và chính bài gốc đã đánh dấu các biến giữ lại cho bản rút gọn. Rhoades & Eisenberger (2002, tr. 699) cho rằng dùng bản ngắn không có vấn đề vì thang gốc đơn hướng và có độ tin cậy cao. Các nghiên cứu ở Việt Nam như Duong & Ho (2024) và Wang và cộng sự (2026) đều dùng 8 biến và đạt α trên 0,9. Em cần ghi rõ đã chọn những câu nào từ bản gốc và giữ biến của cả hai mặt: coi trọng đóng góp và quan tâm tới đời sống."
+    },
+    {
+      "q": "Các câu đảo chiều tải thấp hoặc tách thành nhân tố riêng thì xử lý thế nào?",
+      "a": "Trước hết kiểm tra đã đảo điểm đủ các câu đảo chiều chưa (trên thang 1–7: 8 − điểm). Nếu đã đảo mà các câu này vẫn gom thành nhân tố riêng, đó thường là hiệu ứng cách diễn đạt phủ định chứ không phải một khái niệm khác, vì Rhoades & Eisenberger (2002) xem thang là đơn hướng. Em có thể chạy CFA so sánh mô hình 1 nhân tố với mô hình 1 nhân tố có thêm nhân tố phương pháp cho các câu đảo chiều, hoặc loại câu đảo chiều yếu và báo cáo rõ đã loại câu nào."
+    },
+    {
+      "q": "Hỗ trợ tổ chức và cam kết tổ chức (hoặc gắn kết) có thực sự khác nhau trong dữ liệu của em không?",
+      "a": "Về lý thuyết, POS là niềm tin của người lao động về tổ chức, còn cam kết hay gắn kết là thái độ, trạng thái của chính họ (Rhoades & Eisenberger, 2002). Về dữ liệu, em phải kiểm tra giá trị phân biệt bằng HTMT: dưới 0,85 (nghiêm ngặt) hoặc 0,90 (nới lỏng) theo Henseler, Ringle & Sarstedt (2015). Ví dụ Wang và cộng sự (2026) báo cáo cả Fornell-Larcker và HTMT cho POS và gắn kết công việc trên mẫu điều dưỡng Việt Nam."
+    }
+  ],
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu hỗ trợ tổ chức là một trong 3 biến dự báo của biến phụ thuộc thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
   "license": "Các biến được công bố trong Bảng 1 của bài báo gốc trên Journal of Applied Psychology và được dùng rộng rãi trong nghiên cứu; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn bài gốc.",
   "references": [
+    "Do, H. P., &amp; Le, T. H. (2026). Occupational stress, psychological resources, coping responses, and job satisfaction among healthcare workers in Ho Chi Minh City: A three-wave prospective cohort study. <em>BMC Psychology, 14</em>(1), 1398. https://doi.org/10.1186/s40359-026-05279-7",
+    "Duong, C. H., &amp; Ho, Y.-H. (2024). Perceived organizational support and its impact on employee's intention to stay: Dataset from the electronics industry in Vietnam. <em>Data in Brief, 54</em>, 110428. https://doi.org/10.1016/j.dib.2024.110428",
     "Eisenberger, R., Huntington, R., Hutchison, S., &amp; Sowa, D. (1986). Perceived organizational support. <em>Journal of Applied Psychology, 71</em>(3), 500–507. https://doi.org/10.1037/0021-9010.71.3.500",
-    "Rhoades, L., &amp; Eisenberger, R. (2002). Perceived organizational support: A review of the literature. <em>Journal of Applied Psychology, 87</em>(4), 698–714. https://doi.org/10.1037/0021-9010.87.4.698"
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Rhoades, L., &amp; Eisenberger, R. (2002). Perceived organizational support: A review of the literature. <em>Journal of Applied Psychology, 87</em>(4), 698–714. https://doi.org/10.1037/0021-9010.87.4.698",
+    "Wang, C.-K., Duong, C. H., Ho, Y.-H., Do, D. L., Dang, Q. T., &amp; Hoang, K. T. T. (2026). When support meets expectation: The negative moderating role of transformational leadership on nurses' intention to stay. <em>SAGE Open Nursing, 12</em>. https://doi.org/10.1177/23779608261442399"
   ],
   "verifiedFrom": [
     "https://journal.untar.ac.id/index.php/jmishumsen/article/view/979/10702",
     "https://sajip.co.za/index.php/sajip/article/download/754/869",
-    "https://api.crossref.org/works/10.1037/0021-9010.71.3.500"
+    "https://api.crossref.org/works/10.1037/0021-9010.71.3.500",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22perceived%20organizational%20support%22%20AND%20(Vietnam%20OR%20Vietnamese)%20AND%20OPEN_ACCESS:y&format=json",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11098798/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13080198/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13621476/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.dib.2024.110428",
+    "https://api.crossref.org/works/10.1177/23779608261442399",
+    "https://api.crossref.org/works/10.1186/s40359-026-05279-7",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8"
   ],
   "related": [
     "cam-ket-to-chuc-ocq",

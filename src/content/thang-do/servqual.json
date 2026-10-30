@@ -181,18 +181,101 @@
     "Khi dịch câu phủ định, giữ nguyên chữ 'không'. Người trả lời Việt Nam hay nhầm câu phủ định, nên đọc thử với 5–10 người và cân nhắc kiểm tra riêng nhóm câu đảo chiều khi chạy EFA.",
     "Thay XYZ bằng tên đơn vị cụ thể và điều chỉnh từ ngữ theo ngành (ví dụ 'bệnh viện', 'ngân hàng'), nhưng giữ ý của từng biến. Cấu trúc 5 thành phần thường không giữ nguyên ở mọi ngành, nên chạy EFA trước rồi mới CFA."
   ],
+  "reliability": [
+    {
+      "construct": "Phương tiện hữu hình (TAN, 4 biến)",
+      "value": "α = 0,52 (ngân hàng); 0,62 (thẻ tín dụng); 0,64 (sửa chữa, bảo trì); 0,64 (điện thoại đường dài)",
+      "sample": "4 mẫu khách hàng tại trung tâm thương mại, khoảng 200 người mỗi mẫu; α tính trên điểm hiệu số cảm nhận trừ kỳ vọng (P − E)",
+      "source": "Parasuraman, Zeithaml & Berry (1988), Bảng 2, tr. 25",
+      "url": "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    },
+    {
+      "construct": "Sự tin cậy (REL, 5 biến)",
+      "value": "α = 0,80 (ngân hàng); 0,78 (thẻ tín dụng); 0,84 (sửa chữa, bảo trì); 0,74 (điện thoại đường dài)",
+      "sample": "4 mẫu khách hàng, khoảng 200 người mỗi mẫu; điểm hiệu số P − E",
+      "source": "Parasuraman, Zeithaml & Berry (1988), Bảng 2, tr. 25",
+      "url": "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    },
+    {
+      "construct": "Sự đáp ứng (RES, 4 biến)",
+      "value": "α = 0,72 (ngân hàng); 0,69 (thẻ tín dụng); 0,76 (sửa chữa, bảo trì); 0,70 (điện thoại đường dài)",
+      "sample": "4 mẫu khách hàng, khoảng 200 người mỗi mẫu; điểm hiệu số P − E",
+      "source": "Parasuraman, Zeithaml & Berry (1988), Bảng 2, tr. 25",
+      "url": "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    },
+    {
+      "construct": "Sự đảm bảo (ASS, 4 biến)",
+      "value": "α = 0,84 (ngân hàng); 0,80 (thẻ tín dụng); 0,87 (sửa chữa, bảo trì); 0,84 (điện thoại đường dài)",
+      "sample": "4 mẫu khách hàng, khoảng 200 người mỗi mẫu; điểm hiệu số P − E",
+      "source": "Parasuraman, Zeithaml & Berry (1988), Bảng 2, tr. 25",
+      "url": "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    },
+    {
+      "construct": "Sự đồng cảm (EMP, 5 biến)",
+      "value": "α = 0,71 (ngân hàng); 0,80 (thẻ tín dụng); 0,72 (sửa chữa, bảo trì); 0,76 (điện thoại đường dài)",
+      "sample": "4 mẫu khách hàng, khoảng 200 người mỗi mẫu; điểm hiệu số P − E",
+      "source": "Parasuraman, Zeithaml & Berry (1988), Bảng 2, tr. 25",
+      "url": "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    },
+    {
+      "construct": "Toàn thang 22 biến (độ tin cậy tổ hợp tuyến tính)",
+      "value": "0,87 (ngân hàng); 0,89 (thẻ tín dụng); 0,90 (sửa chữa, bảo trì); 0,88 (điện thoại đường dài)",
+      "sample": "4 mẫu khách hàng, khoảng 200 người mỗi mẫu; điểm hiệu số P − E",
+      "source": "Parasuraman, Zeithaml & Berry (1988), Bảng 2, tr. 25",
+      "url": "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Nguyen, B. Q., & Nguyen, C. T. T.",
+      "year": 2022,
+      "title": "An assessment of outpatient satisfaction with hospital pharmacy quality and influential factors in the context of the COVID-19 pandemic",
+      "journal": "Healthcare, 10(10), 1945",
+      "url": "https://doi.org/10.3390/healthcare10101945",
+      "note": "Dùng bảng hỏi SERVQUAL điều chỉnh cho dịch vụ cấp phát thuốc bảo hiểm y tế ở một bệnh viện trung ương, thang 5 mức, n = 210 người bệnh ngoại trú; sau khi loại 2 biến còn 26 biến thuộc 5 thành phần, α của mọi thành phần trên 0,7."
+    },
+    {
+      "authors": "Le, N. H., Nguyen, P. T. H., & Nguyen, T. N. P.",
+      "year": 2021,
+      "title": "Using SERVQUAL model to analyse cultural tourist satisfaction: Case study of Dak Lak province, Vietnam",
+      "journal": "VNUHCM Journal of Social Sciences and Humanities (Science & Technology Development Journal: Social Sciences & Humanities), 5(4), 1293–1305",
+      "url": "https://doi.org/10.32508/stdjssh.v5i4.677",
+      "note": "Dùng mô hình SERVQUAL để đo khoảng cách giữa kỳ vọng và sự hài lòng của khách du lịch văn hoá ở Đắk Lắk, n = 196."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Đề tài chỉ hỏi phần cảm nhận, vậy có còn gọi là SERVQUAL được không?",
+      "a": "Theo Parasuraman, Zeithaml & Berry (1988), chất lượng dịch vụ là hiệu số cảm nhận trừ kỳ vọng (P − E), và các hệ số α trong Bảng 2 của bài gốc đều tính trên điểm hiệu số. Nếu chỉ đo 22 câu cảm nhận thì về bản chất là SERVPERF; Cronin & Taylor (1992) cho rằng thước đo chỉ dựa trên kết quả thực hiện có thể là cách đo tốt hơn. Nên gọi đúng tên SERVPERF và trích cả hai nguồn."
+    },
+    {
+      "q": "Bản gốc dùng thang 7 mức, sao đề tài dùng thang 5 mức?",
+      "a": "Phụ lục của Parasuraman, Zeithaml & Berry (1988) dùng Likert 7 mức, chỉ gắn nhãn hai đầu. Chuyển sang 5 mức là lựa chọn phổ biến ở Việt Nam (ví dụ Nguyen & Nguyen, 2022) nhưng cần ghi rõ trong phần phương pháp, dùng cùng một thang cho mọi câu và không so sánh trực tiếp điểm trung bình với các nghiên cứu dùng thang 7 mức."
+    },
+    {
+      "q": "Bản 1988 có câu đảo chiều không, xử lý thế nào?",
+      "a": "Có 9 câu phát biểu phủ định ở thành phần Đáp ứng (P10–P13) và Đồng cảm (P18–P22). Phải đảo điểm (thang 7 mức: 8 − điểm; thang 5 mức: 6 − điểm) trước khi tính Cronbach's alpha và EFA. Parasuraman, Berry & Zeithaml (1991) đã viết lại toàn bộ thành câu thuận; nếu dùng bản này thì trích bài 1991."
+    }
+  ],
   "sampleSize": {
     "note": "SERVQUAL là thang đo, không phải mô hình. Khi dùng 5 thành phần làm biến độc lập dự báo sự hài lòng, phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 92 quan sát."
   },
   "license": "Các biến quan sát được công bố trong phụ lục bài báo gốc và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; chúng tôi không tìm thấy điều kiện cấp phép riêng cho mục đích học thuật phi thương mại.",
   "references": [
     "Cronin, J. J., &amp; Taylor, S. A. (1992). Measuring service quality: A reexamination and extension. <em>Journal of Marketing, 56</em>(3), 55–68. https://doi.org/10.1177/002224299205600304",
+    "Nguyen, B. Q., &amp; Nguyen, C. T. T. (2022). An assessment of outpatient satisfaction with hospital pharmacy quality and influential factors in the context of the COVID-19 pandemic. <em>Healthcare, 10</em>(10), 1945. https://doi.org/10.3390/healthcare10101945",
     "Parasuraman, A., Berry, L. L., &amp; Zeithaml, V. A. (1991). Refinement and reassessment of the SERVQUAL scale. <em>Journal of Retailing, 67</em>(4), 420–450.",
     "Parasuraman, A., Zeithaml, V. A., &amp; Berry, L. L. (1988). SERVQUAL: A multiple-item scale for measuring consumer perceptions of service quality. <em>Journal of Retailing, 64</em>(1), 12–40."
   ],
   "verifiedFrom": [
     "https://zenodo.org/records/14579730",
-    "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf"
+    "https://zenodo.org/records/14579730/files/1988_JR_Vol.64.pdf",
+    "https://api.crossref.org/works/10.1177/002224299205600304",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9601799/fullTextXML",
+    "https://doi.org/10.3390/healthcare10101945",
+    "https://api.crossref.org/works/10.32508/stdjssh.v5i4.677",
+    "https://stdjssh.scienceandtechnology.com.vn/index.php/stdjssh/article/view/677",
+    "https://api.crossref.org/works/10.3390/healthcare10101945"
   ],
   "related": [
     "servperf",

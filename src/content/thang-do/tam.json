@@ -113,6 +113,95 @@
     "Nếu mô hình thêm thái độ (Attitude), trích Davis, Bagozzi & Warshaw (1989); nếu mở rộng sang chuẩn chủ quan, xem TAM2 hoặc UTAUT.",
     "Chạy Cronbach's alpha và EFA cho từng khái niệm trước khi phân tích mô hình; PU và PEOU có thể tải chéo nếu bản dịch chưa đủ rõ."
   ],
+  "model": {
+    "paths": [
+      "Nhận thức tính dễ sử dụng (PEOU) → Nhận thức sự hữu ích (PU)",
+      "Nhận thức sự hữu ích (PU) → Ý định sử dụng (BI)",
+      "Nhận thức tính dễ sử dụng (PEOU) → Ý định sử dụng (BI)",
+      "PU và PEOU → Thái độ (ATT) → Ý định sử dụng (BI) (thái độ chỉ trung gian một phần)",
+      "Ý định sử dụng (BI) → Hành vi sử dụng thực tế"
+    ],
+    "note": "Davis, Bagozzi & Warshaw (1989) thấy PU tác động mạnh lên ý định, giải thích hơn một nửa phương sai của ý định sau 14 tuần; PEOU tác động nhỏ và yếu dần theo thời gian; thái độ chỉ trung gian một phần; chuẩn chủ quan không tác động lên ý định. Davis (1989) gợi ý PEOU có thể là tiền đề của PU hơn là tác động trực tiếp song song lên việc sử dụng.",
+    "source": "Davis, Bagozzi & Warshaw (1989), phần tóm tắt; Davis (1989), phần tóm tắt."
+  },
+  "reliability": [
+    {
+      "construct": "PU (6 biến)",
+      "value": "Độ tin cậy = 0,98",
+      "sample": "Hai nghiên cứu, tổng cộng 152 người dùng, 4 chương trình ứng dụng",
+      "source": "Davis (1989), phần tóm tắt",
+      "url": "https://doi.org/10.2307/249008"
+    },
+    {
+      "construct": "PEOU (6 biến)",
+      "value": "Độ tin cậy = 0,94",
+      "sample": "Hai nghiên cứu, tổng cộng 152 người dùng, 4 chương trình ứng dụng",
+      "source": "Davis (1989), phần tóm tắt",
+      "url": "https://doi.org/10.2307/249008"
+    },
+    {
+      "construct": "PU (4 biến, bản điều chỉnh tiếng Việt)",
+      "value": "α = 0,802",
+      "sample": "n = 492 sinh viên các trường đại học khối kinh tế tại Việt Nam",
+      "source": "Nguyen (2023), mục 4.1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10217509/"
+    },
+    {
+      "construct": "PEOU (5 biến, bản điều chỉnh tiếng Việt)",
+      "value": "α = 0,851",
+      "sample": "n = 492 sinh viên các trường đại học khối kinh tế tại Việt Nam",
+      "source": "Nguyen (2023), mục 4.1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10217509/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Nguyen, T. M. P.",
+      "year": 2023,
+      "title": "Factors affecting the adoption of online database systems for learning among students at economics universities in Vietnam",
+      "journal": "European Journal of Investigation in Health, Psychology and Education, 13(5), 820–835",
+      "url": "https://doi.org/10.3390/ejihpe13050062",
+      "note": "Dựa trên TAM để đo ý định dùng cơ sở dữ liệu trực tuyến của sinh viên, n = 492, phân tích bằng SPSS và AMOS; α của nhận thức sự hữu ích là 0,802 và của tính dễ sử dụng là 0,851."
+    },
+    {
+      "authors": "Linh, T. T., & Huyen, N. T. T.",
+      "year": 2025,
+      "title": "An extension of Trust and TAM model with TPB in the adoption of digital payment: An empirical study in Vietnam",
+      "journal": "F1000Research, 14, 127",
+      "url": "https://doi.org/10.12688/f1000research.157763.3",
+      "note": "Kết hợp TAM (PU, PEOU) với niềm tin và TPB cho thanh toán số ở vùng miền núi phía Bắc (có Cao Bằng), 509 phiếu hợp lệ, phân tích EFA, CFA và SEM."
+    },
+    {
+      "authors": "Luu, A. P., Nguyen, T. T., Cao, V. T. C., và cộng sự",
+      "year": 2024,
+      "title": "Acceptance and user experiences of a wearable device for the management of hospitalized patients in COVID-19-designated wards in Ho Chi Minh City, Vietnam: Action learning project",
+      "journal": "JMIR Human Factors, 11, e44619",
+      "url": "https://doi.org/10.2196/44619",
+      "note": "Phiếu phản hồi xây dựng theo các thành phần TAM cho bác sĩ và điều dưỡng tại TP.HCM, n = 21; điểm trung bình từ 3,6 (tính dễ sử dụng) đến 4,4 (thái độ)."
+    },
+    {
+      "authors": "Bui, T. H., Luong, D. H., Nguyen, X. A., Nguyen, H. L., & Ngo, T. T.",
+      "year": 2020,
+      "title": "Impact of female students' perceptions on behavioral intention to use video conferencing tools in COVID-19: Data of Vietnam",
+      "journal": "Data in Brief, 32, 106142",
+      "url": "https://doi.org/10.1016/j.dib.2020.106142",
+      "note": "Bảng hỏi 21 biến thiết kế theo TAM về ý định dùng công cụ họp trực tuyến của nữ sinh viên, 254 phiếu hợp lệ; α của ý định hành vi là 0,89."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Nếu PEOU không tác động có ý nghĩa lên ý định sử dụng thì mô hình có sai không?",
+      "a": "Không hẳn. Davis, Bagozzi & Warshaw (1989) ghi nhận tác động của tính dễ sử dụng lên ý định chỉ nhỏ và giảm dần theo thời gian, còn Davis (1989) cho rằng PEOU có thể là tiền đề của PU. Vì vậy nên kiểm định thêm tác động gián tiếp PEOU → PU → BI trước khi kết luận PEOU không quan trọng."
+    },
+    {
+      "q": "PU và PEOU thường tương quan cao, em chứng minh giá trị phân biệt thế nào?",
+      "a": "Ngoài tiêu chí Fornell-Larcker, nên báo cáo chỉ số HTMT của Henseler, Ringle & Sarstedt (2015): HTMT giữa PU và PEOU dưới 0,85 (chặt) hoặc dưới 0,90 (nới lỏng) thì đạt. Nếu vượt ngưỡng, xem lại bản dịch các biến vì hai khái niệm dễ bị hiểu lẫn khi câu chữ không rõ."
+    },
+    {
+      "q": "Mô hình TAM chạy PLS-SEM thì cỡ mẫu tối thiểu là bao nhiêu?",
+      "a": "Phân tích power cho mô hình 2 mũi tên vào ý định chỉ cần khoảng 68 quan sát, nhưng Kock & Hadaya (2018) đề xuất phương pháp căn bậc hai nghịch đảo: n tối thiểu > (2,486/p_min)². Với hệ số đường dẫn nhỏ nhất kỳ vọng là 0,2, cỡ mẫu cần khoảng 155. Nên lấy con số lớn hơn và nêu rõ cả hai cách tính."
+    }
+  ],
   "sampleSize": {
     "arrowsMax": 2,
     "note": "Trong mô hình TAM cơ bản, ý định sử dụng nhận nhiều nhất 2 mũi tên (từ PU và PEOU). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát; mô hình mở rộng thêm biến thì con số này tăng."
@@ -121,12 +210,25 @@
   "references": [
     "Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. <em>MIS Quarterly, 13</em>(3), 319–340. https://doi.org/10.2307/249008",
     "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003. https://doi.org/10.1287/mnsc.35.8.982",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131",
+    "Nguyen, T. M. P. (2023). Factors affecting the adoption of online database systems for learning among students at economics universities in Vietnam. <em>European Journal of Investigation in Health, Psychology and Education, 13</em>(5), 820–835. https://doi.org/10.3390/ejihpe13050062",
     "Venkatesh, V., &amp; Davis, F. D. (2000). A theoretical extension of the technology acceptance model: Four longitudinal field studies. <em>Management Science, 46</em>(2), 186–204. https://doi.org/10.1287/mnsc.46.2.186.11926",
     "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540"
   ],
   "verifiedFrom": [
     "https://doi.org/10.2307/249008",
-    "https://doi.org/10.1287/mnsc.46.2.186.11926"
+    "https://doi.org/10.1287/mnsc.46.2.186.11926",
+    "https://api.crossref.org/works/10.2307/249008",
+    "https://api.crossref.org/works/10.1287/mnsc.35.8.982",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8",
+    "https://api.crossref.org/works/10.1111/isj.12131",
+    "https://api.crossref.org/works/10.3390/ejihpe13050062",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10217509/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11969139/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10773555/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7405901/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC10217509"
   ],
   "related": [
     "utaut",

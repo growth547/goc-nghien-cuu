@@ -107,11 +107,36 @@
     "Câu đảo chiều dịch sang tiếng Việt dễ thành phủ định kép, ví dụ OC11; đọc thử với vài người trả lời để chắc họ hiểu đúng chiều.",
     "OCQ là thang một khái niệm. Nếu đề tài cần cam kết tình cảm, duy trì và chuẩn mực, đó là mô hình ba thành phần của Meyer và Allen (1991), có bản thương mại phải mua quyền; không ghép OCQ vào để thay thế."
   ],
+  "reliability": [
+    {
+      "construct": "Cam kết tổ chức (OCQ 15 biến, bản tiếng Ả Rập), hai nhân tố 'cam kết giá trị' và 'cam kết ở lại'",
+      "value": "α từ 0,69 đến 0,91 (hai nhân tố, hai mẫu)",
+      "sample": "412 điều dưỡng ở Ả Rập Xê Út, hai mẫu n = 193 và n = 219",
+      "source": "Al-Yami, Galdas & Watson (2018), mục Kết quả (bản thảo đã chấp nhận lưu trên White Rose)",
+      "url": "https://eprints.whiterose.ac.uk/id/document/1047175"
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Sao em dùng OCQ của Mowday mà không dùng thang ba thành phần của Meyer & Allen?",
+      "a": "Hai thang đo hai cách hiểu khác nhau về cam kết. OCQ của Mowday, Steers & Porter (1979) đo một khái niệm thái độ: tin vào mục tiêu, giá trị của tổ chức, sẵn lòng nỗ lực và muốn ở lại; về nội dung, nó gần nhất với thành phần cam kết tình cảm. Meyer & Allen (1991) tách cam kết thành ba thành phần: tình cảm, duy trì (vì chi phí khi rời đi) và chuẩn mực (vì thấy có nghĩa vụ). Nếu đề tài chỉ cần mức gắn bó về thái độ với tổ chức thì OCQ phù hợp; nếu giả thuyết phân biệt 'muốn ở', 'cần ở' và 'nên ở' thì phải dùng thang của Meyer & Allen."
+    },
+    {
+      "q": "EFA của em ra hai nhân tố chứ không phải một, có sai không?",
+      "a": "Không hẳn là sai. Mowday, Steers & Porter (1979) xem OCQ là một nhân tố, nhưng Al-Yami, Galdas & Watson (2018) trên hai mẫu điều dưỡng lại thu được hai nhân tố ổn định: 'cam kết giá trị' (câu 1, 2, 4, 5, 6, 8, 10) và 'cam kết ở lại' (các câu còn lại). Nhân tố thứ hai chứa cả 6 câu đảo chiều (OC3, OC7, OC9, OC11, OC12, OC15), nên một phần có thể là hiệu ứng cách diễn đạt phủ định. Em nên kiểm tra lại việc đảo điểm, rồi chạy CFA so sánh mô hình 1 nhân tố, 2 nhân tố và 1 nhân tố có nhân tố phương pháp cho câu đảo chiều, sau đó báo cáo mô hình chọn và lý do."
+    },
+    {
+      "q": "Mô hình của em có cả cam kết tổ chức và ý định nghỉ việc, làm sao chứng minh hai khái niệm khác nhau?",
+      "a": "Một số câu OCQ như OC9 và OC15 nói về việc rời tổ chức, nên dễ trùng nội dung với thang ý định nghỉ việc và làm phóng đại tương quan giữa hai biến. Em cần kiểm tra giá trị phân biệt bằng HTMT, dưới 0,85 (nghiêm ngặt) hoặc 0,90 (nới lỏng) theo Henseler, Ringle & Sarstedt (2015). Nếu không đạt, có thể chạy lại mô hình chỉ với nhóm câu 'cam kết giá trị' của OCQ và báo cáo đó là phân tích độ nhạy."
+    }
+  ],
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu cam kết tổ chức nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
   "license": "Các biến được công bố trong bài báo gốc trên Journal of Vocational Behavior. Theo một nghiên cứu kiểm định thang lưu trên kho White Rose, không cần xin phép khi dùng OCQ vì tác giả chủ động không đăng ký bản quyền thang để khuyến khích sử dụng. Khi dùng, trích dẫn bài gốc.",
   "references": [
+    "Al-Yami, M., Galdas, P., &amp; Watson, R. (2018). Factor analysis and Mokken scaling of the Organizational Commitment Questionnaire in nurses. <em>International Nursing Review, 66</em>(1), 52–60. https://doi.org/10.1111/inr.12454",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
     "Meyer, J. P., &amp; Allen, N. J. (1991). A three-component conceptualization of organizational commitment. <em>Human Resource Management Review, 1</em>(1), 61–89. https://doi.org/10.1016/1053-4822(91)90011-Z",
     "Mowday, R. T., Steers, R. M., &amp; Porter, L. W. (1979). The measurement of organizational commitment. <em>Journal of Vocational Behavior, 14</em>(2), 224–247. https://doi.org/10.1016/0001-8791(79)90072-1",
     "Porter, L. W., Steers, R. M., Mowday, R. T., &amp; Boulian, P. V. (1974). Organizational commitment, job satisfaction, and turnover among psychiatric technicians. <em>Journal of Applied Psychology, 59</em>(5), 603–609. https://doi.org/10.1037/h0037335"
@@ -122,7 +147,12 @@
     "https://verdi.cs.ucl.ac.uk/constructDB/publications/mowday-measurement-1979.html",
     "https://api.crossref.org/works/10.1016/0001-8791(79)90072-1",
     "https://api.crossref.org/works/10.1037/h0037335",
-    "https://api.crossref.org/works/10.1016/1053-4822(91)90011-Z"
+    "https://api.crossref.org/works/10.1016/1053-4822(91)90011-Z",
+    "https://api.crossref.org/works/10.1111/inr.12454",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(%22Organizational%20Commitment%20Questionnaire%22%20OR%20Mowday)%20AND%20(Vietnam%20OR%20Vietnamese)&format=json",
+    "https://msed.vse.cz/msed_2016/article/138-Pham-Lan-paper.pdf",
+    "https://journalofscience.ou.edu.vn/index.php/econ-en/article/download/2022/1649"
   ],
   "related": [
     "ho-tro-to-chuc-pos",

@@ -37,19 +37,88 @@
     "Các mốc 0–13 thấp, 14–26 trung bình, 27–40 cao hay thấy trên mạng không phải do Cohen công bố; nếu dùng phải ghi rõ nguồn và chỉ coi là mô tả, không phải chẩn đoán.",
     "Bản dịch sang ngôn ngữ khác thuộc sở hữu trí tuệ của người dịch theo phòng thí nghiệm của Cohen; nếu dùng một bản tiếng Việt đã công bố, trích dẫn và xin phép người dịch."
   ],
+  "reliability": [
+    {
+      "construct": "PSS-10 bản tiếng Việt (V-PSS-10), toàn thang",
+      "value": "α = 0,80",
+      "sample": "n = 473 phụ nữ Việt Nam từ 60 tuổi trở lên, phỏng vấn trực tiếp",
+      "source": "Dao-Tran, Anderson & Seib (2017), tóm tắt và mục Results",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5295219/"
+    },
+    {
+      "construct": "V-PSS-10, độ tin cậy test-retest sau 1 tháng",
+      "value": "r = 0,43",
+      "sample": "Phụ nữ Việt Nam từ 60 tuổi trở lên (cùng nghiên cứu)",
+      "source": "Dao-Tran, Anderson & Seib (2017), tóm tắt (Results)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5295219/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Dao-Tran, T.-H., Anderson, D., & Seib, C.",
+      "year": 2017,
+      "title": "The Vietnamese version of the Perceived Stress Scale (PSS-10): Translation equivalence and psychometric properties among older women",
+      "journal": "BMC Psychiatry, 17, 53",
+      "url": "https://doi.org/10.1186/s12888-017-1221-6",
+      "note": "Dịch và kiểm định V-PSS-10 trên 473 phụ nữ từ 60 tuổi: EFA cho 2 nhân tố tương quan 0,56 nhưng chia 8 câu và 2 câu (khác cách chia 6 và 4 câu ở các nghiên cứu trước), α = 0,80, test-retest sau 1 tháng chỉ 0,43; điểm PSS tương quan 0,60 với triệu chứng trầm cảm CES-D."
+    },
+    {
+      "authors": "Nguyen, H. T. N., Nguyen, P. H., Nong, H. T. N., Vo, L. T., Nguyen, D. D., Bui, N. T., Nguyen, Y. N. T., & Huynh, G.",
+      "year": 2026,
+      "title": "Occupational stress, coping strategies, and associated factors among primary healthcare workers in Vietnam",
+      "journal": "PLOS One, 21(5), e0349770",
+      "url": "https://doi.org/10.1371/journal.pone.0349770",
+      "note": "Dùng PSS-10 cùng Brief COPE trên 212 nhân viên y tế tuyến quận ở TP.HCM; điểm PSS-10 trung bình 16,7 (SD = 2,3), phân tích yếu tố liên quan bằng hồi quy tuyến tính đa biến."
+    },
+    {
+      "authors": "Darwita, R. R., Savitri, P. A., Khairinisa, S., Ramadhani, A., Adiatman, M., Maharani, D. A., & Do, T. T.",
+      "year": 2024,
+      "title": "Comparative analysis of stress level and coping strategies due to COVID-19 pandemics among dental students in Indonesia and Vietnam",
+      "journal": "Heliyon, 10(14), e34452",
+      "url": "https://doi.org/10.1016/j.heliyon.2024.e34452",
+      "note": "So sánh mức căng thẳng (PSS 10 câu, thang 0–4, điểm 0–40) giữa sinh viên nha khoa Indonesia và Việt Nam (137 sinh viên Đại học Y Dược Cần Thơ, tổng n = 304) trong đại dịch COVID-19."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Em chia mẫu thành căng thẳng thấp, trung bình, cao theo mốc 0–13, 14–26, 27–40 thì nguồn ở đâu?",
+      "a": "Các mốc này không do Cohen công bố; PSS của Cohen, Kamarck & Mermelstein (1983) đo mức độ cảm nhận căng thẳng như một điểm liên tục, và tài liệu của phòng thí nghiệm Cohen không đưa ra điểm cắt chẩn đoán. Một số nghiên cứu ở Việt Nam vẫn dùng các mốc này để mô tả, ví dụ Nguyen và cộng sự (2026) và Darwita và cộng sự (2024). Nếu dùng, em ghi rõ là cách phân nhóm mô tả theo nghiên cứu trước, và phân tích chính nên dùng điểm liên tục."
+    },
+    {
+      "q": "Vì sao chọn PSS-10 mà không dùng PSS-14 hay PSS-4?",
+      "a": "Tổng quan 19 nghiên cứu của Lee (2012) kết luận tính chất đo lường của PSS-10 tốt hơn PSS-14, còn PSS-4 kém nhất. PSS-10 cũng là bản đã được dịch và kiểm định tiếng Việt (Dao-Tran, Anderson & Seib, 2017). PSS-4 chỉ nên dùng khi bảng hỏi quá dài và chấp nhận độ tin cậy thấp hơn."
+    },
+    {
+      "q": "EFA của em ra 2 nhân tố, có phải thang không đơn hướng?",
+      "a": "Đây là kết quả thường gặp: 6 câu tiêu cực (bất lực cảm nhận) và 4 câu tích cực (tự tin ứng phó) hay tách thành 2 nhân tố. Ở Việt Nam, Dao-Tran, Anderson & Seib (2017) cũng thấy 2 nhân tố tương quan 0,56, nhưng cách chia là 8 và 2 câu. Em cần đảo điểm 4 câu tích cực trước khi phân tích, báo cáo cấu trúc tìm được, và nếu dùng điểm tổng thì giải thích vì sao (hai nhân tố tương quan đủ cao, cùng đo một khái niệm căng thẳng cảm nhận)."
+    }
+  ],
   "sampleSize": {
     "note": "PSS-10 là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; nếu so sánh nhóm (giới tính, năm học) thì mỗi nhóm cũng nên đủ cỡ này."
   },
   "license": "Phòng thí nghiệm của Sheldon Cohen (Carnegie Mellon University) yêu cầu gửi đề nghị sử dụng PSS qua nền tảng ePROVIDE của Mapi Research Trust; việc gửi đề nghị miễn phí và không ràng buộc mua bảng hỏi. Bản dịch thuộc quyền của người dịch, cần xin phép người dịch.",
   "references": [
+    "Cohen, S., &amp; Williamson, G. (1988). Perceived stress in a probability sample of the United States. In S. Spacapan &amp; S. Oskamp (Eds.), <em>The social psychology of health</em> (pp. 31–67). Sage.",
     "Cohen, S., Kamarck, T., &amp; Mermelstein, R. (1983). A global measure of perceived stress. <em>Journal of Health and Social Behavior, 24</em>(4), 385–396. https://doi.org/10.2307/2136404",
-    "Cohen, S., &amp; Williamson, G. (1988). Perceived stress in a probability sample of the United States. In S. Spacapan &amp; S. Oskamp (Eds.), <em>The social psychology of health</em> (pp. 31–67). Sage."
+    "Dao-Tran, T.-H., Anderson, D., &amp; Seib, C. (2017). The Vietnamese version of the Perceived Stress Scale (PSS-10): Translation equivalence and psychometric properties among older women. <em>BMC Psychiatry, 17</em>, 53. https://doi.org/10.1186/s12888-017-1221-6",
+    "Darwita, R. R., Savitri, P. A., Khairinisa, S., Ramadhani, A., Adiatman, M., Maharani, D. A., &amp; Do, T. T. (2024). Comparative analysis of stress level and coping strategies due to COVID-19 pandemics among dental students in Indonesia and Vietnam. <em>Heliyon, 10</em>(14), e34452. https://doi.org/10.1016/j.heliyon.2024.e34452",
+    "Lee, E.-H. (2012). Review of the psychometric evidence of the Perceived Stress Scale. <em>Asian Nursing Research, 6</em>(4), 121–127. https://doi.org/10.1016/j.anr.2012.08.004",
+    "Nguyen, H. T. N., Nguyen, P. H., Nong, H. T. N., Vo, L. T., Nguyen, D. D., Bui, N. T., Nguyen, Y. N. T., &amp; Huynh, G. (2026). Occupational stress, coping strategies, and associated factors among primary healthcare workers in Vietnam. <em>PLOS One, 21</em>(5), e0349770. https://doi.org/10.1371/journal.pone.0349770"
   ],
   "verifiedFrom": [
     "https://www.cmu.edu/dietrich/psychology/stress-immunity-disease-lab/scales/html/pss.html",
     "https://www.cmu.edu/dietrich/psychology/stress-immunity-disease-lab/scales/.doc/pss_scoring_and_information.doc",
     "https://www.cmu.edu/dietrich/psychology/stress-immunity-disease-lab/scales/index.html",
-    "https://www.cmu.edu/common-cold-project/measures-by-study/psychological-and-social-constructs/stress-measures/perceived-stress.html"
+    "https://www.cmu.edu/common-cold-project/measures-by-study/psychological-and-social-constructs/stress-measures/perceived-stress.html",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%2210.1016/j.anr.2012.08.004%22&format=json&resultType=core",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5295219/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13189326/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11305215/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12446815/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.anr.2012.08.004",
+    "https://api.crossref.org/works/10.1186/s12888-017-1221-6",
+    "https://api.crossref.org/works/10.1371/journal.pone.0349770",
+    "https://api.crossref.org/works/10.1016/j.heliyon.2024.e34452"
   ],
   "related": ["chanh-niem-maas", "hai-long-cuoc-song-swls", "tu-hieu-qua-gse", "hoi-phuc-brs"]
 }

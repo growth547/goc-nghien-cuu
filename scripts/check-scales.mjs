@@ -18,11 +18,16 @@ let errors = 0;
 const STRICT = true;
 const plain = html => html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&");
 // "Davis (1989)", "Davis, Bagozzi & Warshaw (1989)", "Venkatesh và cộng sự (2003)", "(Yoo & Donthu, 2001)".
-const NAME = String.raw`(?<!\p{L})(?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e )*\p{Lu}[\p{L}'\-]+`;
+const NAME = String.raw`(?<!\p{L})(?:[Vv]an der |[Vv]an |[Dd]e |[Dd]i |[Ll]e |Thi |Thị )*\p{Lu}[\p{L}'\-]+`;
 const NARR = new RegExp(String.raw`(${NAME})(?:(?:, | & | và )${NAME})*(?: và cộng sự| et al\.)?\s*\((\d{4})`, "gu");
 const PAREN = new RegExp(String.raw`\((${NAME})(?:(?:, | & | và )${NAME})*(?: và cộng sự| et al\.)?, (\d{4})`, "gu");
 const NOT_NAMES = new Set(["Bảng", "Table", "Hình", "Figure", "Likert", "Study", "Nghiên", "Mẫu", "Theo", "Thang", "Năm", "Bản", "Phụ"]);
-const citations = text => [...text.matchAll(NARR), ...text.matchAll(PAREN)].map(m => [m[1], m[2]]).filter(([s]) => !NOT_NAMES.has(s));
+// Returns [names in the citation, year]; a chain like "Hà Nội, Vu và cộng sự (2022)" yields ["Nội", "Vu"].
+const NAME_ONLY = new RegExp(NAME, "gu");
+const citations = text =>
+  [...text.matchAll(NARR), ...text.matchAll(PAREN)]
+    .map(m => [(m[0].match(NAME_ONLY) ?? []).filter(n => !NOT_NAMES.has(n)), m[m.length - 1]])
+    .filter(([names]) => names.length);
 const fail = (slug, msg) => { errors++; console.log(`FAIL ${slug}: ${msg}`); };
 
 for (const file of all) {
@@ -63,10 +68,11 @@ for (const file of all) {
   if (STRICT && d.title && d.keyword && !d.title.toLowerCase().includes(d.keyword.toLowerCase())) fail(slug, `title must contain keyword "${d.keyword}"`);
 
   // Optional depth sections.
-  const refs = (d.references ?? []).map(plain);
+  // A study listed in vietnamStudies is fully cited on the page, so it counts as a reference too.
+  const refs = [...(d.references ?? []).map(plain), ...(d.vietnamStudies ?? []).map(v => `${v.authors} (${v.year}).`)];
   const cited = (where, text) => {
     for (const [surname, year] of citations(text))
-      if (!refs.some(r => r.startsWith(surname) && r.includes(`(${year}`))) fail(slug, `${where}: "${surname} … ${year}" is not in references`);
+      if (!refs.some(r => surname.some(n => r.startsWith(n)) && r.includes(`(${year}`))) fail(slug, `${where}: "${surname.join(" ")} … ${year}" is not in references`);
   };
   const isUrl = u => typeof u === "string" && /^https?:\/\/\S+$/.test(u);
   if (d.model !== undefined) {
@@ -77,7 +83,7 @@ for (const file of all) {
   for (const [n, r] of (d.reliability ?? []).entries()) {
     for (const k of ["construct", "value", "sample", "source"]) if (!r[k]?.trim?.()) fail(slug, `reliability[${n}] missing ${k}`);
     if (!isUrl(r.url)) fail(slug, `reliability[${n}].url must be the page you copied the value from`);
-    if (!/(Bảng|Table|tr\.|p\.|Hình|Figure)/.test(r.source ?? "")) fail(slug, `reliability[${n}].source must name the table or page the value comes from`);
+    if (!/(Bảng|Table|tr\.|p\.|Hình|Figure|mục|tóm tắt|phần)/.test(r.source ?? "")) fail(slug, `reliability[${n}].source must name the table or page the value comes from`);
     if (!citations(r.source ?? "").length) fail(slug, `reliability[${n}].source must start with a citation`);
     cited(`reliability[${n}]`, r.source ?? "");
   }

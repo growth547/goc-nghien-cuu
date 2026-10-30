@@ -258,6 +258,98 @@
     "HT2 ('nghiện') dễ khiến người trả lời ngại chọn mức cao; khi dịch nên thử nghiệm sơ bộ và cân nhắc diễn đạt nhẹ hơn, nhưng ghi rõ đã điều chỉnh.",
     "Với dịch vụ miễn phí, giá trị giá cả không còn phù hợp; có thể bỏ PV hoặc thay bằng chi phí cảm nhận và giải thích lý do."
   ],
+  "model": {
+    "paths": [
+      "Hiệu quả mong đợi (PE) → Ý định hành vi (BI), điều tiết bởi tuổi và giới tính",
+      "Nỗ lực mong đợi (EE) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính, kinh nghiệm",
+      "Ảnh hưởng xã hội (SI) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính, kinh nghiệm",
+      "Điều kiện thuận lợi (FC) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính, kinh nghiệm",
+      "Động lực hưởng thụ (HM) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính, kinh nghiệm",
+      "Giá trị giá cả (PV) → Ý định hành vi (BI), điều tiết bởi tuổi và giới tính",
+      "Thói quen (HT) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính, kinh nghiệm",
+      "Điều kiện thuận lợi (FC) → Hành vi sử dụng (USE), điều tiết bởi tuổi và kinh nghiệm",
+      "Thói quen (HT) → Hành vi sử dụng (USE), điều tiết bởi tuổi, giới tính, kinh nghiệm",
+      "Ý định hành vi (BI) → Hành vi sử dụng (USE), điều tiết bởi kinh nghiệm"
+    ],
+    "note": "UTAUT2 thêm ba khái niệm (động lực hưởng thụ, giá trị giá cả, thói quen) vào UTAUT cho bối cảnh người tiêu dùng; tuổi, giới tính và kinh nghiệm là biến điều tiết. Bài gốc với 1.512 người dùng Internet di động cho thấy phương sai giải thích của ý định tăng từ 56% lên 74% và của hành vi sử dụng từ 40% lên 52% so với UTAUT.",
+    "source": "Venkatesh, Thong & Xu (2012), phần tóm tắt; danh sách đường dẫn và biến điều tiết theo Tamilmani, Rana & Dwivedi (2021), Bảng 2, tr. 992."
+  },
+  "reliability": [
+    {
+      "construct": "PE",
+      "value": "α trung bình = 0,895 (thấp nhất 0,749, cao nhất 0,972)",
+      "sample": "Phân tích gộp 60 nghiên cứu UTAUT2, hơn 122.000 quan sát cộng dồn",
+      "source": "Tamilmani, Rana & Dwivedi (2021), Bảng 4, tr. 993",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf"
+    },
+    {
+      "construct": "EE",
+      "value": "α trung bình = 0,899 (thấp nhất 0,799, cao nhất 0,980)",
+      "sample": "Phân tích gộp 60 nghiên cứu UTAUT2, hơn 122.000 quan sát cộng dồn",
+      "source": "Tamilmani, Rana & Dwivedi (2021), Bảng 4, tr. 993",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf"
+    },
+    {
+      "construct": "FC",
+      "value": "α trung bình = 0,837 (thấp nhất 0,630, cao nhất 0,970)",
+      "sample": "Phân tích gộp 60 nghiên cứu UTAUT2, hơn 122.000 quan sát cộng dồn",
+      "source": "Tamilmani, Rana & Dwivedi (2021), Bảng 4, tr. 993",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf"
+    },
+    {
+      "construct": "HM",
+      "value": "α trung bình = 0,888 (thấp nhất 0,736, cao nhất 0,980)",
+      "sample": "Phân tích gộp 60 nghiên cứu UTAUT2, hơn 122.000 quan sát cộng dồn",
+      "source": "Tamilmani, Rana & Dwivedi (2021), Bảng 4, tr. 993",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf"
+    },
+    {
+      "construct": "PV",
+      "value": "α trung bình = 0,895 (thấp nhất 0,799, cao nhất 0,980)",
+      "sample": "Phân tích gộp 60 nghiên cứu UTAUT2, hơn 122.000 quan sát cộng dồn",
+      "source": "Tamilmani, Rana & Dwivedi (2021), Bảng 4, tr. 993",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf"
+    },
+    {
+      "construct": "HT",
+      "value": "α trung bình = 0,890 (thấp nhất 0,737, cao nhất 0,970)",
+      "sample": "Phân tích gộp 60 nghiên cứu UTAUT2, hơn 122.000 quan sát cộng dồn",
+      "source": "Tamilmani, Rana & Dwivedi (2021), Bảng 4, tr. 993",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Thu Nguyen, T., Thi Nguyen, H., Thi Mai, H., & Thi Minh Tran, T.",
+      "year": 2020,
+      "title": "Determinants of digital banking services in Vietnam: Applying UTAUT2 model",
+      "journal": "Asian Economic and Financial Review, 10(6), 680–697",
+      "url": "https://doi.org/10.18488/journal.aefr.2020.106.680.697",
+      "note": "Dùng đủ 7 khái niệm UTAUT2 cộng thêm niềm tin cho ngân hàng số, 300 phiếu khảo sát, thang Likert 7 điểm; α từ 0,718 (PV) đến 0,966 (PE)."
+    },
+    {
+      "authors": "Nguyen, A.-H. D., Pham, N.-U. T., Lin, P.-T., và cộng sự",
+      "year": 2024,
+      "title": "Acceptance and use of live streaming on metaverse in Vietnam: An analysis with the UTAUT2",
+      "journal": "Journal of Infrastructure, Policy and Development, 8(8), 6069",
+      "url": "https://doi.org/10.24294/jipd.v8i8.6069",
+      "note": "Dùng một phần UTAUT2 (PE, EE, SI, HM, kinh nghiệm) và thêm tự tin công nghệ cho livestream trên metaverse, n = 303, PLS-SEM; α từ 0,793 đến 0,938."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Nếu nỗ lực mong đợi (EE) không tác động có ý nghĩa lên ý định thì có bất thường không?",
+      "a": "Không bất thường. Phân tích gộp của Tamilmani, Rana & Dwivedi (2021) cho thấy EE → BI là đường dẫn yếu nhất (β gộp = 0,102) và 20 trên 46 nghiên cứu báo cáo không có ý nghĩa (Bảng 6, tr. 998). Với công nghệ đã quen thuộc, người dùng ít bận tâm về độ khó, nên cần bàn luận theo bối cảnh thay vì coi là lỗi."
+    },
+    {
+      "q": "Đề tài chỉ dùng một phần UTAUT2 và bỏ biến điều tiết, có được gọi là mô hình UTAUT2 không?",
+      "a": "Mô hình gốc của Venkatesh, Thong & Xu (2012) có 7 biến tác động lên ý định và tuổi, giới tính, kinh nghiệm điều tiết hầu hết các đường dẫn. Tamilmani, Rana & Dwivedi (2021) nêu rõ việc dùng UTAUT2 không trọn vẹn đang bị phê phán, nên khi bỏ biến cần giải thích lý do (ví dụ dịch vụ miễn phí thì bỏ PV) và gọi là mô hình dựa trên UTAUT2. Nếu giữ biến điều tiết, mỗi biến thêm các mũi tên tương tác nên cỡ mẫu phải tăng."
+    },
+    {
+      "q": "Chạy PLS-SEM cho UTAUT2 thì cỡ mẫu và giá trị phân biệt kiểm tra thế nào?",
+      "a": "Phân tích power với 7 mũi tên vào ý định cần khoảng 103 quan sát, nhưng theo phương pháp căn bậc hai nghịch đảo của Kock & Hadaya (2018), nếu hệ số đường dẫn nhỏ nhất kỳ vọng khoảng 0,2 thì cần khoảng 155; vì EE → BI và PV → BI thường nhỏ, nên lấy mẫu lớn hơn. Giá trị phân biệt nên báo cáo HTMT theo Henseler, Ringle & Sarstedt (2015), dưới 0,85 hoặc 0,90; cặp PE và HM thường cần chú ý."
+    }
+  ],
   "sampleSize": {
     "arrowsMax": 7,
     "note": "Ý định hành vi nhận nhiều nhất 7 mũi tên (PE, EE, SI, FC, HM, PV, HT). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 103 quan sát; thêm các tương tác điều tiết theo tuổi, giới tính, kinh nghiệm thì cần lớn hơn."
@@ -265,8 +357,11 @@
   "license": "Các biến quan sát được công bố trong Phụ lục của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
   "references": [
     "Dodds, W. B., Monroe, K. B., &amp; Grewal, D. (1991). Effects of price, brand, and store information on buyers' product evaluations. <em>Journal of Marketing Research, 28</em>(3), 307–319. https://doi.org/10.1177/002224379102800305",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
     "Kim, S. S., Malhotra, N. K., &amp; Narasimhan, S. (2005). Two competing perspectives on automatic use: A theoretical and empirical comparison. <em>Information Systems Research, 16</em>(4), 418–432. https://doi.org/10.1287/isre.1050.0070",
+    "Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131",
     "Limayem, M., &amp; Hirt, S. G. (2003). Force of habit and information systems usage: Theory and initial validation. <em>Journal of the Association for Information Systems, 4</em>(1), 65–97. https://doi.org/10.17705/1jais.00030",
+    "Tamilmani, K., Rana, N. P., &amp; Dwivedi, Y. K. (2021). Consumer acceptance and use of information technology: A meta-analytic evaluation of UTAUT2. <em>Information Systems Frontiers, 23</em>(4), 987–1005. https://doi.org/10.1007/s10796-020-10007-6",
     "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540",
     "Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412"
   ],
@@ -275,7 +370,16 @@
     "https://api.crossref.org/works/10.2307/41410412",
     "https://api.crossref.org/works/10.1287/isre.1050.0070",
     "https://api.crossref.org/works/10.1177/002224379102800305",
-    "https://api.crossref.org/works/10.17705/1jais.00030"
+    "https://api.crossref.org/works/10.17705/1jais.00030",
+    "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf",
+    "https://api.crossref.org/works/10.1007/s10796-020-10007-6",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8",
+    "https://api.crossref.org/works/10.1111/isj.12131",
+    "https://api.crossref.org/works/10.18488/journal.aefr.2020.106.680.697",
+    "https://archive.aessweb.com/index.php/5002/article/view/1952",
+    "https://archive.aessweb.com/index.php/5002/article/download/1952/3087/3237",
+    "https://api.crossref.org/works/10.24294/jipd.v8i8.6069",
+    "https://www.enpress-publisher.com/files/journals/1/articles/6069/public/6069-29748-1-PB.pdf"
   ],
   "related": [
     "utaut",

@@ -89,20 +89,125 @@
     "'Carried away' (AB3) và 'immersed' (AB2) dễ dịch thành nghĩa tiêu cực hoặc quá văn chương; nên phỏng vấn thử vài người để chắc họ hiểu là bị cuốn vào công việc theo hướng tích cực.",
     "Bản dành cho sinh viên (UWES-S) có câu chữ khác; nếu khảo sát sinh viên thì dùng bản đó thay vì tự sửa từ 'công việc' thành 'học tập'."
   ],
+  "reliability": [
+    {
+      "construct": "Gắn kết công việc (UWES-9, điểm tổng), bản tiếng Việt UWES-9-V",
+      "value": "α = 0,93",
+      "sample": "n = 942 điều dưỡng một bệnh viện đa khoa tuyến trung ương ở Hà Nội, năm 2018, thang 0–6",
+      "source": "Tran và cộng sự (2020), Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7443047/"
+    },
+    {
+      "construct": "Sức sống / Cống hiến / Say mê, bản tiếng Việt UWES-9-V",
+      "value": "α = 0,86 / 0,90 / 0,77",
+      "sample": "n = 942 điều dưỡng ở Hà Nội; hệ số ổn định sau 3 tháng (ICC) của điểm tổng là 0,48 trên 286 người",
+      "source": "Tran và cộng sự (2020), mục Kết quả và Bảng 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7443047/"
+    },
+    {
+      "construct": "Gắn kết công việc (UWES-9, điểm tổng)",
+      "value": "α = 0,93 (trung vị 0,93; dao động 0,89–0,97)",
+      "sample": "Cơ sở dữ liệu Hà Lan, 15 nghiên cứu, N = 9.679",
+      "source": "Schaufeli & Bakker (2004), Bảng 4, tr. 15",
+      "url": "https://www.wilmarschaufeli.nl/publications/Schaufeli/Test%20Manuals/Test_manual_UWES_English.pdf"
+    },
+    {
+      "construct": "Sức sống / Cống hiến / Say mê (UWES-9)",
+      "value": "α = 0,84 / 0,89 / 0,79",
+      "sample": "Cơ sở dữ liệu Hà Lan, N = 9.679",
+      "source": "Schaufeli & Bakker (2004), Bảng 3, tr. 14",
+      "url": "https://www.wilmarschaufeli.nl/publications/Schaufeli/Test%20Manuals/Test_manual_UWES_English.pdf"
+    },
+    {
+      "construct": "Gắn kết công việc (UWES-9, điểm tổng), dữ liệu quốc tế",
+      "value": "α = 0,90 (trung vị 0,91; dao động 0,85–0,94)",
+      "sample": "Mẫu từ 9 quốc gia, N = 12.631",
+      "source": "Schaufeli & Bakker (2004), Bảng 17, tr. 26",
+      "url": "https://www.wilmarschaufeli.nl/publications/Schaufeli/Test%20Manuals/Test_manual_UWES_English.pdf"
+    },
+    {
+      "construct": "Gắn kết công việc (UWES-9, điểm tổng), mẫu Việt Nam, thang 1–5",
+      "value": "α = 0,82 (sức sống 0,76; cống hiến 0,71; say mê 0,72)",
+      "sample": "n = 542 giảng viên 10 trường đại học công lập vùng Đồng bằng sông Cửu Long",
+      "source": "Tran và cộng sự (2026), mục 3.3.2",
+      "url": "https://doi.org/10.3389/fpsyg.2026.1901087"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Tran, T. T. T., Watanabe, K., Imamura, K., Nguyen, H. T., Sasaki, N., Kuribayashi, K., Sakuraya, A., Nguyen, N. T., Bui, T. M., Nguyen, Q. T., Truong, T. Q., Nguyen, G. T. H., Minas, H., Tsustumi, A., Shimazu, A., & Kawakami, N.",
+      "year": 2020,
+      "title": "Reliability and validity of the Vietnamese version of the 9-item Utrecht Work Engagement Scale",
+      "journal": "Journal of Occupational Health, 62(1), e12157",
+      "url": "https://doi.org/10.1002/1348-9585.12157",
+      "note": "Bài kiểm định chính thức bản UWES-9 tiếng Việt (dịch theo quy trình chuẩn) trên 949 điều dưỡng ở Hà Nội: α tổng 0,93; CFA cho thấy cả mô hình 1 và 3 nhân tố đều chấp nhận được sau khi cho tương quan sai số, mô hình 3 nhân tố phù hợp hơn nhưng ba mặt tương quan rất cao (r > 0,90)."
+    },
+    {
+      "authors": "Sasaki, N., Imamura, K., Tran, T. T. T., Nguyen, H. T., Kuribayashi, K., Sakuraya, A., Bui, T. M., Nguyen, Q. T., Nguyen, N. T., Nguyen, G. T. H., Zhang, M. W., Minas, H., Sekiya, Y., Watanabe, K., Tsutsumi, A., Shimazu, A., & Kawakami, N.",
+      "year": 2021,
+      "title": "Effects of smartphone-based stress management on improving work engagement among nurses in Vietnam: Secondary analysis of a three-arm randomized controlled trial",
+      "journal": "Journal of Medical Internet Research, 23(2), e20445",
+      "url": "https://doi.org/10.2196/20445",
+      "note": "Dùng UWES-9 tiếng Việt (thang 0–6, lấy điểm trung bình) làm kết cục của thử nghiệm can thiệp trên 949 điều dưỡng; điểm trung bình ban đầu khoảng 4,3 ở cả ba nhóm."
+    },
+    {
+      "authors": "Tran, V. D., Le, M. T. L., Nguyen, T. H., Nguyen, P. N. T., Tran, M. V., & Nguyen, H. T.",
+      "year": 2026,
+      "title": "Authentic leadership and organizational citizenship behavior: the mediating role of work engagement in a Confucian cultural context",
+      "journal": "Frontiers in Psychology, 17, 1901087",
+      "url": "https://doi.org/10.3389/fpsyg.2026.1901087",
+      "note": "Dùng UWES-9 làm biến trung gian giữa lãnh đạo đích thực và hành vi công dân tổ chức trên 542 giảng viên ở Đồng bằng sông Cửu Long; đổi sang thang tần suất 1–5, α = 0,82, CFA: CFI = 0,99, RMSEA = 0,03."
+    },
+    {
+      "authors": "Jurek, P., Lac, A.-N. T., Le, B.-T. N., Olech, M., & Różycka-Tran, J.",
+      "year": 2026,
+      "title": "Uncovering latent profiles of multidimensional work attitudes: cross-cultural evidence from Poland and Vietnam",
+      "journal": "Frontiers in Psychology, 17, 1749901",
+      "url": "https://doi.org/10.3389/fpsyg.2026.1749901",
+      "note": "Dịch xuôi, dịch ngược UWES-9 sang tiếng Việt, dùng thang tần suất 7 mức trên 305 nhân viên Việt Nam (so với 358 người Ba Lan); kiểm định bất biến đo lường mô hình 1 nhân tố giữa hai nước đạt bất biến vô hướng từng phần (tự do câu 3)."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Vì sao em chọn UWES-9 mà không dùng bản 17 biến?",
+      "a": "Schaufeli, Bakker & Salanova (2006) rút gọn UWES-17 còn 9 biến (mỗi mặt 3 biến) để giảm gánh nặng trả lời mà vẫn giữ cấu trúc ba mặt. Trong sổ tay của Schaufeli & Bakker (2004, Bảng 4), độ tin cậy điểm tổng của UWES-9 (α = 0,93, N = 9.679) ngang bản 17 biến (α = 0,93). Ở Việt Nam, bản UWES-9 đã được kiểm định chính thức trên điều dưỡng (Tran và cộng sự, 2020), còn bản 17 biến thì chưa thấy bài kiểm định tiếng Việt."
+    },
+    {
+      "q": "Gắn kết công việc là một nhân tố hay ba nhân tố? Em phân tích theo cách nào?",
+      "a": "Cả hai đều có cơ sở. Schaufeli & Bakker (2004) cho thấy mô hình 3 nhân tố phù hợp hơn, nhưng với UWES-9 mô hình 1 nhân tố cũng chấp nhận được và ba mặt tương quan rất cao, nên khi quan tâm tới gắn kết nói chung thì dùng điểm tổng. Tran và cộng sự (2020) cũng thấy cả hai mô hình chấp nhận được trên mẫu Việt Nam, ba mặt tương quan trên 0,90. Em nên chạy CFA so sánh hai mô hình; nếu dùng hồi quy thì không đưa đồng thời cả ba mặt vào làm biến độc lập vì đa cộng tuyến, theo khuyến nghị của sổ tay."
+    },
+    {
+      "q": "Em đổi thang tần suất 0–6 sang Likert 5 mức có được không?",
+      "a": "Được, nhưng phải ghi rõ là đã điều chỉnh. Tran và cộng sự (2026) dùng thang tần suất 1–5 trên giảng viên Việt Nam và vẫn đạt α = 0,82, CFA phù hợp tốt. Tuy vậy, điểm khi đó không so được với chuẩn (norms) trong sổ tay của Schaufeli & Bakker (2004) hay với điểm trung bình khoảng 4,3 trên thang 0–6 của điều dưỡng Việt Nam trong Sasaki và cộng sự (2021). Nếu muốn so sánh, giữ thang 0–6 như bản gốc."
+    }
+  ],
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu gắn kết công việc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
   "license": "Theo trang của Wilmar Schaufeli, UWES được dùng miễn phí cho mục đích học thuật phi thương mại (luận án, bài báo khoa học); mục đích khác cần ký hợp đồng với tác giả. Người dùng đồng ý chia sẻ một phần dữ liệu (điểm thô, tuổi, giới tính, nghề nghiệp) với tác giả để kiểm định thang đo.",
   "references": [
+    "Jurek, P., Lac, A.-N. T., Le, B.-T. N., Olech, M., &amp; Różycka-Tran, J. (2026). Uncovering latent profiles of multidimensional work attitudes: Cross-cultural evidence from Poland and Vietnam. <em>Frontiers in Psychology, 17</em>, 1749901. https://doi.org/10.3389/fpsyg.2026.1749901",
+    "Sasaki, N., Imamura, K., Tran, T. T. T., Nguyen, H. T., Kuribayashi, K., Sakuraya, A., Bui, T. M., Nguyen, Q. T., Nguyen, N. T., Nguyen, G. T. H., Zhang, M. W., Minas, H., Sekiya, Y., Watanabe, K., Tsutsumi, A., Shimazu, A., &amp; Kawakami, N. (2021). Effects of smartphone-based stress management on improving work engagement among nurses in Vietnam: Secondary analysis of a three-arm randomized controlled trial. <em>Journal of Medical Internet Research, 23</em>(2), e20445. https://doi.org/10.2196/20445",
     "Schaufeli, W. B., Bakker, A. B., &amp; Salanova, M. (2006). The measurement of work engagement with a short questionnaire: A cross-national study. <em>Educational and Psychological Measurement, 66</em>(4), 701–716. https://doi.org/10.1177/0013164405282471",
-    "Schaufeli, W., &amp; Bakker, A. (2004). <em>Utrecht Work Engagement Scale: Preliminary manual</em> (Version 1.1). Occupational Health Psychology Unit, Utrecht University."
+    "Schaufeli, W., &amp; Bakker, A. (2004). <em>Utrecht Work Engagement Scale: Preliminary manual</em> (Version 1.1). Occupational Health Psychology Unit, Utrecht University.",
+    "Tran, T. T. T., Watanabe, K., Imamura, K., Nguyen, H. T., Sasaki, N., Kuribayashi, K., Sakuraya, A., Nguyen, N. T., Bui, T. M., Nguyen, Q. T., Truong, T. Q., Nguyen, G. T. H., Minas, H., Tsustumi, A., Shimazu, A., &amp; Kawakami, N. (2020). Reliability and validity of the Vietnamese version of the 9-item Utrecht Work Engagement Scale. <em>Journal of Occupational Health, 62</em>(1), e12157. https://doi.org/10.1002/1348-9585.12157",
+    "Tran, V. D., Le, M. T. L., Nguyen, T. H., Nguyen, P. N. T., Tran, M. V., &amp; Nguyen, H. T. (2026). Authentic leadership and organizational citizenship behavior: The mediating role of work engagement in a Confucian cultural context. <em>Frontiers in Psychology, 17</em>, 1901087. https://doi.org/10.3389/fpsyg.2026.1901087"
   ],
   "verifiedFrom": [
     "https://www.wilmarschaufeli.nl/publications/Schaufeli/Tests/UWES_GB_9.pdf",
     "https://www.wilmarschaufeli.nl/publications/Schaufeli/Test%20Manuals/Test_manual_UWES_English.pdf",
     "https://www.wilmarschaufeli.nl/downloads/",
     "https://www.wilmarschaufeli.nl/tests/",
-    "https://api.crossref.org/works/10.1177/0013164405282471"
+    "https://api.crossref.org/works/10.1177/0013164405282471",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=(%22Utrecht%20Work%20Engagement%22%20OR%20UWES)%20AND%20(Vietnam%20OR%20Vietnamese)%20AND%20OPEN_ACCESS:y&format=json",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7443047/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7943341/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13533948/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13253423/fullTextXML",
+    "https://api.crossref.org/works/10.1002/1348-9585.12157",
+    "https://api.crossref.org/works/10.2196/20445",
+    "https://api.crossref.org/works/10.3389/fpsyg.2026.1901087",
+    "https://api.crossref.org/works/10.3389/fpsyg.2026.1749901"
   ],
   "related": [
     "hai-long-cong-viec",

@@ -107,6 +107,70 @@
     "'Committed' dịch là 'cam kết' nghe cứng với người tiêu dùng; 'gắn bó' tự nhiên hơn nhưng phải giữ ý sẵn lòng ở lại với thương hiệu.",
     "Thị phần và giá tương đối trong mô hình gốc lấy từ quản lý thương hiệu, không hỏi người tiêu dùng; đề tài chỉ khảo sát khách hàng thường dừng ở hai loại trung thành hoặc thay bằng ý định giới thiệu, ý định mua lại."
   ],
+  "model": {
+    "paths": [
+      "Niềm tin thương hiệu (BT) → Trung thành hành vi (PL) (H1a, β = 0,46)",
+      "Niềm tin thương hiệu (BT) → Trung thành thái độ (AL) (H1b, β = 0,33)",
+      "Cảm xúc thương hiệu (BA) → Trung thành hành vi (PL) (H2a, β = 0,25)",
+      "Cảm xúc thương hiệu (BA) → Trung thành thái độ (AL) (H2b, β = 0,30)",
+      "Trung thành hành vi (PL) → Thị phần (H3, β = 0,21)",
+      "Trung thành thái độ (AL) → Giá tương đối (H4, β = 0,21)",
+      "Biến kiểm soát cấp sản phẩm: giá trị hưởng thụ → cảm xúc thương hiệu (0,32), giá trị thực dụng → cảm xúc thương hiệu (−0,26); cấp thương hiệu: mức độ khác biệt → giá tương đối (0,27), thị phần quảng cáo (share of voice) → thị phần (0,35) và → giá tương đối (0,32)"
+    ],
+    "note": "Cả bốn giả thuyết đều được ủng hộ (p < 0,05); mô hình giải thích 16% phương sai thị phần và 24% phương sai giá tương đối. Trung thành hành vi giải thích thị phần nhưng không giải thích giá tương đối, còn trung thành thái độ giải thích giá tương đối nhưng không giải thích thị phần.",
+    "source": "Chaudhuri & Holbrook (2001), Hình 1, Hình 2 và Bảng 3, tr. 83 và 89."
+  },
+  "reliability": [
+    {
+      "construct": "Niềm tin thương hiệu (BT, 4 biến)",
+      "value": "α = 0,81",
+      "sample": "Khảo sát người tiêu dùng giai đoạn 3: 30 người dùng cho mỗi thương hiệu, 149 thương hiệu thuộc 49 ngành hàng (4.470 người trả lời), thang 7 mức",
+      "source": "Chaudhuri & Holbrook (2001), tr. 87",
+      "url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf"
+    },
+    {
+      "construct": "Cảm xúc thương hiệu (BA, 3 biến)",
+      "value": "α = 0,96",
+      "sample": "Như trên, 149 thương hiệu × 30 người dùng",
+      "source": "Chaudhuri & Holbrook (2001), tr. 87",
+      "url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf"
+    },
+    {
+      "construct": "Trung thành hành vi (PL, 2 biến)",
+      "value": "α = 0,90",
+      "sample": "Như trên, 149 thương hiệu × 30 người dùng",
+      "source": "Chaudhuri & Holbrook (2001), tr. 88",
+      "url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf"
+    },
+    {
+      "construct": "Trung thành thái độ (AL, 2 biến)",
+      "value": "α = 0,83",
+      "sample": "Như trên, 149 thương hiệu × 30 người dùng",
+      "source": "Chaudhuri & Holbrook (2001), tr. 88",
+      "url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf"
+    },
+    {
+      "construct": "Cả 4 khái niệm (CFA trên dữ liệu gộp 149 thương hiệu)",
+      "value": "AVE từ 0,67 đến 0,88; bình phương tương quan lớn nhất giữa hai khái niệm là 0,46",
+      "sample": "149 thương hiệu, dữ liệu trung bình theo thương hiệu",
+      "source": "Chaudhuri & Holbrook (2001), tr. 88",
+      "url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf"
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Trung thành hành vi và trung thành thái độ mỗi khái niệm chỉ có 2 biến, có đủ tin cậy không?",
+      "a": "Trong bài gốc, α của trung thành hành vi là 0,90 và của trung thành thái độ là 0,83 (Chaudhuri & Holbrook, 2001, tr. 88), nhưng đó là dữ liệu trung bình theo thương hiệu, nên ổn định hơn dữ liệu cá nhân. Với khảo sát cá nhân, khái niệm 2 biến dễ có α thấp và khó chạy CFA; nên bổ sung 1–2 biến từ thang khác như Yoo & Donthu (2001) và ghi rõ nguồn từng biến."
+    },
+    {
+      "q": "Đề tài có kiểm định được nhánh thị phần và giá tương đối như mô hình gốc không?",
+      "a": "Thường là không. Trong bài gốc, thị phần và giá tương đối do quản lý thương hiệu cung cấp, không hỏi người tiêu dùng, và mô hình chỉ giải thích 16% phương sai thị phần, 24% phương sai giá tương đối (Chaudhuri & Holbrook, 2001). Khoá luận chỉ khảo sát khách hàng nên dừng ở hai loại trung thành, hoặc thay bằng ý định mua lại, ý định giới thiệu, và nói rõ đây là phần rút gọn của mô hình."
+    },
+    {
+      "q": "Niềm tin và cảm xúc thương hiệu tương quan cao, làm sao chứng minh chúng là hai khái niệm khác nhau?",
+      "a": "Trong bài gốc, tương quan giữa niềm tin và cảm xúc thương hiệu là 0,66 (Bảng 2), và tác giả kiểm tra giá trị phân biệt bằng cách so AVE (0,67 đến 0,88) với bình phương tương quan lớn nhất (0,46). Với dữ liệu cá nhân, nên báo cáo thêm HTMT theo Henseler, Ringle & Sarstedt (2015), dưới 0,85 (chặt) hoặc 0,90 (nới), vì hai khái niệm này dễ bị trùng khi người trả lời yêu thích thương hiệu."
+    }
+  ],
   "sampleSize": {
     "arrowsMax": 2,
     "note": "Ở phần khảo sát khách hàng, mỗi loại trung thành nhận 2 mũi tên (từ niềm tin và cảm xúc thương hiệu). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 68 quan sát."
@@ -114,12 +178,15 @@
   "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
   "references": [
     "Chaudhuri, A., &amp; Holbrook, M. B. (2001). The chain of effects from brand trust and brand affect to brand performance: The role of brand loyalty. <em>Journal of Marketing, 65</em>(2), 81–93. https://doi.org/10.1509/jmkg.65.2.81.18255",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
     "Yoo, B., &amp; Donthu, N. (2001). Developing and validating a multidimensional consumer-based brand equity scale. <em>Journal of Business Research, 52</em>(1), 1–14. https://doi.org/10.1016/S0148-2963(99)00098-3"
   ],
   "verifiedFrom": [
     "https://business.columbia.edu/sites/default/files-efs/pubfiles/593/The_Chain_of_Effects.pdf",
     "https://api.crossref.org/works/10.1509/jmkg.65.2.81.18255",
-    "https://api.crossref.org/works/10.1016/S0148-2963(99)00098-3"
+    "https://api.crossref.org/works/10.1016/S0148-2963(99)00098-3",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9186281/fullTextXML",
+    "https://vmostscience.vjst.vn/index.php/vmost_jossh/article/download/418/390/1823"
   ],
   "related": [
     "tai-san-thuong-hieu",

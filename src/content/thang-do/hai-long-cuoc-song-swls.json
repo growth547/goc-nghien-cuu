@@ -30,17 +30,108 @@
     "Dịch 'ideal' thành 'lý tưởng' dễ bị hiểu là hoàn hảo; nên thử phỏng vấn nhận thức (cognitive interview) với 5–10 người trước khi khảo sát chính thức.",
     "Thang một nhân tố: chạy Cronbach's alpha và EFA để kiểm tra tính đơn hướng; nếu đưa vào mô hình SEM cùng thang hạnh phúc khác, kiểm tra giá trị phân biệt (HTMT)."
   ],
+  "reliability": [
+    {
+      "construct": "SWLS (toàn thang)",
+      "value": "α = 0,87; test-retest sau 2 tháng = 0,82",
+      "sample": "Nghiên cứu 1 của Diener và cộng sự (1985), do Pavot & Diener tổng hợp lại",
+      "source": "Pavot & Diener (1993), Bảng 2 và đoạn về độ tin cậy",
+      "url": "https://labs.psychology.illinois.edu/~ediener/Documents/Pavot-Diener_1993.pdf"
+    },
+    {
+      "construct": "SWLS (toàn thang)",
+      "value": "α = 0,89; test-retest sau 2 tuần = 0,83",
+      "sample": "Alfonso & Allison (1992a), tổng hợp lại trong bài tổng quan",
+      "source": "Pavot & Diener (1993), Bảng 2",
+      "url": "https://labs.psychology.illinois.edu/~ediener/Documents/Pavot-Diener_1993.pdf"
+    },
+    {
+      "construct": "SWLS (toàn thang), độ ổn định dài hạn",
+      "value": "test-retest sau 4 năm = 0,54",
+      "sample": "Magnus, Diener, Fujita & Pavot (1993), tổng hợp lại trong bài tổng quan",
+      "source": "Pavot & Diener (1993), Bảng 2",
+      "url": "https://labs.psychology.illinois.edu/~ediener/Documents/Pavot-Diener_1993.pdf"
+    },
+    {
+      "construct": "SWLS bản tiếng Việt (được tác giả cho phép)",
+      "value": "ω = 0,756; CFA 1 nhân tố: CFI = 0,968, RMSEA = 0,073, SRMR = 0,027",
+      "sample": "n = 1.073 tình nguyện viên cộng đồng ở TP.HCM",
+      "source": "Arrindell và cộng sự (2022), mục 3.2 CFA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8953938/"
+    },
+    {
+      "construct": "SWLS bản tiếng Việt",
+      "value": "α = 0,90",
+      "sample": "n = 484 sinh viên đại học Việt Nam (18–24 tuổi)",
+      "source": "Tran và cộng sự (2022), mục Life Satisfaction (Measures)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9617225/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Arrindell, W. A., Checa, I., Espejo, B., Chen, I.-H., Carrozzino, D., Vu-Bich, P., Dambach, H., & Vagos, P.",
+      "year": 2022,
+      "title": "Measurement invariance and construct validity of the Satisfaction With Life Scale (SWLS) in community volunteers in Vietnam",
+      "journal": "International Journal of Environmental Research and Public Health, 19(6), 3460",
+      "url": "https://doi.org/10.3390/ijerph19063460",
+      "note": "Kiểm định bản SWLS tiếng Việt được tác giả cho phép trên 1.073 tình nguyện viên ở TP.HCM: CFA xác nhận cấu trúc 1 nhân tố, ω = 0,756, tương quan trung bình giữa các câu 0,38, và đạt bất biến cấu hình, thang đo và điểm chặn (scalar) theo giới tính, tuổi, hôn nhân."
+    },
+    {
+      "authors": "Tran, M. A. Q., Khoury, B., Chau, N. N. T., Van Pham, M., Dang, A. T. N., Ngo, T. V., Ngo, T. T., Truong, T. M., & Le Dao, A. K.",
+      "year": 2022,
+      "title": "The role of self-compassion on psychological well-being and life satisfaction of Vietnamese undergraduate students during the COVID-19 pandemic: Hope as a mediator",
+      "journal": "Journal of Rational-Emotive & Cognitive-Behavior Therapy, 42(1), 35–53",
+      "url": "https://doi.org/10.1007/s10942-022-00487-7",
+      "note": "Dùng SWLS 7 mức trên 484 sinh viên Việt Nam làm biến kết quả trong mô hình trung gian (lòng trắc ẩn với bản thân → hy vọng → hài lòng cuộc sống), α = 0,90, có CFA mô hình đo lường."
+    },
+    {
+      "authors": "Ho, T. T. Q., Nguyen, B. T. N., & Nguyen, N. P. H.",
+      "year": 2022,
+      "title": "Academic stress and depression among Vietnamese adolescents: A moderated mediation model of life satisfaction and resilience",
+      "journal": "Current Psychology, 42(31), 27217–27227",
+      "url": "https://doi.org/10.1007/s12144-022-03661-3",
+      "note": "Dùng SWLS 7 mức trên 1.336 học sinh Việt Nam làm biến điều tiết giữa áp lực học tập và trầm cảm, α = 0,795."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "SWLS có câu nào đảo chiều và có nhiều nhân tố không?",
+      "a": "Không có câu đảo chiều; 5 câu cộng thẳng, điểm tổng 5–35. SWLS được xây dựng là thang 1 nhân tố (Diener, Emmons, Larsen & Griffin, 1985), và ở Việt Nam Arrindell và cộng sự (2022) đã xác nhận cấu trúc 1 nhân tố bằng CFA trên 1.073 người ở TP.HCM. Em chạy CFA 1 nhân tố, báo cáo alpha hoặc omega; nếu câu 5 ('nếu được sống lại') tải thấp, nêu lý do trước khi loại."
+    },
+    {
+      "q": "Hài lòng cuộc sống có ổn định không, đo một lần có đủ không?",
+      "a": "Pavot & Diener (1993) tổng hợp cho thấy SWLS khá ổn định trong ngắn hạn (test-retest 0,82 sau 2 tháng) nhưng giảm còn khoảng 0,54 sau 4 năm, nghĩa là thang vẫn nhạy với thay đổi của hoàn cảnh sống. Với đề tài cắt ngang, đo một lần là đủ để phân tích quan hệ; nếu muốn nói về thay đổi theo thời gian thì cần thiết kế lặp lại."
+    },
+    {
+      "q": "Điểm tổng của em nằm trong khoảng nào và diễn giải ra sao?",
+      "a": "Với thang 7 mức, điểm tổng 5–35; Pavot & Diener (1993) đưa các mức diễn giải, trong đó 20 là trung lập, 21–25 hơi hài lòng, 26–30 hài lòng. Cần kiểm tra kỹ phần phương pháp: có bài ở Việt Nam ghi khoảng điểm 5–25 dù dùng thang 7 mức (Ho và cộng sự, 2022), đây là lỗi mô tả. Nếu báo cáo điểm trung bình 1–7 thì không dùng trực tiếp các mức diễn giải theo điểm tổng."
+    }
+  ],
   "sampleSize": {
     "note": "SWLS là thang đơn lẻ 5 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (25) nhưng nên có từ 100 quan sát trở lên để kết quả độ tin cậy và phân tích nhân tố ổn định."
   },
   "license": "Thang có bản quyền của Ed Diener và các đồng tác giả nhưng được dùng miễn phí, không cần xin phép, cho mục đích phi thương mại (nghiên cứu, thực hành), với điều kiện trích dẫn đúng các tác giả, theo trang chính thức của Diener.",
   "references": [
-    "Diener, E., Emmons, R. A., Larsen, R. J., &amp; Griffin, S. (1985). The Satisfaction With Life Scale. <em>Journal of Personality Assessment, 49</em>(1), 71–75. https://doi.org/10.1207/s15327752jpa4901_13"
+    "Arrindell, W. A., Checa, I., Espejo, B., Chen, I.-H., Carrozzino, D., Vu-Bich, P., Dambach, H., &amp; Vagos, P. (2022). Measurement invariance and construct validity of the Satisfaction With Life Scale (SWLS) in community volunteers in Vietnam. <em>International Journal of Environmental Research and Public Health, 19</em>(6), 3460. https://doi.org/10.3390/ijerph19063460",
+    "Diener, E., Emmons, R. A., Larsen, R. J., &amp; Griffin, S. (1985). The Satisfaction With Life Scale. <em>Journal of Personality Assessment, 49</em>(1), 71–75. https://doi.org/10.1207/s15327752jpa4901_13",
+    "Ho, T. T. Q., Nguyen, B. T. N., &amp; Nguyen, N. P. H. (2022). Academic stress and depression among Vietnamese adolescents: A moderated mediation model of life satisfaction and resilience. <em>Current Psychology, 42</em>(31), 27217–27227. https://doi.org/10.1007/s12144-022-03661-3",
+    "Pavot, W., &amp; Diener, E. (1993). Review of the Satisfaction With Life Scale. <em>Psychological Assessment, 5</em>(2), 164–172. https://doi.org/10.1037/1040-3590.5.2.164",
+    "Tran, M. A. Q., Khoury, B., Chau, N. N. T., Van Pham, M., Dang, A. T. N., Ngo, T. V., Ngo, T. T., Truong, T. M., &amp; Le Dao, A. K. (2022). The role of self-compassion on psychological well-being and life satisfaction of Vietnamese undergraduate students during the COVID-19 pandemic: Hope as a mediator. <em>Journal of Rational-Emotive &amp; Cognitive-Behavior Therapy, 42</em>(1), 35–53. https://doi.org/10.1007/s10942-022-00487-7"
   ],
   "verifiedFrom": [
     "https://sabi.unc.edu/pdf/SWLS_Diener.pdf",
     "https://eddiener.com/satisfaction-with-life-scale-swls/",
-    "https://labs.psychology.illinois.edu/~ediener/SWLS.html"
+    "https://labs.psychology.illinois.edu/~ediener/SWLS.html",
+    "https://labs.psychology.illinois.edu/~ediener/Documents/Pavot-Diener_1993.pdf",
+    "https://labs.psychology.illinois.edu/~ediener/Documents/Diener-Emmons-Larsen-Griffin_1985.pdf",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8953938/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9617225/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9574843/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12532450/fullTextXML",
+    "https://api.crossref.org/works/10.1037/1040-3590.5.2.164",
+    "https://api.crossref.org/works/10.3390/ijerph19063460",
+    "https://api.crossref.org/works/10.1007/s10942-022-00487-7",
+    "https://api.crossref.org/works/10.1007/s12144-022-03661-3"
   ],
   "related": ["tu-trong-rosenberg", "cang-thang-pss-10", "hai-long-cong-viec"]
 }

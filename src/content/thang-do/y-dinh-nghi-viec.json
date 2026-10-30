@@ -28,17 +28,57 @@
     "Câu hỏi nhạy cảm với người đang đi làm; nên khảo sát ẩn danh và không phát qua quản lý trực tiếp để giảm sai lệch do mong muốn xã hội.",
     "'Trong năm tới' là mốc thời gian của bản gốc; nếu đổi mốc (ví dụ 6 tháng), giữ thống nhất ở TI1 và TI3."
   ],
+  "reliability": [
+    {
+      "construct": "Ý định nghỉ việc (MOAQ, 3 biến), thang đồng ý 1–5",
+      "value": "α = 0,87",
+      "sample": "n = 141 điều dưỡng hai bệnh viện ở Ả Rập Xê Út",
+      "source": "Shaqiqi (2026), mục Instruments",
+      "url": "https://doi.org/10.1155/jonm/2960879"
+    },
+    {
+      "construct": "Ý định nghỉ việc (MOAQ, 3 biến, bản tiếng Thổ Nhĩ Kỳ), thang đồng ý 1–5",
+      "value": "α = 0,71",
+      "sample": "n = 563 công nhân và nhân viên văn phòng ba công ty sản xuất lớn ở Thổ Nhĩ Kỳ, năm 2024",
+      "source": "İlhan và cộng sự (2025), mục 3.2.2",
+      "url": "https://doi.org/10.3389/fpsyg.2025.1588266"
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Câu TI1 hỏi về khả năng, hai câu còn lại hỏi mức đồng ý; em đưa về cùng một thang có được không?",
+      "a": "Được, và nhiều nghiên cứu đã làm như vậy. Ví dụ Shaqiqi (2026) và İlhan và cộng sự (2025) đều cho cả 3 biến trả lời trên thang đồng ý 5 mức và vẫn đạt α = 0,87 và 0,71; trong Shaqiqi (2026), câu tìm việc được viết thành câu khẳng định ('I will probably be looking for a new job in the next year'). Em cần ghi rõ trong phần phương pháp rằng đã điều chỉnh từ bản gốc của Cammann và cộng sự (1979), và giữ nguyên ý 'trong năm tới'."
+    },
+    {
+      "q": "Ý định nghỉ việc và cam kết tổ chức (hoặc hài lòng) có bị trùng nhau không?",
+      "a": "Có nguy cơ, vì vài câu của thang cam kết cũng nói về việc ở lại hay rời tổ chức. Em kiểm tra giá trị phân biệt bằng HTMT, dưới 0,85 (nghiêm ngặt) hoặc 0,90 (nới lỏng) theo Henseler, Ringle & Sarstedt (2015). Ngoài ra, nhớ rằng điểm cao của thang này là tiêu cực, nên khi đặt cạnh hài lòng hay cam kết, giả thuyết phải là quan hệ ngược chiều và em cần kiểm tra dấu hệ số cho đúng."
+    },
+    {
+      "q": "Em đo ý định chứ không đo việc nghỉ thật, kết luận được đến đâu?",
+      "a": "Thang của Cammann và cộng sự (1979) đo ý định và suy nghĩ về việc rời tổ chức tại thời điểm khảo sát, không đo hành vi nghỉ việc thực tế. Với thiết kế cắt ngang, em chỉ nên kết luận về các yếu tố liên quan tới ý định nghỉ việc, không kết luận là các yếu tố đó gây ra nghỉ việc. Nếu muốn nói về hành vi, cần theo dõi lại người trả lời sau một thời gian, ví dụ sau 12 tháng như câu TI1 hỏi."
+    }
+  ],
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu ý định nghỉ việc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
   "license": "Các biến được công bố trong tài liệu MOAQ của Đại học Michigan, bản báo cáo năm 1975 được Paul Spector lưu trữ trên trang của ông; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Cammann và cộng sự.",
   "references": [
     "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1979). <em>The Michigan Organizational Assessment Questionnaire</em> [Unpublished manuscript]. University of Michigan.",
-    "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1983). Assessing the attitudes and perceptions of organizational members. In S. E. Seashore, E. E. Lawler, P. H. Mirvis, &amp; C. Cammann (Eds.), <em>Assessing organizational change: A guide to methods, measures, and practices</em>. Wiley."
+    "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1983). Assessing the attitudes and perceptions of organizational members. In S. E. Seashore, E. E. Lawler, P. H. Mirvis, &amp; C. Cammann (Eds.), <em>Assessing organizational change: A guide to methods, measures, and practices</em>. Wiley.",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "İlhan, Ü. D., Güler, B. K., Turgut, D., &amp; Duran, C. (2025). Unique challenges in the Turkish workforce: Examining the impact of job demands and resources on work-related outcomes of blue- and white-collar workers. <em>Frontiers in Psychology, 16</em>, 1588266. https://doi.org/10.3389/fpsyg.2025.1588266",
+    "Shaqiqi, W. (2026). The mediating role of job satisfaction in the relationship between perceived organizational support and nurses' turnover intentions. <em>Journal of Nursing Management, 2026</em>(1), 2960879. https://doi.org/10.1155/jonm/2960879"
   ],
   "verifiedFrom": [
     "https://paulspector.com/assessment-files/other/moaq.pdf",
-    "https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/"
+    "https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22I%20often%20think%20about%20quitting%22%20AND%20(Vietnam%20OR%20Vietnamese)&format=json",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13392518/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12263561/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10525439/fullTextXML",
+    "https://api.crossref.org/works/10.1155/jonm/2960879",
+    "https://api.crossref.org/works/10.3389/fpsyg.2025.1588266",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8"
   ],
   "related": ["hai-long-cong-viec", "cam-ket-to-chuc-ocq", "ho-tro-to-chuc-pos", "phu-hop-ca-nhan-to-chuc"]
 }

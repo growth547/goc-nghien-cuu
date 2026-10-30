@@ -70,6 +70,102 @@
     "Nếu muốn so sánh với nghiên cứu khác, tránh tự thêm biến về lợi ích cụ thể vào thang thái độ; các niềm tin cụ thể thuộc phần đo gián tiếp (behavioral beliefs), không phải đo trực tiếp.",
     "Chạy EFA và CFA để kiểm tra giá trị phân biệt giữa SN và PBC; theo Ajzen, có thể phải loại 1–2 biến mỗi khái niệm sau khảo sát thử."
   ],
+  "model": {
+    "paths": [
+      "Thái độ đối với hành vi (ATT) → Ý định hành vi (INT)",
+      "Chuẩn chủ quan (SN) → Ý định hành vi (INT)",
+      "Nhận thức kiểm soát hành vi (PBC) → Ý định hành vi (INT)",
+      "Ý định hành vi (INT) → Hành vi thực tế",
+      "Nhận thức kiểm soát hành vi (PBC) → Hành vi thực tế (tác động trực tiếp)"
+    ],
+    "note": "Thái độ càng tích cực, chuẩn chủ quan càng ủng hộ và nhận thức kiểm soát càng cao thì ý định càng mạnh. PBC là phần Ajzen thêm vào thuyết hành động hợp lý; phân tích gộp 185 nghiên cứu cho thấy PBC giải thích thêm phương sai của cả ý định lẫn hành vi, độc lập với thái độ và chuẩn chủ quan.",
+    "source": "Ajzen (1991), theo mô tả trong Armitage & Conner (2001), phần tóm tắt, và Tran và cộng sự (2021), Hình 1."
+  },
+  "reliability": [
+    {
+      "construct": "ATT (4 biến)",
+      "value": "α = 0,872",
+      "sample": "n = 237 người tiêu dùng thế hệ Z tại Việt Nam, hành vi mua xanh",
+      "source": "Ngo, Nguyen & Phan (2025), Bảng 2",
+      "url": "https://doi.org/10.1371/journal.pone.0323879"
+    },
+    {
+      "construct": "SN (4 biến)",
+      "value": "α = 0,866",
+      "sample": "n = 237 người tiêu dùng thế hệ Z tại Việt Nam, hành vi mua xanh",
+      "source": "Ngo, Nguyen & Phan (2025), Bảng 2",
+      "url": "https://doi.org/10.1371/journal.pone.0323879"
+    },
+    {
+      "construct": "PBC (4 biến)",
+      "value": "α = 0,869",
+      "sample": "n = 237 người tiêu dùng thế hệ Z tại Việt Nam, hành vi mua xanh",
+      "source": "Ngo, Nguyen & Phan (2025), Bảng 2",
+      "url": "https://doi.org/10.1371/journal.pone.0323879"
+    },
+    {
+      "construct": "INT (4 biến)",
+      "value": "α = 0,867",
+      "sample": "n = 237 người tiêu dùng thế hệ Z tại Việt Nam, hành vi mua xanh",
+      "source": "Ngo, Nguyen & Phan (2025), Bảng 2",
+      "url": "https://doi.org/10.1371/journal.pone.0323879"
+    },
+    {
+      "construct": "ATT / SN / PBC / INT",
+      "value": "α = 0,76 / 0,90 / 0,76 / 0,64",
+      "sample": "n = 597 sinh viên điều dưỡng tại Hà Nội, ý định tham gia phòng chống COVID-19 tuyến đầu",
+      "source": "Tran và cộng sự (2021), mục Phương pháp (đo lường)",
+      "url": "https://doi.org/10.3389/fpubh.2021.699079"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Tran, Q. A., Nguyen, H. T. T., Bui, T. V., và cộng sự",
+      "year": 2021,
+      "title": "Factors associated with the intention to participate in coronavirus disease 2019 frontline prevention activities among nursing students in Vietnam: An application of the theory of planned behavior",
+      "journal": "Frontiers in Public Health, 9, 699079",
+      "url": "https://doi.org/10.3389/fpubh.2021.699079",
+      "note": "Đo đủ ATT, SN, PBC và ý định cho 597 sinh viên điều dưỡng ở Hà Nội; ba yếu tố giải thích 37% phương sai ý định, chuẩn chủ quan mạnh nhất (β = 0,358); α từ 0,64 (ý định) đến 0,90 (SN)."
+    },
+    {
+      "authors": "Ngo, Q.-H., Nguyen, T.-D., & Phan, N.-B.",
+      "year": 2025,
+      "title": "Exploring green purchasing intentions and behaviours among Vietnamese Generation Z: A perspective from the theory of planned behaviour",
+      "journal": "PLOS ONE, 20(5), e0323879",
+      "url": "https://doi.org/10.1371/journal.pone.0323879",
+      "note": "Mô hình TPB gốc (ATT, SN, PBC → ý định → hành vi mua xanh), n = 237, PLS-SEM; α từ 0,866 đến 0,880, mọi HTMT dưới 0,85."
+    },
+    {
+      "authors": "Nguyen, L. T. P., Phan, D. Q., Gyan, A., và cộng sự",
+      "year": 2024,
+      "title": "Parents' intentions of human papillomavirus vaccination for students in Vietnam: A cross-sectional study",
+      "journal": "Cancer Control, 31, 10732748241284907",
+      "url": "https://doi.org/10.1177/10732748241284907",
+      "note": "Bảng hỏi dựa trên các khía cạnh của TPB và mô hình niềm tin sức khoẻ, n = 365 phụ huynh, hồi quy logistic; 55,9% có ý định tiêm vắc xin HPV cho con, thái độ là yếu tố có ý nghĩa."
+    },
+    {
+      "authors": "Linh, T. T., & Huyen, N. T. T.",
+      "year": 2025,
+      "title": "An extension of Trust and TAM model with TPB in the adoption of digital payment: An empirical study in Vietnam",
+      "journal": "F1000Research, 14, 127",
+      "url": "https://doi.org/10.12688/f1000research.157763.3",
+      "note": "Kết hợp TPB với TAM và niềm tin cho thanh toán số ở vùng miền núi phía Bắc, 509 phiếu hợp lệ, phân tích SEM."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Chuẩn chủ quan không có ý nghĩa thống kê, có phải thang đo có vấn đề?",
+      "a": "Đây là kết quả thường gặp. Armitage & Conner (2001) tổng hợp 185 nghiên cứu và thấy chuẩn chủ quan nhìn chung là yếu tố dự báo ý định yếu, một phần do đo lường chưa tốt và thành phần chuẩn mực cần được mở rộng. Tuy vậy ở bối cảnh Việt Nam, Tran và cộng sự (2021) lại thấy chuẩn chủ quan mạnh nhất, nên cần bàn luận theo đặc điểm mẫu và hành vi."
+    },
+    {
+      "q": "Đo hành vi bằng tự báo cáo trong cùng bảng hỏi có làm kết quả kém tin cậy không?",
+      "a": "Có ảnh hưởng. Theo Armitage & Conner (2001), khi hành vi là tự báo cáo, TPB giải thích nhiều hơn 11% phương sai so với khi đo khách quan (R² = 0,31 so với 0,21). Nếu chỉ dùng tự báo cáo, nên nêu trong phần hạn chế và kiểm tra sai lệch do phương pháp chung."
+    },
+    {
+      "q": "Mô hình TPB chạy PLS-SEM cần bao nhiêu mẫu và kiểm tra phân biệt thái độ với ý định thế nào?",
+      "a": "Phân tích power với 3 mũi tên vào ý định cần khoảng 77 quan sát, nhưng theo phương pháp căn bậc hai nghịch đảo của Kock & Hadaya (2018), với hệ số đường dẫn nhỏ nhất kỳ vọng 0,2 thì cần khoảng 155. Thái độ và ý định thường tương quan cao, nên báo cáo HTMT theo Henseler, Ringle & Sarstedt (2015), dưới 0,85 hoặc 0,90, như Ngo, Nguyen & Phan (2025) đã làm."
+    }
+  ],
   "sampleSize": {
     "arrowsMax": 3,
     "note": "Trong mô hình TPB gốc, ý định nhận 3 mũi tên (ATT, SN, PBC). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát; nếu đưa cả hành vi thực tế và biến mở rộng vào mô hình thì cần nhiều hơn."
@@ -78,13 +174,28 @@
   "references": [
     "Ajzen, I. (1991). The theory of planned behavior. <em>Organizational Behavior and Human Decision Processes, 50</em>(2), 179–211. https://doi.org/10.1016/0749-5978(91)90020-T",
     "Ajzen, I. (n.d.). <em>Constructing a theory of planned behavior questionnaire</em>. University of Massachusetts Amherst. https://people.umass.edu/aizen/pdf/tpb.measurement.pdf",
+    "Armitage, C. J., &amp; Conner, M. (2001). Efficacy of the theory of planned behaviour: A meta-analytic review. <em>British Journal of Social Psychology, 40</em>(4), 471–499. https://doi.org/10.1348/014466601164939",
+    "Fishbein, M., &amp; Ajzen, I. (2010). <em>Predicting and changing behavior: The reasoned action approach</em>. Psychology Press.",
     "Francis, J. J., Eccles, M. P., Johnston, M., Walker, A., Grimshaw, J., Foy, R., Kaner, E. F. S., Smith, L., &amp; Bonetti, D. (2004). <em>Constructing questionnaires based on the theory of planned behaviour: A manual for health services researchers</em>. Centre for Health Services Research, University of Newcastle upon Tyne.",
-    "Fishbein, M., &amp; Ajzen, I. (2010). <em>Predicting and changing behavior: The reasoned action approach</em>. Psychology Press."
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131",
+    "Ngo, Q.-H., Nguyen, T.-D., &amp; Phan, N.-B. (2025). Exploring green purchasing intentions and behaviours among Vietnamese Generation Z: A perspective from the theory of planned behaviour. <em>PLOS ONE, 20</em>(5), e0323879. https://doi.org/10.1371/journal.pone.0323879",
+    "Tran, Q. A., Nguyen, H. T. T., Bui, T. V., Tran, N. T., Nguyen, N. T., Nguyen, T. T., Nguyen, H. T., &amp; Nguyen, S. H. (2021). Factors associated with the intention to participate in coronavirus disease 2019 frontline prevention activities among nursing students in Vietnam: An application of the theory of planned behavior. <em>Frontiers in Public Health, 9</em>, 699079. https://doi.org/10.3389/fpubh.2021.699079"
   ],
   "verifiedFrom": [
     "https://people.umass.edu/aizen/pdf/tpb.measurement.pdf",
     "https://openaccess.city.ac.uk/id/eprint/1735/1/TPB%20Manual%20FINAL%20May2004.pdf",
-    "https://api.crossref.org/works/10.1016/0749-5978(91)90020-T"
+    "https://api.crossref.org/works/10.1016/0749-5978(91)90020-T",
+    "https://api.crossref.org/works/10.1348/014466601164939",
+    "https://api.crossref.org/works/10.3389/fpubh.2021.699079",
+    "https://api.crossref.org/works/10.1371/journal.pone.0323879",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8",
+    "https://api.crossref.org/works/10.1111/isj.12131",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8283521/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12118922/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11402091/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11969139/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC8283521%20OR%20PMCID:PMC12118922"
   ],
   "related": ["tam", "utaut", "y-dinh-mua"]
 }

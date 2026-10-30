@@ -159,6 +159,73 @@
     "Trong mô hình gốc, điều kiện thuận lợi tác động lên hành vi sử dụng chứ không lên ý định; nếu đề tài chỉ đo ý định mà vẫn vẽ mũi tên FC → BI thì cần giải thích lý do.",
     "Các biến điều tiết (giới tính, tuổi, kinh nghiệm, tính tự nguyện) là phần quan trọng của UTAUT; nếu bỏ, nên nói rõ trong phần hạn chế."
   ],
+  "model": {
+    "paths": [
+      "Hiệu quả mong đợi (PE) → Ý định hành vi (BI), điều tiết bởi tuổi và giới tính",
+      "Nỗ lực mong đợi (EE) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính và kinh nghiệm",
+      "Ảnh hưởng xã hội (SI) → Ý định hành vi (BI), điều tiết bởi tuổi, giới tính, kinh nghiệm và tính tự nguyện",
+      "Điều kiện thuận lợi (FC) → Hành vi sử dụng (USE), điều tiết bởi kinh nghiệm",
+      "Ý định hành vi (BI) → Hành vi sử dụng (USE)"
+    ],
+    "note": "UTAUT có bốn yếu tố cốt lõi và tối đa bốn biến điều tiết (giới tính, tuổi, kinh nghiệm, tính tự nguyện). Điều kiện thuận lợi được đề xuất tác động trực tiếp lên hành vi sử dụng chứ không lên ý định. Mô hình gốc đạt R² điều chỉnh 69% cho ý định, và 70% khi kiểm định lại ở hai tổ chức mới.",
+    "source": "Venkatesh và cộng sự (2003), phần tóm tắt; chiều tác động của từng biến điều tiết theo mô tả trong Dingel và cộng sự (2024), mục giả thuyết 4 đến 8."
+  },
+  "reliability": [
+    {
+      "construct": "PE / EE / SI / FC / BI",
+      "value": "α = 0,86 / 0,89 / 0,89 / 0,86 / 0,94",
+      "sample": "n = 130 sinh viên tiếng Anh tại Việt Nam, chấp nhận Google Classroom",
+      "source": "Pham & Nguyen (2024), Bảng 1",
+      "url": "https://doi.org/10.1016/j.heliyon.2024.e29832"
+    },
+    {
+      "construct": "PE / EE / FC / BI",
+      "value": "α = 0,788 / 0,822 / 0,841 / 0,857",
+      "sample": "Nhà báo và cán bộ tại 6 cơ quan báo chí Việt Nam (287 người được chọn khảo sát), ứng dụng blockchain",
+      "source": "Pham & Thi Nguyet (2023), Bảng 2",
+      "url": "https://doi.org/10.1016/j.heliyon.2022.e12747"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Pham, A. T., & Nguyen, T. B.",
+      "year": 2024,
+      "title": "English as a foreign language students' acceptance of Google Classroom in writing classes: A case study in Vietnam",
+      "journal": "Heliyon, 10(8), e29832",
+      "url": "https://doi.org/10.1016/j.heliyon.2024.e29832",
+      "note": "Bảng hỏi 32 biến điều chỉnh từ UTAUT (bỏ cả bốn biến điều tiết), n = 130 sinh viên tại Cần Thơ kèm phỏng vấn; α từ 0,86 đến 0,95."
+    },
+    {
+      "authors": "Pham, C. T., & Thi Nguyet, T. T.",
+      "year": 2023,
+      "title": "Determinants of blockchain adoption in news media platforms: A perspective from the Vietnamese press industry",
+      "journal": "Heliyon, 9(1), e12747",
+      "url": "https://doi.org/10.1016/j.heliyon.2022.e12747",
+      "note": "Mở rộng UTAUT với niềm tin, sẵn sàng công nghệ và hỗ trợ pháp lý cho nhà báo, PLS-SEM; α từ 0,788 đến 0,858, HTMT dưới 0,85; hiệu quả mong đợi không tác động mạnh lên ý định."
+    },
+    {
+      "authors": "Nguyen, L. L. H., Khuu, D. T., Halibas, A., & Nguyen, T. Q.",
+      "year": 2024,
+      "title": "Factors that influence the intention of smallholder rice farmers to adopt cleaner production practices: An empirical study of precision agriculture adoption",
+      "journal": "Evaluation Review, 48(4), 692–735",
+      "url": "https://doi.org/10.1177/0193841X231200775",
+      "note": "Dùng UTAUT làm khung chủ đề cho 35 cuộc phỏng vấn bán cấu trúc với nông dân trồng lúa và chuyên gia; PE, EE, ảnh hưởng xã hội và hỗ trợ của nhà nước là yếu tố quyết định (nghiên cứu định tính, không có alpha)."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Vì sao mô hình của em không vẽ mũi tên từ điều kiện thuận lợi (FC) sang ý định?",
+      "a": "Trong UTAUT gốc, FC là tiền đề trực tiếp của hành vi sử dụng, không phải của ý định (Venkatesh và cộng sự, 2003, theo mô tả của Dingel và cộng sự, 2024). Nếu đề tài chỉ đo ý định mà vẫn muốn giữ FC, cần lập luận riêng; phân tích gộp của Dingel và cộng sự (2024) cho thấy quan hệ FC với ý định đi qua trung gian hiệu quả mong đợi và nỗ lực mong đợi."
+    },
+    {
+      "q": "Đề tài bỏ các biến điều tiết giới tính, tuổi, kinh nghiệm, tự nguyện thì có còn là UTAUT không?",
+      "a": "Nhiều nghiên cứu làm vậy, như Pham & Nguyen (2024), và Tamilmani, Rana & Dwivedi (2021) ghi nhận các nghiên cứu dùng UTAUT hiếm khi đưa biến điều tiết vào. Tuy nhiên đó là phần cốt lõi của mô hình, nên cần nói rõ trong phần phạm vi hoặc hạn chế. Nếu giữ, mỗi biến điều tiết thêm một mũi tên tương tác cho mỗi đường dẫn nó điều tiết (ví dụ SI → BI có tới 4 tương tác), nên số biến dự báo vào ý định tăng nhanh."
+    },
+    {
+      "q": "Có biến điều tiết thì cỡ mẫu tối thiểu cho PLS-SEM tính thế nào?",
+      "a": "Theo phương pháp căn bậc hai nghịch đảo của Kock & Hadaya (2018), n tối thiểu > (2,486/p_min)². Không có tương tác và hệ số nhỏ nhất kỳ vọng 0,2 thì cần khoảng 155; hiệu ứng tương tác thường nhỏ, nếu kỳ vọng 0,1 thì cần khoảng 619. Giá trị phân biệt giữa PE và EE nên báo cáo HTMT theo Henseler, Ringle & Sarstedt (2015), dưới 0,85 hoặc 0,90."
+    }
+  ],
   "sampleSize": {
     "arrowsMax": 3,
     "note": "Ý định hành vi nhận nhiều nhất 3 mũi tên (từ PE, EE, SI). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát; thêm các tương tác điều tiết thì số biến dự báo tăng và cỡ mẫu phải lớn hơn."
@@ -166,12 +233,30 @@
   "license": "Các biến quan sát được công bố trong Bảng 16 của bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không thấy yêu cầu xin phép cho mục đích học thuật phi thương mại.",
   "references": [
     "Davis, F. D., Bagozzi, R. P., &amp; Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. <em>Management Science, 35</em>(8), 982–1003. https://doi.org/10.1287/mnsc.35.8.982",
+    "Dingel, J., Kleine, A.-K., Cecil, J., Sigl, A. L., Lermer, E., &amp; Gaube, S. (2024). Predictors of health care practitioners' intention to use AI-enabled clinical decision support systems: Meta-analysis based on the unified theory of acceptance and use of technology. <em>Journal of Medical Internet Research, 26</em>, e57224. https://doi.org/10.2196/57224",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131",
+    "Pham, A. T., &amp; Nguyen, T. B. (2024). English as a foreign language students' acceptance of Google Classroom in writing classes: A case study in Vietnam. <em>Heliyon, 10</em>(8), e29832. https://doi.org/10.1016/j.heliyon.2024.e29832",
+    "Pham, C. T., &amp; Thi Nguyet, T. T. (2023). Determinants of blockchain adoption in news media platforms: A perspective from the Vietnamese press industry. <em>Heliyon, 9</em>(1), e12747. https://doi.org/10.1016/j.heliyon.2022.e12747",
+    "Tamilmani, K., Rana, N. P., &amp; Dwivedi, Y. K. (2021). Consumer acceptance and use of information technology: A meta-analytic evaluation of UTAUT2. <em>Information Systems Frontiers, 23</em>(4), 987–1005. https://doi.org/10.1007/s10796-020-10007-6",
     "Venkatesh, V., Morris, M. G., Davis, G. B., &amp; Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. <em>MIS Quarterly, 27</em>(3), 425–478. https://doi.org/10.2307/30036540",
     "Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412"
   ],
   "verifiedFrom": [
     "https://eclass.hmu.gr/modules/document/file.php/DSH314/006%20%CE%97%CE%B3%CE%B5%CF%83%CE%AF%CE%B1%20%CE%BA%CE%B1%CE%B9%20%CE%B1%CE%BB%CE%BB%CE%B1%CE%B3%CE%AE%2014%20%CE%99%CE%B1%CE%BD%202026/Venkatesh%202003_UTAUT.pdf",
-    "https://cdn.clinicaltrials.gov/large-docs/25/NCT04656925/Prot_000.pdf"
+    "https://cdn.clinicaltrials.gov/large-docs/25/NCT04656925/Prot_000.pdf",
+    "https://api.crossref.org/works/10.2307/30036540",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11333871/fullTextXML",
+    "https://api.crossref.org/works/10.2196/57224",
+    "https://link.springer.com/content/pdf/10.1007/s10796-020-10007-6.pdf",
+    "https://api.crossref.org/works/10.1007/s10796-020-10007-6",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11063422/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.heliyon.2024.e29832",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9849998/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.heliyon.2022.e12747",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11193914/fullTextXML",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8",
+    "https://api.crossref.org/works/10.1111/isj.12131"
   ],
   "related": [
     "tam",

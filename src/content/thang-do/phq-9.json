@@ -32,21 +32,123 @@
     "PHQ-9 là công cụ sàng lọc và đo mức độ triệu chứng, không chẩn đoán trầm cảm. Hướng dẫn của tác giả coi điểm từ 10 là 'cờ vàng' cần lưu ý; chẩn đoán phải qua phỏng vấn lâm sàng. Trong luận văn, viết 'tỷ lệ có triệu chứng trầm cảm từ mức vừa trở lên' chứ không viết 'tỷ lệ mắc trầm cảm'.",
     "Câu 9 hỏi về ý nghĩ chết hoặc tự làm hại bản thân. Đề tài phải làm theo quy định đạo đức nghiên cứu của trường, có phiếu đồng ý tham gia, và ghi một đầu mối hỗ trợ (phòng tư vấn tâm lý của trường, đường dây nóng hỗ trợ tâm lý) ngay trong bảng hỏi. Nếu khảo sát ẩn danh trực tuyến, không có cách liên hệ lại người trả lời, cân nhắc dùng PHQ-8: hướng dẫn của tác giả nói PHQ-8 bỏ câu 9, dùng chủ yếu trong nghiên cứu không chuyên về trầm cảm, và có mốc điểm giống PHQ-9.",
     "Giữ nguyên khung '2 tuần qua' và thang tần suất 0–3; đổi sang thang đồng ý 5 mức làm mất các mốc 5/10/15/20 và không so sánh được với nghiên cứu khác.",
-    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. Vu và cộng sự (2022) đã dùng PHQ-9 trên 899 người dân ngoại thành ở Việt Nam và thấy cấu trúc 2 nhân tố 'cơ thể' và 'nhận thức/cảm xúc' (Cronbach's alpha 0,84 và 0,80); hãy chạy EFA/CFA và báo cáo cấu trúc tìm được thay vì mặc định 1 nhân tố."
+    "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định. Vu và cộng sự (2022) đã dùng PHQ-9 trên 889 người dân ngoại thành (tóm tắt của bài ghi 899) ở Việt Nam và thấy cấu trúc 2 nhân tố 'cơ thể' và 'nhận thức/cảm xúc' (Cronbach's alpha 0,84 và 0,80); hãy chạy EFA/CFA và báo cáo cấu trúc tìm được thay vì mặc định 1 nhân tố."
+  ],
+  "reliability": [
+    {
+      "construct": "PHQ-9 (toàn thang)",
+      "value": "α = 0,89",
+      "sample": "PHQ Primary Care Study, 3.000 bệnh nhân ở 8 phòng khám chăm sóc ban đầu (Mỹ)",
+      "source": "Kroenke, Spitzer & Williams (2001), mục Results: Reliability and Efficiency of the PHQ-9",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1495268/"
+    },
+    {
+      "construct": "PHQ-9 (toàn thang)",
+      "value": "α = 0,86",
+      "sample": "PHQ Ob-Gyn Study, 3.000 bệnh nhân ở 7 phòng khám sản phụ khoa (Mỹ)",
+      "source": "Kroenke, Spitzer & Williams (2001), mục Results: Reliability and Efficiency of the PHQ-9",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1495268/"
+    },
+    {
+      "construct": "PHQ-9, độ tin cậy test-retest",
+      "value": "r = 0,84 (bản tự điền so với phỏng vấn qua điện thoại trong vòng 48 giờ)",
+      "sample": "580 bệnh nhân được chuyên gia sức khoẻ tâm thần phỏng vấn lại",
+      "source": "Kroenke, Spitzer & Williams (2001), mục Results: Reliability and Efficiency of the PHQ-9",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1495268/"
+    },
+    {
+      "construct": "PHQ-9 (toàn thang), mẫu Việt Nam",
+      "value": "α = 0,85",
+      "sample": "n = 889 người dân 3 xã huyện Thanh Oai, Hà Nội",
+      "source": "Vu và cộng sự (2022), mục Measure and Instruments",
+      "url": "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2022.838747/full"
+    },
+    {
+      "construct": "Nhân tố 'Cơ thể' (5 câu) / 'Nhận thức-cảm xúc' (4 câu), mẫu Việt Nam",
+      "value": "α = 0,843 / 0,802; omega = 0,844 / 0,820",
+      "sample": "n = 889 người dân 3 xã huyện Thanh Oai, Hà Nội",
+      "source": "Vu và cộng sự (2022), Bảng 3",
+      "url": "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2022.838747/full"
+    },
+    {
+      "construct": "PHQ-9 (toàn thang), mẫu Việt Nam",
+      "value": "α = 0,92",
+      "sample": "n = 1.850 vị thành niên và người trẻ Việt Nam, khảo sát trực tuyến",
+      "source": "Nguyen và cộng sự (2025), mục Assessment of depressive & anxiety symptoms",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12508456/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Vu, L. G., Le, L. K., Dam, A. V. T., Nguyen, S. H., Vu, T. T. M., Trinh, T. T. H., Do, A. L., Do, N. M., Le, T. H., Latkin, C., Ho, R. C. M., & Ho, C. S. H.",
+      "year": 2022,
+      "title": "Factor structures of Patient Health Questionnaire-9 instruments in exploring depressive symptoms of suburban population",
+      "journal": "Frontiers in Psychiatry, 13, 838747",
+      "url": "https://doi.org/10.3389/fpsyt.2022.838747",
+      "note": "Kiểm tra cấu trúc PHQ-9 trên người dân ngoại thành Hà Nội (bảng số liệu ghi n = 889, tóm tắt ghi 899): mô hình 2 nhân tố 'cơ thể' và 'nhận thức/cảm xúc' phù hợp hơn 1 nhân tố (CFI = 0,960, RMSEA = 0,074), α toàn thang 0,85."
+    },
+    {
+      "authors": "Nguyen, D. Q., Do, D. V., Tran, D. V., Cao, T. H., & Vo, T. M.",
+      "year": 2026,
+      "title": "Depression and associated factors among perimenopausal women: A cross-sectional study in Ho Chi Minh City, Vietnam",
+      "journal": "International Journal of Women's Health, 18, 1–11",
+      "url": "https://doi.org/10.2147/IJWH.S631126",
+      "note": "Dùng PHQ-9 tự điền trên 669 phụ nữ tiền mãn kinh ở TP.HCM, lấy mốc từ 5 điểm để sàng lọc (25,1% có triệu chứng); người có kết quả sàng lọc dương tính được tư vấn và chuyển tới trung tâm sức khoẻ tâm thần để khám thêm."
+    },
+    {
+      "authors": "Duong, N. L. M., Nguyen, V. H., Ngo, M. T., Le, D. M., Nguyen, T. D., Nguyen, T. T. T., Nguyen, H. T., Kim, B. G., & Pham, T. T.",
+      "year": 2025,
+      "title": "Academic motivation in association with mental health and quality of life among medical and health science students: A survey in Vietnam",
+      "journal": "BMC Medical Education, 25, 986",
+      "url": "https://doi.org/10.1186/s12909-025-07368-4",
+      "note": "Khảo sát 1.723 sinh viên y và khoa học sức khoẻ bằng PHQ-9 (mốc 10 để phân nhóm) cùng GAD-7 và SF-12, dùng hồi quy Poisson để so nhóm động lực học tập."
+    },
+    {
+      "authors": "Nguyen, T. T., Nguyen, D. C., Nguyen, H. T., Do, H. T., Ngo, T., Pham, A. B. G., Tran, T. Q., Hoang, L. P., Dang, H., Boyer, L., Fond, G., Auquier, P., Latkin, C. A., Ho, R. C. M., Ho, C. S. H., & Zhang, M. W. B.",
+      "year": 2025,
+      "title": "Exposure to fake news on social media, coping mechanisms, and mental health impact among Vietnamese adolescents and young adults",
+      "journal": "Scientific Reports, 15, 35117",
+      "url": "https://doi.org/10.1038/s41598-025-19175-4",
+      "note": "Dùng PHQ-9 cùng GAD-7 trên 1.850 vị thành niên và người trẻ Việt Nam (α PHQ-9 = 0,92); người trả lời có ý định tự hại hoặc tự sát được gửi lời khuyên đi tư vấn tâm lý (gửi cho chính họ hoặc cha mẹ)."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Mốc 10 điểm PHQ-9 có nghĩa là người đó bị trầm cảm không?",
+      "a": "Không. Kroenke, Spitzer & Williams (2001) cho thấy điểm từ 10 có độ nhạy 88% và độ đặc hiệu 88% với trầm cảm nặng khi so với phỏng vấn của chuyên gia sức khoẻ tâm thần, nghĩa là vẫn có người dương tính giả và âm tính giả. PHQ-9 là công cụ sàng lọc và đo mức độ; chẩn đoán phải qua phỏng vấn lâm sàng. Luận văn nên viết 'có triệu chứng trầm cảm từ mức vừa trở lên' và nêu mốc đã dùng; các nghiên cứu cộng đồng ở Việt Nam có khi dùng mốc 5 (Nguyen và cộng sự, 2026), có khi dùng mốc 10 (Duong và cộng sự, 2025)."
+    },
+    {
+      "q": "Câu 9 hỏi về ý nghĩ tự sát, em xử lý thế nào về đạo đức?",
+      "a": "Hướng dẫn của tác giả PHQ nói rằng quyết định cuối cùng về nguy cơ tự hại phải dựa trên phỏng vấn lâm sàng, nên nhà nghiên cứu không tự đánh giá nguy cơ mà phải có quy trình chuyển tiếp. Cách làm phổ biến: xin duyệt đạo đức, có phiếu đồng ý, ghi đầu mối hỗ trợ ngay trong bảng hỏi, và chuyển người sàng lọc dương tính tới cơ sở chuyên môn như Nguyen và cộng sự (2026) đã làm ở TP.HCM. Nếu khảo sát ẩn danh trực tuyến không liên hệ lại được, cân nhắc dùng PHQ-8 (bỏ câu 9)."
+    },
+    {
+      "q": "Vì sao em phân tích PHQ-9 thành 2 nhân tố thay vì 1?",
+      "a": "PHQ-9 gốc tính một điểm tổng (Kroenke, Spitzer & Williams, 2001), nhưng cấu trúc nhân tố khác nhau giữa các mẫu. Trên mẫu người dân ngoại thành Hà Nội, Vu và cộng sự (2022) thấy mô hình 2 nhân tố 'cơ thể' (5 câu) và 'nhận thức/cảm xúc' (4 câu) phù hợp hơn mô hình 1 nhân tố. Em nên chạy CFA so sánh cả hai, báo cáo chỉ số phù hợp, và vẫn có thể dùng điểm tổng khi so mốc mức độ."
+    }
   ],
   "sampleSize": {
     "note": "PHQ-9 là thang đơn lẻ 9 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (45, làm tròn thành mức tối thiểu 50) và nên từ 100 quan sát trở lên; nếu ước lượng tỷ lệ có triệu chứng thì tính cỡ mẫu theo công thức ước lượng tỷ lệ."
   },
   "license": "Theo hướng dẫn trên trang PHQ Screeners và chú thích in trên bảng hỏi, PHQ-9 do Spitzer, Williams, Kroenke và cộng sự phát triển với tài trợ giáo dục của Pfizer, thuộc phạm vi công cộng: không cần xin phép để sao chép, dịch, trình bày hay phân phối.",
   "references": [
+    "Duong, N. L. M., Nguyen, V. H., Ngo, M. T., Le, D. M., Nguyen, T. D., Nguyen, T. T. T., Nguyen, H. T., Kim, B. G., &amp; Pham, T. T. (2025). Academic motivation in association with mental health and quality of life among medical and health science students: A survey in Vietnam. <em>BMC Medical Education, 25</em>, 986. https://doi.org/10.1186/s12909-025-07368-4",
     "Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. W. (2001). The PHQ-9: Validity of a brief depression severity measure. <em>Journal of General Internal Medicine, 16</em>(9), 606–613. https://doi.org/10.1046/j.1525-1497.2001.016009606.x",
+    "Nguyen, D. Q., Do, D. V., Tran, D. V., Cao, T. H., &amp; Vo, T. M. (2026). Depression and associated factors among perimenopausal women: A cross-sectional study in Ho Chi Minh City, Vietnam. <em>International Journal of Women's Health, 18</em>, 1–11. https://doi.org/10.2147/IJWH.S631126",
+    "Nguyen, T. T., Nguyen, D. C., Nguyen, H. T., Do, H. T., Ngo, T., Pham, A. B. G., Tran, T. Q., Hoang, L. P., Dang, H., Boyer, L., Fond, G., Auquier, P., Latkin, C. A., Ho, R. C. M., Ho, C. S. H., &amp; Zhang, M. W. B. (2025). Exposure to fake news on social media, coping mechanisms, and mental health impact among Vietnamese adolescents and young adults. <em>Scientific Reports, 15</em>, 35117. https://doi.org/10.1038/s41598-025-19175-4",
     "Vu, L. G., Le, L. K., Dam, A. V. T., Nguyen, S. H., Vu, T. T. M., Trinh, T. T. H., Do, A. L., Do, N. M., Le, T. H., Latkin, C., Ho, R. C. M., &amp; Ho, C. S. H. (2022). Factor structures of Patient Health Questionnaire-9 instruments in exploring depressive symptoms of suburban population. <em>Frontiers in Psychiatry, 13</em>, 838747. https://doi.org/10.3389/fpsyt.2022.838747"
   ],
   "verifiedFrom": [
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC1495268/",
     "https://depts.washington.edu/uwhatc/PDF/TF-%20CBT/pages/3%20Assessment/Standardized%20Measures/PHQ9-English.pdf",
     "https://web.archive.org/web/20131010210324id_/http://www.phqscreeners.com/instructions/instructions.pdf",
-    "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2022.838747/full"
+    "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2022.838747/full",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9381874/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13505764/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12219361/fullTextXML",
+    "https://api.crossref.org/works/10.2147/ijwh.s631126",
+    "https://api.crossref.org/works/10.1186/s12909-025-07368-4",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12508456/fullTextXML",
+    "https://api.crossref.org/works/10.1038/s41598-025-19175-4"
   ],
   "related": ["gad-7", "dass-21", "cang-thang-pss-10"]
 }

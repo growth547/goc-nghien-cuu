@@ -33,17 +33,75 @@
     "Phần tiếng Việt ở đây là bản dịch của trang này, chưa qua kiểm định; chúng tôi chưa tìm thấy bài kiểm định GAD-7 tiếng Việt để dẫn. Nên dịch ngược, khảo sát thử 20–30 người, rồi chạy Cronbach's alpha và CFA một nhân tố.",
     "Nếu đo cả trầm cảm, dùng kèm PHQ-9 vì cùng khung 2 tuần và cùng thang 0–3; hai câu đầu của GAD-7 và PHQ-9 ghép lại thành PHQ-4 dùng để sàng lọc siêu ngắn."
   ],
+  "reliability": [
+    {
+      "construct": "GAD-7 (toàn thang)",
+      "value": "α = 0,89 (như nhau ở mọi nhóm con)",
+      "sample": "n = 5.030 người, mẫu đại diện dân số chung Đức, khảo sát hộ gia đình năm 2006",
+      "source": "Löwe và cộng sự (2008), tóm tắt (Results)",
+      "url": "https://europepmc.org/article/MED/18388841"
+    },
+    {
+      "construct": "GAD-7 bản tiếng Việt",
+      "value": "α = 0,94",
+      "sample": "n = 1.850 vị thành niên và người trẻ Việt Nam, khảo sát trực tuyến",
+      "source": "Nguyen và cộng sự (2025), mục Generalized Anxiety Disorder Assessment (GAD-7)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12508456/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Nguyen, T. T., Nguyen, D. C., Nguyen, H. T., Do, H. T., Ngo, T., Pham, A. B. G., Tran, T. Q., Hoang, L. P., Dang, H., Boyer, L., Fond, G., Auquier, P., Latkin, C. A., Ho, R. C. M., Ho, C. S. H., & Zhang, M. W. B.",
+      "year": 2025,
+      "title": "Exposure to fake news on social media, coping mechanisms, and mental health impact among Vietnamese adolescents and young adults",
+      "journal": "Scientific Reports, 15, 35117",
+      "url": "https://doi.org/10.1038/s41598-025-19175-4",
+      "note": "Dùng GAD-7 bản tiếng Việt cùng PHQ-9 trên 1.850 vị thành niên và người trẻ Việt Nam (α GAD-7 = 0,94, α PHQ-9 = 0,92); điểm GAD-7 trung bình 4,9 (SD = 5,3), phân tích bằng hồi quy tuyến tính đa biến."
+    },
+    {
+      "authors": "Duong, N. L. M., Nguyen, V. H., Ngo, M. T., Le, D. M., Nguyen, T. D., Nguyen, T. T. T., Nguyen, H. T., Kim, B. G., & Pham, T. T.",
+      "year": 2025,
+      "title": "Academic motivation in association with mental health and quality of life among medical and health science students: A survey in Vietnam",
+      "journal": "BMC Medical Education, 25, 986",
+      "url": "https://doi.org/10.1186/s12909-025-07368-4",
+      "note": "Khảo sát 1.723 sinh viên y và khoa học sức khoẻ, dùng GAD-7 với mốc 10 để sàng lọc lo âu (kèm PHQ-9 và SF-12); sinh viên có động lực học tập không tự quyết có khả năng sàng lọc dương tính lo âu cao hơn (PR = 1,44)."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Em lấy mốc 10 điểm GAD-7 để tính tỷ lệ rối loạn lo âu được không?",
+      "a": "Chỉ được gọi là tỷ lệ sàng lọc dương tính, không phải tỷ lệ mắc. Spitzer và cộng sự (2006) chọn mốc 10 vì cân bằng độ nhạy 89% và độ đặc hiệu 82% so với chẩn đoán của chuyên gia sức khoẻ tâm thần, nên vẫn có người dương tính giả. Chẩn đoán rối loạn lo âu phải qua phỏng vấn lâm sàng. Để so sánh, Löwe và cộng sự (2008) thấy khoảng 5% dân số chung Đức có điểm từ 10 trở lên."
+    },
+    {
+      "q": "GAD-7 tiếng Việt đã được kiểm định chưa, em dùng bản nào?",
+      "a": "Bản trên trang này chưa qua kiểm định, và chưa có bài kiểm định GAD-7 tiếng Việt so với phỏng vấn chẩn đoán được dẫn ở đây. Nhiều nghiên cứu ở Việt Nam đã dùng bản tiếng Việt và báo cáo độ tin cậy cao, ví dụ α = 0,94 trên 1.850 người trẻ (Nguyen và cộng sự, 2025). Em nên dịch ngược, khảo sát thử, rồi báo cáo Cronbach's alpha và CFA 1 nhân tố trên mẫu của mình; Löwe và cộng sự (2008) đã xác nhận cấu trúc 1 nhân tố ở dân số chung."
+    },
+    {
+      "q": "Dùng GAD-7 cùng PHQ-9 thì hai thang có bị trùng nhau không?",
+      "a": "Hai thang tương quan khá cao vì lo âu và trầm cảm hay đi cùng nhau, nhưng Spitzer và cộng sự (2006) dùng phân tích nhân tố và xác nhận lo âu và trầm cảm là hai chiều riêng biệt, mỗi chiều ảnh hưởng độc lập tới suy giảm chức năng. Trong luận văn, em nên báo cáo tương quan giữa hai điểm tổng và kiểm tra giá trị phân biệt (ví dụ CFA 2 nhân tố) trước khi đưa cả hai vào cùng một mô hình."
+    }
+  ],
   "sampleSize": {
     "note": "GAD-7 là thang đơn lẻ 7 biến. Theo Hair và cộng sự, EFA cần tối thiểu 50 quan sát (5 quan sát cho mỗi biến, không dưới 50) và nên từ 100 quan sát trở lên; nếu ước lượng tỷ lệ có triệu chứng thì tính cỡ mẫu theo công thức ước lượng tỷ lệ."
   },
   "license": "Theo hướng dẫn trên trang PHQ Screeners và chú thích in trên bảng hỏi, GAD-7 do Spitzer, Williams, Kroenke và cộng sự phát triển với tài trợ giáo dục của Pfizer, thuộc phạm vi công cộng: không cần xin phép để sao chép, dịch, trình bày hay phân phối.",
   "references": [
+    "Duong, N. L. M., Nguyen, V. H., Ngo, M. T., Le, D. M., Nguyen, T. D., Nguyen, T. T. T., Nguyen, H. T., Kim, B. G., &amp; Pham, T. T. (2025). Academic motivation in association with mental health and quality of life among medical and health science students: A survey in Vietnam. <em>BMC Medical Education, 25</em>, 986. https://doi.org/10.1186/s12909-025-07368-4",
+    "Löwe, B., Decker, O., Müller, S., Brähler, E., Schellberg, D., Herzog, W., &amp; Herzberg, P. Y. (2008). Validation and standardization of the Generalized Anxiety Disorder Screener (GAD-7) in the general population. <em>Medical Care, 46</em>(3), 266–274. https://doi.org/10.1097/MLR.0b013e318160d093",
+    "Nguyen, T. T., Nguyen, D. C., Nguyen, H. T., Do, H. T., Ngo, T., Pham, A. B. G., Tran, T. Q., Hoang, L. P., Dang, H., Boyer, L., Fond, G., Auquier, P., Latkin, C. A., Ho, R. C. M., Ho, C. S. H., &amp; Zhang, M. W. B. (2025). Exposure to fake news on social media, coping mechanisms, and mental health impact among Vietnamese adolescents and young adults. <em>Scientific Reports, 15</em>, 35117. https://doi.org/10.1038/s41598-025-19175-4",
     "Spitzer, R. L., Kroenke, K., Williams, J. B. W., &amp; Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. <em>Archives of Internal Medicine, 166</em>(10), 1092–1097. https://doi.org/10.1001/archinte.166.10.1092"
   ],
   "verifiedFrom": [
     "https://web.archive.org/web/20140418091818id_/http://www.phqscreeners.com/pdfs/03_GAD-7/English.pdf",
     "https://web.archive.org/web/20131010210324id_/http://www.phqscreeners.com/instructions/instructions.pdf",
-    "https://camcops.readthedocs.io/en/latest/tasks/gad7.html"
+    "https://camcops.readthedocs.io/en/latest/tasks/gad7.html",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%2210.1097/MLR.0b013e318160d093%22&format=json&resultType=core",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%2210.1001/archinte.166.10.1092%22&format=json&resultType=core",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12508456/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12219361/fullTextXML",
+    "https://api.crossref.org/works/10.1097/MLR.0b013e318160d093",
+    "https://api.crossref.org/works/10.1038/s41598-025-19175-4",
+    "https://api.crossref.org/works/10.1186/s12909-025-07368-4"
   ],
   "related": ["phq-9", "dass-21", "cang-thang-pss-10"]
 }

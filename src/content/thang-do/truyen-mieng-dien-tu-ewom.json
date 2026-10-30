@@ -31,20 +31,49 @@
     "Các biến khá giống nhau về câu chữ (EWOM2 và EWOM3), dễ làm alpha cao bất thường và AVE tốt giả. Kiểm tra tương quan giữa các biến và cân nhắc loại biến trùng ý.",
     "Thang thường đặt làm biến độc lập tác động lên hình ảnh thương hiệu, niềm tin và ý định mua; chạy CFA và kiểm tra HTMT với các thang đó."
   ],
+  "model": {
+    "paths": [
+      "Truyền miệng điện tử (eWOM) → Hình ảnh thương hiệu",
+      "Truyền miệng điện tử (eWOM) → Ý định mua"
+    ],
+    "note": "Jalilvand & Samiei (2012) dùng mô hình cấu trúc (SEM) trên 341 khách hàng tiềm năng của Iran Khodro có tham gia cộng đồng khách hàng trực tuyến, và kết luận eWOM là một trong những yếu tố tác động mạnh nhất lên hình ảnh thương hiệu và ý định mua.",
+    "source": "Jalilvand & Samiei (2012), phần tóm tắt."
+  },
+  "examinerQA": [
+    {
+      "q": "Thang eWOM này đo việc người trả lời viết đánh giá hay đọc đánh giá?",
+      "a": "Thang của Jalilvand & Samiei (2012), phát triển từ Bambauer-Sachse & Mangold (2011), đo phía người tiếp nhận: mức độ đọc, tham khảo và dựa vào đánh giá trực tuyến của người khác trước khi mua. Nếu đề tài muốn đo hành vi chia sẻ hoặc ý định viết đánh giá thì phải dùng thang khác và gọi tên khái niệm cho đúng."
+    },
+    {
+      "q": "Jalilvand & Samiei có hai bài năm 2012 về eWOM, đề tài lấy thang từ bài nào?",
+      "a": "Thang 6 biến trên trang này lấy từ bài về ngành ô tô ở Iran đăng trên Marketing Intelligence & Planning (Jalilvand & Samiei, 2012), n = 341, mô hình eWOM → hình ảnh thương hiệu và ý định mua. Bài còn lại đăng trên Internet Research nghiên cứu eWOM và việc chọn điểm đến du lịch (Jalilvand & Samiei, 2012). Khi trích, ghi đủ tên tạp chí và thêm chữ a/b sau năm theo APA để hội đồng không nhầm."
+    },
+    {
+      "q": "Các câu eWOM khá giống nhau, alpha rất cao có phải là tốt không?",
+      "a": "Không hẳn. Một số câu gần như trùng ý (đọc đánh giá để chọn đúng sản phẩm, tham khảo đánh giá để chọn đúng sản phẩm), nên alpha trên 0,95 có thể do lặp câu chữ hơn là do đo tốt. Nên xem tương quan giữa các cặp biến, cân nhắc bỏ biến trùng ý, và kiểm tra giá trị phân biệt với hình ảnh thương hiệu, ý định mua bằng HTMT theo Henseler, Ringle & Sarstedt (2015)."
+    }
+  ],
   "sampleSize": {
     "note": "Đây là thang đo đơn hướng, không phải mô hình. Trong mô hình gốc của Jalilvand & Samiei (2012), ý định mua nhận 2 mũi tên (từ eWOM và hình ảnh thương hiệu), cần tối thiểu 68 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
   },
   "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn bài gốc; không cần xin phép cho mục đích học thuật phi thương mại.",
   "references": [
+    "Bambauer-Sachse, S., &amp; Mangold, S. (2011). Brand equity dilution through negative online word-of-mouth communication. <em>Journal of Retailing and Consumer Services, 18</em>(1), 38–45. https://doi.org/10.1016/j.jretconser.2010.09.003",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
     "Jalilvand, M. R., &amp; Samiei, N. (2012). The effect of electronic word of mouth on brand image and purchase intention: An empirical study in the automobile industry in Iran. <em>Marketing Intelligence &amp; Planning, 30</em>(4), 460–476. https://doi.org/10.1108/02634501211231946",
-    "Bambauer-Sachse, S., &amp; Mangold, S. (2011). Brand equity dilution through negative online word-of-mouth communication. <em>Journal of Retailing and Consumer Services, 18</em>(1), 38–45. https://doi.org/10.1016/j.jretconser.2010.09.003"
+    "Jalilvand, M. R., &amp; Samiei, N. (2012). The impact of electronic word of mouth on a tourism destination choice. <em>Internet Research, 22</em>(5), 591–612. https://doi.org/10.1108/10662241211271563"
   ],
   "verifiedFrom": [
     "https://www.tujom.org/index.php/1/article/download/118/84",
     "https://journalppw.com/index.php/jpsp/article/download/5450/3609",
     "http://www.ccsenet.org/journal/index.php/ijms/article/download/0/0/38645/39357",
     "https://jisem-journal.com/index.php/journal/article/download/10865/5017",
-    "https://api.openalex.org/works/doi:10.1108/02634501211231946"
+    "https://api.openalex.org/works/doi:10.1108/02634501211231946",
+    "https://api.crossref.org/works/10.1108/02634501211231946",
+    "https://api.crossref.org/works/10.1108/10662241211271563",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9450807/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9243881/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9568856/fullTextXML"
   ],
   "related": ["y-dinh-mua", "niem-tin-trung-thanh-thuong-hieu", "tai-san-thuong-hieu"]
 }

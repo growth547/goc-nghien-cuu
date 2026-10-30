@@ -81,16 +81,84 @@
     "Câu tích cực và tiêu cực thường tách thành hai nhân tố do hiệu ứng cách diễn đạt (method effect); với CFA, cân nhắc mô hình một nhân tố có tương quan sai số giữa các câu cùng chiều.",
     "Giữ thang 4 mức không có điểm giữa như bản gốc; nếu đổi sang Likert 5 mức, ghi rõ trong phần phương pháp."
   ],
+  "reliability": [
+    {
+      "construct": "Tự trọng (RSES 10 câu), mẫu Việt Nam",
+      "value": "α = 0,83",
+      "sample": "n = 789 học sinh trung học phổ thông Việt Nam, chấm 0–3 (điểm tổng 0–30)",
+      "source": "Nguyen và cộng sự (2026), mục Rosenberg self-esteem scale",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13192003/"
+    },
+    {
+      "construct": "Tự trọng (RSES 10 câu), mẫu Việt Nam",
+      "value": "α = 0,9",
+      "sample": "n = 468 nhân viên văn phòng mới mất việc ở Việt Nam, năm 2023, chấm 1–4 (điểm tổng 10–40)",
+      "source": "Trung và cộng sự (2025), mục Self-esteem (Measures)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11936243/"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Nguyen, D. T., Hua, T. D., Nguyen, T. T. T., Pham, N. H., Nguyen, H. N., Ho, C. S. H., Tran-Chi, V.-L., Lin, K., & Lin, C.-Y.",
+      "year": 2026,
+      "title": "Mental health problems as mediators between self-esteem and internet addiction among adolescents",
+      "journal": "BMC Public Health, 26, 1574",
+      "url": "https://doi.org/10.1186/s12889-026-27258-8",
+      "note": "Dùng RSES chấm 0–3 (điểm tổng 0–30, đảo câu 2, 5, 6, 8, 9) trên 789 học sinh THPT Việt Nam, α = 0,83; tự trọng là biến độc lập trong mô hình PLS-SEM với DASS-21 làm biến trung gian dẫn tới nghiện internet."
+    },
+    {
+      "authors": "Trung, C. T. T., Dat, N. T., Teh, C. J., & Tee, P. K.",
+      "year": 2025,
+      "title": "Psychological capital and mental health problems among the unemployed in the post-COVID-19 era: Self-esteem as a moderator",
+      "journal": "PLOS ONE, 20(3), e0319555",
+      "url": "https://doi.org/10.1371/journal.pone.0319555",
+      "note": "Dùng RSES chấm 1–4 (điểm tổng 10–40) làm biến điều tiết giữa vốn tâm lý và vấn đề sức khoẻ tâm thần (DASS-21) trên 468 người mới mất việc ở Việt Nam, α = 0,9."
+    },
+    {
+      "authors": "Ho, Q. B., Tran, H. T. L., Nguyen, D. T. T., Tran, T. T., & Tran, L. T. K.",
+      "year": 2026,
+      "title": "The mediating role of self-esteem in the link between attachment relationships and stress among Vietnamese nursing students: A cross-sectional survey",
+      "journal": "International Journal of Nursing Studies Advances, 10, 100500",
+      "url": "https://doi.org/10.1016/j.ijnsa.2026.100500",
+      "note": "Dịch xuôi, dịch ngược RSES và kiểm tra giá trị nội dung với 6 chuyên gia (câu 6 có I-CVI = 0,83 nên được sửa lời), rồi dùng tự trọng làm biến trung gian giữa gắn bó và căng thẳng trên 612 sinh viên điều dưỡng ở TP.HCM; thang 1–4."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Em chấm RSES theo 0–3 hay 1–4, và có ảnh hưởng gì không?",
+      "a": "Cả hai cách đều được dùng: Nguyen và cộng sự (2026) chấm 0–3 (tổng 0–30), Trung và cộng sự (2025) và Ho và cộng sự (2026) chấm 1–4 (tổng 10–40). Hai cách chỉ lệch nhau đúng 10 điểm tổng nên alpha, tương quan và hệ số hồi quy chuẩn hoá không đổi, nhưng điểm trung bình thì khác. Em phải ghi rõ cách chấm trong phần phương pháp và quy đổi trước khi so điểm trung bình với nghiên cứu khác."
+    },
+    {
+      "q": "Vì sao các câu tiêu cực của em tải thấp hoặc tách thành nhân tố riêng?",
+      "a": "Schmitt & Allik (2005) dùng RSES ở 53 quốc gia (16.998 người) và thấy cấu trúc nhân tố khá ổn định, nhưng các câu diễn đạt tiêu cực được hiểu khác nhau giữa các nền văn hoá, và ở văn hoá tập thể người trả lời hay chọn mức trung tính. Vì vậy câu tiêu cực tải thấp hoặc tách nhân tố là hiện tượng đã biết, thường do cách diễn đạt chứ không phải hai khái niệm khác nhau. Em nên kiểm tra đã đảo điểm đúng 5 câu tiêu cực chưa, rồi thử CFA 1 nhân tố có tương quan sai số giữa các câu cùng chiều."
+    },
+    {
+      "q": "Có thể so điểm tự trọng của mẫu Việt Nam với mẫu nước ngoài không?",
+      "a": "Nên thận trọng. Schmitt & Allik (2005) kết luận rằng do câu tiêu cực được hiểu khác nhau giữa các quốc gia, so sánh trực tiếp điểm RSES giữa các nền văn hoá có giá trị hạn chế. Nếu đề tài cần so sánh nhóm, em nên kiểm định tính bất biến đo lường (configural, metric, scalar) trước khi so điểm trung bình."
+    }
+  ],
   "sampleSize": {
     "note": "RSES là thang đơn lẻ 10 biến. Theo Hair và cộng sự, EFA cần tối thiểu 5 quan sát cho mỗi biến (50) và nên từ 100 quan sát trở lên; CFA kiểm tra cấu trúc hai chiều tích cực và tiêu cực nên có từ 200 quan sát."
   },
   "license": "Dùng miễn phí cho nghiên cứu và giáo dục, không cần xin phép, theo hướng dẫn của Khoa Xã hội học, Đại học Maryland (nơi giữ tư liệu của Rosenberg) được PsyToolkit trích lại; cần trích dẫn Rosenberg. Gia đình tác giả mong được biết về việc sử dụng.",
   "references": [
-    "Rosenberg, M. (1965). <em>Society and the adolescent self-image</em>. Princeton University Press."
+    "Ho, Q. B., Tran, H. T. L., Nguyen, D. T. T., Tran, T. T., &amp; Tran, L. T. K. (2026). The mediating role of self-esteem in the link between attachment relationships and stress among Vietnamese nursing students: A cross-sectional survey. <em>International Journal of Nursing Studies Advances, 10</em>, 100500. https://doi.org/10.1016/j.ijnsa.2026.100500",
+    "Nguyen, D. T., Hua, T. D., Nguyen, T. T. T., Pham, N. H., Nguyen, H. N., Ho, C. S. H., Tran-Chi, V.-L., Lin, K., &amp; Lin, C.-Y. (2026). Mental health problems as mediators between self-esteem and internet addiction among adolescents. <em>BMC Public Health, 26</em>, 1574. https://doi.org/10.1186/s12889-026-27258-8",
+    "Rosenberg, M. (1965). <em>Society and the adolescent self-image</em>. Princeton University Press.",
+    "Schmitt, D. P., &amp; Allik, J. (2005). Simultaneous administration of the Rosenberg Self-Esteem Scale in 53 nations: Exploring the universal and culture-specific features of global self-esteem. <em>Journal of Personality and Social Psychology, 89</em>(4), 623–642. https://doi.org/10.1037/0022-3514.89.4.623",
+    "Trung, C. T. T., Dat, N. T., Teh, C. J., &amp; Tee, P. K. (2025). Psychological capital and mental health problems among the unemployed in the post-COVID-19 era: Self-esteem as a moderator. <em>PLOS ONE, 20</em>(3), e0319555. https://doi.org/10.1371/journal.pone.0319555"
   ],
   "verifiedFrom": [
     "https://www.ewi-psy.fu-berlin.de/psychologie/arbeitsbereiche/arbpsych/media/lehre/ss08/12736/rosenberg_self_esteem_scale.pdf",
-    "https://www.psytoolkit.org/survey-library/self-esteem-rosenberg.html"
+    "https://www.psytoolkit.org/survey-library/self-esteem-rosenberg.html",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%2210.1037/0022-3514.89.4.623%22&format=json&resultType=core",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13192003/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11936243/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12925180/fullTextXML",
+    "https://api.crossref.org/works/10.1037/0022-3514.89.4.623",
+    "https://api.crossref.org/works/10.1186/s12889-026-27258-8",
+    "https://api.crossref.org/works/10.1371/journal.pone.0319555",
+    "https://api.crossref.org/works/10.1016/j.ijnsa.2026.100500"
   ],
   "related": [
     "tu-hieu-qua-gse",

@@ -73,6 +73,68 @@
     "Chạy CFA bốn nhân tố và kiểm tra giá trị phân biệt (HTMT) giữa giá trị chất lượng và giá trị giá cả, vì người trả lời Việt Nam hay gộp 'tốt' với 'đáng tiền'.",
     "Nếu bảng hỏi dài, Walsh, Shiu & Hassan (2014) đã đề xuất bản rút gọn; dùng bản đó thì trích bài của họ và lấy đúng các biến họ giữ lại."
   ],
+  "reliability": [
+    {
+      "construct": "Giá trị cảm xúc (VE, 4 biến, bản điều chỉnh cho game)",
+      "value": "α = 0,88; CR = 0,92; AVE = 0,70",
+      "sample": "n = 539 người chơi game nhập vai trực tuyến (MMORPG) ở ba miền Việt Nam, thang 5 mức",
+      "source": "Vu, Nguyen & Nguyen (2026), Bảng 4",
+      "url": "https://www.nature.com/articles/s41599-025-06379-2/tables/4"
+    },
+    {
+      "construct": "Giá trị xã hội (VS, 4 biến)",
+      "value": "α = 0,85; CR = 0,90; AVE = 0,67",
+      "sample": "n = 539 người chơi MMORPG, Việt Nam",
+      "source": "Vu, Nguyen & Nguyen (2026), Bảng 4",
+      "url": "https://www.nature.com/articles/s41599-025-06379-2/tables/4"
+    },
+    {
+      "construct": "Giá trị giá cả (VP, 4 biến)",
+      "value": "α = 0,82; CR = 0,88; AVE = 0,63",
+      "sample": "n = 539 người chơi MMORPG, Việt Nam",
+      "source": "Vu, Nguyen & Nguyen (2026), Bảng 4",
+      "url": "https://www.nature.com/articles/s41599-025-06379-2/tables/4"
+    },
+    {
+      "construct": "Giá trị chất lượng (VQ, 4 biến)",
+      "value": "α = 0,84; CR = 0,89; AVE = 0,66",
+      "sample": "n = 539 người chơi MMORPG, Việt Nam",
+      "source": "Vu, Nguyen & Nguyen (2026), Bảng 4",
+      "url": "https://www.nature.com/articles/s41599-025-06379-2/tables/4"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Vu, T. V., Nguyen, Y. T. H., & Nguyen, P. V.",
+      "year": 2026,
+      "title": "Predicting virtual goods purchases in Vietnam's MMOGs with a TAM-PERVAL model using PLS-SEM and ANN",
+      "journal": "Humanities and Social Sciences Communications, 13, 80",
+      "url": "https://doi.org/10.1057/s41599-025-06379-2",
+      "note": "Kết hợp TAM với bốn khía cạnh PERVAL (cảm xúc, xã hội, giá cả, chất lượng) để giải thích ý định mua vật phẩm ảo trong game, n = 539, thang 5 mức, mỗi khía cạnh 4 biến; α của bốn khía cạnh từ 0,82 đến 0,88."
+    },
+    {
+      "authors": "Vu, T. V., & Nguyen, P. V.",
+      "year": 2025,
+      "title": "Driving virtual goods purchases in Vietnam's MMORPGs: A TAM-PERVAL model",
+      "journal": "International Journal of Innovative Research and Scientific Studies, 8(3), 4828–4838",
+      "url": "https://doi.org/10.53894/ijirss.v8i3.7617",
+      "note": "Mô hình TAM-PERVAL trên 339 người chơi MMORPG Việt Nam, PLS-SEM; giá trị cảm xúc tác động có ý nghĩa, giá trị xã hội tác động qua sự gắn kết cộng đồng, thu nhập điều tiết tác động của giá trị giá cả."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "PERVAL có mấy khía cạnh, có được gộp thành một biến giá trị cảm nhận chung không?",
+      "a": "Sweeney & Soutar (2001) đo 4 khía cạnh với 19 biến: giá trị chất lượng, giá trị cảm xúc, giá trị giá cả và giá trị xã hội; điểm mới là tách riêng phần cảm xúc và phần xã hội khỏi cách đo một chiều chất lượng so với giá. Có thể mô hình hoá giá trị cảm nhận như khái niệm bậc hai, nhưng vẫn phải báo cáo độ tin cậy và giá trị phân biệt của từng khía cạnh. Nếu giả thuyết nói khía cạnh nào tác động mạnh hơn thì phải giữ 4 khía cạnh làm biến riêng."
+    },
+    {
+      "q": "Đề tài về dịch vụ (khách sạn, du lịch) có dùng PERVAL được không?",
+      "a": "PERVAL được phát triển cho sản phẩm lâu bền ở cấp thương hiệu. Với dịch vụ, Petrick (2002) đã phát triển SERV-PERVAL riêng; nên dùng thang đó hoặc ghi rõ đã điều chỉnh câu chữ PERVAL cho dịch vụ và kiểm định lại bằng CFA. Không trộn câu của hai thang mà không ghi nguồn từng biến."
+    },
+    {
+      "q": "Đề tài chỉ dùng 4 biến mỗi khía cạnh, có sai so với bản gốc không?",
+      "a": "Rút gọn được chấp nhận nếu có căn cứ. Walsh, Shiu & Hassan (2014) đã kiểm định và đề xuất bản rút gọn của PERVAL; nếu dùng bản đó thì trích bài của họ và lấy đúng các biến họ giữ lại. Nếu tự bỏ biến (ví dụ hai câu đảo chiều QV4, QV5 hay tải yếu), phải nêu lý do và kết quả CFA. Ở Việt Nam, Vu, Nguyen & Nguyen (2026) dùng 4 biến mỗi khía cạnh và đạt α từ 0,82 đến 0,88."
+    }
+  ],
   "sampleSize": {
     "note": "PERVAL là thang đo đa hướng, không phải mô hình. Khi đưa bốn khía cạnh làm biến độc lập dự báo ý định mua, có 4 mũi tên vào biến phụ thuộc, cần tối thiểu 85 quan sát theo G*Power (f² = 0,15, α = 5%, power 0,80)."
   },
@@ -81,6 +143,7 @@
     "Petrick, J. F. (2002). Development of a multi-dimensional scale for measuring the perceived value of a service. <em>Journal of Leisure Research, 34</em>(2), 119–134. https://doi.org/10.1080/00222216.2002.11949965",
     "Ranaweera, C., &amp; Karjaluoto, H. (2017). The impact of service bundles on the mechanism through which functional value and price value affect WOM intent. <em>Journal of Service Management, 28</em>(4), 707–723. https://doi.org/10.1108/JOSM-03-2016-0065",
     "Sweeney, J. C., &amp; Soutar, G. N. (2001). Consumer perceived value: The development of a multiple item scale. <em>Journal of Retailing, 77</em>(2), 203–220. https://doi.org/10.1016/S0022-4359(01)00041-0",
+    "Vu, T. V., Nguyen, Y. T. H., &amp; Nguyen, P. V. (2026). Predicting virtual goods purchases in Vietnam’s MMOGs with a TAM-PERVAL model using PLS-SEM and ANN. <em>Humanities and Social Sciences Communications, 13</em>, 80. https://doi.org/10.1057/s41599-025-06379-2",
     "Walsh, G., Shiu, E., &amp; Hassan, L. M. (2014). Replicating, validating, and reducing the length of the consumer perceived value scale. <em>Journal of Business Research, 67</em>(3), 260–267. https://doi.org/10.1016/j.jbusres.2013.05.012"
   ],
   "verifiedFrom": [
@@ -89,7 +152,13 @@
     "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8723156/fullTextXML",
     "http://www.ccsenet.org/journal/index.php/ijms/article/download/68479/37942",
     "https://api.openalex.org/works/doi:10.1016/S0022-4359(01)00041-0",
-    "https://api.crossref.org/works/10.1080/00222216.2002.11949965"
+    "https://api.crossref.org/works/10.1080/00222216.2002.11949965",
+    "https://api.crossref.org/works/10.1057/s41599-025-06379-2",
+    "https://www.nature.com/articles/s41599-025-06379-2",
+    "https://www.nature.com/articles/s41599-025-06379-2/tables/4",
+    "https://api.crossref.org/works/10.53894/ijirss.v8i3.7617",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9638435/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12782400/fullTextXML"
   ],
   "related": ["y-dinh-mua", "niem-tin-trung-thanh-thuong-hieu", "mua-hang-ngau-hung", "y-thuc-ve-gia"]
 }

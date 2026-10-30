@@ -10,8 +10,6 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - cach-tinh-co-mau-theo-cong-thuc-slovin | công thức slovin, yamane | khi nào không nên dùng
 - bang-krejcie-morgan | bảng krejcie morgan | Krejcie & Morgan 1970
 - phan-tich-tuong-quan-pearson | tương quan pearson spss | ngưỡng Cohen 1988
-- pls-sem-la-gi-smartpls | pls-sem là gì, smartpls | Hair 2019, 2022
-- ave-cr-la-gi | ave, cr, giá trị hội tụ | Fornell & Larcker 1981
 - cfa-amos-chi-so-phu-hop | cfa amos, chỉ số phù hợp mô hình | Hu & Bentler 1999
 - common-method-bias | common method bias, harman | Podsakoff 2003, Kock 2015
 - mo-hinh-tam-la-gi | mô hình tam | Davis 1989, dẫn thang đo TAM
@@ -25,7 +23,6 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - y-dinh-nghi-viec | các yếu tố ảnh hưởng đến ý định nghỉ việc | tổng quan
 - du-lieu-thu-cap-la-gi | dữ liệu thứ cấp là gì, nguồn dữ liệu thứ cấp | dẫn sang mục dữ liệu
 - nguon-du-lieu-vi-mo-viet-nam | lấy số liệu GDP, lạm phát Việt Nam ở đâu | dẫn sang dữ liệu
-- hoi-quy-du-lieu-bang-panel | dữ liệu bảng, hồi quy panel, FEM REM | Hausman
 - kiem-dinh-tinh-dung-adf | kiểm định tính dừng adf | chuỗi thời gian
 - cach-trich-dan-apa-7 | cách trích dẫn apa 7 | dẫn sang công cụ trích dẫn
 - cach-viet-tong-quan-tai-lieu | cách viết tổng quan tài liệu, khoảng trống nghiên cứu |
@@ -33,11 +30,16 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - cach-trinh-bay-bang-bieu-luan-van | trình bày bảng biểu luận văn |
 - mau-de-cuong-khoa-luan | mẫu đề cương khoá luận, đề cương nghiên cứu |
 - phuong-sai-sai-so-thay-doi | phương sai sai số thay đổi là gì, kiểm định và khắc phục (Stata, EViews) | 10 biến thể Autocomplete 30/10; White 1980, Breusch-Pagan 1979, sai số chuẩn vững
-- hoi-quy-logistic-spss | hồi quy logistic trong spss, đơn biến / đa biến | 10 biến thể Autocomplete; Peduzzi 1996, Vittinghoff 2007, Nagelkerke 1991, Hosmer-Lemeshow 1980 (DOI đã kiểm tra)
 
 
 ## Đã viết
 
+- pls-sem-la-gi-smartpls | pls-sem là gì, smartpls | Hair 2019, 2022 | đã viết: /posts/pls-sem-la-gi-smartpls/
+- ave-cr-la-gi | ave, cr, giá trị hội tụ | Fornell & Larcker 1981 | đã viết: /posts/ave-cr-la-gi/
+- hoi-quy-du-lieu-bang-panel | dữ liệu bảng, hồi quy panel, FEM REM | Hausman | đã viết: /posts/hoi-quy-du-lieu-bang-panel/
+- hoi-quy-logistic-spss | hồi quy logistic trong spss, đơn biến / đa biến | 10 biến thể Autocomplete; Peduzzi 1996, Vittinghoff 2007, Nagelkerke 1991, Hosmer-Lemeshow 1980 (DOI đã kiểm tra) | đã viết: /posts/hoi-quy-logistic-spss/
+- he-so-vif-da-cong-tuyen | hệ số vif, đa cộng tuyến, inner/outer vif | O'Brien 2007, Hair 2019, Kock & Lynn 2012 (SEO_KEYWORDS Khoảng trống #2) | đã viết: /posts/he-so-vif-da-cong-tuyen/
+- r-binh-phuong-hieu-chinh | r bình phương hiệu chỉnh là gì, bao nhiêu là đủ | Wherry 1931, Cohen 1988, Chin 1998, Hair 2011 (SEO_KEYWORDS Khoảng trống #3) | đã viết: /posts/r-binh-phuong-hieu-chinh/
 - kiem-dinh-t-test-anova-spss | kiểm định t-test và anova trong spss | Levene, Welch, Tukey, Games-Howell | đã viết: /posts/kiem-dinh-t-test-anova-spss/
 - htmt-la-gi | htmt, giá trị phân biệt | Henseler 2015, Franke & Sarstedt 2019 | đã viết: /posts/htmt-gia-tri-phan-biet/
 - bien-trung-gian-dieu-tiet | biến trung gian và biến điều tiết là gì | Baron & Kenny 1986, Hayes, Zhao 2010 | đã viết: /posts/bien-trung-gian-bien-dieu-tiet-la-gi/

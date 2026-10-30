@@ -53,12 +53,14 @@ Nhịp dạng bài trong 14 ngày:
 ### Ngày 1 · T7 31/10 · 20:30 · chủ đề KLTN · Topic hỏi cộng đồng
 
 **Bài:**
-> Topic: Điều bạn ước có người nói với mình trước khi bắt đầu phần số liệu khoá luận?
+> Topic: Được quay lại hôm mới nhận đề tài khoá luận, bạn sẽ dặn bản thân câu gì? Mình mở hàng trước nè
 
 **Trả lời ngay dưới bài (tự mở hàng):**
-> Mình mở hàng: chọn phương pháp phân tích trước, rồi mới thiết kế bảng hỏi và tính cỡ mẫu.
+> Câu mình muốn dặn mấy bạn: chọn cách phân tích trước, rồi mới làm bảng hỏi.
 >
-> Làm ngược lại là hay gặp cảnh thu xong phiếu mới biết mỗi khái niệm chỉ có 2 câu hỏi, hoặc số phiếu không đủ cho mô hình định chạy. Lúc đó sửa gì cũng phải khảo sát lại.
+> Làm ngược là dễ gặp cảnh thu xong phiếu mới biết mỗi khái niệm chỉ có 2 câu hỏi, hoặc số phiếu không đủ cho mô hình định chạy. Lúc đó sửa gì cũng phải khảo sát lại.
+>
+> Tới lượt bạn, kể nghe với :))
 
 Cách theo dõi bài: với mỗi trả lời có nội dung, trả lời lại bằng một ý bổ sung cụ thể như nguồn, ngưỡng hoặc cách làm, không chỉ "đúng rồi".
 

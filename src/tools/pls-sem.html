@@ -71,6 +71,9 @@
     <div id="ps-report" class="ps-report" style="line-height:1.65"></div>
     <small class="text-muted-foreground">Kết quả tính theo thuật toán PLS chuẩn (Lohmöller, 1989) với các thiết lập mặc định của SmartPLS: lược đồ trọng số đường dẫn, dữ liệu chuẩn hoá, trọng số khởi đầu bằng 1, tiêu chí dừng 10⁻⁷, tối đa 300 vòng lặp. Ước lượng điểm khớp hai gói R seminr và cSEM tới ít nhất 9 chữ số thập phân, nên chỉ có thể lệch SmartPLS ở phần làm tròn (riêng f² tính từ điểm khái niệm của mô hình đầy đủ như cSEM; phần mềm ước lượng lại mô hình khi bỏ từng đường, như seminr, có thể lệch ở chữ số thứ ba); số bootstrap khác nhau một chút giữa các phần mềm vì mỗi phần mềm rút mẫu ngẫu nhiên khác nhau. Bạn vẫn là người chịu trách nhiệm diễn giải kết quả và kiểm tra câu chữ trước khi đưa vào luận văn.</small>
   </div>
+  <aside class="cta" id="ps-cta" hidden><span class="cta-label">Tài trợ · Genius Data</span><strong id="ps-cta-h">Mẫu đang dưới mức khuyến nghị</strong>
+    <p id="ps-cta-p"></p>
+    <a class="btn" href="https://geniusdata.io/signup?ref=lab-tool&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=tool&amp;utm_campaign=ai-lab&amp;utm_content=pls-sem-thieu-mau" rel="sponsored noopener" data-placement="pls-sem-thieu-mau">Tạo khảo sát trên Genius Data</a></aside>
 </div>
 <style>
 .ps-lbl{font-weight:600}
@@ -606,6 +609,9 @@
   function show(pr,est,boot,q2,opt,notes,pending){const r=report(pr,est,boot,q2,opt);last={...r,pr,est};
     const warn=[...(pending?['Bootstrap đang chạy: bảng giả thuyết và khoảng tin cậy sẽ hiện khi xong.']:[]),...notes.map(escH),...r.warnings];
     $('ps-warn').hidden=!warn.length;$('ps-warn').innerHTML=warn.length?`<strong>Cần xem lại</strong><ul>${warn.map(w=>`<li>${w}</li>`).join('')}</ul>`:'';
+    // Sample below the inverse square root minimum (Kock & Hadaya, 2018) for p_min = 0,20, or below 10 × the most arrows into one construct: offer more data instead of the static note in the guide.
+    {const maxIn=Math.max(0,...pr.pred.map(x=>x.length)),need=Math.max(155,10*maxIn),short=pr.n<need;$('ps-cta').hidden=!short;const st=document.getElementById('ps-cta-static');if(st)st.hidden=short;
+      if(short){$('ps-cta-h').textContent=`Cần thu thêm khoảng ${fx(need-pr.n,0)} phiếu đúng đối tượng?`;$('ps-cta-p').innerHTML=`Mẫu có ${fx(pr.n,0)} phiếu, dưới mức ${fx(need,0)} quan sát theo phương pháp căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018) khi hệ số đường dẫn nhỏ nhất kỳ vọng là 0,20${10*maxIn>155?` và quy tắc 10 lần số mũi tên (${maxIn} mũi tên trỏ vào một khái niệm)`:''}. Mẫu nhỏ làm khoảng tin cậy bootstrap rộng và dễ bỏ sót đường dẫn yếu. Thử thêm kênh miễn phí trước (<a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu nhanh</a>); nếu vẫn thiếu, Genius Data cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt. Tính lại con số cho đề tài bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.`}}
     $('ps-report').innerHTML=r.html;$('ps-out').hidden=false;if(!boot&&pending)$('ps-out').scrollIntoView({behavior:'smooth'})}
   $('ps-run').addEventListener('click',run);
 

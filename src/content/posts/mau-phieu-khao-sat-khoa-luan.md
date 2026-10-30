@@ -132,6 +132,7 @@ tags: ["bảng hỏi","khoá luận"]
 <p>Nếu đề tài của bạn gần với các chủ đề phổ biến như ví điện tử, mua sắm online, ý định nghỉ việc, chất lượng dịch vụ, xem các <a href="/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> có sẵn mô hình, cỡ mẫu và nguồn thang đo.</p>
 
 <p>Sửa xong phiếu, tính số phiếu cần thu bằng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a>; khi có câu trả lời, <a href="/cong-cu/lam-sach-du-lieu/">chuyển dữ liệu Google Form sang SPSS</a> để mã hoá theo đúng mã biến trong phiếu.</p>
+<p>Khi đã có phiếu và con số cần thu, kênh phát phiếu quyết định bạn đủ mẫu sớm hay muộn; các kênh miễn phí có trong bài <a href="/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>. Nếu cần người trả lời đúng đối tượng mà mạng lưới không đủ, một lựa chọn là <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=mau-phieu-khao-sat-khoa-luan" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng cho mỗi câu hỏi và chỉ trả tiền cho phiếu được duyệt.</p>
 
 <h2>Lỗi thường gặp</h2>
 <table>

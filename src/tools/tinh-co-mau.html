@@ -128,6 +128,9 @@
   <small class="text-muted-foreground">Đoạn văn tự cập nhật theo lựa chọn ở trên. Kiểm tra lại số liệu và chỉnh câu chữ cho hợp với đề tài trước khi đưa vào luận văn.</small>
 </div>
 <p style="margin-top:20px">Cách chọn phương pháp và trích dẫn trong chương 3: xem <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">Cỡ mẫu nghiên cứu bao nhiêu là đủ</a>.</p>
+<aside class="cta" id="ss-cta"><span class="cta-label">Tài trợ · Genius Data</span><strong id="ss-cta-h">Cần thu đủ số phiếu này, đúng đối tượng?</strong>
+  <p>Trước hết hãy dùng hết kênh miễn phí (mạng lưới cá nhân, nhóm lớp, nhờ giảng viên chia sẻ), xem <a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu nhanh</a>. Nếu vẫn thiếu, Genius Data cho bạn chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt.</p>
+  <a class="btn" href="https://geniusdata.io/signup?ref=lab-tool&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=tool&amp;utm_campaign=ai-lab&amp;utm_content=tinh-co-mau-ket-qua" rel="sponsored noopener" data-placement="tinh-co-mau-ket-qua">Tạo khảo sát trên Genius Data</a></aside>
 <script>
 (function(){
   // ---- statistics (shared with the unit check in scripts/check-power.mjs) ----
@@ -322,6 +325,7 @@
       html+=`<div class="result"><span class="lbl">Nếu thuê thu mẫu trên Genius Data</span><span class="how">Khoảng <b>${money(cost(0.15))} – ${money(cost(0.4))} đ</b> cho ${fmt(n)} phiếu hợp lệ, tức từ khoảng ${fmt(perLo)} đ mỗi phiếu ${fmt(q)} câu. Bạn tự chọn mức thưởng từ 0,15 tới 0,4 GP/câu và chỉ trả cho phiếu được duyệt.</span></div>`;}
     $('ss-out').innerHTML=html;
     $('ss-thesis').innerHTML=thesisHtml(p);
+    const ctaH=$('ss-cta-h');if(ctaH)ctaH.textContent=Number.isFinite(n)?`Cần thu ${fmt(n)} phiếu hợp lệ, đúng đối tượng?`:'Cần thu đủ số phiếu này, đúng đối tượng?';
   }
 
   // ---- ready-to-paste methodology paragraph (Vietnamese, APA references) ----

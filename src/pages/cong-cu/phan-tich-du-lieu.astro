@@ -1,5 +1,6 @@
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { appLink } from "@/utils/appLink";
 import html from "@/tools/phan-tich-du-lieu.html?raw";
 ---
 
@@ -222,6 +223,10 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
       với nhau, công cụ vẫn nhóm thành khái niệm.
     </p>
 
+    <p class="text-sm" id="pt-cta-static">
+      <span class="cta-label">Tài trợ · Genius Data</span><br />
+      Đang chờ đủ phiếu mới chạy được? Có thể chạy thử với dữ liệu mẫu ở trên trước. Nếu kênh miễn phí đã cạn mà vẫn thiếu phiếu, <a href={appLink("tool", "phan-tich-du-lieu-huong-dan", "/app/forms")} rel="sponsored noopener" data-placement="phan-tich-du-lieu-huong-dan">Genius Data</a> (link giới thiệu) cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt.
+    </p>
     <h2>Tài liệu tham khảo</h2>
     <ul class="text-sm">
       <li>

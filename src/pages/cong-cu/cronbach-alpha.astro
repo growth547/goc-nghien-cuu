@@ -1,5 +1,6 @@
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { appLink } from "@/utils/appLink";
 import html from "@/tools/cronbach-alpha.html?raw";
 ---
 
@@ -162,6 +163,10 @@ import html from "@/tools/cronbach-alpha.html?raw";
       của alpha rất rộng. Dùng kết quả đó để phát hiện câu có vấn đề; kết luận chính
       thức dựa trên mẫu đầy đủ, tính bằng
       <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.
+    </p>
+    <p class="text-sm">
+      <span class="cta-label">Tài trợ · Genius Data</span><br />
+      Chạy thử xong, cần thu mẫu chính thức? Trước hết dùng mạng lưới và nhóm lớp, xem <a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu nhanh</a>. Nếu vẫn thiếu người đúng đối tượng, <a href={appLink("tool", "cronbach-alpha-huong-dan", "/app/forms")} rel="sponsored noopener" data-placement="cronbach-alpha-huong-dan">Genius Data</a> (link giới thiệu) cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt.
     </p>
 
     <h2>Tài liệu tham khảo</h2>

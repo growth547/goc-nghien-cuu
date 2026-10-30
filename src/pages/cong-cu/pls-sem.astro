@@ -1,5 +1,6 @@
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { appLink } from "@/utils/appLink";
 import html from "@/tools/pls-sem.html?raw";
 ---
 
@@ -147,6 +148,10 @@ import html from "@/tools/pls-sem.html?raw";
       còn mức nhỏ, vừa, lớn hầu như không đổi.
     </p>
 
+    <p class="text-sm" id="ps-cta-static">
+      <span class="cta-label">Tài trợ · Genius Data</span><br />
+      Chưa đủ phiếu để chạy mô hình? PLS-SEM vẫn cần cỡ mẫu theo số mũi tên và hệ số đường dẫn kỳ vọng, tính bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>. Nếu kênh miễn phí đã cạn, <a href={appLink("tool", "pls-sem-huong-dan", "/app/forms")} rel="sponsored noopener" data-placement="pls-sem-huong-dan">Genius Data</a> (link giới thiệu) cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt.
+    </p>
     <h2>Tài liệu tham khảo</h2>
     <ul class="text-sm">
       <li>

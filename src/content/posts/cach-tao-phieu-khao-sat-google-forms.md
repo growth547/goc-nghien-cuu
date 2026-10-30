@@ -105,6 +105,7 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <li>Sửa xong, xoá các câu trả lời thử trong tab <strong>Câu trả lời</strong>, hoặc ghi lại mốc thời gian để lọc chúng ra sau.</li>
 </ol>
 <p>Sau khi phát link chính thức, tránh sửa câu chữ: dữ liệu trước và sau khi sửa không còn đo cùng một thứ.</p>
+<p>Phát link xong mà phiếu về chậm, hãy đọc <a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu khảo sát nhanh</a> trước: phần lớn kênh trong đó miễn phí. Nếu đối tượng khó tiếp cận qua mạng lưới cá nhân, một lựa chọn là <a href="https://geniusdata.io/signup?ref=lab-blog&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=blog&amp;utm_campaign=ai-lab&amp;utm_content=cach-tao-phieu-khao-sat-google-forms" rel="sponsored noopener">Genius Data</a> (link giới thiệu), nơi người nghiên cứu tự đặt mức thưởng cho mỗi câu hỏi và chỉ trả tiền cho phiếu được duyệt.</p>
 
 <h2>Bước 10: Từ Google Sheets sang SPSS</h2>
 <ol>

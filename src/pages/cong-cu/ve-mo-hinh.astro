@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { appLink } from "@/utils/appLink";
 import html from "@/tools/ve-mo-hinh.html?raw";
 
 // Only what the concept search needs; "<" is escaped so the JSON cannot close the script tag.
@@ -273,6 +274,10 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
       2009) với cỡ hiệu ứng trung bình f² = 0,15 theo Cohen (1992), đối chiếu
       với phương pháp căn bậc hai nghịch đảo. Đề tài dùng hồi quy trong SPSS thì
       đổi phương pháp ở Máy tính cỡ mẫu.
+    </p>
+    <p class="text-sm">
+      <span class="cta-label">Tài trợ · Genius Data</span><br />
+      Có mô hình và cỡ mẫu rồi thì bước tiếp theo là thu dữ liệu. Kênh miễn phí trước: <a href="/posts/cach-thu-mau-khao-sat-khoa-luan/">cách thu mẫu khảo sát khoá luận</a>. Nếu cần người trả lời đúng đối tượng mà mạng lưới không đủ, <a href={appLink("tool", "ve-mo-hinh-huong-dan", "/app/forms")} rel="sponsored noopener" data-placement="ve-mo-hinh-huong-dan">Genius Data</a> (link giới thiệu) cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt.
     </p>
 
     <h2>Câu hỏi thường gặp</h2>

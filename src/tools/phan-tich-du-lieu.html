@@ -56,6 +56,9 @@
     <div id="pt-report" class="pt-report" style="line-height:1.65"></div>
     <small class="text-muted-foreground">Kết quả tính theo công thức chuẩn (Cronbach's alpha, PCA với phép xoay Varimax có chuẩn hoá Kaiser, hồi quy OLS, Levene theo trung bình như SPSS). Hãy đối chiếu với SPSS ở lần đầu dùng và kiểm tra câu chữ trước khi đưa vào luận văn. Hệ số tải ở mục CR/AVE tính theo thành phần chính của từng thang đo, gần với outer loadings của SmartPLS nhưng có thể lệch ở chữ số thập phân thứ hai; đề tài dùng PLS-SEM thì chạy <a class="text-accent underline" href="/cong-cu/pls-sem/">công cụ PLS-SEM</a> để có đúng outer loadings, CR, AVE, HTMT và hệ số đường dẫn như SmartPLS.</small>
   </div>
+  <aside class="cta" id="pt-cta" hidden><span class="cta-label">Tài trợ · Genius Data</span><strong id="pt-cta-h">Mẫu đang dưới mức khuyến nghị</strong>
+    <p id="pt-cta-p"></p>
+    <a class="btn" href="https://geniusdata.io/signup?ref=lab-tool&amp;next=%2Fapp%2Fforms&amp;utm_source=goc-nghien-cuu&amp;utm_medium=tool&amp;utm_campaign=ai-lab&amp;utm_content=phan-tich-du-lieu-thieu-mau" rel="sponsored noopener" data-placement="phan-tich-du-lieu-thieu-mau">Tạo khảo sát trên Genius Data</a></aside>
 </div>
 <style>
 .pt-lbl{font-weight:600}
@@ -568,6 +571,9 @@
     if(res.error){msg.className='err';msg.innerHTML=escH(res.error)+(warn.length?'<br>'+warn.join('<br>'):'');$('pt-out').hidden=true;msg.scrollIntoView({behavior:'smooth',block:'center'});return}
     $('pt-warn').hidden=!warn.length;$('pt-warn').innerHTML=warn.length?`<strong>Cần xem lại trước khi dùng kết quả</strong><ul>${warn.map(w=>`<li>${w}</li>`).join('')}</ul>`:'';
     $('pt-report').innerHTML=res.html;$('pt-out').hidden=false;
+    // EFA needs at least 5 cases per item and preferably 100 or more (Hair et al., 2010): below that, offer more data instead of the static note in the guide.
+    {const p=new Set((res.groups||[]).flatMap(g=>g.items)).size,need=Math.max(100,5*p),short=res.n<need;$('pt-cta').hidden=!short;const st=document.getElementById('pt-cta-static');if(st)st.hidden=short;
+      if(short){$('pt-cta-h').textContent=`Cần thu thêm khoảng ${fx(need-res.n,0)} phiếu đúng đối tượng?`;$('pt-cta-p').innerHTML=`Mẫu có ${fx(res.n,0)} phiếu hợp lệ cho ${fx(p,0)} biến quan sát, dưới mức ${fx(need,0)} phiếu (ít nhất 5 phiếu cho mỗi biến và tốt nhất từ 100 phiếu, theo Hair và cộng sự, 2010). Với mẫu nhỏ, KMO và cấu trúc nhân tố dễ thay đổi khi thêm vài phiếu. Thử thêm kênh miễn phí trước (<a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu nhanh</a>); nếu vẫn thiếu, Genius Data cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt. Con số chính xác cho đề tài: <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.`}}
     msg.textContent=`Đã phân tích ${fx(res.n,0)} phiếu hợp lệ trong ${fx((performance.now()-t0)/1000,1)} giây.`;
     $('pt-out').scrollIntoView({behavior:'smooth'});
   }

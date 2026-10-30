@@ -1,0 +1,53 @@
+{
+  "name": "Độ tin cậy nguồn (KOL, người đại diện)",
+  "nameEn": "Source credibility",
+  "field": "Marketing & thương hiệu",
+  "title": "Thang đo độ tin cậy nguồn, KOL tiếng Việt: Ohanian (1990)",
+  "description": "Thang đo độ tin cậy nguồn của Ohanian (1990) dịch sẵn tiếng Việt cho đề tài KOL, influencer: sức hấp dẫn, sự đáng tin, chuyên môn, 15 cặp tính từ đối nghĩa 7 mức.",
+  "keyword": "thang đo độ tin cậy nguồn KOL",
+  "intro": "Độ tin cậy nguồn là cách người xem đánh giá người truyền thông điệp, ví dụ người nổi tiếng, KOL hay KOC giới thiệu sản phẩm. Ohanian (1990) đo khái niệm này bằng 15 cặp tính từ đối lập chia cho ba thành phần: sức hấp dẫn, sự đáng tin và chuyên môn. Ở Việt Nam, thang hay dùng cho đề tài về influencer trên TikTok, YouTube, livestream bán hàng và tác động của họ lên thái độ với thương hiệu hoặc ý định mua.",
+  "constructs": [
+    {
+      "key": "do-tin-cay-nguon-ohanian:ATT",
+      "note": "Sức hấp dẫn; 5 cặp tính từ. Quan trọng với sản phẩm làm đẹp, thời trang."
+    },
+    {
+      "key": "do-tin-cay-nguon-ohanian:TRU",
+      "note": "Sự đáng tin; 5 cặp tính từ. Thường dự báo ý định mua mạnh trong đề tài KOL."
+    },
+    {
+      "key": "do-tin-cay-nguon-ohanian:EXP",
+      "note": "Chuyên môn; 5 cặp tính từ. Phù hợp khi người đại diện là chuyên gia, bác sĩ, reviewer công nghệ."
+    }
+  ],
+  "tips": [
+    "Mỗi biến là một cặp tính từ, trả lời trên thang đối nghĩa, không phải câu Likert đồng ý. Đặt một câu dẫn như 'Theo bạn, [người đại diện] là người:' trước các cặp tính từ.",
+    "Nếu chuyển sang câu Likert ('[người đại diện] hấp dẫn'), ghi rõ là đã điều chỉnh từ Ohanian (1990), không ghi như nguyên bản.",
+    "Cho người trả lời xem ảnh hoặc clip của người đại diện cụ thể và hỏi một câu sàng lọc về mức độ biết người đó trước khi đánh giá.",
+    "Sức hấp dẫn và sự đáng tin đôi khi tải chéo ở mẫu Việt Nam; kiểm tra giá trị phân biệt bằng HTMT."
+  ],
+  "faq": [
+    {
+      "q": "Đã có nghiên cứu ở Việt Nam dùng thang Ohanian cho KOL chưa?",
+      "a": "Có. Khuong An và cộng sự (2024) dùng ba thành phần của Ohanian cho influencer mỹ phẩm (269 người, α 0,768–0,859), và Le, Vu và Le (2024) dùng cho beauty vlogger với mỹ phẩm thuần chay (382 người, α 0,804–0,904); cả hai đăng trên Innovative Marketing 20(3)."
+    },
+    {
+      "q": "Có thể chỉ dùng một hoặc hai thành phần không?",
+      "a": "Có, nếu tổng quan chỉ ra thành phần đó quan trọng với đề tài. Khi đó trích đúng số biến của thành phần và không gọi chung là độ tin cậy nguồn."
+    },
+    {
+      "q": "Độ tin cậy nguồn khác niềm tin thương hiệu thế nào?",
+      "a": "Độ tin cậy nguồn là đánh giá về người truyền thông điệp; niềm tin thương hiệu là đánh giá về chính thương hiệu. Trong mô hình KOL, độ tin cậy nguồn thường tác động tới thái độ với thương hiệu rồi tới ý định mua."
+    }
+  ],
+  "related": [
+    "thai-do",
+    "y-dinh-mua",
+    "niem-tin",
+    "truyen-mieng"
+  ],
+  "references": [
+    "Khuong An, G., Thuy An Ngo, T., Tu Tran, T., &amp; Thy Nguyen, P. (2024). Investigating the influence of social media influencer credibility on beauty product purchase behaviors: A case study from Vietnam. <em>Innovative Marketing, 20</em>(3), 261–276. https://doi.org/10.21511/im.20(3).2024.21",
+    "Le, B. N., Vu, V. T., &amp; Le, M. T. (2024). Source credibility of beauty vloggers and consumer purchases of vegan cosmetics: The mediating role of cognitive and affective attitude. <em>Innovative Marketing, 20</em>(3), 14–27. https://doi.org/10.21511/im.20(3).2024.02"
+  ]
+}

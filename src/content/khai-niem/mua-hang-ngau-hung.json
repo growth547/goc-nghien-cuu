@@ -1,0 +1,45 @@
+{
+  "name": "Mua hàng ngẫu hứng",
+  "nameEn": "Impulse buying",
+  "field": "Hành vi người tiêu dùng",
+  "title": "Thang đo mua hàng ngẫu hứng tiếng Việt: Rook và Fisher (1995)",
+  "description": "Thang đo xu hướng mua hàng ngẫu hứng (Buying Impulsiveness Scale) của Rook và Fisher (1995) dịch sẵn tiếng Việt, 9 biến, cách chấm, câu đảo chiều và bản rút gọn 5 biến.",
+  "keyword": "thang đo mua hàng ngẫu hứng",
+  "intro": "Mua hàng ngẫu hứng là mua một cách tự phát, ngay lập tức, bị cuốn theo cảm xúc với sản phẩm thay vì theo kế hoạch. Rook và Fisher (1995) đo khái niệm này như một xu hướng cá nhân: có người dễ mua theo hứng hơn người khác, bất kể đang mua món gì. Ở Việt Nam, khái niệm này xuất hiện nhiều trong đề tài về livestream bán hàng, TikTok Shop, sàn thương mại điện tử và mua sắm của Gen Z, thường đi cùng giá trị mua sắm khoái lạc và nỗi sợ bỏ lỡ (FoMO).",
+  "constructs": [
+    {
+      "key": "mua-hang-ngau-hung:BI",
+      "note": "Chọn khi đo xu hướng mua ngẫu hứng như một đặc điểm cá nhân; 9 biến, BI8 đảo chiều, Likert 5 mức là dạng được dùng nhiều nhất."
+    },
+    {
+      "key": "gia-tri-mua-sam-khoai-lac-thuc-dung:HSV",
+      "note": "Không đo mua ngẫu hứng mà đo niềm vui của chuyến mua sắm (Babin và cộng sự, 1994); hay dùng làm biến tác động tới mua ngẫu hứng."
+    }
+  ],
+  "tips": [
+    "BIS đo xu hướng, không đo một lần mua cụ thể. Nếu đề tài hỏi về hành vi mua ngẫu hứng trong một buổi livestream hay một chiến dịch, cần thêm thang hành vi mua ngẫu hứng riêng và ghi rõ nguồn.",
+    "BI8 ('lên kế hoạch cẩn thận') là câu đảo chiều; với Likert 5 mức, đảo bằng 6 − điểm trước khi tính Cronbach's alpha.",
+    "Các câu khẩu hiệu như 'Just do it', 'I see it, I buy it' nên dịch theo ý ('cứ mua đã', 'thấy là mua') và chạy thử với vài người trước khi khảo sát chính thức.",
+    "Khi bảng hỏi dài, có thể dùng bản 5 biến BI1–BI5 mà Fenton-O'Creevy và Furnham (2022) rút gọn từ thang gốc; ghi rõ đã dùng bản rút gọn."
+  ],
+  "faq": [
+    {
+      "q": "Thang mua hàng ngẫu hứng của Rook và Fisher có bao nhiêu biến?",
+      "a": "Thang gốc có 9 biến, đơn hướng, trong đó BI8 là câu đảo chiều. Điểm càng cao thì xu hướng mua ngẫu hứng càng mạnh."
+    },
+    {
+      "q": "Mua hàng ngẫu hứng nên là biến độc lập hay phụ thuộc?",
+      "a": "Trong đề tài livestream hay TikTok Shop, mua ngẫu hứng thường là biến phụ thuộc, chịu tác động của kích thích marketing, giá trị mua sắm khoái lạc hay FoMO. Vì BIS đo xu hướng ổn định, khi đặt nó làm biến phụ thuộc cần lập luận rằng môi trường mua sắm làm xu hướng này bộc lộ rõ hơn."
+    },
+    {
+      "q": "Có thể đổi BIS sang thang 7 mức không?",
+      "a": "Có. Các nghiên cứu sau dùng cả Likert 5 và 7 mức. Chọn một dạng, dùng thống nhất trong bảng hỏi và ghi rõ trong chương phương pháp."
+    }
+  ],
+  "related": [
+    "y-dinh-mua",
+    "gia-tri-cam-nhan",
+    "truyen-mieng",
+    "nghien-mang-xa-hoi"
+  ]
+}

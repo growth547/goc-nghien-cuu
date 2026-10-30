@@ -1,0 +1,44 @@
+{
+  "name": "Hài lòng với cuộc sống",
+  "nameEn": "Life satisfaction",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo hài lòng cuộc sống tiếng Việt: SWLS (Diener, 1985)",
+  "description": "Thang đo hài lòng với cuộc sống SWLS của Diener và cộng sự (1985) dịch sẵn tiếng Việt: 5 biến, Likert 7 mức, điểm 5–35 và các khoảng diễn giải, nghiên cứu tại Việt Nam.",
+  "keyword": "thang đo hài lòng cuộc sống",
+  "intro": "Hài lòng với cuộc sống là đánh giá tổng quát của một người về cuộc sống của mình theo tiêu chuẩn do chính họ đặt ra; đây là thành phần nhận thức của hạnh phúc chủ quan. SWLS của Diener, Emmons, Larsen và Griffin (1985) chỉ có 5 câu, một nhân tố, trả lời trong khoảng một phút. Ở Việt Nam, SWLS hay làm biến kết quả trong đề tài về sức khoẻ tinh thần sinh viên, cân bằng công việc và cuộc sống, người cao tuổi và tác động của mạng xã hội.",
+  "constructs": [
+    {
+      "key": "hai-long-cuoc-song-swls:SWLS",
+      "note": "Chọn khi đo hài lòng cuộc sống tổng quát; 5 biến, Likert 7 mức, không có câu đảo chiều."
+    }
+  ],
+  "tips": [
+    "Các khoảng diễn giải (31–35 rất hài lòng … 5–9 rất không hài lòng) tính trên tổng điểm của thang 7 mức; nếu đổi sang 5 mức hoặc báo cáo điểm trung bình thì không dùng được các khoảng này.",
+    "SWLS5 ('nếu được sống lại') thường tải thấp nhất ở người trẻ; xem lý do lý thuyết trước khi loại biến.",
+    "'Ideal' dịch thành 'lý tưởng' dễ bị hiểu là hoàn hảo; phỏng vấn nhận thức với vài người trước khi khảo sát chính thức."
+  ],
+  "faq": [
+    {
+      "q": "Đã có nghiên cứu kiểm định SWLS ở Việt Nam chưa?",
+      "a": "Có. Arrindell và cộng sự (2022, IJERPH 19(6), 3460) kiểm tra tính bất biến đo lường và giá trị cấu trúc của SWLS trên 1.073 tình nguyện viên tại TP.HCM. Trên sinh viên năm nhất, Trinh và cộng sự (2025) báo cáo Cronbach's alpha 0,81."
+    },
+    {
+      "q": "SWLS có câu đảo chiều không?",
+      "a": "Không. Cộng thẳng 5 câu được 5–35; điểm 20 là trung lập theo các khoảng diễn giải của tác giả."
+    },
+    {
+      "q": "Có cần xin phép để dùng SWLS không?",
+      "a": "Không cần cho mục đích phi thương mại như nghiên cứu, với điều kiện trích dẫn đúng các tác giả, theo trang chính thức của Diener."
+    }
+  ],
+  "related": [
+    "long-tu-trong",
+    "cang-thang",
+    "ho-tro-xa-hoi",
+    "can-bang-cong-viec-cuoc-song"
+  ],
+  "references": [
+    "Arrindell, W. A., Checa, I., Espejo, B., Chen, I.-H., Carrozzino, D., Vu-Bich, P., Dambach, H., &amp; Vagos, P. (2022). Measurement invariance and construct validity of the Satisfaction With Life Scale (SWLS) in community volunteers in Vietnam. <em>International Journal of Environmental Research and Public Health, 19</em>(6), 3460. https://doi.org/10.3390/ijerph19063460",
+    "Trinh, H. H., Nguyen, T. T., Nguyen, T. Q., Ngo, N. T., Nguyen, S. T., Nguyen, C. V., Mac, T. D., &amp; Nguyen, T. H. (2025). Impacts of adverse childhood experiences on mental health and satisfaction with life in first-year college students: Results from a cross-sectional study in Vietnam. <em>Psychiatry Investigation, 22</em>(8), 939–948. https://doi.org/10.30773/pi.2025.0068"
+  ]
+}

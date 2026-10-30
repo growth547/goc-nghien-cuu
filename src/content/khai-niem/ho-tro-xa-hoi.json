@@ -1,0 +1,52 @@
+{
+  "name": "Hỗ trợ xã hội",
+  "nameEn": "Perceived social support",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo hỗ trợ xã hội tiếng Việt: MSPSS (Zimet, 1988)",
+  "description": "Thang đo hỗ trợ xã hội cảm nhận MSPSS của Zimet và cộng sự (1988) dịch sẵn tiếng Việt: 12 biến từ gia đình, bạn bè và người đặc biệt, Likert 7 mức, cách tính điểm.",
+  "keyword": "thang đo hỗ trợ xã hội",
+  "intro": "Hỗ trợ xã hội cảm nhận là mức độ một người thấy mình được quan tâm, giúp đỡ và có chỗ dựa khi cần. MSPSS của Zimet, Dahlem, Zimet và Farley (1988) đo khái niệm này từ ba nguồn: gia đình, bạn bè và một người đặc biệt, mỗi nguồn 4 câu. Ở Việt Nam, MSPSS hay dùng trong đề tài về sức khoẻ tinh thần của sinh viên, người bệnh mạn tính và người cao tuổi, thường làm biến độc lập hoặc biến điều tiết giữa căng thẳng với trầm cảm, lo âu hay sự hài lòng cuộc sống.",
+  "constructs": [
+    {
+      "key": "ho-tro-xa-hoi-mspss:FAM",
+      "note": "Hỗ trợ từ gia đình; 4 biến. Dùng riêng khi đề tài tập trung vào gia đình, ví dụ sinh viên xa nhà."
+    },
+    {
+      "key": "ho-tro-xa-hoi-mspss:FRI",
+      "note": "Hỗ trợ từ bạn bè; 4 biến. Thường là nguồn quan trọng nhất với sinh viên."
+    },
+    {
+      "key": "ho-tro-xa-hoi-mspss:SO",
+      "note": "Hỗ trợ từ một người đặc biệt; 4 biến. Người Việt dễ hiểu là người yêu, nên thêm chú thích ngắn về nghĩa của 'người đặc biệt'."
+    }
+  ],
+  "tips": [
+    "Đặt 12 câu theo đúng thứ tự gốc, không gom theo nguồn, rồi tính điểm từng nguồn (trung bình 4 câu) và điểm chung (trung bình 12 câu).",
+    "Chạy CFA 3 nhân tố; nếu hai nguồn tương quan quá cao, kiểm tra giá trị phân biệt (HTMT) trước khi tách riêng trong mô hình.",
+    "Đã có bản MSPSS tiếng Việt được thẩm định trên 500 người sống chung với HIV (Kieu, Vuong và Dung, 2023, Cronbach's alpha 0,90); nếu dùng bản đó, trích dẫn bài thẩm định.",
+    "Khi dùng chung với thang trầm cảm, lo âu, làm theo quy định đạo đức nghiên cứu của trường và ghi đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "MSPSS có câu đảo chiều không?",
+      "a": "Không. Điểm mỗi nguồn là trung bình 4 câu, điểm chung là trung bình 12 câu, từ 1 đến 7; điểm càng cao thì hỗ trợ cảm nhận càng nhiều."
+    },
+    {
+      "q": "Có cần xin phép tác giả để dùng MSPSS không?",
+      "a": "Không. Theo trang MSPSS của Gregory Zimet, thang được dùng miễn phí, chỉ cần trích dẫn bài gốc năm 1988; trang này còn có sẵn thư cho phép nếu trường yêu cầu."
+    },
+    {
+      "q": "Nên dùng điểm chung hay điểm từng nguồn?",
+      "a": "Tuỳ câu hỏi nghiên cứu. Nếu giả thuyết nói về hỗ trợ xã hội nói chung, dùng điểm chung; nếu muốn biết nguồn nào quan trọng hơn (gia đình hay bạn bè), đưa ba nguồn thành ba khái niệm riêng."
+    }
+  ],
+  "related": [
+    "cang-thang",
+    "tram-cam",
+    "hai-long-cuoc-song",
+    "co-don"
+  ],
+  "references": [
+    "Kieu, P. T., Vuong, N. L., &amp; Dung, D. V. (2023). Validation of Multidimensional Scale of Perceived Social Support (MSPSS) in Vietnamese among people living with HIV/AIDS. <em>AIDS and Behavior, 27</em>(8), 2488–2496. https://doi.org/10.1007/s10461-022-03974-1"
+  ]
+}

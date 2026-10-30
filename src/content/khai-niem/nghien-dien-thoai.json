@@ -1,0 +1,41 @@
+{
+  "name": "Nghiện điện thoại thông minh",
+  "nameEn": "Smartphone addiction",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo nghiện điện thoại tiếng Việt: SAS-SV (Kwon, 2013)",
+  "description": "Thang đo nghiện điện thoại thông minh bản rút gọn SAS-SV của Kwon và cộng sự (2013) dịch sẵn tiếng Việt: 10 biến, Likert 6 mức, điểm cắt tham khảo và lưu ý khi dịch.",
+  "keyword": "thang đo nghiện điện thoại",
+  "intro": "Nghiện điện thoại thông minh là việc dùng điện thoại quá mức tới mức gây rối loạn sinh hoạt, khó chịu khi không có điện thoại và khó kiểm soát thời gian sử dụng. Kwon, Kim, Cho và Yang (2013) rút 10 câu từ thang SAS 33 câu để có bản ngắn dễ dùng trong khảo sát. Ở Việt Nam, SAS-SV hay được dùng trong đề tài về sinh viên, liên hệ với giấc ngủ, căng thẳng, kết quả học tập và FoMO.",
+  "constructs": [
+    {
+      "key": "nghien-dien-thoai-sas-sv:SAS",
+      "note": "Chọn khi đo nghiện điện thoại nói chung; 10 biến, Likert 6 mức, không có câu đảo chiều, cộng điểm 10–60."
+    }
+  ],
+  "tips": [
+    "Giữ Likert 6 mức như bản gốc nếu muốn so với điểm cắt của Kwon và cộng sự (2013); đổi sang 5 mức thì không dùng được điểm cắt đó.",
+    "Điểm cắt 31 (nam) và 33 (nữ) được xác định trên học sinh trung học Hàn Quốc; với sinh viên Việt Nam chỉ nên coi là mốc tham khảo.",
+    "Câu nhắc tới Twitter, Facebook có thể thêm Zalo, TikTok, Messenger, nhưng phải ghi rõ đã điều chỉnh từ bản gốc.",
+    "Thang đo này không phải công cụ chẩn đoán. Đề tài hỏi về sức khoẻ tinh thần cần làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "SAS-SV có bao nhiêu câu và chấm điểm thế nào?",
+      "a": "SAS-SV có 10 câu trả lời bằng Likert 6 mức. Cộng 10 câu được điểm 10–60; điểm càng cao thì mức nghiện càng cao. Không có câu đảo chiều."
+    },
+    {
+      "q": "SAS-SV có dùng được cho sinh viên không?",
+      "a": "Bản gốc kiểm định trên học sinh trung học, nhưng thang được dùng rộng rãi cho sinh viên. Hãy chạy EFA, CFA và Cronbach's alpha trên mẫu của bạn và chú ý câu về đau cổ tay, sau gáy vì đây là biểu hiện thể chất."
+    },
+    {
+      "q": "Bài gốc SAS-SV có được sao chép tự do không?",
+      "a": "Bài của Kwon và cộng sự (2013) đăng trên PLoS ONE theo giấy phép Creative Commons Attribution, cho phép dùng và sao chép nếu ghi đúng tác giả và nguồn."
+    }
+  ],
+  "related": [
+    "nghien-mang-xa-hoi",
+    "fomo",
+    "cang-thang",
+    "lo-au"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Lãnh đạo chuyển đổi",
+  "nameEn": "Transformational leadership",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo lãnh đạo chuyển đổi tiếng Việt: GTL (Carless, 2000)",
+  "description": "Thang đo lãnh đạo chuyển đổi toàn cục GTL của Carless, Wearing và Mann (2000) dịch sẵn tiếng Việt: 7 biến, dùng thay MLQ phải mua bản quyền, có lưu ý khi dùng.",
+  "keyword": "thang đo lãnh đạo chuyển đổi",
+  "intro": "Lãnh đạo chuyển đổi là kiểu lãnh đạo truyền cảm hứng bằng tầm nhìn, quan tâm phát triển từng nhân viên, khuyến khích tư duy mới và làm gương bằng giá trị của mình. Bộ đo quen thuộc nhất là MLQ nhưng phải mua bản quyền; GTL của Carless, Wearing và Mann (2000) là thước đo ngắn 7 biến, mỗi biến một hành vi, được công bố trong bài báo. Ở Việt Nam, khái niệm này hay gặp trong đề tài về ảnh hưởng của người quản lý tới gắn kết, hài lòng, sáng tạo và hiệu quả công việc của nhân viên.",
+  "constructs": [
+    {
+      "key": "lanh-dao-chuyen-doi-glts:TL",
+      "note": "Chọn khi cần một thước đo ngắn, công bố tự do, đo lãnh đạo chuyển đổi như một khái niệm tổng; 7 biến."
+    }
+  ],
+  "tips": [
+    "GTL đo lãnh đạo chuyển đổi như một nhân tố; nếu hội đồng yêu cầu tách các thành phần (ảnh hưởng lý tưởng, kích thích trí tuệ…), 7 biến không đủ cho từng thành phần.",
+    "Chọn một cách gọi người quản lý trực tiếp ('quản lý của tôi') và dùng thống nhất cho cả 7 câu.",
+    "Khi nhiều nhân viên cùng đánh giá một người quản lý, báo cáo số người quản lý được đánh giá và cân nhắc kiểm tra mức đồng thuận trong nhóm.",
+    "Nếu nhân viên tự đánh giá cả lãnh đạo lẫn kết quả của mình, kiểm tra sai lệch phương pháp chung (Harman một nhân tố hoặc biến đánh dấu)."
+  ],
+  "faq": [
+    {
+      "q": "Vì sao không dùng MLQ?",
+      "a": "MLQ là bộ đo có bản quyền, phải mua để sử dụng. GTL được công bố trong bài báo của Carless và cộng sự (2000), ngắn hơn và được dùng rộng rãi như một lựa chọn thay thế."
+    },
+    {
+      "q": "Đã có nghiên cứu ở Việt Nam về lãnh đạo chuyển đổi và gắn kết chưa?",
+      "a": "Có, ví dụ Thanh, Quang và Anh (2022, Humanities and Social Sciences Communications) khảo sát 378 cán bộ khu vực công với MLQ và UWES-9. Bài này dùng MLQ chứ không dùng GTL, nên chỉ dùng để tham khảo mô hình."
+    },
+    {
+      "q": "GTL trả lời bằng thang nào?",
+      "a": "Bản đối chiếu dùng thang tần suất 5 mức (1 = Không bao giờ … 5 = Thường xuyên, gần như luôn luôn); nhiều nghiên cứu khác dùng thang đồng ý 5 mức. Chọn một dạng và ghi rõ trong chương phương pháp."
+    }
+  ],
+  "related": [
+    "gan-ket-cong-viec",
+    "hieu-qua-cong-viec",
+    "hanh-vi-cong-dan-to-chuc",
+    "hai-long-cong-viec"
+  ],
+  "references": [
+    "Thanh, N. H., Quang, N. V., &amp; Anh, N. N. (2022). The relationship between leadership style and staff work engagement: An empirical analysis of the public sector in Vietnam. <em>Humanities and Social Sciences Communications, 9</em>(1), 340. https://doi.org/10.1057/s41599-022-01354-7"
+  ]
+}

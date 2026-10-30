@@ -1,0 +1,53 @@
+{
+  "name": "Công bằng tổ chức",
+  "nameEn": "Organizational justice",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo công bằng tổ chức tiếng Việt: Colquitt (2001)",
+  "description": "Thang đo công bằng tổ chức của Colquitt (2001) dịch sẵn tiếng Việt: công bằng thủ tục, phân phối, quan hệ cá nhân và thông tin, 20 biến, thang mức độ 5 mức.",
+  "keyword": "thang đo công bằng tổ chức",
+  "intro": "Công bằng tổ chức là cảm nhận của người lao động về mức độ công bằng trong cách tổ chức phân bổ kết quả, ra quyết định và đối xử với họ. Colquitt (2001) kiểm định cấu trúc bốn thành phần: công bằng phân phối, thủ tục, quan hệ cá nhân và thông tin, với bộ 20 biến là bộ đo công bằng được trích nhiều nhất. Ở Việt Nam, khái niệm này hay gặp trong đề tài về lương thưởng, đánh giá thành tích, ý định nghỉ việc, cam kết và hành vi công dân tổ chức.",
+  "constructs": [
+    {
+      "key": "cong-bang-to-chuc:DJ",
+      "note": "Công bằng phân phối; 4 biến. Thay (kết quả) bằng thu nhập, thưởng hay kết quả đánh giá cụ thể."
+    },
+    {
+      "key": "cong-bang-to-chuc:PJ",
+      "note": "Công bằng thủ tục; 7 biến về quy trình dùng để đi tới kết quả."
+    },
+    {
+      "key": "cong-bang-to-chuc:IPJ",
+      "note": "Công bằng quan hệ cá nhân; 4 biến về cách người quản lý đối xử."
+    },
+    {
+      "key": "cong-bang-to-chuc:IFJ",
+      "note": "Công bằng thông tin; 5 biến về việc giải thích và truyền đạt thông tin."
+    }
+  ],
+  "tips": [
+    "Trước mỗi nhóm câu, viết câu dẫn nói rõ thủ tục nào, kết quả nào và người ra quyết định là ai; thay [kết quả] và [quản lý] thống nhất trong cả bảng hỏi.",
+    "Biến viết dạng câu hỏi và trả lời bằng thang mức độ (ở mức rất ít … rất nhiều); nếu chuyển thành câu khẳng định với thang đồng ý, ghi rõ đã điều chỉnh.",
+    "Chạy CFA bốn nhân tố và so với mô hình ba nhân tố gộp quan hệ cá nhân với thông tin, như Colquitt (2001) đã làm.",
+    "Nếu chỉ dùng một hoặc hai thành phần, gọi đúng tên thành phần, không gọi chung là công bằng tổ chức."
+  ],
+  "faq": [
+    {
+      "q": "Công bằng tổ chức có mấy thành phần?",
+      "a": "Theo Colquitt (2001) có bốn: phân phối (kết quả), thủ tục (quy trình), quan hệ cá nhân (được tôn trọng) và thông tin (được giải thích). Một số nghiên cứu gộp hai thành phần cuối thành công bằng tương tác."
+    },
+    {
+      "q": "Có cần xin phép để dùng thang của Colquitt không?",
+      "a": "Các biến được công bố trong bài gốc trên Journal of Applied Psychology và được dùng rộng rãi; không thấy điều kiện sử dụng riêng. Khi dùng, trích dẫn bài gốc."
+    },
+    {
+      "q": "Công bằng tổ chức thường đi với biến nào trong mô hình?",
+      "a": "Thường là biến độc lập tác động tới hài lòng công việc, cam kết, hành vi công dân tổ chức và ý định nghỉ việc; lập luận dựa trên lý thuyết trao đổi xã hội."
+    }
+  ],
+  "related": [
+    "hai-long-cong-viec",
+    "y-dinh-nghi-viec",
+    "cam-ket-to-chuc",
+    "hanh-vi-cong-dan-to-chuc"
+  ]
+}

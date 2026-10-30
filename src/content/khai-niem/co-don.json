@@ -1,0 +1,41 @@
+{
+  "name": "Cô đơn",
+  "nameEn": "Loneliness",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo cô đơn tiếng Việt: thang 3 biến (Hughes, 2004)",
+  "description": "Thang đo cô đơn 3 biến của Hughes, Waite, Hawkley và Cacioppo (2004), rút từ UCLA, dịch sẵn tiếng Việt: thang tần suất 3 mức, điểm 3–9, lưu ý khi dịch và phân tích.",
+  "keyword": "thang đo cô đơn",
+  "intro": "Cô đơn là cảm nhận chủ quan rằng các mối quan hệ xã hội của mình thiếu hụt, thể hiện qua cảm giác thiếu bầu bạn, bị gạt ra ngoài và bị cô lập. Hughes, Waite, Hawkley và Cacioppo (2004) rút 3 câu từ thang UCLA 20 câu để dùng trong khảo sát lớn; thang đạt alpha 0,72 và tương quan cao với bản đầy đủ. Ở Việt Nam, khái niệm này hợp với đề tài về sinh viên xa nhà, người cao tuổi, người làm việc từ xa và tác động của mạng xã hội.",
+  "constructs": [
+    {
+      "key": "co-don-ucla-3:LON",
+      "note": "Chọn khi cần thước đo cô đơn rất ngắn; 3 biến, thang tần suất 3 mức, điểm 3–9."
+    }
+  ],
+  "tips": [
+    "Không đổi sang thang đồng ý 5 hoặc 7 mức: câu hỏi là 'có thường… không', nên thang tần suất mới khớp nghĩa.",
+    "Thang chỉ có 3 biến nên EFA ít ý nghĩa; báo cáo Cronbach's alpha và hệ số tải trong CFA nếu đưa vào SEM.",
+    "'Left out' dễ dịch thành 'bị bỏ rơi', nặng hơn nghĩa gốc; khảo sát thử để chọn cách diễn đạt người trả lời hiểu đúng.",
+    "Thang đo này không phải công cụ chẩn đoán. Đề tài hỏi về sức khoẻ tinh thần cần làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "Tính điểm thang cô đơn 3 biến thế nào?",
+      "a": "Cộng 3 câu (1 = Hiếm khi, 2 = Thỉnh thoảng, 3 = Thường xuyên) được 3–9; điểm càng cao càng cô đơn. Không có câu đảo chiều."
+    },
+    {
+      "q": "Khi nào nên dùng bản UCLA đầy đủ?",
+      "a": "Khi cô đơn là biến chính và cần độ phân giải cao hơn. Bản 3 biến phù hợp khi cô đơn chỉ là một biến trong bảng hỏi dài."
+    },
+    {
+      "q": "Có cần xin phép không?",
+      "a": "Ba câu hỏi được công bố trong bài của Hughes và cộng sự (2004), đọc miễn phí trên PubMed Central; khi dùng cho nghiên cứu, trích dẫn bài gốc."
+    }
+  ],
+  "related": [
+    "ho-tro-xa-hoi",
+    "tram-cam",
+    "nghien-mang-xa-hoi",
+    "hai-long-cuoc-song"
+  ]
+}

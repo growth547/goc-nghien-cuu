@@ -1,0 +1,40 @@
+{
+  "name": "Cân bằng công việc và cuộc sống",
+  "nameEn": "Work-life balance",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo cân bằng công việc và cuộc sống tiếng Việt: Brough (2014)",
+  "description": "Thang đo cân bằng công việc và cuộc sống của Brough và cộng sự (2014) dịch sẵn tiếng Việt: 4 biến, Likert 5 mức, câu đảo chiều WLB2 và khác biệt với xung đột gia đình.",
+  "keyword": "thang đo cân bằng công việc cuộc sống",
+  "intro": "Cân bằng công việc và cuộc sống là đánh giá chủ quan của một người rằng công việc và các hoạt động ngoài công việc của mình đang hài hoà, phù hợp với ưu tiên hiện tại. Thang 4 biến của Brough và cộng sự (2014) hỏi về mọi hoạt động ngoài giờ làm chứ không chỉ gia đình, nên dùng được cả cho người độc thân. Ở Việt Nam, khái niệm này hợp với đề tài về làm việc từ xa, làm thêm giờ, chính sách linh hoạt và làm biến trung gian giữa áp lực công việc với hài lòng hay ý định nghỉ việc.",
+  "constructs": [
+    {
+      "key": "can-bang-cong-viec-cuoc-song:WLB",
+      "note": "Chọn khi đo đánh giá tổng thể về sự cân bằng; 4 biến, WLB2 đảo chiều, hỏi về 3 tháng gần đây."
+    }
+  ],
+  "tips": [
+    "Đảo điểm WLB2 bằng 6 − điểm (Likert 5 mức) trước khi tính Cronbach's alpha và điểm trung bình.",
+    "Dịch 'non-work activities' là 'hoạt động ngoài công việc', không thu hẹp thành 'gia đình'.",
+    "Nếu đề tài cần tách công việc ảnh hưởng gia đình và ngược lại, thang 4 biến này không đủ; cần một thang xung đột công việc và gia đình riêng, trích đúng nguồn."
+  ],
+  "faq": [
+    {
+      "q": "Cân bằng công việc và cuộc sống khác xung đột công việc và gia đình thế nào?",
+      "a": "Xung đột đo mức công việc và gia đình cản trở nhau theo từng chiều; cân bằng là đánh giá tổng thể rằng mọi mặt đang hài hoà. Thang của Brough và cộng sự (2014) đo khái niệm thứ hai."
+    },
+    {
+      "q": "Thang có bao nhiêu biến?",
+      "a": "4 biến, trả lời bằng Likert 5 mức về 3 tháng gần đây; đảo WLB2 rồi lấy trung bình, điểm càng cao càng cân bằng."
+    },
+    {
+      "q": "Có cần xin phép tác giả không?",
+      "a": "Không thấy điều kiện mua bản quyền; khi dùng, trích dẫn Brough và cộng sự (2014). Nếu dịch và công bố bản tiếng Việt, nên liên hệ tác giả."
+    }
+  ],
+  "related": [
+    "hai-long-cong-viec",
+    "kiet-suc",
+    "y-dinh-nghi-viec",
+    "hai-long-cuoc-song"
+  ]
+}

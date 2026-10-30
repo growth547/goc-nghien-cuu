@@ -1,0 +1,40 @@
+{
+  "name": "Hiệu quả công việc",
+  "nameEn": "Job performance (in-role)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "title": "Thang đo hiệu quả công việc tiếng Việt: Williams và Anderson (1991)",
+  "description": "Thang đo hiệu quả công việc trong vai trò của Williams và Anderson (1991) dịch sẵn tiếng Việt: 7 biến, 2 câu đảo chiều, dùng cho quản lý đánh giá hoặc tự đánh giá.",
+  "keyword": "thang đo hiệu quả công việc",
+  "intro": "Hiệu quả công việc trong vai trò là mức một nhân viên hoàn thành đầy đủ các nhiệm vụ và trách nhiệm được quy định chính thức. Williams và Anderson (1991) xây dựng thang 7 biến này cùng lúc với hai thang hành vi công dân, để tách phần việc bắt buộc với phần tự nguyện. Câu viết ở ngôi thứ ba nên dùng được cho quản lý đánh giá nhân viên hoặc chuyển sang tự đánh giá. Ở Việt Nam, khái niệm này hay là biến kết quả trong đề tài về lãnh đạo, gắn kết, trao quyền và hài lòng công việc.",
+  "constructs": [
+    {
+      "key": "hieu-qua-cong-viec:IRB",
+      "note": "Chọn khi đo hiệu quả trong vai trò; 7 biến, IRB6 và IRB7 đảo chiều."
+    }
+  ],
+  "tips": [
+    "Khi tự đánh giá, đổi [Nhân viên] thành 'Tôi' và nói rõ trong luận văn đây là hiệu quả tự đánh giá, vì điểm thường cao hơn khi quản lý chấm.",
+    "IRB6 và IRB7 là câu phủ định: đảo điểm trước khi chạy Cronbach's alpha (Likert 5 mức: 6 − điểm; 7 mức: 8 − điểm).",
+    "Nếu biến độc lập và hiệu quả cùng do một người trả lời, kiểm tra sai lệch phương pháp chung (Harman một nhân tố hoặc biến đánh dấu)."
+  ],
+  "faq": [
+    {
+      "q": "Hiệu quả công việc và hành vi công dân tổ chức khác nhau thế nào?",
+      "a": "Hiệu quả trong vai trò là phần việc bắt buộc theo mô tả công việc; hành vi công dân là phần tự nguyện ngoài nhiệm vụ. Williams và Anderson (1991) đo hai khái niệm bằng hai thang riêng."
+    },
+    {
+      "q": "Có nên để quản lý đánh giá không?",
+      "a": "Nếu được thì tốt hơn, vì tránh thiên lệch tự đánh giá và sai lệch phương pháp chung. Khi đó cần ghép phiếu của quản lý với phiếu của nhân viên bằng mã."
+    },
+    {
+      "q": "Có cần xin phép tác giả không?",
+      "a": "Các biến được công bố trong bài gốc trên Journal of Management và được dùng rộng rãi; không thấy điều kiện sử dụng riêng. Khi dùng, trích dẫn bài gốc."
+    }
+  ],
+  "related": [
+    "hanh-vi-cong-dan-to-chuc",
+    "gan-ket-cong-viec",
+    "lanh-dao-chuyen-doi",
+    "dong-luc-lam-viec"
+  ]
+}

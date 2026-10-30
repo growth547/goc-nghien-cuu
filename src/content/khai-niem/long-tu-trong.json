@@ -1,0 +1,41 @@
+{
+  "name": "Lòng tự trọng",
+  "nameEn": "Self-esteem",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo lòng tự trọng tiếng Việt: Rosenberg (1965)",
+  "description": "Thang đo lòng tự trọng Rosenberg (1965) dịch sẵn tiếng Việt: 10 biến, 5 câu đảo chiều, thang 4 mức từ 0 đến 3, cách chấm điểm 0–30 và lưu ý khi chạy CFA.",
+  "keyword": "thang đo lòng tự trọng",
+  "intro": "Lòng tự trọng là thái độ tích cực hay tiêu cực chung của một người đối với bản thân, tức mức độ họ thấy mình có giá trị. Thang Rosenberg (1965) là thang tự trọng được dùng nhiều nhất thế giới, gồm 10 câu, một nửa tích cực, một nửa tiêu cực. Ở Việt Nam, khái niệm này gặp nhiều trong đề tài về hình ảnh cơ thể, mạng xã hội, bắt nạt học đường và sức khoẻ tinh thần sinh viên.",
+  "constructs": [
+    {
+      "key": "tu-trong-rosenberg:RSE",
+      "note": "Chọn khi đo lòng tự trọng tổng quát; 10 biến, 5 câu đảo chiều, thang 4 mức không có điểm giữa."
+    }
+  ],
+  "tips": [
+    "Thang chấm từ 0 đến 3, nên đảo 5 câu tiêu cực (RSE2, RSE5, RSE6, RSE8, RSE9) bằng 3 − điểm, không phải 6 − điểm như Likert 5 mức.",
+    "Thứ tự câu khác nhau giữa các tài liệu; xác định câu đảo chiều theo nội dung (5 câu tiêu cực), không theo số thứ tự.",
+    "Giữ thang 4 mức không có điểm giữa như bản gốc; nếu đổi sang Likert 5 mức, ghi rõ trong chương phương pháp và đổi cách đảo điểm theo.",
+    "Câu tích cực và tiêu cực hay tách thành hai nhân tố do cách diễn đạt; với CFA, cân nhắc mô hình một nhân tố có tương quan sai số giữa các câu cùng chiều."
+  ],
+  "faq": [
+    {
+      "q": "Cách tính điểm thang Rosenberg?",
+      "a": "Câu tích cực chấm Rất đồng ý = 3 … Rất không đồng ý = 0; 5 câu tiêu cực chấm ngược. Cộng 10 câu được 0–30; điểm càng cao thì lòng tự trọng càng cao. Một số nghiên cứu chấm 1–4, khi đó điểm tổng là 10–40."
+    },
+    {
+      "q": "Có cần xin phép để dùng thang Rosenberg không?",
+      "a": "Không. Thang được dùng miễn phí cho nghiên cứu và giáo dục, chỉ cần trích dẫn Rosenberg (1965)."
+    },
+    {
+      "q": "Câu RSE8 có hệ số tải thấp thì làm gì?",
+      "a": "RSE8 ('ước mình tôn trọng bản thân hơn') hay tải thấp ở mẫu châu Á vì có thể được hiểu là mong muốn tự hoàn thiện. Xem lý do lý thuyết và Cronbach's alpha nếu loại biến trước khi quyết định, và báo cáo lý do trong chương 4."
+    }
+  ],
+  "related": [
+    "niem-tin-vao-nang-luc-ban-than",
+    "hai-long-cuoc-song",
+    "cang-thang",
+    "tram-cam"
+  ]
+}

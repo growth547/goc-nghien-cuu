@@ -1,0 +1,41 @@
+{
+  "name": "Nghiện mạng xã hội",
+  "nameEn": "Social media addiction",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo nghiện mạng xã hội tiếng Việt: BSMAS (Andreassen, 2016)",
+  "description": "Thang đo nghiện mạng xã hội Bergen (BSMAS) của Andreassen và cộng sự (2016) dịch sẵn tiếng Việt: 6 biến theo sáu thành phần nghiện hành vi, thang tần suất 5 mức.",
+  "keyword": "thang đo nghiện mạng xã hội",
+  "intro": "Nghiện mạng xã hội là việc dùng mạng xã hội quá mức tới mức bận tâm thường xuyên, dùng để giải toả tâm trạng, khó cắt giảm và ảnh hưởng xấu tới học tập hay công việc. BSMAS đo khái niệm này theo sáu thành phần của nghiện hành vi mà Griffiths mô tả, mỗi thành phần một câu. Ở Việt Nam, khái niệm này gặp nhiều trong đề tài về sinh viên dùng Facebook, TikTok, liên hệ với trầm cảm, lo âu, giấc ngủ, kết quả học tập và FoMO.",
+  "constructs": [
+    {
+      "key": "nghien-mang-xa-hoi-bsmas:BSMAS",
+      "note": "Chọn khi đo nghiện mạng xã hội nói chung hoặc một nền tảng cụ thể; 6 biến, thang tần suất 5 mức, cộng điểm 6–30."
+    }
+  ],
+  "tips": [
+    "BSMAS dùng thang tần suất (rất hiếm khi … rất thường xuyên), không phải Likert đồng ý; giữ đúng nhãn khi đưa vào bảng hỏi chung.",
+    "Có thể đổi 'mạng xã hội' thành một nền tảng cụ thể như TikTok, nhưng giữ cấu trúc câu và ghi rõ đã điều chỉnh từ BSMAS.",
+    "Các điểm cắt 'nghiện' lưu hành trên mạng không thống nhất giữa các nghiên cứu; nếu chia nhóm, trích nguồn điểm cắt và nói rõ đây là sàng lọc, không phải chẩn đoán.",
+    "Thang đo này không phải công cụ chẩn đoán. Đề tài hỏi về sức khoẻ tinh thần cần làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "BSMAS có câu đảo chiều không?",
+      "a": "Không. Cộng 6 câu được điểm 6–30; điểm càng cao thì nguy cơ nghiện mạng xã hội càng lớn."
+    },
+    {
+      "q": "Đã có nghiên cứu ở Việt Nam dùng BSMAS chưa?",
+      "a": "Có. Doan và cộng sự (2022, IJERPH 19(21), 14416) khảo sát 173 người trẻ 16–30 tuổi và báo cáo Cronbach's alpha 0,81. Đây là kết quả trên mẫu của bài, chưa phải một nghiên cứu thẩm định bản tiếng Việt."
+    },
+    {
+      "q": "Nên dùng BSMAS hay thang nghiện điện thoại SAS-SV?",
+      "a": "BSMAS hỏi về mạng xã hội, SAS-SV hỏi về việc dùng điện thoại nói chung. Chọn theo biến chính của đề tài; nếu đo cả hai, kiểm tra giá trị phân biệt vì hai khái niệm khá gần nhau."
+    }
+  ],
+  "related": [
+    "nghien-dien-thoai",
+    "fomo",
+    "tram-cam",
+    "lo-au"
+  ]
+}

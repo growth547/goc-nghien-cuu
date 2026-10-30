@@ -1,0 +1,41 @@
+{
+  "name": "Khả năng phục hồi",
+  "nameEn": "Resilience",
+  "field": "Tâm lý & sức khoẻ tinh thần",
+  "title": "Thang đo khả năng phục hồi tiếng Việt: BRS (Smith, 2008)",
+  "description": "Thang đo khả năng phục hồi ngắn BRS của Smith và cộng sự (2008) dịch sẵn tiếng Việt: 6 biến, 3 câu đảo chiều xen kẽ, Likert 5 mức, cách tính điểm trung bình 1–5.",
+  "keyword": "thang đo khả năng phục hồi",
+  "intro": "Khả năng phục hồi (resilience) theo nghĩa gốc là khả năng 'bật lại', lấy lại trạng thái bình thường sau căng thẳng hoặc biến cố. BRS của Smith và cộng sự (2008) hỏi trực tiếp người trả lời hồi phục nhanh hay chậm, khác với các thang đo nguồn lực như lạc quan hay hỗ trợ xã hội. Ở Việt Nam, khái niệm này hợp với đề tài về áp lực học tập, kiệt sức nghề nghiệp và làm biến trung gian hoặc điều tiết giữa căng thẳng với kết quả.",
+  "constructs": [
+    {
+      "key": "hoi-phuc-brs:BRS",
+      "note": "Chọn khi đo khả năng hồi phục như một kết quả; 6 biến, BRS2, BRS4, BRS6 đảo chiều."
+    }
+  ],
+  "tips": [
+    "Đảo điểm BRS2, BRS4, BRS6 bằng 6 − điểm trước khi tính Cronbach's alpha; quên bước này làm alpha thấp bất thường hoặc âm.",
+    "Giữ thứ tự xen kẽ câu thuận và câu nghịch như bản gốc.",
+    "Không gộp lạc quan, hỗ trợ xã hội hay tự hiệu quả vào BRS; đo chúng bằng thang riêng (ví dụ GSE, MSPSS).",
+    "Thang đo này không phải công cụ chẩn đoán. Đề tài hỏi về sức khoẻ tinh thần cần làm theo quy định đạo đức nghiên cứu của trường (có phiếu đồng ý tham gia) và ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "faq": [
+    {
+      "q": "Tính điểm BRS thế nào?",
+      "a": "Đảo 3 câu nghịch, rồi lấy trung bình 6 câu, điểm từ 1 đến 5; điểm càng cao khả năng phục hồi càng tốt."
+    },
+    {
+      "q": "BRS khác thang đo sức bật như CD-RISC thế nào?",
+      "a": "BRS đo trực tiếp việc hồi phục được hay không, còn nhiều thang khác đo các nguồn lực giúp con người kiên cường. Chọn theo định nghĩa khái niệm trong chương 2 của bạn."
+    },
+    {
+      "q": "Có cần xin phép để dùng BRS không?",
+      "a": "Không. Theo PhenX Toolkit (NIH), giao thức BRS được cung cấp miễn phí; khi dùng, trích dẫn Smith và cộng sự (2008)."
+    }
+  ],
+  "related": [
+    "cang-thang",
+    "niem-tin-vao-nang-luc-ban-than",
+    "ho-tro-xa-hoi",
+    "kiet-suc"
+  ]
+}

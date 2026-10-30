@@ -374,7 +374,7 @@ const plain = h => h.replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&am
   const sd = src.match(/function sampleData\(\)\{[\s\S]*?return out\}/)[0], raw = new Function(`${sd}; return sampleData();`)();
   const hd = raw[0], itemCols = hd.filter(x => /^(PEOU|PU|BI)\d$/.test(x)), ix = itemCols.map(x => hd.indexOf(x)), ac = hd.indexOf("AC1");
   const kept = raw.slice(1).filter(r => r[ac] === 2).map(r => ix.map(j => r[j])).filter(r => new Set(r).size > 1);
-  const csv = readFileSync("scripts/fixtures/efa-data/sample.csv", "utf8").trim().split("\n");
+  const csv = readFileSync("scripts/fixtures/efa-data/sample.csv", "utf8").trim().split(/\r?\n/);
   check(csv.length - 1 === kept.length && csv.slice(1).every((l, i) => l === kept[i].join(",")), `EFA fixture: sample.csv is the tool's sample after its filters (${kept.length} cases)`);
   const colsOf = re => itemCols.map((h, j) => (re.test(h) ? kept.map(r => r[j]) : null)).filter(Boolean);
   const Rs = { sample_iv: S.corrMatrix(colsOf(/^(PEOU|PU)/)), sample_dv: S.corrMatrix(colsOf(/^BI/)) };

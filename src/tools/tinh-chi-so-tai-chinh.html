@@ -180,10 +180,14 @@
     const byCode=f=>f.code&&(!sec||f.st===sec)&&(s===fold(f.code)||s===fold(f.st+' '+f.code)||s===fold('ma '+f.code)||s===fold('ma so '+f.code));
     const names=f=>[f.label,...(f.al||[])].map(fold);
     const hit=F.find(f=>s===f.key)||F.find(byCode)||F.find(f=>names(f).includes(s));
-    if(hit)return hit.key;
+    if(hit)return hit.key==='npl'&&/%/.test(h)?'nplr':hit.key;
     if(s.length>=8){const c=F.filter(f=>names(f).some(n=>n.startsWith(s+' ')));if(c.length===1)return c[0].key}
+    // Retry without a unit or note in brackets ("Tổng tài sản (tỷ đồng)") and without item numbering ("VI. Cho vay khách hàng").
+    const t=stripItem(h);
+    if(t&&t!==String(h).trim()){const k=headerKey(t,tpl,sec);return k==='npl'&&/%/.test(h)?'nplr':k}
     return null;
   }
+  const stripItem=h=>String(h??'').replace(/\([^)]*\)|\[[^\]]*\]/g,' ').replace(/^\s*(?:[IVXLCDM]+|[A-Za-z]|\d+(?:\.\d+)*)\s*[.)]\s*/,'').replace(/\s+/g,' ').trim();
   // Decimal mark used by the whole table: ',' (Vietnamese Excel), '.' (English Excel) or null when nothing tells.
   // Evidence: both marks in one number, a group that cannot be thousands (1,5 / 0.25 / 12.3456), or 2+ thousand groups.
   function detectDecimal(rows){
@@ -248,7 +252,7 @@
     const lab=rows[hr].map((c,j)=>j).filter(j=>j<yc[0]);
     const base=Math.max(...rows.slice(0,hr).flatMap(r=>(r.join(' ').match(/(?:19|20)\d{2}/g)||[]).map(Number)));
     const years=yc.map(j=>yearOf(rows[hr][j])??(relYear(rows[hr][j])!=null&&base>0?base+relYear(rows[hr][j]):null));
-    const vals={},order=[];let firmRow=null,sec=null,prev=null;
+    const vals={},vlab={},order=[];let firmRow=null,sec=null,prev=null;
     for(const r of rows.slice(hr+1)){
       const labels=lab.map(j=>r[j]??''),txt=fold(labels.join(' '));
       const empty=yc.every(j=>!String(r[j]??'').trim());
@@ -264,8 +268,10 @@
       }else key=labels.map(x=>headerKey(x,tpl)).find(Boolean)||null;
       if(!key||key==='year')continue;
       if(key==='firm'){firmRow=r;continue}
-      if(vals[key])continue;
-      vals[key]=yc.map(j=>r[j]??'');order.push(key);
+      // A numbered sub-item repeating its heading ("VI. Cho vay khách hàng" = net, then "1. Cho vay khách hàng" = gross) replaces it.
+      const lb=labels.find(x=>String(x).trim())||'';
+      if(vals[key]){if(/^\s*[IVXLCDM]+\s*[.)]/.test(vlab[key])&&/^\s*\d+\s*[.)]/.test(lb)&&fold(stripItem(vlab[key]))===fold(stripItem(lb))){vals[key]=yc.map(j=>r[j]??'');vlab[key]=lb}continue}
+      vals[key]=yc.map(j=>r[j]??'');vlab[key]=lb;order.push(key);
     }
     const out=[['firm','year',...order]];
     years.forEach((y,i)=>{if(y==null||out.some((o,k)=>k>0&&+o[1]===y))return;out.push([firmRow?String(firmRow[yc[i]]??'').trim()||'DN':'DN',String(y),...order.map(k=>vals[k][i])])});
@@ -280,6 +286,8 @@
     for(const r of rows.slice(1)){const k=headerKey(r[ii],tpl);if(!k||k==='firm'||k==='year')continue;if(!keys.includes(k))keys.push(k);const id=r[fi]+'|'+r[yi];(cell[id]=cell[id]||{firm:r[fi],year:r[yi]})[k]??=r[vi]}
     return [['firm','year',...keys],...Object.values(cell).map(o=>[o.firm,o.year,...keys.map(k=>o[k]??'')])];
   }
+  // Tickers are compared in upper case (vnm and VNM are one firm); longer names are kept as typed.
+  const ticker=x=>{const s=String(x??'').trim().replace(/\s+/g,' ');return /^[a-z0-9]{2,5}$/i.test(s)?s.toUpperCase():s};
   function parse(text,tpl){
     let rows=splitLines(text);if(!rows.length)return {data:[],cols:[],unknown:[],errors:['Chưa có dữ liệu.'],notes:[]};
     const t=maybeTranspose(rows,tpl);rows=t.rows;
@@ -296,7 +304,7 @@
     const data=[],seen=new Set();
     for(const r of rows.slice(1)){
       const o=noFirm?{firm:'DN'}:{};
-      head.forEach((k,j)=>{if(!k)return;o[k]=k==='firm'?String(r[j]??'').trim():k==='year'?parseInt(String(r[j]??'').replace(/\D/g,''),10):num(r[j],dec)});
+      head.forEach((k,j)=>{if(!k)return;o[k]=k==='firm'?ticker(r[j]):k==='year'?parseInt(String(r[j]??'').replace(/\D/g,''),10):num(r[j],dec)});
       if(!o.firm||!Number.isFinite(o.year)||o.year<1900||o.year>2100)continue;
       if(!Number.isFinite(o.tax)&&Number.isFinite(o.taxc))o.tax=o.taxc+(Number.isFinite(o.taxd)?o.taxd:0);
       const id=o.firm+'|'+o.year;if(seen.has(id)){errors.push(`Trùng dòng ${o.firm} năm ${o.year}: giữ dòng đầu tiên.`);continue}

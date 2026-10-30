@@ -240,5 +240,28 @@ near(rel.data[1].rev, 900, "Năm nay column holds the report year");
 const relNo = T.parse(["Chỉ tiêu\tMã số\tNăm nay\tNăm trước", "Doanh thu thuần\t10\t900\t800", "LNST\t60\t45\t40"].join("\n"), "firm");
 ok(relNo.errors.some(e => /Năm nay/.test(e)), "Năm nay without a year in the title asks for year headers");
 
+// ---- cycle 2: headers with units in brackets and item numbering; vertical TT49 bank statement; ticker case ----
+for (const [h, k, tpl = "firm"] of [["Tổng tài sản (tỷ đồng)", "ta"], ["LNST (triệu đồng)", "ni"], ["A. TÀI SẢN NGẮN HẠN", "ca"], ["II. Đầu tư tài chính ngắn hạn", "sti"],
+  ["VI. Cho vay khách hàng", "loans", "bank"], ["1. Thu nhập lãi và các khoản thu nhập tương tự", "ii", "bank"], ["Nợ xấu (%)", "nplr", "bank"], ["Nợ xấu (tỷ đồng)", "npl", "bank"], ["CAR (%)", "car", "bank"]])
+  ok(T.headerKey(h, tpl) === k, `headerKey("${h}", ${tpl}) = ${T.headerKey(h, tpl)}, want ${k}`);
+ok(T.headerKey("1. Tiền", "firm") === null, "sub-item 'Tiền' is not cash and equivalents");
+const tt49 = T.parse([
+  "Chỉ tiêu\tThuyết minh\t31/12/2024\t31/12/2023", "Ngân hàng\t\tVCB\tVCB",
+  "TỔNG TÀI SẢN\t\t2.085.000\t1.839.613", "VI. Cho vay khách hàng\t\t1.418.000\t1.250.000", "1. Cho vay khách hàng\t8\t1.440.000\t1.270.000", "2. Dự phòng rủi ro cho vay khách hàng\t9\t(22.000)\t(20.000)",
+  "III. Tiền gửi của khách hàng\t\t1.590.000\t1.450.000", "VIII. Vốn chủ sở hữu\t\t190.000\t165.000",
+  "1. Thu nhập lãi và các khoản thu nhập tương tự\t\t110.000\t100.000", "I. Thu nhập lãi thuần\t\t56.000\t55.400", "VIII. Tổng thu nhập hoạt động\t\t70.000\t68.000",
+  "IX. Chi phí hoạt động\t\t(22.000)\t(21.000)", "XI. Chi phí dự phòng rủi ro tín dụng\t\t(5.000)\t(6.000)", "XII. Tổng lợi nhuận trước thuế\t\t42.000\t41.000", "XIV. Lợi nhuận sau thuế\t\t33.800\t32.800",
+].join("\n"), "bank");
+ok(tt49.transposed && tt49.data.length === 2 && tt49.data[0].firm === "VCB", `vertical TT49 statement: ${tt49.data.length} rows`);
+const v24 = tt49.data.find(r => r.year === 2024) ?? {};
+for (const [k, v] of Object.entries({ ta: 2085000, loans: 1440000, llr: -22000, deposits: 1590000, eq: 190000, ii: 110000, nii: 56000, toi: 70000, opex: -22000, prov: -5000, ebt: 42000, ni: 33800 }))
+  near(v24[k], v, `TT49 2024 ${k}`);
+const RT = T.compute(tt49.data, "bank", false);
+near(get("VCB", 2024, "cir", RT), 22000 / 70000, "CIR from a vertical TT49 statement");
+near(get("VCB", 2024, "lg", RT), 1440000 / 1270000 - 1, "loan growth on gross loans");
+const tk = T.parse("firm\tyear\tta\tni\nvnm\t2022\t100\t5\nVNM \t2023\t110\t6", "firm");
+ok(new Set(tk.data.map(r => r.firm)).size === 1, "tickers vnm and VNM are one firm");
+near(get("VNM", 2023, "growth", T.compute(T.parse("firm\tyear\trev\nvnm\t2022\t100\nVNM\t2023\t110", "firm").data, "firm", false)), 0.1, "lag found across ticker case");
+
 if (fails) { console.log(`\n${fails} of ${n} checks failed`); process.exit(1); }
 console.log(`OK ${n} calculator checks`);

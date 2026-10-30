@@ -274,7 +274,7 @@
     switch(a.goal){
     case 'compare':{
       if(a.out==='nom'){
-        if(a.design==='rep')return {main:M('Kiểm định McNemar (2 lần đo) hoặc Cochran’s Q (từ 3 lần đo)',{why:['Biến kết quả định danh, cùng người được đo nhiều lần nên các lần đo không độc lập.'],assume:['Biến kết quả hai giá trị (có/không) ở mỗi lần đo.','Cặp dữ liệu đầy đủ cho mỗi người.'],sample:['Số cặp “đổi ý” (có → không, không → có) quyết định power; nên có ít nhất 25 cặp đổi ý để dùng xấp xỉ chi bình phương, ít hơn thì dùng McNemar chính xác (Field, 2018).'],report:['Bảng chéo hai lần đo, χ² (hoặc p chính xác), tỷ lệ thay đổi.'],links:[T.analysis,T.sample],refs:['field']}),alts:[]};
+        if(a.design==='rep')return {main:M('Kiểm định McNemar (2 lần đo) hoặc Cochran’s Q (từ 3 lần đo)',{why:['Biến kết quả định danh, cùng người được đo nhiều lần nên các lần đo không độc lập.'],assume:['Biến kết quả hai giá trị (có/không) ở mỗi lần đo.','Cặp dữ liệu đầy đủ cho mỗi người.'],sample:['Số cặp “đổi ý” (có → không, không → có) quyết định power; nên có khoảng 25 cặp đổi ý trở lên mới dùng xấp xỉ chi bình phương, ít hơn thì dùng McNemar chính xác (nhị thức).'],report:['Bảng chéo hai lần đo, χ² (hoặc p chính xác), tỷ lệ thay đổi.'],links:[T.analysis,T.sample],refs:['field']}),alts:[]};
         const n=CHI_N[df];
         return {main:M('Kiểm định chi bình phương độc lập (χ²)',{why:['So sánh tỷ lệ của một biến định danh giữa các nhóm độc lập: lập bảng chéo nhóm × kết quả.'],
           assume:['Mỗi người chỉ ở một ô của bảng.','Tần số kỳ vọng từ 5 trở lên ở ít nhất 80% số ô và không ô nào dưới 1; bảng 2 × 2 nhỏ thì dùng kiểm định chính xác Fisher.'],
@@ -459,6 +459,8 @@
       if(a.xdesign==='prepost'){
         const nt=anovaN(gg,0.25,0.05,0.8), n=Math.ceil(nt*0.75);
         if(xo==='nom')return dress({main:M('Hồi quy logistic: kết quả sau can thiệp, kiểm soát giá trị trước',{why:['Kết quả có/không đo hai lần: mô hình logistic với biến nhóm và giá trị trước can thiệp làm biến kiểm soát.'],assume:['Quan sát độc lập giữa người tham gia.'],sample:['Ít nhất 10 biến cố cho mỗi tham số (Peduzzi và cộng sự, 1996).'],report:['Odds ratio của nhóm can thiệp và khoảng tin cậy.'],links:[T.sample],refs:['peduzzi','field']}),alts:[]});
+        const anc=M('ANCOVA: điểm sau can thiệp, kiểm soát điểm trước',{why:['Nếu xem câu Likert đơn lẻ như thang khoảng: so sánh điểm sau, điều chỉnh theo điểm trước (Vickers & Altman, 2001).'],refs:['vickers']});
+        if(xo==='ord')return dress({main:M('Hồi quy logistic thứ bậc: kết quả sau can thiệp, kiểm soát giá trị trước',{why:['Kết quả là một câu Likert (thứ bậc) đo trước và sau: mô hình thứ bậc với biến nhóm và giá trị trước làm biến kiểm soát, cùng logic với ANCOVA nhưng không giả định khoảng cách giữa các mức bằng nhau (Vickers & Altman, 2001).'],assume:['Tỷ lệ odds tỷ lệ (kiểm định đường song song).','Giá trị trước đo trước khi can thiệp.'],sample:['Khoảng 10 quan sát ở mức trả lời ít nhất cho mỗi tham số (Peduzzi và cộng sự, 1996).'],report:['Odds ratio của nhóm can thiệp và khoảng tin cậy; kiểm định đường song song.'],links:[T.likertOrd,T.sample],refs:['vickers','peduzzi','field']}),alts:[anc]});
         return dress({main:M('ANCOVA: điểm sau can thiệp, kiểm soát điểm trước',{why:['So sánh điểm sau giữa các nhóm, điều chỉnh theo điểm trước: mạnh hơn so sánh điểm chênh lệch hay chỉ điểm sau, và không bị lệch khi hai nhóm khác nhau lúc đầu (Vickers & Altman, 2001).'],
           assume:['Điểm trước đo trước khi can thiệp.','Quan hệ tuyến tính giữa điểm trước và sau; độ dốc đồng nhất giữa các nhóm (tương tác nhóm × điểm trước không có ý nghĩa).','Phần dư gần chuẩn, phương sai đồng nhất.'],
           sample:[`Khoảng ${n} người mỗi nhóm: cỡ mẫu của ${multi?'ANOVA':'t-test'} (${nt} mỗi nhóm, hiệu ứng trung bình) nhân (1 − ρ²) với tương quan trước–sau ρ = 0,5 (Borm và cộng sự, 2007).`],
@@ -591,7 +593,7 @@
     const refs=[...new Set([r.main,...r.alts].flatMap(m=>m.refs))].sort();
     $('cp-out').innerHTML=card(r.main,true)+(r.alts.length?`<div class="cp-alt"><h4 style="margin-top:0">Phương án khác</h4>${r.alts.map(m=>card(m,false)).join('')}</div>`:'')+
       (refs.length?`<details><summary style="cursor:pointer;font-size:.85rem;font-weight:600">Tài liệu tham khảo (APA)</summary><ul style="font-size:.8rem">${refs.map(k=>`<li>${REFS[k]}</li>`).join('')}</ul></details>`:'');
-    try{const q=new URLSearchParams();for(const [k,v] of Object.entries(a))if(v!=null&&v!=='')q.set(k,v);history.replaceState(null,'',location.pathname+'?'+q.toString()+location.hash)}catch(e){}
+    try{const q=new URLSearchParams(),vis=el=>el&&!el.closest('[hidden]');for(const n of NAMES){const el=form.querySelector(`input[name="${n}"]:checked`);if(vis(el))q.set(n,el.value)}for(const [k,id] of Object.entries(INPUTS))if(vis($(id))&&a[k]!=='')q.set(k,a[k]);history.replaceState(null,'',location.pathname+'?'+q.toString()+location.hash)}catch(e){}
   }
   function restore(){
     const q=new URLSearchParams(location.search);

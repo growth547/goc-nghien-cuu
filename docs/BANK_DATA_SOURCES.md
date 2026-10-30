@@ -131,7 +131,14 @@ Ngày rà soát: 30/10/2026. Người thực hiện: ban biên tập Góc Nghiê
 ## Trích xuất và kiểm tra (tóm tắt)
 
 - Lượt 1 và lượt 2 độc lập: tệp có lớp chữ → lớp chữ PDF (PyMuPDF) và OCR ảnh trang (RapidOCR, 170 dpi); tệp scan →
-  OCR 170 dpi ảnh màu và OCR 230 dpi ảnh xám. Một giá trị chỉ được giữ khi hai lượt cho cùng một số.
+  OCR 170 dpi ảnh màu và OCR 230 dpi ảnh xám. Một giá trị chỉ được giữ khi hai lượt cho cùng một số. Hai lượt OCR
+  dùng chung một công cụ nên giá trị từ tệp scan còn phải nằm trong một đẳng thức kế toán đã khớp hoặc khớp cột so
+  sánh của BCTC năm sau. BCTC 2025 của VCB (trang PDF 8–9) và CTG (trang 8, 9, 11) được đọc lại bằng mắt làm lượt
+  thứ ba vì chưa có BCTC năm sau.
+- Kết quả đợt thí điểm (30/10/2026): 928 giá trị đăng, 93 giá trị gắn cờ không đăng, 144 trường hợp BCTC năm sau
+  trình bày lại số năm trước (giữ số gốc, ghi số trình bày lại trong cột `restated_in_next_report`). Tỷ lệ nợ xấu mới
+  có cho TCB 2019–2025 (2019 và 2022 lấy từ cột so sánh của BCTC năm sau, vì bảng phân loại nợ trong BCTC 2022 gộp cả
+  cho vay ký quỹ nên tổng không khớp); VCB và CTG chưa trích thuyết minh. CAR chưa trích (không nằm trong BCTC kiểm toán).
 - Kiểm tra kế toán trên từng cột, đối chiếu cột so sánh của BCTC năm sau, ghi nhận trình bày lại: xem phần "Cách trích
   và kiểm tra" trên trang và `scripts/check-bank-data.mjs`.
 - Công cụ trích xuất chạy ngoài kho mã (thư mục làm việc tạm); kết quả đã kiểm tra được ghi vào

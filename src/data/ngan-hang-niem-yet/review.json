@@ -1,312 +1,390 @@
 {
  "builtAt": "2026-10-30",
- "published": 567,
+ "published": 928,
  "flagged": [
   {
-   "bank": "TCB",
-   "year": 2019,
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "cash",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
    "item_code": "charter_capital",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "customer_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "dividend_income",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "due_to_govt_sbv",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "interbank_assets",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "interbank_liabilities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "minority_interest_bs",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "net_fx_income",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "net_investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "net_trading_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "operating_expense",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "profit_after_tax_parent",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "profit_before_tax",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "provision_expense",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "sbv_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "total_liabilities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2022,
+   "item_code": "valuable_papers",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2023,
+   "item_code": "profit_after_tax_parent",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2023,
+   "item_code": "profit_before_tax",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "CTG",
+   "year": 2023,
+   "item_code": "provision_expense",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "cash",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "fee_income",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_fee_income",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_trading_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "operating_expense",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "charter_capital",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "due_to_govt_sbv",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "interbank_liabilities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2017,
+   "item_code": "cash",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "customer_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "interbank_assets",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "interbank_liabilities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "retained_earnings",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "valuable_papers",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
-   "item_code": "classified_loans_total",
-   "reason": "hai lượt trích không khớp"
+   "item_code": "cash",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "customer_deposits",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "dividend_income",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "fee_expense",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "fee_income",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "income_tax",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "interbank_assets",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "interbank_liabilities",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "interest_expense",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "interest_income",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "investment_securities",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loan_loss_reserve",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_gross",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_group1",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_group2",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_group3",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_group4",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_group5",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "loans_net",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "minority_interest_bs",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "net_fee_income",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "net_fx_income",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "net_interest_income",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "net_investment_securities",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "net_other_income",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "net_trading_securities",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "operating_expense",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "other_expense",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "other_income",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "pre_provision_profit",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "profit_after_tax_parent",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "provision_expense",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "retained_earnings",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "sbv_deposits",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "total_assets",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2019,
-   "item_code": "total_equity",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "total_liabilities",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "total_liabilities_equity",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2019,
    "item_code": "valuable_papers",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2020,
-   "item_code": "cash",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "TCB",
-   "year": 2020,
-   "item_code": "profit_before_tax",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "TCB",
    "year": 2020,
    "item_code": "total_operating_income",
-   "reason": "hai lượt trích không khớp"
+   "reason": "đẳng thức kế toán không khớp khi ghép số từ hai BCTC"
   },
   {
-   "bank": "TCB",
-   "year": 2021,
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "customer_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "cash",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "charter_capital",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "customer_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2016,
    "item_code": "due_to_govt_sbv",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2021,
+   "bank": "VCB",
+   "year": 2016,
    "item_code": "interbank_assets",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2022,
-   "item_code": "classified_loans_total",
-   "reason": "không qua kiểm tra kế toán"
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "interbank_liabilities",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2022,
-   "item_code": "loans_group1",
-   "reason": "không qua kiểm tra kế toán"
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "interest_expense",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2022,
-   "item_code": "loans_group2",
-   "reason": "không qua kiểm tra kế toán"
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2022,
-   "item_code": "loans_group3",
-   "reason": "không qua kiểm tra kế toán"
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "retained_earnings",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2022,
-   "item_code": "loans_group4",
-   "reason": "không qua kiểm tra kế toán"
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "sbv_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
-   "bank": "TCB",
-   "year": 2022,
-   "item_code": "loans_group5",
-   "reason": "không qua kiểm tra kế toán"
+   "bank": "VCB",
+   "year": 2016,
+   "item_code": "valuable_papers",
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "VCB",
@@ -335,6 +413,12 @@
   {
    "bank": "VCB",
    "year": 2017,
+   "item_code": "income_tax",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
    "item_code": "interbank_assets",
    "reason": "chưa đủ hai lượt trích độc lập"
   },
@@ -354,6 +438,18 @@
    "bank": "VCB",
    "year": 2017,
    "item_code": "other_income",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "profit_after_tax",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "profit_after_tax_parent",
    "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
@@ -382,33 +478,9 @@
   },
   {
    "bank": "VCB",
-   "year": 2018,
-   "item_code": "other_expense",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "VCB",
-   "year": 2018,
-   "item_code": "profit_before_tax",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "VCB",
-   "year": 2019,
-   "item_code": "income_tax",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "VCB",
-   "year": 2019,
-   "item_code": "profit_after_tax",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "VCB",
    "year": 2019,
    "item_code": "profit_after_tax_parent",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "VCB",
@@ -432,7 +504,7 @@
    "bank": "VCB",
    "year": 2020,
    "item_code": "sbv_deposits",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "VCB",
@@ -444,13 +516,7 @@
    "bank": "VCB",
    "year": 2021,
    "item_code": "investment_securities",
-   "reason": "hai lượt trích không khớp"
-  },
-  {
-   "bank": "VCB",
-   "year": 2021,
-   "item_code": "loan_loss_reserve",
-   "reason": "hai lượt trích không khớp"
+   "reason": "chưa đủ hai lượt trích độc lập"
   },
   {
    "bank": "VCB",
@@ -469,12 +535,6 @@
    "year": 2021,
    "item_code": "retained_earnings",
    "reason": "chưa đủ hai lượt trích độc lập"
-  },
-  {
-   "bank": "VCB",
-   "year": 2022,
-   "item_code": "profit_before_tax",
-   "reason": "hai lượt trích không khớp"
   },
   {
    "bank": "VCB",
@@ -502,6 +562,54 @@
   }
  ],
  "restatements": [
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "loans_gross",
+   "original": 387151704,
+   "inNextReport": 387722937,
+   "nextFile": "Bao20cao20tai20chinh20hop20nhat20201620da20kiem20toan.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "loans_net",
+   "original": 378541826,
+   "inNextReport": 379113059,
+   "nextFile": "Bao20cao20tai20chinh20hop20nhat20201620da20kiem20toan.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "investment_securities",
+   "original": 108055236,
+   "inNextReport": 107597495,
+   "nextFile": "Bao20cao20tai20chinh20hop20nhat20201620da20kiem20toan.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "customer_deposits",
+   "original": 500528267,
+   "inNextReport": 501162550,
+   "nextFile": "Bao20cao20tai20chinh20hop20nhat20201620da20kiem20toan.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "net_trading_securities",
+   "original": 178362,
+   "inNextReport": 197475,
+   "nextFile": "Bao20cao20tai20chinh20hop20nhat20201620da20kiem20toan.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2015,
+   "item_code": "net_investment_securities",
+   "original": 171467,
+   "inNextReport": 152354,
+   "nextFile": "Bao20cao20tai20chinh20hop20nhat20201620da20kiem20toan.pdf"
+  },
   {
    "bank": "VCB",
    "year": 2019,
@@ -652,6 +760,30 @@
    "item_code": "profit_before_tax",
    "original": 23122377,
    "inNextReport": 23211571,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "income_tax",
+   "original": -4596389,
+   "inNextReport": -4614227,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "profit_after_tax",
+   "original": 18525988,
+   "inNextReport": 18597344,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "profit_after_tax_parent",
+   "original": 18510898,
+   "inNextReport": 18582254,
    "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
   },
   {
@@ -989,6 +1121,534 @@
    "original": 33033203,
    "inNextReport": 33101027,
    "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "loans_gross",
+   "original": 111625772,
+   "inNextReport": 112179889,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "loan_loss_reserve",
+   "original": -1164407,
+   "inNextReport": -1167241,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "loans_net",
+   "original": 110461365,
+   "inNextReport": 111012648,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "investment_securities",
+   "original": 44301594,
+   "inNextReport": 45017189,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "interest_income",
+   "original": 13374087,
+   "inNextReport": 13379387,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_interest_income",
+   "original": 7208380,
+   "inNextReport": 7213680,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "fee_income",
+   "original": 1682123,
+   "inNextReport": 1815286,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_fee_income",
+   "original": 1138975,
+   "inNextReport": 1272138,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_trading_securities",
+   "original": 303577,
+   "inNextReport": 63400,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_investment_securities",
+   "original": -152229,
+   "inNextReport": 87948,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "other_income",
+   "original": 1511730,
+   "inNextReport": 1373267,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "net_other_income",
+   "original": 1026426,
+   "inNextReport": 887963,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "operating_expense",
+   "original": -3682803,
+   "inNextReport": -3678848,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "pre_provision_profit",
+   "original": 5661139,
+   "inNextReport": 5665094,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2015,
+   "item_code": "provision_expense",
+   "original": -3623934,
+   "inNextReport": -3627889,
+   "nextFile": "Bao_cao_tai_chinh_nam_2016_Hop_nhat_8801af1933_8f22ea4257.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "interbank_liabilities",
+   "original": 24886126,
+   "inNextReport": 25473509,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2017_Hop_nhat_19a52c2565_cd620387bd.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "other_income",
+   "original": 1653250,
+   "inNextReport": 1567677,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2017_Hop_nhat_19a52c2565_cd620387bd.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "net_other_income",
+   "original": 973833,
+   "inNextReport": 888260,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2017_Hop_nhat_19a52c2565_cd620387bd.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "total_operating_income",
+   "original": 11918726,
+   "inNextReport": 11833153,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2017_Hop_nhat_19a52c2565_cd620387bd.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2016,
+   "item_code": "operating_expense",
+   "original": -4260995,
+   "inNextReport": -4175422,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2017_Hop_nhat_19a52c2565_cd620387bd.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2017,
+   "item_code": "fee_expense",
+   "original": -707783,
+   "inNextReport": -593601,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2018_Hop_nhat_ea825b8399_f8afe7a676.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2017,
+   "item_code": "net_fee_income",
+   "original": 3811902,
+   "inNextReport": 3926084,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2018_Hop_nhat_ea825b8399_f8afe7a676.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2017,
+   "item_code": "total_operating_income",
+   "original": 16343806,
+   "inNextReport": 16457988,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2018_Hop_nhat_ea825b8399_f8afe7a676.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2017,
+   "item_code": "operating_expense",
+   "original": -4698283,
+   "inNextReport": -4812465,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_nam_2018_Hop_nhat_ea825b8399_f8afe7a676.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "interbank_assets",
+   "original": 35559363,
+   "inNextReport": 35359355,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "loans_gross",
+   "original": 159939217,
+   "inNextReport": 159017028,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "loan_loss_reserve",
+   "original": -2385114,
+   "inNextReport": -2378980,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "loans_net",
+   "original": 157554103,
+   "inNextReport": 156638048,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "investment_securities",
+   "original": 86512348,
+   "inNextReport": 85020629,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "customer_deposits",
+   "original": 201414532,
+   "inNextReport": 202829420,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "valuable_papers",
+   "original": 13177959,
+   "inNextReport": 12614219,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "total_liabilities",
+   "original": 269206236,
+   "inNextReport": 269330154,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "total_liabilities_equity",
+   "original": 320988941,
+   "inNextReport": 318620217,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "interest_income",
+   "original": 21150222,
+   "inNextReport": 21292547,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "net_interest_income",
+   "original": 11126535,
+   "inNextReport": 11286784,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "fee_income",
+   "original": 4451721,
+   "inNextReport": 2757424,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "net_fee_income",
+   "original": 3535984,
+   "inNextReport": 1898628,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "net_trading_securities",
+   "original": 168433,
+   "inNextReport": 168381,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "net_investment_securities",
+   "original": 756585,
+   "inNextReport": 454347,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "other_income",
+   "original": 3147169,
+   "inNextReport": 3088141,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "net_other_income",
+   "original": 1633777,
+   "inNextReport": 1568366,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "dividend_income",
+   "original": 894703,
+   "inNextReport": 1709327,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "total_operating_income",
+   "original": 18349768,
+   "inNextReport": 17319584,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "pre_provision_profit",
+   "original": 12507261,
+   "inNextReport": 11699243,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "profit_before_tax",
+   "original": 10661016,
+   "inNextReport": 9855370,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "income_tax",
+   "original": -2187019,
+   "inNextReport": -1856819,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2018,
+   "item_code": "profit_after_tax",
+   "original": 8473997,
+   "inNextReport": 7998551,
+   "nextFile": "Bao_cao_tai_chinh_da_kiem_toan_cho_nam_tai_chinh_ket_thuc_ngay_31_thang_12_nam_2019_Hop_nhat_a055755df2_cb260bd365.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "interbank_assets",
+   "original": 47895204,
+   "inNextReport": 47990224,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_gross",
+   "original": 229357829,
+   "inNextReport": 230802027,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loan_loss_reserve",
+   "original": -2906075,
+   "inNextReport": -2916744,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_net",
+   "original": 226451754,
+   "inNextReport": 227885283,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "investment_securities",
+   "original": 63276980,
+   "inNextReport": 66054597,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "customer_deposits",
+   "original": 233053806,
+   "inNextReport": 231296761,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "valuable_papers",
+   "original": 16807111,
+   "inNextReport": 17460634,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "total_liabilities",
+   "original": 321643993,
+   "inNextReport": 321626694,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "total_liabilities_equity",
+   "original": 379598492,
+   "inNextReport": 383699461,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "interest_income",
+   "original": 24727344,
+   "inNextReport": 25020397,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_interest_income",
+   "original": 14002550,
+   "inNextReport": 14257844,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "fee_income",
+   "original": 3361680,
+   "inNextReport": 4853846,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_fee_income",
+   "original": 1780731,
+   "inNextReport": 3253353,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_trading_securities",
+   "original": 397932,
+   "inNextReport": 397664,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_investment_securities",
+   "original": 745394,
+   "inNextReport": 1243759,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "other_income",
+   "original": 4417810,
+   "inNextReport": 4425079,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_other_income",
+   "original": 1790074,
+   "inNextReport": 1806728,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "pre_provision_profit",
+   "original": 11793822,
+   "inNextReport": 13755636,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "income_tax",
+   "original": -2210068,
+   "inNextReport": -2612059,
+   "nextFile": "BCTC_nam_da_kiem_toan_Hop_nhat_Ban_tra_cuu_97131f4925_0583a464fc.pdf"
   },
   {
    "bank": "TCB",

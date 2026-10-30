@@ -66,7 +66,7 @@ const issueUrl = `${repo}/issues/new?title=${encodeURIComponent("Sai số liệu
           <span class="text-accent font-bold">Từng khoản mục, có nguồn (dạng dài)</span>
           <span class="card-meta"
             >Mỗi dòng một giá trị: ngân hàng, năm, mã khoản mục, giá trị, đơn vị in trên BCTC, báo cáo (CĐKT, KQKD, thuyết
-            minh), URL tệp gốc, tên tệp, số trang, cột (năm hiện hành hay số so sánh) và kết quả kiểm tra.</span
+            minh), URL tệp gốc, tên tệp, số trang (thứ tự trang trong tệp PDF, có thể khác số in ở chân trang), cột (năm hiện hành hay số so sánh) và kết quả kiểm tra.</span
           >
           <span class="card-foot"><span><code>{BANK_FILES.long}</code></span></span>
         </a>
@@ -209,7 +209,8 @@ const issueUrl = `${repo}/issues/new?title=${encodeURIComponent("Sai số liệu
         <li>
           <strong>Hai lượt trích độc lập.</strong> Với tệp có lớp chữ: lượt 1 đọc lớp chữ của PDF, lượt 2 nhận dạng ký tự
           (OCR) ảnh trang. Với tệp scan: hai lượt OCR ở hai độ phân giải khác nhau (170 và 230 dpi, ảnh màu và ảnh xám).
-          Chỉ giữ giá trị mà hai lượt cho đúng cùng một con số.
+          Chỉ giữ giá trị mà hai lượt cho đúng cùng một con số. Với BCTC 2025 của VCB và CTG (chưa có BCTC năm sau để
+          đối chiếu), báo cáo tình hình tài chính và kết quả hoạt động được đọc lại bằng mắt trên ảnh trang làm lượt thứ ba.
         </li>
         <li>
           <strong>Kiểm tra kế toán</strong> trên từng cột của từng báo cáo (sai lệch tối đa 2 triệu đồng do làm tròn): tổng

@@ -2,32 +2,96 @@
   <form class="panel" id="ss-form" novalidate>
     <div class="field"><label for="ss-method">Bạn sẽ phân tích bằng</label>
       <select id="ss-method">
-        <option value="pls" selected>PLS-SEM (SmartPLS)</option>
-        <option value="reg">Hồi quy bội (SPSS)</option>
-        <option value="efa">EFA / CFA (SPSS, AMOS)</option>
-        <option value="prop">Thống kê mô tả, ước lượng tỷ lệ</option>
+        <optgroup label="Kiểm định mô hình, giả thuyết">
+          <option value="pls" selected>PLS-SEM (SmartPLS)</option>
+          <option value="cbsem">CB-SEM / CFA (AMOS, lavaan)</option>
+          <option value="reg">Hồi quy bội (SPSS)</option>
+          <option value="mod">Biến điều tiết (tác động tương tác)</option>
+          <option value="med">Biến trung gian (tác động gián tiếp)</option>
+        </optgroup>
+        <optgroup label="Phân tích nhân tố">
+          <option value="efa">EFA (SPSS)</option>
+        </optgroup>
+        <optgroup label="So sánh nhóm, liên hệ giữa hai biến">
+          <option value="ttest">T-test (2 nhóm, hoặc trước và sau)</option>
+          <option value="anova">ANOVA một yếu tố (từ 3 nhóm)</option>
+          <option value="chi">Chi bình phương (bảng chéo)</option>
+          <option value="corr">Tương quan Pearson</option>
+        </optgroup>
+        <optgroup label="Khảo sát mô tả">
+          <option value="prop">Ước lượng tỷ lệ (Cochran, Slovin, Krejcie &amp; Morgan)</option>
+        </optgroup>
       </select>
-      <small>Cỡ mẫu tối thiểu phụ thuộc vào phương pháp phân tích chính của đề tài.</small></div>
+      <small id="ss-hint">Cỡ mẫu tối thiểu phụ thuộc vào phương pháp phân tích chính của đề tài.</small></div>
 
-    <div data-for="pls reg" class="row">
-      <div class="field"><label for="ss-m" data-label-pls="Số mũi tên nhiều nhất trỏ vào một biến" data-label-reg="Số biến độc lập">Số mũi tên nhiều nhất trỏ vào một biến</label>
-        <input id="ss-m" type="number" min="1" max="40" step="1" value="5"><small data-for="pls">Đếm trên mô hình: biến phụ thuộc nào nhận nhiều mũi tên nhất.</small></div>
-      <div class="field"><label for="ss-f2">Cỡ hiệu ứng f²</label>
+    <div data-for="pls reg mod" class="row">
+      <div class="field"><label for="ss-m" data-label-pls="Số mũi tên nhiều nhất trỏ vào một biến" data-label-reg="Số biến độc lập" data-label-mod="Tổng số biến dự báo, gồm cả số hạng tương tác">Số mũi tên nhiều nhất trỏ vào một biến</label>
+        <input id="ss-m" type="number" min="1" max="40" step="1" value="5"><small data-for="pls">Đếm trên mô hình: biến phụ thuộc nào nhận nhiều mũi tên nhất.</small><small data-for="mod">Biến độc lập, biến điều tiết, số hạng tương tác và biến kiểm soát. Ví dụ X, M và X × M: nhập 3.</small></div>
+      <div class="field" data-for="pls reg"><label for="ss-f2">Cỡ hiệu ứng f²</label>
         <select id="ss-f2"><option value="0.02">0,02 (nhỏ)</option><option value="0.15" selected>0,15 (trung bình)</option><option value="0.35">0,35 (lớn)</option></select>
         <small>Theo Cohen (1988). Đa số luận văn dùng 0,15.</small></div>
+      <div class="field" data-for="mod"><label for="ss-tested">Số số hạng tương tác cần kiểm định</label>
+        <input id="ss-tested" type="number" min="1" max="10" step="1" value="1"><small>Một biến điều tiết trên một đường dẫn: 1.</small></div>
     </div>
+    <div data-for="mod" class="field"><label for="ss-f2mod">Cỡ hiệu ứng f² của số hạng tương tác</label>
+      <select id="ss-f2mod"><option value="0.01">0,01</option><option value="0.02" selected>0,02 (nhỏ theo Cohen)</option><option value="0.05">0,05</option><option value="0.15">0,15 (trung bình, hiếm gặp với tương tác)</option></select>
+      <small>Hiệu ứng tương tác thường rất nhỏ: tổng quan 30 năm của Aguinis và cộng sự (2005) cho trung vị f² chỉ 0,002. Dùng 0,02 trở xuống; chọn 0,15 cho cỡ mẫu nhỏ nhưng khó bảo vệ.</small></div>
     <div data-for="pls" class="field"><label for="ss-pmin">Hệ số đường dẫn nhỏ nhất kỳ vọng có ý nghĩa</label>
       <select id="ss-pmin"><option value="0.1">0,10 (khoảng 0,05–0,10 trong bảng của Hair và cộng sự)</option><option value="0.15">0,15</option><option value="0.2" selected>0,20 (khoảng 0,11–0,20, mức thường dùng)</option><option value="0.25">0,25</option><option value="0.3">0,30 (khoảng 0,21–0,30)</option><option value="0.4">0,40 (khoảng 0,31–0,40)</option></select>
       <small>Dùng cho phương pháp căn bậc hai nghịch đảo. Bảng của Hair và cộng sự (2022) tính mỗi khoảng p_min theo cận trên: 0,11–0,20 cần 155 quan sát, 0,21–0,30 cần 69 (α 5%, power 0,80). Không có nghiên cứu trước thì giữ 0,20; kỳ vọng có đường dẫn yếu hơn thì chọn 0,15 hoặc 0,10 (thận trọng hơn, cỡ mẫu lớn hơn).</small></div>
-    <div data-for="pls reg" class="row">
+
+    <div data-for="efa cbsem" class="row">
+      <div class="field"><label for="ss-items">Số biến quan sát (câu hỏi đo lường)</label>
+        <input id="ss-items" type="number" min="1" step="1" value="25"></div>
+      <div class="field" data-for="cbsem"><label for="ss-k">Số cấu trúc (biến tiềm ẩn)</label>
+        <input id="ss-k" type="number" min="1" max="30" step="1" value="5"></div>
+    </div>
+    <div data-for="cbsem" class="row">
+      <div class="field"><label for="ss-minitems">Số biến quan sát ít nhất trong một cấu trúc</label>
+        <input id="ss-minitems" type="number" min="1" step="1" value="4"></div>
+      <div class="field"><label for="ss-comm">Communality kỳ vọng của biến quan sát</label>
+        <select id="ss-comm"><option value="high">Cao, từ 0,6 (hệ số tải từ 0,78)</option><option value="mid" selected>Vừa, khoảng 0,5 (hệ số tải khoảng 0,7)</option><option value="low">Thấp, dưới 0,45 (hệ số tải dưới 0,67)</option></select></div>
+    </div>
+    <div data-for="cbsem" class="field"><label for="ss-sdf">Bậc tự do (df) của mô hình, tùy chọn</label>
+      <input id="ss-sdf" type="number" min="1" step="1" placeholder="Để trống: tự tính cho mô hình đo lường CFA"><small>Dùng cho phân tích power theo RMSEA. AMOS in df ở mục Notes for Model; nhập nếu bạn muốn tính cho mô hình cấu trúc thay vì CFA.</small></div>
+
+    <div data-for="med" class="row">
+      <div class="field"><label for="ss-a">Đường dẫn a (X → M), chuẩn hoá</label>
+        <select id="ss-a"><option value="0">0,14 (nhỏ)</option><option value="1" selected>0,26 (giữa nhỏ và vừa)</option><option value="2">0,39 (vừa)</option><option value="3">0,59 (lớn)</option></select></div>
+      <div class="field"><label for="ss-b">Đường dẫn b (M → Y), chuẩn hoá</label>
+        <select id="ss-b"><option value="0">0,14 (nhỏ)</option><option value="1" selected>0,26 (giữa nhỏ và vừa)</option><option value="2">0,39 (vừa)</option><option value="3">0,59 (lớn)</option></select></div>
+    </div>
+    <div data-for="med" class="field"><label for="ss-medtest">Cách kiểm định tác động gián tiếp</label>
+      <select id="ss-medtest"><option value="perc" selected>Bootstrap phân vị (mặc định của SmartPLS 4, PROCESS)</option><option value="bc">Bootstrap hiệu chỉnh độ chệch (bias-corrected)</option><option value="joint">Ý nghĩa đồng thời của a và b</option><option value="sobel">Kiểm định Sobel</option></select>
+      <small>Tra bảng mô phỏng của Fritz và MacKinnon (2007), cố định α = 5% và power 0,80.</small></div>
+
+    <div data-for="ttest" class="row">
+      <div class="field"><label for="ss-ttype">Loại so sánh</label>
+        <select id="ss-ttype"><option value="ind" selected>Hai nhóm độc lập (ví dụ nam và nữ)</option><option value="paired">Cặp: cùng người, trước và sau</option></select></div>
+      <div class="field"><label for="ss-d">Cỡ hiệu ứng d</label>
+        <select id="ss-d"><option value="0.2">0,2 (nhỏ)</option><option value="0.5" selected>0,5 (trung bình)</option><option value="0.8">0,8 (lớn)</option></select></div>
+    </div>
+    <div data-for="anova" class="row">
+      <div class="field"><label for="ss-g">Số nhóm so sánh</label>
+        <input id="ss-g" type="number" min="2" max="20" step="1" value="3"></div>
+      <div class="field"><label for="ss-fa">Cỡ hiệu ứng f</label>
+        <select id="ss-fa"><option value="0.1">0,10 (nhỏ)</option><option value="0.25" selected>0,25 (trung bình)</option><option value="0.4">0,40 (lớn)</option></select></div>
+    </div>
+    <div data-for="chi" class="row">
+      <div class="field"><label for="ss-cdf">Bậc tự do df</label>
+        <input id="ss-cdf" type="number" min="1" max="100" step="1" value="1"><small>(Số hàng − 1) × (số cột − 1). Bảng 2 × 2: 1; bảng 2 × 3: 2.</small></div>
+      <div class="field"><label for="ss-w">Cỡ hiệu ứng w</label>
+        <select id="ss-w"><option value="0.1">0,1 (nhỏ)</option><option value="0.3" selected>0,3 (trung bình)</option><option value="0.5">0,5 (lớn)</option></select></div>
+    </div>
+    <div data-for="corr" class="field"><label for="ss-r">Hệ số tương quan kỳ vọng r</label>
+      <select id="ss-r"><option value="0.1">0,1 (nhỏ)</option><option value="0.3" selected>0,3 (trung bình)</option><option value="0.5">0,5 (lớn)</option></select></div>
+
+    <div data-for="pls reg mod cbsem ttest anova chi corr" class="row">
       <div class="field"><label for="ss-alpha">Mức ý nghĩa α</label>
         <select id="ss-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.1">10%</option></select></div>
       <div class="field"><label for="ss-power">Power (1 − β)</label>
         <select id="ss-power"><option value="0.8" selected>0,80</option><option value="0.9">0,90</option><option value="0.95">0,95</option></select></div>
     </div>
-
-    <div data-for="efa" class="field"><label for="ss-items">Số biến quan sát (câu hỏi đo lường)</label>
-      <input id="ss-items" type="number" min="1" step="1" value="25"></div>
 
     <div data-for="prop" class="row">
       <div class="field"><label for="ss-conf">Độ tin cậy</label>
@@ -39,10 +103,12 @@
       <div class="field"><label for="ss-p">Tỷ lệ ước lượng p (%)</label>
         <input id="ss-p" type="number" min="1" max="99" value="50"><small>Không biết thì để 50%.</small></div>
       <div class="field"><label for="ss-N">Quy mô tổng thể N</label>
-        <input id="ss-N" type="number" min="0" step="1" placeholder="Để trống nếu rất lớn"></div>
+        <input id="ss-N" type="number" min="1" step="1" placeholder="Để trống nếu rất lớn hoặc không rõ"><small>Chỉ nhập khi biết chính xác N, ví dụ 1.200 sinh viên trong danh sách của khoa.</small></div>
     </div>
 
-    <div data-for="pls reg" class="field"><label for="ss-dv">Tên biến phụ thuộc (để viết đoạn văn)</label>
+    <div data-for="pls cbsem" class="field"><label for="ss-groups">Số nhóm nếu phân tích đa nhóm (MGA)</label>
+      <input id="ss-groups" type="number" min="1" max="10" step="1" value="1"><small>Để 1 nếu không so sánh mô hình giữa các nhóm. So sánh nam và nữ: nhập 2.</small></div>
+    <div data-for="pls reg mod" class="field"><label for="ss-dv">Tên biến phụ thuộc (để viết đoạn văn)</label>
       <input id="ss-dv" type="text" placeholder="Ví dụ: Ý định sử dụng ví điện tử"></div>
     <div class="row">
       <div class="field"><label for="ss-drop">Dự phòng phiếu bị loại (%)</label>
@@ -50,7 +116,7 @@
       <div class="field"><label for="ss-q">Số câu hỏi trong bảng hỏi</label>
         <input id="ss-q" type="number" min="1" value="25"></div>
     </div>
-    <label class="row" style="align-items:center;gap:8px;font-size:.9rem"><input id="ss-strict" type="checkbox" style="width:auto"> <span id="ss-strict-label">Đối chiếu thêm tiêu chí thứ hai trong đoạn văn</span></label>
+    <label class="row" id="ss-strict-row" style="align-items:center;gap:8px;font-size:.9rem"><input id="ss-strict" type="checkbox" style="width:auto"> <span id="ss-strict-label">Đối chiếu thêm tiêu chí thứ hai trong đoạn văn</span></label>
   </form>
   <div class="panel" id="ss-out" aria-live="polite"></div>
 </div>
@@ -83,6 +149,36 @@
   function isrN(pmin,alpha,power){const k=zinv(1-alpha)+zinv(power);return Math.ceil(Math.pow(k/pmin,2))}
   //#math-end
 
+  // ---- statistics used only by this page (outside the shared block; checked in scripts/check-power.mjs) ----
+  //#page-stats-start
+  // Regularized lower incomplete gamma, chi-square CDF and inverse, noncentral chi-square as a Poisson mixture.
+  function gammaP(a,x){if(x<=0)return 0;const gl=lgamma(a);if(x<a+1){let ap=a,sum=1/a,del=sum;for(let n=0;n<2000;n++){ap++;del*=x/ap;sum+=del;if(Math.abs(del)<Math.abs(sum)*1e-15)break}return sum*Math.exp(-x+a*Math.log(x)-gl)}let b=x+1-a,c=1e300,dd=1/b,h=dd;for(let i=1;i<2000;i++){const an=-i*(i-a);b+=2;dd=an*dd+b;if(Math.abs(dd)<1e-300)dd=1e-300;c=b+an/c;if(Math.abs(c)<1e-300)c=1e-300;dd=1/dd;const del=dd*c;h*=del;if(Math.abs(del-1)<1e-15)break}return 1-Math.exp(-x+a*Math.log(x)-gl)*h}
+  function chi2cdf(x,k){return gammaP(k/2,x/2)}
+  function ncx2cdf(x,k,lam){const h=lam/2,sd=Math.sqrt(h+1),a=Math.max(0,Math.floor(h-12*sd-40)),b=Math.ceil(h+12*sd+40);let s=0;for(let j=a;j<=b;j++)s+=Math.exp(-h+j*Math.log(h||1e-300)-lgamma(j+1))*chi2cdf(x,k+2*j);return s}
+  function ncx2inv(p,k,lam){let lo=0,hi=k+lam+10;while(ncx2cdf(hi,k,lam)<p)hi*=2;for(let i=0;i<60;i++){const mid=(lo+hi)/2;ncx2cdf(mid,k,lam)<p?lo=mid:hi=mid}return (lo+hi)/2}
+  // Smallest n ≥ lo+1 for which ok(n) holds (ok is monotone in n): double, then bisect.
+  function minN(lo,ok){let hi=lo+1;while(!ok(hi)){lo=hi;hi*=2;if(hi>2e6)return NaN}while(hi-lo>1){const mid=(lo+hi)>>1;ok(mid)?hi=mid:lo=mid}return hi}
+  const fPow=(d1,d2,lam,alpha)=>d2<1?0:1-ncfcdf(finv(1-alpha,d1,d2),d1,d2,lam);
+  // G*Power "Linear multiple regression: Fixed model, R² increase": q tested of m predictors.
+  function incN(q,m,f2,alpha,power){return minN(m+1,n=>fPow(q,n-m-1,f2*n,alpha)>=power)}
+  // G*Power t-tests (two-tailed): t′² with ν df is noncentral F(1, ν, δ²). Independent: n per group; paired: n pairs.
+  function tN(dz,alpha,power,paired){return paired?minN(1,n=>fPow(1,n-1,dz*dz*n,alpha)>=power):minN(1,n=>fPow(1,2*n-2,dz*dz*n/2,alpha)>=power)}
+  // G*Power "ANOVA: Fixed effects, omnibus, one-way": λ = f²·N, total N for k equal groups.
+  function anovaN(k,f,alpha,power){return minN(k,N=>fPow(k-1,N-k,f*f*N,alpha)>=power)}
+  // G*Power "Goodness-of-fit tests: Contingency tables": λ = w²·N.
+  function chiN(w,df,alpha,power){let lo=0,hi=df+10;while(chi2cdf(hi,df)<1-alpha)hi*=2;for(let i=0;i<100;i++){const mid=(lo+hi)/2;chi2cdf(mid,df)<1-alpha?lo=mid:hi=mid}const crit=(lo+hi)/2;return minN(1,N=>1-ncx2cdf(crit,df,w*w*N)>=power)}
+  // MacCallum, Browne & Sugawara (1996): test of close fit, H0 ε = 0,05 vs Ha ε = 0,08, λ = (N − 1)·df·ε².
+  function rmseaN(df,alpha,power){return minN(2,N=>{const crit=ncx2inv(1-alpha,df,(N-1)*df*0.0025);return 1-ncx2cdf(crit,df,(N-1)*df*0.0064)>=power})}
+  // Pearson r ≠ 0, two-tailed, Fisher z approximation (Cohen, 1988).
+  function corrN(r,alpha,power){const C=0.5*Math.log((1+r)/(1-r));return Math.ceil(Math.pow((zinv(1-alpha/2)+zinv(power))/C,2)+3)}
+  // Fritz & MacKinnon (2007), Table 3: N for .80 power; index = 4·a + b over S, H, M, L = 0,14; 0,26; 0,39; 0,59.
+  const FM={perc:[558,412,406,398,414,162,126,122,404,124,78,59,401,123,59,36],bc:[462,377,400,385,368,148,115,118,391,116,71,53,396,115,54,34],joint:[530,402,403,403,407,159,124,120,405,125,74,58,405,122,59,36],sobel:[667,450,422,412,450,196,144,127,421,145,90,66,410,129,67,42]};
+  const FMV=['0,14','0,26','0,39','0,59'],FMT={perc:'bootstrap phân vị',bc:'bootstrap hiệu chỉnh độ chệch',joint:'kiểm định ý nghĩa đồng thời của a và b',sobel:'kiểm định Sobel'};
+  // Hair et al. (2010) minimum sample sizes for SEM by model complexity.
+  function hairTier(k,minItems,comm){if(k>7)return 500;if(k<=5&&minItems>3&&comm==='high')return 100;if(minItems>=3&&comm!=='low')return 150;return 300}
+  const TIER={100:'không quá 5 cấu trúc, mỗi cấu trúc trên 3 biến quan sát và communality cao (từ 0,6)',150:'không quá 7 cấu trúc, communality vừa phải (khoảng 0,5) và không có cấu trúc dưới 3 biến quan sát',300:'không quá 7 cấu trúc nhưng communality thấp (dưới 0,45) hoặc có cấu trúc dưới 3 biến quan sát',500:'nhiều hơn 7 cấu trúc'};
+  //#page-stats-end
+
   const $=id=>document.getElementById(id);
   const fmt=n=>Number(n).toLocaleString('vi-VN');
   const d=x=>String(x).replace('.',',');
@@ -90,43 +186,117 @@
   const num=id=>{const v=parseFloat(String($(id).value).replace(',','.'));return Number.isFinite(v)?v:NaN};
   const isInt=(v,lo,hi)=>Number.isInteger(v)&&v>=lo&&v<=hi;
   const F2NAME={'0.02':'nhỏ','0.15':'trung bình','0.35':'lớn'};
-  const LBL={pls:'Đối chiếu thêm phương pháp căn bậc hai nghịch đảo (Kock & Hadaya, 2018) và lấy số lớn hơn',reg:'Đối chiếu thêm quy tắc của Tabachnick & Fidell (2013) và lấy số lớn hơn',efa:'Dùng mức khuyến nghị max(100; 10 × số biến) thay cho mức tối thiểu 5:1',prop:'Đối chiếu thêm công thức Slovin/Yamane (cần N) và lấy số lớn hơn'};
+  const ESN={ttest:[0.2,0.5,0.8],anova:[0.1,0.25,0.4],chi:[0.1,0.3,0.5],corr:[0.1,0.3,0.5]},ES=p=>['nhỏ','trung bình','lớn'][ESN[p.method].indexOf(p.es)];  // Cohen (1988) conventions per index
+  const LBL={pls:'Đối chiếu thêm phương pháp căn bậc hai nghịch đảo (Kock & Hadaya, 2018) và lấy số lớn hơn',cbsem:'Đối chiếu thêm phân tích power theo RMSEA (MacCallum và cộng sự, 1996) và lấy số lớn hơn',reg:'Đối chiếu thêm quy tắc của Tabachnick & Fidell (2013) và lấy số lớn hơn',mod:'Đối chiếu thêm cỡ mẫu cho cả mô hình (R² khác 0, f² = 0,15) và lấy số lớn hơn',med:'',efa:'Dùng mức khuyến nghị max(100; 10 × số biến) thay cho mức tối thiểu 5:1',ttest:'',anova:'',chi:'',corr:'',prop:'Đối chiếu thêm công thức Slovin/Yamane (cần N) và lấy số lớn hơn'};
+  const HINT={
+    pls:'Kiểm định mô hình nhiều biến tiềm ẩn bằng SmartPLS.',
+    cbsem:'Kiểm định thang đo bằng CFA hoặc mô hình cấu trúc bằng AMOS, lavaan. Cần mẫu lớn hơn PLS-SEM.',
+    reg:'Một phương trình hồi quy, biến phụ thuộc đo bằng điểm trung bình.',
+    mod:'Kiểm định số hạng tương tác X × M (hồi quy, PROCESS hoặc PLS-SEM). Cần mẫu lớn vì hiệu ứng tương tác thường nhỏ.',
+    med:'Kiểm định tác động gián tiếp X → M → Y bằng bootstrap. Nếu cả mô hình chạy PLS-SEM, lấy số lớn hơn giữa số này và cỡ mẫu PLS-SEM.',
+    efa:'Khám phá cấu trúc nhân tố của thang đo bằng SPSS. Kiểm định thang đo bằng AMOS thì chọn CB-SEM / CFA.',
+    ttest:'So sánh trung bình giữa 2 nhóm, hoặc cùng một nhóm trước và sau.',
+    anova:'So sánh trung bình giữa từ 3 nhóm trở lên (ví dụ theo thu nhập, độ tuổi).',
+    chi:'Kiểm tra hai biến định danh có liên hệ không (ví dụ giới tính và kênh mua hàng).',
+    corr:'Kiểm định một hệ số tương quan giữa hai biến định lượng khác 0.',
+    prop:'Chỉ dùng khi mục tiêu chính là ước lượng một tỷ lệ của tổng thể. Đề tài kiểm định mô hình hay giả thuyết nên chọn phương pháp phân tích ở trên.',
+  };
 
   // Everything the panel and the paragraph show comes from this one plan, so the two never disagree.
+  // val: the main criterion; base: per-group minimum after the optional cross-check; target: total minimum (× groups for MGA).
   function plan(){
-    const method=$('ss-method').value,strict=$('ss-strict').checked,p={method,strict,refs:[],note:'',warn:''};
-    if(method==='pls'||method==='reg'){
-      const m=num('ss-m'),f2=num('ss-f2'),alpha=num('ss-alpha'),power=num('ss-power');
-      if(!isInt(m,1,40))return {error:`Nhập số nguyên từ 1 đến 40 cho ${method==='pls'?'số mũi tên trỏ vào một biến':'số biến độc lập'}.`};
-      const nPow=regN(m,f2,alpha,power);Object.assign(p,{m,f2,alpha,power,val:nPow,target:nPow});
-      p.main=['Phân tích power (G*Power)',nPow,`F-test hồi quy, f² = ${dn(f2)}, α = ${dn(alpha)}, power = ${d(power.toFixed(2))}, ${m} biến dự báo. Cohen (1992); tính như G*Power 3.1 (Faul và cộng sự, 2009).`];
-      if(method==='pls'){
-        const pmin=num('ss-pmin'),isr=isrN(pmin,alpha,power);p.pmin=pmin;p.second=isr;
-        p.refs.push(['Căn bậc hai nghịch đảo (Kock & Hadaya, 2018)',isr,`n > ((z₁₋α + z₁₋β)/|p_min|)², p_min = ${d(pmin.toFixed(2))}. Hair và cộng sự (2022) khuyên dùng cách này cho PLS-SEM.`]);
-        p.refs.push(['Quy tắc 10 lần (Hair và cộng sự, 2011)',10*m,`10 × ${m} mũi tên. Cách cũ, thường cho cỡ mẫu quá thấp; chỉ nên dùng để đối chiếu.`]);
-        p.note='Hội đồng ngày càng hỏi về power. Báo cáo số theo G*Power, kèm số theo căn bậc hai nghịch đảo để cho thấy mẫu đủ cho cả hai cách.';
-        if(strict)p.target=Math.max(nPow,isr);
+    const method=$('ss-method').value,strict=$('ss-strict').checked&&Boolean(LBL[method]),p={method,strict,refs:[],note:'',warn:'',groups:1};
+    const alpha=num('ss-alpha'),power=num('ss-power'),apw=`α = ${dn(alpha)}, power = ${d(power.toFixed(2))}`;
+    if(method==='pls'||method==='reg'||method==='mod'){
+      const m=num('ss-m');
+      if(!isInt(m,1,40))return {error:`Nhập số nguyên từ 1 đến 40 cho ${method==='pls'?'số mũi tên trỏ vào một biến':method==='mod'?'tổng số biến dự báo':'số biến độc lập'}.`};
+      if(method==='mod'){
+        const q=num('ss-tested'),f2=num('ss-f2mod');
+        if(!isInt(q,1,10)||q>m)return {error:'Số số hạng tương tác phải là số nguyên từ 1 và không lớn hơn tổng số biến dự báo.'};
+        if(m<3)p.warn='Mô hình điều tiết có ít nhất 3 biến dự báo: biến độc lập, biến điều tiết và số hạng tương tác.';
+        const nInc=incN(q,m,f2,alpha,power),nAll=regN(m,0.15,alpha,power);Object.assign(p,{m,q,f2,alpha,power,val:nInc,second:nAll,base:strict?Math.max(nInc,nAll):nInc});
+        p.main=['Phân tích power cho số hạng tương tác (G*Power)',nInc,`F-test mức tăng R², ${q} số hạng tương tác trong ${m} biến dự báo, f² = ${dn(f2)}, ${apw}. Faul và cộng sự (2009).`];
+        p.refs.push(['Cả mô hình, R² khác 0 (f² = 0,15)',nAll,`Cỡ mẫu để kiểm định chung ${m} biến dự báo. Nhỏ hơn nhiều vì f² = 0,15 lớn gấp ${dn(0.15/f2,1)} lần f² của tương tác.`]);
+        if(f2>=0.15)p.warn='f² = 0,15 cho số hạng tương tác là kỳ vọng rất lạc quan: Aguinis và cộng sự (2005) cho trung vị f² của tác động điều tiết chỉ 0,002. Hội đồng có thể hỏi căn cứ.';
       }else{
-        const tf=Math.max(50+8*m,104+m);p.second=tf;
-        p.refs.push(['Tabachnick & Fidell (2013)',tf,`max(50 + 8m, 104 + m) = max(${50+8*m}, ${104+m}).`]);
-        if(strict)p.target=Math.max(nPow,tf);
+        const f2=num('ss-f2'),nPow=regN(m,f2,alpha,power);Object.assign(p,{m,f2,alpha,power,val:nPow,base:nPow});
+        p.main=['Phân tích power (G*Power)',nPow,`F-test hồi quy, f² = ${dn(f2)}, ${apw}, ${m} biến dự báo. Cohen (1992); tính như G*Power 3.1 (Faul và cộng sự, 2009).`];
+        if(method==='pls'){
+          const pmin=num('ss-pmin'),isr=isrN(pmin,alpha,power);p.pmin=pmin;p.second=isr;
+          p.refs.push(['Căn bậc hai nghịch đảo (Kock & Hadaya, 2018)',isr,`n > ((z₁₋α + z₁₋β)/|p_min|)², p_min = ${d(pmin.toFixed(2))}. Hair và cộng sự (2022) khuyên dùng cách này cho PLS-SEM.`]);
+          p.refs.push(['Quy tắc 10 lần (Hair và cộng sự, 2011)',10*m,`10 × ${m} mũi tên. Cách cũ, thường cho cỡ mẫu quá thấp; chỉ nên dùng để đối chiếu.`]);
+          p.note='Hội đồng ngày càng hỏi về power. Báo cáo số theo G*Power, kèm số theo căn bậc hai nghịch đảo để cho thấy mẫu đủ cho cả hai cách.';
+          if(strict)p.base=Math.max(nPow,isr);
+          else if(isr>nPow)p.warn=`Theo căn bậc hai nghịch đảo, mô hình cần ${fmt(isr)} quan sát, nhiều hơn ${fmt(nPow)} của G*Power. Nếu hội đồng theo Hair và cộng sự (2022), hãy đánh dấu ô đối chiếu ở cuối biểu mẫu để lấy số lớn hơn.`;
+        }else{
+          const tf=Math.max(50+8*m,104+m);p.second=tf;
+          p.refs.push(['Tabachnick & Fidell (2013)',tf,`max(50 + 8m, 104 + m) = max(${50+8*m}, ${104+m}).`]);
+          if(strict)p.base=Math.max(nPow,tf);
+        }
       }
+    }else if(method==='cbsem'){
+      const k=num('ss-items'),f=num('ss-k'),mi=num('ss-minitems'),comm=$('ss-comm').value,sdfRaw=String($('ss-sdf').value).trim(),sdf=num('ss-sdf');
+      if(!isInt(k,2,500)||!isInt(f,1,30))return {error:'Nhập số biến quan sát (từ 2) và số cấu trúc (1 đến 30) là số nguyên.'};
+      if(!isInt(mi,1,k)||mi*f>k)return {error:'Số biến quan sát ít nhất trong một cấu trúc phải là số nguyên, và số cấu trúc × số này không vượt quá tổng số biến quan sát.'};
+      const cfaDf=k*(k+1)/2-(2*k+f*(f-1)/2),df=sdfRaw?sdf:cfaDf;
+      if(!isInt(df,1,100000))return {error:sdfRaw?'Bậc tự do phải là số nguyên dương.':`Mô hình CFA có df = ${cfaDf}, không đủ để kiểm định độ phù hợp. Kiểm tra lại số biến quan sát.`};
+      const tier=hairTier(f,mi,comm),rn=rmseaN(df,alpha,power);
+      Object.assign(p,{k,f,mi,comm,df,cfaDf,dfOwn:Boolean(sdfRaw),alpha,power,tier,val:tier,second:rn,base:strict?Math.max(tier,rn):tier});
+      p.main=['Mức tối thiểu theo độ phức tạp mô hình (Hair và cộng sự, 2010)',tier,`Mô hình ${TIER[tier]}.`];
+      p.refs.push(['Power theo RMSEA (MacCallum và cộng sự, 1996)',rn,`Kiểm định độ phù hợp gần đúng H₀: ε = 0,05, Hₐ: ε = 0,08, df = ${fmt(df)}${sdfRaw?'':` (CFA: ${k}·${k+1}/2 − (2·${k} + ${f}·${f-1}/2))`}, ${apw}. Mô hình càng nhiều bậc tự do thì số này càng nhỏ.`]);
+      if(f>7)p.note='Hair và cộng sự (2010) chỉ đưa mức 500 cho mô hình nhiều cấu trúc có communality thấp hoặc cấu trúc dưới 3 biến; với hơn 7 cấu trúc, công cụ dùng mức này cho thận trọng.';
+      if(mi<3)p.warn='Cấu trúc dưới 3 biến quan sát khó nhận dạng trong CFA; cân nhắc bổ sung biến quan sát.';
+    }else if(method==='med'){
+      const a=num('ss-a'),b=num('ss-b'),t=$('ss-medtest').value,n=FM[t][4*a+b];
+      Object.assign(p,{a,b,t,val:n,base:n,second:FM.sobel[4*a+b]});
+      p.main=['Bảng mô phỏng của Fritz & MacKinnon (2007)',n,`${FMT[t][0].toUpperCase()+FMT[t].slice(1)}, a = ${FMV[a]}, b = ${FMV[b]}, α = 0,05, power = 0,80.`];
+      if(t!=='sobel')p.refs.push(['Kiểm định Sobel, cùng a và b',p.second,'Sobel bảo thủ hơn nên cần nhiều quan sát hơn; chỉ để đối chiếu.']);
+      p.note='Bảng chỉ có α = 5% và power 0,80. Nếu mô hình chính là PLS-SEM hay CB-SEM, lấy số lớn hơn giữa số này và cỡ mẫu của mô hình.';
     }else if(method==='efa'){
       const k=num('ss-items');if(!isInt(k,1,1000))return {error:'Nhập số biến quan sát là số nguyên lớn hơn 0.'};
-      const v=Math.max(50,5*k),rec=Math.max(100,10*k);Object.assign(p,{k,val:v,second:rec,target:strict?rec:v});
+      const v=Math.max(50,5*k),rec=Math.max(100,10*k);Object.assign(p,{k,val:v,second:rec,base:strict?rec:v});
       p.main=['Tỷ lệ 5:1 (Hair và cộng sự, 2010)',v,`max(50; 5 × ${k} biến quan sát) = ${fmt(v)}.`];
       p.refs.push(['Mức khuyến nghị: 10:1 và từ 100 trở lên',rec,`max(100; 10 × ${k}) = ${fmt(rec)}.`]);
-      p.note='Hair và cộng sự (2010) khuyên mẫu từ 100 trở lên cho phân tích nhân tố.';
+      p.note='Hair và cộng sự (2010) khuyên mẫu từ 100 trở lên cho phân tích nhân tố. Nếu sau đó kiểm định thang đo bằng CFA (AMOS), chọn CB-SEM / CFA để có mức cao hơn.';
+    }else if(method==='ttest'){
+      const es=num('ss-d'),paired=$('ss-ttype').value==='paired',n=tN(es,alpha,power,paired),tot=paired?n:2*n;
+      Object.assign(p,{es,paired,alpha,power,per:n,val:tot,base:tot});
+      p.main=['Phân tích power cho t-test (G*Power)',tot,paired?`T-test cặp, hai phía, d = ${dn(es)}, ${apw}: ${fmt(n)} cặp quan sát.`:`T-test hai nhóm độc lập, hai phía, nhóm bằng nhau, d = ${dn(es)}, ${apw}: ${fmt(n)} quan sát mỗi nhóm.`];
+    }else if(method==='anova'){
+      const g=num('ss-g'),f=num('ss-fa');if(!isInt(g,2,20))return {error:'Số nhóm so sánh phải là số nguyên từ 2 đến 20.'};
+      const N=anovaN(g,f,alpha,power),per=Math.ceil(N/g);Object.assign(p,{g,es:f,alpha,power,per,val:per*g,base:per*g});
+      p.main=['Phân tích power cho ANOVA (G*Power)',per*g,`ANOVA một yếu tố, ${g} nhóm bằng nhau, f = ${dn(f)}, ${apw}: ${fmt(per)} quan sát mỗi nhóm.`];
+      if(g===2)p.note='Với 2 nhóm, ANOVA tương đương t-test độc lập.';
+    }else if(method==='chi'){
+      const df=num('ss-cdf'),w=num('ss-w');if(!isInt(df,1,100))return {error:'Bậc tự do df phải là số nguyên từ 1 đến 100.'};
+      const N=chiN(w,df,alpha,power);Object.assign(p,{df,es:w,alpha,power,val:N,base:N});
+      p.main=['Phân tích power cho χ² (G*Power)',N,`Kiểm định χ² bảng chéo, df = ${df}, w = ${dn(w)}, ${apw}.`];
+      p.note='Kiểm định χ² còn cần tần số kỳ vọng mỗi ô từ 5 trở lên; nhóm nào quá ít người trả lời thì gộp nhóm.';
+    }else if(method==='corr'){
+      const r=num('ss-r'),N=corrN(r,alpha,power);Object.assign(p,{es:r,alpha,power,val:N,base:N});
+      p.main=['Tương quan Pearson, xấp xỉ Fisher z (Cohen, 1988)',N,`N = ((z₁₋α/₂ + z₁₋β)/C)² + 3, C = ½·ln((1 + r)/(1 − r)), r = ${dn(r)}, hai phía, ${apw}. G*Power (phép tính chính xác) có thể cho ít hơn 1 quan sát.`];
     }else{
-      const z=num('ss-conf'),ePct=num('ss-e'),e=ePct/100,pp=num('ss-p')/100,N=num('ss-N'),hasN=Number.isFinite(N)&&N>0;
-      if(!(e>0&&pp>0&&pp<1))return {error:'Sai số và tỷ lệ p phải lớn hơn 0; p nhỏ hơn 100%.'};
-      if(hasN&&!Number.isInteger(N))return {error:'Quy mô tổng thể N phải là số nguyên.'};
+      const z=num('ss-conf'),ePct=num('ss-e'),e=ePct/100,pPct=num('ss-p'),pp=pPct/100,Nraw=String($('ss-N').value).trim(),N=num('ss-N'),hasN=Nraw!=='';
+      if(!(e>0&&e<1&&pp>0&&pp<1))return {error:'Sai số phải lớn hơn 0 và nhỏ hơn 100%; tỷ lệ p lớn hơn 0 và nhỏ hơn 100%.'};
+      if(hasN&&!isInt(N,1,1e10))return {error:'Quy mô tổng thể N phải là số nguyên dương, hoặc để trống.'};
       if(ePct<1)p.warn=`Sai số đang là ${dn(ePct)}%. Ô này nhập theo phần trăm: muốn sai số 5% thì nhập 5, không nhập 0,05.`;
+      else if(pPct<1)p.warn=`Tỷ lệ p đang là ${dn(pPct)}%. Ô này nhập theo phần trăm: muốn p = 0,5 thì nhập 50.`;
       const n0=z*z*pp*(1-pp)/(e*e);let n=n0,how=`n₀ = z²·p(1−p)/e² = ${dn(z)}²·${dn(pp)}·${dn(1-pp)}/${dn(e)}² = ${dn(n0,2)}`;
-      if(hasN){n=n0/(1+(n0-1)/N);how+=`; hiệu chỉnh tổng thể hữu hạn = ${dn(n,2)}`}
-      Object.assign(p,{z,e,pp,N,hasN,n0,val:Math.ceil(n),target:Math.ceil(n)});
-      p.main=['Cochran (1977)',p.val,how];
-      if(hasN){const sl=N/(1+N*e*e);p.second=Math.ceil(sl);p.refs.push(['Slovin / Yamane (1967)',p.second,`n = N/(1+N·e²) = ${dn(sl,2)}`]);if(strict)p.target=Math.max(p.val,p.second)}
+      if(hasN){n=n0/(1+(n0-1)/N);how+=`; hiệu chỉnh tổng thể hữu hạn n = n₀/(1 + (n₀ − 1)/N) = ${dn(n,2)}`}
+      const val=Math.ceil(n-1e-9);Object.assign(p,{z,e,pp,N,hasN,n0,val,base:val});
+      p.main=['Cochran (1977)',val,how+'.'];
+      if(hasN){
+        const sl=N/(1+N*e*e),km=z*z*N*pp*(1-pp)/(e*e*(N-1)+z*z*pp*(1-pp));p.second=Math.ceil(sl-1e-9);
+        p.refs.push(['Slovin / Yamane (1967)',p.second,`n = N/(1+N·e²) = ${dn(sl,2)}. Không dùng độ tin cậy và p; chỉ để đối chiếu.`]);
+        p.refs.push(['Krejcie & Morgan (1970)',Math.round(km),`s = χ²·N·p(1−p)/(e²(N−1) + χ²·p(1−p)) = ${dn(km,2)}, χ² = z² = ${dn(z*z,3)}. Bảng của Krejcie & Morgan dùng chính công thức này với độ tin cậy 95%, e = 5%, p = 50% và làm tròn đến số gần nhất (N = 2.000 cho 322).`]);
+        if(strict)p.base=Math.max(val,p.second);
+        p.note=n0/N<0.05?`n₀ chỉ bằng ${dn(100*n0/N,1)}% tổng thể nên hiệu chỉnh tổng thể hữu hạn hầu như không đổi kết quả.`:`n₀ bằng ${dn(100*n0/N,1)}% tổng thể nên hiệu chỉnh tổng thể hữu hạn giảm cỡ mẫu đáng kể. Chỉ dùng khi chọn mẫu ngẫu nhiên từ danh sách đủ ${fmt(N)} người.`;
+      }else p.note='Để trống N là coi tổng thể rất lớn. Đề tài chọn mẫu thuận tiện và kiểm định mô hình nên chọn phương pháp phân tích ở ô đầu tiên thay cho Cochran hay Slovin.';
+    }
+    p.target=p.base;
+    if(method==='pls'||method==='cbsem'){
+      const g=num('ss-groups');if(!isInt(g,1,10))return {error:'Số nhóm MGA phải là số nguyên từ 1 đến 10 (để 1 nếu không so sánh nhóm).'};
+      if(g>1){p.groups=g;p.target=g*p.base}
     }
     return p;
   }
@@ -134,12 +304,12 @@
   function render(){
     const method=$('ss-method').value;
     document.querySelectorAll('[data-for]').forEach(el=>{el.hidden=!el.dataset.for.split(' ').includes(method)});
-    const mLabel=document.querySelector('label[for="ss-m"]');mLabel.textContent=mLabel.dataset[method==='reg'?'labelReg':'labelPls'];
-    $('ss-strict-label').textContent=LBL[method];
+    const mLabel=document.querySelector('label[for="ss-m"]');mLabel.textContent=mLabel.dataset[method==='reg'?'labelReg':method==='mod'?'labelMod':'labelPls'];
+    $('ss-strict-label').textContent=LBL[method];$('ss-strict-row').hidden=!LBL[method];$('ss-hint').textContent=HINT[method];
     const p=plan();
     if(p.error){$('ss-out').innerHTML=`<p class="err">${p.error}</p>`;$('ss-thesis').innerHTML='<p class="err">Sửa ô nhập ở trên để có đoạn văn.</p>';return}
-    const [lbl,val,how]=p.main,two=p.strict&&p.target!==val;
-    let html=`<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${Number.isFinite(p.target)?fmt(p.target):'—'}</span><span class="how">${two?`<b>Lấy số lớn hơn</b> giữa ${lbl} (${fmt(val)}) và tiêu chí đối chiếu (${fmt(p.target)}), theo ô đã đánh dấu bên dưới. `:''}<b>${lbl}.</b> ${how}</span></div>`;
+    const [lbl,val,how]=p.main,two=p.strict&&p.base!==val;
+    let html=`<div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${Number.isFinite(p.target)?fmt(p.target):'—'}</span><span class="how">${p.groups>1?`<b>${p.groups} nhóm × ${fmt(p.base)} quan sát mỗi nhóm.</b> Mỗi nhóm trong phân tích đa nhóm cần đủ cỡ mẫu tối thiểu của mô hình (Matthews, 2017). `:''}${two?`<b>Lấy số lớn hơn</b> giữa ${lbl} (${fmt(val)}) và tiêu chí đối chiếu (${fmt(p.base)}), theo ô đã đánh dấu bên dưới. `:''}<b>${lbl}.</b> ${how}</span></div>`;
     if(p.refs.length)html+=`<div class="result"><span class="lbl">Đối chiếu</span>${p.refs.map(([l,v,h])=>`<span class="how"><b>${l}: ${fmt(v)}</b>. ${h}</span>`).join('')}</div>`;
     if(p.warn)html+=`<div class="result"><span class="how err">${p.warn}</span></div>`;
     if(p.note)html+=`<div class="result"><span class="how">${p.note}</span></div>`;
@@ -155,43 +325,75 @@
 
   // ---- ready-to-paste methodology paragraph (Vietnamese, APA references) ----
   const REF={
+    aguinis:'Aguinis, H., Beaty, J. C., Boik, R. J., &amp; Pierce, C. A. (2005). Effect size and power in assessing moderating effects of categorical variables using multiple regression: A 30-year review. <em>Journal of Applied Psychology, 90</em>(1), 94–107. https://doi.org/10.1037/0021-9010.90.1.94',
     cochran:'Cochran, W. G. (1977). <em>Sampling techniques</em> (3rd ed.). John Wiley &amp; Sons.',
-    yamane:'Yamane, T. (1967). <em>Statistics: An introductory analysis</em> (2nd ed.). Harper &amp; Row.',
     cohen88:'Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em> (2nd ed.). Lawrence Erlbaum Associates.',
     cohen92:'Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1), 155–159. https://doi.org/10.1037/0033-2909.112.1.155',
+    faul07:'Faul, F., Erdfelder, E., Lang, A.-G., &amp; Buchner, A. (2007). G*Power 3: A flexible statistical power analysis program for the social, behavioral, and biomedical sciences. <em>Behavior Research Methods, 39</em>(2), 175–191. https://doi.org/10.3758/BF03193146',
     faul:'Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <em>Behavior Research Methods, 41</em>(4), 1149–1160. https://doi.org/10.3758/BRM.41.4.1149',
+    fritz:'Fritz, M. S., &amp; MacKinnon, D. P. (2007). Required sample size to detect the mediated effect. <em>Psychological Science, 18</em>(3), 233–239. https://doi.org/10.1111/j.1467-9280.2007.01882.x',
     hair10:'Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.',
     hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
     kock:'Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal, 28</em>(1), 227–261. https://doi.org/10.1111/isj.12131',
+    krejcie:'Krejcie, R. V., &amp; Morgan, D. W. (1970). Determining sample size for research activities. <em>Educational and Psychological Measurement, 30</em>(3), 607–610. https://doi.org/10.1177/001316447003000308',
+    maccallum:'MacCallum, R. C., Browne, M. W., &amp; Sugawara, H. M. (1996). Power analysis and determination of sample size for covariance structure modeling. <em>Psychological Methods, 1</em>(2), 130–149. https://doi.org/10.1037/1082-989X.1.2.130',
+    matthews:'Matthews, L. (2017). Applying multigroup analysis in PLS-SEM: A step-by-step process. In H. Latan &amp; R. Noonan (Eds.), <em>Partial least squares path modeling</em> (pp. 219–243). Springer. https://doi.org/10.1007/978-3-319-64069-3_10',
     tf:'Tabachnick, B. G., &amp; Fidell, L. S. (2013). <em>Using multivariate statistics</em> (6th ed.). Pearson.',
+    yamane:'Yamane, T. (1967). <em>Statistics: An introductory analysis</em> (2nd ed.). Harper &amp; Row.',
   };
   const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   function thesisHtml(p){
-    const drop=Math.min(50,Math.max(0,num('ss-drop')||0))/100,ps=[];let refs=[];const val=p.val,target=p.target;
+    const drop=Math.min(50,Math.max(0,num('ss-drop')||0))/100,ps=[];let refs=[];const val=p.val,base=p.base,target=p.target;
     if(!Number.isFinite(val))return '';
+    const apw=p.alpha?`mức ý nghĩa α = ${dn(p.alpha)} và power thống kê ${d(p.power.toFixed(2))}`:'';
     if(p.method==='pls'||p.method==='reg'){
       const dvRaw=$('ss-dv').value.trim(),dvText=dvRaw?`biến “${esc(dvRaw)}”`:'biến phụ thuộc chính';
-      const powerSentence=`Cỡ mẫu tối thiểu được xác định bằng phân tích power thống kê trên phần mềm G*Power 3.1 (Faul và cộng sự, 2009), sử dụng kiểm định F cho hồi quy tuyến tính bội với ${p.m} biến dự báo, cỡ hiệu ứng f² = ${dn(p.f2)} (mức ${F2NAME[String(p.f2)]} theo Cohen, 1988), mức ý nghĩa α = ${dn(p.alpha)} và power thống kê ${d(p.power.toFixed(2))} (Cohen, 1992). Kết quả cho thấy cỡ mẫu tối thiểu cần đạt là ${fmt(val)} quan sát.`;
+      const powerSentence=`Cỡ mẫu tối thiểu được xác định bằng phân tích power thống kê trên phần mềm G*Power 3.1 (Faul và cộng sự, 2009), sử dụng kiểm định F cho hồi quy tuyến tính bội với ${p.m} biến dự báo, cỡ hiệu ứng f² = ${dn(p.f2)} (mức ${F2NAME[String(p.f2)]} theo Cohen, 1988), ${apw} (Cohen, 1992). Kết quả cho thấy cỡ mẫu tối thiểu cần đạt là ${fmt(val)} quan sát.`;
       refs=['faul','cohen88','cohen92'];
       if(p.method==='pls'){
         ps.push(`Nghiên cứu sử dụng phương pháp mô hình cấu trúc bình phương tối thiểu riêng phần (PLS-SEM) để kiểm định mô hình nghiên cứu. Trong mô hình, ${dvText} nhận nhiều nhất ${p.m} mũi tên từ các biến tiềm ẩn khác. ${powerSentence}`);
-        if(p.strict){ps.push(`Bên cạnh đó, theo phương pháp căn bậc hai nghịch đảo do Kock và Hadaya (2018) đề xuất và được Hair và cộng sự (2022) khuyến nghị cho PLS-SEM, với hệ số đường dẫn nhỏ nhất kỳ vọng có ý nghĩa thống kê là ${d(p.pmin.toFixed(2))}, cỡ mẫu tối thiểu là ${fmt(p.second)} quan sát. Để đáp ứng đồng thời hai tiêu chí, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(target)} quan sát.`);refs.push('hair22','kock')}
+        if(p.strict){ps.push(`Bên cạnh đó, theo phương pháp căn bậc hai nghịch đảo do Kock và Hadaya (2018) đề xuất và được Hair và cộng sự (2022) khuyến nghị cho PLS-SEM, với hệ số đường dẫn nhỏ nhất kỳ vọng có ý nghĩa thống kê là ${d(p.pmin.toFixed(2))}, cỡ mẫu tối thiểu là ${fmt(p.second)} quan sát. Để đáp ứng đồng thời hai tiêu chí, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(base)} quan sát.`);refs.push('hair22','kock')}
       }else{
         ps.push(`Nghiên cứu sử dụng phân tích hồi quy tuyến tính bội để kiểm định tác động của ${p.m} biến độc lập lên ${dvText}. ${powerSentence}`);
-        if(p.strict){ps.push(`Đối chiếu với quy tắc của Tabachnick và Fidell (2013), cỡ mẫu cho hồi quy bội cần đạt tối thiểu 50 + 8m = ${50+8*p.m} để kiểm định mô hình tổng thể và 104 + m = ${104+p.m} để kiểm định từng biến độc lập. Vì vậy, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(target)} quan sát.`);refs.push('tf')}
+        if(p.strict){ps.push(`Đối chiếu với quy tắc của Tabachnick và Fidell (2013), cỡ mẫu cho hồi quy bội cần đạt tối thiểu 50 + 8m = ${50+8*p.m} để kiểm định mô hình tổng thể và 104 + m = ${104+p.m} để kiểm định từng biến độc lập. Vì vậy, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(base)} quan sát.`);refs.push('tf')}
       }
-    }else if(p.method==='efa'){
-      ps.push(`Nghiên cứu sử dụng phân tích nhân tố khám phá (EFA) với ${p.k} biến quan sát. Theo Hair và cộng sự (2010), cỡ mẫu cho phân tích nhân tố nên tối thiểu là 50, tốt hơn từ 100 trở lên, và số quan sát nên gấp ít nhất 5 lần số biến quan sát. ${p.strict?`Nghiên cứu áp dụng mức khuyến nghị 10 quan sát cho mỗi biến và không dưới 100, do đó cỡ mẫu tối thiểu là max(100; 10 × ${p.k}) = ${fmt(target)} quan sát.`:`Với ${p.k} biến quan sát, cỡ mẫu tối thiểu là max(50; 5 × ${p.k}) = ${fmt(val)} quan sát.`}`);
+    }else if(p.method==='mod'){
+      const dvRaw=$('ss-dv').value.trim(),dvText=dvRaw?`biến “${esc(dvRaw)}”`:'biến phụ thuộc';
+      ps.push(`Nghiên cứu kiểm định vai trò điều tiết bằng số hạng tương tác trong phương trình giải thích ${dvText}. Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3.1 (Faul và cộng sự, 2009) với kiểm định F cho mức tăng R² (Linear multiple regression: Fixed model, R² increase), trong đó ${p.q} số hạng tương tác được kiểm định trong mô hình có ${p.m} biến dự báo, cỡ hiệu ứng f² = ${dn(p.f2)}${p.f2===0.02?' (mức nhỏ theo Cohen, 1988)':''}, ${apw}. Mức hiệu ứng nhỏ được chọn vì tác động điều tiết trong thực nghiệm thường rất nhỏ (Aguinis và cộng sự, 2005). Kết quả cho thấy cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`);
+      refs=['faul','cohen88','aguinis'];
+      if(p.strict)ps.push(`Đối chiếu với kiểm định toàn bộ mô hình (R² khác 0, f² = 0,15), cỡ mẫu cần ${fmt(p.second)} quan sát. Nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(base)} quan sát.`);
+    }else if(p.method==='cbsem'){
+      ps.push(`Nghiên cứu sử dụng mô hình cấu trúc tuyến tính dựa trên hiệp phương sai (CB-SEM), gồm phân tích nhân tố khẳng định (CFA) và kiểm định mô hình cấu trúc. Mô hình có ${p.f} cấu trúc với ${p.k} biến quan sát, mỗi cấu trúc có ít nhất ${p.mi} biến quan sát. Theo Hair và cộng sự (2010), mô hình ${TIER[p.tier]} cần cỡ mẫu tối thiểu ${fmt(val)} quan sát.`);
       refs=['hair10'];
+      if(p.strict){ps.push(`Bên cạnh đó, phân tích power theo RMSEA (MacCallum và cộng sự, 1996) cho kiểm định độ phù hợp gần đúng (H₀: ε = 0,05; Hₐ: ε = 0,08) với ${p.dfOwn?'':'mô hình đo lường CFA có '}bậc tự do df = ${fmt(p.df)}, ${apw} cho cỡ mẫu tối thiểu ${fmt(p.second)} quan sát. Để đáp ứng đồng thời hai tiêu chí, nghiên cứu xác định cỡ mẫu tối thiểu là ${fmt(base)} quan sát.`);refs.push('maccallum')}
+    }else if(p.method==='med'){
+      ps.push(`Tác động gián tiếp được kiểm định bằng ${FMT[p.t]}. Theo kết quả mô phỏng của Fritz và MacKinnon (2007), để đạt power 0,80 ở mức ý nghĩa 0,05 khi hệ số chuẩn hoá của đường dẫn a (biến độc lập đến biến trung gian) là ${FMV[p.a]} và của đường dẫn b (biến trung gian đến biến phụ thuộc) là ${FMV[p.b]}, cỡ mẫu tối thiểu cần đạt là ${fmt(val)} quan sát.`);
+      refs=['fritz'];
+    }else if(p.method==='efa'){
+      ps.push(`Nghiên cứu sử dụng phân tích nhân tố khám phá (EFA) với ${p.k} biến quan sát. Theo Hair và cộng sự (2010), cỡ mẫu cho phân tích nhân tố nên tối thiểu là 50, tốt hơn từ 100 trở lên, và số quan sát nên gấp ít nhất 5 lần số biến quan sát. ${p.strict?`Nghiên cứu áp dụng mức khuyến nghị 10 quan sát cho mỗi biến và không dưới 100, do đó cỡ mẫu tối thiểu là max(100; 10 × ${p.k}) = ${fmt(base)} quan sát.`:`Với ${p.k} biến quan sát, cỡ mẫu tối thiểu là max(50; 5 × ${p.k}) = ${fmt(val)} quan sát.`}`);
+      refs=['hair10'];
+    }else if(p.method==='ttest'){
+      ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3 (Faul và cộng sự, 2007) cho kiểm định t ${p.paired?'mẫu cặp':'hai mẫu độc lập'} hai phía, cỡ hiệu ứng d = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cần ${p.paired?`tối thiểu ${fmt(val)} cặp quan sát`:`${fmt(p.per)} quan sát mỗi nhóm, tức tổng cỡ mẫu tối thiểu ${fmt(val)} quan sát`}.`);
+      refs=['faul07','cohen88'];
+    }else if(p.method==='anova'){
+      ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3 (Faul và cộng sự, 2007) cho phân tích phương sai một yếu tố (ANOVA) với ${p.g} nhóm, cỡ hiệu ứng f = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cần ${fmt(p.per)} quan sát mỗi nhóm, tức tổng cỡ mẫu tối thiểu ${fmt(val)} quan sát.`);
+      refs=['faul07','cohen88'];
+    }else if(p.method==='chi'){
+      ps.push(`Cỡ mẫu tối thiểu được xác định bằng phân tích power trên G*Power 3 (Faul và cộng sự, 2007) cho kiểm định χ² trên bảng chéo với bậc tự do df = ${p.df}, cỡ hiệu ứng w = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`);
+      refs=['faul07','cohen88'];
+    }else if(p.method==='corr'){
+      ps.push(`Cỡ mẫu tối thiểu để kiểm định hệ số tương quan Pearson khác 0 (kiểm định hai phía) được tính theo biến đổi Fisher z (Cohen, 1988) với hệ số tương quan kỳ vọng r = ${dn(p.es)} (mức ${ES(p)} theo Cohen, 1988), ${apw}. Kết quả cho thấy cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`);
+      refs=['cohen88'];
     }else{
       const conf={1.645:'90%',1.96:'95%',2.576:'99%'}[p.z];
       let s=`Cỡ mẫu được xác định theo công thức của Cochran (1977): n₀ = z²·p(1 − p)/e², trong đó z = ${dn(p.z)} tương ứng độ tin cậy ${conf}, p = ${dn(p.pp)} là tỷ lệ ước lượng${p.pp===0.5?' (chọn 0,5 để cỡ mẫu đạt mức lớn nhất khi chưa có thông tin trước)':''} và e = ${dn(p.e)} là sai số cho phép. Thay số, n₀ = ${dn(p.n0,2)}.`;
       s+=p.hasN?` Do tổng thể nghiên cứu có quy mô N = ${fmt(p.N)}, cỡ mẫu được hiệu chỉnh theo công thức n = n₀/(1 + (n₀ − 1)/N), cho kết quả ${fmt(val)} quan sát.`:` Làm tròn lên, cỡ mẫu tối thiểu là ${fmt(val)} quan sát.`;
       ps.push(s);refs=['cochran'];
-      if(p.strict&&p.hasN){ps.push(`Đối chiếu theo công thức Slovin (Yamane, 1967) n = N/(1 + N·e²), cỡ mẫu tối thiểu là ${fmt(p.second)} quan sát. Nghiên cứu chọn cỡ mẫu tối thiểu ${fmt(target)} quan sát.`);refs.push('yamane')}
+      if(p.strict&&p.hasN){ps.push(`Đối chiếu theo công thức Slovin (Yamane, 1967) n = N/(1 + N·e²), cỡ mẫu tối thiểu là ${fmt(p.second)} quan sát. Nghiên cứu chọn cỡ mẫu tối thiểu ${fmt(base)} quan sát.`);refs.push('yamane')}
     }
+    if(p.groups>1){ps.push(`Do nghiên cứu so sánh mô hình giữa ${p.groups} nhóm bằng phân tích đa nhóm, mỗi nhóm cần đạt cỡ mẫu tối thiểu nêu trên (Matthews, 2017), nên tổng cỡ mẫu tối thiểu là ${p.groups} × ${fmt(base)} = ${fmt(target)} quan sát.`);refs.push('matthews')}
     if(drop>0)ps.push(`Để dự phòng khoảng ${d(Math.round(drop*100))}% phiếu trả lời không hợp lệ, số phiếu khảo sát dự kiến phát ra là ${fmt(Math.ceil(target/(1-drop)))} phiếu.`);
-    const order=['cochran','cohen88','cohen92','faul','hair10','hair22','kock','tf','yamane'];
+    const order=['aguinis','cochran','cohen88','cohen92','faul07','faul','fritz','hair10','hair22','kock','krejcie','maccallum','matthews','tf','yamane'];
     refs=[...new Set(refs)].sort((a,b)=>order.indexOf(a)-order.indexOf(b));
     return ps.map(x=>`<p>${x}</p>`).join('')+`<p><strong>Tài liệu tham khảo</strong></p><ul>${refs.map(r=>`<li>${REF[r]}</li>`).join('')}</ul>`;
   }

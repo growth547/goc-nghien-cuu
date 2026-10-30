@@ -5,9 +5,9 @@ import html from "@/tools/tinh-co-mau.html?raw";
 
 <ToolLayout
   slug="tinh-co-mau"
-  title="Máy tính cỡ mẫu: PLS-SEM, G*Power, hồi quy, EFA, Cochran"
+  title="Máy tính cỡ mẫu: PLS-SEM, CB-SEM, G*Power, t-test, ANOVA, Cochran"
   h1="Máy tính cỡ mẫu nghiên cứu"
-  description="Tính cỡ mẫu tối thiểu cho SmartPLS (G*Power, Kock & Hadaya), hồi quy, EFA, Cochran và tự viết sẵn đoạn phương pháp chọn mẫu cho chương 3 kèm tài liệu tham khảo APA."
+  description="Tính cỡ mẫu tối thiểu cho PLS-SEM (G*Power, Kock & Hadaya), CB-SEM/CFA, biến điều tiết, trung gian, đa nhóm, hồi quy, EFA, t-test, ANOVA, chi bình phương, tương quan, Cochran và viết sẵn đoạn chọn mẫu cho chương 3 kèm tài liệu tham khảo APA."
   lede="Chọn phương pháp phân tích của đề tài. Máy tính trả về cỡ mẫu tối thiểu và viết sẵn đoạn văn “Phương pháp xác định cỡ mẫu” kèm tài liệu tham khảo APA để bạn chép vào chương 3."
   html={html}
 >
@@ -16,9 +16,11 @@ import html from "@/tools/tinh-co-mau.html?raw";
     <ol>
       <li>
         <strong>Chọn phương pháp phân tích chính</strong> của đề tài: PLS-SEM
-        (SmartPLS), hồi quy bội (SPSS), EFA/CFA, hoặc thống kê mô tả và ước lượng
-        tỷ lệ. Cỡ mẫu tối thiểu phụ thuộc vào phương pháp phân tích, nên chọn
-        đúng phương pháp bạn sẽ báo cáo ở chương 4.
+        (SmartPLS), CB-SEM/CFA (AMOS), hồi quy bội, biến điều tiết, biến trung gian,
+        EFA, t-test, ANOVA, chi bình phương, tương quan, hoặc ước lượng tỷ lệ. Cỡ
+        mẫu tối thiểu phụ thuộc vào phương pháp phân tích, nên chọn đúng phương
+        pháp bạn sẽ báo cáo ở chương 4. Đề tài dùng nhiều phương pháp thì tính
+        từng phương pháp và lấy số lớn nhất.
       </li>
       <li>
         <strong>Đếm mũi tên trên mô hình.</strong> Với PLS-SEM, tìm biến nhận
@@ -87,6 +89,53 @@ import html from "@/tools/tinh-co-mau.html?raw";
       hiện để đối chiếu.
     </p>
 
+    <p>
+      <strong>CB-SEM / CFA (AMOS).</strong> Hair và cộng sự (2010) đưa mức tối
+      thiểu theo độ phức tạp mô hình: 100 khi không quá 5 cấu trúc, mỗi cấu trúc
+      trên 3 biến quan sát và communality từ 0,6; 150 khi không quá 7 cấu trúc,
+      communality khoảng 0,5 và không cấu trúc nào dưới 3 biến; 300 khi
+      communality dưới 0,45 hoặc có cấu trúc dưới 3 biến; 500 khi mô hình có nhiều
+      cấu trúc. Ô đối chiếu thêm phân tích power theo RMSEA của MacCallum và cộng
+      sự (1996): kiểm định độ phù hợp gần đúng (H₀: ε = 0,05, Hₐ: ε = 0,08) với
+      bậc tự do của mô hình đo lường CFA, df = p(p + 1)/2 − 2p − k(k − 1)/2 (p
+      biến quan sát, k cấu trúc). Ví dụ df = 10 cần 782 quan sát, df = 100 cần
+      132, khớp bảng 4 của bài báo gốc. Quy tắc 5:1 của EFA không đủ cho CB-SEM.
+    </p>
+    <p>
+      <strong>Biến điều tiết.</strong> Số hạng tương tác được kiểm định bằng bài
+      toán “R² increase” của G*Power: n nhỏ nhất để mức tăng R² do số hạng tương
+      tác có ý nghĩa. Hiệu ứng tương tác thường rất nhỏ (trung vị f² = 0,002 theo
+      Aguinis và cộng sự, 2005), nên mặc định f² = 0,02. Ví dụ X, M và X × M (3
+      biến dự báo, kiểm định 1) cần 395 quan sát, so với 77 nếu chỉ kiểm định cả
+      mô hình với f² = 0,15.
+    </p>
+    <p>
+      <strong>Biến trung gian.</strong> Tra bảng mô phỏng của Fritz và MacKinnon
+      (2007) theo độ lớn chuẩn hoá của đường dẫn a (X → M) và b (M → Y). Với a = b
+      = 0,26 và bootstrap phân vị cần 162 quan sát; a = b = 0,14 cần 558. Bảng chỉ
+      có α = 5% và power 0,80.
+    </p>
+    <p>
+      <strong>Phân tích đa nhóm (MGA).</strong> Mỗi nhóm phải đủ cỡ mẫu tối thiểu
+      của mô hình (Matthews, 2017), nên tổng cỡ mẫu bằng số nhóm nhân cỡ mẫu mỗi
+      nhóm: so sánh nam và nữ với mô hình cần 92 quan sát thì cần ít nhất 2 × 92 =
+      184, và mỗi nhóm đều phải đạt 92.
+    </p>
+    <p>
+      <strong>T-test, ANOVA, chi bình phương, tương quan.</strong> Tính như G*Power
+      3 (Faul và cộng sự, 2007) với cỡ hiệu ứng quy ước của Cohen (1988): d = 0,2
+      / 0,5 / 0,8; f = 0,10 / 0,25 / 0,40; w và r = 0,1 / 0,3 / 0,5 (nhỏ / trung
+      bình / lớn). Ví dụ t-test hai nhóm, d = 0,5 cần 64 người mỗi nhóm; ANOVA 3
+      nhóm, f = 0,25 cần 159; χ² bảng 2 × 2, w = 0,3 cần 88. Tương quan dùng xấp xỉ
+      Fisher z (r = 0,3 cần 85; G*Power tính chính xác ra 84).
+    </p>
+    <p>
+      <strong>Krejcie và Morgan (1970).</strong> Bảng tra nổi tiếng này chính là
+      công thức Cochran có hiệu chỉnh tổng thể hữu hạn, với độ tin cậy 95%, e = 5%,
+      p = 50%: N = 1.000 cho 278, N = 10.000 cho 370. Công cụ hiện số theo bảng
+      này trong khung đối chiếu khi bạn nhập N.
+    </p>
+
     <h2>Đọc kết quả</h2>
     <ul>
       <li>
@@ -122,6 +171,22 @@ import html from "@/tools/tinh-co-mau.html?raw";
       Nên báo cáo cả hai và lấy số lớn hơn. Phương pháp căn bậc hai nghịch đảo
       gắn trực tiếp với hệ số đường dẫn trong mô hình nên ngày càng được hội đồng
       và phản biện tạp chí hỏi tới.
+    </p>
+    <h3>Đề tài khảo sát rồi chạy PLS-SEM thì dùng Cochran, Slovin hay G*Power?</h3>
+    <p>
+      Dùng phương pháp gắn với phân tích bạn báo cáo: PLS-SEM thì G*Power và căn
+      bậc hai nghịch đảo, CB-SEM thì mức của Hair và cộng sự (2010). Cochran,
+      Slovin và Krejcie &amp; Morgan trả lời câu hỏi khác: cần bao nhiêu người để
+      ước lượng một tỷ lệ của tổng thể với sai số cho trước, và chỉ đúng khi chọn
+      mẫu ngẫu nhiên. Nếu khoa yêu cầu báo cáo cả hai, tính cả hai và lấy số lớn
+      hơn.
+    </p>
+    <h3>Khi nào nhập quy mô tổng thể N?</h3>
+    <p>
+      Chỉ khi biết chính xác N và chọn mẫu ngẫu nhiên từ danh sách đó, ví dụ 1.200
+      nhân viên của một công ty. Hiệu chỉnh tổng thể hữu hạn chỉ làm giảm cỡ mẫu
+      đáng kể khi n₀ chiếm từ khoảng 5% tổng thể trở lên; với “người dùng ví điện
+      tử ở Hà Nội” thì để trống.
     </p>
     <h3>Có nên dùng công thức Slovin?</h3>
     <p>
@@ -164,8 +229,31 @@ import html from "@/tools/tinh-co-mau.html?raw";
         1149–1160. https://doi.org/10.3758/BRM.41.4.1149
       </li>
       <li>
+        Aguinis, H., Beaty, J. C., Boik, R. J., &amp; Pierce, C. A. (2005).
+        Effect size and power in assessing moderating effects of categorical
+        variables using multiple regression: A 30-year review. <em
+          >Journal of Applied Psychology, 90</em
+        >(1), 94–107. https://doi.org/10.1037/0021-9010.90.1.94
+      </li>
+      <li>
+        Faul, F., Erdfelder, E., Lang, A.-G., &amp; Buchner, A. (2007). G*Power 3:
+        A flexible statistical power analysis program for the social, behavioral,
+        and biomedical sciences. <em>Behavior Research Methods, 39</em>(2),
+        175–191. https://doi.org/10.3758/BF03193146
+      </li>
+      <li>
+        Fritz, M. S., &amp; MacKinnon, D. P. (2007). Required sample size to
+        detect the mediated effect. <em>Psychological Science, 18</em>(3),
+        233–239. https://doi.org/10.1111/j.1467-9280.2007.01882.x
+      </li>
+      <li>
         Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010).
         <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.
+      </li>
+      <li>
+        Hair, J. F., Ringle, C. M., &amp; Sarstedt, M. (2011). PLS-SEM: Indeed a
+        silver bullet. <em>Journal of Marketing Theory and Practice, 19</em>(2),
+        139–152. https://doi.org/10.2753/MTP1069-6679190202
       </li>
       <li>
         Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022).
@@ -181,9 +269,30 @@ import html from "@/tools/tinh-co-mau.html?raw";
         https://doi.org/10.1111/isj.12131
       </li>
       <li>
+        Krejcie, R. V., &amp; Morgan, D. W. (1970). Determining sample size for
+        research activities. <em>Educational and Psychological Measurement, 30</em
+        >(3), 607–610. https://doi.org/10.1177/001316447003000308
+      </li>
+      <li>
+        MacCallum, R. C., Browne, M. W., &amp; Sugawara, H. M. (1996). Power
+        analysis and determination of sample size for covariance structure
+        modeling. <em>Psychological Methods, 1</em>(2), 130–149.
+        https://doi.org/10.1037/1082-989X.1.2.130
+      </li>
+      <li>
+        Matthews, L. (2017). Applying multigroup analysis in PLS-SEM: A
+        step-by-step process. In H. Latan &amp; R. Noonan (Eds.), <em
+          >Partial least squares path modeling</em
+        > (pp. 219–243). Springer. https://doi.org/10.1007/978-3-319-64069-3_10
+      </li>
+      <li>
         Tabachnick, B. G., &amp; Fidell, L. S. (2013). <em
           >Using multivariate statistics</em
         > (6th ed.). Pearson.
+      </li>
+      <li>
+        Yamane, T. (1967). <em>Statistics: An introductory analysis</em> (2nd
+        ed.). Harper &amp; Row.
       </li>
     </ul>
   </Fragment>

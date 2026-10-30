@@ -24,10 +24,15 @@ Giống luật đã cập nhật ở `lich-14-ngay.md`:
 - **Bài mời kể chuyện:** mỗi tuần ít nhất một bài kết bằng lời mời bình luận (tuần 1: ngày 7, nhân 20/11; tuần 2: ngày 10). Bài phải tự đứng được, không tự trả lời dưới bài để mở hàng.
 - **Phần ngắn, nhiều xuống dòng.** Thuật ngữ giải thích trong vài chữ.
 - **Emoji:** tối đa 1-2 mỗi bài, không chuỗi emoji. Lịch này hiện không dùng emoji nào.
-- **Không link** trong bài và trong trả lời. Link chỉ để ở bio. Không nhắc Genius Data.
+- **Không link** trong bài và trong trả lời. Link chỉ để ở bio.
+- **Genius Data: tối đa một bài có hợp tác mỗi tuần** (đợt này: ngày 5, T4 18/11, và ngày 9, CN 22/11). Góc nghiên cứu là đối tác giới thiệu (affiliate) của Genius Data, nên bài đó:
+  - ghi "(bài có hợp tác)" ngay trong phần 1, và mở phần 2 bằng câu "Bài có hợp tác: bên mình là đối tác giới thiệu của Genius Data.";
+  - không link, chỉ "link ở bio";
+  - trung thực: chỉ nói điều trang Genius Data tự công bố, luôn kèm lựa chọn miễn phí hoặc checklist dùng được cho mọi trang, không hứa thu nhập hay tốc độ, không nói về cách họ lọc phiếu bên trong;
+  - các bài khác và mọi trả lời bình luận không nhắc Genius Data.
 - **Một bài một chủ đề.** Chỉ dùng chủ đề đã có sẵn trong app: `nckh`, `KLTN`, `khóa luận`.
   - Đợt này không lên lịch tag `SPSS`, vì kết quả thử ở ngày 10 đợt 1 (09/11) coi như chưa biết lúc soạn lịch.
-  - Nếu khi đánh giá ngày 14 đợt 1, tag `SPSS` có tỉ lệ người theo dõi mới trên 100 lượt xem cao hơn `nckh`, thì đổi chủ đề của ngày 5 (hồi quy logistic, bài dùng bảng SPSS) sang `SPSS`. Không thì giữ `khóa luận`.
+  - Nếu khi đánh giá ngày 14 đợt 1, tag `SPSS` có tỉ lệ người theo dõi mới trên 100 lượt xem cao hơn `nckh`, thì đăng dự phòng C (hồi quy logistic, bài dùng bảng SPSS, trước là ngày 5) với chủ đề `SPSS` thay ngày 13. Không thì giữ `khóa luận`.
 - **Chuỗi:**
   - soạn bằng "Thêm vào thread" trước khi đăng, để các phần hiện liền nhau;
   - phần 1 phải tự đứng được;
@@ -49,11 +54,11 @@ Giống luật đã cập nhật ở `lich-14-ngay.md`:
 | 2 | CN 15/11 | 20:30 | KLTN | Chuỗi 5 phần, tổng hợp (mẹo phân biệt) | Trung gian hay điều tiết |
 | 3 | T2 16/11 | 20:30 | nckh | Chuỗi 4 phần, tranh cãi | "AVE dưới 0,5 vẫn được vì CR đạt": bài gốc nói ngược lại |
 | 4 | T3 17/11 | 20:30 | KLTN | Poll | Bạn chạy số liệu bằng phần mềm nào |
-| 5 | T4 18/11 | 20:30 | khóa luận | Chuỗi 7 phần, phát hiện + tổng hợp | Exp(B) không phải xác suất; 5 lỗi đọc hồi quy logistic |
+| 5 | T4 18/11 | 20:30 | khóa luận | Chuỗi 6 phần, tổng hợp, **bài có hợp tác** | Trước khi trả tiền thu mẫu: 5 câu hỏi nền tảng |
 | 6 | T5 19/11 | **12:15** | nckh | Chuỗi 4 phần, tranh cãi | Fornell-Larcker đạt chưa chắc có giá trị phân biệt |
 | 7 | T6 20/11 | 20:30 | KLTN | Chuỗi 3 phần, tổng hợp mời kể chuyện | Nhân 20/11: 5 nguyên tắc chép lên đầu file khoá luận |
 | 8 | T7 21/11 | 20:30 | nckh | Chuỗi 4 phần, tranh cãi | Bước 1 Baron và Kenny không có ý nghĩa chưa phải dừng |
-| 9 | CN 22/11 | 20:30 | khóa luận | Chuỗi 7 phần, tổng hợp | 5 bước chọn mô hình dữ liệu bảng, kèm lệnh Stata |
+| 9 | CN 22/11 | 20:30 | khóa luận | Chuỗi 6 phần, tổng hợp, **bài có hợp tác** | Làm khảo sát nhận voucher mà bị loại phiếu: 5 lý do |
 | 10 | T2 23/11 | 20:30 | KLTN | Chuỗi 5 phần, tranh cãi mời kể chuyện | R² 0,35 không có nghĩa là mô hình yếu |
 | 11 | T3 24/11 | **12:15** | nckh | Chuỗi 4 phần, tranh cãi | p < 0,001 chưa chắc tác động lớn: f² |
 | 12 | T4 25/11 | 20:30 | khóa luận | Chuỗi 4 phần, giới thiệu công cụ bên mình làm | Công cụ PLS-SEM trên trình duyệt làm được gì, chưa làm được gì |
@@ -61,15 +66,15 @@ Giống luật đã cập nhật ở `lich-14-ngay.md`:
 | 14 | T6 27/11 | 20:30 | KLTN | Chuỗi 5 phần, tranh cãi, "Hội đồng hỏi" số 2 | "Vì nhiều nghiên cứu dùng" không phải lý do chọn TPB |
 
 Nhịp dạng bài trong 14 ngày:
-- tổng hợp: ngày 1, 2, 7, 9;
+- tổng hợp: ngày 1, 2, 5, 7, 9;
 - tranh cãi: ngày 3, 6, 8, 10, 11, 13, 14 (ngày 14 là "Hội đồng hỏi" duy nhất của đợt);
-- phát hiện: ngày 5;
 - giới thiệu: ngày 12;
-- poll: ngày 4.
+- poll: ngày 4;
+- bài có hợp tác (Genius Data): ngày 5 (người nghiên cứu định trả tiền thu mẫu) và ngày 9 (người làm khảo sát nhận thưởng), mỗi tuần một bài. Hai bài cũ (hồi quy logistic, dữ liệu bảng) chuyển xuống dự phòng C và D.
 
 Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 
-**Không lặp chủ đề đợt 1.** Đợt 1 đã có: công cụ miễn phí, nguồn thang đo, KMO và Bartlett, Sig. = ,000, dùng AI, Cronbach's alpha thấp, lỗi trình bày chương 4, T-test và ANOVA, giả thuyết không được ủng hộ, khung chương 4, VIF, phần hạn chế, Likert 5 hay 7 mức, phiếu trả lời cho có. Đợt 2 không viết lại các chủ đề đó; VIF chỉ được nhắc như một chỉ số trong danh sách, không thành bài riêng.
+**Không lặp chủ đề đợt 1.** Đợt 1 đã có: công cụ miễn phí, nguồn thang đo, KMO và Bartlett, Sig. = ,000 (dự phòng), dùng AI, Cronbach's alpha thấp, lỗi trình bày chương 4, T-test và ANOVA, giả thuyết không được ủng hộ, khung chương 4, VIF (dự phòng), phần hạn chế, Likert 5 hay 7 mức, phiếu trả lời cho có, cách thu thêm phiếu và checklist trang khảo sát lừa (hai bài có hợp tác). Hai bài có hợp tác của đợt 2 vì vậy đi góc khác: câu hỏi trước khi trả tiền thu mẫu, và lý do phiếu bị loại. Đợt 2 không viết lại các chủ đề đó; VIF chỉ được nhắc như một chỉ số trong danh sách, không thành bài riêng.
 
 **Dạng danh sách:** giống ngày 2 và ngày 8 đợt 1. Phần 1 nêu một nỗi khổ cụ thể của sinh viên và hứa một danh sách, mỗi mục một phần, phần cuối nhắc lưu lại hoặc gửi cho bạn, và mời bổ sung.
 
@@ -155,36 +160,41 @@ Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 Sau 48 giờ, ghi tỉ lệ thật vào nhật ký. Lời hứa trong bài là thật:
 - ngày 10, 13 và các bài dự phòng dùng ví dụ theo phần mềm thắng;
 - nếu SmartPLS thắng rõ, giữ ngày 12 như lịch; nếu SPSS thắng rõ, có thể đổi ngày 12 với dự phòng A;
-- nếu Stata, EViews hoặc R thắng, mở phần 1 của ngày 9 bằng tỉ lệ thật, ví dụ "Poll hôm thứ ba, X% chạy Stata, EViews hoặc R." X là số thật, không có thì bỏ câu này.
+- nếu Stata, EViews hoặc R thắng, đăng dự phòng D (dữ liệu bảng, trước là ngày 9) thay ngày 13, và mở phần 1 bằng tỉ lệ thật, ví dụ "Poll hôm thứ ba, X% chạy Stata, EViews hoặc R." X là số thật, không có thì bỏ câu này.
 
-### Ngày 5 · T4 18/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách (phát hiện + tổng hợp)
+### Ngày 5 · T4 18/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách (tổng hợp), bài có hợp tác của tuần 1
 
-**1/7**
-> Exp(B) = 2,5 không có nghĩa là xác suất tăng 2,5 lần. Gửi đứa bạn đang chạy hồi quy logistic: 5 lỗi đọc bảng SPSS hay gặp:
+Bài có hợp tác duy nhất của tuần 1 đợt 2 (thay bài hồi quy logistic, chuyển xuống dự phòng C). Khác bài ngày 6 đợt 1: bài đó là cách thu thêm mẫu, bài này là câu hỏi trước khi trả tiền.
 
-**2/7**
-> 1. Đọc Exp(B) như tỉ lệ xác suất
-> Exp(B) = 2,5 nghĩa là odds nhân lên 2,5 lần, không phải xác suất tăng 2,5 lần. Odds = p / (1 - p). Trong một ví dụ mô phỏng, odds nhân 2,5 lần nhưng xác suất chỉ đi từ 10,8% lên 23,3%.
+**1/6**
+> Định trả tiền thu mẫu khảo sát? Hỏi nền tảng 5 câu này trước đã. Gửi đứa bạn sắp chuyển khoản :)) (bài có hợp tác)
 
-**3/7**
-> 2. Đọc ngược Hosmer-Lemeshow
-> Giả thuyết H0 của kiểm định này là mô hình phù hợp, nên ở đây muốn Sig. lớn hơn 0,05 (Hosmer & Lemeshow, 1980). Với mẫu rất lớn, kiểm định dễ bác bỏ ngay cả khi mô hình chỉ lệch rất nhẹ (Paul và cộng sự, 2013).
+**2/6**
+> Bài có hợp tác: bên mình là đối tác giới thiệu của Genius Data.
+> Vì vậy 5 câu dưới đây là câu bạn hỏi được với mọi nền tảng, kể cả Genius Data. Và nhớ dùng hết kênh miễn phí trước khi trả tiền.
 
-**4/7**
-> 3. Viết Nagelkerke R² như phần trăm phương sai được giải thích
-> Đây là pseudo R² (Nagelkerke, 1991), không đọc như R² của hồi quy tuyến tính. Viết "Nagelkerke R² = 0,247", đừng viết "mô hình giải thích 24,7% biến thiên".
+**3/6**
+> 1. Có lọc đúng đối tượng không?
+> Đề tài cần nhân viên văn phòng mà nhận về toàn sinh viên là phí tiền và phí phiếu.
+>
+> 2. Phiếu kém chất lượng có phải trả tiền không?
+> Hỏi rõ phiếu bị loại thì ai chịu, trước khi nạp đồng nào.
 
-**5/7**
-> 4. Bỏ qua bảng Dependent Variable Encoding
-> SPSS mô hình hoá xác suất của giá trị được mã nội bộ là 1. Nếu nhóm "có" lại không phải giá trị đó thì mọi dấu hệ số bị đảo ngược. Mở bảng này đầu tiên.
+**4/6**
+> 3. Tính tiền theo gì, bạn có tự đặt mức không?
+> Theo phiếu hay theo câu, có VAT chưa. Lập ngân sách trước cho đúng form của bạn, ví dụ 15 câu nhân 200 phiếu.
+>
+> 4. Có tải được dữ liệu thô không?
+> Bạn vẫn phải tự lọc phiếu và ghi tiêu chí lọc vào chương 3.
 
-**6/7**
-> 5. Quá nhiều biến so với số biến cố
-> Cỡ mẫu tính theo nhóm ít hơn của biến phụ thuộc: khoảng 10 trường hợp cho mỗi biến độc lập (Peduzzi và cộng sự, 1996). 400 phiếu mà chỉ 30 người "có" thì mô hình 4 biến đã dưới mốc đó. Vittinghoff và McCulloch (2007) cho rằng 5 đến 9 thường vẫn chấp nhận được, nhưng cần thận trọng.
+**5/6**
+> 5. Có đủ số liệu để ghi chương 3 không?
+> Thời gian thu, số phiếu thu về, số phiếu bị loại. Hội đồng hỏi nguồn mẫu thì bạn trả lời bằng con số.
+> Thu qua nền tảng vẫn là chọn mẫu phi xác suất. Ghi đúng tên phương pháp, đừng ghi "ngẫu nhiên".
 
-**7/7**
-> Hồi quy logistic dùng khi biến phụ thuộc chỉ có hai giá trị có hoặc không. Lưu lại để soát chương 4 trước khi nộp.
-> Bạn từng bị hội đồng hỏi gì khác về hồi quy logistic thì để dưới bình luận, mình bổ sung vào danh sách.
+**6/6**
+> Genius Data trả lời câu 2 và 3 thế này, theo trang của họ: người nghiên cứu tự đặt mức thưởng mỗi câu và chỉ trả cho phản hồi được duyệt. Các câu còn lại bạn tự hỏi, tự kiểm. Link ở bio.
+> Lưu lại để hỏi bất kỳ nền tảng nào trước khi trả tiền.
 
 ### Ngày 6 · T5 19/11 · 12:15 · chủ đề nckh · chuỗi tranh cãi (thử giờ trưa)
 
@@ -231,36 +241,40 @@ Bài tự đứng được, không tự trả lời dưới bài. Bình luận c
 **4/4**
 > Sau đó mới xem tác động trực tiếp c'. Không có ý nghĩa là trung gian toàn phần. Có ý nghĩa và cùng dấu với a × b là trung gian một phần, ngược dấu là trung gian cạnh tranh. Trung gian một phần không phải kết quả kém: nó gợi ý còn cơ chế khác chưa đưa vào mô hình.
 
-### Ngày 9 · CN 22/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách (tổng hợp)
+### Ngày 9 · CN 22/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách (tổng hợp), bài có hợp tác của tuần 2
 
-Ghi chú: nếu poll ngày 4 có tỉ lệ thật cho nhóm Stata, EViews hoặc R, thêm câu đó vào đầu phần 1 (xem ngày 4) và bỏ vế "Gửi đứa bạn làm khoá luận tài chính:" để phần 1 vẫn dưới 140 ký tự.
+Bài có hợp tác duy nhất của tuần 2 đợt 2 (thay bài 5 bước chọn mô hình dữ liệu bảng, chuyển xuống dự phòng D). Nhắm người làm khảo sát nhận thưởng; các lý do loại phiếu là cách lọc phổ biến của người làm nghiên cứu, không phải quy trình riêng của nền tảng nào.
 
-**1/7**
-> Gửi đứa bạn làm khoá luận tài chính: chỉ báo cáo Pooled OLS là dễ bị hỏi lại. 5 bước chọn mô hình dữ liệu bảng, kèm lệnh Stata:
+**1/6**
+> Làm khảo sát nhận voucher mà phiếu cứ bị loại? 5 lý do hay gặp nhất, đọc xong đỡ mất công. (bài có hợp tác)
 
-**2/7**
-> 1. Chạy cả ba mô hình
-> Pooled OLS, FEM (tác động cố định) và REM (tác động ngẫu nhiên), đặt cạnh nhau trong một bảng. Hội đồng muốn thấy quá trình lựa chọn, không chỉ mô hình cuối cùng.
+**2/6**
+> Bài có hợp tác: bên mình là đối tác giới thiệu của Genius Data.
+> 5 lý do dưới đây đúng với mọi trang khảo sát, vì người làm nghiên cứu nào cũng lọc phiếu theo những kiểu này trước khi phân tích.
 
-**3/7**
-> 2. F test: Pooled OLS hay FEM
-> Đọc dòng "F test that all u_i=0" ở cuối kết quả xtreg, fe. H0 là mọi đối tượng có cùng hằng số. p < 0,05 thì FEM tốt hơn Pooled OLS.
+**3/6**
+> 1. Sai câu kiểm tra chú ý
+> Kiểu "Vui lòng chọn mức 2 cho câu này". Đọc lướt là sai.
+>
+> 2. Chọn một mức cho cả trang
+> Toàn "đồng ý" từ đầu đến cuối là thứ được lọc đầu tiên.
 
-**4/7**
-> 3. Breusch-Pagan LM: Pooled OLS hay REM
-> Chạy xttest0 sau xtreg, re (Breusch & Pagan, 1980). H0 là phương sai của tác động riêng từng đối tượng bằng 0. p < 0,05 thì REM tốt hơn Pooled OLS.
+**4/6**
+> 3. Trả lời mâu thuẫn
+> Đầu form nói chưa từng dùng sản phẩm, cuối form chấm điểm chi tiết từng tính năng.
+>
+> 4. Làm quá nhanh
+> Form 15 phút mà xong trong 2 phút thì ai nhìn dữ liệu cũng thấy.
 
-**5/7**
-> 4. Hausman: FEM hay REM
-> H0 là khác biệt giữa hệ số FEM và REM không có tính hệ thống, tức dùng REM (Hausman, 1978). p < 0,05 thì chọn FEM. Stata báo χ² âm thì chạy lại bằng hausman fe re, sigmamore, đừng báo cáo con số âm đó như "không bác bỏ H0".
+**5/6**
+> 5. Câu tự luận dán từ chatbot
+> Người ta cần trải nghiệm của bạn, viết ngắn bằng lời của mình cũng được.
+>
+> Còn bị dừng ở vài câu đầu là do câu gạn lọc: khảo sát cần một nhóm khác, không phải bạn làm sai.
 
-**6/7**
-> 5. Kiểm tra tự tương quan và phương sai thay đổi
-> Lệnh xtserial cho tự tương quan (Drukker, 2003), xttest3 cho phương sai thay đổi sau FEM; cả hai cài bằng ssc install. Có vấn đề thì ước lượng lại với sai số chuẩn vững theo cụm doanh nghiệp, vce(cluster id), như Petersen (2009) khuyến nghị cho dữ liệu tài chính.
-
-**7/7**
-> Lưu lại để chạy theo đúng thứ tự, hoặc gửi cho cả nhóm.
-> Bạn từng bị hỏi thêm kiểm định nào khác cho dữ liệu bảng thì để dưới bình luận, mình bổ sung vào danh sách.
+**6/6**
+> Trên Genius Data, mỗi khảo sát hợp lệ được cộng GTOKEN để đổi voucher, theo trang của họ. Muốn biết có đáng không, ghi lại số phút và số điểm của 3 khảo sát đầu rồi tự tính. Link ở bio.
+> Gửi đứa bạn hay than bị loại phiếu nha.
 
 ### Ngày 10 · T2 23/11 · 20:30 · chủ đề KLTN · chuỗi tranh cãi mời kể chuyện
 
@@ -388,6 +402,66 @@ Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của m�
 **3/3**
 > Số mẫu bootstrap: tối thiểu 5.000, Hair và cộng sự (2021) khuyên 10.000 cho kết quả cuối cùng. Con số này không liên quan đến cỡ mẫu khảo sát: 200 phiếu vẫn bootstrap 10.000 lần được.
 
+#### Dự phòng C · chủ đề khóa luận (hoặc `SPSS`) · chuỗi 7 phần · Exp(B) không phải xác suất (bài ngày 5 cũ)
+
+**1/7**
+> Exp(B) = 2,5 không có nghĩa là xác suất tăng 2,5 lần. Gửi đứa bạn đang chạy hồi quy logistic: 5 lỗi đọc bảng SPSS hay gặp:
+
+**2/7**
+> 1. Đọc Exp(B) như tỉ lệ xác suất
+> Exp(B) = 2,5 nghĩa là odds nhân lên 2,5 lần, không phải xác suất tăng 2,5 lần. Odds = p / (1 - p). Trong một ví dụ mô phỏng, odds nhân 2,5 lần nhưng xác suất chỉ đi từ 10,8% lên 23,3%.
+
+**3/7**
+> 2. Đọc ngược Hosmer-Lemeshow
+> Giả thuyết H0 của kiểm định này là mô hình phù hợp, nên ở đây muốn Sig. lớn hơn 0,05 (Hosmer & Lemeshow, 1980). Với mẫu rất lớn, kiểm định dễ bác bỏ ngay cả khi mô hình chỉ lệch rất nhẹ (Paul và cộng sự, 2013).
+
+**4/7**
+> 3. Viết Nagelkerke R² như phần trăm phương sai được giải thích
+> Đây là pseudo R² (Nagelkerke, 1991), không đọc như R² của hồi quy tuyến tính. Viết "Nagelkerke R² = 0,247", đừng viết "mô hình giải thích 24,7% biến thiên".
+
+**5/7**
+> 4. Bỏ qua bảng Dependent Variable Encoding
+> SPSS mô hình hoá xác suất của giá trị được mã nội bộ là 1. Nếu nhóm "có" lại không phải giá trị đó thì mọi dấu hệ số bị đảo ngược. Mở bảng này đầu tiên.
+
+**6/7**
+> 5. Quá nhiều biến so với số biến cố
+> Cỡ mẫu tính theo nhóm ít hơn của biến phụ thuộc: khoảng 10 trường hợp cho mỗi biến độc lập (Peduzzi và cộng sự, 1996). 400 phiếu mà chỉ 30 người "có" thì mô hình 4 biến đã dưới mốc đó. Vittinghoff và McCulloch (2007) cho rằng 5 đến 9 thường vẫn chấp nhận được, nhưng cần thận trọng.
+
+**7/7**
+> Hồi quy logistic dùng khi biến phụ thuộc chỉ có hai giá trị có hoặc không. Lưu lại để soát chương 4 trước khi nộp.
+> Bạn từng bị hội đồng hỏi gì khác về hồi quy logistic thì để dưới bình luận, mình bổ sung vào danh sách.
+
+#### Dự phòng D · chủ đề khóa luận · chuỗi 7 phần · 5 bước chọn mô hình dữ liệu bảng (bài ngày 9 cũ)
+
+Ghi chú: nếu poll ngày 4 có tỉ lệ thật cho nhóm Stata, EViews hoặc R, thêm câu đó vào đầu phần 1 (xem ngày 4) và bỏ vế "Gửi đứa bạn làm khoá luận tài chính:" để phần 1 vẫn dưới 140 ký tự.
+
+**1/7**
+> Gửi đứa bạn làm khoá luận tài chính: chỉ báo cáo Pooled OLS là dễ bị hỏi lại. 5 bước chọn mô hình dữ liệu bảng, kèm lệnh Stata:
+
+**2/7**
+> 1. Chạy cả ba mô hình
+> Pooled OLS, FEM (tác động cố định) và REM (tác động ngẫu nhiên), đặt cạnh nhau trong một bảng. Hội đồng muốn thấy quá trình lựa chọn, không chỉ mô hình cuối cùng.
+
+**3/7**
+> 2. F test: Pooled OLS hay FEM
+> Đọc dòng "F test that all u_i=0" ở cuối kết quả xtreg, fe. H0 là mọi đối tượng có cùng hằng số. p < 0,05 thì FEM tốt hơn Pooled OLS.
+
+**4/7**
+> 3. Breusch-Pagan LM: Pooled OLS hay REM
+> Chạy xttest0 sau xtreg, re (Breusch & Pagan, 1980). H0 là phương sai của tác động riêng từng đối tượng bằng 0. p < 0,05 thì REM tốt hơn Pooled OLS.
+
+**5/7**
+> 4. Hausman: FEM hay REM
+> H0 là khác biệt giữa hệ số FEM và REM không có tính hệ thống, tức dùng REM (Hausman, 1978). p < 0,05 thì chọn FEM. Stata báo χ² âm thì chạy lại bằng hausman fe re, sigmamore, đừng báo cáo con số âm đó như "không bác bỏ H0".
+
+**6/7**
+> 5. Kiểm tra tự tương quan và phương sai thay đổi
+> Lệnh xtserial cho tự tương quan (Drukker, 2003), xttest3 cho phương sai thay đổi sau FEM; cả hai cài bằng ssc install. Có vấn đề thì ước lượng lại với sai số chuẩn vững theo cụm doanh nghiệp, vce(cluster id), như Petersen (2009) khuyến nghị cho dữ liệu tài chính.
+
+**7/7**
+> Lưu lại để chạy theo đúng thứ tự, hoặc gửi cho cả nhóm.
+> Bạn từng bị hỏi thêm kiểm định nào khác cho dữ liệu bảng thì để dưới bình luận, mình bổ sung vào danh sách.
+
 ## 6 mẫu trả lời bài kêu cứu (bổ sung cho 10 mẫu ở đợt 1)
 
 Chỉnh theo từng bài, không dán y nguyên. Giọng sinh viên nói với sinh viên, câu ngắn. Không link, không "ib mình", không nhắc dịch vụ. Chưa chắc thì nói chưa chắc.
@@ -417,9 +491,9 @@ Các mẫu này chỉ để soạn nháp. Tài khoản không tự gửi; ngư�
 Giữ nguyên mục "Lịch làm việc mỗi ngày" và "Đo gì" đã cập nhật trong `lich-14-ngay.md`: không bình luận ngay sau khi đăng, trả lời chỉ soạn nháp để người dùng gửi, nhật ký một dòng mỗi bài, các tỉ lệ ra quyết định (người theo dõi mới trên 100 lượt xem là quan trọng nhất; thêm (đăng lại + chia sẻ) / lượt xem).
 
 **Đánh giá ngày 7 và ngày 14 của đợt 2:**
-- So giờ: ngày 6 và ngày 11 (12:15) với ngày 3 và ngày 8 (20:30). Bốn bài cùng tag `nckh`, cùng dạng chuỗi tranh cãi 4 phần, nên khác biệt chủ yếu đến từ giờ đăng. Gộp với hai bài 12:15 của đợt 1 để có 4 điểm dữ liệu cho mỗi khung giờ.
+- So giờ: ngày 6 và ngày 11 (12:15) với ngày 3 và ngày 8 (20:30). Bốn bài cùng tag `nckh`, cùng dạng chuỗi tranh cãi 4 phần, nên khác biệt chủ yếu đến từ giờ đăng. Gộp với bài 12:15 ngày 11 của đợt 1 (ngày 6 đợt 1 là bài có hợp tác, khác dạng, không gộp).
 - So kiểu: tổng hợp, tranh cãi, phát hiện, giới thiệu.
-- So bài nhắc công cụ (ngày 12) với các bài khác cùng tag `khóa luận` (ngày 5, 9): lượt bấm link bio có tăng không, tỉ lệ 2 có giảm không. Nếu tỉ lệ 2 giảm rõ, đợt 3 không đăng bài riêng về công cụ.
+- So bài nhắc công cụ (ngày 12) và hai bài có hợp tác (ngày 5, 9) với các bài còn lại: lượt bấm link bio có tăng không, tỉ lệ 2 có giảm không. Gộp với ngày 6 và 13 của đợt 1; nếu bài có hợp tác làm tỉ lệ 2 giảm rõ, đợt 3 giãn thành hai tuần một bài. Nếu tỉ lệ 2 giảm rõ, đợt 3 không đăng bài riêng về công cụ.
 
 ## Nguồn trích trong bài đăng
 
@@ -458,4 +532,4 @@ Ghi chú về số liệu: các ví dụ số trong bài (CR 0,82 và AVE 0,36 c
 
 ## Kiểm tra độ dài
 
-Đếm số ký tự phần chữ trong các dòng `>` của từng phần (bỏ tiền tố `> `, dòng trống trong khối tính là một ký tự xuống dòng), bằng script Python đọc file này. Mọi phần dưới 500 ký tự, phần 1 (hoặc bài đơn) không quá 140 ký tự. Lần đếm ngày 30/10/2026 sau khi viết lại: phần dài nhất 397 ký tự.
+Đếm số ký tự phần chữ trong các dòng `>` của từng phần (bỏ tiền tố `> `, dòng trống trong khối tính là một ký tự xuống dòng), bằng script Python đọc file này. Mọi phần dưới 500 ký tự, phần 1 (hoặc bài đơn) không quá 140 ký tự. Lần đếm ngày 30/10/2026 sau khi viết lại: phần dài nhất 397 ký tự. Lần đếm ngày 31/10/2026 sau khi thay ngày 5 và ngày 9 bằng bài có hợp tác: vẫn đạt, phần dài nhất của hai bài mới 251 ký tự, phần 1 dài nhất 114 ký tự.

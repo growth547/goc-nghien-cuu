@@ -28,7 +28,12 @@ Tài khoản @gocnghiencuu1203 (Góc nghiên cứu). Căn cứ: `dot-1.md` và `
 - **Bài mời kể chuyện:** mỗi tuần ít nhất một bài kết bằng lời mời bình luận (tuần 1: ngày 4, poll; tuần 2: ngày 9). Bài phải tự đứng được, không tự trả lời dưới bài để mở hàng. "Hội đồng hỏi" chỉ giữ khi viết thành tranh cãi hoặc tổng hợp (ngày 3).
 - **Phần ngắn, nhiều xuống dòng, chữ thường.** Thuật ngữ thì giải thích trong vài chữ.
 - **Emoji:** tối đa 1-2 mỗi bài, không chuỗi emoji. Lịch này hiện không dùng emoji nào.
-- **Không link** trong bài và trong trả lời. Link chỉ để ở bio. Không nhắc Genius Data.
+- **Không link** trong bài và trong trả lời. Link chỉ để ở bio.
+- **Genius Data: tối đa một bài có hợp tác mỗi tuần** (đợt này: ngày 6, T5 05/11, và ngày 13, T5 12/11). Góc nghiên cứu là đối tác giới thiệu (affiliate) của Genius Data, nên bài đó:
+  - ghi "(bài có hợp tác)" ngay trong phần 1, và mở phần 2 bằng câu "Bài có hợp tác: bên mình là đối tác giới thiệu của Genius Data.";
+  - không link, chỉ "link ở bio";
+  - trung thực: chỉ nói điều trang Genius Data tự công bố, luôn kèm lựa chọn miễn phí hoặc checklist dùng được cho mọi trang, không hứa thu nhập hay tốc độ, không nói về cách họ lọc phiếu bên trong;
+  - các bài khác và mọi trả lời bình luận không nhắc Genius Data.
 - **Giọng:** kênh Góc nghiên cứu, xưng "mình". Không đóng vai một sinh viên hay cá nhân nào, không kể chuyện cá nhân không có thật. Công cụ của mình thì nói "bên mình làm" và "link ở bio".
 - **Một bài một chủ đề.** Chỉ dùng chủ đề đã có sẵn trong app: `nckh`, `KLTN`, `khóa luận`. Thử `SPSS` một lần ở ngày 10, vì tag này hiện chủ yếu là bài tiếng Anh và tiếng Mã Lai.
 - **Chuỗi (1/n):**
@@ -51,22 +56,22 @@ Tài khoản @gocnghiencuu1203 (Góc nghiên cứu). Căn cứ: `dot-1.md` và `
 | 3 | T2 02/11 | 20:30 | nckh | Chuỗi 5 phần, tranh cãi, "Hội đồng hỏi" số 1 | Trích thang đo từ khoá luận khoá trước là sai nguồn |
 | 4 | T3 03/11 | 20:30 | KLTN | Poll, mời kể chuyện | Bạn đang kẹt ở khâu nào |
 | 5 | T4 04/11 | 20:30 | nckh | Chuỗi 4 phần, tổng hợp (cheat sheet) | Đọc bảng KMO và Bartlett |
-| 6 | T5 05/11 | **12:15** | khóa luận | Chuỗi 3 phần, phát hiện | p không bao giờ bằng 0 |
+| 6 | T5 05/11 | **12:15** | khóa luận | Chuỗi 7 phần, tổng hợp, **bài có hợp tác** | Thiếu phiếu khảo sát: 4 cách thu thêm mẫu thật, không độn phiếu |
 | 7 | T6 06/11 | 20:30 | khóa luận | Chuỗi 5 phần, tranh cãi + checklist | Dùng AI chưa chắc sai, trích dẫn AI bịa mới toang |
 | 8 | T7 07/11 | 20:30 | nckh | Chuỗi 7 phần, tranh cãi + tổng hợp | Alpha 0,7 không phải luật trời; 4 lý do alpha thấp |
 | 9 | CN 08/11 | 20:30 | KLTN | Chuỗi 2 phần, tổng hợp mời bổ sung | 3 lỗi trình bày nhỏ ở chương 4 |
 | 10 | T2 09/11 | 20:30 | SPSS (thử) | Chuỗi 4 phần, tổng hợp (cheat sheet) | T-test hay ANOVA |
 | 11 | T3 10/11 | **12:15** | KLTN | Chuỗi 4 phần, tranh cãi | Giả thuyết không được ủng hộ không làm hỏng khoá luận |
 | 12 | T4 11/11 | 20:30 | khóa luận | Bài ngắn + **văn bản đính kèm**, khung copy | Khung chương 4 |
-| 13 | T5 12/11 | 20:30 | nckh | Chuỗi 4 phần, tranh cãi | VIF < 10 chưa chắc là ổn |
+| 13 | T5 12/11 | 20:30 | nckh | Chuỗi 6 phần, tổng hợp (checklist), **bài có hợp tác** | Kiếm voucher bằng khảo sát: 5 dấu hiệu trang lừa |
 | 14 | T6 13/11 | 20:30 | KLTN | Chuỗi 4 phần, tranh cãi + khung copy | Khung 3 phần viết hạn chế |
 
 Nhịp dạng bài trong 14 ngày:
 - giới thiệu: ngày 1 (ra mắt trang);
-- tổng hợp: ngày 2, 5, 9, 10, 12;
-- tranh cãi: ngày 3, 7, 8, 11, 13, 14 (ngày 3 là "Hội đồng hỏi" duy nhất của đợt);
-- phát hiện: ngày 6;
-- poll: ngày 4; văn bản đính kèm: ngày 12.
+- tổng hợp: ngày 2, 5, 6, 9, 10, 12, 13;
+- tranh cãi: ngày 3, 7, 8, 11, 14 (ngày 3 là "Hội đồng hỏi" duy nhất của đợt);
+- poll: ngày 4; văn bản đính kèm: ngày 12;
+- bài có hợp tác (Genius Data): ngày 6 (người nghiên cứu cần thêm phiếu) và ngày 13 (người làm khảo sát nhận thưởng), mỗi tuần một bài. Bài phát hiện "p không bao giờ bằng 0" và bài VIF chuyển xuống dự phòng D, E.
 
 **Dạng danh sách:**
 - Học theo format các bài "Top N" đang chạy tốt trên Threads: phần 1 nêu nỗi đau cụ thể và hứa một danh sách, mỗi mục là một phần riêng, phần cuối nhắc lưu lại hoặc gửi cho bạn, và mời bổ sung.
@@ -197,19 +202,36 @@ Sau 48 giờ, ghi tỉ lệ thật vào nhật ký. Ngày 8 mở bài bằng t�
 > Hai chỉ số đạt mới là điều kiện để chạy EFA, chưa phải kết quả.
 > Kết quả nằm ở hệ số tải và cách các câu hỏi gom nhóm. Hair và cộng sự coi hệ số tải từ 0,5 là có ý nghĩa thực tiễn. Muốn dùng ngưỡng thấp hơn thì cần cỡ mẫu lớn hơn.
 
-### Ngày 6 · T5 05/11 · 12:15 · chủ đề khóa luận · chuỗi ngắn, phát hiện (thử giờ trưa)
+### Ngày 6 · T5 05/11 · 12:15 · chủ đề khóa luận · chuỗi dạng danh sách (tổng hợp), bài có hợp tác của tuần 1
 
-**1/3**
-> Gửi đứa bạn đang ghi "p = 0,000" trong khoá luận: p không bao giờ bằng 0. SPSS chỉ làm tròn thôi.
+Bài có hợp tác duy nhất của tuần 1 (thay bài "p không bao giờ bằng 0", chuyển xuống dự phòng D; ý "p = 0,000" vẫn có trong ngày 9). Khi so giờ 12:15 với 20:30, dùng ngày 11; bài này khác dạng nên chỉ ghi số liệu, không dùng làm đối chứng.
 
-**2/3**
-> SPSS chỉ hiện 3 chữ số thập phân, nên p rất nhỏ cũng hiện thành ,000.
-> APA 7 hướng dẫn ghi "p < .001" khi p nhỏ hơn 0,001; theo dấu thập phân tiếng Việt là "p < 0,001".
-> Các giá trị khác ghi đúng số, ví dụ p = 0,032.
+**1/7**
+> Thiếu phiếu khảo sát? 4 cách thu thêm mẫu thật, không độn phiếu. Gửi đứa bạn đang kẹt ở 150/300 :)) (bài có hợp tác)
 
-**3/3**
-> Tiện soát luôn dấu thập phân: theo quy định trình bày của trường, rồi dùng thống nhất cho mọi bảng.
-> Bảng này 0.032, bảng kia 0,032 là lỗi nhỏ nhưng ai đọc cũng thấy.
+**2/7**
+> Bài có hợp tác: bên mình là đối tác giới thiệu của Genius Data.
+> Vì vậy mình nói rõ: 3 cách đầu miễn phí, cách thứ 4 mới tốn tiền, kèm những câu phải hỏi trước khi trả.
+
+**3/7**
+> 1. Nhờ đúng người chia sẻ, đừng chỉ đăng nhóm lớp
+> Giảng viên, câu lạc bộ, nhóm cộng đồng đúng đối tượng (xin phép quản trị viên trước). Một lời nhờ từ người họ tin thường được hưởng ứng hơn một bài đăng lại.
+
+**4/7**
+> 2. Quả bóng tuyết có kiểm soát
+> Cuối phiếu nhờ mỗi người gửi cho 2-3 người đúng đối tượng. Bắt đầu từ nhiều người khác nhau để mẫu bớt đồng nhất, và ghi vào chương 3 là chọn mẫu quả bóng tuyết.
+
+**5/7**
+> 3. Quà nhỏ, trao minh bạch
+> Bốc thăm vài voucher cho người hoàn thành. Thưởng giúp tăng tỉ lệ tham gia (Singer & Ye, 2013). Form nhận quà để riêng, đừng thu email trong phiếu chính để phiếu vẫn ẩn danh.
+
+**6/7**
+> 4. Nền tảng có sẵn người trả lời, khi đối tượng khó tìm
+> Ví dụ Genius Data: bạn tự đặt mức thưởng mỗi câu và chỉ trả cho phiếu được duyệt, theo trang của họ. Dù dùng nền tảng nào, hỏi 3 câu: lọc được đối tượng không, phiếu kém có phải trả tiền không, có số liệu để ghi chương 3 không. Link ở bio.
+
+**7/7**
+> Còn cách không nên dùng: tự điền, nhờ người điền hộ, mua phiếu. Dấu thời gian sát nhau và đáp án giống hệt nhau là lộ.
+> Thiếu đến hạn thì báo giảng viên sớm và nêu hạn chế về cỡ mẫu. Lưu lại, hoặc gửi cho cả nhóm.
 
 ### Ngày 7 · T6 06/11 · 20:30 · chủ đề khóa luận · chuỗi tranh cãi + checklist
 
@@ -376,21 +398,40 @@ Cam kết trong bài là thật: tuần 3 phải đăng danh sách đó, ghi nh�
 >
 > Phần thảo luận để ở chương 4 hay chương 5 tuỳ mẫu của trường. Kiểm tra hướng dẫn của khoa trước khi viết.
 
-### Ngày 13 · T5 12/11 · 20:30 · chủ đề nckh · chuỗi tranh cãi
+### Ngày 13 · T5 12/11 · 20:30 · chủ đề nckh · chuỗi tổng hợp (checklist), bài có hợp tác của tuần 2
 
-**1/4**
-> "VIF < 10 là không đa cộng tuyến." Đúng hay sai còn tuỳ bạn trích ai. Chạy PLS-SEM mà ghi ngưỡng 10 là dễ bị hỏi lại.
+Bài có hợp tác duy nhất của tuần 2 (thay bài "VIF < 10 chưa chắc là ổn", chuyển xuống dự phòng E). Nhắm người làm khảo sát, cũng là sinh viên đang nhờ người khác điền form cho mình.
 
-**2/4**
-> VIF < 10 là ngưỡng truyền thống và khá lỏng (Hair và cộng sự, 2010).
-> Với PLS-SEM, Hair và cộng sự (2019) coi VIF từ 5 trở lên là vấn đề nghiêm trọng, tốt nhất ở mức khoảng 3 hoặc thấp hơn.
+**1/6**
+> Mấy bạn làm khảo sát online để kiếm voucher: 5 dấu hiệu trang lừa, check trong 2 phút. Gửi đứa bạn hay bấm link lạ (bài có hợp tác)
 
-**3/4**
-> Chọn một ngưỡng, ghi nguồn ở chương 3, rồi dùng đúng ngưỡng đó ở chương 4.
-> Đừng để chương 3 ghi 10, chương 4 lại viết "VIF < 2 nên rất tốt" mà không trích ai.
+**2/6**
+> Bài có hợp tác: bên mình là đối tác giới thiệu của Genius Data.
+> Đó cũng là một trang trả thưởng cho người làm khảo sát, nên checklist dưới đây áp dụng cho mọi trang, kể cả trang đó.
 
-**4/4**
-> VIF cao thì xem lại hai biến có đang đo cùng một thứ không, trước khi nghĩ đến chuyện bỏ biến.
+**3/6**
+> 1. Đòi bạn trả tiền
+> Phí kích hoạt, nâng cấp VIP, "nạp để mở nhiệm vụ", "đóng thuế trước khi rút". Trang thật trả cho bạn, không thu của bạn.
+>
+> 2. Xin OTP, mật khẩu, mã PIN
+> Không đơn vị nào cần OTP của bạn để trả thưởng. Có OTP là rút được tiền khỏi tài khoản của bạn.
+
+**4/6**
+> 3. Người lạ nhắn Zalo, Telegram mời "làm nhiệm vụ"
+> Thả tim, chốt đơn ảo rồi nhận hoa hồng là kịch bản lừa, không phải khảo sát.
+>
+> 4. Hứa thu nhập cao bất thường
+> Khảo sát thật trả thưởng nhỏ theo từng phiếu. "500 nghìn mỗi ngày chỉ với điện thoại" là dừng.
+
+**5/6**
+> 5. Không có thông tin pháp lý
+> Chân trang phải có tên công ty, mã số thuế, địa chỉ. Có logo Bộ Công Thương thì bấm thử: logo thật dẫn tới hồ sơ trên cổng của Bộ.
+>
+> Bị dừng ở vài câu đầu vì không đúng đối tượng thì bình thường, không phải lừa.
+
+**6/6**
+> Genius Data tự công bố: tích GTOKEN từ khảo sát hợp lệ để đổi voucher; chân trang ghi Công ty TNHH Nghiên cứu và Phát triển GR kèm mã số thuế. Bên mình chỉ chép lại, bạn tự check đúng 5 điều trên. Link ở bio.
+> Lưu lại, hoặc gửi cho đứa bạn hay bấm link lạ.
 
 ### Ngày 14 · T6 13/11 · 20:30 · chủ đề KLTN · chuỗi tranh cãi + khung copy
 
@@ -474,6 +515,36 @@ Ghi chú:
 > 4. Rồi mới làm Google Form.
 >
 > Lưu lại, hoặc gửi cho đứa bạn cùng nhóm nha.
+
+#### Dự phòng D · chủ đề khóa luận · chuỗi 3 phần · p không bao giờ bằng 0 (bài ngày 6 cũ)
+
+**1/3**
+> Gửi đứa bạn đang ghi "p = 0,000" trong khoá luận: p không bao giờ bằng 0. SPSS chỉ làm tròn thôi.
+
+**2/3**
+> SPSS chỉ hiện 3 chữ số thập phân, nên p rất nhỏ cũng hiện thành ,000.
+> APA 7 hướng dẫn ghi "p < .001" khi p nhỏ hơn 0,001; theo dấu thập phân tiếng Việt là "p < 0,001".
+> Các giá trị khác ghi đúng số, ví dụ p = 0,032.
+
+**3/3**
+> Tiện soát luôn dấu thập phân: theo quy định trình bày của trường, rồi dùng thống nhất cho mọi bảng.
+> Bảng này 0.032, bảng kia 0,032 là lỗi nhỏ nhưng ai đọc cũng thấy.
+
+#### Dự phòng E · chủ đề nckh · chuỗi 4 phần · VIF < 10 chưa chắc là ổn (bài ngày 13 cũ)
+
+**1/4**
+> "VIF < 10 là không đa cộng tuyến." Đúng hay sai còn tuỳ bạn trích ai. Chạy PLS-SEM mà ghi ngưỡng 10 là dễ bị hỏi lại.
+
+**2/4**
+> VIF < 10 là ngưỡng truyền thống và khá lỏng (Hair và cộng sự, 2010).
+> Với PLS-SEM, Hair và cộng sự (2019) coi VIF từ 5 trở lên là vấn đề nghiêm trọng, tốt nhất ở mức khoảng 3 hoặc thấp hơn.
+
+**3/4**
+> Chọn một ngưỡng, ghi nguồn ở chương 3, rồi dùng đúng ngưỡng đó ở chương 4.
+> Đừng để chương 3 ghi 10, chương 4 lại viết "VIF < 2 nên rất tốt" mà không trích ai.
+
+**4/4**
+> VIF cao thì xem lại hai biến có đang đo cùng một thứ không, trước khi nghĩ đến chuyện bỏ biến.
 
 ## 10 mẫu trả lời bài kêu cứu
 
@@ -597,7 +668,8 @@ Bỏ qua:
 3. Người theo dõi mới trong ngày có nhiều trả lời / ngày ít trả lời: kiểm tra xem trả lời ở bài người khác có kéo người về không.
 
 **Đánh giá ngày 7 và ngày 14:**
-- So 20:30 với 12:15.
+- So 20:30 với 12:15. Ngày 6 là bài có hợp tác, khác dạng, nên so giờ chủ yếu bằng ngày 11.
+- So hai bài có hợp tác (ngày 6, 13) với các bài khác: tỉ lệ 2 (người theo dõi mới / 100 lượt xem) có giảm không, có ai phàn nàn về quảng cáo không. Giảm rõ thì đợt sau giãn thành hai tuần một bài.
 - So bốn kiểu bài: tổng hợp, tranh cãi, giới thiệu, phát hiện; và poll, văn bản đính kèm.
 - So tag `SPSS` với `nckh`.
 
@@ -615,4 +687,5 @@ Kiểm tra lại trước khi đăng nếu cần:
 - Lance, C. E., Butts, M. M., & Michels, L. C. (2006). The sources of four commonly reported cutoff criteria: What did they really say? *Organizational Research Methods, 9*(2), 202-220. https://doi.org/10.1177/1094428105284919 (kiểm tra qua api.crossref.org ngày 30/10/2026; dùng ở ngày 8 cho câu "0,7 là mức đủ cho giai đoạn đầu, nghiên cứu cơ bản cần khoảng 0,8" theo Nunnally, 1978)
 - Clark, L. A., & Watson, D. (1995). Constructing validity: Basic issues in objective scale development. *Psychological Assessment, 7*(3). https://doi.org/10.1037/1040-3590.7.3.309
 - Meade, A. W., & Craig, S. B. (2012). Identifying careless responses in survey data. *Psychological Methods, 17*(3).
+- Singer, E., & Ye, C. (2013). The use and effects of incentives in surveys. *The Annals of the American Academy of Political and Social Science, 645*(1), 112-141. https://doi.org/10.1177/0002716212458082 (kiểm tra qua api.crossref.org ngày 31/10/2026; dùng ở ngày 6)
 - APA (2020). *Publication Manual of the American Psychological Association* (7th ed.), mục báo cáo giá trị p.

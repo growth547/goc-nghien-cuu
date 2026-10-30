@@ -105,7 +105,7 @@ Bài ra mắt gocnghiencuu.com. Mọi tính năng nêu trong bài đã đối ch
 > - Thư viện 60 thang đo tiếng Việt, mỗi thang ghi rõ bài báo gốc, đang thêm dần. Đỡ cảnh trích thang đo từ khoá luận khoá trước.
 
 **5/5**
-> Nói thẳng giới hạn: công cụ PLS-SEM chưa có PLSc, PLSpredict, MGA. Khoa bắt buộc SmartPLS thì dùng để kiểm tra trước rồi chạy lại trên SmartPLS.
+> Có cả SRMR và PLSpredict. Nói thẳng giới hạn: công cụ PLS-SEM chưa có PLSc, MGA, mô hình bậc hai. Khoa bắt buộc SmartPLS thì dùng để kiểm tra trước rồi chạy lại trên SmartPLS.
 >
 > Tất cả miễn phí, link ở bio. Gửi cho cả nhóm khoá luận của bạn nha.
 

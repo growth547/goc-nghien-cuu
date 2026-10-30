@@ -322,7 +322,7 @@ Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của m�
 > Làm được: thuật toán PLS với các mặc định như SmartPLS, cho hệ số tải, alpha, rho_A, CR, AVE, HTMT, Fornell-Larcker, VIF, hệ số đường dẫn, R², f², Q², tác động gián tiếp. Bootstrap mặc định 5.000 mẫu với seed cố định, xuất bảng ra Word. Dữ liệu không rời khỏi máy bạn.
 
 **3/4**
-> Chưa làm được: PLSc, PLSpredict, mô hình bậc hai, biến điều tiết dạng tương tác và phân tích đa nhóm (MGA). Đề tài cần các phần này vẫn phải dùng SmartPLS hoặc gói seminr của R.
+> Đã có SRMR, PLSpredict, HTMT2. Chưa làm được: PLSc, mô hình bậc hai, biến điều tiết dạng tương tác và phân tích đa nhóm (MGA). Đề tài cần các phần này vẫn phải dùng SmartPLS hoặc gói seminr của R.
 >
 > Biết trước giới hạn để tự quyết có hợp đề tài không.
 

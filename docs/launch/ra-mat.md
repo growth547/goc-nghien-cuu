@@ -28,7 +28,7 @@ Mọi con số và tính năng dưới đây đã đối chiếu với mã ngu�
 
 Chung cho mọi công cụ: miễn phí, không cần tài khoản, dữ liệu xử lý ngay trên trình duyệt, không gửi lên máy chủ (riêng công cụ APA chỉ gửi DOI hoặc tên bài tới Crossref).
 
-**Giới hạn cần nói thật khi được hỏi:** công cụ PLS-SEM chưa có SRMR, PLSpredict, MGA và mô hình bậc cao trong phần ước lượng (công cụ Vẽ mô hình vẽ được, nhưng chưa chạy được). Phân tích dữ liệu chưa có CFA/CB-SEM (kiểu AMOS). EFA dùng PCA + Varimax (như mặc định SPSS), không phải PAF/Promax. Số bootstrap lệch nhẹ so với SmartPLS vì mỗi phần mềm rút mẫu ngẫu nhiên khác nhau. Người làm khoá luận vẫn phải tự diễn giải và sửa đoạn văn.
+**Giới hạn cần nói thật khi được hỏi:** công cụ PLS-SEM đã có SRMR, PLSpredict, HTMT2 nhưng chưa có PLSc, MGA và mô hình bậc cao trong phần ước lượng (công cụ Vẽ mô hình vẽ được, nhưng chưa chạy được). Phân tích dữ liệu chưa có CFA/CB-SEM (kiểu AMOS). EFA dùng PCA + Varimax (như mặc định SPSS), không phải PAF/Promax. Số bootstrap lệch nhẹ so với SmartPLS vì mỗi phần mềm rút mẫu ngẫu nhiên khác nhau. Người làm khoá luận vẫn phải tự diễn giải và sửa đoạn văn.
 
 ---
 
@@ -68,7 +68,7 @@ Quy ước link: nếu nhóm cho để link trong bài thì để ở cuối bà
 >
 > Miễn phí, không cần tài khoản, dữ liệu xử lý ngay trên máy bạn chứ không gửi lên đâu cả. Kết quả PLS mình đối chiếu với gói R seminr và cSEM, nhưng các bạn vẫn nên so lại với phần mềm trường dùng ở lần đầu.
 >
-> Web còn thiếu nhiều thứ (chưa có CFA kiểu AMOS, chưa có SRMR), bạn nào dùng thấy sai hay khó hiểu chỗ nào cứ bình luận, mình sửa.
+> Web còn thiếu nhiều thứ (chưa có CFA kiểu AMOS, chưa có MGA), bạn nào dùng thấy sai hay khó hiểu chỗ nào cứ bình luận, mình sửa.
 >
 > Link: https://gocnghiencuu.com/
 
@@ -98,7 +98,7 @@ Quy ước link: nếu nhóm cho để link trong bài thì để ở cuối bà
 > Mình đang muốn biết 3 điều:
 > 1. Kết quả có khớp với SPSS/SmartPLS máy bạn không? Lệch ở bảng nào?
 > 2. Đoạn văn chương 4 nó viết ra có dùng được không, hay phải sửa nhiều?
-> 3. Bạn cần thêm tính năng gì nhất (CFA, SRMR, MGA…)?
+> 3. Bạn cần thêm tính năng gì nhất (CFA, MGA, PLSc…)?
 >
 > Web miễn phí, không cần tài khoản, dữ liệu xử lý trên máy bạn. Mình không bán gì trong bài này, chỉ cần góp ý để sửa cho đúng. Nếu admin thấy không phù hợp thì cứ gỡ giúp mình nhé.
 >
@@ -199,7 +199,7 @@ Trước khi nộp, tự hỏi: mọi ngưỡng đã có nguồn chưa? Cỡ m�
 Có vài lựa chọn hợp pháp và miễn phí:
 
 - **R với gói seminr hoặc cSEM**: đầy đủ, minh bạch, nhưng phải viết vài dòng code.
-- **Công cụ chạy trên trình duyệt**: mình làm một trang tên [Góc Nghiên Cứu](https://gocnghiencuu.com/cong-cu/pls-sem/), chạy PLS-SEM ngay trên trình duyệt với mặc định giống SmartPLS (path weighting, dữ liệu chuẩn hoá, tiêu chí dừng 10⁻⁷, tối đa 300 vòng lặp), ra đủ các bảng ở bước 4–5 và xuất Word. Mình đối chiếu điểm ước lượng với seminr và cSEM; số bootstrap thì lệch nhẹ giữa các phần mềm như mọi phần mềm khác, vì rút mẫu ngẫu nhiên khác nhau. Nó chưa có SRMR, PLSpredict hay MGA, nên nếu hội đồng trường bạn yêu cầu các chỉ số đó thì vẫn cần R hoặc SmartPLS.
+- **Công cụ chạy trên trình duyệt**: mình làm một trang tên [Góc Nghiên Cứu](https://gocnghiencuu.com/cong-cu/pls-sem/), chạy PLS-SEM ngay trên trình duyệt với mặc định giống SmartPLS (path weighting, dữ liệu chuẩn hoá, tiêu chí dừng 10⁻⁷, tối đa 300 vòng lặp), ra đủ các bảng ở bước 4–5 và xuất Word. Mình đối chiếu điểm ước lượng với seminr và cSEM; số bootstrap thì lệch nhẹ giữa các phần mềm như mọi phần mềm khác, vì rút mẫu ngẫu nhiên khác nhau. Nó có SRMR và PLSpredict, nhưng chưa có MGA hay PLSc, nên nếu hội đồng trường bạn yêu cầu các phân tích đó thì vẫn cần R hoặc SmartPLS.
 
 Dù dùng gì, ở lần đầu hãy chạy dữ liệu mẫu trên hai phần mềm và so kết quả. Đó là cách tốt nhất để tin công cụ của mình, và cũng là câu trả lời tốt nhất nếu hội đồng hỏi.
 
@@ -240,7 +240,7 @@ Nếu cần tra nhanh ngưỡng và nguồn của từng chỉ số, mình có t
 >
 > Lựa chọn miễn phí và hợp pháp:
 > 1. **R + gói seminr hoặc cSEM**: đủ outer loadings, CR, AVE, HTMT, bootstrap. Phải viết code nhưng ví dụ trong tài liệu gói khá dễ theo.
-> 2. **Công cụ trên trình duyệt**: mình có làm một trang miễn phí chạy PLS-SEM với mặc định giống SmartPLS (https://gocnghiencuu.com/cong-cu/pls-sem/), ra loadings, alpha, rho_A, CR, AVE, HTMT, hệ số đường dẫn, bootstrap 5.000 mẫu, R², f², Q², xuất Word. Chưa có SRMR, PLSpredict, MGA.
+> 2. **Công cụ trên trình duyệt**: mình có làm một trang miễn phí chạy PLS-SEM với mặc định giống SmartPLS (https://gocnghiencuu.com/cong-cu/pls-sem/), ra loadings, alpha, rho_A, CR, AVE, HTMT, hệ số đường dẫn, bootstrap 5.000 mẫu, R², f², Q², SRMR, PLSpredict, xuất Word. Chưa có MGA, PLSc.
 >
 > Dùng gì thì cũng nên chạy thử dữ liệu mẫu trên hai phần mềm và so kết quả ở lần đầu. Khi báo cáo, ghi rõ phần mềm, số mẫu bootstrap và ngưỡng theo Hair và cộng sự (2019) là đủ để hội đồng chấp nhận.
 
@@ -389,7 +389,7 @@ Nhóm Facebook đôi khi coi link dài có tham số là spam; khi đó dùng li
 | Phản hồi trên bài | Đếm tay: bình luận, câu hỏi, lượt chia sẻ, bài bị từ chối, mỗi nhóm một dòng | Mỗi tối |
 | Video | Lượt xem, thời gian xem trung bình, lượt bấm vào hồ sơ (TikTok Analytics) | 48 giờ sau mỗi video |
 | Spiderum | Lượt xem, upvote, bình luận | 02/11 và 06/11 |
-| Góp ý sản phẩm | Lỗi, lệch kết quả so với SPSS/SmartPLS, tính năng được xin (CFA, SRMR…), ghi vào GitHub issues | Khi nhận |
+| Góp ý sản phẩm | Lỗi, lệch kết quả so với SPSS/SmartPLS, tính năng được xin (CFA, MGA…), ghi vào GitHub issues | Khi nhận |
 | Backlink | Email đã gửi, trả lời, trang đã thêm link; Search Console → Liên kết (cập nhật chậm) | 06/11 |
 
 Không đặt mục tiêu số cứng cho tuần đầu vì chưa có dữ liệu nền. Mục tiêu của tuần là biết kênh nào ra người dùng thật (có câu hỏi, có góp ý) để tuần sau dồn sức vào đó.

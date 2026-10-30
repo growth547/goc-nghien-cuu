@@ -1,0 +1,69 @@
+{
+  "title": "Chi đầu tư tài sản cố định (CAPEX): công thức từ LCTT",
+  "description": "CAPEX (Capital expenditure): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chi đầu tư tài sản cố định",
+  "nameEn": "Capital expenditure",
+  "symbol": "CAPEX",
+  "group": "Cổ tức & đầu tư",
+  "scope": "Doanh nghiệp",
+  "keyword": "chi đầu tư tài sản cố định",
+  "definition": "CAPEX đo dòng tiền chi mua sắm, xây dựng tài sản dài hạn trong năm, chuẩn hoá theo tổng tài sản đầu năm. Đây là biến phụ thuộc trong các đề tài hạn chế tài chính và độ nhạy đầu tư với dòng tiền (Fazzari và cộng sự, 1988) và trong đo lường đầu tư quá mức (Richardson, 2006).",
+  "formula": "CAPEX = Tiền chi mua sắm, xây dựng TSCĐ và tài sản dài hạn khác năm t / Tổng tài sản cuối năm t−1",
+  "items": [
+    {
+      "statement": "LCTT",
+      "code": "21",
+      "label": "Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Đầu tư ròng",
+      "formula": "(Tiền chi mua TSCĐ − Tiền thu thanh lý TSCĐ LCTT mã 22) / TTS_t−1"
+    },
+    {
+      "name": "Đầu tư mới của Richardson (2006)",
+      "formula": "Tổng đầu tư − Khấu hao (đầu tư duy trì)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Dòng tiền hoạt động",
+      "sign": "+",
+      "note": "Độ nhạy đầu tư – dòng tiền cao hơn ở doanh nghiệp bị hạn chế tài chính (Fazzari và cộng sự, 1988)."
+    },
+    {
+      "with": "Tobin's Q",
+      "sign": "+",
+      "note": "Cơ hội đầu tư."
+    }
+  ],
+  "mistakes": [
+    "Quên dấu: mã 21 được trình bày là số âm (dòng tiền ra).",
+    "Chia cho tổng tài sản cuối năm t, khiến biến bị ảnh hưởng bởi chính khoản đầu tư."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen capex_r = abs(capex) / L.ta",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(capex_r = ifelse(year - lag(year) == 1, abs(capex) / lag(ta), NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Fazzari, S. M., Hubbard, R. G., &amp; Petersen, B. C. (1988). Financing constraints and corporate investment. <em>Brookings Papers on Economic Activity, 1988</em>(1), 141–206.",
+      "doi": "10.2307/2534426"
+    },
+    {
+      "text": "Richardson, S. (2006). Over-investment of free cash flow. <em>Review of Accounting Studies, 11</em>(2–3), 159–189.",
+      "doi": "10.1007/s11142-006-9012-1"
+    }
+  ],
+  "related": [
+    "tai-san-huu-hinh",
+    "tobin-q",
+    "nam-giu-tien-mat",
+    "tang-truong-doanh-thu"
+  ],
+  "calc": "capex"
+}

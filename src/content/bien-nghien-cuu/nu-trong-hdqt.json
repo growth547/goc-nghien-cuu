@@ -1,0 +1,57 @@
+{
+  "title": "Tỷ lệ thành viên nữ trong HĐQT: cách đo đa dạng giới",
+  "description": "FEMALE (Board gender diversity): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ nữ trong HĐQT",
+  "nameEn": "Board gender diversity",
+  "symbol": "FEMALE",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tỷ lệ nữ trong hđqt",
+  "definition": "Tỷ lệ thành viên nữ trên tổng số thành viên HĐQT, đại diện cho đa dạng giới trong quản trị. Adams và Ferreira (2009) thấy HĐQT có nhiều nữ giám sát chặt hơn nhưng tác động lên hiệu quả trung bình là âm ở doanh nghiệp đã có quản trị tốt.",
+  "formula": "FEMALE = Số thành viên nữ trong HĐQT / Tổng số thành viên HĐQT",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Danh sách HĐQT (họ tên, giới tính)"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Biến giả",
+      "formula": "1 nếu có ít nhất một thành viên nữ"
+    },
+    {
+      "name": "Chỉ số Blau",
+      "formula": "1 − Σp_i², với p_i là tỷ lệ mỗi giới"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "±",
+      "note": "Adams và Ferreira (2009)."
+    }
+  ],
+  "mistakes": [
+    "Suy giới tính từ tên mà không kiểm tra ảnh hoặc danh xưng trong báo cáo thường niên.",
+    "Bỏ qua tính nội sinh: doanh nghiệp tốt có thể bổ nhiệm nhiều nữ hơn."
+  ],
+  "stata": "gen female = female_n / board_n",
+  "r": "df$female <- df$female_n / df$board_n",
+  "references": [
+    {
+      "text": "Adams, R. B., &amp; Ferreira, D. (2009). Women in the boardroom and their impact on governance and performance. <em>Journal of Financial Economics, 94</em>(2), 291–309.",
+      "doi": "10.1016/j.jfineco.2008.10.007"
+    },
+    {
+      "text": "Yermack, D. (1996). Higher market valuation of companies with a small board of directors. <em>Journal of Financial Economics, 40</em>(2), 185–211.",
+      "doi": "10.1016/0304-405X(95)00844-5"
+    }
+  ],
+  "related": [
+    "quy-mo-hoi-dong-quan-tri",
+    "thanh-vien-hdqt-doc-lap",
+    "kiem-nhiem-ceo",
+    "roa"
+  ]
+}

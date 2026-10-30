@@ -1,0 +1,62 @@
+{
+  "title": "Ý kiến kiểm toán: mã hoá biến giả từ báo cáo kiểm toán",
+  "description": "OPINION (Audit opinion): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Ý kiến kiểm toán",
+  "nameEn": "Audit opinion",
+  "symbol": "OPINION",
+  "group": "Chất lượng lợi nhuận & kiểm toán",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "ý kiến kiểm toán",
+  "definition": "Ý kiến kiểm toán được mã hoá thành biến giả: 1 nếu không phải ý kiến chấp nhận toàn phần (ngoại trừ, trái ngược, từ chối), hoặc có đoạn nhấn mạnh về hoạt động liên tục. Theo Điều 10 Thông tư 96/2020/TT-BTC, doanh nghiệp phải công bố văn bản giải trình khi ý kiến không phải chấp nhận toàn phần.",
+  "formula": "MAO = 1 nếu ý kiến kiểm toán không phải chấp nhận toàn phần; 0 nếu chấp nhận toàn phần",
+  "items": [
+    {
+      "statement": "Thuyết minh",
+      "label": "Báo cáo kiểm toán độc lập: mục \"Ý kiến của kiểm toán viên\" và \"Vấn đề cần nhấn mạnh\""
+    }
+  ],
+  "variants": [
+    {
+      "name": "Biến thứ bậc",
+      "formula": "0 = chấp nhận toàn phần; 1 = có đoạn nhấn mạnh; 2 = ngoại trừ; 3 = trái ngược hoặc từ chối"
+    },
+    {
+      "name": "Hoạt động liên tục",
+      "formula": "GC = 1 nếu có đoạn về khả năng hoạt động liên tục"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Rủi ro kiệt quệ (Z-score thấp)",
+      "sign": "+",
+      "note": "Doanh nghiệp kiệt quệ dễ nhận ý kiến hoạt động liên tục."
+    },
+    {
+      "with": "Dồn tích tuỳ ý",
+      "sign": "+",
+      "note": "Kiểm toán viên phản ứng với điều chỉnh lợi nhuận lớn."
+    }
+  ],
+  "mistakes": [
+    "Coi đoạn \"Vấn đề khác\" là ý kiến không chấp nhận toàn phần.",
+    "Mã hoá theo BCTC bán niên (soát xét) thay vì BCTC năm (kiểm toán)."
+  ],
+  "stata": "gen mao = (opinion != \"chap nhan toan phan\")",
+  "r": "df$mao <- as.integer(df$opinion != \"chap nhan toan phan\")",
+  "references": [
+    {
+      "text": "DeAngelo, L. E. (1981). Auditor size and audit quality. <em>Journal of Accounting and Economics, 3</em>(3), 183–199.",
+      "doi": "10.1016/0165-4101(81)90002-1"
+    },
+    {
+      "text": "Altman, E. I. (1968). Financial ratios, discriminant analysis and the prediction of corporate bankruptcy. <em>The Journal of Finance, 23</em>(4), 589–609.",
+      "doi": "10.1111/j.1540-6261.1968.tb00843.x"
+    }
+  ],
+  "related": [
+    "kiem-toan-big4",
+    "altman-z-score",
+    "quan-tri-loi-nhuan-jones-dieu-chinh",
+    "tong-dieu-chinh-don-tich"
+  ]
+}

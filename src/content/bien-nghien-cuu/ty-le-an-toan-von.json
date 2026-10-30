@@ -1,0 +1,64 @@
+{
+  "title": "Tỷ lệ an toàn vốn (CAR): nguồn số liệu và cách dùng",
+  "description": "CAR (Capital adequacy ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ an toàn vốn",
+  "nameEn": "Capital adequacy ratio",
+  "symbol": "CAR",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "tỷ lệ an toàn vốn",
+  "definition": "CAR là vốn tự có chia cho tổng tài sản có rủi ro, tính theo quy định của Ngân hàng Nhà nước (Thông tư 41/2016/TT-NHNN theo Basel II, mức tối thiểu 8%). Sinh viên không tự tính được CAR từ BCTC vì cần tài sản có rủi ro theo trọng số; lấy số do ngân hàng công bố trong thuyết minh hoặc báo cáo thường niên.",
+  "formula": "CAR = Vốn tự có / (Tài sản có rủi ro tín dụng + Rủi ro thị trường + Rủi ro hoạt động), lấy số ngân hàng công bố",
+  "items": [
+    {
+      "statement": "Thuyết minh",
+      "label": "Tỷ lệ an toàn vốn (thuyết minh quản lý rủi ro vốn)"
+    },
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Các chỉ số an toàn hoạt động"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Vốn chủ sở hữu trên tổng tài sản",
+      "formula": "VCSH / Tổng tài sản",
+      "note": "Thay thế khi thiếu CAR các năm đầu (xem trang EQTA)."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Z-score",
+      "sign": "+",
+      "note": "Nguyen (2021)."
+    },
+    {
+      "with": "Hiệu quả trong khủng hoảng",
+      "sign": "+",
+      "note": "Berger và Bouwman (2013)."
+    }
+  ],
+  "mistakes": [
+    "Trộn CAR theo Thông tư 36/2014 (Basel I) và Thông tư 41/2016 (Basel II) mà không có biến giả chuyển đổi.",
+    "Nhập CAR dạng phần trăm cùng các biến dạng thập phân."
+  ],
+  "stata": "gen car_r = car / 100",
+  "r": "df$car_r <- df$car / 100",
+  "references": [
+    {
+      "text": "Berger, A. N., &amp; Bouwman, C. H. S. (2013). How does capital affect bank performance during financial crises? <em>Journal of Financial Economics, 109</em>(1), 146–176.",
+      "doi": "10.1016/j.jfineco.2013.02.008"
+    },
+    {
+      "text": "Nguyen, M. S. (2021). Capital adequacy ratio and a bank’s financial stability in Vietnam. <em>Banks and Bank Systems, 16</em>(4), 61–71.",
+      "doi": "10.21511/bbs.16(4).2021.06"
+    }
+  ],
+  "related": [
+    "von-chu-so-huu-tren-tong-tai-san",
+    "z-score-ngan-hang",
+    "roe",
+    "ty-le-no-xau"
+  ],
+  "calc": "car"
+}

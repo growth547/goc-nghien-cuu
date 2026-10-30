@@ -1,0 +1,57 @@
+{
+  "title": "Kiêm nhiệm CEO (CEO duality): biến giả và dấu kỳ vọng",
+  "description": "DUAL (CEO duality): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Kiêm nhiệm Chủ tịch HĐQT và Tổng giám đốc",
+  "nameEn": "CEO duality",
+  "symbol": "DUAL",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "kiêm nhiệm chủ tịch hđqt và tổng giám đốc",
+  "definition": "Biến giả nhận giá trị 1 khi Chủ tịch HĐQT đồng thời là Tổng giám đốc (Giám đốc). Lý thuyết đại diện cho rằng kiêm nhiệm làm giảm tính độc lập giám sát; lý thuyết quản lý (stewardship) cho rằng kiêm nhiệm giúp lãnh đạo thống nhất. Nghị định 155/2020/NĐ-CP hạn chế việc kiêm nhiệm này ở công ty niêm yết.",
+  "formula": "DUAL = 1 nếu Chủ tịch HĐQT kiêm Tổng giám đốc; 0 nếu không",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Danh sách HĐQT và Ban điều hành"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Kiêm nhiệm một phần năm",
+      "formula": "Tỷ lệ số tháng kiêm nhiệm trong năm"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "-",
+      "note": "Rechner và Dalton (1991); ở Việt Nam, Pham và cộng sự (2015) nghiên cứu kiêm nhiệm trong các thương vụ M&A."
+    }
+  ],
+  "mistakes": [
+    "Mã hoá theo tình trạng hiện tại thay vì của từng năm.",
+    "Không xét người đại diện theo pháp luật khác Tổng giám đốc."
+  ],
+  "stata": "gen dual = (chair_id == ceo_id)",
+  "r": "df$dual <- as.integer(df$chair_id == df$ceo_id)",
+  "references": [
+    {
+      "text": "Rechner, P. L., &amp; Dalton, D. R. (1991). CEO duality and organizational performance: A longitudinal analysis. <em>Strategic Management Journal, 12</em>(2), 155–160.",
+      "doi": "10.1002/smj.4250120206"
+    },
+    {
+      "text": "Pham, N., Oh, K. B., &amp; Pech, R. (2015). Mergers and acquisitions: CEO duality, operating performance and stock returns in Vietnam. <em>Pacific-Basin Finance Journal, 35</em>, 298–316.",
+      "doi": "10.1016/j.pacfin.2015.01.007"
+    },
+    {
+      "text": "Fama, E. F., &amp; Jensen, M. C. (1983). Separation of ownership and control. <em>The Journal of Law and Economics, 26</em>(2), 301–325.",
+      "doi": "10.1086/467037"
+    }
+  ],
+  "related": [
+    "quy-mo-hoi-dong-quan-tri",
+    "thanh-vien-hdqt-doc-lap",
+    "so-huu-cua-nha-quan-ly",
+    "roa"
+  ]
+}

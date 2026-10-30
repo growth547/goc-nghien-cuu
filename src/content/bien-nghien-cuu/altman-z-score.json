@@ -1,0 +1,110 @@
+{
+  "title": "Altman Z-score: công thức, ngưỡng và cách tính từ BCTC",
+  "description": "Z (Altman Z-score): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chỉ số Z của Altman",
+  "nameEn": "Altman Z-score",
+  "symbol": "Z",
+  "group": "Rủi ro & kiệt quệ tài chính",
+  "scope": "Doanh nghiệp",
+  "keyword": "chỉ số z của altman",
+  "definition": "Chỉ số Z (Altman, 1968) là tổ hợp tuyến tính của năm tỷ số tài chính, ước lượng bằng phân tích biệt số trên mẫu doanh nghiệp sản xuất Mỹ niêm yết. Z càng thấp, nguy cơ kiệt quệ tài chính càng cao. Trong khoá luận, Z thường là biến đo rủi ro phá sản hoặc sức khoẻ tài chính.",
+  "formula": "Z = 1,2·X1 + 1,4·X2 + 3,3·X3 + 0,6·X4 + 1,0·X5, với X1 = (TSNH − Nợ NH)/TTS; X2 = LNST chưa phân phối/TTS; X3 = (LNTT + Lãi vay)/TTS; X4 = Giá trị thị trường VCSH/Nợ phải trả; X5 = Doanh thu thuần/TTS",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "100",
+      "label": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "310",
+      "label": "Nợ ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "421",
+      "label": "Lợi nhuận sau thuế chưa phân phối"
+    },
+    {
+      "statement": "KQKD",
+      "code": "50",
+      "label": "Tổng lợi nhuận kế toán trước thuế"
+    },
+    {
+      "statement": "KQKD",
+      "code": "23",
+      "label": "Trong đó: Chi phí lãi vay"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "300",
+      "label": "Nợ phải trả"
+    },
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "Thị trường",
+      "label": "Giá đóng cửa cuối năm × Số cổ phiếu đang lưu hành",
+      "note": "Lấy giá từ Sở giao dịch, số cổ phiếu từ thuyết minh vốn chủ sở hữu (trừ cổ phiếu quỹ)."
+    }
+  ],
+  "variants": [
+    {
+      "name": "Ngưỡng phân loại gốc",
+      "formula": "Z > 2,99: vùng an toàn; 1,81–2,99: vùng xám; Z < 1,81: vùng nguy hiểm",
+      "note": "Ngưỡng của mẫu Mỹ 1946–1965, không nên áp nguyên cho Việt Nam."
+    },
+    {
+      "name": "Z' cho doanh nghiệp chưa niêm yết",
+      "formula": "Thay giá trị thị trường VCSH bằng giá trị sổ sách; hệ số được ước lượng lại"
+    },
+    {
+      "name": "Z'' cho thị trường mới nổi",
+      "formula": "Xem trang Z'' (bốn biến, bỏ X5)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "X4 giảm khi nợ tăng."
+    },
+    {
+      "with": "Chất lượng quản trị",
+      "sign": "+",
+      "note": "Thường dùng làm biến kiểm soát rủi ro trong mô hình hiệu quả."
+    }
+  ],
+  "mistakes": [
+    "Áp dụng cho ngân hàng, công ty chứng khoán: mô hình không xây cho doanh nghiệp tài chính.",
+    "Nhập tỷ số dạng phần trăm (12) thay vì thập phân (0,12): các hệ số gốc dùng thập phân, trừ phiên bản Altman ghi X1–X4 theo phần trăm với hệ số 0,012…",
+    "Dùng X2 là lợi nhuận sau thuế năm nay thay vì lợi nhuận giữ lại luỹ kế (mã 421)."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen x1 = (ca - cl) / ta\ngen x2 = re / ta\ngen x3 = (ebt + int) / ta\ngen x4 = (price * shares) / tl\ngen x5 = rev / ta\ngen z = 1.2*x1 + 1.4*x2 + 3.3*x3 + 0.6*x4 + 1.0*x5",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(z = 1.2 * (ca - cl) / ta + 1.4 * re / ta + 3.3 * (ebt + int) / ta +\n             0.6 * (price * shares) / tl + 1.0 * rev / ta) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Altman, E. I. (1968). Financial ratios, discriminant analysis and the prediction of corporate bankruptcy. <em>The Journal of Finance, 23</em>(4), 589–609.",
+      "doi": "10.1111/j.1540-6261.1968.tb00843.x"
+    },
+    {
+      "text": "Altman, E. I., Iwanicz-Drozdowska, M., Laitinen, E. K., &amp; Suvas, A. (2017). Financial distress prediction in an international context: A review and empirical analysis of Altman’s Z-score model. <em>Journal of International Financial Management &amp; Accounting, 28</em>(2), 131–171.",
+      "doi": "10.1111/jifm.12053"
+    }
+  ],
+  "related": [
+    "altman-z-score-thi-truong-moi-noi",
+    "ohlson-o-score",
+    "don-bay-tai-chinh",
+    "kha-nang-thanh-toan-lai-vay"
+  ],
+  "calc": "z"
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Ohlson O-score: công thức logit dự báo phá sản",
+  "description": "O-score (Ohlson O-score): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chỉ số O của Ohlson",
+  "nameEn": "Ohlson O-score",
+  "symbol": "O-score",
+  "group": "Rủi ro & kiệt quệ tài chính",
+  "scope": "Doanh nghiệp",
+  "keyword": "chỉ số o của ohlson",
+  "definition": "O-score (Ohlson, 1980) ước lượng xác suất phá sản bằng hồi quy logit với chín biến tài chính. Khác Z-score, O-score không cần giá thị trường và cho ra xác suất, nên hợp với nghiên cứu rủi ro vỡ nợ của doanh nghiệp chưa niêm yết hoặc ít giao dịch.",
+  "formula": "O = −1,32 − 0,407·ln(TTS/chỉ số giá) + 6,03·(Nợ phải trả/TTS) − 1,43·(Vốn lưu động/TTS) + 0,0757·(Nợ NH/TSNH) − 2,37·(LNST/TTS) − 1,83·(Lưu chuyển tiền từ HĐKD/Nợ phải trả) + 0,285·INTWO − 1,72·OENEG − 0,521·CHIN",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "300",
+      "label": "Nợ phải trả"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "100",
+      "label": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "310",
+      "label": "Nợ ngắn hạn"
+    },
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    },
+    {
+      "statement": "LCTT",
+      "code": "20",
+      "label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh"
+    },
+    {
+      "statement": "Thị trường",
+      "label": "Chỉ số giảm phát GDP (năm gốc = 100)",
+      "note": "Lấy từ Tổng cục Thống kê hoặc World Bank."
+    }
+  ],
+  "variants": [
+    {
+      "name": "Xác suất phá sản",
+      "formula": "P = exp(O) / (1 + exp(O))"
+    },
+    {
+      "name": "Các biến giả",
+      "formula": "INTWO = 1 nếu lỗ hai năm liền; OENEG = 1 nếu Nợ phải trả > TTS; CHIN = (LNST_t − LNST_t−1)/(|LNST_t| + |LNST_t−1|)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "+",
+      "note": "Hệ số dương lớn nhất của mô hình."
+    },
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "-",
+      "note": "Lỗ làm tăng xác suất phá sản."
+    }
+  ],
+  "mistakes": [
+    "Dùng ln(Tổng tài sản) danh nghĩa thay vì đã chia chỉ số giá như bản gốc, rồi vẫn dùng hằng số −1,32.",
+    "Biến số dùng lưu chuyển tiền từ HĐKD; bản gốc dùng \"funds from operations\", nên nêu rõ cách thay thế."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen size_r = ln(ta / deflator * 100)\ngen intwo = (ni < 0 & L.ni < 0)\ngen oeneg = (tl > ta)\ngen chin = (ni - L.ni) / (abs(ni) + abs(L.ni))\ngen o = -1.32 - 0.407*size_r + 6.03*tl/ta - 1.43*(ca - cl)/ta + 0.0757*cl/ca ///\n    - 2.37*ni/ta - 1.83*cfo/tl + 0.285*intwo - 1.72*oeneg - 0.521*chin\ngen p_bankrupt = exp(o) / (1 + exp(o))",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(intwo = as.integer(ni < 0 & lag(ni) < 0),\n         oeneg = as.integer(tl > ta),\n         chin = (ni - lag(ni)) / (abs(ni) + abs(lag(ni))),\n         o = -1.32 - 0.407 * log(ta / deflator * 100) + 6.03 * tl / ta -\n             1.43 * (ca - cl) / ta + 0.0757 * cl / ca - 2.37 * ni / ta -\n             1.83 * cfo / tl + 0.285 * intwo - 1.72 * oeneg - 0.521 * chin,\n         p_bankrupt = plogis(o)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Ohlson, J. A. (1980). Financial ratios and the probabilistic prediction of bankruptcy. <em>Journal of Accounting Research, 18</em>(1), 109–131.",
+      "doi": "10.2307/2490395"
+    },
+    {
+      "text": "Altman, E. I., Iwanicz-Drozdowska, M., Laitinen, E. K., &amp; Suvas, A. (2017). Financial distress prediction in an international context: A review and empirical analysis of Altman’s Z-score model. <em>Journal of International Financial Management &amp; Accounting, 28</em>(2), 131–171.",
+      "doi": "10.1111/jifm.12053"
+    }
+  ],
+  "related": [
+    "altman-z-score",
+    "altman-z-score-thi-truong-moi-noi",
+    "don-bay-tai-chinh",
+    "roa"
+  ]
+}

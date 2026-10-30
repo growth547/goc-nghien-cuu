@@ -1,0 +1,70 @@
+{
+  "title": "Tổng điều chỉnh dồn tích (total accruals): cách tính từ BCTC",
+  "description": "TACC (Total accruals): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tổng điều chỉnh dồn tích",
+  "nameEn": "Total accruals",
+  "symbol": "TACC",
+  "group": "Chất lượng lợi nhuận & kiểm toán",
+  "scope": "Doanh nghiệp",
+  "keyword": "tổng điều chỉnh dồn tích",
+  "definition": "Tổng điều chỉnh dồn tích là phần chênh lệch giữa lợi nhuận kế toán và dòng tiền từ hoạt động kinh doanh. Đây là đầu vào của mọi mô hình quản trị lợi nhuận dựa trên dồn tích (Jones, 1991; Dechow và cộng sự, 1995). Cách tính theo dòng tiền tránh sai số của cách tính theo bảng cân đối khi doanh nghiệp sáp nhập.",
+  "formula": "TACC = (LNST − Lưu chuyển tiền thuần từ HĐKD) / Tổng tài sản cuối năm t−1",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    },
+    {
+      "statement": "LCTT",
+      "code": "20",
+      "label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Theo bảng cân đối",
+      "formula": "(ΔTSNH − ΔTiền − ΔNợ NH + ΔVay NH − Khấu hao) / TTS_t−1",
+      "note": "Cách của Jones (1991), dễ sai khi có hợp nhất kinh doanh."
+    },
+    {
+      "name": "Dùng LN trước khoản bất thường",
+      "formula": "(LN thuần từ HĐKD − CFO) / TTS_t−1"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Chất lượng kiểm toán",
+      "sign": "-",
+      "note": "Khách hàng của kiểm toán Big 4 có dồn tích tuỳ ý thấp hơn (Becker và cộng sự, 1998)."
+    }
+  ],
+  "mistakes": [
+    "Chia cho tổng tài sản cuối năm t thay vì đầu năm.",
+    "Dùng TACC làm thước đo quản trị lợi nhuận trực tiếp: cần tách phần không tuỳ ý bằng mô hình."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen tacc = (ni - cfo) / L.ta",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(tacc = ifelse(year - lag(year) == 1, (ni - cfo) / lag(ta), NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Jones, J. J. (1991). Earnings management during import relief investigations. <em>Journal of Accounting Research, 29</em>(2), 193–228.",
+      "doi": "10.2307/2491047"
+    },
+    {
+      "text": "Dechow, P. M., Sloan, R. G., &amp; Sweeney, A. P. (1995). Detecting earnings management. <em>The Accounting Review, 70</em>(2), 193–225.",
+      "doi": "10.2308/tar-9505096112"
+    }
+  ],
+  "related": [
+    "quan-tri-loi-nhuan-jones-dieu-chinh",
+    "quan-tri-loi-nhuan-thuc",
+    "kiem-toan-big4",
+    "roa"
+  ],
+  "calc": "tacc"
+}

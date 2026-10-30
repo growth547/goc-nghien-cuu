@@ -1,0 +1,66 @@
+{
+  "title": "Biên lợi nhuận gộp: công thức từ BCTC và cách dùng",
+  "description": "GPM (Gross profit margin): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Biên lợi nhuận gộp",
+  "nameEn": "Gross profit margin",
+  "symbol": "GPM",
+  "group": "Khả năng sinh lời",
+  "scope": "Doanh nghiệp",
+  "keyword": "biên lợi nhuận gộp",
+  "definition": "Biên lợi nhuận gộp là phần doanh thu thuần còn lại sau giá vốn hàng bán, phản ánh sức định giá và hiệu quả sản xuất trước chi phí bán hàng, quản lý và tài chính. Trong nghiên cứu vốn lưu động, đây là biến kết quả ít bị ảnh hưởng bởi cấu trúc vốn hơn ROA.",
+  "formula": "GPM = (Doanh thu thuần − Giá vốn hàng bán) / Doanh thu thuần",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "KQKD",
+      "code": "11",
+      "label": "Giá vốn hàng bán"
+    },
+    {
+      "statement": "KQKD",
+      "code": "20",
+      "label": "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Lợi nhuận hoạt động gộp trên tài sản",
+      "formula": "(Doanh thu thuần − Giá vốn) / (Tổng tài sản − Đầu tư tài chính)",
+      "note": "Biến kết quả của Deloof (2003)."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Số ngày phải thu, số ngày tồn kho",
+      "sign": "-",
+      "note": "Deloof (2003) thấy doanh nghiệp có lợi nhuận gộp thấp chậm trả nhà cung cấp hơn."
+    }
+  ],
+  "mistakes": [
+    "Lấy lợi nhuận gộp (mã 20) cộng thêm doanh thu tài chính.",
+    "Dùng cho doanh nghiệp dịch vụ không có giá vốn rõ ràng mà không nêu cách xử lý."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen gpm = (rev - cogs) / rev if rev > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(gpm = ifelse(rev > 0, (rev - cogs) / rev, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Deloof, M. (2003). Does working capital management affect profitability of Belgian firms? <em>Journal of Business Finance &amp; Accounting, 30</em>(3–4), 573–588.",
+      "doi": "10.1111/1468-5957.00008"
+    },
+    {
+      "text": "Nguyen, T. H., &amp; Su, D. T. (2022). Threshold effect of working capital management on firm profitability: Evidence from Vietnam. <em>Cogent Business &amp; Management, 9</em>(1), Article 2141090.",
+      "doi": "10.1080/23311975.2022.2141090"
+    }
+  ],
+  "related": [
+    "ros",
+    "chu-ky-chuyen-doi-tien",
+    "roa",
+    "vong-quay-tong-tai-san"
+  ],
+  "calc": "gpm"
+}

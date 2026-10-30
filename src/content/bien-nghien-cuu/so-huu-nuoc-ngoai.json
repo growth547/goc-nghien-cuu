@@ -1,0 +1,53 @@
+{
+  "title": "Sở hữu nước ngoài: cách đo và nguồn dữ liệu hợp lệ",
+  "description": "FOREIGN (Foreign ownership): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ sở hữu nước ngoài",
+  "nameEn": "Foreign ownership",
+  "symbol": "FOREIGN",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tỷ lệ sở hữu nước ngoài",
+  "definition": "Tỷ lệ cổ phần do nhà đầu tư nước ngoài nắm giữ cuối năm. Nhà đầu tư nước ngoài mang theo vốn, kỹ năng giám sát và chuẩn mực quản trị; Douma và cộng sự (2006) thấy tác động dương ở thị trường mới nổi. Số liệu lấy từ báo cáo thường niên hoặc danh sách cổ đông do doanh nghiệp công bố.",
+  "formula": "FOREIGN = Số cổ phần do nhà đầu tư nước ngoài sở hữu / Tổng số cổ phần đang lưu hành",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Cơ cấu cổ đông: trong nước và nước ngoài"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Sở hữu chiến lược nước ngoài",
+      "formula": "Chỉ tính cổ đông chiến lược nước ngoài (≥ 5%)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "+",
+      "note": "Douma và cộng sự (2006); Phung và Mishra (2016) cho bằng chứng Việt Nam."
+    }
+  ],
+  "mistakes": [
+    "Dùng room ngoại tối đa thay cho tỷ lệ thực tế.",
+    "Lấy tỷ lệ sở hữu tại ngày chốt danh sách ĐHĐCĐ năm sau và gán cho năm trước mà không nói rõ."
+  ],
+  "stata": "gen foreign = foreign_sh / shares",
+  "r": "df$foreign <- df$foreign_sh / df$shares",
+  "references": [
+    {
+      "text": "Douma, S., George, R., &amp; Kabir, R. (2006). Foreign and domestic ownership, business groups, and firm performance: Evidence from a large emerging market. <em>Strategic Management Journal, 27</em>(7), 637–657.",
+      "doi": "10.1002/smj.535"
+    },
+    {
+      "text": "Phung, D. N., &amp; Mishra, A. V. (2016). Ownership structure and firm performance: Evidence from Vietnamese listed firms. <em>Australian Economic Papers, 55</em>(1), 63–98.",
+      "doi": "10.1111/1467-8454.12056"
+    }
+  ],
+  "related": [
+    "so-huu-nha-nuoc",
+    "so-huu-tap-trung",
+    "tobin-q",
+    "roa"
+  ]
+}

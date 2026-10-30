@@ -1,0 +1,61 @@
+{
+  "title": "ROS là gì? Công thức tỷ suất lợi nhuận trên doanh thu",
+  "description": "ROS (Return on sales (net profit margin)): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ suất lợi nhuận trên doanh thu",
+  "nameEn": "Return on sales (net profit margin)",
+  "symbol": "ROS",
+  "group": "Khả năng sinh lời",
+  "scope": "Doanh nghiệp",
+  "keyword": "tỷ suất lợi nhuận trên doanh thu",
+  "definition": "ROS (biên lợi nhuận ròng) cho biết mỗi đồng doanh thu thuần còn lại bao nhiêu đồng lợi nhuận sau thuế. Chỉ số phản ánh khả năng kiểm soát chi phí và sức định giá, hay dùng làm biến kết quả trong đề tài về quản trị vốn lưu động.",
+  "formula": "ROS = Lợi nhuận sau thuế / Doanh thu thuần",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    },
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Biên lợi nhuận hoạt động",
+      "formula": "Lợi nhuận thuần từ hoạt động kinh doanh (KQKD mã 30) / Doanh thu thuần",
+      "note": "Loại thu nhập khác, ổn định hơn qua các năm."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Chu kỳ chuyển đổi tiền",
+      "sign": "-",
+      "note": "Rút ngắn chu kỳ tiền gắn với lợi nhuận cao hơn (Deloof, 2003; Nguyen & Nguyen, 2018)."
+    }
+  ],
+  "mistakes": [
+    "Dùng doanh thu bán hàng (mã 01) thay vì doanh thu thuần (mã 10).",
+    "So sánh ROS giữa các ngành có cấu trúc chi phí khác nhau mà không kiểm soát ngành."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen ros = ni / rev if rev > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(ros = ifelse(rev > 0, ni / rev, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Deloof, M. (2003). Does working capital management affect profitability of Belgian firms? <em>Journal of Business Finance &amp; Accounting, 30</em>(3–4), 573–588.",
+      "doi": "10.1111/1468-5957.00008"
+    },
+    {
+      "text": "Nguyen, A. T. H., &amp; Nguyen, T. V. (2018). Working capital management and corporate profitability: Empirical evidence from Vietnam. <em>Foundations of Management, 10</em>(1), 195–206.",
+      "doi": "10.2478/fman-2018-0015"
+    }
+  ],
+  "related": [
+    "roa",
+    "bien-loi-nhuan-gop",
+    "chu-ky-chuyen-doi-tien",
+    "vong-quay-tong-tai-san"
+  ],
+  "calc": "ros"
+}

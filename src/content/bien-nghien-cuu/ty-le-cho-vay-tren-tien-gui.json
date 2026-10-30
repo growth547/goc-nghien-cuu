@@ -1,0 +1,68 @@
+{
+  "title": "Tỷ lệ cho vay trên tiền gửi (LDR): công thức và quy định",
+  "description": "LDR (Loan-to-deposit ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ cho vay trên tiền gửi",
+  "nameEn": "Loan-to-deposit ratio",
+  "symbol": "LDR",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "tỷ lệ cho vay trên tiền gửi",
+  "definition": "LDR so sánh dư nợ cho vay khách hàng với tiền gửi của khách hàng, đo rủi ro thanh khoản và mức độ ngân hàng dùng vốn huy động để cho vay. Tỷ lệ theo quy định tại Thông tư 22/2019/TT-NHNN có cách tính riêng (loại trừ một số khoản), khác LDR tính thô từ BCTC.",
+  "formula": "LDR = Cho vay khách hàng / Tiền gửi của khách hàng",
+  "items": [
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Cho vay khách hàng (dư nợ gộp, trước dự phòng)"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Tiền gửi của khách hàng"
+    }
+  ],
+  "variants": [
+    {
+      "name": "LDR theo quy định",
+      "formula": "Theo Thông tư 22/2019/TT-NHNN (tối đa 85% với ngân hàng thương mại)",
+      "note": "Lấy từ báo cáo của ngân hàng nếu có."
+    },
+    {
+      "name": "Cho vay trên tổng tài sản",
+      "formula": "Cho vay khách hàng / Tổng tài sản"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "+",
+      "note": "Cho vay là tài sản sinh lời cao nhất, nhưng rủi ro thanh khoản tăng (Dietrich & Wanzenried, 2011)."
+    },
+    {
+      "with": "Tạo thanh khoản",
+      "sign": "+",
+      "note": "Berger và Bouwman (2009)."
+    }
+  ],
+  "mistakes": [
+    "Dùng dư nợ sau dự phòng ở năm này, trước dự phòng ở năm khác.",
+    "Gọi LDR thô là tỷ lệ theo quy định."
+  ],
+  "stata": "gen ldr = loans / deposits",
+  "r": "df$ldr <- df$loans / df$deposits",
+  "references": [
+    {
+      "text": "Dietrich, A., &amp; Wanzenried, G. (2011). Determinants of bank profitability before and during the crisis: Evidence from Switzerland. <em>Journal of International Financial Markets, Institutions and Money, 21</em>(3), 307–327.",
+      "doi": "10.1016/j.intfin.2010.11.002"
+    },
+    {
+      "text": "Berger, A. N., &amp; Bouwman, C. H. S. (2009). Bank liquidity creation. <em>The Review of Financial Studies, 22</em>(9), 3779–3837.",
+      "doi": "10.1093/rfs/hhn104"
+    }
+  ],
+  "related": [
+    "tang-truong-tin-dung",
+    "nim",
+    "roa",
+    "von-chu-so-huu-tren-tong-tai-san"
+  ],
+  "calc": "ldr"
+}

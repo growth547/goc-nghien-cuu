@@ -1,0 +1,66 @@
+{
+  "title": "Tuổi doanh nghiệp: cách đo theo năm thành lập hoặc niêm yết",
+  "description": "AGE (Firm age): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tuổi doanh nghiệp",
+  "nameEn": "Firm age",
+  "symbol": "AGE",
+  "group": "Đặc điểm doanh nghiệp",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tuổi doanh nghiệp",
+  "definition": "Tuổi doanh nghiệp đại diện cho kinh nghiệm, uy tín và giai đoạn trong vòng đời. Thông tin lấy từ phần thông tin chung của thuyết minh BCTC hoặc báo cáo thường niên. Lý thuyết vòng đời của DeAngelo và cộng sự (2006) dùng lợi nhuận giữ lại trên vốn để đo giai đoạn, còn tuổi là thước đo bổ sung đơn giản.",
+  "formula": "AGE = ln(1 + Năm quan sát − Năm thành lập)",
+  "items": [
+    {
+      "statement": "Thuyết minh",
+      "label": "Năm thành lập hoặc năm cổ phần hoá (giấy chứng nhận đăng ký doanh nghiệp lần đầu)"
+    },
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Năm niêm yết trên HOSE, HNX hoặc UPCoM"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Tuổi niêm yết",
+      "formula": "ln(1 + Năm quan sát − Năm niêm yết)"
+    },
+    {
+      "name": "Giai đoạn vòng đời",
+      "formula": "Lợi nhuận giữ lại / Vốn chủ sở hữu (DeAngelo và cộng sự, 2006)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Chi trả cổ tức",
+      "sign": "+",
+      "note": "Doanh nghiệp trưởng thành ít cơ hội đầu tư, chi trả nhiều hơn."
+    },
+    {
+      "with": "Tăng trưởng",
+      "sign": "-",
+      "note": "Doanh nghiệp trẻ tăng trưởng nhanh hơn."
+    }
+  ],
+  "mistakes": [
+    "Lấy năm cổ phần hoá cho doanh nghiệp nhà nước cũ mà không nêu rõ, làm doanh nghiệp hoạt động 40 năm có tuổi 10.",
+    "Không lấy log, khiến biến tuổi lấn át các biến tỷ lệ."
+  ],
+  "stata": "gen age = ln(1 + year - founded)",
+  "r": "df$age <- log(1 + df$year - df$founded)",
+  "references": [
+    {
+      "text": "DeAngelo, H., DeAngelo, L., &amp; Stulz, R. M. (2006). Dividend policy and the earned/contributed capital mix: A test of the life-cycle theory. <em>Journal of Financial Economics, 81</em>(2), 227–254.",
+      "doi": "10.1016/j.jfineco.2005.07.005"
+    },
+    {
+      "text": "Fama, E. F., &amp; French, K. R. (2001). Disappearing dividends: Changing firm characteristics or lower propensity to pay? <em>Journal of Financial Economics, 60</em>(1), 3–43.",
+      "doi": "10.1016/S0304-405X(01)00038-1"
+    }
+  ],
+  "related": [
+    "quy-mo-doanh-nghiep",
+    "ty-le-chi-tra-co-tuc",
+    "tang-truong-doanh-thu",
+    "so-huu-nha-nuoc"
+  ]
+}

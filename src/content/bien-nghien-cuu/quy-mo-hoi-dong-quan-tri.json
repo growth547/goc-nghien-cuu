@@ -1,0 +1,57 @@
+{
+  "title": "Quy mô hội đồng quản trị: cách đo và dấu kỳ vọng",
+  "description": "BSIZE (Board size): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Quy mô hội đồng quản trị",
+  "nameEn": "Board size",
+  "symbol": "BSIZE",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "quy mô hội đồng quản trị",
+  "definition": "Số thành viên hội đồng quản trị (HĐQT) tại cuối năm tài chính. Yermack (1996) thấy doanh nghiệp có HĐQT nhỏ được định giá cao hơn vì phối hợp và giám sát hiệu quả hơn. Luật Doanh nghiệp 2020 quy định HĐQT công ty cổ phần có từ 3 đến 11 thành viên.",
+  "formula": "BSIZE = Số thành viên HĐQT cuối năm (hoặc ln của số này)",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Mục quản trị công ty: danh sách thành viên HĐQT"
+    },
+    {
+      "statement": "Báo cáo quản trị",
+      "label": "Báo cáo tình hình quản trị công ty năm"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Dạng log",
+      "formula": "ln(Số thành viên HĐQT)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Tobin's Q, ROA",
+      "sign": "-",
+      "note": "Yermack (1996); với ngân hàng, HĐQT lớn có thể giám sát tốt hơn."
+    }
+  ],
+  "mistakes": [
+    "Đếm cả thành viên đã miễn nhiệm trong năm.",
+    "Lấy số liệu từ trang web hiện tại thay vì báo cáo của năm quan sát."
+  ],
+  "stata": "gen bsize = ln(board_n)",
+  "r": "df$bsize <- log(df$board_n)",
+  "references": [
+    {
+      "text": "Yermack, D. (1996). Higher market valuation of companies with a small board of directors. <em>Journal of Financial Economics, 40</em>(2), 185–211.",
+      "doi": "10.1016/0304-405X(95)00844-5"
+    },
+    {
+      "text": "Fama, E. F., &amp; Jensen, M. C. (1983). Separation of ownership and control. <em>The Journal of Law and Economics, 26</em>(2), 301–325.",
+      "doi": "10.1086/467037"
+    }
+  ],
+  "related": [
+    "thanh-vien-hdqt-doc-lap",
+    "kiem-nhiem-ceo",
+    "nu-trong-hdqt",
+    "tobin-q"
+  ]
+}

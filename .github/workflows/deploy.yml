@@ -35,6 +35,8 @@ jobs:
       - run: node scripts/check-apa.mjs
       - run: node scripts/check-method.mjs
       - run: node scripts/check-data.mjs
+      - run: node scripts/check-variables.mjs
+      - run: node scripts/check-ratios.mjs
       - run: pnpm exec astro build
       - run: pnpm exec pagefind --site dist
       - uses: actions/configure-pages@v5

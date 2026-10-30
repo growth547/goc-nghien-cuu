@@ -1,0 +1,66 @@
+{
+  "title": "Market-to-book (P/B): công thức và cách dùng làm biến tăng trưởng",
+  "description": "MTB (Market-to-book ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Giá trị thị trường trên giá trị sổ sách",
+  "nameEn": "Market-to-book ratio",
+  "symbol": "MTB",
+  "group": "Định giá thị trường",
+  "scope": "Doanh nghiệp",
+  "keyword": "giá trị thị trường trên giá trị sổ sách",
+  "definition": "MTB so sánh giá trị vốn hoá thị trường với vốn chủ sở hữu trên sổ sách. Trong tài chính doanh nghiệp, MTB là đại diện cho cơ hội tăng trưởng; trong định giá tài sản, nghịch đảo của nó (book-to-market) là một nhân tố giải thích tỷ suất sinh lời cổ phiếu (Fama & French, 1992).",
+  "formula": "MTB = (Giá đóng cửa cuối năm × Số cổ phiếu lưu hành) / Vốn chủ sở hữu",
+  "items": [
+    {
+      "statement": "Thị trường",
+      "label": "Giá đóng cửa cuối năm × Số cổ phiếu đang lưu hành",
+      "note": "Lấy giá từ Sở giao dịch, số cổ phiếu từ thuyết minh vốn chủ sở hữu (trừ cổ phiếu quỹ)."
+    },
+    {
+      "statement": "CĐKT",
+      "code": "400",
+      "label": "Vốn chủ sở hữu"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Book-to-market",
+      "formula": "Vốn chủ sở hữu / Giá trị thị trường VCSH",
+      "note": "Fama và French (1992) dùng dạng log."
+    },
+    {
+      "name": "MTB tài sản",
+      "formula": "(Tổng tài sản − VCSH + Giá trị thị trường VCSH) / Tổng tài sản",
+      "note": "Rajan và Zingales (1995) dùng làm biến cơ hội tăng trưởng."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "Doanh nghiệp nhiều cơ hội tăng trưởng vay ít hơn (Rajan & Zingales, 1995)."
+    }
+  ],
+  "mistakes": [
+    "Không loại quan sát VCSH âm.",
+    "Dùng lợi ích cổ đông không kiểm soát trong mẫu số khi tử số chỉ là vốn hoá của công ty mẹ."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen mtb = price * shares / eq if eq > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(mtb = ifelse(eq > 0, price * shares / eq, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Fama, E. F., &amp; French, K. R. (1992). The cross-section of expected stock returns. <em>The Journal of Finance, 47</em>(2), 427–465.",
+      "doi": "10.1111/j.1540-6261.1992.tb04398.x"
+    },
+    {
+      "text": "Rajan, R. G., &amp; Zingales, L. (1995). What do we know about capital structure? Some evidence from international data. <em>The Journal of Finance, 50</em>(5), 1421–1460.",
+      "doi": "10.1111/j.1540-6261.1995.tb05184.x"
+    }
+  ],
+  "related": [
+    "tobin-q",
+    "tang-truong-doanh-thu",
+    "don-bay-tai-chinh",
+    "quy-mo-doanh-nghiep"
+  ],
+  "calc": "mtb"
+}

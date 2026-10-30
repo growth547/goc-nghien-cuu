@@ -1,0 +1,79 @@
+{
+  "title": "Tỷ lệ chi trả cổ tức: công thức từ BCTC và các biến thể",
+  "description": "PAYOUT (Dividend payout ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ chi trả cổ tức",
+  "nameEn": "Dividend payout ratio",
+  "symbol": "PAYOUT",
+  "group": "Cổ tức & đầu tư",
+  "scope": "Doanh nghiệp",
+  "keyword": "tỷ lệ chi trả cổ tức",
+  "definition": "Tỷ lệ chi trả cổ tức là phần lợi nhuận được trả cho cổ đông bằng tiền. Ở Việt Nam nhiều doanh nghiệp trả cổ tức bằng cổ phiếu, không xuất hiện trên báo cáo lưu chuyển tiền tệ, nên phải nêu rõ biến chỉ đo cổ tức tiền mặt. Fama và French (2001) dùng thêm biến giả có trả cổ tức hay không.",
+  "formula": "PAYOUT = Cổ tức, lợi nhuận đã trả cho chủ sở hữu (LCTT mã 36) / LNST",
+  "items": [
+    {
+      "statement": "LCTT",
+      "code": "36",
+      "label": "Cổ tức, lợi nhuận đã trả cho chủ sở hữu"
+    },
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Biến giả trả cổ tức",
+      "formula": "PAYER = 1 nếu trả cổ tức tiền mặt trong năm"
+    },
+    {
+      "name": "Cổ tức trên tài sản",
+      "formula": "Cổ tức tiền mặt / Tổng tài sản",
+      "note": "Tránh mẫu số âm khi doanh nghiệp lỗ."
+    },
+    {
+      "name": "Cổ tức công bố",
+      "formula": "Cổ tức mỗi cổ phiếu (từ nghị quyết ĐHĐCĐ) / EPS"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "+",
+      "note": "Fama và French (2001)."
+    },
+    {
+      "with": "Cơ hội tăng trưởng",
+      "sign": "-",
+      "note": "Doanh nghiệp tăng trưởng giữ lại lợi nhuận để đầu tư."
+    },
+    {
+      "with": "Lợi nhuận giữ lại / VCSH",
+      "sign": "+",
+      "note": "Lý thuyết vòng đời (DeAngelo và cộng sự, 2006)."
+    }
+  ],
+  "mistakes": [
+    "Cổ tức chi trong năm t thường là cổ tức của năm t−1: cần nói rõ quy ước thời gian.",
+    "Cộng cổ tức bằng cổ phiếu vào tử số dù không có dòng tiền."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen payout = abs(div) / ni if ni > 0\ngen payer = (abs(div) > 0) if !missing(div)",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(payout = ifelse(ni > 0, abs(div) / ni, NA), payer = as.integer(abs(div) > 0)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Fama, E. F., &amp; French, K. R. (2001). Disappearing dividends: Changing firm characteristics or lower propensity to pay? <em>Journal of Financial Economics, 60</em>(1), 3–43.",
+      "doi": "10.1016/S0304-405X(01)00038-1"
+    },
+    {
+      "text": "DeAngelo, H., DeAngelo, L., &amp; Stulz, R. M. (2006). Dividend policy and the earned/contributed capital mix: A test of the life-cycle theory. <em>Journal of Financial Economics, 81</em>(2), 227–254.",
+      "doi": "10.1016/j.jfineco.2005.07.005"
+    }
+  ],
+  "related": [
+    "tuoi-doanh-nghiep",
+    "nam-giu-tien-mat",
+    "roa",
+    "so-huu-tap-trung"
+  ],
+  "calc": "payout"
+}

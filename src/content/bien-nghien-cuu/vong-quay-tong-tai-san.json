@@ -1,0 +1,69 @@
+{
+  "title": "Vòng quay tổng tài sản: công thức và ý nghĩa trong khoá luận",
+  "description": "AT (Asset turnover): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Vòng quay tổng tài sản",
+  "nameEn": "Asset turnover",
+  "symbol": "AT",
+  "group": "Khả năng sinh lời",
+  "scope": "Doanh nghiệp",
+  "keyword": "vòng quay tổng tài sản",
+  "definition": "Vòng quay tổng tài sản đo số đồng doanh thu thuần tạo ra trên mỗi đồng tài sản, tức hiệu suất sử dụng tài sản. Đây là một thành phần của phân tích DuPont và là biến kiểm soát quen thuộc trong mô hình quản trị lợi nhuận và hiệu quả hoạt động.",
+  "formula": "AT = Doanh thu thuần / Tổng tài sản",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Vòng quay bình quân",
+      "formula": "Doanh thu thuần / [(Tổng tài sản đầu kỳ + cuối kỳ) / 2]"
+    },
+    {
+      "name": "Vòng quay tài sản cố định",
+      "formula": "Doanh thu thuần / TSCĐ hữu hình (CĐKT mã 221)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "ROA",
+      "sign": "+",
+      "note": "Theo đồng nhất thức DuPont, ROA = ROS × AT."
+    },
+    {
+      "with": "Tài sản hữu hình",
+      "sign": "-",
+      "note": "Ngành thâm dụng tài sản cố định có vòng quay thấp."
+    }
+  ],
+  "mistakes": [
+    "So sánh vòng quay giữa bán lẻ và bất động sản mà không đưa biến giả ngành.",
+    "Dùng số cuối kỳ khi doanh nghiệp vừa sáp nhập lớn trong năm, làm vòng quay giảm giả tạo."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen at = rev / ta",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(at = rev / ta) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Deloof, M. (2003). Does working capital management affect profitability of Belgian firms? <em>Journal of Business Finance &amp; Accounting, 30</em>(3–4), 573–588.",
+      "doi": "10.1111/1468-5957.00008"
+    },
+    {
+      "text": "Kothari, S. P., Leone, A. J., &amp; Wasley, C. E. (2005). Performance matched discretionary accrual measures. <em>Journal of Accounting and Economics, 39</em>(1), 163–197.",
+      "doi": "10.1016/j.jacceco.2004.11.002"
+    }
+  ],
+  "related": [
+    "roa",
+    "ros",
+    "tai-san-huu-hinh",
+    "bien-loi-nhuan-gop"
+  ],
+  "calc": "at"
+}

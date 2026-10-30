@@ -1,0 +1,65 @@
+{
+  "title": "Khả năng thanh toán nhanh: công thức (TSNH − tồn kho) / nợ NH",
+  "description": "QR (Quick ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Khả năng thanh toán nhanh",
+  "nameEn": "Quick ratio",
+  "symbol": "QR",
+  "group": "Thanh khoản & vốn lưu động",
+  "scope": "Doanh nghiệp",
+  "keyword": "khả năng thanh toán nhanh",
+  "definition": "Hệ số thanh toán nhanh loại hàng tồn kho, khoản kém thanh khoản nhất của tài sản ngắn hạn, để đo khả năng trả nợ ngắn hạn mà không phải bán hàng tồn kho. Phù hợp hơn hệ số hiện hành với ngành có tồn kho lớn.",
+  "formula": "QR = (Tài sản ngắn hạn − Hàng tồn kho) / Nợ ngắn hạn",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "100",
+      "label": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "140",
+      "label": "Hàng tồn kho"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "310",
+      "label": "Nợ ngắn hạn"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Hệ số thanh toán tức thời",
+      "formula": "(Tiền và tương đương tiền mã 110 + Đầu tư tài chính ngắn hạn mã 120) / Nợ ngắn hạn"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Nắm giữ tiền",
+      "sign": "+",
+      "note": "Tiền là thành phần chính của tử số."
+    }
+  ],
+  "mistakes": [
+    "Trừ hàng tồn kho gộp (mã 141) thay vì hàng tồn kho thuần (mã 140) đã trừ dự phòng.",
+    "Đưa cả CR và QR vào cùng mô hình, gây đa cộng tuyến."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen qr = (ca - inv) / cl if cl > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(qr = ifelse(cl > 0, (ca - inv) / cl, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Opler, T., Pinkowitz, L., Stulz, R., &amp; Williamson, R. (1999). The determinants and implications of corporate cash holdings. <em>Journal of Financial Economics, 52</em>(1), 3–46.",
+      "doi": "10.1016/S0304-405X(99)00003-3"
+    },
+    {
+      "text": "Deloof, M. (2003). Does working capital management affect profitability of Belgian firms? <em>Journal of Business Finance &amp; Accounting, 30</em>(3–4), 573–588.",
+      "doi": "10.1111/1468-5957.00008"
+    }
+  ],
+  "related": [
+    "kha-nang-thanh-toan-hien-hanh",
+    "nam-giu-tien-mat",
+    "chu-ky-chuyen-doi-tien",
+    "don-bay-tai-chinh"
+  ],
+  "calc": "qr"
+}

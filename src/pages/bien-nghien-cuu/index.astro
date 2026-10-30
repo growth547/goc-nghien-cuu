@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import ListFilter from "@/components/ListFilter.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import config from "@/config";
+import { VARIABLE_GROUPS } from "@/content.config";
+import { variableSetLd } from "@/utils/jsonLd";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const vars = (await getCollection("variables")).sort((a, b) =>
+  a.data.symbol.localeCompare(b.data.symbol, "vi")
+);
+const abs = (path: string) =>
+  new URL(getRelativeLocaleUrl(locale, path), Astro.site).href;
+const groups = VARIABLE_GROUPS.filter(g => vars.some(v => v.data.group === g));
+const calcHref = getRelativeLocaleUrl(locale, "cong-cu/tinh-chi-so-tai-chinh");
+const nCalc = vars.filter(v => v.data.calc).length;
+---
+
+<Layout
+  title={`Biến nghiên cứu cho đề tài dữ liệu thứ cấp: ROA, ROE, Z-score | ${config.site.title}`}
+  description="Biến nghiên cứu tài chính doanh nghiệp và ngân hàng: ROA, ROE, đòn bẩy, Tobin's Q, Altman Z, NIM, NPL, CAR. Công thức theo mã số BCTC, dấu kỳ vọng, code Stata và R."
+>
+  <JsonLd
+    slot="head"
+    data={variableSetLd(vars, abs("bien-nghien-cuu"), v =>
+      abs(`bien-nghien-cuu/${v.id}`)
+    )}
+  />
+  <Header />
+  <Breadcrumb current="Biến nghiên cứu" />
+  <Main
+    pageTitle="Biến nghiên cứu cho đề tài dữ liệu thứ cấp"
+    pageDesc={`${vars.length} biến hay dùng trong khoá luận tài chính doanh nghiệp, kế toán và ngân hàng. Mỗi trang ghi công thức theo đúng chỉ tiêu và mã số trên báo cáo tài chính (Thông tư 200/2014, Thông tư 49/2014), các biến thể, dấu kỳ vọng trong nghiên cứu trước, lỗi hay gặp, code Stata và R, kèm tài liệu đã kiểm tra DOI.`}
+  >
+    <p class="text-muted-foreground mb-6 max-w-3xl text-sm">
+      Đã có số liệu BCTC? <a
+        class="text-accent underline underline-offset-4"
+        href={calcHref}>Công cụ tính chỉ số tài chính</a
+      > tính sẵn {nCalc} biến trong thư viện cho nhiều doanh nghiệp, nhiều năm, xuất
+      file dữ liệu bảng và đoạn đo lường biến cho chương 3.
+    </p>
+    <ListFilter
+      label="Lọc biến"
+      placeholder="Lọc biến, ví dụ: ROA, đòn bẩy, nợ xấu, Tobin…"
+      total={vars.length}
+      unit="biến"
+    />
+    {
+      groups.map(g => (
+        <section class="mb-12" data-filter-group>
+          <h2 class="text-foreground mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-bold">
+            {g}
+            <span class="badge neutral">
+              {vars.filter(x => x.data.group === g).length}
+            </span>
+          </h2>
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {vars
+              .filter(x => x.data.group === g)
+              .map(x => (
+                <li
+                  data-filter-item
+                  data-filter-text={`${x.data.symbol} ${x.data.name} ${x.data.nameEn} ${x.data.keyword}`}
+                >
+                  <a
+                    href={getRelativeLocaleUrl(
+                      locale,
+                      `bien-nghien-cuu/${x.id}`
+                    )}
+                    class="card gap-1 p-4"
+                  >
+                    <span class="card-title">
+                      {x.data.symbol}{" "}
+                      <span class="text-muted-foreground font-normal">
+                        · {x.data.name}
+                      </span>
+                    </span>
+                    <span class="card-meta">{x.data.nameEn}</span>
+                    <span class="card-foot flex flex-wrap gap-2">
+                      <span class="badge neutral">{x.data.scope}</span>
+                      {x.data.calc && (
+                        <span class="badge">Tính trong công cụ</span>
+                      )}
+                    </span>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ))
+    }
+    <section class="border-border mt-6 max-w-3xl border-t pt-6 text-sm">
+      <h2 class="text-foreground mb-2 text-lg font-bold">
+        Lấy số liệu ở đâu cho hợp pháp
+      </h2>
+      <p class="text-muted-foreground">
+        Lấy báo cáo tài chính đã kiểm toán từ mục quan hệ nhà đầu tư trên
+        website của chính doanh nghiệp, hoặc tra trên HOSE, HNX, Uỷ ban Chứng
+        khoán Nhà nước rồi mở tệp gốc. Số liệu trong BCTC không thuộc đối tượng
+        bảo hộ quyền tác giả (khoản 3 Điều 15 Luật Sở hữu trí tuệ), nhưng điều
+        khoản sử dụng của các trang tổng hợp như FiinGroup, Vietstock, VNDIRECT,
+        SSI cấm sao chép, xây cơ sở dữ liệu hoặc phân phối lại. Đừng đăng lại dữ
+        liệu tải từ các nguồn đó.
+      </p>
+    </section>
+  </Main>
+  <Footer />
+</Layout>

@@ -1,0 +1,81 @@
+{
+  "title": "NIM là gì? Công thức biên lãi thuần của ngân hàng",
+  "description": "NIM (Net interest margin): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Biên lãi thuần",
+  "nameEn": "Net interest margin",
+  "symbol": "NIM",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "biên lãi thuần",
+  "definition": "NIM đo chênh lệch giữa thu nhập lãi và chi phí lãi trên tài sản sinh lãi, phản ánh hiệu quả hoạt động trung gian tín dụng. Mô hình đại lý (dealer model) của Ho và Saunders (1981) giải thích NIM bằng mức độ ngại rủi ro, quy mô giao dịch và cấu trúc thị trường.",
+  "formula": "NIM = Thu nhập lãi thuần / Tài sản sinh lãi bình quân",
+  "items": [
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Thu nhập lãi thuần"
+    },
+    {
+      "statement": "Thuyết minh",
+      "label": "Tài sản sinh lãi: tiền gửi và cho vay TCTD khác, cho vay khách hàng, chứng khoán đầu tư, mua nợ"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Tổng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Trên tổng tài sản",
+      "formula": "Thu nhập lãi thuần / Tổng tài sản bình quân",
+      "note": "Khi không đủ thuyết minh để tính tài sản sinh lãi; ghi rõ là xấp xỉ."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Rủi ro tín dụng",
+      "sign": "+",
+      "note": "Ngân hàng đòi bù rủi ro (Angbazo, 1997)."
+    },
+    {
+      "with": "Chi phí hoạt động",
+      "sign": "+",
+      "note": "Maudos và Fernández de Guevara (2004)."
+    },
+    {
+      "with": "Vốn chủ sở hữu/TTS",
+      "sign": "+",
+      "note": "Demirgüç-Kunt và Huizinga (1999)."
+    }
+  ],
+  "mistakes": [
+    "Dùng thu nhập lãi (gộp) thay cho thu nhập lãi thuần.",
+    "Tính tài sản sinh lãi theo cách khác nhau giữa các ngân hàng."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen nim = nii / ((ea + L.ea) / 2)",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(nim = ifelse(year - lag(year) == 1, nii / ((ea + lag(ea)) / 2), NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Ho, T. S. Y., &amp; Saunders, A. (1981). The determinants of bank interest margins: Theory and empirical evidence. <em>Journal of Financial and Quantitative Analysis, 16</em>(4), 581–600.",
+      "doi": "10.2307/2330377"
+    },
+    {
+      "text": "Angbazo, L. (1997). Commercial bank net interest margins, default risk, interest-rate risk, and off-balance sheet banking. <em>Journal of Banking &amp; Finance, 21</em>(1), 55–87.",
+      "doi": "10.1016/S0378-4266(96)00025-8"
+    },
+    {
+      "text": "Maudos, J., &amp; Fernández de Guevara, J. (2004). Factors explaining the interest margin in the banking sectors of the European Union. <em>Journal of Banking &amp; Finance, 28</em>(9), 2259–2281.",
+      "doi": "10.1016/j.jbankfin.2003.09.004"
+    },
+    {
+      "text": "Batten, J., &amp; Vo, X. V. (2019). Determinants of bank profitability: Evidence from Vietnam. <em>Emerging Markets Finance and Trade, 55</em>(6), 1417–1428.",
+      "doi": "10.1080/1540496X.2018.1524326"
+    }
+  ],
+  "related": [
+    "roa",
+    "ty-le-chi-phi-tren-thu-nhap",
+    "da-dang-hoa-thu-nhap",
+    "ty-le-no-xau"
+  ],
+  "calc": "nim"
+}

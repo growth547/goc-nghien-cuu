@@ -1,0 +1,66 @@
+{
+  "title": "Khả năng thanh toán hiện hành: công thức và cách dùng",
+  "description": "CR (Current ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Khả năng thanh toán hiện hành",
+  "nameEn": "Current ratio",
+  "symbol": "CR",
+  "group": "Thanh khoản & vốn lưu động",
+  "scope": "Doanh nghiệp",
+  "keyword": "khả năng thanh toán hiện hành",
+  "definition": "Hệ số thanh toán hiện hành so sánh tài sản ngắn hạn với nợ ngắn hạn, đo khả năng trả các nghĩa vụ trong vòng một năm. Trong khoá luận, chỉ số này thường là biến kiểm soát thanh khoản trong mô hình sinh lời, cấu trúc vốn hoặc nắm giữ tiền.",
+  "formula": "CR = Tài sản ngắn hạn / Nợ ngắn hạn",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "100",
+      "label": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "310",
+      "label": "Nợ ngắn hạn"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Vốn lưu động ròng trên tổng tài sản",
+      "formula": "(Tài sản ngắn hạn − Nợ ngắn hạn) / Tổng tài sản",
+      "note": "Chính là X1 trong chỉ số Z của Altman (1968)."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "Tài sản thanh khoản có thể thay thế cho vay nợ."
+    },
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "±",
+      "note": "Thanh khoản quá cao là tài sản nhàn rỗi, quá thấp là rủi ro."
+    }
+  ],
+  "mistakes": [
+    "Đọc CR cao là tốt trong mọi trường hợp: hàng tồn kho ứ đọng cũng làm CR tăng.",
+    "So sánh doanh nghiệp bất động sản (tồn kho dự án lớn) với doanh nghiệp dịch vụ mà không kiểm soát ngành."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen cr = ca / cl if cl > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(cr = ifelse(cl > 0, ca / cl, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Opler, T., Pinkowitz, L., Stulz, R., &amp; Williamson, R. (1999). The determinants and implications of corporate cash holdings. <em>Journal of Financial Economics, 52</em>(1), 3–46.",
+      "doi": "10.1016/S0304-405X(99)00003-3"
+    },
+    {
+      "text": "Altman, E. I. (1968). Financial ratios, discriminant analysis and the prediction of corporate bankruptcy. <em>The Journal of Finance, 23</em>(4), 589–609.",
+      "doi": "10.1111/j.1540-6261.1968.tb00843.x"
+    }
+  ],
+  "related": [
+    "kha-nang-thanh-toan-nhanh",
+    "nam-giu-tien-mat",
+    "chu-ky-chuyen-doi-tien",
+    "altman-z-score"
+  ],
+  "calc": "cr"
+}

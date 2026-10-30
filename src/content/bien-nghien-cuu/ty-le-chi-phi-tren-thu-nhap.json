@@ -1,0 +1,68 @@
+{
+  "title": "Tỷ lệ chi phí trên thu nhập (CIR): đo hiệu quả ngân hàng",
+  "description": "CIR (Cost-to-income ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ chi phí trên thu nhập",
+  "nameEn": "Cost-to-income ratio",
+  "symbol": "CIR",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "tỷ lệ chi phí trên thu nhập",
+  "definition": "CIR là chi phí hoạt động chia cho tổng thu nhập hoạt động, thước đo hiệu quả quản lý chi phí đơn giản nhất. CIR càng thấp, ngân hàng càng hiệu quả. Athanasoglou và cộng sự (2008) thấy quản lý chi phí là yếu tố quyết định lợi nhuận quan trọng.",
+  "formula": "CIR = Chi phí hoạt động / Tổng thu nhập hoạt động",
+  "items": [
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Chi phí hoạt động"
+    },
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Tổng thu nhập hoạt động"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Hiệu quả chi phí (SFA, DEA)",
+      "formula": "Điểm hiệu quả ước lượng bằng biên ngẫu nhiên hoặc phân tích bao dữ liệu",
+      "note": "Nguyen và Pham (2020) cho ngân hàng Việt Nam."
+    }
+  ],
+  "relations": [
+    {
+      "with": "ROA",
+      "sign": "-",
+      "note": "Athanasoglou và cộng sự (2008)."
+    },
+    {
+      "with": "Nợ xấu",
+      "sign": "+",
+      "note": "Berger và DeYoung (1997)."
+    }
+  ],
+  "mistakes": [
+    "Cộng chi phí dự phòng rủi ro tín dụng vào chi phí hoạt động.",
+    "Dùng thu nhập lãi thay cho tổng thu nhập hoạt động."
+  ],
+  "stata": "gen cir = abs(opex) / toi",
+  "r": "df$cir <- abs(df$opex) / df$toi",
+  "references": [
+    {
+      "text": "Athanasoglou, P. P., Brissimis, S. N., &amp; Delis, M. D. (2008). Bank-specific, industry-specific and macroeconomic determinants of bank profitability. <em>Journal of International Financial Markets, Institutions and Money, 18</em>(2), 121–136.",
+      "doi": "10.1016/j.intfin.2006.07.001"
+    },
+    {
+      "text": "Nguyen, P. H., &amp; Pham, D. T. B. (2020). Income diversification and cost-efficiency of Vietnamese banks. <em>International Journal of Managerial Finance, 16</em>(5), 623–643.",
+      "doi": "10.1108/IJMF-06-2019-0230"
+    },
+    {
+      "text": "Berger, A. N., &amp; DeYoung, R. (1997). Problem loans and cost efficiency in commercial banks. <em>Journal of Banking &amp; Finance, 21</em>(6), 849–870.",
+      "doi": "10.1016/S0378-4266(97)00003-4"
+    }
+  ],
+  "related": [
+    "nim",
+    "roa",
+    "da-dang-hoa-thu-nhap",
+    "ty-le-no-xau"
+  ],
+  "calc": "cir"
+}

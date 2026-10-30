@@ -1,0 +1,63 @@
+{
+  "title": "Chất lượng kiểm toán: biến giả Big 4 và cách lấy dữ liệu",
+  "description": "BIG4 (Audit quality (Big 4 auditor)): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chất lượng kiểm toán (Big 4)",
+  "nameEn": "Audit quality (Big 4 auditor)",
+  "symbol": "BIG4",
+  "group": "Chất lượng lợi nhuận & kiểm toán",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "chất lượng kiểm toán (big 4)",
+  "definition": "Biến giả Big 4 nhận giá trị 1 khi BCTC được kiểm toán bởi Deloitte, EY, KPMG hoặc PwC. DeAngelo (1981) lập luận công ty kiểm toán lớn có nhiều khách hàng hơn nên mất nhiều hơn nếu kiểm toán kém, do đó chất lượng kiểm toán cao hơn. Thông tin lấy từ trang báo cáo kiểm toán độc lập.",
+  "formula": "BIG4 = 1 nếu công ty kiểm toán là Deloitte, Ernst & Young, KPMG hoặc PwC Việt Nam; 0 nếu khác",
+  "items": [
+    {
+      "statement": "Thuyết minh",
+      "label": "Báo cáo kiểm toán độc lập: tên công ty kiểm toán ký báo cáo"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Big 4 mở rộng",
+      "formula": "Thêm các hãng thuộc mạng lưới quốc tế lớn (ví dụ Grant Thornton, BDO)",
+      "note": "Nêu rõ danh sách."
+    },
+    {
+      "name": "Nhiệm kỳ kiểm toán",
+      "formula": "Số năm liên tiếp cùng một công ty kiểm toán"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Dồn tích tuỳ ý",
+      "sign": "-",
+      "note": "Becker và cộng sự (1998)."
+    },
+    {
+      "with": "Quy mô doanh nghiệp",
+      "sign": "+",
+      "note": "Doanh nghiệp lớn chọn kiểm toán lớn; cần kiểm soát quy mô để tránh kết luận nhầm."
+    }
+  ],
+  "mistakes": [
+    "Lấy tên công ty kiểm toán của năm sau (báo cáo kiểm toán ký đầu năm sau cho năm trước) và gán lệch một năm.",
+    "Không kiểm soát nội sinh do doanh nghiệp tự chọn kiểm toán."
+  ],
+  "stata": "gen big4 = inlist(auditor, \"Deloitte\", \"EY\", \"KPMG\", \"PwC\")",
+  "r": "df$big4 <- as.integer(df$auditor %in% c(\"Deloitte\", \"EY\", \"KPMG\", \"PwC\"))",
+  "references": [
+    {
+      "text": "DeAngelo, L. E. (1981). Auditor size and audit quality. <em>Journal of Accounting and Economics, 3</em>(3), 183–199.",
+      "doi": "10.1016/0165-4101(81)90002-1"
+    },
+    {
+      "text": "Becker, C. L., DeFond, M. L., Jiambalvo, J., &amp; Subramanyam, K. R. (1998). The effect of audit quality on earnings management. <em>Contemporary Accounting Research, 15</em>(1), 1–24.",
+      "doi": "10.1111/j.1911-3846.1998.tb00547.x"
+    }
+  ],
+  "related": [
+    "y-kien-kiem-toan",
+    "quan-tri-loi-nhuan-jones-dieu-chinh",
+    "tong-dieu-chinh-don-tich",
+    "thanh-vien-hdqt-doc-lap"
+  ]
+}

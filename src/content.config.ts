@@ -260,4 +260,46 @@ const concepts = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, scales, templates, datasets, concepts };
+// Firm and bank research variables for secondary-data theses (/bien-nghien-cuu/), checked by
+// scripts/check-variables.mjs; `calc` is the variable id in src/tools/tinh-chi-so-tai-chinh.html.
+export const VARIABLE_GROUPS = [
+  "Khả năng sinh lời",
+  "Cấu trúc vốn",
+  "Thanh khoản & vốn lưu động",
+  "Rủi ro & kiệt quệ tài chính",
+  "Định giá thị trường",
+  "Đặc điểm doanh nghiệp",
+  "Cổ tức & đầu tư",
+  "Chất lượng lợi nhuận & kiểm toán",
+  "Quản trị công ty & sở hữu",
+  "Trách nhiệm xã hội & ESG",
+  "Ngân hàng",
+] as const;
+const variables = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/bien-nghien-cuu" }),
+  schema: z.object({
+    title: z.string().max(70),
+    description: z.string().min(110).max(170),
+    name: z.string(),
+    nameEn: z.string(),
+    symbol: z.string(),
+    group: z.enum(VARIABLE_GROUPS),
+    scope: z.enum(["Doanh nghiệp", "Ngân hàng", "Doanh nghiệp và ngân hàng"]),
+    keyword: z.string(),
+    definition: z.string(),
+    formula: z.string(),
+    items: z
+      .array(z.object({ statement: z.string(), code: z.string().optional(), label: z.string(), note: z.string().optional() }))
+      .min(1),
+    variants: z.array(z.object({ name: z.string(), formula: z.string(), note: z.string().optional() })).min(1),
+    relations: z.array(z.object({ with: z.string(), sign: z.enum(["+", "-", "±"]), note: z.string() })).min(1),
+    mistakes: z.array(z.string()).min(2),
+    stata: z.string(),
+    r: z.string(),
+    references: z.array(z.object({ text: z.string(), doi: z.string() })).min(2).max(4),
+    related: z.array(z.string()).default([]),
+    calc: z.string().optional(),
+  }),
+});
+
+export const collections = { posts, pages, scales, templates, datasets, concepts, variables };

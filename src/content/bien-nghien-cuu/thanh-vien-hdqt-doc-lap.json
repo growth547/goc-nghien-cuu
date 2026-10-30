@@ -1,0 +1,63 @@
+{
+  "title": "Thành viên HĐQT độc lập: cách đo tỷ lệ độc lập của HĐQT",
+  "description": "INDEP (Board independence): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ thành viên HĐQT độc lập",
+  "nameEn": "Board independence",
+  "symbol": "INDEP",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tỷ lệ thành viên hđqt độc lập",
+  "definition": "Tỷ lệ thành viên HĐQT độc lập trên tổng số thành viên. Theo lý thuyết đại diện, thành viên độc lập giám sát ban điều hành khách quan hơn (Fama & Jensen, 1983). Nghị định 155/2020/NĐ-CP quy định số thành viên độc lập tối thiểu của HĐQT công ty niêm yết theo quy mô HĐQT; tiêu chuẩn độc lập theo khoản 2 Điều 155 Luật Doanh nghiệp 2020.",
+  "formula": "INDEP = Số thành viên HĐQT độc lập / Tổng số thành viên HĐQT",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Danh sách HĐQT có ghi tư cách thành viên độc lập"
+    },
+    {
+      "statement": "Báo cáo quản trị",
+      "label": "Báo cáo tình hình quản trị công ty"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Thành viên không điều hành",
+      "formula": "Số thành viên không tham gia điều hành / Tổng số thành viên",
+      "note": "Rộng hơn độc lập theo luật."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Dồn tích tuỳ ý",
+      "sign": "-",
+      "note": "Giám sát tốt hơn hạn chế điều chỉnh lợi nhuận."
+    },
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "±",
+      "note": "Bằng chứng thực nghiệm không thống nhất; kết quả phụ thuộc cách định nghĩa độc lập."
+    }
+  ],
+  "mistakes": [
+    "Gộp thành viên không điều hành và thành viên độc lập.",
+    "Không nêu tiêu chuẩn độc lập đã dùng cho các năm trước 2021."
+  ],
+  "stata": "gen indep = indep_n / board_n",
+  "r": "df$indep <- df$indep_n / df$board_n",
+  "references": [
+    {
+      "text": "Fama, E. F., &amp; Jensen, M. C. (1983). Separation of ownership and control. <em>The Journal of Law and Economics, 26</em>(2), 301–325.",
+      "doi": "10.1086/467037"
+    },
+    {
+      "text": "Jensen, M. C., &amp; Meckling, W. H. (1976). Theory of the firm: Managerial behavior, agency costs and ownership structure. <em>Journal of Financial Economics, 3</em>(4), 305–360.",
+      "doi": "10.1016/0304-405X(76)90026-X"
+    }
+  ],
+  "related": [
+    "quy-mo-hoi-dong-quan-tri",
+    "kiem-nhiem-ceo",
+    "nu-trong-hdqt",
+    "quan-tri-loi-nhuan-jones-dieu-chinh"
+  ]
+}

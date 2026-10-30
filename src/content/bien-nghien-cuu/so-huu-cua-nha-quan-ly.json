@@ -1,0 +1,61 @@
+{
+  "title": "Sở hữu của nhà quản lý: cách đo và quan hệ phi tuyến",
+  "description": "MOWN (Managerial ownership): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Sở hữu của nhà quản lý",
+  "nameEn": "Managerial ownership",
+  "symbol": "MOWN",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "sở hữu của nhà quản lý",
+  "definition": "Tỷ lệ cổ phần do thành viên HĐQT, Ban giám đốc (và người có liên quan, nếu đề tài định nghĩa như vậy) nắm giữ. Theo Jensen và Meckling (1976), sở hữu của nhà quản lý gắn lợi ích của họ với cổ đông; Morck và cộng sự (1988) phát hiện quan hệ phi tuyến với Tobin's Q.",
+  "formula": "MOWN = Số cổ phần do HĐQT và Ban giám đốc sở hữu / Tổng số cổ phần đang lưu hành",
+  "items": [
+    {
+      "statement": "Báo cáo quản trị",
+      "label": "Giao dịch và sở hữu cổ phiếu của người nội bộ"
+    },
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Tỷ lệ sở hữu của thành viên HĐQT, Ban điều hành"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Dạng bậc hai",
+      "formula": "MOWN và MOWN² để kiểm định quan hệ phi tuyến (McConnell & Servaes, 1990)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Tobin's Q",
+      "sign": "±",
+      "note": "Tăng ở mức thấp, giảm ở mức trung bình do cố thủ (Morck và cộng sự, 1988)."
+    }
+  ],
+  "mistakes": [
+    "Không cộng người có liên quan khi định nghĩa có ghi.",
+    "Đưa MOWN² mà không tính điểm cực trị và kiểm tra nó nằm trong miền dữ liệu."
+  ],
+  "stata": "gen mown = mgr_sh / shares\ngen mown2 = mown^2",
+  "r": "df$mown <- df$mgr_sh / df$shares\ndf$mown2 <- df$mown^2",
+  "references": [
+    {
+      "text": "Jensen, M. C., &amp; Meckling, W. H. (1976). Theory of the firm: Managerial behavior, agency costs and ownership structure. <em>Journal of Financial Economics, 3</em>(4), 305–360.",
+      "doi": "10.1016/0304-405X(76)90026-X"
+    },
+    {
+      "text": "Morck, R., Shleifer, A., &amp; Vishny, R. W. (1988). Management ownership and market valuation: An empirical analysis. <em>Journal of Financial Economics, 20</em>, 293–315.",
+      "doi": "10.1016/0304-405X(88)90048-7"
+    },
+    {
+      "text": "McConnell, J. J., &amp; Servaes, H. (1990). Additional evidence on equity ownership and corporate value. <em>Journal of Financial Economics, 27</em>(2), 595–612.",
+      "doi": "10.1016/0304-405X(90)90069-C"
+    }
+  ],
+  "related": [
+    "so-huu-tap-trung",
+    "tobin-q",
+    "kiem-nhiem-ceo",
+    "so-huu-nha-nuoc"
+  ]
+}

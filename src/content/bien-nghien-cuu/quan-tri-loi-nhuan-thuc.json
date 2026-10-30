@@ -1,0 +1,92 @@
+{
+  "title": "Quản trị lợi nhuận thực (REM): mô hình Roychowdhury",
+  "description": "REM (Real earnings management): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Quản trị lợi nhuận thông qua hoạt động thực",
+  "nameEn": "Real earnings management",
+  "symbol": "REM",
+  "group": "Chất lượng lợi nhuận & kiểm toán",
+  "scope": "Doanh nghiệp",
+  "keyword": "quản trị lợi nhuận thông qua hoạt động thực",
+  "definition": "Quản trị lợi nhuận thực là việc thay đổi hoạt động kinh doanh (giảm giá bán, sản xuất thừa, cắt chi phí bán hàng và quản lý) để đạt mục tiêu lợi nhuận. Roychowdhury (2006) đo bằng phần dư bất thường của dòng tiền hoạt động, chi phí sản xuất và chi phí tuỳ ý, mỗi phần ước lượng theo ngành – năm.",
+  "formula": "REM = −Abn_CFO + Abn_PROD − Abn_DISX (mỗi thành phần là phần dư hồi quy theo ngành – năm)",
+  "items": [
+    {
+      "statement": "LCTT",
+      "code": "20",
+      "label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh"
+    },
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "KQKD",
+      "code": "11",
+      "label": "Giá vốn hàng bán"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "140",
+      "label": "Hàng tồn kho"
+    },
+    {
+      "statement": "KQKD",
+      "code": "25",
+      "label": "Chi phí bán hàng"
+    },
+    {
+      "statement": "KQKD",
+      "code": "26",
+      "label": "Chi phí quản lý doanh nghiệp"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "CFO bất thường",
+      "formula": "CFO_t/A_t−1 = α0 + α1(1/A_t−1) + β1(S_t/A_t−1) + β2(ΔS_t/A_t−1) + ε"
+    },
+    {
+      "name": "Chi phí sản xuất bất thường",
+      "formula": "PROD = Giá vốn + ΔHàng tồn kho; hồi quy theo S_t, ΔS_t, ΔS_t−1"
+    },
+    {
+      "name": "Chi phí tuỳ ý bất thường",
+      "formula": "DISX = Chi phí bán hàng + Chi phí QLDN; hồi quy theo S_t−1"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Quản trị lợi nhuận dồn tích",
+      "sign": "-",
+      "note": "Hai cách điều chỉnh có thể thay thế nhau khi một cách bị giám sát chặt."
+    }
+  ],
+  "mistakes": [
+    "Cộng ba thành phần mà không đổi dấu CFO và chi phí tuỳ ý bất thường.",
+    "Áp dụng cho ngành dịch vụ không có chi phí sản xuất."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen a1 = 1 / L.ta\ngen s = rev / L.ta\ngen ds = (rev - L.rev) / L.ta\ngen cfo_a = cfo / L.ta\n* phần dư theo ngành – năm, ví dụ cho CFO bất thường\nbysort industry year: egen n = count(cfo_a)\nstatsby, by(industry year) clear: reg cfo_a a1 s ds\n* ghép hệ số lại và tính abn_cfo = cfo_a - giá trị dự báo",
+  "r": "library(dplyr)\nabn <- df |>\n  group_by(industry, year) |>\n  filter(n() >= 10) |>\n  group_modify(~ mutate(.x, abn_cfo = resid(lm(cfo_a ~ a1 + s + ds, data = .x)))) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Roychowdhury, S. (2006). Earnings management through real activities manipulation. <em>Journal of Accounting and Economics, 42</em>(3), 335–370.",
+      "doi": "10.1016/j.jacceco.2006.01.002"
+    },
+    {
+      "text": "Dechow, P. M., &amp; Dichev, I. D. (2002). The quality of accruals and earnings: The role of accrual estimation errors. <em>The Accounting Review, 77</em>(s-1), 35–59.",
+      "doi": "10.2308/accr.2002.77.s-1.35"
+    }
+  ],
+  "related": [
+    "quan-tri-loi-nhuan-jones-dieu-chinh",
+    "tong-dieu-chinh-don-tich",
+    "kiem-toan-big4",
+    "ros"
+  ]
+}

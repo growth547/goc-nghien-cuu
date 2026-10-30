@@ -1,0 +1,63 @@
+{
+  "title": "Tăng trưởng tín dụng: công thức và quan hệ với rủi ro",
+  "description": "LG (Loan growth): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tăng trưởng tín dụng",
+  "nameEn": "Loan growth",
+  "symbol": "LG",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "tăng trưởng tín dụng",
+  "definition": "Tốc độ tăng dư nợ cho vay khách hàng so với năm trước. Foos và cộng sự (2010) thấy tăng trưởng tín dụng bất thường dẫn đến dự phòng cao hơn và lợi nhuận, vốn thấp hơn trong các năm sau. Ở Việt Nam, Ngân hàng Nhà nước giao hạn mức tăng trưởng tín dụng hàng năm nên biến này chịu tác động chính sách.",
+  "formula": "LG = (Cho vay KH năm t − năm t−1) / Cho vay KH năm t−1",
+  "items": [
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Cho vay khách hàng (dư nợ gộp, trước dự phòng)"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Tăng trưởng bất thường",
+      "formula": "LG của ngân hàng − Trung vị LG của toàn ngành trong năm (Foos và cộng sự, 2010)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Nợ xấu năm sau",
+      "sign": "+",
+      "note": "Foos và cộng sự (2010); Ho và cộng sự (2021) cho Việt Nam."
+    },
+    {
+      "with": "Z-score",
+      "sign": "-",
+      "note": "Le (2020)."
+    }
+  ],
+  "mistakes": [
+    "Tính tăng trưởng qua năm sáp nhập ngân hàng mà không xử lý.",
+    "Đặt LG cùng năm với NPL khi giả thuyết là tác động trễ."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen lg = (loans - L.loans) / L.loans",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(lg = ifelse(year - lag(year) == 1, loans / lag(loans) - 1, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Foos, D., Norden, L., &amp; Weber, M. (2010). Loan growth and riskiness of banks. <em>Journal of Banking &amp; Finance, 34</em>(12), 2929–2940.",
+      "doi": "10.1016/j.jbankfin.2010.06.007"
+    },
+    {
+      "text": "Ho, T. H., Le, T. D., &amp; Nguyen, D. T. (2021). Abnormal loan growth and bank risk-taking in Vietnam: A quantile regression approach. <em>Cogent Business &amp; Management, 8</em>(1), Article 1908004.",
+      "doi": "10.1080/23311975.2021.1908004"
+    },
+    {
+      "text": "Le, T. D. Q. (2020). The interrelationship among bank profitability, bank stability, and loan growth: Evidence from Vietnam. <em>Cogent Business &amp; Management, 7</em>(1), Article 1840488.",
+      "doi": "10.1080/23311975.2020.1840488"
+    }
+  ],
+  "related": [
+    "ty-le-no-xau",
+    "z-score-ngan-hang",
+    "ty-le-cho-vay-tren-tien-gui",
+    "chi-phi-du-phong-rui-ro-tin-dung"
+  ],
+  "calc": "lg"
+}

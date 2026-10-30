@@ -59,6 +59,39 @@ export function glossaryLd(concepts: CollectionEntry<"concepts">[], glossaryUrl:
   };
 }
 
+const VARIABLE_SET = "Biến nghiên cứu cho đề tài dữ liệu thứ cấp (Góc Nghiên Cứu)";
+
+/** Variable page (/bien-nghien-cuu/<slug>/): the variable as a DefinedTerm with its formula as termCode. */
+export function variableTermLd(v: CollectionEntry<"variables">, pageUrl: string, setUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "@id": `${pageUrl}#term`,
+    name: v.data.name,
+    alternateName: [v.data.symbol, v.data.nameEn],
+    termCode: v.data.symbol,
+    description: `${v.data.definition} Công thức: ${v.data.formula}`,
+    url: pageUrl,
+    inLanguage: "vi",
+    citation: v.data.references.map(r => `https://doi.org/${r.doi}`),
+    inDefinedTermSet: { "@type": "DefinedTermSet", "@id": `${setUrl}#variables`, name: VARIABLE_SET, url: setUrl },
+  };
+}
+
+/** Variable index (/bien-nghien-cuu/): every variable in one DefinedTermSet. `url(v)` returns its page URL. */
+export function variableSetLd(vars: CollectionEntry<"variables">[], setUrl: string, url: (v: CollectionEntry<"variables">) => string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": `${setUrl}#variables`,
+    name: VARIABLE_SET,
+    url: setUrl,
+    inLanguage: "vi",
+    publisher: ORG,
+    hasDefinedTerm: vars.map(v => ({ "@type": "DefinedTerm", "@id": `${url(v)}#term`, name: v.data.name, termCode: v.data.symbol, alternateName: v.data.nameEn, url: url(v) })),
+  };
+}
+
 /** Data index (/du-lieu/): every indicator as a Dataset in one DataCatalog. `url(d)` returns its page URL. */
 export function dataCatalogLd(datasets: CollectionEntry<"datasets">[], catalogUrl: string, url: (d: CollectionEntry<"datasets">) => string) {
   return {

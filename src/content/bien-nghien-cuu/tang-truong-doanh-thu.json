@@ -1,0 +1,64 @@
+{
+  "title": "Tăng trưởng doanh thu: công thức và cách xử lý năm thiếu",
+  "description": "GROWTH (Sales growth): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tăng trưởng doanh thu",
+  "nameEn": "Sales growth",
+  "symbol": "GROWTH",
+  "group": "Đặc điểm doanh nghiệp",
+  "scope": "Doanh nghiệp",
+  "keyword": "tăng trưởng doanh thu",
+  "definition": "Tốc độ tăng doanh thu thuần so với năm trước, đại diện cho cơ hội tăng trưởng dựa trên số liệu kế toán. Titman và Wessels (1988) dùng tăng trưởng làm một trong các yếu tố quyết định cấu trúc vốn; biến này cũng là thành phần của mô hình quản trị lợi nhuận Jones điều chỉnh.",
+  "formula": "GROWTH = (Doanh thu thuần năm t − Doanh thu thuần năm t−1) / Doanh thu thuần năm t−1",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Tăng trưởng tổng tài sản",
+      "formula": "(TTS_t − TTS_t−1) / TTS_t−1"
+    },
+    {
+      "name": "Dạng log",
+      "formula": "ln(Doanh thu_t) − ln(Doanh thu_t−1)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "Theo lý thuyết đại diện; ở Việt Nam kết quả không thống nhất (Vo, 2017)."
+    },
+    {
+      "with": "Nắm giữ tiền",
+      "sign": "+",
+      "note": "Opler và cộng sự (1999)."
+    }
+  ],
+  "mistakes": [
+    "Tính tăng trưởng giữa hai năm không liền nhau khi dữ liệu thiếu một năm.",
+    "Giữ tăng trưởng hàng nghìn phần trăm của doanh nghiệp mới thành lập: winsorize hoặc loại."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen growth = (rev - L.rev) / L.rev if L.rev > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(growth = ifelse(year - lag(year) == 1 & lag(rev) > 0, rev / lag(rev) - 1, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Titman, S., &amp; Wessels, R. (1988). The determinants of capital structure choice. <em>The Journal of Finance, 43</em>(1), 1–19.",
+      "doi": "10.1111/j.1540-6261.1988.tb02585.x"
+    },
+    {
+      "text": "Vo, X. V. (2017). Determinants of capital structure in emerging markets: Evidence from Vietnam. <em>Research in International Business and Finance, 40</em>, 105–113.",
+      "doi": "10.1016/j.ribaf.2016.12.001"
+    }
+  ],
+  "related": [
+    "quy-mo-doanh-nghiep",
+    "gia-tri-thi-truong-tren-so-sach",
+    "don-bay-tai-chinh",
+    "quan-tri-loi-nhuan-jones-dieu-chinh"
+  ],
+  "calc": "growth"
+}

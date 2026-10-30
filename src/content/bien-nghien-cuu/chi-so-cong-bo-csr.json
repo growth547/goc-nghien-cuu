@@ -1,0 +1,70 @@
+{
+  "title": "Chỉ số công bố CSR: xây bằng phân tích nội dung báo cáo",
+  "description": "CSRD (CSR disclosure index): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chỉ số công bố thông tin trách nhiệm xã hội",
+  "nameEn": "CSR disclosure index",
+  "symbol": "CSRD",
+  "group": "Trách nhiệm xã hội & ESG",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "chỉ số công bố thông tin trách nhiệm xã hội",
+  "definition": "Chỉ số công bố CSR được xây bằng phân tích nội dung báo cáo thường niên hoặc báo cáo phát triển bền vững theo một danh mục mục tin (thường dựa trên GRI và Phụ lục IV Thông tư 96/2020/TT-BTC). Mỗi mục được chấm 1 nếu có công bố, 0 nếu không; chỉ số là tỷ lệ mục được công bố.",
+  "formula": "CSRD = Số mục được công bố / Tổng số mục trong danh mục",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Mục báo cáo tác động môi trường và xã hội (Phụ lục IV Thông tư 96/2020/TT-BTC)"
+    },
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Báo cáo phát triển bền vững (nếu có)"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Có trọng số",
+      "formula": "0 = không công bố; 1 = định tính; 2 = định lượng; 3 = định lượng có so sánh"
+    },
+    {
+      "name": "Biến giả khởi đầu",
+      "formula": "1 nếu doanh nghiệp lần đầu phát hành báo cáo CSR riêng (Dhaliwal và cộng sự, 2011)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "+",
+      "note": "Tran và Tran (2022) cho doanh nghiệp Việt Nam."
+    },
+    {
+      "with": "Chi phí vốn",
+      "sign": "-",
+      "note": "Dhaliwal và cộng sự (2011)."
+    }
+  ],
+  "mistakes": [
+    "Không công bố danh mục mục tin và không kiểm tra độ tin cậy giữa hai người chấm.",
+    "Gọi chỉ số công bố là \"hiệu quả CSR\"."
+  ],
+  "stata": "egen csrd = rowmean(item1-item30)",
+  "r": "df$csrd <- rowMeans(df[, paste0(\"item\", 1:30)])",
+  "references": [
+    {
+      "text": "Dhaliwal, D. S., Li, O. Z., Tsang, A., &amp; Yang, Y. G. (2011). Voluntary nonfinancial disclosure and the cost of equity capital: The initiation of corporate social responsibility reporting. <em>The Accounting Review, 86</em>(1), 59–100.",
+      "doi": "10.2308/accr.00000005"
+    },
+    {
+      "text": "Tran, N. M., &amp; Tran, M. H. (2022). Corporate social responsibility disclosure and firm performance: Evidence from Vietnam. <em>Investment Management and Financial Innovations, 19</em>(3), 49–59.",
+      "doi": "10.21511/imfi.19(3).2022.05"
+    },
+    {
+      "text": "Waddock, S. A., &amp; Graves, S. B. (1997). The corporate social performance–financial performance link. <em>Strategic Management Journal, 18</em>(4), 303–319.",
+      "doi": "10.1002/(SICI)1097-0266(199704)18:4<303::AID-SMJ869>3.0.CO;2-G"
+    }
+  ],
+  "related": [
+    "diem-esg",
+    "roa",
+    "tobin-q",
+    "quy-mo-doanh-nghiep"
+  ]
+}

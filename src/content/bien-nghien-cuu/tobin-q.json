@@ -1,0 +1,89 @@
+{
+  "title": "Tobin's Q là gì? Công thức xấp xỉ từ BCTC và giá cổ phiếu",
+  "description": "Q (Tobin's Q): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tobin's Q",
+  "nameEn": "Tobin's Q",
+  "symbol": "Q",
+  "group": "Định giá thị trường",
+  "scope": "Doanh nghiệp",
+  "keyword": "tobin's q",
+  "definition": "Tobin's Q là tỷ số giữa giá trị thị trường của doanh nghiệp và giá trị thay thế tài sản. Q lớn hơn 1 cho thấy thị trường định giá doanh nghiệp cao hơn giá trị tài sản, thường được hiểu là cơ hội tăng trưởng hoặc giá trị tạo thêm của quản trị. Do giá thay thế khó đo, nghiên cứu dùng công thức xấp xỉ của Chung và Pruitt (1994).",
+  "formula": "Q = (Giá trị thị trường VCSH + Nợ phải trả) / Tổng tài sản",
+  "items": [
+    {
+      "statement": "Thị trường",
+      "label": "Giá đóng cửa cuối năm × Số cổ phiếu đang lưu hành",
+      "note": "Lấy giá từ Sở giao dịch, số cổ phiếu từ thuyết minh vốn chủ sở hữu (trừ cổ phiếu quỹ)."
+    },
+    {
+      "statement": "CĐKT",
+      "code": "300",
+      "label": "Nợ phải trả"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Chung và Pruitt (1994)",
+      "formula": "(Giá trị thị trường cổ phiếu + Giá trị sổ sách nợ ngắn hạn − TSNH + Hàng tồn kho + Nợ dài hạn) / Tổng tài sản"
+    },
+    {
+      "name": "Lindenberg và Ross (1981)",
+      "formula": "Giá trị thị trường / Giá thay thế tài sản (ước lượng lại tài sản cố định theo giá hiện hành)",
+      "note": "Chính xác hơn nhưng cần dữ liệu không có trong BCTC Việt Nam."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Sở hữu của nhà quản lý",
+      "sign": "±",
+      "note": "Quan hệ phi tuyến (Morck và cộng sự, 1988; McConnell & Servaes, 1990)."
+    },
+    {
+      "with": "Quy mô hội đồng quản trị",
+      "sign": "-",
+      "note": "Yermack (1996)."
+    },
+    {
+      "with": "Đòn bẩy",
+      "sign": "±",
+      "note": "Bằng chứng ở Việt Nam: Dang và Do (2021)."
+    }
+  ],
+  "mistakes": [
+    "Lấy giá cổ phiếu trung bình năm cho năm này, giá cuối năm cho năm khác.",
+    "Dùng vốn điều lệ chia mệnh giá làm số cổ phiếu mà quên trừ cổ phiếu quỹ.",
+    "Gọi chỉ số giá thị trường trên giá trị sổ sách (P/B) là Tobin's Q."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen mve = price * shares\ngen q = (mve + tl) / ta",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(mve = price * shares, q = (mve + tl) / ta) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Chung, K. H., &amp; Pruitt, S. W. (1994). A simple approximation of Tobin’s q. <em>Financial Management, 23</em>(3), 70–74.",
+      "doi": "10.2307/3665623"
+    },
+    {
+      "text": "Lindenberg, E. B., &amp; Ross, S. A. (1981). Tobin’s q ratio and industrial organization. <em>The Journal of Business, 54</em>(1), 1–32.",
+      "doi": "10.1086/296120"
+    },
+    {
+      "text": "Morck, R., Shleifer, A., &amp; Vishny, R. W. (1988). Management ownership and market valuation: An empirical analysis. <em>Journal of Financial Economics, 20</em>, 293–315.",
+      "doi": "10.1016/0304-405X(88)90048-7"
+    },
+    {
+      "text": "Dang, T. D., &amp; Do, T. V. T. (2021). Does capital structure affect firm value in Vietnam? <em>Investment Management and Financial Innovations, 18</em>(1), 33–41.",
+      "doi": "10.21511/imfi.18(1).2021.03"
+    }
+  ],
+  "related": [
+    "gia-tri-thi-truong-tren-so-sach",
+    "so-huu-cua-nha-quan-ly",
+    "quy-mo-hoi-dong-quan-tri",
+    "roa"
+  ],
+  "calc": "q"
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Tỷ lệ nắm giữ tiền mặt: công thức và các cách đo",
+  "description": "CASH (Cash holdings): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ nắm giữ tiền",
+  "nameEn": "Cash holdings",
+  "symbol": "CASH",
+  "group": "Thanh khoản & vốn lưu động",
+  "scope": "Doanh nghiệp",
+  "keyword": "tỷ lệ nắm giữ tiền",
+  "definition": "Tỷ lệ nắm giữ tiền đo phần tài sản giữ dưới dạng tiền và tương đương tiền. Opler và cộng sự (1999) giải thích việc giữ tiền bằng động cơ giao dịch, phòng ngừa và chi phí đại diện; đây là biến phụ thuộc phổ biến trong đề tài quản trị tài chính ngắn hạn.",
+  "formula": "CASH = Tiền và các khoản tương đương tiền / Tổng tài sản",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "110",
+      "label": "Tiền và các khoản tương đương tiền"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Cách đo của Opler và cộng sự (1999)",
+      "formula": "(Tiền + Đầu tư tài chính ngắn hạn) / (Tổng tài sản − Tiền − Đầu tư tài chính ngắn hạn)"
+    },
+    {
+      "name": "Dạng log",
+      "formula": "ln(Tiền / Tài sản ròng)",
+      "note": "Giảm độ lệch phân phối."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "Opler và cộng sự (1999), Bates và cộng sự (2009)."
+    },
+    {
+      "with": "Cơ hội tăng trưởng",
+      "sign": "+",
+      "note": "Doanh nghiệp nhiều cơ hội đầu tư giữ nhiều tiền để tránh thiếu vốn."
+    },
+    {
+      "with": "Quy mô",
+      "sign": "-",
+      "note": "Lợi thế quy mô trong quản lý tiền."
+    }
+  ],
+  "mistakes": [
+    "Bỏ tiền gửi có kỳ hạn trên 3 tháng (nằm ở mã 123) dù về kinh tế vẫn là tiền dự trữ: nêu rõ lựa chọn.",
+    "Dùng số dư tiền cuối năm của doanh nghiệp có tính thời vụ mà không bàn đến hạn chế này."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen cash_ta = cash / ta\ngen cash_opler = (cash + sti) / (ta - cash - sti)",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(cash_ta = cash / ta, cash_opler = (cash + sti) / (ta - cash - sti)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Opler, T., Pinkowitz, L., Stulz, R., &amp; Williamson, R. (1999). The determinants and implications of corporate cash holdings. <em>Journal of Financial Economics, 52</em>(1), 3–46.",
+      "doi": "10.1016/S0304-405X(99)00003-3"
+    },
+    {
+      "text": "Bates, T. W., Kahle, K. M., &amp; Stulz, R. M. (2009). Why do U.S. firms hold so much more cash than they used to? <em>The Journal of Finance, 64</em>(5), 1985–2021.",
+      "doi": "10.1111/j.1540-6261.2009.01492.x"
+    }
+  ],
+  "related": [
+    "kha-nang-thanh-toan-nhanh",
+    "kha-nang-thanh-toan-hien-hanh",
+    "don-bay-tai-chinh",
+    "ty-le-chi-tra-co-tuc"
+  ],
+  "calc": "cash"
+}

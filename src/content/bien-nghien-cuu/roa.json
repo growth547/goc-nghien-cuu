@@ -1,0 +1,98 @@
+{
+  "title": "ROA là gì? Công thức tính ROA từ báo cáo tài chính",
+  "description": "ROA (Return on assets): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ suất sinh lời trên tổng tài sản",
+  "nameEn": "Return on assets",
+  "symbol": "ROA",
+  "group": "Khả năng sinh lời",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tỷ suất sinh lời trên tổng tài sản",
+  "definition": "ROA cho biết mỗi đồng tài sản tạo ra bao nhiêu đồng lợi nhuận sau thuế. Đây là thước đo hiệu quả hoạt động được dùng nhiều nhất trong khoá luận tài chính doanh nghiệp và ngân hàng, thường làm biến phụ thuộc khi nghiên cứu tác động của cấu trúc vốn, quản trị công ty hay sở hữu lên kết quả kinh doanh.",
+  "formula": "ROA = Lợi nhuận sau thuế / Tổng tài sản",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    },
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Lợi nhuận sau thuế"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Tổng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "ROA bình quân",
+      "formula": "LNST / [(Tổng tài sản đầu kỳ + cuối kỳ) / 2]",
+      "note": "Phổ biến trong nghiên cứu ngân hàng (Athanasoglou và cộng sự, 2008). Mất quan sát năm đầu."
+    },
+    {
+      "name": "ROA trước thuế và lãi vay",
+      "formula": "(LN trước thuế + Chi phí lãi vay) / Tổng tài sản",
+      "note": "Loại ảnh hưởng của thuế và cấu trúc vốn, hợp khi biến giải thích là đòn bẩy."
+    },
+    {
+      "name": "ROA của cổ đông công ty mẹ",
+      "formula": "LNST của cổ đông công ty mẹ (KQKD mã 61) / Tổng tài sản",
+      "note": "Dùng khi BCTC hợp nhất có lợi ích cổ đông không kiểm soát lớn."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy tài chính",
+      "sign": "-",
+      "note": "Lý thuyết trật tự phân hạng: doanh nghiệp lãi nhiều dùng ít nợ (Myers & Majluf, 1984); đa số nghiên cứu Việt Nam cũng thấy quan hệ âm (Vo, 2017)."
+    },
+    {
+      "with": "Quy mô",
+      "sign": "±",
+      "note": "Lợi thế quy mô làm ROA tăng, nhưng doanh nghiệp rất lớn có thể kém linh hoạt."
+    },
+    {
+      "with": "Vốn chủ sở hữu/tổng tài sản (ngân hàng)",
+      "sign": "+",
+      "note": "Ngân hàng nhiều vốn hơn có chi phí vốn thấp hơn và sinh lời cao hơn (Batten & Vo, 2019)."
+    }
+  ],
+  "mistakes": [
+    "Lấy LNST của cổ đông công ty mẹ chia cho tổng tài sản hợp nhất (gồm cả phần của cổ đông không kiểm soát) mà không nói rõ trong chương 3.",
+    "Trộn BCTC riêng và BCTC hợp nhất giữa các doanh nghiệp hoặc giữa các năm.",
+    "Không xử lý giá trị ngoại lai: ROA của doanh nghiệp tài sản rất nhỏ có thể lên hàng trăm phần trăm. Nên winsorize 1% hai đầu."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen roa = ni / ta\n* bình quân đầu kỳ, cuối kỳ (chỉ khi có năm liền trước)\ngen roa_avg = ni / ((ta + L.ta) / 2)\nwinsor2 roa, cuts(1 99) replace",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(roa = ni / ta,\n         roa_avg = ifelse(year - lag(year) == 1, ni / ((ta + lag(ta)) / 2), NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Athanasoglou, P. P., Brissimis, S. N., &amp; Delis, M. D. (2008). Bank-specific, industry-specific and macroeconomic determinants of bank profitability. <em>Journal of International Financial Markets, Institutions and Money, 18</em>(2), 121–136.",
+      "doi": "10.1016/j.intfin.2006.07.001"
+    },
+    {
+      "text": "Myers, S. C., &amp; Majluf, N. S. (1984). Corporate financing and investment decisions when firms have information that investors do not have. <em>Journal of Financial Economics, 13</em>(2), 187–221.",
+      "doi": "10.1016/0304-405X(84)90023-0"
+    },
+    {
+      "text": "Vo, X. V. (2017). Determinants of capital structure in emerging markets: Evidence from Vietnam. <em>Research in International Business and Finance, 40</em>, 105–113.",
+      "doi": "10.1016/j.ribaf.2016.12.001"
+    },
+    {
+      "text": "Batten, J., &amp; Vo, X. V. (2019). Determinants of bank profitability: Evidence from Vietnam. <em>Emerging Markets Finance and Trade, 55</em>(6), 1417–1428.",
+      "doi": "10.1080/1540496X.2018.1524326"
+    }
+  ],
+  "related": [
+    "roe",
+    "ros",
+    "don-bay-tai-chinh",
+    "z-score-ngan-hang"
+  ],
+  "calc": "roa"
+}

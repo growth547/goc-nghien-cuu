@@ -1,0 +1,82 @@
+{
+  "title": "Z-score ngân hàng: công thức đo rủi ro vỡ nợ và ổn định",
+  "description": "ZSCORE (Bank Z-score): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Z-score ngân hàng",
+  "nameEn": "Bank Z-score",
+  "symbol": "ZSCORE",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "z-score ngân hàng",
+  "definition": "Z-score đo số độ lệch chuẩn mà ROA phải giảm để vốn chủ sở hữu bị xoá hết, dựa trên khái niệm an toàn trước tiên của Roy (1952). Z-score càng cao, ngân hàng càng ổn định. Đây là biến phụ thuộc phổ biến nhất trong nghiên cứu rủi ro và ổn định ngân hàng (Laeven & Levine, 2009). Khác hoàn toàn với Z-score của Altman.",
+  "formula": "ZSCORE = (ROA + Vốn chủ sở hữu/Tổng tài sản) / σ(ROA)",
+  "items": [
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Lợi nhuận sau thuế"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Tổng tài sản"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Vốn chủ sở hữu"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Cửa sổ trượt 3 năm",
+      "formula": "σ(ROA) tính trên năm t, t−1, t−2",
+      "note": "Lepetit và Strobel (2013) so sánh các cách tính theo thời gian."
+    },
+    {
+      "name": "Dạng log",
+      "formula": "ln(ZSCORE)",
+      "note": "Z-score lệch phải mạnh (Laeven & Levine, 2009)."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Tỷ lệ an toàn vốn",
+      "sign": "+",
+      "note": "Nguyen (2021) cho ngân hàng Việt Nam."
+    },
+    {
+      "with": "Tăng trưởng tín dụng",
+      "sign": "-",
+      "note": "Le (2020)."
+    }
+  ],
+  "mistakes": [
+    "Tính σ(ROA) trên toàn giai đoạn rồi dùng như biến thay đổi theo năm.",
+    "Gọi là Altman Z-score.",
+    "Lấy ROA dạng phần trăm nhưng VCSH/TTS dạng thập phân."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen roa = ni / ta\ngen eqta = eq / ta\nrangestat (sd) sd_roa = roa, interval(year -2 0) by(id)\nrangestat (count) n_roa = roa, interval(year -2 0) by(id)\ngen zscore = (roa + eqta) / sd_roa if n_roa == 3\ngen ln_z = ln(zscore)",
+  "r": "library(dplyr)\nlibrary(slider)\ndf <- df |>\n  group_by(firm) |> arrange(year, .by_group = TRUE) |>\n  mutate(roa = ni / ta, eqta = eq / ta,\n         sd_roa = slide_index_dbl(roa, year, sd, .before = 2, .complete = TRUE),\n         zscore = (roa + eqta) / sd_roa) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Laeven, L., &amp; Levine, R. (2009). Bank governance, regulation and risk taking. <em>Journal of Financial Economics, 93</em>(2), 259–275.",
+      "doi": "10.1016/j.jfineco.2008.09.003"
+    },
+    {
+      "text": "Lepetit, L., &amp; Strobel, F. (2013). Bank insolvency risk and time-varying Z-score measures. <em>Journal of International Financial Markets, Institutions and Money, 25</em>, 73–87.",
+      "doi": "10.1016/j.intfin.2013.01.004"
+    },
+    {
+      "text": "Roy, A. D. (1952). Safety first and the holding of assets. <em>Econometrica, 20</em>(3), 431–449.",
+      "doi": "10.2307/1907413"
+    },
+    {
+      "text": "Le, T. D. Q. (2020). The interrelationship among bank profitability, bank stability, and loan growth: Evidence from Vietnam. <em>Cogent Business &amp; Management, 7</em>(1), Article 1840488.",
+      "doi": "10.1080/23311975.2020.1840488"
+    }
+  ],
+  "related": [
+    "roa",
+    "von-chu-so-huu-tren-tong-tai-san",
+    "ty-le-an-toan-von",
+    "tang-truong-tin-dung"
+  ],
+  "calc": "zbank"
+}

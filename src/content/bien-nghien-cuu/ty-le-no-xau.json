@@ -1,0 +1,73 @@
+{
+  "title": "Tỷ lệ nợ xấu (NPL): công thức và nguồn số liệu trong thuyết minh",
+  "description": "NPL (Non-performing loan ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ nợ xấu",
+  "nameEn": "Non-performing loan ratio",
+  "symbol": "NPL",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "tỷ lệ nợ xấu",
+  "definition": "Tỷ lệ nợ xấu là dư nợ nhóm 3 (dưới tiêu chuẩn), nhóm 4 (nghi ngờ) và nhóm 5 (có khả năng mất vốn) trên tổng dư nợ cho vay khách hàng, theo quy định phân loại nợ của Ngân hàng Nhà nước (Thông tư 11/2021/TT-NHNN, trước đó Thông tư 02/2013/TT-NHNN). Đây là thước đo rủi ro tín dụng chính.",
+  "formula": "NPL = (Nợ nhóm 3 + nhóm 4 + nhóm 5) / Tổng dư nợ cho vay khách hàng",
+  "items": [
+    {
+      "statement": "Thuyết minh",
+      "label": "Phân tích chất lượng nợ cho vay theo nhóm nợ"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Cho vay khách hàng (dư nợ gộp, trước dự phòng)"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Dự phòng trên dư nợ",
+      "formula": "Dự phòng rủi ro cho vay khách hàng / Cho vay khách hàng",
+      "note": "Thước đo rủi ro tín dụng thay thế."
+    },
+    {
+      "name": "Nợ xấu mở rộng",
+      "formula": "Cộng thêm trái phiếu VAMC và nợ đã bán chưa xử lý",
+      "note": "Cần thuyết minh chi tiết."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả chi phí",
+      "sign": "-",
+      "note": "Giả thuyết quản lý kém (Berger & DeYoung, 1997)."
+    },
+    {
+      "with": "Tăng trưởng tín dụng năm trước",
+      "sign": "+",
+      "note": "Foos và cộng sự (2010); Dao và cộng sự (2020) cho Việt Nam."
+    }
+  ],
+  "mistakes": [
+    "Lấy nợ xấu của BCTC riêng chia cho dư nợ hợp nhất.",
+    "Bỏ qua thay đổi quy định phân loại nợ giữa các năm."
+  ],
+  "stata": "gen npl_r = npl / loans",
+  "r": "df$npl_r <- df$npl / df$loans",
+  "references": [
+    {
+      "text": "Berger, A. N., &amp; DeYoung, R. (1997). Problem loans and cost efficiency in commercial banks. <em>Journal of Banking &amp; Finance, 21</em>(6), 849–870.",
+      "doi": "10.1016/S0378-4266(97)00003-4"
+    },
+    {
+      "text": "Louzis, D. P., Vouldis, A. T., &amp; Metaxas, V. L. (2012). Macroeconomic and bank-specific determinants of non-performing loans in Greece: A comparative study of mortgage, business and consumer loan portfolios. <em>Journal of Banking &amp; Finance, 36</em>(4), 1012–1027.",
+      "doi": "10.1016/j.jbankfin.2011.10.012"
+    },
+    {
+      "text": "Dao, L. K. O., Nguyen, T. Y., Hussain, S., &amp; Nguyen, V. C. (2020). Factors affecting non-performing loans of commercial banks: The role of bank performance and credit growth. <em>Banks and Bank Systems, 15</em>(3), 44–54.",
+      "doi": "10.21511/bbs.15(3).2020.05"
+    }
+  ],
+  "related": [
+    "chi-phi-du-phong-rui-ro-tin-dung",
+    "tang-truong-tin-dung",
+    "z-score-ngan-hang",
+    "nim"
+  ],
+  "calc": "npl"
+}

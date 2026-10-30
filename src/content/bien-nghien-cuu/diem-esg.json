@@ -1,0 +1,61 @@
+{
+  "title": "Điểm ESG: nguồn, cách đo thay thế và lưu ý khi dùng",
+  "description": "ESG (ESG score): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Điểm ESG",
+  "nameEn": "ESG score",
+  "symbol": "ESG",
+  "group": "Trách nhiệm xã hội & ESG",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "điểm esg",
+  "definition": "Điểm ESG tổng hợp hiệu quả môi trường, xã hội và quản trị. Doanh nghiệp Việt Nam ít được các hãng xếp hạng quốc tế chấm điểm, và dữ liệu xếp hạng thương mại thường cấm phát hành lại, nên khoá luận hay tự xây chỉ số từ báo cáo của doanh nghiệp. Friede và cộng sự (2015) tổng hợp hơn 2000 nghiên cứu và thấy phần lớn cho quan hệ dương với hiệu quả tài chính.",
+  "formula": "ESG = Trung bình (có trọng số) của điểm E, S, G; mỗi trụ cột là tỷ lệ tiêu chí đạt trong danh mục",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Báo cáo tác động môi trường và xã hội; báo cáo quản trị"
+    },
+    {
+      "statement": "Thị trường",
+      "label": "Điểm ESG của tổ chức xếp hạng (nếu trường có thuê bao và được phép dùng)"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Từng trụ cột",
+      "formula": "Đưa riêng E, S, G vào mô hình"
+    },
+    {
+      "name": "Biến giả danh mục",
+      "formula": "1 nếu thuộc rổ VNSI (chỉ số phát triển bền vững của HOSE)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả tài chính",
+      "sign": "+",
+      "note": "Friede và cộng sự (2015); Waddock và Graves (1997)."
+    }
+  ],
+  "mistakes": [
+    "Dùng điểm ESG tải từ nền tảng thương mại rồi đăng kèm khoá luận: vi phạm điều khoản sử dụng.",
+    "Trộn điểm của nhiều hãng xếp hạng có thang khác nhau."
+  ],
+  "stata": "egen esg = rowmean(e_score s_score g_score)",
+  "r": "df$esg <- rowMeans(df[, c(\"e_score\", \"s_score\", \"g_score\")])",
+  "references": [
+    {
+      "text": "Friede, G., Busch, T., &amp; Bassen, A. (2015). ESG and financial performance: Aggregated evidence from more than 2000 empirical studies. <em>Journal of Sustainable Finance &amp; Investment, 5</em>(4), 210–233.",
+      "doi": "10.1080/20430795.2015.1118917"
+    },
+    {
+      "text": "Waddock, S. A., &amp; Graves, S. B. (1997). The corporate social performance–financial performance link. <em>Strategic Management Journal, 18</em>(4), 303–319.",
+      "doi": "10.1002/(SICI)1097-0266(199704)18:4<303::AID-SMJ869>3.0.CO;2-G"
+    }
+  ],
+  "related": [
+    "chi-so-cong-bo-csr",
+    "roa",
+    "tobin-q",
+    "quy-mo-doanh-nghiep"
+  ]
+}

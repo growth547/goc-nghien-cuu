@@ -1,0 +1,70 @@
+{
+  "title": "Hệ số nợ trên vốn chủ sở hữu (D/E): công thức và lưu ý",
+  "description": "D/E (Debt-to-equity ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Hệ số nợ trên vốn chủ sở hữu",
+  "nameEn": "Debt-to-equity ratio",
+  "symbol": "D/E",
+  "group": "Cấu trúc vốn",
+  "scope": "Doanh nghiệp",
+  "keyword": "hệ số nợ trên vốn chủ sở hữu",
+  "definition": "D/E so sánh tổng nợ phải trả với vốn chủ sở hữu, cho biết chủ nợ tài trợ bao nhiêu đồng trên mỗi đồng của cổ đông. Chỉ số quen thuộc trong phân tích tín dụng, nhưng phân phối rất lệch nên cần biến đổi trước khi đưa vào hồi quy.",
+  "formula": "D/E = Nợ phải trả / Vốn chủ sở hữu",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "300",
+      "label": "Nợ phải trả"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "400",
+      "label": "Vốn chủ sở hữu"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Nợ vay trên VCSH",
+      "formula": "(Vay ngắn hạn + Vay dài hạn) / Vốn chủ sở hữu"
+    },
+    {
+      "name": "Dạng log",
+      "formula": "ln(1 + D/E)",
+      "note": "Giảm độ lệch phân phối."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Tài sản hữu hình",
+      "sign": "+",
+      "note": "Titman và Wessels (1988) dùng giá trị thế chấp của tài sản làm yếu tố quyết định."
+    },
+    {
+      "with": "Rủi ro phá sản",
+      "sign": "+",
+      "note": "D/E cao làm tăng rủi ro kiệt quệ tài chính."
+    }
+  ],
+  "mistakes": [
+    "Giữ quan sát VCSH âm: D/E âm không có nghĩa kinh tế.",
+    "Đưa D/E và LEV cùng một mô hình."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen de = tl / eq if eq > 0\ngen ln_de = ln(1 + de)",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(de = ifelse(eq > 0, tl / eq, NA), ln_de = log1p(de)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Titman, S., &amp; Wessels, R. (1988). The determinants of capital structure choice. <em>The Journal of Finance, 43</em>(1), 1–19.",
+      "doi": "10.1111/j.1540-6261.1988.tb02585.x"
+    },
+    {
+      "text": "Rajan, R. G., &amp; Zingales, L. (1995). What do we know about capital structure? Some evidence from international data. <em>The Journal of Finance, 50</em>(5), 1421–1460.",
+      "doi": "10.1111/j.1540-6261.1995.tb05184.x"
+    }
+  ],
+  "related": [
+    "don-bay-tai-chinh",
+    "roe",
+    "no-vay-tren-tong-tai-san",
+    "altman-z-score"
+  ],
+  "calc": "de"
+}

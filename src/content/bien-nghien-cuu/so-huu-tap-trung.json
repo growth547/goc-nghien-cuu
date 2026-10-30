@@ -1,0 +1,65 @@
+{
+  "title": "Sở hữu tập trung: đo bằng cổ đông lớn nhất và chỉ số Herfindahl",
+  "description": "CONC (Ownership concentration): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Mức độ tập trung sở hữu",
+  "nameEn": "Ownership concentration",
+  "symbol": "CONC",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "mức độ tập trung sở hữu",
+  "definition": "Mức độ tập trung sở hữu đo quyền lực của các cổ đông lớn. Demsetz và Lehn (1985) cho rằng cấu trúc sở hữu là kết quả nội sinh của đặc điểm doanh nghiệp; Nguyen, Locke và Reddy (2015) dùng ước lượng động cho Việt Nam và Singapore.",
+  "formula": "CONC = Tỷ lệ sở hữu của cổ đông lớn nhất (hoặc tổng của 5 cổ đông lớn nhất)",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Danh sách cổ đông lớn (sở hữu từ 5%)"
+    },
+    {
+      "statement": "Thuyết minh",
+      "label": "Cổ đông góp vốn"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Herfindahl",
+      "formula": "Σ (tỷ lệ sở hữu của từng cổ đông lớn)²"
+    },
+    {
+      "name": "Tổng cổ đông lớn",
+      "formula": "Tổng tỷ lệ của cổ đông sở hữu từ 5% trở lên"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "±",
+      "note": "Giám sát tốt hơn (+) nhưng có thể chiếm đoạt cổ đông nhỏ (−)."
+    }
+  ],
+  "mistakes": [
+    "Không gộp nhóm người có liên quan.",
+    "Coi hệ số dương là tác động nhân quả mà không xử lý nội sinh (GMM hệ thống, biến công cụ)."
+  ],
+  "stata": "gen top1 = top1_sh / shares\ngen hhi = s1^2 + s2^2 + s3^2 + s4^2 + s5^2",
+  "r": "df$top1 <- df$top1_sh / df$shares",
+  "references": [
+    {
+      "text": "Demsetz, H., &amp; Lehn, K. (1985). The structure of corporate ownership: Causes and consequences. <em>Journal of Political Economy, 93</em>(6), 1155–1177.",
+      "doi": "10.1086/261354"
+    },
+    {
+      "text": "Nguyen, T., Locke, S., &amp; Reddy, K. (2015). Ownership concentration and corporate performance from a dynamic perspective: Does national governance quality matter? <em>International Review of Financial Analysis, 41</em>, 148–161.",
+      "doi": "10.1016/j.irfa.2015.06.005"
+    },
+    {
+      "text": "Jensen, M. C., &amp; Meckling, W. H. (1976). Theory of the firm: Managerial behavior, agency costs and ownership structure. <em>Journal of Financial Economics, 3</em>(4), 305–360.",
+      "doi": "10.1016/0304-405X(76)90026-X"
+    }
+  ],
+  "related": [
+    "so-huu-nha-nuoc",
+    "so-huu-nuoc-ngoai",
+    "so-huu-cua-nha-quan-ly",
+    "ty-le-chi-tra-co-tuc"
+  ]
+}

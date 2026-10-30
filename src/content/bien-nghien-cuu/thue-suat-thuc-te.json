@@ -1,0 +1,69 @@
+{
+  "title": "Thuế suất thực tế (ETR): công thức và cách đo tránh thuế",
+  "description": "ETR (Effective tax rate): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Thuế suất thực tế",
+  "nameEn": "Effective tax rate",
+  "symbol": "ETR",
+  "group": "Đặc điểm doanh nghiệp",
+  "scope": "Doanh nghiệp",
+  "keyword": "thuế suất thực tế",
+  "definition": "Thuế suất thực tế là chi phí thuế thu nhập doanh nghiệp chia cho lợi nhuận kế toán trước thuế. ETR thấp hơn thuế suất luật định (20% từ năm 2016) phản ánh ưu đãi thuế hoặc hoạt động tránh thuế; Dyreng và cộng sự (2008) đề xuất đo trên nhiều năm để giảm nhiễu.",
+  "formula": "ETR = (Chi phí thuế TNDN hiện hành + hoãn lại) / LN kế toán trước thuế",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "51",
+      "label": "Chi phí thuế TNDN hiện hành"
+    },
+    {
+      "statement": "KQKD",
+      "code": "52",
+      "label": "Chi phí thuế TNDN hoãn lại"
+    },
+    {
+      "statement": "KQKD",
+      "code": "50",
+      "label": "Tổng lợi nhuận kế toán trước thuế"
+    }
+  ],
+  "variants": [
+    {
+      "name": "ETR tiền mặt",
+      "formula": "Tiền thuế TNDN đã nộp (LCTT) / LN trước thuế"
+    },
+    {
+      "name": "ETR dài hạn",
+      "formula": "Tổng thuế 5 năm / Tổng LN trước thuế 5 năm (Dyreng và cộng sự, 2008)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Quy mô",
+      "sign": "±",
+      "note": "Giả thuyết chi phí chính trị (+) đối lập giả thuyết năng lực lập kế hoạch thuế (−)."
+    }
+  ],
+  "mistakes": [
+    "Giữ quan sát lỗ trước thuế: ETR âm hoặc rất lớn không có nghĩa.",
+    "Dùng thuế phải nộp trên CĐKT thay cho chi phí thuế trên KQKD."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen etr = tax / ebt if ebt > 0\nreplace etr = . if etr < 0 | etr > 1",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(etr = ifelse(ebt > 0, tax / ebt, NA), etr = ifelse(etr < 0 | etr > 1, NA, etr)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Dyreng, S. D., Hanlon, M., &amp; Maydew, E. L. (2008). Long-run corporate tax avoidance. <em>The Accounting Review, 83</em>(1), 61–82.",
+      "doi": "10.2308/accr.2008.83.1.61"
+    },
+    {
+      "text": "Frank, M. Z., &amp; Goyal, V. K. (2009). Capital structure decisions: Which factors are reliably important? <em>Financial Management, 38</em>(1), 1–37.",
+      "doi": "10.1111/j.1755-053X.2009.01026.x"
+    }
+  ],
+  "related": [
+    "quy-mo-doanh-nghiep",
+    "roa",
+    "quan-tri-loi-nhuan-jones-dieu-chinh",
+    "so-huu-nuoc-ngoai"
+  ],
+  "calc": "etr"
+}

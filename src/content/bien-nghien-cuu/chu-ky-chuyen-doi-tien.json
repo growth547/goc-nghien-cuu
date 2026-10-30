@@ -1,0 +1,85 @@
+{
+  "title": "Chu kỳ chuyển đổi tiền (CCC): công thức DIO + DSO − DPO",
+  "description": "CCC (Cash conversion cycle): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chu kỳ chuyển đổi tiền",
+  "nameEn": "Cash conversion cycle",
+  "symbol": "CCC",
+  "group": "Thanh khoản & vốn lưu động",
+  "scope": "Doanh nghiệp",
+  "keyword": "chu kỳ chuyển đổi tiền",
+  "definition": "Chu kỳ chuyển đổi tiền là số ngày từ khi trả tiền cho nhà cung cấp đến khi thu tiền từ khách hàng. Đây là thước đo tổng hợp của quản trị vốn lưu động, biến giải thích chính trong các đề tài vốn lưu động và lợi nhuận (Deloof, 2003).",
+  "formula": "CCC = 365 × (Hàng tồn kho / Giá vốn + Phải thu khách hàng / Doanh thu thuần − Phải trả người bán / Giá vốn)",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "140",
+      "label": "Hàng tồn kho"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "131",
+      "label": "Phải thu ngắn hạn của khách hàng"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "311",
+      "label": "Phải trả người bán ngắn hạn"
+    },
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "KQKD",
+      "code": "11",
+      "label": "Giá vốn hàng bán"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Từng thành phần",
+      "formula": "DIO = 365 × HTK / Giá vốn; DSO = 365 × Phải thu / Doanh thu; DPO = 365 × Phải trả / Giá vốn",
+      "note": "Nên đưa riêng từng thành phần vào mô hình như Deloof (2003)."
+    },
+    {
+      "name": "Số dư bình quân",
+      "formula": "Dùng bình quân đầu kỳ, cuối kỳ của tồn kho, phải thu, phải trả"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "-",
+      "note": "Deloof (2003); ở Việt Nam có bằng chứng quan hệ ngưỡng (Nguyen & Su, 2022)."
+    }
+  ],
+  "mistakes": [
+    "Tính DPO trên doanh thu thay vì giá vốn.",
+    "Dùng 360 ngày ở chỗ này, 365 ở chỗ khác.",
+    "Áp dụng cho doanh nghiệp xây lắp, bất động sản mà không bàn về chi phí sản xuất kinh doanh dở dang."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen dio = 365 * inv / cogs\ngen dso = 365 * ar / rev\ngen dpo = 365 * ap / cogs\ngen ccc = dio + dso - dpo",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(dio = 365 * inv / cogs, dso = 365 * ar / rev,\n         dpo = 365 * ap / cogs, ccc = dio + dso - dpo) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Deloof, M. (2003). Does working capital management affect profitability of Belgian firms? <em>Journal of Business Finance &amp; Accounting, 30</em>(3–4), 573–588.",
+      "doi": "10.1111/1468-5957.00008"
+    },
+    {
+      "text": "Nguyen, T. H., &amp; Su, D. T. (2022). Threshold effect of working capital management on firm profitability: Evidence from Vietnam. <em>Cogent Business &amp; Management, 9</em>(1), Article 2141090.",
+      "doi": "10.1080/23311975.2022.2141090"
+    },
+    {
+      "text": "Nguyen, A. T. H., &amp; Nguyen, T. V. (2018). Working capital management and corporate profitability: Empirical evidence from Vietnam. <em>Foundations of Management, 10</em>(1), 195–206.",
+      "doi": "10.2478/fman-2018-0015"
+    }
+  ],
+  "related": [
+    "ros",
+    "bien-loi-nhuan-gop",
+    "kha-nang-thanh-toan-hien-hanh",
+    "nam-giu-tien-mat"
+  ],
+  "calc": "ccc"
+}

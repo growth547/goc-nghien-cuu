@@ -1,0 +1,63 @@
+{
+  "title": "Chi phí dự phòng rủi ro tín dụng (LLP): công thức và ý nghĩa",
+  "description": "LLP (Loan loss provisions ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chi phí dự phòng rủi ro tín dụng trên dư nợ",
+  "nameEn": "Loan loss provisions ratio",
+  "symbol": "LLP",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "chi phí dự phòng rủi ro tín dụng trên dư nợ",
+  "definition": "LLP đo chi phí dự phòng trích trong năm so với dư nợ cho vay, phản ánh chất lượng tín dụng dự kiến và cả hành vi điều chỉnh lợi nhuận của ngân hàng. Dietrich và Wanzenried (2011) dùng LLP làm biến chất lượng tín dụng trong mô hình lợi nhuận.",
+  "formula": "LLP = Chi phí dự phòng rủi ro tín dụng / Cho vay khách hàng",
+  "items": [
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Chi phí dự phòng rủi ro tín dụng"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Cho vay khách hàng (dư nợ gộp, trước dự phòng)"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Trên dư nợ bình quân",
+      "formula": "Chi phí dự phòng / Dư nợ bình quân đầu kỳ, cuối kỳ"
+    }
+  ],
+  "relations": [
+    {
+      "with": "ROA",
+      "sign": "-",
+      "note": "Chi phí dự phòng trực tiếp làm giảm lợi nhuận."
+    },
+    {
+      "with": "Nợ xấu",
+      "sign": "+",
+      "note": "Louzis và cộng sự (2012)."
+    }
+  ],
+  "mistakes": [
+    "Dùng số dư dự phòng trên CĐKT thay vì chi phí dự phòng trong năm.",
+    "Bỏ qua phần hoàn nhập dự phòng làm chi phí âm."
+  ],
+  "stata": "gen llp = abs(prov) / loans",
+  "r": "df$llp <- abs(df$prov) / df$loans",
+  "references": [
+    {
+      "text": "Dietrich, A., &amp; Wanzenried, G. (2011). Determinants of bank profitability before and during the crisis: Evidence from Switzerland. <em>Journal of International Financial Markets, Institutions and Money, 21</em>(3), 307–327.",
+      "doi": "10.1016/j.intfin.2010.11.002"
+    },
+    {
+      "text": "Louzis, D. P., Vouldis, A. T., &amp; Metaxas, V. L. (2012). Macroeconomic and bank-specific determinants of non-performing loans in Greece: A comparative study of mortgage, business and consumer loan portfolios. <em>Journal of Banking &amp; Finance, 36</em>(4), 1012–1027.",
+      "doi": "10.1016/j.jbankfin.2011.10.012"
+    }
+  ],
+  "related": [
+    "ty-le-no-xau",
+    "roa",
+    "tang-truong-tin-dung",
+    "ty-le-chi-phi-tren-thu-nhap"
+  ],
+  "calc": "llp"
+}

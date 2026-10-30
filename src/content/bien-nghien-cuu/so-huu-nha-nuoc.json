@@ -1,0 +1,65 @@
+{
+  "title": "Sở hữu nhà nước: cách đo và kết quả ở Việt Nam",
+  "description": "STATE (State ownership): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ lệ sở hữu nhà nước",
+  "nameEn": "State ownership",
+  "symbol": "STATE",
+  "group": "Quản trị công ty & sở hữu",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tỷ lệ sở hữu nhà nước",
+  "definition": "Tỷ lệ cổ phần do Nhà nước nắm (qua SCIC, bộ ngành, tập đoàn nhà nước) cuối năm. Với doanh nghiệp cổ phần hoá ở Việt Nam, sở hữu nhà nước còn lại là biến đặc thù được nghiên cứu nhiều; Megginson và Netter (2001) tổng hợp bằng chứng tư nhân hoá cải thiện hiệu quả.",
+  "formula": "STATE = Số cổ phần do Nhà nước sở hữu / Tổng số cổ phần đang lưu hành",
+  "items": [
+    {
+      "statement": "Báo cáo thường niên",
+      "label": "Cơ cấu cổ đông: cổ đông Nhà nước"
+    },
+    {
+      "statement": "Thuyết minh",
+      "label": "Danh sách cổ đông lớn"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Biến giả kiểm soát",
+      "formula": "1 nếu Nhà nước sở hữu trên 50%"
+    },
+    {
+      "name": "Ngưỡng",
+      "formula": "Các khoảng 0, (0;36%), [36;50%], trên 50% theo quyền phủ quyết"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Hiệu quả hoạt động",
+      "sign": "±",
+      "note": "Quan hệ phi tuyến ở Việt Nam (Phung & Mishra, 2016; Nguyen & Vo, 2022)."
+    }
+  ],
+  "mistakes": [
+    "Không cộng phần sở hữu gián tiếp qua doanh nghiệp nhà nước khác khi đề tài định nghĩa là sở hữu nhà nước tổng.",
+    "Dùng số liệu cuối năm sau thoái vốn cho năm trước."
+  ],
+  "stata": "gen state = state_sh / shares",
+  "r": "df$state <- df$state_sh / df$shares",
+  "references": [
+    {
+      "text": "Megginson, W. L., &amp; Netter, J. M. (2001). From state to market: A survey of empirical studies on privatization. <em>Journal of Economic Literature, 39</em>(2), 321–389.",
+      "doi": "10.1257/jel.39.2.321"
+    },
+    {
+      "text": "Phung, D. N., &amp; Mishra, A. V. (2016). Ownership structure and firm performance: Evidence from Vietnamese listed firms. <em>Australian Economic Papers, 55</em>(1), 63–98.",
+      "doi": "10.1111/1467-8454.12056"
+    },
+    {
+      "text": "Nguyen, M. H., &amp; Vo, T. Q. (2022). Residual state ownership and firm performance: A case of Vietnam. <em>Journal of Risk and Financial Management, 15</em>(6), Article 259.",
+      "doi": "10.3390/jrfm15060259"
+    }
+  ],
+  "related": [
+    "so-huu-nuoc-ngoai",
+    "so-huu-tap-trung",
+    "so-huu-cua-nha-quan-ly",
+    "roa"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "title": "ROE là gì? Công thức tính ROE từ BCTC và lưu ý khi dùng",
+  "description": "ROE (Return on equity): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ suất sinh lời trên vốn chủ sở hữu",
+  "nameEn": "Return on equity",
+  "symbol": "ROE",
+  "group": "Khả năng sinh lời",
+  "scope": "Doanh nghiệp và ngân hàng",
+  "keyword": "tỷ suất sinh lời trên vốn chủ sở hữu",
+  "definition": "ROE đo lợi nhuận sau thuế tạo ra trên mỗi đồng vốn chủ sở hữu, phản ánh hiệu quả từ góc nhìn cổ đông. ROE chịu ảnh hưởng mạnh của đòn bẩy: cùng ROA, doanh nghiệp vay nhiều hơn sẽ có ROE cao hơn. Vì vậy khoá luận thường dùng ROE song song với ROA.",
+  "formula": "ROE = Lợi nhuận sau thuế / Vốn chủ sở hữu",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "400",
+      "label": "Vốn chủ sở hữu"
+    },
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Lợi nhuận sau thuế"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Vốn chủ sở hữu"
+    }
+  ],
+  "variants": [
+    {
+      "name": "ROE bình quân",
+      "formula": "LNST / [(VCSH đầu kỳ + cuối kỳ) / 2]"
+    },
+    {
+      "name": "Phân tích DuPont",
+      "formula": "ROE = ROS × Vòng quay tổng tài sản × (Tổng tài sản / VCSH)",
+      "note": "Tách ROE thành biên lợi nhuận, hiệu suất và đòn bẩy."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy tài chính",
+      "sign": "±",
+      "note": "Về cơ học đòn bẩy làm tăng ROE khi ROA lớn hơn lãi suất vay, nhưng làm giảm khi ngược lại."
+    },
+    {
+      "with": "Tỷ lệ an toàn vốn (ngân hàng)",
+      "sign": "-",
+      "note": "Vốn nhiều hơn làm mẫu số ROE lớn hơn; nhiều nghiên cứu ngân hàng thấy quan hệ âm với ROE dù dương với ROA (Berger & Bouwman, 2013)."
+    }
+  ],
+  "mistakes": [
+    "Giữ quan sát có vốn chủ sở hữu âm: ROE âm chia cho VCSH âm thành dương, sai hoàn toàn ý nghĩa. Loại các quan sát này và ghi rõ.",
+    "Dùng vốn góp của chủ sở hữu (mã 411) thay cho tổng vốn chủ sở hữu (mã 400).",
+    "Đưa cả ROE và ROA làm biến phụ thuộc rồi kết luận như hai bằng chứng độc lập: hai chỉ số tương quan rất cao."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen roe = ni / eq if eq > 0\nwinsor2 roe, cuts(1 99) replace",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(roe = ifelse(eq > 0, ni / eq, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Athanasoglou, P. P., Brissimis, S. N., &amp; Delis, M. D. (2008). Bank-specific, industry-specific and macroeconomic determinants of bank profitability. <em>Journal of International Financial Markets, Institutions and Money, 18</em>(2), 121–136.",
+      "doi": "10.1016/j.intfin.2006.07.001"
+    },
+    {
+      "text": "Berger, A. N., &amp; Bouwman, C. H. S. (2013). How does capital affect bank performance during financial crises? <em>Journal of Financial Economics, 109</em>(1), 146–176.",
+      "doi": "10.1016/j.jfineco.2013.02.008"
+    },
+    {
+      "text": "Le, T. D. Q., &amp; Nguyen, D. T. (2020). Capital structure and bank profitability in Vietnam: A quantile regression approach. <em>Journal of Risk and Financial Management, 13</em>(8), Article 168.",
+      "doi": "10.3390/jrfm13080168"
+    }
+  ],
+  "related": [
+    "roa",
+    "no-tren-von-chu-so-huu",
+    "ros",
+    "ty-le-an-toan-von"
+  ],
+  "calc": "roe"
+}

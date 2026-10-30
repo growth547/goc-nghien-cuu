@@ -1,0 +1,68 @@
+{
+  "title": "Đa dạng hoá thu nhập ngân hàng: tỷ trọng thu nhập ngoài lãi",
+  "description": "Đa dạng hoá thu nhập (NONII): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Đa dạng hoá thu nhập",
+  "nameEn": "Non-interest income share (income diversification)",
+  "symbol": "NONII",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "đa dạng hoá thu nhập",
+  "definition": "Tỷ trọng thu nhập ngoài lãi (dịch vụ, kinh doanh ngoại hối, chứng khoán, thu nhập khác) trong tổng thu nhập hoạt động. Stiroh (2004) thấy thu nhập ngoài lãi biến động mạnh hơn và không giúp giảm rủi ro như kỳ vọng; Demirgüç-Kunt và Huizinga (2010) phân tích tác động lên rủi ro và lợi nhuận.",
+  "formula": "NONII = (Tổng thu nhập hoạt động − Thu nhập lãi thuần) / Tổng thu nhập hoạt động",
+  "items": [
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Tổng thu nhập hoạt động"
+    },
+    {
+      "statement": "KQKD-TCTD",
+      "label": "Thu nhập lãi thuần"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Chỉ số Herfindahl đa dạng hoá",
+      "formula": "DIV = 1 − (tỷ trọng lãi² + tỷ trọng ngoài lãi²)",
+      "note": "Dùng trong Stiroh (2004)."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Rủi ro",
+      "sign": "±",
+      "note": "Stiroh (2004)."
+    },
+    {
+      "with": "Hiệu quả chi phí",
+      "sign": "±",
+      "note": "Nguyen và Pham (2020)."
+    }
+  ],
+  "mistakes": [
+    "Lấy thu nhập từ dịch vụ gộp thay cho lãi thuần từ dịch vụ.",
+    "Không xử lý năm có thu nhập ngoài lãi âm (lỗ kinh doanh chứng khoán)."
+  ],
+  "stata": "gen nonii = (toi - nii) / toi\ngen div_hhi = 1 - ((nii/toi)^2 + (nonii)^2)",
+  "r": "df$nonii <- (df$toi - df$nii) / df$toi",
+  "references": [
+    {
+      "text": "Stiroh, K. J. (2004). Diversification in banking: Is noninterest income the answer? <em>Journal of Money, Credit, and Banking, 36</em>(5), 853–882.",
+      "doi": "10.1353/mcb.2004.0076"
+    },
+    {
+      "text": "Demirgüç-Kunt, A., &amp; Huizinga, H. (2010). Bank activity and funding strategies: The impact on risk and returns. <em>Journal of Financial Economics, 98</em>(3), 626–650.",
+      "doi": "10.1016/j.jfineco.2010.06.004"
+    },
+    {
+      "text": "Nguyen, P. H., &amp; Pham, D. T. B. (2020). Income diversification and cost-efficiency of Vietnamese banks. <em>International Journal of Managerial Finance, 16</em>(5), 623–643.",
+      "doi": "10.1108/IJMF-06-2019-0230"
+    }
+  ],
+  "related": [
+    "nim",
+    "ty-le-chi-phi-tren-thu-nhap",
+    "roa",
+    "z-score-ngan-hang"
+  ],
+  "calc": "nonint"
+}

@@ -1,0 +1,70 @@
+{
+  "title": "Khả năng thanh toán lãi vay (ICR): công thức EBIT / lãi vay",
+  "description": "ICR (Interest coverage ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Khả năng thanh toán lãi vay",
+  "nameEn": "Interest coverage ratio",
+  "symbol": "ICR",
+  "group": "Cấu trúc vốn",
+  "scope": "Doanh nghiệp",
+  "keyword": "khả năng thanh toán lãi vay",
+  "definition": "ICR cho biết lợi nhuận trước thuế và lãi vay (EBIT) gấp bao nhiêu lần chi phí lãi vay. Chỉ số thấp hơn 1 nghĩa là lợi nhuận hoạt động không đủ trả lãi. Trong nghiên cứu, ICR là thước đo khả năng trả nợ và rủi ro tín dụng.",
+  "formula": "ICR = (LN trước thuế + Chi phí lãi vay) / Chi phí lãi vay",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "50",
+      "label": "Tổng lợi nhuận kế toán trước thuế"
+    },
+    {
+      "statement": "KQKD",
+      "code": "23",
+      "label": "Trong đó: Chi phí lãi vay"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Dạng log",
+      "formula": "ln(ICR)",
+      "note": "ICR rất lệch phải; doanh nghiệp không vay có ICR không xác định."
+    },
+    {
+      "name": "EBITDA trên lãi vay",
+      "formula": "(LN trước thuế + Lãi vay + Khấu hao LCTT mã 02) / Lãi vay"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "Nợ nhiều hơn thì chi phí lãi lớn hơn so với lợi nhuận."
+    },
+    {
+      "with": "Rủi ro kiệt quệ",
+      "sign": "-",
+      "note": "ICR là thành phần thường gặp của các mô hình chấm điểm tín dụng."
+    }
+  ],
+  "mistakes": [
+    "Dùng chi phí tài chính (KQKD mã 22) thay cho chi phí lãi vay (mã 23): mã 22 gồm cả lỗ tỷ giá, dự phòng đầu tư.",
+    "Giữ quan sát lãi vay bằng 0 rồi gán ICR rất lớn tuỳ ý."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen icr = (ebt + int) / int if int > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(icr = ifelse(int > 0, (ebt + int) / int, NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Frank, M. Z., &amp; Goyal, V. K. (2009). Capital structure decisions: Which factors are reliably important? <em>Financial Management, 38</em>(1), 1–37.",
+      "doi": "10.1111/j.1755-053X.2009.01026.x"
+    },
+    {
+      "text": "Altman, E. I. (1968). Financial ratios, discriminant analysis and the prediction of corporate bankruptcy. <em>The Journal of Finance, 23</em>(4), 589–609.",
+      "doi": "10.1111/j.1540-6261.1968.tb00843.x"
+    }
+  ],
+  "related": [
+    "no-vay-tren-tong-tai-san",
+    "altman-z-score",
+    "don-bay-tai-chinh",
+    "ky-han-no"
+  ],
+  "calc": "icr"
+}

@@ -1,0 +1,100 @@
+{
+  "title": "Altman Z'' cho thị trường mới nổi: công thức 4 biến",
+  "description": "Z'' (Altman Z''-score (emerging markets)): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Chỉ số Z'' cho thị trường mới nổi",
+  "nameEn": "Altman Z''-score (emerging markets)",
+  "symbol": "Z''",
+  "group": "Rủi ro & kiệt quệ tài chính",
+  "scope": "Doanh nghiệp",
+  "keyword": "chỉ số z'' cho thị trường mới nổi",
+  "definition": "Z'' bỏ biến vòng quay tài sản X5 (rất khác nhau giữa các ngành) và dùng giá trị sổ sách của vốn chủ sở hữu, nên áp dụng được cho doanh nghiệp phi sản xuất và doanh nghiệp ở thị trường mới nổi. Altman và cộng sự (1998) cộng thêm hằng số 3,25 để thang điểm khớp với xếp hạng trái phiếu (EM score).",
+  "formula": "Z'' = 6,56·X1 + 3,26·X2 + 6,72·X3 + 1,05·X4, với X4 = Vốn chủ sở hữu (sổ sách) / Nợ phải trả",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "100",
+      "label": "Tài sản ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "310",
+      "label": "Nợ ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "421",
+      "label": "Lợi nhuận sau thuế chưa phân phối"
+    },
+    {
+      "statement": "KQKD",
+      "code": "50",
+      "label": "Tổng lợi nhuận kế toán trước thuế"
+    },
+    {
+      "statement": "KQKD",
+      "code": "23",
+      "label": "Trong đó: Chi phí lãi vay"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "400",
+      "label": "Vốn chủ sở hữu"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "300",
+      "label": "Nợ phải trả"
+    }
+  ],
+  "variants": [
+    {
+      "name": "EM score",
+      "formula": "EM = 3,25 + Z''",
+      "note": "Altman và cộng sự (1998), dùng để quy đổi sang xếp hạng tín nhiệm tương đương."
+    },
+    {
+      "name": "Ngưỡng thường dùng",
+      "formula": "Z'' > 2,6: an toàn; 1,1–2,6: vùng xám; Z'' < 1,1: nguy hiểm"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Đòn bẩy",
+      "sign": "-",
+      "note": "X4 giảm khi nợ tăng."
+    },
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "+",
+      "note": "X3 là lợi nhuận hoạt động trên tài sản."
+    }
+  ],
+  "mistakes": [
+    "Gọi Z'' là \"Z-score điều chỉnh\" mà không trích Altman và cộng sự (1998).",
+    "Trộn ngưỡng của Z gốc (1,81 và 2,99) với Z''."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen z2 = 6.56*(ca - cl)/ta + 3.26*re/ta + 6.72*(ebt + int)/ta + 1.05*eq/tl\ngen em_score = 3.25 + z2",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(z2 = 6.56 * (ca - cl) / ta + 3.26 * re / ta + 6.72 * (ebt + int) / ta + 1.05 * eq / tl,\n         em_score = 3.25 + z2) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Altman, E. I., Hartzell, J., &amp; Peck, M. (1998). Emerging market corporate bonds: A scoring system. In R. M. Levich (Ed.), <em>Emerging market capital flows</em> (pp. 391–400). Springer.",
+      "doi": "10.1007/978-1-4615-6197-2_25"
+    },
+    {
+      "text": "Altman, E. I., Iwanicz-Drozdowska, M., Laitinen, E. K., &amp; Suvas, A. (2017). Financial distress prediction in an international context: A review and empirical analysis of Altman’s Z-score model. <em>Journal of International Financial Management &amp; Accounting, 28</em>(2), 131–171.",
+      "doi": "10.1111/jifm.12053"
+    }
+  ],
+  "related": [
+    "altman-z-score",
+    "ohlson-o-score",
+    "don-bay-tai-chinh",
+    "z-score-ngan-hang"
+  ],
+  "calc": "z2"
+}

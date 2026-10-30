@@ -1,0 +1,102 @@
+{
+  "title": "Quản trị lợi nhuận: mô hình Jones điều chỉnh từng bước",
+  "description": "DA (Discretionary accruals (modified Jones model)): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Dồn tích tuỳ ý (mô hình Jones điều chỉnh)",
+  "nameEn": "Discretionary accruals (modified Jones model)",
+  "symbol": "DA",
+  "group": "Chất lượng lợi nhuận & kiểm toán",
+  "scope": "Doanh nghiệp",
+  "keyword": "dồn tích tuỳ ý (mô hình jones điều chỉnh)",
+  "definition": "Dồn tích tuỳ ý là phần dư của hồi quy tổng dồn tích theo những yếu tố kinh tế bình thường. Mô hình Jones điều chỉnh (Dechow và cộng sự, 1995) trừ thay đổi phải thu khỏi thay đổi doanh thu vì doanh thu bán chịu dễ bị điều chỉnh. Hồi quy ước lượng theo từng ngành – năm, cần ít nhất khoảng 10 quan sát mỗi nhóm.",
+  "formula": "TACC_it / A_it−1 = α1(1/A_it−1) + α2(ΔREV_it − ΔREC_it)/A_it−1 + α3·PPE_it/A_it−1 + ε_it; DA = phần dư ε",
+  "items": [
+    {
+      "statement": "KQKD",
+      "code": "60",
+      "label": "Lợi nhuận sau thuế thu nhập doanh nghiệp"
+    },
+    {
+      "statement": "LCTT",
+      "code": "20",
+      "label": "Lưu chuyển tiền thuần từ hoạt động kinh doanh"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    },
+    {
+      "statement": "KQKD",
+      "code": "10",
+      "label": "Doanh thu thuần về bán hàng và cung cấp dịch vụ"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "131",
+      "label": "Phải thu ngắn hạn của khách hàng"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "222",
+      "label": "Nguyên giá tài sản cố định hữu hình"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Jones (1991) gốc",
+      "formula": "Không trừ ΔREC trong bước ước lượng"
+    },
+    {
+      "name": "Kothari và cộng sự (2005)",
+      "formula": "Thêm ROA vào phương trình, hoặc trừ DA của doanh nghiệp cùng ngành có ROA gần nhất",
+      "note": "Giảm sai lệch khi doanh nghiệp có hiệu quả bất thường."
+    },
+    {
+      "name": "Giá trị tuyệt đối",
+      "formula": "|DA| làm thước đo mức độ quản trị lợi nhuận không theo hướng"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Kiểm toán Big 4",
+      "sign": "-",
+      "note": "Becker và cộng sự (1998)."
+    },
+    {
+      "with": "Thành viên HĐQT độc lập",
+      "sign": "-",
+      "note": "Giám sát tốt hơn hạn chế điều chỉnh lợi nhuận."
+    }
+  ],
+  "mistakes": [
+    "Ước lượng bước 1 với ΔREC rồi lại tính phần không tuỳ ý không trừ ΔREC (hoặc ngược lại): Dechow và cộng sự (1995) chỉ trừ ΔREC khi tính phần không tuỳ ý.",
+    "Chạy một hồi quy chung cho cả mẫu thay vì theo ngành – năm, rồi không báo cáo số quan sát mỗi nhóm.",
+    "Dùng PPE giá trị còn lại thay vì nguyên giá như bản gốc mà không nói rõ."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen tacc = (ni - cfo) / L.ta\ngen inv_a = 1 / L.ta\ngen drev = (rev - L.rev) / L.ta\ngen drec = (ar - L.ar) / L.ta\ngen ppe_a = ppeg / L.ta\n* ước lượng theo ngành – năm (industry là mã ngành)\ngen da = .\nlevelsof industry, local(inds)\nlevelsof year, local(yrs)\nforeach i of local inds {\n  foreach y of local yrs {\n    capture reg tacc inv_a drev ppe_a if industry == `i' & year == `y', noconstant\n    if _rc == 0 & e(N) >= 10 {\n      replace da = tacc - (_b[inv_a]*inv_a + _b[drev]*(drev - drec) + _b[ppe_a]*ppe_a) ///\n        if industry == `i' & year == `y'\n    }\n  }\n}",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |> arrange(year, .by_group = TRUE) |>\n  mutate(ok = year - lag(year) == 1,\n         tacc = (ni - cfo) / lag(ta), inv_a = 1 / lag(ta),\n         drev = (rev - lag(rev)) / lag(ta), drec = (ar - lag(ar)) / lag(ta),\n         ppe_a = ppeg / lag(ta)) |>\n  filter(ok) |> ungroup() |>\n  group_by(industry, year) |>\n  filter(n() >= 10) |>\n  group_modify(~ {\n    m <- lm(tacc ~ 0 + inv_a + drev + ppe_a, data = .x)\n    b <- coef(m)\n    mutate(.x, da = tacc - (b[\"inv_a\"] * inv_a + b[\"drev\"] * (drev - drec) + b[\"ppe_a\"] * ppe_a))\n  }) |> ungroup()",
+  "references": [
+    {
+      "text": "Dechow, P. M., Sloan, R. G., &amp; Sweeney, A. P. (1995). Detecting earnings management. <em>The Accounting Review, 70</em>(2), 193–225.",
+      "doi": "10.2308/tar-9505096112"
+    },
+    {
+      "text": "Jones, J. J. (1991). Earnings management during import relief investigations. <em>Journal of Accounting Research, 29</em>(2), 193–228.",
+      "doi": "10.2307/2491047"
+    },
+    {
+      "text": "Kothari, S. P., Leone, A. J., &amp; Wasley, C. E. (2005). Performance matched discretionary accrual measures. <em>Journal of Accounting and Economics, 39</em>(1), 163–197.",
+      "doi": "10.1016/j.jacceco.2004.11.002"
+    },
+    {
+      "text": "Becker, C. L., DeFond, M. L., Jiambalvo, J., &amp; Subramanyam, K. R. (1998). The effect of audit quality on earnings management. <em>Contemporary Accounting Research, 15</em>(1), 1–24.",
+      "doi": "10.1111/j.1911-3846.1998.tb00547.x"
+    }
+  ],
+  "related": [
+    "tong-dieu-chinh-don-tich",
+    "quan-tri-loi-nhuan-thuc",
+    "kiem-toan-big4",
+    "thanh-vien-hdqt-doc-lap"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Đòn bẩy tài chính: công thức nợ phải trả / tổng tài sản",
+  "description": "LEV (Leverage (total liabilities to total assets)): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Đòn bẩy tài chính",
+  "nameEn": "Leverage (total liabilities to total assets)",
+  "symbol": "LEV",
+  "group": "Cấu trúc vốn",
+  "scope": "Doanh nghiệp",
+  "keyword": "đòn bẩy tài chính",
+  "definition": "Đòn bẩy tài chính đo mức độ doanh nghiệp tài trợ tài sản bằng nợ. Khoá luận ở Việt Nam thường dùng tổng nợ phải trả trên tổng tài sản vì số liệu có sẵn trên CĐKT; Rajan và Zingales (1995) lưu ý thước đo này gồm cả khoản phải trả mang tính hoạt động nên phóng đại đòn bẩy thực.",
+  "formula": "LEV = Nợ phải trả / Tổng tài sản",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "300",
+      "label": "Nợ phải trả"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Nợ vay trên tổng tài sản",
+      "formula": "(Vay ngắn hạn mã 320 + Vay dài hạn mã 338) / Tổng tài sản",
+      "note": "Gần với khái niệm nợ tài chính trong lý thuyết cấu trúc vốn."
+    },
+    {
+      "name": "Đòn bẩy thị trường",
+      "formula": "Nợ phải trả / (Nợ phải trả + Giá trị thị trường VCSH)"
+    }
+  ],
+  "relations": [
+    {
+      "with": "Khả năng sinh lời",
+      "sign": "-",
+      "note": "Trật tự phân hạng (Myers, 1984); bằng chứng Việt Nam: Vo (2017)."
+    },
+    {
+      "with": "Tài sản hữu hình",
+      "sign": "+",
+      "note": "Tài sản thế chấp giúp vay dễ hơn (Rajan & Zingales, 1995)."
+    },
+    {
+      "with": "Quy mô",
+      "sign": "+",
+      "note": "Doanh nghiệp lớn ít rủi ro phá sản hơn (Frank & Goyal, 2009)."
+    }
+  ],
+  "mistakes": [
+    "Gọi tổng nợ phải trả là \"nợ vay\" trong chương 3 trong khi công thức dùng mã 300.",
+    "Đưa cùng lúc LEV và D/E vào một mô hình: hai biến gần như là biến đổi của nhau.",
+    "Không loại ngân hàng, chứng khoán, bảo hiểm khỏi mẫu doanh nghiệp phi tài chính."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen lev = tl / ta",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(lev = tl / ta) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Rajan, R. G., &amp; Zingales, L. (1995). What do we know about capital structure? Some evidence from international data. <em>The Journal of Finance, 50</em>(5), 1421–1460.",
+      "doi": "10.1111/j.1540-6261.1995.tb05184.x"
+    },
+    {
+      "text": "Myers, S. C. (1984). The capital structure puzzle. <em>The Journal of Finance, 39</em>(3), 574–592.",
+      "doi": "10.1111/j.1540-6261.1984.tb03646.x"
+    },
+    {
+      "text": "Frank, M. Z., &amp; Goyal, V. K. (2009). Capital structure decisions: Which factors are reliably important? <em>Financial Management, 38</em>(1), 1–37.",
+      "doi": "10.1111/j.1755-053X.2009.01026.x"
+    },
+    {
+      "text": "Vo, X. V. (2017). Determinants of capital structure in emerging markets: Evidence from Vietnam. <em>Research in International Business and Finance, 40</em>, 105–113.",
+      "doi": "10.1016/j.ribaf.2016.12.001"
+    }
+  ],
+  "related": [
+    "no-vay-tren-tong-tai-san",
+    "no-tren-von-chu-so-huu",
+    "tai-san-huu-hinh",
+    "roa"
+  ],
+  "calc": "lev"
+}

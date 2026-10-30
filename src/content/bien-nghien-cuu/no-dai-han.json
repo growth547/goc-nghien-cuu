@@ -1,0 +1,66 @@
+{
+  "title": "Tỷ lệ nợ dài hạn trên tổng tài sản: công thức từ BCTC",
+  "description": "LTD (Long-term debt ratio): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Nợ vay dài hạn trên tổng tài sản",
+  "nameEn": "Long-term debt ratio",
+  "symbol": "LTD",
+  "group": "Cấu trúc vốn",
+  "scope": "Doanh nghiệp",
+  "keyword": "nợ vay dài hạn trên tổng tài sản",
+  "definition": "Tỷ lệ nợ vay dài hạn tách phần tài trợ có kỳ hạn trên một năm, gắn với đầu tư tài sản cố định. Nghiên cứu cấu trúc vốn ở Việt Nam thường tách riêng nợ ngắn hạn và dài hạn vì doanh nghiệp chủ yếu vay ngắn hạn ngân hàng, và các yếu tố quyết định có dấu khác nhau giữa hai loại nợ (Vo, 2017).",
+  "formula": "LTD = Vay và nợ thuê tài chính dài hạn / Tổng tài sản",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "338",
+      "label": "Vay và nợ thuê tài chính dài hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "270",
+      "label": "Tổng cộng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Nợ dài hạn tổng",
+      "formula": "Nợ dài hạn (CĐKT mã 330) / Tổng tài sản",
+      "note": "Gồm cả phải trả dài hạn không chịu lãi."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Tài sản hữu hình",
+      "sign": "+",
+      "note": "Nguyên tắc tương xứng kỳ hạn tài sản và nguồn vốn."
+    },
+    {
+      "with": "Quy mô",
+      "sign": "+",
+      "note": "Doanh nghiệp lớn tiếp cận vốn dài hạn dễ hơn (Vo, 2017)."
+    }
+  ],
+  "mistakes": [
+    "Quên rằng phần vay dài hạn đến hạn trả trong năm tới đã được chuyển sang vay ngắn hạn (mã 320).",
+    "Dùng mã 330 nhưng gọi là \"nợ vay dài hạn\"."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen ltdr = ltd / ta",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(ltdr = ltd / ta) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Vo, X. V. (2017). Determinants of capital structure in emerging markets: Evidence from Vietnam. <em>Research in International Business and Finance, 40</em>, 105–113.",
+      "doi": "10.1016/j.ribaf.2016.12.001"
+    },
+    {
+      "text": "Barclay, M. J., &amp; Smith, C. W. (1995). The maturity structure of corporate debt. <em>The Journal of Finance, 50</em>(2), 609–631.",
+      "doi": "10.1111/j.1540-6261.1995.tb04797.x"
+    }
+  ],
+  "related": [
+    "ky-han-no",
+    "no-vay-tren-tong-tai-san",
+    "don-bay-tai-chinh",
+    "tai-san-huu-hinh"
+  ],
+  "calc": "ltdr"
+}

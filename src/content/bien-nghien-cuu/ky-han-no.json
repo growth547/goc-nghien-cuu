@@ -1,0 +1,66 @@
+{
+  "title": "Kỳ hạn nợ: tỷ trọng nợ vay ngắn hạn trong tổng nợ vay",
+  "description": "STD (Debt maturity (short-term debt share)): định nghĩa, công thức tính từ BCTC theo Thông tư 200, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Tỷ trọng nợ vay ngắn hạn (kỳ hạn nợ)",
+  "nameEn": "Debt maturity (short-term debt share)",
+  "symbol": "STD",
+  "group": "Cấu trúc vốn",
+  "scope": "Doanh nghiệp",
+  "keyword": "tỷ trọng nợ vay ngắn hạn (kỳ hạn nợ)",
+  "definition": "Biến này đo cơ cấu kỳ hạn của nợ vay: tỷ trọng càng cao, doanh nghiệp càng phụ thuộc vào vay ngắn hạn và chịu rủi ro tái tài trợ lớn hơn. Barclay và Smith (1995) dùng tỷ trọng nợ dài hạn để kiểm định các giả thuyết về chi phí đại diện, tín hiệu và thuế.",
+  "formula": "STD = Vay ngắn hạn / (Vay ngắn hạn + Vay dài hạn)",
+  "items": [
+    {
+      "statement": "CĐKT",
+      "code": "320",
+      "label": "Vay và nợ thuê tài chính ngắn hạn"
+    },
+    {
+      "statement": "CĐKT",
+      "code": "338",
+      "label": "Vay và nợ thuê tài chính dài hạn"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Tỷ trọng nợ dài hạn",
+      "formula": "Vay dài hạn / (Vay ngắn hạn + Vay dài hạn)",
+      "note": "Cách đo gốc của Barclay và Smith (1995), bằng 1 − STD."
+    }
+  ],
+  "relations": [
+    {
+      "with": "Quy mô",
+      "sign": "-",
+      "note": "Doanh nghiệp lớn dùng nhiều nợ dài hạn hơn (Barclay & Smith, 1995)."
+    },
+    {
+      "with": "Cơ hội tăng trưởng",
+      "sign": "+",
+      "note": "Doanh nghiệp nhiều cơ hội tăng trưởng dùng nợ ngắn hạn để giảm chi phí đại diện."
+    }
+  ],
+  "mistakes": [
+    "Không loại doanh nghiệp không có nợ vay (mẫu số bằng 0) và không báo cáo số quan sát bị loại.",
+    "Hiểu nhầm hướng: STD cao là kỳ hạn nợ ngắn."
+  ],
+  "stata": "* Dữ liệu bảng: một dòng một doanh nghiệp – năm\nencode firm, gen(id)\nxtset id year\ngen stdr = std / (std + ltd) if std + ltd > 0",
+  "r": "library(dplyr)\ndf <- df |>\n  group_by(firm) |>\n  arrange(year, .by_group = TRUE) |>\n  mutate(stdr = ifelse(std + ltd > 0, std / (std + ltd), NA)) |>\n  ungroup()",
+  "references": [
+    {
+      "text": "Barclay, M. J., &amp; Smith, C. W. (1995). The maturity structure of corporate debt. <em>The Journal of Finance, 50</em>(2), 609–631.",
+      "doi": "10.1111/j.1540-6261.1995.tb04797.x"
+    },
+    {
+      "text": "Vo, X. V. (2017). Determinants of capital structure in emerging markets: Evidence from Vietnam. <em>Research in International Business and Finance, 40</em>, 105–113.",
+      "doi": "10.1016/j.ribaf.2016.12.001"
+    }
+  ],
+  "related": [
+    "no-dai-han",
+    "no-vay-tren-tong-tai-san",
+    "kha-nang-thanh-toan-hien-hanh",
+    "quy-mo-doanh-nghiep"
+  ],
+  "calc": "stdr"
+}

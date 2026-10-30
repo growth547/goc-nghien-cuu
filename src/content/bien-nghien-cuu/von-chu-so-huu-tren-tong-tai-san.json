@@ -1,0 +1,68 @@
+{
+  "title": "Vốn chủ sở hữu trên tổng tài sản của ngân hàng (EQTA)",
+  "description": "EQTA (Equity to total assets): định nghĩa, công thức tính từ BCTC theo Thông tư 49/2014/TT-NHNN, biến thể, dấu kỳ vọng, lỗi hay gặp, code Stata và R.",
+  "name": "Vốn chủ sở hữu trên tổng tài sản (ngân hàng)",
+  "nameEn": "Equity to total assets",
+  "symbol": "EQTA",
+  "group": "Ngân hàng",
+  "scope": "Ngân hàng",
+  "keyword": "vốn chủ sở hữu trên tổng tài sản (ngân hàng)",
+  "definition": "EQTA đo mức vốn hoá theo sổ sách, không cần trọng số rủi ro như CAR, nên có đủ cho mọi ngân hàng và mọi năm. Ngân hàng nhiều vốn có chi phí huy động thấp và động cơ chấp nhận rủi ro thấp hơn; Batten và Vo (2019) và Le và Nguyen (2020) cho thấy quan hệ dương với lợi nhuận ở Việt Nam.",
+  "formula": "EQTA = Vốn chủ sở hữu / Tổng tài sản",
+  "items": [
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Vốn chủ sở hữu"
+    },
+    {
+      "statement": "CĐKT-TCTD",
+      "label": "Tổng tài sản"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Đòn bẩy ngân hàng",
+      "formula": "Tổng tài sản / Vốn chủ sở hữu",
+      "note": "Nghịch đảo của EQTA."
+    }
+  ],
+  "relations": [
+    {
+      "with": "ROA",
+      "sign": "+",
+      "note": "Batten và Vo (2019)."
+    },
+    {
+      "with": "Z-score",
+      "sign": "+",
+      "note": "EQTA là một phần của tử số Z-score."
+    }
+  ],
+  "mistakes": [
+    "Đưa EQTA và Z-score cùng mô hình khi Z-score đã chứa EQTA.",
+    "Dùng vốn điều lệ thay cho vốn chủ sở hữu."
+  ],
+  "stata": "gen eqta = eq / ta",
+  "r": "df$eqta <- df$eq / df$ta",
+  "references": [
+    {
+      "text": "Batten, J., &amp; Vo, X. V. (2019). Determinants of bank profitability: Evidence from Vietnam. <em>Emerging Markets Finance and Trade, 55</em>(6), 1417–1428.",
+      "doi": "10.1080/1540496X.2018.1524326"
+    },
+    {
+      "text": "Le, T. D. Q., &amp; Nguyen, D. T. (2020). Capital structure and bank profitability in Vietnam: A quantile regression approach. <em>Journal of Risk and Financial Management, 13</em>(8), Article 168.",
+      "doi": "10.3390/jrfm13080168"
+    },
+    {
+      "text": "Athanasoglou, P. P., Brissimis, S. N., &amp; Delis, M. D. (2008). Bank-specific, industry-specific and macroeconomic determinants of bank profitability. <em>Journal of International Financial Markets, Institutions and Money, 18</em>(2), 121–136.",
+      "doi": "10.1016/j.intfin.2006.07.001"
+    }
+  ],
+  "related": [
+    "ty-le-an-toan-von",
+    "z-score-ngan-hang",
+    "roa",
+    "roe"
+  ],
+  "calc": "eqta"
+}

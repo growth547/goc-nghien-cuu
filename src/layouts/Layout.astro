@@ -3,6 +3,7 @@ import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
 import { getAssetPath } from "@/utils/withBase";
+import { ogCardFor } from "@/utils/ogCards";
 import config from "@/config";
 import "@/styles/global.css";
 
@@ -19,10 +20,13 @@ type Props = {
 
 const { site } = config;
 
+// Pages with their own share card (public/og/, 1200x630) use it unless a post sets ogImage.
+const ogCard = ogCardFor(Astro.url.pathname);
+
 const {
   title: rawTitle = site.title,
   description = site.description,
-  ogImage = resolveDefaultOgImagePath(config),
+  ogImage = ogCard ? getAssetPath(ogCard.file) : resolveDefaultOgImagePath(config),
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   noindex = false,
   ogType = "website",
@@ -39,7 +43,11 @@ const title =
 
 const socialImageURL = new URL(ogImage, Astro.site ?? Astro.url);
 // public/default-og.png is 1200x630; declaring it lets Facebook/Zalo render the card on first share.
-const isDefaultOgImage = ogImage === resolveDefaultOgImagePath(config);
+// The per-page cards are the same size.
+const isDefaultOgImage =
+  ogImage === resolveDefaultOgImagePath(config) ||
+  (ogCard !== undefined && ogImage === getAssetPath(ogCard.file));
+const ogImageAlt = ogCard && ogImage === getAssetPath(ogCard.file) ? ogCard.alt : title;
 // getRelativeLocaleUrl appends a trailing slash ("rss.xml/"), which 404s on a static host.
 const rssHref = getAssetPath("rss.xml");
 ---
@@ -94,7 +102,7 @@ const rssHref = getAssetPath("rss.xml");
         </>
       )
     }
-    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content="vi_VN" />
 
     <!-- Twitter / X (name=, not property=) -->
@@ -102,6 +110,7 @@ const rssHref = getAssetPath("rss.xml");
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <!-- RSS autodiscovery -->
     <link

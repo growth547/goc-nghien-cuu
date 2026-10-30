@@ -75,7 +75,7 @@ const btn =
   };
   const track = (channel: string) => {
     const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
-    if (typeof g === "function") g("event", "share_click", { channel });
+    if (typeof g === "function") g("event", "share_click", { channel, transport_type: "beacon" });
   };
   const touch = () => window.matchMedia("(pointer: coarse)").matches;
 

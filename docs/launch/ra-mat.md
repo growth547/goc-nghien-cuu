@@ -351,11 +351,23 @@ Threads đã được lên lịch tự động lúc 20:30 mỗi ngày (riêng 05
 
 ### Đo gì và đo bằng gì
 
-**Tình trạng analytics (kiểm tra 30/10/2026):** mã nguồn đã có sẵn chỗ gắn Google Analytics 4 (`src/layouts/Layout.astro`, đọc `gaMeasurementId` trong `astro-paper.config.ts`), nhưng `gaMeasurementId` đang để trống, nên **trang chưa có analytics nào**; trang live https://gocnghiencuu.com/ cũng không có thẻ gtag hay công cụ đo nào khác. Hiện chỉ có Google Search Console (đã xác minh) và Bing Webmaster.
+**Tình trạng analytics (cập nhật 31/10/2026):** GA4 đã bật (`G-FXE0951K7Y`, khai báo `gaMeasurementId` trong `astro-paper.config.ts`, thẻ ở `src/layouts/Layout.astro`). `page_view` gửi ở mỗi `astro:page-load` (cả lần tải đầu lẫn khi chuyển trang bằng ClientRouter). Ngoài ra có Google Search Console (đã xác minh) và Bing Webmaster.
 
-Hệ quả: lượt vào từ Facebook, Spiderum, TikTok **không đo được** cho tới khi gắn analytics. Search Console chỉ thấy lượt từ Google Search, không thấy referral từ mạng xã hội.
+**Sự kiện GA4 tự đặt** (gửi bằng `transport_type: "beacon"` để không mất khi bấm link rời trang; không có thông tin cá nhân, không gửi nội dung dữ liệu người dùng dán hay tải lên):
 
-Khuyến nghị (chưa làm, chủ trang quyết định): gắn một công cụ đo tôn trọng quyền riêng tư, không dùng cookie, trước 31/10 nếu kịp: Cloudflare Web Analytics (miễn phí), GoatCounter (miễn phí cho dự án phi thương mại), Plausible hoặc Umami (tự host hoặc trả phí). Nếu chọn GA4 thì chỉ cần điền mã vào `gaMeasurementId`, nhưng nên kèm thông báo cookie. Dù chọn gì, cập nhật trang `/about/` hoặc chân trang nói rõ trang có đo lượt truy cập.
+| Sự kiện | Tham số | Khi nào gửi | Nguồn |
+|---|---|---|---|
+| `tool_run` | `tool` (slug trang, vd `pls-sem`, `cronbach-alpha`) | Công cụ có nút chạy (id kết thúc `-run`: PLS-SEM, Cronbach, phân tích dữ liệu, làm sạch, bác sĩ kết quả, trung gian–điều tiết, APA, chỉ số tài chính): mỗi lần bấm nút. Công cụ tự tính khi nhập (tính cỡ mẫu, vẽ mô hình, bộ khảo sát, chọn phương pháp): một lần mỗi lượt xem trang, ở thao tác đầu tiên. Đây là lượt bấm chạy, kể cả khi dữ liệu lỗi. | `src/scripts/track.ts` |
+| `export` | `tool`, `format` (`docx`, `csv`, `sps`, `png`, `svg`, `ris`, `bibtex`, `google_form`, `gdf`, `link`, `copy`) | Bấm nút tải hoặc sao chép kết quả trong công cụ (theo id nút trong `src/tools/*.html`) | `src/scripts/track.ts` |
+| `share_click` | `channel` (`facebook`, `messenger`, `zalo`, `copy`, `webshare`) | Bấm nút trong thanh "Gửi cho bạn cùng nhóm" ở trang công cụ và bài viết | `src/components/ShareBar.astro` |
+| `affiliate_click` | `placement` (`data-placement` của link, nếu không có thì `utm_content`, nếu không có thì đường dẫn trang), `link_domain` | Bấm bất kỳ link `rel="sponsored"` nào (link giới thiệu Genius Data) | `src/scripts/track.ts` |
+
+Link chia sẻ từ thanh chia sẻ mang `utm_source=share&utm_medium=<kênh>`, nên lượt vào từ link bạn bè gửi nhau hiện trong GA4 ở Nguồn/Phương tiện `share / zalo`, `share / facebook`…
+
+Cách xem: GA4 → Báo cáo → Tương tác → Sự kiện (số lần mỗi sự kiện); muốn xem theo `tool`, `format`, `channel`, `placement` thì vào Quản trị → Định nghĩa tuỳ chỉnh → tạo chiều tuỳ chỉnh phạm vi sự kiện cho từng tham số (chỉ có dữ liệu từ lúc tạo). Kiểm tra nhanh: Quản trị → DebugView, hoặc Báo cáo → Thời gian thực. Nên đánh dấu `tool_run` và `share_click` là sự kiện chính (key event) để so kênh.
+
+Còn thiếu: chưa có thông báo cookie; nên ghi ở `/about/` hoặc chân trang rằng trang dùng GA4 để đếm lượt truy cập.
+
 
 **Link có UTM** (chỉ có ích khi đã gắn analytics; không gắn UTM vào link affiliate):
 

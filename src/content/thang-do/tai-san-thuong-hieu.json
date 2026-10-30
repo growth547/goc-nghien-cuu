@@ -122,7 +122,8 @@
     "Tác giả hướng dẫn tính MBE bằng trung bình 10 biến BL, PQ, BAA và OBE bằng trung bình 4 biến OBE; BAA5 phải đảo điểm (7 thành 1, 1 thành 7) trước khi tính.",
     "Trong mô hình SEM, phổ biến nhất là để BL, PQ, BAA tác động lên OBE. Nhận biết và liên tưởng gộp chung một thành phần trong bản gốc; nếu tách riêng liên tưởng thương hiệu thì cần thêm biến và ghi rõ nguồn.",
     "Thay [thương hiệu] bằng tên cụ thể và trộn ngẫu nhiên thứ tự câu hỏi như tác giả khuyến nghị. Người trả lời phải biết hoặc đã dùng thương hiệu, nên thêm câu hỏi sàng lọc ở đầu bảng hỏi.",
-    "Câu OBE dịch dễ bị lủng củng vì cấu trúc giả định; đọc thử với vài người trả lời và kiểm tra tính giá trị phân biệt giữa BL và OBE, hai khái niệm này thường tương quan cao."
+    "Câu OBE dịch dễ bị lủng củng vì cấu trúc giả định; đọc thử với vài người trả lời và kiểm tra tính giá trị phân biệt giữa BL và OBE, hai khái niệm này thường tương quan cao.",
+    "Yoo và Donthu cũng công bố năm 2001 thang SITEQUAL đo chất lượng website (Quarterly Journal of Electronic Commerce); khi trích thang MBE, ghi đúng bài trên Journal of Business Research. Nếu luận văn trích cả hai bài, APA yêu cầu ghi 2001a và 2001b."
   ],
   "sampleSize": {
     "arrowsMax": 3,

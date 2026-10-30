@@ -1,12 +1,12 @@
 {
-  "title": "Thang đo hài lòng công việc MOAQ tiếng Việt: Cammann (1979)",
+  "title": "Thang đo hài lòng công việc MOAQ tiếng Việt: Cammann và cộng sự (1979)",
   "description": "Thang đo hài lòng công việc tổng thể 3 biến quan sát của Michigan Organizational Assessment Questionnaire, dịch sẵn tiếng Việt, có bản gốc, câu đảo chiều và trích dẫn.",
   "name": "MOAQ-JSS",
   "fullName": "Thang đo hài lòng công việc tổng thể của Michigan Organizational Assessment Questionnaire (MOAQ Job Satisfaction Subscale)",
   "field": "Quản trị nhân sự & tổ chức",
   "keyword": "thang đo hài lòng công việc",
   "intro": "Thang đo này đo mức hài lòng chung của người lao động với công việc, không tách theo khía cạnh như lương, đồng nghiệp hay cấp trên. Ba biến thuộc bộ Michigan Organizational Assessment Questionnaire do nhóm Quality of Work của Đại học Michigan phát triển giữa thập niên 1970, thường trích theo Cammann, Fichman, Jenkins và Klesh (1979, 1983). Bowling và Hammond (2008) tổng hợp hơn 70 nghiên cứu và xác nhận thang có giá trị cấu trúc tốt. Ở Việt Nam, thang hợp với đề tài về hài lòng, gắn kết và ý định nghỉ việc của nhân viên ngân hàng, giáo viên, điều dưỡng, nhân viên văn phòng.",
-  "responseScale": "Likert đồng ý. Bộ MOAQ năm 1975 dùng thang 7 mức; bản trong kho thang đo của Paul Spector (Spector, n.d.) dùng 6 mức (1 = Rất không đồng ý … 6 = Rất đồng ý). Nhiều nghiên cứu sau dùng 5 hoặc 7 mức; cộng hoặc lấy trung bình 3 biến sau khi đảo chiều JS2.",
+  "responseScale": "Likert đồng ý. Báo cáo MOAQ năm 1975 của Đại học Michigan (bản trước của tài liệu Cammann và cộng sự, 1979) dùng thang 7 mức; bản trong kho thang đo của Paul Spector (Spector, n.d.) dùng 6 mức (1 = Rất không đồng ý … 6 = Rất đồng ý). Nhiều nghiên cứu sau dùng 5 hoặc 7 mức; cộng hoặc lấy trung bình 3 biến sau khi đảo chiều JS2.",
   "responseScaleShort": "Likert 6–7 mức",
   "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–6: điểm mới = 1 + 6 − điểm = 7 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
   "constructs": [
@@ -52,7 +52,7 @@
     },
     {
       "q": "Bản gốc dùng thang mấy mức? Em dùng 5 mức có được không?",
-      "a": "Bộ MOAQ năm 1975 dùng thang đồng ý 7 mức, bản trong kho của Spector (n.d.) dùng 6 mức, còn nhiều nghiên cứu sau dùng 5 mức, ví dụ Shaqiqi (2025) và Shaqiqi (2026) với điểm tổng từ 3 đến 15. Số mức không làm thay đổi nội dung câu hỏi, nhưng em phải ghi rõ số mức trong phần phương pháp và không so trực tiếp điểm trung bình với nghiên cứu dùng thang khác số mức."
+      "a": "Báo cáo MOAQ năm 1975 (bản trước của Cammann và cộng sự, 1979) dùng thang đồng ý 7 mức, bản trong kho của Spector (n.d.) dùng 6 mức, còn nhiều nghiên cứu sau dùng 5 mức, ví dụ Shaqiqi (2025) và Shaqiqi (2026) với điểm tổng từ 3 đến 15. Số mức không làm thay đổi nội dung câu hỏi, nhưng em phải ghi rõ số mức trong phần phương pháp và không so trực tiếp điểm trung bình với nghiên cứu dùng thang khác số mức."
     },
     {
       "q": "Cronbach's alpha của em chỉ khoảng 0,7, có chấp nhận được không?",

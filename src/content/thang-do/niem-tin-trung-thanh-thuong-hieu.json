@@ -102,7 +102,7 @@
     }
   ],
   "usage": [
-    "Trung thành hành vi và trung thành thái độ mỗi khái niệm chỉ có 2 biến; hội đồng hay hỏi về độ tin cậy, nên bổ sung 1–2 biến từ thang khác (ví dụ Yoo & Donthu, 2001) và ghi rõ nguồn từng biến.",
+    "Trung thành hành vi và trung thành thái độ mỗi khái niệm chỉ có 2 biến; hội đồng hay hỏi về độ tin cậy, nên bổ sung 1–2 biến từ thang khác (ví dụ thang tài sản thương hiệu MBE của Yoo & Donthu, 2001) và ghi rõ nguồn từng biến.",
     "Bài gốc phân tích ở cấp thương hiệu (trung bình 30 người cho mỗi thương hiệu); khoá luận phân tích ở cấp cá nhân nên phải chạy lại CFA, không lấy hệ số alpha của bài gốc làm bằng chứng.",
     "'Committed' dịch là 'cam kết' nghe cứng với người tiêu dùng; 'gắn bó' tự nhiên hơn nhưng phải giữ ý sẵn lòng ở lại với thương hiệu.",
     "Thị phần và giá tương đối trong mô hình gốc lấy từ quản lý thương hiệu, không hỏi người tiêu dùng; đề tài chỉ khảo sát khách hàng thường dừng ở hai loại trung thành hoặc thay bằng ý định giới thiệu, ý định mua lại."
@@ -160,7 +160,7 @@
   "examinerQA": [
     {
       "q": "Trung thành hành vi và trung thành thái độ mỗi khái niệm chỉ có 2 biến, có đủ tin cậy không?",
-      "a": "Trong bài gốc, α của trung thành hành vi là 0,90 và của trung thành thái độ là 0,83 (Chaudhuri & Holbrook, 2001, tr. 88), nhưng đó là dữ liệu trung bình theo thương hiệu, nên ổn định hơn dữ liệu cá nhân. Với khảo sát cá nhân, khái niệm 2 biến dễ có α thấp và khó chạy CFA; nên bổ sung 1–2 biến từ thang khác như Yoo & Donthu (2001) và ghi rõ nguồn từng biến."
+      "a": "Trong bài gốc, α của trung thành hành vi là 0,90 và của trung thành thái độ là 0,83 (Chaudhuri & Holbrook, 2001, tr. 88), nhưng đó là dữ liệu trung bình theo thương hiệu, nên ổn định hơn dữ liệu cá nhân. Với khảo sát cá nhân, khái niệm 2 biến dễ có α thấp và khó chạy CFA; nên bổ sung 1–2 biến từ thang khác như thang MBE của Yoo & Donthu (2001) và ghi rõ nguồn từng biến."
     },
     {
       "q": "Đề tài có kiểm định được nhánh thị phần và giá tương đối như mô hình gốc không?",

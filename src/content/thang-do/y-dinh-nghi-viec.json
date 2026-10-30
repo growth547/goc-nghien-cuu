@@ -6,7 +6,7 @@
   "field": "Quản trị nhân sự & tổ chức",
   "keyword": "thang đo ý định nghỉ việc",
   "intro": "Thang đo này đo mức người lao động đang nghĩ tới việc rời tổ chức và tìm việc mới trong thời gian tới. Ba biến thuộc mục Turnover của Michigan Organizational Assessment Questionnaire, do nhóm Quality of Work của Đại học Michigan phát triển và thường trích theo Cammann, Fichman, Jenkins và Klesh (1979). Ý định nghỉ việc là biến kết quả quen thuộc trong mô hình về hài lòng công việc, cam kết tổ chức, hỗ trợ tổ chức và kiệt sức. Ở Việt Nam, thang hay dùng cho đề tài về nhân viên ngân hàng, công nghệ thông tin, điều dưỡng, giáo viên trường tư.",
-  "responseScale": "Bộ MOAQ năm 1975 dùng thang 7 mức: TI2 và TI3 hỏi mức đồng ý, TI1 hỏi mức khả năng xảy ra. Nhiều nghiên cứu sau đưa cả 3 biến về Likert đồng ý 5 hoặc 7 mức; nếu làm vậy, ghi rõ trong phần phương pháp.",
+  "responseScale": "Báo cáo MOAQ năm 1975 của Đại học Michigan (bản trước của tài liệu Cammann và cộng sự, 1979) dùng thang 7 mức: TI2 và TI3 hỏi mức đồng ý, TI1 hỏi mức khả năng xảy ra. Nhiều nghiên cứu sau đưa cả 3 biến về Likert đồng ý 5 hoặc 7 mức; nếu làm vậy, ghi rõ trong phần phương pháp.",
   "responseScaleShort": "Likert/khả năng 7 mức",
   "constructs": [
     {
@@ -61,13 +61,14 @@
   "sampleSize": {
     "note": "Đây là thang đo một khái niệm, không phải mô hình. Cỡ mẫu phụ thuộc mô hình bạn xây; nếu ý định nghỉ việc nhận 3 biến dự báo thì theo power f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
   },
-  "license": "Các biến được công bố trong tài liệu MOAQ của Đại học Michigan, bản báo cáo năm 1975 được Paul Spector lưu trữ trên trang của ông; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Cammann và cộng sự.",
+  "license": "Các biến được công bố trong tài liệu MOAQ của Đại học Michigan, bản báo cáo năm 1975 được Paul Spector lưu trữ trên trang của ông (Spector, n.d.); không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Cammann và cộng sự (1979) hoặc chương sách năm 1983.",
   "references": [
     "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1979). <em>The Michigan Organizational Assessment Questionnaire</em> [Unpublished manuscript]. University of Michigan.",
     "Cammann, C., Fichman, M., Jenkins, G. D., &amp; Klesh, J. R. (1983). Assessing the attitudes and perceptions of organizational members. In S. E. Seashore, E. E. Lawler, P. H. Mirvis, &amp; C. Cammann (Eds.), <em>Assessing organizational change: A guide to methods, measures, and practices</em>. Wiley.",
     "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
     "İlhan, Ü. D., Güler, B. K., Turgut, D., &amp; Duran, C. (2025). Unique challenges in the Turkish workforce: Examining the impact of job demands and resources on work-related outcomes of blue- and white-collar workers. <em>Frontiers in Psychology, 16</em>, 1588266. https://doi.org/10.3389/fpsyg.2025.1588266",
-    "Shaqiqi, W. (2026). The mediating role of job satisfaction in the relationship between perceived organizational support and nurses' turnover intentions. <em>Journal of Nursing Management, 2026</em>(1), 2960879. https://doi.org/10.1155/jonm/2960879"
+    "Shaqiqi, W. (2026). The mediating role of job satisfaction in the relationship between perceived organizational support and nurses' turnover intentions. <em>Journal of Nursing Management, 2026</em>(1), 2960879. https://doi.org/10.1155/jonm/2960879",
+    "Spector, P. E. (n.d.). <em>Michigan Organizational Assessment Questionnaire (MOAQ)</em> [Assessment archive]. Retrieved October 30, 2026, from https://paulspector.com/assessments/assessment-archive/job-attitudes/michigan-organizational-assessment-questionnaire-moaq/"
   ],
   "verifiedFrom": [
     "https://paulspector.com/assessment-files/other/moaq.pdf",

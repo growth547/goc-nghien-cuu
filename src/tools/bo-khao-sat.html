@@ -104,6 +104,7 @@
       <button type="button" class="btn ghost" id="bk-link">Sao chép link</button>
     </span>
   </div>
+  <div id="bk-ph-warn" class="err" role="alert" hidden style="margin-top:8px"></div>
   <div id="bk-gform-box" class="bk-box bk-hide">
     <p style="margin:0"><strong>Tạo Google Form bằng Apps Script</strong></p>
     <ol class="bk-steps">
@@ -169,7 +170,8 @@
   function ncfcdf(x,d1,d2,lam){const y=d1*x/(d1*x+d2),h=lam/2;let sum=0,jmax=Math.ceil(h+12*Math.sqrt(h+1)+40);for(let j=0;j<=jmax;j++){const w=Math.exp(-h+j*Math.log(h||1e-300)-lgamma(j+1));sum+=w*ibeta(y,d1/2+j,d2/2)}return sum}
   // G*Power "Linear multiple regression: Fixed model, R² deviation from zero".
   function regPower(n,m,f2,alpha){const d2=n-m-1;if(d2<1)return 0;const crit=finv(1-alpha,m,d2);return 1-ncfcdf(crit,m,d2,f2*n)}
-  function regN(m,f2,alpha,power){for(let n=m+2;n<20000;n++)if(regPower(n,m,f2,alpha)>=power)return n;return NaN}
+  // Smallest n with power ≥ target: power rises with n, so double then bisect (same answer as a linear search, ~25× faster).
+  function regN(m,f2,alpha,power){let lo=m+1,hi=m+2;while(regPower(hi,m,f2,alpha)<power){lo=hi;hi*=2;if(hi>400000)return NaN}while(hi-lo>1){const mid=(lo+hi)>>1;regPower(mid,m,f2,alpha)>=power?hi=mid:lo=mid}return hi}
   function zinv(p){const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416],pl=0.02425;let q,r;if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}if(p>1-pl){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}q=p-0.5;r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
   // Kock & Hadaya (2018) inverse square root method (one-tailed test).
   function isrN(pmin,alpha,power){const k=zinv(1-alpha)+zinv(power);return Math.ceil(Math.pow(k/pmin,2))}
@@ -506,6 +508,18 @@
   function introLine(sv){
     const a=sv.addr==='Bạn'?'bạn':'Anh/Chị';
     return `Khảo sát phục vụ nghiên cứu "${sv.topic||'[tên đề tài]'}", mất khoảng ${sv.minutes} phút. Không có câu trả lời đúng hay sai; câu trả lời được giữ ẩn danh và chỉ dùng cho mục đích nghiên cứu. Tham gia là tự nguyện, ${a} có thể dừng bất cứ lúc nào.`;
+  }
+  // Unfilled "[…]" placeholders in what respondents will read in one export ('word' | 'gform' | 'gdf').
+  // Listed in a warning before export; the export itself is never blocked.
+  function respondentPlaceholders(sv,target){
+    const T=[introLine(sv)];
+    if(target==='word')T.push(sv.who||'[họ tên người thực hiện]',sv.org||'[khoa, trường]',sv.contact||'[email hoặc số điện thoại]');
+    if(sv.screening)T.push(sv.screening.text,...sv.screening.choices);
+    if(sv.ac)T.push(sv.ac.text);
+    sv.constructs.forEach(c=>{T.push(c.lead||'');if(sv.showNames)T.push(c.nameVi||'');c.blocks.forEach(b=>{T.push(b.legend||'');b.items.forEach(i=>T.push(i.text||'',i.stem||'',i.left||'',i.right||''))})});
+    sv.demos.forEach(d=>T.push(d.label,...d.options));
+    const out=[];for(const t of T)for(const m of String(t).matchAll(/\[([^\]]*\p{L}[^\]]*)\]/gu))if(!out.includes(m[0]))out.push(m[0]);
+    return out;
   }
   const gridTitle=(sv,b,lead)=>lead||(b.kind==='agree'?`Mức độ đồng ý của ${sv.addr==='Bạn'?'bạn':'Anh/Chị'} với các phát biểu sau`:`Chọn mức phù hợp nhất với ${sv.addr==='Bạn'?'bạn':'Anh/Chị'} cho mỗi câu`);
   const colLabel=(b,v)=>b.labels[v]?`${v} - ${b.labels[v]}`:String(v);
@@ -883,16 +897,19 @@ ${warn.length?`<div class="result"><span class="lbl">Cần xem lại</span><ul c
     const fb=()=>{if(el&&el.select){el.focus();el.select()}else if(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}btn.textContent='Đã chọn, nhấn Ctrl+C'};
     try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}}
   const need=()=>{if(!last){$('bk-out').scrollIntoView({behavior:'smooth'});return false}return true};
+  const NAMES={word:'Bản Word',gform:'Google Form',gdf:'Bản GDF'};
+  function phWarn(target){const el=$('bk-ph-warn'),ph=last?respondentPlaceholders(last.sv,target):[];el.hidden=!ph.length;
+    el.textContent=ph.length?`${NAMES[target]} vẫn còn ${ph.length} chỗ trống chưa điền mà người trả lời sẽ thấy nguyên văn: ${ph.join(', ')}. Điền ở các ô phía trên (tên đề tài, người thực hiện, chỗ trống trong câu hỏi, câu sàng lọc) rồi xuất lại.`:''}
 
-  $('bk-doc').addEventListener('click',()=>{if(!need())return;
+  $('bk-doc').addEventListener('click',()=>{if(!need())return;phWarn('word');
     download('phieu-khao-sat.doc','application/msword',`﻿<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Phiếu khảo sát</title><style>@page WordSection1{size:21cm 29.7cm;margin:2cm 2cm 2cm 3cm}div.WordSection1{page:WordSection1}body{font-family:"Times New Roman";font-size:13pt;line-height:1.4}table{border-collapse:collapse;width:100%}td,th{border:1px solid #000;padding:3pt 4pt;font-size:12pt;vertical-align:top}td.c,th.c{text-align:center}</style></head><body><div class="WordSection1">${questionnaireHtml(last.sv)}</div></body></html>`)});
   $('bk-csv').addEventListener('click',()=>{if(!need())return;download('bang-ma-hoa.csv','text/csv;charset=utf-8',toCSV(codebookRows(last.sv)))});
   $('bk-copy-q').addEventListener('click',()=>copyText($('bk-q').innerText,$('bk-copy-q'),'Sao chép dạng chữ',$('bk-q')));
   $('bk-copy-t').addEventListener('click',()=>copyText($('bk-thesis').innerText,$('bk-copy-t'),'Sao chép đoạn văn',$('bk-thesis')));
   $('bk-link').addEventListener('click',()=>{save();copyText(location.href,$('bk-link'),'Sao chép link')});
   const toggle=(id,fill)=>{if(!need())return;const b=$(id+'-box');b.classList.toggle('bk-hide');if(!b.classList.contains('bk-hide')){fill();b.scrollIntoView({behavior:'smooth',block:'nearest'})}};
-  $('bk-gform').addEventListener('click',()=>toggle('bk-gform',()=>{$('bk-gform-code').value=appsScript(last.sv)}));
-  $('bk-gdf').addEventListener('click',()=>toggle('bk-gdf',()=>{$('bk-gdf-code').value=toGDF(last.sv)}));
+  $('bk-gform').addEventListener('click',()=>toggle('bk-gform',()=>{phWarn('gform');$('bk-gform-code').value=appsScript(last.sv)}));
+  $('bk-gdf').addEventListener('click',()=>toggle('bk-gdf',()=>{phWarn('gdf');$('bk-gdf-code').value=toGDF(last.sv)}));
   $('bk-gform-copy').addEventListener('click',()=>copyText($('bk-gform-code').value,$('bk-gform-copy'),'Sao chép đoạn mã',$('bk-gform-code')));
   $('bk-gdf-copy').addEventListener('click',()=>copyText($('bk-gdf-code').value,$('bk-gdf-copy'),'Sao chép',$('bk-gdf-code')));
 

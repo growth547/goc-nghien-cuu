@@ -28,7 +28,7 @@ const api = new Function(
   `${block(kitSrc, "math")}${block(kitSrc, "kit")}
    return { placeholdersOf, fillPlaceholders, applyAddress, citeOf, citedBy, isAgreementScale, parseResponseScale, itemAnchors, itemFormat,
      legendOf, valuesOf, reverseRule, dedupeCodes, acCode, placeAttention, defaultScreening, DEMOS, DEMO_DEFAULT, buildSurvey, appsScript,
-     toGDF, codebookRows, toCSV, kitSample, normText, expandQuery, indexConstruct, rankConstructs, LIK };`
+     toGDF, codebookRows, toCSV, kitSample, respondentPlaceholders, normText, expandQuery, indexConstruct, rankConstructs, LIK };`
 )();
 const ts = await import("../src/utils/kit.ts");
 
@@ -395,6 +395,19 @@ for (const tf of readdirSync(tdir).filter(f => f.endsWith(".json") && !f.startsW
   const dup = filled.find(v => /(?<!\p{L})(\p{L}+ \p{L}+) \1(?!\p{L})|(?<!\p{L})này này(?!\p{L})/iu.test(v));
   check(!dup, `${tf}: no doubled words after filling${dup ? ` (${dup})` : ""}`);
   check(["sv", "ld", "td"].includes(ts.audienceCode(t.audience)), `${tf}: audience maps to a tool audience (${ts.audienceCode(t.audience)})`);
+}
+
+
+// ---- unfilled placeholders are listed before Word / Google Form / GDF export (warning only) ----
+{
+  const pend = api.buildSurvey(input(["tam:PEOU", "tam:PU", "tam:BI"], { aud: "sv", topic: "", ph: {} }));
+  const word = api.respondentPlaceholders(pend, "word"), gdf = api.respondentPlaceholders(pend, "gdf");
+  check(word.includes("[tên đề tài]") && word.includes("[họ tên người thực hiện]") && word.includes("[trường/ngành]"), `placeholders: Word lists topic, author and screening blanks (${word.join(", ")})`);
+  check(word.some(x => /hệ thống/i.test(x)), "placeholders: an unfilled item placeholder ([hệ thống]) is listed");
+  check(!gdf.includes("[họ tên người thực hiện]") && gdf.includes("[tên đề tài]"), "placeholders: GDF lists only text it shows respondents");
+  const done = api.buildSurvey(input(["tam:PEOU", "tam:PU", "tam:BI"], { aud: "td", topic: "Ví điện tử", who: "An", org: "Khoa KT", contact: "a@b.vn", target: "ví điện tử", ph: { "hệ thống": "ví điện tử" } }));
+  for (const t of ["word", "gform", "gdf"]) check(api.respondentPlaceholders(done, t).length === 0, `placeholders: a filled survey has none in ${t} (${api.respondentPlaceholders(done, t).join(", ")})`);
+  check(/phWarn\('word'\)/.test(kitSrc) && /phWarn\('gform'\)/.test(kitSrc) && /phWarn\('gdf'\)/.test(kitSrc) && /id="bk-ph-warn"[^>]*role="alert"/.test(kitSrc), "placeholders: each export button shows the warning");
 }
 
 console.log(`${passed} checks passed`);

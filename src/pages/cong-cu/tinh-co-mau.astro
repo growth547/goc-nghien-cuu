@@ -57,6 +57,15 @@ import html from "@/tools/tinh-co-mau.html?raw";
       khuyến nghị cách này cho PLS-SEM.
     </p>
     <p>
+      Bảng của Hair và cộng sự (2022) chia p_min thành các khoảng và tính mỗi
+      khoảng theo cận trên: 0,05–0,10 cần 619 quan sát, 0,11–0,20 cần 155,
+      0,21–0,30 cần 69, 0,31–0,40 cần 39 (α 5%, power 0,80). Máy tính cho chọn
+      đúng các giá trị đó (0,10; 0,20; 0,30; 0,40) cùng hai mức giữa 0,15 và
+      0,25, nên con số khớp với sách. Mặc định là 0,20, mức thường dùng khi chưa
+      có số liệu trước; nếu mô hình có đường dẫn kỳ vọng yếu, chọn 0,15 hoặc
+      0,10 để thận trọng hơn.
+    </p>
+    <p>
       <strong>Quy tắc 10 lần</strong> (10 × số mũi tên lớn nhất) chỉ hiện để đối
       chiếu, vì thường cho cỡ mẫu quá thấp. Với hồi quy, công cụ đối chiếu thêm
       quy tắc của Tabachnick và Fidell (2013): N ≥ 50 + 8m để kiểm định cả mô hình
@@ -64,8 +73,10 @@ import html from "@/tools/tinh-co-mau.html?raw";
       hơn.
     </p>
     <p>
-      <strong>EFA.</strong> Tối thiểu 5 phiếu cho mỗi biến quan sát và không dưới
-      50 phiếu; mức nên đạt là 10 phiếu cho mỗi biến (Hair và cộng sự, 2010).
+      <strong>EFA.</strong> Tối thiểu max(50; 5 × số biến quan sát); mức khuyến
+      nghị là max(100; 10 × số biến), tức 10 phiếu cho mỗi biến và không dưới
+      100 phiếu (Hair và cộng sự, 2010). Đánh dấu ô “Dùng mức khuyến nghị” thì
+      cả khung kết quả và đoạn văn dùng mức này.
     </p>
     <p>
       <strong>Ước lượng tỷ lệ (Cochran, 1977).</strong>
@@ -84,9 +95,14 @@ import html from "@/tools/tinh-co-mau.html?raw";
         phiếu cần thu là n / 0,85 (155 phiếu hợp lệ cần khoảng 183 phiếu thu về).
       </li>
       <li>
-        <strong>Khung đối chiếu</strong> liệt kê các tiêu chí khác. Lấy số lớn
-        nhất mà bạn trích dẫn được, rồi viết rõ trong chương 3 rằng mẫu thực tế
-        đạt cả hai tiêu chí.
+        <strong>Khung đối chiếu</strong> liệt kê các tiêu chí khác. Đánh dấu ô
+        đối chiếu ở cuối biểu mẫu thì số lớn hơn được dùng cho cả con số chính và
+        đoạn văn chương 3, kèm câu nêu rõ mẫu đạt cả hai tiêu chí.
+      </li>
+      <li>
+        <strong>Số mũi tên hoặc số biến độc lập</strong> phải là số nguyên từ 1
+        đến 40. Khi ô nhập sai, đoạn văn được xoá để bạn không chép nhầm số cũ.
+        Sai số trong ước lượng tỷ lệ nhập theo phần trăm (5 nghĩa là 5%).
       </li>
       <li>
         <strong>Đoạn văn chương 3</strong> tự cập nhật theo lựa chọn ở trên và kèm

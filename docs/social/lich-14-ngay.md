@@ -22,13 +22,13 @@ Tài khoản @gocnghiencuu1203 (Góc nghiên cứu). Căn cứ: `dot-1.md` và `
 | Ngày | Thứ, ngày | Giờ | Chủ đề | Dạng | Nội dung |
 |---|---|---|---|---|---|
 | 1 | T7 31/10 | 20:30 | KLTN | Topic: hỏi cộng đồng + tự mở hàng | Điều ước gì được nói trước khi làm phần số liệu |
-| 2 | CN 01/11 | 20:30 | nckh | Chuỗi 4 phần | Likert 5 mức hay 7 mức |
+| 2 | CN 01/11 | 20:30 | nckh | Chuỗi 7 phần, danh sách | 5 công cụ miễn phí chạy số liệu khoá luận |
 | 3 | T2 02/11 | 20:30 | nckh | Chuỗi 5 phần, chuyên mục "Hội đồng hỏi" số 1 | "Thang đo này em lấy ở đâu?" |
 | 4 | T3 03/11 | 20:30 | KLTN | Poll | Bạn đang kẹt ở khâu nào |
 | 5 | T4 04/11 | 20:30 | nckh | Chuỗi 4 phần, phân biệt hai khái niệm | KMO và Bartlett |
 | 6 | T5 05/11 | **12:15** | khóa luận | Chuỗi 3 phần ngắn | Sig. = ,000 viết thế nào |
 | 7 | T6 06/11 | 20:30 | khóa luận | Chuỗi 5 phần, "Hội đồng hỏi" số 2 | "Phần này em có dùng AI không?" |
-| 8 | T7 07/11 | 20:30 | nckh | Chuỗi 4 phần | Phiếu trả lời cho có |
+| 8 | T7 07/11 | 20:30 | nckh | Chuỗi 6 phần, danh sách | 4 lý do Cronbach's alpha thấp |
 | 9 | CN 08/11 | 20:30 | KLTN | Topic: hỏi cộng đồng + tự mở hàng | Lỗi trình bày nhỏ bị bắt ở chương 4 |
 | 10 | T2 09/11 | 20:30 | SPSS (thử) | Chuỗi 4 phần, phân biệt | T-test và ANOVA |
 | 11 | T3 10/11 | **12:15** | KLTN | Chuỗi 4 phần, "Hội đồng hỏi" số 3 | Giả thuyết không được ủng hộ |
@@ -40,7 +40,11 @@ Nhịp dạng bài trong 14 ngày:
 - 2 bài Topic;
 - 1 poll;
 - 1 bài có văn bản đính kèm;
-- 10 chuỗi, trong đó 4 bài thuộc chuyên mục cố định "Hội đồng hỏi".
+- 10 chuỗi, trong đó 4 bài thuộc chuyên mục cố định "Hội đồng hỏi" và 2 bài dạng danh sách (ngày 2, ngày 8).
+
+**Dạng danh sách:**
+- Học theo format các bài "Top N" đang chạy tốt trên Threads: phần 1 nêu nỗi đau cụ thể và hứa một danh sách, mỗi mục là một phần riêng, phần cuối mời bổ sung.
+- Vẫn là giọng của tài khoản Góc nghiên cứu, không đóng vai cá nhân. Mục nào là sản phẩm của mình thì nói rõ "bên mình làm".
 
 ---
 
@@ -58,21 +62,33 @@ Nhịp dạng bài trong 14 ngày:
 
 Cách theo dõi bài: với mỗi trả lời có nội dung, trả lời lại bằng một ý bổ sung cụ thể như nguồn, ngưỡng hoặc cách làm, không chỉ "đúng rồi".
 
-### Ngày 2 · CN 01/11 · 20:30 · chủ đề nckh · chuỗi
+### Ngày 2 · CN 01/11 · 20:30 · chủ đề nckh · chuỗi dạng danh sách
 
-**1/4**
-> Thang Likert 5 mức hay 7 mức, chọn cái nào để hội đồng không bắt bẻ?
+**1/7**
+> Mấy bạn làm khoá luận ơi, đừng ngồi tìm SPSS bản crack nữa. Dưới đây là 5 công cụ miễn phí đủ để chạy hết phần số liệu, từ tính cỡ mẫu tới chương 4:
 
-**2/4**
-> Nguyên tắc đầu tiên: giữ đúng số mức của thang đo gốc mà bạn kế thừa. Tác giả gốc kiểm định thang đo trên 7 mức mà bạn đổi sang 5 mức là bạn đã đổi công cụ đo, dù câu chữ giữ nguyên.
+**2/7**
+> 1. JASP
+> Miễn phí, mã nguồn mở, giao diện gần giống SPSS. Chạy được Cronbach's alpha, EFA, tương quan, hồi quy, t-test, ANOVA. Bảng kết quả trình bày theo kiểu APA, chép vào Word khá gọn.
 
-**3/4**
-> Nếu buộc phải đổi, ví dụ gộp nhiều thang đo khác số mức vào cùng một bảng hỏi cho người trả lời đỡ rối, thì ghi rõ ở chương 3: đổi từ mấy mức sang mấy mức và vì sao.
->
-> Dawes (2008) so sánh 5, 7 và 10 mức, thấy 5 mức và 7 mức cho trung bình gần như nhau sau khi quy về cùng thang.
+**3/7**
+> 2. jamovi
+> Cũng miễn phí và giống SPSS, xây trên R. Cái hay là kho module cài thêm, ví dụ medmod để kiểm định biến trung gian, điều tiết. Mở được cả file .sav của SPSS.
 
-**4/4**
-> Câu đáng chuẩn bị hơn: mức giữa "trung lập" trong bảng hỏi của bạn nghĩa là gì, và vì sao bạn tính trung bình các câu Likert như một biến liên tục. Mỗi câu chuẩn bị sẵn một ý trả lời là đủ.
+**4/7**
+> 3. G*Power
+> Tính cỡ mẫu tối thiểu theo độ lớn hiệu ứng và power, trả lời luôn câu "vì sao em chọn cỡ mẫu này". Nhớ ghi lại hiệu ứng, alpha và power đã nhập để đưa vào chương 3.
+
+**5/7**
+> 4. Zotero
+> Quản lý tài liệu tham khảo, có plugin cho Word, chọn kiểu APA 7 là danh mục tự sắp xếp. Đỡ hẳn cảnh sửa trích dẫn bằng tay đêm trước hạn nộp.
+
+**6/7**
+> 5. Góc Nghiên Cứu (link ở bio)
+> Web miễn phí bên mình làm cho sinh viên: tính Cronbach's alpha, cỡ mẫu, chạy PLS-SEM ngay trên trình duyệt, kèm thư viện thang đo tiếng Việt có nguồn gốc. Không cần cài gì.
+
+**7/7**
+> Lưu lại để lúc chạy số liệu khỏi đi tìm. Bạn đang dùng công cụ miễn phí nào khác thì để dưới bình luận, mình bổ sung vào danh sách.
 
 ### Ngày 3 · T2 02/11 · 20:30 · chủ đề nckh · "Hội đồng hỏi" số 1
 
@@ -151,26 +167,31 @@ Sau 48 giờ, ghi tỉ lệ thật vào nhật ký. Ngày 8 mở bài bằng t�
 **5/5**
 > Câu trả lời đứng được khi bạn giải thích lại được mọi con số và mọi lập luận trong bài mà không cần nhìn máy. Đó cũng là điều buổi bảo vệ thực sự kiểm tra.
 
-### Ngày 8 · T7 07/11 · 20:30 · chủ đề nckh · chuỗi
+### Ngày 8 · T7 07/11 · 20:30 · chủ đề nckh · chuỗi dạng danh sách
 
-Ghi chú:
-- Nếu poll ngày 4 có người chọn "Bảng hỏi và thu phiếu", thêm câu mở đầu thật vào phần 1, ví dụ "Poll hôm thứ ba, X% chọn bảng hỏi và thu phiếu." X là số thật, không có thì bỏ câu này.
-- Nếu khâu khác thắng rõ, đổi bài này với bài cùng khâu: ngày 12 (viết chương 4) hoặc ngày 10 (chạy số liệu).
+Ghi chú: nếu poll ngày 4 có nhiều người chọn "Bảng hỏi và thu phiếu", có thể đăng bài dự phòng "Phiếu trả lời cho có" (cuối phần Bài đăng) thay bài này.
 
-**1/4**
-> Thu về 300 phiếu chưa chắc là có 300 phiếu dùng được.
+**1/6**
+> Cronbach's alpha ra 0,5 thì đừng vội xoá câu hỏi. Đây là 4 lý do hay gặp nhất khiến alpha thấp, kiểm tra theo thứ tự này trước:
 
-**2/4**
-> Ba dấu hiệu phiếu trả lời cho có (Meade & Craig, 2012 tổng hợp các cách phát hiện):
-> - chọn cùng một mức cho cả trang;
-> - thời gian làm bài ngắn bất thường so với độ dài bảng hỏi;
-> - trả lời mâu thuẫn ở hai câu hỏi ngược chiều.
+**2/6**
+> 1. Câu đảo chiều chưa mã hoá ngược
+> Câu viết theo chiều phủ định, ví dụ "Tôi thấy công việc này nhàm chán", phải đổi 1 thành 5, 2 thành 4 trước khi tính. Dấu hiệu: tương quan biến tổng của câu đó bị âm.
 
-**3/4**
-> Lúc thiết kế có thể chèn một câu kiểm tra sự chú ý, ví dụ "Ở câu này, vui lòng chọn mức 2". Ai chọn khác thì có lý do rõ ràng để loại.
+**3/6**
+> 2. Phiếu trả lời cho có
+> Người chọn cùng một mức cho cả trang, hoặc làm xong trong thời gian ngắn bất thường, kéo alpha xuống. Lọc những phiếu này trước khi chạy và ghi tiêu chí loại vào chương 4 (Meade & Craig, 2012).
 
-**4/4**
-> Trong chương 4 ghi rõ: thu bao nhiêu, loại bao nhiêu, loại theo tiêu chí gì. Một dòng đó trả lời trước câu "số phiếu hợp lệ của em ở đâu ra".
+**4/6**
+> 3. Thang đo quá ít câu
+> Alpha phụ thuộc vào số câu: cùng mức tương quan, thang 3 câu cho alpha thấp hơn thang 8 câu. Thang ngắn thì báo cáo thêm tương quan trung bình giữa các câu; Clark và Watson (1995) gợi ý khoảng 0,15 đến 0,50.
+
+**5/6**
+> 4. Gộp nhiều khía cạnh vào một thang
+> Thang có các khía cạnh con, ví dụ công bằng phân phối và công bằng thủ tục, mà tính chung một alpha thì dễ thấp. Tính alpha riêng cho từng khía cạnh theo đúng cấu trúc của thang đo gốc.
+
+**6/6**
+> Kiểm tra hết 4 chỗ này mà alpha vẫn thấp thì mới xét bỏ câu, dựa vào cột "Cronbach's alpha if item deleted", và ghi rõ câu nào bị loại, vì sao. Bỏ câu làm đổi nội dung khái niệm thì nên giữ lại và nêu ở phần hạn chế.
 
 ### Ngày 9 · CN 08/11 · 20:30 · chủ đề KLTN · Topic hỏi cộng đồng
 
@@ -297,6 +318,45 @@ Cam kết trong câu trả lời là thật: tuần 3 phải đăng danh sách �
 > Ba hạn chế viết theo khung đó là đủ. Phần này viết kỹ thì lúc phản biện hỏi khó, bạn đã có sẵn câu trả lời.
 
 ---
+
+### Bài dự phòng (thay bài bất kỳ khi cần)
+
+#### Dự phòng A · chủ đề nckh · chuỗi 4 phần · Likert 5 mức hay 7 mức
+
+**1/4**
+> Thang Likert 5 mức hay 7 mức, chọn cái nào để hội đồng không bắt bẻ?
+
+**2/4**
+> Nguyên tắc đầu tiên: giữ đúng số mức của thang đo gốc mà bạn kế thừa. Tác giả gốc kiểm định thang đo trên 7 mức mà bạn đổi sang 5 mức là bạn đã đổi công cụ đo, dù câu chữ giữ nguyên.
+
+**3/4**
+> Nếu buộc phải đổi, ví dụ gộp nhiều thang đo khác số mức vào cùng một bảng hỏi cho người trả lời đỡ rối, thì ghi rõ ở chương 3: đổi từ mấy mức sang mấy mức và vì sao.
+>
+> Dawes (2008) so sánh 5, 7 và 10 mức, thấy 5 mức và 7 mức cho trung bình gần như nhau sau khi quy về cùng thang.
+
+**4/4**
+> Câu đáng chuẩn bị hơn: mức giữa "trung lập" trong bảng hỏi của bạn nghĩa là gì, và vì sao bạn tính trung bình các câu Likert như một biến liên tục. Mỗi câu chuẩn bị sẵn một ý trả lời là đủ.
+
+#### Dự phòng B · chủ đề nckh · chuỗi 4 phần · Phiếu trả lời cho có
+
+Ghi chú:
+- Nếu poll ngày 4 có người chọn "Bảng hỏi và thu phiếu", thêm câu mở đầu thật vào phần 1, ví dụ "Poll hôm thứ ba, X% chọn bảng hỏi và thu phiếu." X là số thật, không có thì bỏ câu này.
+- Nếu khâu khác thắng rõ, đổi bài này với bài cùng khâu: ngày 12 (viết chương 4) hoặc ngày 10 (chạy số liệu).
+
+**1/4**
+> Thu về 300 phiếu chưa chắc là có 300 phiếu dùng được.
+
+**2/4**
+> Ba dấu hiệu phiếu trả lời cho có (Meade & Craig, 2012 tổng hợp các cách phát hiện):
+> - chọn cùng một mức cho cả trang;
+> - thời gian làm bài ngắn bất thường so với độ dài bảng hỏi;
+> - trả lời mâu thuẫn ở hai câu hỏi ngược chiều.
+
+**3/4**
+> Lúc thiết kế có thể chèn một câu kiểm tra sự chú ý, ví dụ "Ở câu này, vui lòng chọn mức 2". Ai chọn khác thì có lý do rõ ràng để loại.
+
+**4/4**
+> Trong chương 4 ghi rõ: thu bao nhiêu, loại bao nhiêu, loại theo tiêu chí gì. Một dòng đó trả lời trước câu "số phiếu hợp lệ của em ở đâu ra".
 
 ## 10 mẫu trả lời bài kêu cứu
 
@@ -432,5 +492,6 @@ Kiểm tra lại trước khi đăng nếu cần:
 - Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E. (2010). *Multivariate Data Analysis* (7th ed.).
 - Hair, J. F., Risher, J. J., Sarstedt, M., & Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. *European Business Review, 31*(1).
 - Kaiser, H. F. (1974). An index of factorial simplicity. *Psychometrika, 39*(1).
+- Clark, L. A., & Watson, D. (1995). Constructing validity: Basic issues in objective scale development. *Psychological Assessment, 7*(3). https://doi.org/10.1037/1040-3590.7.3.309
 - Meade, A. W., & Craig, S. B. (2012). Identifying careless responses in survey data. *Psychological Methods, 17*(3).
 - APA (2020). *Publication Manual of the American Psychological Association* (7th ed.), mục báo cáo giá trị p.

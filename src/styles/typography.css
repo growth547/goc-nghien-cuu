@@ -4,8 +4,8 @@
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
     @apply prose;
-    font-size: 1.0625rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.75;
     --tw-prose-body: var(--foreground);
     --tw-prose-headings: var(--foreground);
     --tw-prose-bold: var(--foreground);
@@ -36,13 +36,31 @@
     }
 
     h2 {
-      @apply mt-12 mb-4 text-[1.45rem] font-bold sm:text-2xl;
-      line-height: 1.32;
+      @apply mt-12 mb-4 font-bold;
+      font-size: var(--fs-h2);
+      line-height: 1.3;
+      scroll-margin-top: calc(var(--header-h) + 1rem);
     }
 
     h3 {
-      @apply mt-8 mb-3 text-[1.15rem] font-semibold;
-      line-height: 1.38;
+      @apply mt-8 mb-2.5 font-semibold;
+      font-size: var(--fs-h3);
+      line-height: 1.4;
+      scroll-margin-top: calc(var(--header-h) + 1rem);
+    }
+
+    /* The first heading of a block sits flush with what precedes it. */
+    > h2:first-child,
+    > h3:first-child {
+      @apply mt-0;
+    }
+
+    li {
+      @apply my-1.5;
+    }
+
+    li > p {
+      @apply my-1;
     }
 
     h4 {
@@ -102,11 +120,15 @@
 
       th,
       td {
-        @apply border-border border-b px-3 py-2.5 align-top;
+        @apply border-border-subtle border-b px-3.5 py-2.5 align-top;
       }
 
       thead th {
-        @apply bg-muted text-foreground border-b-border-strong text-start text-[0.8rem] font-semibold;
+        @apply bg-muted text-foreground border-b-border text-start text-[0.8rem] leading-snug font-semibold;
+      }
+
+      tbody tr:nth-child(even) td {
+        background: var(--zebra);
       }
 
       tbody tr:last-child td {
@@ -153,9 +175,10 @@
     }
 
     .overflow-x-auto {
-      @apply border-border bg-surface my-5 rounded-xl border;
+      @apply border-border bg-surface my-6 rounded-xl border;
       box-shadow: var(--shadow);
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
     }
 
     .overflow-x-auto > table {
@@ -163,7 +186,7 @@
     }
 
     code {
-      @apply bg-muted text-foreground rounded px-1.5 py-0.5 text-[0.88em] font-medium wrap-break-word before:content-none after:content-none;
+      @apply bg-muted text-foreground border-border-subtle rounded-md border px-1.5 py-0.5 text-[0.86em] font-medium wrap-break-word before:content-none after:content-none;
     }
 
     .astro-code code {
@@ -171,7 +194,8 @@
     }
 
     blockquote {
-      @apply border-s-accent bg-accent-soft/60 rounded-e-lg py-1 font-normal not-italic wrap-break-word;
+      @apply border-s-accent bg-accent-soft/60 rounded-e-lg py-1 ps-5 pe-4 font-normal not-italic wrap-break-word;
+      border-inline-start-width: 3px;
     }
 
     blockquote p:first-of-type::before,
@@ -189,6 +213,13 @@
 
     pre {
       @apply rounded-lg focus-visible:outline-accent focus-visible:border-transparent focus-visible:outline-2;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .app-prose {
+      font-size: 1.0625rem;
+      line-height: 1.78;
     }
   }
 

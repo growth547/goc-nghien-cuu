@@ -49,7 +49,9 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
     <p>
       Câu trả lời dạng chữ theo thang 5 mức chuẩn (Hoàn toàn không đồng ý,
       Không đồng ý, Trung lập hoặc Bình thường, Đồng ý, Hoàn toàn đồng ý) được
-      tự đổi thành 1–5 và có thông báo. Cột không đọc được thành số được nêu tên.
+      tự đổi thành 1–5 và có thông báo; nhãn thang 6 hoặc 7 mức (có “Hơi đồng
+      ý”, “Hơi không đồng ý”) được đổi thành 1–6 hoặc 1–7. Cột không đọc được
+      thành số được nêu tên.
       File được đọc ngay trong trình duyệt, không gửi lên máy chủ; file 10.000
       phiếu × 40 biến chạy trong vài giây. Muốn thử trước, bấm “Dùng dữ liệu
       mẫu”.
@@ -85,7 +87,8 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
       </li>
       <li>
         <strong>Cronbach's alpha</strong> cho từng khái niệm, kèm tương quan
-        biến–tổng hiệu chỉnh và alpha nếu loại biến, như
+        biến–tổng hiệu chỉnh, alpha nếu loại biến, trung bình và phương sai
+        thang đo nếu loại biến (đúng bảng Item-Total Statistics của SPSS), như
         <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/"
           >công cụ tính Cronbach's alpha</a
         >. Biến có tương quan biến–tổng âm được nhắc kiểm tra câu đảo chiều.
@@ -210,9 +213,11 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
     <p>
       Cột TT1, TT2… của Bộ khảo sát, và cột không phải biến quan sát có từ 2 đến
       12 giá trị khác nhau (giới tính, năm học, thu nhập theo khoảng…), được điền
-      sẵn vào ô biến nhân khẩu học; sửa ô này nếu cần. Mỗi biến có một bảng tần
-      số trong mục 4.1, xếp theo thứ tự số trong nhãn (“Dưới 5 triệu”, “Từ 5 đến
-      dưới 10 triệu”…), và một kiểm định khác biệt trong mục 4.8. Nếu đề tài có
+      sẵn vào ô biến nhân khẩu học; sửa ô này nếu cần. Các biến được gộp vào
+      một bảng đặc điểm mẫu ở mục 4.1 (kèm câu mô tả nhóm chiếm tỷ lệ cao nhất),
+      nhóm xếp theo thứ tự số trong nhãn (“Dưới 5 triệu”, “Từ 5 đến dưới 10
+      triệu”…); mỗi biến có một kiểm định khác biệt ở mục cuối. Câu hỏi có mã ở
+      đầu (“TT1. Giới tính”) được gọi bằng nhãn trong đoạn văn. Nếu đề tài có
       khái niệm viết tắt TT (ví dụ Tin tưởng) gồm các câu thang đo có tương quan
       với nhau, công cụ vẫn nhóm thành khái niệm.
     </p>

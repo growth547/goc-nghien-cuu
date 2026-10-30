@@ -57,7 +57,7 @@ const ld = [
     },
     about: `${d.name} (${d.nameEn})`,
     citation: d.references.map(
-      r => `${strip(r.text)} https://doi.org/${r.doi}`
+      r => `${strip(r.text)} https://doi.org/${encodeURI(r.doi)}`
     ),
   },
   {
@@ -236,7 +236,7 @@ const ld = [
           d.references.map(r => (
             <li>
               <span set:html={r.text} />{" "}
-              <a href={`https://doi.org/${r.doi}`} rel="noopener">
+              <a href={`https://doi.org/${encodeURI(r.doi)}`} rel="noopener">
                 https://doi.org/{r.doi}
               </a>
             </li>

@@ -35,3 +35,6 @@ compose.override.yaml
 # launch reels: video and image files stay local, only captions.md is tracked
 docs/launch/reels/*.mp4
 docs/launch/reels/*.png
+
+# UI snapshots (scripts/ui-snapshots.py)
+ui-shots/

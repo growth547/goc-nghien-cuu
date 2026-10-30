@@ -1,21 +1,49 @@
-<div class="tool">
-  <div class="panel">
-    <div class="field"><label for="ca-data">Dữ liệu thang đo</label>
-      <textarea id="ca-data" spellcheck="false"></textarea>
-      <small>Cột cách nhau bằng tab (dán từ Excel), dấu chấm phẩy, dấu phẩy hoặc khoảng trắng; số thập phân dùng dấu phẩy hay dấu chấm đều được. Dòng đầu là tên biến thì cứ để nguyên. Cột số thứ tự, cột thời gian hoặc cột chữ được tự bỏ ra và nêu tên. Dòng thiếu giá trị bị loại (listwise). Dữ liệu chỉ xử lý trong trình duyệt của bạn, không gửi đi đâu.</small></div>
-    <div class="row"><button type="button" class="btn" id="ca-run">Tính alpha</button><button type="button" class="btn ghost" id="ca-sample">Nạp dữ liệu mẫu</button></div>
-  </div>
-  <div class="panel" id="ca-out" aria-live="polite"></div>
+<style>
+.ca-opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.ca-opts .wide{grid-column:1/-1}
+.ca-mini{font:inherit;font-size:.75rem;line-height:1.2;padding:3px 8px;border:1px solid var(--border-strong,#bbb);border-radius:6px;background:var(--surface,#fff);color:inherit;cursor:pointer;white-space:nowrap;margin:2px 0}
+.ca-mini:hover{border-color:var(--accent,#06c)}
+.ca-scale{border-top:2px solid var(--border,#ddd);padding-top:12px;margin-top:4px;display:flex;flex-direction:column;gap:10px}
+.ca-scale h3{margin:0;font-size:1.05rem}
+.ca-kpi{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.ca-kpi div{border:1px solid var(--border,#ddd);border-radius:8px;padding:6px 10px}
+.ca-kpi b{display:block;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.ca-kpi span{font-size:.78rem;color:var(--muted-foreground,#666)}
+.ca-note{font-size:.85rem;color:var(--muted-foreground,#666);margin:0}
+#ca-out td:not(:first-child),#ca-out th:not(:first-child){text-align:right}
+#ca-out td.act{text-align:left}
+#ca-out .table-wrap td:first-child,#ca-out .table-wrap th:first-child{position:sticky;left:0;z-index:1;background:var(--surface,#fff)}
+#ca-out .table-wrap th:first-child{background:var(--muted,#f3f3f3)}
+#ca-out .table-wrap tr.flagged td:first-child{background:color-mix(in srgb,#f97316 14%,var(--surface,#fff))}
+#ca-thesis p{margin:0 0 10px}
+</style>
+<div class="panel">
+  <div class="field"><label for="ca-data">Dữ liệu (dán từ Excel, SPSS hoặc Google Forms)</label>
+    <textarea id="ca-data" spellcheck="false"></textarea>
+    <small>Mỗi dòng một người trả lời, mỗi cột một biến. Dán được cả bảng hỏi: các biến được tự gom thành thang đo theo mã (HL1, HL2… thành HL; TC_1, TC_2… thành TC); cột STT, thời gian, giới tính hay cột chữ được bỏ ra và nêu tên. Cột phân cách bằng tab, chấm phẩy, dấu phẩy hoặc khoảng trắng; số thập phân 3,5 hay 3.5 đều được; nhãn chữ “Đồng ý”, “Hoàn toàn đồng ý”… được đổi sang điểm. Ô trống hoặc dấu “.” của SPSS là giá trị thiếu. Dữ liệu chỉ xử lý trong trình duyệt của bạn, không gửi đi đâu.</small></div>
+  <details>
+    <summary style="cursor:pointer;font-weight:600;font-size:.9rem">Tuỳ chọn: câu đảo chiều, loại biến, tự khai báo nhóm</summary>
+    <div class="ca-opts" style="margin-top:12px">
+      <div class="field"><label for="ca-rev">Câu đảo chiều (mã hoá lại)</label><input id="ca-rev" placeholder="ví dụ: TC3, HL5"><small>Điểm mới = điểm thấp nhất + điểm cao nhất − điểm cũ.</small></div>
+      <div class="field"><label for="ca-drop">Biến loại bỏ</label><input id="ca-drop" placeholder="ví dụ: HL4"><small>Kết quả ghi cả lần 1 (đủ biến) và lần 2 (sau khi loại).</small></div>
+      <div class="field"><label for="ca-range">Thang điểm (để đảo chiều)</label><select id="ca-range"><option value="auto">Tự nhận từ dữ liệu</option><option value="1-5">1 – 5</option><option value="1-7">1 – 7</option><option value="1-4">1 – 4</option><option value="1-6">1 – 6</option><option value="1-10">1 – 10</option><option value="0-10">0 – 10</option></select></div>
+      <div class="field"><label for="ca-miss">Mã giá trị thiếu</label><input id="ca-miss" placeholder="ví dụ: 99, -9"><small>Ô có giá trị này được coi là bỏ trống.</small></div>
+      <div class="field"><label for="ca-dec">Dấu thập phân khi xuất</label><select id="ca-dec"><option value=",">0,812 (tiếng Việt)</option><option value=".">0.812 (tiếng Anh)</option></select></div>
+      <div class="field wide"><label for="ca-groups">Tự khai báo nhóm (để trống thì gom theo mã)</label><textarea id="ca-groups" spellcheck="false" style="min-height:4.5rem" placeholder="Mỗi dòng một thang đo, ví dụ:&#10;Hài lòng: HL1-HL4&#10;Tin cậy: TC1, TC2, TC3, TC4"></textarea><small>Dùng khi tên biến không theo mã (Câu 1, Câu 2…) hoặc muốn đặt tên khái niệm. Viết “HL1-HL4” cho một dãy cột liền nhau.</small></div>
+    </div>
+  </details>
+  <div class="row"><button type="button" class="btn" id="ca-run">Tính độ tin cậy</button><button type="button" class="btn ghost" id="ca-sample-multi">Mẫu: cả bảng hỏi</button><button type="button" class="btn ghost" id="ca-sample">Mẫu: 1 thang đo</button></div>
 </div>
+<div class="panel" id="ca-out" aria-live="polite" style="margin-top:24px"></div>
 <div class="panel" style="margin-top:24px">
   <div class="row" style="justify-content:space-between;align-items:center">
-    <strong>Đoạn văn cho chương 4</strong>
-    <button type="button" class="btn" id="ca-copy">Sao chép đoạn văn</button>
+    <strong>Đoạn văn và bảng cho chương 4</strong>
+    <div class="row"><button type="button" class="btn" id="ca-word">Tải file Word</button><button type="button" class="btn ghost" id="ca-copy">Sao chép đoạn văn</button></div>
   </div>
   <div id="ca-thesis" style="line-height:1.7"></div>
-  <small class="text-muted-foreground">Sửa mã thang đo thành tên khái niệm của đề tài. Cần chạy cho nhiều thang đo một lúc thì dùng công cụ phân tích dữ liệu khảo sát.</small>
+  <small class="text-muted-foreground">File Word có bảng tổng hợp, bảng Item-Total Statistics của từng thang đo (cả lần 1 và lần 2 nếu có loại biến), đoạn văn và tài liệu tham khảo. Sửa mã thang đo thành tên khái niệm nếu chưa khai báo tên.</small>
 </div>
-<p style="margin-top:20px">Cách đọc từng con số: xem <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì và đọc kết quả thế nào</a>. Chạy alpha cho mọi thang đo, EFA và hồi quy cùng lúc: <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">phân tích dữ liệu khảo sát</a>.</p>
+<p style="margin-top:20px">Cách đọc từng con số: xem <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì và đọc kết quả thế nào</a>. Chạy tiếp EFA và hồi quy: <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">phân tích dữ liệu khảo sát</a>.</p>
 <script>
 (function(){
   //#ca-start
@@ -24,7 +52,14 @@
   const corr=(a,b)=>{const ma=mean(a),mb=mean(b);let sab=0,saa=0,sbb=0;for(let i=0;i<a.length;i++){const da=a[i]-ma,db=b[i]-mb;sab+=da*db;saa+=da*da;sbb+=db*db}return sab/Math.sqrt(saa*sbb)};
   const alpha=cols=>{const k=cols.length;if(k<2)return NaN;const tot=cols[0].map((_,i)=>cols.reduce((s,c)=>s+c[i],0));return k/(k-1)*(1-cols.reduce((s,c)=>s+variance(c),0)/variance(tot))};
   // A cell is a number only if it looks like one: "4", "3,5", "3.5", "4 - Đồng ý". Dates ("01/01/2026") and words are not.
-  function cellNum(c){const s=String(c).trim();if(/^[-+]?\d+(?:[.,]\d+)?$/.test(s))return parseFloat(s.replace(',','.'));const m=s.match(/^(\d+)\s*[-–—:.)]\s*\p{L}/u);return m?+m[1]:NaN}
+  function cellNum(c){const s=String(c).trim().replace(/^"(.*)"$/,'$1').trim();if(/^[-+]?\d+(?:[.,]\d+)?$/.test(s))return parseFloat(s.replace(',','.'));const m=s.match(/^(\d+)\s*[-–—:.)]\s*\p{L}/u);return m?+m[1]:NaN}
+  // Likert labels as Google Forms exports them. 7-point wording ("hơi đồng ý", "somewhat agree") switches the whole paste to 1–7.
+  const L5=[['hoàn toàn không đồng ý|rất không đồng ý|hoàn toàn phản đối|strongly disagree|hoàn toàn không hài lòng|rất không hài lòng',1],['không đồng ý|phản đối|disagree|không hài lòng',2],['trung lập|bình thường|phân vân|không ý kiến|không có ý kiến|trung dung|không chắc chắn|neutral|neither agree nor disagree',3],['đồng ý|agree|hài lòng',4],['hoàn toàn đồng ý|rất đồng ý|strongly agree|hoàn toàn hài lòng|rất hài lòng',5]];
+  const L7=[['hoàn toàn không đồng ý|rất không đồng ý|strongly disagree',1],['không đồng ý|disagree',2],['hơi không đồng ý|somewhat disagree',3],['trung lập|bình thường|phân vân|không ý kiến|neutral|neither agree nor disagree',4],['hơi đồng ý|somewhat agree',5],['đồng ý|agree',6],['hoàn toàn đồng ý|rất đồng ý|strongly agree',7]];
+  const normLabel=s=>String(s).normalize('NFC').toLowerCase().replace(/^"(.*)"$/,'$1').replace(/[.!\s]+$/,'').replace(/\s+/g,' ').trim();
+  function labelMap(scale){const m=new Map();for(const [alts,v] of scale)for(const a of alts.split('|'))m.set(a,v);return m}
+  // Splits one line on the separator, honouring "quoted, cells" as CSV exports write them.
+  function splitLine(l,sep){if(typeof sep!=='string')return l.trim().split(sep);const out=[];let cur='',q=false;for(let i=0;i<l.length;i++){const ch=l[i];if(ch==='"'){if(q&&l[i+1]==='"'){cur+='"';i++}else q=!q}else if(ch===sep&&!q){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out}
   // Column separator: tab, then semicolon; space-separated rows whose cells use decimal commas ("3,5 4,0") are split on spaces.
   function pickSep(lines){
     if(lines.some(l=>l.includes('\t')))return '\t';
@@ -34,33 +69,118 @@
     if(spaced&&(lines.some(l=>/\d,\d/.test(l))||!lines.some(l=>l.includes(','))))return /\s+/;
     return lines.some(l=>l.includes(','))?',':/\s+/;
   }
-  function parse(text){
+  // opts.missing: user-missing codes such as 99 (SPSS "Missing Values"), treated as blank.
+  function parse(text,opts={}){
+    const miss=new Set((opts.missing||[]).map(Number));
     const lines=String(text).replace(/^﻿/,'').split(/\r?\n/).filter(l=>l.trim());
-    if(!lines.length)return {names:[],rows:[],dropped:0,k:0,removed:[],sep:''};
-    const sep=pickSep(lines),split=l=>l.trim().split(sep).map(x=>x.trim());
+    if(!lines.length)return {names:[],rows:[],cells:[],dropped:0,k:0,removed:[],mapped:[],labelScale:0,sep:''};
+    const sep=pickSep(lines),split=l=>splitLine(l,sep).map(x=>x.trim());
     let rows=lines.map(split),names=null;
-    if(rows[0].some(c=>c!==''&&Number.isNaN(cellNum(c))))names=rows.shift();
+    const allLabels=new Set([...labelMap(L5).keys(),...labelMap(L7).keys()]);
+    if(rows[0].some(c=>c!==''&&c!=='.'&&Number.isNaN(cellNum(c))&&!allLabels.has(normLabel(c))))names=rows.shift();
     const k=Math.max(0,...rows.map(r=>r.length));
     names=Array.from({length:k},(_,j)=>(names&&names[j])||'Biến '+(j+1));
-    // Columns that are not items: mostly non-numeric (timestamps, names), or an ID / STT counter 1, 2, 3…
-    const removed=[];const keep=[];
-    for(let j=0;j<k;j++){const cells=rows.map(r=>r[j]==null?'':r[j]).filter(c=>c!=='');const nums=cells.map(cellNum),okN=nums.filter(Number.isFinite);
-      if(!cells.length){removed.push({name:names[j],why:'trống'});continue}
-      if(okN.length<0.5*cells.length){removed.push({name:names[j],why:`không phải số (ví dụ “${String(cells.find((c,i)=>!Number.isFinite(nums[i]))).slice(0,30)}”)`});continue}
-      const idName=/^(id|stt|mã phiếu|ma phieu|số thứ tự|so thu tu|no\.?)$/i.test(names[j]);
+    const seven=rows.some(r=>r.some(c=>/^(hơi |somewhat )/.test(normLabel(c))));
+    const lmap=labelMap(seven?L7:L5);
+    const removed=[],keep=[],mapped=[],conv=[];
+    for(let j=0;j<k;j++){const cells=rows.map(r=>r[j]==null?'':r[j]).filter(c=>c!==''&&c!=='.');let nums=cells.map(cellNum),okN=nums.filter(Number.isFinite);
+      if(!cells.length){if(!/^Biến \d+$/.test(names[j]))removed.push({name:names[j],why:'trống'});continue}
+      let toNum=cellNum;
+      if(okN.length<0.5*cells.length){
+        const lab=cells.map(c=>lmap.get(normLabel(c))??(Number.isFinite(cellNum(c))?cellNum(c):undefined));
+        if(lab.every(v=>v!=null)&&new Set(lab).size>=2){toNum=c=>lmap.get(normLabel(c))??cellNum(c);mapped.push(names[j]);nums=lab;okN=lab}
+        else{removed.push({name:names[j],why:`không phải số (ví dụ “${String(cells.find((c,i)=>!Number.isFinite(nums[i]))).slice(0,30)}”)`});continue}}
+      const idName=/^(id|stt|tt|mã phiếu|ma phieu|mã số|số thứ tự|so thu tu|no\.?|respondent ?id)$/i.test(names[j].trim());
       const counter=okN.length>=8&&okN.length===cells.length&&nums.every((v,i)=>i===0||v-nums[i-1]===1);
       if(idName||counter){removed.push({name:names[j],why:'là cột số thứ tự (1, 2, 3…), không phải câu hỏi'});continue}
-      keep.push(j)}
+      keep.push(j);conv.push(toNum)}
+    const cellsOut=rows.map(r=>keep.map((j,x)=>{const c=r[j]==null?'':r[j];if(c===''||c==='.')return NaN;const v=conv[x](c);return miss.has(v)?NaN:v}));
     let dropped=0;const clean=[];
-    for(const r of rows){const v=keep.map(j=>cellNum(r[j]==null?'':r[j]));if(v.every(Number.isFinite))clean.push(v);else dropped++}
-    return {names:keep.map(j=>names[j]),rows:clean,dropped,k:keep.length,removed,sep:sep==='\t'?'tab':sep===';'?'dấu chấm phẩy':sep===','?'dấu phẩy':'khoảng trắng'};
+    for(const v of cellsOut){if(v.every(Number.isFinite))clean.push(v);else dropped++}
+    return {names:keep.map(j=>names[j]),rows:clean,cells:cellsOut,dropped,k:keep.length,removed,mapped,labelScale:mapped.length?(seven?7:5):0,sep:sep==='\t'?'tab':sep===';'?'dấu chấm phẩy':sep===','?'dấu phẩy':'khoảng trắng'};
   }
-  // Same columns as SPSS Item-Total Statistics.
+  // Code prefix of an item name: HL1, HL_2, hl 3, HL04, HL5R and HL5_r all belong to "HL"; Q1_1, Q1_2 to "Q1".
+  // "HL1. Tôi hài lòng…" is read by its leading code; a Google Forms grid "Mức độ đồng ý [Câu a]" by its question.
+  function stem(n){let s=String(n).trim();const g=s.match(/^(.*\S)\s*\[[^\]]*\]$/);if(g)return g[1];const c=s.match(/^([A-Za-zĐđ]{1,8}[\s_.\-]?\d{1,3}[A-Za-z]?)\s*[.:)\-–]\s+\S/);if(c)s=c[1];
+    const m=s.match(/^(.*?\D)[\s_.\-]*0*(\d+)(?:[\s_.\-]*\(?(?:r|rev|đ|đảo)\)?)?$/i);return m?m[1].replace(/[\s_.\-]+$/,''):s}
+  const key=n=>String(n).trim().toLowerCase();
+  // Groups items into scales: from the user's lines ("Tên: HL1-HL4" or "TC1, TC2, TC3"), otherwise by code prefix.
+  function makeGroups(names,spec){
+    const idx=new Map(names.map((n,j)=>[key(n),j])),groups=[],unknown=[];
+    const lines=String(spec||'').split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+    // "HL1-HL4", "HL1 – HL4", "HL1 đến HL4": every dash is tried as the split point, so names that contain '-' still work.
+    const range=t=>{const parts=[...t.matchAll(/\s*(?:[-–—]|\sđến\s)\s*/g)];for(const p of parts){const a=t.slice(0,p.index).trim(),b=t.slice(p.index+p[0].length).trim();if(idx.has(key(a))&&idx.has(key(b))){const x=idx.get(key(a)),y=idx.get(key(b)),out=[];for(let j=Math.min(x,y);j<=Math.max(x,y);j++)out.push(j);return out}}return null};
+    if(lines.length){
+      for(const l of lines){const m=l.match(/^([^:=]+?)\s*[:=]\s*(.+)$/),body=m?m[2]:l,items=[];
+        for(const chunk of body.split(/[,;]+/).map(t=>t.trim()).filter(Boolean)){
+          if(idx.has(key(chunk))){items.push(idx.get(key(chunk)));continue}
+          const r=range(chunk);if(r){items.push(...r);continue}
+          for(const tok of chunk.split(/\s+/)){if(idx.has(key(tok)))items.push(idx.get(key(tok)));else{const r2=range(tok);if(r2)items.push(...r2);else unknown.push(tok)}}}
+        const uniq=[...new Set(items)];if(uniq.length)groups.push({name:m?m[1].trim():stem(names[uniq[0]]),idx:uniq})}
+      const used=new Set(groups.flatMap(g=>g.idx));
+      return {groups:groups.filter(g=>g.idx.length>=2),singles:groups.filter(g=>g.idx.length<2).map(g=>names[g.idx[0]]),unused:names.filter((_,j)=>!used.has(j)),unknown};
+    }
+    const by=new Map();names.forEach((n,j)=>{const s=stem(n),kk=key(s);if(!by.has(kk))by.set(kk,{name:s,idx:[]});by.get(kk).idx.push(j)});
+    const all=[...by.values()];
+    return {groups:all.filter(g=>g.idx.length>=2),singles:all.filter(g=>g.idx.length<2).map(g=>names[g.idx[0]]),unused:[],unknown};
+  }
+  // ---- F distribution quantile (regularised incomplete beta + bisection), for the Feldt interval ----
+  function lnGamma(x){const c=[676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];if(x<0.5)return Math.log(Math.PI/Math.sin(Math.PI*x))-lnGamma(1-x);x-=1;let a=0.99999999999980993;const t=x+7.5;for(let i=0;i<8;i++)a+=c[i]/(x+i+1);return 0.5*Math.log(2*Math.PI)+(x+0.5)*Math.log(t)-t+Math.log(a)}
+  function betacf(x,a,b){const qab=a+b,qap=a+1,qam=a-1,T=1e-300;let c=1,d=1-qab*x/qap;if(Math.abs(d)<T)d=T;d=1/d;let h=d;for(let m=1;m<=1000;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<T)d=T;c=1+aa/c;if(Math.abs(c)<T)c=T;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<T)d=T;c=1+aa/c;if(Math.abs(c)<T)c=T;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<3e-16)break}return h}
+  function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const bt=Math.exp(lnGamma(a+b)-lnGamma(a)-lnGamma(b)+a*Math.log(x)+b*Math.log(1-x));return x<(a+1)/(a+b+2)?bt*betacf(x,a,b)/a:1-bt*betacf(1-x,b,a)/b}
+  function fQuantile(p,d1,d2){let lo=0,hi=1;for(let i=0;i<200;i++){const mid=(lo+hi)/2;if(ibeta(mid,d1/2,d2/2)<p)lo=mid;else hi=mid}const x=(lo+hi)/2;return d2*x/(d1*(1-x))}
+  // Feldt, Woodruff & Salih (1987): (1 − α)/(1 − α̂) follows F with n − 1 and (n − 1)(k − 1) df. Same bounds as SPSS's
+  // ICC table (two-way mixed, consistency, average measures), whose point estimate equals alpha.
+  function feldtCI(a,n,k,level=0.95){if(!(n>=2&&k>=2&&Number.isFinite(a)))return [NaN,NaN];const d1=n-1,d2=(n-1)*(k-1),g=1-level;return [1-(1-a)*fQuantile(1-g/2,d1,d2),1-(1-a)*fQuantile(g/2,d1,d2)]}
+  // Symmetric eigen-decomposition (cyclic Jacobi); eigenvalues and eigenvectors (columns) in descending order.
+  function eigSym(A){const n=A.length,a=A.map(r=>r.slice()),v=a.map((_,i)=>a.map((_,j)=>i===j?1:0));
+    for(let sw=0;sw<100;sw++){let off=0;for(let i=0;i<n;i++)for(let j=i+1;j<n;j++)off+=a[i][j]**2;if(off<1e-24)break;
+      for(let p=0;p<n;p++)for(let q=p+1;q<n;q++){if(Math.abs(a[p][q])<1e-300)continue;const th=(a[q][q]-a[p][p])/(2*a[p][q]),t=Math.sign(th||1)/(Math.abs(th)+Math.sqrt(th*th+1)),c=1/Math.sqrt(t*t+1),s=t*c;
+        for(let r=0;r<n;r++){const arp=a[r][p],arq=a[r][q];a[r][p]=c*arp-s*arq;a[r][q]=s*arp+c*arq}
+        for(let r=0;r<n;r++){const apr=a[p][r],aqr=a[q][r];a[p][r]=c*apr-s*aqr;a[q][r]=s*apr+c*aqr}
+        for(let r=0;r<n;r++){const vrp=v[r][p],vrq=v[r][q];v[r][p]=c*vrp-s*vrq;v[r][q]=s*vrp+c*vrq}}}
+    const ord=a.map((_,i)=>i).sort((x,y)=>a[y][y]-a[x][x]);return {values:ord.map(i=>a[i][i]),vectors:v.map(r=>ord.map(i=>r[i]))}}
+  function invert(M){const n=M.length,a=M.map((r,i)=>[...r,...r.map((_,j)=>i===j?1:0)]);for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.abs(a[r][c])>Math.abs(a[p][c]))p=r;if(Math.abs(a[p][c])<1e-12)return null;[a[c],a[p]]=[a[p],a[c]];const d=a[c][c];for(let j=0;j<2*n;j++)a[c][j]/=d;for(let r=0;r<n;r++)if(r!==c){const f=a[r][c];if(f)for(let j=0;j<2*n;j++)a[r][j]-=f*a[c][j]}}return a.map(r=>r.slice(n))}
+  // McDonald's omega (total) from a one-factor model fitted by maximum likelihood: ω = (Σλ)² / ((Σλ)² + Σθ), λ and θ
+  // on the raw-score metric (the summed score SPSS reports). ML is fitted on the correlation matrix by the classic
+  // fixed-point iteration (Ψ ← diag(R − ΛΛ′), Λ from the top eigenpair of Ψ^−½ R Ψ^−½), then rescaled by the item SDs.
+  function omegaML(cols){
+    const k=cols.length;if(k<3)return {omega:NaN,reason:'k<3'};
+    const sd=cols.map(c=>Math.sqrt(variance(c))),R=cols.map((a,i)=>cols.map((b,j)=>i===j?1:corr(a,b)));
+    const inv=invert(R);let psi=R.map((_,i)=>inv?Math.min(0.995,Math.max(0.005,1/inv[i][i])):0.5),lam=psi.map(()=>0),vec=null,it=0,converged=false;
+    for(;it<20000;it++){const s=psi.map(Math.sqrt),M=R.map((r,i)=>r.map((x,j)=>x/(s[i]*s[j])));
+      if(!vec)vec=eigSym(M).vectors.map(r=>r[0]);
+      for(let p=0;p<500;p++){const w=M.map(r=>r.reduce((t,x,j)=>t+x*vec[j],0)),nw=Math.hypot(...w),u=w.map(x=>x/nw),ch=Math.max(...u.map((x,i)=>Math.abs(x-vec[i])));vec=u;if(ch<1e-14)break}
+      const top=vec.reduce((t,x,i)=>t+x*M[i].reduce((q,y,j)=>q+y*vec[j],0),0),th=Math.max(top-1,0);
+      lam=s.map((si,i)=>si*vec[i]*Math.sqrt(th));const nxt=lam.map(l=>Math.min(1,Math.max(0.005,1-l*l)));
+      const d=Math.max(...nxt.map((x,i)=>Math.abs(x-psi[i])));psi=nxt;if(d<1e-12){converged=true;break}}
+    if(lam.reduce((s,x)=>s+x,0)<0)lam=lam.map(x=>-x);
+    const L=lam.map((l,i)=>l*sd[i]),T=psi.map((p,i)=>p*sd[i]*sd[i]),sl=L.reduce((s,x)=>s+x,0),st=T.reduce((s,x)=>s+x,0);
+    return {omega:sl*sl/(sl*sl+st),loadings:lam,heywood:psi.some(p=>p<=0.0051),converged,iterations:it};
+  }
+  // Same numbers as SPSS Reliability Statistics, Item Statistics, Summary Item Statistics and Item-Total Statistics.
   function analyse(names,rows){
-    const k=names.length,cols=names.map((_,j)=>rows.map(r=>r[j])),tot=rows.map(r=>r.reduce((s,x)=>s+x,0)),a=alpha(cols);
+    const k=names.length,n=rows.length,cols=names.map((_,j)=>rows.map(r=>r[j])),tot=rows.map(r=>r.reduce((s,x)=>s+x,0)),a=alpha(cols);
     const constant=names.filter((_,j)=>variance(cols[j])===0);
-    const items=cols.map((c,j)=>{const rest=tot.map((t,i)=>t-c[i]);return {name:names[j],m:mean(c),sd:Math.sqrt(variance(c)),smd:mean(rest),svd:variance(rest),citc:corr(c,rest),aid:k>2?alpha(cols.filter((_,x)=>x!==j)):NaN}});
-    return {alpha:a,items,constant,n:rows.length,k};
+    const R=constant.length||n<3?null:cols.map((x,i)=>cols.map((y,j)=>i===j?1:corr(x,y))),inv=R&&invert(R);
+    const items=cols.map((c,j)=>{const rest=tot.map((t,i)=>t-c[i]);return {name:names[j],m:mean(c),sd:Math.sqrt(variance(c)),smd:mean(rest),svd:variance(rest),citc:corr(c,rest),aid:k>2?alpha(cols.filter((_,x)=>x!==j)):NaN,smc:inv&&k>2?1-1/inv[j][j]:NaN}});
+    const offd=R?R.flatMap((r,i)=>r.filter((_,j)=>j>i)):[],rbar=offd.length?mean(offd):NaN;
+    return {alpha:a,items,constant,n,k,aStd:k*rbar/(1+(k-1)*rbar),rbar,rmin:offd.length?Math.min(...offd):NaN,rmax:offd.length?Math.max(...offd):NaN,
+      ci:feldtCI(a,n,k),omega:R?omegaML(cols):{omega:NaN},sb:k===2&&R?2*R[0][1]/(1+R[0][1]):NaN,scaleMean:mean(tot),scaleSD:Math.sqrt(variance(tot))};
+  }
+  // Low and high end of the response scale, for reverse-coding: from the choice, else from the data (lowest 0 or 1, highest seen).
+  function scaleRange(vals,choice){const m=String(choice||'').match(/^(-?\d+)-(\d+)$/);if(m)return [+m[1],+m[2]];let lo=Infinity,hi=-Infinity;for(const v of vals)if(Number.isFinite(v)){if(v<lo)lo=v;if(v>hi)hi=v}return [Math.min(1,lo),hi]}
+  // One scale end to end: per-scale listwise deletion (as SPSS RELIABILITY does), reverse-coding, run 1 with every item,
+  // run 2 without the dropped ones.
+  function scaleReport(p,g,opt={}){
+    const rev=new Set((opt.reverse||[]).map(key)),drop=new Set((opt.drop||[]).map(key));
+    const names=g.idx.map(j=>p.names[j]),raw=p.cells.map(r=>g.idx.map(j=>r[j])),rows=raw.filter(r=>r.every(Number.isFinite));
+    const [lo,hi]=scaleRange(rows.flat(),opt.range),revd=names.filter(n=>rev.has(key(n)));
+    const data=rows.map(r=>r.map((v,j)=>rev.has(key(names[j]))?lo+hi-v:v));
+    const first=analyse(names,data),keepJ=names.map((_,j)=>j).filter(j=>!drop.has(key(names[j])));
+    const dropped=names.filter(n=>drop.has(key(n)));
+    const final=dropped.length&&keepJ.length>=2?analyse(keepJ.map(j=>names[j]),data.map(r=>keepJ.map(j=>r[j]))):null;
+    return {name:g.name,names,n:rows.length,missing:raw.length-rows.length,range:[lo,hi],max:names.map((_,j)=>rows.length?Math.max(...rows.map(r=>r[j])):NaN),reversed:revd,dropped,first,final,last:final||first};
   }
   //#ca-end
 
@@ -79,31 +199,120 @@
 3\t2\t3\t3\t2
 5\t5\t5\t4\t3
 1\t2\t2\t1\t4`;
-  const f3=x=>Number.isFinite(x)?x.toFixed(3).replace('.',',').replace(/^-/,'-'):'—';
+  // Example: a whole questionnaire, 40 respondents. STT and GioiTinh are not scale items; HL4 is weak; TC3 is a
+  // reverse-worded item not yet recoded.
+  const SAMPLE_MULTI='STT\tGioiTinh\tHL1\tHL2\tHL3\tHL4\tTC1\tTC2\tTC3\tTC4\tDU1\tDU2\tDU3\n'+'1 1 3 4 3 3 3 2 3 3 3 2 3|2 2 5 5 5 4 4 5 1 4 4 5 4|3 2 4 4 4 2 3 3 2 4 4 2 3|4 2 3 5 3 2 3 3 2 3 3 2 3|5 2 4 4 3 4 4 4 3 4 3 3 4|6 1 3 2 3 2 3 4 3 3 3 3 3|7 1 4 3 3 4 5 4 2 5 4 3 4|8 1 5 4 5 4 3 3 2 3 3 3 2|9 2 5 3 4 5 5 5 1 5 5 5 5|10 1 3 4 3 3 4 4 3 4 3 3 4|11 1 2 1 2 2 2 2 3 3 2 2 2|12 1 2 3 3 3 3 1 4 2 1 1 1|13 1 3 4 3 1 3 4 3 5 4 5 4|14 1 2 1 1 5 3 4 3 4 3 3 3|15 1 3 3 3 3 3 4 3 3 4 3 4|16 1 4 2 3 3 3 3 4 3 3 3 4|17 1 3 4 3 4 2 3 3 3 2 3 3|18 1 4 4 4 4 4 4 2 4 3 3 3|19 2 2 3 2 1 1 3 4 2 4 4 3|20 1 3 2 2 4 4 3 2 3 3 3 4|21 2 4 4 3 4 4 4 3 3 3 3 2|22 2 4 5 4 3 4 5 2 4 4 4 4|23 1 3 2 3 3 4 4 2 5 3 1 3|24 2 4 4 3 4 3 3 1 4 2 3 3|25 2 5 4 5 3 4 4 3 4 5 5 3|26 2 2 2 2 3 3 4 2 4 2 2 3|27 1 5 3 3 4 3 4 2 3 4 4 3|28 2 2 3 3 2 3 3 2 4 4 4 5|29 2 3 2 3 2 3 3 2 4 2 1 2|30 2 4 4 4 3 4 4 3 5 2 2 2|31 2 3 3 3 2 4 4 5 4 2 2 3|32 2 3 3 3 4 5 4 1 4 2 2 4|33 1 3 3 3 3 4 4 3 4 4 3 3|34 2 3 3 3 4 2 4 3 2 3 4 4|35 2 3 4 5 4 3 2 4 3 3 3 3|36 2 3 2 2 3 4 3 2 4 3 2 2|37 1 2 2 1 2 3 3 3 3 2 2 1|38 2 3 3 4 4 4 4 4 4 2 4 2|39 2 3 3 3 5 2 3 2 4 3 4 3|40 1 4 3 3 3 3 3 3 4 3 4 4'.split('|').map(r=>r.split(' ').join('\t')).join('\n');
+  let DEC=',';
+  const fx=(x,d=3)=>{if(!Number.isFinite(x))return '—';let s=x.toFixed(d);if(/^-0\.?0*$/.test(s))s=s.slice(1);return s.replace('.',DEC).replace(/^-/,'−')};
+  const f3=x=>fx(x,3),c1=x=>fx(x,1),c2=x=>fx(x,2);
+  const ci=c=>Number.isFinite(c[0])?`[${f3(c[0])}${DEC===','?'; ':', '}${f3(c[1])}]`:'—';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const list=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' và '+a[a.length-1];
-  function run(){
-    const out=$('ca-out'),th=$('ca-thesis');th.innerHTML='';
-    const p=parse($('ca-data').value),note=p.removed.length?`<p class="err">Đã bỏ ${p.removed.map(r=>`cột ${esc(r.name)} (${esc(r.why)})`).join('; ')}.</p>`:'';
-    if(p.k<2){out.innerHTML=note+'<p class="err">Cần ít nhất 2 cột số (2 biến quan sát) để tính alpha.</p>';return}
-    if(p.rows.length<3){out.innerHTML=note+`<p class="err">Cần ít nhất 3 dòng dữ liệu hợp lệ (đang có ${p.rows.length}, đã loại ${p.dropped} dòng thiếu hoặc lỗi). Kiểm tra lại dấu phân cách cột.</p>`;return}
-    const r=analyse(p.names,p.rows);
-    if(r.constant.length){out.innerHTML=note+`<p class="err">Biến ${esc(list(r.constant))} có mọi người trả lời giống hệt nhau (phương sai bằng 0), nên không tính được alpha. Bỏ cột đó rồi tính lại.</p>`;return}
-    const a=r.alpha,neg=r.items.filter(s=>s.citc<0).map(s=>s.name);
-    const verdict=!Number.isFinite(a)?'Không tính được.':a<0?'Âm: gần như chắc chắn còn câu đảo chiều chưa mã hoá lại.':a>=0.9?'Rất cao. Trên 0,95 nên xem có câu hỏi trùng ý không.':a>=0.8?'Tốt.':a>=0.7?'Chấp nhận được (Nunnally, 1978).':a>=0.6?'Tạm chấp nhận với nghiên cứu khám phá hoặc thang đo mới.':'Thấp. Xem lại các biến bị đánh dấu.';
-    let html=`<div class="result"><span class="lbl">Cronbach's alpha</span><span class="num">${f3(a)}</span><span class="how">${verdict} N = ${r.n} phiếu, ${r.k} biến${p.dropped?`; đã loại ${p.dropped} dòng thiếu hoặc lỗi`:''}. Đã đọc các cột: ${esc(p.names.join(', '))} (phân cách bằng ${p.sep}).</span></div>`+note;
-    html+=`<div class="table-wrap"><table><thead><tr><th>Biến</th><th>Trung bình</th><th>Trung bình thang đo nếu loại biến</th><th>Phương sai thang đo nếu loại biến</th><th>Tương quan biến–tổng hiệu chỉnh</th><th>Alpha nếu loại biến</th></tr></thead><tbody>`;
-    for(const s of r.items){const bad=s.citc<0.3||s.aid>a;html+=`<tr class="${bad?'flagged':''}"><td>${esc(s.name)}</td><td>${f3(s.m)}</td><td>${f3(s.smd)}</td><td>${f3(s.svd)}</td><td>${f3(s.citc)}${s.citc<0?' <span class="flag">âm</span>':s.citc<0.3?' <span class="flag">&lt; 0,3</span>':''}</td><td>${f3(s.aid)}${s.aid>a?' <span class="flag">tăng</span>':''}</td></tr>`}
-    html+='</tbody></table></div><p class="how" style="margin:0;font-size:.85rem;color:var(--muted-foreground)">Dòng tô màu: tương quan biến–tổng dưới 0,3 hoặc loại biến làm alpha tăng. Cân nhắc loại, nhưng xét cả nội dung lý thuyết trước khi bỏ.</p>';
-    if(neg.length)html+=`<p class="err">${esc(list(neg))} có tương quan biến–tổng âm: câu này có thể là câu đảo chiều chưa đảo điểm. Mã hoá lại (thang 5 mức: 6 − điểm; thang 7 mức: 8 − điểm) rồi tính lại trước khi quyết định loại.</p>`;
-    out.innerHTML=html;
-    const weak=r.items.filter(s=>s.citc<0.3).map(s=>s.name),up=r.items.filter(s=>s.aid>a).map(s=>s.name),[lo,hi]=[Math.min(...r.items.map(s=>s.citc)),Math.max(...r.items.map(s=>s.citc))];
-    th.innerHTML=`<p>Thang đo gồm ${r.k} biến quan sát (${esc(p.names.join(', '))}) có hệ số Cronbach's alpha = ${f3(a)}${a>=0.7?', lớn hơn 0,7 (Nunnally, 1978)':', nhỏ hơn mức 0,7 (Nunnally, 1978)'}. Tương quan biến – tổng hiệu chỉnh của các biến nằm trong khoảng từ ${f3(lo)} đến ${f3(hi)}. ${weak.length?`Biến ${esc(list(weak))} có tương quan biến – tổng nhỏ hơn 0,3 (Nunnally &amp; Bernstein, 1994)${up.length?` và việc loại ${up.length>1?'các biến':'biến'} ${esc(list(up))} làm alpha tăng`:''}, nên cần được xem xét loại khỏi thang đo.`:`Tất cả biến đều có tương quan biến – tổng từ 0,3 trở lên (Nunnally &amp; Bernstein, 1994)${a>=0.7?', vì vậy thang đo đạt độ tin cậy và các biến được giữ lại cho phân tích tiếp theo':''}.`}</p><p><strong>Tài liệu tham khảo</strong></p><ul><li>Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.). McGraw-Hill.</li><li>Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em> (3rd ed.). McGraw-Hill.</li></ul>`;
+  const words=s=>String(s||'').split(/[,;\s]+/).map(x=>x.trim()).filter(Boolean);
+  const REFS={
+    cronbach:'Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. <em>Psychometrika, 16</em>(3), 297–334. https://doi.org/10.1007/BF02310555',
+    eisinga:'Eisinga, R., Grotenhuis, M. te, &amp; Pelzer, B. (2013). The reliability of a two-item scale: Pearson, Cronbach, or Spearman-Brown? <em>International Journal of Public Health, 58</em>(4), 637–642. https://doi.org/10.1007/s00038-012-0416-3',
+    feldt:'Feldt, L. S., Woodruff, D. J., &amp; Salih, F. A. (1987). Statistical inference for coefficient alpha. <em>Applied Psychological Measurement, 11</em>(1), 93–103. https://doi.org/10.1177/014662168701100107',
+    hair:'Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.',
+    hayes:'Hayes, A. F., &amp; Coutts, J. J. (2020). Use omega rather than Cronbach’s alpha for estimating reliability. But…. <em>Communication Methods and Measures, 14</em>(1), 1–24. https://doi.org/10.1080/19312458.2020.1718629',
+    nunnally:'Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.). McGraw-Hill.',
+    nb:'Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em> (3rd ed.). McGraw-Hill.',
+    tavakol:'Tavakol, M., &amp; Dennick, R. (2011). Making sense of Cronbach’s alpha. <em>International Journal of Medical Education, 2</em>, 53–55. https://doi.org/10.5116/ijme.4dfb.8dfd'
+  };
+  function verdict(a){return !Number.isFinite(a)?'Không tính được.':a<0?'Âm: gần như chắc chắn còn câu đảo chiều chưa mã hoá lại.':a>=0.9?`Rất cao; từ ${c2(0.9)} trở lên nên xem có câu hỏi trùng ý không (Tavakol & Dennick, 2011).`:a>=0.8?'Tốt.':a>=0.7?'Chấp nhận được (Nunnally, 1978).':a>=0.6?'Tạm chấp nhận với nghiên cứu khám phá (Hair và cộng sự, 2010).':'Thấp. Xem lại các biến bị đánh dấu.'}
+  const flagged=(s,a)=>s.citc<0.3||s.aid>a;
+  function itemTable(r,{actions=false,word=false}={}){
+    const a=r.alpha;let h=`<table><thead><tr><th>Biến</th><th>Trung bình</th><th>Độ lệch chuẩn</th><th>Trung bình thang đo nếu loại biến</th><th>Phương sai thang đo nếu loại biến</th><th>Tương quan biến–tổng hiệu chỉnh</th>${word?'':'<th>Bình phương tương quan bội</th>'}<th>Alpha nếu loại biến</th>${actions?'<th></th>':''}</tr></thead><tbody>`;
+    for(const s of r.items){const bad=flagged(s,a);
+      h+=`<tr${bad&&!word?' class="flagged"':''}><td>${esc(s.name)}</td><td>${f3(s.m)}</td><td>${f3(s.sd)}</td><td>${f3(s.smd)}</td><td>${f3(s.svd)}</td><td>${f3(s.citc)}${word?'':s.citc<0?' <span class="flag">âm</span>':s.citc<0.3?` <span class="flag">&lt; ${c1(0.3)}</span>`:''}</td>${word?'':`<td>${f3(s.smc)}</td>`}<td>${f3(s.aid)}${!word&&s.aid>a?' <span class="flag">tăng</span>':''}</td>${actions?`<td class="act"><button type="button" class="ca-mini" data-act="drop" data-item="${esc(s.name)}">Loại</button>${s.citc<0?` <button type="button" class="ca-mini" data-act="rev" data-item="${esc(s.name)}">Đảo điểm</button>`:''}</td>`:''}</tr>`}
+    return h+'</tbody></table>';
   }
+  let last=null;
+  function readOpts(){return {reverse:words($('ca-rev').value),drop:words($('ca-drop').value),range:$('ca-range').value,missing:words($('ca-miss').value).map(x=>+x.replace(',','.').replace('−','-')).filter(Number.isFinite),groups:$('ca-groups').value}}
+  function run(){
+    DEC=$('ca-dec').value||',';
+    const out=$('ca-out'),th=$('ca-thesis');th.innerHTML='';last=null;
+    const o=readOpts(),p=parse($('ca-data').value,{missing:o.missing});
+    let note=p.removed.length?`<p class="err">Đã bỏ ${p.removed.map(r=>`cột ${esc(r.name)} (${esc(r.why)})`).join('; ')}.</p>`:'';
+    if(p.mapped.length)note+=`<p class="ca-note">Đã đổi nhãn chữ sang điểm thang ${p.labelScale} mức (Hoàn toàn không đồng ý = 1 … Hoàn toàn đồng ý = ${p.labelScale}) ở ${p.mapped.length} cột.</p>`;
+    if(p.k<2){out.innerHTML=note+'<p class="err">Cần ít nhất 2 cột số (2 biến quan sát) để tính alpha.</p>';return}
+    const G=makeGroups(p.names,o.groups);
+    if(G.unknown.length)note+=`<p class="err">Không tìm thấy biến ${esc(list(G.unknown))} trong dữ liệu (tên cột đọc được: ${esc(p.names.join(', '))}).</p>`;
+    if(G.singles.length)note+=`<p class="ca-note">Không tính cho ${esc(list(G.singles))}: mỗi mã chỉ có 1 biến (thường là biến nhân khẩu học). Nếu đây là câu hỏi của thang đo, khai báo nhóm trong Tuỳ chọn.</p>`;
+    if(G.unused.length)note+=`<p class="ca-note">Không thuộc nhóm nào đã khai báo: ${esc(list(G.unused))}.</p>`;
+    if(!G.groups.length){out.innerHTML=note+'<p class="err">Không có nhóm nào đủ 2 biến. Đặt tên cột theo mã (HL1, HL2…) hoặc khai báo nhóm trong Tuỳ chọn.</p>';return}
+    const S=G.groups.map(g=>scaleReport(p,g,o)),known=new Set(p.names.map(key));
+    const badOpt=[...o.reverse,...o.drop].filter(x=>!known.has(key(x)));
+    if(badOpt.length)note+=`<p class="err">Không có biến tên ${esc(list(badOpt))}; kiểm tra lại ô Tuỳ chọn.</p>`;
+    const big=S.filter(s=>s.names.length>12&&!o.groups.trim());
+    if(big.length)note+=`<p class="err">Nhóm ${esc(list(big.map(s=>s.name)))} có hơn 12 biến: có thể đang gộp nhiều khái niệm (ví dụ cột đặt tên Câu 1, Câu 2…). Alpha chỉ có nghĩa cho các câu cùng đo một khái niệm; hãy khai báo nhóm trong Tuỳ chọn.</p>`;
+    let html=`<p class="ca-note">Đã đọc ${p.names.length} cột số (phân cách bằng ${p.sep}), gom thành ${S.length} thang đo: ${S.map(s=>`<b>${esc(s.name)}</b> (${s.names.length} biến)`).join(', ')}.</p>`+note;
+    if(S.length>1){html+=`<h3 style="margin:8px 0 0;font-size:1.05rem">Bảng tổng hợp</h3><div class="table-wrap"><table><thead><tr><th>Thang đo</th><th>Biến giữ lại</th><th>N</th><th>Cronbach's alpha</th><th>KTC 95%</th><th>Omega</th><th>Tương quan biến–tổng nhỏ nhất</th></tr></thead><tbody>`;
+      for(const s of S){const r=s.last,mc=Math.min(...r.items.map(i=>i.citc)),bad=!(r.alpha>=0.7)||!(mc>=0.3);html+=`<tr${bad?' class="flagged"':''}><td>${esc(s.name)}</td><td>${r.k}/${s.names.length}</td><td>${s.n}</td><td>${f3(r.alpha)}</td><td>${ci(r.ci)}</td><td>${f3(r.omega.omega)}</td><td>${f3(mc)}</td></tr>`}
+      html+='</tbody></table></div>'}
+    for(const s of S){const r=s.last,a=r.alpha;
+      html+=`<section class="ca-scale"><h3>Thang đo ${esc(s.name)}${s.final?' (lần 2, sau khi loại biến)':''}</h3>`;
+      if(s.n<3){html+=`<p class="err">Chỉ có ${s.n} phiếu trả lời đủ các biến của thang đo này; cần ít nhất 3.</p></section>`;continue}
+      if(r.constant.length){html+=`<p class="err">Biến ${esc(list(r.constant))} có mọi người trả lời giống hệt nhau (phương sai bằng 0), nên không tính được alpha. Bấm Loại ở biến đó.</p><div class="table-wrap">${itemTable(r,{actions:true})}</div></section>`;continue}
+      const negL=(r.omega.loadings||[]).map((l,j)=>l<0?r.items[j].name:null).filter(Boolean);
+      const maxes=r.items.map(it=>s.max[s.names.indexOf(it.name)]),spread=Math.max(...maxes)-Math.min(...maxes);
+      if(spread>=2)html+=`<p class="err">Các biến trong nhóm này có điểm cao nhất rất khác nhau (${r.items.map((it,j)=>esc(it.name)+': '+maxes[j]).join(', ')}): nếu đây là biến nhân khẩu học (giới tính, tuổi, thu nhập…) đặt cùng mã thì bỏ qua kết quả này, hoặc khai báo nhóm trong Tuỳ chọn.</p>`;
+      html+=`<div class="ca-kpi"><div><span>Cronbach's alpha</span><b>${f3(a)}</b></div><div><span>KTC 95% (Feldt)</span><b style="font-size:1rem">${ci(r.ci)}</b></div><div><span>McDonald's omega</span><b>${f3(r.omega.omega)}</b></div><div><span>Alpha chuẩn hoá</span><b>${f3(r.aStd)}</b></div><div><span>N phiếu · số biến</span><b>${s.n} · ${r.k}</b></div></div>`;
+      html+=`<p class="ca-note">${esc(verdict(a))} Tương quan giữa các biến: trung bình ${f3(r.rbar)} (từ ${f3(r.rmin)} đến ${f3(r.rmax)}).${s.missing?` Đã loại ${s.missing} phiếu thiếu câu trả lời ở thang đo này (listwise).`:''}${s.reversed.length?` Đã đảo điểm ${esc(list(s.reversed))} theo thang ${s.range[0]}–${s.range[1]}.`:''}${a>=0.7&&r.ci[0]<0.7?` Cận dưới khoảng tin cậy còn dưới ${c1(0.7)}: mẫu nhỏ nên ước lượng chưa chắc chắn.`:''}${r.k===2?` Thang đo 2 biến: omega không xác định; hệ số Spearman-Brown = ${f3(r.sb)} là chỉ số phù hợp hơn (Eisinga và cộng sự, 2013).`:''}${negL.length?` ${esc(list(negL))} có hệ số tải âm trong mô hình một nhân tố, nên omega chưa có ý nghĩa cho tới khi đảo điểm.`:''}${r.omega.heywood?' Mô hình một nhân tố có biến tải gần 1 (trường hợp Heywood), đọc omega thận trọng.':''}</p>`;
+      if(s.final)html+=`<p class="ca-note">Lần 1 (đủ ${s.names.length} biến): alpha = ${f3(s.first.alpha)}. Đã loại ${esc(list(s.dropped))}: ${s.dropped.map(d=>`<button type="button" class="ca-mini" data-act="undrop" data-item="${esc(d)}">Đưa ${esc(d)} trở lại</button>`).join(' ')}</p>`;
+      else if(s.dropped.length)html+=`<p class="err">Không thể loại ${esc(list(s.dropped))}: thang đo phải còn ít nhất 2 biến. <button type="button" class="ca-mini" data-act="undrop" data-item="${esc(s.dropped[0])}">Đưa ${esc(s.dropped[0])} trở lại</button></p>`;
+      html+=`<div class="table-wrap">${itemTable(r,{actions:true})}</div>`;
+      const neg=r.items.filter(i=>i.citc<0).map(i=>i.name);
+      if(neg.length)html+=`<p class="err">${esc(list(neg))} có tương quan biến–tổng âm: câu này có thể là câu đảo chiều chưa đảo điểm. Bấm “Đảo điểm” (hoặc ghi vào ô Câu đảo chiều) rồi xem lại trước khi quyết định loại.</p>`;
+      html+='</section>';
+    }
+    html+=`<p class="ca-note">Dòng tô màu: tương quan biến–tổng hiệu chỉnh dưới ${c1(0.3)} hoặc loại biến làm alpha tăng. Loại từng biến một, bắt đầu từ biến yếu nhất, và xét cả nội dung câu hỏi trước khi bỏ.</p>`;
+    out.innerHTML=html;
+    const ok=S.filter(s=>s.n>=3&&!s.last.constant.length);
+    if(ok.length){last={S:ok};th.innerHTML=thesis(ok)}
+  }
+  // Chapter-4 text: method sentence, one paragraph per scale (run 1 → run 2 when items were dropped), conclusion, references.
+  function thesis(S){
+    const used=new Set(['cronbach','feldt','nunnally','nb']);
+    const hasOmega=S.some(s=>Number.isFinite(s.last.omega.omega));if(hasOmega)used.add('hayes');
+    let h=`<p>Độ tin cậy của ${S.length>1?S.length+' thang đo':'thang đo'} được đánh giá bằng hệ số Cronbach's alpha (Cronbach, 1951), kèm khoảng tin cậy 95% theo Feldt và cộng sự (1987)${hasOmega?' và hệ số McDonald\'s omega ước lượng từ mô hình một nhân tố (Hayes &amp; Coutts, 2020)':''}. Thang đo được chấp nhận khi alpha từ ${c1(0.7)} trở lên (Nunnally, 1978); biến quan sát được giữ lại khi tương quan biến – tổng hiệu chỉnh từ ${c1(0.3)} trở lên (Nunnally &amp; Bernstein, 1994).</p>`;
+    let pass=0;
+    for(const s of S){const r=s.last,a=r.alpha,cs=r.items.map(i=>i.citc),[lo,hi]=[Math.min(...cs),Math.max(...cs)];
+      const weak=r.items.filter(i=>i.citc<0.3).map(i=>i.name),up=r.items.filter(i=>i.aid>a).map(i=>i.name);
+      let t=`Thang đo ${esc(s.name)} gồm ${s.names.length} biến quan sát (${esc(s.names.join(', '))}).`;
+      if(s.reversed.length)t+=` ${s.reversed.length>1?'Các biến':'Biến'} ${esc(list(s.reversed))} là câu đảo chiều nên được mã hoá lại (${s.range[0]+s.range[1]} − điểm) trước khi tính.`;
+      if(s.final){const f=s.first,dd=f.items.filter(i=>s.dropped.includes(i.name));
+        t+=` Kết quả lần 1 cho hệ số Cronbach's alpha = ${f3(f.alpha)}; ${dd.map(i=>`biến ${esc(i.name)} có tương quan biến – tổng hiệu chỉnh ${f3(i.citc)}${i.citc<0.3?` (nhỏ hơn ${c1(0.3)})`:''} và nếu loại thì alpha ${i.aid>f.alpha?'tăng lên':'còn'} ${f3(i.aid)}`).join('; ')}, nên ${dd.length>1?'các biến này':'biến này'} bị loại. Kết quả lần 2 với ${r.k} biến còn lại`}
+      else t+=' Kết quả';
+      t+=` cho alpha = ${f3(a)} (KTC 95%: ${ci(r.ci)})${Number.isFinite(r.omega.omega)?`, omega = ${f3(r.omega.omega)}`:''}. Tương quan biến – tổng hiệu chỉnh nằm trong khoảng từ ${f3(lo)} đến ${f3(hi)}.`;
+      if(r.k===2&&Number.isFinite(r.sb)){used.add('eisinga');t+=` Với thang đo 2 biến, hệ số Spearman-Brown = ${f3(r.sb)} (Eisinga và cộng sự, 2013).`}
+      if(weak.length)t+=` Biến ${esc(list(weak))} có tương quan biến – tổng nhỏ hơn ${c1(0.3)}${up.length?` và việc loại ${up.length>1?'các biến':'biến'} ${esc(list(up))} làm alpha tăng`:''}, nên cần được xem xét loại khỏi thang đo.`;
+      else if(a>=0.7){t+=` Tất cả biến đều có tương quan biến – tổng từ ${c1(0.3)} trở lên và alpha đạt mức ${c1(0.7)}, vì vậy thang đo đạt độ tin cậy.`;pass++}
+      else if(a>=0.6){used.add('hair');t+=` Alpha nằm trong khoảng ${c1(0.6)} – ${c1(0.7)}, chỉ chấp nhận được trong nghiên cứu khám phá (Hair và cộng sự, 2010).`}
+      else t+=` Alpha nhỏ hơn ${c1(0.6)} nên thang đo chưa đạt độ tin cậy.`;
+      if(a>=0.9){used.add('tavakol');t+=` Alpha từ ${c2(0.9)} trở lên nên cần rà soát các câu hỏi có nội dung trùng lặp (Tavakol &amp; Dennick, 2011).`}
+      h+=`<p>${t}</p>`}
+    if(S.length>1&&pass===S.length){const nItems=S.reduce((x,s)=>x+s.last.k,0),nDrop=S.reduce((x,s)=>x+s.dropped.length,0);h+=`<p>Như vậy, cả ${S.length} thang đo đều đạt độ tin cậy${nDrop?` sau khi loại ${nDrop} biến`:''}; ${nItems} biến quan sát được giữ lại cho phân tích nhân tố khám phá (EFA).</p>`}
+    h+=`<p><strong>Tài liệu tham khảo</strong></p><ul>${Object.keys(REFS).filter(k=>used.has(k)).map(k=>`<li>${REFS[k]}</li>`).join('')}</ul>`;
+    return h;
+  }
+  function wordDoc(){
+    const {S}=last;let body=`<h3>Bảng 4.1. Tổng hợp kết quả kiểm định độ tin cậy thang đo</h3><table><tr><th>Thang đo</th><th>Số biến ban đầu</th><th>Số biến giữ lại</th><th>N</th><th>Cronbach's alpha</th><th>KTC 95%</th><th>McDonald's omega</th></tr>${S.map(s=>`<tr><td>${esc(s.name)}</td><td>${s.names.length}</td><td>${s.last.k}</td><td>${s.n}</td><td>${f3(s.last.alpha)}</td><td>${ci(s.last.ci)}</td><td>${f3(s.last.omega.omega)}</td></tr>`).join('')}</table>`;
+    let t=2;for(const s of S)for(const [r,run] of s.final?[[s.first,'lần 1'],[s.final,'lần 2']]:[[s.last,'']])
+      body+=`<h3>Bảng 4.${t++}. Kết quả Cronbach's alpha thang đo ${esc(s.name)}${run?' ('+run+')':''}: alpha = ${f3(r.alpha)}, N = ${s.n}, số biến = ${r.k}</h3>${itemTable(r,{word:true})}`;
+    return `﻿<html><head><meta charset="utf-8"><title>Cronbach's alpha</title><style>body{font-family:"Times New Roman";font-size:13pt}h3{font-size:12pt}table{border-collapse:collapse;margin:6pt 0 12pt}td,th{border:1px solid #000;padding:3px 6px;text-align:right;vertical-align:top;font-size:11pt}td:first-child,th:first-child{text-align:left}</style></head><body><h2>KIỂM ĐỊNH ĐỘ TIN CẬY THANG ĐO</h2>${body}${$('ca-thesis').innerHTML}</body></html>`;
+  }
+  function toggle(id,name,on){const el=$(id),cur=words(el.value).filter(x=>key(x)!==key(name));if(on)cur.push(name);el.value=cur.join(', ')}
+  $('ca-out').addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('button[data-act]');if(!b)return;const it=b.dataset.item,act=b.dataset.act;
+    if(act==='drop')toggle('ca-drop',it,true);else if(act==='undrop')toggle('ca-drop',it,false);else if(act==='rev')toggle('ca-rev',it,!words($('ca-rev').value).some(x=>key(x)===key(it)));run()});
   $('ca-run').addEventListener('click',run);
-  $('ca-sample').addEventListener('click',()=>{$('ca-data').value=SAMPLE;run()});
+  const load=s=>{$('ca-data').value=s;$('ca-rev').value='';$('ca-drop').value='';$('ca-groups').value='';run()};
+  $('ca-sample').addEventListener('click',()=>load(SAMPLE));
+  $('ca-sample-multi').addEventListener('click',()=>load(SAMPLE_MULTI));
+  $('ca-dec').addEventListener('change',run);
+  $('ca-word').addEventListener('click',()=>{if(!last)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([wordDoc()],{type:'application/msword'}));a.download='cronbach-alpha.doc';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
   $('ca-copy').addEventListener('click',()=>{const el=$('ca-thesis'),b=$('ca-copy'),done=()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent='Sao chép đoạn văn',1500)};
     const fb=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Đã chọn, nhấn Ctrl+C'};try{navigator.clipboard.writeText(el.innerText).then(done,fb)}catch(e){fb()}});
-  $('ca-data').value=SAMPLE; run();
+  $('ca-data').value=SAMPLE_MULTI; run();
 })();
 </script>

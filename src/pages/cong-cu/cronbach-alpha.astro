@@ -5,127 +5,162 @@ import html from "@/tools/cronbach-alpha.html?raw";
 
 <ToolLayout
   slug="cronbach-alpha"
-  title="Tính Cronbach's alpha online: dán dữ liệu, ra kết quả ngay"
+  title="Tính Cronbach's alpha online: nhiều thang đo một lần, có omega và file Word"
   h1="Tính Cronbach's alpha online"
-  description="Công cụ tính hệ số Cronbach's alpha miễn phí: dán dữ liệu từ Excel hoặc SPSS, nhận alpha, tương quan biến–tổng hiệu chỉnh và alpha nếu loại biến."
-  lede="Dán dữ liệu một thang đo từ Excel hoặc SPSS (mỗi dòng một người trả lời, mỗi cột một biến quan sát). Kết quả giống bảng Reliability Statistics và Item-Total Statistics của SPSS."
+  description="Dán cả bảng hỏi từ Excel, SPSS hoặc Google Forms: tính Cronbach's alpha cho mọi thang đo một lần, kèm khoảng tin cậy 95%, McDonald's omega, bảng Item-Total Statistics như SPSS, đoạn văn chương 4 và file Word."
+  lede="Dán dữ liệu cả bảng hỏi (mỗi dòng một người trả lời, mỗi cột một biến). Công cụ tự gom biến thành thang đo theo mã (HL1, HL2… thành HL), tính alpha với khoảng tin cậy 95%, omega, các cột như bảng Item-Total Statistics của SPSS, rồi viết sẵn đoạn văn và bảng cho chương 4."
   html={html}
 >
   <Fragment slot="guide">
     <h2>Cách dùng</h2>
     <ol>
       <li>
-        Trong Excel hoặc SPSS Data View, bôi đen các cột của <strong
-          >một</strong
-        > thang đo (ví dụ HL1 đến HL5), kể cả dòng tên biến nếu muốn, rồi sao chép.
+        Trong Excel, SPSS Data View hoặc file Google Forms, bôi đen các cột câu
+        hỏi kèm dòng tên biến rồi sao chép. Có thể chọn cả bảng: cột STT, thời
+        gian, cột chữ được bỏ ra và nêu tên; biến chỉ có một mã như giới tính,
+        tuổi được để riêng, không tính.
       </li>
       <li>
-        Dán vào ô dữ liệu. Công cụ tự nhận dấu phân cách là tab, dấu chấm phẩy,
-        dấu phẩy hoặc khoảng trắng (số thập phân dạng 3,5 hay 3.5 đều được), và
-        nhận dòng đầu là tên biến nếu dòng đó có chữ. Kết quả ghi rõ các cột đã
-        đọc. Cột số thứ tự (ID, STT, hoặc 1, 2, 3… tăng dần), cột thời gian và
-        cột chữ được bỏ ra và nêu tên, nên không làm sai alpha.
+        Dán vào ô dữ liệu và bấm <strong>Tính độ tin cậy</strong>. Các biến cùng
+        mã (HL1, HL_2, HL03, HL4R…) thành một thang đo. Tên biến không theo mã
+        (Câu 1, Câu 2…) thì khai báo nhóm trong <strong>Tuỳ chọn</strong>, mỗi
+        dòng một thang đo, ví dụ <code>Hài lòng: Câu 1-Câu 5</code>.
       </li>
       <li>
-        Bấm <strong>Tính alpha</strong>. Dòng nào thiếu giá trị hoặc có ô không
-        phải số sẽ bị loại (listwise), giống thiết lập mặc định của SPSS. Biến mà
-        mọi người trả lời giống nhau (phương sai bằng 0) được nêu tên để bạn bỏ
-        ra.
+        Biến có tương quan biến–tổng âm thường là câu đảo chiều chưa mã hoá lại:
+        bấm <strong>Đảo điểm</strong> ở dòng đó (điểm mới = thấp nhất + cao nhất −
+        điểm cũ, tức 6 − điểm với thang 1–5). Biến yếu thì bấm
+        <strong>Loại</strong>; kết quả ghi cả lần 1 và lần 2, giống cách trình
+        bày trong luận văn.
       </li>
       <li>
-        Mã hoá lại câu đảo chiều trước khi dán: thang 5 mức dùng 6 − điểm, thang
-        7 mức dùng 8 − điểm. Câu đảo chiều chưa mã hoá là nguyên nhân phổ biến
-        nhất khiến alpha thấp hoặc âm.
+        Bấm <strong>Tải file Word</strong> để lấy bảng tổng hợp, bảng chi tiết
+        từng thang đo và đoạn văn có trích dẫn, hoặc sao chép đoạn văn.
       </li>
     </ol>
     <p>
-      Mỗi khái niệm tính riêng một lần. Dữ liệu chỉ được xử lý trong trình duyệt
-      của bạn, không gửi lên máy chủ.
+      Định dạng dán được: cột cách nhau bằng tab, chấm phẩy, dấu phẩy (CSV có
+      dấu ngoặc kép) hoặc khoảng trắng; số thập phân 3,5 hoặc 3.5; ô trống hay
+      dấu “.” của SPSS là giá trị thiếu; mã thiếu như 99 khai trong Tuỳ chọn; nhãn
+      chữ của Google Forms (Hoàn toàn không đồng ý … Hoàn toàn đồng ý) đổi sang 1–5,
+      có chữ “Hơi đồng ý” thì đổi sang 1–7. Phiếu thiếu câu trả lời bị loại riêng
+      trong thang đo có ô trống (listwise theo từng thang đo, như lệnh RELIABILITY
+      của SPSS). Dữ liệu chỉ xử lý trong trình duyệt, không gửi lên máy chủ.
     </p>
 
     <h2>Công thức và cách tính</h2>
-    <p>
-      Hệ số alpha (Cronbach, 1951) đo độ nhất quán nội tại của các câu cùng đo
-      một khái niệm:
-    </p>
+    <p>Hệ số alpha (Cronbach, 1951):</p>
     <p><code>α = k / (k − 1) × (1 − Σσᵢ² / σₜ²)</code></p>
     <ul>
       <li><strong>k</strong>: số biến quan sát trong thang đo.</li>
       <li><strong>Σσᵢ²</strong>: tổng phương sai của từng biến.</li>
-      <li>
-        <strong>σₜ²</strong>: phương sai của điểm tổng (cộng tất cả các biến của
-        một người trả lời).
-      </li>
+      <li><strong>σₜ²</strong>: phương sai của điểm tổng.</li>
     </ul>
     <p>
       Phương sai tính theo mẫu (chia cho n − 1), như SPSS. <strong
         >Tương quan biến–tổng hiệu chỉnh</strong
-      > là hệ số tương quan Pearson giữa một biến và tổng các biến còn lại (không
-      tính chính biến đó). <strong>Alpha nếu loại biến</strong> là alpha tính lại
-      sau khi bỏ biến đó khỏi thang đo.
+      > là tương quan Pearson giữa một biến và tổng các biến còn lại.
+      <strong>Bình phương tương quan bội</strong> là R² khi hồi quy biến đó theo
+      các biến còn lại (1 − 1/r<sup>jj</sup> từ nghịch đảo ma trận tương quan).
+      <strong>Alpha chuẩn hoá</strong> = k·r̄ / (1 + (k − 1)·r̄), với r̄ là tương
+      quan trung bình giữa các biến.
+    </p>
+    <p>
+      <strong>Khoảng tin cậy 95% của alpha</strong> theo Feldt, Woodruff và Salih
+      (1987): (1 − α) / (1 − α̂) có phân phối F với n − 1 và (n − 1)(k − 1) bậc
+      tự do, nên cận dưới = 1 − (1 − α̂)·F<sub>0,975</sub>, cận trên = 1 − (1 −
+      α̂)·F<sub>0,025</sub>. Đây cũng là khoảng tin cậy SPSS in ở bảng Intraclass
+      Correlation Coefficient (two-way mixed, consistency, average measures), vì
+      hệ số ở dòng đó bằng alpha.
+    </p>
+    <p>
+      <strong>McDonald's omega</strong> (ω tổng):
+      <code>ω = (Σλᵢ)² / ((Σλᵢ)² + Σθᵢ)</code>, với λ là hệ số tải và θ là phương
+      sai sai số của mô hình một nhân tố (McDonald, 1999; Hayes &amp; Coutts, 2020).
+      Công cụ ước lượng mô hình bằng hợp lý cực đại (ML) trên ma trận tương quan,
+      rồi đổi về thang điểm thô bằng độ lệch chuẩn của từng biến, nên ω nói về độ
+      tin cậy của điểm tổng giống như alpha. Kết quả được đối chiếu với hai cách
+      ước lượng ML độc lập (tối ưu hoá trực tiếp hàm ML bằng SciPy và
+      FactorAnalysis của scikit-learn), khớp đến 5 chữ số thập phân. Omega cần ít
+      nhất 3 biến; với thang đo 2 biến, công cụ báo hệ số Spearman-Brown như
+      Eisinga và cộng sự (2013) khuyến nghị. Khi một biến có hệ số tải gần 1
+      (trường hợp Heywood), công cụ ghi chú để đọc omega thận trọng.
     </p>
 
     <h2>Đọc kết quả</h2>
     <ul>
       <li>
         <strong>Alpha tổng.</strong> Mốc được trích nhiều nhất là 0,7 (Nunnally,
-        1978). Từ 0,6 đến dưới 0,7 thường được chấp nhận trong nghiên cứu khám phá
-        hoặc thang đo mới (Hair và cộng sự, 2010). Trên 0,95 nên xem lại có câu
-        nào lặp ý gần như nguyên văn không (Tavakol &amp; Dennick, 2011).
+        1978). Từ 0,6 đến dưới 0,7 thường được chấp nhận trong nghiên cứu khám
+        phá (Hair và cộng sự, 2010). Từ 0,90 trở lên nên xem có câu nào lặp ý
+        không (Tavakol &amp; Dennick, 2011). Các mốc này là quy ước, không phải
+        ngưỡng thống kê, và các tác giả dùng nhãn khác nhau cho cùng một giá trị
+        (Taber, 2018), nên ghi rõ mốc và nguồn trong luận văn.
       </li>
       <li>
-        <strong>Tương quan biến–tổng hiệu chỉnh dưới 0,3</strong> được tô màu:
-        biến đó đóng góp yếu vào thang đo (Nunnally &amp; Bernstein, 1994).
+        <strong>Khoảng tin cậy.</strong> Với mẫu nhỏ, alpha 0,75 có thể đi kèm cận
+        dưới dưới 0,7: công cụ ghi chú khi đó để bạn không kết luận quá mạnh.
       </li>
       <li>
-        <strong>Alpha nếu loại biến lớn hơn alpha tổng</strong> cũng được đánh
-        dấu: bỏ biến đó làm thang đo nhất quán hơn.
+        <strong>Omega</strong> không đòi hỏi các biến có hệ số tải bằng nhau như
+        alpha. Khi hệ số tải chênh nhau nhiều, omega thường cao hơn alpha. Hayes và
+        Coutts (2020) khuyến nghị dùng omega thay cho alpha; vì hội đồng thường
+        vẫn hỏi alpha, công cụ báo cả hai.
+      </li>
+      <li>
+        <strong>Tương quan biến–tổng hiệu chỉnh dưới 0,3</strong> được tô màu
+        (Nunnally &amp; Bernstein, 1994); <strong>alpha nếu loại biến lớn hơn alpha
+        tổng</strong> cũng được đánh dấu.
       </li>
       <li>
         <strong>Tương quan biến–tổng âm</strong> gần như luôn là câu đảo chiều
-        chưa đảo điểm. Công cụ nhắc mã hoá lại trước khi quyết định loại.
+        chưa đảo điểm: mã hoá lại trước khi quyết định loại.
       </li>
     </ul>
     <p>
-      Loại từng biến một, bắt đầu từ biến yếu nhất, rồi tính lại; các con số thay
-      đổi sau mỗi lần loại. Xem nội dung câu hỏi trước khi loại: câu dịch sai
-      nghĩa hoặc câu hai ý có thể sửa được. Giữ ít nhất 3 biến cho mỗi khái niệm.
-      Cách đọc từng bảng và câu mẫu cho chương 4 có trong bài
-      <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/"
-        >Cronbach's alpha là gì</a
+      Loại từng biến một, bắt đầu từ biến yếu nhất, rồi xem lại; các con số thay
+      đổi sau mỗi lần loại. Xem nội dung câu hỏi trước khi loại: câu dịch sai nghĩa
+      hoặc câu hai ý có thể sửa được. Giữ ít nhất 3 biến cho mỗi khái niệm. Cách đọc
+      từng bảng có trong bài
+      <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a
       >.
     </p>
 
     <h2>Câu hỏi thường gặp</h2>
     <h3>Kết quả có khớp với SPSS không?</h3>
     <p>
-      Có, khi dùng cùng dữ liệu và cùng cách xử lý giá trị thiếu. Số trên công cụ
-      tương ứng cột <code>Cronbach's Alpha</code> của bảng Reliability Statistics
-      và các cột <code>Scale Mean if Item Deleted</code>,
+      Có, với cùng dữ liệu và cùng cách xử lý giá trị thiếu. Các số tương ứng cột
+      <code>Cronbach's Alpha</code> và
+      <code>Cronbach's Alpha Based on Standardized Items</code> của bảng Reliability
+      Statistics, cột <code>Mean</code> và <code>Std. Deviation</code> của Item
+      Statistics, và các cột <code>Scale Mean if Item Deleted</code>,
       <code>Scale Variance if Item Deleted</code>,
       <code>Corrected Item-Total Correlation</code>,
-      <code>Cronbach's Alpha if Item Deleted</code> của bảng Item-Total Statistics.
-      Dưới kết quả có đoạn văn chương 4 viết sẵn để sao chép.
+      <code>Squared Multiple Correlation</code>,
+      <code>Cronbach's Alpha if Item Deleted</code> của Item-Total Statistics. Bảng
+      Reliability Statistics của SPSS không in khoảng tin cậy của alpha; công cụ
+      tính sẵn khoảng tin cậy và omega cho mọi thang đo trong một lần.
     </p>
     <h3>Vì sao alpha âm?</h3>
     <p>
-      Alpha âm khi hiệp phương sai trung bình giữa các biến âm. Gần như luôn do
-      còn câu đảo chiều chưa mã hoá lại. Tìm biến có tương quan biến–tổng âm.
+      Alpha âm khi hiệp phương sai trung bình giữa các biến âm, gần như luôn do còn
+      câu đảo chiều chưa mã hoá lại. Tìm biến có tương quan biến–tổng âm và bấm
+      Đảo điểm.
     </p>
-    <h3>Có nên tính alpha cho cả bảng hỏi?</h3>
+    <h3>Có nên tính alpha cho cả bảng hỏi gộp lại?</h3>
     <p>
-      Không. Alpha chỉ có nghĩa với các câu cùng đo một khái niệm. Alpha cao cũng
-      chưa chứng minh thang đo đơn hướng; việc đó cần EFA. Để chạy alpha cho mọi
-      thang đo, EFA và hồi quy cùng lúc, dùng
+      Không. Alpha chỉ có nghĩa với các câu cùng đo một khái niệm; công cụ tính
+      riêng cho từng thang đo và cảnh báo khi một nhóm có hơn 12 biến. Alpha cao
+      cũng chưa chứng minh thang đo đơn hướng; việc đó cần EFA, có trong
       <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/"
         >công cụ phân tích dữ liệu khảo sát</a
       >.
     </p>
     <h3>Cần bao nhiêu phiếu?</h3>
     <p>
-      Công cụ chạy được từ 3 dòng, nhưng với 20–30 phiếu chạy thử alpha dao động
-      mạnh. Dùng kết quả đó để phát hiện câu có vấn đề; kết luận chính thức dựa
-      trên mẫu đầy đủ, tính bằng
+      Công cụ chạy được từ 3 phiếu, nhưng với 20–30 phiếu chạy thử khoảng tin cậy
+      của alpha rất rộng. Dùng kết quả đó để phát hiện câu có vấn đề; kết luận chính
+      thức dựa trên mẫu đầy đủ, tính bằng
       <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.
     </p>
 
@@ -137,8 +172,29 @@ import html from "@/tools/cronbach-alpha.html?raw";
         https://doi.org/10.1007/BF02310555
       </li>
       <li>
+        Eisinga, R., Grotenhuis, M. te, &amp; Pelzer, B. (2013). The reliability of
+        a two-item scale: Pearson, Cronbach, or Spearman-Brown?
+        <em>International Journal of Public Health, 58</em>(4), 637–642.
+        https://doi.org/10.1007/s00038-012-0416-3
+      </li>
+      <li>
+        Feldt, L. S., Woodruff, D. J., &amp; Salih, F. A. (1987). Statistical
+        inference for coefficient alpha. <em>Applied Psychological Measurement, 11</em
+        >(1), 93–103. https://doi.org/10.1177/014662168701100107
+      </li>
+      <li>
         Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010).
         <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.
+      </li>
+      <li>
+        Hayes, A. F., &amp; Coutts, J. J. (2020). Use omega rather than Cronbach’s
+        alpha for estimating reliability. But…. <em
+          >Communication Methods and Measures, 14</em
+        >(1), 1–24. https://doi.org/10.1080/19312458.2020.1718629
+      </li>
+      <li>
+        McDonald, R. P. (1999). <em>Test theory: A unified treatment</em>. Lawrence
+        Erlbaum Associates.
       </li>
       <li>
         Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.).
@@ -147,6 +203,12 @@ import html from "@/tools/cronbach-alpha.html?raw";
       <li>
         Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em>
         (3rd ed.). McGraw-Hill.
+      </li>
+      <li>
+        Taber, K. S. (2018). The use of Cronbach’s alpha when developing and
+        reporting research instruments in science education. <em
+          >Research in Science Education, 48</em
+        >(6), 1273–1296. https://doi.org/10.1007/s11165-016-9602-2
       </li>
       <li>
         Tavakol, M., &amp; Dennick, R. (2011). Making sense of Cronbach's alpha.

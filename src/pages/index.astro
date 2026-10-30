@@ -10,6 +10,7 @@ import Icon from "@/components/Icon.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
+import { appLink } from "@/utils/appLink";
 
 const { posts: postsConfig } = config;
 
@@ -79,9 +80,10 @@ const journey = [
   },
   {
     title: "Thu mẫu",
-    desc: "Tìm đúng người trả lời, lọc phiếu không hợp lệ.",
-    cta: "Đọc hướng dẫn",
+    desc: "Thuê người trả lời đúng đối tượng, chỉ trả cho phiếu được duyệt (link giới thiệu).",
+    cta: "Thu mẫu trên Genius Data",
     path: "posts/cach-thu-mau-khao-sat-khoa-luan",
+    url: appLink("home", "journey-thu-mau", "/app/forms"),
   },
   {
     title: "Phân tích & viết chương 4",
@@ -364,7 +366,11 @@ const homePosts = [...featuredPosts, ...recentPosts].slice(
         {
           journey.map((step, i) => (
             <li class="w-[15.5rem] flex-none snap-start sm:w-auto">
-              <a href={href(step.path)} class="card group gap-1 p-4">
+              <a
+                href={"url" in step && step.url ? step.url : href(step.path)}
+                rel={"url" in step && step.url ? "sponsored noopener" : undefined}
+                class="card group gap-1 p-4"
+              >
                 <span class="flex items-center gap-2">
                   <span class="bg-warm-soft text-warm grid size-7 flex-none place-items-center rounded-full text-sm font-bold">
                     {i + 1}

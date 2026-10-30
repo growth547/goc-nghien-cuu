@@ -49,6 +49,13 @@
     <div class="field"><label for="ps-d">Khoảng cách bỏ D (Q², blindfolding)</label><input id="ps-d" type="number" min="5" max="12" step="1" value="7"></div>
   </div>
   <div class="row">
+    <div class="field"><label for="ps-pk">PLSpredict (dự báo ngoài mẫu)</label>
+      <select id="ps-pk"><option value="0">Không chạy</option><option value="10x10" selected>10 nhóm × 10 lần lặp (mặc định SmartPLS)</option><option value="5x10">5 nhóm × 10 lần lặp</option><option value="10x1">10 nhóm × 1 lần (thử nhanh)</option></select>
+      <small>Chia nhóm ngẫu nhiên theo seed ở trên.</small></div>
+    <div class="field"><label for="ps-ht">Hệ số giá trị phân biệt</label>
+      <select id="ps-ht"><option value="htmt" selected>HTMT (Henseler và cộng sự, 2015)</option><option value="htmt2">HTMT2 (Roemer và cộng sự, 2021)</option></select></div>
+  </div>
+  <div class="row">
     <div class="field"><label for="ps-sec">Số mục chương 4</label><input id="ps-sec" type="text" value="4.3"></div>
     <div class="field"><label for="ps-tab">Bảng đầu tiên là Bảng 4.</label><input id="ps-tab" type="number" min="1" step="1" value="5"></div>
     <div class="field"><label for="ps-fig">Hình kết quả là Hình 4.</label><input id="ps-fig" type="number" min="1" step="1" value="2"></div>
@@ -69,7 +76,7 @@
       <span class="row" style="gap:8px;flex-wrap:wrap"><button type="button" class="btn" id="ps-doc">Tải Word</button><button type="button" class="btn ghost" id="ps-csv">Tải bảng (CSV)</button><button type="button" class="btn ghost" id="ps-scores">Điểm khái niệm (CSV)</button><button type="button" class="btn ghost" id="ps-copy">Sao chép</button></span>
     </div>
     <div id="ps-report" class="ps-report" style="line-height:1.65"></div>
-    <small class="text-muted-foreground">Kết quả tính theo thuật toán PLS chuẩn (Lohmöller, 1989) với các thiết lập mặc định của SmartPLS: lược đồ trọng số đường dẫn, dữ liệu chuẩn hoá, trọng số khởi đầu bằng 1, tiêu chí dừng 10⁻⁷, tối đa 300 vòng lặp. Ước lượng điểm khớp hai gói R seminr và cSEM tới ít nhất 9 chữ số thập phân, nên chỉ có thể lệch SmartPLS ở phần làm tròn (riêng f² tính từ điểm khái niệm của mô hình đầy đủ như cSEM; phần mềm ước lượng lại mô hình khi bỏ từng đường, như seminr, có thể lệch ở chữ số thứ ba); số bootstrap khác nhau một chút giữa các phần mềm vì mỗi phần mềm rút mẫu ngẫu nhiên khác nhau. Bạn vẫn là người chịu trách nhiệm diễn giải kết quả và kiểm tra câu chữ trước khi đưa vào luận văn.</small>
+    <small class="text-muted-foreground">Kết quả tính theo thuật toán PLS chuẩn (Lohmöller, 1989) với các thiết lập mặc định của SmartPLS: lược đồ trọng số đường dẫn, dữ liệu chuẩn hoá, trọng số khởi đầu bằng 1, tiêu chí dừng 10⁻⁷, tối đa 300 vòng lặp. Ước lượng điểm khớp hai gói R seminr và cSEM tới ít nhất 9 chữ số thập phân, nên chỉ có thể lệch SmartPLS ở phần làm tròn (riêng f² tính từ điểm khái niệm của mô hình đầy đủ như cSEM; phần mềm ước lượng lại mô hình khi bỏ từng đường, như seminr, có thể lệch ở chữ số thứ ba); SRMR và HTMT2 khớp cSEM. Số bootstrap và PLSpredict khác nhau một chút giữa các phần mềm vì mỗi phần mềm rút mẫu hoặc chia nhóm ngẫu nhiên khác nhau (với cùng cách chia nhóm, PLSpredict khớp seminr tới 14 chữ số). Bạn vẫn là người chịu trách nhiệm diễn giải kết quả và kiểm tra câu chữ trước khi đưa vào luận văn.</small>
   </div>
   <aside class="cta" id="ps-cta" hidden><span class="cta-label">Tài trợ · Genius Data</span><strong id="ps-cta-h">Mẫu đang dưới mức khuyến nghị</strong>
     <p id="ps-cta-p"></p>
@@ -168,7 +175,7 @@
       const pairs=[];for(const a of order)for(const b of order)if(a!==b&&chains.some(c=>c[0]===a&&c[c.length-1]===b))pairs.push([a,b]);
       const reach=[];for(const a of order)for(const b of order)if(a!==b&&(seen.has(a+'>'+b)||pairs.some(x=>x[0]===a&&x[1]===b)))reach.push([a,b]);
       return {n,N,nDropped:N-n,nImputed:nImp,missing:miss,p,m,Z,mu,sd,items:o.items.slice(),names:o.cons.map(c=>c.name),blk:o.cons.map(c=>c.idx.slice()),
-        mode:o.cons.map(c=>c.mode==='B'&&c.idx.length>1?'B':'A'),pred,succ,paths,order,endo,chains:chains.slice(0,500),pairs,reach,owner}}
+        mode:o.cons.map(c=>c.mode==='B'&&c.idx.length>1?'B':'A'),pred,succ,paths,order,endo,chains:chains.slice(0,500),pairs,reach,owner,htmt2:!!o.htmt2}}
 
     // Correlation matrix of the rows of Z (row-major n × p) with multiplicities w (null = every row once).
     function corrOf(Z,n,p,w){const G=new Float64Array(n*p),c=new Float64Array(n),s=new Float64Array(p),S=new Float64Array(p*p);let r=0,tot=0;
@@ -215,8 +222,10 @@
       for(const [a,b] of pr.reach){const k=a+'>'+b;te[k]=B[a][b]+(ti[k]||0)}return {spec,ti,te}}
     // HTMT (Henseler et al., 2015; absolute correlations, as SmartPLS and seminr) for every pair of reflective constructs with at least two indicators.
     const htmtPairs=pr=>{const ok=pr.blk.map((b,j)=>pr.mode[j]==='A'&&b.length>1),out=[];for(let i=0;i<pr.m;i++)for(let j=i+1;j<pr.m;j++)if(ok[i]&&ok[j])out.push([i,j]);return out};
-    function htmt(S,pr){const p=pr.p,mono=b=>{let s=0,c=0;for(let a=0;a<b.length;a++)for(let d=a+1;d<b.length;d++){s+=Math.abs(S[b[a]*p+b[d]]);c++}return s/c},mo=pr.blk.map(b=>b.length>1?mono(b):NaN),out={};
-      for(const [i,j] of htmtPairs(pr)){let s=0;for(const a of pr.blk[i])for(const d of pr.blk[j])s+=Math.abs(S[a*p+d]);out[i+','+j]=(s/(pr.blk[i].length*pr.blk[j].length))/Math.sqrt(mo[i]*mo[j])}return out}
+    // pr.htmt2: HTMT2 (Roemer et al., 2021), the same ratio with geometric instead of arithmetic means (as cSEM's calculateHTMT, .type_htmt = "htmt2").
+    function htmt(S,pr){const p=pr.p,g=!!pr.htmt2,f=x=>g?Math.log(Math.abs(x)):Math.abs(x),back=x=>g?Math.exp(x):x;
+      const mono=b=>{let s=0,c=0;for(let a=0;a<b.length;a++)for(let d=a+1;d<b.length;d++){s+=f(S[b[a]*p+b[d]]);c++}return back(s/c)},mo=pr.blk.map(b=>b.length>1?mono(b):NaN),out={};
+      for(const [i,j] of htmtPairs(pr)){let s=0;for(const a of pr.blk[i])for(const d of pr.blk[j])s+=f(S[a*p+d]);out[i+','+j]=back(s/(pr.blk[i].length*pr.blk[j].length))/Math.sqrt(mo[i]*mo[j])}return out}
 
     // Full-sample estimation.
     function estimate(pr,opt={}){const {p,m,blk,mode}=pr,S=corrOf(pr.Z,pr.n,p,null);if(!S)throw new Error('Có biến quan sát không biến thiên.');
@@ -291,7 +300,69 @@
         out[j]=ok?{q2:1-sse/sso,sse,sso}:null}
       return out}
 
-    return {tP,pnorm,qnorm,mulberry32,quantile,solve,inverse,prepare,corrOf,core,structural,effects,htmt,htmtPairs,estimate,statKeys,statsOf,bootStart,bootStep,bootFinish,bootstrap,blindfold}
+    // SRMR (Henseler et al., 2014; Hu & Bentler, 1999), as cSEM's fit() and calculateSRMR(): the model-implied indicator
+    // correlations are λk·λl·ρ(jk, jl) between blocks, λk·λl within a reflective block, and the observed correlations
+    // within a formative (composite) block. Saturated model: ρ = the construct correlations; estimated model: ρ implied
+    // by the structural model, (I − B)⁻¹(ΓΦΓ' + Ψ)(I − B)⁻ᵀ with Ψ = 1 − R², unit diagonal. SRMR is the root mean square
+    // of the differences over the lower triangle, diagonal included.
+    const mmul=(A,B)=>A.map(r=>B[0].map((_,c)=>{let s=0;for(let k=0;k<r.length;k++)s+=r[k]*B[k][c];return s}));
+    const tpose=A=>A[0]?A[0].map((_,c)=>A.map(r=>r[c])):[];
+    function impliedLV(pr,est){const m=pr.m,E=pr.endo,X=[];for(let j=0;j<m;j++)if(!pr.pred[j].length)X.push(j);
+      const IB=E.map((r,a)=>E.map((c,b)=>(a===b?1:0)-est.B[c][r])),A=inverse(IB);if(!A)return null;
+      const G=E.map(r=>X.map(c=>est.B[c][r])),Phi=X.map(a=>X.map(b=>est.C[a][b])),At=tpose(A);
+      const M=mmul(mmul(G,Phi),tpose(G));E.forEach((j,a)=>M[a][a]+=1-est.eq[j].r2);
+      const CE=mmul(mmul(A,M),At),XE=mmul(mmul(Phi,tpose(G)),At);
+      const R=Array.from({length:m},()=>new Array(m).fill(0));
+      X.forEach((a,i)=>X.forEach((b,k)=>R[a][b]=Phi[i][k]));
+      E.forEach((a,i)=>{E.forEach((b,k)=>R[a][b]=i===k?1:CE[i][k]);X.forEach((b,k)=>{R[a][b]=R[b][a]=XE[k][i]})});
+      return R}
+    function srmr(pr,est){const {p,owner,mode,blk}=pr,S=est.S,L=est.load;
+      const one=R=>{if(!R)return NaN;let s=0,c=0;for(let k=0;k<p;k++)for(let l=0;l<=k;l++){let sig;const a=owner[k],b=owner[l];
+          if(k===l)sig=1;else if(a===b)sig=mode[a]==='B'?S[k*p+l]:L[k]*L[l];else sig=L[k]*L[l]*R[a][b];
+          const d=S[k*p+l]-sig;s+=d*d;c++}return Math.sqrt(s/c)};
+      return {sat:one(est.C),est:one(impliedLV(pr,est))}}
+
+    // PLSpredict (Shmueli et al., 2016, 2019): k-fold cross-validation repeated r times. Folds: for each repetition a
+    // Fisher–Yates shuffle of the rows from the mulberry32 stream (seeded); the row at shuffled position i goes to fold ⌊i·k/n⌋.
+    // In each fold the model is estimated on the training rows; test rows are standardised with the training mean and SD,
+    // exogenous scores come from the training weights and endogenous scores from the paths (earliest antecedents, as
+    // SmartPLS and cSEM's default), item prediction = training mean + SD · loading · score. LM benchmark: OLS of each
+    // endogenous indicator on all indicators of the exogenous constructs. Q²predict = 1 − SSE(PLS) / SSE(training mean).
+    // RMSE, MAE (original scale) and Q²predict are computed per repetition and averaged, as cSEM's predict().
+    function foldsOf(n,k,reps,seed){const rnd=mulberry32(seed>>>0),out=[];
+      for(let r=0;r<reps;r++){const perm=Array.from({length:n},(_,i)=>i);for(let i=n-1;i>0;i--){const j=Math.floor(rnd()*(i+1)),t=perm[i];perm[i]=perm[j];perm[j]=t}
+        const f=new Int32Array(n);perm.forEach((row,i)=>f[row]=Math.floor(i*k/n));out.push(f)}
+      return out}
+    function plsPredict(pr,o={},onProgress){const k=Math.max(2,Math.min(o.folds||10,pr.n)),reps=Math.max(1,o.reps||10),seed=o.seed||1,{n,p,m,blk,Z,sd,order,pred}=pr;
+      const exo=[];for(let j=0;j<m;j++)if(!pred[j].length)exo.push(j);
+      const xi=exo.flatMap(j=>blk[j]),tc=[];for(let j=0;j<m;j++)if(pred[j].length)blk[j].forEach(c=>tc.push([c,j]));
+      const T=tc.length,q=xi.length,folds=foldsOf(n,k,reps,seed),acc={pr:new Float64Array(T),pm:new Float64Array(T),lr:new Float64Array(T),lm:new Float64Array(T),q2:new Float64Array(T)};
+      const res=tc.map(()=>[]);let failed=0,lmFail=false;
+      const w=new Int32Array(n),mz=new Float64Array(p),sz=new Float64Array(p),eta=new Float64Array(m);
+      for(let r=0;r<reps;r++){const F=folds[r],sse=new Float64Array(T),sae=new Float64Array(T),lse=new Float64Array(T),lae=new Float64Array(T),mse=new Float64Array(T);let used=0;
+        for(let f=0;f<k;f++){let nt=0;for(let i=0;i<n;i++){w[i]=F[i]===f?0:1;nt+=w[i]}
+          for(let c=0;c<p;c++){let s=0;for(let i=0;i<n;i++)if(w[i])s+=Z[i*p+c];const mu=s/nt;let v=0;for(let i=0;i<n;i++)if(w[i]){const d=Z[i*p+c]-mu;v+=d*d}mz[c]=mu;sz[c]=Math.sqrt(v/(nt-1))}
+          const S=corrOf(Z,n,p,w),cr=S?core(S,pr,null):null,st=cr?structural(cr.C,pr,false):null;if(!st)failed++;
+          // LM benchmark on the training rows (centred normal equations).
+          let Bl=null;{const XtX=xi.map(()=>new Array(q).fill(0)),XtY=xi.map(()=>new Float64Array(T));
+            for(let i=0;i<n;i++)if(w[i])for(let a=0;a<q;a++){const da=Z[i*p+xi[a]]-mz[xi[a]];for(let b=a;b<q;b++)XtX[a][b]+=da*(Z[i*p+xi[b]]-mz[xi[b]]);for(let t=0;t<T;t++)XtY[a][t]+=da*(Z[i*p+tc[t][0]]-mz[tc[t][0]])}
+            for(let a=0;a<q;a++)for(let b=0;b<a;b++)XtX[a][b]=XtX[b][a];const Xi=inverse(XtX);
+            if(Xi)Bl=tc.map((_,t)=>xi.map((_,a)=>{let s=0;for(let b=0;b<q;b++)s+=Xi[a][b]*XtY[b][t];return s}));else lmFail=true}
+          // A fold whose training model cannot be estimated is left out of every metric (as cSEM's set_NA).
+          if(st)for(let i=0;i<n;i++){if(w[i])continue;const o2=i*p;used++;
+            for(const j of exo){let s=0;blk[j].forEach((c,a)=>s+=cr.W[j][a]*(Z[o2+c]-mz[c])/sz[c]);eta[j]=s}
+            for(const j of order){if(!pred[j].length)continue;let s=0;for(const a of pred[j])s+=st.B[a][j]*eta[a];eta[j]=s}
+            for(let t=0;t<T;t++){const [c,j]=tc[t],z=Z[o2+c],e0=sd[c]*(z-mz[c]);mse[t]+=e0*e0;
+              const e=sd[c]*(z-mz[c]-sz[c]*cr.SW[c*m+j]*eta[j]);sse[t]+=e*e;sae[t]+=Math.abs(e);res[t].push(e);
+              if(Bl){let y=mz[c];for(let a=0;a<q;a++)y+=Bl[t][a]*(Z[o2+xi[a]]-mz[xi[a]]);const el=sd[c]*(z-y);lse[t]+=el*el;lae[t]+=Math.abs(el)}else{lse[t]=NaN;lae[t]=NaN}}}}
+        if(!used)throw new Error('PLSpredict: không ước lượng được mô hình trên mẫu huấn luyện nào.');
+        for(let t=0;t<T;t++){acc.pr[t]+=Math.sqrt(sse[t]/used)/reps;acc.pm[t]+=sae[t]/used/reps;acc.lr[t]+=Math.sqrt(lse[t]/used)/reps;acc.lm[t]+=lae[t]/used/reps;acc.q2[t]+=(1-sse[t]/mse[t])/reps}
+        if(onProgress)onProgress((r+1)/reps)}
+      // Skewness (g1) of the pooled out-of-sample PLS prediction errors: Shmueli et al. (2019) compare MAE instead of RMSE when they are strongly asymmetric.
+      const skew=res.map(e=>{const N=e.length;let mu=0;for(const x of e)mu+=x;mu/=N;let m2=0,m3=0;for(const x of e){const d=x-mu;m2+=d*d;m3+=d*d*d}m2/=N;m3/=N;return m2>0?m3/Math.pow(m2,1.5):0});
+      return {folds:k,reps,seed,failed,lmFail,items:tc.map(([c,j],t)=>({item:c,con:j,q2:acc.q2[t],rmse:acc.pr[t],mae:acc.pm[t],lmRmse:acc.lr[t],lmMae:acc.lm[t],skew:skew[t]}))}}
+
+    return {tP,pnorm,qnorm,mulberry32,quantile,solve,inverse,prepare,corrOf,core,structural,effects,htmt,htmtPairs,estimate,statKeys,statsOf,bootStart,bootStep,bootFinish,bootstrap,blindfold,impliedLV,srmr,foldsOf,plsPredict}
   }
   //#pls-end
 
@@ -407,6 +478,11 @@
     hair19:'Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203',
     hair21:'Hair, J. F., Hult, G. T. M., Ringle, C. M., Sarstedt, M., Danks, N. P., &amp; Ray, S. (2021). <em>Partial least squares structural equation modeling (PLS-SEM) using R: A workbook</em>. Springer. https://doi.org/10.1007/978-3-030-80519-7',
     hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
+    henseler14:'Henseler, J., Dijkstra, T. K., Sarstedt, M., Ringle, C. M., Diamantopoulos, A., Straub, D. W., Ketchen, D. J., Jr., Hair, J. F., Hult, G. T. M., &amp; Calantone, R. J. (2014). Common beliefs and reality about PLS: Comments on Rönkkö and Evermann (2013). <em>Organizational Research Methods, 17</em>(2), 182–209. https://doi.org/10.1177/1094428114526928',
+    hu99:'Hu, L., &amp; Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. <em>Structural Equation Modeling: A Multidisciplinary Journal, 6</em>(1), 1–55. https://doi.org/10.1080/10705519909540118',
+    shmueli16:'Shmueli, G., Ray, S., Velasquez Estrada, J. M., &amp; Chatla, S. B. (2016). The elephant in the room: Predictive performance of PLS models. <em>Journal of Business Research, 69</em>(10), 4552–4564. https://doi.org/10.1016/j.jbusres.2016.03.049',
+    shmueli19:'Shmueli, G., Sarstedt, M., Hair, J. F., Cheah, J.-H., Ting, H., Vaithilingam, S., &amp; Ringle, C. M. (2019). Predictive model assessment in PLS-SEM: Guidelines for using PLSpredict. <em>European Journal of Marketing, 53</em>(11), 2322–2347. https://doi.org/10.1108/EJM-02-2019-0189',
+    roemer21:'Roemer, E., Schuberth, F., &amp; Henseler, J. (2021). HTMT2–an improved criterion for assessing discriminant validity in structural equation modeling. <em>Industrial Management &amp; Data Systems, 121</em>(12), 2637–2650. https://doi.org/10.1108/IMDS-02-2021-0082',
     henseler15:'Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8',
     lohmoller89:'Lohmöller, J.-B. (1989). <em>Latent variable path modeling with partial least squares</em>. Physica-Verlag. https://doi.org/10.1007/978-3-642-52512-4',
     stone74:'Stone, M. (1974). Cross-validatory choice and assessment of statistical predictions. <em>Journal of the Royal Statistical Society: Series B (Methodological), 36</em>(2), 111–133. https://doi.org/10.1111/j.2517-6161.1974.tb00994.x',
@@ -473,7 +549,7 @@
       if(bad.length)W.push(`Khái niệm ${listVi(bad.map(E))} chưa đạt ngưỡng độ tin cậy hoặc AVE.`);
 
       // Discriminant validity: Fornell–Larcker, HTMT, cross-loadings.
-      refs.add('henseler15');const R=est.C,idx=pr.order.filter(j=>true);let flBad=[];
+      refs.add('henseler15');if(pr.htmt2)refs.add('roemer21');const HT=pr.htmt2?'HTMT2':'HTMT',R=est.C,idx=pr.order.filter(j=>true);let flBad=[];
       const flRows=idx.map((j,a)=>tr([[nm(j),'l'],...idx.slice(0,a+1).map((i,b)=>{if(i===j){const r=est.rel[j];return r?[f3(Math.sqrt(r.ave)),'own']:'—'}const v=R[j][i];
         const rj=est.rel[j],ri=est.rel[i];if((rj&&Math.abs(v)>=Math.sqrt(rj.ave))||(ri&&Math.abs(v)>=Math.sqrt(ri.ave))){flBad.push(`${N[j]}–${N[i]}`);return [f3(v),'bad']}return f3(v)}),...idx.slice(a+1).map(()=>'')])).join('');
       html+=`<h4>Giá trị phân biệt</h4>`+tbl('Tiêu chí Fornell–Larcker',['Khái niệm',...idx.map(nm)],flRows,'Ghi chú: số in đậm trên đường chéo là căn bậc hai AVE; các ô còn lại là tương quan giữa các khái niệm.');
@@ -482,10 +558,10 @@
           if(v>=0.9||(s&&s.q95>=0.9))hBad.push(`${N[i]}–${N[j]}`);else if(v>=0.85||(s&&s.q95>=0.85))hMid.push(`${N[i]}–${N[j]}`);
           return [f3(v)+(s?` <small>[${f3(s.q95)}]</small>`:''),v>=0.9?'bad':'']}),...arr.slice(a).map(()=>'')])).join('');
         const ar=idx.filter(j=>refl[j]);
-        html+=tbl('Hệ số HTMT',['Khái niệm',...ar.map(nm)],hRows,`Ghi chú: HTMT &lt; 0,85 (hoặc &lt; 0,90 khi hai khái niệm gần nghĩa; Henseler và cộng sự, 2015; <a href="${T_MEAS}">ngưỡng chấp nhận</a>).${boot?` Số trong ngoặc vuông là cận trên khoảng tin cậy bootstrap 95% một phía (phân vị 95, ${fx(boot.B,0)} mẫu).`:''}`);
+        html+=tbl(`Hệ số ${HT}`,['Khái niệm',...ar.map(nm)],hRows,`Ghi chú: ${HT} &lt; 0,85 (hoặc &lt; 0,90 khi hai khái niệm gần nghĩa; Henseler và cộng sự, 2015${pr.htmt2?'; HTMT2 theo Roemer và cộng sự, 2021':''}; <a href="${T_MEAS}">ngưỡng chấp nhận</a>).${boot?` Số trong ngoặc vuông là cận trên khoảng tin cậy bootstrap 95% một phía (phân vị 95, ${fx(boot.B,0)} mẫu).`:''}`);
         const hv=hp.map(k=>est.htmt[k]);
-        html+=`<p>Giá trị phân biệt được đánh giá bằng tiêu chí Fornell–Larcker và hệ số HTMT (Henseler và cộng sự, 2015). ${flBad.length?`Theo Fornell–Larcker, căn bậc hai AVE chưa lớn hơn tương quan ở cặp ${listVi(flBad.map(E))}.`:'Căn bậc hai AVE của mỗi khái niệm đều lớn hơn tương quan của khái niệm đó với các khái niệm còn lại, nên tiêu chí Fornell–Larcker được thoả mãn.'} HTMT của các cặp khái niệm nằm trong khoảng ${f3(Math.min(...hv))}–${f3(Math.max(...hv))}${hBad.length?`; cặp ${listVi(hBad.map(E))} có HTMT${boot?' hoặc cận trên khoảng tin cậy':''} từ 0,90 trở lên, nên chưa đạt giá trị phân biệt`:hMid.length?`; cặp ${listVi(hMid.map(E))} có HTMT${boot?' hoặc cận trên khoảng tin cậy':''} trong khoảng 0,85–0,90, chỉ chấp nhận được khi hai khái niệm gần nghĩa về lý thuyết`:`, đều nhỏ hơn 0,85${boot?' và cận trên khoảng tin cậy bootstrap cũng nhỏ hơn 0,85':''}, nên các khái niệm đạt giá trị phân biệt`}. Henseler và cộng sự (2015) cho thấy HTMT nhạy hơn Fornell–Larcker trong việc phát hiện thiếu giá trị phân biệt, nên kết luận chủ yếu dựa vào HTMT.</p>`;
-        if(hBad.length)W.push(`HTMT của ${listVi(hBad.map(E))} từ 0,90 trở lên: hai khái niệm khó phân biệt. Xem bài HTMT và Bác sĩ kết quả để biết cách xử lý hợp lệ.`)}
+        html+=`<p>Giá trị phân biệt được đánh giá bằng tiêu chí Fornell–Larcker và hệ số ${pr.htmt2?'HTMT2 (Roemer và cộng sự, 2021), phiên bản của HTMT (Henseler và cộng sự, 2015) dùng trung bình nhân thay cho trung bình cộng của các tương quan nên không bị lệch khi hệ số tải của các biến chênh nhau nhiều':'HTMT (Henseler và cộng sự, 2015)'}. ${flBad.length?`Theo Fornell–Larcker, căn bậc hai AVE chưa lớn hơn tương quan ở cặp ${listVi(flBad.map(E))}.`:'Căn bậc hai AVE của mỗi khái niệm đều lớn hơn tương quan của khái niệm đó với các khái niệm còn lại, nên tiêu chí Fornell–Larcker được thoả mãn.'} ${HT} của các cặp khái niệm nằm trong khoảng ${f3(Math.min(...hv))}–${f3(Math.max(...hv))}${hBad.length?`; cặp ${listVi(hBad.map(E))} có ${HT}${boot?' hoặc cận trên khoảng tin cậy':''} từ 0,90 trở lên, nên chưa đạt giá trị phân biệt`:hMid.length?`; cặp ${listVi(hMid.map(E))} có ${HT}${boot?' hoặc cận trên khoảng tin cậy':''} trong khoảng 0,85–0,90, chỉ chấp nhận được khi hai khái niệm gần nghĩa về lý thuyết`:`, đều nhỏ hơn 0,85${boot?' và cận trên khoảng tin cậy bootstrap cũng nhỏ hơn 0,85':''}, nên các khái niệm đạt giá trị phân biệt`}. Henseler và cộng sự (2015) cho thấy HTMT nhạy hơn Fornell–Larcker trong việc phát hiện thiếu giá trị phân biệt, nên kết luận chủ yếu dựa vào ${HT}.</p>`;
+        if(hBad.length)W.push(`${HT} của ${listVi(hBad.map(E))} từ 0,90 trở lên: hai khái niệm khó phân biệt. Xem bài HTMT và Bác sĩ kết quả để biết cách xử lý hợp lệ.`)}
       // Cross-loadings.
       let crossBad=[];const crow=[];pr.blk.forEach((b,j)=>b.forEach(k=>{const own=est.cross[k*pr.m+j];crow.push(tr([[E(I[k]),'l'],...idx.map(i=>{const v=est.cross[k*pr.m+i];if(i===j)return [f3(v),'own'];if(Math.abs(v)>=Math.abs(own)&&!form[j]){crossBad.push(I[k]);return [f3(v),'bad']}return f3(v)})]))}));
       html+=tbl('Hệ số tải chéo (cross-loadings)',['Biến quan sát',...idx.map(nm)],crow.join(''),'Ghi chú: số in đậm là hệ số tải lên khái niệm của chính biến đó; mỗi hệ số này cần lớn hơn hệ số tải lên các khái niệm khác.');
@@ -525,6 +601,21 @@
       html+=tbl('Hệ số tác động f²',[['Quan hệ','l'],'f²',['Mức tác động','l']],fr.join(''),'Ghi chú: f² 0,02 / 0,15 / 0,35 là nhỏ / vừa / lớn (Cohen, 1988). f² = (R²<sub>có</sub> − R²<sub>không</sub>) / (1 − R²<sub>có</sub>).');
       const big=endo.flatMap(j=>est.eq[j].pred.map((a,t)=>({a,j,v:est.eq[j].f2[t]}))).sort((x,y)=>y.v-x.v)[0];
       if(big)html+=`<p>Theo hệ số f² (Cohen, 1988), tác động mạnh nhất là ${nm(big.a)} → ${nm(big.j)} (f² = ${f3(big.v)}, mức ${(big.v>=0.35?'lớn':big.v>=0.15?'vừa':big.v>=0.02?'nhỏ':'không đáng kể')}).</p>`}
+    // PLSpredict (Shmueli et al., 2016, 2019).
+    if(opt.pred===null)html+=`<h4>Khả năng dự báo ngoài mẫu (PLSpredict)</h4><p class="note">PLSpredict đang chạy; bảng sẽ hiện khi xong.</p>`;
+    else if(opt.pred&&opt.pred.items.length){const pd=opt.pred;refs.add('shmueli16').add('shmueli19');
+      const asym=pd.items.filter(x=>Math.abs(x.skew)>1),useMAE=asym.length>0,mk=useMAE?'MAE':'RMSE',key=useMAE?['mae','lmMae']:['rmse','lmRmse'];
+      const lmOk=!pd.lmFail&&pd.items.every(x=>Number.isFinite(x.lmRmse));
+      const qBad=pd.items.filter(x=>!(x.q2>0)),better=lmOk?pd.items.filter(x=>x[key[0]]<x[key[1]]):[],T=pd.items.length;
+      const level=!lmOk?null:better.length===T?'cao':better.length>T/2?'trung bình':better.length>0?'thấp':'không có';
+      let body='',cur=-1;
+      pd.items.forEach(x=>{if(x.con!==cur){cur=x.con;body+=`<tr class="grp"><td colspan="8">${nm(x.con)}</td></tr>`}const d1=x.rmse-x.lmRmse,d2=x.mae-x.lmMae;
+        body+=tr([[E(I[x.item]),'l'],[f3(x.q2),x.q2>0?'':'bad'],f3(x.rmse),lmOk?f3(x.lmRmse):'—',lmOk?[f3(d1),!useMAE&&d1>=0?'bad':'']:'—',f3(x.mae),lmOk?f3(x.lmMae):'—',lmOk?[f3(d2),useMAE&&d2>=0?'bad':'']:'—'])});
+      html+=`<h4>Khả năng dự báo ngoài mẫu (PLSpredict)</h4>`+tbl('Kết quả PLSpredict cho các biến quan sát của khái niệm nội sinh',['Biến quan sát','Q²<sub>predict</sub>','RMSE PLS','RMSE LM','PLS − LM','MAE PLS','MAE LM','PLS − LM'],body,`Ghi chú: kiểm định chéo ${pd.folds} nhóm (k-fold), lặp ${pd.reps} lần (seed = ${pd.seed}); dự báo theo các khái niệm ngoại sinh (earliest antecedents); LM là hồi quy tuyến tính mỗi biến quan sát nội sinh theo mọi biến quan sát của khái niệm ngoại sinh. RMSE và MAE theo thang đo gốc; số âm ở cột PLS − LM là PLS dự báo tốt hơn LM.`);
+      html+=tbl('Cách đọc kết quả PLSpredict',[['Kết quả so với LM (sau khi mọi Q²<sub>predict</sub> &gt; 0)','l'],['Khả năng dự báo','l']],[['Mọi biến quan sát có sai số PLS nhỏ hơn LM','Cao'],['Đa số biến có sai số PLS nhỏ hơn LM','Trung bình'],['Một số ít biến có sai số PLS nhỏ hơn LM','Thấp'],['Không biến nào có sai số PLS nhỏ hơn LM','Không có']].map(r=>tr([[r[0],'l'],[r[1],'l']])).join(''),'Ghi chú: theo Shmueli và cộng sự (2019). So sánh RMSE; dùng MAE khi sai số dự báo phân phối lệch mạnh.');
+      html+=`<p>Khả năng dự báo ngoài mẫu được đánh giá bằng PLSpredict (Shmueli và cộng sự, 2016, 2019) với ${pd.folds} nhóm và ${pd.reps} lần lặp. ${qBad.length?`Q²<sub>predict</sub> của ${listVi(qBad.map(x=>E(I[x.item])))} không lớn hơn 0, tức mô hình dự báo ${qBad.length>1?'các biến này':'biến này'} không tốt hơn giá trị trung bình của mẫu huấn luyện`:`Q²<sub>predict</sub> của mọi biến quan sát nội sinh đều lớn hơn 0 (từ ${f3(Math.min(...pd.items.map(x=>x.q2)))} đến ${f3(Math.max(...pd.items.map(x=>x.q2)))}), nên mô hình dự báo tốt hơn giá trị trung bình`}. ${useMAE?`Sai số dự báo của ${listVi(asym.map(x=>E(I[x.item])))} phân phối lệch mạnh (|độ lệch| &gt; 1), nên so sánh theo MAE. `:'Sai số dự báo không lệch mạnh, nên so sánh theo RMSE. '}${lmOk?`So với mô hình hồi quy tuyến tính (LM), PLS cho ${mk} nhỏ hơn ở ${better.length}/${T} biến quan sát, nên mô hình có khả năng dự báo ${level==='không có'?'thấp hơn mô hình tuyến tính đơn giản (không có khả năng dự báo vượt LM)':level} theo Shmueli và cộng sự (2019).`:'Không ước lượng được mô hình LM (số biến quan sát của khái niệm ngoại sinh quá nhiều so với số phiếu hoặc các biến trùng nhau), nên chỉ đánh giá được theo Q²<sub>predict</sub>.'} Shmueli và cộng sự (2019) khuyên tập trung vào khái niệm mục tiêu chính của mô hình khi diễn giải.</p>`;
+      if(qBad.length)W.push(`Q²predict không dương ở ${listVi(qBad.map(x=>E(I[x.item])))}: mô hình chưa dự báo ngoài mẫu tốt hơn giá trị trung bình cho ${qBad.length>1?'các biến này':'biến này'}.`);
+      if(pd.failed)W.push(`PLSpredict: ${pd.failed} lần ước lượng trên mẫu huấn luyện không thành công; các dòng thử tương ứng bị tính là thiếu.`)}
     // Indirect effects.
     if(pr.chains.length){refs.add('zhao10');const rows=[],txt=[];
       pr.chains.forEach((c,i)=>{const v=est.spec[i],s=st('si:'+i),x=c[0],y=c[c.length-1],dir=pr.paths.find(p=>p.from===x&&p.to===y),ds=dir?st('p:'+x+'>'+y):null;
@@ -536,6 +627,11 @@
       const te=pr.reach.map(([a,b])=>{const k=a+'>'+b,s=st('te:'+k),ti=est.ti[k],ts=st('ti:'+k);return tr([[`${nm(a)} → ${nm(b)}`,'l'],f3(est.B[a][b]),Number.isFinite(ti)?f3(ti):'—',...(boot?[ts?ci(ts):'—']:[]),f3(est.te[k]),...(boot?[ci(s)]:[])])});
       html+=tbl('Tác động trực tiếp, gián tiếp tổng và tác động tổng',[['Quan hệ','l'],'Trực tiếp','Gián tiếp tổng',...(boot?[`KTC ${cp}% gián tiếp`]:[]),'Tổng',...(boot?[`KTC ${cp}% tổng`]:[])],te.join(''),'Ghi chú: tác động tổng = trực tiếp + gián tiếp tổng; trực tiếp bằng 0 khi mô hình không có đường dẫn đó.')}
 
+    // SRMR (model fit).
+    if(opt.srmr&&Number.isFinite(opt.srmr.sat)){const s=opt.srmr;refs.add('henseler14').add('hu99');
+      html+=`<h4>Độ phù hợp của mô hình (SRMR)</h4>`+tbl('Chỉ số SRMR',[['Mô hình','l'],'SRMR',['Đánh giá','l']],[['Mô hình bão hoà (saturated)',s.sat],['Mô hình ước lượng (estimated)',s.est]].map(([l,v])=>tr([[l,'l'],[f3(v),v<0.08?'':'bad'],[Number.isFinite(v)?(v<0.08?'Phù hợp (&lt; 0,08)':'Chưa đạt (≥ 0,08)'):'—','l']])).join(''),`Ghi chú: SRMR &lt; 0,08 là mô hình phù hợp (Henseler và cộng sự, 2014; Hu &amp; Bentler, 1999). Mô hình bão hoà cho mọi khái niệm tương quan tự do; mô hình ước lượng dùng tương quan suy ra từ các đường dẫn. Tính theo cách của gói cSEM.`);
+      html+=`<p>Chỉ số SRMR (standardized root mean square residual) của mô hình bão hoà là ${f3(s.sat)} và của mô hình ước lượng là ${f3(s.est)}. ${s.sat<0.08?`SRMR của mô hình bão hoà nhỏ hơn ngưỡng 0,08 (Henseler và cộng sự, 2014; Hu &amp; Bentler, 1999), cho thấy mô hình phù hợp với dữ liệu${s.est<0.08?'':'; SRMR của mô hình ước lượng vượt 0,08, cho thấy mô hình cấu trúc có thể thiếu một số đường dẫn giữa các khái niệm'}.`:`SRMR của mô hình bão hoà từ 0,08 trở lên, cho thấy mô hình đo lường chưa phù hợp tốt với dữ liệu; cần xem lại các biến có hệ số tải thấp hoặc tải chéo.`} Hair và cộng sự (2022) lưu ý các chỉ số phù hợp mô hình trong PLS-SEM mới ở giai đoạn đầu phát triển, nên SRMR chỉ được báo cáo bổ sung, không thay cho đánh giá mô hình đo lường và cấu trúc ở trên.</p>`}
+
     const plain=s=>s.replace(/<[^>]+>|&amp;/g,'');
     const keys=[...refs].sort((a,b)=>plain(REF[a]).localeCompare(plain(REF[b]),'en'));
     html+=`<p><strong>Tài liệu tham khảo</strong></p><ul>${keys.map(r=>`<li>${REF[r]}</li>`).join('')}</ul>`;
@@ -544,7 +640,7 @@
 
   if(typeof document==='undefined')return;
   const $=id=>document.getElementById(id),P=PLS_ENGINE();
-  let raw=null,tbl=null,worker=null,last=null,runId=0;
+  let raw=null,tbl=null,worker=null,pworker=null,last=null,runId=0,bootId=0;
   const setStatus=(t,isErr)=>{$('ps-status').innerHTML=t;$('ps-status').className=isErr?'err':''};
   function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
   function useRaw(table,label,paths){raw=table.map(r=>(r||[]).map(v=>v==null?'':v));if(!raw.length){setStatus('File không có dữ liệu.',true);return}
@@ -579,11 +675,12 @@
     if(!s){$('ps-pathmsg').innerHTML='<span class="err">Trình duyệt này chưa có mô hình nào trong Vẽ mô hình. Vẽ ở <a class="text-accent underline" href="/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a> rồi quay lại, hoặc dán link mô hình vào ô đường dẫn.</span>';return}
     try{const r=fromDrawing(s,conNames());if(r.count)$('ps-paths').value=r.text;showPathMsg(r,'vm')}catch(e){$('ps-pathmsg').innerHTML='<span class="err">Không đọc được mô hình đã lưu.</span>'}});
 
-  function workerURL(){return URL.createObjectURL(new Blob([`const P=(${PLS_ENGINE.toString()})();onmessage=e=>{try{const d=e.data;const r=P.bootstrap(d.pr,d.est,d.B,d.seed,d.o,f=>postMessage({progress:f}));postMessage({done:r})}catch(err){postMessage({error:String(err&&err.message||err)})}}`],{type:'text/javascript'}))}
+  // One worker per task: bootstrap (d.task absent) or PLSpredict (d.task = 'predict').
+  function workerURL(){return URL.createObjectURL(new Blob([`const P=(${PLS_ENGINE.toString()})();onmessage=e=>{try{const d=e.data;if(d.task==='predict'){postMessage({pred:P.plsPredict(d.pr,d.o)});return}const r=P.bootstrap(d.pr,d.est,d.B,d.seed,d.o,f=>postMessage({progress:f}));postMessage({done:r})}catch(err){postMessage({error:String(err&&err.message||err)})}}`],{type:'text/javascript'}))}
   function stop(msg){if(worker){worker.terminate();worker=null}$('ps-prog').hidden=true;$('ps-stop').hidden=true;$('ps-run').disabled=false;if(msg){$('ps-msg').className='err';$('ps-msg').textContent=msg}}
-  $('ps-stop').addEventListener('click',()=>{runId++;stop('Đã dừng bootstrap; kết quả bên dưới chưa có kiểm định ý nghĩa.')});
+  $('ps-stop').addEventListener('click',()=>{bootId++;stop('Đã dừng bootstrap; kết quả bên dưới chưa có kiểm định ý nghĩa.')});
   // Chunked fallback when Web Workers are blocked: same engine, run in slices so the page stays responsive.
-  function bootChunked(pr,est,B,seed,o,id,done,fail){let s;try{s=P.bootStart(pr,est,B,seed,o)}catch(e){fail(e.message);return}const step=()=>{if(id!==runId)return;try{const t=performance.now();let fin=false;while(!fin&&performance.now()-t<40)fin=P.bootStep(s,25);$('ps-prog').value=s.b/B;if(fin)done(P.bootFinish(s));else setTimeout(step,0)}catch(e){fail(e.message)}};setTimeout(step,0)}
+  function bootChunked(pr,est,B,seed,o,id,done,fail){let s;try{s=P.bootStart(pr,est,B,seed,o)}catch(e){fail(e.message);return}const step=()=>{if(id!==bootId)return;try{const t=performance.now();let fin=false;while(!fin&&performance.now()-t<40)fin=P.bootStep(s,25);$('ps-prog').value=s.b/B;if(fin)done(P.bootFinish(s));else setTimeout(step,0)}catch(e){fail(e.message)}};setTimeout(step,0)}
 
   function run(){const msg=$('ps-msg');msg.textContent='';msg.className='';const fail=t=>{msg.className='err';msg.innerHTML=t;$('ps-out').hidden=true;msg.scrollIntoView({behavior:'smooth',block:'center'})};
     if(!tbl)return fail('Chưa có dữ liệu.');
@@ -592,27 +689,36 @@
     const pp=parsePaths($('ps-paths').value,inp.cons.map(c=>c.name));if(pp.errors.length)return fail(pp.errors.map(escH).join('<br>'));
     if(!pp.paths.length)return fail('Chưa có đường dẫn nào ở mục 3 (ví dụ <code>CL -&gt; HL</code>).');
     let pr,est,q2;const t0=performance.now();
-    try{pr=P.prepare({cols:inp.cols,items:inp.items,cons:inp.cons,paths:pp.paths,missing:$('ps-miss').value});est=P.estimate(pr)}catch(e){return fail(escH(e.message))}
+    try{pr=P.prepare({cols:inp.cols,items:inp.items,cons:inp.cons,paths:pp.paths,missing:$('ps-miss').value,htmt2:$('ps-ht').value==='htmt2'});est=P.estimate(pr)}catch(e){return fail(escH(e.message))}
     const D=Math.max(2,Math.min(30,Math.round(+$('ps-d').value||7)));try{q2=P.blindfold(pr,D)}catch(e){q2={}}
     const opt={sec:$('ps-sec').value.trim(),tab:Math.max(1,+$('ps-tab').value||1),fig:Math.max(1,+$('ps-fig').value||1),conf:+$('ps-conf').value,ci:$('ps-ci').value,D};
     const B=+$('ps-b').value,seed=Math.max(1,Math.floor(+$('ps-seed').value||1)),notes=inp.notes;
-    show(pr,est,null,q2,opt,notes,B>0);
+    try{opt.srmr=P.srmr(pr,est)}catch(e){opt.srmr=null}
+    // PLSpredict runs in its own worker (or on a timer when workers are blocked) while the bootstrap runs; opt.pred is null while pending.
+    const pk=$('ps-pk').value,id=++runId,bid=++bootId,sendable={...pr,Z:pr.Z};let curBoot=null,bootPending=B>0;const pend=()=>bootPending&&bid===bootId;
+    if(pworker){pworker.terminate();pworker=null}
+    if(pk!=='0'&&pr.endo.length){const [k,r]=pk.split('x').map(Number),po={folds:k,reps:r,seed};opt.pred=null;
+      const got=res=>{if(id!==runId)return;if(pworker){pworker.terminate();pworker=null}opt.pred=res;show(pr,est,curBoot,q2,opt,notes,pend())};
+      const lost=e=>{if(id!==runId)return;opt.pred=undefined;notes.push('Không chạy được PLSpredict: '+String(e&&e.message||e));show(pr,est,curBoot,q2,opt,notes,pend())};
+      const local=()=>{if(pworker){pworker.terminate();pworker=null}setTimeout(()=>{if(id!==runId)return;try{got(P.plsPredict(pr,po))}catch(e){lost(e)}},0)};
+      try{pworker=new Worker(workerURL());pworker.onmessage=e=>{const d=e.data;if(d.pred)got(d.pred);else if(d.error)lost(d.error)};pworker.onerror=ev=>{ev.preventDefault&&ev.preventDefault();local()};pworker.postMessage({task:'predict',pr:sendable,o:po})}catch(err){local()}}
+    show(pr,est,null,q2,opt,notes,B>0,true);
     if(!B){msg.textContent=`Đã ước lượng trên ${fx(pr.n,0)} phiếu trong ${fx((performance.now()-t0)/1000,1)} giây.`;return}
-    const id=++runId,o={conf:opt.conf,bca:opt.ci==='bca'},t1=performance.now();
+    const o={conf:opt.conf,bca:opt.ci==='bca'},t1=performance.now();
     stop();$('ps-run').disabled=true;$('ps-prog').hidden=false;$('ps-prog').value=0;$('ps-stop').hidden=false;msg.textContent=`Đang chạy ${fx(B,0)} mẫu bootstrap…`;
-    const done=boot=>{if(id!==runId)return;stop();show(pr,est,boot,q2,opt,notes,false);msg.textContent=`Đã chạy ${fx(B,0)} mẫu bootstrap trên ${fx(pr.n,0)} phiếu trong ${fx((performance.now()-t1)/1000,1)} giây${boot.redraw?` (${boot.redraw} mẫu không hội tụ được rút lại)`:''}.`};
-    const slow=e=>{if(worker){worker.terminate();worker=null}bootChunked(pr,est,B,seed,o,id,done,stop)};
-    const sendable={...pr,Z:pr.Z};const ests={W:est.W.map(w=>Array.from(w)),S:est.S};
+    const done=boot=>{if(bid!==bootId)return;stop();curBoot=boot;bootPending=false;show(pr,est,boot,q2,opt,notes,false);msg.textContent=`Đã chạy ${fx(B,0)} mẫu bootstrap trên ${fx(pr.n,0)} phiếu trong ${fx((performance.now()-t1)/1000,1)} giây${boot.redraw?` (${boot.redraw} mẫu không hội tụ được rút lại)`:''}.`};
+    const slow=e=>{if(worker){worker.terminate();worker=null}bootChunked(pr,est,B,seed,o,bid,done,stop)};
+    const ests={W:est.W.map(w=>Array.from(w)),S:est.S};
     try{worker=new Worker(workerURL());worker.onmessage=e=>{const d=e.data;if(d.progress!=null)$('ps-prog').value=d.progress;else if(d.done)done(d.done);else if(d.error)stop(d.error)};
       worker.onerror=ev=>{ev.preventDefault&&ev.preventDefault();slow()};worker.postMessage({pr:sendable,est:ests,B,seed,o})}
     catch(err){slow()}}
-  function show(pr,est,boot,q2,opt,notes,pending){const r=report(pr,est,boot,q2,opt);last={...r,pr,est};
+  function show(pr,est,boot,q2,opt,notes,pending,scroll){const r=report(pr,est,boot,q2,opt);last={...r,pr,est};
     const warn=[...(pending?['Bootstrap đang chạy: bảng giả thuyết và khoảng tin cậy sẽ hiện khi xong.']:[]),...notes.map(escH),...r.warnings];
     $('ps-warn').hidden=!warn.length;$('ps-warn').innerHTML=warn.length?`<strong>Cần xem lại</strong><ul>${warn.map(w=>`<li>${w}</li>`).join('')}</ul>`:'';
     // Sample below the inverse square root minimum (Kock & Hadaya, 2018) for p_min = 0,20, or below 10 × the most arrows into one construct: offer more data instead of the static note in the guide.
     {const maxIn=Math.max(0,...pr.pred.map(x=>x.length)),need=Math.max(155,10*maxIn),short=pr.n<need;$('ps-cta').hidden=!short;const st=document.getElementById('ps-cta-static');if(st)st.hidden=short;
       if(short){$('ps-cta-h').textContent=`Cần thu thêm khoảng ${fx(need-pr.n,0)} phiếu đúng đối tượng?`;$('ps-cta-p').innerHTML=`Mẫu có ${fx(pr.n,0)} phiếu, dưới mức ${fx(need,0)} quan sát theo phương pháp căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018) khi hệ số đường dẫn nhỏ nhất kỳ vọng là 0,20${10*maxIn>155?` và quy tắc 10 lần số mũi tên (${maxIn} mũi tên trỏ vào một khái niệm)`:''}. Mẫu nhỏ làm khoảng tin cậy bootstrap rộng và dễ bỏ sót đường dẫn yếu. Thử thêm kênh miễn phí trước (<a href="/posts/cach-thu-du-mau-khao-sat-nhanh/">cách thu đủ mẫu nhanh</a>); nếu vẫn thiếu, Genius Data cho chọn nhóm người trả lời, tự đặt mức thưởng mỗi câu và chỉ trả tiền cho phản hồi được duyệt. Tính lại con số cho đề tài bằng <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>.`}}
-    $('ps-report').innerHTML=r.html;$('ps-out').hidden=false;if(!boot&&pending)$('ps-out').scrollIntoView({behavior:'smooth'})}
+    $('ps-report').innerHTML=r.html;$('ps-out').hidden=false;if(scroll&&pending)$('ps-out').scrollIntoView({behavior:'smooth'})}
   $('ps-run').addEventListener('click',run);
 
   const save=(name,type,data)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)};

@@ -9,7 +9,7 @@ import html from "@/tools/pls-sem.html?raw";
   title="Chạy PLS-SEM online miễn phí như SmartPLS"
   h1="Chạy PLS-SEM online: mô hình đo lường, cấu trúc, bootstrap"
   description="Chạy PLS-SEM online miễn phí trên trình duyệt: outer loadings, alpha, rho_A, CR, AVE, HTMT, hệ số đường dẫn, R², f², Q², bootstrap và chương 4 viết sẵn."
-  lede="Ước lượng mô hình PLS-SEM như SmartPLS ngay trên trình duyệt, không cần cài phần mềm hay mua giấy phép. Tải file khảo sát, khai báo khái niệm và các đường dẫn giả thuyết. Công cụ chạy thuật toán PLS với thiết lập mặc định của SmartPLS, đánh giá mô hình đo lường (hệ số tải, Cronbach's alpha, rho_A, CR, AVE, Fornell–Larcker, HTMT) và mô hình cấu trúc (VIF, hệ số đường dẫn, R², f², Q², tác động gián tiếp), kiểm định bằng bootstrap 5.000 mẫu, rồi viết sẵn mục kết quả cho chương 4 để tải về Word."
+  lede="Ước lượng mô hình PLS-SEM như SmartPLS ngay trên trình duyệt, không cần cài phần mềm hay mua giấy phép. Tải file khảo sát, khai báo khái niệm và các đường dẫn giả thuyết. Công cụ chạy thuật toán PLS với thiết lập mặc định của SmartPLS, đánh giá mô hình đo lường (hệ số tải, Cronbach's alpha, rho_A, CR, AVE, Fornell–Larcker, HTMT) và mô hình cấu trúc (VIF, hệ số đường dẫn, R², f², Q², PLSpredict, SRMR, tác động gián tiếp), kiểm định bằng bootstrap 5.000 mẫu, rồi viết sẵn mục kết quả cho chương 4 để tải về Word."
   html={html}
 >
   <Fragment slot="guide">
@@ -57,6 +57,16 @@ import html from "@/tools/pls-sem.html?raw";
         tiếp riêng theo từng chuỗi, gián tiếp tổng và tác động tổng; Q² bằng blindfolding (khoảng cách bỏ D = 7).
       </li>
       <li>
+        <strong>PLSpredict</strong> (Shmueli và cộng sự, 2016, 2019): kiểm định chéo 10 nhóm, lặp 10 lần (mặc định
+        SmartPLS, chia nhóm theo seed), Q²<sub>predict</sub>, RMSE và MAE của PLS so với mô hình hồi quy tuyến tính (LM)
+        cho từng biến quan sát của khái niệm nội sinh, kèm bảng đọc mức khả năng dự báo cao, trung bình, thấp. Chạy nền
+        cùng lúc với bootstrap.
+      </li>
+      <li>
+        <strong>SRMR</strong> của mô hình bão hoà và mô hình ước lượng, ngưỡng &lt; 0,08 (Henseler và cộng sự, 2014; Hu
+        &amp; Bentler, 1999); tuỳ chọn <strong>HTMT2</strong> (Roemer và cộng sự, 2021) thay cho HTMT.
+      </li>
+      <li>
         <strong>Bootstrap</strong> (mặc định 5.000 mẫu, seed cố định): độ lệch chuẩn, t, p hai phía, khoảng tin cậy
         percentile hoặc BCa cho hệ số đường dẫn, hệ số tải, trọng số, R², tác động gián tiếp, tác động tổng và HTMT.
       </li>
@@ -83,6 +93,12 @@ import html from "@/tools/pls-sem.html?raw";
         không chứa 0), R², f², Q². Tác động gián tiếp được kết luận theo khoảng tin cậy bootstrap, phân loại trung gian
         theo Zhao và cộng sự (2010).
       </li>
+      <li>
+        <strong>Khả năng dự báo ngoài mẫu (PLSpredict):</strong> trước hết mọi Q²<sub>predict</sub> phải lớn hơn 0; rồi
+        đếm số biến quan sát có RMSE của PLS nhỏ hơn LM (dùng MAE nếu sai số dự báo lệch mạnh): tất cả là khả năng dự báo
+        cao, đa số là trung bình, số ít là thấp, không biến nào là không có. <strong>SRMR</strong> dưới 0,08 chỉ báo cáo
+        bổ sung.
+      </li>
     </ol>
     <p>
       Chỉ số nào không đạt, xem cách xử lý hợp lệ ở <a href="/cong-cu/bac-si-ket-qua/">Bác sĩ kết quả</a> thay vì đổi sang
@@ -95,8 +111,11 @@ import html from "@/tools/pls-sem.html?raw";
       toán PLS chuẩn nên chỉ có thể lệch SmartPLS ở phần làm tròn. Bootstrap thì khác nhau một chút giữa mọi phần mềm, kể
       cả giữa hai lần chạy SmartPLS với seed khác nhau, vì mẫu lặp được rút ngẫu nhiên; độ lệch chuẩn thường chỉ khác ở
       chữ số thứ ba và kết luận giả thuyết hiếm khi đổi, trừ khi p sát 0,05. Q² bằng blindfolding có thể lệch nhẹ do cách
-      thay giá trị bị bỏ khác nhau giữa các phần mềm (SmartPLS 4 đã thay blindfolding bằng PLSpredict). Công cụ chưa có
-      PLSc, PLSpredict, mô hình bậc hai, biến điều tiết dạng tương tác và phân tích đa nhóm (MGA).
+      thay giá trị bị bỏ khác nhau giữa các phần mềm (SmartPLS 4 đã thay blindfolding bằng PLSpredict). PLSpredict cũng
+      chia nhóm ngẫu nhiên nên RMSE, MAE và Q²<sub>predict</sub> chênh SmartPLS cỡ vài phần nghìn, còn kết luận về mức
+      dự báo hầu như không đổi. SRMR tính theo cách của gói cSEM (mô hình bão hoà và mô hình ước lượng); SmartPLS có thể
+      lệch nhẹ ở chữ số thứ ba nếu dùng ma trận tương quan ngụ ý khác. Công cụ chưa có PLSc, mô hình bậc hai, biến điều
+      tiết dạng tương tác, phân tích đa nhóm (MGA) và kiểm định bất biến đo lường (MICOM).
     </p>
     <p>
       Công cụ tính đúng các con số; việc chọn mô hình, quyết định loại biến và diễn giải kết quả vẫn là trách nhiệm của
@@ -107,8 +126,8 @@ import html from "@/tools/pls-sem.html?raw";
     <h3>Có cần cài SmartPLS không?</h3>
     <p>
       Không cần để ước lượng mô hình: thuật toán chạy ngay trong trình duyệt, không cần giấy phép, và dữ liệu không rời
-      khỏi máy bạn. Công cụ chưa có các phân tích nâng cao như PLSc, PLSpredict hay MGA; đề tài cần các phần đó vẫn phải
-      dùng SmartPLS hoặc gói seminr của R.
+      khỏi máy bạn. Công cụ đã có PLSpredict, SRMR và HTMT2 nhưng chưa có PLSc, mô hình bậc hai, MGA hay MICOM; đề tài
+      cần các phần đó vẫn phải dùng SmartPLS hoặc gói seminr, cSEM của R.
     </p>
     <h3>Cỡ mẫu bao nhiêu là đủ cho PLS-SEM?</h3>
     <p>
@@ -119,6 +138,20 @@ import html from "@/tools/pls-sem.html?raw";
     <p>
       PLS-SEM hợp với mục tiêu dự báo, mô hình nhiều khái niệm, có khái niệm cấu tạo hoặc mẫu nhỏ; CB-SEM hợp khi kiểm
       định lý thuyết và cần chỉ số phù hợp mô hình như CFI, RMSEA. Trả lời vài câu ở <a href="/cong-cu/chon-phuong-phap/">chọn phương pháp phân tích</a> để biết đề tài của bạn hợp cách nào.
+    </p>
+    <h3>PLSpredict khác Q² blindfolding thế nào?</h3>
+    <p>
+      Q² blindfolding dự báo lại các điểm dữ liệu bị che nhưng vẫn ước lượng mô hình trên gần như toàn bộ mẫu, nên chưa
+      phải dự báo ngoài mẫu thật. PLSpredict chia mẫu thành 10 nhóm, ước lượng trên 9 nhóm rồi dự báo nhóm còn lại, lặp
+      lại 10 lần, và so sai số với một hồi quy tuyến tính đơn giản. Hair và cộng sự (2019) khuyên báo cáo PLSpredict khi
+      đề tài có mục tiêu dự báo; Q²<sub>predict</sub> &gt; 0 là điều kiện đầu tiên, RMSE (hoặc MAE) thấp hơn LM ở càng
+      nhiều biến thì khả năng dự báo càng cao.
+    </p>
+    <h3>SRMR có bắt buộc báo cáo không?</h3>
+    <p>
+      Không bắt buộc. SRMR dưới 0,08 (Henseler và cộng sự, 2014) thường được báo cáo như chỉ số phù hợp mô hình, nhưng
+      Hair và cộng sự (2022) lưu ý các chỉ số phù hợp trong PLS-SEM còn đang phát triển, nên chỉ dùng bổ sung chứ không
+      thay cho đánh giá mô hình đo lường và cấu trúc. Nếu hội đồng hỏi, báo cáo SRMR của mô hình bão hoà.
     </p>
     <h3>Vì sao kết quả bootstrap của tôi khác bạn cùng nhóm?</h3>
     <p>
@@ -141,6 +174,13 @@ import html from "@/tools/pls-sem.html?raw";
       cậy BCa khớp bản Python tới 10⁻⁹. Bootstrap khớp bản Python tuyệt đối khi dùng cùng chuỗi số ngẫu nhiên; so với
       bootstrap 5.000 mẫu của seminr (bộ sinh số khác), độ lệch chuẩn chênh tối đa 3,3% và cận khoảng tin cậy chênh dưới
       0,16 lần độ lệch chuẩn, đúng mức sai số Monte Carlo.
+    </p>
+    <p>
+      SRMR (mô hình bão hoà và mô hình ước lượng) và HTMT2 khớp cSEM với sai lệch dưới 10⁻¹⁰. PLSpredict được kiểm tra hai
+      cách: với cùng cách chia nhóm mà công cụ rút, mỗi nhóm ước lượng bằng seminr (<code>estimate_pls</code> và
+      <code>predict</code>, cách dự báo theo khái niệm ngoại sinh) và hồi quy <code>lm</code> của R, RMSE, MAE,
+      Q²<sub>predict</sub> của PLS và LM khớp tới 10⁻¹⁴; so với <code>predict()</code> của cSEM tự chia nhóm (10 nhóm × 10
+      lần lặp), RMSE và MAE của PLS chênh dưới 0,5% và Q²<sub>predict</sub> chênh dưới 0,004.
     </p>
     <p>
       Riêng f²: công cụ tính từ điểm khái niệm của mô hình đầy đủ, như cSEM. seminr ước lượng lại toàn bộ mô hình khi bỏ
@@ -179,13 +219,38 @@ import html from "@/tools/pls-sem.html?raw";
         PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203
       </li>
       <li>
+        Henseler, J., Dijkstra, T. K., Sarstedt, M., Ringle, C. M., Diamantopoulos, A., Straub, D. W., Ketchen, D. J., Jr.,
+        Hair, J. F., Hult, G. T. M., &amp; Calantone, R. J. (2014). Common beliefs and reality about PLS: Comments on Rönkkö
+        and Evermann (2013). <em>Organizational Research Methods, 17</em>(2), 182–209. https://doi.org/10.1177/1094428114526928
+      </li>
+      <li>
         Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in
         variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135.
         https://doi.org/10.1007/s11747-014-0403-8
       </li>
       <li>
+        Hu, L., &amp; Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional
+        criteria versus new alternatives. <em>Structural Equation Modeling: A Multidisciplinary Journal, 6</em>(1), 1–55.
+        https://doi.org/10.1080/10705519909540118
+      </li>
+      <li>
         Lohmöller, J.-B. (1989). <em>Latent variable path modeling with partial least squares</em>. Physica-Verlag.
         https://doi.org/10.1007/978-3-642-52512-4
+      </li>
+      <li>
+        Roemer, E., Schuberth, F., &amp; Henseler, J. (2021). HTMT2–an improved criterion for assessing discriminant
+        validity in structural equation modeling. <em>Industrial Management &amp; Data Systems, 121</em>(12), 2637–2650.
+        https://doi.org/10.1108/IMDS-02-2021-0082
+      </li>
+      <li>
+        Shmueli, G., Ray, S., Velasquez Estrada, J. M., &amp; Chatla, S. B. (2016). The elephant in the room: Predictive
+        performance of PLS models. <em>Journal of Business Research, 69</em>(10), 4552–4564.
+        https://doi.org/10.1016/j.jbusres.2016.03.049
+      </li>
+      <li>
+        Shmueli, G., Sarstedt, M., Hair, J. F., Cheah, J.-H., Ting, H., Vaithilingam, S., &amp; Ringle, C. M. (2019).
+        Predictive model assessment in PLS-SEM: Guidelines for using PLSpredict. <em>European Journal of Marketing,
+        53</em>(11), 2322–2347. https://doi.org/10.1108/EJM-02-2019-0189
       </li>
       <li>
         Stone, M. (1974). Cross-validatory choice and assessment of statistical predictions. <em>Journal of the Royal

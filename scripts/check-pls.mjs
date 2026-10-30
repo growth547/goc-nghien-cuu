@@ -5,6 +5,9 @@
 //  - an independent numpy implementation on the data matrix (scripts/pls_reference.py): every estimate above, specific
 //    indirect effects, Q² by blindfolding, and the bootstrap, replaying the same resampling stream (must match to
 //    rounding, BCa included) and from numpy's own generator (SEs within Monte Carlo error);
+//  - cSEM (scripts/fixtures/pls-extra-reference.json, Rscript scripts/pls_reference.R extra): SRMR of the saturated and
+//    estimated model, HTMT2; PLSpredict on the tool's own fold assignment (--export-folds) refitted fold by fold with
+//    seminr and lm() (must match to rounding), and cSEM's predict() with its own folds (within Monte Carlo error);
 //  - identities: total = direct + Σ specific indirect, chapter-4 report renders for every case.
 // Data: the tool's own sample data (its generator must reproduce the fixture exactly) and a simulated survey with a
 // formative construct, a single-item construct and missing values. node scripts/check-pls.mjs --export-sample rewrites
@@ -28,6 +31,24 @@ if (process.argv.includes("--export-sample")) {
 }
 
 const FX = JSON.parse(readFileSync("scripts/fixtures/pls-reference.json", "utf8"));
+// PLSpredict settings shared with the R reference: the tool's defaults; the fold seed is the case's bootstrap seed.
+const PRED = { folds: 10, reps: 10 };
+function caseInput(C) {
+  const cs = C.case, D = FX.datasets[cs.data], items = cs.constructs.flatMap(c => c[1]);
+  const col = h => Float64Array.from(D.rows, r => (r[D.names.indexOf(h)] == null ? NaN : r[D.names.indexOf(h)]));
+  let k = 0;
+  const cons = cs.constructs.map(([name, its, mode]) => ({ name, idx: its.map(() => k++), mode })), names = cons.map(c => c.name);
+  return { cols: items.map(col), items, cons, paths: cs.paths.map(([a, b]) => [names.indexOf(a), names.indexOf(b), 1]), missing: cs.missing };
+}
+if (process.argv.includes("--export-folds")) {
+  // Fold assignment of every PLSpredict repetition, for Rscript scripts/pls_reference.R extra.
+  const out = {};
+  for (const C of FX.cases) out[C.case.id] = { folds: PRED.folds, seed: C.case.seed, assign: P.foldsOf(P.prepare(caseInput(C)).n, PRED.folds, PRED.reps, C.case.seed).map(f => Array.from(f)) };
+  writeFileSync("scripts/fixtures/pls-data/predict-folds.json", JSON.stringify(out));
+  console.log("wrote scripts/fixtures/pls-data/predict-folds.json");
+  process.exit(0);
+}
+const XR = JSON.parse(readFileSync("scripts/fixtures/pls-extra-reference.json", "utf8"));
 let failed = 0, passed = 0;
 const dev = {}; // largest deviation per comparison group, printed at the end
 const near = (a, b, tol, label, group) => {
@@ -203,7 +224,48 @@ for (const C of FX.cases) {
   }
 }
 
-// 3. Listwise deletion drops incomplete rows; mean replacement keeps them.
+// 3. SRMR against cSEM; PLSpredict against seminr on the same folds (exact) and cSEM's own folds (Monte Carlo error).
+for (const C of FX.cases) {
+  const id = C.case.id, X = XR[id], inp = caseInput(C), pr = P.prepare(inp), est = P.estimate(pr);
+  console.log(`\n== ${id}: SRMR and PLSpredict ==`);
+  const s = P.srmr(pr, est);
+  near(s.sat, X.srmr.saturated, 1e-6, `SRMR saturated ${s.sat.toFixed(4)} vs cSEM`, "SRMR saturated (cSEM)");
+  near(s.est, X.srmr.estimated, 1e-6, `SRMR estimated ${s.est.toFixed(4)} vs cSEM`, "SRMR estimated (cSEM)");
+  truthy(s.est >= s.sat - 1e-12, "SRMR of the estimated model is not below the saturated one");
+  const folds = P.foldsOf(pr.n, PRED.folds, PRED.reps, C.case.seed), fx = JSON.parse(readFileSync("scripts/fixtures/pls-data/predict-folds.json", "utf8"))[id];
+  truthy(folds.every((f, r) => f.every((v, i) => v === fx.assign[r][i])), "fold assignment equals the one exported to R");
+  truthy(folds.every(f => { const c = new Array(PRED.folds).fill(0); f.forEach(v => c[v]++); return Math.max(...c) - Math.min(...c) <= 1; }), "folds differ in size by at most one row");
+  const t0 = performance.now(), pp = P.plsPredict(pr, { ...PRED, seed: C.case.seed }), ms = performance.now() - t0;
+  console.log(`PLSpredict ${PRED.folds} folds × ${PRED.reps} repetitions (n = ${pr.n}): ${(ms / 1000).toFixed(2)} s`);
+  const R = X.predict, CP = X.csem_predict, names = pp.items.map(x => inp.items[x.item]);
+  truthy(names.join(",") === R.items.join(","), "predicted indicators = indicators of endogenous constructs");
+  truthy(pp.failed === 0 && !pp.lmFail, "every fold estimated");
+  pp.items.forEach((x, t) => {
+    const h = names[t];
+    for (const [k, rk] of [["rmse", "rmse"], ["mae", "mae"], ["lmRmse", "lm_rmse"], ["lmMae", "lm_mae"], ["q2", "q2"], ["skew", "skew"]])
+      near(x[k], R[rk][h], 1e-6, `${h} ${k} vs seminr (same folds)`, `PLSpredict ${k} (seminr, same folds)`);
+    // cSEM draws its own folds and its Q²predict centres the errors: within Monte Carlo error of 10 × 10-fold CV.
+    // (cSEM's LM benchmark has no intercept, so it is not comparable; the LM benchmark is checked against lm() above.)
+    for (const [k, rk] of [["rmse", "rmse"], ["mae", "mae"]])
+      near(x[k] / CP[rk][h], 1, 0.02, `${h} ${k} vs cSEM's own folds (ratio)`, `PLSpredict ${k} ratio − 1 (cSEM, own folds)`);
+    near(x.q2, CP.q2[h], 0.02, `${h} Q²predict vs cSEM's own folds`, "PLSpredict Q²predict (cSEM, own folds)");
+  });
+  const again = P.plsPredict(pr, { ...PRED, seed: C.case.seed });
+  truthy(again.items.every((x, t) => x.rmse === pp.items[t].rmse && x.q2 === pp.items[t].q2), "same seed gives identical PLSpredict");
+  const r = T.report(pr, est, null, P.blindfold(pr, C.case.D), { sec: "4.3", tab: 5, fig: 2, conf: 0.95, ci: "perc", D: C.case.D, srmr: s, pred: pp });
+  truthy(r.html.includes("SRMR") && r.html.includes("PLSpredict") && r.html.includes("Q²<sub>predict</sub>") && !/NaN|undefined/.test(r.html.replace(/<[^>]+>/g, "")), "report renders SRMR and PLSpredict");
+  // HTMT2 (geometric means) against cSEM, for the reflective multi-item pairs the tool reports.
+  const pr2 = P.prepare({ ...inp, htmt2: true }), est2 = P.estimate(pr2), H2 = X.htmt2, nm2 = inp.cons.map(c => c.name);
+  for (const [key, v] of Object.entries(est2.htmt)) {
+    const [i, j] = key.split(",").map(Number), a = H2.rows.indexOf(nm2[i]), b = H2.rows.indexOf(nm2[j]);
+    near(v, H2.v[Math.max(a, b)][Math.min(a, b)], 1e-6, `HTMT2 ${nm2[i]}–${nm2[j]} vs cSEM`, "HTMT2 (cSEM)");
+  }
+  truthy(Object.keys(est2.htmt).length === Object.keys(est.htmt).length, "HTMT2 for the same pairs as HTMT");
+  const b2 = P.bootstrap(pr2, est2, 200, C.case.seed, { conf: 0.95 }), r2 = T.report(pr2, est2, b2, {}, { sec: "4.3", tab: 5, fig: 2, conf: 0.95, ci: "perc", D: 7 });
+  truthy(Object.keys(est2.htmt).every(k => Math.abs(b2.stats[`h:${k}`].est - est2.htmt[k]) < 1e-9) && r2.html.includes("Hệ số HTMT2") && r2.html.includes("Roemer"), "HTMT2 bootstrapped and reported");
+}
+
+// 4. Listwise deletion drops incomplete rows; mean replacement keeps them.
 {
   const C = FX.cases[1], D = FX.datasets[C.case.data], items = C.case.constructs.flatMap(c => c[1]);
   const col = h => Float64Array.from(D.rows, r => (r[D.names.indexOf(h)] == null ? NaN : r[D.names.indexOf(h)]));

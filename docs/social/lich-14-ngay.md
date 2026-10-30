@@ -14,7 +14,7 @@ Tài khoản @gocnghiencuu1203 (Góc nghiên cứu). Căn cứ: `dot-1.md` và `
 - **Giờ đăng:**
   - mặc định **20:30**, theo khung 20:00-22:00 ở `dot-1.md`. Meta không công bố giờ vàng nào, đây là giả thuyết cần đo;
   - ngày 6 và ngày 11 đăng **12:15** để so sánh.
-- **Sau khi đăng:** ở lại ít nhất 60 phút, trả lời mọi bình luận. Bài dạng "Topic:" phải đăng ngay câu tự mở hàng trong phút đầu.
+- **Sau khi đăng:** tài khoản không bình luận ngay sau khi đăng, kể cả dưới bài của chính mình. Trả lời bình luận chỉ soạn nháp, người dùng quyết định lúc nào gửi.
 - **Bài 2-5 trong `dot-1.md`:** nếu chưa đăng, có thể thay vào ngày 2, 5, 8 hoặc 13. Các bài đó cũng đã sẵn sàng.
 
 ## Tổng quan
@@ -50,19 +50,28 @@ Nhịp dạng bài trong 14 ngày:
 
 ## Bài đăng
 
-### Ngày 1 · T7 31/10 · 20:30 · chủ đề KLTN · Topic hỏi cộng đồng
+### Ngày 1 · T7 31/10 · 20:30 · chủ đề KLTN · chuỗi 3 phần, tranh cãi + checklist
 
-**Bài:**
-> Topic: Được quay lại hôm mới nhận đề tài khoá luận, bạn sẽ dặn bản thân câu gì? Mình mở hàng trước nè
+**1/3**
+> Gửi đứa bạn sắp làm khoá luận: đừng mở Google Form vội. Chọn cách phân tích trước, rồi mới viết bảng hỏi.
 
-**Trả lời ngay dưới bài (tự mở hàng):**
-> Câu mình muốn dặn mấy bạn: chọn cách phân tích trước, rồi mới làm bảng hỏi.
+**2/3**
+> Làm ngược là dễ gặp cảnh thu xong phiếu mới biết:
+> - mỗi khái niệm chỉ có 2 câu hỏi;
+> - số phiếu không đủ cho mô hình định chạy.
 >
-> Làm ngược là dễ gặp cảnh thu xong phiếu mới biết mỗi khái niệm chỉ có 2 câu hỏi, hoặc số phiếu không đủ cho mô hình định chạy. Lúc đó sửa gì cũng phải khảo sát lại.
->
-> Tới lượt bạn, kể nghe với :))
+> Lúc đó sửa gì cũng phải khảo sát lại.
 
-Cách theo dõi bài: với mỗi trả lời có nội dung, trả lời lại bằng một ý bổ sung cụ thể như nguồn, ngưỡng hoặc cách làm, không chỉ "đúng rồi".
+**3/3**
+> Thứ tự an toàn hơn:
+> 1. Chốt mô hình và cách phân tích: hồi quy, EFA hay PLS-SEM.
+> 2. Tính cỡ mẫu theo đúng cách đó.
+> 3. Lấy thang đo từ bài báo gốc, giữ đủ số câu như bản gốc.
+> 4. Rồi mới làm Google Form.
+>
+> Lưu lại, hoặc gửi cho đứa bạn cùng nhóm nha.
+
+Không trả lời bình luận ngay sau khi đăng. Bình luận có nội dung thì soạn nháp trả lời vào file nháp trong ngày, người dùng quyết định lúc nào gửi.
 
 ### Ngày 2 · CN 01/11 · 20:30 · chủ đề nckh · chuỗi dạng danh sách
 

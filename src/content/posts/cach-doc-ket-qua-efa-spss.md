@@ -37,7 +37,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 </tbody>
 </table>
 <p>Ngưỡng tối thiểu hay được trích là 0,5 (Hair và cộng sự, 2010). Đây là điều kiện <em>cần</em> để tiếp tục, không phải bằng chứng thang đo tốt.</p>
-<p>Nếu KMO tổng thấp, mở bảng <em>Anti-image Matrices</em> và xem đường chéo của phần <em>Anti-image Correlation</em> (giá trị có chữ "a"). Đó là MSA của từng biến. Biến có MSA dưới 0,5 nên được xem xét loại, từng biến một, bắt đầu từ biến có MSA thấp nhất (Hair và cộng sự, 2010).</p>
+<p>Nếu KMO tổng thấp, mở bảng <em>Anti-image Matrices</em> và xem đường chéo của phần <em>Anti-image Correlation</em> (giá trị có chữ "a"). Đó là MSA của từng biến. Biến có MSA dưới 0,5 nên được xem xét loại, từng biến một, bắt đầu từ biến có MSA thấp nhất (Hair và cộng sự, 2010). Cách tính KMO, MSA bằng tay và vì sao biến yếu vẫn có thể có MSA cao được giải thích ở bài <a href="/posts/kmo-va-bartlett-la-gi/">KMO và Bartlett là gì</a>.</p>
 <h3>Bartlett's Test of Sphericity</h3>
 <p>Kiểm định giả thuyết ma trận tương quan là ma trận đơn vị, tức các biến không tương quan với nhau (Bartlett, 1954). Sig. nhỏ hơn 0,05 thì bác bỏ giả thuyết này, dữ liệu phù hợp để phân tích nhân tố. Với cỡ mẫu vài trăm, Bartlett gần như luôn có ý nghĩa, nên nó ít khi là vấn đề. KMO thông tin hơn.</p>
 <p>SPSS hiển thị Sig. = .000. Khi viết, ghi <em>p</em> &lt; 0,001, không ghi "p = 0,000", vì xác suất không bao giờ bằng 0 tuyệt đối.</p>

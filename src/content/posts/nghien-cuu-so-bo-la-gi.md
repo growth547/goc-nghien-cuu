@@ -112,7 +112,7 @@ tags: ["bảng hỏi","thu mẫu","khoá luận"]
 <h3>Sơ bộ định tính có cần ghi âm, gỡ băng?</h3>
 <p>Với phỏng vấn nhận thức trong khoá luận, ghi chú theo từng mã câu là đủ. Ghi âm (khi người tham gia đồng ý) giúp bạn không bỏ sót.</p>
 <h3>Pilot có cần chạy EFA không?</h3>
-<p>Không nên. EFA cần mẫu lớn hơn nhiều so với 30 đến 50 người, và kết quả sẽ không ổn định. Để EFA cho dữ liệu chính thức.</p>
+<p>Không nên. EFA cần mẫu lớn hơn nhiều so với 30 đến 50 người, và kết quả sẽ không ổn định. Để EFA cho dữ liệu chính thức. Vì sao mẫu nhỏ làm KMO thấp hoặc không tính được có ở bài <a href="/posts/kmo-va-bartlett-la-gi/">KMO và Bartlett là gì</a>.</p>
 <h3>Đã dùng nguyên thang đo có sẵn bản tiếng Việt thì có cần sơ bộ?</h3>
 <p>Vẫn nên làm pilot để kiểm tra phiếu, thời gian và logic. Phần định tính có thể rút gọn.</p>
 

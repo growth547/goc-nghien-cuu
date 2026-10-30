@@ -2,67 +2,85 @@
 
 Tài khoản @gocnghiencuu1203 (Góc nghiên cứu). Nối tiếp `lich-14-ngay.md` (31/10 - 13/11). Căn cứ: `dot-1.md`, `threads-nghien-cuu.md` và các bài trên trang trong `src/content/posts/`. Mọi con số, ngưỡng và trích dẫn trong bài đăng khớp với bài tương ứng trên trang; nguồn đầy đủ ở mục cuối.
 
+## Vì sao viết lại (30/10/2026)
+
+- Bài 1 viết giọng trang trọng được 53 lượt xem, 0 lượt thích. Bài chạy tốt cùng ngách là bài giọng sinh viên, câu mở ngắn, hứa một danh sách hoặc nêu một nhận định dễ gây bàn luận (chi tiết ở mục "Vì sao viết lại" của `lich-14-ngay.md`).
+- Người dùng góp ý thêm: tài khoản mới mà bình luận ngay sau khi đăng dễ bị coi là bot và bị giảm phân phối. Bài dễ lan là bài người ta muốn đăng lại hoặc gửi cho bạn: tổng hợp, tranh cãi, giới thiệu, phát hiện.
+- Vì vậy phần 1 của mọi bài được viết lại theo bốn kiểu đó; bài "Topic:" có câu tự mở hàng thành bài tự đứng được; "Hội đồng hỏi" chỉ giữ một bài (ngày 14), viết thành tranh cãi. Nội dung chuyên môn, ngưỡng và trích dẫn giữ nguyên.
+
 ## Luật chung cho mọi bài
 
-Giữ nguyên luật của đợt 1:
+Giống luật đã cập nhật ở `lich-14-ngay.md`:
 
+- **Mỗi bài thuộc một trong bốn kiểu dễ lan:**
+  - tổng hợp: danh sách, checklist, cheat sheet, khung copy vào chương 3, 4, 5;
+  - tranh cãi: một nhận định hơi ngược số đông nhưng bảo vệ được bằng nguồn;
+  - giới thiệu: một công cụ hay tài nguyên miễn phí, kể cả công cụ bên mình làm;
+  - phát hiện: một sự thật ít người để ý, kiểm chứng được. Không kể chuyện cá nhân không có thật.
+- **Phần 1 là quan trọng nhất** (phần mở chuỗi nhận gần hết lượt thích):
+  - tối đa 140 ký tự, làm người đọc muốn gửi cho bạn ("gửi đứa bạn đang làm khoá luận");
+  - giọng sinh viên: "mấy bạn", "mình", "tụi mình", được dùng ":))" nhẹ;
+  - không hứa quá ("chắc chắn qua", "điểm 10"), không bịa con số hay câu chuyện.
+- **Bài mời kể chuyện:** mỗi tuần ít nhất một bài kết bằng lời mời bình luận (tuần 1: ngày 7, nhân 20/11; tuần 2: ngày 10). Bài phải tự đứng được, không tự trả lời dưới bài để mở hàng.
+- **Phần ngắn, nhiều xuống dòng.** Thuật ngữ giải thích trong vài chữ.
+- **Emoji:** tối đa 1-2 mỗi bài, không chuỗi emoji. Lịch này hiện không dùng emoji nào.
 - **Không link** trong bài và trong trả lời. Link chỉ để ở bio. Không nhắc Genius Data.
 - **Một bài một chủ đề.** Chỉ dùng chủ đề đã có sẵn trong app: `nckh`, `KLTN`, `khóa luận`.
   - Đợt này không lên lịch tag `SPSS`, vì kết quả thử ở ngày 10 đợt 1 (09/11) coi như chưa biết lúc soạn lịch.
   - Nếu khi đánh giá ngày 14 đợt 1, tag `SPSS` có tỉ lệ người theo dõi mới trên 100 lượt xem cao hơn `nckh`, thì đổi chủ đề của ngày 5 (hồi quy logistic, bài dùng bảng SPSS) sang `SPSS`. Không thì giữ `khóa luận`.
 - **Chuỗi:**
   - soạn bằng "Thêm vào thread" trước khi đăng, để các phần hiện liền nhau;
-  - phần 1 phải tự đứng được, vì phần mở chuỗi nhận gần hết lượt thích;
+  - phần 1 phải tự đứng được;
   - không ghi số "1/4" vào nội dung. Số trong file này chỉ để đánh dấu phần.
-- **Mỗi phần dưới 500 ký tự** (đã đếm bằng script, xem cuối file). Không viết hoa cả câu, không chuỗi emoji, không gạch ngang dài, không "comment để nhận".
-- **Giọng:** tài khoản nói với tư cách kênh Góc nghiên cứu, xưng "mình". Không đóng vai một sinh viên hay một cá nhân nào, không kể chuyện cá nhân không có thật.
+- **Mỗi phần dưới 500 ký tự** (đã đếm bằng script, xem cuối file). Không viết hoa cả câu, không gạch ngang dài, không "comment để nhận".
+- **Giọng:** tài khoản nói với tư cách kênh Góc nghiên cứu, xưng "mình". Không đóng vai một sinh viên hay một cá nhân nào.
 - **Sản phẩm của mình:** bài nào nhắc công cụ trên trang thì nói thẳng "bên mình làm" và "link ở bio".
 - **Giờ đăng:**
   - mặc định **20:30**;
   - ngày 6 (T5 19/11) và ngày 11 (T3 24/11) đăng **12:15**, cùng thứ trong tuần với hai khung 12:15 của đợt 1 (T5 05/11 và T3 10/11).
-  - Để so sánh được, hai bài 12:15 cùng dạng (chuỗi giải thích 4 phần) và cùng chủ đề `nckh` với hai bài đối chứng 20:30 là ngày 3 và ngày 8.
-- **Sau khi đăng:** ở lại ít nhất 60 phút, trả lời mọi bình luận. Bài "Topic:" phải đăng câu tự mở hàng trong phút đầu.
+  - Để so sánh được, hai bài 12:15 cùng dạng (chuỗi tranh cãi 4 phần) và cùng chủ đề `nckh` với hai bài đối chứng 20:30 là ngày 3 và ngày 8.
+- **Sau khi đăng: không bình luận ngay.** Tài khoản không bình luận ngay sau khi đăng, kể cả dưới bài của chính mình. Trả lời bình luận chỉ soạn nháp vào `nhap-<ngày>.md`, người dùng quyết định lúc nào gửi.
 
 ## Tổng quan
 
 | Ngày | Thứ, ngày | Giờ | Chủ đề | Dạng | Nội dung |
 |---|---|---|---|---|---|
-| 1 | T7 14/11 | 20:30 | nckh | Chuỗi 7 phần, danh sách | 5 lỗi hay gặp khi báo cáo SmartPLS |
-| 2 | CN 15/11 | 20:30 | KLTN | Chuỗi 5 phần, "Hội đồng hỏi" số 5 | "Biến này là trung gian hay điều tiết?" |
-| 3 | T2 16/11 | 20:30 | nckh | Chuỗi 4 phần, phân biệt hai khái niệm | CR đạt mà AVE không đạt |
+| 1 | T7 14/11 | 20:30 | nckh | Chuỗi 7 phần, tổng hợp | 5 lỗi hay gặp khi báo cáo SmartPLS |
+| 2 | CN 15/11 | 20:30 | KLTN | Chuỗi 5 phần, tổng hợp (mẹo phân biệt) | Trung gian hay điều tiết |
+| 3 | T2 16/11 | 20:30 | nckh | Chuỗi 4 phần, tranh cãi | "AVE dưới 0,5 vẫn được vì CR đạt": bài gốc nói ngược lại |
 | 4 | T3 17/11 | 20:30 | KLTN | Poll | Bạn chạy số liệu bằng phần mềm nào |
-| 5 | T4 18/11 | 20:30 | khóa luận | Chuỗi 7 phần, danh sách | 5 lỗi khi đọc hồi quy logistic |
-| 6 | T5 19/11 | **12:15** | nckh | Chuỗi 4 phần | Fornell-Larcker đạt mà HTMT 0,87 |
-| 7 | T6 20/11 | 20:30 | KLTN | Topic: hỏi cộng đồng + tự mở hàng | Góp ý của giảng viên hướng dẫn (ngày 20/11) |
-| 8 | T7 21/11 | 20:30 | nckh | Chuỗi 4 phần | Kiểm định trung gian: vì sao không dừng ở bước 1 Baron và Kenny |
-| 9 | CN 22/11 | 20:30 | khóa luận | Chuỗi 7 phần, danh sách | 5 bước chọn mô hình dữ liệu bảng (Pooled, FEM, REM, Hausman) |
-| 10 | T2 23/11 | 20:30 | KLTN | Chuỗi 5 phần, "Hội đồng hỏi" số 6 | "R² hiệu chỉnh chỉ 0,35, mô hình có yếu không?" |
-| 11 | T3 24/11 | **12:15** | nckh | Chuỗi 4 phần | p nhỏ chưa chắc tác động lớn: f² |
-| 12 | T4 25/11 | 20:30 | khóa luận | Chuỗi 4 phần, công cụ bên mình làm | Công cụ PLS-SEM trên trình duyệt làm được gì, chưa làm được gì |
-| 13 | T5 26/11 | 20:30 | KLTN | Chuỗi 7 phần, danh sách | 5 lỗi hay gặp khi viết hàm ý quản trị ở chương 5 |
-| 14 | T6 27/11 | 20:30 | KLTN | Chuỗi 5 phần, "Hội đồng hỏi" số 7 | "Vì sao em chọn TPB mà không phải TAM?" |
+| 5 | T4 18/11 | 20:30 | khóa luận | Chuỗi 7 phần, phát hiện + tổng hợp | Exp(B) không phải xác suất; 5 lỗi đọc hồi quy logistic |
+| 6 | T5 19/11 | **12:15** | nckh | Chuỗi 4 phần, tranh cãi | Fornell-Larcker đạt chưa chắc có giá trị phân biệt |
+| 7 | T6 20/11 | 20:30 | KLTN | Chuỗi 3 phần, tổng hợp mời kể chuyện | Nhân 20/11: 5 nguyên tắc chép lên đầu file khoá luận |
+| 8 | T7 21/11 | 20:30 | nckh | Chuỗi 4 phần, tranh cãi | Bước 1 Baron và Kenny không có ý nghĩa chưa phải dừng |
+| 9 | CN 22/11 | 20:30 | khóa luận | Chuỗi 7 phần, tổng hợp | 5 bước chọn mô hình dữ liệu bảng, kèm lệnh Stata |
+| 10 | T2 23/11 | 20:30 | KLTN | Chuỗi 5 phần, tranh cãi mời kể chuyện | R² 0,35 không có nghĩa là mô hình yếu |
+| 11 | T3 24/11 | **12:15** | nckh | Chuỗi 4 phần, tranh cãi | p < 0,001 chưa chắc tác động lớn: f² |
+| 12 | T4 25/11 | 20:30 | khóa luận | Chuỗi 4 phần, giới thiệu công cụ bên mình làm | Công cụ PLS-SEM trên trình duyệt làm được gì, chưa làm được gì |
+| 13 | T5 26/11 | 20:30 | KLTN | Chuỗi 7 phần, tranh cãi + tổng hợp | 5 lỗi khi viết hàm ý quản trị ở chương 5 |
+| 14 | T6 27/11 | 20:30 | KLTN | Chuỗi 5 phần, tranh cãi, "Hội đồng hỏi" số 2 | "Vì nhiều nghiên cứu dùng" không phải lý do chọn TPB |
 
 Nhịp dạng bài trong 14 ngày:
-- 4 chuỗi danh sách "Top N" (ngày 1, 5, 9, 13);
-- 3 bài "Hội đồng hỏi" số 5, 6, 7 (ngày 2, 10, 14);
-- 1 poll (ngày 4);
-- 1 bài "Topic:" có câu tự mở hàng (ngày 7);
-- 5 chuỗi giải thích (ngày 3, 6, 8, 11, 12).
+- tổng hợp: ngày 1, 2, 7, 9;
+- tranh cãi: ngày 3, 6, 8, 10, 11, 13, 14 (ngày 14 là "Hội đồng hỏi" duy nhất của đợt);
+- phát hiện: ngày 5;
+- giới thiệu: ngày 12;
+- poll: ngày 4.
 
 Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 
 **Không lặp chủ đề đợt 1.** Đợt 1 đã có: công cụ miễn phí, nguồn thang đo, KMO và Bartlett, Sig. = ,000, dùng AI, Cronbach's alpha thấp, lỗi trình bày chương 4, T-test và ANOVA, giả thuyết không được ủng hộ, khung chương 4, VIF, phần hạn chế, Likert 5 hay 7 mức, phiếu trả lời cho có. Đợt 2 không viết lại các chủ đề đó; VIF chỉ được nhắc như một chỉ số trong danh sách, không thành bài riêng.
 
-**Dạng danh sách:** giống ngày 2 và ngày 8 đợt 1. Phần 1 nêu một nỗi khổ cụ thể của sinh viên và hứa một danh sách, mỗi mục một phần, phần cuối mời bổ sung.
+**Dạng danh sách:** giống ngày 2 và ngày 8 đợt 1. Phần 1 nêu một nỗi khổ cụ thể của sinh viên và hứa một danh sách, mỗi mục một phần, phần cuối nhắc lưu lại hoặc gửi cho bạn, và mời bổ sung.
 
 ---
 
 ## Bài đăng
 
-### Ngày 1 · T7 14/11 · 20:30 · chủ đề nckh · chuỗi dạng danh sách
+### Ngày 1 · T7 14/11 · 20:30 · chủ đề nckh · chuỗi dạng danh sách (tổng hợp)
 
 **1/7**
-> Chạy SmartPLS ra đủ bảng rồi mà hội đồng vẫn hỏi vặn phần kết quả? Thường là do một trong 5 lỗi dưới đây. Soát lại chương 4 trước khi nộp:
+> 5 lỗi báo cáo SmartPLS dễ làm hội đồng hỏi vặn chương 4. Gửi đứa bạn đang chạy PLS-SEM trước khi nó nộp:
 
 **2/7**
 > 1. Chỉ chạy PLS-SEM algorithm, không chạy Bootstrapping
@@ -85,14 +103,13 @@ Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 > Với thang đo kế thừa, nhiều hướng dẫn PLS-SEM đi thẳng vào đánh giá mô hình đo lường. Nếu giảng viên vẫn yêu cầu EFA, ví dụ vì thang đo mới dịch hoặc chỉnh nhiều, thì ghi rõ lý do đó ở chương 3.
 
 **7/7**
-> Lưu lại để soát chương 4 trước khi nộp. Bạn từng bị hỏi lỗi nào khác ở phần PLS-SEM thì để dưới bình luận, mình bổ sung vào danh sách.
+> Lưu lại để soát chương 4 trước khi nộp, hoặc gửi cho cả nhóm.
+> Bạn từng bị hỏi lỗi nào khác ở phần PLS-SEM thì để dưới bình luận, mình bổ sung vào danh sách.
 
-### Ngày 2 · CN 15/11 · 20:30 · chủ đề KLTN · "Hội đồng hỏi" số 5
+### Ngày 2 · CN 15/11 · 20:30 · chủ đề KLTN · chuỗi tổng hợp (mẹo phân biệt)
 
 **1/5**
-> Hội đồng hỏi: "Biến này trong mô hình của em là trung gian hay điều tiết?"
->
-> Hai khái niệm này rất dễ bị gọi nhầm tên, kể cả khi sơ đồ vẽ đúng.
+> Trung gian hay điều tiết? Mẹo phân biệt trong một câu, gửi đứa bạn hay gọi nhầm tên hai biến này :))
 
 **2/5**
 > Biến trung gian trả lời câu "X tác động đến Y bằng cách nào". Nó nằm trên đường đi: X tác động lên M, rồi M tác động lên Y. Ví dụ thấy ứng dụng hữu ích nên có thái độ tích cực, và vì thái độ tích cực nên muốn dùng tiếp.
@@ -104,12 +121,12 @@ Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 > Câu tự kiểm tra: X có gây ra biến đó không? Có thì biến đó giống trung gian hơn. Mẹo khi đọc bài báo: "thông qua" là trung gian; "mạnh hơn khi", "ở nhóm" là điều tiết. Bài kinh điển về phân biệt này là Baron và Kenny (1986).
 
 **5/5**
-> Cách kiểm định cũng khác. Trung gian: tác động gián tiếp a × b, kiểm định bằng bootstrap. Điều tiết: hệ số của biến tương tác X × W. Nói được cả vai trò lẫn cách kiểm định là câu này qua.
+> Cách kiểm định cũng khác. Trung gian: tác động gián tiếp a × b, kiểm định bằng bootstrap. Điều tiết: hệ số của biến tương tác X × W. Nói được cả vai trò lẫn cách kiểm định thì hội đồng hỏi câu này là trả lời trọn.
 
-### Ngày 3 · T2 16/11 · 20:30 · chủ đề nckh · phân biệt hai khái niệm (đối chứng 20:30 cho ngày 6)
+### Ngày 3 · T2 16/11 · 20:30 · chủ đề nckh · chuỗi tranh cãi (đối chứng 20:30 cho ngày 6)
 
 **1/4**
-> CR = 0,82 nhưng AVE = 0,36. Thang đo này đạt hay không đạt?
+> Viết "AVE dưới 0,5 vẫn chấp nhận được vì CR trên 0,6" rồi trích Fornell & Larcker (1981)? Bài gốc nói ngược lại đó.
 
 **2/4**
 > CR và AVE trả lời hai câu khác nhau. CR là độ tin cậy: các câu hỏi có cho kết quả nhất quán với nhau không. AVE là giá trị hội tụ: khái niệm giải thích được bao nhiêu phần biến thiên của các câu hỏi. AVE từ 0,50 mới đạt (Fornell & Larcker, 1981).
@@ -118,12 +135,16 @@ Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 > Ví dụ thang đo 8 câu, câu nào cũng tải 0,6. Nhờ nhiều câu nên CR khoảng 0,82, nhưng AVE chỉ 0,36: gần hai phần ba biến thiên của mỗi câu là sai số. Đó cũng là lý do của mốc tải 0,708, vì 0,708 bình phương xấp xỉ 0,50.
 
 **4/4**
-> Đừng viết "AVE dưới 0,5 vẫn chấp nhận được vì CR trên 0,6" rồi trích Fornell và Larcker (1981). Bài gốc cảnh báo ngược lại: chỉ dựa vào CR có thể kết luận thang đo đạt dù hơn một nửa phương sai là sai số. Muốn dùng lập luận đó thì đọc bản gốc trước.
+> Fornell và Larcker (1981) cảnh báo: chỉ dựa vào CR có thể kết luận thang đo đạt dù hơn một nửa phương sai là sai số. Muốn dùng lập luận "CR đạt là đủ" thì đọc bản gốc trước.
+>
+> Gửi đứa bạn đang viết câu này vào chương 4 nha.
 
 ### Ngày 4 · T3 17/11 · 20:30 · chủ đề KLTN · poll
 
 **Bài (gắn poll):**
-> Khoá luận của bạn chạy số liệu bằng phần mềm nào? Từ tuần sau, ví dụ trong các bài của mình sẽ theo phần mềm được chọn nhiều nhất.
+> Khoá luận của bạn chạy số liệu bằng gì? Tuần sau ví dụ trong bài sẽ theo phần mềm nhiều người chọn nhất.
+>
+> Dùng cái khác thì kể nha.
 
 **Lựa chọn poll (tối đa 4):**
 1. SPSS, JASP hoặc jamovi
@@ -131,18 +152,15 @@ Chủ đề theo tag: `nckh` 5 bài, `KLTN` 6 bài, `khóa luận` 3 bài.
 3. AMOS
 4. Stata, EViews hoặc R
 
-**Trả lời dưới bài:**
-> Bạn dùng phần mềm khác, hoặc dùng hai phần mềm cùng lúc, thì ghi dưới đây kèm chỗ đang kẹt. Mình đọc hết và trả lời từng cái.
-
 Sau 48 giờ, ghi tỉ lệ thật vào nhật ký. Lời hứa trong bài là thật:
 - ngày 10, 13 và các bài dự phòng dùng ví dụ theo phần mềm thắng;
 - nếu SmartPLS thắng rõ, giữ ngày 12 như lịch; nếu SPSS thắng rõ, có thể đổi ngày 12 với dự phòng A;
 - nếu Stata, EViews hoặc R thắng, mở phần 1 của ngày 9 bằng tỉ lệ thật, ví dụ "Poll hôm thứ ba, X% chạy Stata, EViews hoặc R." X là số thật, không có thì bỏ câu này.
 
-### Ngày 5 · T4 18/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách
+### Ngày 5 · T4 18/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách (phát hiện + tổng hợp)
 
 **1/7**
-> Biến phụ thuộc chỉ có hai giá trị có hoặc không thì phải chạy hồi quy logistic, và bảng kết quả của nó khác hẳn hồi quy tuyến tính. Đây là 5 lỗi hay gặp khi đọc bảng SPSS, soát theo thứ tự này:
+> Exp(B) = 2,5 không có nghĩa là xác suất tăng 2,5 lần. Gửi đứa bạn đang chạy hồi quy logistic: 5 lỗi đọc bảng SPSS hay gặp:
 
 **2/7**
 > 1. Đọc Exp(B) như tỉ lệ xác suất
@@ -165,15 +183,16 @@ Sau 48 giờ, ghi tỉ lệ thật vào nhật ký. Lời hứa trong bài là t
 > Cỡ mẫu tính theo nhóm ít hơn của biến phụ thuộc: khoảng 10 trường hợp cho mỗi biến độc lập (Peduzzi và cộng sự, 1996). 400 phiếu mà chỉ 30 người "có" thì mô hình 4 biến đã dưới mốc đó. Vittinghoff và McCulloch (2007) cho rằng 5 đến 9 thường vẫn chấp nhận được, nhưng cần thận trọng.
 
 **7/7**
-> Lưu lại để soát chương 4 trước khi nộp. Bạn từng bị hội đồng hỏi gì khác về hồi quy logistic thì để dưới bình luận, mình bổ sung vào danh sách.
+> Hồi quy logistic dùng khi biến phụ thuộc chỉ có hai giá trị có hoặc không. Lưu lại để soát chương 4 trước khi nộp.
+> Bạn từng bị hội đồng hỏi gì khác về hồi quy logistic thì để dưới bình luận, mình bổ sung vào danh sách.
 
-### Ngày 6 · T5 19/11 · 12:15 · chủ đề nckh · chuỗi (thử giờ trưa)
+### Ngày 6 · T5 19/11 · 12:15 · chủ đề nckh · chuỗi tranh cãi (thử giờ trưa)
 
 **1/4**
-> Fornell-Larcker đạt hết mà HTMT lại ra 0,87. Kết luận giá trị phân biệt theo cái nào?
+> Fornell-Larcker đạt hết chưa chắc là có giá trị phân biệt. HTMT ra 0,87 thì tin HTMT. Lý do ở dưới:
 
 **2/4**
-> Theo HTMT. Henseler và cộng sự (2015) cho thấy bằng mô phỏng rằng tiêu chí Fornell-Larcker thường không phát hiện được hai khái niệm đang đo gần như cùng một thứ. Hair và cộng sự (2019) coi HTMT là tiêu chí chính cho giá trị phân biệt.
+> Henseler và cộng sự (2015) cho thấy bằng mô phỏng rằng tiêu chí Fornell-Larcker thường không phát hiện được hai khái niệm đang đo gần như cùng một thứ. Hair và cộng sự (2019) coi HTMT là tiêu chí chính cho giá trị phân biệt.
 
 **3/4**
 > Ngưỡng là dưới 0,85, hoặc dưới 0,90 khi hai khái niệm gần nghĩa về lý thuyết (Henseler và cộng sự, 2015), ví dụ hài lòng và trung thành. Dùng mốc 0,90 thì phải lập luận vì sao gần nghĩa, không chọn mốc sau khi đã thấy kết quả.
@@ -181,25 +200,30 @@ Sau 48 giờ, ghi tỉ lệ thật vào nhật ký. Lời hứa trong bài là t
 **4/4**
 > Ngoài so ngưỡng, xem khoảng tin cậy bootstrap. Franke và Sarstedt (2019) khuyên kiểm định chặt: cận trên của khoảng tin cậy một phía 95% phải nằm dưới ngưỡng. Vượt ngưỡng thì đọc lại câu chữ, xem có câu nào của khái niệm này thực ra đang hỏi về khái niệm kia.
 
-### Ngày 7 · T6 20/11 · 20:30 · chủ đề KLTN · Topic hỏi cộng đồng
+### Ngày 7 · T6 20/11 · 20:30 · chủ đề KLTN · chuỗi tổng hợp mời kể chuyện (ngày 20/11)
 
-**Bài:**
-> Topic: Góp ý nào của giảng viên hướng dẫn đã giúp khoá luận của bạn đỡ vất vả nhất?
+**1/3**
+> Nhân 20/11: 5 nguyên tắc làm khoá luận đáng chép lên đầu file. Gửi đứa bạn cùng nhóm, rồi kể câu thầy cô bạn từng dặn nha.
 
-**Trả lời ngay dưới bài (tự mở hàng):**
-> Nhân ngày 20/11, mình mở hàng bằng một nguyên tắc đáng chép lên đầu file khoá luận: mỗi bảng ở chương 4 phải trả lời một câu hỏi nghiên cứu ở chương 1. Bảng nào không trả lời câu nào thì cân nhắc chuyển xuống phụ lục.
->
-> Bạn kể góp ý của thầy cô mình nhé, không cần nêu tên.
+**2/3**
+> 1. Mỗi bảng ở chương 4 trả lời một câu hỏi nghiên cứu ở chương 1. Bảng nào không trả lời câu nào thì cân nhắc chuyển xuống phụ lục.
+> 2. Trích thang đo từ bài báo gốc, không trích khoá luận đã dùng lại nó.
+> 3. Chọn ngưỡng nào thì ghi nguồn ở chương 3 và dùng đúng ngưỡng đó ở chương 4.
+> 4. Ghi rõ thu bao nhiêu phiếu, loại bao nhiêu, loại theo tiêu chí gì.
+> 5. Chạy bootstrap thì ghi seed vào chương 3.
 
-Cách theo dõi bài: với mỗi trả lời có nội dung về phương pháp, trả lời lại bằng một ý bổ sung cụ thể (nguồn, ngưỡng, cách làm). Trả lời chỉ là lời cảm ơn thầy cô thì thả tim và cảm ơn ngắn, không biến thành bài giảng.
+**3/3**
+> Thầy cô hướng dẫn của bạn từng dặn câu nào đáng thêm vào danh sách này? Kể dưới bình luận nha, không cần nêu tên thầy cô.
 
-### Ngày 8 · T7 21/11 · 20:30 · chủ đề nckh · chuỗi (đối chứng 20:30 cho ngày 11)
+Bài tự đứng được, không tự trả lời dưới bài. Bình luận có nội dung về phương pháp thì soạn nháp trả lời bằng một ý bổ sung cụ thể (nguồn, ngưỡng, cách làm); bình luận chỉ là lời cảm ơn thầy cô thì nháp một câu cảm ơn ngắn. Người dùng quyết định lúc nào gửi.
+
+### Ngày 8 · T7 21/11 · 20:30 · chủ đề nckh · chuỗi tranh cãi (đối chứng 20:30 cho ngày 11)
 
 **1/4**
-> Kiểm định biến trung gian theo 4 bước của Baron và Kenny (1986), bước 1 không có ý nghĩa là dừng luôn? Chưa chắc.
+> Bước 1 Baron và Kenny không có ý nghĩa mà bỏ luôn giả thuyết trung gian là bỏ phí. Zhao và cộng sự (2010) đã chỉ ra vì sao.
 
 **2/4**
-> Zhao và cộng sự (2010) chỉ ra bước 1 không cần thiết. Tác động gián tiếp vẫn có thể tồn tại khi tác động tổng của X lên Y không có ý nghĩa, ví dụ khi tác động trực tiếp và tác động gián tiếp ngược dấu nhau nên triệt tiêu.
+> Theo Zhao và cộng sự (2010), bước 1 không cần thiết. Tác động gián tiếp vẫn có thể tồn tại khi tác động tổng của X lên Y không có ý nghĩa, ví dụ khi tác động trực tiếp và tác động gián tiếp ngược dấu nhau nên triệt tiêu.
 
 **3/4**
 > Điều kiện cần là tác động gián tiếp a × b có ý nghĩa, kiểm định bằng bootstrap (Preacher & Hayes, 2008): rút lại mẫu khoảng 5.000 lần, khoảng tin cậy 95% của a × b không chứa 0 là có trung gian. Kiểm định Sobel giả định a × b phân phối chuẩn, điều thường không đúng ở mẫu vừa và nhỏ.
@@ -207,12 +231,12 @@ Cách theo dõi bài: với mỗi trả lời có nội dung về phương pháp
 **4/4**
 > Sau đó mới xem tác động trực tiếp c'. Không có ý nghĩa là trung gian toàn phần. Có ý nghĩa và cùng dấu với a × b là trung gian một phần, ngược dấu là trung gian cạnh tranh. Trung gian một phần không phải kết quả kém: nó gợi ý còn cơ chế khác chưa đưa vào mô hình.
 
-### Ngày 9 · CN 22/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách
+### Ngày 9 · CN 22/11 · 20:30 · chủ đề khóa luận · chuỗi dạng danh sách (tổng hợp)
 
-Ghi chú: nếu poll ngày 4 có tỉ lệ thật cho nhóm Stata, EViews hoặc R, thêm câu đó vào đầu phần 1 (xem ngày 4).
+Ghi chú: nếu poll ngày 4 có tỉ lệ thật cho nhóm Stata, EViews hoặc R, thêm câu đó vào đầu phần 1 (xem ngày 4) và bỏ vế "Gửi đứa bạn làm khoá luận tài chính:" để phần 1 vẫn dưới 140 ký tự.
 
 **1/7**
-> Khoá luận tài chính dùng dữ liệu bảng mà chỉ báo cáo Pooled OLS là dễ bị hỏi lại. Đây là 5 bước chọn và kiểm tra mô hình, kèm lệnh Stata, làm theo đúng thứ tự:
+> Gửi đứa bạn làm khoá luận tài chính: chỉ báo cáo Pooled OLS là dễ bị hỏi lại. 5 bước chọn mô hình dữ liệu bảng, kèm lệnh Stata:
 
 **2/7**
 > 1. Chạy cả ba mô hình
@@ -235,16 +259,15 @@ Ghi chú: nếu poll ngày 4 có tỉ lệ thật cho nhóm Stata, EViews hoặc
 > Lệnh xtserial cho tự tương quan (Drukker, 2003), xttest3 cho phương sai thay đổi sau FEM; cả hai cài bằng ssc install. Có vấn đề thì ước lượng lại với sai số chuẩn vững theo cụm doanh nghiệp, vce(cluster id), như Petersen (2009) khuyến nghị cho dữ liệu tài chính.
 
 **7/7**
-> Lưu lại để chạy theo đúng thứ tự. Bạn từng bị hỏi thêm kiểm định nào khác cho dữ liệu bảng thì để dưới bình luận, mình bổ sung vào danh sách.
+> Lưu lại để chạy theo đúng thứ tự, hoặc gửi cho cả nhóm.
+> Bạn từng bị hỏi thêm kiểm định nào khác cho dữ liệu bảng thì để dưới bình luận, mình bổ sung vào danh sách.
 
-### Ngày 10 · T2 23/11 · 20:30 · chủ đề KLTN · "Hội đồng hỏi" số 6
+### Ngày 10 · T2 23/11 · 20:30 · chủ đề KLTN · chuỗi tranh cãi mời kể chuyện
 
 Ghi chú: nếu poll ngày 4 cho thấy SmartPLS thắng rõ, phần 2 giữ nguyên (đã có mốc cho PLS). Nếu SPSS thắng rõ, phần 5 có thể thêm "trong bảng Model Summary, cột Adjusted R Square".
 
 **1/5**
-> Hội đồng hỏi: "R² hiệu chỉnh của em chỉ 0,35. Mô hình có yếu không?"
->
-> Đừng trả lời "dạ tại mẫu nhỏ".
+> R² hiệu chỉnh 0,35 không có nghĩa là mô hình yếu. Gửi đứa bạn đang lo vì R² thấp, và đừng trả lời hội đồng "dạ tại mẫu nhỏ" nữa :))
 
 **2/5**
 > Không có mốc R² "đạt" chung cho mọi đề tài. Các mốc hay được trích đều gắn với bối cảnh: Chin (1998) dùng 0,67, 0,33 và 0,19 cho mô hình PLS; Hair và cộng sự (2011) dùng 0,75, 0,50 và 0,25 cho nghiên cứu marketing dùng PLS-SEM.
@@ -256,12 +279,14 @@ Ghi chú: nếu poll ngày 4 cho thấy SmartPLS thắng rõ, phần 2 giữ ngu
 > Ý thứ hai: mục tiêu của khoá luận là kiểm định tác động, không phải dự báo cho từng người. R² thấp chỉ cho biết còn nhiều yếu tố ngoài mô hình, tự nó không làm ước lượng hệ số bị chệch (Wooldridge, 2020). Phần "yếu tố ngoài mô hình" đưa vào mục hạn chế ở chương 5.
 
 **5/5**
-> Và đừng thêm biến chỉ để kéo R² lên. R² luôn tăng khi thêm biến, kể cả biến vô nghĩa. R² hiệu chỉnh trừ phần tăng đó đi, nên mô hình có nhiều biến thì đọc và diễn giải theo R² hiệu chỉnh.
+> Và đừng thêm biến chỉ để kéo R² lên. R² luôn tăng khi thêm biến, kể cả biến vô nghĩa. R² hiệu chỉnh trừ phần tăng đó đi, nên mô hình nhiều biến thì diễn giải theo R² hiệu chỉnh.
+>
+> Đề tài của bạn R² bao nhiêu, có bị hỏi chưa? Kể dưới bình luận nha.
 
-### Ngày 11 · T3 24/11 · 12:15 · chủ đề nckh · chuỗi (thử giờ trưa)
+### Ngày 11 · T3 24/11 · 12:15 · chủ đề nckh · chuỗi tranh cãi (thử giờ trưa)
 
 **1/4**
-> Hệ số có ý nghĩa thống kê, p < 0,001. Vậy tác động đó lớn hay nhỏ? p không trả lời được câu này.
+> p < 0,001 chưa chắc là tác động lớn. Hiểu nhầm chỗ này là chương 5 dễ ưu tiên sai yếu tố.
 
 **2/4**
 > p chỉ cho biết tác động có khác 0 hay không. Muốn biết lớn hay nhỏ thì cần chỉ số độ lớn hiệu ứng (Sullivan & Feinn, 2012). Mẫu càng lớn thì một tác động rất nhỏ cũng có thể cho p rất nhỏ.
@@ -272,30 +297,32 @@ Ghi chú: nếu poll ngày 4 cho thấy SmartPLS thắng rõ, phần 2 giữ ngu
 **4/4**
 > Chương 4 nên báo cáo cả hai, ví dụ "tác động có ý nghĩa (p < 0,001) nhưng nhỏ (f² = 0,03)". Câu đó giúp luôn chương 5: hàm ý ưu tiên yếu tố tác động lớn, không phải yếu tố có p nhỏ nhất. SmartPLS in sẵn f² ở mục f-square.
 
-### Ngày 12 · T4 25/11 · 20:30 · chủ đề khóa luận · chuỗi, công cụ bên mình làm
+### Ngày 12 · T4 25/11 · 20:30 · chủ đề khóa luận · chuỗi giới thiệu, công cụ bên mình làm
 
-Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của mình. Trả lời bình luận vẫn không gắn link, chỉ nhắc "link ở bio".
+Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của mình (bài ra mắt trang đã đăng ngày 31/10 ở đợt 1). Nháp trả lời bình luận vẫn không gắn link, chỉ nhắc "link ở bio". Tính năng đã đối chiếu với `src/tools/pls-sem.html` ngày 30/10/2026.
 
 **1/4**
-> Không có giấy phép SmartPLS thì chạy PLS-SEM bằng gì? Bên mình làm một công cụ chạy PLS-SEM ngay trên trình duyệt, miễn phí, link ở bio. Dưới đây là những gì nó làm được và chưa làm được, để bạn tự quyết có hợp đề tài không.
+> Không có giấy phép SmartPLS vẫn chạy được PLS-SEM: bên mình làm công cụ miễn phí trên trình duyệt, link ở bio. Ưu nhược nói thẳng:
 
 **2/4**
-> Làm được: thuật toán PLS với các mặc định như SmartPLS, cho hệ số tải, alpha, rho_A, CR, AVE, HTMT, Fornell-Larcker, VIF, hệ số đường dẫn, R², f², tác động gián tiếp. Bootstrap mặc định 5.000 mẫu với seed cố định, xuất bảng ra Word. Dữ liệu không rời khỏi máy bạn.
+> Làm được: thuật toán PLS với các mặc định như SmartPLS, cho hệ số tải, alpha, rho_A, CR, AVE, HTMT, Fornell-Larcker, VIF, hệ số đường dẫn, R², f², Q², tác động gián tiếp. Bootstrap mặc định 5.000 mẫu với seed cố định, xuất bảng ra Word. Dữ liệu không rời khỏi máy bạn.
 
 **3/4**
 > Chưa làm được: PLSc, PLSpredict, mô hình bậc hai, biến điều tiết dạng tương tác và phân tích đa nhóm (MGA). Đề tài cần các phần này vẫn phải dùng SmartPLS hoặc gói seminr của R.
+>
+> Biết trước giới hạn để tự quyết có hợp đề tài không.
 
 **4/4**
 > Ước lượng điểm theo đúng thuật toán PLS chuẩn nên chỉ lệch SmartPLS ở phần làm tròn. Bootstrap thì phần mềm nào cũng chênh nhau một chút do rút mẫu ngẫu nhiên, nên ghi seed vào chương 3. Khoa yêu cầu kết quả từ SmartPLS thì dùng công cụ để kiểm tra trước, rồi chạy SmartPLS với cùng mô hình.
 
-### Ngày 13 · T5 26/11 · 20:30 · chủ đề KLTN · chuỗi dạng danh sách
+### Ngày 13 · T5 26/11 · 20:30 · chủ đề KLTN · chuỗi dạng danh sách (tranh cãi + tổng hợp)
 
 **1/7**
-> Chương 4 xong rồi mà chương 5 viết mãi vẫn thấy chung chung? Đây là 5 lỗi hay gặp ở phần hàm ý quản trị. Sửa từng cái là chương 5 có căn cứ hơn hẳn:
+> Hàm ý kiểu "doanh nghiệp cần nâng cao chất lượng dịch vụ" thì không làm nghiên cứu cũng viết được. 5 lỗi chương 5 và cách sửa:
 
 **2/7**
 > 1. Hàm ý dán vào khoá luận nào cũng được
-> "Doanh nghiệp cần nâng cao chất lượng dịch vụ" thì không làm nghiên cứu cũng viết được. Mỗi hàm ý phải truy ngược về một con số ở chương 4: hệ số, điểm trung bình, câu hỏi có điểm thấp nhất.
+> Câu nào dán vào khoá luận khác cũng được thì chưa phải hàm ý. Mỗi hàm ý phải truy ngược về một con số ở chương 4: hệ số, điểm trung bình, câu hỏi có điểm thấp nhất.
 
 **3/7**
 > 2. Viết hàm ý "tăng cường" cho yếu tố không có ý nghĩa
@@ -314,14 +341,14 @@ Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của m�
 > "Nghiên cứu đã chứng minh", "khẳng định chắc chắn" với một mẫu thuận tiện là tự mở thêm câu hỏi cho hội đồng. Dùng "cho thấy", "ủng hộ".
 
 **7/7**
-> Một hàm ý tốt có bốn phần: căn cứ kèm con số, hành động cụ thể, ai làm, và vì sao kỳ vọng có hiệu quả. Bạn từng được góp ý gì khác ở chương 5 thì để dưới bình luận, mình bổ sung vào danh sách.
+> Một hàm ý tốt có bốn phần: căn cứ kèm con số, hành động cụ thể, ai làm, và vì sao kỳ vọng có hiệu quả.
+>
+> Gửi đứa bạn đang viết chương 5 nha. Bạn từng được góp ý gì khác ở chương 5 thì để dưới bình luận, mình bổ sung vào danh sách.
 
-### Ngày 14 · T6 27/11 · 20:30 · chủ đề KLTN · "Hội đồng hỏi" số 7
+### Ngày 14 · T6 27/11 · 20:30 · chủ đề KLTN · chuỗi tranh cãi, "Hội đồng hỏi" số 2
 
 **1/5**
-> Hội đồng hỏi: "Vì sao em chọn TPB mà không phải TAM?"
->
-> Trả lời "vì nhiều nghiên cứu dùng" là chưa đủ.
+> "Vì nhiều nghiên cứu dùng" không phải lý do chọn TPB. Hội đồng hỏi "sao không dùng TAM" thì trả lời theo các ý này:
 
 **2/5**
 > TPB của Ajzen (1991) giải thích ý định qua thái độ, chuẩn chủ quan và nhận thức kiểm soát hành vi. Nhận thức kiểm soát là phần TPB thêm vào thuyết hành động hợp lý TRA (Fishbein & Ajzen, 1975), và nó tác động cả lên ý định lẫn trực tiếp lên hành vi.
@@ -342,7 +369,7 @@ Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của m�
 #### Dự phòng A · chủ đề nckh · chuỗi 3 phần · Biến kiểm soát và biến điều tiết
 
 **1/3**
-> Biến kiểm soát và biến điều tiết đều là biến "đưa thêm vào mô hình", nhưng vai trò khác hẳn nhau.
+> Thêm biến vào mô hình mà không đặt giả thuyết cho nó thì đó là biến kiểm soát, không phải biến điều tiết. Phân biệt trong 2 ý:
 
 **2/3**
 > Biến kiểm soát chỉ để tách phần ảnh hưởng của nó ra khỏi biến phụ thuộc. Bạn không đặt giả thuyết cho nó, chỉ báo cáo là đã kiểm soát. Ví dụ tuổi, thu nhập khi kiểm định tác động của thái độ lên ý định.
@@ -363,13 +390,15 @@ Ghi chú: đây là bài duy nhất trong đợt nói về sản phẩm của m�
 
 ## 6 mẫu trả lời bài kêu cứu (bổ sung cho 10 mẫu ở đợt 1)
 
-Chỉnh theo từng bài, không dán y nguyên. Không link, không "ib mình", không nhắc dịch vụ. Chưa chắc thì nói chưa chắc.
+Chỉnh theo từng bài, không dán y nguyên. Giọng sinh viên nói với sinh viên, câu ngắn. Không link, không "ib mình", không nhắc dịch vụ. Chưa chắc thì nói chưa chắc.
+
+Các mẫu này chỉ để soạn nháp. Tài khoản không tự gửi; người dùng quyết định lúc nào gửi, rải ra trong ngày.
 
 **11. "AVE dưới 0,5, làm sao?"**
-> Tìm biến có hệ số tải thấp nhất trước, vì AVE là trung bình bình phương hệ số tải: một biến tải 0,45 chỉ góp 0,20. Xem câu đó có phải câu đảo chiều chưa mã hoá ngược, hay câu dịch tối nghĩa không. Loại từng biến một rồi chạy lại, giữ ít nhất 3 câu cho mỗi khái niệm, ghi lý do loại vào chương 4.
+> Khoan loại hàng loạt nha. Tìm biến có hệ số tải thấp nhất trước, vì AVE là trung bình bình phương hệ số tải: một biến tải 0,45 chỉ góp 0,20. Xem câu đó có phải câu đảo chiều chưa mã hoá ngược, hay câu dịch tối nghĩa không. Loại từng biến một rồi chạy lại, giữ ít nhất 3 câu cho mỗi khái niệm, ghi lý do loại vào chương 4.
 
 **12. "HTMT vượt 0,85"**
-> Bạn đọc lại câu chữ hai thang đo trước: hay gặp một câu của khái niệm này thực ra hỏi về khái niệm kia. Sau đó tìm biến có tương quan chéo cao nhất, và lọc phiếu chọn cùng một mức cho cả khối. Nếu hai khái niệm gần nghĩa về lý thuyết thì có thể dùng mốc 0,90 (Henseler và cộng sự, 2015), nhưng phải lập luận từ chương 2.
+> Đọc lại câu chữ hai thang đo trước đã: hay gặp một câu của khái niệm này thực ra hỏi về khái niệm kia. Sau đó tìm biến có tương quan chéo cao nhất, và lọc phiếu chọn cùng một mức cho cả khối. Nếu hai khái niệm gần nghĩa về lý thuyết thì có thể dùng mốc 0,90 (Henseler và cộng sự, 2015), nhưng phải lập luận từ chương 2.
 
 **13. "Hausman ra chi bình phương âm"**
 > Đó là do hiệu hai ma trận phương sai không xác định dương, không phải kết quả "không bác bỏ H0". Chạy lại bằng hausman fe re, sigmamore để hai mô hình dùng chung một ước lượng phương sai, rồi đọc p như bình thường.
@@ -378,18 +407,18 @@ Chỉnh theo từng bài, không dán y nguyên. Không link, không "ib mình",
 > Tính theo nhóm ít hơn của biến phụ thuộc, không theo tổng số phiếu. Khoảng 10 trường hợp ở nhóm ít hơn cho mỗi biến độc lập (Peduzzi và cộng sự, 1996), biến giả cũng tính là một biến. Mô hình 6 biến thì cần khoảng 60 người ở nhóm ít hơn.
 
 **15. "Bước 1 Baron và Kenny không có ý nghĩa, bỏ giả thuyết trung gian à?"**
-> Chưa cần bỏ. Zhao và cộng sự (2010) chỉ ra tác động gián tiếp vẫn có thể có ý nghĩa khi tác động tổng không có ý nghĩa. Kiểm định thẳng a × b bằng bootstrap 5.000 mẫu: khoảng tin cậy 95% không chứa 0 là có trung gian.
+> Chưa cần bỏ đâu. Zhao và cộng sự (2010) chỉ ra tác động gián tiếp vẫn có thể có ý nghĩa khi tác động tổng không có ý nghĩa. Kiểm định thẳng a × b bằng bootstrap 5.000 mẫu: khoảng tin cậy 95% không chứa 0 là có trung gian.
 
 **16. "Không cài được SmartPLS"**
-> Bạn thử gói seminr hoặc cSEM trên R, cả hai miễn phí và chạy được PLS-SEM đầy đủ, có bootstrap. Ghi đúng tên gói và phiên bản ở chương 3. Nếu khoa bắt buộc SmartPLS thì hỏi giảng viên xem trường có bản quyền cho sinh viên không.
+> Thử gói seminr hoặc cSEM trên R nha, cả hai miễn phí và chạy được PLS-SEM đầy đủ, có bootstrap. Ghi đúng tên gói và phiên bản ở chương 3. Nếu khoa bắt buộc SmartPLS thì hỏi giảng viên xem trường có bản quyền cho sinh viên không.
 
 ## Lịch làm việc và đo lường
 
-Giữ nguyên mục "Lịch làm việc mỗi ngày" và "Đo gì" trong `lich-14-ngay.md`: 10-15 trả lời có nội dung mỗi ngày, nhật ký một dòng mỗi bài, ba tỉ lệ ra quyết định (tỉ lệ 2, người theo dõi mới trên 100 lượt xem, là quan trọng nhất).
+Giữ nguyên mục "Lịch làm việc mỗi ngày" và "Đo gì" đã cập nhật trong `lich-14-ngay.md`: không bình luận ngay sau khi đăng, trả lời chỉ soạn nháp để người dùng gửi, nhật ký một dòng mỗi bài, các tỉ lệ ra quyết định (người theo dõi mới trên 100 lượt xem là quan trọng nhất; thêm (đăng lại + chia sẻ) / lượt xem).
 
 **Đánh giá ngày 7 và ngày 14 của đợt 2:**
-- So giờ: ngày 6 và ngày 11 (12:15) với ngày 3 và ngày 8 (20:30). Bốn bài cùng tag `nckh`, cùng dạng chuỗi giải thích 4 phần, nên khác biệt chủ yếu đến từ giờ đăng. Gộp với hai bài 12:15 của đợt 1 để có 4 điểm dữ liệu cho mỗi khung giờ.
-- So dạng: 4 chuỗi danh sách với 5 chuỗi giải thích và 3 bài "Hội đồng hỏi".
+- So giờ: ngày 6 và ngày 11 (12:15) với ngày 3 và ngày 8 (20:30). Bốn bài cùng tag `nckh`, cùng dạng chuỗi tranh cãi 4 phần, nên khác biệt chủ yếu đến từ giờ đăng. Gộp với hai bài 12:15 của đợt 1 để có 4 điểm dữ liệu cho mỗi khung giờ.
+- So kiểu: tổng hợp, tranh cãi, phát hiện, giới thiệu.
 - So bài nhắc công cụ (ngày 12) với các bài khác cùng tag `khóa luận` (ngày 5, 9): lượt bấm link bio có tăng không, tỉ lệ 2 có giảm không. Nếu tỉ lệ 2 giảm rõ, đợt 3 không đăng bài riêng về công cụ.
 
 ## Nguồn trích trong bài đăng
@@ -429,4 +458,4 @@ Ghi chú về số liệu: các ví dụ số trong bài (CR 0,82 và AVE 0,36 c
 
 ## Kiểm tra độ dài
 
-Đếm số ký tự phần chữ trong các dòng `>` của từng phần (bỏ tiền tố `> `, dòng trống trong khối tính là một ký tự xuống dòng), bằng script Python đọc file này. Mọi phần dưới 500 ký tự; phần dài nhất ghi ở báo cáo kèm commit.
+Đếm số ký tự phần chữ trong các dòng `>` của từng phần (bỏ tiền tố `> `, dòng trống trong khối tính là một ký tự xuống dòng), bằng script Python đọc file này. Mọi phần dưới 500 ký tự, phần 1 (hoặc bài đơn) không quá 140 ký tự. Lần đếm ngày 30/10/2026 sau khi viết lại: phần dài nhất 397 ký tự.

@@ -40,14 +40,14 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 
 ## Đang viết (đã có người nhận, tác vụ khác bỏ qua)
 
-- cach-tim-thang-do-nghien-cuu-khoa-hoc | cách tìm thang đo trong nghiên cứu khoa học | Google Scholar, phụ lục, thư viện
-- nghien-cuu-so-bo-la-gi | nghiên cứu sơ bộ, khảo sát thử pilot test | cỡ mẫu pilot, Cronbach sơ bộ
 - cach-xay-dung-mo-hinh-nghien-cuu | xây dựng mô hình nghiên cứu, mô hình nghiên cứu đề xuất | dẫn sang công cụ vẽ mô hình
 - cach-dat-gia-thuyet-nghien-cuu | cách viết giả thuyết nghiên cứu | ví dụ H1 H2, cùng chiều/ngược chiều
 - hoi-quy-tuyen-tinh-boi-spss | hồi quy tuyến tính bội spss, đọc kết quả hồi quy | dẫn sang công cụ phân tích
 
 ## Đã viết
 
+- nghien-cuu-so-bo-la-gi | nghiên cứu sơ bộ, khảo sát thử pilot test | cỡ mẫu pilot, Cronbach sơ bộ | đã viết: /posts/nghien-cuu-so-bo-la-gi/
+- cach-tim-thang-do-nghien-cuu-khoa-hoc | cách tìm thang đo trong nghiên cứu khoa học | Google Scholar, phụ lục, thư viện | đã viết: /posts/cach-tim-thang-do-nghien-cuu-khoa-hoc/
 - thang-do-likert-5-muc-hay-7-muc | thang đo likert 5 mức độ của ai, likert 5 hay 7 mức | trích Likert 1932, Preston & Colman 2000 | trùng bài có sẵn: /posts/thang-do-likert/
 - likert-la-thang-do-khoang-hay-thu-bac | likert là thang đo khoảng cách hay thứ bậc | Norman 2010, Carifio & Perla | đã viết: /posts/likert-la-thang-do-khoang-hay-thu-bac/
 - thang-do-goc-ke-thua-hieu-chinh-la-gi | thang đo gốc là gì, thang đo kế thừa, thang đo hiệu chỉnh | dẫn sang thư viện thang đo | đã viết: /posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/

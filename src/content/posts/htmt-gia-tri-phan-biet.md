@@ -95,7 +95,7 @@ tags: ["PLS-SEM","thang đo","khoá luận"]
 </tbody>
 </table>
 <p>HL và TT qua được kiểm định so với 1 (cận trên 0,927 &lt; 1) nhưng không qua được kiểm định chặt so với 0,90. Kết luận trung thực: giá trị phân biệt giữa hài lòng và trung thành ở mức giới hạn, cần xem xét như phần sau.</p>
-<p>Trong SmartPLS 4: chạy <code>Bootstrapping</code> (5.000 mẫu con), mở <code>Discriminant validity &gt; Heterotrait-monotrait ratio (HTMT)</code> trong kết quả bootstrap, chọn tab <code>Confidence intervals</code>. Nếu muốn cận trên một phía, chọn kiểu kiểm định One-tailed khi cài bootstrap và đọc cột 95%.</p>
+<p>Trong SmartPLS 4: chạy <code>Bootstrapping</code> (5.000 mẫu con), mở <code>Discriminant validity &gt; Heterotrait-monotrait ratio (HTMT)</code> trong kết quả bootstrap, chọn tab <code>Confidence intervals</code>. Nếu muốn cận trên một phía, chọn kiểu kiểm định One-tailed khi cài bootstrap và đọc cột 95%. Không có SmartPLS thì <a href="/cong-cu/pls-sem/">chạy PLS-SEM trên trình duyệt</a>: bảng HTMT kèm sẵn cận trên một phía 95% từ bootstrap.</p>
 
 <h2>Khi HTMT vượt ngưỡng: xử lý thế nào</h2>
 <ol>

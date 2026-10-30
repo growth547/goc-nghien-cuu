@@ -232,6 +232,7 @@
     sample:L('cong-cu/tinh-co-mau/','Máy tính cỡ mẫu'),
     kit:L('cong-cu/bo-khao-sat/','Bộ khảo sát: bảng hỏi từ thang đo gốc'),
     model:L('cong-cu/ve-mo-hinh/','Vẽ mô hình nghiên cứu và giả thuyết'),
+    pls:L('cong-cu/pls-sem/','Chạy PLS-SEM online: hệ số tải, HTMT, bootstrap (miễn phí)'),
     scales:L('thang-do/','Thư viện thang đo'),
     efa:L('posts/cach-doc-ket-qua-efa-spss/','Cách đọc kết quả EFA trong SPSS'),
     alpha:L('posts/cronbach-alpha-la-gi/','Cronbach’s alpha là gì'),
@@ -354,7 +355,7 @@
       const pls=M('PLS-SEM (SmartPLS)',{why:[],assume:['Mô hình đệ quy (không vòng lặp).','Mỗi khái niệm phản ánh từ 3 câu trở lên.','Không cần phân phối chuẩn; ý nghĩa kiểm định bằng bootstrap (5.000 mẫu).'],
         sample:[`${Math.max(pow,isr)} quan sát: lấy số lớn hơn giữa G*Power (${pow}; ${k} mũi tên nhiều nhất trỏ vào một khái niệm, f² = 0,15) và căn bậc hai nghịch đảo (${isr}; Kock & Hadaya, 2018).`],
         report:['Mô hình đo lường: outer loading ≥ 0,708, Cronbach’s alpha và CR 0,70–0,95, AVE ≥ 0,50, HTMT < 0,85 (hoặc 0,90).','Mô hình cấu trúc: VIF < 3, hệ số đường dẫn và p (bootstrap), R², f², Q²/PLSpredict (Hair và cộng sự, 2019).'],
-        links:[T.model,T.build,T.kit,T.concepts,T.analysis,T.sample],refs:['hair19','hair22','kock']});
+        links:[T.pls,T.model,T.build,T.kit,T.concepts,T.analysis,T.sample],refs:['hair19','hair22','kock']});
       const cb=M('CB-SEM (AMOS, lavaan): CFA rồi mô hình cấu trúc',{why:[],assume:['Phân phối chuẩn đa biến (hoặc ước lượng bền vững như MLR, bootstrap Bollen–Stine).','Khái niệm phản ánh, mỗi khái niệm từ 3 câu.','Mô hình xác định được.'],
         sample:['Hair và cộng sự (2010): 100 khi tối đa 5 khái niệm, mỗi khái niệm trên 3 câu, hệ số chung từ 0,6; 150 khi tối đa 7 khái niệm, hệ số chung 0,5; 300 khi hệ số chung thấp (dưới 0,45) hoặc khái niệm dưới 3 câu; 500 khi có nhiều khái niệm. Mô phỏng của Wolf và cộng sự (2013) cho thấy cỡ mẫu cần dao động khoảng 30–460 tuỳ độ phức tạp.'],
         report:['Hai bước (Anderson & Gerbing, 1988): CFA với CR, AVE, Fornell–Larcker/HTMT; rồi mô hình cấu trúc.','Chỉ số phù hợp: χ²/df, CFI và TLI ≥ 0,95 (≥ 0,90 chấp nhận được), RMSEA ≤ 0,06, SRMR ≤ 0,08 (Hu & Bentler, 1999).'],

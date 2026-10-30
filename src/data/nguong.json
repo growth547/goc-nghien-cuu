@@ -149,7 +149,7 @@
       "id": "pls-do-luong",
       "title": "PLS-SEM, mô hình đo lường: outer loading, AVE, HTMT bao nhiêu là đạt?",
       "answer": "Với mô hình đo lường kết quả (reflective) trong PLS-SEM: hệ số tải ngoài ≥ 0,708, độ tin cậy 0,70–0,95, AVE ≥ 0,50, và giá trị phân biệt đánh giá bằng HTMT < 0,85 (hoặc < 0,90 khi hai khái niệm gần nghĩa). Tiêu chí Fornell–Larcker vẫn hay được báo cáo nhưng không còn được khuyên dùng làm tiêu chí chính.",
-      "links": [],
+      "links": [["cong-cu/pls-sem", "Chạy PLS-SEM trên trình duyệt (outer loading, AVE, HTMT)"]],
       "rows": [
         {
           "indicator": "Hệ số tải ngoài (outer loading)",

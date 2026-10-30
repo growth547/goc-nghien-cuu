@@ -15,48 +15,96 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
     <h2>Cách dùng</h2>
     <ol>
       <li>
-        <strong>Chuẩn bị file.</strong> Dòng đầu là tên cột, mỗi dòng là một
-        phiếu. Đặt tên biến quan sát theo mã khái niệm cộng số thứ tự (PU1, PU2,
-        PEOU1…) để công cụ tự nhóm. Cột câu kiểm tra chú ý nên đặt tên ATT hoặc
-        ATT1. Xuất từ Google Forms thì đổi tên cột câu hỏi trước khi tải lên;
-        <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> có sẵn bảng
-        mã hoá theo đúng quy ước này.
+        <strong>Chuẩn bị file.</strong> Mỗi dòng là một phiếu. Đặt tên biến quan
+        sát theo mã khái niệm cộng số thứ tự để công cụ tự nhóm: PU1, PU2,
+        PEOU_1, mã có tiền tố như TPB_ATT1, mã tiếng Việt như ĐT1, TĐ1, hoặc kiểu
+        Qualtrics Q1_1. ATT1–ATT4 được hiểu là khái niệm Thái độ (TPB, TAM),
+        không phải câu kiểm tra chú ý.
       </li>
       <li>
-        <strong>Kiểm tra nhóm khái niệm.</strong> Mỗi dòng có dạng
-        <code>MÃ: biến1 biến2 …</code>; sửa nếu công cụ nhóm sai. Khai báo câu đảo
-        chiều để công cụ đảo điểm trước khi tính.
+        <strong>Dùng file từ Bộ khảo sát.</strong> Form tạo bằng
+        <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> (Word,
+        Google Form hoặc GDF) dùng cùng bảng mã với công cụ này: AC1 hoặc ACHK là
+        câu kiểm tra chú ý (đáp án đúng là 2 – Không đồng ý, được điền sẵn),
+        SANGLOC là câu sàng lọc (phiếu trả lời “Chưa từng” hoặc “Không phải” bị
+        loại), TT1, TT2… là câu hỏi thông tin chung. Với file Google Sheets xuất
+        từ Google Form, công cụ đọc mã ở đầu tên cột (“TT1. Giới tính”, “… [PU1.
+        Ứng dụng dễ dùng]”), nên không cần đổi tên cột. File Google Forms tự tạo
+        không có mã thì đổi tên cột theo bảng mã hoá trước khi tải lên.
       </li>
       <li>
-        <strong>Chọn cách lọc phiếu:</strong> câu kiểm tra chú ý (ví dụ
-        <code>ATT1=4</code> nghĩa là đáp án đúng là 4) và loại phiếu chọn cùng một
-        mức cho mọi biến quan sát. Phiếu thiếu câu trả lời bị loại tự động.
+        <strong>Kiểm tra phần công cụ nhận ra:</strong> dòng tiêu đề (file Excel
+        có tiêu đề gộp hai dòng thì chọn dòng chứa mã), thang đo (1–5, 1–7…),
+        nhóm khái niệm (<code>MÃ: biến1 biến2 …</code>), câu đảo chiều, câu kiểm
+        tra chú ý (ví dụ <code>AC1=2</code>; đáp án dạng chữ như
+        <code>ATTN=Đồng ý</code> cũng được) và biến nhân khẩu học. Cột chỉ có một
+        biến (ví dụ SAT1 đứng riêng) không được coi là nhân khẩu học.
       </li>
       <li>
-        <strong>Chọn biến phụ thuộc</strong> cho hồi quy và số nhân tố cho EFA
-        (mặc định theo eigenvalue &gt; 1), rồi bấm phân tích.
+        <strong>Chọn biến phụ thuộc</strong>, cách chạy EFA (tách biến độc lập và
+        biến phụ thuộc, hay chạy chung), số nhân tố, và các giả thuyết tác động
+        ngược chiều nếu có, rồi bấm phân tích.
       </li>
     </ol>
     <p>
-      File được đọc ngay trong trình duyệt, không gửi lên máy chủ. Muốn thử trước,
-      bấm “Dùng dữ liệu mẫu” để chạy bộ dữ liệu TAM 250 phiếu.
+      Câu trả lời dạng chữ theo thang 5 mức chuẩn (Hoàn toàn không đồng ý,
+      Không đồng ý, Trung lập hoặc Bình thường, Đồng ý, Hoàn toàn đồng ý) được
+      tự đổi thành 1–5 và có thông báo. Cột không đọc được thành số được nêu tên.
+      File được đọc ngay trong trình duyệt, không gửi lên máy chủ; file 10.000
+      phiếu × 40 biến chạy trong vài giây. Muốn thử trước, bấm “Dùng dữ liệu
+      mẫu”.
     </p>
+
+    <h2>Công cụ làm gì với dữ liệu trước khi phân tích</h2>
+    <ul>
+      <li>
+        <strong>Lọc phiếu</strong> theo thứ tự: không qua câu sàng lọc, thiếu câu
+        trả lời (listwise), sai câu kiểm tra chú ý, chọn cùng một mức cho mọi
+        câu. Mục 4.1 ghi số phiếu bị loại theo từng lý do.
+      </li>
+      <li>
+        <strong>Đảo điểm câu đảo chiều</strong> theo thang đã khai báo: điểm mới
+        = thấp nhất + cao nhất − điểm cũ (thang 1–5 là 6 − điểm), kể cả khi không
+        ai chọn mức 1 hay 5. Giá trị nằm ngoài thang được cảnh báo.
+      </li>
+      <li>
+        <strong>Loại biến hỏng:</strong> biến mà mọi phiếu trả lời cùng một mức
+        (phương sai bằng 0) và biến trùng lặp với biến khác (tương quan gần bằng
+        1, thường do sao chép nhầm cột) bị loại khỏi mọi phân tích, có cảnh báo
+        nêu tên và câu ghi rõ trong mục 4.3. Nếu ma trận tương quan vẫn suy biến,
+        EFA báo không tính được KMO thay vì đưa ra con số sai.
+      </li>
+    </ul>
 
     <h2>Công thức và cách tính</h2>
     <ul>
+      <li>
+        <strong>Thống kê mô tả</strong> cho từng biến và từng khái niệm: N, nhỏ
+        nhất, lớn nhất, trung bình, độ lệch chuẩn, skewness và kurtosis theo công
+        thức hiệu chỉnh của SPSS.
+      </li>
       <li>
         <strong>Cronbach's alpha</strong> cho từng khái niệm, kèm tương quan
         biến–tổng hiệu chỉnh và alpha nếu loại biến, như
         <a href="/goc-nghien-cuu/cong-cu/cronbach-alpha/"
           >công cụ tính Cronbach's alpha</a
-        >.
+        >. Biến có tương quan biến–tổng âm được nhắc kiểm tra câu đảo chiều.
       </li>
       <li>
-        <strong>EFA</strong> chạy chung cho mọi biến quan sát đã khai báo: trích
-        nhân tố bằng Principal Components trên ma trận tương quan, xoay Varimax có
-        chuẩn hoá Kaiser (Kaiser, 1958), giống lựa chọn phổ biến trong SPSS. Công
-        cụ báo KMO (Kaiser, 1974), kiểm định Bartlett, eigenvalue, phương sai
-        trích luỹ kế và ma trận xoay.
+        <strong>EFA</strong>: trích nhân tố bằng Principal Components trên ma trận
+        tương quan, xoay Varimax có chuẩn hoá Kaiser (Kaiser, 1958), giống lựa
+        chọn phổ biến trong SPSS. Mặc định chạy riêng cho các biến độc lập và cho
+        biến phụ thuộc, như nhiều giảng viên yêu cầu; có thể chọn chạy chung. Công
+        cụ báo KMO (Kaiser, 1974), kiểm định Bartlett, bảng tổng phương sai trích
+        (eigenvalue, % phương sai, % tích luỹ, trước và sau xoay) và ma trận xoay.
+      </li>
+      <li>
+        <strong>CR, AVE, Fornell–Larcker và HTMT.</strong> Hệ số tải của mỗi
+        biến lấy từ thành phần chính thứ nhất của thang đo đó; CR = (Σλ)² /
+        [(Σλ)² + Σ(1 − λ²)], AVE = Σλ²/k (Fornell &amp; Larcker, 1981). HTMT tính
+        đúng theo Henseler và cộng sự (2015) từ ma trận tương quan giữa các biến
+        quan sát. Hệ số tải theo thành phần chính gần với outer loadings của
+        SmartPLS nhưng có thể lệch ở chữ số thập phân thứ hai.
       </li>
       <li>
         <strong>Tương quan Pearson</strong> giữa các khái niệm, mỗi khái niệm lấy
@@ -64,15 +112,32 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
       </li>
       <li>
         <strong>Hồi quy bội OLS</strong>: R², R² hiệu chỉnh, kiểm định F, hệ số B,
-        sai số chuẩn, β chuẩn hoá, t, Sig. và VIF cho từng biến độc lập.
+        sai số chuẩn, β chuẩn hoá, t, Sig. (cả hằng số) và VIF; kiểm tra giả định
+        bằng VIF, Durbin–Watson (Durbin &amp; Watson, 1951) và skewness, kurtosis
+        của phần dư chuẩn hoá; bảng giả thuyết chấp nhận/bác bỏ.
+      </li>
+      <li>
+        <strong>Kiểm định khác biệt</strong> của biến phụ thuộc theo từng biến
+        nhân khẩu học: Independent Samples T-test cho hai nhóm, One-way ANOVA từ
+        ba nhóm. Kiểm định Levene dựa trên trung bình như SPSS (Levene, 1960);
+        khi phương sai không đồng nhất, công cụ dùng t-test Welch (Welch, 1947)
+        hoặc Welch ANOVA (Welch, 1951). Khi ANOVA có ý nghĩa, kiểm định sau dùng
+        Bonferroni (phương sai đồng nhất) hoặc Tamhane’s T2 (Tamhane, 1979). Nhóm
+        dưới 2 phiếu không đưa vào kiểm định và được nêu tên.
       </li>
     </ul>
 
     <h2>Đọc kết quả</h2>
     <ul>
       <li>
+        <strong>Phân phối:</strong> skewness và kurtosis trong khoảng ±2 là xấp xỉ
+        chuẩn (George &amp; Mallery, 2019); dưới 3 và 10 (giá trị tuyệt đối) là
+        chưa vi phạm nghiêm trọng (Kline, 2016).
+      </li>
+      <li>
         <strong>Độ tin cậy:</strong> alpha từ 0,7 (Nunnally, 1978) và tương quan
-        biến–tổng hiệu chỉnh từ 0,3 (Nunnally &amp; Bernstein, 1994).
+        biến–tổng hiệu chỉnh từ 0,3 (Nunnally &amp; Bernstein, 1994); CR từ 0,7
+        đến 0,95 và AVE từ 0,5 (Hair và cộng sự, 2022).
       </li>
       <li>
         <strong>EFA:</strong> KMO từ 0,5 và Bartlett có Sig. &lt; 0,05 thì dữ liệu
@@ -82,34 +147,57 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
         hỏi.
       </li>
       <li>
+        <strong>Giá trị phân biệt:</strong> căn bậc hai AVE lớn hơn tương quan
+        với các khái niệm khác (Fornell &amp; Larcker, 1981); HTMT dưới 0,85, hoặc
+        dưới 0,90 với các khái niệm gần nhau về lý thuyết (Henseler và cộng sự,
+        2015).
+      </li>
+      <li>
         <strong>Hồi quy:</strong> Sig. của F &lt; 0,05 thì mô hình có ý nghĩa; mỗi
-        biến độc lập có Sig. &lt; 0,05 thì tác động có ý nghĩa, dấu của β cho biết
-        chiều tác động. VIF từ 5 trở lên được tô màu để xem xét đa cộng tuyến
-        (Hair và cộng sự, 2010).
+        biến độc lập có Sig. &lt; 0,05 và β cùng dấu kỳ vọng thì giả thuyết được
+        chấp nhận. VIF từ 5 trở lên được tô màu (Hair và cộng sự, 2010);
+        Durbin–Watson trong khoảng 1 đến 3 là không có tự tương quan (Field,
+        2013).
+      </li>
+      <li>
+        <strong>Kiểm định khác biệt:</strong> đọc Sig. của Levene trước để biết
+        dùng dòng kết quả nào, rồi đọc Sig. của t hoặc F.
       </li>
     </ul>
     <p>
-      Đoạn văn chương 4 (mục 4.1 đến 4.5) được viết theo đúng các con số trên, kèm
-      bảng và tài liệu tham khảo, tải về Word được. Kiểm tra câu chữ và đối chiếu
-      với SPSS ở lần đầu dùng.
+      Đoạn văn chương 4 (mục 4.1 đến 4.8) được viết theo đúng các con số trên,
+      kèm bảng đánh số 4.1, 4.2… và tài liệu tham khảo APA, tải về Word được.
+      Các cảnh báo (biến bị loại, cột không đọc được, câu đảo chiều sai tên) hiện
+      phía trên kết quả và không nằm trong đoạn văn. Kiểm tra câu chữ và đối
+      chiếu với SPSS ở lần đầu dùng.
     </p>
 
     <h2>Câu hỏi thường gặp</h2>
     <h3>Công cụ có thay được SPSS hay SmartPLS không?</h3>
     <p>
-      Công cụ tính theo các công thức chuẩn và cho cùng kết quả với SPSS khi dùng
-      cùng lựa chọn (PCA, Varimax, loại phiếu thiếu theo listwise). Công cụ không
-      chạy CFA, SEM hay PLS-SEM; đề tài dùng SmartPLS vẫn cần phần mềm đó cho mô
-      hình cấu trúc.
+      Thống kê mô tả, Cronbach's alpha, EFA, tương quan, hồi quy, t-test, ANOVA
+      và Levene cho cùng kết quả với SPSS khi dùng cùng lựa chọn (PCA, Varimax,
+      loại phiếu thiếu theo listwise). CR, AVE và Fornell–Larcker dùng hệ số tải
+      theo thành phần chính nên chỉ gần đúng với SmartPLS; HTMT tính đúng công
+      thức. Công cụ không chạy CFA, SEM hay PLS-SEM; đề tài dùng SmartPLS vẫn cần
+      phần mềm đó cho mô hình cấu trúc và nên báo cáo số của SmartPLS.
     </p>
     <h3>Vì sao số phiếu hợp lệ ít hơn số phiếu tải lên?</h3>
     <p>
-      Phần 4.1 liệt kê số phiếu bị loại theo từng lý do: thiếu câu trả lời, sai
-      câu kiểm tra chú ý, chọn cùng một mức cho mọi câu. Cách đặt câu kiểm tra và
-      các dấu hiệu khác có trong bài
+      Phần 4.1 liệt kê số phiếu bị loại theo từng lý do: không qua câu sàng lọc,
+      thiếu câu trả lời, sai câu kiểm tra chú ý, chọn cùng một mức cho mọi câu.
+      Cách đặt câu kiểm tra và các dấu hiệu khác có trong bài
       <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/"
         >cách lọc phiếu khảo sát không hợp lệ</a
       >.
+    </p>
+    <h3>Câu kiểm tra chú ý của tôi không tên AC1 thì sao?</h3>
+    <p>
+      Cột tên ACHK, ATTN, ATT_CHECK, IMC hoặc ATT/AC đứng riêng (không có ATT2,
+      AC2) được nhận là câu kiểm tra chú ý. Tên khác thì tự ghi vào ô “Câu kiểm
+      tra chú ý” theo dạng <code>TÊNCỘT=đáp án đúng</code>. Nếu công cụ thấy cột
+      giống câu kiểm tra mà chưa có đáp án, hoặc không tìm thấy cột bạn ghi, sẽ
+      có cảnh báo và chưa lọc theo câu đó.
     </p>
     <h3>KMO dưới 0,5 thì làm gì?</h3>
     <p>
@@ -120,15 +208,53 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
     </p>
     <h3>Cột nhân khẩu học được xử lý thế nào?</h3>
     <p>
-      Cột không phải biến quan sát và có từ 2 đến 8 giá trị khác nhau (giới tính,
-      năm học, thu nhập theo khoảng…) được lập bảng tần số trong phần mô tả mẫu.
+      Cột TT1, TT2… của Bộ khảo sát, và cột không phải biến quan sát có từ 2 đến
+      12 giá trị khác nhau (giới tính, năm học, thu nhập theo khoảng…), được điền
+      sẵn vào ô biến nhân khẩu học; sửa ô này nếu cần. Mỗi biến có một bảng tần
+      số trong mục 4.1, xếp theo thứ tự số trong nhãn (“Dưới 5 triệu”, “Từ 5 đến
+      dưới 10 triệu”…), và một kiểm định khác biệt trong mục 4.8. Nếu đề tài có
+      khái niệm viết tắt TT (ví dụ Tin tưởng) gồm các câu thang đo có tương quan
+      với nhau, công cụ vẫn nhóm thành khái niệm.
     </p>
 
     <h2>Tài liệu tham khảo</h2>
     <ul class="text-sm">
       <li>
+        Durbin, J., &amp; Watson, G. S. (1951). Testing for serial correlation in
+        least squares regression. II. <em>Biometrika, 38</em>(1–2), 159–178.
+        https://doi.org/10.1093/biomet/38.1-2.159
+      </li>
+      <li>
+        Field, A. (2013). <em>Discovering statistics using IBM SPSS Statistics</em>
+        (4th ed.). Sage.
+      </li>
+      <li>
+        Fornell, C., &amp; Larcker, D. F. (1981). Evaluating structural equation
+        models with unobservable variables and measurement error.
+        <em>Journal of Marketing Research, 18</em>(1), 39–50.
+        https://doi.org/10.1177/002224378101800104
+      </li>
+      <li>
+        George, D., &amp; Mallery, P. (2019). <em
+          >IBM SPSS Statistics 25 step by step: A simple guide and reference</em
+        > (15th ed.). Routledge.
+      </li>
+      <li>
         Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010).
         <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.
+      </li>
+      <li>
+        Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022).
+        <em
+          >A primer on partial least squares structural equation modeling
+          (PLS-SEM)</em
+        > (3rd ed.). Sage.
+      </li>
+      <li>
+        Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion
+        for assessing discriminant validity in variance-based structural equation
+        modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1),
+        115–135. https://doi.org/10.1007/s11747-014-0403-8
       </li>
       <li>
         Kaiser, H. F. (1958). The varimax criterion for analytic rotation in
@@ -140,12 +266,42 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
         <em>Psychometrika, 39</em>(1), 31–36. https://doi.org/10.1007/BF02291575
       </li>
       <li>
+        Kline, R. B. (2016). <em
+          >Principles and practice of structural equation modeling</em
+        > (4th ed.). Guilford Press.
+      </li>
+      <li>
+        Levene, H. (1960). Robust tests for equality of variances. In I. Olkin,
+        S. G. Ghurye, W. Hoeffding, W. G. Madow, &amp; H. B. Mann (Eds.),
+        <em
+          >Contributions to probability and statistics: Essays in honor of Harold
+          Hotelling</em
+        > (pp. 278–292). Stanford University Press.
+      </li>
+      <li>
         Nunnally, J. C. (1978). <em>Psychometric theory</em> (2nd ed.).
         McGraw-Hill.
       </li>
       <li>
         Nunnally, J. C., &amp; Bernstein, I. H. (1994). <em>Psychometric theory</em>
         (3rd ed.). McGraw-Hill.
+      </li>
+      <li>
+        Tamhane, A. C. (1979). A comparison of procedures for multiple
+        comparisons of means with unequal variances. <em
+          >Journal of the American Statistical Association, 74</em
+        >(366), 471–480. https://doi.org/10.1080/01621459.1979.10482541
+      </li>
+      <li>
+        Welch, B. L. (1947). The generalization of “Student’s” problem when
+        several different population variances are involved. <em
+          >Biometrika, 34</em
+        >(1–2), 28–35. https://doi.org/10.1093/biomet/34.1-2.28
+      </li>
+      <li>
+        Welch, B. L. (1951). On the comparison of several mean values: An
+        alternative approach. <em>Biometrika, 38</em>(3–4), 330–336.
+        https://doi.org/10.1093/biomet/38.3-4.330
       </li>
     </ul>
   </Fragment>

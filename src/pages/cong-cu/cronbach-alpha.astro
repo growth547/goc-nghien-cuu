@@ -20,12 +20,17 @@ import html from "@/tools/cronbach-alpha.html?raw";
         > thang đo (ví dụ HL1 đến HL5), kể cả dòng tên biến nếu muốn, rồi sao chép.
       </li>
       <li>
-        Dán vào ô dữ liệu. Công cụ tự nhận dấu phân cách là tab, dấu chấm phẩy
-        hoặc dấu phẩy, và nhận dòng đầu là tên biến nếu dòng đó có chữ.
+        Dán vào ô dữ liệu. Công cụ tự nhận dấu phân cách là tab, dấu chấm phẩy,
+        dấu phẩy hoặc khoảng trắng (số thập phân dạng 3,5 hay 3.5 đều được), và
+        nhận dòng đầu là tên biến nếu dòng đó có chữ. Kết quả ghi rõ các cột đã
+        đọc. Cột số thứ tự (ID, STT, hoặc 1, 2, 3… tăng dần), cột thời gian và
+        cột chữ được bỏ ra và nêu tên, nên không làm sai alpha.
       </li>
       <li>
         Bấm <strong>Tính alpha</strong>. Dòng nào thiếu giá trị hoặc có ô không
-        phải số sẽ bị loại (listwise), giống thiết lập mặc định của SPSS.
+        phải số sẽ bị loại (listwise), giống thiết lập mặc định của SPSS. Biến mà
+        mọi người trả lời giống nhau (phương sai bằng 0) được nêu tên để bạn bỏ
+        ra.
       </li>
       <li>
         Mã hoá lại câu đảo chiều trước khi dán: thang 5 mức dùng 6 − điểm, thang
@@ -76,6 +81,10 @@ import html from "@/tools/cronbach-alpha.html?raw";
         <strong>Alpha nếu loại biến lớn hơn alpha tổng</strong> cũng được đánh
         dấu: bỏ biến đó làm thang đo nhất quán hơn.
       </li>
+      <li>
+        <strong>Tương quan biến–tổng âm</strong> gần như luôn là câu đảo chiều
+        chưa đảo điểm. Công cụ nhắc mã hoá lại trước khi quyết định loại.
+      </li>
     </ul>
     <p>
       Loại từng biến một, bắt đầu từ biến yếu nhất, rồi tính lại; các con số thay
@@ -92,8 +101,11 @@ import html from "@/tools/cronbach-alpha.html?raw";
     <p>
       Có, khi dùng cùng dữ liệu và cùng cách xử lý giá trị thiếu. Số trên công cụ
       tương ứng cột <code>Cronbach's Alpha</code> của bảng Reliability Statistics
-      và hai cột <code>Corrected Item-Total Correlation</code>,
+      và các cột <code>Scale Mean if Item Deleted</code>,
+      <code>Scale Variance if Item Deleted</code>,
+      <code>Corrected Item-Total Correlation</code>,
       <code>Cronbach's Alpha if Item Deleted</code> của bảng Item-Total Statistics.
+      Dưới kết quả có đoạn văn chương 4 viết sẵn để sao chép.
     </p>
     <h3>Vì sao alpha âm?</h3>
     <p>

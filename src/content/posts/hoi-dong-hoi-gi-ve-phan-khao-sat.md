@@ -21,7 +21,7 @@ tags: ["bảo vệ khoá luận","cỡ mẫu","PLS-SEM"]
 
 <h3>3. "Thang đo lấy ở đâu, dịch thế nào?"</h3>
 <p>Cần trả lời được ba thứ: nguồn gốc (tác giả, năm, bài báo), cách dịch, và cách kiểm tra bản dịch. Quy trình thường được chấp nhận là dịch xuôi rồi dịch ngược bởi một người khác (Brislin, 1970), nhờ giảng viên hoặc chuyên gia đọc lại, sau đó khảo sát thử với 20 đến 30 người để sửa câu khó hiểu. Ghi rõ câu nào bạn đã điều chỉnh từ ngữ cho phù hợp bối cảnh Việt Nam.</p>
-<p><a href="/thang-do/">Thư viện thang đo</a> có câu hỏi gốc tiếng Anh, bản tiếng Việt tham khảo và nguồn trích dẫn của hơn 60 thang đo hay dùng (TAM, UTAUT2, TPB, SERVQUAL, SWLS...).</p>
+<p><a href="/thang-do/">Thư viện thang đo</a> có câu hỏi gốc tiếng Anh, bản tiếng Việt tham khảo và nguồn trích dẫn của hơn 60 thang đo hay dùng (TAM, UTAUT2, TPB, SERVQUAL, SWLS...). Nếu hội đồng hỏi vì sao chuẩn chủ quan trong mô hình TPB không có ý nghĩa, xem phần giải thích ở bài <a href="/posts/mo-hinh-tpb-thuyet-hanh-vi-co-ke-hoach/">mô hình TPB là gì</a>.</p>
 
 <h3>4. "Sao Cronbach's alpha của nhân tố này chỉ 0,65?"</h3>
 <p>Ngưỡng hay được trích là 0,7 (Nunnally, 1978). Nếu bạn ở dưới mức đó, đừng chống chế, hãy giải thích bằng số liệu: nhân tố có ít biến quan sát (alpha nhạy với số câu), bạn đã xem cột <em>Corrected Item-Total Correlation</em> và <em>Cronbach's Alpha if Item Deleted</em>, và quyết định giữ hay bỏ câu nào vì lý do gì. Với PLS-SEM, báo cáo thêm độ tin cậy tổng hợp (composite reliability) và rho_A, vì alpha giả định mọi câu có tải nhân tố bằng nhau và thường cho giá trị thấp hơn (Hair và cộng sự, 2019).</p>

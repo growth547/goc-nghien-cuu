@@ -22,7 +22,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 <tr><td>ECM (Bhattacherjee, 2001)</td><td>Ý định tiếp tục sử dụng</td><td>Sự xác nhận, nhận thức sự hữu ích, sự hài lòng</td><td>Người đã dùng, câu hỏi là có dùng tiếp không</td></tr>
 </tbody>
 </table>
-<p>Câu hỏi đầu tiên để chọn: đối tượng của bạn đã dùng hay chưa dùng? Người chưa dùng phù hợp với TAM, UTAUT2; người đã dùng phù hợp với ECM. Thang đo tiếng Việt cho từng mô hình có ở <a href="/thang-do/tam/">TAM</a>, <a href="/thang-do/tpb/">TPB</a>, <a href="/thang-do/utaut2/">UTAUT2</a> và <a href="/thang-do/ecm-tiep-tuc-su-dung/">ECM</a>.</p>
+<p>Câu hỏi đầu tiên để chọn: đối tượng của bạn đã dùng hay chưa dùng? Người chưa dùng phù hợp với TAM, UTAUT2; người đã dùng phù hợp với ECM. Thang đo tiếng Việt cho từng mô hình có ở <a href="/thang-do/tam/">TAM</a>, <a href="/thang-do/tpb/">TPB</a>, <a href="/thang-do/utaut2/">UTAUT2</a> và <a href="/thang-do/ecm-tiep-tuc-su-dung/">ECM</a>. Mô hình TPB gốc, cách mở rộng và kết quả thường gặp được giải thích ở bài <a href="/posts/mo-hinh-tpb-thuyet-hanh-vi-co-ke-hoach/">mô hình TPB là gì</a>.</p>
 
 <h2>Quy trình 7 bước</h2>
 <h3>Bước 1: Chốt biến phụ thuộc từ câu hỏi nghiên cứu</h3>

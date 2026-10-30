@@ -1,0 +1,176 @@
+---
+import { getCollection } from "astro:content";
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/ve-mo-hinh.html?raw";
+
+// Only what the concept search needs; "<" is escaped so the JSON cannot close the script tag.
+const scales = (await getCollection("scales"))
+  .map(({ id, data }) => ({
+    slug: id,
+    name: data.name,
+    fullName: data.fullName,
+    constructs: data.constructs.map(c => ({
+      code: c.code,
+      nameVi: c.nameVi,
+      nameEn: c.nameEn,
+      definition: c.definition,
+      source: c.source,
+      items: c.items.map(i => ({ en: i.en, vi: i.vi })),
+    })),
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name, "vi"));
+const json = JSON.stringify(scales).replace(/</g, "\\u003c");
+---
+
+<ToolLayout
+  slug="ve-mo-hinh"
+  title="Vẽ mô hình nghiên cứu online, tự viết giả thuyết H1, H2 và tính cỡ mẫu"
+  h1="Vẽ mô hình nghiên cứu"
+  description="Chọn khái niệm từ thư viện thang đo, nối mũi tên, tải hình mô hình nghiên cứu (PNG, SVG), nhận giả thuyết H1…Hn tiếng Việt và cỡ mẫu tối thiểu PLS-SEM. Miễn phí."
+  lede="Thêm các khái niệm, nối mũi tên giữa chúng. Công cụ tự xếp hình gọn gàng để chèn vào chương 2, viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian), đếm số mũi tên nhiều nhất để ra cỡ mẫu tối thiểu, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
+  html={html}
+>
+  <script is:inline type="application/json" id="vm-data" set:html={json} />
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        <strong>Thêm khái niệm.</strong> Gõ tên khái niệm vào ô tìm kiếm (tiếng
+        Việt hoặc tiếng Anh, có dấu hay không đều được), ví dụ “hữu ích; dễ sử
+        dụng; ý định”. Bấm vào kết quả để thêm. Khái niệm lấy từ
+        <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a> mang theo mã
+        biến gốc (PU, PEOU, BI…) và thang đo có trích dẫn. Khái niệm chưa có
+        trong thư viện thì gõ vào ô “Tự đặt tên”.
+      </li>
+      <li>
+        <strong>Nối mũi tên.</strong> Chọn “Từ” và “Tới” rồi bấm Nối, hoặc bấm
+        vào một ô trên hình rồi bấm ô đích. Muốn nhanh hơn, gõ danh sách vào ô
+        văn bản, mỗi dòng một quan hệ: <code>PEOU -&gt; PU</code>,
+        <code>PU, PEOU -&gt; BI</code>, <code>PR -&gt; BI (-)</code> cho quan hệ
+        ngược chiều.
+      </li>
+      <li>
+        <strong>Kiểm tra hình.</strong> Công cụ xếp biến độc lập bên trái, biến
+        trung gian ở giữa, biến phụ thuộc bên phải; mũi tên ngược chiều vẽ nét
+        đứt màu đỏ. Tải PNG (độ phân giải gấp 3 lần, đủ nét khi in) để chèn vào
+        Word, hoặc SVG để chỉnh tiếp trong PowerPoint, Inkscape, draw.io.
+      </li>
+      <li>
+        <strong>Chép giả thuyết</strong> vào cuối chương 2 và viết lập luận cho
+        từng giả thuyết. Thứ tự H1, H2… theo thứ tự trong danh sách mũi tên; dùng
+        nút ↑ để đổi.
+      </li>
+      <li>
+        <strong>Bấm “Mở trong Bộ khảo sát”.</strong> Các khái niệm từ thư viện,
+        số mũi tên lớn nhất và biến phụ thuộc được chuyển sang
+        <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> để ghép
+        bảng hỏi tiếng Việt, tính cỡ mẫu và viết đoạn chương 3.
+      </li>
+    </ol>
+
+    <h2>Ví dụ: mô hình TAM</h2>
+    <p>
+      Bấm “Nạp ví dụ TAM”. Mô hình chấp nhận công nghệ của Davis (1989) có ba
+      khái niệm: Nhận thức tính dễ sử dụng (PEOU), Nhận thức sự hữu ích (PU) và
+      Ý định sử dụng (BI), với ba mũi tên PEOU → PU, PU → BI và PEOU → BI. Công
+      cụ viết ra:
+    </p>
+    <ul>
+      <li>H1: Nhận thức tính dễ sử dụng (PEOU) có tác động cùng chiều đến nhận thức sự hữu ích (PU).</li>
+      <li>H2: Nhận thức sự hữu ích (PU) có tác động cùng chiều đến ý định sử dụng (BI).</li>
+      <li>H3: Nhận thức tính dễ sử dụng (PEOU) có tác động cùng chiều đến ý định sử dụng (BI).</li>
+      <li>H4: Nhận thức sự hữu ích (PU) đóng vai trò trung gian trong mối quan hệ giữa nhận thức tính dễ sử dụng (PEOU) và ý định sử dụng (BI).</li>
+    </ul>
+    <p>
+      BI nhận nhiều mũi tên nhất (2), nên G*Power (hồi quy bội, f² = 0,15, α =
+      0,05, power = 0,80, 2 biến dự báo) cho 68 quan sát; phương pháp căn bậc hai
+      nghịch đảo của Kock và Hadaya (2018) với hệ số đường dẫn nhỏ nhất 0,20 cho
+      155. Cỡ mẫu tối thiểu là số lớn hơn, 155 phiếu hợp lệ; dự phòng 15% phiếu
+      bị loại thì cần thu khoảng 183 phiếu.
+    </p>
+
+    <h2>Đếm mũi tên và cỡ mẫu</h2>
+    <p>
+      Trong PLS-SEM, mỗi biến nội sinh được ước lượng bằng một phương trình hồi
+      quy với các biến trỏ vào nó. Phương trình có nhiều biến dự báo nhất quyết
+      định cỡ mẫu cần cho phân tích power, vì vậy công cụ đếm số mũi tên nhiều
+      nhất trỏ vào một khái niệm (Hair và cộng sự, 2022). Phần tính toán giống
+      hệt <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a> và
+      Bộ khảo sát: kiểm định F của hồi quy bội như G*Power 3.1 (Faul và cộng sự,
+      2009) với cỡ hiệu ứng trung bình f² = 0,15 theo Cohen (1992), đối chiếu
+      với phương pháp căn bậc hai nghịch đảo. Đề tài dùng hồi quy trong SPSS thì
+      đổi phương pháp ở Máy tính cỡ mẫu.
+    </p>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Khi nào ghi “cùng chiều”, khi nào “ngược chiều”?</h3>
+    <p>
+      Theo lý thuyết và nghiên cứu trước: biến này tăng thì biến kia tăng là
+      cùng chiều (tích cực); tăng thì giảm là ngược chiều (tiêu cực), ví dụ rủi
+      ro cảm nhận làm giảm ý định mua. Chiều của giả thuyết phải khớp dấu hệ số
+      bạn kỳ vọng ở chương 4; giả thuyết bị bác bỏ khi hệ số không có ý nghĩa
+      thống kê hoặc ngược dấu.
+    </p>
+    <h3>Biến điều tiết vẽ thế nào?</h3>
+    <p>
+      Công cụ vẽ quan hệ trực tiếp và tự nhận biết biến trung gian (chuỗi X → M
+      → Y). Biến điều tiết là mũi tên trỏ vào một mũi tên khác; hãy tải SVG rồi
+      thêm mũi tên đó trong PowerPoint hoặc draw.io, và viết giả thuyết dạng “W
+      điều tiết mối quan hệ giữa X và Y”. Cách kiểm định trung gian, điều tiết
+      xem ở <a href="/goc-nghien-cuu/cong-cu/chon-phuong-phap/">Chọn phương pháp phân tích</a>.
+    </p>
+    <h3>Có nên thêm giả thuyết trung gian?</h3>
+    <p>
+      Chỉ khi đề tài thật sự muốn kiểm định tác động gián tiếp. Khi đó báo cáo
+      tác động gián tiếp bằng bootstrap thay cho các bước của Baron và Kenny
+      (Zhao và cộng sự, 2010). Bỏ dấu tích “Thêm giả thuyết trung gian” nếu
+      không cần.
+    </p>
+    <h3>Công cụ báo mô hình có vòng lặp?</h3>
+    <p>
+      A → B → C → A là mô hình không đệ quy; PLS-SEM và hồi quy thông thường
+      không ước lượng được. Bỏ một mũi tên trong vòng, thường là mũi tên ít cơ
+      sở lý thuyết nhất.
+    </p>
+    <h3>Dữ liệu mô hình có được gửi đi đâu không?</h3>
+    <p>
+      Không. Mọi thứ chạy trong trình duyệt; mô hình được lưu trong đường link
+      (nút “Sao chép link”) và bộ nhớ của trình duyệt để lần sau mở lại.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>
+        Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1),
+        155–159. https://doi.org/10.1037/0033-2909.112.1.155
+      </li>
+      <li>
+        Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user
+        acceptance of information technology. <em>MIS Quarterly, 13</em>(3),
+        319–340. https://doi.org/10.2307/249008
+      </li>
+      <li>
+        Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009).
+        Statistical power analyses using G*Power 3.1: Tests for correlation and
+        regression analyses. <em>Behavior Research Methods, 41</em>(4),
+        1149–1160. https://doi.org/10.3758/BRM.41.4.1149
+      </li>
+      <li>
+        Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022).
+        <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em>
+        (3rd ed.). Sage.
+      </li>
+      <li>
+        Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in
+        PLS-SEM: The inverse square root and gamma-exponential methods.
+        <em>Information Systems Journal, 28</em>(1), 227–261.
+        https://doi.org/10.1111/isj.12131
+      </li>
+      <li>
+        Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron
+        and Kenny: Myths and truths about mediation analysis. <em>Journal of
+        Consumer Research, 37</em>(2), 197–206. https://doi.org/10.1086/651257
+      </li>
+    </ul>
+  </Fragment>
+</ToolLayout>

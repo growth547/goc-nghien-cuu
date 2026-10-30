@@ -31,6 +31,7 @@ jobs:
       - run: node scripts/check-kit.mjs
       - run: node scripts/check-stats.mjs
       - run: node scripts/check-concepts.mjs
+      - run: node scripts/check-model.mjs
       - run: pnpm exec astro build
       - run: pnpm exec pagefind --site dist
       - uses: actions/configure-pages@v5

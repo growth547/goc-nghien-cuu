@@ -179,7 +179,7 @@
     @apply text-muted-foreground mt-2 max-w-2xl;
   }
   .more-link {
-    @apply text-accent inline-flex items-center gap-1 text-sm font-semibold whitespace-nowrap hover:underline;
+    @apply text-accent inline-flex min-h-11 items-center gap-1 text-sm font-semibold whitespace-nowrap hover:underline;
     text-underline-offset: 4px;
   }
   .icon-tile {

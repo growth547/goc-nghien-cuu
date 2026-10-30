@@ -93,6 +93,21 @@ const journey = [
   },
 ];
 
+// First screen for visitors from social posts: the tools those posts promise.
+const quickStart: { title: string; desc: string; path: string; icon: "graph" | "chart" | "users" | "layers" | "book"; wide?: boolean }[] = [
+  { title: "Chạy PLS-SEM", desc: "Bảng như SmartPLS, bootstrap, xuất Word", path: "cong-cu/pls-sem", icon: "graph" },
+  { title: "Tính Cronbach's alpha", desc: "Dán từ Excel, ra bảng như SPSS", path: "cong-cu/cronbach-alpha", icon: "chart" },
+  { title: "Tính cỡ mẫu", desc: "PLS-SEM, hồi quy, EFA, Cochran", path: "cong-cu/tinh-co-mau", icon: "users" },
+  { title: "Vẽ mô hình nghiên cứu", desc: "Kéo thả, tự viết giả thuyết H1, H2…", path: "cong-cu/ve-mo-hinh", icon: "layers" },
+  {
+    title: `${scales.length} thang đo tiếng Việt có nguồn`,
+    desc: "Bản gốc tiếng Anh, tác giả, năm, trích dẫn APA",
+    path: "thang-do",
+    icon: "book",
+    wide: true,
+  },
+];
+
 const popularScales = ["tam", "utaut2", "tpb", "servqual", "dass-21", "cang-thang-pss-10"]
   .map(id => scales.find(s => s.id === id))
   .filter((s): s is (typeof scales)[number] => Boolean(s));
@@ -237,7 +252,7 @@ const homePosts = [...featuredPosts, ...recentPosts].slice(
         <div class="bg-grid fade-grid absolute inset-0"></div>
       </div>
       <div
-        class="app-layout grid items-center gap-10 pt-12 pb-14 sm:pt-16 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:pt-20 lg:pb-20"
+        class="app-layout grid items-center gap-10 pt-7 pb-14 sm:pt-16 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:pt-20 lg:pb-20"
       >
         <div>
           <p class="badge">
@@ -246,38 +261,51 @@ const homePosts = [...featuredPosts, ...recentPosts].slice(
           </p>
           <h1
             id="hero-title"
-            class="text-foreground mt-5 text-[2.1rem] leading-[1.18] font-bold sm:text-5xl sm:leading-[1.15] lg:text-[2.85rem]"
+            class="text-foreground mt-4 text-[1.7rem] leading-[1.2] font-bold sm:mt-5 sm:text-5xl sm:leading-[1.15] lg:text-[2.7rem]"
           >
-            Chọn khái niệm trong mô hình.
-            <span class="text-accent block">1 phút có bảng hỏi và chương 3.</span>
+            Chạy số liệu khoá luận ngay trên trình duyệt.
+            <span class="text-accent block">Miễn phí, không cần tài khoản.</span>
           </h1>
-          <p class="text-muted-foreground mt-5 max-w-xl text-lg leading-relaxed">
-            Bảng hỏi tiếng Việt ghép từ thang đo gốc có trích dẫn, cỡ mẫu tối
-            thiểu cho PLS-SEM hoặc SPSS, và đoạn “Thang đo và cỡ mẫu” viết sẵn.
-            Tải về Word. Miễn phí, không cần đăng ký.
+          <p class="text-muted-foreground mt-3 max-w-xl text-base leading-relaxed sm:mt-4 sm:text-lg">
+            Bộ công cụ cho khoá luận định lượng. Chọn việc bạn cần, mỗi công
+            cụ đều có dữ liệu mẫu để thử ngay:
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a class="btn lg" href={href("cong-cu/bo-khao-sat")}>
-              Tạo bảng hỏi ngay <Icon name="arrow" />
-            </a>
-            <a class="btn ghost lg" href={href("du-lieu")}>
-              <Icon name="database" /> Dữ liệu Việt Nam
-            </a>
-          </div>
-          <ul class="text-muted-foreground mt-8 grid gap-2.5 text-[0.95rem] sm:grid-cols-1">
+          <ul class="mt-5 grid gap-2.5 sm:mt-6 sm:grid-cols-2 sm:gap-3" aria-label="Bắt đầu nhanh">
+            {quickStart.map(q => (
+              <li class:list={[q.wide && "sm:col-span-2"]}>
+                <a href={href(q.path)} class="group border-border bg-surface hover:border-accent/60 focus-visible:outline-accent flex min-h-16 items-center gap-3 rounded-xl border px-3.5 py-3 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2" style="box-shadow: var(--shadow)">
+                  <span class="bg-accent-soft text-accent grid size-11 flex-none place-items-center rounded-lg">
+                    <Icon name={q.icon} class="size-6" />
+                  </span>
+                  <span class="min-w-0 flex-1">
+                    <span class="text-foreground group-hover:text-accent block text-[1.05rem] leading-snug font-bold">{q.title}</span>
+                    <span class="text-muted-foreground block text-sm leading-snug">{q.desc}</span>
+                  </span>
+                  <Icon name="arrow" class="text-accent size-5 flex-none" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul class="text-muted-foreground mt-6 grid gap-2 text-[0.95rem]">
             <li class="flex gap-2.5">
               <Icon name="check" class="text-accent mt-0.5 size-5 flex-none" />
-              <span>{scales.length} thang đo gốc: TAM, UTAUT2, TPB, SERVQUAL…</span>
+              <span>Miễn phí, không đăng ký, không cài phần mềm</span>
             </li>
             <li class="flex gap-2.5">
               <Icon name="check" class="text-accent mt-0.5 size-5 flex-none" />
-              <span>Cỡ mẫu theo G*Power và Kock &amp; Hadaya</span>
+              <span>Dữ liệu xử lý ngay trên trình duyệt của bạn, không gửi lên máy chủ</span>
             </li>
             <li class="flex gap-2.5">
               <Icon name="check" class="text-accent mt-0.5 size-5 flex-none" />
-              <span>Có câu kiểm tra chú ý, bảng mã hoá Excel</span>
+              <span>Mỗi ngưỡng (alpha, AVE, HTMT…) có nguồn để trích</span>
             </li>
           </ul>
+          <p class="text-muted-foreground mt-5 text-sm">
+            Cần bảng hỏi trước?{" "}
+            <a class="text-accent font-semibold underline underline-offset-4" href={href("cong-cu/bo-khao-sat")}>Tạo bảng hỏi từ thang đo gốc</a>
+            {" "}hoặc xem{" "}
+            <a class="text-accent font-semibold underline underline-offset-4" href={href("cong-cu")}>tất cả công cụ</a>.
+          </p>
         </div>
 
         {

@@ -5,9 +5,9 @@ import html from "@/tools/chon-phuong-phap.html?raw";
 
 <ToolLayout
   slug="chon-phuong-phap"
-  title="Chọn phương pháp phân tích dữ liệu: t-test, ANOVA, hồi quy, EFA, PLS-SEM"
+  title="Chọn phương pháp phân tích dữ liệu: t-test, hồi quy, PLS-SEM, FEM/REM, GMM, ARDL, DID"
   h1="Chọn phương pháp phân tích"
-  description="Trả lời vài câu về mục tiêu, loại biến, số nhóm và thiết kế, nhận gợi ý phương pháp phân tích (t-test, ANOVA, chi bình phương, tương quan, hồi quy, logistic, EFA/CFA, PLS-SEM, CB-SEM, trung gian, điều tiết, dữ liệu bảng) kèm lý do, giả định và cỡ mẫu tối thiểu có nguồn."
+  description="Trả lời vài câu về mục tiêu, loại biến và thiết kế, nhận gợi ý phương pháp phân tích (t-test, ANOVA, chi bình phương, hồi quy, logistic, EFA/CFA, PLS-SEM, trung gian, điều tiết, thí nghiệm, FEM/REM, GMM, ARDL, VAR/VECM, DID, event study, định tính) kèm lý do, giả định và cỡ mẫu có nguồn."
   lede="Trả lời vài câu về câu hỏi nghiên cứu và dữ liệu. Công cụ gợi ý phương pháp phân tích phù hợp, giải thích vì sao, liệt kê giả định cần kiểm tra, cỡ mẫu tối thiểu có trích dẫn và những gì cần báo cáo ở chương 4."
   html={html}
 >
@@ -17,8 +17,10 @@ import html from "@/tools/chon-phuong-phap.html?raw";
       <li>
         <strong>Chọn câu hỏi nghiên cứu.</strong> So sánh nhóm, liên hệ giữa hai
         biến, nhiều yếu tố tác động tới một biến, mô hình nhiều khái niệm, kiểm
-        tra thang đo, trung gian và điều tiết, dữ liệu bảng hay mô tả. Đề tài có
-        nhiều câu hỏi thì chạy công cụ cho từng câu.
+        tra thang đo, trung gian và điều tiết, thí nghiệm, dữ liệu bảng doanh
+        nghiệp và ngân hàng, chuỗi thời gian vĩ mô, tác động chính sách (DID,
+        event study), định tính hay mô tả. Đề tài có nhiều câu hỏi thì chạy
+        công cụ cho từng câu.
       </li>
       <li>
         <strong>Trả lời các câu hỏi phụ hiện ra.</strong> Quan trọng nhất là cách
@@ -55,6 +57,23 @@ import html from "@/tools/chon-phuong-phap.html?raw";
       mô hình đo lường và cấu trúc theo Hair và cộng sự (2019). Vẽ mô hình và
       đếm mũi tên bằng <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a>.
     </p>
+    <p>
+      <strong>Các yếu tố tác động đến nợ xấu của 27 ngân hàng, 2012–2023, có
+      biến nợ xấu năm trước.</strong> Chọn “Dữ liệu bảng”, ngân hàng, nhiều đơn
+      vị ít năm, có biến phụ thuộc trễ: gợi ý GMM hệ thống với kiểm định AR(2),
+      Hansen và lưu ý số biến công cụ phải nhỏ hơn số ngân hàng (Roodman, 2009),
+      kèm link tới cách tính
+      <a href="/goc-nghien-cuu/bien-nghien-cuu/ty-le-no-xau/">tỷ lệ nợ xấu</a>,
+      NIM, Z-score, CAR. Không có biến trễ thì gợi ý Pooled OLS, FEM, REM với
+      kiểm định F, Breusch–Pagan và Hausman.
+    </p>
+    <p>
+      <strong>Các yếu tố tác động đến lạm phát Việt Nam 1995–2023.</strong>
+      Chọn “Chuỗi thời gian vĩ mô”, một phương trình: sau kiểm định nghiệm đơn
+      vị, biến lẫn lộn I(0) và I(1) thì gợi ý ARDL bounds (Pesaran và cộng sự,
+      2001), với khoảng 30 quan sát năm thì dùng giá trị tới hạn của Narayan
+      (2005). Số liệu lấy ở <a href="/goc-nghien-cuu/du-lieu/">Dữ liệu thứ cấp</a>.
+    </p>
 
     <h2>Công cụ chọn theo nguyên tắc nào?</h2>
     <ul>
@@ -75,6 +94,14 @@ import html from "@/tools/chon-phuong-phap.html?raw";
         và cộng sự, 2009); logistic theo 10 biến cố cho mỗi biến (Peduzzi và cộng
         sự, 1996); trung gian theo bảng mô phỏng bootstrap của Fritz và MacKinnon
         (2007).
+      </li>
+      <li>
+        <strong>Dữ liệu thứ cấp</strong> theo cấu trúc: nhiều đơn vị ít năm thì
+        FEM/REM (Hausman, 1978) hoặc GMM khi có biến trễ (Roodman, 2009); ít đơn
+        vị nhiều năm thì kiểm định nghiệm đơn vị, đồng liên kết rồi ARDL bảng
+        (Pesaran và cộng sự, 1999); một chuỗi thời gian thì ARDL hoặc VAR/VECM
+        tuỳ bậc tích hợp (Pesaran và cộng sự, 2001; Johansen, 1991); chính sách
+        áp dụng ở các năm khác nhau thì DID theo Callaway và Sant’Anna (2021).
       </li>
       <li>
         <strong>PLS-SEM hay CB-SEM</strong> theo mục tiêu (dự báo, mở rộng lý
@@ -115,14 +142,21 @@ import html from "@/tools/chon-phuong-phap.html?raw";
 
     <h2>Tài liệu tham khảo</h2>
     <ul class="text-sm">
+      <li>Callaway, B., &amp; Sant’Anna, P. H. C. (2021). Difference-in-differences with multiple time periods. <em>Journal of Econometrics</em>, <em>225</em>(2), 200–230. https://doi.org/10.1016/j.jeconom.2020.12.001</li>
       <li>Cohen, J. (1992). A power primer. <em>Psychological Bulletin</em>, <em>112</em>(1), 155–159. https://doi.org/10.1037/0033-2909.112.1.155</li>
       <li>Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <em>Behavior Research Methods</em>, <em>41</em>(4), 1149–1160. https://doi.org/10.3758/BRM.41.4.1149</li>
       <li>Field, A. (2018). <em>Discovering statistics using IBM SPSS Statistics</em> (5th ed.). Sage.</li>
       <li>Fritz, M. S., &amp; MacKinnon, D. P. (2007). Required sample size to detect the mediated effect. <em>Psychological Science</em>, <em>18</em>(3), 233–239. https://doi.org/10.1111/j.1467-9280.2007.01882.x</li>
       <li>Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review</em>, <em>31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203</li>
+      <li>Hausman, J. A. (1978). Specification tests in econometrics. <em>Econometrica</em>, <em>46</em>(6), 1251–1271. https://doi.org/10.2307/1913827</li>
       <li>Hayes, A. F. (2022). <em>Introduction to mediation, moderation, and conditional process analysis: A regression-based approach</em> (3rd ed.). Guilford Press.</li>
+      <li>Johansen, S. (1991). Estimation and hypothesis testing of cointegration vectors in Gaussian vector autoregressive models. <em>Econometrica</em>, <em>59</em>(6), 1551–1580. https://doi.org/10.2307/2938278</li>
       <li>Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal</em>, <em>28</em>(1), 227–261. https://doi.org/10.1111/isj.12131</li>
+      <li>Narayan, P. K. (2005). The saving and investment nexus for China: Evidence from cointegration tests. <em>Applied Economics</em>, <em>37</em>(17), 1979–1990. https://doi.org/10.1080/00036840500278103</li>
       <li>Peduzzi, P., Concato, J., Kemper, E., Holford, T. R., &amp; Feinstein, A. R. (1996). A simulation study of the number of events per variable in logistic regression analysis. <em>Journal of Clinical Epidemiology</em>, <em>49</em>(12), 1373–1379. https://doi.org/10.1016/S0895-4356(96)00236-3</li>
+      <li>Pesaran, M. H., Shin, Y., &amp; Smith, R. P. (1999). Pooled mean group estimation of dynamic heterogeneous panels. <em>Journal of the American Statistical Association</em>, <em>94</em>(446), 621–634. https://doi.org/10.1080/01621459.1999.10474156</li>
+      <li>Pesaran, M. H., Shin, Y., &amp; Smith, R. J. (2001). Bounds testing approaches to the analysis of level relationships. <em>Journal of Applied Econometrics</em>, <em>16</em>(3), 289–326. https://doi.org/10.1002/jae.616</li>
+      <li>Roodman, D. (2009). How to do xtabond2: An introduction to difference and system GMM in Stata. <em>The Stata Journal</em>, <em>9</em>(1), 86–136. https://doi.org/10.1177/1536867X0900900106</li>
       <li>Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. <em>Journal of Consumer Research</em>, <em>37</em>(2), 197–206. https://doi.org/10.1086/651257</li>
     </ul>
   </Fragment>

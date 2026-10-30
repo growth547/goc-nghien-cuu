@@ -1,0 +1,443 @@
+{
+ "10.1002/jae.616": {
+  "family": "Pesaran",
+  "authors": 3,
+  "year": 2001,
+  "printed": true,
+  "volume": "16",
+  "page": "289-326",
+  "title": "Bounds testing approaches to the analysis of level relationships"
+ },
+ "10.1007/s00181-020-01875-7": {
+  "family": "Pesaran",
+  "authors": 1,
+  "year": 2021,
+  "printed": true,
+  "volume": "60",
+  "page": "13-50",
+  "title": "General diagnostic tests for cross-sectional dependence in panels"
+ },
+ "10.1016/0304-405X(85)90042-X": {
+  "family": "Brown",
+  "authors": 2,
+  "year": 1985,
+  "printed": true,
+  "volume": "14",
+  "page": "3-31",
+  "title": "Using daily stock returns"
+ },
+ "10.1016/0304-4076(92)90104-Y": {
+  "family": "Kwiatkowski",
+  "authors": 4,
+  "year": 1992,
+  "printed": true,
+  "volume": "54",
+  "page": "159-178",
+  "title": "Testing the null hypothesis of stationarity against the alternative of a unit root"
+ },
+ "10.1016/0304-4076(94)01616-8": {
+  "family": "Toda",
+  "authors": 2,
+  "year": 1995,
+  "printed": true,
+  "volume": "66",
+  "page": "225-250",
+  "title": "Statistical inference in vector autoregressions with possibly integrated processes"
+ },
+ "10.1016/0304-4076(94)01642-D": {
+  "family": "Arellano",
+  "authors": 2,
+  "year": 1995,
+  "printed": true,
+  "volume": "68",
+  "page": "29-51",
+  "title": "Another look at the instrumental variable estimation of error-components models"
+ },
+ "10.1016/S0304-4076(03)00092-7": {
+  "family": "Im",
+  "authors": 3,
+  "year": 2003,
+  "printed": true,
+  "volume": "115",
+  "page": "53-74",
+  "title": "Testing for unit roots in heterogeneous panels"
+ },
+ "10.1016/S0304-4076(98)00009-8": {
+  "family": "Blundell",
+  "authors": 2,
+  "year": 1998,
+  "printed": true,
+  "volume": "87",
+  "page": "115-143",
+  "title": "Initial conditions and moment restrictions in dynamic panel data models"
+ },
+ "10.1016/S0895-4356(96)00236-3": {
+  "family": "Peduzzi",
+  "authors": 5,
+  "year": 1996,
+  "printed": true,
+  "volume": "49",
+  "page": "1373-1379",
+  "title": "A simulation study of the number of events per variable in logistic regression analysis"
+ },
+ "10.1016/j.jclinepi.2007.02.006": {
+  "family": "Borm",
+  "authors": 3,
+  "year": 2007,
+  "printed": true,
+  "volume": "60",
+  "page": "1234-1238",
+  "title": "A simple sample size formula for analysis of covariance in randomized clinical trials"
+ },
+ "10.1016/j.jeconom.2004.02.005": {
+  "family": "Windmeijer",
+  "authors": 1,
+  "year": 2005,
+  "printed": true,
+  "volume": "126",
+  "page": "25-51",
+  "title": "A finite sample correction for the variance of linear efficient two-step GMM estimators"
+ },
+ "10.1016/j.jeconom.2020.09.006": {
+  "family": "Sun",
+  "authors": 2,
+  "year": 2021,
+  "printed": true,
+  "volume": "225",
+  "page": "175-199",
+  "title": "Estimating dynamic treatment effects in event studies with heterogeneous treatment effects"
+ },
+ "10.1016/j.jeconom.2020.12.001": {
+  "family": "Callaway",
+  "authors": 2,
+  "year": 2021,
+  "printed": true,
+  "volume": "225",
+  "page": "200-230",
+  "title": "Difference-in-Differences with multiple time periods"
+ },
+ "10.1016/j.jeconom.2021.03.014": {
+  "family": "Goodman-Bacon",
+  "authors": 1,
+  "year": 2021,
+  "printed": true,
+  "volume": "225",
+  "page": "254-277",
+  "title": "Difference-in-differences with variation in treatment timing"
+ },
+ "10.1016/j.jeconom.2023.03.008": {
+  "family": "Roth",
+  "authors": 4,
+  "year": 2023,
+  "printed": true,
+  "volume": "235",
+  "page": "2218-2244",
+  "title": "What’s trending in difference-in-differences? A synthesis of the recent econometrics literature"
+ },
+ "10.1016/j.socscimed.2021.114523": {
+  "family": "Hennink",
+  "authors": 2,
+  "year": 2022,
+  "printed": true,
+  "volume": "292",
+  "page": "114523",
+  "title": "Sample sizes for saturation in qualitative research: A systematic review of empirical tests"
+ },
+ "10.1017/CBO9781139013567": {
+  "family": "Cameron",
+  "authors": 2,
+  "year": 2013,
+  "printed": true,
+  "volume": null,
+  "page": null,
+  "title": "Regression Analysis of Count Data"
+ },
+ "10.1037/0033-2909.103.3.411": {
+  "family": "Anderson",
+  "authors": 2,
+  "year": 1988,
+  "printed": false,
+  "volume": "103",
+  "page": "411-423",
+  "title": "Structural equation modeling in practice: A review and recommended two-step approach."
+ },
+ "10.1037/0033-2909.112.1.155": {
+  "family": "Cohen",
+  "authors": 1,
+  "year": 1992,
+  "printed": false,
+  "volume": "112",
+  "page": "155-159",
+  "title": "A power primer."
+ },
+ "10.1080/00036840500278103": {
+  "family": "Narayan",
+  "authors": 1,
+  "year": 2005,
+  "printed": true,
+  "volume": "37",
+  "page": "1979-1990",
+  "title": "The saving and investment nexus for China: evidence from cointegration tests"
+ },
+ "10.1080/01621459.1979.10482531": {
+  "family": "Dickey",
+  "authors": 2,
+  "year": 1979,
+  "printed": true,
+  "volume": "74",
+  "page": "427-431",
+  "title": "Distribution of the Estimators for Autoregressive Time Series with a Unit Root"
+ },
+ "10.1080/01621459.1999.10474156": {
+  "family": "Pesaran",
+  "authors": 3,
+  "year": 1999,
+  "printed": true,
+  "volume": "94",
+  "page": "621-634",
+  "title": "Pooled Mean Group Estimation of Dynamic Heterogeneous Panels"
+ },
+ "10.1080/10705519909540118": {
+  "family": "Hu",
+  "authors": 2,
+  "year": 1999,
+  "printed": true,
+  "volume": "6",
+  "page": "1-55",
+  "title": "Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives"
+ },
+ "10.1086/651257": {
+  "family": "Zhao",
+  "authors": 3,
+  "year": 2010,
+  "printed": true,
+  "volume": "37",
+  "page": "197-206",
+  "title": "Reconsidering Baron and Kenny: Myths and Truths about Mediation Analysis"
+ },
+ "10.1093/biomet/75.2.335": {
+  "family": "PHILLIPS",
+  "authors": 2,
+  "year": 1988,
+  "printed": true,
+  "volume": "75",
+  "page": "335-346",
+  "title": "Testing for a unit root in time series regression"
+ },
+ "10.1093/ije/dyw098": {
+  "family": "Lopez Bernal",
+  "authors": 3,
+  "year": 2016,
+  "printed": false,
+  "volume": null,
+  "page": "dyw098",
+  "title": "Interrupted time series regression for the evaluation of public health interventions: a tutorial"
+ },
+ "10.1093/rfs/hhn053": {
+  "family": "Petersen",
+  "authors": 1,
+  "year": 2009,
+  "printed": true,
+  "volume": "22",
+  "page": "435-480",
+  "title": "Estimating Standard Errors in Finance Panel Data Sets: Comparing Approaches"
+ },
+ "10.1108/EBR-11-2018-0203": {
+  "family": "Hair",
+  "authors": 4,
+  "year": 2019,
+  "printed": true,
+  "volume": "31",
+  "page": "2-24",
+  "title": "When to use and how to report the results of PLS-SEM"
+ },
+ "10.1108/IMR-09-2014-0304": {
+  "family": "Henseler",
+  "authors": 3,
+  "year": 2016,
+  "printed": true,
+  "volume": "33",
+  "page": "405-431",
+  "title": "Testing measurement invariance of composites using partial least squares"
+ },
+ "10.1111/1475-6773.12117": {
+  "family": "Fetters",
+  "authors": 3,
+  "year": 2013,
+  "printed": true,
+  "volume": "48",
+  "page": "2134-2156",
+  "title": "Achieving Integration in Mixed Methods Designs—Principles and Practices"
+ },
+ "10.1111/isj.12131": {
+  "family": "Kock",
+  "authors": 2,
+  "year": 2018,
+  "printed": true,
+  "volume": "28",
+  "page": "227-261",
+  "title": "Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods"
+ },
+ "10.1111/j.1467-9280.2007.01882.x": {
+  "family": "Fritz",
+  "authors": 2,
+  "year": 2007,
+  "printed": true,
+  "volume": "18",
+  "page": "233-239",
+  "title": "Required Sample Size to Detect the Mediated Effect"
+ },
+ "10.1111/j.1468-0084.2007.00477.x": {
+  "family": "Westerlund",
+  "authors": 1,
+  "year": 2007,
+  "printed": true,
+  "volume": "69",
+  "page": "709-748",
+  "title": "Testing for Error Correction in Panel Data*"
+ },
+ "10.1136/bmj.323.7321.1123": {
+  "family": "Vickers",
+  "authors": 2,
+  "year": 2001,
+  "printed": true,
+  "volume": "323",
+  "page": "1123-1124",
+  "title": "Analysing controlled trials with baseline and follow up measurements"
+ },
+ "10.1145/1978942.1978963": {
+  "family": "Wobbrock",
+  "authors": 4,
+  "year": 2011,
+  "printed": true,
+  "volume": null,
+  "page": "143-146",
+  "title": "The aligned rank transform for nonparametric factorial analyses using only anova procedures"
+ },
+ "10.1162/003355304772839588": {
+  "family": "Bertrand",
+  "authors": 3,
+  "year": 2004,
+  "printed": true,
+  "volume": "119",
+  "page": "249-275",
+  "title": "How Much Should We Trust Differences-In-Differences Estimates?"
+ },
+ "10.1162/003465398557825": {
+  "family": "Driscoll",
+  "authors": 2,
+  "year": 1998,
+  "printed": true,
+  "volume": "80",
+  "page": "549-560",
+  "title": "Consistent Covariance Matrix Estimation with Spatially Dependent Panel Data"
+ },
+ "10.1177/0013164413495237": {
+  "family": "Wolf",
+  "authors": 4,
+  "year": 2013,
+  "printed": true,
+  "volume": "73",
+  "page": "913-934",
+  "title": "Sample Size Requirements for Structural Equation Models"
+ },
+ "10.1177/1525822X05279903": {
+  "family": "Guest",
+  "authors": 3,
+  "year": 2006,
+  "printed": true,
+  "volume": "18",
+  "page": "59-82",
+  "title": "How Many Interviews Are Enough?"
+ },
+ "10.1177/1536867X0900900106": {
+  "family": "Roodman",
+  "authors": 1,
+  "year": 2009,
+  "printed": true,
+  "volume": "9",
+  "page": "86-136",
+  "title": "How to do Xtabond2: An Introduction to Difference and System GMM in Stata"
+ },
+ "10.1191/1478088706qp063oa": {
+  "family": "Braun",
+  "authors": 2,
+  "year": 2006,
+  "printed": true,
+  "volume": "3",
+  "page": "77-101",
+  "title": "Using thematic analysis in psychology"
+ },
+ "10.2307/1912017": {
+  "family": "Sims",
+  "authors": 1,
+  "year": 1980,
+  "printed": true,
+  "volume": "48",
+  "page": "1",
+  "title": "Macroeconomics and Reality"
+ },
+ "10.2307/1913236": {
+  "family": "Engle",
+  "authors": 2,
+  "year": 1987,
+  "printed": true,
+  "volume": "55",
+  "page": "251",
+  "title": "Co-Integration and Error Correction: Representation, Estimation, and Testing"
+ },
+ "10.2307/1913646": {
+  "family": "Mundlak",
+  "authors": 1,
+  "year": 1978,
+  "printed": true,
+  "volume": "46",
+  "page": "69",
+  "title": "On the Pooling of Time Series and Cross Section Data"
+ },
+ "10.2307/1913827": {
+  "family": "Hausman",
+  "authors": 1,
+  "year": 1978,
+  "printed": true,
+  "volume": "46",
+  "page": "1251",
+  "title": "Specification Tests in Econometrics"
+ },
+ "10.2307/2297968": {
+  "family": "Arellano",
+  "authors": 2,
+  "year": 1991,
+  "printed": true,
+  "volume": "58",
+  "page": "277",
+  "title": "Some Tests of Specification for Panel Data: Monte Carlo Evidence and an Application to Employment Equations"
+ },
+ "10.2307/2938278": {
+  "family": "Johansen",
+  "authors": 1,
+  "year": 1991,
+  "printed": true,
+  "volume": "59",
+  "page": "1551",
+  "title": "Estimation and Hypothesis Testing of Cointegration Vectors in Gaussian Vector Autoregressive Models"
+ },
+ "10.3368/jhr.50.2.317": {
+  "family": "Colin Cameron",
+  "authors": 2,
+  "year": 2015,
+  "printed": true,
+  "volume": "50",
+  "page": "317-372",
+  "title": "A Practitioner’s Guide to Cluster-Robust Inference"
+ },
+ "10.3758/BRM.41.4.1149": {
+  "family": "Faul",
+  "authors": 4,
+  "year": 2009,
+  "printed": true,
+  "volume": "41",
+  "page": "1149-1160",
+  "title": "Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses"
+ }
+}

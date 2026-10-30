@@ -22,7 +22,11 @@
       <label><input type="radio" name="goal" value="model"><span>Kiểm định mô hình nhiều khái niệm đo bằng thang đo<small>TAM, UTAUT, TPB: khái niệm đo bằng nhiều câu Likert, có chuỗi tác động.</small></span></label>
       <label><input type="radio" name="goal" value="scale"><span>Kiểm tra thang đo<small>Độ tin cậy, các câu có gom đúng nhân tố không.</small></span></label>
       <label><input type="radio" name="goal" value="medmod"><span>Biến trung gian hoặc điều tiết<small>X tác động Y thông qua M; tác động của X lên Y mạnh yếu tuỳ W.</small></span></label>
-      <label><input type="radio" name="goal" value="panel"><span>Dữ liệu thứ cấp nhiều đơn vị qua nhiều năm<small>Doanh nghiệp niêm yết, ngân hàng, tỉnh, quốc gia theo năm.</small></span></label>
+      <label><input type="radio" name="goal" value="experiment"><span>Thí nghiệm, can thiệp có nhóm đối chứng<small>Chia ngẫu nhiên người tham gia vào các kịch bản, quảng cáo, phương pháp dạy khác nhau.</small></span></label>
+      <label><input type="radio" name="goal" value="panel"><span>Dữ liệu bảng: nhiều đơn vị qua nhiều năm<small>Doanh nghiệp niêm yết, ngân hàng, tỉnh, quốc gia theo năm (FEM, REM, GMM).</small></span></label>
+      <label><input type="radio" name="goal" value="ts"><span>Chuỗi thời gian vĩ mô của một quốc gia<small>Lạm phát, tỷ giá, lãi suất, GDP Việt Nam theo năm, quý, tháng (ARDL, VAR, VECM).</small></span></label>
+      <label><input type="radio" name="goal" value="policy"><span>Tác động của một chính sách, sự kiện<small>Trước và sau một quy định, so với nhóm không chịu tác động (DID); phản ứng giá cổ phiếu khi công bố tin (event study).</small></span></label>
+      <label><input type="radio" name="goal" value="qual"><span>Nghiên cứu định tính hoặc hỗn hợp<small>Phỏng vấn sâu, thảo luận nhóm; định tính trước rồi khảo sát.</small></span></label>
       <label><input type="radio" name="goal" value="describe"><span>Mô tả, ước lượng tỷ lệ<small>Bao nhiêu phần trăm sinh viên dùng ví điện tử; điểm trung bình.</small></span></label>
     </fieldset>
 
@@ -39,11 +43,27 @@
       <label><input type="radio" name="design" value="ind" checked><span>Độc lập: mỗi người thuộc một nhóm</span></label>
       <label><input type="radio" name="design" value="rep"><span>Lặp lại: cùng người đo nhiều lần, hoặc cặp ghép đôi</span></label>
     </fieldset>
-    <fieldset class="cp-q" data-for="compare:cont:ind"><legend>Có mấy biến chia nhóm cùng lúc?</legend>
+    <fieldset class="cp-q" data-for="compare:ind"><legend>Có mấy biến chia nhóm cùng lúc?</legend>
       <label><input type="radio" name="factors" value="1" checked><span>Một (ví dụ chỉ giới tính)</span></label>
       <label><input type="radio" name="factors" value="2"><span>Hai (ví dụ giới tính và độ tuổi, xem cả tương tác)</span></label>
     </fieldset>
-    <fieldset class="cp-q" data-for="compare:cont relate:cc"><legend>Dữ liệu có gần phân phối chuẩn không?</legend>
+    <fieldset class="cp-q" data-for="experiment"><legend>2. Thiết kế thí nghiệm</legend>
+      <label><input type="radio" name="xdesign" value="post" checked><span>Giữa các nhóm, chỉ đo sau can thiệp<small>Mỗi người xem một kịch bản (nhóm thực nghiệm, nhóm đối chứng) rồi trả lời.</small></span></label>
+      <label><input type="radio" name="xdesign" value="prepost"><span>Đo trước và sau, có nhóm đối chứng<small>Lớp thực nghiệm và lớp đối chứng cùng làm bài kiểm tra đầu vào và cuối kỳ.</small></span></label>
+      <label><input type="radio" name="xdesign" value="factorial"><span>Thiết kế giai thừa 2 × 2 (hai yếu tố thao tác)<small>Ví dụ loại quảng cáo × có hay không có người nổi tiếng.</small></span></label>
+      <label><input type="radio" name="xdesign" value="within"><span>Trong cùng người: mỗi người trải qua mọi điều kiện</span></label>
+    </fieldset>
+    <fieldset class="cp-q" data-for="experiment"><legend>Biến kết quả</legend>
+      <label><input type="radio" name="xout" value="cont" checked><span>Liên tục hoặc trung bình nhiều câu Likert<small>Ý định mua, điểm kiểm tra.</small></span></label>
+      <label><input type="radio" name="xout" value="ord"><span>Một câu Likert đơn lẻ, xếp hạng</span></label>
+      <label><input type="radio" name="xout" value="bin"><span>Có/không (có bấm mua, có đăng ký)</span></label>
+    </fieldset>
+    <fieldset class="cp-q" data-for="experiment:post experiment:within experiment:prepost"><legend>Số điều kiện (nhóm) so sánh</legend>
+      <label><input type="radio" name="xk" value="2" checked><span>2 (thực nghiệm và đối chứng)</span></label>
+      <label><input type="radio" name="xk" value="3"><span>3 trở lên</span></label>
+    </fieldset>
+
+    <fieldset class="cp-q" data-for="compare:cont relate:cc experiment:cont"><legend>Dữ liệu có gần phân phối chuẩn không?</legend>
       <label><input type="radio" name="normal" value="yes" checked><span>Có, hoặc mỗi nhóm từ 30 quan sát trở lên<small>Với mẫu lớn, kiểm định trung bình vẫn tin cậy dù lệch nhẹ.</small></span></label>
       <label><input type="radio" name="normal" value="no"><span>Không: lệch nhiều, có ngoại lai, nhóm nhỏ</span></label>
     </fieldset>
@@ -100,7 +120,12 @@
       <label><input type="radio" name="frame" value="sem"><span>Khái niệm tiềm ẩn trong mô hình SEM (SmartPLS, AMOS)</span></label>
     </fieldset>
 
-    <fieldset class="cp-q" data-for="panel"><legend>2. Số đơn vị (N) so với số năm (T)</legend>
+    <fieldset class="cp-q" data-for="panel"><legend>2. Đơn vị quan sát</legend>
+      <label><input type="radio" name="unit" value="firm" checked><span>Doanh nghiệp (niêm yết, theo báo cáo tài chính)</span></label>
+      <label><input type="radio" name="unit" value="bank"><span>Ngân hàng thương mại</span></label>
+      <label><input type="radio" name="unit" value="macro"><span>Tỉnh, quốc gia (số liệu vĩ mô)</span></label>
+    </fieldset>
+    <fieldset class="cp-q" data-for="panel"><legend>Số đơn vị (N) so với số năm (T)</legend>
       <label><input type="radio" name="nt" value="nbig" checked><span>Nhiều đơn vị, ít năm (ví dụ 300 doanh nghiệp × 8 năm)</span></label>
       <label><input type="radio" name="nt" value="tbig"><span>Ít đơn vị, nhiều năm (ví dụ 10 quốc gia × 30 năm)</span></label>
     </fieldset>
@@ -109,14 +134,42 @@
       <label><input type="radio" name="dyn" value="yes"><span>Có, hoặc nghi có nội sinh cần biến công cụ</span></label>
     </fieldset>
 
-    <div class="row" data-for="predict model compare relate scale">
+    <fieldset class="cp-q" data-for="ts"><legend>2. Bạn muốn ước lượng</legend>
+      <label><input type="radio" name="tsaim" value="single" checked><span>Tác động của vài biến lên một biến, ngắn hạn và dài hạn<small>Các yếu tố tác động đến lạm phát Việt Nam.</small></span></label>
+      <label><input type="radio" name="tsaim" value="system"><span>Quan hệ qua lại giữa các biến, phản ứng với cú sốc, nhân quả Granger<small>Tỷ giá, lãi suất, lạm phát tác động lẫn nhau.</small></span></label>
+    </fieldset>
+    <fieldset class="cp-q" data-for="ts"><legend>Kết quả kiểm định nghiệm đơn vị (ADF, PP, KPSS)</legend>
+      <label><input type="radio" name="integ" value="unknown" checked><span>Chưa kiểm định</span></label>
+      <label><input type="radio" name="integ" value="i0"><span>Tất cả dừng ở chuỗi gốc, I(0)</span></label>
+      <label><input type="radio" name="integ" value="i1"><span>Tất cả dừng ở sai phân bậc 1, I(1)</span></label>
+      <label><input type="radio" name="integ" value="mix"><span>Lẫn lộn I(0) và I(1)</span></label>
+      <label><input type="radio" name="integ" value="i2"><span>Có biến chỉ dừng ở sai phân bậc 2, I(2)</span></label>
+    </fieldset>
+
+    <fieldset class="cp-q" data-for="policy"><legend>2. Dữ liệu bạn có</legend>
+      <label><input type="radio" name="ptype" value="did" checked><span>Nhiều đơn vị, có nhóm chịu tác động và nhóm không, trước và sau<small>Doanh nghiệp thuộc diện áp dụng quy định so với doanh nghiệp không thuộc diện.</small></span></label>
+      <label><input type="radio" name="ptype" value="stock"><span>Giá cổ phiếu quanh ngày công bố một tin<small>Công bố chia cổ tức, sáp nhập, thay CEO, đưa vào rổ chỉ số.</small></span></label>
+      <label><input type="radio" name="ptype" value="its"><span>Một đơn vị (một tỉnh, cả nước), không có nhóm đối chứng<small>Chuỗi số liệu theo tháng trước và sau chính sách.</small></span></label>
+    </fieldset>
+    <fieldset class="cp-q" data-for="policy:did"><legend>Thời điểm chịu tác động</legend>
+      <label><input type="radio" name="timing" value="same" checked><span>Cùng một thời điểm cho mọi đơn vị chịu tác động</span></label>
+      <label><input type="radio" name="timing" value="stagger"><span>Mỗi nhóm đơn vị chịu tác động ở năm khác nhau</span></label>
+    </fieldset>
+
+    <fieldset class="cp-q" data-for="qual"><legend>2. Thiết kế</legend>
+      <label><input type="radio" name="qtype" value="qual" checked><span>Chỉ định tính: phỏng vấn sâu, thảo luận nhóm</span></label>
+      <label><input type="radio" name="qtype" value="explor"><span>Định tính trước, khảo sát sau<small>Phỏng vấn để điều chỉnh thang đo, mô hình, rồi khảo sát định lượng.</small></span></label>
+      <label><input type="radio" name="qtype" value="explan"><span>Khảo sát trước, phỏng vấn sau để giải thích kết quả</span></label>
+    </fieldset>
+
+    <div class="row" data-for="predict model compare relate scale experiment:3">
       <div class="field" data-for="predict model"><label for="cp-k" id="cp-k-label">Số biến độc lập (hoặc số mũi tên nhiều nhất trỏ vào một khái niệm)</label>
         <input id="cp-k" type="number" min="1" max="30" step="1" inputmode="numeric" value="4"></div>
       <div class="field" data-for="predict:bin"><label for="cp-p">Tỷ lệ nhóm ít hơn của biến phụ thuộc (%)</label>
         <input id="cp-p" type="number" min="1" max="50" step="1" inputmode="numeric" value="30"><small>Ví dụ 30% người trả lời “có mua”.</small></div>
       <div class="field" data-for="scale"><label for="cp-items">Tổng số biến quan sát</label>
         <input id="cp-items" type="number" min="3" max="300" step="1" inputmode="numeric" value="24"></div>
-      <div class="field" data-for="compare:3"><label for="cp-g">Số nhóm</label>
+      <div class="field" data-for="compare:3 experiment:3"><label for="cp-g">Số nhóm</label>
         <input id="cp-g" type="number" min="3" max="10" step="1" inputmode="numeric" value="3"></div>
       <div class="field" data-for="compare:nom relate:nn"><label for="cp-df">Bậc tự do của bảng chéo (hàng − 1) × (cột − 1)</label>
         <input id="cp-df" type="number" min="1" max="6" step="1" inputmode="numeric" value="1"><small>Bảng 2 × 2 có bậc tự do 1; 2 × 3 có 2.</small></div>
@@ -160,10 +213,16 @@
     const pw=n=>{const crit=finv(1-alpha,1,n-1);return 1-ncfcdf(crit,1,n-1,n*dz*dz)};
     let n=3;while(pw(n)<power&&n<100000)n++;return n;
   }
+  // Total N for one effect with df1 numerator degrees of freedom in a factorial ANOVA with `cells` cells, as
+  // G*Power's "ANOVA: Fixed effects, special, main effects and interactions" (2 × 2, f = .25 → 128).
+  function factN(df1,cells,f,alpha,power){
+    const pw=N=>{const d2=N-cells;if(d2<1)return 0;const crit=finv(1-alpha,df1,d2);return 1-ncfcdf(crit,df1,d2,f*f*N)};
+    let N=cells+2;while(pw(N)<power&&N<200000)N++;return N;
+  }
   // Pearson r ≠ 0, two-sided, through Fisher's z (Cohen, 1992 table: r = .30 → 85).
   function corrN(r,alpha,power){const c=0.5*Math.log((1+r)/(1-r));return Math.ceil(Math.pow((zinv(1-alpha/2)+zinv(power))/c,2)+3)}
   // Cohen (1992, Table 2): chi-square, w = .30 (medium), α = .05, power = .80, by degrees of freedom.
-  const CHI_N={1:87,2:107,3:122,4:133,5:143,6:154};
+  const CHI_N={1:87,2:107,3:122,4:133,5:143,6:152};
   const FM={SS:[558,462],HH:[162,148],MM:[78,71],LL:[36,34]};
   const L=(href,text)=>({href:'/goc-nghien-cuu/'+href,text});
   const T={
@@ -177,8 +236,36 @@
     ch4:L('posts/cach-viet-chuong-4-ket-qua-nghien-cuu/','Cách viết chương 4'),
     size:L('posts/co-mau-nghien-cuu-bao-nhieu-la-du/','Cỡ mẫu bao nhiêu là đủ'),
     likert:L('posts/thang-do-likert/','Thang đo Likert: thứ bậc hay khoảng'),
-    data:L('du-lieu/','Dữ liệu thứ cấp Việt Nam'),
+    likertOrd:L('posts/likert-la-thang-do-khoang-hay-thu-bac/','Likert là thang đo khoảng hay thứ bậc'),
+    ols:L('posts/hoi-quy-tuyen-tinh-boi-spss/','Hồi quy tuyến tính bội trong SPSS: cách chạy và đọc'),
+    build:L('posts/cach-xay-dung-mo-hinh-nghien-cuu/','Cách xây dựng mô hình nghiên cứu'),
+    pilot:L('posts/nghien-cuu-so-bo-la-gi/','Nghiên cứu sơ bộ là gì'),
+    adapt:L('posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/','Thang đo gốc, kế thừa, hiệu chỉnh'),
+    design:L('posts/cach-thiet-ke-bang-hoi/','Cách thiết kế bảng hỏi'),
+    concepts:L('khai-niem/','Khái niệm nghiên cứu và thang đo đo chúng'),
+    data:L('du-lieu/','Dữ liệu thứ cấp Việt Nam (CSV)'),
+    panelData:L('du-lieu/du-lieu-bang/','Dữ liệu bảng Việt Nam, ASEAN cho Stata, R, EViews'),
+    series:L('du-lieu/kho-chi-so/','Kho chỉ số: tra cứu chuỗi số liệu Việt Nam'),
+    cpi:L('du-lieu/lam-phat/','Lạm phát (CPI) Việt Nam theo năm'),
+    fx:L('du-lieu/ty-gia/','Tỷ giá USD/VND theo năm'),
+    gdp:L('du-lieu/tang-truong-gdp/','Tăng trưởng GDP Việt Nam'),
+    rate:L('du-lieu/lai-suat-cho-vay/','Lãi suất cho vay Việt Nam'),
+    m2:L('du-lieu/cung-tien-m2/','Cung tiền M2 so với GDP'),
+    vol:L('du-lieu/bien-dong-gia-chung-khoan/','Mức biến động thị trường chứng khoán Việt Nam'),
+    vars:L('bien-nghien-cuu/','Biến nghiên cứu doanh nghiệp, ngân hàng: công thức, code Stata và R'),
+    ratio:L('cong-cu/tinh-chi-so-tai-chinh/','Tính chỉ số tài chính từ báo cáo tài chính'),
+    roa:L('bien-nghien-cuu/roa/','ROA: công thức từ báo cáo tài chính'),
+    lev:L('bien-nghien-cuu/don-bay-tai-chinh/','Đòn bẩy tài chính (LEV)'),
+    tobin:L('bien-nghien-cuu/tobin-q/','Tobin’s Q'),
+    firmSize:L('bien-nghien-cuu/quy-mo-doanh-nghiep/','Quy mô doanh nghiệp (SIZE)'),
+    npl:L('bien-nghien-cuu/ty-le-no-xau/','Tỷ lệ nợ xấu (NPL)'),
+    nim:L('bien-nghien-cuu/nim/','Biên lãi ròng (NIM)'),
+    zbank:L('bien-nghien-cuu/z-score-ngan-hang/','Z-score ngân hàng'),
+    car:L('bien-nghien-cuu/ty-le-an-toan-von/','Tỷ lệ an toàn vốn (CAR)'),
   };
+  // Variable and data pages for a panel of firms, banks or regions.
+  const UNIT={firm:[T.vars,T.roa,T.lev,T.tobin,T.firmSize,T.ratio],bank:[T.vars,T.npl,T.nim,T.zbank,T.car,T.ratio],macro:[T.data,T.panelData,T.series]};
+  const unitLinks=u=>UNIT[u]||UNIT.firm;
   const num=(x,d,lo,hi)=>{x=parseInt(x,10);return Number.isFinite(x)?Math.min(hi,Math.max(lo,x)):d};
   // answers → {main, alts}; each method: name, why[], assume[], sample[], report[], links[], refs[]
   function recommend(a){
@@ -196,43 +283,51 @@
           alts:[M('Hồi quy logistic',{why:['Khi muốn kiểm soát thêm biến khác, hoặc ước lượng tỷ số odds.']})]};
       }
       const two=a.groups!=='3', rep=a.design==='rep', nonpar=a.out==='ord'||a.normal==='no';
+      if(!rep&&a.factors==='2'){
+        // the second factor is taken to have 2 levels; the interaction is the hardest effect to detect
+        const lv=two?2:g, cells=2*lv, N=factN(lv-1,cells,0.25,0.05,0.8);
+        const nTxt=`${N} quan sát tổng (khoảng ${Math.ceil(N/cells)} mỗi ô của bảng ${lv} × 2) để phát hiện tương tác mức trung bình f = 0,25 với α = 0,05, power 0,80 (tính như G*Power, ANOVA: main effects and interactions; Faul và cộng sự, 2009).`;
+        const tw=M(`ANOVA hai nhân tố (${lv} × 2)`,{why:['Hai biến chia nhóm cùng lúc: xem tác động chính của từng biến và tương tác giữa chúng.','Tương tác có ý nghĩa thì phân tích tác động đơn (simple effects) thay vì đọc tác động chính.'],assume:['Quan sát độc lập.','Phần dư gần chuẩn.','Phương sai đồng nhất giữa các ô (kiểm định Levene); số người mỗi ô gần bằng nhau.'],sample:[nTxt],report:['Bảng ANOVA: F, p, partial η² cho từng tác động và tương tác; trung bình từng ô; đồ thị tương tác.'],links:[T.analysis,T.sample],refs:['faul','field']});
+        const art=M('ANOVA trên thứ hạng căn chỉnh (Aligned Rank Transform)',{why:['Bản phi tham số cho thiết kế nhiều nhân tố, vẫn kiểm định được tương tác; Kruskal–Wallis chỉ xử lý một nhân tố (Wobbrock và cộng sự, 2011).'],assume:['Quan sát độc lập.','Biến ít nhất thứ bậc.'],sample:[nTxt],report:['F, p cho từng tác động và tương tác trên dữ liệu đã căn chỉnh; trung vị từng ô.'],links:[T.analysis,T.sample],refs:['wobbrock','faul']});
+        if(a.out==='ord')return {main:M('Hồi quy logistic thứ bậc với hai nhân tố và tương tác',{why:['Biến kết quả là một câu Likert (thứ bậc) và có hai biến chia nhóm: mô hình thứ bậc đưa cả hai nhân tố và tích của chúng vào cùng lúc.'],assume:['Tỷ lệ odds tỷ lệ (kiểm định đường song song).','Mỗi ô của bảng nhân tố có đủ quan sát ở các mức trả lời.'],sample:['Khoảng 10 quan sát ở mức trả lời ít nhất cho mỗi tham số ước lượng (Peduzzi và cộng sự, 1996); ' +nTxt],report:['Hệ số, odds ratio và khoảng tin cậy cho hai nhân tố và tương tác; kiểm định đường song song; xác suất dự báo từng mức theo ô.'],links:[T.likertOrd,T.sample],refs:['peduzzi','field','faul']}),alts:[art,tw]};
+        return a.normal==='no'?{main:art,alts:[tw]}:{main:tw,alts:[art]};
+      }
       if(two&&!rep){
         const n=anovaN(2,0.25,0.05,0.8);
         const t=M('Kiểm định t hai mẫu độc lập (Welch)',{why:['So sánh trung bình của một biến liên tục giữa hai nhóm độc lập.','Bản Welch không cần phương sai hai nhóm bằng nhau, nên dùng mặc định thay cho bản Student.'],
           assume:['Quan sát độc lập.','Biến kết quả liên tục, gần chuẩn trong mỗi nhóm hoặc mỗi nhóm từ 30 quan sát.','Không có ngoại lai quá xa.'],
-          sample:[`${n} quan sát mỗi nhóm (${2*n} tổng) để phát hiện chênh lệch trung bình mức trung bình d = 0,5 với α = 0,05 hai phía, power 0,80 (Cohen, 1992; tính như G*Power).`],
+          sample:[`${n} quan sát mỗi nhóm (${2*n} tổng) để phát hiện chênh lệch trung bình mức trung bình d = 0,5 với α = 0,05 hai phía, power 0,80 (Cohen, 1992; tính như G*Power, Faul và cộng sự, 2009).`],
           report:['Trung bình, độ lệch chuẩn từng nhóm; t(df), p; Cohen’s d và khoảng tin cậy 95% của chênh lệch.'],links:[T.analysis,T.sample,T.likert],refs:['cohen92','faul','field']});
-        const u=M('Kiểm định Mann–Whitney U',{why:['Thay cho t-test khi biến kết quả là thứ bậc (một câu Likert) hoặc lệch nhiều với nhóm nhỏ: so sánh thứ hạng thay vì trung bình.'],assume:['Quan sát độc lập.','Biến ít nhất thứ bậc.'],sample:[`Khoảng ${Math.ceil(n*1.16)} mỗi nhóm (cỡ mẫu của t-test chia hiệu suất tương đối tiệm cận tối thiểu 0,864).`],report:['Trung vị từng nhóm, U, z, p, và r = z/√N.'],links:[T.analysis],refs:['field']});
+        const u=M('Kiểm định Mann–Whitney U',{why:['Thay cho t-test khi biến kết quả là thứ bậc (một câu Likert) hoặc lệch nhiều với nhóm nhỏ: so sánh thứ hạng thay vì trung bình.'],assume:['Quan sát độc lập.','Biến ít nhất thứ bậc.'],sample:[`Khoảng ${Math.ceil(n*1.16)} mỗi nhóm (cỡ mẫu của t-test chia hiệu suất tương đối tiệm cận tối thiểu 0,864).`],report:['Trung vị từng nhóm, U, z, p, và r = z/√N.'],links:[T.analysis,T.likertOrd],refs:['field']});
         return nonpar?{main:u,alts:[t]}:{main:t,alts:[u]};
       }
       if(two&&rep){
         const n=pairedN(0.5,0.05,0.8);
         const t=M('Kiểm định t mẫu cặp',{why:['Cùng người được đo hai lần (trước–sau) hoặc cặp ghép đôi: so sánh trung bình của chênh lệch.'],assume:['Chênh lệch giữa hai lần đo gần phân phối chuẩn, hoặc từ 30 cặp trở lên.'],
-          sample:[`${n} cặp để phát hiện hiệu ứng trung bình d_z = 0,5, α = 0,05 hai phía, power 0,80 (tính như G*Power).`],report:['Trung bình hai lần đo, t(df), p, d_z.'],links:[T.analysis,T.sample],refs:['faul','field']});
-        const w=M('Kiểm định Wilcoxon dấu hạng',{why:['Bản phi tham số của t mẫu cặp, cho dữ liệu thứ bậc hoặc chênh lệch lệch nhiều.'],assume:['Chênh lệch đối xứng quanh trung vị.'],sample:[`Khoảng ${Math.ceil(n*1.16)} cặp.`],report:['Trung vị, T (hoặc z), p, r.'],refs:['field']});
+          sample:[`${n} cặp để phát hiện hiệu ứng trung bình d_z = 0,5, α = 0,05 hai phía, power 0,80 (tính như G*Power, Faul và cộng sự, 2009).`],report:['Trung bình hai lần đo, t(df), p, d_z.'],links:[T.analysis,T.sample],refs:['faul','field']});
+        const w=M('Kiểm định Wilcoxon dấu hạng',{why:['Bản phi tham số của t mẫu cặp, cho dữ liệu thứ bậc hoặc chênh lệch lệch nhiều.'],assume:['Chênh lệch đối xứng quanh trung vị.'],sample:[`Khoảng ${Math.ceil(n*1.16)} cặp.`],report:['Trung vị, T (hoặc z), p, r.'],links:[T.analysis,T.likertOrd],refs:['field']});
         return nonpar?{main:w,alts:[t]}:{main:t,alts:[w]};
       }
       if(!rep){
         const n=anovaN(g,0.25,0.05,0.8);
-        if(a.factors==='2'&&!nonpar)return {main:M('ANOVA hai nhân tố',{why:['Hai biến chia nhóm cùng lúc: xem tác động chính của từng biến và tương tác giữa chúng.'],assume:['Quan sát độc lập.','Phần dư gần chuẩn.','Phương sai đồng nhất giữa các ô (kiểm định Levene).'],sample:[`Tính power cho từng tác động bằng G*Power; tối thiểu nên có khoảng ${n} quan sát cho mỗi mức của nhân tố chính và không ô nào quá ít (Cohen, 1992).`],report:['Bảng ANOVA: F, p, partial η² cho từng tác động và tương tác; đồ thị tương tác.'],links:[T.analysis,T.sample],refs:['cohen92','field']}),alts:[]};
         const an=M('ANOVA một yếu tố (Welch nếu phương sai không đồng nhất)',{why:[`So sánh trung bình của một biến liên tục giữa ${g} nhóm độc lập; làm nhiều t-test sẽ tăng sai lầm loại I.`,'Có ý nghĩa thì kiểm định sau (post hoc): Tukey khi phương sai đồng nhất, Games–Howell khi không.'],
           assume:['Quan sát độc lập.','Gần chuẩn trong mỗi nhóm hoặc mỗi nhóm từ 30 quan sát.','Phương sai đồng nhất (Levene); không thì dùng Welch.'],
-          sample:[`${n} quan sát mỗi nhóm (${g*n} tổng) cho hiệu ứng trung bình f = 0,25 với ${g} nhóm, α = 0,05, power 0,80 (Cohen, 1992; tính như G*Power).`],
+          sample:[`${n} quan sát mỗi nhóm (${g*n} tổng) cho hiệu ứng trung bình f = 0,25 với ${g} nhóm, α = 0,05, power 0,80 (Cohen, 1992; tính như G*Power, Faul và cộng sự, 2009).`],
           report:['Trung bình, độ lệch chuẩn từng nhóm; F(df1, df2), p; η²; kết quả post hoc.'],links:[T.analysis,T.sample],refs:['cohen92','faul','field']});
-        const kw=M('Kiểm định Kruskal–Wallis',{why:['Bản phi tham số của ANOVA một yếu tố cho dữ liệu thứ bậc hoặc lệch nhiều; post hoc bằng Dunn có hiệu chỉnh Bonferroni.'],assume:['Quan sát độc lập.'],sample:[`Khoảng ${Math.ceil(n*1.16)} mỗi nhóm.`],report:['Trung vị, H(df), p, ε².'],links:[T.analysis],refs:['field']});
+        const kw=M('Kiểm định Kruskal–Wallis',{why:['Bản phi tham số của ANOVA một yếu tố cho dữ liệu thứ bậc hoặc lệch nhiều; post hoc bằng Dunn có hiệu chỉnh Bonferroni.'],assume:['Quan sát độc lập.'],sample:[`Khoảng ${Math.ceil(n*1.16)} mỗi nhóm.`],report:['Trung vị, H(df), p, ε².'],links:[T.analysis,T.likertOrd],refs:['field']});
         return nonpar?{main:kw,alts:[an]}:{main:an,alts:[kw]};
       }
-      const rm=M('ANOVA đo lặp lại',{why:['Cùng người được đo từ ba lần trở lên.'],assume:['Phân phối gần chuẩn ở mỗi lần đo.','Cầu phương sai (Mauchly); vi phạm thì hiệu chỉnh Greenhouse–Geisser.'],sample:['Tính bằng G*Power (ANOVA: repeated measures, within factors); thường cần ít người hơn thiết kế độc lập vì mỗi người là đối chứng của chính mình.'],report:['F, p, partial η², kết quả so sánh từng cặp có hiệu chỉnh Bonferroni.'],links:[T.sample],refs:['faul','field']});
-      const fr=M('Kiểm định Friedman',{why:['Bản phi tham số của ANOVA đo lặp lại.'],assume:['Các lần đo trên cùng người.'],sample:['Như ANOVA đo lặp lại, thêm khoảng 15%.'],report:['Trung vị, χ²_F(df), p, Kendall’s W.'],refs:['field']});
+      const rm=M('ANOVA đo lặp lại',{why:['Cùng người được đo từ ba lần trở lên.'],assume:['Phân phối gần chuẩn ở mỗi lần đo.','Cầu phương sai (Mauchly); vi phạm thì hiệu chỉnh Greenhouse–Geisser.'],sample:['Tính bằng G*Power (ANOVA: repeated measures, within factors; Faul và cộng sự, 2009); thường cần ít người hơn thiết kế độc lập vì mỗi người là đối chứng của chính mình.'],report:['F, p, partial η², kết quả so sánh từng cặp có hiệu chỉnh Bonferroni.'],links:[T.sample,T.ch4],refs:['faul','field']});
+      const fr=M('Kiểm định Friedman',{why:['Bản phi tham số của ANOVA đo lặp lại.'],assume:['Các lần đo trên cùng người.'],sample:['Như ANOVA đo lặp lại, thêm khoảng 15%.'],report:['Trung vị, χ²_F(df), p, Kendall’s W.'],links:[T.likertOrd,T.sample],refs:['field']});
       return nonpar?{main:fr,alts:[rm]}:{main:rm,alts:[fr]};
     }
     case 'relate':{
       if(a.pair==='nn')return recommend({...a,goal:'compare',out:'nom',design:'ind'});
-      if(a.pair==='bc')return {main:M('Kiểm định t hai mẫu độc lập (tương đương tương quan điểm hai chuỗi)',{why:['Liên hệ giữa một biến hai mức và một biến liên tục chính là chênh lệch trung bình giữa hai nhóm.'],assume:['Như t-test độc lập.'],sample:[`${anovaN(2,0.25,0.05,0.8)} quan sát mỗi nhóm cho d = 0,5 (Cohen, 1992).`],report:['t, p, d hoặc r_pb.'],links:[T.analysis],refs:['cohen92','field']}),alts:[]};
+      if(a.pair==='bc')return {main:M('Kiểm định t hai mẫu độc lập (tương đương tương quan điểm hai chuỗi)',{why:['Liên hệ giữa một biến hai mức và một biến liên tục chính là chênh lệch trung bình giữa hai nhóm.'],assume:['Như t-test độc lập.'],sample:[`${anovaN(2,0.25,0.05,0.8)} quan sát mỗi nhóm cho d = 0,5 (Cohen, 1992).`],report:['t, p, d hoặc r_pb.'],links:[T.analysis,T.sample],refs:['cohen92','field']}),alts:[]};
       const n=corrN(0.3,0.05,0.8);
       const pe=M('Tương quan Pearson',{why:['Đo mức độ liên hệ tuyến tính giữa hai biến liên tục; dùng trước hồi quy để xem chiều và độ mạnh của quan hệ.'],assume:['Quan hệ tuyến tính (xem biểu đồ phân tán).','Gần chuẩn hai chiều, không có ngoại lai lớn.'],
         sample:[`${n} quan sát để phát hiện r = 0,30 (mức trung bình) với α = 0,05 hai phía, power 0,80 (Cohen, 1992).`],report:['Ma trận tương quan với trung bình, độ lệch chuẩn; r, p. Tương quan không cho biết quan hệ nhân quả.'],links:[T.analysis,T.ch4],refs:['cohen92','field']});
-      const sp=M('Tương quan hạng Spearman',{why:['Cho biến thứ bậc (một câu Likert, xếp hạng) hoặc quan hệ đơn điệu không tuyến tính, có ngoại lai.'],assume:['Quan hệ đơn điệu.'],sample:[`Khoảng ${Math.ceil(n*1.1)} quan sát.`],report:['ρ (rho), p.'],refs:['field']});
+      const sp=M('Tương quan hạng Spearman',{why:['Cho biến thứ bậc (một câu Likert, xếp hạng) hoặc quan hệ đơn điệu không tuyến tính, có ngoại lai.'],assume:['Quan hệ đơn điệu.'],sample:[`Khoảng ${Math.ceil(n*1.1)} quan sát.`],report:['ρ (rho), p.'],links:[T.analysis,T.likertOrd],refs:['field']});
       return a.pair==='oo'||a.normal==='no'?{main:sp,alts:[pe]}:{main:pe,alts:[sp]};
     }
     case 'predict':{
@@ -241,15 +336,15 @@
         return {main:M('Hồi quy logistic nhị phân',{why:['Biến phụ thuộc chỉ có hai giá trị nên không dùng hồi quy tuyến tính (dự báo vượt ngoài 0–1, phần dư không chuẩn).'],
           assume:['Quan sát độc lập.','Quan hệ tuyến tính giữa biến liên tục và logit.','Không đa cộng tuyến nghiêm trọng (VIF).'],
           sample:[`Ít nhất 10 biến cố cho mỗi biến độc lập (Peduzzi và cộng sự, 1996): 10 × ${k} ÷ ${String(p).replace('.',',')} = ${n} quan sát, với ${Math.round(p*100)}% là tỷ lệ nhóm ít hơn.`],
-          report:['B, Exp(B) (tỷ số odds) và khoảng tin cậy, Wald, p; Nagelkerke R², kiểm định Hosmer–Lemeshow, bảng phân loại.'],links:[T.sample],refs:['peduzzi','field']}),alts:[]}}
-      if(a.dv==='cat')return {main:M('Hồi quy logistic đa thức (multinomial)',{why:['Biến phụ thuộc có từ ba lựa chọn không thứ tự; mô hình so sánh từng lựa chọn với một nhóm tham chiếu.'],assume:['Độc lập của các lựa chọn không liên quan (IIA).','Không đa cộng tuyến.'],sample:[`Áp dụng 10 biến cố mỗi biến độc lập cho nhóm ít nhất (Peduzzi và cộng sự, 1996): khoảng ${Math.ceil(10*k/p)} quan sát nếu nhóm ít nhất chiếm ${Math.round(p*100)}%.`],report:['B, Exp(B) cho từng lựa chọn so với nhóm tham chiếu; kiểm định tỷ số hợp lý.'],refs:['peduzzi','field']}),alts:[]};
-      if(a.dv==='ord')return {main:M('Hồi quy logistic thứ bậc (ordinal)',{why:['Biến phụ thuộc là mức độ có thứ tự (một câu Likert); không giả định khoảng cách giữa các mức bằng nhau.'],assume:['Tỷ lệ odds tỷ lệ (kiểm định đường song song).'],sample:['Từ 10 biến cố mỗi biến độc lập ở mức có ít quan sát nhất; nếu biến phụ thuộc là trung bình nhiều câu thì dùng hồi quy tuyến tính.'],report:['Hệ số, odds ratio, kiểm định đường song song, pseudo R².'],links:[T.likert],refs:['peduzzi','field']}),alts:[]};
-      if(a.dv==='count')return {main:M('Hồi quy Poisson hoặc nhị thức âm',{why:['Biến phụ thuộc là số đếm không âm, thường lệch phải; Poisson khi trung bình xấp xỉ phương sai, nhị thức âm khi phương sai lớn hơn (quá phân tán).'],assume:['Quan sát độc lập.','Kiểm tra quá phân tán và thừa số 0.'],sample:['Không có quy tắc chung; nên từ 10 quan sát có giá trị khác 0 cho mỗi biến độc lập.'],report:['Hệ số, tỷ số tỷ suất (IRR), kiểm định quá phân tán.'],refs:['field']}),alts:[]};
+          report:['B, Exp(B) (tỷ số odds) và khoảng tin cậy, Wald, p; Nagelkerke R², kiểm định Hosmer–Lemeshow, bảng phân loại.'],links:[T.sample,T.ch4],refs:['peduzzi','field']}),alts:[]}}
+      if(a.dv==='cat')return {main:M('Hồi quy logistic đa thức (multinomial)',{why:['Biến phụ thuộc có từ ba lựa chọn không thứ tự; mô hình so sánh từng lựa chọn với một nhóm tham chiếu.'],assume:['Độc lập của các lựa chọn không liên quan (IIA).','Không đa cộng tuyến.'],sample:[`Áp dụng 10 biến cố mỗi biến độc lập cho nhóm ít nhất (Peduzzi và cộng sự, 1996): khoảng ${Math.ceil(10*k/p)} quan sát nếu nhóm ít nhất chiếm ${Math.round(p*100)}%.`],report:['B, Exp(B) cho từng lựa chọn so với nhóm tham chiếu; kiểm định tỷ số hợp lý.'],links:[T.sample,T.design],refs:['peduzzi','field']}),alts:[]};
+      if(a.dv==='ord')return {main:M('Hồi quy logistic thứ bậc (ordinal)',{why:['Biến phụ thuộc là mức độ có thứ tự (một câu Likert); không giả định khoảng cách giữa các mức bằng nhau.'],assume:['Tỷ lệ odds tỷ lệ (kiểm định đường song song).'],sample:['Từ 10 biến cố mỗi biến độc lập ở mức có ít quan sát nhất (Peduzzi và cộng sự, 1996); nếu biến phụ thuộc là trung bình nhiều câu thì dùng hồi quy tuyến tính.'],report:['Hệ số, odds ratio, kiểm định đường song song, pseudo R².'],links:[T.likertOrd,T.likert],refs:['peduzzi','field']}),alts:[]};
+      if(a.dv==='count')return {main:M('Hồi quy Poisson hoặc nhị thức âm',{why:['Biến phụ thuộc là số đếm không âm, thường lệch phải; Poisson khi trung bình xấp xỉ phương sai, nhị thức âm khi phương sai lớn hơn (quá phân tán).'],assume:['Quan sát độc lập.','Kiểm tra quá phân tán (phương sai so với trung bình, kiểm định tỷ số hợp lý Poisson với nhị thức âm).','Nhiều số 0 hơn mức mô hình dự báo thì cân nhắc mô hình zero-inflated hoặc hurdle (Cameron & Trivedi, 2013).','Thời gian quan sát khác nhau giữa các đơn vị thì đưa log thời gian vào làm offset.'],sample:['Không có quy tắc chung; nên từ 10 quan sát có giá trị khác 0 cho mỗi biến độc lập.'],report:['Hệ số và tỷ số tỷ suất (IRR = e^B) kèm khoảng tin cậy, kiểm định quá phân tán, AIC khi so Poisson với nhị thức âm.'],links:[T.sample,T.data],refs:['cameron','field']}),alts:[]};
       const pow=regN(k,0.15,0.05,0.8),tf=Math.max(50+8*k,104+k);
       return {main:M('Hồi quy tuyến tính bội (OLS)',{why:[`Một biến phụ thuộc liên tục (hoặc trung bình nhiều câu Likert) được giải thích bởi ${k} biến độc lập trong một phương trình.`,'Trước hồi quy: Cronbach’s alpha và EFA để kiểm tra thang đo, rồi tính điểm trung bình mỗi khái niệm.'],
         assume:['Quan hệ tuyến tính.','Phần dư độc lập (Durbin–Watson), phương sai không đổi, gần chuẩn.','Không đa cộng tuyến: VIF dưới 5 (thận trọng: dưới 3).'],
         sample:[`${pow} quan sát theo G*Power (f² = 0,15, α = 0,05, power 0,80, ${k} biến dự báo; Cohen, 1992; Faul và cộng sự, 2009).`,`${tf} theo Tabachnick và Fidell (2013): max(50 + 8m, 104 + m). Lấy số lớn hơn: ${Math.max(pow,tf)}.`],
-        report:['R², R² hiệu chỉnh, F, p của mô hình; B, β chuẩn hoá, t, p, VIF từng biến; kết luận từng giả thuyết.'],links:[T.analysis,T.sample,T.ch4,T.kit],refs:['cohen92','faul','tabachnick','field']}),
+        report:['R², R² hiệu chỉnh, F, p của mô hình; B, β chuẩn hoá, t, p, VIF từng biến; kết luận từng giả thuyết.'],links:[T.analysis,T.ols,T.sample,T.ch4,T.kit],refs:['cohen92','faul','tabachnick','field']}),
         alts:[M('PLS-SEM',{why:['Nếu các biến là khái niệm tiềm ẩn đo bằng nhiều câu và bạn muốn đánh giá thang đo và mô hình cùng lúc.']})]};
     }
     case 'model':{
@@ -257,7 +352,7 @@
       const pls=M('PLS-SEM (SmartPLS)',{why:[],assume:['Mô hình đệ quy (không vòng lặp).','Mỗi khái niệm phản ánh từ 3 câu trở lên.','Không cần phân phối chuẩn; ý nghĩa kiểm định bằng bootstrap (5.000 mẫu).'],
         sample:[`${Math.max(pow,isr)} quan sát: lấy số lớn hơn giữa G*Power (${pow}; ${k} mũi tên nhiều nhất trỏ vào một khái niệm, f² = 0,15) và căn bậc hai nghịch đảo (${isr}; Kock & Hadaya, 2018).`],
         report:['Mô hình đo lường: outer loading ≥ 0,708, Cronbach’s alpha và CR 0,70–0,95, AVE ≥ 0,50, HTMT < 0,85 (hoặc 0,90).','Mô hình cấu trúc: VIF < 3, hệ số đường dẫn và p (bootstrap), R², f², Q²/PLSpredict (Hair và cộng sự, 2019).'],
-        links:[T.model,T.kit,T.analysis,T.sample],refs:['hair19','hair22','kock']});
+        links:[T.model,T.build,T.kit,T.concepts,T.analysis,T.sample],refs:['hair19','hair22','kock']});
       const cb=M('CB-SEM (AMOS, lavaan): CFA rồi mô hình cấu trúc',{why:[],assume:['Phân phối chuẩn đa biến (hoặc ước lượng bền vững như MLR, bootstrap Bollen–Stine).','Khái niệm phản ánh, mỗi khái niệm từ 3 câu.','Mô hình xác định được.'],
         sample:['Hair và cộng sự (2010): 100 khi tối đa 5 khái niệm, mỗi khái niệm trên 3 câu, hệ số chung từ 0,6; 150 khi tối đa 7 khái niệm, hệ số chung 0,5; 300 khi hệ số chung thấp (dưới 0,45) hoặc khái niệm dưới 3 câu; 500 khi có nhiều khái niệm. Mô phỏng của Wolf và cộng sự (2013) cho thấy cỡ mẫu cần dao động khoảng 30–460 tuỳ độ phức tạp.'],
         report:['Hai bước (Anderson & Gerbing, 1988): CFA với CR, AVE, Fornell–Larcker/HTMT; rồi mô hình cấu trúc.','Chỉ số phù hợp: χ²/df, CFI và TLI ≥ 0,95 (≥ 0,90 chấp nhận được), RMSEA ≤ 0,06, SRMR ≤ 0,08 (Hu & Bentler, 1999).'],
@@ -278,34 +373,115 @@
         sample:[`Tối thiểu max(50; 5 × ${items}) = ${Math.max(50,5*items)}; nên đạt max(100; 10 × ${items}) = ${Math.max(100,10*items)} (Hair và cộng sự, 2010).`],
         report:['Bảng alpha, tương quan biến–tổng, alpha nếu loại biến; KMO, Bartlett, ma trận xoay (Promax khi các nhân tố tương quan, Varimax khi không), phương sai trích.'],
         links:[T.analysis,T.efa,T.alpha,T.scales],refs:['hair10','field']});
-      const cfa=M('CFA (phân tích nhân tố khẳng định)',{why:['Cấu trúc nhân tố đã biết từ lý thuyết: kiểm định thẳng cấu trúc đó, đánh giá CR, AVE và giá trị phân biệt.'],assume:['Mỗi nhân tố từ 3 câu.','Chuẩn đa biến hoặc ước lượng bền vững.'],
-        sample:['Từ 100–150 với mô hình nhỏ, hệ số chung cao; 200 trở lên là mức an toàn (Hair và cộng sự, 2010; Wolf và cộng sự, 2013).'],report:['Hệ số tải chuẩn hoá ≥ 0,5 (lý tưởng 0,7), CR ≥ 0,7, AVE ≥ 0,5, HTMT < 0,85; CFI, TLI, RMSEA, SRMR.'],links:[T.analysis,T.scales],refs:['anderson','hair10','hu','wolf']});
+      const cfa=M('CFA (phân tích nhân tố khẳng định)',{why:['Cấu trúc nhân tố đã biết từ lý thuyết: kiểm định thẳng cấu trúc đó, đánh giá CR, AVE và giá trị phân biệt, trước khi đưa vào mô hình cấu trúc (Anderson & Gerbing, 1988).'],assume:['Mỗi nhân tố từ 3 câu.','Chuẩn đa biến hoặc ước lượng bền vững.'],
+        sample:['Từ 100–150 với mô hình nhỏ, hệ số chung cao; 200 trở lên là mức an toàn (Hair và cộng sự, 2010; Wolf và cộng sự, 2013).'],report:['Hệ số tải chuẩn hoá ≥ 0,5 (lý tưởng 0,7), CR ≥ 0,7, AVE ≥ 0,5, HTMT < 0,85; CFI, TLI ≥ 0,95, RMSEA ≤ 0,06, SRMR ≤ 0,08 (Hu & Bentler, 1999).'],links:[T.analysis,T.scales],refs:['anderson','hair10','hu','wolf']});
       return a.origin==='established'?{main:cfa,alts:[efa]}:{main:efa,alts:[cfa]};
     }
     case 'medmod':{
       const sem=a.frame==='sem';
       const fm=`Fritz và MacKinnon (2007), percentile bootstrap, power 0,80: khoảng ${FM.MM[0]} quan sát khi hai đường a và b ở mức trung bình (0,39), ${FM.HH[0]} khi ở mức 0,26 và ${FM.SS[0]} khi nhỏ (0,14).`;
-      const med=M(sem?'Trung gian trong PLS-SEM hoặc CB-SEM: tác động gián tiếp bằng bootstrap':'Trung gian bằng PROCESS (Model 4) với bootstrap',{why:['Kiểm định tác động gián tiếp a × b bằng khoảng tin cậy bootstrap (5.000 mẫu): khoảng không chứa 0 là có trung gian.','Không dùng riêng các bước của Baron và Kenny hay kiểm định Sobel: kém power và không bắt buộc X phải tác động tổng lên Y (Zhao và cộng sự, 2010).'],
+      const med=M(sem?'Trung gian trong PLS-SEM hoặc CB-SEM: tác động gián tiếp bằng bootstrap':'Trung gian bằng PROCESS (Model 4) với bootstrap',{why:['Kiểm định tác động gián tiếp a × b bằng khoảng tin cậy bootstrap (5.000 mẫu): khoảng không chứa 0 là có trung gian (Hayes, 2022).','Không dùng riêng các bước của Baron và Kenny hay kiểm định Sobel: kém power và không bắt buộc X phải tác động tổng lên Y (Zhao và cộng sự, 2010).'],
         assume:['Thứ tự nhân quả X → M → Y có cơ sở lý thuyết (và tốt nhất là thời gian).','Không có biến gây nhiễu bỏ sót giữa M và Y.'],sample:[fm],
         report:['Tác động trực tiếp, gián tiếp, tổng; khoảng tin cậy bootstrap 95% của tác động gián tiếp; loại trung gian (toàn phần, một phần bổ sung, cạnh tranh).'],links:sem?[T.model,T.kit,T.sample]:[T.analysis,T.model,T.sample],refs:['fritz','hayes','zhao']});
       const cat=a.wtype==='cat';
       const mod=M(cat?(sem?'Phân tích đa nhóm (MGA)':'Hồi quy có biến tương tác với biến giả nhóm (PROCESS Model 1)'):(sem?'Điều tiết bằng biến tương tác (two-stage) trong PLS-SEM':'Hồi quy có biến tương tác X × W (PROCESS Model 1)'),{
-        why:[cat?'Biến điều tiết là nhóm: so sánh hệ số đường dẫn giữa các nhóm.':'Biến điều tiết liên tục: thêm tích X × W; hệ số tương tác có ý nghĩa nghĩa là có điều tiết.','Vẽ đồ thị độ dốc đơn (simple slopes) tại W thấp, trung bình, cao để diễn giải.'],
-        assume:cat?['Mỗi nhóm đủ cỡ mẫu tối thiểu riêng.',sem?'Kiểm tra bất biến đo lường giữa các nhóm (MICOM cho PLS-SEM).':'Phương sai phần dư tương đương giữa các nhóm.']:['Đo lường X, W đáng tin cậy (sai số đo làm giảm power của tương tác).','Có thể chuẩn hoá hoặc trừ trung bình X và W để dễ diễn giải.'],
+        why:[cat?(sem?'Biến điều tiết là nhóm: so sánh hệ số đường dẫn giữa các nhóm bằng phân tích đa nhóm (Hair và cộng sự, 2022).':'Biến điều tiết là nhóm: so sánh hệ số đường dẫn giữa các nhóm.'):(sem?'Biến điều tiết liên tục: tạo biến tương tác theo cách hai giai đoạn trong PLS-SEM; hệ số tương tác có ý nghĩa nghĩa là có điều tiết (Hair và cộng sự, 2022).':'Biến điều tiết liên tục: thêm tích X × W; hệ số tương tác có ý nghĩa nghĩa là có điều tiết.'),'Vẽ đồ thị độ dốc đơn (simple slopes) tại W thấp, trung bình, cao để diễn giải (Hayes, 2022).'],
+        assume:cat?['Mỗi nhóm đủ cỡ mẫu tối thiểu riêng.',sem?'Kiểm tra bất biến đo lường giữa các nhóm bằng MICOM (Henseler và cộng sự, 2016).':'Phương sai phần dư tương đương giữa các nhóm.']:['Đo lường X, W đáng tin cậy (sai số đo làm giảm power của tương tác).','Có thể chuẩn hoá hoặc trừ trung bình X và W để dễ diễn giải.'],
         sample:[cat?'Mỗi nhóm phải tự đạt cỡ mẫu tối thiểu của mô hình, nên tổng mẫu tăng theo số nhóm.':'Hiệu ứng tương tác thường nhỏ, nên tính lại cỡ mẫu với f² = 0,02 thay vì 0,15 ở Máy tính cỡ mẫu.'],
-        report:['Hệ số tương tác (hoặc chênh lệch hệ số giữa nhóm), p, ΔR²; đồ thị độ dốc đơn.'],links:[T.sample,sem?T.model:T.analysis],refs:['hayes','hair22']});
+        report:['Hệ số tương tác (hoặc chênh lệch hệ số giữa nhóm), p, ΔR²; đồ thị độ dốc đơn.'],links:[T.sample,sem?T.model:T.analysis],refs:sem?(cat?['hayes','hair22','henseler16']:['hayes','hair22']):['hayes']});
       if(a.mm==='mod')return {main:mod,alts:[]};
       if(a.mm==='both')return {main:M('Trung gian có điều kiện (PROCESS Model 7, 14 hoặc tương đương trong SEM)',{why:['Tác động gián tiếp X → M → Y thay đổi theo W: báo cáo chỉ số trung gian có điều kiện (index of moderated mediation) bằng bootstrap.'],assume:med.assume,sample:[fm,'Thêm điều tiết thì cần mẫu lớn hơn mức trên.'],report:['Chỉ số trung gian có điều kiện và khoảng tin cậy; tác động gián tiếp tại các mức W.'],links:med.links,refs:['fritz','hayes']}),alts:[med,mod]};
       return {main:med,alts:[]};
     }
     case 'panel':{
-      if(a.dyn==='yes')return {main:M('GMM hệ thống (Arellano–Bover/Blundell–Bond)',{why:['Có biến phụ thuộc trễ hoặc biến nội sinh: FEM/REM cho hệ số chệch; GMM dùng các độ trễ làm biến công cụ.',a.nt==='tbig'?'Lưu ý: GMM thiết kế cho N lớn, T nhỏ; với ít đơn vị nhiều năm, cân nhắc mô hình chuỗi thời gian bảng (ARDL, PMG).':'N lớn, T nhỏ là bối cảnh phù hợp của GMM.'],
-        assume:['Kiểm định AR(2) không có ý nghĩa (không tự tương quan bậc 2 của sai phân phần dư).','Kiểm định Hansen không bác bỏ (công cụ hợp lệ).','Số biến công cụ không vượt số đơn vị N (Roodman, 2009).'],
-        sample:['Không có công thức chung; cần N đủ lớn so với số công cụ, thường từ vài chục đơn vị trở lên (Roodman, 2009).'],report:['Hệ số, sai số chuẩn bền vững (Windmeijer), AR(1), AR(2), Hansen, số công cụ, số nhóm.'],links:[T.data],refs:['roodman','wooldridge']}),alts:[]};
-      return {main:M('Hồi quy dữ liệu bảng: Pooled OLS, FEM, REM',{why:['Chạy cả ba mô hình rồi chọn bằng kiểm định: F (Pooled vs FEM), Breusch–Pagan LM (Pooled vs REM), Hausman (FEM vs REM; Hausman, 1978).',a.nt==='tbig'?'T lớn: kiểm tra tính dừng (unit root bảng) trước khi hồi quy.':'N lớn, T nhỏ: FEM/REM là lựa chọn chuẩn.'],
-        assume:['Kiểm định phương sai sai số thay đổi (Wald sửa đổi) và tự tương quan (Wooldridge); vi phạm thì dùng sai số chuẩn bền vững theo cụm hoặc FGLS.','Không đa cộng tuyến (VIF).'],
-        sample:['Không có công thức chung; số quan sát N × T phải lớn hơn nhiều số biến, và FEM cần mỗi đơn vị có từ 2 năm trở lên (Wooldridge, 2010).'],report:['Thống kê mô tả, ma trận tương quan, kết quả ba mô hình cạnh nhau, các kiểm định lựa chọn và khuyết tật, mô hình cuối với sai số chuẩn bền vững.'],links:[T.data],refs:['hausman','wooldridge']}),
+      const U=unitLinks(a.unit), bank=a.unit==='bank';
+      if(a.nt==='tbig')return {main:M('ARDL bảng (PMG/MG) sau kiểm định phụ thuộc chéo, nghiệm đơn vị và đồng liên kết bảng',{why:['Ít đơn vị, nhiều năm: chuỗi của từng đơn vị thường không dừng, hồi quy FEM/REM trên chuỗi không dừng có thể là hồi quy giả; hệ số ngắn hạn cũng dễ khác nhau giữa các đơn vị.','PMG giữ hệ số dài hạn chung, cho hệ số ngắn hạn và tốc độ điều chỉnh khác nhau theo đơn vị; MG cho mọi hệ số khác nhau; chọn giữa hai bằng Hausman (Pesaran và cộng sự, 1999).','Trình tự: phụ thuộc chéo (Pesaran CD) → nghiệm đơn vị bảng (IPS của Im và cộng sự, 2003; khi có phụ thuộc chéo dùng CIPS) → đồng liên kết bảng (Westerlund, 2007) → PMG/MG.'],
+        assume:['Biến I(0) hoặc I(1), không biến nào I(2).','Hệ số hiệu chỉnh sai số (ECT) âm và có ý nghĩa: có quan hệ dài hạn.','Có phụ thuộc chéo giữa các nước, tỉnh (cùng chịu cú sốc chung) thì dùng kiểm định thế hệ hai và báo cáo rõ (Pesaran, 2021).'],
+        sample:['Không có công thức chung; PMG/MG ước lượng phương trình riêng cho từng đơn vị nên T phải đủ dài so với số biến nhân số độ trễ. Dữ liệu năm ngắn thì cân nhắc dữ liệu quý.'],
+        report:['Bảng kiểm định CD, nghiệm đơn vị bảng (gốc và sai phân), đồng liên kết; hệ số dài hạn, ECT và hệ số ngắn hạn của PMG và MG; Hausman chọn mô hình.'],links:[...U,T.panelData],refs:['pesaran99','ips','pesaranCD','westerlund']}),
+        alts:[M('FEM với sai số chuẩn Driscoll–Kraay',{why:['Khi chỉ cần quan hệ trung bình và chuỗi đã dừng: sai số chuẩn bền vững với phụ thuộc chéo và tự tương quan khi T lớn (Driscoll & Kraay, 1998).'],refs:['driscoll']}),M('Không dùng GMM khi T lớn',{why:['Số biến công cụ tăng theo T và vượt nhanh số đơn vị N (Roodman, 2009).'],refs:['roodman']})]};
+      if(a.dyn==='yes')return {main:M('GMM hệ thống (Arellano–Bover/Blundell–Bond)',{why:['Có biến phụ thuộc trễ hoặc biến nội sinh: FEM/REM cho hệ số chệch (chệch Nickell khi T nhỏ); GMM dùng các độ trễ làm biến công cụ (Arellano & Bond, 1991).','GMM hệ thống thêm phương trình gốc, tốt hơn GMM sai phân khi biến phụ thuộc có tính bền vững cao như ROA, nợ xấu (Arellano & Bover, 1995; Blundell & Bond, 1998).','Kiểm tra nhanh: hệ số trễ của GMM nên nằm giữa hệ số của OLS gộp (chệch lên) và FEM (chệch xuống) (Roodman, 2009).'],
+        assume:['Kiểm định AR(2) không có ý nghĩa (không tự tương quan bậc 2 của sai phân phần dư).','Kiểm định Hansen không bác bỏ (công cụ hợp lệ); p của Hansen quá gần 1 là dấu hiệu quá nhiều công cụ.','Số biến công cụ không vượt số đơn vị N (Roodman, 2009).'],
+        sample:[bank?'Khoảng 25–30 ngân hàng Việt Nam là N nhỏ: dùng tuỳ chọn collapse, giới hạn số độ trễ làm công cụ và báo cáo số công cụ nhỏ hơn số ngân hàng (Roodman, 2009).':'Không có công thức chung; cần N đủ lớn so với số công cụ, thường từ vài chục đơn vị trở lên (Roodman, 2009).'],
+        report:['Hệ số, sai số chuẩn hai bước hiệu chỉnh Windmeijer (2005), AR(1), AR(2), Hansen (và Sargan), số công cụ, số nhóm; nêu rõ biến nào là nội sinh, độ trễ nào làm công cụ.'],links:[...U,T.panelData],refs:['arellano91','arellanoBover','blundell','roodman','windmeijer']}),
+        alts:[M('Pooled OLS và FEM để so sánh',{why:['Báo cáo OLS gộp và FEM cạnh GMM để kiểm tra khoảng hợp lý của hệ số trễ.']})]};
+      return {main:M('Hồi quy dữ liệu bảng: Pooled OLS, FEM, REM',{why:['Chạy cả ba mô hình rồi chọn bằng kiểm định: F (Pooled vs FEM), Breusch–Pagan LM (Pooled vs REM), Hausman (FEM vs REM; Hausman, 1978).','Hausman chuẩn giả định REM hiệu quả; khi dùng sai số chuẩn theo cụm thì dùng Hausman bền vững hoặc kiểm định Mundlak (1978).','N lớn, T nhỏ: FEM/REM là lựa chọn chuẩn.'],
+        assume:['Kiểm định phương sai sai số thay đổi (Wald sửa đổi) và tự tương quan (Wooldridge); vi phạm thì dùng sai số chuẩn theo cụm đơn vị (Petersen, 2009) hoặc FGLS.','Không đa cộng tuyến (VIF).','Biến giải thích ngoại sinh; nghi nội sinh hoặc có biến phụ thuộc trễ thì chuyển sang GMM.'],
+        sample:['Không có công thức chung; số quan sát N × T phải lớn hơn nhiều số biến, và FEM cần mỗi đơn vị có từ 2 năm trở lên (Wooldridge, 2010). Sai số chuẩn theo cụm cần đủ số cụm; quá ít cụm thì p bị đánh giá thấp (Cameron & Miller, 2015).'],
+        report:['Thống kê mô tả, ma trận tương quan, kết quả ba mô hình cạnh nhau, các kiểm định lựa chọn và khuyết tật, mô hình cuối với sai số chuẩn bền vững.'],links:[...U,T.panelData],refs:['hausman','mundlak','petersen','cameronMiller','wooldridge']}),
         alts:[M('GMM hệ thống',{why:['Nếu thêm biến phụ thuộc trễ hoặc nghi ngờ nội sinh.']})]};
+    }
+    case 'ts':{
+      const ur='Bước 1: kiểm định nghiệm đơn vị cho từng biến bằng ADF (Dickey & Fuller, 1979) và PP (Phillips & Perron, 1988), đối chiếu KPSS (Kwiatkowski và cộng sự, 1992) có giả thuyết ngược lại; xác định bậc tích hợp I(0), I(1), I(2).';
+      const lk=[T.data,T.series,T.cpi,T.fx,T.rate,T.gdp,T.m2,T.panelData];
+      const smallT='Không có công thức chung; dữ liệu năm của Việt Nam thường chỉ khoảng 30 quan sát nên ít độ trễ và ít biến. Kiểm định bounds với mẫu 30–80 quan sát dùng giá trị tới hạn của Narayan (2005); có thể chuyển sang dữ liệu quý, tháng.';
+      const ardl=M('ARDL và kiểm định đồng liên kết bounds',{why:[ur,'ARDL dùng được khi các biến lẫn lộn I(0) và I(1), cho cả hệ số dài hạn và ngắn hạn (mô hình hiệu chỉnh sai số) trong một phương trình (Pesaran và cộng sự, 2001).'],
+        assume:['Không biến nào I(2): bounds test không hợp lệ với I(2).','Phần dư không tự tương quan (Breusch–Godfrey), phương sai không đổi, ổn định hệ số (CUSUM, CUSUMSQ).','Chọn độ trễ bằng AIC hoặc SC; có gãy cấu trúc (khủng hoảng 2008, COVID-19) thì thêm biến giả.'],
+        sample:[smallT],report:['Bảng nghiệm đơn vị; F bounds so với cận I(0), I(1); hệ số dài hạn; ECT (âm, có ý nghĩa) và hệ số ngắn hạn; kiểm định chẩn đoán và CUSUM.'],links:lk,refs:['dickey','pp','kpss','pesaran01','narayan']});
+      const ols=M('Hồi quy OLS trên chuỗi dừng, sai số chuẩn Newey–West',{why:[ur,'Mọi biến đều I(0) thì hồi quy trên chuỗi gốc không phải hồi quy giả; dùng sai số chuẩn bền vững với tự tương quan.'],assume:['Phần dư không tự tương quan hoặc đã dùng sai số chuẩn HAC.','Ổn định hệ số (CUSUM).'],sample:[smallT],report:['Bảng nghiệm đơn vị, hệ số với sai số chuẩn Newey–West, kiểm định chẩn đoán.'],links:lk,refs:['dickey','pp','kpss','narayan']});
+      const var0=M('VAR ở dạng gốc, hàm phản ứng xung và phân rã phương sai',{why:[ur,'Các biến I(0) và tác động qua lại: VAR coi mọi biến là nội sinh (Sims, 1980); dùng hàm phản ứng xung (IRF), phân rã phương sai và nhân quả Granger.'],assume:['Chọn độ trễ bằng AIC, SC, HQ; mô hình ổn định (nghiệm nằm trong vòng tròn đơn vị).','Phần dư không tự tương quan (LM).','Thứ tự biến trong phân rã Cholesky có cơ sở lý thuyết.'],sample:[smallT],report:['Độ trễ tối ưu, kiểm định ổn định, IRF có khoảng tin cậy, phân rã phương sai, Granger.'],links:lk,refs:['dickey','pp','kpss','sims','narayan']});
+      const vecm=M('Kiểm định Johansen, rồi VECM (có đồng liên kết) hoặc VAR sai phân (không)',{why:[ur,'Các biến cùng I(1): kiểm định Johansen (trace, max-eigen) xác định số quan hệ đồng liên kết (Johansen, 1991); có đồng liên kết thì dùng VECM, không có thì VAR (Sims, 1980) ở sai phân bậc 1 (Engle & Granger, 1987).'],assume:['Mọi biến cùng I(1).','Chọn độ trễ VAR trước khi kiểm định Johansen; chọn đúng dạng hằng số, xu thế.','Phần dư không tự tương quan, mô hình ổn định.'],sample:[smallT],report:['Nghiệm đơn vị, độ trễ, kết quả Johansen, vector đồng liên kết chuẩn hoá, hệ số điều chỉnh, IRF và phân rã phương sai.'],links:lk,refs:['dickey','pp','kpss','johansen','engle','sims','narayan']});
+      const ty=M('VAR với nhân quả Granger Toda–Yamamoto',{why:[ur,'Các biến lẫn lộn I(0) và I(1): Toda–Yamamoto ước lượng VAR (Sims, 1980) ở dạng gốc với p + d_max độ trễ, kiểm định Granger hợp lệ bất kể bậc tích hợp và đồng liên kết (Toda & Yamamoto, 1995).'],assume:['d_max là bậc tích hợp lớn nhất của các biến.','Phần dư không tự tương quan, mô hình ổn định.'],sample:[smallT],report:['Nghiệm đơn vị, độ trễ p, d_max, Wald cho từng chiều nhân quả.'],links:lk,refs:['dickey','pp','kpss','toda','sims','narayan']});
+      if(a.integ==='i2')return {main:M('Xử lý biến I(2) trước khi chọn mô hình',{why:[ur,'Có biến I(2): bounds test ARDL không hợp lệ (Pesaran và cộng sự, 2001) và Johansen cho I(1) cũng không dùng được. Thường lấy sai phân hoặc chuyển sang tốc độ tăng (log sai phân) cho biến đó rồi kiểm định lại.'],assume:['Kiểm tra lại I(2) bằng nhiều kiểm định và xét gãy cấu trúc (gãy cấu trúc làm ADF dễ kết luận nhầm là không dừng).'],sample:[smallT],report:['Bảng nghiệm đơn vị ở gốc, sai phân bậc 1 và 2; cách biến đổi biến I(2).'],links:lk,refs:['dickey','pp','kpss','pesaran01','narayan']}),alts:[ardl,vecm]};
+      if(a.tsaim==='system'){
+        if(a.integ==='i0')return {main:var0,alts:[vecm]};
+        if(a.integ==='mix')return {main:ty,alts:[ardl]};
+        return {main:vecm,alts:[ty,var0]};
+      }
+      if(a.integ==='i0')return {main:ols,alts:[ardl]};
+      return {main:ardl,alts:[vecm]};
+    }
+    case 'policy':{
+      if(a.ptype==='stock')return {main:M('Nghiên cứu sự kiện (event study): lợi nhuận bất thường và CAR',{why:['Ước lượng lợi nhuận bình thường bằng mô hình thị trường trong cửa sổ ước lượng trước sự kiện, rồi tính lợi nhuận bất thường (AR) và luỹ kế (CAR) quanh ngày công bố; mô hình thị trường với dữ liệu ngày cho kết quả tốt (Brown & Warner, 1985).'],
+        assume:['Ngày công bố xác định chính xác (ngày tin đến thị trường, không phải ngày ký).','Cửa sổ ước lượng (ví dụ 120–250 phiên) không chồng lên cửa sổ sự kiện (ví dụ [−1; +1], [−5; +5]).','Không có tin khác lẫn vào cửa sổ sự kiện; nhiều công ty cùng ngày sự kiện thì lợi nhuận tương quan chéo, dùng cách gộp danh mục hoặc kiểm định bền vững.','Cổ phiếu ít giao dịch (nhiều phiên giá không đổi) làm chệch beta.'],
+        sample:['Không có công thức chung; mô phỏng của Brown và Warner (1985) dùng mẫu 50 cổ phiếu; vài chục sự kiện trở lên giúp kiểm định t trên CAR ổn định hơn.'],
+        report:['Mô tả mẫu sự kiện, cửa sổ ước lượng và sự kiện; AAR theo ngày, CAAR theo các cửa sổ với t-test (và kiểm định phi tham số); đồ thị CAAR.'],links:[T.data,T.vol,T.vars],refs:['brownWarner']}),alts:[]};
+      if(a.ptype==='its')return {main:M('Chuỗi thời gian gián đoạn (interrupted time series)',{why:['Chỉ có một đơn vị, không có nhóm đối chứng: so sánh xu thế trước chính sách với mức và độ dốc sau chính sách bằng hồi quy phân đoạn; so sánh hai thời điểm trước–sau không đủ để quy kết tác động (Lopez Bernal và cộng sự, 2017).'],
+        assume:['Nhiều điểm thời gian trước và sau chính sách (tháng, quý), không chỉ hai điểm.','Xử lý tự tương quan (Newey–West hoặc ARIMA) và mùa vụ.','Không có sự kiện khác xảy ra cùng lúc với chính sách.'],
+        sample:['Không có công thức chung; power phụ thuộc số điểm thời gian, độ biến động và độ lớn tác động (Lopez Bernal và cộng sự, 2017).'],
+        report:['Đồ thị chuỗi với đường xu thế trước và sau; hệ số thay đổi mức và thay đổi độ dốc kèm khoảng tin cậy; kiểm định tự tương quan.'],links:[T.series,T.data],refs:['bernal']}),alts:[M('DID',{why:['Nếu tìm được đơn vị so sánh không chịu tác động (tỉnh, ngành khác).']})]};
+      const twfe=M('Khác biệt trong khác biệt (DID) với tác động cố định hai chiều',{why:['So sánh thay đổi trước–sau của nhóm chịu tác động với thay đổi của nhóm đối chứng: Y = α_i + λ_t + β(Treat × Post) + kiểm soát; β là tác động của chính sách.','Kiểm tra xu hướng song song bằng mô hình event study (hệ số các năm trước chính sách gần 0) (Roth và cộng sự, 2023).'],
+        assume:['Xu hướng song song: không có chính sách thì hai nhóm thay đổi như nhau.','Không có tác động đón trước, và chính sách không lan sang nhóm đối chứng.','Sai số chuẩn theo cụm đơn vị; DID nhiều năm với sai số chuẩn thông thường cho p quá nhỏ (Bertrand và cộng sự, 2004).'],
+        sample:['Không có công thức chung; cần vài năm trước chính sách để kiểm tra xu hướng song song, và đủ số cụm cho sai số chuẩn theo cụm (Cameron & Miller, 2015).'],
+        report:['Đồ thị trung bình hai nhóm theo năm; hệ số β với sai số chuẩn theo cụm; đồ thị event study có khoảng tin cậy; kiểm định giả (placebo).'],links:[T.vars,T.panelData,T.data],refs:['bertrand','cameronMiller','roth']});
+      if(a.timing==='stagger')return {main:M('DID nhiều thời điểm: Callaway–Sant’Anna hoặc Sun–Abraham',{why:['Đơn vị chịu tác động ở các năm khác nhau: hồi quy TWFE thông thường dùng cả nhóm đã chịu tác động làm đối chứng, β có thể chệch, thậm chí đổi dấu khi tác động thay đổi theo thời gian (Goodman-Bacon, 2021).','Ước lượng tác động cho từng nhóm theo năm bắt đầu rồi gộp lại (Callaway & Sant’Anna, 2021; Sun & Abraham, 2021).'],
+        assume:['Xu hướng song song có điều kiện cho từng nhóm theo năm bắt đầu.','Không có tác động đón trước.','Có nhóm chưa bao giờ hoặc chưa chịu tác động làm đối chứng.'],
+        sample:['Không có công thức chung; mỗi nhóm theo năm bắt đầu cần đủ đơn vị, và cần đủ số cụm (Cameron & Miller, 2015).'],
+        report:['Phân rã Goodman-Bacon của TWFE; tác động trung bình theo nhóm, theo thời gian kể từ khi chịu tác động; đồ thị event study.'],links:[T.vars,T.panelData,T.data],refs:['goodmanBacon','callaway','sunAbraham','roth','cameronMiller']}),alts:[twfe]};
+      return {main:twfe,alts:[M('Event study động (từng năm trước, sau)',{why:['Thay Treat × Post bằng biến giả từng năm so với năm chính sách để xem tác động theo thời gian và kiểm tra xu hướng trước.']})]};
+    }
+    case 'experiment':{
+      const xo=a.xout==='bin'?'nom':(a.xout==='ord'?'ord':'cont'), multi=a.xk==='3', gg=multi?num(a.g,3,3,10):2;
+      const xWhy='Phân ngẫu nhiên người tham gia vào các điều kiện giúp quy khác biệt giữa các nhóm cho can thiệp, không cho đặc điểm người tham gia.';
+      const xAssume=['Phân nhóm ngẫu nhiên thật sự (ghi rõ cách phân); so sánh đặc điểm nền giữa các nhóm.','Kiểm tra thao tác (manipulation check): người tham gia nhận ra đúng kịch bản được giao.'];
+      const xReport='Số người được phân vào từng nhóm, số bỏ cuộc, kết quả kiểm tra thao tác.';
+      const dress=r=>{const m=r.main;r.main={...m,why:[xWhy,...m.why],assume:[...xAssume,...m.assume],report:[xReport,...m.report],links:[...m.links,T.design]};return r};
+      if(a.xdesign==='prepost'){
+        const nt=anovaN(gg,0.25,0.05,0.8), n=Math.ceil(nt*0.75);
+        if(xo==='nom')return dress({main:M('Hồi quy logistic: kết quả sau can thiệp, kiểm soát giá trị trước',{why:['Kết quả có/không đo hai lần: mô hình logistic với biến nhóm và giá trị trước can thiệp làm biến kiểm soát.'],assume:['Quan sát độc lập giữa người tham gia.'],sample:['Ít nhất 10 biến cố cho mỗi tham số (Peduzzi và cộng sự, 1996).'],report:['Odds ratio của nhóm can thiệp và khoảng tin cậy.'],links:[T.sample],refs:['peduzzi','field']}),alts:[]});
+        return dress({main:M('ANCOVA: điểm sau can thiệp, kiểm soát điểm trước',{why:['So sánh điểm sau giữa các nhóm, điều chỉnh theo điểm trước: mạnh hơn so sánh điểm chênh lệch hay chỉ điểm sau, và không bị lệch khi hai nhóm khác nhau lúc đầu (Vickers & Altman, 2001).'],
+          assume:['Điểm trước đo trước khi can thiệp.','Quan hệ tuyến tính giữa điểm trước và sau; độ dốc đồng nhất giữa các nhóm (tương tác nhóm × điểm trước không có ý nghĩa).','Phần dư gần chuẩn, phương sai đồng nhất.'],
+          sample:[`Khoảng ${n} người mỗi nhóm: cỡ mẫu của ${multi?'ANOVA':'t-test'} (${nt} mỗi nhóm, hiệu ứng trung bình) nhân (1 − ρ²) với tương quan trước–sau ρ = 0,5 (Borm và cộng sự, 2007).`],
+          report:['Trung bình trước, sau từng nhóm; F, p, partial η² của nhóm; trung bình điều chỉnh và khoảng tin cậy của chênh lệch.'],links:[T.analysis,T.sample],refs:['vickers','borm','field']}),
+          alts:[M('ANOVA hỗn hợp (nhóm × thời điểm)',{why:['Với hai lần đo, tương tác nhóm × thời điểm tương đương t-test trên điểm chênh lệch, kém power hơn ANCOVA (Vickers & Altman, 2001).'],refs:['vickers']})]});
+      }
+      if(a.xdesign==='factorial'){
+        if(xo==='nom')return dress({main:M('Hồi quy logistic với hai yếu tố và tương tác',{why:['Kết quả có/không trong thiết kế 2 × 2: đưa hai yếu tố và tích của chúng vào mô hình logistic.'],assume:['Mỗi ô có đủ số người trả lời “có” và “không”.'],sample:['Ít nhất 10 biến cố cho mỗi tham số (Peduzzi và cộng sự, 1996); không ô nào quá ít người.'],report:['Odds ratio hai yếu tố và tương tác; tỷ lệ “có” theo ô.'],links:[T.sample],refs:['peduzzi','field']}),alts:[]});
+        return dress(recommend({...a,goal:'compare',out:xo,groups:'2',design:'ind',factors:'2'}));
+      }
+      return dress(recommend({...a,goal:'compare',out:xo,groups:multi?'3':'2',design:a.xdesign==='within'?'rep':'ind',factors:'1',g:String(gg),df:String(Math.min(6,gg-1))}));
+    }
+    case 'qual':{
+      const sat='Chọn mẫu có chủ đích, phỏng vấn tới khi bão hoà (không còn ý mới): khoảng 12 cuộc phỏng vấn với nhóm tương đối đồng nhất (Guest và cộng sự, 2006); tổng quan các kiểm định thực nghiệm cho 9–17 phỏng vấn hoặc 4–8 cuộc thảo luận nhóm (Hennink & Kaiser, 2022).';
+      const ta=M('Phân tích chủ đề (thematic analysis)',{why:['Mục tiêu khám phá, giải thích “vì sao”, “như thế nào”: mã hoá bản ghi phỏng vấn rồi gom mã thành chủ đề theo 6 bước (Braun & Clarke, 2006).'],
+        assume:['Ghi âm có đồng ý, gỡ băng nguyên văn.','Bộ câu hỏi bán cấu trúc bám câu hỏi nghiên cứu.','Ghi lại quá trình mã hoá (bảng mã) để người khác kiểm tra được.'],
+        sample:[sat],report:['Bảng đặc điểm người tham gia (ẩn danh); bảng chủ đề, chủ đề con kèm trích dẫn nguyên văn; cách đảm bảo độ tin cậy (đối chiếu với người tham gia, hai người mã hoá).'],links:[T.pilot,T.build],refs:['braun','guest','hennink']});
+      if(a.qtype!=='explor'&&a.qtype!=='explan')return {main:ta,alts:[]};
+      const explor=a.qtype==='explor';
+      return {main:M(explor?'Hỗn hợp tuần tự khám phá: định tính → khảo sát':'Hỗn hợp tuần tự giải thích: khảo sát → định tính',{why:[explor?'Phỏng vấn trước để điều chỉnh thang đo, bổ sung biến cho bối cảnh Việt Nam, rồi khảo sát để kiểm định mô hình; giai đoạn định tính quyết định nội dung bảng hỏi.':'Khảo sát trước để kiểm định giả thuyết, rồi phỏng vấn một số người trả lời để giải thích kết quả bất ngờ hoặc giả thuyết bị bác bỏ.','Nêu rõ điểm tích hợp hai giai đoạn và trình bày bảng kết hợp (joint display) (Fetters và cộng sự, 2013).'],
+        assume:[explor?'Câu hỏi khảo sát được xây từ kết quả phỏng vấn, kiểm tra lại bằng Cronbach’s alpha, EFA.':'Người được phỏng vấn chọn từ mẫu khảo sát theo kết quả cần giải thích.','Mỗi giai đoạn tự đáp ứng chuẩn của nó (cỡ mẫu khảo sát, bão hoà định tính).'],
+        sample:[sat,'Phần khảo sát tính cỡ mẫu theo phương pháp định lượng (PLS-SEM, hồi quy).'],report:['Sơ đồ thiết kế hai giai đoạn; kết quả định tính và điều chỉnh thang đo hoặc giải thích; bảng kết hợp định tính và định lượng.'],
+        links:explor?[T.pilot,T.adapt,T.scales,T.kit,T.sample]:[T.analysis,T.ch4,T.pilot,T.sample],refs:['fetters','braun','guest','hennink']}),alts:[ta]};
     }
     case 'describe':
       return {main:M('Thống kê mô tả và ước lượng tỷ lệ',{why:['Tần số, phần trăm cho biến định danh; trung bình, độ lệch chuẩn cho biến liên tục; khoảng tin cậy 95% cho tỷ lệ hoặc trung bình.'],assume:['Mẫu đại diện cho tổng thể (chọn mẫu xác suất nếu muốn suy rộng).'],
@@ -315,31 +491,69 @@
   }
   const REFS={
     anderson:'Anderson, J. C., & Gerbing, D. W. (1988). Structural equation modeling in practice: A review and recommended two-step approach. <i>Psychological Bulletin</i>, <i>103</i>(3), 411–423. https://doi.org/10.1037/0033-2909.103.3.411',
+    arellano91:'Arellano, M., & Bond, S. (1991). Some tests of specification for panel data: Monte Carlo evidence and an application to employment equations. <i>The Review of Economic Studies</i>, <i>58</i>(2), 277–297. https://doi.org/10.2307/2297968',
+    arellanoBover:'Arellano, M., & Bover, O. (1995). Another look at the instrumental variable estimation of error-components models. <i>Journal of Econometrics</i>, <i>68</i>(1), 29–51. https://doi.org/10.1016/0304-4076(94)01642-D',
+    bernal:'Lopez Bernal, J., Cummins, S., & Gasparrini, A. (2017). Interrupted time series regression for the evaluation of public health interventions: A tutorial. <i>International Journal of Epidemiology</i>, <i>46</i>(1), 348–355. https://doi.org/10.1093/ije/dyw098',
+    bertrand:'Bertrand, M., Duflo, E., & Mullainathan, S. (2004). How much should we trust differences-in-differences estimates? <i>The Quarterly Journal of Economics</i>, <i>119</i>(1), 249–275. https://doi.org/10.1162/003355304772839588',
+    blundell:'Blundell, R., & Bond, S. (1998). Initial conditions and moment restrictions in dynamic panel data models. <i>Journal of Econometrics</i>, <i>87</i>(1), 115–143. https://doi.org/10.1016/S0304-4076(98)00009-8',
+    borm:'Borm, G. F., Fransen, J., & Lemmens, W. A. J. G. (2007). A simple sample size formula for analysis of covariance in randomized clinical trials. <i>Journal of Clinical Epidemiology</i>, <i>60</i>(12), 1234–1238. https://doi.org/10.1016/j.jclinepi.2007.02.006',
+    braun:'Braun, V., & Clarke, V. (2006). Using thematic analysis in psychology. <i>Qualitative Research in Psychology</i>, <i>3</i>(2), 77–101. https://doi.org/10.1191/1478088706qp063oa',
+    brownWarner:'Brown, S. J., & Warner, J. B. (1985). Using daily stock returns: The case of event studies. <i>Journal of Financial Economics</i>, <i>14</i>(1), 3–31. https://doi.org/10.1016/0304-405X(85)90042-X',
+    callaway:'Callaway, B., & Sant’Anna, P. H. C. (2021). Difference-in-differences with multiple time periods. <i>Journal of Econometrics</i>, <i>225</i>(2), 200–230. https://doi.org/10.1016/j.jeconom.2020.12.001',
+    cameron:'Cameron, A. C., & Trivedi, P. K. (2013). <i>Regression analysis of count data</i> (2nd ed.). Cambridge University Press. https://doi.org/10.1017/CBO9781139013567',
+    cameronMiller:'Cameron, A. C., & Miller, D. L. (2015). A practitioner’s guide to cluster-robust inference. <i>Journal of Human Resources</i>, <i>50</i>(2), 317–372. https://doi.org/10.3368/jhr.50.2.317',
     cochran:'Cochran, W. G. (1977). <i>Sampling techniques</i> (3rd ed.). John Wiley & Sons.',
     cohen92:'Cohen, J. (1992). A power primer. <i>Psychological Bulletin</i>, <i>112</i>(1), 155–159. https://doi.org/10.1037/0033-2909.112.1.155',
+    dickey:'Dickey, D. A., & Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. <i>Journal of the American Statistical Association</i>, <i>74</i>(366a), 427–431. https://doi.org/10.1080/01621459.1979.10482531',
+    driscoll:'Driscoll, J. C., & Kraay, A. C. (1998). Consistent covariance matrix estimation with spatially dependent panel data. <i>Review of Economics and Statistics</i>, <i>80</i>(4), 549–560. https://doi.org/10.1162/003465398557825',
+    engle:'Engle, R. F., & Granger, C. W. J. (1987). Co-integration and error correction: Representation, estimation, and testing. <i>Econometrica</i>, <i>55</i>(2), 251–276. https://doi.org/10.2307/1913236',
     faul:'Faul, F., Erdfelder, E., Buchner, A., & Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <i>Behavior Research Methods</i>, <i>41</i>(4), 1149–1160. https://doi.org/10.3758/BRM.41.4.1149',
+    fetters:'Fetters, M. D., Curry, L. A., & Creswell, J. W. (2013). Achieving integration in mixed methods designs: Principles and practices. <i>Health Services Research</i>, <i>48</i>(6pt2), 2134–2156. https://doi.org/10.1111/1475-6773.12117',
     field:'Field, A. (2018). <i>Discovering statistics using IBM SPSS Statistics</i> (5th ed.). Sage.',
     fritz:'Fritz, M. S., & MacKinnon, D. P. (2007). Required sample size to detect the mediated effect. <i>Psychological Science</i>, <i>18</i>(3), 233–239. https://doi.org/10.1111/j.1467-9280.2007.01882.x',
+    goodmanBacon:'Goodman-Bacon, A. (2021). Difference-in-differences with variation in treatment timing. <i>Journal of Econometrics</i>, <i>225</i>(2), 254–277. https://doi.org/10.1016/j.jeconom.2021.03.014',
+    guest:'Guest, G., Bunce, A., & Johnson, L. (2006). How many interviews are enough? An experiment with data saturation and variability. <i>Field Methods</i>, <i>18</i>(1), 59–82. https://doi.org/10.1177/1525822X05279903',
     hair10:'Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E. (2010). <i>Multivariate data analysis</i> (7th ed.). Pearson Prentice Hall.',
     hair19:'Hair, J. F., Risher, J. J., Sarstedt, M., & Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <i>European Business Review</i>, <i>31</i>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203',
     hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., & Sarstedt, M. (2022). <i>A primer on partial least squares structural equation modeling (PLS-SEM)</i> (3rd ed.). Sage.',
     hausman:'Hausman, J. A. (1978). Specification tests in econometrics. <i>Econometrica</i>, <i>46</i>(6), 1251–1271. https://doi.org/10.2307/1913827',
     hayes:'Hayes, A. F. (2022). <i>Introduction to mediation, moderation, and conditional process analysis: A regression-based approach</i> (3rd ed.). Guilford Press.',
+    hennink:'Hennink, M., & Kaiser, B. N. (2022). Sample sizes for saturation in qualitative research: A systematic review of empirical tests. <i>Social Science & Medicine</i>, <i>292</i>, Article 114523. https://doi.org/10.1016/j.socscimed.2021.114523',
+    henseler16:'Henseler, J., Ringle, C. M., & Sarstedt, M. (2016). Testing measurement invariance of composites using partial least squares. <i>International Marketing Review</i>, <i>33</i>(3), 405–431. https://doi.org/10.1108/IMR-09-2014-0304',
     hu:'Hu, L., & Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. <i>Structural Equation Modeling</i>, <i>6</i>(1), 1–55. https://doi.org/10.1080/10705519909540118',
+    ips:'Im, K. S., Pesaran, M. H., & Shin, Y. (2003). Testing for unit roots in heterogeneous panels. <i>Journal of Econometrics</i>, <i>115</i>(1), 53–74. https://doi.org/10.1016/S0304-4076(03)00092-7',
+    johansen:'Johansen, S. (1991). Estimation and hypothesis testing of cointegration vectors in Gaussian vector autoregressive models. <i>Econometrica</i>, <i>59</i>(6), 1551–1580. https://doi.org/10.2307/2938278',
     kock:'Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <i>Information Systems Journal</i>, <i>28</i>(1), 227–261. https://doi.org/10.1111/isj.12131',
+    kpss:'Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., & Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. <i>Journal of Econometrics</i>, <i>54</i>(1–3), 159–178. https://doi.org/10.1016/0304-4076(92)90104-Y',
+    mundlak:'Mundlak, Y. (1978). On the pooling of time series and cross section data. <i>Econometrica</i>, <i>46</i>(1), 69–85. https://doi.org/10.2307/1913646',
+    narayan:'Narayan, P. K. (2005). The saving and investment nexus for China: Evidence from cointegration tests. <i>Applied Economics</i>, <i>37</i>(17), 1979–1990. https://doi.org/10.1080/00036840500278103',
     peduzzi:'Peduzzi, P., Concato, J., Kemper, E., Holford, T. R., & Feinstein, A. R. (1996). A simulation study of the number of events per variable in logistic regression analysis. <i>Journal of Clinical Epidemiology</i>, <i>49</i>(12), 1373–1379. https://doi.org/10.1016/S0895-4356(96)00236-3',
+    pesaran01:'Pesaran, M. H., Shin, Y., & Smith, R. J. (2001). Bounds testing approaches to the analysis of level relationships. <i>Journal of Applied Econometrics</i>, <i>16</i>(3), 289–326. https://doi.org/10.1002/jae.616',
+    pesaran99:'Pesaran, M. H., Shin, Y., & Smith, R. P. (1999). Pooled mean group estimation of dynamic heterogeneous panels. <i>Journal of the American Statistical Association</i>, <i>94</i>(446), 621–634. https://doi.org/10.1080/01621459.1999.10474156',
+    pesaranCD:'Pesaran, M. H. (2021). General diagnostic tests for cross-sectional dependence in panels. <i>Empirical Economics</i>, <i>60</i>(1), 13–50. https://doi.org/10.1007/s00181-020-01875-7',
+    petersen:'Petersen, M. A. (2009). Estimating standard errors in finance panel data sets: Comparing approaches. <i>The Review of Financial Studies</i>, <i>22</i>(1), 435–480. https://doi.org/10.1093/rfs/hhn053',
+    pp:'Phillips, P. C. B., & Perron, P. (1988). Testing for a unit root in time series regression. <i>Biometrika</i>, <i>75</i>(2), 335–346. https://doi.org/10.1093/biomet/75.2.335',
     roodman:'Roodman, D. (2009). How to do xtabond2: An introduction to difference and system GMM in Stata. <i>The Stata Journal</i>, <i>9</i>(1), 86–136. https://doi.org/10.1177/1536867X0900900106',
+    roth:'Roth, J., Sant’Anna, P. H. C., Bilinski, A., & Poe, J. (2023). What’s trending in difference-in-differences? A synthesis of the recent econometrics literature. <i>Journal of Econometrics</i>, <i>235</i>(2), 2218–2244. https://doi.org/10.1016/j.jeconom.2023.03.008',
+    sims:'Sims, C. A. (1980). Macroeconomics and reality. <i>Econometrica</i>, <i>48</i>(1), 1–48. https://doi.org/10.2307/1912017',
+    sunAbraham:'Sun, L., & Abraham, S. (2021). Estimating dynamic treatment effects in event studies with heterogeneous treatment effects. <i>Journal of Econometrics</i>, <i>225</i>(2), 175–199. https://doi.org/10.1016/j.jeconom.2020.09.006',
     tabachnick:'Tabachnick, B. G., & Fidell, L. S. (2013). <i>Using multivariate statistics</i> (6th ed.). Pearson.',
+    toda:'Toda, H. Y., & Yamamoto, T. (1995). Statistical inference in vector autoregressions with possibly integrated processes. <i>Journal of Econometrics</i>, <i>66</i>(1–2), 225–250. https://doi.org/10.1016/0304-4076(94)01616-8',
+    vickers:'Vickers, A. J., & Altman, D. G. (2001). Analysing controlled trials with baseline and follow up measurements. <i>BMJ</i>, <i>323</i>(7321), 1123–1124. https://doi.org/10.1136/bmj.323.7321.1123',
+    westerlund:'Westerlund, J. (2007). Testing for error correction in panel data. <i>Oxford Bulletin of Economics and Statistics</i>, <i>69</i>(6), 709–748. https://doi.org/10.1111/j.1468-0084.2007.00477.x',
+    windmeijer:'Windmeijer, F. (2005). A finite sample correction for the variance of linear efficient two-step GMM estimators. <i>Journal of Econometrics</i>, <i>126</i>(1), 25–51. https://doi.org/10.1016/j.jeconom.2004.02.005',
+    wobbrock:'Wobbrock, J. O., Findlater, L., Gergle, D., & Higgins, J. J. (2011). The aligned rank transform for nonparametric factorial analyses using only ANOVA procedures. In <i>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</i> (pp. 143–146). ACM. https://doi.org/10.1145/1978942.1978963',
     wolf:'Wolf, E. J., Harrington, K. M., Clark, S. L., & Miller, M. W. (2013). Sample size requirements for structural equation models: An evaluation of power, bias, and solution propriety. <i>Educational and Psychological Measurement</i>, <i>73</i>(6), 913–934. https://doi.org/10.1177/0013164413495237',
     wooldridge:'Wooldridge, J. M. (2010). <i>Econometric analysis of cross section and panel data</i> (2nd ed.). MIT Press.',
     zhao:'Zhao, X., Lynch, J. G., Jr., & Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. <i>Journal of Consumer Research</i>, <i>37</i>(2), 197–206. https://doi.org/10.1086/651257',
   };
+
   //#advisor-end
 
   const $=id=>document.getElementById(id);
   const form=$('cp-form');
   const esc=s=>String(s).replace(/&(?!amp;|lt;|gt;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const NAMES=['goal','out','groups','design','factors','normal','pair','dv','chain','aim','formative','size','origin','mm','wtype','frame','nt','dyn'];
+  const NAMES=['goal','out','groups','design','factors','normal','pair','dv','chain','aim','formative','size','origin','mm','wtype','frame','unit','nt','dyn','tsaim','integ','ptype','timing','xdesign','xout','xk','qtype'];
   const INPUTS={k:'cp-k',p:'cp-p',items:'cp-items',g:'cp-g',df:'cp-df'};
   function answers(){
     const a={};NAMES.forEach(n=>{const el=form.querySelector(`input[name="${n}"]:checked`);if(el)a[n]=el.value});
@@ -349,12 +563,13 @@
   // data-for="goal" or "goal:value" tokens (value = the first sub-answer that matters for that goal).
   function show(a){
     const tags=new Set([a.goal]);
-    if(a.goal==='compare'){tags.add('compare:'+a.out);if(a.groups==='3')tags.add('compare:3');if(a.out==='cont'&&a.design==='ind'&&a.groups==='3')tags.add('compare:cont:ind')}
+    if(a.goal==='compare'){tags.add('compare:'+a.out);if(a.groups==='3')tags.add('compare:3');if(a.out!=='nom'&&a.design==='ind')tags.add('compare:ind')}
+    if(a.goal==='experiment'){tags.add('experiment:'+a.xdesign);if(a.xout==='cont'&&a.xdesign!=='prepost')tags.add('experiment:cont');if(a.xk==='3'&&a.xdesign!=='factorial')tags.add('experiment:3')}
+    if(a.goal==='policy')tags.add('policy:'+a.ptype);
     if(a.goal==='relate')tags.add('relate:'+a.pair);
     if(a.goal==='predict')tags.add('predict:'+a.dv);
     if(a.goal==='medmod')tags.add('medmod:'+a.mm);
     form.querySelectorAll('[data-for]').forEach(el=>{el.hidden=!el.dataset.for.split(' ').some(t=>tags.has(t))});
-    // a factor of 2 only applies to independent groups with a continuous outcome
     const kl=$('cp-k-label');if(kl)kl.textContent=a.goal==='model'?'Số mũi tên nhiều nhất trỏ vào một khái niệm':'Số biến độc lập';
   }
   const li=xs=>`<ul>${xs.map(x=>`<li>${x}</li>`).join('')}</ul>`;

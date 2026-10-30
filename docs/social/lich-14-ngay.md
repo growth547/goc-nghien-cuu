@@ -21,7 +21,7 @@ Tài khoản @gocnghiencuu1203 (Góc nghiên cứu). Căn cứ: `dot-1.md` và `
 
 | Ngày | Thứ, ngày | Giờ | Chủ đề | Dạng | Nội dung |
 |---|---|---|---|---|---|
-| 1 | T7 31/10 | 20:30 | KLTN | Topic: hỏi cộng đồng + tự mở hàng | Điều ước gì được nói trước khi làm phần số liệu |
+| 1 | T7 31/10 | 20:30 | KLTN | Chuỗi 5 phần, ra mắt trang (giới thiệu) | Công cụ miễn phí trên trình duyệt: PLS-SEM, Cronbach, cỡ mẫu, vẽ mô hình, thang đo |
 | 2 | CN 01/11 | 20:30 | nckh | Chuỗi 7 phần, danh sách | 5 công cụ miễn phí chạy số liệu khoá luận |
 | 3 | T2 02/11 | 20:30 | nckh | Chuỗi 5 phần, chuyên mục "Hội đồng hỏi" số 1 | "Thang đo này em lấy ở đâu?" |
 | 4 | T3 03/11 | 20:30 | KLTN | Poll | Bạn đang kẹt ở khâu nào |
@@ -50,26 +50,33 @@ Nhịp dạng bài trong 14 ngày:
 
 ## Bài đăng
 
-### Ngày 1 · T7 31/10 · 20:30 · chủ đề KLTN · chuỗi 3 phần, tranh cãi + checklist
+### Ngày 1 · T7 31/10 · 20:30 · chủ đề KLTN · chuỗi 5 phần, ra mắt trang (giới thiệu)
 
-**1/3**
-> Gửi đứa bạn sắp làm khoá luận: đừng mở Google Form vội. Chọn cách phân tích trước, rồi mới viết bảng hỏi.
+Bài ra mắt gocnghiencuu.com. Mọi tính năng nêu trong bài đã đối chiếu với trang công cụ ngày 30/10/2026 (`src/tools/pls-sem.html`, `src/pages/cong-cu/*.astro`, 60 thang đo trong `src/content/thang-do/`).
 
-**2/3**
-> Làm ngược là dễ gặp cảnh thu xong phiếu mới biết:
-> - mỗi khái niệm chỉ có 2 câu hỏi;
-> - số phiếu không đủ cho mô hình định chạy.
+**1/5**
+> Gửi ngay cho đứa bạn đang làm khoá luận: giờ chạy PLS-SEM được ngay trên trình duyệt, miễn phí, khỏi cài SmartPLS hay tìm crack.
+
+**2/5**
+> Bên mình làm Góc Nghiên Cứu, bộ công cụ miễn phí cho sinh viên làm khoá luận. Link ở bio.
 >
-> Lúc đó sửa gì cũng phải khảo sát lại.
+> Công cụ PLS-SEM cho các bảng chính như SmartPLS: outer loadings, alpha, rho_A, CR, AVE, HTMT, hệ số đường dẫn, R², f², Q². Bootstrap mặc định 5.000 mẫu, xuất bảng ra Word.
 
-**3/3**
-> Thứ tự an toàn hơn:
-> 1. Chốt mô hình và cách phân tích: hồi quy, EFA hay PLS-SEM.
-> 2. Tính cỡ mẫu theo đúng cách đó.
-> 3. Lấy thang đo từ bài báo gốc, giữ đủ số câu như bản gốc.
-> 4. Rồi mới làm Google Form.
+**3/5**
+> Dữ liệu xử lý ngay trên trình duyệt của bạn, không gửi lên máy chủ.
 >
-> Lưu lại, hoặc gửi cho đứa bạn cùng nhóm nha.
+> Đi kèm còn có:
+> - tính Cronbach's alpha: dán dữ liệu từ Excel, SPSS hay Google Forms, có bảng Item-Total như SPSS;
+> - tính cỡ mẫu cho PLS-SEM, hồi quy, EFA, t-test, ANOVA, kèm đoạn chọn mẫu cho chương 3.
+
+**4/5**
+> - Vẽ mô hình kéo thả, tải hình cho Word, có sẵn giả thuyết H1, H2 viết theo mô hình.
+> - Thư viện 60 thang đo tiếng Việt, mỗi thang ghi rõ bài báo gốc, đang thêm dần. Đỡ cảnh trích thang đo từ khoá luận khoá trước.
+
+**5/5**
+> Nói thẳng giới hạn: công cụ PLS-SEM chưa có PLSc, PLSpredict, MGA. Khoa bắt buộc SmartPLS thì dùng để kiểm tra trước rồi chạy lại trên SmartPLS.
+>
+> Tất cả miễn phí, link ở bio. Gửi cho cả nhóm khoá luận của bạn nha.
 
 Không trả lời bình luận ngay sau khi đăng. Bình luận có nội dung thì soạn nháp trả lời vào file nháp trong ngày, người dùng quyết định lúc nào gửi.
 
@@ -368,6 +375,27 @@ Ghi chú:
 
 **4/4**
 > Trong chương 4 ghi rõ: thu bao nhiêu, loại bao nhiêu, loại theo tiêu chí gì. Một dòng đó trả lời trước câu "số phiếu hợp lệ của em ở đâu ra".
+
+#### Dự phòng C · chủ đề KLTN · chuỗi 3 phần · Chọn cách phân tích trước bảng hỏi (bài ngày 1 cũ)
+
+**1/3**
+> Gửi đứa bạn sắp làm khoá luận: đừng mở Google Form vội. Chọn cách phân tích trước, rồi mới viết bảng hỏi.
+
+**2/3**
+> Làm ngược là dễ gặp cảnh thu xong phiếu mới biết:
+> - mỗi khái niệm chỉ có 2 câu hỏi;
+> - số phiếu không đủ cho mô hình định chạy.
+>
+> Lúc đó sửa gì cũng phải khảo sát lại.
+
+**3/3**
+> Thứ tự an toàn hơn:
+> 1. Chốt mô hình và cách phân tích: hồi quy, EFA hay PLS-SEM.
+> 2. Tính cỡ mẫu theo đúng cách đó.
+> 3. Lấy thang đo từ bài báo gốc, giữ đủ số câu như bản gốc.
+> 4. Rồi mới làm Google Form.
+>
+> Lưu lại, hoặc gửi cho đứa bạn cùng nhóm nha.
 
 ## 10 mẫu trả lời bài kêu cứu
 

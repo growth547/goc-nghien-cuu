@@ -10,9 +10,9 @@ Mục tiêu: 1.000 lượt truy cập trong tuần ra mắt (31/10–06/11/2026)
 | Bài SEO | Tác vụ "viết 2 bài SEO mỗi ngày" | 9:16 hằng ngày | 2 bài theo docs/CONTENT_BACKLOG.md | DOI qua Crossref, check-seo, CI |
 | Bảo trì, dữ liệu, SEO theo Search Console | Tác vụ "quét, sửa, làm mới dữ liệu và tối ưu SEO" | T2, T5 6:13 | Sửa lỗi crawl, +5 chỉ số dữ liệu, tối ưu tối đa 8 trang CTR thấp, yêu cầu index | check-data, check-seo, docs/qa/gsc-weekly.md |
 | Threads | Tác vụ đăng bài tối (20:31) và trưa (12:15) | Đến 27/11 | Đúng bài trong docs/social/lich-14-ngay*.md; nháp trả lời bình luận | So từng phần với file trước khi đăng |
-| Đánh giá tăng trưởng | Phiên chính khi chủ site nhắn (tác vụ hằng ngày 22:15 chờ cấp quyền tạo tác vụ hẹn giờ) | Hằng ngày | docs/qa/growth-daily.md; chỉnh câu mở 3 bài Threads sắp tới theo bài nào chạy tốt | Chỉ đọc GA/Threads, không đăng |
+| Đánh giá tăng trưởng | Tác vụ "đánh giá tăng trưởng hằng ngày" | 22:15 hằng ngày | docs/qa/growth-daily.md; chỉnh câu mở 3 bài Threads sắp tới theo bài nào chạy tốt | Chỉ đọc GA/Threads, không đăng |
 | Reels | Agent dựng video, phiên chính đăng | 1 video/ngày | docs/launch/reels/ | Xem lại khung hình trước khi đăng |
-| Facebook Page | Phiên chính (khi người dùng nhắn) | Một lần, sau đó 1 bài/ngày | Page "Góc Nghiên Cứu" liên kết Instagram | Không tạo trùng |
+| Facebook Page | Tác vụ một lần 9:30 ngày 31/10, sau đó phiên chính | Một lần, sau đó 1 bài/ngày | Page "Góc Nghiên Cứu" liên kết Instagram | Không tạo trùng |
 | Nhóm Facebook, Spiderum, diễn đàn | Chủ site, từ tài khoản thật | 2 nhóm/ngày | Bài trong docs/launch/ra-mat.md | Đọc luật nhóm trước |
 
 ## Chỉ số theo dõi mỗi ngày

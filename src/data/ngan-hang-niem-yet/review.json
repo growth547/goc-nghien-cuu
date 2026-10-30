@@ -1,0 +1,378 @@
+{
+ "builtAt": "2026-10-30",
+ "published": 258,
+ "flagged": [
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "charter_capital",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "classified_loans_total",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "customer_deposits",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "dividend_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "fee_expense",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "fee_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "income_tax",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "interbank_assets",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "interbank_liabilities",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "interest_expense",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "interest_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "investment_securities",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loan_loss_reserve",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_gross",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_group1",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_group2",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_group3",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_group4",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_group5",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "loans_net",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "minority_interest_bs",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_fee_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_fx_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_interest_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_investment_securities",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_other_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "net_trading_securities",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "operating_expense",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "other_expense",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "other_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "pre_provision_profit",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "profit_after_tax_parent",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "provision_expense",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "retained_earnings",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "sbv_deposits",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "total_assets",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "total_equity",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "total_liabilities",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "total_liabilities_equity",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2019,
+   "item_code": "valuable_papers",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2020,
+   "item_code": "cash",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2020,
+   "item_code": "profit_before_tax",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2020,
+   "item_code": "total_operating_income",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2021,
+   "item_code": "due_to_govt_sbv",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2021,
+   "item_code": "interbank_assets",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "classified_loans_total",
+   "reason": "không qua kiểm tra kế toán"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "loans_group1",
+   "reason": "không qua kiểm tra kế toán"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "loans_group2",
+   "reason": "không qua kiểm tra kế toán"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "loans_group3",
+   "reason": "không qua kiểm tra kế toán"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "loans_group4",
+   "reason": "không qua kiểm tra kế toán"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "loans_group5",
+   "reason": "không qua kiểm tra kế toán"
+  }
+ ],
+ "restatements": [
+  {
+   "bank": "TCB",
+   "year": 2020,
+   "item_code": "fee_expense",
+   "original": -1859665,
+   "inNextReport": -1523503,
+   "nextFile": "TCB_31122021_VI_conso_search_4556d04800.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2020,
+   "item_code": "net_fee_income",
+   "original": 4188778,
+   "inNextReport": 4524940,
+   "nextFile": "TCB_31122021_VI_conso_search_4556d04800.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2020,
+   "item_code": "operating_expense",
+   "original": -8631195,
+   "inNextReport": -8967357,
+   "nextFile": "TCB_31122021_VI_conso_search_4556d04800.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2021,
+   "item_code": "loans_group1",
+   "original": 342902534,
+   "inNextReport": 327051002,
+   "nextFile": "Techcombank_VAS_bao_cao_tai_chinh_hop_nhat_YE_22_1b61069c5d.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "fee_expense",
+   "original": -2312843,
+   "inNextReport": -2687732,
+   "nextFile": "Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-YE-23-searchable-ebc51dbf3e.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "net_fee_income",
+   "original": 8527494,
+   "inNextReport": 8152605,
+   "nextFile": "Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-YE-23-searchable-ebc51dbf3e.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "total_operating_income",
+   "original": 40902080,
+   "inNextReport": 40527191,
+   "nextFile": "Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-YE-23-searchable-ebc51dbf3e.pdf"
+  },
+  {
+   "bank": "TCB",
+   "year": 2022,
+   "item_code": "operating_expense",
+   "original": -13398018,
+   "inNextReport": -13023129,
+   "nextFile": "Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-YE-23-searchable-ebc51dbf3e.pdf"
+  }
+ ]
+}

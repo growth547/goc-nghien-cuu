@@ -1,0 +1,245 @@
+[
+ {
+  "code": "VCB",
+  "name": "Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank)",
+  "exchange": "HOSE",
+  "status": "included",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu/Chi-tiet-nha-dau-tu",
+  "reason": "Không có trang điều khoản sử dụng website; chân trang chỉ ghi bản quyền; robots.txt cho phép toàn bộ (Allow: /)."
+ },
+ {
+  "code": "CTG",
+  "name": "Ngân hàng TMCP Công Thương Việt Nam (VietinBank)",
+  "exchange": "HOSE",
+  "status": "included",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://investor.vietinbank.vn/vi/financialreports.aspx",
+  "reason": "Không tìm thấy điều khoản sử dụng website; chân trang chỉ ghi bản quyền; robots.txt của investor.vietinbank.vn không chặn đường dẫn nào."
+ },
+ {
+  "code": "TCB",
+  "name": "Ngân hàng TMCP Kỹ thương Việt Nam (Techcombank)",
+  "exchange": "HOSE",
+  "status": "included",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://techcombank.com/nha-dau-tu/thong-tin-tai-chinh/bao-cao-tai-chinh-vas",
+  "reason": "Không có điều khoản sử dụng website (liên kết “Điều khoản & Điều kiện” ở chân trang dẫn tới điều khoản sản phẩm); robots.txt không chặn /nha-dau-tu và /content/dam."
+ },
+ {
+  "code": "BID",
+  "name": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV)",
+  "status": "excluded",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://bidv.com.vn/vn/quan-he-nha-dau-tu",
+  "reason": "Điều khoản sử dụng website cấm sao chép, hiển thị hoặc dùng cho mục đích công cộng bất kỳ phần nào của tài liệu trên website khi chưa có chấp thuận bằng văn bản của BIDV.",
+  "exchange": ""
+ },
+ {
+  "code": "MBB",
+  "name": "Ngân hàng TMCP Quân đội (MB)",
+  "status": "excluded",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://www.mbbank.com.vn",
+  "reason": "robots.txt chặn toàn bộ website với các bot AI (ClaudeBot, GPTBot, Google-Extended…); bộ dữ liệu này được trích với sự hỗ trợ của Claude nên không dùng.",
+  "exchange": ""
+ },
+ {
+  "code": "VPB",
+  "name": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)",
+  "status": "pending",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://www.vpbank.com.vn/quan-he-nha-dau-tu/bao-cao-tai-chinh",
+  "reason": "Đã đọc robots.txt (không chặn mục quan hệ nhà đầu tư) và chân trang (chỉ có câu bản quyền, chính sách bảo mật); chưa tải BCTC. Bổ sung đợt sau.",
+  "exchange": ""
+ },
+ {
+  "code": "ACB",
+  "name": "Ngân hàng TMCP Á Châu (ACB)",
+  "status": "pending",
+  "checkedAt": "2026-10-30",
+  "irUrl": "https://acb.com.vn/nha-dau-tu",
+  "reason": "Đã đọc robots.txt (cho phép); chưa tìm thấy điều khoản sử dụng website, chưa tải BCTC. Bổ sung đợt sau.",
+  "exchange": ""
+ },
+ {
+  "code": "HDB",
+  "name": "Ngân hàng TMCP Phát triển TP.HCM (HDBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "STB",
+  "name": "Ngân hàng TMCP Sài Gòn Thương Tín (Sacombank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "SHB",
+  "name": "Ngân hàng TMCP Sài Gòn – Hà Nội (SHB)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "LPB",
+  "name": "Ngân hàng TMCP Lộc Phát Việt Nam (LPBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "VIB",
+  "name": "Ngân hàng TMCP Quốc tế Việt Nam (VIB)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "TPB",
+  "name": "Ngân hàng TMCP Tiên Phong (TPBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "MSB",
+  "name": "Ngân hàng TMCP Hàng Hải Việt Nam (MSB)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "SSB",
+  "name": "Ngân hàng TMCP Đông Nam Á (SeABank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "OCB",
+  "name": "Ngân hàng TMCP Phương Đông (OCB)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "EIB",
+  "name": "Ngân hàng TMCP Xuất Nhập khẩu Việt Nam (Eximbank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "NAB",
+  "name": "Ngân hàng TMCP Nam Á (Nam A Bank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "BAB",
+  "name": "Ngân hàng TMCP Bắc Á (Bac A Bank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "ABB",
+  "name": "Ngân hàng TMCP An Bình (ABBANK)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "VAB",
+  "name": "Ngân hàng TMCP Việt Á (VietABank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "KLB",
+  "name": "Ngân hàng TMCP Kiên Long (KienlongBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "BVB",
+  "name": "Ngân hàng TMCP Bản Việt (BVBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "PGB",
+  "name": "Ngân hàng TMCP Thịnh vượng và Phát triển (PGBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "SGB",
+  "name": "Ngân hàng TMCP Sài Gòn Công Thương (Saigonbank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "VBB",
+  "name": "Ngân hàng TMCP Việt Nam Thương Tín (VietBank)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ },
+ {
+  "code": "NVB",
+  "name": "Ngân hàng TMCP Quốc Dân (NCB)",
+  "status": "pending",
+  "checkedAt": "",
+  "irUrl": "",
+  "reason": "Chưa rà soát xong điều khoản sử dụng và robots.txt; sẽ bổ sung theo từng ngân hàng.",
+  "exchange": ""
+ }
+]

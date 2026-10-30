@@ -1,0 +1,414 @@
+{
+  "published": "2026-10-30",
+  "updated": "2026-10-30",
+  "families": [
+    {
+      "id": "do-tin-cay",
+      "title": "Độ tin cậy: Cronbach's alpha, CR, ρA, omega bao nhiêu là đạt?",
+      "answer": "Cronbach's alpha, độ tin cậy tổng hợp (CR) và ρA cùng dùng một bộ mốc: tối thiểu 0,70, chấp nhận 0,60–0,70 trong nghiên cứu khám phá, tốt nhất 0,80–0,90, và trên 0,95 là đáng ngờ vì các biến gần như lặp lại nhau. Tương quan biến–tổng hiệu chỉnh từ 0,30 trở lên là quy ước, không có nguồn gốc thống kê chặt.",
+      "links": [["cong-cu/cronbach-alpha", "Tính Cronbach's alpha"], ["posts/cronbach-alpha-la-gi", "Cronbach's alpha là gì"]],
+      "rows": [
+        {
+          "indicator": "Cronbach's alpha (α)",
+          "threshold": "≥ 0,70; 0,60–0,70 chấp nhận được trong nghiên cứu khám phá; 0,70–0,90 từ đạt đến tốt; ≥ 0,95 có vấn đề (biến trùng lặp, trả lời một kiểu)",
+          "fix": "Xem cột \"alpha nếu loại biến\", kiểm tra biến đảo chiều đã mã hoá ngược chưa, chỉ loại biến khi không làm mất nội dung của khái niệm.",
+          "src": ["hair2021", "hair2019", "lance2006"],
+          "note": "Nunnally (1978) chỉ nói 0,70 là đủ ở giai đoạn đầu của nghiên cứu; với nghiên cứu cơ bản ông đề nghị 0,80 và khi ra quyết định dựa trên điểm từng người là tối thiểu 0,90 (trích nguyên văn trong Lance và cộng sự, 2006). Viết \"α ≥ 0,70 theo Nunnally\" cho mọi trường hợp là dẫn rộng hơn nguồn."
+        },
+        {
+          "indicator": "Tương quan biến–tổng hiệu chỉnh (corrected item-total correlation)",
+          "threshold": "≥ 0,30 (quy ước); giá trị âm gần như luôn là biến đảo chiều chưa mã hoá ngược",
+          "fix": "Đảo điểm biến ngược chiều rồi chạy lại; nếu vẫn thấp, xem lại câu chữ hoặc bản dịch của biến trước khi loại.",
+          "src": [],
+          "note": "Mốc 0,30 xuất hiện trong nhiều giáo trình SPSS và tài liệu tiếng Việt (thường ghi Nunnally & Bernstein, 1994), nhưng chúng tôi chưa tìm được câu gốc nêu đúng con số này, nên trang ghi đây là quy ước, không gán cho tác giả cụ thể."
+        },
+        {
+          "indicator": "Độ tin cậy tổng hợp (CR, ρc)",
+          "threshold": "≥ 0,70 (0,60 trong nghiên cứu khám phá); khuyến nghị 0,80–0,90; tối đa 0,95. Bagozzi & Yi (1988) dùng mốc ≥ 0,60",
+          "fix": "Loại biến có hệ số tải thấp nhất nếu việc loại làm CR vượt ngưỡng và không làm hỏng giá trị nội dung.",
+          "src": ["hair2021", "hair2019", "bagozzi1988"]
+        },
+        {
+          "indicator": "ρA (Dijkstra–Henseler)",
+          "threshold": "Cùng mốc với CR: ≥ 0,70, tối đa 0,95; giá trị thường nằm giữa α (cận dưới) và ρc (cận trên)",
+          "fix": "Như CR.",
+          "src": ["dijkstra2015", "hair2021"]
+        },
+        {
+          "indicator": "McDonald's omega (ω)",
+          "threshold": "Không có ngưỡng riêng; thực hành áp dụng cùng mốc với alpha (≥ 0,70)",
+          "fix": "Báo cáo ω cạnh α khi hệ số tải các biến chênh nhau nhiều (vi phạm giả định tau-equivalence của alpha).",
+          "src": ["mcneish2018", "hayes2020"],
+          "note": "Hai bài này khuyên dùng ω thay α vì α đánh giá thấp độ tin cậy khi hệ số tải không bằng nhau; cả hai không đặt ra mốc mới cho ω."
+        }
+      ]
+    },
+    {
+      "id": "efa",
+      "title": "EFA: KMO, Bartlett, hệ số tải, phương sai trích bao nhiêu là đạt?",
+      "answer": "Trong EFA, KMO tối thiểu 0,50 (từ 0,80 là tốt), kiểm định Bartlett có p < 0,05, hệ số tải cần đạt tuỳ cỡ mẫu (0,50 khi n khoảng 120, 0,30 khi n từ 350), và số nhân tố nên kiểm tra bằng parallel analysis thay vì chỉ dựa vào eigenvalue > 1. Mốc phương sai trích 50% là quy ước trong tài liệu tiếng Việt.",
+      "links": [["posts/cach-doc-ket-qua-efa-spss", "Cách đọc kết quả EFA trên SPSS"], ["cong-cu/phan-tich-du-lieu", "Chạy EFA trên trình duyệt"]],
+      "rows": [
+        {
+          "indicator": "KMO (Kaiser–Meyer–Olkin)",
+          "threshold": "≥ 0,50 tối thiểu. Thang của Kaiser: ≥ 0,90 tuyệt vời (marvelous), 0,80–0,89 rất tốt, 0,70–0,79 khá, 0,60–0,69 tầm thường, 0,50–0,59 kém, < 0,50 không chấp nhận",
+          "fix": "Loại biến có MSA riêng (đường chéo ma trận anti-image) < 0,50, rồi chạy lại; tăng cỡ mẫu nếu được.",
+          "src": ["kaiser1974", "kaiserrice1974"],
+          "note": "Bảng nhãn thường được dẫn Kaiser (1974, Psychometrika); một số tài liệu, gồm Wikipedia, ghi Kaiser & Rice (1974). Chúng tôi chưa đọc được nguyên văn để xác định bài nào chứa bảng nhãn, nên ghi cả hai."
+        },
+        {
+          "indicator": "Kiểm định Bartlett (sphericity)",
+          "threshold": "p < 0,05 (ma trận tương quan khác ma trận đơn vị, đủ tương quan để phân tích nhân tố)",
+          "fix": "Nếu p ≥ 0,05, các biến gần như không tương quan: xem lại thang đo, không chạy EFA.",
+          "src": ["bartlett1950"],
+          "note": "Với mẫu vài trăm phiếu, kiểm định này gần như luôn có ý nghĩa; đạt Bartlett không chứng minh dữ liệu tốt."
+        },
+        {
+          "indicator": "Communality (hệ số chung)",
+          "threshold": "Thường 0,40–0,70 trong khoa học xã hội; < 0,40 thì xem lại biến; ≥ 0,80 được coi là cao nhưng hiếm",
+          "fix": "Biến có communality < 0,40 có thể không liên quan đến các biến còn lại hoặc gợi ý một nhân tố khác: xem nội dung trước khi loại.",
+          "src": ["costello2005"]
+        },
+        {
+          "indicator": "Hệ số tải nhân tố theo cỡ mẫu",
+          "threshold": "0,30 (n ≥ 350) · 0,35 (250) · 0,40 (200) · 0,45 (150) · 0,50 (120) · 0,55 (100) · 0,60 (85) · 0,65 (70) · 0,70 (60) · 0,75 (50)",
+          "fix": "Loại lần lượt từng biến có hệ số tải thấp nhất dưới mốc rồi chạy lại EFA, không loại nhiều biến một lúc.",
+          "src": ["hair1998"],
+          "note": "Bảng của Hair và cộng sự (1998, tr. 112) tính để hệ số tải có ý nghĩa với α = 0,05 và power 80%. Mốc 0,50 hay dùng trong khoá luận ứng với n khoảng 120 trở lên."
+        },
+        {
+          "indicator": "Tổng phương sai trích (total variance explained)",
+          "threshold": "Hair và cộng sự coi khoảng 60% là thoả đáng trong khoa học xã hội, có khi thấp hơn; tài liệu tiếng Việt thường dùng mốc ≥ 50%",
+          "fix": "Phương sai trích thấp thường đi kèm nhiều biến tải thấp: xử lý các biến đó trước.",
+          "src": ["hair1998"],
+          "note": "Mốc 50% hay được dẫn Gerbing & Anderson (1988). Bài đó bàn về tính đơn hướng và đề xuất kiểm định bằng CFA; chúng tôi chưa đối chiếu được con số 50% trong bài, nên không dùng nó làm nguồn cho mốc này."
+        },
+        {
+          "indicator": "Số nhân tố: eigenvalue và parallel analysis",
+          "threshold": "Eigenvalue > 1 (Kaiser, 1960) là mặc định của SPSS nhưng thường giữ thừa nhân tố; nên giữ nhân tố có eigenvalue thực lớn hơn eigenvalue từ dữ liệu ngẫu nhiên cùng kích thước (parallel analysis, Horn, 1965)",
+          "fix": "Chạy lại với số nhân tố cố định theo mô hình lý thuyết và theo parallel analysis, chọn lời giải sạch nhất.",
+          "src": ["kaiser1960", "horn1965", "zwick1986", "lance2006"],
+          "note": "Zwick & Velicer (1986) thấy quy tắc eigenvalue > 1 luôn ước lượng thừa số thành phần; parallel analysis và MAP chính xác hơn."
+        },
+        {
+          "indicator": "Tải chéo (cross-loading)",
+          "threshold": "Biến tải ≥ 0,32 lên từ hai nhân tố trở lên là tải chéo. Quy ước trong tài liệu tiếng Việt: chênh lệch hai hệ số tải < 0,30 thì cân nhắc loại",
+          "fix": "Loại biến tải chéo nếu mỗi nhân tố vẫn còn đủ biến tải mạnh (≥ 0,50); nếu nhiều biến tải chéo, xem lại cấu trúc thang đo.",
+          "src": ["costello2005"],
+          "note": "Mốc 0,32 là của Tabachnick & Fidell, theo Costello & Osborne (2005). Quy tắc chênh lệch 0,30 không có nguồn gốc thống kê rõ ràng; chúng tôi ghi nó là quy ước."
+        }
+      ]
+    },
+    {
+      "id": "cfa",
+      "title": "CFA, CB-SEM: CFI, TLI, RMSEA, SRMR bao nhiêu là mô hình phù hợp?",
+      "answer": "Hu & Bentler (1999) đề xuất CFI và TLI gần 0,95, RMSEA gần 0,06 và SRMR gần 0,08. Mốc 0,90 cho CFI/TLI là quy ước cũ, xuất phát từ nhận xét của Bentler & Bonett (1980) về NFI và TLI. Không có \"luật vàng\": báo cáo nhiều chỉ số cùng lúc và giải thích theo bối cảnh.",
+      "links": [],
+      "rows": [
+        {
+          "indicator": "χ²/df (CMIN/df)",
+          "threshold": "≤ 3 hay gặp; ≤ 5 là mức lỏng",
+          "fix": "χ² tăng theo cỡ mẫu nên tỉ số này dễ vượt mốc khi mẫu lớn; báo cáo χ², df, p cùng các chỉ số dưới.",
+          "src": [],
+          "note": "Không có nguồn gốc thống nhất: mốc 5 thường dẫn Wheaton và cộng sự (1977), mốc 2–3 dẫn Carmines & McIver (1981); chúng tôi chưa đối chiếu được nguyên văn nên không gán con số cho họ."
+        },
+        {
+          "indicator": "CFI",
+          "threshold": "≥ 0,95 (Hu & Bentler, 1999); ≥ 0,90 là mức truyền thống",
+          "fix": "Xem hệ số tải chuẩn hoá và modification indices; chỉ nối sai số khi có lý do về nội dung (ví dụ hai câu cùng cách diễn đạt).",
+          "src": ["hu1999", "lance2006", "marsh2004"],
+          "note": "Bentler & Bonett (1980) chỉ viết rằng mô hình có NFI/TLI dưới 0,90 thường cải thiện được đáng kể; họ không nói về CFI vì CFI ra đời năm 1990 (Lance và cộng sự, 2006)."
+        },
+        {
+          "indicator": "TLI (NNFI)",
+          "threshold": "≥ 0,95 (Hu & Bentler, 1999); ≥ 0,90 là mức truyền thống",
+          "fix": "Như CFI. TLI phạt mô hình phức tạp nên thường thấp hơn CFI một chút.",
+          "src": ["hu1999", "bentler1980"]
+        },
+        {
+          "indicator": "RMSEA",
+          "threshold": "≤ 0,06 (Hu & Bentler, 1999); ≤ 0,05 tốt, 0,05–0,08 chấp nhận được, 0,08–0,10 tầm thường, > 0,10 kém (MacCallum và cộng sự, 1996)",
+          "fix": "Với mẫu nhỏ và bậc tự do thấp, RMSEA hay bác bỏ nhầm mô hình đúng; báo cáo kèm khoảng tin cậy 90%.",
+          "src": ["hu1999", "maccallum1996"]
+        },
+        {
+          "indicator": "SRMR",
+          "threshold": "≤ 0,08 (Hu & Bentler, 1999)",
+          "fix": "Xem ma trận phần dư chuẩn hoá để tìm cặp biến gây lệch lớn nhất.",
+          "src": ["hu1999"]
+        },
+        {
+          "indicator": "GFI, AGFI",
+          "threshold": "≥ 0,90 là mức truyền thống; không nằm trong nhóm chỉ số Hu & Bentler (1999) đề xuất ngưỡng",
+          "fix": "Ưu tiên báo cáo CFI, TLI, RMSEA, SRMR; nếu hội đồng yêu cầu GFI, ghi rõ đây là chỉ số bổ sung.",
+          "src": ["hu1999", "lance2006"]
+        }
+      ]
+    },
+    {
+      "id": "pls-do-luong",
+      "title": "PLS-SEM, mô hình đo lường: outer loading, AVE, HTMT bao nhiêu là đạt?",
+      "answer": "Với mô hình đo lường kết quả (reflective) trong PLS-SEM: hệ số tải ngoài ≥ 0,708, độ tin cậy 0,70–0,95, AVE ≥ 0,50, và giá trị phân biệt đánh giá bằng HTMT < 0,85 (hoặc < 0,90 khi hai khái niệm gần nghĩa). Tiêu chí Fornell–Larcker vẫn hay được báo cáo nhưng không còn được khuyên dùng làm tiêu chí chính.",
+      "links": [],
+      "rows": [
+        {
+          "indicator": "Hệ số tải ngoài (outer loading)",
+          "threshold": "≥ 0,708 (khái niệm giải thích trên 50% phương sai của biến); 0,40–0,708 chỉ loại khi việc loại làm CR hoặc AVE vượt ngưỡng; < 0,40 luôn loại",
+          "fix": "Loại từng biến tải thấp nhất, kiểm tra CR/AVE và giá trị nội dung sau mỗi lần loại.",
+          "src": ["hair2021", "hair2019"]
+        },
+        {
+          "indicator": "Độ tin cậy (α, ρA, ρc)",
+          "threshold": "≥ 0,70 (0,60 khám phá), khuyến nghị 0,80–0,90, tối đa 0,95; có thể kiểm định bằng khoảng tin cậy bootstrap",
+          "fix": "Xem bảng độ tin cậy ở trên.",
+          "src": ["hair2021", "hair2019"]
+        },
+        {
+          "indicator": "AVE (phương sai trung bình được trích)",
+          "threshold": "≥ 0,50",
+          "fix": "Loại biến tải thấp nhất (nếu nội dung cho phép) để tăng AVE.",
+          "src": ["fornell1981", "hair2021"]
+        },
+        {
+          "indicator": "Fornell–Larcker",
+          "threshold": "Căn bậc hai AVE của mỗi khái niệm lớn hơn tương quan của nó với mọi khái niệm khác",
+          "fix": "Dùng HTMT làm tiêu chí chính; có thể báo cáo Fornell–Larcker bổ sung nếu hội đồng quen dùng.",
+          "src": ["fornell1981", "henseler2015", "hair2021"],
+          "note": "Henseler và cộng sự (2015) cho thấy tiêu chí này bỏ sót vấn đề giá trị phân biệt khi hệ số tải chênh nhau ít (ví dụ cùng nằm trong 0,65–0,85); Hair và cộng sự (2021) khuyên không dùng nó."
+        },
+        {
+          "indicator": "HTMT",
+          "threshold": "< 0,85 khi hai khái niệm khác biệt rõ; < 0,90 khi gần nghĩa (ví dụ hài lòng nhận thức và hài lòng cảm xúc). Kiểm định: cận trên khoảng tin cậy bootstrap 95% một phía nhỏ hơn ngưỡng",
+          "fix": "Xem các cặp biến có tương quan chéo cao; cân nhắc gộp hai khái niệm hoặc dùng khái niệm bậc cao nếu lý thuyết cho phép.",
+          "src": ["henseler2015", "hair2021", "hair2019"]
+        }
+      ]
+    },
+    {
+      "id": "pls-cau-truc",
+      "title": "PLS-SEM, mô hình cấu trúc: VIF, R², f², Q², PLSpredict bao nhiêu là đạt?",
+      "answer": "Trong mô hình cấu trúc PLS-SEM: VIF nên dưới 3 (từ 5 là cộng tuyến nghiêm trọng), hệ số đường dẫn có ý nghĩa khi |t| > 1,96 hoặc khoảng tin cậy bootstrap 95% không chứa 0, R² 0,25/0,50/0,75 là yếu/trung bình/mạnh, f² 0,02/0,15/0,35 là nhỏ/vừa/lớn và Q² > 0 cho thấy có khả năng dự báo.",
+      "links": [["cong-cu/tinh-co-mau", "Máy tính cỡ mẫu PLS-SEM"]],
+      "rows": [
+        {
+          "indicator": "VIF giữa các biến tiềm ẩn (inner VIF)",
+          "threshold": "< 3 lý tưởng; 3–5 có thể có cộng tuyến; ≥ 5 cộng tuyến nghiêm trọng",
+          "fix": "Gộp các khái niệm quá gần nhau thành khái niệm bậc cao hoặc bỏ bớt một đường dẫn có cơ sở lý thuyết yếu.",
+          "src": ["hair2019", "hair2021"]
+        },
+        {
+          "indicator": "Hệ số đường dẫn và bootstrapping",
+          "threshold": "Có ý nghĩa khi |t| > 1,96 (α = 0,05, hai phía) hoặc khoảng tin cậy 95% (phương pháp percentile) không chứa 0; Hair và cộng sự (2021) khuyên dùng 10.000 mẫu bootstrap",
+          "fix": "Giả thuyết không được ủng hộ vẫn là kết quả; báo cáo trung thực và bàn luận ở chương 5.",
+          "src": ["hair2021", "streukens2016", "hair2019"]
+        },
+        {
+          "indicator": "R²",
+          "threshold": "0,75 / 0,50 / 0,25 là mạnh / trung bình / yếu trong nhiều ngành khoa học xã hội; ở một số lĩnh vực 0,10 đã thoả đáng; ≥ 0,90 với thái độ, hành vi thường là dấu hiệu quá khớp",
+          "fix": "So R² với các nghiên cứu cùng mô hình thay vì một mốc chung.",
+          "src": ["hair2011", "hair2021", "hair2019"]
+        },
+        {
+          "indicator": "f² (effect size)",
+          "threshold": "0,02 / 0,15 / 0,35 là nhỏ / vừa / lớn",
+          "fix": "f² chỉ cần báo cáo khi thứ tự quan trọng của các biến khác với thứ tự hệ số đường dẫn, hoặc khi hội đồng yêu cầu.",
+          "src": ["cohen1988", "hair2019"]
+        },
+        {
+          "indicator": "Q² (blindfolding, Stone–Geisser)",
+          "threshold": "> 0 là có khả năng dự báo; 0 / 0,25 / 0,50 là nhỏ / vừa / lớn",
+          "fix": "Q² blindfolding không phải dự báo ngoài mẫu thực sự; nên báo cáo thêm PLSpredict.",
+          "src": ["hair2019", "stone1974"]
+        },
+        {
+          "indicator": "PLSpredict",
+          "threshold": "Q²predict > 0; so RMSE (hoặc MAE) từng biến của khái niệm mục tiêu với mô hình hồi quy tuyến tính (LM): thấp hơn ở tất cả biến là dự báo cao, ở đa số là trung bình, ở thiểu số là thấp, không biến nào là không có khả năng dự báo. Dùng k = 10, lặp 10 lần",
+          "fix": "Khả năng dự báo thấp không làm mất giá trị giải thích; ghi rõ là hạn chế.",
+          "src": ["shmueli2019", "hair2021"]
+        },
+        {
+          "indicator": "SRMR trong PLS-SEM",
+          "threshold": "< 0,08 hay được báo cáo, nhưng Hair và cộng sự (2019) lưu ý mọi ngưỡng phù hợp mô hình cho PLS-SEM còn rất tạm thời",
+          "fix": "Không dùng SRMR để bác bỏ mô hình PLS; tập trung vào các bước đánh giá ở trên.",
+          "src": ["hair2019"]
+        }
+      ]
+    },
+    {
+      "id": "hoi-quy",
+      "title": "Hồi quy tuyến tính: VIF, Durbin–Watson, phân phối chuẩn, R² bao nhiêu là đạt?",
+      "answer": "Trong hồi quy bội, VIF dưới 10 (tolerance trên 0,10) là quy ước lỏng, dưới 5 là chặt hơn; Durbin–Watson gần 2 là không có tự tương quan nhưng chỉ có ý nghĩa với dữ liệu có thứ tự thời gian; phân phối chuẩn kiểm tra trên phần dư; và R² không có mốc đạt chung.",
+      "links": [["posts/hoi-quy-tuyen-tinh-boi-spss", "Hồi quy tuyến tính bội trên SPSS"], ["cong-cu/phan-tich-du-lieu", "Chạy hồi quy trên trình duyệt"]],
+      "rows": [
+        {
+          "indicator": "VIF / Tolerance",
+          "threshold": "VIF < 10 (Tolerance > 0,10) là quy ước phổ biến; VIF < 4 hoặc < 5 là quy ước chặt hơn",
+          "fix": "Không loại biến chỉ vì VIF vượt mốc; xem sai số chuẩn của hệ số, cỡ mẫu, và cân nhắc gộp biến nếu có cơ sở lý thuyết.",
+          "src": ["obrien2007"],
+          "note": "O'Brien (2007) ghi nhận cả hai mốc 10 và 4 đều đang được dùng và lập luận rằng VIF 10, 20 hay 40 tự nó không đủ để loại biến hay bác bỏ một mô hình hồi quy."
+        },
+        {
+          "indicator": "Durbin–Watson",
+          "threshold": "Gần 2 là không có tự tương quan bậc một; kiểm định đúng là so d với cận dL và dU trong bảng Durbin–Watson theo n và số biến",
+          "fix": "Với dữ liệu khảo sát cắt ngang, thứ tự dòng là tuỳ ý nên DW gần như không mang thông tin; chỉ xử lý (thêm biến trễ, sai số chuẩn HAC) khi dữ liệu là chuỗi thời gian.",
+          "src": ["durbin1950", "durbin1951"],
+          "note": "Các khoảng 1,5–2,5 hoặc 1–3 hay gặp trong khoá luận là quy tắc kinh nghiệm, không phải ngưỡng trong bài gốc của Durbin & Watson."
+        },
+        {
+          "indicator": "Phân phối chuẩn của phần dư (skewness, kurtosis)",
+          "threshold": "n < 50: |z| < 1,96; 50 ≤ n < 300: |z| < 3,29; n ≥ 300: |skewness| < 2 và |kurtosis| < 7",
+          "fix": "Xem histogram và P-P/Q-Q plot của phần dư (không phải của từng biến); với mẫu lớn, lệch chuẩn nhẹ ít ảnh hưởng tới kiểm định hệ số.",
+          "src": ["kim2013"],
+          "note": "Kim (2013) ghi mốc 7 cho kurtosis \"proper\"; SPSS báo excess kurtosis (bằng kurtosis proper trừ 3), nên mốc tương ứng trên SPSS là 4 nếu hiểu chặt."
+        },
+        {
+          "indicator": "R² và R² hiệu chỉnh",
+          "threshold": "Không có mốc đạt chung. Quy đổi từ f² của Cohen: R² ≈ 0,02 / 0,13 / 0,26 là nhỏ / vừa / lớn",
+          "fix": "So với nghiên cứu cùng đề tài; báo cáo R² hiệu chỉnh khi có nhiều biến độc lập.",
+          "src": ["cohen1992", "hair2021"],
+          "note": "R² = f² / (1 + f²), với f² = 0,02 / 0,15 / 0,35 (Cohen, 1992)."
+        }
+      ]
+    },
+    {
+      "id": "effect-size",
+      "title": "Effect size: Cohen's d, η², f², r bao nhiêu là nhỏ, vừa, lớn?",
+      "answer": "Mốc của Cohen: d = 0,20 / 0,50 / 0,80, r = 0,10 / 0,30 / 0,50, f² = 0,02 / 0,15 / 0,35, η² ≈ 0,01 / 0,06 / 0,14 là nhỏ / vừa / lớn. Chính Cohen coi đây là mốc dự phòng khi lĩnh vực chưa có chuẩn riêng; ưu tiên so với các nghiên cứu cùng chủ đề.",
+      "links": [],
+      "rows": [
+        {
+          "indicator": "Cohen's d",
+          "threshold": "0,20 / 0,50 / 0,80 là nhỏ / vừa / lớn",
+          "fix": "Báo cáo d kèm khoảng tin cậy, không chỉ giá trị p.",
+          "src": ["cohen1992", "lakens2013"]
+        },
+        {
+          "indicator": "Hệ số tương quan r",
+          "threshold": "Cohen: 0,10 / 0,30 / 0,50. Funder & Ozer (2019): 0,05 rất nhỏ, 0,10 nhỏ, 0,20 vừa, 0,30 lớn, ≥ 0,40 rất lớn (và thường là ước lượng quá cao)",
+          "fix": "Nêu rõ thang đang dùng khi diễn giải.",
+          "src": ["cohen1992", "funder2019"]
+        },
+        {
+          "indicator": "η² (ANOVA)",
+          "threshold": "≈ 0,01 / 0,06 / 0,14 là nhỏ / vừa / lớn (quy đổi từ f = 0,10 / 0,25 / 0,40 của Cohen, η² = f² / (1 + f²))",
+          "fix": "SPSS báo partial η²; không so partial η² với các mốc này một cách máy móc khi thiết kế có nhiều yếu tố.",
+          "src": ["cohen1992", "lakens2013"]
+        },
+        {
+          "indicator": "f² (hồi quy, PLS-SEM)",
+          "threshold": "0,02 / 0,15 / 0,35 là nhỏ / vừa / lớn",
+          "fix": "f² của một biến = (R² đủ − R² khi bỏ biến) / (1 − R² đủ).",
+          "src": ["cohen1992", "cohen1988"]
+        }
+      ]
+    },
+    {
+      "id": "kiem-dinh-nhom",
+      "title": "So sánh nhóm: Levene, Shapiro–Wilk đọc thế nào?",
+      "answer": "Levene có p > 0,05 thì chưa có bằng chứng phương sai các nhóm khác nhau; p ≤ 0,05 thì đọc dòng Welch. Shapiro–Wilk có p > 0,05 thì không bác bỏ giả định phân phối chuẩn, nhưng với mẫu lớn kiểm định này quá nhạy, nên xem thêm biểu đồ Q-Q.",
+      "links": [],
+      "rows": [
+        {
+          "indicator": "Levene (đồng nhất phương sai)",
+          "threshold": "p > 0,05: dùng dòng \"Equal variances assumed\"; p ≤ 0,05: dùng dòng Welch (\"not assumed\") hoặc Welch ANOVA",
+          "fix": "Có thể dùng Welch t-test mặc định, không cần kiểm định Levene trước.",
+          "src": ["levene1960", "delacre2017"],
+          "note": "Delacre, Lakens & Leys (2017) khuyên dùng Welch's t-test làm mặc định vì nó kiểm soát sai lầm loại I khi phương sai các nhóm khác nhau và gần như không kém Student's t-test khi phương sai bằng nhau."
+        },
+        {
+          "indicator": "Shapiro–Wilk (phân phối chuẩn)",
+          "threshold": "p > 0,05: không bác bỏ phân phối chuẩn. Mạnh hơn Kolmogorov–Smirnov (kể cả có hiệu chỉnh Lilliefors)",
+          "fix": "Mẫu lớn (trên 30–40 mỗi nhóm) thì phân phối mẫu của trung bình xấp xỉ chuẩn; xem Q-Q plot, hoặc dùng kiểm định phi tham số khi mẫu nhỏ và lệch rõ.",
+          "src": ["shapiro1965", "ghasemi2012"]
+        }
+      ]
+    },
+    {
+      "id": "cmb",
+      "title": "Sai lệch phương pháp chung (CMB): Harman và full collinearity VIF cần đạt gì?",
+      "answer": "Quy ước phổ biến: nhân tố đầu tiên trong kiểm định Harman giải thích dưới 50% phương sai, và mọi VIF trong kiểm định full collinearity của Kock (2015) không vượt 3,3. Harman là kiểm định yếu và bị phê phán nhiều; nếu dùng PLS-SEM nên báo cáo full collinearity VIF.",
+      "links": [],
+      "rows": [
+        {
+          "indicator": "Kiểm định một nhân tố của Harman",
+          "threshold": "Nhân tố đầu (EFA không xoay, rút một nhân tố) giải thích < 50% tổng phương sai",
+          "fix": "Nếu ≥ 50%, báo cáo thêm biến đánh dấu (marker variable) hoặc full collinearity VIF, và thừa nhận hạn chế.",
+          "src": ["podsakoff1986", "podsakoff2003", "gorrell2011"],
+          "note": "Podsakoff & Organ (1986) mô tả dấu hiệu là một nhân tố chung giải thích \"phần lớn\" (majority) hiệp phương sai; mốc 50% là cách đọc chữ \"phần lớn\", không phải ngưỡng được kiểm chứng. Podsakoff và cộng sự (2003) nêu kiểm định này không kiểm soát được sai lệch; Gorrell và cộng sự (2011) kết luận không nên dùng."
+        },
+        {
+          "indicator": "Full collinearity VIF",
+          "threshold": "Mọi VIF ≤ 3,3 thì mô hình được coi là không bị sai lệch phương pháp chung; với thuật toán PLS dạng nhân tố (factor-based), Kock gợi ý ngưỡng có thể cao hơn, đến 5",
+          "fix": "VIF > 3,3 ở một khái niệm: kiểm tra khái niệm đó có trùng nội dung với khái niệm khác không, và ghi nhận CMB là hạn chế.",
+          "src": ["kock2015", "kocklynn2012"]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Cronbach's alpha bao nhiêu là đạt?",
+      "a": "Mốc chung là từ 0,70; trong nghiên cứu khám phá, 0,60–0,70 được chấp nhận. Từ 0,70 đến 0,90 là đạt đến tốt, còn từ 0,95 trở lên là đáng ngờ vì các biến gần như lặp lại nhau (Hair và cộng sự, 2019, 2021). Nunnally (1978) chỉ coi 0,70 là đủ ở giai đoạn đầu của nghiên cứu, nên đừng gán mốc 0,70 cho mọi trường hợp."
+    },
+    {
+      "q": "Hệ số tải nhân tố bao nhiêu thì giữ biến?",
+      "a": "Trong EFA, mốc phụ thuộc cỡ mẫu: 0,50 khi n khoảng 120, 0,40 khi n khoảng 200, 0,30 khi n từ 350 (Hair và cộng sự, 1998). Trong PLS-SEM, hệ số tải ngoài nên từ 0,708; biến từ 0,40 đến 0,708 chỉ loại khi việc loại giúp CR hoặc AVE đạt ngưỡng, dưới 0,40 thì luôn loại."
+    },
+    {
+      "q": "HTMT nên dùng ngưỡng 0,85 hay 0,90?",
+      "a": "Dùng 0,85 khi hai khái niệm khác biệt rõ về nội dung và 0,90 khi chúng gần nghĩa, ví dụ hài lòng nhận thức và hài lòng cảm xúc (Henseler và cộng sự, 2015). Chặt hơn nữa là kiểm định bootstrap: cận trên khoảng tin cậy 95% một phía của HTMT phải nhỏ hơn ngưỡng đã chọn."
+    },
+    {
+      "q": "CFI và RMSEA bao nhiêu là mô hình CFA phù hợp?",
+      "a": "Hu & Bentler (1999) đề xuất CFI và TLI gần 0,95, RMSEA gần 0,06, SRMR gần 0,08. Nhiều khoá luận vẫn chấp nhận CFI từ 0,90 và RMSEA đến 0,08, nhưng mốc 0,90 bắt nguồn từ một nhận xét của Bentler & Bonett (1980) về NFI và TLI, không phải ngưỡng được kiểm chứng cho CFI."
+    },
+    {
+      "q": "Kiểm định Harman dưới 50% có đủ để kết luận không có sai lệch phương pháp chung?",
+      "a": "Không. Mốc 50% chỉ là cách đọc chữ \"phần lớn\" trong mô tả của Podsakoff & Organ (1986), và Podsakoff và cộng sự (2003) nêu rằng kiểm định này không kiểm soát được sai lệch. Nên báo cáo thêm full collinearity VIF ≤ 3,3 (Kock, 2015) hoặc biến đánh dấu, và vẫn ghi CMB là hạn chế của nghiên cứu."
+    }
+  ],
+  "sources": {
+    "bagozzi1988": { "cite": "Bagozzi & Yi (1988)", "apa": "Bagozzi, R. P., & Yi, Y. (1988). On the evaluation of structural equation models. Journal of the Academy of Marketing Science, 16(1), 74–94.", "doi": "10.1007/BF02723327" },
+    "bartlett1950": { "cite": "Bartlett (1950)", "apa": "Bartlett, M. S. (1950). Tests of significance in factor analysis. British Journal of Statistical Psychology, 3(2), 77–85.", "doi": "10.1111/j.2044-8317.1950.tb00285.x" },
+    "bentler1980": { "cite": "Bentler & Bonett (1980)", "apa": "Bentler, P. M., & Bonett, D. G. (1980). Significance tests and goodness of fit in the analysis of covariance structures. Psychological Bulletin, 88(3), 588–606.", "doi": "10.1037/0033-2909.88.3.588" },
+    "cohen1988": { "cite": "Cohen (1988)", "apa": "Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.). Lawrence Erlbaum Associates.", "doi": "10.4324/9780203771587" },
+    "cohen1992": { "cite": "Cohen (1992)", "apa": "Cohen, J. (1992). A power primer. Psychological Bulletin, 112(1), 155–159.", "doi": "10.1037/0033-2909.112.1.155" },
+    "costello2005": { "cite": "Costello & Osborne (2005)", "apa": "Costello, A. B., & Osborne, J. W. (2005). Best practices in exploratory factor analysis: Four recommendations for getting the most from your analysis. Practical Assessment, Research, and Evaluation, 10, Article 7.", "doi": "10.7275/jyj1-4868" },
+    "delacre2017": { "cite": "Delacre và cộng sự (2017)", "apa": "Delacre, M., Lakens, D., & Leys, C. (2017). Why psychologists should by default use Welch's t-test instead of Student's t-test. International Review of Social Psychology, 30(1), 92–101.", "doi": "10.5334/irsp.82" },
+    "dijkstra2015": { "cite": "Dijkstra & Henseler (2015)", "apa": "Dijkstra, T. K., & Henseler, J. (2015). Consistent partial least squares path modeling. MIS Quarterly, 39(2), 297–316.", "doi": "10.25300/MISQ/2015/39.2.02" },
+    "durbin1950": { "cite": "Durbin & Watson (1950)", "apa": "Durbin, J., & Watson, G. S. (1950). Testing for serial correlation in least squares regression. I. Biometrika, 37(3–4), 409–428.", "doi": "10.1093/biomet/37.3-4.409" },
+    "durbin1951": { "cite": "Durbin & Watson (1951)", "apa": "Durbin, J., & Watson, G. S. (1951). Testing for serial correlation in least squares regression. II. Biometrika, 38(1–2), 159–178.", "doi": "10.1093/biomet/38.1-2.159" },
+    "fornell1981": { "cite": "Fornell & Larcker (1981)", "apa": "Fornell, C., & Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and measurement error. Journal of Marketing Research, 18(1), 39–50.", "doi": "10.1177/002224378101800104" },
+    "funder2019": { "cite": "Funder & Ozer (2019)", "apa": "Funder, D. C., & Ozer, D. J. (2019). Evaluating effect size in psychological research: Sense and nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168.", "doi": "10.1177/2515245919847202" },
+    "ghasemi2012": { "cite": "Ghasemi & Zahediasl (2012)", "apa": "Ghasemi, A., & Zahediasl, S. (2012). Normality tests for statistical analysis: A guide for non-statisticians. International Journal of Endocrinology and Metabolism, 10(2), 486–489.", "doi": "10.5812/ijem.3505" },
+    "gorrell2011": { "cite": "Gorrell và cộng sự (2011)", "apa": "Gorrell, G., Ford, N., Madden, A., Holdridge, P., & Eaglestone, B. (2011). Countering method bias in questionnaire-based user studies. Journal of Documentation, 67(3), 507–524.", "doi": "10.1108/00220411111124569" },
+    "hair1998": { "cite": "Hair và cộng sự (1998)", "apa": "Hair, J. F., Jr., Anderson, R. E., Tatham, R. L., & Black, W. C. (1998). Multivariate data analysis (5th ed.). Prentice Hall.", "url": "https://imaging.mrc-cbu.cam.ac.uk/statswiki/FAQ/thresholds", "urlLabel": "bảng tr. 112 dẫn lại tại CBU Statistics Wiki (sách, không có DOI)" },
+    "hair2011": { "cite": "Hair, Ringle & Sarstedt (2011)", "apa": "Hair, J. F., Ringle, C. M., & Sarstedt, M. (2011). PLS-SEM: Indeed a silver bullet. Journal of Marketing Theory and Practice, 19(2), 139–152.", "doi": "10.2753/MTP1069-6679190202" },
+    "hair2019": { "cite": "Hair và cộng sự (2019)", "apa": "Hair, J. F., Risher, J. J., Sarstedt, M., & Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. European Business Review, 31(1), 2–24.", "doi": "10.1108/EBR-11-2018-0203" },
+    "hair2021": { "cite": "Hair và cộng sự (2021)", "apa": "Hair, J. F., Jr., Hult, G. T. M., Ringle, C. M., Sarstedt, M., Danks, N. P., & Ray, S. (2021). Partial least squares structural equation modeling (PLS-SEM) using R: A workbook. Springer (truy cập mở).", "doi": "10.1007/978-3-030-80519-7" },
+    "hayes2020": { "cite": "Hayes & Coutts (2020)", "apa": "Hayes, A. F., & Coutts, J. J. (2020). Use omega rather than Cronbach's alpha for estimating reliability. But…. Communication Methods and Measures, 14(1), 1–24.", "doi": "10.1080/19312458.2020.1718629" },
+    "henseler2015": { "cite": "Henseler và cộng sự (2015)", "apa": "Henseler, J., Ringle, C. M., & Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. Journal of the Academy of Marketing Science, 43(1), 115–135.", "doi": "10.1007/s11747-014-0403-8" },
+    "horn1965": { "cite": "Horn (1965)", "apa": "Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. Psychometrika, 30(2), 179–185.", "doi": "10.1007/BF02289447" },
+    "hu1999": { "cite": "Hu & Bentler (1999)", "apa": "Hu, L., & Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. Structural Equation Modeling, 6(1), 1–55.", "doi": "10.1080/10705519909540118" },
+    "kaiser1960": { "cite": "Kaiser (1960)", "apa": "Kaiser, H. F. (1960). The application of electronic computers to factor analysis. Educational and Psychological Measurement, 20(1), 141–151.", "doi": "10.1177/001316446002000116" },
+    "kaiser1974": { "cite": "Kaiser (1974)", "apa": "Kaiser, H. F. (1974). An index of factorial simplicity. Psychometrika, 39(1), 31–36.", "doi": "10.1007/BF02291575" },
+    "kaiserrice1974": { "cite": "Kaiser & Rice (1974)", "apa": "Kaiser, H. F., & Rice, J. (1974). Little Jiffy, Mark IV. Educational and Psychological Measurement, 34(1), 111–117.", "doi": "10.1177/001316447403400115" },
+    "kim2013": { "cite": "Kim (2013)", "apa": "Kim, H.-Y. (2013). Statistical notes for clinical researchers: Assessing normal distribution (2) using skewness and kurtosis. Restorative Dentistry & Endodontics, 38(1), 52–54.", "doi": "10.5395/rde.2013.38.1.52" },
+    "kock2015": { "cite": "Kock (2015)", "apa": "Kock, N. (2015). Common method bias in PLS-SEM: A full collinearity assessment approach. International Journal of e-Collaboration, 11(4), 1–10.", "doi": "10.4018/ijec.2015100101" },
+    "kocklynn2012": { "cite": "Kock & Lynn (2012)", "apa": "Kock, N., & Lynn, G. S. (2012). Lateral collinearity and misleading results in variance-based SEM: An illustration and recommendations. Journal of the Association for Information Systems, 13(7), 546–580.", "doi": "10.17705/1jais.00302" },
+    "lakens2013": { "cite": "Lakens (2013)", "apa": "Lakens, D. (2013). Calculating and reporting effect sizes to facilitate cumulative science: A practical primer for t-tests and ANOVAs. Frontiers in Psychology, 4, Article 863.", "doi": "10.3389/fpsyg.2013.00863" },
+    "lance2006": { "cite": "Lance và cộng sự (2006)", "apa": "Lance, C. E., Butts, M. M., & Michels, L. C. (2006). The sources of four commonly reported cutoff criteria: What did they really say? Organizational Research Methods, 9(2), 202–220.", "doi": "10.1177/1094428105284919" },
+    "levene1960": { "cite": "Levene (1960)", "apa": "Levene, H. (1960). Robust tests for equality of variances. In I. Olkin (Ed.), Contributions to probability and statistics: Essays in honor of Harold Hotelling (pp. 278–292). Stanford University Press." },
+    "maccallum1996": { "cite": "MacCallum và cộng sự (1996)", "apa": "MacCallum, R. C., Browne, M. W., & Sugawara, H. M. (1996). Power analysis and determination of sample size for covariance structure modeling. Psychological Methods, 1(2), 130–149.", "doi": "10.1037/1082-989X.1.2.130" },
+    "marsh2004": { "cite": "Marsh và cộng sự (2004)", "apa": "Marsh, H. W., Hau, K.-T., & Wen, Z. (2004). In search of golden rules: Comment on hypothesis-testing approaches to setting cutoff values for fit indexes and dangers in overgeneralizing Hu and Bentler's (1999) findings. Structural Equation Modeling, 11(3), 320–341.", "doi": "10.1207/s15328007sem1103_2" },
+    "mcneish2018": { "cite": "McNeish (2018)", "apa": "McNeish, D. (2018). Thanks coefficient alpha, we'll take it from here. Psychological Methods, 23(3), 412–433.", "doi": "10.1037/met0000144" },
+    "obrien2007": { "cite": "O'Brien (2007)", "apa": "O'Brien, R. M. (2007). A caution regarding rules of thumb for variance inflation factors. Quality & Quantity, 41(5), 673–690.", "doi": "10.1007/s11135-006-9018-6" },
+    "podsakoff1986": { "cite": "Podsakoff & Organ (1986)", "apa": "Podsakoff, P. M., & Organ, D. W. (1986). Self-reports in organizational research: Problems and prospects. Journal of Management, 12(4), 531–544.", "doi": "10.1177/014920638601200408" },
+    "podsakoff2003": { "cite": "Podsakoff và cộng sự (2003)", "apa": "Podsakoff, P. M., MacKenzie, S. B., Lee, J.-Y., & Podsakoff, N. P. (2003). Common method biases in behavioral research: A critical review of the literature and recommended remedies. Journal of Applied Psychology, 88(5), 879–903.", "doi": "10.1037/0021-9010.88.5.879" },
+    "shapiro1965": { "cite": "Shapiro & Wilk (1965)", "apa": "Shapiro, S. S., & Wilk, M. B. (1965). An analysis of variance test for normality (complete samples). Biometrika, 52(3–4), 591–611.", "doi": "10.1093/biomet/52.3-4.591" },
+    "shmueli2019": { "cite": "Shmueli và cộng sự (2019)", "apa": "Shmueli, G., Sarstedt, M., Hair, J. F., Cheah, J.-H., Ting, H., Vaithilingam, S., & Ringle, C. M. (2019). Predictive model assessment in PLS-SEM: Guidelines for using PLSpredict. European Journal of Marketing, 53(11), 2322–2347.", "doi": "10.1108/EJM-02-2019-0189" },
+    "stone1974": { "cite": "Stone (1974)", "apa": "Stone, M. (1974). Cross-validatory choice and assessment of statistical predictions. Journal of the Royal Statistical Society: Series B (Methodological), 36(2), 111–133.", "doi": "10.1111/j.2517-6161.1974.tb00994.x" },
+    "streukens2016": { "cite": "Streukens & Leroi-Werelds (2016)", "apa": "Streukens, S., & Leroi-Werelds, S. (2016). Bootstrapping and PLS-SEM: A step-by-step guide to get more out of your bootstrap results. European Management Journal, 34(6), 618–632.", "doi": "10.1016/j.emj.2016.06.003" },
+    "zwick1986": { "cite": "Zwick & Velicer (1986)", "apa": "Zwick, W. R., & Velicer, W. F. (1986). Comparison of five rules for determining the number of components to retain. Psychological Bulletin, 99(3), 432–442.", "doi": "10.1037/0033-2909.99.3.432" }
+  }
+}

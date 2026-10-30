@@ -79,6 +79,7 @@ export function header(site: URL) {
     `- [Mẫu bảng hỏi / Questionnaire templates](${u("mau-bang-hoi")}): bảng hỏi theo đề tài khoá luận`,
     `- [Dữ liệu thứ cấp Việt Nam / Vietnam data](${u("du-lieu")}): chỉ số World Bank, ILO, FAO, PWT và giá hàng hoá, tải CSV`,
     `- [Biến nghiên cứu tài chính / Firm and bank variables](${u("bien-nghien-cuu")}): định nghĩa, công thức theo chỉ tiêu BCTC Việt Nam (Thông tư 200, 49), code Stata/R, tài liệu tham khảo`,
+    `- [Ngưỡng chấp nhận các chỉ số / Acceptance thresholds](${u("nguong-chap-nhan")}): Cronbach's alpha, CR, AVE, KMO, hệ số tải, CFI/TLI/RMSEA/SRMR, HTMT, VIF, R², f², Q², Durbin–Watson, effect size, CMB; mỗi ngưỡng có nguồn gốc và DOI, ghi chú khi nguồn hay bị dẫn sai`,
     `- [Bài viết / Guides](${u("posts")}): hướng dẫn phương pháp nghiên cứu`,
     `- [Phương pháp biên soạn / Methodology](${u("phuong-phap-bien-soan")}): cách kiểm chứng thang đo, thống kê, dữ liệu`,
     "",

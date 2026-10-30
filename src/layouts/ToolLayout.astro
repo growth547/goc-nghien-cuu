@@ -4,6 +4,7 @@ import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Footer from "@/components/Footer.astro";
 import ShareBar from "@/components/ShareBar.astro";
+import Icon from "@/components/Icon.astro";
 import { appLink } from "@/utils/appLink";
 import config from "@/config";
 
@@ -115,40 +116,53 @@ const crumbsLd = {
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(crumbsLd)} />
   <Header />
   <Breadcrumb />
-  <main id="main-content" class="app-layout pb-8">
-    <h1 class="text-2xl font-semibold sm:text-3xl">{h1}</h1>
-    <p id="tool-lede" class="text-muted-foreground mt-2 max-w-3xl max-sm:line-clamp-3">{lede}</p>
-    <button type="button" id="tool-lede-more" data-no-track class="text-accent min-h-11 text-sm font-semibold underline underline-offset-4 sm:hidden" aria-controls="tool-lede" aria-expanded="false">Đọc tiếp giới thiệu</button>
+  <main id="main-content" class="app-layout tool-page pb-10">
+    <header class="tool-head">
+      <ul class="text-muted-foreground mb-3 hidden flex-wrap gap-x-4 gap-y-1 text-[0.8125rem] font-medium sm:flex" aria-label="Về công cụ này">
+        <li class="flex items-center gap-1.5"><Icon name="check" class="text-accent size-4" />Miễn phí, không cần tài khoản</li>
+        <li class="flex items-center gap-1.5"><Icon name="shield" class="text-accent size-4" />Dữ liệu xử lý trên trình duyệt của bạn</li>
+      </ul>
+      <h1 class="text-foreground font-bold" style="font-size: var(--fs-h1); line-height: var(--lh-tight)">{h1}</h1>
+      <p id="tool-lede" class="text-muted-foreground mt-2.5 max-w-3xl leading-relaxed max-sm:line-clamp-3 sm:mt-3" style="font-size: var(--fs-lead)">{lede}</p>
+      <button type="button" id="tool-lede-more" data-no-track class="text-accent min-h-11 text-sm font-semibold underline underline-offset-4 sm:hidden" aria-controls="tool-lede" aria-expanded="false">Đọc tiếp giới thiệu</button>
+    </header>
     <div class="mb-6 max-sm:mb-3"></div>
     <slot />
     <Fragment set:html={html} />
-    <ShareBar />
-    <p class="text-muted-foreground mt-3 max-w-3xl text-sm">
+    <ShareBar wide class="mt-10" />
+    <p class="text-muted-foreground mt-3 text-sm">
       Bạn thấy công cụ này có ích không?{" "}
       <a class="text-accent font-semibold underline underline-offset-4" href={feedbackUrl} target="_blank" rel="noopener" data-feedback>Gửi góp ý</a>
       {" "}(mở GitHub, cần tài khoản GitHub; đừng dán dữ liệu thật).
     </p>
     {
       Astro.slots.has("guide") && (
-        <div class="app-prose max-w-app mt-12">
+        <div class="tool-guide app-prose max-w-app border-border mt-12 border-t pt-10">
           <slot name="guide" />
         </div>
       )
     }
+    {
+      next.length > 0 && (
+        <nav class="mt-12" aria-labelledby="tool-next-title">
+          <h2 id="tool-next-title" class="text-foreground text-base font-bold">Bước tiếp theo</h2>
+          <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {next.map(([href, anchor, rest]) => (
+              <li>
+                <a class="card group gap-1 p-4" href={href}>
+                  <span class="card-title text-accent flex items-start justify-between gap-2 text-[0.95rem]">
+                    <span>{anchor}</span>
+                    <Icon name="arrow" class="mt-0.5 size-4 flex-none transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                  {rest && <span class="card-meta">{rest}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
     <p class="text-muted-foreground mt-8 max-w-3xl text-sm">
-      {next.length > 0 && (
-        <>
-          Bước tiếp theo:{" "}
-          {next.map(([href, anchor, rest], i) => (
-            <>
-              {i > 0 && "; "}
-              <a class="text-accent underline underline-offset-4" href={href}>{anchor}</a>
-              {rest && ` ${rest}`}
-            </>
-          ))}
-          .{" "}
-        </>
-      )}
       Đây là một trong {Object.keys(NEXT).length} <a class="text-accent underline underline-offset-4" href="/cong-cu/">công cụ nghiên cứu khoa học miễn phí</a> của Góc Nghiên Cứu.
     </p>
     {

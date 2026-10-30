@@ -1,0 +1,185 @@
+{
+  "title": "Thang đo ý định khởi nghiệp EIQ tiếng Việt: Liñán & Chen (2009)",
+  "description": "Thang đo ý định khởi nghiệp EIQ của Liñán và Chen (2009): 19 biến cho thái độ, chuẩn chủ quan, nhận thức kiểm soát và ý định, có bản gốc tiếng Anh.",
+  "name": "EIQ",
+  "fullName": "Bảng hỏi ý định khởi nghiệp (Entrepreneurial Intention Questionnaire)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo ý định khởi nghiệp EIQ",
+  "intro": "Entrepreneurial Intention Questionnaire (EIQ) do Liñán & Chen (2009) xây dựng dựa trên thuyết hành vi có kế hoạch để đo ý định thành lập doanh nghiệp và các tiền tố của nó. Bộ thang gồm thái độ với việc làm doanh nhân, chuẩn chủ quan, nhận thức kiểm soát hành vi và ý định khởi nghiệp. Bài gốc kiểm định thang trên sinh viên ở hai nền văn hoá khác nhau, nên thang được dùng rộng rãi trong nghiên cứu so sánh. Ở Việt Nam, EIQ là lựa chọn quen thuộc cho đề tài về ý định khởi nghiệp của sinh viên, tác động của giáo dục khởi nghiệp hay vai trò của gia đình.",
+  "responseScale": "Likert 5 hoặc 7 mức (1 = Hoàn toàn không đồng ý … 5/7 = Hoàn toàn đồng ý). Ferreira-Neto và cộng sự (2023) dùng thang 7 mức; Kurata và cộng sự (2025) dùng thang 5 mức.",
+  "responseScaleShort": "Likert 5 hoặc 7 mức",
+  "constructs": [
+    {
+      "code": "ATT",
+      "nameVi": "Thái độ với việc khởi nghiệp",
+      "nameEn": "Personal Attitude",
+      "definition": "Mức độ một người đánh giá tích cực hay tiêu cực việc trở thành doanh nhân.",
+      "source": "Liñán & Chen (2009), 5 biến, theo bản trình bày của Kurata và cộng sự (2025).",
+      "items": [
+        {
+          "code": "ATT1",
+          "en": "Being an entrepreneur implies more advantages than disadvantages to me",
+          "vi": "Với tôi, làm doanh nhân mang lại nhiều lợi ích hơn bất lợi."
+        },
+        {
+          "code": "ATT2",
+          "en": "A career as entrepreneur is attractive for me",
+          "vi": "Tôi thấy con đường khởi nghiệp kinh doanh hấp dẫn."
+        },
+        {
+          "code": "ATT3",
+          "en": "If I had the opportunity and resources, I'd like to start a firm",
+          "vi": "Nếu có cơ hội và nguồn lực, tôi muốn thành lập một doanh nghiệp."
+        },
+        {
+          "code": "ATT4",
+          "en": "Being an entrepreneur would entail great satisfaction for me",
+          "vi": "Làm doanh nhân sẽ mang lại cho tôi sự thoả mãn lớn."
+        },
+        {
+          "code": "ATT5",
+          "en": "Among various options, I would rather be an entrepreneur",
+          "vi": "Giữa nhiều lựa chọn nghề nghiệp, tôi thích trở thành doanh nhân hơn cả."
+        }
+      ]
+    },
+    {
+      "code": "SN",
+      "nameVi": "Chuẩn chủ quan",
+      "nameEn": "Subjective Norm",
+      "definition": "Mức độ một người cho rằng những người thân cận sẽ ủng hộ quyết định khởi nghiệp của mình.",
+      "source": "Liñán & Chen (2009), 2 biến minh hoạ, theo cách diễn đạt của Kurata và cộng sự (2025); bản gốc hỏi sự ủng hộ của gia đình, bạn bè và đồng nghiệp.",
+      "items": [
+        {
+          "code": "SN1",
+          "en": "If you decided to create a firm, would your family approve of that decision?",
+          "vi": "Nếu tôi quyết định thành lập doanh nghiệp, gia đình tôi có ủng hộ quyết định đó không?"
+        },
+        {
+          "code": "SN2",
+          "en": "If you decided to create a firm, would your friends approve of that decision?",
+          "vi": "Nếu tôi quyết định thành lập doanh nghiệp, bạn bè tôi có ủng hộ quyết định đó không?"
+        }
+      ]
+    },
+    {
+      "code": "PBC",
+      "nameVi": "Nhận thức kiểm soát hành vi",
+      "nameEn": "Perceived Behavioral Control",
+      "definition": "Mức độ một người thấy việc thành lập và vận hành doanh nghiệp là dễ dàng và nằm trong khả năng của mình.",
+      "source": "Liñán & Chen (2009), 6 biến, theo bản trình bày của Ferreira-Neto và cộng sự (2023).",
+      "items": [
+        {
+          "code": "PBC1",
+          "en": "To start a firm and keep it working would be easy for me.",
+          "vi": "Với tôi, thành lập một doanh nghiệp và duy trì cho nó hoạt động là việc dễ dàng."
+        },
+        {
+          "code": "PBC2",
+          "en": "I am prepared to start a viable firm.",
+          "vi": "Tôi đã sẵn sàng để thành lập một doanh nghiệp có khả năng trụ vững."
+        },
+        {
+          "code": "PBC3",
+          "en": "I can control the creation process of a new firm.",
+          "vi": "Tôi có thể kiểm soát quá trình thành lập một doanh nghiệp mới."
+        },
+        {
+          "code": "PBC4",
+          "en": "I know the necessary practical details to start a firm.",
+          "vi": "Tôi biết những chi tiết thực tế cần thiết để thành lập doanh nghiệp."
+        },
+        {
+          "code": "PBC5",
+          "en": "I know how to develop an entrepreneurial project.",
+          "vi": "Tôi biết cách phát triển một dự án khởi nghiệp."
+        },
+        {
+          "code": "PBC6",
+          "en": "If I tried to start a firm, I would have a high probability of succeeding.",
+          "vi": "Nếu thử thành lập doanh nghiệp, tôi có khả năng thành công cao."
+        }
+      ]
+    },
+    {
+      "code": "EI",
+      "nameVi": "Ý định khởi nghiệp",
+      "nameEn": "Entrepreneurial Intention",
+      "definition": "Mức độ một người tự nhận đã quyết tâm thành lập doanh nghiệp trong tương lai.",
+      "source": "Liñán & Chen (2009), 6 biến, theo bản trình bày của Ferreira-Neto và cộng sự (2023) và Kurata và cộng sự (2025).",
+      "items": [
+        {
+          "code": "EI1",
+          "en": "I am ready to do anything to be an entrepreneur.",
+          "vi": "Tôi sẵn sàng làm mọi việc để trở thành doanh nhân."
+        },
+        {
+          "code": "EI2",
+          "en": "My professional goal is to become an entrepreneur.",
+          "vi": "Mục tiêu nghề nghiệp của tôi là trở thành doanh nhân."
+        },
+        {
+          "code": "EI3",
+          "en": "I will make every effort to start and run my own firm.",
+          "vi": "Tôi sẽ nỗ lực hết sức để thành lập và điều hành doanh nghiệp của riêng mình."
+        },
+        {
+          "code": "EI4",
+          "en": "I am determined to create a firm in the future.",
+          "vi": "Tôi quyết tâm thành lập doanh nghiệp trong tương lai."
+        },
+        {
+          "code": "EI5",
+          "en": "I have very seriously thought of starting a firm.",
+          "vi": "Tôi đã suy nghĩ rất nghiêm túc về việc thành lập doanh nghiệp."
+        },
+        {
+          "code": "EI6",
+          "en": "I have the firm intention to start a firm someday.",
+          "vi": "Tôi có ý định chắc chắn sẽ thành lập doanh nghiệp vào một ngày nào đó."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Chuẩn chủ quan trong bài gốc hỏi theo dạng câu hỏi về sự ủng hộ của từng nhóm người thân; nhiều nghiên cứu đổi nhóm tham chiếu cho hợp mẫu, ví dụ Kurata và cộng sự (2025) thêm bạn cùng lớp và giáo viên cho sinh viên. Đổi thế nào cũng phải ghi rõ trong chương phương pháp.",
+    "'Firm' nên dịch là 'doanh nghiệp' hoặc 'công việc kinh doanh riêng' thống nhất trong cả bảng hỏi; với sinh viên, có thể giải thích ngắn rằng hộ kinh doanh cũng tính là khởi nghiệp nếu đề tài muốn bao gồm.",
+    "EI3 và EI6 có hai vế (thành lập và điều hành; ý định chắc chắn và một ngày nào đó); dịch sát để không biến thành câu hỏi kép khó trả lời.",
+    "Thái độ, chuẩn chủ quan và nhận thức kiểm soát thường tương quan khá cao; chạy EFA hoặc CFA để kiểm tra giá trị phân biệt trước khi chạy mô hình cấu trúc.",
+    "Nếu đề tài có giáo dục khởi nghiệp, thường đặt nó làm tiền tố của ba nhân tố TPB hoặc làm biến điều tiết, như Kurata và cộng sự (2025)."
+  ],
+  "examinerQA": [
+    {
+      "q": "Nếu chuẩn chủ quan không tác động có ý nghĩa lên ý định khởi nghiệp thì em giải thích thế nào?",
+      "a": "Kết quả này không hiếm. Kurata và cộng sự (2025) cũng thấy chuẩn chủ quan không tác động có ý nghĩa lên ý định (β = −0,064), trong khi thái độ và tự hiệu quả có tác động dương. Em nên kiểm tra thêm tác động gián tiếp của chuẩn chủ quan qua thái độ và nhận thức kiểm soát trước khi kết luận nó không quan trọng."
+    },
+    {
+      "q": "Mô hình ba biến độc lập lên ý định khởi nghiệp cần cỡ mẫu tối thiểu bao nhiêu?",
+      "a": "Với 3 mũi tên trỏ vào ý định, phân tích power (f² = 0,15, α = 5%, power 0,80) cho tối thiểu 77 quan sát, đúng con số Ferreira-Neto và cộng sự (2023) báo cáo. Nên lấy mẫu lớn hơn nhiều, nhất là khi chạy CB-SEM với 19 biến quan sát."
+    }
+  ],
+  "sampleSize": {
+    "arrowsMax": 3,
+    "note": "Trong mô hình theo thuyết hành vi có kế hoạch, ý định khởi nghiệp nhận 3 mũi tên (thái độ, chuẩn chủ quan, nhận thức kiểm soát). Theo phân tích power với f² = 0,15, α = 5%, power 0,80 cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn Liñán & Chen (2009) và bài đã cung cấp câu chữ; không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Ferreira-Neto, M. N., de Carvalho Castro, J. L., de Sousa-Filho, J. M., &amp; de Souza Lessa, B. (2023). The role of self-efficacy, entrepreneurial passion, and creativity in developing entrepreneurial intentions. <em>Frontiers in Psychology, 14</em>, 1134618. https://doi.org/10.3389/fpsyg.2023.1134618",
+    "Kurata, K., Kodama, K., Kageyama, I., Kobayashi, Y., &amp; Lim, Y. (2025). Entrepreneurial intention among engineering students: The moderating role of entrepreneurship education in Japan. <em>Behavioral Sciences, 15</em>(5), 663. https://doi.org/10.3390/bs15050663",
+    "Liñán, F., &amp; Chen, Y.-W. (2009). Development and cross-cultural application of a specific instrument to measure entrepreneurial intentions. <em>Entrepreneurship Theory and Practice, 33</em>(3), 593–617. https://doi.org/10.1111/j.1540-6520.2009.00318.x"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10025313/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12109376/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9211024/fullTextXML",
+    "https://api.crossref.org/works/10.1111/j.1540-6520.2009.00318.x",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC10025313",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC12109376",
+    "https://api.crossref.org/works/10.3389/fpsyg.2023.1134618",
+    "https://api.crossref.org/works/10.3390/bs15050663"
+  ],
+  "related": [
+    "tpb",
+    "tu-hieu-qua-gse"
+  ]
+}

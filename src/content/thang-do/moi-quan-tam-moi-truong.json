@@ -1,0 +1,145 @@
+{
+  "title": "Thang đo mối quan tâm môi trường NEP tiếng Việt: Dunlap (2000)",
+  "description": "Thang đo mối quan tâm môi trường NEP bản sửa đổi của Dunlap và cộng sự (2000): 15 biến, 7 câu đảo chiều, kèm bản gốc tiếng Anh và cách tính điểm.",
+  "name": "NEP",
+  "fullName": "Thang đo Mô thức sinh thái mới (New Ecological Paradigm Scale)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo mối quan tâm môi trường NEP",
+  "intro": "Thang NEP bản sửa đổi do Dunlap và cộng sự (2000) công bố để đo mức độ một người tán thành thế giới quan sinh thái, thường được dùng như thước đo chung về thái độ và mối quan tâm môi trường. Thang có 15 câu phủ 5 khía cạnh: giới hạn tăng trưởng, chống nhân loại trung tâm, sự mong manh của cân bằng tự nhiên, bác bỏ ngoại lệ của con người và khả năng xảy ra khủng hoảng sinh thái. Bảy câu được viết theo hướng ngược lại để giảm thiên lệch đồng ý. Ở Việt Nam, NEP hợp với đề tài về tiêu dùng xanh, ý định mua sản phẩm thân thiện môi trường, phân loại rác hay du lịch sinh thái, thường đặt làm tiền tố của thái độ trong mô hình TPB.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), 3 = Không chắc chắn. Sau khi đảo điểm các câu số chẵn, điểm càng cao thì thế giới quan càng thiên về sinh thái.",
+  "responseScaleShort": "Likert 5 mức",
+  "reverseRule": "Thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
+  "constructs": [
+    {
+      "code": "NEP",
+      "nameVi": "Thế giới quan sinh thái (mối quan tâm môi trường)",
+      "nameEn": "New Ecological Paradigm",
+      "definition": "Mức độ một người tin rằng con người là một phần của tự nhiên, tự nhiên có giới hạn và dễ tổn thương trước hoạt động của con người.",
+      "source": "Dunlap và cộng sự (2000), 15 biến, theo bản trình bày của Pettersson và cộng sự (2026); đối chiếu thêm Marcineková và cộng sự (2024).",
+      "items": [
+        {
+          "code": "NEP1",
+          "en": "We are approaching the limit of the number of people the earth can support",
+          "vi": "Chúng ta đang tiến gần tới giới hạn số người mà Trái Đất có thể nuôi sống."
+        },
+        {
+          "code": "NEP2",
+          "en": "Humans have the right to modify the natural environment to suit their needs",
+          "vi": "Con người có quyền thay đổi môi trường tự nhiên cho phù hợp với nhu cầu của mình.",
+          "reverse": true
+        },
+        {
+          "code": "NEP3",
+          "en": "When humans interfere with nature it often produces disastrous consequences",
+          "vi": "Khi con người can thiệp vào tự nhiên, điều đó thường gây ra hậu quả thảm khốc."
+        },
+        {
+          "code": "NEP4",
+          "en": "Human ingenuity will ensure that we do NOT make the earth unlivable",
+          "vi": "Trí tuệ của con người sẽ bảo đảm rằng chúng ta KHÔNG biến Trái Đất thành nơi không thể sống được.",
+          "reverse": true
+        },
+        {
+          "code": "NEP5",
+          "en": "Humans are severely abusing the environment",
+          "vi": "Con người đang làm tổn hại môi trường một cách nghiêm trọng."
+        },
+        {
+          "code": "NEP6",
+          "en": "The earth has plenty of natural resources if we just learn how to develop them",
+          "vi": "Trái Đất có rất nhiều tài nguyên thiên nhiên, chỉ cần chúng ta biết cách khai thác chúng.",
+          "reverse": true
+        },
+        {
+          "code": "NEP7",
+          "en": "Plants and animals have as much right as humans to exist",
+          "vi": "Thực vật và động vật cũng có quyền tồn tại như con người."
+        },
+        {
+          "code": "NEP8",
+          "en": "The balance of nature is strong enough to cope with the impacts of modern industrial nations",
+          "vi": "Sự cân bằng của tự nhiên đủ vững để chịu được tác động của các quốc gia công nghiệp hiện đại.",
+          "reverse": true
+        },
+        {
+          "code": "NEP9",
+          "en": "Despite our special abilities humans are still subject to the laws of nature",
+          "vi": "Dù có những khả năng đặc biệt, con người vẫn phải tuân theo các quy luật của tự nhiên."
+        },
+        {
+          "code": "NEP10",
+          "en": "The so-called “ecological crisis” facing humankind has been greatly exaggerated",
+          "vi": "Cái gọi là \"khủng hoảng sinh thái\" mà nhân loại đang đối mặt đã bị thổi phồng quá mức.",
+          "reverse": true
+        },
+        {
+          "code": "NEP11",
+          "en": "The earth is like a spaceship with very limited room and resources",
+          "vi": "Trái Đất giống như một con tàu vũ trụ với không gian và tài nguyên rất hạn chế."
+        },
+        {
+          "code": "NEP12",
+          "en": "Humans were meant to rule over the rest of nature",
+          "vi": "Con người sinh ra là để thống trị phần còn lại của tự nhiên.",
+          "reverse": true
+        },
+        {
+          "code": "NEP13",
+          "en": "The balance of nature is very delicate and easily upset",
+          "vi": "Sự cân bằng của tự nhiên rất mong manh và dễ bị phá vỡ."
+        },
+        {
+          "code": "NEP14",
+          "en": "Humans will eventually learn enough about how nature works to be able to control it",
+          "vi": "Rồi đây con người sẽ hiểu đủ về cách tự nhiên vận hành để có thể kiểm soát nó.",
+          "reverse": true
+        },
+        {
+          "code": "NEP15",
+          "en": "If things continue on their present course, we will soon experience a major ecological catastrophe",
+          "vi": "Nếu mọi thứ cứ tiếp diễn như hiện nay, chúng ta sẽ sớm gặp một thảm hoạ sinh thái lớn."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Bảy câu số chẵn (NEP2, 4, 6, 8, 10, 12, 14) thể hiện thế giới quan lấy con người làm trung tâm; đảo điểm trước khi tính điểm trung bình hay alpha. Khi dịch phải giữ nguyên chiều của các câu này, nhất là chữ 'KHÔNG' viết hoa ở NEP4.",
+    "Năm khía cạnh gồm 3 câu mỗi khía cạnh: giới hạn tăng trưởng (1, 6, 11), chống nhân loại trung tâm (2, 7, 12), cân bằng tự nhiên (3, 8, 13), bác bỏ ngoại lệ của con người (4, 9, 14), khủng hoảng sinh thái (5, 10, 15). Phần lớn nghiên cứu dùng điểm tổng; nếu muốn tách khía cạnh, chạy EFA hoặc CFA trước vì cấu trúc 5 nhân tố không phải lúc nào cũng tái lập được.",
+    "Alpha của NEP thường chỉ vừa đủ do có cả câu thuận và câu nghịch; nếu thấp, kiểm tra tương quan biến tổng của từng câu đảo chiều thay vì loại hàng loạt.",
+    "Trong mô hình hành vi xanh, NEP thường đặt làm tiền tố của thái độ hoặc chuẩn mực cá nhân, không thay thế cho thang thái độ cụ thể với một sản phẩm.",
+    "Đây là bản sửa đổi đầy đủ 15 câu, không phải bản rút gọn. Nếu chỉ dùng một phần, ghi rõ câu nào đã lấy và lý do, vì điểm tổng sẽ không so sánh được với các nghiên cứu dùng đủ 15 câu."
+  ],
+  "examinerQA": [
+    {
+      "q": "NEP đo thế giới quan, sao em gọi là mối quan tâm môi trường?",
+      "a": "Dunlap và cộng sự (2000) xem NEP là thước đo mức độ tán thành thế giới quan sinh thái, và nhiều nghiên cứu sau dùng nó như chỉ báo chung của thái độ hay mối quan tâm môi trường, ví dụ Marcineková và cộng sự (2024) dùng NEP để đo thái độ môi trường của người dân Slovakia. Trong luận văn nên nói rõ em dùng NEP theo nghĩa thái độ môi trường chung, không phải mối quan tâm với một vấn đề cụ thể."
+    },
+    {
+      "q": "Em xử lý 7 câu đảo chiều thế nào khi tính điểm?",
+      "a": "Pettersson và cộng sự (2026) nêu rõ: đồng ý với câu số lẻ và không đồng ý với câu số chẵn là phản hồi thân môi trường. Vì vậy em đảo điểm 7 câu số chẵn theo công thức 6 − điểm trên thang 1–5, sau đó mới tính điểm trung bình và Cronbach's alpha."
+    }
+  ],
+  "sampleSize": {
+    "note": "NEP là thang đo đơn lẻ, không phải mô hình. Khi đưa vào mô hình, tính cỡ mẫu theo số mũi tên nhiều nhất trỏ vào một biến phụ thuộc; để chạy EFA cho 15 biến, nên có ít nhất 5 quan sát mỗi biến, tức khoảng 75 phiếu, tốt hơn là từ 150 trở lên."
+  },
+  "license": "Các biến quan sát được công bố trong bài báo học thuật và được dùng rộng rãi trong nghiên cứu. Khi dùng, trích dẫn Dunlap và cộng sự (2000); không cần xin phép cho mục đích học thuật phi thương mại.",
+  "references": [
+    "Dunlap, R. E., Van Liere, K. D., Mertig, A. G., &amp; Jones, R. E. (2000). Measuring endorsement of the New Ecological Paradigm: A revised NEP scale. <em>Journal of Social Issues, 56</em>(3), 425–442. https://doi.org/10.1111/0022-4537.00176",
+    "Marcineková, L., Štěrbová, M., Výbošťok, J., Hajdúchová, I., Giertliová, B., Šulek, R., Sarvašová, Z., &amp; Šálka, J. (2024). Slovakia and its environmental transformation: Measuring environmental attitudes using the new ecological paradigm. <em>Frontiers in Psychology, 15</em>, 1320451. https://doi.org/10.3389/fpsyg.2024.1320451",
+    "Pettersson, A., Swärdh, E., Brodin, N., &amp; Palstam, A. (2026). Experience, awareness, attitudes and ecological worldviews related to sustainable development among physiotherapy students in Sweden: A cross-sectional survey. <em>BMC Medical Education, 26</em>, 1094. https://doi.org/10.1186/s12909-026-09838-9"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13343656/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11021702/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13436795/fullTextXML",
+    "https://api.crossref.org/works/10.1111/0022-4537.00176",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC13343656",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC11021702",
+    "https://api.crossref.org/works/10.1186/s12909-026-09838-9",
+    "https://api.crossref.org/works/10.3389/fpsyg.2024.1320451"
+  ],
+  "related": [
+    "tpb",
+    "y-dinh-mua"
+  ]
+}

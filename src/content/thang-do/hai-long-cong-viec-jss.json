@@ -1,0 +1,331 @@
+{
+  "title": "Thang đo hài lòng công việc JSS tiếng Việt: Spector (1985)",
+  "description": "Thang đo hài lòng công việc JSS của Spector: 36 biến cho 9 khía cạnh như lương, thăng tiến, cấp trên, đồng nghiệp, kèm bản gốc tiếng Anh và cách đảo điểm.",
+  "name": "JSS",
+  "fullName": "Thang đo hài lòng công việc (Job Satisfaction Survey)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo hài lòng công việc JSS",
+  "intro": "Job Satisfaction Survey (JSS) do Spector (1985) xây dựng để đo thái độ của nhân viên với công việc và từng khía cạnh của công việc. Thang có 36 biến chia đều cho 9 khía cạnh: lương, thăng tiến, cấp trên, phúc lợi, khen thưởng theo kết quả, quy trình làm việc, đồng nghiệp, bản chất công việc và giao tiếp trong tổ chức. Thang ban đầu phát triển cho các tổ chức dịch vụ xã hội nhưng tác giả cho biết dùng được cho mọi loại tổ chức. Ở Việt Nam, JSS hợp với đề tài cần tách sự hài lòng theo từng khía cạnh, ví dụ hài lòng của nhân viên ngân hàng, giáo viên, điều dưỡng hay công nhân, thay vì chỉ một chỉ số chung.",
+  "responseScale": "Likert 6 mức, không có điểm giữa (1 = Rất không đồng ý, 2 = Khá không đồng ý, 3 = Hơi không đồng ý, 4 = Hơi đồng ý, 5 = Khá đồng ý, 6 = Rất đồng ý). Điểm mỗi khía cạnh từ 4 đến 24, điểm tổng từ 36 đến 216 sau khi đảo điểm các câu phủ định.",
+  "responseScaleShort": "Likert 6 mức",
+  "reverseRule": "Thang 1–6: điểm mới = 1 + 6 − điểm = 7 − điểm.",
+  "constructs": [
+    {
+      "code": "PAY",
+      "nameVi": "Lương",
+      "nameEn": "Pay",
+      "definition": "Mức độ hài lòng với tiền lương và việc tăng lương.",
+      "source": "Spector (1985), 4 biến (câu 1, 10, 19, 28 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "PAY1",
+          "en": "I feel I am being paid a fair amount for the work I do.",
+          "vi": "Tôi thấy mức lương mình nhận được là tương xứng với công việc tôi làm."
+        },
+        {
+          "code": "PAY2",
+          "en": "Raises are too few and far between.",
+          "vi": "Số lần tăng lương quá ít và cách nhau quá lâu.",
+          "reverse": true
+        },
+        {
+          "code": "PAY3",
+          "en": "I feel unappreciated by the organization when I think about what they pay me.",
+          "vi": "Khi nghĩ đến mức lương tổ chức trả cho tôi, tôi cảm thấy mình không được coi trọng.",
+          "reverse": true
+        },
+        {
+          "code": "PAY4",
+          "en": "I feel satisfied with my chances for salary increases.",
+          "vi": "Tôi hài lòng với cơ hội được tăng lương của mình."
+        }
+      ]
+    },
+    {
+      "code": "PRO",
+      "nameVi": "Thăng tiến",
+      "nameEn": "Promotion",
+      "definition": "Mức độ hài lòng với cơ hội thăng tiến trong tổ chức.",
+      "source": "Spector (1985), 4 biến (câu 2, 11, 20, 33 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "PRO1",
+          "en": "There is really too little chance for promotion on my job.",
+          "vi": "Công việc của tôi có quá ít cơ hội thăng tiến.",
+          "reverse": true
+        },
+        {
+          "code": "PRO2",
+          "en": "Those who do well on the job stand a fair chance of being promoted.",
+          "vi": "Người làm tốt công việc có cơ hội thăng tiến công bằng."
+        },
+        {
+          "code": "PRO3",
+          "en": "People get ahead as fast here as they do in other places.",
+          "vi": "Ở đây, người ta thăng tiến nhanh không kém những nơi khác."
+        },
+        {
+          "code": "PRO4",
+          "en": "I am satisfied with my chances for promotion.",
+          "vi": "Tôi hài lòng với cơ hội thăng tiến của mình."
+        }
+      ]
+    },
+    {
+      "code": "SUP",
+      "nameVi": "Cấp trên trực tiếp",
+      "nameEn": "Supervision",
+      "definition": "Mức độ hài lòng với năng lực và cách đối xử của cấp trên trực tiếp.",
+      "source": "Spector (1985), 4 biến (câu 3, 12, 21, 30 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "SUP1",
+          "en": "My supervisor is quite competent in doing his/her job.",
+          "vi": "Cấp trên của tôi khá có năng lực trong công việc của họ."
+        },
+        {
+          "code": "SUP2",
+          "en": "My supervisor is unfair to me.",
+          "vi": "Cấp trên đối xử không công bằng với tôi.",
+          "reverse": true
+        },
+        {
+          "code": "SUP3",
+          "en": "My supervisor shows too little interest in the feelings of subordinates.",
+          "vi": "Cấp trên của tôi quá ít quan tâm đến cảm xúc của nhân viên cấp dưới.",
+          "reverse": true
+        },
+        {
+          "code": "SUP4",
+          "en": "I like my supervisor.",
+          "vi": "Tôi quý cấp trên của mình."
+        }
+      ]
+    },
+    {
+      "code": "FB",
+      "nameVi": "Phúc lợi",
+      "nameEn": "Fringe Benefits",
+      "definition": "Mức độ hài lòng với các phúc lợi bằng tiền và không bằng tiền ngoài lương.",
+      "source": "Spector (1985), 4 biến (câu 4, 13, 22, 29 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "FB1",
+          "en": "I am not satisfied with the benefits I receive.",
+          "vi": "Tôi không hài lòng với các phúc lợi mình nhận được.",
+          "reverse": true
+        },
+        {
+          "code": "FB2",
+          "en": "The benefits we receive are as good as most other organizations offer.",
+          "vi": "Phúc lợi chúng tôi nhận được tốt không kém phần lớn các tổ chức khác."
+        },
+        {
+          "code": "FB3",
+          "en": "The benefit package we have is equitable.",
+          "vi": "Chế độ phúc lợi của chúng tôi là công bằng."
+        },
+        {
+          "code": "FB4",
+          "en": "There are benefits we do not have which we should have.",
+          "vi": "Có những phúc lợi lẽ ra chúng tôi phải có nhưng lại không có.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "code": "CR",
+      "nameVi": "Khen thưởng theo kết quả",
+      "nameEn": "Contingent Rewards",
+      "definition": "Mức độ hài lòng với sự ghi nhận, đánh giá cao và khen thưởng khi làm tốt công việc.",
+      "source": "Spector (1985), 4 biến (câu 5, 14, 23, 32 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "CR1",
+          "en": "When I do a good job, I receive the recognition for it that I should receive.",
+          "vi": "Khi làm tốt công việc, tôi nhận được sự ghi nhận xứng đáng."
+        },
+        {
+          "code": "CR2",
+          "en": "I do not feel that the work I do is appreciated.",
+          "vi": "Tôi không cảm thấy công việc mình làm được đánh giá cao.",
+          "reverse": true
+        },
+        {
+          "code": "CR3",
+          "en": "There are few rewards for those who work here.",
+          "vi": "Người làm việc ở đây nhận được ít phần thưởng.",
+          "reverse": true
+        },
+        {
+          "code": "CR4",
+          "en": "I don't feel my efforts are rewarded the way they should be.",
+          "vi": "Tôi không thấy nỗ lực của mình được khen thưởng một cách xứng đáng.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "code": "OP",
+      "nameVi": "Quy trình làm việc",
+      "nameEn": "Operating Procedures",
+      "definition": "Mức độ hài lòng với các quy định, thủ tục và khối lượng việc hành chính bắt buộc.",
+      "source": "Spector (1985), 4 biến (câu 6, 15, 24, 31 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "OP1",
+          "en": "Many of our rules and procedures make doing a good job difficult.",
+          "vi": "Nhiều quy định và thủ tục ở đây khiến việc làm tốt công việc trở nên khó khăn.",
+          "reverse": true
+        },
+        {
+          "code": "OP2",
+          "en": "My efforts to do a good job are seldom blocked by red tape.",
+          "vi": "Nỗ lực làm tốt công việc của tôi hiếm khi bị cản trở bởi thủ tục rườm rà."
+        },
+        {
+          "code": "OP3",
+          "en": "I have too much to do at work.",
+          "vi": "Tôi có quá nhiều việc phải làm ở chỗ làm.",
+          "reverse": true
+        },
+        {
+          "code": "OP4",
+          "en": "I have too much paperwork.",
+          "vi": "Tôi có quá nhiều giấy tờ phải xử lý.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "code": "COW",
+      "nameVi": "Đồng nghiệp",
+      "nameEn": "Coworkers",
+      "definition": "Mức độ hài lòng với những người cùng làm việc.",
+      "source": "Spector (1985), 4 biến (câu 7, 16, 25, 34 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "COW1",
+          "en": "I like the people I work with.",
+          "vi": "Tôi quý những người làm việc cùng mình."
+        },
+        {
+          "code": "COW2",
+          "en": "I find I have to work harder at my job because of the incompetence of people I work with.",
+          "vi": "Tôi thấy mình phải làm việc vất vả hơn vì đồng nghiệp thiếu năng lực.",
+          "reverse": true
+        },
+        {
+          "code": "COW3",
+          "en": "I enjoy my coworkers.",
+          "vi": "Tôi thấy vui khi làm việc với đồng nghiệp."
+        },
+        {
+          "code": "COW4",
+          "en": "There is too much bickering and fighting at work.",
+          "vi": "Ở chỗ làm có quá nhiều cãi vã và xung đột.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "code": "NW",
+      "nameVi": "Bản chất công việc",
+      "nameEn": "Nature of Work",
+      "definition": "Mức độ hài lòng với chính các nhiệm vụ trong công việc.",
+      "source": "Spector (1985), 4 biến (câu 8, 17, 27, 35 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "NW1",
+          "en": "I sometimes feel my job is meaningless.",
+          "vi": "Đôi khi tôi cảm thấy công việc của mình vô nghĩa.",
+          "reverse": true
+        },
+        {
+          "code": "NW2",
+          "en": "I like doing the things I do at work.",
+          "vi": "Tôi thích làm những việc mình đang làm."
+        },
+        {
+          "code": "NW3",
+          "en": "I feel a sense of pride in doing my job.",
+          "vi": "Tôi cảm thấy tự hào khi làm công việc của mình."
+        },
+        {
+          "code": "NW4",
+          "en": "My job is enjoyable.",
+          "vi": "Công việc của tôi thú vị."
+        }
+      ]
+    },
+    {
+      "code": "COM",
+      "nameVi": "Giao tiếp trong tổ chức",
+      "nameEn": "Communication",
+      "definition": "Mức độ hài lòng với việc truyền đạt thông tin trong tổ chức.",
+      "source": "Spector (1985), 4 biến (câu 9, 18, 26, 36 trong bảng hỏi gốc).",
+      "items": [
+        {
+          "code": "COM1",
+          "en": "Communications seem good within this organization.",
+          "vi": "Việc trao đổi thông tin trong tổ chức này có vẻ tốt."
+        },
+        {
+          "code": "COM2",
+          "en": "The goals of this organization are not clear to me.",
+          "vi": "Tôi không rõ mục tiêu của tổ chức này là gì.",
+          "reverse": true
+        },
+        {
+          "code": "COM3",
+          "en": "I often feel that I do not know what is going on with the organization.",
+          "vi": "Tôi thường cảm thấy mình không biết chuyện gì đang diễn ra trong tổ chức.",
+          "reverse": true
+        },
+        {
+          "code": "COM4",
+          "en": "Work assignments are not fully explained.",
+          "vi": "Các nhiệm vụ được giao không được giải thích đầy đủ.",
+          "reverse": true
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Bảng hỏi gốc xếp xen kẽ các khía cạnh theo thứ tự câu 1 đến 36; nên giữ thứ tự xen kẽ đó khi phát phiếu thay vì gom 4 câu cùng khía cạnh vào một chỗ, rồi mã hoá theo mã khía cạnh ở trên.",
+    "Có 19 câu phủ định (câu 2, 4, 6, 8, 10, 12, 14, 16, 18, 19, 21, 23, 24, 26, 29, 31, 32, 34, 36 trong bảng hỏi gốc); phải đảo điểm trước khi tính alpha hay cộng điểm. Khi dịch, giữ nguyên chiều phủ định, đừng chuyển sang câu khẳng định cho dễ đọc.",
+    "Thang trả lời gốc có 6 mức, không có điểm giữa. Nếu đổi sang 5 hoặc 7 mức, dải điểm và công thức đảo điểm thay đổi, phải ghi rõ trong chương phương pháp.",
+    "Alpha của quy trình làm việc (0,62) và đồng nghiệp (0,60) trong mẫu 2.870 người mà tác giả công bố trên trang của mình thấp hơn ngưỡng 0,70 (alpha tổng 36 biến là 0,91); kiểm tra kỹ hai khía cạnh này, xem hệ số tương quan biến tổng trước khi loại biến.",
+    "Điều kiện dùng miễn phí: giữ dòng bản quyền 'Copyright Paul E. Spector 1994, All rights reserved.' trên phiếu và gửi kết quả (trung bình từng khía cạnh, điểm tổng, cỡ mẫu, mô tả mẫu, quốc gia) cho tác giả."
+  ],
+  "examinerQA": [
+    {
+      "q": "Vì sao em dùng thang 6 mức mà không phải Likert 5 mức quen thuộc?",
+      "a": "Spector (1985) thiết kế JSS với 6 lựa chọn từ 'rất không đồng ý' đến 'rất đồng ý', không có điểm giữa, và hướng dẫn chấm điểm của tác giả dựa trên dải 1–6 (điểm khía cạnh 4–24, điểm tổng 36–216). Giữ nguyên 6 mức giúp so sánh được với chuẩn (norms) mà tác giả công bố."
+    },
+    {
+      "q": "Hai khía cạnh có alpha thấp hơn 0,70 thì em xử lý thế nào?",
+      "a": "Ngay trong mẫu 2.870 người của tác giả, quy trình làm việc chỉ đạt 0,62 và đồng nghiệp 0,60, nên đây là đặc điểm của thang chứ không hẳn do bản dịch. Em báo cáo alpha từng khía cạnh, kiểm tra tương quan biến tổng, và nếu dùng mô hình đo lường thì báo cáo thêm độ tin cậy tổng hợp; mọi biến bị loại đều phải nêu lý do."
+    }
+  ],
+  "sampleSize": {
+    "note": "JSS là thang đo đơn lẻ, không phải mô hình. Khi đưa 9 khía cạnh vào hồi quy hay SEM làm biến độc lập, tính cỡ mẫu theo số mũi tên trỏ vào biến phụ thuộc; để chạy EFA cho 36 biến, nên có ít nhất 5 quan sát mỗi biến, tức khoảng 180 phiếu."
+  },
+  "license": "Miễn phí cho mục đích phi thương mại, kể cả luận văn và đề tài sinh viên, theo trang của tác giả: phải trích dẫn, giữ dòng bản quyền trên phiếu và gửi kết quả cho tác giả. Bản dịch được phép nếu gửi một bản cho tác giả và ghi người dịch, năm dịch.",
+  "references": [
+    "Spector, P. E. (1985). Measurement of human service staff satisfaction: Development of the Job Satisfaction Survey. <em>American Journal of Community Psychology, 13</em>(6), 693–713. https://doi.org/10.1007/BF00929796"
+  ],
+  "verifiedFrom": [
+    "https://paulspector.com/assessments/pauls-no-cost-assessments/job-satisfaction-survey-jss/",
+    "https://paulspector.com/assessment-files/jss/jss-english.doc",
+    "https://paulspector.com/assessment-files/jss/jss-scoring.docx",
+    "https://paulspector.com/assessment-files/jss/jss-description-reliabilities.docx",
+    "https://paulspector.com/assessments/pauls-no-cost-assessments/conditions-for-using-these-assessments/",
+    "https://api.crossref.org/works/10.1007/BF00929796"
+  ],
+  "related": [
+    "hai-long-cong-viec",
+    "y-dinh-nghi-viec",
+    "ho-tro-to-chuc-pos"
+  ]
+}

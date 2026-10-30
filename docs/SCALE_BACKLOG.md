@@ -8,19 +8,16 @@ Mỗi dòng: `slug | thang đo, tác giả (năm) | ghi chú`.
 
 Thứ tự theo tần suất trong khoảng 80 nghiên cứu khảo sát Việt Nam 2020–2026 (rà soát ngày 30/10/2026).
 
-- hai-long-khach-hang | Customer satisfaction, Oliver (1997) hoặc Cronin, Brady & Hult (2000); không dùng ACSI | đã thử 1 lần
-- rui-ro-cam-nhan | Perceived risk đa chiều, Featherman & Pavlou (2003) hoặc thang có nguyên văn khác | đã thử 1 lần
-- hinh-anh-thuong-hieu | Brand image, Low & Lamb (2000) | đã thử 1 lần
-- hinh-anh-diem-den | Destination image (cognitive + affective), Baloglu & McCleary (1999) |
-- y-dinh-quay-lai-diem-den | Revisit/recommend intention, Chen & Tsai (2007) |
-- hai-long-cong-viec-jss | Job Satisfaction Survey, Spector (1985), miễn phí cho nghiên cứu phi thương mại; không dùng JDI (có phí) |
-- hai-long-ve-luong | Pay Satisfaction Questionnaire, Heneman & Schwab (1985) |
-- ho-tro-cap-tren | Perceived supervisor support, Eisenberger và cộng sự (2002) |
+- hai-long-khach-hang | Customer satisfaction, Oliver (1997) hoặc Cronin, Brady & Hult (2000); không dùng ACSI | đã thử 2 lần (31/10: bài gốc sau tường phí; trên PMC chỉ thấy bản đã sửa câu chữ cho bối cảnh khác)
+- rui-ro-cam-nhan | Perceived risk đa chiều, Featherman & Pavlou (2003) hoặc thang có nguyên văn khác | đã thử 2 lần (31/10: các bài truy cập mở chỉ trích định nghĩa, không chép nguyên văn biến)
+- hinh-anh-thuong-hieu | Brand image, Low & Lamb (2000) | đã thử 2 lần (31/10: không tìm thấy bài truy cập mở chép nguyên văn biến)
+- hinh-anh-diem-den | Destination image (cognitive + affective), Baloglu & McCleary (1999) | đã thử 1 lần (31/10: chỉ thấy 4 cặp tính từ cảm xúc ghi nguồn tác giả khác; danh sách thuộc tính nhận thức không có nguyên văn)
+- y-dinh-quay-lai-diem-den | Revisit/recommend intention, Chen & Tsai (2007) | đã thử 1 lần (31/10: chưa thấy bài truy cập mở chép biến kèm nguồn Chen & Tsai)
+- hai-long-ve-luong | Pay Satisfaction Questionnaire, Heneman & Schwab (1985) | đã thử 1 lần (31/10: chỉ thấy bản đã thêm "I feel satisfied with…" trước từng biến, không phải nguyên văn)
+- ho-tro-cap-tren | Perceived supervisor support, Eisenberger và cộng sự (2002) | đã thử 1 lần (31/10: chỉ thấy bản ghi "modified", chưa xác định được bộ biến gốc)
 - ho-tro-dong-nghiep | Coworker support, Ducharme & Martin (2000) |
 - dao-tao-thang-tien | Training and promotion opportunity, Schwepker (2001) |
-- y-dinh-khoi-nghiep-eiq | Entrepreneurial Intention Questionnaire, Liñán & Chen (2009) |
 - giao-duc-khoi-nghiep | Entrepreneurship education, Souitaris và cộng sự (2007) |
-- moi-quan-tam-moi-truong | Environmental concern, NEP Dunlap và cộng sự (2000) bản rút gọn |
 - y-thuc-suc-khoe | Health consciousness, Gould (1988) hoặc Michaelidou & Hassan (2008) |
 - niem-tin-xanh | Green trust / green purchase intention / greenwashing, Chen (2010); Chen & Chang (2012, 2013) |
 - nhan-thuc-csr | CSR perception, Turker (2009) |
@@ -47,4 +44,7 @@ Không đưa vào (có phí hoặc bản quyền thương mại): MLQ, TCM Meyer
 
 ## Đã xử lý
 
+- hai-long-cong-viec-jss | Job Satisfaction Survey, Spector (1985), miễn phí cho nghiên cứu phi thương mại; không dùng JDI (có phí) | đã thêm, 36 biến, nguyên văn từ trang của Spector (31/10/2026 00:46)
+- y-dinh-khoi-nghiep-eiq | Entrepreneurial Intention Questionnaire, Liñán & Chen (2009) | đã thêm, 19 biến, nguyên văn từ Ferreira-Neto và cộng sự (2023), Kurata và cộng sự (2025) (31/10/2026 00:46)
+- moi-quan-tam-moi-truong | Environmental concern, NEP Dunlap và cộng sự (2000) bản rút gọn | đã thêm bản sửa đổi 15 biến, nguyên văn từ Pettersson và cộng sự (2026), Marcineková và cộng sự (2024) (31/10/2026 00:46)
 - (đợt 30/10/2026: 34 thang đo, xem git log)

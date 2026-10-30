@@ -1,0 +1,296 @@
+---
+// Listed-bank pilot dataset: values extracted from each bank's own audited consolidated statements, with the
+// source file and page of every number. Data: src/data/ngan-hang-niem-yet/, checks: scripts/check-bank-data.mjs,
+// source review: docs/BANK_DATA_SOURCES.md.
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import { getAssetPath } from "@/utils/withBase";
+import { BANK_FILES, VARIABLES, bankValues, banks, computed, panel, review } from "../_lib/banks";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const repo = "https://github.com/growth547/goc-nghien-cuu";
+const href = (f: string) => getAssetPath(`du-lieu/${f}`);
+const varHref = (slug: string) => getRelativeLocaleUrl(locale, `bien-nghien-cuu/${slug}`);
+const t = panel();
+const included = banks.filter(b => b.status === "included");
+const others = banks.filter(b => b.status !== "included");
+const years = bankValues.map(v => v.year);
+const firstYear = Math.min(...years);
+const lastYear = Math.max(...years);
+const reportFiles = new Set(bankValues.map(v => v.file_name)).size;
+const pct = (x?: number, d = 2) => (x === undefined || !Number.isFinite(x) ? "–" : (x * 100).toFixed(d).replace(".", ","));
+const num = (x?: number, d = 2) => (x === undefined || !Number.isFinite(x) ? "–" : x.toFixed(d).replace(".", ","));
+const tril = (x?: number) => (x === undefined ? "–" : (x / 1e6).toLocaleString("vi-VN", { maximumFractionDigits: 1 }));
+const SHOW = ["roa", "roe", "nim_ta", "cir", "npl", "ldr", "eqta", "zscore"] as const;
+const issueUrl = `${repo}/issues/new?title=${encodeURIComponent("Sai số liệu ngân hàng niêm yết: ")}`;
+---
+
+<Layout
+  title={`Dữ liệu BCTC ngân hàng niêm yết ${firstYear}–${lastYear}: CSV có nguồn | ${config.site.title}`}
+  description={`Số liệu BCTC hợp nhất kiểm toán của ${included.length} ngân hàng niêm yết, ${firstYear}–${lastYear}: tổng tài sản, cho vay, tiền gửi, lợi nhuận, ROA, ROE, NIM, CIR, nợ xấu, Z-score; mỗi số có tệp gốc và số trang.`}
+>
+  <Header />
+  <Breadcrumb current="Ngân hàng niêm yết" />
+  <Main
+    pageTitle="Dữ liệu BCTC ngân hàng niêm yết (thí điểm)"
+    pageDesc={`${bankValues.length.toLocaleString("vi-VN")} giá trị của ${included.length} ngân hàng (${included.map(b => b.code).join(", ")}), ${firstYear}–${lastYear}, trích từ ${reportFiles} BCTC hợp nhất đã kiểm toán do chính ngân hàng đăng trên website quan hệ nhà đầu tư. Mỗi số ghi tệp gốc, số trang và các bước kiểm tra.`}
+  >
+    <div class="border-accent bg-surface mb-8 rounded-lg border-l-4 p-4 text-sm">
+      <p class="font-semibold">
+        Số liệu trích từ BCTC kiểm toán do ngân hàng công bố; hãy đối chiếu bản gốc trước khi dùng cho luận văn.
+      </p>
+      <p class="mt-2">
+        Đây là bộ dữ liệu thí điểm, không phải nguồn chính thức. Trích dẫn BCTC của từng ngân hàng (đường link tệp gốc có
+        trong cột <code>source_url</code>), không trích dẫn {config.site.title} như nguồn số liệu.
+      </p>
+    </div>
+
+    <ul class="mb-10 grid gap-3 sm:grid-cols-2">
+      <li>
+        <a href={href(BANK_FILES.panel)} download class="card gap-1 p-4">
+          <span class="text-accent font-bold">Bảng ngân hàng – năm (dạng rộng)</span>
+          <span class="card-meta"
+            >Mỗi dòng một ngân hàng – năm: các khoản mục chính (triệu đồng) và {VARIABLES.length} biến tính sẵn (ROA, ROE,
+            NIM, CIR, nợ xấu, LDR, VCSH/TTS, chi phí dự phòng, Z-score). Dùng ngay cho FEM, REM, GMM.</span
+          >
+          <span class="card-foot"><span><code>{BANK_FILES.panel}</code></span></span>
+        </a>
+      </li>
+      <li>
+        <a href={href(BANK_FILES.long)} download class="card gap-1 p-4">
+          <span class="text-accent font-bold">Từng khoản mục, có nguồn (dạng dài)</span>
+          <span class="card-meta"
+            >Mỗi dòng một giá trị: ngân hàng, năm, mã khoản mục, giá trị, đơn vị in trên BCTC, báo cáo (CĐKT, KQKD, thuyết
+            minh), URL tệp gốc, tên tệp, số trang, cột (năm hiện hành hay số so sánh) và kết quả kiểm tra.</span
+          >
+          <span class="card-foot"><span><code>{BANK_FILES.long}</code></span></span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="app-prose max-w-none">
+      <h2>Ngân hàng có trong dữ liệu</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Mã</th>
+              <th>Ngân hàng</th>
+              <th>Sàn</th>
+              <th>Năm</th>
+              <th>Giá trị</th>
+              <th>Tổng tài sản năm cuối (nghìn tỷ đồng)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              included.map(b => {
+                const rows = t.get(b.code);
+                const ys = rows ? [...rows.keys()].sort() : [];
+                const last = ys.at(-1);
+                return (
+                  <tr>
+                    <td>{b.code}</td>
+                    <td>
+                      <a href={b.irUrl} rel="noopener" target="_blank">
+                        {b.name}
+                      </a>
+                    </td>
+                    <td>{b.exchange}</td>
+                    <td class="tabular-nums">{ys.length ? `${ys[0]}–${last}` : "–"}</td>
+                    <td class="tabular-nums">{bankValues.filter(v => v.bank === b.code).length}</td>
+                    <td class="tabular-nums">{last ? tril(rows!.get(last)!.total_assets) : "–"}</td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+
+      {
+        included.map(b => {
+          const rows = t.get(b.code);
+          if (!rows) return null;
+          const comp = computed(rows);
+          const ys = [...rows.keys()].sort();
+          return (
+            <>
+              <h3>
+                {b.code} – {b.name}
+              </h3>
+              <div class="table-scroll">
+                <table class="text-sm">
+                  <thead>
+                    <tr>
+                      <th>Năm</th>
+                      <th>TTS (nghìn tỷ)</th>
+                      <th>LNST (nghìn tỷ)</th>
+                      {SHOW.map(c => (
+                        <th>{VARIABLES.find(v => v.code === c)!.name.replace(" (trên tổng tài sản bình quân)", "").replace(" (cửa sổ 3 năm)", "")}{c === "zscore" ? "" : " (%)"}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ys.map(y => {
+                      const r = rows.get(y)!;
+                      const c = comp.get(y)!;
+                      return (
+                        <tr>
+                          <td class="tabular-nums">{y}</td>
+                          <td class="tabular-nums">{tril(r.total_assets)}</td>
+                          <td class="tabular-nums">{tril(r.profit_after_tax)}</td>
+                          {SHOW.map(k => (
+                            <td class="tabular-nums">{k === "zscore" ? num(c[k], 1) : pct(c[k])}</td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          );
+        })
+      }
+      <p class="text-sm">
+        Dấu “–” là chưa có số: khoản mục không trích được qua đủ hai lượt khớp nhau, không qua kiểm tra kế toán, ngân
+        hàng không thuyết minh, hoặc biến cần số năm trước (NIM bình quân, Z-score 3 năm).
+      </p>
+
+      <h2>Biến tính sẵn</h2>
+      <p>Công thức theo thư viện <a href={getRelativeLocaleUrl(locale, "bien-nghien-cuu")}>Biến nghiên cứu</a>:</p>
+      <ul>
+        {
+          VARIABLES.map(v => (
+            <li>
+              <a href={varHref(v.page)}>{v.name}</a> (<code>{v.code}</code>): {v.formula}.
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="text-sm">
+        <li>
+          Vốn chủ sở hữu và lợi nhuận sau thuế lấy đúng dòng tổng trên BCTC hợp nhất (gồm phần của cổ đông không kiểm
+          soát). Chi phí hoạt động và chi phí dự phòng in số âm trên BCTC; khi tính CIR và tỷ lệ chi phí dự phòng dùng giá trị
+          tuyệt đối.
+        </li>
+        <li>
+          NIM ở đây là biến thể trên tổng tài sản bình quân (bộ dữ liệu chưa trích tài sản sinh lãi), nên thấp hơn NIM
+          ngân hàng tự công bố. Ghi rõ là xấp xỉ khi dùng.
+        </li>
+        <li>
+          Tỷ lệ nợ xấu chỉ có khi thuyết minh “phân tích chất lượng nợ cho vay” được trích qua hai lượt và tổng năm nhóm
+          khớp dòng tổng của bảng. Mẫu số là tổng dư nợ được phân loại nhóm 1–5 trong bảng đó (một số ngân hàng để riêng cho
+          vay ký quỹ của công ty chứng khoán con ngoài bảng).
+        </li>
+        <li>
+          Z-score dùng độ lệch chuẩn mẫu của ROA trong 3 năm t, t−1, t−2; chỉ có từ năm thứ ba có số liên tục.
+        </li>
+      </ul>
+
+      <h2>Cách trích và kiểm tra</h2>
+      <ol>
+        <li>
+          <strong>Nguồn.</strong> Chỉ dùng tệp PDF BCTC hợp nhất đã kiểm toán đăng trên website quan hệ nhà đầu tư của
+          chính ngân hàng (Thông tư 96/2020/TT-BTC buộc ngân hàng công bố tại đây). Trước khi tải, đã đọc và lưu điều khoản
+          sử dụng và <code>robots.txt</code> của từng website; ngân hàng có điều khoản cấm tái sử dụng nội dung hoặc chặn
+          truy cập tự động bị loại. Không dùng CafeF, Vietstock, FiinGroup, VNDIRECT, SSI hay cổng HOSE, HNX (xem
+          <a href={`${repo}/blob/main/docs/FIRM_DATA_LEGAL.md`}>rà soát pháp lý</a> và
+          <a href={`${repo}/blob/main/docs/BANK_DATA_SOURCES.md`}>nhật ký nguồn từng ngân hàng</a>). Số liệu tự thân
+          không thuộc đối tượng bảo hộ quyền tác giả (khoản 3 Điều 15 Luật Sở hữu trí tuệ); trang này không đăng lại tệp
+          PDF, chỉ trích số và dẫn link về tệp gốc.
+        </li>
+        <li>
+          <strong>Hai lượt trích độc lập.</strong> Với tệp có lớp chữ: lượt 1 đọc lớp chữ của PDF, lượt 2 nhận dạng ký tự
+          (OCR) ảnh trang. Với tệp scan: hai lượt OCR ở hai độ phân giải khác nhau (170 và 230 dpi, ảnh màu và ảnh xám).
+          Chỉ giữ giá trị mà hai lượt cho đúng cùng một con số.
+        </li>
+        <li>
+          <strong>Kiểm tra kế toán</strong> trên từng cột của từng báo cáo (sai lệch tối đa 2 triệu đồng do làm tròn): tổng
+          tài sản = tổng nợ phải trả và vốn chủ sở hữu = nợ phải trả + VCSH; thu nhập lãi thuần = thu nhập lãi − chi phí
+          lãi; lãi thuần dịch vụ và hoạt động khác; tổng thu nhập hoạt động = tổng các khoản lãi thuần; chuỗi lợi nhuận
+          (trước dự phòng → trước thuế → sau thuế); cho vay thuần = cho vay gộp − dự phòng; tổng năm nhóm nợ = tổng dư nợ
+          phân loại. Giá trị nằm trong một đẳng thức không khớp bị gắn cờ và không đăng.
+        </li>
+        <li>
+          <strong>Đối chiếu năm sau.</strong> Số năm t được so với cột số liệu so sánh trong BCTC năm t+1 (một tài liệu
+          khác, scan khác). Khi hai tệp có hai lượt OCR cùng một công cụ, giá trị chỉ được đăng nếu khớp cột so sánh năm
+          sau hoặc nằm trong một đẳng thức kế toán đã khớp. Nếu BCTC năm sau trình bày lại, bộ dữ liệu giữ số gốc của năm t
+          và ghi số trình bày lại ở cột <code>restated_in_next_report</code> ({review.restatements.length} trường hợp).
+          Năm không có BCTC riêng trên website (ví dụ VCB 2017) lấy từ cột so sánh của BCTC năm sau và ghi rõ ở cột
+          <code>column</code>.
+        </li>
+        <li>
+          <strong>Kết quả.</strong> Đăng {bankValues.length.toLocaleString("vi-VN")} giá trị; {review.flagged.length}
+          giá trị bị gắn cờ và không đăng (lý do từng giá trị ở cuối trang). Kiểm tra lại tự động mỗi lần trang được dựng
+          (<a href={`${repo}/blob/main/scripts/check-bank-data.mjs`}>check-bank-data.mjs</a>).
+        </li>
+      </ol>
+
+      <h2>Nhập vào Stata, R</h2>
+      <pre><code>{`* Stata
+import delimited "${BANK_FILES.panel}", clear encoding(utf8)
+xtset id year
+summarize roa roe nim_ta cir npl ldr eqta zscore
+
+# R
+library(plm)
+bank <- read.csv("${BANK_FILES.panel}", fileEncoding = "UTF-8-BOM")
+pdat <- pdata.frame(bank, index = c("bank", "year"))`}</code></pre>
+
+      <h2>Ngân hàng chưa có hoặc bị loại</h2>
+      <div class="table-scroll">
+        <table class="text-sm">
+          <thead>
+            <tr>
+              <th>Mã</th>
+              <th>Ngân hàng</th>
+              <th>Tình trạng</th>
+              <th>Lý do</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              others.map(b => (
+                <tr>
+                  <td>{b.code}</td>
+                  <td>{b.name}</td>
+                  <td>{b.status === "excluded" ? "Loại" : "Chưa rà soát xong"}</td>
+                  <td>{b.reason}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Báo lỗi, yêu cầu gỡ</h2>
+      <p>
+        Thấy số khác BCTC gốc? <a href={issueUrl} rel="noopener" target="_blank">Mở một issue trên GitHub</a>, ghi mã ngân
+        hàng, năm, khoản mục và số trang bạn đối chiếu; giá trị sai sẽ được gỡ hoặc sửa trước khi điều tra xong.
+        Ngân hàng có số liệu trên trang này có thể yêu cầu gỡ bất kỳ lúc nào qua issue trên GitHub hoặc
+        mục liên hệ của website; số liệu sẽ được gỡ khỏi trang và file CSV.
+      </p>
+
+      <details>
+        <summary>Giá trị bị gắn cờ, không đăng ({review.flagged.length})</summary>
+        <ul class="text-sm">
+          {
+            review.flagged.map(f => (
+              <li>
+                {f.bank} {f.year} <code>{f.item_code}</code>: {f.reason}
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </div>
+  </Main>
+  <Footer />
+</Layout>

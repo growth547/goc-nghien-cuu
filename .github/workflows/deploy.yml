@@ -39,6 +39,7 @@ jobs:
       - run: node scripts/check-data.mjs
       - run: node scripts/check-variables.mjs
       - run: node scripts/check-ratios.mjs
+      - run: node scripts/check-bank-data.mjs
       - run: node scripts/check-clean.mjs
       - run: node scripts/check-doctor.mjs
       - run: pnpm exec astro build

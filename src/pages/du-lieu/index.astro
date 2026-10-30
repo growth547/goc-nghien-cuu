@@ -74,6 +74,10 @@ catalog.dataset = catalog.dataset.map((entry, i) => ({
         <span class="text-accent font-bold">Dữ liệu bảng cho Stata, R, EViews</span>
         <span class="card-meta">File rộng (năm × chỉ số) cho Việt Nam, file nước–năm cho ASEAN, giá hàng hoá theo tháng.</span>
       </a>
+      <a href={getRelativeLocaleUrl(locale, "du-lieu/ngan-hang-niem-yet")} class="card gap-1 p-4">
+        <span class="text-accent font-bold">BCTC ngân hàng niêm yết (thí điểm)</span>
+        <span class="card-meta">Số liệu trích từ BCTC kiểm toán của từng ngân hàng, có tệp gốc và số trang; ROA, ROE, NIM, nợ xấu.</span>
+      </a>
       <a href={allCsvHref} download class="card gap-1 p-4">
         <span class="text-accent font-bold">Tải CSV tất cả {datasets.length} chỉ số</span>
         <span class="card-meta">Định dạng dài, có nguồn, giấy phép, ngày truy xuất và trích dẫn APA trên từng dòng.</span>

@@ -1,6 +1,6 @@
 {
  "builtAt": "2026-10-30",
- "published": 258,
+ "published": 567,
  "flagged": [
   {
    "bank": "TCB",
@@ -307,9 +307,689 @@
    "year": 2022,
    "item_code": "loans_group5",
    "reason": "không qua kiểm tra kế toán"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "cash",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "charter_capital",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "customer_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "due_to_govt_sbv",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "interbank_assets",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "interbank_liabilities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "other_income",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "provision_expense",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "retained_earnings",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "sbv_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2017,
+   "item_code": "valuable_papers",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2018,
+   "item_code": "other_expense",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2018,
+   "item_code": "profit_before_tax",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "income_tax",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "profit_after_tax",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "profit_after_tax_parent",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "retained_earnings",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "sbv_deposits",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2020,
+   "item_code": "investment_securities",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2020,
+   "item_code": "sbv_deposits",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "interbank_assets",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "investment_securities",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "loan_loss_reserve",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "loans_net",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "profit_after_tax_parent",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "retained_earnings",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2022,
+   "item_code": "profit_before_tax",
+   "reason": "hai lượt trích không khớp"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "interbank_assets",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "profit_after_tax_parent",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "retained_earnings",
+   "reason": "chưa đủ hai lượt trích độc lập"
+  },
+  {
+   "bank": "VCB",
+   "year": 2025,
+   "item_code": "profit_after_tax_parent",
+   "reason": "chưa đủ hai lượt trích độc lập"
   }
  ],
  "restatements": [
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "total_assets",
+   "original": 1222718858,
+   "inNextReport": 1222813692,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "loan_loss_reserve",
+   "original": -10416789,
+   "inNextReport": -10233637,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "loans_net",
+   "original": 724290102,
+   "inNextReport": 724473254,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "total_liabilities",
+   "original": 1141835876,
+   "inNextReport": 1141859355,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "retained_earnings",
+   "original": 26055190,
+   "inNextReport": 26126544,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "total_equity",
+   "original": 80882982,
+   "inNextReport": 80954337,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "total_liabilities_equity",
+   "original": 1222718858,
+   "inNextReport": 1222813692,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "interest_income",
+   "original": 67724190,
+   "inNextReport": 67665496,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "interest_expense",
+   "original": -33146840,
+   "inNextReport": -33127768,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "net_interest_income",
+   "original": 34577350,
+   "inNextReport": 34537728,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "fee_income",
+   "original": 9002507,
+   "inNextReport": 9005109,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "net_fee_income",
+   "original": 4306844,
+   "inNextReport": 4309446,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "other_income",
+   "original": 3427765,
+   "inNextReport": 3427795,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "net_other_income",
+   "original": 3069795,
+   "inNextReport": 3069825,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "total_operating_income",
+   "original": 45730381,
+   "inNextReport": 45693391,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "operating_expense",
+   "original": -15817575,
+   "inNextReport": -15874542,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "pre_provision_profit",
+   "original": 29912806,
+   "inNextReport": 29818849,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "provision_expense",
+   "original": -6790429,
+   "inNextReport": -6607278,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2019,
+   "item_code": "profit_before_tax",
+   "original": 23122377,
+   "inNextReport": 23211571,
+   "nextFile": "BC3A1o20cC3A1o20tC3A0i20chC3ADnh20hE1BBA3p20nhE1BAA5t20nC483m20202020C491C3A320kiE1BB83m20toC3A1n.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "total_assets",
+   "original": 1414672587,
+   "inNextReport": 1414986259,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "interbank_assets",
+   "original": 225764546,
+   "inNextReport": 225811765,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "loans_net",
+   "original": 934774287,
+   "inNextReport": 935009671,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "total_liabilities",
+   "original": 1305555194,
+   "inNextReport": 1305799830,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "retained_earnings",
+   "original": 48433500,
+   "inNextReport": 48502536,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "total_equity",
+   "original": 109117393,
+   "inNextReport": 109186429,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "total_liabilities_equity",
+   "original": 1414672587,
+   "inNextReport": 1414986259,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "interest_income",
+   "original": 70749002,
+   "inNextReport": 70621957,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "net_interest_income",
+   "original": 42399617,
+   "inNextReport": 42272572,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "net_trading_securities",
+   "original": 104114,
+   "inNextReport": 137665,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "net_investment_securities",
+   "original": -85126,
+   "inNextReport": -85235,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "total_operating_income",
+   "original": 56723569,
+   "inNextReport": 56629966,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "operating_expense",
+   "original": -17574188,
+   "inNextReport": -17665925,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "pre_provision_profit",
+   "original": 39149381,
+   "inNextReport": 38964041,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "provision_expense",
+   "original": -11760801,
+   "inNextReport": -11478198,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "income_tax",
+   "original": -5449535,
+   "inNextReport": -5469010,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "profit_after_tax",
+   "original": 21939045,
+   "inNextReport": 22016833,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2021,
+   "item_code": "profit_after_tax_parent",
+   "original": 21918813,
+   "inNextReport": 21996601,
+   "nextFile": "2022-CN-HN.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "total_assets",
+   "original": 1839613198,
+   "inNextReport": 1839724560,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "interbank_assets",
+   "original": 336468607,
+   "inNextReport": 336501657,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "loan_loss_reserve",
+   "original": -28683685,
+   "inNextReport": -28681807,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "loans_net",
+   "original": 1241675333,
+   "inNextReport": 1241677211,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "total_liabilities",
+   "original": 1674600532,
+   "inNextReport": 1674644070,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "retained_earnings",
+   "original": 76758658,
+   "inNextReport": 76826482,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "total_equity",
+   "original": 165012666,
+   "inNextReport": 165080490,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "total_liabilities_equity",
+   "original": 1839613198,
+   "inNextReport": 1839724560,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "interest_income",
+   "original": 108122278,
+   "inNextReport": 108115840,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "net_interest_income",
+   "original": 53620869,
+   "inNextReport": 53614431,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "fee_income",
+   "original": 12632739,
+   "inNextReport": 12698083,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "fee_expense",
+   "original": -6853016,
+   "inNextReport": -6872673,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "net_fee_income",
+   "original": 5779723,
+   "inNextReport": 5825410,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "net_trading_securities",
+   "original": 124217,
+   "inNextReport": 124539,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "other_income",
+   "original": 4050144,
+   "inNextReport": 4051437,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "net_other_income",
+   "original": 2272169,
+   "inNextReport": 2273462,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "total_operating_income",
+   "original": 67723462,
+   "inNextReport": 67764326,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "operating_expense",
+   "original": -21914899,
+   "inNextReport": -21905912,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "pre_provision_profit",
+   "original": 45808563,
+   "inNextReport": 45858414,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "provision_expense",
+   "original": -4564876,
+   "inNextReport": -4529947,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "profit_before_tax",
+   "original": 41243687,
+   "inNextReport": 41328467,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "income_tax",
+   "original": -8189239,
+   "inNextReport": -8206195,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "profit_after_tax",
+   "original": 33054448,
+   "inNextReport": 33122272,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
+  {
+   "bank": "VCB",
+   "year": 2023,
+   "item_code": "profit_after_tax_parent",
+   "original": 33033203,
+   "inNextReport": 33101027,
+   "nextFile": "VCB-31122024---FS-Conso---VIE.pdf"
+  },
   {
    "bank": "TCB",
    "year": 2020,

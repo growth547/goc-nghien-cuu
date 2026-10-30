@@ -9,17 +9,13 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - chay-spss-can-bao-nhieu-mau | chạy spss cần bao nhiêu mẫu | dẫn sang máy tính cỡ mẫu
 - cach-tinh-co-mau-theo-cong-thuc-slovin | công thức slovin, yamane | khi nào không nên dùng
 - bang-krejcie-morgan | bảng krejcie morgan | Krejcie & Morgan 1970
-- kiem-dinh-t-test-anova-spss | t-test, anova spss | Levene, Welch
 - phan-tich-tuong-quan-pearson | tương quan pearson spss | ngưỡng Cohen 1988
 - pls-sem-la-gi-smartpls | pls-sem là gì, smartpls | Hair 2019, 2022
-- htmt-la-gi | htmt, giá trị phân biệt | Henseler 2015
 - ave-cr-la-gi | ave, cr, giá trị hội tụ | Fornell & Larcker 1981
 - cfa-amos-chi-so-phu-hop | cfa amos, chỉ số phù hợp mô hình | Hu & Bentler 1999
-- bien-trung-gian-dieu-tiet | biến trung gian, biến điều tiết | Baron & Kenny 1986, Hayes, Zhao 2010
 - common-method-bias | common method bias, harman | Podsakoff 2003, Kock 2015
 - mo-hinh-tam-la-gi | mô hình tam | Davis 1989, dẫn thang đo TAM
 - mo-hinh-utaut2 | mô hình utaut2 | Venkatesh 2012
-- thuyet-hanh-vi-co-ke-hoach-tpb | mô hình tpb ajzen 1991 | Ajzen 1991
 - mo-hinh-servqual-5-thanh-phan | thang đo chất lượng dịch vụ parasuraman, 22 biến servqual | Parasuraman 1988
 - thang-do-dass-21-tieng-viet | thang đo dass 21 tiếng việt | Tran 2013, dẫn trang thang đo
 - thang-do-pss-10-tieng-viet | thang đo pss 10 tiếng việt | dẫn trang thang đo
@@ -33,14 +29,21 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - kiem-dinh-tinh-dung-adf | kiểm định tính dừng adf | chuỗi thời gian
 - cach-trich-dan-apa-7 | cách trích dẫn apa 7 | dẫn sang công cụ trích dẫn
 - cach-viet-tong-quan-tai-lieu | cách viết tổng quan tài liệu, khoảng trống nghiên cứu |
-- cach-viet-chuong-5-thao-luan | cách viết chương 5 thảo luận, hàm ý quản trị |
 - cach-viet-han-che-nghien-cuu | hạn chế của nghiên cứu |
 - cach-trinh-bay-bang-bieu-luan-van | trình bày bảng biểu luận văn |
 - mau-de-cuong-khoa-luan | mẫu đề cương khoá luận, đề cương nghiên cứu |
+- phuong-sai-sai-so-thay-doi | phương sai sai số thay đổi là gì, kiểm định và khắc phục (Stata, EViews) | 10 biến thể Autocomplete 30/10; White 1980, Breusch-Pagan 1979, sai số chuẩn vững
+- hoi-quy-logistic-spss | hồi quy logistic trong spss, đơn biến / đa biến | 10 biến thể Autocomplete; Peduzzi 1996, Vittinghoff 2007, Nagelkerke 1991, Hosmer-Lemeshow 1980 (DOI đã kiểm tra)
 
 
 ## Đã viết
 
+- kiem-dinh-t-test-anova-spss | kiểm định t-test và anova trong spss | Levene, Welch, Tukey, Games-Howell | đã viết: /posts/kiem-dinh-t-test-anova-spss/
+- htmt-la-gi | htmt, giá trị phân biệt | Henseler 2015, Franke & Sarstedt 2019 | đã viết: /posts/htmt-gia-tri-phan-biet/
+- bien-trung-gian-dieu-tiet | biến trung gian và biến điều tiết là gì | Baron & Kenny 1986, Hayes, Zhao 2010 | đã viết: /posts/bien-trung-gian-bien-dieu-tiet-la-gi/
+- thuyet-hanh-vi-co-ke-hoach-tpb | mô hình tpb ajzen 1991, tpb mở rộng | Ajzen 1991, Armitage & Conner 2001 | đã viết: /posts/mo-hinh-tpb-thuyet-hanh-vi-co-ke-hoach/
+- cach-viet-chuong-5-thao-luan | hàm ý quản trị là gì, cách viết chương 5 | IPA Martilla & James 1977 | đã viết: /posts/ham-y-quan-tri-cach-viet-chuong-5/
+- kmo-va-bartlett-la-gi | kmo là gì, kiểm định kmo và bartlett | Kaiser 1970/1974, Bartlett 1950, ví dụ tính tay | đã viết: /posts/kmo-va-bartlett-la-gi/ (ưu tiên 1 trong SEO_KEYWORDS)
 - hoi-quy-tuyen-tinh-boi-spss | hồi quy tuyến tính bội spss, đọc kết quả hồi quy | dẫn sang công cụ phân tích | đã viết: /posts/hoi-quy-tuyen-tinh-boi-spss/
 - cach-dat-gia-thuyet-nghien-cuu | cách viết giả thuyết nghiên cứu | ví dụ H1 H2, cùng chiều/ngược chiều | đã viết: /posts/cach-dat-gia-thuyet-nghien-cuu/
 - cach-xay-dung-mo-hinh-nghien-cuu | xây dựng mô hình nghiên cứu, mô hình nghiên cứu đề xuất | dẫn sang công cụ vẽ mô hình | đã viết: /posts/cach-xay-dung-mo-hinh-nghien-cuu/

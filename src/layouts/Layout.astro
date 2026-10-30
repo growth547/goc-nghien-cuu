@@ -145,6 +145,34 @@ const rssHref = getAssetPath("rss.xml");
       })();
     </script>
 
+    {
+      site.gaMeasurementId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${site.gaMeasurementId}`}
+          />
+          <script is:inline define:vars={{ gaId: site.gaMeasurementId }}>
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () {
+              window.dataLayer.push(arguments);
+            };
+            gtag("js", new Date());
+            // ClientRouter swaps pages without a full load, so page views are sent on
+            // every astro:page-load (which also fires on the first load) instead.
+            gtag("config", gaId, { send_page_view: false });
+            document.addEventListener("astro:page-load", () => {
+              gtag("event", "page_view", {
+                page_location: location.href,
+                page_title: document.title,
+              });
+            });
+          </script>
+        </>
+      )
+    }
+
     <ClientRouter />
   </head>
   <body

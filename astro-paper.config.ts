@@ -13,6 +13,8 @@ export default defineAstroPaperConfig({
     timezone: "Asia/Ho_Chi_Minh",
     dir: "ltr",
     googleVerification: "e95tgeuTukw0ZwNNlfND3Ho7UVcpzN5bbgE6OWzEmkU",
+    // GA4 measurement ID from analytics.google.com (Admin > Data streams); empty = no analytics tag.
+    gaMeasurementId: "",
   },
   posts: {
     perPage: 8,

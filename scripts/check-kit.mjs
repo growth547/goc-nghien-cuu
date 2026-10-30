@@ -28,7 +28,8 @@ const api = new Function(
   `${block(kitSrc, "math")}${block(kitSrc, "kit")}
    return { placeholdersOf, fillPlaceholders, applyAddress, citeOf, citedBy, isAgreementScale, parseResponseScale, itemAnchors, itemFormat,
      legendOf, valuesOf, reverseRule, dedupeCodes, acCode, placeAttention, defaultScreening, DEMOS, DEMO_DEFAULT, buildSurvey, appsScript,
-     toGDF, codebookRows, toCSV, kitSample, respondentPlaceholders, normText, expandQuery, indexConstruct, rankConstructs, LIK };`
+     toGDF, codebookRows, toCSV, kitSample, respondentPlaceholders, normText, expandQuery, indexConstruct, rankConstructs, LIK,
+     generalQuestions, demoOf, mgaTotal, gridTitle, introLine, extraFromParams, thesisHtml };`
 )();
 const ts = await import("../src/utils/kit.ts");
 
@@ -231,25 +232,35 @@ function validateGDF(g) {
 }
 
 // Run the Apps Script against a stub FormApp that only has the real methods we rely on;
-// any other property access is reported.
+// any other property access is reported. Then answer the form twice (one respondent who passes
+// screening, one who does not) and run xuatDuLieu to read back the coded data sheet.
 function runAppsScript(code) {
   const errs = [],
     items = [];
   const NAV = { CONTINUE: "CONTINUE", SUBMIT: "SUBMIT", GO_TO_PAGE: "GO_TO_PAGE", RESTART: "RESTART" };
+  const TYPE = { PAGE_BREAK: "PAGE_BREAK", GRID: "GRID", SCALE: "SCALE", MULTIPLE_CHOICE: "MULTIPLE_CHOICE", TEXT: "TEXT" };
   const strict = (o, name) => new Proxy(o, { get: (t, k) => (k in t ? t[k] : (errs.push(`unknown API ${name}.${String(k)}`), () => strict({}, "?"))) });
   const item = (type, methods) => {
-    const o = { type, p: {} };
+    const o = { type, p: {}, cc: [] };
     const px = strict(o, type);
     for (const m of methods)
       o[m] = (...a) => {
         o.p[m] = a;
         return px;
       };
+    o.createChoice = (v, nav) => {
+      o.cc.push([v, nav]);
+      return { v };
+    };
     items.push(o);
     return px;
   };
-  const MC = ["setTitle", "setHelpText", "setRequired", "setChoices", "setChoiceValues", "showOtherOption", "createChoice"];
-  let dest = null;
+  const MC = ["setTitle", "setHelpText", "setRequired", "setChoices", "setChoiceValues", "showOtherOption"];
+  let dest = null,
+    props = {},
+    sheet = null,
+    responses = [];
+  const handle = o => strict({ getType: () => ({ page: TYPE.PAGE_BREAK, grid: TYPE.GRID, scale: TYPE.SCALE, mc: TYPE.MULTIPLE_CHOICE, text: TYPE.TEXT })[o.type], getId: () => items.indexOf(o) }, "Item");
   const formObj = {
     setDescription: () => form, setProgressBar: () => form, setConfirmationMessage: () => form,
     addMultipleChoiceItem: () => item("mc", MC),
@@ -261,14 +272,21 @@ function runAppsScript(code) {
       dest = [t, id];
       return form;
     },
-    getPublishedUrl: () => "u", getEditUrl: () => "e",
+    getId: () => "form-id", getPublishedUrl: () => "u", getEditUrl: () => "e",
+    getItems: () => items.map(handle),
+    getResponses: () => responses.map(ans => strict({ getResponseForItem: h => (ans.has(h.getId()) ? strict({ getResponse: () => ans.get(h.getId()) }, "ItemResponse") : null) }, "FormResponse")),
   };
   const form = strict(formObj, "Form");
-  const FormApp = strict({ create: () => form, PageNavigationType: NAV, DestinationType: { SPREADSHEET: "SPREADSHEET" } }, "FormApp");
-  const SpreadsheetApp = strict({ create: () => strict({ getId: () => "sheet-id", getUrl: () => "s" }, "Spreadsheet") }, "SpreadsheetApp");
+  const FormApp = strict({ create: () => form, openById: id => (id === "form-id" ? form : errs.push(`openById(${id})`)), PageNavigationType: NAV, DestinationType: { SPREADSHEET: "SPREADSHEET" }, ItemType: TYPE }, "FormApp");
+  const sheetObj = { clear: () => sh, getRange: (r, c, nr, nc) => strict({ setValues: v => (v.length !== nr || v.some(x => x.length !== nc) ? errs.push(`setValues ${v.length}x${v[0]?.length} into ${nr}x${nc}`) : (sheet = v)) }, "Range") };
+  const sh = strict(sheetObj, "Sheet");
+  const ss = strict({ getId: () => "sheet-id", getUrl: () => "s", getSheetByName: () => null, insertSheet: () => sh }, "Spreadsheet");
+  const SpreadsheetApp = strict({ create: () => ss, openById: id => (id === "sheet-id" ? ss : errs.push(`openById(${id})`)) }, "SpreadsheetApp");
+  const PropertiesService = strict({ getScriptProperties: () => strict({ setProperties: o => (props = { ...props, ...o }), getProperty: k => props[k] ?? null }, "Properties") }, "PropertiesService");
   const Logger = { log: () => {} };
+  let run = null;
   try {
-    new Function("FormApp", "SpreadsheetApp", "Logger", `${code}\ntaoBangHoi();`)(FormApp, SpreadsheetApp, Logger);
+    run = new Function("FormApp", "SpreadsheetApp", "PropertiesService", "Logger", `${code}\ntaoBangHoi();\nreturn xuatDuLieu;`)(FormApp, SpreadsheetApp, PropertiesService, Logger);
   } catch (e) {
     errs.push(`runtime: ${e.message}`);
   }
@@ -276,6 +294,7 @@ function runAppsScript(code) {
     if (it.type === "grid") {
       if (!(it.p.setRows?.[0]?.length >= 1) || !(it.p.setColumns?.[0]?.length >= 2) || it.p.setRequired?.[0] !== true) errs.push("grid without rows/columns/required");
       else if (new Set(it.p.setRows[0]).size !== it.p.setRows[0].length) errs.push("grid with duplicate rows");
+      else if (new Set(it.p.setColumns[0]).size !== it.p.setColumns[0].length) errs.push("grid with duplicate columns");
     }
     if (it.type === "scale") {
       const [lo, hi] = it.p.setBounds || [];
@@ -283,13 +302,36 @@ function runAppsScript(code) {
       if (!it.p.setLabels?.[0] || !it.p.setLabels?.[1]) errs.push("scale without labels");
     }
     if (it.type === "mc") {
-      const ch = it.p.setChoices?.[0] || it.p.setChoiceValues?.[0] || [];
+      const ch = it.cc.length ? it.cc.map(c => c[0]) : it.p.setChoiceValues?.[0] || [];
       if (ch.length < 2) errs.push("multiple choice with fewer than 2 choices");
-      if (it.p.createChoice && !Object.values(NAV).includes(it.p.createChoice[1])) errs.push("bad navigation type");
+      if (new Set(ch).size !== ch.length) errs.push("multiple choice with duplicate choices");
+      if (it.cc.some(c => !Object.values(NAV).includes(c[1]))) errs.push("bad navigation type");
     }
   }
   if (!dest || dest[0] !== "SPREADSHEET" || dest[1] !== "sheet-id") errs.push("not linked to a spreadsheet created by the script");
-  return { errs, items };
+  if (props.FORM_ID !== "form-id" || props.SHEET_ID !== "sheet-id") errs.push("form and sheet ids not saved for xuatDuLieu");
+  // Respondent A answers everything: grids pick column 2 on every row, scales 3, choices the last
+  // option (or a free "other" answer where offered), text "abc". Respondent B fails screening.
+  const choicesOf = it => (it.cc.length ? it.cc.map(c => c[0]) : it.p.setChoiceValues?.[0] || []);
+  const a = new Map(),
+    b = new Map();
+  items.forEach((it, i) => {
+    if (it.type === "grid") a.set(i, it.p.setRows[0].map(() => it.p.setColumns[0][1]));
+    if (it.type === "scale") a.set(i, "3");
+    if (it.type === "text") a.set(i, "abc");
+    if (it.type === "mc") a.set(i, it.p.showOtherOption?.[0] ? "Một câu trả lời khác" : it.cc.length ? choicesOf(it)[0] : choicesOf(it).at(-1));
+  });
+  const scr = items.find(it => it.cc.length);
+  if (scr) b.set(items.indexOf(scr), scr.cc.find(c => c[1] === "SUBMIT")[0]);
+  responses = scr ? [a, b] : [a];
+  if (typeof run === "function")
+    try {
+      run();
+    } catch (e) {
+      errs.push(`xuatDuLieu runtime: ${e.message}`);
+    }
+  else errs.push("no xuatDuLieu function");
+  return { errs, items, sheet, answers: a };
 }
 
 function checkSurvey(name, inp) {
@@ -325,6 +367,16 @@ function checkSurvey(name, inp) {
   check(cb.length - 1 === codes.length, `${name}: codebook has one row per data column (${cb.length - 1})`);
   check(cb.some(r => /Đáp án đúng: 2/.test(r[8])) === Boolean(sv.ac) && cb.filter(r => /^TT\d/.test(r[0])).every(r => /1 = |Tự điền/.test(r[8])), `${name}: codebook lists the attention answer and demographic value labels`);
   check(api.toCSV(cb).startsWith("﻿"), `${name}: CSV starts with a BOM so Excel reads Vietnamese`);
+  // Coded data sheet from xuatDuLieu: the codebook's columns minus free-text answers, one row for the
+  // respondent who passed screening, numbers only; "Khác" typed in is coded as the "Khác (ghi rõ)" value.
+  const coded = cb.slice(1).filter(r => !/^Tự điền/.test(r[8])).map(r => r[0]);
+  check(Boolean(run.sheet) && JSON.stringify(run.sheet[0]) === JSON.stringify(coded), `${name}: xuatDuLieu writes one column per coded variable in codebook order${run.sheet ? "" : " (no sheet)"}`);
+  check(Boolean(run.sheet) && run.sheet.length === 2 && run.sheet[1].every(v => typeof v === "number" && Number.isFinite(v)), `${name}: xuatDuLieu keeps only the respondent who passed screening, every value a number`);
+  if (run.sheet)
+    for (const d of sv.demos.filter(x => x.type === "single")) {
+      const v = run.sheet[1][run.sheet[0].indexOf(d.code)], other = d.options.findIndex(x => /\(ghi rõ\)$/.test(x));
+      check(v === (other >= 0 ? other + 1 : d.options.length), `${name}: ${d.code} coded ${v} as in the codebook`, true);
+    }
   return sv;
 }
 
@@ -359,6 +411,62 @@ const p3c = checkSurvey("supervisor TPB entrepreneurship", input(["tpb:ATT", "tp
 check(p3c.constructs[0].blocks[0].kind === "bipolar" && p3c.constructs[0].blocks[0].k === 7, "supervisor TPB: attitude stays a 7-point semantic differential");
 checkSurvey("clashing codes (TAM BI + UTAUT BI + Ohanian ATT + TPB ATT)", input(["tam:BI", "utaut:BI", "do-tin-cay-nguon-ohanian:ATT", "tpb:ATT"], { aud: "td" }));
 checkSurvey("no agreement block (PSS-10, GAD-7)", input(["cang-thang-pss-10:PSS", "gad-7:GAD"], { aud: "sv" }));
+
+// ---- control and grouping variables from the model drawer link ----
+{
+  const ex = api.extraFromParams(new URLSearchParams("c=tam:PU&ctrl=Độ tuổi;Quy mô doanh nghiệp&ctrl=Thâm niên&grp=Loại hình doanh nghiệp:Nhà nước;Tư nhân trong nước"));
+  check(JSON.stringify(ex.map(x => [x.label, x.opts, x.role])) === JSON.stringify([["Độ tuổi", "", "ctrl"], ["Quy mô doanh nghiệp", "", "ctrl"], ["Thâm niên", "", "ctrl"], ["Loại hình doanh nghiệp", "Nhà nước; Tư nhân trong nước", "grp"]]), `link: ctrl (; or repeated) and grp=name:groups are read (${JSON.stringify(ex)})`);
+  check(api.extraFromParams(new URLSearchParams("c=tam:PU")).length === 0, "link: no ctrl/grp, no extra questions");
+  const opt = x => ({ label: x.label, options: x.opts.split(/[;\n]/), role: x.role });
+  const G = api.generalQuestions("ld", ["gender", "age", "edu"], ex.map(opt));
+  const age = G.filter(g => g.key === "age");
+  check(age.length === 1 && age[0].role === "ctrl", "control 'Độ tuổi' uses the ticked age question once, marked as a control");
+  check(G.some(g => g.key === "tenure" && g.role === "ctrl" && Array.isArray(g.opts)), "control 'Thâm niên' adds the ready-made tenure question");
+  const size = G.find(g => g.label === "Quy mô doanh nghiệp");
+  check(size && size.custom && size.opts === "text" && size.role === "ctrl", "control with no ready-made question is a free answer");
+  const grp = G.find(g => g.key === "orgtype");
+  check(grp && grp.role === "grp" && grp.groups.join("|") === "Nhà nước|Tư nhân trong nước" && grp.opts.length === 4, "grouping variable whose groups are options of a ready-made question keeps that question");
+  const G2 = api.generalQuestions("td", ["gender", "age"], [{ label: "Độ tuổi", options: ["Dưới 30", "Từ 30 trở lên"], role: "grp" }]);
+  check(G2.filter(g => g.key === "age").length === 1 && G2.find(g => g.key === "age").opts.join("|") === "Dưới 30|Từ 30 trở lên", "grouping variable with its own groups replaces the age options, never asks age twice");
+  check(api.demoOf("Chất lượng dịch vụ", "td") === null && api.demoOf("Giới tính", "sv")[0] === "gender", "ready-made match: 'chất lượng' is not income ('lương'), 'giới tính' is gender");
+  const hr = checkSurvey(
+    "persona HRM with controls and multigroup (link ctrl/grp)",
+    input(["ho-tro-to-chuc-pos:POS", "gan-ket-cong-viec-uwes:VI", "y-dinh-nghi-viec:TI"], { aud: "ld", ph: { "công ty": "Công ty ABC" }, target: "Công ty ABC", demos: ["gender", "age", "edu"], extra: ex.map(opt) })
+  );
+  check(hr.mga && hr.mga.groups.length === 2 && hr.mga.code === hr.demos.find(d => d.key === "orgtype").code, "multigroup: grouping variable and its two groups reach the survey");
+  check(api.mgaTotal(155, hr.mga) === 310 && api.mgaTotal(155, null) === 155, "multigroup: minimum sample is per group (155 × 2 = 310)");
+  const cbh = api.codebookRows(hr);
+  check(cbh.filter(r => r[1] === "Biến kiểm soát").length === 3 && cbh.some(r => r[1] === "Biến phân nhóm" && /So sánh đa nhóm: Nhà nước, Tư nhân trong nước/.test(r[8])), "codebook marks control and grouping variables");
+  check(/# TT\d+: biến phân nhóm/.test(api.toGDF(hr)), "GDF notes the grouping variable");
+  check(/Q\d+ \[text\] Quy mô doanh nghiệp/.test(api.toGDF(hr)) && /"TT4\. Quy mô doanh nghiệp"\)\.setRequired\(true\)/.test(api.appsScript(hr)), "a free-answer control variable is required on GDF and Google Form");
+  const refsOf = c => scales.get(c.scale.slug).references;
+  const plain = h => h.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
+  const ss = api.kitSample("pls", 3, hr.nItems);
+  const th = plain(api.thesisHtml(hr, { ss, method: "pls", arrows: 3, drop: 0.15 }, refsOf));
+  check(/tổng cỡ mẫu tối thiểu là 155 × 2 = 310 quan sát/.test(th) && /Nhà nước và Tư nhân trong nước/.test(th) && /số phiếu dự kiến thu là 365 phiếu/.test(th), "chapter 3: multigroup minimum per group, total and planned forms");
+  check(/Các biến kiểm soát độ tuổi \(TT2\), quy mô doanh nghiệp \(TT4\) và thâm niên làm việc tại tổ chức hiện tại \(TT5\)/.test(th), "chapter 3: control variables named with their codes");
+  check(/Phiếu khảo sát gồm câu hỏi sàng lọc, phần đo lường gồm 3 khái niệm/.test(th), "chapter 3: questionnaire structure sentence");
+  check((th.match(/6 − điểm/g) || []).length === 1 && /POS2, POS3/.test(th), "chapter 3: reverse items listed once with one rule");
+  check(/Eisenberger, R\., Huntington/.test(th) && /Kock, N\./.test(th), "chapter 3: scale and method references listed");
+}
+
+// ---- wording on the respondent side ----
+{
+  const sv = api.buildSurvey(input(["lmx-7:LMX", "tam:PU"], { aud: "ld", ph: { "quản lý": "quản lý trực tiếp", "hệ thống": "phần mềm" }, who: "Nguyễn An", org: "Khoa QTKD", contact: "an@x.vn" }));
+  const thl = api.thesisHtml(sv, { ss: api.kitSample("spss", 2, sv.nItems), method: "spss", arrows: 2, drop: 0 }, c => scales.get(c.scale.slug).references);
+  check(/thang 5 mức \(1 đến 5\) với nhãn hai đầu riêng cho từng câu/.test(thl) && !/kết hợp thang 5 mức.*kết hợp thang 5 mức/.test(thl), "chapter 3: LMX-7 per-item anchors read as one scale");
+  check(!/\(\s*[^()]*\)\s*\(/.test(thl.replace(/<[^>]+>/g, "")), "chapter 3: no two parentheses back to back");
+  const one = sv.constructs[0].blocks.find(b => b.items.filter(i => !i.isAC).length === 1);
+  check(one && !/cho mỗi câu|các phát biểu/.test(api.gridTitle(sv, one, "")), `a one-statement grid is not titled "cho mỗi câu" (${one && api.gridTitle(sv, one, "")})`);
+  check(sv.ac.labels[1] === "2 - Không đồng ý", "attention check options carry the number the instruction asks for");
+  check(/Người thực hiện: Nguyễn An, Khoa QTKD\. Liên hệ khi có thắc mắc: an@x\.vn\./.test(api.introLine(sv)), "online intro names the researcher and contact when given");
+  const g = api.toGDF(sv);
+  check(/  - 2 - Không đồng ý \[correct\]/.test(g), "GDF attention check: correct option numbered like the grid columns");
+  const hidden = api.toGDF(api.buildSurvey(input(["tam:PU", "tam:BI"], { aud: "sv", showNames: false })));
+  check(/=SECTION #phan-1 \| Phần 1/.test(hidden) && !/#nhan-thuc/.test(hidden), "GDF section labels do not reveal construct names when names are hidden");
+  const cbr = api.codebookRows(api.buildSurvey(input(["tam:PU"], { aud: "sv" })));
+  check(cbr.every(r => !/Điều chỉnh: điều chỉnh/.test(r[7])), "codebook does not say 'Điều chỉnh: điều chỉnh'");
+}
 // The whole library in one form, three modes, construct names hidden in one of them.
 const everything = published.flatMap(s => s.constructs.map(c => `${s.slug}:${c.code}`));
 for (const mode of ["5", "7", "orig"]) checkSurvey(`whole library (${everything.length} constructs, mode ${mode})`, input(everything, { aud: mode === "7" ? "ld" : "td", mode, showNames: mode !== "orig" }));
@@ -373,6 +481,11 @@ for (const [q, want] of [["trust", "trust"], ["niem tin", "trust"], ["hai long",
 }
 check(!api.expandQuery("gia tri").includes("chi phi"), "search: 'gia tri' does not pull in the price synonyms");
 check(!api.expandQuery("niem tin").includes("tin") && api.expandQuery("niem tin").includes("trust"), "search: 'niem tin' keeps the phrase and 'trust', not the single word 'tin'");
+{
+  const risk = api.rankConstructs("nhan thuc rui ro", index).map(i => all[i]);
+  check(risk.every(({ s, c }) => /risk|rui ro/.test(api.normText(`${c.nameEn} ${c.nameVi} ${s.fullName} ${c.definition}`))), `search: a concept the library lacks (perceived risk) does not return every "nhận thức" construct (got ${risk.slice(0, 3).map(x => x.c.nameEn).join(" | ")})`);
+}
+check(top("y dinh mua", 5).some(n => /buy|purchase|intention/.test(n)), "search: 'y dinh mua' still finds purchase intention");
 for (const q of ["trust", "y dinh", "chat luong dich vu", "lanh dao"]) check(api.rankConstructs(q, index).length <= 12, `search "${q}": at most 12 results`);
 
 // ---- template pages ----

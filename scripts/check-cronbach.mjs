@@ -86,6 +86,12 @@ cmp(rep("DU", {}).first, REF.DU, "DU");
 { const noHeadLabels = CA.parse("Đồng ý\tĐồng ý\tTrung lập\nKhông đồng ý\tĐồng ý\tĐồng ý\nTrung lập\tKhông đồng ý\tKhông đồng ý\n");
   check(noHeadLabels.rows.length === 3 && noHeadLabels.names[0] === "Biến 1", "a first row of answer labels is data, not a header"); }
 
+// review round 2: Google Forms headers carrying a code are shortened to the code (tables stay readable, Loại/Đảo work)
+{ const gfh = CA.parse("HL1. Tôi hài lòng với dịch vụ\tHL2. Tôi sẽ quay lại\tHL3: Tôi giới thiệu cho bạn bè\tGiới tính\n4\t5\t4\t1\n3\t3\t2\t2\n5\t4\t5\t1\n");
+  check(gfh.names.join() === "HL1,HL2,HL3,Giới tính", `long coded headers shortened to codes (${gfh.names})`);
+  const dup = CA.parse("A1. câu một\tA1. câu một lặp\n1\t2\n2\t3\n");
+  check(dup.names[0].startsWith("A1. "), "duplicate codes keep the full header"); }
+
 // ---- per-scale listwise: a blank in one scale does not cost a respondent in another (as SPSS RELIABILITY) ----
 { const t = "A1\tA2\tA3\tB1\tB2\tB3\n4\t4\t5\t\t3\t2\n3\t3\t3\t4\t4\t4\n5\t4\t4\t2\t2\t3\n2\t2\t3\t3\t3\t3\n4\t5\t4\t5\t4\t5\n";
   const q = CA.parse(t), g = CA.makeGroups(q.names, "");

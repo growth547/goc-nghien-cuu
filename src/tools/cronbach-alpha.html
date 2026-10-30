@@ -80,6 +80,9 @@
     if(rows[0].some(c=>c!==''&&c!=='.'&&Number.isNaN(cellNum(c))&&!allLabels.has(normLabel(c))))names=rows.shift();
     const k=Math.max(0,...rows.map(r=>r.length));
     names=Array.from({length:k},(_,j)=>(names&&names[j])||'Biến '+(j+1));
+    // Google Forms headers such as "HL1. Tôi hài lòng với dịch vụ" are shortened to their code when every code is unique.
+    const codes=names.map(n=>(String(n).match(/^\s*([A-Za-zĐđ]{1,8}[_.\-]?\d{1,3}[A-Za-z]?)\s*[.:)\-–]\s+\S/)||[])[1]);
+    if(codes.some(Boolean)&&new Set(codes.filter(Boolean).map(c=>c.toLowerCase())).size===codes.filter(Boolean).length)names=names.map((n,j)=>codes[j]||n);
     const seven=rows.some(r=>r.some(c=>/^(hơi |somewhat )/.test(normLabel(c))));
     const lmap=labelMap(seven?L7:L5);
     const removed=[],keep=[],mapped=[],conv=[];

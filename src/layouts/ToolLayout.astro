@@ -23,10 +23,20 @@ const ld = {
   offers: { "@type": "Offer", price: "0", priceCurrency: "VND" },
   publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
 };
+const crumbsLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Trang chủ", item: config.site.url },
+    { "@type": "ListItem", position: 2, name: "Công cụ", item: new URL("cong-cu/", config.site.url).href },
+    { "@type": "ListItem", position: 3, name: h1, item: url },
+  ],
+};
 ---
 
 <Layout title={`${title} | ${config.site.title}`} description={description}>
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(crumbsLd)} />
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-8">

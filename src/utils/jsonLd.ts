@@ -73,7 +73,7 @@ export function variableTermLd(v: CollectionEntry<"variables">, pageUrl: string,
     description: `${v.data.definition} Công thức: ${v.data.formula}`,
     url: pageUrl,
     inLanguage: "vi",
-    citation: v.data.references.map(r => `https://doi.org/${r.doi}`),
+    citation: v.data.references.map(r => `https://doi.org/${encodeURI(r.doi)}`),
     inDefinedTermSet: { "@type": "DefinedTermSet", "@id": `${setUrl}#variables`, name: VARIABLE_SET, url: setUrl },
   };
 }

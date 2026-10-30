@@ -48,6 +48,18 @@ const navLabels: Record<string, string> = {
   "bien-nghien-cuu": "Biến nghiên cứu",
   "tinh-chi-so-tai-chinh": "Tính chỉ số tài chính",
   "ngan-hang-niem-yet": "Ngân hàng niêm yết",
+  "kho-chi-so": "Kho chỉ số",
+  "du-lieu-bang": "Dữ liệu bảng",
+  // Tools (/cong-cu/<slug>/): every page in src/pages/cong-cu needs a label here,
+  // otherwise its last crumb is dropped.
+  "lam-sach-du-lieu": "Làm sạch dữ liệu",
+  "bac-si-ket-qua": "Bác sĩ kết quả",
+  "chon-phuong-phap": "Chọn phương pháp phân tích",
+  "trich-dan-apa": "Trích dẫn APA 7",
+  "trung-gian-dieu-tiet": "Trung gian và điều tiết",
+  "ve-mo-hinh": "Vẽ mô hình nghiên cứu",
+  "nguong-chap-nhan": "Ngưỡng chấp nhận",
+  "phuong-phap-bien-soan": "Phương pháp biên soạn",
 };
 
 // if breadcrumb is Home > Posts > [page] <etc>
@@ -86,9 +98,10 @@ breadcrumbList.forEach((segment, index) => {
     const label = current ?? known ?? (index === 0 ? decodeSegment(segment) : undefined);
     if (label) crumbs.push({ label });
   } else {
+    // link to the cumulative path (/du-lieu/kho-chi-so/), not the bare segment
     crumbs.push({
       label: known ?? decodeSegment(segment),
-      href: getRelativeLocaleUrl(locale, segment),
+      href: getRelativeLocaleUrl(locale, breadcrumbList.slice(0, index + 1).join("/")),
     });
   }
 });

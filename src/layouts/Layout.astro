@@ -38,6 +38,8 @@ const title =
     : rawTitle;
 
 const socialImageURL = new URL(ogImage, Astro.site ?? Astro.url);
+// public/default-og.png is 1200x630; declaring it lets Facebook/Zalo render the card on first share.
+const isDefaultOgImage = ogImage === resolveDefaultOgImagePath(config);
 // getRelativeLocaleUrl appends a trailing slash ("rss.xml/"), which 404s on a static host.
 const rssHref = getAssetPath("rss.xml");
 ---
@@ -59,7 +61,15 @@ const rssHref = getAssetPath("rss.xml");
     <!-- Font -->
     <Font
       cssVariable="--font-be-vietnam-pro"
-      preload={[{ subset: "vietnamese", weight: 400, style: "normal" }]}
+      preload={[
+        // Vietnamese text needs both subsets: basic letters come from "latin",
+        // letters with diacritics from "vietnamese". Headings use 600/700, whose
+        // late swap was the main layout shift on data pages (PSI: CLS 0.069).
+        { subset: "latin", weight: 400, style: "normal" },
+        { subset: "vietnamese", weight: 400, style: "normal" },
+        { subset: "latin", weight: 600, style: "normal" },
+        { subset: "latin", weight: 700, style: "normal" },
+      ]}
     />
 
     <!-- Primary meta -->
@@ -76,13 +86,22 @@ const rssHref = getAssetPath("rss.xml");
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
+    {
+      isDefaultOgImage && (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+        </>
+      )
+    }
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:locale" content="vi_VN" />
 
-    <!-- Twitter / X -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={socialImageURL} />
+    <!-- Twitter / X (name=, not property=) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
 
     <!-- RSS autodiscovery -->
     <link

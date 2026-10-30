@@ -43,6 +43,7 @@ jobs:
       - run: node scripts/check-clean.mjs
       - run: node scripts/check-doctor.mjs
       - run: pnpm exec astro build
+      - run: node scripts/check-seo.mjs dist
       - run: pnpm exec pagefind --site dist
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -62,7 +62,7 @@ tags: ["đáp viên"]
 <ul>
 <li>Trang dành cho đáp viên (geniusdata.io/join-surveys) mô tả việc tích GTOKEN từ các khảo sát hợp lệ và dùng GTOKEN để đổi voucher, thanh toán dịch vụ trong hệ sinh thái của họ. Trang đó cũng có câu "giá trị quy đổi lên đến 5+ triệu/tháng"; hãy đọc câu này như một mức trần quảng cáo, đúng như mục kỳ vọng thực tế ở trên.</li>
 <li>Chân trang ghi tên Công ty TNHH Nghiên cứu và Phát triển GR, mã số thuế 0319440277, địa chỉ và email hi@geniusdata.io.</li>
-<li>Logo Bộ Công Thương ở chân trang bấm vào dẫn tới <a href="https://online.gov.vn/Home/WebDetails/142371" rel="noopener">hồ sơ trên online.gov.vn</a>. Khi chúng tôi mở hồ sơ ngày 30/10/2026, tên doanh nghiệp và mã số thuế trùng với chân trang, còn địa chỉ trên hồ sơ khác với địa chỉ ở chân trang. Đây đúng là loại chi tiết checklist ở trên khuyên bạn tự đối chiếu và hỏi lại qua email hỗ trợ.</li>
+<li>Logo Bộ Công Thương ở chân trang bấm vào dẫn tới <a href="https://online.gov.vn/Home/WebDetails/142371" rel="noopener">hồ sơ trên online.gov.vn</a>. Bạn có thể tự mở hồ sơ để đối chiếu tên doanh nghiệp và mã số thuế với chân trang, như checklist ở trên.</li>
 </ul>
 <p>Hãy áp dụng đúng checklist ở trên cho Genius Data như với mọi trang khác.</p>
 

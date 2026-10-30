@@ -54,7 +54,7 @@ tags: ["mô hình nghiên cứu","khoá luận","PLS-SEM"]
 </tbody>
 </table>
 
-<p>Mô hình có biến trung gian hoặc điều tiết thì phương pháp phân tích phải khớp với hình vẽ: <a href="/cong-cu/chon-phuong-phap/">công cụ chọn phương pháp phân tích</a> gợi ý PLS-SEM, CB-SEM hay hồi quy theo cấu trúc mô hình, còn mô hình nhỏ một trung gian hoặc một điều tiết có thể chạy thẳng bằng <a href="/cong-cu/trung-gian-dieu-tiet/">công cụ kiểm định trung gian, điều tiết</a>.</p>
+<p>Mô hình có biến trung gian hoặc điều tiết thì phương pháp phân tích phải khớp với hình vẽ: <a href="/cong-cu/chon-phuong-phap/">công cụ chọn phương pháp phân tích</a> gợi ý PLS-SEM, CB-SEM hay hồi quy theo cấu trúc mô hình, còn mô hình nhỏ một trung gian hoặc một điều tiết có thể chạy thẳng bằng <a href="/cong-cu/trung-gian-dieu-tiet/">công cụ kiểm định trung gian, điều tiết</a>. Khi nào chọn SmartPLS thay cho AMOS được giải thích ở bài <a href="/posts/pls-sem-la-gi-smartpls/">PLS-SEM là gì</a>; mô hình dùng số liệu tài chính nhiều năm của doanh nghiệp thì xem <a href="/posts/hoi-quy-du-lieu-bang-panel/">hồi quy dữ liệu bảng</a>.</p>
 
 <h2>Ví dụ đầy đủ: ý định tiếp tục sử dụng ví điện tử</h2>
 <p><strong>Bối cảnh:</strong> sinh viên đã dùng ví điện tử ít nhất 3 tháng. Vì đối tượng đã dùng, lý thuyết nền là ECM.</p>

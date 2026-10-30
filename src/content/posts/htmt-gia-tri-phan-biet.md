@@ -112,7 +112,7 @@ tags: ["PLS-SEM","thang đo","khoá luận"]
 <ol>
 <li>Hệ số tải ngoài từ 0,708 (chấp nhận 0,40 đến 0,70 nếu các chỉ số khác đạt).</li>
 <li>Độ tin cậy: Cronbach's alpha, rho_A, CR từ 0,70 đến 0,95. Cách tính CR có ở bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</li>
-<li>Giá trị hội tụ: AVE từ 0,50.</li>
+<li>Giá trị hội tụ: AVE từ 0,50. Cách tính tay AVE có ở bài <a href="/posts/ave-cr-la-gi/">AVE và CR là gì</a>.</li>
 <li>Giá trị phân biệt: HTMT dưới 0,85 hoặc 0,90, kèm khoảng tin cậy bootstrap.</li>
 </ol>
 <p>Toàn bộ ngưỡng kèm nguồn có ở trang <a href="/nguong-chap-nhan/">ngưỡng chấp nhận Cronbach, KMO, AVE, HTMT, VIF</a>. HTMT chỉ áp dụng cho khái niệm kết quả (reflective) có từ 2 biến trở lên; khái niệm nguyên nhân (formative) và khái niệm một biến không tính HTMT. Roemer và cộng sự (2021) đề xuất HTMT2, dùng trung bình nhân thay cho trung bình cộng để ước lượng tốt hơn khi hệ số tải chênh nhau nhiều; một số phiên bản SmartPLS báo cáo thêm chỉ số này.</p>

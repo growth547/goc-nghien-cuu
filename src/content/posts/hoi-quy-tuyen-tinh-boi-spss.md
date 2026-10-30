@@ -11,7 +11,7 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 <h2>Khi nào dùng hồi quy tuyến tính bội</h2>
 <ul>
 <li>Biến phụ thuộc là định lượng: điểm trung bình của một thang đo nhiều câu (ví dụ ý định sử dụng), hoặc biến tỉ lệ như chi tiêu.</li>
-<li>Các biến độc lập là định lượng, hoặc định tính đã chuyển thành biến giả (dummy).</li>
+<li>Các biến độc lập là định lượng, hoặc định tính đã chuyển thành biến giả (dummy). Nếu biến phụ thuộc chỉ có hai giá trị (có/không), dùng <a href="/posts/hoi-quy-logistic-spss/">hồi quy logistic nhị phân</a> thay cho hồi quy tuyến tính.</li>
 <li>Mô hình chỉ có một biến phụ thuộc và không có chuỗi quan hệ. Nếu mô hình có biến trung gian (X → M → Y), một phương trình hồi quy không kiểm định được toàn bộ mô hình; cân nhắc PLS-SEM hoặc phân tích trung gian bằng bootstrap.</li>
 </ul>
 <p>Biến độc lập và phụ thuộc phải là biến tổng hợp đã tạo bằng Compute (trung bình các câu của mỗi thang đo) sau khi kiểm định độ tin cậy, không phải từng câu riêng lẻ.</p>
@@ -88,7 +88,7 @@ tags: ["SPSS","phân tích dữ liệu","khoá luận"]
 </tbody>
 </table>
 <h3>VIF bao nhiêu là có vấn đề</h3>
-<p>Ngưỡng 10 được trích nhiều nhất; nhiều tác giả dùng ngưỡng chặt hơn là 5 hoặc 3. O'Brien (2007) cho thấy các ngưỡng này không nên áp máy móc: VIF cao chỉ làm sai số chuẩn lớn lên, và việc nó có đáng lo hay không còn tuỳ cỡ mẫu và độ lớn hệ số. Cách viết an toàn: nêu ngưỡng bạn dùng kèm nguồn, và nếu có VIF trên 3, xem lại hai biến có tương quan cao có đo trùng khái niệm không (kiểm tra lại EFA).</p>
+<p>Ngưỡng 10 được trích nhiều nhất; nhiều tác giả dùng ngưỡng chặt hơn là 5 hoặc 3. O'Brien (2007) cho thấy các ngưỡng này không nên áp máy móc: VIF cao chỉ làm sai số chuẩn lớn lên, và việc nó có đáng lo hay không còn tuỳ cỡ mẫu và độ lớn hệ số. Cách viết an toàn: nêu ngưỡng bạn dùng kèm nguồn, và nếu có VIF trên 3, xem lại hai biến có tương quan cao có đo trùng khái niệm không (kiểm tra lại EFA). Ví dụ số cho thấy một biến trùng làm sai số chuẩn tăng gần gấp ba, cùng cách đọc inner và outer VIF trong SmartPLS, có ở bài <a href="/posts/he-so-vif-da-cong-tuyen/">hệ số VIF và đa cộng tuyến</a>.</p>
 <h3>Cook's distance</h3>
 <p>Cook (1977) đề xuất thước đo ảnh hưởng của từng quan sát lên toàn bộ hệ số. Mốc thường dùng là 1. Sắp xếp cột COO_1 giảm dần; nếu có phiếu vượt mốc, kiểm tra phiếu đó có lỗi nhập liệu hay trả lời rập khuôn không. Quy trình lọc phiếu nên làm trước khi chạy hồi quy, xem bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">lọc phiếu khảo sát không hợp lệ</a>.</p>
 

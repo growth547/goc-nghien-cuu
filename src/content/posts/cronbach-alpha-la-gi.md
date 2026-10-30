@@ -98,7 +98,7 @@ tags: ["độ tin cậy","SPSS"]
 <li>Phương sai sai số từng câu là 1 − λ²: 0,4375; 0,51; 0,36; 0,4816; tổng là 1,7891.</li>
 <li>CR = 8,8209 / (8,8209 + 1,7891) = 8,8209 / 10,61 = 0,831.</li>
 </ol>
-<p>Cùng bộ hệ số tải đó, phương sai trích trung bình AVE = (0,5625 + 0,49 + 0,64 + 0,5184) / 4 = 0,553, trên ngưỡng 0,5. Trong SmartPLS, CR hiện ở cột rho_c, kèm rho_a nằm giữa alpha và CR. Nếu khoá luận của bạn chỉ chạy SPSS để làm EFA và hồi quy, alpha vẫn là hệ số hội đồng chờ đợi; nếu chạy CFA hoặc PLS-SEM, hãy báo cáo cả alpha và CR, cộng AVE cho giá trị hội tụ. Bước tiếp theo, giá trị phân biệt, xem ở bài <a href="/posts/htmt-gia-tri-phan-biet/">HTMT là gì</a>.</p>
+<p>Cùng bộ hệ số tải đó, phương sai trích trung bình AVE = (0,5625 + 0,49 + 0,64 + 0,5184) / 4 = 0,553, trên ngưỡng 0,5. Trong SmartPLS, CR hiện ở cột rho_c, kèm rho_a nằm giữa alpha và CR. Nếu khoá luận của bạn chỉ chạy SPSS để làm EFA và hồi quy, alpha vẫn là hệ số hội đồng chờ đợi; nếu chạy CFA hoặc PLS-SEM, hãy báo cáo cả alpha và CR, cộng AVE cho giá trị hội tụ. Bước tiếp theo, giá trị phân biệt, xem ở bài <a href="/posts/htmt-gia-tri-phan-biet/">HTMT là gì</a>. Công thức CR, AVE, rho_A và cách xử lý khi AVE dưới 0,5 có ở bài <a href="/posts/ave-cr-la-gi/">AVE và CR là gì</a>.</p>
 
 <p>Với dữ liệu khảo sát thử 20–30 phiếu, đọc alpha thận trọng như hướng dẫn trong bài <a href="/posts/nghien-cuu-so-bo-la-gi/">nghiên cứu sơ bộ là gì</a>.</p>
 

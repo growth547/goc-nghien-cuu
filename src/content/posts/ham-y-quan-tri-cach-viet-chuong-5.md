@@ -110,7 +110,7 @@ tags: ["khoá luận","bảo vệ khoá luận"]
 <tr><td>Chỉ đo ý định, chưa đo hành vi thực tế</td><td>Kết hợp dữ liệu sử dụng thực tế từ hệ thống</td></tr>
 </tbody>
 </table>
-<p>Tránh liệt kê hạn chế không liên quan đến kết quả ("thời gian có hạn", "kinh nghiệm của tác giả còn hạn chế"): hội đồng sẽ hỏi hạn chế đó ảnh hưởng thế nào đến kết luận.</p>
+<p>Tránh liệt kê hạn chế không liên quan đến kết quả ("thời gian có hạn", "kinh nghiệm của tác giả còn hạn chế"): hội đồng sẽ hỏi hạn chế đó ảnh hưởng thế nào đến kết luận. Cách viết về R² thấp mà không tự hạ giá trị nghiên cứu có ở bài <a href="/posts/r-binh-phuong-hieu-chinh/">R bình phương hiệu chỉnh là gì</a>.</p>
 
 <h2>Lỗi hay gặp ở chương 5</h2>
 <ul>

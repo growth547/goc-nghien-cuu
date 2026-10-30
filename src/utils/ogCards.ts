@@ -5,7 +5,7 @@
 export const OG_CARDS: Record<string, { file: string; alt: string }> = {
   "/": {
     file: "og/home.png",
-    alt: "Góc Nghiên Cứu: công cụ khoá luận miễn phí, PLS-SEM, Cronbach's alpha, tính cỡ mẫu, vẽ mô hình, 60 thang đo tiếng Việt",
+    alt: "Góc Nghiên Cứu: công cụ khoá luận miễn phí, PLS-SEM, Cronbach's alpha, tính cỡ mẫu, vẽ mô hình, thư viện thang đo tiếng Việt",
   },
   "/cong-cu/": {
     file: "og/cong-cu.png",
@@ -29,7 +29,7 @@ export const OG_CARDS: Record<string, { file: string; alt: string }> = {
   },
   "/thang-do/": {
     file: "og/thang-do.png",
-    alt: "60 thang đo tiếng Việt có nguồn gốc: bản dịch, bản gốc tiếng Anh, tác giả, năm, trích dẫn APA",
+    alt: "Thang đo tiếng Việt có nguồn gốc, để trích: bản dịch, bản gốc tiếng Anh, tác giả, năm, trích dẫn APA",
   },
 };
 

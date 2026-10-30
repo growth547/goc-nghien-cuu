@@ -74,6 +74,10 @@ document.addEventListener("click", event => {
   }
 
   const tool = toolSlug();
+  if (tool && target.closest("a[data-feedback]")) {
+    send("feedback_click", { tool });
+    return;
+  }
   if (!tool || !inTool(target)) return;
   const button = target.closest<HTMLButtonElement>("button");
   if (!button) {

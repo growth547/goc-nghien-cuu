@@ -22,7 +22,7 @@ CARDS = {
     "home": (
         "Cho sinh viên làm khoá luận",
         "Công cụ khoá luận miễn phí",
-        "PLS-SEM · Cronbach's alpha · Tính cỡ mẫu · Vẽ mô hình · 60 thang đo tiếng Việt",
+        "PLS-SEM · Cronbach's alpha · Tính cỡ mẫu · Vẽ mô hình · Thư viện thang đo tiếng Việt",
     ),
     "cong-cu": (
         "12 công cụ trên trình duyệt",
@@ -51,7 +51,7 @@ CARDS = {
     ),
     "thang-do": (
         "Thư viện thang đo",
-        "60 thang đo tiếng Việt có nguồn gốc",
+        "Thang đo tiếng Việt có nguồn gốc, để trích",
         "Bản dịch, bản gốc tiếng Anh, tác giả, năm, độ tin cậy và trích dẫn APA.",
     ),
 }
@@ -95,7 +95,7 @@ def main() -> None:
                 PAGE.replace("LOGO", LOGO)
                 .replace("EYEBROW", html.escape(eyebrow))
                 .replace("TITLE", html.escape(title))
-                .replace("SUB", html.escape(sub))
+                .replace("SUB", html.escape(sub).replace(" · ", " · "))
             )
             page.set_content(doc, wait_until="networkidle")
             page.evaluate("document.fonts.ready")

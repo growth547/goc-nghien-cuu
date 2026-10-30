@@ -70,6 +70,19 @@ const NEXT: Record<string, [string, string, string][]> = {
   ],
 };
 const next = NEXT[slug] ?? [];
+// Launch-day feedback: Vietnamese issue template, page prefilled.
+const feedbackUrl = `https://github.com/growth547/goc-nghien-cuu/issues/new?${new URLSearchParams({
+  template: "gop-y-cong-cu.md",
+  title: `[Góp ý] ${h1}`,
+  body: `**Trang:** ${url}
+
+**Công cụ có ích với bạn không?**
+
+**Chỗ sai hoặc khó hiểu:**
+
+**Bạn muốn có thêm gì?**
+`,
+})}`;
 // Tools that carry their own Genius Data note (after the result or in the guide): one sponsored note per page, so no footer line.
 const OWN_CTA = new Set(["tinh-co-mau", "pls-sem", "phan-tich-du-lieu", "cronbach-alpha", "ve-mo-hinh", "bo-khao-sat"]);
 const ld = {
@@ -108,6 +121,11 @@ const crumbsLd = {
     <slot />
     <Fragment set:html={html} />
     <ShareBar />
+    <p class="text-muted-foreground mt-3 max-w-3xl text-sm">
+      Bạn thấy công cụ này có ích không?{" "}
+      <a class="text-accent font-semibold underline underline-offset-4" href={feedbackUrl} target="_blank" rel="noopener" data-feedback>Gửi góp ý</a>
+      {" "}(mở GitHub, cần tài khoản GitHub; đừng dán dữ liệu thật).
+    </p>
     {
       Astro.slots.has("guide") && (
         <div class="app-prose max-w-app mt-12">

@@ -360,6 +360,7 @@ Threads đã được lên lịch tự động lúc 20:30 mỗi ngày (riêng 05
 | `tool_run` | `tool` (slug trang, vd `pls-sem`, `cronbach-alpha`) | Công cụ có nút chạy (id kết thúc `-run`: PLS-SEM, Cronbach, phân tích dữ liệu, làm sạch, bác sĩ kết quả, trung gian–điều tiết, APA, chỉ số tài chính): mỗi lần bấm nút. Công cụ tự tính khi nhập (tính cỡ mẫu, vẽ mô hình, bộ khảo sát, chọn phương pháp): một lần mỗi lượt xem trang, ở thao tác đầu tiên. Đây là lượt bấm chạy, kể cả khi dữ liệu lỗi. | `src/scripts/track.ts` |
 | `export` | `tool`, `format` (`docx`, `csv`, `sps`, `png`, `svg`, `ris`, `bibtex`, `google_form`, `gdf`, `link`, `copy`) | Bấm nút tải hoặc sao chép kết quả trong công cụ (theo id nút trong `src/tools/*.html`) | `src/scripts/track.ts` |
 | `share_click` | `channel` (`facebook`, `messenger`, `zalo`, `copy`, `webshare`) | Bấm nút trong thanh "Gửi cho bạn cùng nhóm" ở trang công cụ và bài viết | `src/components/ShareBar.astro` |
+| `feedback_click` | `tool` | Bấm "Gửi góp ý" dưới thanh chia sẻ ở trang công cụ (mở issue GitHub theo mẫu `.github/ISSUE_TEMPLATE/gop-y-cong-cu.md`, điền sẵn link trang) | `src/scripts/track.ts` |
 | `affiliate_click` | `placement` (`data-placement` của link, nếu không có thì `utm_content`, nếu không có thì đường dẫn trang), `link_domain` | Bấm bất kỳ link `rel="sponsored"` nào (link giới thiệu Genius Data) | `src/scripts/track.ts` |
 
 Link chia sẻ từ thanh chia sẻ mang `utm_source=share&utm_medium=<kênh>`, nên lượt vào từ link bạn bè gửi nhau hiện trong GA4 ở Nguồn/Phương tiện `share / zalo`, `share / facebook`…

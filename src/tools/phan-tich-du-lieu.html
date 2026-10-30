@@ -54,18 +54,19 @@
       <span class="row" style="gap:8px"><button type="button" class="btn" id="pt-doc">Tải chương 4 (Word)</button><button type="button" class="btn ghost" id="pt-copy">Sao chép</button></span>
     </div>
     <div id="pt-report" class="pt-report" style="line-height:1.65"></div>
-    <small class="text-muted-foreground">Kết quả tính theo công thức chuẩn (Cronbach's alpha, PCA với phép xoay Varimax có chuẩn hoá Kaiser, hồi quy OLS, Levene theo trung bình như SPSS). Hãy đối chiếu với SPSS ở lần đầu dùng và kiểm tra câu chữ trước khi đưa vào luận văn.</small>
+    <small class="text-muted-foreground">Kết quả tính theo công thức chuẩn (Cronbach's alpha, PCA với phép xoay Varimax có chuẩn hoá Kaiser, hồi quy OLS, Levene theo trung bình như SPSS). Hãy đối chiếu với SPSS ở lần đầu dùng và kiểm tra câu chữ trước khi đưa vào luận văn. Hệ số tải ở mục CR/AVE tính theo thành phần chính của từng thang đo, gần với outer loadings của SmartPLS nhưng có thể lệch ở chữ số thập phân thứ hai; đề tài dùng SmartPLS thì báo cáo số của SmartPLS.</small>
   </div>
 </div>
 <style>
 .pt-lbl{font-weight:600}
 .pt-file{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .pt-file:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
-.pt-report .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 14px;max-width:100%}
+.pt-report .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:4px 0 14px;max-width:100%}
 .pt-report table{border-collapse:collapse;font-size:.88rem;width:100%}
 .pt-report th,.pt-report td{border-bottom:1px solid var(--border);padding:4px 8px;text-align:right;white-space:nowrap}
 .pt-report th:first-child,.pt-report td:first-child,.pt-report td.l,.pt-report th.l{text-align:left}
-.pt-report caption{text-align:left;font-weight:600;padding:4px 0;white-space:normal}
+.pt-report h3{font-size:1.1rem;font-weight:700;margin:1.4em 0 .4em}.pt-report h4{font-size:1rem;font-weight:600;font-style:italic;margin:1em 0 .3em}.pt-report p{margin:.5em 0}
+.pt-report p.tcap{margin:14px 0 0;font-size:.92rem}
 .pt-report .bad{color:var(--warm);font-weight:600}
 .pt-report tr.sum td{font-weight:600}
 #pt-warn{border-left:3px solid var(--warm);padding:4px 12px;margin-bottom:12px}
@@ -100,7 +101,7 @@
   // Cronbach's alpha with corrected item-total correlation and alpha if item deleted.
   function cronbach(cols){const k=cols.length,n=cols[0].length,tot=new Float64Array(n);for(const c of cols)for(let i=0;i<n;i++)tot[i]+=c[i];
     const vs=cols.map(variance),sumV=vs.reduce((s,v)=>s+v,0),a=(kk,sv,v)=>kk<2?NaN:kk/(kk-1)*(1-sv/v);
-    return {alpha:a(k,sumV,variance(tot)),items:cols.map((c,j)=>{const rest=new Float64Array(n);for(let i=0;i<n;i++)rest[i]=tot[i]-c[i];return {citc:pearson(c,rest),ifDel:a(k-1,sumV-vs[j],variance(rest))}})}}
+    return {alpha:a(k,sumV,variance(tot)),items:cols.map((c,j)=>{const rest=new Float64Array(n);for(let i=0;i<n;i++)rest[i]=tot[i]-c[i];return {citc:pearson(c,rest),ifDel:a(k-1,sumV-vs[j],variance(rest)),smd:mean(rest),svd:variance(rest)}})}}
   // Symmetric eigen-decomposition (cyclic Jacobi), eigenvalues sorted descending.
   function eigenSym(S){const n=S.length,A=S.map(r=>[...r]),V=A.map((r,i)=>r.map((_,j)=>i===j?1:0));
     for(let sweep=0;sweep<100;sweep++){let off=0;for(let i=0;i<n;i++)for(let j=i+1;j<n;j++)off+=A[i][j]*A[i][j];if(off<1e-20)break;
@@ -185,6 +186,8 @@
     let m=s.match(/\[\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)\]–-]/u);if(m)return m[1];
     m=s.match(/^([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)–-]\s*\S/u);if(m)return m[1];
     m=s.match(/[[(]\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[\])]\s*$/u);if(m)return m[1];
+    // The kit's codes without a number: "SANGLOC. Bạn đã từng…", "Mức độ đồng ý [ACHK. Để xác nhận…]".
+    m=s.match(/(?:^|\[)\s*([A-Za-z][A-Za-z_]*)\s*[.:]\s*\S/);if(m&&(ATTN_RE.test(m[1])||SCREEN_RE.test(m[1])))return m[1];
     return s;
   }
   // Item codes: PU1, PU_1, TPB_ATT1, ĐT1, Q1_1 (group Q1). The group is the code without its final number.
@@ -206,7 +209,16 @@
   // Strict number: "4", "3,5", "4 - Đồng ý" → number; dates ("01/01/2026") and words → NaN.
   function toNum(v){if(typeof v==='number')return Number.isFinite(v)?v:NaN;const s=String(v==null?'':v).trim();if(!s)return NaN;if(isNumStr(s))return parseFloat(s.replace(',','.'));
     const m=s.match(/^(\d+)\s*[-–—:.)=]\s*\p{L}/u);return m?+m[1]:NaN}
-  function likertNum(v){const x=toNum(v);if(!Number.isNaN(x))return x;return LIKERT.get(normText(v))||NaN}
+  function likertNum(v,map){const x=toNum(v);if(!Number.isNaN(x))return x;return (map||LIKERT).get(normText(v))||NaN}
+  // 6- and 7-point agreement labels (the kit's LIK[6], LIK[7]): "Hơi đồng ý" marks them; "Trung lập" separates 7 from 6.
+  const LIKERT7=new Map([['hoan toan khong dong y',1],['rat khong dong y',1],['khong dong y',2],['hoi khong dong y',3],['trung lap',4],['binh thuong',4],['phan van',4],['khong y kien',4],['trung dung',4],
+    ['khong dong y cung khong phan doi',4],['hoi dong y',5],['dong y',6],['hoan toan dong y',7],['rat dong y',7],
+    ['strongly disagree',1],['disagree',2],['somewhat disagree',3],['neutral',4],['neither agree nor disagree',4],['somewhat agree',5],['agree',6],['strongly agree',7]]);
+  const LIKERT6=new Map([['hoan toan khong dong y',1],['rat khong dong y',1],['khong dong y',2],['hoi khong dong y',3],['hoi dong y',4],['dong y',5],['hoan toan dong y',6],['rat dong y',6],
+    ['strongly disagree',1],['disagree',2],['somewhat disagree',3],['somewhat agree',4],['agree',5],['strongly agree',6]]);
+  function likertScheme(cells){let hoi=false,mid=false;for(const c of cells){if(typeof c==='number')continue;const t=normText(c);if(!t||/^\d/.test(t))continue;
+      if(/^(hoi (khong )?dong y|somewhat (dis)?agree)$/.test(t))hoi=true;else if(LIKERT.get(t)===3)mid=true;if(hoi&&mid)break}
+    return hoi?(mid?{map:LIKERT7,k:7}:{map:LIKERT6,k:6}):{map:LIKERT,k:5}}
   const ATTN_RE=/^(ACHK(_\d+)?|AC|ATT|ATTN\d*|ATT_?CHECK\d*|ATTENTION(_?CHECK)?\d*|IMC\d*|KTCY\d*|KTCHUY\d*|CHUY\d*)$/i;
   const SCREEN_RE=/^(SANGLOC\d*|SANG_LOC|SCREEN(ING)?\d*)$/i;
   const ID_RE=/^(id|stt|so thu tu|ma phieu|ma so|respondent id|response id|responseid|timestamp|dau thoi gian|thoi gian|thoi gian gui|ngay|date|email|dia chi email|email address|ho ten|ho va ten|ten|name|ip|ip address)$/;
@@ -241,7 +253,8 @@
   // Suggested constructs from the item columns, in file order.
   function suggestGroups(header,kinds){const g={};header.forEach(h=>{if(kinds[h]==='item'){const k=groupOf(h);(g[k]=g[k]||[]).push(h)}});return Object.entries(g).map(([code,items])=>({code,items}))}
   // Scale bounds guessed from the item columns: 1–5, 1–7, 0–10…
-  function guessScale(header,rows,kinds){let lo=Infinity,hi=-Infinity;header.forEach((h,j)=>{if(kinds[h]!=='item')return;for(const r of rows){const v=likertNum(r[j]);if(Number.isFinite(v)){if(v<lo)lo=v;if(v>hi)hi=v}}});
+  function guessScale(header,rows,kinds){let lo=Infinity,hi=-Infinity;const js=header.map((h,j)=>kinds[h]==='item'?j:-1).filter(j=>j>=0),{map}=likertScheme(js.flatMap(j=>rows.map(r=>r[j])));
+    header.forEach((h,j)=>{if(kinds[h]!=='item')return;for(const r of rows){const v=likertNum(r[j],map);if(Number.isFinite(v)){if(v<lo)lo=v;if(v>hi)hi=v}}});
     if(!Number.isFinite(hi))return [1,5];return [lo<1?Math.floor(lo):1,[5,7,10].find(x=>hi<=x)||Math.ceil(hi)]}
   //#data-end
 
@@ -288,11 +301,14 @@
     if(twice.length)W.push(`Biến ${escH(listVi(twice))} được khai báo ở nhiều khái niệm; chỉ giữ ở khái niệm đầu tiên.`);
     // 2. numbers, with the standard Likert labels mapped to 1–5
     const N0=o.rows.length,X={},textCols=[],badCols=[],bad=new Set(),oddCells=[];
+    const LK=likertScheme([...seenItem].flatMap(h=>{const j=ix.get(h);return o.rows.map(r=>r[j])}));
     for(const h of seenItem){const j=ix.get(h),a=new Float64Array(N0);let txt=0,nb=0,filled=0,ex='';
       for(let r=0;r<N0;r++){const cell=o.rows[r][j],s=cell==null?'':String(cell).trim();if(s===''){a[r]=NaN;continue}filled++;let v=toNum(cell);
-        if(Number.isNaN(v)){const k=LIKERT.get(normText(s));if(k){v=k;txt++}else{nb++;if(!ex)ex=s}}a[r]=v}
+        if(Number.isNaN(v)){const k=LK.map.get(normText(s));if(k){v=k;txt++}else{nb++;if(!ex)ex=s}}a[r]=v}
       X[h]=a;if(txt)textCols.push(h);if(nb&&nb>=0.5*filled){bad.add(h);badCols.push(`${escH(h)} (ví dụ “${escH(ex.slice(0,40))}”)`)}else if(nb)oddCells.push(`${escH(h)}: ${nb} ô (ví dụ “${escH(ex.slice(0,40))}”)`)}
-    if(textCols.length)W.push(`Đã đổi câu trả lời dạng chữ sang số theo thang 5 mức (Hoàn toàn không đồng ý = 1, Không đồng ý = 2, Trung lập/Bình thường = 3, Đồng ý = 4, Hoàn toàn đồng ý = 5) ở ${textCols.length} cột: ${escH(textCols.slice(0,12).join(', '))}${textCols.length>12?'…':''}.${+o.scaleMax!==5||+o.scaleMin!==1?' Thang đo bạn khai báo không phải 1–5; kiểm tra lại cách đổi này.':''}`);
+    const LKTXT={5:'Hoàn toàn không đồng ý = 1, Không đồng ý = 2, Trung lập/Bình thường = 3, Đồng ý = 4, Hoàn toàn đồng ý = 5',6:'Hoàn toàn không đồng ý = 1, Không đồng ý = 2, Hơi không đồng ý = 3, Hơi đồng ý = 4, Đồng ý = 5, Hoàn toàn đồng ý = 6',
+      7:'Hoàn toàn không đồng ý = 1, Không đồng ý = 2, Hơi không đồng ý = 3, Trung lập = 4, Hơi đồng ý = 5, Đồng ý = 6, Hoàn toàn đồng ý = 7'}[LK.k];
+    if(textCols.length)W.push(`Đã đổi câu trả lời dạng chữ sang số theo thang ${LK.k} mức (${LKTXT}) ở ${textCols.length} cột: ${escH(textCols.slice(0,12).join(', '))}${textCols.length>12?'…':''}.${+o.scaleMax!==LK.k||+o.scaleMin!==1?` Thang đo bạn khai báo không phải 1–${LK.k}; kiểm tra lại cách đổi này.`:''}`);
     if(badCols.length){W.push(`Các cột sau không phải số và không phải nhãn Likert chuẩn nên bị bỏ khỏi phân tích: ${badCols.join('; ')}. Mã hoá lại thành số rồi tải lên lại.`);groups=groups.map(g=>({code:g.code,items:g.items.filter(h=>!bad.has(h))}))}
     if(oddCells.length)W.push(`Một số ô không đọc được thành số và được tính là thiếu: ${oddCells.join('; ')}.`);
     groups=groups.filter(g=>g.items.length>=2);
@@ -332,23 +348,33 @@
     if(!groups.length)return {error:'Sau khi loại biến có phương sai bằng 0 hoặc trùng lặp, không còn khái niệm nào có từ 2 biến quan sát.',warnings:W};
     const removedText=removed.length?`Trước khi phân tích, ${removed.map(x=>`biến ${escH(x.h)} được loại do ${escH(x.why)}`).join('; ')}. `:'';
 
-    let html='',tno=0;const refs=new Set();
-    const tbl=(cap,head,body)=>`<div class="table-wrap"><table><caption>Bảng 4.${++tno}. ${cap}</caption><thead><tr>${head.map((h,i)=>`<th${i?'':' class="l"'}>${h}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table></div>`;
+    let html='',tno=0,sno=0;const refs=new Set();
+    const sec=t=>`<h3>4.${++sno}. ${t}</h3>`;
+    // "Giới tính của bạn?" → "giới tính" for running text; the code when there is no label.
+    const demoName=h=>{const l=labelOf(h)||(/\s/.test(h)?h:'');if(!l)return h;const t=l.replace(/[?:：.]\s*$/,'').replace(/^(xin |vui lòng )?cho biết\s+/i,'').replace(/\s+(của\s+)?(bạn|anh\/chị|anh chị|quý vị)$/i,'').trim();
+      return !t?h:/^\p{Lu}\p{Ll}/u.test(t)?t.charAt(0).toLocaleLowerCase('vi')+t.slice(1):t};
+    const demoRef=h=>{const nm=demoName(h);return nm.toLowerCase()===h.toLowerCase()?escH(nm):`${escH(nm)} (${escH(h)})`};
+    const tbl=(cap,head,body)=>`<p class="tcap"><strong>Bảng 4.${++tno}.</strong> ${cap}</p><div class="table-wrap"><table><thead><tr>${head.map((h,i)=>Array.isArray(h)?`<th class="${h[1]}">${h[0]}</th>`:`<th${i?'':' class="l"'}>${h}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table></div>`;
     const tr=(cells,cls)=>`<tr${cls?` class="${cls}"`:''}>${cells.map(c=>Array.isArray(c)?`<td${c[1]?` class="${c[1]}"`:''}>${c[0]}</td>`:`<td>${c}</td>`).join('')}</tr>`;
     const codes=groups.map(g=>g.code),score={};groups.forEach(g=>{const s=new Float64Array(n);for(const h of g.items){const c=C[h];for(let i=0;i<n;i++)s[i]+=c[i]/g.items.length}score[g.code]=s});
     const dv=codes.includes(o.dv)?o.dv:codes[codes.length-1],ivs=codes.filter(c=>c!==dv);
 
     // 4.1 sample
     const demos=[...new Set((o.demos||[]).map(find).filter(Boolean))].filter(h=>!all.includes(h)&&!seenItem.has(h));
-    html+=`<h3>4.1. Mô tả mẫu nghiên cứu</h3><p>Nghiên cứu thu về ${fx(N0,0)} phiếu khảo sát. ${log.length?`Sau khi loại ${fx(N0-n,0)} phiếu không hợp lệ (${log.join('; ')}), `:'Không có phiếu nào bị loại, '}còn lại ${fx(n,0)} phiếu hợp lệ được đưa vào phân tích.</p>`;
-    const demoCats={};
-    demos.forEach(h=>{const j=ix.get(h),cnt=new Map();for(const r of idx){const v=String(o.rows[r][j]).trim()||'(trống)';cnt.set(v,(cnt.get(v)||0)+1)}const ent=orderCats([...cnt.entries()]);demoCats[h]=ent;
-      const lab=labelOf(h);html+=tbl(`Cơ cấu mẫu theo ${escH(h)}${lab?` (${escH(lab)})`:''}`,[escH(lab||h),'Số phiếu','Tỷ lệ (%)'],ent.map(([k,v])=>tr([[escH(k),'l'],fx(v,0),f1(100*v/n)])).join('')+tr(['Tổng',fx(n,0),'100,0'],'sum'))});
+    html+=sec('Mô tả mẫu nghiên cứu')+`<p>Nghiên cứu thu về ${fx(N0,0)} phiếu khảo sát. ${log.length?`Sau khi loại ${fx(N0-n,0)} phiếu không hợp lệ (${log.join('; ')}), `:'Không có phiếu nào bị loại, '}còn lại ${fx(n,0)} phiếu hợp lệ được đưa vào phân tích${demos.length?'. Đặc điểm của mẫu được trình bày trong bảng dưới đây':''}.</p>`;
+    if(demos.length){const body=[],said=[];
+      demos.forEach(h=>{const j=ix.get(h),cnt=new Map();for(const r of idx){const v=String(o.rows[r][j]).trim()||'(trống)';cnt.set(v,(cnt.get(v)||0)+1)}const ent=orderCats([...cnt.entries()]),lab=labelOf(h);
+        ent.forEach(([k,v],i)=>body.push(tr([[i?'':escH(lab?`${lab} (${h})`:h),'l'],[escH(k),'l'],fx(v,0),f1(100*v/n)])));
+        const top=ent.filter(([k])=>k!=='(trống)').sort((a,b)=>b[1]-a[1]),pc=v=>f1(100*v/n)+'%';
+        if(top.length===2)said.push(`về ${escH(demoName(h))}, “${escH(top[0][0])}” chiếm ${pc(top[0][1])} và “${escH(top[1][0])}” chiếm ${pc(top[1][1])}`);
+        else if(top.length>2){const tie=top.filter(x=>x[1]===top[0][1]);said.push(tie.length>1?`về ${escH(demoName(h))}, các nhóm ${listVi(tie.map(x=>`“${escH(x[0])}”`))} cùng chiếm tỷ lệ cao nhất (${pc(top[0][1])} mỗi nhóm)`:`về ${escH(demoName(h))}, nhóm “${escH(top[0][0])}” chiếm tỷ lệ cao nhất (${pc(top[0][1])}), tiếp theo là “${escH(top[1][0])}” (${pc(top[1][1])})`)}});
+      html+=tbl(`Đặc điểm mẫu khảo sát (n = ${fx(n,0)})`,['Đặc điểm',['Nhóm','l'],'Số phiếu','Tỷ lệ (%)'],body.join(''));
+      if(said.length)html+=`<p>${said.map(s=>s.charAt(0).toUpperCase()+s.slice(1)).join('. ')}.</p>`}
 
     // 4.2 descriptive statistics
 
     const D={};all.forEach(h=>D[h]=describe(C[h]));codes.forEach(c=>D['#'+c]=describe(score[c]));
-    html+=`<h3>4.2. Thống kê mô tả các biến quan sát</h3>`;
+    html+=sec("Thống kê mô tả các biến quan sát");
     html+=tbl('Thống kê mô tả các biến quan sát và khái niệm',['Biến','N','Nhỏ nhất','Lớn nhất','Trung bình','Độ lệch chuẩn','Skewness','Kurtosis'],groups.map(g=>g.items.map(h=>{const d=D[h];return tr([escH(h),fx(d.n,0),fx(d.min,0),fx(d.max,0),f3(d.mean),f3(d.sd),[f3(d.skew),Math.abs(d.skew)>2?'bad':''],[f3(d.kurt),Math.abs(d.kurt)>2?'bad':'']])}).join('')+(()=>{const d=D['#'+g.code];return tr([escH(g.code)+' (trung bình)',fx(d.n,0),f2(d.min),f2(d.max),f3(d.mean),f3(d.sd),f3(d.skew),f3(d.kurt)],'sum')})()).join(''));
     {const its=all.map(h=>[h,D[h]]),byM=[...its].sort((a,b)=>a[1].mean-b[1].mean),cs=codes.map(c=>[c,D['#'+c]]).sort((a,b)=>a[1].mean-b[1].mean);
       const [s0,s1]=minMax(its.map(x=>x[1].skew)),[k0,k1]=minMax(its.map(x=>x[1].kurt));
@@ -357,29 +383,32 @@
       html+=`<p>Giá trị trung bình của các biến quan sát nằm trong khoảng từ ${f3(byM[0][1].mean)} (${escH(byM[0][0])}) đến ${f3(byM[byM.length-1][1].mean)} (${escH(byM[byM.length-1][0])}) trên thang ${lo}–${hi}. ${cs.length>1?`Ở cấp độ khái niệm, ${escH(cs[cs.length-1][0])} có điểm trung bình cao nhất (${f3(cs[cs.length-1][1].mean)}) và ${escH(cs[0][0])} thấp nhất (${f3(cs[0][1].mean)}). `:''}Hệ số skewness của các biến quan sát nằm trong khoảng ${f3(s0)} đến ${f3(s1)}, kurtosis trong khoảng ${f3(k0)} đến ${f3(k1)}. ${!over2.length?'Tất cả đều nằm trong khoảng ±2, nên phân phối của các biến được xem là xấp xỉ chuẩn (George &amp; Mallery, 2019).':!overK.length?`Các biến ${listVi(over2)} có skewness hoặc kurtosis vượt ±2 (George &amp; Mallery, 2019) nhưng vẫn dưới ngưỡng |skewness| &lt; 3 và |kurtosis| &lt; 10 của Kline (2016), nên chưa vi phạm nghiêm trọng giả định phân phối chuẩn.`:`Các biến ${listVi(overK)} vượt ngưỡng |skewness| &lt; 3 hoặc |kurtosis| &lt; 10 (Kline, 2016), cho thấy phân phối lệch mạnh; cần xem xét khi diễn giải kết quả.`}</p>`}
 
     // 4.3 reliability
-    html+=`<h3>4.3. Kiểm định độ tin cậy thang đo (Cronbach's alpha)</h3><p>${removedText}Thang đo đạt độ tin cậy khi hệ số Cronbach's alpha từ 0,7 trở lên (Nunnally, 1978) và các biến quan sát có tương quan biến – tổng hiệu chỉnh từ 0,3 trở lên (Nunnally &amp; Bernstein, 1994).</p>`;refs.add('nunnally78').add('nunnally94');
+    html+=sec("Kiểm định độ tin cậy thang đo (Cronbach's alpha)")+`<p>${removedText}Thang đo đạt độ tin cậy khi hệ số Cronbach's alpha từ 0,7 trở lên (Nunnally, 1978) và các biến quan sát có tương quan biến – tổng hiệu chỉnh từ 0,3 trở lên (Nunnally &amp; Bernstein, 1994).</p>`;refs.add('nunnally78').add('nunnally94');
     const rel={},relText=[];
     groups.forEach(g=>{const r=cronbach(g.items.map(h=>C[h]));rel[g.code]=r;const weak=g.items.filter((h,j)=>r.items[j].citc<0.3),neg=g.items.filter((h,j)=>r.items[j].citc<0);
       if(neg.length)W.push(`Biến ${escH(listVi(neg))} (${escH(g.code)}) có tương quan biến – tổng âm: có thể là câu đảo chiều chưa được đảo điểm. Khai báo ở ô “Câu đảo chiều” rồi chạy lại.`);
-      html+=tbl(`Độ tin cậy thang đo ${escH(g.code)} (Cronbach's alpha = ${f3(r.alpha)})`,['Biến','Trung bình','Tương quan biến – tổng hiệu chỉnh','Alpha nếu loại biến'],g.items.map((h,j)=>tr([escH(h),f3(D[h].mean),[f3(r.items[j].citc),r.items[j].citc<0.3?'bad':''],[f3(r.items[j].ifDel),r.items[j].ifDel>r.alpha?'bad':'']])).join(''));
+      html+=tbl(`Độ tin cậy thang đo ${escH(g.code)} (Cronbach's alpha = ${f3(r.alpha)})`,['Biến','Trung bình thang đo nếu loại biến','Phương sai thang đo nếu loại biến','Tương quan biến – tổng hiệu chỉnh','Alpha nếu loại biến'],g.items.map((h,j)=>tr([escH(h),f3(r.items[j].smd),f3(r.items[j].svd),[f3(r.items[j].citc),r.items[j].citc<0.3?'bad':''],[f3(r.items[j].ifDel),r.items[j].ifDel>r.alpha?'bad':'']])).join(''));
       relText.push(`${escH(g.code)} (α = ${f3(r.alpha)}${r.alpha<0.7?', chưa đạt':''}${weak.length?`; biến ${escH(weak.join(', '))} có tương quan biến – tổng dưới 0,3`:''})`)});
     const relOk=groups.every(g=>rel[g.code].alpha>=0.7&&rel[g.code].items.every(x=>x.citc>=0.3));
-    html+=`<p>Kết quả cho thấy hệ số Cronbach's alpha của các thang đo lần lượt là: ${relText.join('; ')}. ${relOk?'Tất cả thang đo đều đạt độ tin cậy và được giữ lại cho phân tích nhân tố khám phá.':'Các thang đo hoặc biến chưa đạt cần được xem xét loại biến (loại từng biến một rồi chạy lại) hoặc giải thích trước khi phân tích tiếp.'}</p>`;
+    html+=`<p>Kết quả cho thấy hệ số Cronbach's alpha của các thang đo lần lượt là: ${relText.join('; ')}. ${relOk?'Tất cả thang đo đều đạt độ tin cậy và được giữ lại cho phân tích nhân tố khám phá.':'Các phân tích tiếp theo vẫn sử dụng toàn bộ biến quan sát như trên, nên kết quả liên quan đến thang đo hoặc biến chưa đạt cần được diễn giải thận trọng.'}</p>`;
+    if(!relOk)W.push('Có thang đo hoặc biến chưa đạt độ tin cậy. Nếu muốn loại biến, loại từng biến một (bắt đầu từ biến có tương quan biến – tổng thấp nhất), sửa ô “Các khái niệm và biến quan sát” rồi bấm phân tích lại; đoạn văn sẽ ghi theo kết quả mới.');
 
     // 4.4 EFA
-    refs.add('kaiser74').add('kaiser58').add('hair10');
+    refs.add('kaiser74').add('hair10');
     const efaRun=(items,kSel,label,expect)=>{const e=efa(items.map(h=>C[h]),kSel==='eigen'?0:Math.min(+kSel,items.length));
       if(e.singular){W.push(`EFA ${label}: ma trận tương quan suy biến (có biến là tổ hợp tuyến tính của các biến khác), không tính được KMO và Bartlett.`);
         return `<p>Ma trận tương quan của ${items.length} biến quan sát ${label} bị suy biến (định thức bằng 0), nghĩa là có biến là tổ hợp tuyến tính của các biến khác. Vì vậy không tính được hệ số KMO và kiểm định Bartlett; cần loại biến trùng lặp trước khi chạy EFA.</p>`}
-      let s=`<p>Phân tích nhân tố khám phá ${label} được thực hiện với ${items.length} biến quan sát, phương pháp trích Principal Components và phép xoay Varimax (Kaiser, 1958). Hệ số KMO = ${f3(e.kmo)} ${e.kmo>=0.5?'(≥ 0,5)':'(&lt; 0,5, chưa đạt)'} và kiểm định Bartlett có χ² = ${f1(e.chi)}, df = ${fx(e.df,0)}, Sig. ${sig(e.bartP)}, cho thấy dữ liệu ${e.kmo>=0.5&&e.bartP<0.05?'phù hợp':'chưa phù hợp'} để phân tích nhân tố (Kaiser, 1974). ${e.k} nhân tố được rút trích ${kSel==='eigen'?'tại eigenvalue lớn hơn 1':'theo số nhân tố cố định'} (eigenvalue nhỏ nhất được giữ = ${f3(e.eig[e.k-1])}), giải thích ${f1(100*e.cum)}% biến thiên của dữ liệu ${e.cum>=0.5?'(≥ 50%)':'(&lt; 50%, chưa đạt)'}.</p>`;
+      if(e.k>1)refs.add('kaiser58');let s=`<p>Phân tích nhân tố khám phá ${label} được thực hiện với ${items.length} biến quan sát, phương pháp trích Principal Components${e.k>1?' và phép xoay Varimax (Kaiser, 1958)':''}. Hệ số KMO = ${f3(e.kmo)} ${e.kmo>=0.5?'(≥ 0,5)':'(&lt; 0,5, chưa đạt)'} và kiểm định Bartlett có χ² = ${f1(e.chi)}, df = ${fx(e.df,0)}, Sig. ${sig(e.bartP)}, cho thấy dữ liệu ${e.kmo>=0.5&&e.bartP<0.05?'phù hợp':'chưa phù hợp'} để phân tích nhân tố (Kaiser, 1974). ${e.k===1?'Một nhân tố duy nhất':`${e.k} nhân tố`} được rút trích ${kSel==='eigen'?'theo tiêu chí eigenvalue lớn hơn 1':`theo số nhân tố ấn định trước (${e.k})`} (eigenvalue của nhân tố cuối cùng được giữ = ${f3(e.eig[e.k-1])}), giải thích ${f1(100*e.cum)}% biến thiên của dữ liệu ${e.cum>=0.5?'(≥ 50%)':'(&lt; 50%, chưa đạt)'}.</p>`;
       let cum=0,rc=0;s+=tbl(`Tổng phương sai trích (EFA ${label})`,['Thành phần','Eigenvalue','% phương sai','% tích luỹ','Tổng bình phương hệ số tải sau xoay','% phương sai sau xoay','% tích luỹ sau xoay'],e.eig.map((v,i)=>{cum+=100*v/e.p;const rot=i<e.k?e.rotSS[i]:NaN;if(i<e.k)rc+=100*rot/e.p;return tr([String(i+1),f3(v),f3(100*v/e.p),f3(cum),f3(rot),f3(100*rot/e.p),i<e.k?f3(rc):'—'],i<e.k?'sum':'')}).join(''));
       const show=v=>Math.abs(v)>=0.3?f3(v):'';
       const order=items.map((h,i)=>({h,i,f:e.rotated[i].reduce((b,v,j,a)=>Math.abs(v)>Math.abs(a[b])?j:b,0)})).sort((a,b)=>a.f-b.f||Math.abs(e.rotated[b.i][b.f])-Math.abs(e.rotated[a.i][a.f]));
-      s+=tbl(`Ma trận nhân tố sau khi xoay, EFA ${label} (hệ số tải dưới 0,3 được ẩn)`,['Biến',...Array.from({length:e.k},(_,j)=>String(j+1))],order.map(x=>tr([escH(x.h),...e.rotated[x.i].map(v=>[show(v),Math.abs(v)>=0.3&&Math.abs(v)<0.5?'bad':''])])).join(''));
+      s+=tbl(e.k>1?`Ma trận nhân tố sau khi xoay, EFA ${label} (hệ số tải dưới 0,3 được ẩn)`:`Ma trận nhân tố, EFA ${label} (chỉ một nhân tố được rút trích nên không xoay)`,['Biến',...Array.from({length:e.k},(_,j)=>String(j+1))],order.map(x=>tr([escH(x.h),...e.rotated[x.i].map(v=>[show(v),Math.abs(v)>=0.3&&Math.abs(v)<0.5?'bad':''])])).join(''));
       const lowLoad=order.filter(x=>Math.abs(e.rotated[x.i][x.f])<0.5).map(x=>escH(x.h)),cross=order.filter(x=>e.rotated[x.i].filter(v=>Math.abs(v)>=0.3).length>1).map(x=>escH(x.h));
-      s+=`<p>Theo Hair và cộng sự (2010), hệ số tải nhân tố từ 0,5 trở lên là có ý nghĩa thực tiễn. ${lowLoad.length?`Các biến ${lowLoad.join(', ')} có hệ số tải dưới 0,5 cần cân nhắc loại. `:'Tất cả biến quan sát đều có hệ số tải từ 0,5 trở lên. '}${e.k<2?'':cross.length?`Các biến ${cross.join(', ')} tải lên nhiều hơn một nhân tố (từ 0,3 trở lên); nên kiểm tra lại trước khi đặt tên nhân tố.`:'Không có biến tải chéo đáng kể.'}${e.k!==expect?` Lưu ý: số nhân tố rút trích (${e.k}) khác số khái niệm kỳ vọng (${expect})${kSel==='eigen'&&expect>1?`; thử chọn “Cố định ${expect} nhân tố” để đối chiếu`:''}.`:''}</p>`;
+      s+=`<p>Theo Hair và cộng sự (2010), hệ số tải nhân tố từ 0,5 trở lên là có ý nghĩa thực tiễn. ${lowLoad.length?`${lowLoad.length>1?'Các biến':'Biến'} ${listVi(lowLoad)} có hệ số tải dưới 0,5. `:'Tất cả biến quan sát đều có hệ số tải từ 0,5 trở lên. '}${e.k<2?'':cross.length?`${cross.length>1?'Các biến':'Biến'} ${listVi(cross)} có hệ số tải từ 0,3 trở lên ở nhiều hơn một nhân tố (tải chéo).`:'Không có biến tải chéo (hệ số tải từ 0,3 trở lên ở hai nhân tố).'}${e.k!==expect?` Số nhân tố rút trích (${e.k}) ${e.k<expect?'ít':'nhiều'} hơn số khái niệm trong mô hình đề xuất (${expect}), nên cấu trúc thang đo chưa hoàn toàn khớp với mô hình lý thuyết.`:''}</p>`;
+      if(lowLoad.length||cross.length)W.push(`EFA ${label}: ${[lowLoad.length?`hệ số tải dưới 0,5 ở ${listVi(lowLoad)}`:'',cross.length?`tải chéo ở ${listVi(cross)}`:''].filter(Boolean).join('; ')}. Nếu loại biến, loại từng biến một rồi chạy lại.`);
+      if(e.k!==expect)W.push(`EFA ${label} rút được ${e.k} nhân tố, khác số khái niệm (${expect}).${kSel==='eigen'&&expect>1?` Thử chọn “Cố định ${expect} nhân tố” để đối chiếu.`:''}`);
       return s};
-    html+=`<h3>4.4. Phân tích nhân tố khám phá (EFA)</h3>`;
+    html+=sec("Phân tích nhân tố khám phá (EFA)");
     const ivItems=groups.filter(g=>g.code!==dv).flatMap(g=>g.items),dvItems=(groups.find(g=>g.code===dv)||{items:[]}).items;
     if(o.efaMode==='tach'&&ivItems.length>=2&&dvItems.length>=2)
       html+=`<p>EFA được thực hiện riêng cho các biến độc lập và cho biến phụ thuộc.</p><h4>EFA cho các biến độc lập</h4>`+efaRun(ivItems,o.k||'eigen','cho các biến độc lập',ivs.length)+`<h4>EFA cho biến phụ thuộc ${escH(dv)}</h4>`+efaRun(dvItems,'eigen',`cho biến phụ thuộc ${escH(dv)}`,1);
@@ -387,11 +416,11 @@
 
     // 4.5 composite reliability, AVE, discriminant validity
     refs.add('fornell81').add('hair22');
-    html+=`<h3>4.5. Độ tin cậy tổng hợp, giá trị hội tụ và giá trị phân biệt</h3>`;
+    html+=sec("Độ tin cậy tổng hợp, giá trị hội tụ và giá trị phân biệt");
     const CV={};groups.forEach(g=>{const L=pcLoadings(g.items.map(h=>C[h]));CV[g.code]={L,...crAve(L)}});
-    html+=tbl('Hệ số tải, độ tin cậy tổng hợp (CR) và phương sai trích trung bình (AVE)',['Khái niệm','Biến','Hệ số tải','Cronbach\'s alpha','CR','AVE'],groups.map(g=>{const v=CV[g.code];return g.items.map((h,j)=>tr([j?'':escH(g.code),[escH(h),'l'],[f3(v.L[j]),v.L[j]<0.708?'bad':''],j?'':f3(rel[g.code].alpha),j?'':[f3(v.cr),v.cr<0.7||v.cr>0.95?'bad':''],j?'':[f3(v.ave),v.ave<0.5?'bad':'']])).join('')}).join(''));
+    html+=tbl('Hệ số tải, độ tin cậy tổng hợp (CR) và phương sai trích trung bình (AVE)',['Khái niệm',['Biến','l'],'Hệ số tải','Cronbach\'s alpha','CR','AVE'],groups.map(g=>{const v=CV[g.code];return g.items.map((h,j)=>tr([j?'':escH(g.code),[escH(h),'l'],[f3(v.L[j]),v.L[j]<0.708?'bad':''],j?'':f3(rel[g.code].alpha),j?'':[f3(v.cr),v.cr<0.7||v.cr>0.95?'bad':''],j?'':[f3(v.ave),v.ave<0.5?'bad':'']])).join('')}).join(''));
     {const crs=codes.map(c=>CV[c].cr),aves=codes.map(c=>CV[c].ave),[c0,c1]=minMax(crs),[a0,a1]=minMax(aves),crBad=codes.filter(c=>CV[c].cr<0.7).map(escH),aveBad=codes.filter(c=>CV[c].ave<0.5).map(escH),crHi=codes.filter(c=>CV[c].cr>0.95).map(escH),lowL=groups.flatMap(g=>g.items.filter((h,j)=>CV[g.code].L[j]<0.708)).map(escH);
-      html+=`<p>Hệ số tải của từng biến được ước lượng bằng thành phần chính thứ nhất của thang đo tương ứng; độ tin cậy tổng hợp CR = (Σλ)² / [(Σλ)² + Σ(1 − λ²)] và AVE = Σλ²/k (Fornell &amp; Larcker, 1981). CR từ 0,7 trở lên (không quá 0,95) và AVE từ 0,5 trở lên cho thấy thang đo đạt độ tin cậy tổng hợp và giá trị hội tụ (Hair và cộng sự, 2022). Kết quả: CR của các khái niệm từ ${f3(c0)} đến ${f3(c1)}, AVE từ ${f3(a0)} đến ${f3(a1)}. ${!crBad.length&&!aveBad.length?'Tất cả khái niệm đều đạt độ tin cậy tổng hợp và giá trị hội tụ.':`${crBad.length?`CR của ${listVi(crBad)} dưới 0,7. `:''}${aveBad.length?`AVE của ${listVi(aveBad)} dưới 0,5, chưa đạt giá trị hội tụ.`:''}`}${crHi.length?` CR của ${listVi(crHi)} trên 0,95, có thể do các câu hỏi trùng ý.`:''}${lowL.length?` Các biến ${listVi(lowL)} có hệ số tải dưới 0,708; Hair và cộng sự (2022) gợi ý chỉ loại biến có hệ số tải từ 0,40 đến 0,70 khi việc loại làm tăng CR hoặc AVE lên trên ngưỡng.`:''}</p>`}
+      html+=`<p>Hệ số tải của từng biến được ước lượng bằng thành phần chính thứ nhất của thang đo tương ứng; độ tin cậy tổng hợp CR = (Σλ)² / [(Σλ)² + Σ(1 − λ²)] và AVE = Σλ²/k (Fornell &amp; Larcker, 1981). CR từ 0,7 trở lên (không quá 0,95) và AVE từ 0,5 trở lên cho thấy thang đo đạt độ tin cậy tổng hợp và giá trị hội tụ (Hair và cộng sự, 2022). Kết quả: CR của các khái niệm từ ${f3(c0)} đến ${f3(c1)}, AVE từ ${f3(a0)} đến ${f3(a1)}. ${!crBad.length&&!aveBad.length&&!crHi.length?'Tất cả khái niệm đều đạt độ tin cậy tổng hợp và giá trị hội tụ.':!crBad.length&&!aveBad.length?`Tất cả khái niệm đều có CR từ 0,7 và AVE từ 0,5 trở lên; tuy nhiên CR của ${listVi(crHi)} vượt 0,95, cho thấy các biến quan sát có thể trùng lặp về nội dung (Hair và cộng sự, 2022).`:`${crBad.length?`CR của ${listVi(crBad)} dưới 0,7, chưa đạt độ tin cậy tổng hợp. `:''}${aveBad.length?`AVE của ${listVi(aveBad)} dưới 0,5, chưa đạt giá trị hội tụ.`:''}${crHi.length?` CR của ${listVi(crHi)} vượt 0,95, cho thấy các biến quan sát có thể trùng lặp về nội dung.`:''}`}${lowL.length?` Các biến ${listVi(lowL)} có hệ số tải dưới 0,708; Hair và cộng sự (2022) gợi ý chỉ loại biến có hệ số tải từ 0,40 đến 0,70 khi việc loại làm tăng CR hoặc AVE lên trên ngưỡng.`:''}</p>`}
     if(groups.length>=2){refs.add('henseler15');
       const rsc=(a,b)=>pearson(score[a],score[b]),flBad=(a,b)=>Math.abs(rsc(a,b))>Math.min(Math.sqrt(CV[a].ave),Math.sqrt(CV[b].ave));
       html+=tbl('Ma trận Fornell – Larcker (đường chéo là căn bậc hai AVE)',['',...codes.map(escH)],codes.map((a,i)=>tr([escH(a),...codes.map((b,j)=>j>i?'':i===j?`<strong>${f3(Math.sqrt(CV[a].ave))}</strong>`:[f3(rsc(a,b)),flBad(a,b)?'bad':''])])).join(''));
@@ -401,58 +430,71 @@
       const h85=[],h90=[];let mx=-Infinity;codes.forEach((a,i)=>codes.forEach((b,j)=>{if(j<i){const v=HT[i][j];if(v>mx)mx=v;if(v>=0.9)h90.push(`${escH(a)} – ${escH(b)} (${f3(v)})`);else if(v>=0.85)h85.push(`${escH(a)} – ${escH(b)} (${f3(v)})`)}}));
       html+=`<p>Theo tiêu chí Fornell và Larcker (1981), căn bậc hai AVE của mỗi khái niệm cần lớn hơn tương quan của khái niệm đó với các khái niệm khác (tương quan tính trên điểm trung bình của khái niệm). ${flFail.length?`Tiêu chí này chưa đạt ở các cặp ${listVi(flFail)}.`:'Tiêu chí này được đáp ứng ở mọi cặp khái niệm.'} Theo Henseler và cộng sự (2015), HTMT dưới 0,85 (hoặc dưới 0,90 với các khái niệm gần nhau về mặt lý thuyết) cho thấy giá trị phân biệt. HTMT lớn nhất là ${f3(mx)}${!h85.length&&!h90.length?', nên các khái niệm đạt giá trị phân biệt.':`; ${h90.length?`các cặp ${listVi(h90)} từ 0,90 trở lên, chưa đạt giá trị phân biệt`:''}${h90.length&&h85.length?'; ':''}${h85.length?`các cặp ${listVi(h85)} nằm trong khoảng 0,85–0,90, chỉ đạt theo ngưỡng 0,90`:''}.`}</p>`;
     }
-    html+=`<p><small>Ghi chú: hệ số tải ở đây tính theo thành phần chính của từng thang đo, gần với hệ số tải ngoài (outer loadings) của SmartPLS nhưng có thể lệch ở chữ số thập phân thứ hai. Đề tài dùng SmartPLS thì báo cáo số của SmartPLS.</small></p>`;
 
     // 4.6 correlation
-    html+=`<h3>4.6. Phân tích tương quan Pearson</h3>`;
+    html+=sec("Phân tích tương quan Pearson");
     const rp=(a,b)=>{const r=pearson(score[a],score[b]);return {r,p:tP(r*Math.sqrt((n-2)/(1-r*r)),n-2)}};
     html+=tbl('Ma trận tương quan giữa các khái niệm (giá trị trung bình)',['',...codes.map(escH)],codes.map((a,i)=>tr([escH(a),...codes.map((b,j)=>{if(j>i)return '';if(i===j)return '1';const {r,p}=rp(a,b);return `${f3(r)}${p<0.01?'**':p<0.05?'*':''}`})])).join(''))+`<p><small>** tương quan có ý nghĩa ở mức 0,01; * ở mức 0,05 (kiểm định hai phía).</small></p>`;
     if(ivs.length){const c=ivs.map(a=>({a,...rp(a,dv)})),sigC=c.filter(x=>x.p<0.05),ns=c.filter(x=>!(x.p<0.05)),hiPair=[];
       ivs.forEach((a,i)=>ivs.forEach((b,j)=>{if(j<i&&Math.abs(rp(a,b).r)>0.8)hiPair.push(`${escH(a)} – ${escH(b)}`)}));
       html+=`<p>${sigC.length?`Biến phụ thuộc ${escH(dv)} có tương quan có ý nghĩa thống kê với ${listVi(sigC.map(x=>`${escH(x.a)} (r = ${f3(x.r)})`))}`:`Không biến độc lập nào có tương quan có ý nghĩa thống kê với ${escH(dv)}`}${ns.length&&sigC.length?`; tương quan với ${listVi(ns.map(x=>escH(x.a)))} không có ý nghĩa thống kê (Sig. ≥ 0,05)`:''}. ${ivs.length<2?'':hiPair.length?`Tương quan giữa ${listVi(hiPair)} lớn hơn 0,8, cần chú ý hiện tượng đa cộng tuyến ở phần hồi quy.`:'Tương quan giữa các biến độc lập đều không vượt quá 0,8, nên ít có khả năng xảy ra đa cộng tuyến; điều này được kiểm tra lại bằng VIF ở phần hồi quy.'}</p>`}
 
-    // 4.7 regression, assumptions, hypotheses
-    if(ivs.length){const m=ols(score[dv],ivs.map(c=>score[c]));
-      if(!m)html+=`<h3>4.7. Phân tích hồi quy tuyến tính bội</h3><p>Không ước lượng được mô hình hồi quy vì các biến độc lập phụ thuộc tuyến tính hoàn toàn vào nhau.</p>`;
+    // regression, assumptions, hypotheses
+    if(ivs.length){const m=ols(score[dv],ivs.map(c=>score[c])),one=ivs.length===1,kind=one?'đơn':'bội';
+      if(!m)html+=sec(`Phân tích hồi quy tuyến tính ${kind}`)+`<p>Không ước lượng được mô hình hồi quy vì các biến độc lập phụ thuộc tuyến tính hoàn toàn vào nhau.</p>`;
       else{refs.add('field13').add('durbin51');
-        const adjTxt=m.adj>0?`các biến độc lập giải thích ${f1(100*m.adj)}% biến thiên của ${escH(dv)}`:`các biến độc lập hầu như không giải thích được biến thiên của ${escH(dv)}`;
-        html+=`<h3>4.7. Phân tích hồi quy tuyến tính bội</h3><p>Mô hình hồi quy với biến phụ thuộc ${escH(dv)} và ${ivs.length} biến độc lập (${ivs.map(escH).join(', ')}) có R² = ${f3(m.r2)}, R² hiệu chỉnh = ${f3(m.adj)}, nghĩa là ${adjTxt}. Kiểm định F = ${f3(m.F)} (df = ${m.df1}; ${m.df2}), Sig. ${sig(m.fp)}, cho thấy mô hình ${m.fp<0.05?'phù hợp với dữ liệu':'chưa có ý nghĩa thống kê'}.</p>`;
-        html+=tbl(`Kết quả hồi quy (biến phụ thuộc: ${escH(dv)})`,['Biến','B','Sai số chuẩn','Beta chuẩn hoá','t','Sig.','VIF'],tr(['(Hằng số)',f3(m.b0),f3(m.se0),'',f3(m.t0),pf(m.p0),''])+m.coef.map((c,j)=>tr([escH(ivs[j]),f3(c.b),f3(c.se),f3(c.beta),f3(c.t),pf(c.p),[f3(c.vif),c.vif>=5?'bad':'']])).join(''));
+        const who=one?`biến ${escH(ivs[0])}`:'các biến độc lập';
+        const adjTxt=m.adj>0?`${who} giải thích được ${f1(100*m.adj)}% biến thiên của ${escH(dv)}${m.adj<0.1?`; mức giải thích này thấp, phần lớn biến thiên của ${escH(dv)} đến từ các yếu tố nằm ngoài mô hình`:''}`:`${who} hầu như không giải thích được biến thiên của ${escH(dv)}`;
+        html+=sec(`Phân tích hồi quy tuyến tính ${kind}`)+`<p>Mô hình hồi quy với biến phụ thuộc ${escH(dv)} và ${one?`biến độc lập ${escH(ivs[0])}`:`${ivs.length} biến độc lập (${listVi(ivs.map(escH))})`} có R² = ${f3(m.r2)} và R² hiệu chỉnh = ${f3(m.adj)}, nghĩa là ${adjTxt}. Kiểm định F cho kết quả F(${m.df1}; ${m.df2}) = ${f3(m.F)}, Sig. ${sig(m.fp)}, ${m.fp<0.05?`nên mô hình hồi quy phù hợp với dữ liệu: ${one?'biến độc lập':'ít nhất một biến độc lập'} có quan hệ tuyến tính với ${escH(dv)}`:'nên mô hình hồi quy chưa có ý nghĩa thống kê'}.</p>`;
+        html+=tbl(`Tóm tắt mô hình hồi quy (biến phụ thuộc: ${escH(dv)})`,['R','R²','R² hiệu chỉnh','Sai số chuẩn của ước lượng','F','Sig.','Durbin–Watson'],tr([f3(Math.sqrt(Math.max(m.r2,0))),f3(m.r2),f3(m.adj),f3(Math.sqrt(m.mse)),f3(m.F),pf(m.fp),f3(m.dw)]));
+        html+=tbl(`Hệ số hồi quy (biến phụ thuộc: ${escH(dv)})`,['Biến','B','Sai số chuẩn','Beta chuẩn hoá','t','Sig.','VIF'],tr(['(Hằng số)',f3(m.b0),f3(m.se0),'',f3(m.t0),pf(m.p0),''])+m.coef.map((c,j)=>tr([escH(ivs[j]),f3(c.b),f3(c.se),f3(c.beta),f3(c.t),pf(c.p),[f3(c.vif),c.vif>=5?'bad':'']])).join(''));
         const zd=describe(m.zres);let out3=0;for(const z of m.zres)if(Math.abs(z)>3)out3++;const maxVif=minMax(m.coef.map(c=>c.vif))[1],dwOk=m.dw>=1&&m.dw<=3,normOk=Math.abs(zd.skew)<=2&&Math.abs(zd.kurt)<=2;
-        html+=`<h4>Kiểm tra các giả định của mô hình hồi quy</h4>`+tbl('Kiểm tra các giả định hồi quy',['Chỉ số','Giá trị','Ngưỡng tham khảo','Đánh giá'],[
-          ['VIF lớn nhất',f3(maxVif),'&lt; 5 (Hair và cộng sự, 2010)',maxVif<5],
+        html+=`<h4>Kiểm tra các giả định của mô hình hồi quy</h4>`+tbl('Kiểm tra các giả định hồi quy',['Chỉ số','Giá trị',['Ngưỡng tham khảo','l'],['Đánh giá','l']],[
+          ...(one?[]:[['VIF lớn nhất',f3(maxVif),'&lt; 5 (Hair và cộng sự, 2010)',maxVif<5]]),
           ['Durbin–Watson',f3(m.dw),'1 – 3, càng gần 2 càng tốt (Field, 2013)',dwOk],
           ['Skewness của phần dư chuẩn hoá',f3(zd.skew),'trong khoảng ±2',Math.abs(zd.skew)<=2],
           ['Kurtosis của phần dư chuẩn hoá',f3(zd.kurt),'trong khoảng ±2',Math.abs(zd.kurt)<=2],
           ['Phần dư chuẩn hoá có |z| > 3',`${out3} phiếu (${f1(100*out3/n)}%)`,'không quá 1% số phiếu',out3/n<=0.01]].map(r=>tr([[r[0],'l'],r[1],[r[2],'l'],[r[3]?'Đạt':'Cần xem xét',r[3]?'l':'l bad']])).join(''));
-        html+=`<p>Hệ số phóng đại phương sai (VIF) của các biến độc lập ${maxVif<5?`đều nhỏ hơn 5 (lớn nhất ${f3(maxVif)}), nên không có dấu hiệu đa cộng tuyến nghiêm trọng (Hair và cộng sự, 2010)`:`có giá trị từ 5 trở lên ở một số biến (lớn nhất ${f3(maxVif)}), cần xem xét hiện tượng đa cộng tuyến (Hair và cộng sự, 2010)`}. Hệ số Durbin–Watson (Durbin &amp; Watson, 1951) bằng ${f3(m.dw)}, ${dwOk?'nằm trong khoảng 1 đến 3, nên không có dấu hiệu tự tương quan của phần dư (Field, 2013)':'nằm ngoài khoảng 1 đến 3, cho thấy dấu hiệu tự tương quan của phần dư (Field, 2013)'}. Phần dư chuẩn hoá có trung bình ${f3(zd.mean)}, độ lệch chuẩn ${f3(zd.sd)}, skewness ${f3(zd.skew)} và kurtosis ${f3(zd.kurt)}; ${normOk?'phân phối của phần dư xấp xỉ chuẩn, nên giả định phân phối chuẩn của phần dư không bị vi phạm':'phân phối của phần dư lệch khỏi phân phối chuẩn, cần xem xét khi diễn giải kết quả'}${out3?`. Có ${out3} phiếu có phần dư chuẩn hoá vượt ±3, có thể là giá trị ngoại lai`:''}.</p>`;
-        html+=`<p>${m.coef.map((c,j)=>`${escH(ivs[j])} ${c.p<0.05?`có tác động ${c.beta>0?'cùng chiều':'ngược chiều'} tới ${escH(dv)} (β = ${f3(c.beta)}, Sig. ${sig(c.p)})`:`không có tác động có ý nghĩa thống kê tới ${escH(dv)} (Sig. ${sig(c.p)})`}`).join('; ')}.${(()=>{const s=m.coef.map((c,j)=>[ivs[j],c]).filter(([,c])=>c.p<0.05).sort((a,b)=>Math.abs(b[1].beta)-Math.abs(a[1].beta));return s.length>1?` Trong đó ${escH(s[0][0])} có tác động mạnh nhất (|β| lớn nhất).`:''})()}</p>`;
+        html+=`<p>${one?'Mô hình chỉ có một biến độc lập nên không xét hiện tượng đa cộng tuyến.':`Hệ số phóng đại phương sai (VIF) của các biến độc lập ${maxVif<5?`đều nhỏ hơn 5 (lớn nhất ${f3(maxVif)}), nên không có dấu hiệu đa cộng tuyến nghiêm trọng (Hair và cộng sự, 2010)`:`có giá trị từ 5 trở lên ở một số biến (lớn nhất ${f3(maxVif)}), cho thấy dấu hiệu đa cộng tuyến (Hair và cộng sự, 2010)`}.`} Hệ số Durbin–Watson (Durbin &amp; Watson, 1951) bằng ${f3(m.dw)}, ${dwOk?'nằm trong khoảng 1 đến 3, nên không có dấu hiệu tự tương quan của phần dư (Field, 2013)':'nằm ngoài khoảng 1 đến 3, cho thấy dấu hiệu tự tương quan của phần dư (Field, 2013)'}. Phần dư chuẩn hoá có trung bình ${f3(zd.mean)}, độ lệch chuẩn ${f3(zd.sd)}, skewness ${f3(zd.skew)} và kurtosis ${f3(zd.kurt)}; ${normOk?'phân phối của phần dư xấp xỉ chuẩn, chưa có dấu hiệu vi phạm nghiêm trọng giả định phân phối chuẩn của phần dư':'phân phối của phần dư lệch khỏi phân phối chuẩn, nên các kiểm định t và F cần được diễn giải thận trọng'}${out3?`. Có ${out3} phiếu có phần dư chuẩn hoá vượt ±3, có thể là giá trị ngoại lai`:''}.</p>`;
+        const sigs=m.coef.map((c,j)=>[ivs[j],c]).filter(([,c])=>c.p<0.05),top=[...sigs].sort((a,b)=>Math.abs(b[1].beta)-Math.abs(a[1].beta))[0];
+        html+=`<p>${m.coef.map((c,j)=>`${escH(ivs[j])} ${c.p<0.05?`có tác động ${c.beta>0?'cùng chiều':'ngược chiều'} tới ${escH(dv)} (β = ${f3(c.beta)}, Sig. ${sig(c.p)})`:`không có tác động có ý nghĩa thống kê tới ${escH(dv)} (β = ${f3(c.beta)}, Sig. ${sig(c.p)})`}`).join('; ')}.${sigs.length>1?` Trong các biến có ý nghĩa thống kê, ${escH(top[0])} có hệ số β chuẩn hoá lớn nhất về độ lớn (|β| = ${f3(Math.abs(top[1].beta))}), tức là có mức tác động mạnh nhất tới ${escH(dv)}.`:''}${sigs.length?` Phương trình hồi quy chuẩn hoá${sigs.length<ivs.length?' (chỉ gồm các biến có ý nghĩa thống kê)':''}: ${escH(dv)} = ${sigs.map(([v,c],i)=>`${i?(c.beta<0?' − ':' + '):(c.beta<0?'−':'')}${f3(Math.abs(c.beta))} × ${escH(v)}`).join('')}.`:''}</p>`;
         const neg=new Set(String(o.neg||'').split(/[\s,;]+/).filter(Boolean).map(s=>s.toUpperCase()));
         const hyp=m.coef.map((c,j)=>{const want=neg.has(ivs[j].toUpperCase())?-1:1,ok=c.p<0.05&&Math.sign(c.beta)===want;return {h:`H${j+1}`,path:`${ivs[j]} → ${dv} (${want>0?'+':'−'})`,c,ok,why:!(c.p<0.05)?'Sig. ≥ 0,05':'ngược dấu kỳ vọng'}});
-        html+=tbl('Tóm tắt kết quả kiểm định giả thuyết',['Giả thuyết','Đường dẫn (dấu kỳ vọng)','β','Sig.','Kết luận'],hyp.map(x=>tr([x.h,[escH(x.path),'l'],f3(x.c.beta),pf(x.c.p),[x.ok?'Chấp nhận':`Bác bỏ (${x.why})`,x.ok?'l':'l bad']])).join(''));
-        const acc=hyp.filter(x=>x.ok).map(x=>x.h),rej=hyp.filter(x=>!x.ok).map(x=>x.h);
-        html+=`<p>Giả thuyết được chấp nhận khi hệ số hồi quy có Sig. &lt; 0,05 và cùng dấu với kỳ vọng. ${acc.length?`Các giả thuyết ${listVi(acc)} được chấp nhận`:'Không giả thuyết nào được chấp nhận'}${rej.length?`; ${listVi(rej)} bị bác bỏ`:''}. Số thứ tự giả thuyết theo thứ tự biến độc lập; đổi lại cho khớp với mô hình ở chương 2.</p>`;
+        html+=tbl('Tóm tắt kết quả kiểm định giả thuyết',['Giả thuyết',['Đường dẫn (dấu kỳ vọng)','l'],'β','Sig.',['Kết luận','l']],hyp.map(x=>tr([x.h,[escH(x.path),'l'],f3(x.c.beta),pf(x.c.p),[x.ok?'Chấp nhận':`Bác bỏ (${x.why})`,x.ok?'l':'l bad']])).join(''));
+        const acc=hyp.filter(x=>x.ok).map(x=>x.h),rej=hyp.filter(x=>!x.ok).map(x=>x.h),gt=(a,c)=>`${a.length>1?(c?'Các giả thuyết':'các giả thuyết'):(c?'Giả thuyết':'giả thuyết')} ${listVi(a)}`;
+        html+=`<p>Giả thuyết được chấp nhận khi hệ số hồi quy có Sig. &lt; 0,05 và cùng dấu với kỳ vọng. ${acc.length?`${gt(acc,1)} được chấp nhận`:'Không giả thuyết nào được chấp nhận'}${rej.length?`; ${gt(rej,0)} bị bác bỏ`:''}.</p>`;
+        W.push(`Giả thuyết được đánh số ${hyp.length>1?`H1–H${hyp.length}`:'H1'} theo thứ tự biến độc lập (${listVi(ivs.map(escH))}); đổi lại cho khớp với mô hình ở chương 2 trước khi dùng.${o.neg?'':' Nếu có giả thuyết tác động ngược chiều, khai báo ở ô “Giả thuyết tác động ngược chiều” để bảng giả thuyết xét đúng dấu.'}`);
       }}
 
-    // 4.8 group differences in the dependent variable
+    // group differences in the dependent variable
     if(demos.length){
-      const rowsSum=[],paras=[];let body='';
+      const rowsSum=[];let body='';
       demos.forEach(h=>{const j=ix.get(h),bucket=new Map();idx.forEach((r,i)=>{const v=String(o.rows[r][j]).trim();if(!v)return;if(!bucket.has(v))bucket.set(v,[]);bucket.get(v).push(score[dv][i])});
         const cats=orderCats([...bucket.entries()].map(([k,v])=>[k,v.length])).map(([k])=>k),small=cats.filter(k=>bucket.get(k).length<2),use=cats.filter(k=>bucket.get(k).length>=2),G=use.map(k=>bucket.get(k));
-        if(use.length<2){paras.push(`${escH(h)}: không đủ hai nhóm có từ 2 phiếu trở lên để kiểm định.`);return}
-        body+=tbl(`Điểm trung bình ${escH(dv)} theo ${escH(h)}${labelOf(h)?` (${escH(labelOf(h))})`:''}`,['Nhóm','N','Trung bình','Độ lệch chuẩn'],use.map((k,i)=>tr([[escH(k),'l'],fx(G[i].length,0),f3(mean(G[i])),f3(Math.sqrt(variance(G[i])))])).join(''));
-        const lv=levene(G),eq=!(lv.p<0.05),note=small.length?` Nhóm ${listVi(small.map(k=>`“${escH(k)}”`))} có dưới 2 phiếu nên không đưa vào kiểm định.`:'';
+        if(use.length<2){W.push(`${escH(h)}: không đủ hai nhóm có từ 2 phiếu trở lên nên không kiểm định khác biệt theo biến này.`);return}
+        const nm=demoRef(h),Nm=nm.charAt(0).toUpperCase()+nm.slice(1);
+        body+=tbl(`Điểm trung bình ${escH(dv)} theo ${nm}`,['Nhóm','N','Trung bình','Độ lệch chuẩn'],use.map((k,i)=>tr([[escH(k),'l'],fx(G[i].length,0),f3(mean(G[i])),f3(Math.sqrt(variance(G[i])))])).join(''));
+        const lv=levene(G),eq=!(lv.p<0.05),note=small.length?` ${small.length>1?'Các nhóm':'Nhóm'} ${listVi(small.map(k=>`“${escH(k)}”`))} có dưới 2 phiếu nên không được đưa vào kiểm định.`:'';
         const gm=G.map(mean),[mLo,mHi]=minMax(gm),top=use[gm.indexOf(mHi)],bot=use[gm.indexOf(mLo)];
+        const levTxt=Number.isFinite(lv.p)?`kiểm định Levene có Sig. ${sig(lv.p)} ${eq?'≥':'&lt;'} 0,05`:'không tính được kiểm định Levene (độ lệch trong mọi nhóm bằng 0)';
+        const verdict=(p,ok)=>!Number.isFinite(p)?['Không tính được','l bad']:[ok?'Có khác biệt':'Không khác biệt','l'];
+        let para;
         if(use.length===2){const t=ttest(G[0],G[1]),r=eq?t.pooled:t.welch,ok=r.p<0.05;
-          rowsSum.push(tr([[escH(h),'l'],[eq?'T-test':'T-test (Welch)','l'],`${f3(lv.F)} (${pf(lv.p)})`,`t = ${f3(r.t)}`,pf(r.p),[ok?'Có khác biệt':'Không khác biệt','l']]));
-          paras.push(`Theo ${escH(h)}, kiểm định Levene có Sig. ${sig(lv.p)} ${eq?'≥ 0,05 nên phương sai hai nhóm đồng nhất; dùng kết quả t-test với giả định phương sai bằng nhau':'&lt; 0,05 nên phương sai hai nhóm khác nhau; dùng kết quả t-test Welch (không giả định phương sai bằng nhau)'}: t(${eq?fx(r.df,0):f2(r.df)}) = ${f3(r.t)}, Sig. ${sig(r.p)}. ${ok?`Có khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa hai nhóm; nhóm “${escH(top)}” (M = ${f3(mHi)}) cao hơn nhóm “${escH(bot)}” (M = ${f3(mLo)}).`:`Không có khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa hai nhóm.`}${note}`)}
+          rowsSum.push(tr([[nm,'l'],[eq?'T-test':'T-test (Welch)','l'],`${f3(lv.F)} (${pf(lv.p)})`,`t = ${f3(r.t)}`,pf(r.p),verdict(r.p,ok)]));
+          const zeroG=use.filter((k,i)=>!(variance(G[i])>0)).map(k=>`“${escH(k)}”`);
+          if(!Number.isFinite(r.p)){W.push(`${nm}: không tính được kiểm định vì ${zeroG.length>1?'các nhóm':'nhóm'} ${listVi(zeroG)} có mọi phiếu cùng một điểm ${escH(dv)}; cân nhắc gộp nhóm nhỏ rồi kiểm định lại.`);para=`${Nm}: không tính được kiểm định t vì ${zeroG.length>1?'các nhóm':'nhóm'} ${listVi(zeroG)} có mọi phiếu cùng một điểm ${escH(dv)}.${note}`}
+          else para=`${Nm}: ${levTxt}, ${eq?'nên phương sai hai nhóm được xem là đồng nhất và kết quả t-test được đọc theo giả định phương sai bằng nhau':'nên phương sai hai nhóm khác nhau và kết quả được đọc theo t-test Welch'}: t(${eq?fx(r.df,0):f2(r.df)}) = ${f3(r.t)}, Sig. ${sig(r.p)}. ${!Number.isFinite(r.p)?'Không tính được kiểm định vì điểm trong mỗi nhóm không có biến thiên.':ok?`Có khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa hai nhóm: nhóm “${escH(top)}” (M = ${f3(mHi)}) cao hơn nhóm “${escH(bot)}” (M = ${f3(mLo)}).`:`Chưa có bằng chứng về khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa hai nhóm.`}${note}`}
         else{const a=oneway(G),w=welchAnova(G),r=eq?a:w,ok=r.p<0.05;
-          rowsSum.push(tr([[escH(h),'l'],[eq?'ANOVA':'Welch ANOVA','l'],`${f3(lv.F)} (${pf(lv.p)})`,`F = ${f3(r.F)}`,pf(r.p),[ok?'Có khác biệt':'Không khác biệt','l']]));
+          rowsSum.push(tr([[nm,'l'],[eq?'ANOVA':'Welch ANOVA','l'],`${f3(lv.F)} (${pf(lv.p)})`,`F = ${f3(r.F)}`,pf(r.p),verdict(r.p,ok)]));
           let ph='';if(ok){const name=eq?'Bonferroni':'Tamhane’s T2 (Tamhane, 1979)';if(!eq)refs.add('tamhane79');const pairs=postHoc(G,eq).filter(x=>x.p<0.05);
-            ph=pairs.length?` Kiểm định sau (post hoc) ${name} cho thấy khác biệt có ý nghĩa giữa ${listVi(pairs.map(x=>`“${escH(use[x.i])}” và “${escH(use[x.j])}” (chênh lệch ${f3(x.md)}, Sig. ${sig(x.p)})`))}.`:` Kiểm định sau (post hoc) ${name} không tìm thấy cặp nhóm nào khác biệt có ý nghĩa sau khi hiệu chỉnh.`}
-          paras.push(`Theo ${escH(h)}, kiểm định Levene có Sig. ${sig(lv.p)} ${eq?`≥ 0,05 nên phương sai giữa các nhóm đồng nhất; kết quả ANOVA: F(${a.df1}; ${a.df2}) = ${f3(a.F)}, Sig. ${sig(a.p)}`:`&lt; 0,05 nên phương sai giữa các nhóm khác nhau; dùng kiểm định Welch: F(${w.df1}; ${f2(w.df2)}) = ${f3(w.F)}, Sig. ${sig(w.p)}`}. ${ok?`Có khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa các nhóm; cao nhất là nhóm “${escH(top)}” (M = ${f3(mHi)}), thấp nhất là “${escH(bot)}” (M = ${f3(mLo)}).${ph}`:`Không có khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa các nhóm.`}${note}`)}});
+            const pr=x=>{const [hiI,loI]=x.md>=0?[x.i,x.j]:[x.j,x.i];return `“${escH(use[hiI])}” cao hơn “${escH(use[loI])}” (chênh lệch ${f3(Math.abs(x.md))}, Sig. ${sig(x.p)})`};
+            ph=pairs.length?` Kiểm định sau (post hoc) ${name} cho thấy khác biệt có ý nghĩa giữa các cặp: ${listVi(pairs.map(pr))}.`:` Tuy nhiên, kiểm định sau (post hoc) ${name} không tìm thấy cặp nhóm nào khác biệt có ý nghĩa sau khi hiệu chỉnh cho so sánh bội.`}
+          const zeroG=use.filter((k,i)=>!(variance(G[i])>0)).map(k=>`“${escH(k)}”`);
+          if(!Number.isFinite(r.p)){W.push(`${nm}: không tính được kiểm định Welch vì ${zeroG.length>1?'các nhóm':'nhóm'} ${listVi(zeroG)} có mọi phiếu cùng một điểm ${escH(dv)}; cân nhắc gộp nhóm nhỏ rồi kiểm định lại.`);para=`${Nm}: ${levTxt}, nên cần dùng kiểm định Welch; tuy nhiên không tính được kiểm định này vì ${zeroG.length>1?'các nhóm':'nhóm'} ${listVi(zeroG)} có mọi phiếu cùng một điểm ${escH(dv)}.${note}`}
+          else para=`${Nm}: ${levTxt}, ${eq?`nên phương sai giữa các nhóm được xem là đồng nhất; kết quả ANOVA: F(${a.df1}; ${a.df2}) = ${f3(a.F)}, Sig. ${sig(a.p)}`:`nên phương sai giữa các nhóm khác nhau và kết quả được đọc theo kiểm định Welch: F(${w.df1}; ${f2(w.df2)}) = ${f3(w.F)}, Sig. ${sig(w.p)}`}. ${!Number.isFinite(r.p)?'Không tính được kiểm định Welch vì có nhóm mà mọi phiếu có cùng một điểm; cần gộp nhóm nhỏ rồi kiểm định lại.':ok?`Có khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa các nhóm; cao nhất là nhóm “${escH(top)}” (M = ${f3(mHi)}), thấp nhất là “${escH(bot)}” (M = ${f3(mLo)}).${ph}`:`Chưa có bằng chứng về khác biệt có ý nghĩa thống kê về ${escH(dv)} giữa các nhóm.`}${note}`}
+        body+=`<p>${para}</p>`});
       if(rowsSum.length){refs.add('levene60').add('welch47').add('welch51');
-        html+=`<h3>4.8. Kiểm định sự khác biệt về ${escH(dv)} theo đặc điểm nhân khẩu học</h3><p>Kiểm định Independent Samples T-test (hai nhóm) và One-way ANOVA (từ ba nhóm) được dùng để so sánh điểm trung bình ${escH(dv)} giữa các nhóm. Kiểm định Levene (Levene, 1960) được dùng để đánh giá sự đồng nhất phương sai; khi Sig. của Levene nhỏ hơn 0,05, kết quả được đọc theo kiểm định Welch (Welch, 1947, 1951).</p>`+body+tbl(`Tổng hợp kiểm định khác biệt về ${escH(dv)}`,['Biến','Kiểm định','Levene F (Sig.)','Thống kê','Sig.','Kết luận'],rowsSum.join(''))+paras.map(p=>`<p>${p}</p>`).join('')}
+        html+=sec(`Kiểm định sự khác biệt về ${escH(dv)} theo đặc điểm nhân khẩu học`)+`<p>Kiểm định Independent Samples T-test (hai nhóm) và One-way ANOVA (từ ba nhóm) được dùng để so sánh điểm trung bình ${escH(dv)} giữa các nhóm. Kiểm định Levene (Levene, 1960) được dùng để đánh giá sự đồng nhất phương sai; khi Sig. của Levene nhỏ hơn 0,05, kết quả được đọc theo kiểm định Welch (Welch, 1947, 1951).</p>`+body+tbl(`Tổng hợp kiểm định khác biệt về ${escH(dv)}`,['Đặc điểm',['Kiểm định','l'],'Levene F (Sig.)','Thống kê','Sig.',['Kết luận','l']],rowsSum.join(''))}
     }
 
     const plain=s=>s.replace(/<[^>]+>|&amp;/g,'');
@@ -489,6 +531,8 @@
     if(by('single').length)notes.push(`Cột đơn lẻ, không thuộc khái niệm nào: ${by('single').map(escH).join(', ')}. Khái niệm một biến không tính được Cronbach's alpha hay EFA.`);
     if(by('id').length)notes.push(`Bỏ qua: ${by('id').map(escH).join(', ')} (số thứ tự, thời gian, email…).`);
     if(longHead)notes.push(`<span class="err">Có ${longHead} cột mà tên là câu hỏi đầy đủ (kiểu Google Forms) nên chưa nhận ra mã biến. Đổi tên cột theo bảng mã hoá (PU1, PU2…), hoặc tạo form bằng Bộ khảo sát để tên cột có sẵn mã.</span>`);
+    const qLike=gs.filter(g=>g.items.length>=10&&/^(Q|C|CAU|CH|CAUHOI|QUESTION|ITEM|BIEN)$/i.test(g.code));
+    if(qLike.length)notes.push(`<span class="err">Nhóm ${qLike.map(g=>`${escH(g.code)} (${g.items.length} cột)`).join(', ')} có vẻ là số thứ tự câu hỏi, không phải mã khái niệm. Khai báo lại các khái niệm ở mục 2, ví dụ <code>PU: Q1 Q2 Q3</code>.</span>`);
     if(!gs.length)notes.push('<span class="err">Chưa nhận ra khái niệm nào. Kiểm tra dòng tiêu đề, hoặc tự khai báo ở mục 2.</span>');
     setStatus(notes.join('<br>'));
     $('pt-setup').hidden=false;$('pt-out').hidden=true;$('pt-msg').textContent='';refreshSelects();
@@ -528,7 +572,7 @@
     $('pt-out').scrollIntoView({behavior:'smooth'});
   }
   $('pt-run').addEventListener('click',run);
-  $('pt-doc').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([`﻿<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse;margin:6pt 0}td,th{border:1px solid #000;padding:3px 6px;text-align:right;vertical-align:top}td:first-child,th:first-child,td.l,th.l{text-align:left}caption{text-align:left;font-weight:bold;padding:4pt 0}.bad{color:#b00020;font-weight:bold}tr.sum td{font-weight:bold}</style></head><body><h2>CHƯƠNG 4. KẾT QUẢ NGHIÊN CỨU</h2>${$('pt-report').innerHTML.replace(/<div class="table-wrap">|<\/div>/g,'')}</body></html>`],{type:'application/msword'}));a.download='chuong-4-ket-qua.doc';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
+  $('pt-doc').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([`﻿<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:13pt}table{border-collapse:collapse;margin:6pt 0}table{border-top:1.5pt solid #000;border-bottom:1.5pt solid #000}td,th{border:none;padding:3px 8px;text-align:right;vertical-align:top}th{border-bottom:1pt solid #000;font-weight:bold}h3{font-size:13pt;font-weight:bold}h4{font-size:13pt;font-style:italic;font-weight:bold}p{text-align:justify;line-height:1.5}td:first-child,th:first-child,td.l,th.l{text-align:left}p.tcap{text-align:left;margin:12pt 0 3pt;line-height:1.2}.bad{color:#b00020;font-weight:bold}tr.sum td{font-weight:bold}</style></head><body><h2>CHƯƠNG 4. KẾT QUẢ NGHIÊN CỨU</h2>${$('pt-report').innerHTML.replace(/<div class="table-wrap">|<\/div>/g,'')}</body></html>`],{type:'application/msword'}));a.download='chuong-4-ket-qua.doc';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
   $('pt-copy').addEventListener('click',()=>{const el=$('pt-report'),t=el.innerText,b=$('pt-copy'),done=()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent='Sao chép',1500)};
     const fb=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Đã chọn, nhấn Ctrl+C'};try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}});
 })();

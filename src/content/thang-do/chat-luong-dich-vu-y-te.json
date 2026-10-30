@@ -1,6 +1,6 @@
 {
   "title": "Thang đo sự hài lòng người bệnh PSQ-18 tiếng Việt, RAND (1994)",
-  "description": "Thang đo PSQ-18 của RAND đo sự hài lòng của người bệnh với dịch vụ y tế, 18 biến, 7 thành phần, dịch sẵn tiếng Việt. Có câu đảo chiều và cách tính điểm.",
+  "description": "Thang đo PSQ-18 của RAND đo sự hài lòng của người bệnh với dịch vụ y tế, 18 biến quan sát, 7 thành phần, dịch sẵn tiếng Việt. Có câu đảo chiều và cách tính điểm.",
   "name": "PSQ-18",
   "fullName": "Bảng hỏi sự hài lòng của người bệnh dạng ngắn PSQ-18 (Patient Satisfaction Questionnaire Short Form, Marshall & Hays, 1994)",
   "field": "Chất lượng dịch vụ",

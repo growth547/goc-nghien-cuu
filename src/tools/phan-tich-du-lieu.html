@@ -39,6 +39,14 @@
     <div class="field"><label for="pt-k">Số nhân tố rút trích (EFA biến độc lập)</label>
       <select id="pt-k"><option value="eigen" selected>Theo eigenvalue &gt; 1</option></select></div>
   </div>
+  <div class="row">
+    <div class="field"><label for="pt-ext">Phép trích nhân tố (Extraction)</label>
+      <select id="pt-ext"><option value="pc" selected>Principal components (PCA)</option><option value="paf">Principal axis factoring (PAF)</option><option value="ml">Maximum likelihood (ML)</option></select>
+      <small>Như mục Extraction → Method của SPSS. Nhiều luận văn dùng PAF với Promax.</small></div>
+    <div class="field"><label for="pt-rot">Phép xoay (Rotation)</label>
+      <select id="pt-rot"><option value="varimax" selected>Varimax</option><option value="promax">Promax (kappa = 4)</option><option value="oblimin">Direct Oblimin (delta = 0)</option></select>
+      <small>Promax và Direct Oblimin là phép xoay xiên: báo cáo có Pattern Matrix, Structure Matrix và ma trận tương quan giữa các nhân tố.</small></div>
+  </div>
   <div class="field"><label for="pt-neg">Giả thuyết tác động ngược chiều (nếu có)</label>
     <input id="pt-neg" type="text" placeholder="Ví dụ: RISK (để trống nếu mọi giả thuyết là tác động cùng chiều)"></div>
   <label class="check"><input id="pt-straight" type="checkbox" checked> Loại phiếu chọn cùng một mức cho mọi biến quan sát</label>
@@ -54,7 +62,7 @@
       <span class="row" style="gap:8px"><button type="button" class="btn" id="pt-doc">Tải chương 4 (Word)</button><button type="button" class="btn ghost" id="pt-copy">Sao chép</button></span>
     </div>
     <div id="pt-report" class="pt-report" style="line-height:1.65"></div>
-    <small class="text-muted-foreground">Kết quả tính theo công thức chuẩn (Cronbach's alpha, PCA với phép xoay Varimax có chuẩn hoá Kaiser, hồi quy OLS, Levene theo trung bình như SPSS). Hãy đối chiếu với SPSS ở lần đầu dùng và kiểm tra câu chữ trước khi đưa vào luận văn. Hệ số tải ở mục CR/AVE tính theo thành phần chính của từng thang đo, gần với outer loadings của SmartPLS nhưng có thể lệch ở chữ số thập phân thứ hai; đề tài dùng PLS-SEM thì chạy <a class="text-accent underline" href="/cong-cu/pls-sem/">công cụ PLS-SEM</a> để có đúng outer loadings, CR, AVE, HTMT và hệ số đường dẫn như SmartPLS.</small>
+    <small class="text-muted-foreground">Kết quả tính theo công thức chuẩn (Cronbach's alpha; EFA theo quy ước của SPSS FACTOR: PCA, PAF hoặc ML, xoay Varimax, Promax hoặc Direct Oblimin có chuẩn hoá Kaiser; hồi quy OLS, Levene theo trung bình như SPSS). Hãy đối chiếu với SPSS ở lần đầu dùng và kiểm tra câu chữ trước khi đưa vào luận văn. Hệ số tải ở mục CR/AVE tính theo thành phần chính của từng thang đo, gần với outer loadings của SmartPLS nhưng có thể lệch ở chữ số thập phân thứ hai; đề tài dùng PLS-SEM thì chạy <a class="text-accent underline" href="/cong-cu/pls-sem/">công cụ PLS-SEM</a> để có đúng outer loadings, CR, AVE, HTMT và hệ số đường dẫn như SmartPLS.</small>
   </div>
   <aside class="cta" id="pt-cta" hidden><span class="cta-label">Tài trợ · Genius Data</span><strong id="pt-cta-h">Mẫu đang dưới mức khuyến nghị</strong>
     <p id="pt-cta-p"></p>
@@ -113,22 +121,131 @@
         for(let k=0;k<n;k++){const apk=A[p][k],aqk=A[q][k];A[p][k]=c*apk-s*aqk;A[q][k]=s*apk+c*aqk}
         for(let k=0;k<n;k++){const vkp=V[k][p],vkq=V[k][q];V[k][p]=c*vkp-s*vkq;V[k][q]=s*vkp+c*vkq}}}
     return A.map((r,i)=>({val:r[i],vec:V.map(row=>row[i])})).sort((a,b)=>b.val-a.val)}
-  // Varimax rotation with Kaiser normalisation (as in SPSS).
-  function varimax(L){const p=L.length,k=L[0].length;if(k<2)return L.map(r=>[...r]).map((r,_,M)=>M.reduce((s,x)=>s+x[0],0)<0?[-r[0]]:r);const h=L.map(r=>Math.sqrt(r.reduce((s,v)=>s+v*v,0))||1),A=L.map((r,i)=>r.map(v=>v/h[i]));
-    for(let it=0;it<1000;it++){let moved=0;for(let a=0;a<k;a++)for(let b=a+1;b<k;b++){let u=0,v=0,U=0,Vv=0;for(let i=0;i<p;i++){const x=A[i][a],y=A[i][b],uu=x*x-y*y,vv=2*x*y;u+=uu;v+=vv;U+=uu*uu-vv*vv;Vv+=2*uu*vv}
-      const phi=0.25*Math.atan2(Vv-2*u*v/p,U-(u*u-v*v)/p);if(Math.abs(phi)<1e-10)continue;moved=1;const c=Math.cos(phi),s=Math.sin(phi);for(let i=0;i<p;i++){const x=A[i][a],y=A[i][b];A[i][a]=c*x+s*y;A[i][b]=-s*x+c*y}}if(!moved)break}
-    // Sign and order like SPSS: each factor's largest loading positive, factors by sum of squares.
+  // Varimax rotation with Kaiser normalisation, by Kaiser's pairwise rotations, stopped as SPSS FACTOR: after the first sweep that raises
+  // V = Σ_j [p·Σ_i a⁴ − (Σ_i a²)²] (row-normalised loadings) by less than 0.0001 (RCONVERGE), at most 25 sweeps (ITERATE). This reproduces
+  // SPSS 27 output to 1e-9 (scripts/check-stats.mjs); o = {eps: 0, maxIter: 1000} runs to full convergence as R's stats::varimax.
+  function varimax(L,o){o=o||{};const eps=o.eps??1e-4,maxIt=o.maxIter??25,p=L.length,k=L[0].length;if(k<2)return L.map(r=>[...r]).map((r,_,M)=>M.reduce((s,x)=>s+x[0],0)<0?[-r[0]]:r);const h=L.map(r=>Math.sqrt(r.reduce((s,v)=>s+v*v,0))||1),A=L.map((r,i)=>r.map(v=>v/h[i]));
+    const crit=()=>{let V=0;for(let j=0;j<k;j++){let s2=0,s4=0;for(let i=0;i<p;i++){const q=A[i][j]*A[i][j];s2+=q;s4+=q*q}V+=p*s4-s2*s2}return V};let V=crit(),it=0,conv=false;
+    for(;it<maxIt;){let moved=0;for(let a=0;a<k;a++)for(let b=a+1;b<k;b++){let u=0,v=0,U=0,Vv=0;for(let i=0;i<p;i++){const x=A[i][a],y=A[i][b],uu=x*x-y*y,vv=2*x*y;u+=uu;v+=vv;U+=uu*uu-vv*vv;Vv+=2*uu*vv}
+      const phi=0.25*Math.atan2(Vv-2*u*v/p,U-(u*u-v*v)/p);if(Math.abs(phi)<1e-15)continue;moved=1;const c=Math.cos(phi),s=Math.sin(phi);for(let i=0;i<p;i++){const x=A[i][a],y=A[i][b];A[i][a]=c*x+s*y;A[i][b]=-s*x+c*y}}
+      it++;const V1=crit(),dV=V1-V;V=V1;if(!moved||(eps>0?dV<eps:Math.abs(dV)<=1e-15*Math.max(1,V))){conv=true;break}}
+    // Sign and order like SPSS: each factor's loadings sum to a positive number, factors by sum of squares.
     const R=A.map((r,i)=>r.map(v=>v*h[i]));for(let j=0;j<k;j++){let s=0;for(let i=0;i<p;i++)s+=R[i][j];if(s<0)for(let i=0;i<p;i++)R[i][j]=-R[i][j]}
-    const ord=[...Array(k).keys()].sort((x,y)=>R.reduce((s,r)=>s+r[y]*r[y],0)-R.reduce((s,r)=>s+r[x]*r[x],0));return R.map(r=>ord.map(j=>r[j]))}
-  // EFA by principal components on the correlation matrix, with KMO and Bartlett's test.
+    const ord=[...Array(k).keys()].sort((x,y)=>R.reduce((s,r)=>s+r[y]*r[y],0)-R.reduce((s,r)=>s+r[x]*r[x],0)),out=R.map(r=>ord.map(j=>r[j]));out.iter=it;out.converged=conv;return out}
+  // ---- EFA: extraction (principal components, principal axis factoring, maximum likelihood), rotation (Varimax, Promax, Direct Oblimin) ----
+  // Conventions follow SPSS FACTOR; scripts/check-stats.mjs compares them with R (psych, GPArotation, EFAtools type = "SPSS") and with published SPSS 27 output.
+  const tp=A=>A[0].map((_,j)=>A.map(r=>r[j])),mm=(A,B)=>A.map(r=>B[0].map((_,j)=>{let s=0;for(let t=0;t<r.length;t++)s+=r[t]*B[t][j];return s})),eye=k=>Array.from({length:k},(_,i)=>Array.from({length:k},(_,j)=>+(i===j)));
+  const colSS=L=>L[0].map((_,j)=>L.reduce((s,r)=>s+r[j]*r[j],0)),rowSS=L=>L.map(r=>r.reduce((s,v)=>s+v*v,0));
+  // Each column's sum made positive (SPSS shows factors with mostly positive loadings).
+  const reflectCols=L=>{const sg=L[0].map((_,j)=>L.reduce((s,r)=>s+r[j],0)<0?-1:1);return {L:L.map(r=>r.map((v,j)=>v*sg[j])),sg}};
+  // Symmetric eigen-decomposition by Householder tridiagonalisation and the QL algorithm (tred2/tql2 of JAMA), much faster than
+  // Jacobi for the repeated decompositions of ML, PAF and parallel analysis; eigenvalues sorted descending.
+  function eigenTQ(S){const n=S.length,V=S.map(r=>Float64Array.from(r)),d=new Float64Array(n),e=new Float64Array(n);
+    for(let j=0;j<n;j++)d[j]=V[n-1][j];
+    for(let i=n-1;i>0;i--){let scale=0,h=0;for(let k=0;k<i;k++)scale+=Math.abs(d[k]);
+      if(scale===0){e[i]=d[i-1];for(let j=0;j<i;j++){d[j]=V[i-1][j];V[i][j]=0;V[j][i]=0}}
+      else{for(let k=0;k<i;k++){d[k]/=scale;h+=d[k]*d[k]}let f=d[i-1],g=Math.sqrt(h);if(f>0)g=-g;e[i]=scale*g;h-=f*g;d[i-1]=f-g;for(let j=0;j<i;j++)e[j]=0;
+        for(let j=0;j<i;j++){f=d[j];V[j][i]=f;g=e[j]+V[j][j]*f;for(let k=j+1;k<=i-1;k++){g+=V[k][j]*d[k];e[k]+=V[k][j]*f}e[j]=g}
+        f=0;for(let j=0;j<i;j++){e[j]/=h;f+=e[j]*d[j]}const hh=f/(h+h);for(let j=0;j<i;j++)e[j]-=hh*d[j];
+        for(let j=0;j<i;j++){f=d[j];g=e[j];for(let k=j;k<=i-1;k++)V[k][j]-=f*e[k]+g*d[k];d[j]=V[i-1][j];V[i][j]=0}}
+      d[i]=h}
+    for(let i=0;i<n-1;i++){V[n-1][i]=V[i][i];V[i][i]=1;const h=d[i+1];if(h!==0){for(let k=0;k<=i;k++)d[k]=V[k][i+1]/h;for(let j=0;j<=i;j++){let g=0;for(let k=0;k<=i;k++)g+=V[k][i+1]*V[k][j];for(let k=0;k<=i;k++)V[k][j]-=g*d[k]}}for(let k=0;k<=i;k++)V[k][i+1]=0}
+    for(let j=0;j<n;j++){d[j]=V[n-1][j];V[n-1][j]=0}V[n-1][n-1]=1;e[0]=0;
+    for(let i=1;i<n;i++)e[i-1]=e[i];e[n-1]=0;let f=0,tst1=0;const eps=2**-52;
+    for(let l=0;l<n;l++){tst1=Math.max(tst1,Math.abs(d[l])+Math.abs(e[l]));let m=l;while(m<n){if(Math.abs(e[m])<=eps*tst1)break;m++}
+      if(m>l){let guard=0;do{let g=d[l],p=(d[l+1]-g)/(2*e[l]),r=Math.hypot(p,1);if(p<0)r=-r;d[l]=e[l]/(p+r);d[l+1]=e[l]*(p+r);const dl1=d[l+1];let h=g-d[l];for(let i=l+2;i<n;i++)d[i]-=h;f+=h;
+        p=d[m];let c=1,c2=c,c3=c,s=0,s2=0;const el1=e[l+1];
+        for(let i=m-1;i>=l;i--){c3=c2;c2=c;s2=s;g=c*e[i];h=c*p;r=Math.hypot(p,e[i]);e[i+1]=s*r;s=e[i]/r;c=p/r;p=c*d[i]-s*g;d[i+1]=h+s*(c*g+s*d[i]);
+          for(let k=0;k<n;k++){h=V[k][i+1];V[k][i+1]=s*V[k][i]+c*h;V[k][i]=c*V[k][i]-s*h}}
+        p=-s*s2*c3*el1*e[l]/dl1;e[l]=s*p;d[l]=c*p}while(Math.abs(e[l])>eps*tst1&&++guard<100)}
+      d[l]+=f;e[l]=0}
+    return Array.from(d,(val,i)=>({val,vec:V.map(r=>r[i])})).sort((a,b)=>b.val-a.val)}
+  // Squared multiple correlations, SPSS's initial communalities for PAF and ML.
+  function smc(R,Ri){Ri=Ri||invert(R);return Ri?R.map((_,i)=>Math.min(1,Math.max(0,1-1/Ri[i][i]))):null}
+  function topLoad(M,k,abs){const e=eigenTQ(M);return M.map((_,i)=>e.slice(0,k).map(x=>x.vec[i]*Math.sqrt(abs?Math.abs(x.val):Math.max(x.val,0))))}
+  // Principal axis factoring as SPSS: SMC start, communalities re-estimated until the largest change is at most 0.001
+  // (ECONVERGE) or 25 iterations (ITERATE), loadings from the absolute eigenvalues of the reduced matrix.
+  function paf(R,k,o){o=o||{};const eps=o.eps??1e-3,maxIt=o.maxIter??25,p=R.length,h0=smc(R);let h=h0.slice(),L,it=0,d=Infinity,heywood=false;
+    while(d>eps&&it<maxIt){L=topLoad(R.map((r,i)=>r.map((v,j)=>i===j?h[i]:v)),k,true);const nh=rowSS(L);d=0;for(let i=0;i<p;i++){d=Math.max(d,Math.abs(nh[i]-h[i]));if(nh[i]>1)heywood=true}h=nh;it++}
+    return {L,h2:h,h0,iter:it,converged:d<=eps,heywood}}
+  function cholSolve(A,b){const n=A.length,C=A.map(r=>r.map(()=>0));for(let i=0;i<n;i++)for(let j=0;j<=i;j++){let s=A[i][j];for(let t=0;t<j;t++)s-=C[i][t]*C[j][t];if(i===j){if(!(s>0))return null;C[i][i]=Math.sqrt(s)}else C[i][j]=s/C[j][j]}
+    const y=new Array(n);for(let i=0;i<n;i++){let s=b[i];for(let t=0;t<i;t++)s-=C[i][t]*y[t];y[i]=s/C[i][i]}const x=new Array(n);for(let i=n-1;i>=0;i--){let s=y[i];for(let t=i+1;t<n;t++)s-=C[t][i]*x[t];x[i]=s/C[i][i]}return x}
+  // Maximum likelihood factor analysis (Jöreskog, 1967): minimise F(Ψ) = Σ_{j>k}(θ_j − ln θ_j − 1), θ the eigenvalues of Ψ^-½ R Ψ^-½,
+  // over the uniquenesses Ψ in [0.005, 1] (as R's factanal), by projected Newton steps on the analytic gradient.
+  function mlfa(R,k,n,o){o=o||{};const p=R.length,lo=0.005,hi=1,Ri=invert(R),h0=smc(R,Ri);
+    const st=psi=>{const s=psi.map(Math.sqrt);return {s,e:eigenTQ(R.map((r,i)=>r.map((v,j)=>v/(s[i]*s[j]))))}};
+    const fn=psi=>{const {e}=st(psi);let f=0;for(let j=k;j<p;j++)f+=e[j].val-Math.log(e[j].val)-1;return f};
+    const load=psi=>{const {s,e}=st(psi);return R.map((_,i)=>e.slice(0,k).map(x=>s[i]*x.vec[i]*Math.sqrt(Math.max(x.val-1,0))))};
+    const gr=psi=>{const L=load(psi);return psi.map((ps,i)=>(L[i].reduce((t,v)=>t+v*v,0)+ps-R[i][i])/(ps*ps))};
+    let x=R.map((_,i)=>Math.min(hi,Math.max(lo,(1-0.5*k/p)/Ri[i][i]))),f=fn(x),g=gr(x),it=0,conv=false;const tol=o.tol??1e-10,maxIt=o.maxIter??200;
+    for(;it<maxIt;it++){const idx=x.map((_,i)=>i).filter(i=>!((x[i]<=lo&&g[i]>0)||(x[i]>=hi&&g[i]<0)));
+      if(!idx.length||Math.max(...idx.map(i=>Math.abs(g[i])))<tol){conv=true;break}
+      const H=idx.map(()=>new Array(idx.length).fill(0));
+      idx.forEach((i,a)=>{const h=1e-6*Math.max(x[i],0.01),xp=x.slice();xp[i]+=h;const gp=gr(xp);idx.forEach((j,b)=>{const v=(gp[j]-g[j])/h/2;H[a][b]+=v;H[b][a]+=v})});
+      const gi=idx.map(i=>g[i]),dg=Math.max(...H.map((r,a)=>Math.abs(r[a])),1e-8);let d=null;
+      for(let mu=0,t=0;t<20&&!d;t++,mu=mu?mu*10:1e-6*dg){const sol=cholSolve(H.map((r,a)=>r.map((v,b)=>a===b?v+mu:v)),gi);if(sol)d=sol.map(v=>-v)}
+      if(!d)d=gi.map(v=>-v);
+      let step=1,xn=null,fnew=f;
+      for(let t=0;t<50;t++){const c=x.slice();idx.forEach((i,a)=>c[i]=Math.min(hi,Math.max(lo,x[i]+step*d[a])));const fc=fn(c);if(fc<f){xn=c;fnew=fc;break}step/=2}
+      if(!xn){conv=true;break}
+      const moved=Math.max(...x.map((v,i)=>Math.abs(v-xn[i])));x=xn;f=fnew;g=gr(x);if(moved<1e-12){conv=true;break}}
+    const L=load(x),stat=(n-1-(2*p+5)/6-2*k/3)*f,df=((p-k)**2-(p+k))/2;
+    return {L,h2:rowSS(L),h0,psi:x,F:f,iter:it,converged:conv,heywood:x.some(v=>v<=lo+1e-9),chi:stat,df,pv:df>0?gammaQ(df/2,stat/2):NaN}}
+  // Promax as SPSS (Hendrickson & White, 1964; kappa = 4): Varimax with Kaiser normalisation, target = sign(a)·|a/h|^kappa from the
+  // row-normalised varimax loadings, least-squares transformation with unit-length factors, pattern = A·U, Φ = U⁻¹U⁻ᵀ.
+  // psych::Promax builds the target from the unnormalised loadings; EFAtools type = "SPSS" uses this normalised target.
+  function promax(L,kappa,vo){kappa=kappa||4;const A=varimax(L,vo);
+    const P=A.map(r=>{const h=Math.sqrt(r.reduce((s,v)=>s+v*v,0))||1;return r.map(v=>Math.sign(v)*Math.pow(Math.abs(v/h),kappa))});
+    const At=tp(A),U0=mm(invert(mm(At,A)),mm(At,P)),D=invert(mm(tp(U0),U0)),U=U0.map(r=>r.map((v,j)=>v*Math.sqrt(D[j][j]))),Ui=invert(U),phi=mm(Ui,tp(Ui)),pattern=mm(A,U);
+    return {pattern,phi,structure:mm(pattern,phi),iter:A.iter,converged:A.converged}}
+  // Direct Oblimin (delta = 0) with Kaiser normalisation, by the gradient projection algorithm of Bernaards & Jennrich (2005),
+  // started from the unrotated loadings as GPArotation::oblimin; factors reflected and ordered by their sums of squares.
+  function oblimin(L,o){o=o||{};const eps=o.eps??1e-6,k=L[0].length,w=L.map(r=>Math.sqrt(r.reduce((s,v)=>s+v*v,0))||1),A=L.map((r,i)=>r.map(v=>v/w[i]));
+    const vgQ=M=>{let f=0;const Gq=M.map(r=>{const sq=r.map(v=>v*v),tot=sq.reduce((s,v)=>s+v,0);return r.map((v,j)=>{const g=v*(tot-sq[j]);f+=v*g;return g})});return {Gq,f:f/4}};
+    const grad=(Lr,Gq,Ti)=>tp(mm(mm(tp(Lr),Gq),Ti)).map(r=>r.map(v=>-v));
+    let T=eye(k),Ti=eye(k),Lr=A.map(r=>r.slice()),q=vgQ(Lr),G=grad(Lr,q.Gq,Ti),al=1,it=0,conv=false;
+    for(;it<(o.maxIter||5000);it++){const cs=T[0].map((_,j)=>T.reduce((s,r,a)=>s+r[j]*G[a][j],0)),Gp=G.map((r,a)=>r.map((v,j)=>v-T[a][j]*cs[j]));
+      const s=Math.sqrt(Gp.reduce((t,r)=>t+r.reduce((u,v)=>u+v*v,0),0));if(s<eps){conv=true;break}
+      al*=2;let Tt,Lt,qt,Tti;
+      for(let i=0;i<=10;i++){const X=T.map((r,a)=>r.map((v,j)=>v-al*Gp[a][j])),v=X[0].map((_,j)=>1/Math.sqrt(X.reduce((t,r)=>t+r[j]*r[j],0)));Tt=X.map(r=>r.map((x,j)=>x*v[j]));Tti=invert(Tt);Lt=mm(A,tp(Tti));qt=vgQ(Lt);if(q.f-qt.f>0.5*s*s*al)break;al/=2}
+      T=Tt;Ti=Tti;Lr=Lt;q=qt;G=grad(Lr,q.Gq,Ti)}
+    let pattern=Lr.map((r,i)=>r.map(v=>v*w[i])),phi=mm(tp(T),T);const {L:Pr,sg}=reflectCols(pattern);phi=phi.map((r,a)=>r.map((v,b)=>v*sg[a]*sg[b]));
+    const ss=colSS(Pr),ord=[...Array(k).keys()].sort((a,b)=>ss[b]-ss[a]);pattern=Pr.map(r=>ord.map(j=>r[j]));phi=ord.map(a=>ord.map(b=>phi[a][b]));
+    return {pattern,phi,structure:mm(pattern,phi),iter:it,converged:conv}}
+  // Horn's (1965) parallel analysis: eigenvalues of the correlation matrices of `iters` random normal n × p data sets (fixed seed,
+  // so the advice is reproducible); keep the leading factors whose observed eigenvalue exceeds the 95th percentile of the random ones.
+  function parallel(n,p,obs,o){o=o||{};const iters=o.iters||Math.max(5,Math.min(100,Math.floor(1e8/(n*p*p)))),q=o.q??0.95;let s=o.seed??20261031,spare=null;
+    const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,norm=()=>{if(spare!==null){const v=spare;spare=null;return v}const r=Math.sqrt(-2*Math.log(rnd()+1e-12)),t=2*Math.PI*rnd();spare=r*Math.sin(t);return r*Math.cos(t)};
+    const sims=Array.from({length:p},()=>[]);
+    for(let it=0;it<iters;it++){const Z=Array.from({length:p},()=>{const c=new Float64Array(n);let m=0;for(let i=0;i<n;i++){c[i]=norm();m+=c[i]}m/=n;let ss=0;for(let i=0;i<n;i++){c[i]-=m;ss+=c[i]*c[i]}const sd=Math.sqrt(ss);for(let i=0;i<n;i++)c[i]/=sd;return c});
+      const R=Z.map(()=>new Array(p).fill(1));for(let i=0;i<p;i++)for(let j=i+1;j<p;j++){const a=Z[i],b=Z[j];let t=0;for(let r=0;r<n;r++)t+=a[r]*b[r];R[i][j]=R[j][i]=t}eigenTQ(R).forEach((e,j)=>sims[j].push(e.val))}
+    const mean=sims.map(v=>v.reduce((a,b)=>a+b,0)/iters),pct=sims.map(v=>{const w=[...v].sort((a,b)=>a-b);return w[Math.min(iters-1,Math.ceil(q*iters)-1)]});
+    let k=0;while(k<p&&obs[k]>pct[k])k++;return {iters,mean,pct,k}}
+  // EFA on a correlation matrix R from n cases, with KMO and Bartlett's test.
+  // opt.ext: 'pc' | 'paf' | 'ml'; opt.rot: 'varimax' | 'promax' | 'oblimin'. kFixed = 0: as many factors as eigenvalues of R above 1 (SPSS MINEIGEN(1)).
   // singular: the correlation matrix cannot be inverted (duplicate or linearly dependent items), so KMO and Bartlett are undefined.
-  function efa(cols,kFixed){const p=cols.length,n=cols[0].length,R=corrMatrix(cols),Ri=invert(R),ld=logDet(R);
+  function efaCore(R,n,kFixed,opt){opt=opt||{};const p=R.length,Ri=invert(R),ld=logDet(R);
     if(!Ri||!Number.isFinite(ld))return {singular:true,p};
     let r2=0,q2=0;const msa=[];for(let i=0;i<p;i++){let ri=0,qi=0;for(let j=0;j<p;j++)if(i!==j){const r=R[i][j],q=-Ri[i][j]/Math.sqrt(Ri[i][i]*Ri[j][j]);ri+=r*r;qi+=q*q}r2+=ri;q2+=qi;msa.push(ri/(ri+qi))}
-    const chi=-(n-1-(2*p+5)/6)*ld,df=p*(p-1)/2,eig=eigenSym(R),k=Math.min(p,kFixed||Math.max(1,eig.filter(e=>e.val>1).length));
-    const L=Array.from({length:p},(_,i)=>eig.slice(0,k).map(e=>e.vec[i]*Math.sqrt(Math.max(e.val,0))));
-    const rotated=varimax(L),rotSS=Array.from({length:k},(_,j)=>rotated.reduce((s,r)=>s+r[j]*r[j],0));
-    return {singular:false,p,kmo:r2/(r2+q2),msa,chi,df,bartP:gammaQ(df/2,chi/2),eig:eig.map(e=>e.val),k,cum:eig.slice(0,k).reduce((s,e)=>s+e.val,0)/p,rotated,rotSS}}
+    const chi=-(n-1-(2*p+5)/6)*ld,df=p*(p-1)/2,eig=eigenSym(R);
+    let ext=opt.ext||'pc',fallback=false,k=Math.min(p,kFixed||Math.max(1,eig.filter(e=>e.val>1).length));
+    if(ext!=='pc'&&k>=p)k=p-1;
+    if(ext==='ml'&&(p-k)**2-(p+k)<0){ext='paf';fallback=true}
+    let fit=null,L;
+    if(ext==='pc')L=R.map((_,i)=>eig.slice(0,k).map(e=>e.vec[i]*Math.sqrt(Math.max(e.val,0))));
+    else{fit=ext==='paf'?paf(R,k,{eps:opt.pafEps,maxIter:opt.pafMaxIter}):mlfa(R,k,n);L=fit.L}
+    L=reflectCols(L).L;
+    const rot=k>1?(opt.rot||'varimax'):'none',oblique=rot==='promax'||rot==='oblimin';let rotated,structure=null,phi=null,rotFit=null;
+    const vo={eps:opt.vmEps,maxIter:opt.vmMaxIter};
+    if(rot==='varimax'){rotated=varimax(L,vo);rotFit=rotated}
+    else if(oblique){rotFit=rot==='promax'?promax(L,opt.kappa,vo):oblimin(L,{eps:opt.rotEps});rotated=rotFit.pattern;structure=rotFit.structure;phi=rotFit.phi}
+    else rotated=L.map(r=>r.slice());
+    const extSS=colSS(L),rotSS=colSS(structure||rotated);
+    return {singular:false,p,n,kmo:r2/(r2+q2),msa,chi,df,bartP:gammaQ(df/2,chi/2),eig:eig.map(e=>e.val),k,ext,rot,oblique,fallback,
+      cum:ext==='pc'?eig.slice(0,k).reduce((s,e)=>s+e.val,0)/p:extSS.reduce((s,v)=>s+v,0)/p,L,extSS,comm:rowSS(L),h0:fit?fit.h0:R.map(()=>1),
+      iter:fit?fit.iter:0,converged:fit?fit.converged:true,heywood:fit?fit.heywood:false,ml:ext==='ml'?{chi:fit.chi,df:fit.df,p:fit.pv,F:fit.F,psi:fit.psi}:null,
+      rotConverged:rotFit&&rotFit.converged===false?false:true,rotated,pattern:oblique?rotated:null,structure,phi,rotSS}}
+  function efa(cols,kFixed,opt){return efaCore(corrMatrix(cols),cols[0].length,kFixed,opt)}
   // OLS with standardised betas, t tests (constant included), VIF, Durbin–Watson and standardised residuals (SPSS ZRESID).
   function ols(y,X){const n=y.length,k=X.length,D=Array.from({length:n},(_,i)=>{const r=[1];for(const x of X)r.push(x[i]);return r});
     const XtX=Array.from({length:k+1},(_,a)=>Array.from({length:k+1},(_,b)=>{let s=0;for(const r of D)s+=r[a]*r[b];return s})),inv=invert(XtX);if(!inv)return null;
@@ -276,7 +393,11 @@
     george19:'George, D., &amp; Mallery, P. (2019). <em>IBM SPSS Statistics 25 step by step: A simple guide and reference</em> (15th ed.). Routledge.',
     hair10:'Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.',
     hair22:'Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022). <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em> (3rd ed.). Sage.',
+    hendrickson64:'Hendrickson, A. E., &amp; White, P. O. (1964). Promax: A quick method for rotation to oblique simple structure. <em>British Journal of Statistical Psychology, 17</em>(1), 65–70. https://doi.org/10.1111/j.2044-8317.1964.tb00244.x',
     henseler15:'Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8',
+    horn65:'Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. <em>Psychometrika, 30</em>(2), 179–185. https://doi.org/10.1007/BF02289447',
+    jennrich66:'Jennrich, R. I., &amp; Sampson, P. F. (1966). Rotation for simple loadings. <em>Psychometrika, 31</em>(3), 313–323. https://doi.org/10.1007/BF02289465',
+    joreskog67:'Jöreskog, K. G. (1967). Some contributions to maximum likelihood factor analysis. <em>Psychometrika, 32</em>(4), 443–482. https://doi.org/10.1007/BF02289658',
     kaiser58:'Kaiser, H. F. (1958). The varimax criterion for analytic rotation in factor analysis. <em>Psychometrika, 23</em>(3), 187–200. https://doi.org/10.1007/BF02289233',
     kaiser74:'Kaiser, H. F. (1974). An index of factorial simplicity. <em>Psychometrika, 39</em>(1), 31–36. https://doi.org/10.1007/BF02291575',
     kline16:'Kline, R. B. (2016). <em>Principles and practice of structural equation modeling</em> (4th ed.). Guilford Press.',
@@ -398,16 +519,37 @@
 
     // 4.4 EFA
     refs.add('kaiser74').add('hair10');
-    const efaRun=(items,kSel,label,expect)=>{const e=efa(items.map(h=>C[h]),kSel==='eigen'?0:Math.min(+kSel,items.length));
+    const EXT={pc:'Principal Components',paf:'Principal Axis Factoring',ml:'Maximum Likelihood'},ROT={varimax:'Varimax',promax:'Promax',oblimin:'Direct Oblimin'},ROTREF={varimax:['kaiser58','Kaiser, 1958'],promax:['hendrickson64','Hendrickson &amp; White, 1964'],oblimin:['jennrich66','Jennrich &amp; Sampson, 1966']};
+    const efaOpt={ext:EXT[o.ext]?o.ext:'pc',rot:ROT[o.rot]?o.rot:'varimax'};
+    const efaRun=(items,kSel,label,expect)=>{const e=efa(items.map(h=>C[h]),kSel==='eigen'?0:Math.min(+kSel,items.length),efaOpt);
       if(e.singular){W.push(`EFA ${label}: ma trận tương quan suy biến (có biến là tổ hợp tuyến tính của các biến khác), không tính được KMO và Bartlett.`);
         return `<p>Ma trận tương quan của ${items.length} biến quan sát ${label} bị suy biến (định thức bằng 0), nghĩa là có biến là tổ hợp tuyến tính của các biến khác. Vì vậy không tính được hệ số KMO và kiểm định Bartlett; cần loại biến trùng lặp trước khi chạy EFA.</p>`}
-      if(e.k>1)refs.add('kaiser58');let s=`<p>Phân tích nhân tố khám phá ${label} được thực hiện với ${items.length} biến quan sát, phương pháp trích Principal Components${e.k>1?' và phép xoay Varimax (Kaiser, 1958)':''}. Hệ số KMO = ${f3(e.kmo)} ${e.kmo>=0.5?'(≥ 0,5)':'(&lt; 0,5, chưa đạt)'} và kiểm định Bartlett có χ² = ${f1(e.chi)}, df = ${fx(e.df,0)}, Sig. ${sig(e.bartP)}, cho thấy dữ liệu ${e.kmo>=0.5&&e.bartP<0.05?'phù hợp':'chưa phù hợp'} để phân tích nhân tố (Kaiser, 1974). ${e.k===1?'Một nhân tố duy nhất':`${e.k} nhân tố`} được rút trích ${kSel==='eigen'?'theo tiêu chí eigenvalue lớn hơn 1':`theo số nhân tố ấn định trước (${e.k})`} (eigenvalue của nhân tố cuối cùng được giữ = ${f3(e.eig[e.k-1])}), giải thích ${f1(100*e.cum)}% biến thiên của dữ liệu ${e.cum>=0.5?'(≥ 50%)':'(&lt; 50%, chưa đạt)'}.</p>`;
-      let cum=0,rc=0;s+=tbl(`Tổng phương sai trích (EFA ${label})`,['Thành phần','Eigenvalue','% phương sai','% tích luỹ','Tổng bình phương hệ số tải sau xoay','% phương sai sau xoay','% tích luỹ sau xoay'],e.eig.map((v,i)=>{cum+=100*v/e.p;const rot=i<e.k?e.rotSS[i]:NaN;if(i<e.k)rc+=100*rot/e.p;return tr([String(i+1),f3(v),f3(100*v/e.p),f3(cum),f3(rot),f3(100*rot/e.p),i<e.k?f3(rc):'—'],i<e.k?'sum':'')}).join(''));
-      const show=v=>Math.abs(v)>=0.3?f3(v):'';
-      const order=items.map((h,i)=>({h,i,f:e.rotated[i].reduce((b,v,j,a)=>Math.abs(v)>Math.abs(a[b])?j:b,0)})).sort((a,b)=>a.f-b.f||Math.abs(e.rotated[b.i][b.f])-Math.abs(e.rotated[a.i][a.f]));
-      s+=tbl(e.k>1?`Ma trận nhân tố sau khi xoay, EFA ${label} (hệ số tải dưới 0,3 được ẩn)`:`Ma trận nhân tố, EFA ${label} (chỉ một nhân tố được rút trích nên không xoay)`,['Biến',...Array.from({length:e.k},(_,j)=>String(j+1))],order.map(x=>tr([escH(x.h),...e.rotated[x.i].map(v=>[show(v),Math.abs(v)>=0.3&&Math.abs(v)<0.5?'bad':''])])).join(''));
-      const lowLoad=order.filter(x=>Math.abs(e.rotated[x.i][x.f])<0.5).map(x=>escH(x.h)),cross=order.filter(x=>e.rotated[x.i].filter(v=>Math.abs(v)>=0.3).length>1).map(x=>escH(x.h));
-      s+=`<p>Theo Hair và cộng sự (2010), hệ số tải nhân tố từ 0,5 trở lên là có ý nghĩa thực tiễn. ${lowLoad.length?`${lowLoad.length>1?'Các biến':'Biến'} ${listVi(lowLoad)} có hệ số tải dưới 0,5. `:'Tất cả biến quan sát đều có hệ số tải từ 0,5 trở lên. '}${e.k<2?'':cross.length?`${cross.length>1?'Các biến':'Biến'} ${listVi(cross)} có hệ số tải từ 0,3 trở lên ở nhiều hơn một nhân tố (tải chéo).`:'Không có biến tải chéo (hệ số tải từ 0,3 trở lên ở hai nhân tố).'}${e.k!==expect?` Số nhân tố rút trích (${e.k}) ${e.k<expect?'ít':'nhiều'} hơn số khái niệm trong mô hình đề xuất (${expect}), nên cấu trúc thang đo chưa hoàn toàn khớp với mô hình lý thuyết.`:''}</p>`;
+      const pc=e.ext==='pc',unit=pc?'Thành phần':'Nhân tố',spssM=pc?'Component':'Factor',rr=e.k>1?ROTREF[e.rot]:null,pa=parallel(e.n,e.p,e.eig);
+      if(rr)refs.add(rr[0]);if(e.ext==='ml')refs.add('joreskog67');refs.add('horn65');
+      if(e.fallback)W.push(`EFA ${label}: ${items.length} biến quan sát với ${e.k} nhân tố không đủ bậc tự do cho Maximum Likelihood, nên công cụ dùng Principal Axis Factoring (SPSS cũng không ước lượng được ML trong trường hợp này).`);
+      let s=`<p>Phân tích nhân tố khám phá ${label} được thực hiện với ${items.length} biến quan sát, phép trích ${EXT[e.ext]}${e.ext==='ml'?' (Jöreskog, 1967)':''}${rr?` với phép xoay ${ROT[e.rot]} (${rr[1]})`:''}. Hệ số KMO = ${f3(e.kmo)} ${e.kmo>=0.5?'(≥ 0,5)':'(&lt; 0,5, chưa đạt)'} và kiểm định Bartlett có χ² = ${f1(e.chi)}, df = ${fx(e.df,0)}, Sig. ${sig(e.bartP)}, cho thấy dữ liệu ${e.kmo>=0.5&&e.bartP<0.05?'phù hợp':'chưa phù hợp'} để phân tích nhân tố (Kaiser, 1974). ${e.k===1?'Một nhân tố duy nhất':`${e.k} nhân tố`} được rút trích ${kSel==='eigen'?'theo tiêu chí eigenvalue lớn hơn 1':`theo số nhân tố ấn định trước (${e.k})`} (eigenvalue của nhân tố cuối cùng được giữ = ${f3(e.eig[e.k-1])}), ${pc?`giải thích ${f1(100*e.cum)}% biến thiên của dữ liệu`:`tổng phương sai trích (Extraction Sums of Squared Loadings) đạt ${f1(100*e.cum)}%`} ${e.cum>=0.5?'(≥ 50%)':'(&lt; 50%, chưa đạt)'}. Phân tích song song (Horn, 1965), so sánh eigenvalue của dữ liệu với phân vị 95% eigenvalue của ${pa.iters} bộ dữ liệu ngẫu nhiên cùng cỡ (${fx(e.n,0)} × ${e.p}), gợi ý giữ ${pa.k} nhân tố${pa.k===e.k?', trùng với số nhân tố được rút trích':''}.</p>`;
+      if(pa.k!==e.k)W.push(`EFA ${label}: phân tích song song gợi ý ${pa.k} nhân tố, khác số nhân tố được rút trích (${e.k}). Đây là thông tin tham khảo; nếu đổi số nhân tố, chọn “Cố định ${Math.max(1,pa.k)} nhân tố” để đối chiếu.`);
+      if(!e.converged)W.push(`EFA ${label}: phép trích ${EXT[e.ext]} chưa hội tụ sau ${e.iter} vòng lặp (giới hạn mặc định của SPSS là 25; SPSS sẽ báo “More than 25 iterations required” và dừng). Thử giảm số nhân tố hoặc loại biến có hệ số chung thấp.`);
+      if(e.heywood)W.push(`EFA ${label}: có hệ số chung bằng hoặc vượt 1 trong quá trình ước lượng (Heywood case), SPSS sẽ cảnh báo kết quả cần diễn giải thận trọng. Thường do quá ít biến cho một nhân tố hoặc rút quá nhiều nhân tố.`);
+      if(!e.rotConverged)W.push(`EFA ${label}: phép xoay ${ROT[e.rot]} chưa hội tụ trong giới hạn vòng lặp; hãy đối chiếu với SPSS.`);
+      if(!pc)s+=tbl(`Hệ số chung (Communalities), EFA ${label}`,['Biến','Ban đầu (Initial)','Sau trích (Extraction)'],items.map((h,i)=>tr([escH(h),f3(e.h0[i]),[f3(e.comm[i]),e.comm[i]>=1?'bad':'']])).join(''));
+      const obl=e.k>1&&e.oblique,orth=e.k>1&&!obl,rotHead=['Tổng bình phương hệ số tải sau xoay',...(obl?[]:['% phương sai sau xoay','% tích luỹ sau xoay'])];
+      let cum=0,ec=0,rc=0;s+=tbl(`Tổng phương sai trích (Total Variance Explained), EFA ${label}`,[unit,'Eigenvalue','% phương sai','% tích luỹ',...(pc?[]:['Tổng bình phương hệ số tải sau trích','% phương sai sau trích','% tích luỹ sau trích']),...(e.k>1||pc?rotHead:[])],e.eig.map((v,i)=>{cum+=100*v/e.p;const inK=i<e.k,x=inK?e.extSS[i]:NaN,rot=inK?e.rotSS[i]:NaN;if(inK){ec+=100*x/e.p;rc+=100*rot/e.p}
+        return tr([String(i+1),f3(v),f3(100*v/e.p),f3(cum),...(pc?[]:[f3(x),f3(100*x/e.p),inK?f3(ec):'—']),...(e.k>1||pc?[f3(rot),...(obl?[]:[f3(100*rot/e.p),inK?f3(rc):'—'])]:[])],inK?'sum':'')}).join(''));
+      if(obl)s+=`<p>Ghi chú: với phép xoay xiên ${ROT[e.rot]}, cột tổng bình phương hệ số tải sau xoay (Rotation Sums of Squared Loadings) tính trên ma trận cấu trúc; vì các nhân tố tương quan với nhau nên không cộng các giá trị này thành tổng phương sai và không tính % phương sai (như bảng của SPSS).</p>`;
+      if(e.ml&&e.ml.df>0)s+=`<p>Kiểm định độ phù hợp của mô hình (Goodness-of-fit Test) theo phép trích Maximum Likelihood: χ² = ${f3(e.ml.chi)}, df = ${fx(e.ml.df,0)}, Sig. ${sig(e.ml.p)}${e.ml.p<0.05?'; với cỡ mẫu lớn kiểm định này thường có ý nghĩa nên chỉ dùng tham khảo':''}.</p>`;
+      const show=v=>Math.abs(v)>=0.3?f3(v):'',head=['Biến',...Array.from({length:e.k},(_,j)=>String(j+1))],M=e.rotated;
+      const order=items.map((h,i)=>({h,i,f:M[i].reduce((b,v,j,a)=>Math.abs(v)>Math.abs(a[b])?j:b,0)})).sort((a,b)=>a.f-b.f||Math.abs(M[b.i][b.f])-Math.abs(M[a.i][a.f]));
+      const rows=X=>order.map(x=>tr([escH(x.h),...X[x.i].map(v=>[show(v),Math.abs(v)>=0.3&&Math.abs(v)<0.5?'bad':''])])).join('');
+      if(orth)s+=tbl(`Ma trận nhân tố sau khi xoay (Rotated ${spssM} Matrix), EFA ${label} (hệ số tải dưới 0,3 được ẩn)`,head,rows(M));
+      else if(obl){s+=tbl(`Ma trận mẫu (Pattern Matrix), EFA ${label} (hệ số tải dưới 0,3 được ẩn)`,head,rows(M));s+=tbl(`Ma trận cấu trúc (Structure Matrix), EFA ${label} (hệ số tải dưới 0,3 được ẩn)`,head,rows(e.structure));
+        s+=tbl(`Ma trận tương quan giữa các nhân tố (${spssM} Correlation Matrix), EFA ${label}`,[unit,...head.slice(1)],e.phi.map((r,i)=>tr([String(i+1),...r.map(f3)])).join(''))}
+      else s+=tbl(`Ma trận nhân tố (${spssM} Matrix), EFA ${label} (chỉ một nhân tố được rút trích nên không xoay)`,head,rows(M));
+      const lowLoad=order.filter(x=>Math.abs(M[x.i][x.f])<0.5).map(x=>escH(x.h)),cross=order.filter(x=>M[x.i].filter(v=>Math.abs(v)>=0.3).length>1).map(x=>escH(x.h));
+      let phiTxt='';if(obl){let lo=Infinity,hi=-Infinity;e.phi.forEach((r,a)=>r.forEach((v,b)=>{if(b>a){lo=Math.min(lo,v);hi=Math.max(hi,v)}}));const big=Math.max(Math.abs(lo),Math.abs(hi));if(big>0.85)refs.add('kline16');
+        phiTxt=` Với phép xoay xiên, hệ số tải được đọc trên ma trận mẫu; tương quan giữa các nhân tố ${e.k===2?`là ${f3(lo)}`:`nằm trong khoảng ${f3(lo)} đến ${f3(hi)}`}${big>0.85?', có cặp nhân tố tương quan trên 0,85, dấu hiệu hai nhân tố khó phân biệt (Kline, 2016)':''}.`;
+        if(big>0.85)W.push(`EFA ${label}: có hai nhân tố tương quan trên 0,85 (ma trận tương quan giữa các nhân tố), nên xem lại giá trị phân biệt.`)}
+      s+=`<p>Theo Hair và cộng sự (2010), hệ số tải nhân tố từ 0,5 trở lên là có ý nghĩa thực tiễn. ${lowLoad.length?`${lowLoad.length>1?'Các biến':'Biến'} ${listVi(lowLoad)} có hệ số tải dưới 0,5. `:'Tất cả biến quan sát đều có hệ số tải từ 0,5 trở lên. '}${e.k<2?'':cross.length?`${cross.length>1?'Các biến':'Biến'} ${listVi(cross)} có hệ số tải từ 0,3 trở lên ở nhiều hơn một nhân tố (tải chéo).`:'Không có biến tải chéo (hệ số tải từ 0,3 trở lên ở hai nhân tố).'}${phiTxt}${e.k!==expect?` Số nhân tố rút trích (${e.k}) ${e.k<expect?'ít':'nhiều'} hơn số khái niệm trong mô hình đề xuất (${expect}), nên cấu trúc thang đo chưa hoàn toàn khớp với mô hình lý thuyết.`:''}</p>`;
       if(lowLoad.length||cross.length)W.push(`EFA ${label}: ${[lowLoad.length?`hệ số tải dưới 0,5 ở ${listVi(lowLoad)}`:'',cross.length?`tải chéo ở ${listVi(cross)}`:''].filter(Boolean).join('; ')}. Nếu loại biến, loại từng biến một rồi chạy lại.`);
       if(e.k!==expect)W.push(`EFA ${label} rút được ${e.k} nhân tố, khác số khái niệm (${expect}).${kSel==='eigen'&&expect>1?` Thử chọn “Cố định ${expect} nhân tố” để đối chiếu.`:''}`);
       return s};
@@ -565,7 +707,7 @@
     if(!tbl){msg.className='err';msg.textContent='Chưa có dữ liệu.';return}
     const H=tbl.header,by=k=>H.filter(h=>kinds[h]===k),t0=performance.now();let res;
     try{res=analyze({header:H,rows:tbl.rows,labels:tbl.labels,groups:parseGroups(),rev:$('pt-rev').value,scaleMin:+$('pt-min').value,scaleMax:+$('pt-max').value,dv:$('pt-dv').value,
-      efaMode:$('pt-efa').value,k:$('pt-k').value,attn:$('pt-attn').value,attnCols:by('attn'),screen:by('screen'),straight:$('pt-straight').checked,demos:$('pt-demo').value.split(/[\s,;]+/).filter(Boolean),neg:$('pt-neg').value})}
+      efaMode:$('pt-efa').value,k:$('pt-k').value,ext:$('pt-ext').value,rot:$('pt-rot').value,attn:$('pt-attn').value,attnCols:by('attn'),screen:by('screen'),straight:$('pt-straight').checked,demos:$('pt-demo').value.split(/[\s,;]+/).filter(Boolean),neg:$('pt-neg').value})}
     catch(err){res={error:'Có lỗi khi phân tích ('+err.message+'). Kiểm tra lại dữ liệu hoặc gửi file mẫu (đã xoá thông tin cá nhân) để chúng tôi sửa.',warnings:[]}}
     const warn=res.warnings||[];
     if(res.error){msg.className='err';msg.innerHTML=escH(res.error)+(warn.length?'<br>'+warn.join('<br>'):'');$('pt-out').hidden=true;msg.scrollIntoView({behavior:'smooth',block:'center'});return}

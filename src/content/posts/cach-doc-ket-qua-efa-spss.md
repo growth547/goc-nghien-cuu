@@ -122,7 +122,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <h2>Đoạn văn mẫu cho chương 4</h2>
 <blockquote><p>Phân tích nhân tố khám phá được thực hiện với 16 biến quan sát của 5 nhân tố độc lập, sử dụng phương pháp trích Principal Components và phép xoay Varimax. Ở lần chạy thứ nhất, biến EE4 tải lên hai nhân tố với mức chênh lệch hệ số tải 0,05 nên bị loại. Kết quả lần chạy thứ hai với 15 biến cho thấy hệ số KMO = 0,855, thuộc mức rất tốt theo Kaiser (1974); kiểm định Bartlett có ý nghĩa thống kê (χ² = 2.701,3; df = 105; p &lt; 0,001), cho thấy dữ liệu phù hợp để phân tích nhân tố. Năm nhân tố có eigenvalue lớn hơn 1 được trích, giải thích 72,8% tổng phương sai. Tất cả biến quan sát có hệ số tải từ 0,5 trở lên trên nhân tố tương ứng (Hair và cộng sự, 2010) và không có biến tải chéo, các biến hội tụ đúng vào nhân tố đã đề xuất trong mô hình.</p></blockquote>
 <p>df của Bartlett bằng k × (k − 1) / 2 với k là số biến; 15 biến cho df = 105.</p>
-<p><a href="/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> chạy EFA với Principal Components và Varimax trên file Excel của bạn, xuất KMO, Bartlett, ma trận xoay, đánh dấu biến có hệ số tải dưới 0,5 và biến tải từ 0,3 trở lên trên hơn một nhân tố, kèm đoạn văn viết sẵn để bạn đối chiếu với SPSS.</p>
+<p><a href="/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> chạy EFA trên file Excel của bạn với Principal Components, Principal Axis Factoring hoặc Maximum Likelihood và phép xoay Varimax, Promax hoặc Direct Oblimin theo đúng quy ước của SPSS, xuất KMO, Bartlett, ma trận xoay (Pattern Matrix và Structure Matrix khi xoay xiên), đánh dấu biến có hệ số tải dưới 0,5 và biến tải từ 0,3 trở lên trên hơn một nhân tố, kèm đoạn văn viết sẵn để bạn đối chiếu với SPSS.</p>
 
 <h2>Lỗi thường gặp</h2>
 <table>

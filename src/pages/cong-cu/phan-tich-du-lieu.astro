@@ -6,9 +6,9 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
 
 <ToolLayout
   slug="phan-tich-du-lieu"
-  title="Phân tích dữ liệu khảo sát online, không cần cài SPSS"
+  title="Phân tích dữ liệu khảo sát online: EFA PAF, Promax như SPSS"
   h1="Phân tích dữ liệu khảo sát và viết chương 4"
-  description="Tải file Excel khảo sát, nhận ngay Cronbach's alpha, EFA (KMO, ma trận xoay), tương quan, hồi quy bội và chương 4 viết sẵn. Miễn phí, không cần cài SPSS."
+  description="Tải file Excel khảo sát, nhận Cronbach's alpha, EFA (PCA hoặc PAF, Promax như SPSS, KMO), tương quan, hồi quy và chương 4 viết sẵn. Miễn phí, không cần SPSS."
   lede="Công cụ làm thay các bước phân tích hay gặp nhất của khoá luận định lượng: độ tin cậy, EFA, tương quan và hồi quy. Tải file Excel hoặc CSV kết quả khảo sát. Công cụ lọc phiếu không hợp lệ, chạy Cronbach's alpha cho từng thang đo, EFA, tương quan Pearson, hồi quy bội, rồi viết sẵn chương 4 kèm bảng để tải về Word. Không cần SPSS."
   html={html}
 >
@@ -95,12 +95,19 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
         >. Biến có tương quan biến–tổng âm được nhắc kiểm tra câu đảo chiều.
       </li>
       <li>
-        <strong>EFA</strong>: trích nhân tố bằng Principal Components trên ma trận
-        tương quan, xoay Varimax có chuẩn hoá Kaiser (Kaiser, 1958), giống lựa
-        chọn phổ biến trong SPSS. Mặc định chạy riêng cho các biến độc lập và cho
-        biến phụ thuộc, như nhiều giảng viên yêu cầu; có thể chọn chạy chung. Công
-        cụ báo KMO (Kaiser, 1974), kiểm định Bartlett, bảng tổng phương sai trích
-        (eigenvalue, % phương sai, % tích luỹ, trước và sau xoay) và ma trận xoay.
+        <strong>EFA</strong> trên ma trận tương quan, theo đúng quy ước của lệnh
+        FACTOR trong SPSS. Phép trích: Principal Components (mặc định), Principal
+        Axis Factoring (hệ số chung ban đầu là bình phương hệ số tương quan bội,
+        lặp đến khi thay đổi dưới 0,001 hoặc đủ 25 vòng như SPSS) hoặc Maximum
+        Likelihood (Jöreskog, 1967). Phép xoay: Varimax (Kaiser, 1958), Promax
+        với kappa = 4 (Hendrickson &amp; White, 1964) hoặc Direct Oblimin với delta
+        = 0 (Jennrich &amp; Sampson, 1966), đều có chuẩn hoá Kaiser. Số nhân tố theo
+        eigenvalue &gt; 1 hoặc cố định; phân tích song song (Horn, 1965) được ghi
+        thêm để tham khảo. Mặc định chạy riêng cho các biến độc lập và cho biến
+        phụ thuộc, như nhiều giảng viên yêu cầu; có thể chọn chạy chung. Công cụ
+        báo KMO (Kaiser, 1974), kiểm định Bartlett, bảng Communalities (PAF, ML),
+        Total Variance Explained và ma trận xoay; với Promax và Direct Oblimin có
+        thêm Pattern Matrix, Structure Matrix và Factor Correlation Matrix.
       </li>
       <li>
         <strong>CR, AVE, Fornell–Larcker và HTMT.</strong> Hệ số tải của mỗi
@@ -180,11 +187,26 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
     <h3>Công cụ có thay được SPSS hay SmartPLS không?</h3>
     <p>
       Thống kê mô tả, Cronbach's alpha, EFA, tương quan, hồi quy, t-test, ANOVA
-      và Levene cho cùng kết quả với SPSS khi dùng cùng lựa chọn (PCA, Varimax,
-      loại phiếu thiếu theo listwise). CR, AVE và Fornell–Larcker dùng hệ số tải
+      và Levene cho cùng kết quả với SPSS khi dùng cùng lựa chọn (cùng phép trích,
+      phép xoay và loại phiếu thiếu theo listwise). CR, AVE và Fornell–Larcker dùng hệ số tải
       theo thành phần chính nên chỉ gần đúng với SmartPLS; HTMT tính đúng công
       thức. Công cụ không chạy CFA, SEM hay PLS-SEM; đề tài dùng SmartPLS vẫn cần
       phần mềm đó cho mô hình cấu trúc và nên báo cáo số của SmartPLS.
+    </p>
+    <h3>Có chạy được PAF và Promax như SPSS không?</h3>
+    <p>
+      Có. Chọn Principal axis factoring ở ô phép trích và Promax ở ô phép xoay;
+      đoạn văn ghi “phép trích Principal Axis Factoring với phép xoay Promax” và
+      có đủ các bảng như SPSS: Communalities, Total Variance Explained (cột
+      Rotation Sums of Squared Loadings không có % vì các nhân tố tương quan),
+      Pattern Matrix, Structure Matrix và Factor Correlation Matrix. Công cụ dùng
+      cùng điểm dừng với SPSS (PAF dừng khi hệ số chung thay đổi dưới 0,001 hoặc
+      sau 25 vòng; Varimax dừng theo tiêu chí RCONVERGE 0,0001) và đã được đối
+      chiếu với bảng SPSS 27 đã công bố của sáu bộ dữ liệu, khớp đến chữ số thập
+      phân thứ tám. Promax của gói psych trong R dựng ma trận đích khác SPSS nên
+      lệch ở chữ số thứ hai; số của công cụ theo SPSS. Với Direct Oblimin, thứ
+      tự và dấu của các nhân tố có thể khác SPSS; đổi chỗ cột không làm thay đổi
+      kết quả.
     </p>
     <h3>Vì sao số phiếu hợp lệ ít hơn số phiếu tải lên?</h3>
     <p>
@@ -261,10 +283,31 @@ import html from "@/tools/phan-tich-du-lieu.html?raw";
         > (3rd ed.). Sage.
       </li>
       <li>
+        Hendrickson, A. E., &amp; White, P. O. (1964). Promax: A quick method for
+        rotation to oblique simple structure. <em
+          >British Journal of Statistical Psychology, 17</em
+        >(1), 65–70. https://doi.org/10.1111/j.2044-8317.1964.tb00244.x
+      </li>
+      <li>
         Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion
         for assessing discriminant validity in variance-based structural equation
         modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1),
         115–135. https://doi.org/10.1007/s11747-014-0403-8
+      </li>
+      <li>
+        Horn, J. L. (1965). A rationale and test for the number of factors in
+        factor analysis. <em>Psychometrika, 30</em>(2), 179–185.
+        https://doi.org/10.1007/BF02289447
+      </li>
+      <li>
+        Jennrich, R. I., &amp; Sampson, P. F. (1966). Rotation for simple
+        loadings. <em>Psychometrika, 31</em>(3), 313–323.
+        https://doi.org/10.1007/BF02289465
+      </li>
+      <li>
+        Jöreskog, K. G. (1967). Some contributions to maximum likelihood factor
+        analysis. <em>Psychometrika, 32</em>(4), 443–482.
+        https://doi.org/10.1007/BF02289658
       </li>
       <li>
         Kaiser, H. F. (1958). The varimax criterion for analytic rotation in

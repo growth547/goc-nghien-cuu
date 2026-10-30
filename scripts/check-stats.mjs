@@ -9,7 +9,7 @@ const block = tag => {
   return parts[1].split(`//#${tag}-end`)[0];
 };
 const S = new Function(
-  `${block("stats")}${block("data")}${block("report")}; return { gammaQ, tP, fP, mean, variance, minMax, pearson, corrMatrix, invert, logDet, describe, cronbach, eigenSym, varimax, efa, ols,
+  `${block("stats")}${block("data")}${block("report")}; return { gammaQ, tP, fP, mean, variance, minMax, pearson, corrMatrix, invert, logDet, describe, cronbach, eigenSym, varimax, efa, efaCore, smc, paf, mlfa, promax, oblimin, parallel, ols,
     oneway, levene, welchAnova, ttest, postHoc, pcLoadings, crAve, htmt, parseCSV, extractCode, groupOf, pickHeaderRow, buildTable, toNum, likertNum, classify, suggestGroups, guessScale, orderCats, analyze };`
 )();
 
@@ -355,6 +355,108 @@ const plain = h => h.replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&am
   const cst = CA.parse("A\tB\tC\n3\t4\t5\n3\t2\t4\n3\t5\t5\n3\t1\t2\n");
   check(CA.analyse(cst.names, cst.rows).constant.join() === "A", "P1-11: the zero-variance column is named");
   check(/câu đảo chiều chưa đảo điểm/.test(caSrc) && /tương quan biến–tổng âm/.test(caSrc), "P1-12: a negative item-total correlation suggests reverse coding");
+}
+
+// ---------- EFA options (PAF, ML; Varimax, Promax, Direct Oblimin; parallel analysis) against R and published SPSS output ----------
+// Reference values: scripts/efa_reference.R → scripts/fixtures/efa-reference.json (psych, GPArotation, factanal, EFAtools type = "SPSS",
+// EFAtools::SPSS_27). Factors are matched to the reference by column (sign and order are arbitrary in R's output).
+{
+  const REF = JSON.parse(readFileSync("scripts/fixtures/efa-reference.json", "utf8"));
+  const M = x => (Array.isArray(x[0]) ? x : x.map(v => [v]));
+  const align = (A, B) => { A = M(A); B = M(B); const k = B[0].length, used = new Set(), perm = [], sg = [];
+    for (let l = 0; l < k; l++) { let best = -1, bv = -1, bs = 1; for (let j = 0; j < k; j++) { if (used.has(j)) continue; let d = 0; for (let i = 0; i < A.length; i++) d += A[i][j] * B[i][l]; if (Math.abs(d) > bv) { bv = Math.abs(d); best = j; bs = Math.sign(d) || 1; } } used.add(best); perm.push(best); sg.push(bs); }
+    return { A: A.map(r => perm.map((j, l) => r[j] * sg[l])), perm, sg }; };
+  const maxd = (A, B) => { A = M(A); B = M(B); let m = 0; A.forEach((r, i) => r.forEach((v, j) => (m = Math.max(m, Math.abs(v - B[i][j]))))); return m; };
+  const phiAl = (P, al) => al.perm.map((a, x) => al.perm.map((b, y) => P[a][b] * al.sg[x] * al.sg[y]));
+  const worst = {}, put = (key, v) => (worst[key] = Math.max(worst[key] || 0, v));
+
+  // The sample fixture is the tool's own sampleData() after its filters (attention check AC1 = 2, straight-lining).
+  const sd = src.match(/function sampleData\(\)\{[\s\S]*?return out\}/)[0], raw = new Function(`${sd}; return sampleData();`)();
+  const hd = raw[0], itemCols = hd.filter(x => /^(PEOU|PU|BI)\d$/.test(x)), ix = itemCols.map(x => hd.indexOf(x)), ac = hd.indexOf("AC1");
+  const kept = raw.slice(1).filter(r => r[ac] === 2).map(r => ix.map(j => r[j])).filter(r => new Set(r).size > 1);
+  const csv = readFileSync("scripts/fixtures/efa-data/sample.csv", "utf8").trim().split("\n");
+  check(csv.length - 1 === kept.length && csv.slice(1).every((l, i) => l === kept[i].join(",")), `EFA fixture: sample.csv is the tool's sample after its filters (${kept.length} cases)`);
+  const colsOf = re => itemCols.map((h, j) => (re.test(h) ? kept.map(r => r[j]) : null)).filter(Boolean);
+  const Rs = { sample_iv: S.corrMatrix(colsOf(/^(PEOU|PU)/)), sample_dv: S.corrMatrix(colsOf(/^BI/)) };
+  const tight = { pafEps: 1e-12, pafMaxIter: 100000, rotEps: 1e-10, vmEps: 0, vmMaxIter: 1000 };
+
+  for (const name of ["sample_iv", "sample_dv", "bfi"]) {
+    const c = REF[name], R = c.R || Rs[name];
+    near(Math.max(...S.smc(R).map((v, i) => Math.abs(v - c.smc[i]))), 0, 1e-9, `${name}: initial communalities = SMC (psych::smc)`);
+    for (const ext of ["paf", "ml", "pc"]) {
+      const r = c[ext], v = S.efaCore(R, c.n, c.k, { ext, rot: "varimax", ...tight });
+      put(`${ext} unrotated`, maxd(align(v.L, r.L).A, r.L));
+      if (ext === "paf") put("paf communalities", maxd(v.comm, r.h2));
+      if (ext === "ml") { put("ml uniquenesses", maxd(v.ml.psi, r.psi)); put("ml chi-square (relative)", Math.abs(v.ml.chi - r.stat) / r.stat); check(v.ml.df === r.dof, `${name}: ML df = factanal dof (${r.dof})`); }
+      if (c.k < 2) continue;
+      put(`${ext} varimax`, maxd(align(v.rotated, r.varimax).A, r.varimax));
+      for (const rot of ["promax", "oblimin"]) {
+        const o = S.efaCore(R, c.n, c.k, { ext, rot, ...tight }), ref = rot === "promax" ? r.promax_spss : r.oblimin, a = align(o.pattern, ref.pattern);
+        put(`${ext} ${rot} pattern`, maxd(a.A, ref.pattern)); put(`${ext} ${rot} factor correlations`, maxd(phiAl(o.phi, a), ref.phi));
+        const st = o.pattern.map(row => o.phi[0].map((_, j) => row.reduce((t, x, m) => t + x * o.phi[m][j], 0)));
+        put("oblique: structure = pattern × Φ, diag Φ = 1", Math.max(maxd(st, o.structure), ...o.phi.map((row, i) => Math.abs(row[i] - 1))));
+        put("oblique: communalities = diag(PΦPᵀ)", Math.max(...o.pattern.map((row, i) => Math.abs(row.reduce((t, x, m) => t + x * st[i][m], 0) - v.comm[i]))));
+        if (rot === "promax") put(`${ext} promax: SPSS target vs psych::Promax (pattern, informative)`, maxd(align(o.pattern, r.promax_psych.pattern).A, r.promax_psych.pattern));
+        const dflt = S.efaCore(R, c.n, c.k, { ext, rot: "oblimin", pafEps: 1e-12, pafMaxIter: 100000 });
+        if (rot === "oblimin") put("oblimin at the tool's default tolerance", maxd(align(dflt.pattern, r.oblimin.pattern).A, r.oblimin.pattern));
+      }
+    }
+    // The tool's defaults (SPSS: PAF stops at a 0.001 change in communalities or 25 iterations; varimax at RCONVERGE) vs EFAtools type = "SPSS".
+    const d = c.spss_default, v = S.efaCore(R, c.n, c.k, { ext: "paf", rot: "promax" });
+    put("SPSS-default PAF vs EFAtools", maxd(align(v.L, d.L).A, d.L)); check(v.iter === d.iter, `${name}: PAF stops after the same number of iterations as EFAtools type = "SPSS" (${v.iter})`);
+    put("SPSS-default PAF vs fully converged psych::fa", maxd(align(v.L, c.paf.L).A, c.paf.L));
+    if (c.k > 1) { const a = align(v.pattern, d.pattern); put("SPSS-default promax vs EFAtools", Math.max(maxd(a.A, d.pattern), maxd(phiAl(v.phi, a), d.phi))); }
+    if (c.parallel) {
+      const obs = S.eigenSym(R).map(e => e.val), pa = S.parallel(c.n, R.length, obs);
+      near(maxd(pa.mean, c.parallel.mean), 0, 0.03, `${name}: parallel analysis, mean random eigenvalues vs R (2,000 sets) within Monte Carlo error`);
+      near(maxd(pa.pct, c.parallel.p95), 0, 0.05, `${name}: parallel analysis, 95th percentiles vs R`);
+      let kR = 0; while (kR < obs.length && obs[kR] > c.parallel.p95[kR]) kR++;
+      check(pa.k === kR && pa.k === c.k, `${name}: parallel analysis keeps ${pa.k} factors, as R's percentiles (${kR})`);
+      check(S.parallel(c.n, R.length, obs).pct.join() === pa.pct.join(), `${name}: parallel analysis is reproducible (fixed seed)`);
+    }
+  }
+  const tolTight = 1e-4;
+  for (const [key, v] of Object.entries(worst)) {
+    if (/informative/.test(key)) { console.log(`info ${key}: max |Δ| = ${v.toExponential(2)} (psych's target is not row-normalised; SPSS's is)`); check(v > 0.01, `${key} differs from the SPSS target, as documented`); continue; }
+    // SPSS stops PAF at a 0.001 change in communalities, so its loadings sit up to a few 1e-3 from the fully converged solution.
+    const tol = /fully converged/.test(key) ? 3e-3 : /SPSS-default|default tolerance/.test(key) ? 1e-3 : /chi-square/.test(key) ? 1e-6 : tolTight;
+    near(v, 0, tol, `EFA vs R, ${key}: max |Δ|`);
+  }
+
+  // Published SPSS 27 FACTOR output (Grieder & Steiner, 2022, via EFAtools::SPSS_27): PAF, varimax and promax.
+  // These runs raised ITERATE above 25 (case_1a needs 60 iterations), so the tool runs PAF with 500 here.
+  let spssMax = 0;
+  for (const [name, c] of Object.entries(REF).filter(([k]) => k.startsWith("spss_"))) {
+    const v = S.efaCore(c.R, c.n, c.k, { ext: "paf", rot: "promax", pafMaxIter: 500 }), w = S.efaCore(c.R, c.n, c.k, { ext: "paf", rot: "varimax", pafMaxIter: 500 }), sp = c.spss27, a = align(v.pattern, sp.pattern);
+    const dev = Math.max(maxd(align(v.L, sp.L).A, sp.L), maxd(align(w.rotated, sp.varimax).A, sp.varimax), maxd(a.A, sp.pattern), maxd(phiAl(v.phi, a), sp.phi));
+    spssMax = Math.max(spssMax, dev);
+    check(a.perm.every((j, l) => j === l) && a.sg.every(x => x === 1), `SPSS 27 ${name}: promax factors in SPSS's order and sign`);
+    near(dev, 0, 1e-5, `SPSS 27 ${name} (${c.R.length} variables, ${c.k} factors): factor matrix, rotated (varimax) matrix, pattern matrix, factor correlations`);
+  }
+  console.log(`info largest deviation from SPSS 27 output: ${spssMax.toExponential(2)}`);
+
+  // The chapter names the method and shows the SPSS tables for oblique rotations.
+  const sample = new Function(`${sd}; return sampleData();`)();
+  const run2 = o => runTable(sample, { dv: "BI", attn: "AC1=2", ...o }).res;
+  const paf = run2({ ext: "paf", rot: "promax" }), hp = plain(paf.html);
+  check(/phép trích Principal Axis Factoring với phép xoay Promax \(Hendrickson & White, 1964\)/.test(hp) && paf.refs.includes("hendrickson64"), "chapter: “phép trích Principal Axis Factoring với phép xoay Promax”, reference listed");
+  check(["Pattern Matrix", "Structure Matrix", "Factor Correlation Matrix", "Communalities", "Total Variance Explained", "Extraction Sums of Squared Loadings", "Rotation Sums of Squared Loadings"].every(t => hp.includes(t)), "chapter: SPSS table names for PAF + Promax");
+  const tve = paf.html.split("Total Variance Explained), EFA cho các biến độc lập")[1].split("</table>")[0];
+  check((tve.match(/<th[ >]/g) || []).length === 8 && !/% phương sai sau xoay/.test(tve), "chapter: oblique Total Variance Explained has one rotation column, without %");
+  const iv = S.efa(colsOf(/^(PEOU|PU)/), 0, { ext: "paf", rot: "promax" }), first = S.efaCore(Rs.sample_iv, kept.length, 2, { ext: "paf", rot: "promax" });
+  check(paf.n === kept.length && iv.k === 2 && first.k === 2, `chapter: the sample's IV EFA runs on the same ${kept.length} cases`);
+  const pm = paf.html.split("Ma trận mẫu (Pattern Matrix), EFA cho các biến độc lập")[1].split("</table>")[0];
+  const shown = [...pm.matchAll(/<td[^>]*>(\d+,\d{3})<\/td>/g)].map(m => +m[1].replace(",", ".")), best = Math.max(...iv.pattern.flat().map(Math.abs));
+  check(shown.length === 12 && Math.abs(Math.max(...shown) - best) < 6e-4, `chapter: pattern matrix shows the computed loadings (largest ${best.toFixed(3)})`);
+  check(/Phân tích song song \(Horn, 1965\).*gợi ý giữ 2 nhân tố, trùng với số nhân tố được rút trích/.test(hp) && paf.refs.includes("horn65"), "chapter: parallel analysis advisory line");
+  const ml = plain(run2({ ext: "ml", rot: "oblimin" }).html);
+  check(/phép trích Maximum Likelihood \(Jöreskog, 1967\) với phép xoay Direct Oblimin \(Jennrich & Sampson, 1966\)/.test(ml) && /Goodness-of-fit Test.*χ² = \d+,\d{3}, df = \d+/.test(ml), "chapter: ML + Direct Oblimin named, goodness-of-fit test reported");
+  const pc = run2({});
+  check(/phép trích Principal Components với phép xoay Varimax \(Kaiser, 1958\)/.test(plain(pc.html)) && /Rotated Component Matrix/.test(pc.html) && !/Pattern Matrix|Communalities/.test(pc.html), "chapter: default stays PCA + Varimax with the Rotated Component Matrix");
+  const two = runTable(makeData({ A: 4, B: 4, Y: 2 }, 200), { ext: "ml", rot: "promax" }).res;
+  check(two.warnings.some(w => /không đủ bậc tự do cho Maximum Likelihood/.test(w)) && /EFA cho biến phụ thuộc Y[\s\S]*phép trích Principal Axis Factoring/.test(plain(two.html)), "two-item scale: ML not identified, PAF used with a warning");
+  const t0 = performance.now(); runTable(makeData({ A: 10, B: 10, C: 10, D: 10 }, 2000), { ext: "ml", rot: "oblimin", efaMode: "chung" });
+  check(performance.now() - t0 < 20000, `ML + Direct Oblimin on 2,000 × 40 in ${((performance.now() - t0) / 1000).toFixed(1)} s`);
 }
 
 if (failed) { console.error(`${failed} check(s) failed`); process.exit(1); }

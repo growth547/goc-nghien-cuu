@@ -2,7 +2,9 @@
 // sample-size calculator's, its concept search ranks like the questionnaire kit, and the pure model
 // helpers (arrow list parser, layers, layout, hypotheses, sample size, kit link), the canvas editor's
 // pure parts (graph edits, undo/redo, geometry, warnings, link format) and the extended models (higher-order
-// constructs, moderation, multigroup comparison, control variables) behave.
+// constructs, moderation, multigroup comparison, control variables) behave; plus the quick-start entry paths:
+// the hypothesis-text parser, the data-file reader (same grouping as the PLS-SEM tool), templates from the
+// scale library, the layered auto-layout, OCR label clean-up and the tool_run / PLS-SEM hand-off hooks.
 import { readFileSync, readdirSync } from "node:fs";
 
 const block = (src, tag) => {
@@ -14,6 +16,7 @@ const norm = s => s.split(String.fromCharCode(13)).join("").trim();
 const src = readFileSync("src/tools/ve-mo-hinh.html", "utf8");
 const calcSrc = readFileSync("src/tools/tinh-co-mau.html", "utf8");
 const kitSrc = readFileSync("src/tools/bo-khao-sat.html", "utf8");
+const plsSrc = readFileSync("src/tools/pls-sem.html", "utf8");
 let failed = 0,
   passed = 0;
 const check = (ok, label, quiet = false) => {
@@ -25,12 +28,14 @@ const check = (ok, label, quiet = false) => {
 check(norm(block(src, "math")) === norm(block(calcSrc, "math")), "math block matches tinh-co-mau.html");
 
 const api = new Function(
-  `${block(src, "math")}${block(src, "search")}${block(src, "model")}
+  `${block(src, "math")}${block(src, "search")}${block(src, "model")}${block(src, "data")}
    return { codeFrom, addNode, addEdge, removeNode, findNode, parseArrows, edgesToText, inDegree, maxArrows, backEdges, layersOf, layout, lcFirst, hypotheses, modelSample, kitQuery, rankConstructs, indexConstruct, citeOf, regN, isrN,
      GRID, BOX_W, snapTo, hasPos, boxOf, overlaps, freeSpot, autoArrange, placeNew, boundsOf, fitView, zoomAt, borderPoint, quadAt, routeEdge, routeAll, edgeIndex, nodesInRect,
      removeNodes, removeEdge, toggleSign, reverseEdge, moveEdge, moveNodes, renameNode, recodeNode, modelWarnings, packModel, unpackModel, createHistory,
      predictorsOf, hNumbers, controlsOf, incN, regPower, tidy, makeHoc, attachChild, detachChild, ungroupHoc, setHocMode, setCtrl, arrangeChildren, hocLinks, childrenOf,
-     addMod, removeMod, toggleModDir, modRoutes, setMga, mgaPaths, toggleMgaPath, parseGroups };`
+     addMod, removeMod, toggleModDir, modRoutes, setMga, mgaPaths, toggleMgaPath, parseGroups,
+     parseModelText, modelFromParsed, mergeInto, splitHyps, nameKey, isCodeTok, guessDV, modelFromGroups, TEMPLATES, templateModel, ocrLabels,
+     parseCSV, pickHeaderRow, buildTable, suggestGroups };`
 )();
 const kit = new Function(`${block(kitSrc, "math")}${block(kitSrc, "kit")} return { rankConstructs, indexConstruct, kitSample, citeOf };`)();
 
@@ -78,7 +83,7 @@ check(api.edgesToText(round) === api.edgesToText(chain), "edgesToText round-trip
 
 // ---- structure, layout ----
 const { layer } = api.layersOf(m1);
-check(layer.get("PEOU") === 0 && layer.get("PU") === 1 && layer.get("BI") === 2 && layer.get("RRCN") === 1, "layers: cause left, mediator middle, outcome right; a lone cause sits next to its effect");
+check(layer.get("PEOU") === 0 && layer.get("PU") === 1 && layer.get("BI") === 2 && layer.get("RRCN") === 0, "layers: every independent in the first column, mediator middle, outcome right");
 const mx = api.maxArrows(m1);
 check(mx.max === 3 && mx.at[0] === "BI", "max arrows into one construct: BI gets 3");
 const L = api.layout(m1, { measure: t => t.length * 7 });
@@ -440,6 +445,187 @@ check(api.kitQuery(tam()).indexOf("ctrl=") < 0 && api.kitQuery(tam()).indexOf("g
 // When the kit reads them, it splits ctrl on ";" and grp on the first ":" then ";" (as built above).
 if (/qs\.getAll\('ctrl'\)/.test(kitSrc)) check(/qs\.get\('grp'\)/.test(kitSrc) && /indexOf\(':'\)/.test(kitSrc), "the kit reads ?ctrl= and ?grp=Name:groups");
 
+{
+// ======== quick start: paste hypotheses, data file, templates, layout, picture ========
+// ---- 1. hypothesis text → model ----
+const pq = text => {
+  const r = api.parseModelText(text), m = api.modelFromParsed(r);
+  return { r, m, t: api.edgesToText(m).replace(/\n/g, "; "), nm: Object.fromEntries(m.nodes.map(n => [n.id, n.name])), bad: r.lines.filter(l => !l.ok) };
+};
+const pt = (text, want, label, names) => {
+  const x = pq(text);
+  const okNames = !names || Object.entries(names).every(([k, v]) => x.nm[k] === v);
+  check(x.t === want && okNames && !x.bad.length, `parse ${label}: ${x.t}${okNames ? "" : " names " + JSON.stringify(x.nm)}${x.bad.length ? " NOT " + x.bad.map(l => l.line).join(" | ") : ""}`);
+  return x;
+};
+let px = pt("H1: Chất lượng dịch vụ → Sự hài lòng\nH2: Sự hài lòng → Lòng trung thành\nCL -> HL", "CL -> HL; HL -> LTT", "H-labels with arrows; a bare code joins the name with those initials", { CL: "Chất lượng dịch vụ", HL: "Sự hài lòng", LTT: "Lòng trung thành" });
+check(px.r.notes.some(n => /Hiểu CL là “Chất lượng dịch vụ”/.test(n)) && px.r.cons.find(c => c.code === "CL").guess, "…and says the code was a guess");
+pt("CL, GT, NT -> HL -> TT", "CL -> HL; GT -> HL; NT -> HL; HL -> TT", "a list into a chain");
+px = pt("H2 (-): Rủi ro cảm nhận tác động ngược chiều đến Ý định", "RRCN -> YD (-)", "H2 (-) with Vietnamese verb phrase", { RRCN: "Rủi ro cảm nhận", YD: "Ý định" });
+check(px.r.notes.some(n => /H2 trong văn bản sẽ mang số khác/.test(n)), "a student's H2 that becomes H1 is pointed out");
+pt("Rủi ro cảm nhận tác động ngược chiều đến Ý định mua", "RRCN -> YDM (-)", "“tác động ngược chiều đến”");
+pt("Rui ro cam nhan tac dong nguoc chieu den y dinh mua", "RRCN -> YDM (-)", "typed without diacritics", { RRCN: "Rui ro cam nhan", YDM: "Y dinh mua" });
+pt("Chất lượng dịch vụ có tác động cùng chiều đến sự hài lòng".normalize("NFD"), "CLDV -> HL", "decomposed Unicode (NFD) input", { CLDV: "Chất lượng dịch vụ", HL: "Sự hài lòng" });
+pt("H1: Chất lượng dịch vụ có tác động cùng chiều đến sự hài lòng của khách hàng. H2: Sự hài lòng có ảnh hưởng tích cực đến lòng trung thành. H3: Giá cả cảm nhận có ảnh hưởng ngược chiều đến sự hài lòng.",
+  "CLDV -> HL; HL -> LTT; GCCN -> HL (-)", "a pasted paragraph H1 … H2 … H3 …; “sự hài lòng” and “sự hài lòng của khách hàng” are one construct", { HL: "Sự hài lòng của khách hàng" });
+pt("Ảnh hưởng xã hội có ảnh hưởng tích cực đến ý định sử dụng", "AHXH -> YDSD", "a name that starts with the verb (Ảnh hưởng xã hội)", { AHXH: "Ảnh hưởng xã hội" });
+pt("Hiệu quả kỳ vọng tác động tích cực đến ý định hành vi\nNỗ lực kỳ vọng tác động đến ý định hành vi", "HQKV -> YDHV; NLKV -> YDHV", "names ending in “kỳ vọng” keep it", { HQKV: "Hiệu quả kỳ vọng", NLKV: "Nỗ lực kỳ vọng" });
+pt("Ý định mua chịu tác động tích cực của niềm tin\nÝ định mua bị ảnh hưởng bởi giá cả", "NT -> YDM; GC -> YDM", "passive “chịu tác động của”, “bị ảnh hưởng bởi”");
+pt("Rủi ro cảm nhận làm giảm ý định mua\nKhuyến mãi làm tăng ý định mua", "RRCN -> YDM (-); KM -> YDM", "“làm giảm” is negative, “làm tăng” positive");
+pt("Chất lượng dịch vụ càng cao thì sự hài lòng càng cao\nGiá càng cao thì ý định mua càng thấp", "CLDV -> HL; GIA -> YDM (-)", "“càng … thì … càng”");
+pt("Có mối quan hệ cùng chiều giữa niềm tin và ý định mua\nCó mối quan hệ ngược chiều giữa rủi ro và ý định mua", "NT -> YDM; RR -> YDM (-)", "“có mối quan hệ … giữa X và Y”");
+pt("Perceived usefulness positively affects behavioral intention\nPerceived risk has a negative effect on behavioral intention\nTrust influences behavioral intention", "PU -> BI; PR -> BI (-); TRU -> BI", "English phrasing");
+pt("CL -> HL\nCL: Chất lượng dịch vụ\nHL = Sự hài lòng", "CL -> HL", "legend lines after the arrows", { CL: "Chất lượng dịch vụ", HL: "Sự hài lòng" });
+pt("Chất lượng dịch vụ (CL) → Sự hài lòng (HL)\nHL → Lòng trung thành (TT)", "CL -> HL; HL -> TT", "codes in parentheses", { TT: "Lòng trung thành" });
+pt("Giả thuyết H1: Niềm tin (NT) có tác động tích cực đến ý định mua (YD)\nH1a: NT -> YD\n1. cl -> hl\n- GT → HL\n• H5: HL ⇒ YD", "NT -> YD; CL -> HL; GT -> HL; HL -> YD", "“Giả thuyết H1:”, H1a, numbering, bullets, lower-case codes, ⇒");
+pt("PU -> BI : -\nPEOU → PU, BI\nSN -> BI (−)\nPBC -> BI (+)\nHL <- CL", "PU -> BI (-); PEOU -> PU; PEOU -> BI; SN -> BI (-); PBC -> BI; CL -> HL", "sign markers “: -”, “(−)”, “(+)” and a reversed “<-”");
+pt("H3 (−): Nhận thức rủi ro (RR) có tác động tiêu cực (ngược chiều) đến ý định sử dụng ví điện tử (YD).", "RR -> YD (-)", "unicode minus, “(ngược chiều)” and a final full stop", { YD: "Ý định sử dụng ví điện tử" });
+pt("Chất lượng thông tin, chất lượng hệ thống và chất lượng dịch vụ đều tác động tích cực đến sự hài lòng", "CLTT -> HL; CLHT -> HL; CLDV -> HL", "a subject list “A, B và C đều …”");
+pt("CL và GT -> HL", "CL -> HL; GT -> HL", "“và” between codes splits");
+pt("Giá cả và khuyến mãi -> Hài lòng", "GCVKM -> HL", "“và” inside a name does not split", { GCVKM: "Giá cả và khuyến mãi" });
+px = pt("Thu nhập điều tiết Giá cảm nhận → Ý định mua", "GCN -> YDM", "moderator “Z điều tiết X → Y”");
+check(px.m.mods.length === 1 && px.m.mods[0].w === "TN" && px.m.mods[0].from === "GCN" && px.m.mods[0].dir === 1, "…W = TN on GCN → YDM, strengthening");
+for (const [text, label, dir] of [
+  ["Z điều tiết mối quan hệ giữa X và Y theo hướng làm suy yếu", "“mối quan hệ giữa X và Y theo hướng làm suy yếu”", -1],
+  ["Z điều tiết tác động của X lên Y", "“tác động của X lên Y”", 1],
+  ["Mối quan hệ giữa X và Y được điều tiết bởi Z", "“… được điều tiết bởi Z”", 1],
+  ["Z điều tiết tiêu cực X -> Y", "“điều tiết tiêu cực”", -1],
+  ["Z moderates the relationship between X and Y", "English “moderates the relationship between”", 1],
+]) {
+  const x = pq(text);
+  check(x.t === "X -> Y" && x.m.mods.length === 1 && x.m.mods[0].w === "Z" && x.m.mods[0].from === "X" && x.m.mods[0].to === "Y" && x.m.mods[0].dir === dir && !x.bad.length, `moderation ${label} (${x.t}; ${JSON.stringify(x.m.mods)})`);
+}
+px = pt("Sự hài lòng đóng vai trò trung gian trong mối quan hệ giữa chất lượng dịch vụ và lòng trung thành", "CLDV -> HL; HL -> LTT", "mediation sentence → X → M → Y");
+check(api.hypotheses(px.m).some(h => h.mediator === "HL"), "…and the mediation hypothesis follows");
+pt("Trust mediates the relationship between quality and loyalty", "QUA -> TRU; TRU -> LOY", "English mediation");
+pt("X tác động đến Y thông qua M", "X -> M; M -> Y", "“X tác động đến Y thông qua M”");
+px = pq("Mô hình nghiên cứu đề xuất\nCL -> HL\nSự hài lòng tác động đến Sự hài lòng\nX tác động");
+check(px.t === "CL -> HL" && px.bad.length === 3 && px.bad.some(l => l.why === "self"), `lines not understood are listed and skipped, not drawn (${px.bad.map(l => l.line).join(" | ")})`);
+check(api.parseModelText("").cons.length === 0 && api.parseModelText("# ghi chú\n\n// chú thích").lines.length === 0, "empty text and comment lines give nothing");
+px = pq("H1: Chất lượng dịch vụ (CL) tác động cùng chiều đến Sự hài lòng (HL)\nH2 (-): Rủi ro cảm nhận (RR) → HL");
+const hp = api.hypotheses(px.m);
+check(hp[0].text === "Chất lượng dịch vụ (CL) có tác động cùng chiều đến sự hài lòng (HL)." && hp[1].text === "Rủi ro cảm nhận (RR) có tác động ngược chiều đến sự hài lòng (HL).", `hypotheses read back the pasted ones (${hp.map(h => h.text).join(" | ")})`);
+const fixed = api.modelFromParsed(px.r, { names: { 2: "Rủi ro cảm nhận khi mua online" }, codes: { 0: "SQ", 2: "1bad" } });
+check(fixed.nodes.map(n => n.id).join() === "SQ,HL,RRCNK" && fixed.nodes[2].name === "Rủi ro cảm nhận khi mua online" && api.edgesToText(fixed) === "SQ -> HL\nRRCNK -> HL (-)", `corrections typed in the preview: name, code, a malformed code replaced (${fixed.nodes.map(n => n.id)})`);
+const clash = api.modelFromParsed(api.parseModelText("A -> B"), { codes: { 1: "A" } });
+check(clash.nodes.map(n => n.id).join() === "A,A2", "two constructs given the same code stay apart");
+const baseM = { nodes: [], edges: [] };
+api.parseArrows("CL -> HL", baseM).edges.forEach(e => api.addEdge(baseM, e.from, e.to, e.sign));
+baseM.nodes.find(n => n.id === "HL").name = "Sự hài lòng";
+const addedK = api.mergeInto(baseM, api.modelFromParsed(api.parseModelText("Sự hài lòng → Lòng trung thành (TT)\nGT -> HL")));
+check(addedK === 2 && baseM.nodes.map(n => n.id).join() === "CL,HL,TT,GT" && api.edgesToText(baseM) === "CL -> HL\nHL -> TT\nGT -> HL", `“Thêm vào mô hình đang có” matches by name and code (${api.edgesToText(baseM).replace(/\n/g, "; ")})`);
+check(api.isCodeTok("PEOU") && api.isCodeTok("eWOM") && api.isCodeTok("ĐCM") && !api.isCodeTok("Hài lòng") && !api.isCodeTok("Trust"), "code tokens: PEOU, eWOM, ĐCM yes; names no");
+check(api.nameKey("Sự hài lòng của khách hàng") === api.nameKey("sự hài lòng") && api.nameKey("Sự hài lòng") === "hai long", "name key ignores “sự”, “của …”, case and accents");
+check(api.codeFrom("Sự hài lòng") === "HL" && api.codeFrom("Sự hài lòng của khách hàng") === "HL" && api.codeFrom("Lòng trung thành") === "LTT", "codes skip a leading “sự” and a “của …” qualifier");
+check(api.splitHyps("H1: A → B. H2: B → C; H3 (-): C → D").length === 3, "a paragraph with H1, H2, H3 is split into lines");
+
+// ---- 2. data file → constructs → arrows ----
+const pls = new Function(`${block(plsSrc, "data")} return { parseCSV, buildTable, pickHeaderRow, suggestGroups, fromDrawing };`)();
+const csvs = [
+  "STT,GIOITINH,CL1,CL2,CL3,CL4,GT1,GT2,GT3,HL1,HL2,HL3,TT1,TT2,TT3\n1,Nam,4,4,5,4,3,3,4,4,4,5,4,4,4",
+  '"Dấu thời gian","Giới tính","Mức độ đồng ý [CL1. Nhân viên lịch sự]","Mức độ đồng ý [CL2. Phục vụ nhanh]","Mức độ đồng ý [CL3. Giá hợp lý]","Mức độ đồng ý [HL1. Tôi hài lòng]","Mức độ đồng ý [HL2. Sẽ quay lại]","Mức độ đồng ý [HL3. Giới thiệu bạn bè]"\n"2026/10/01 9:00:00",Nữ,4,5,4,5,5,4',
+  "Phiếu khảo sát;;;;\nPU1;PU2;PU3;PEOU1;PEOU2;BI_1;BI_2\n5;4;4;3;3;4;5",
+  "HL1. Tôi hài lòng\tHL2. Đáp ứng mong đợi\tTT1. Sẽ quay lại\tTT2. Sẽ giới thiệu\tTuổi\n4\t5\t4\t4\t22",
+  "Q1,Q2,Q3,Câu 4\n1,2,3,4",
+];
+for (const c of csvs) {
+  const mine = (() => { const raw = api.parseCSV(c), hi = api.pickHeaderRow(raw); return api.suggestGroups(api.buildTable(raw, hi).header); })();
+  const theirs = (() => { const raw = pls.parseCSV(c), hi = pls.pickHeaderRow(raw); return pls.suggestGroups(pls.buildTable(raw, hi).header); })();
+  check(JSON.stringify(mine) === JSON.stringify(theirs), `data file groups like the PLS-SEM tool: ${mine.map(g => `${g.code}(${g.items.length})`).join(" ") || "none"}`);
+}
+const groupsOf = c => { const raw = api.parseCSV(c); return api.suggestGroups(api.buildTable(raw, api.pickHeaderRow(raw)).header); };
+const g1 = groupsOf(csvs[0]), g2 = groupsOf(csvs[1]);
+check(g1.map(g => g.code).join() === "CL,GT,HL,TT" && g1[0].items.length === 4, "CL1…CL4, GT1…GT3 → CL (4), GT, HL, TT; STT and GIOITINH left out");
+check(g2.map(g => g.code + g.items.length).join() === "CL3,HL3", "Google Forms “Mức độ đồng ý [CL1. …]” headers read as CL1…");
+check(api.guessDV(g1) === "TT" && api.guessDV(groupsOf(csvs[2])) === "BI" && api.guessDV([{ code: "A", items: [] }, { code: "B", items: [] }]) === "B" && api.guessDV([]) === null, "dependent guess: an outcome-like code (TT, BI), else the last construct");
+let dm = api.modelFromGroups(g1, { dv: "TT", names: { HL: "Sự hài lòng" } });
+check(api.edgesToText(dm) === "CL -> TT\nGT -> TT\nHL -> TT" && dm.nodes.find(n => n.id === "CL").items === 4 && dm.nodes.find(n => n.id === "HL").name === "Sự hài lòng", "no mediator: every independent → the dependent; item counts and names kept");
+dm = api.modelFromGroups(g1, { dv: "TT", med: ["HL"] });
+check(api.edgesToText(dm) === "CL -> HL\nGT -> HL\nHL -> TT", "with a mediator: independents → mediator → dependent");
+dm = api.modelFromGroups(g1, { dv: "TT", med: ["HL", "TT"], direct: true });
+check(api.edgesToText(dm) === "CL -> HL\nGT -> HL\nHL -> TT\nCL -> TT\nGT -> TT" && api.hypotheses(dm).filter(h => h.mediator).length === 2, "direct effects on request; the dependent cannot also be a mediator");
+check(api.modelFromGroups(g1, {}).edges.length === 0 && api.modelFromGroups(g1, { dv: "ZZ" }).edges.length === 0, "no dependent chosen yet: boxes, no arrows");
+const dpk = api.packModel(dm), dback = api.unpackModel(dpk);
+check(dback.nodes.find(n => n.id === "CL").items === 4 && api.packModel(dback) === dpk, "item counts from the data survive the link and this browser's storage");
+check(api.modelWarnings({ nodes: [{ id: "A", name: "A", items: 2 }, { id: "B", name: "B", items: 4 }], edges: [{ from: "A", to: "B", sign: 1 }] }, { itemsOf: n => n.items ?? null }).some(w => w.kind === "items" && w.ids.join() === "A"), "a construct with 2 items in the data gets the fewer-than-3 warning");
+const fd = pls.fromDrawing(dpk, g1.map(g => g.code));
+check(fd.count === dm.edges.length && !fd.notes.length && fd.text.split("\n")[0] === "CL -> HL", `PLS-SEM reads the saved model: ${fd.count} paths, codes match the column prefixes`);
+check(/localStorage\.getItem\('vm-state-v2'\)/.test(plsSrc) && /localStorage\.setItem\('vm-state-v2'/.test(src), "hand-off: this tool saves vm-state-v2 and the PLS-SEM tool reads it");
+check(/id="vm-pls" href="\/cong-cu\/pls-sem\/"/.test(src) && /\$\('vm-pls'\)\.addEventListener\('click'.*flushSave\(\)\}\);/.test(src), "“Chạy PLS-SEM với mô hình này” saves before leaving");
+
+// ---- 3. templates from the scale library ----
+const libKey = new Map(all.map(x => [`${x.s.slug}:${x.c.code}`, x.c]));
+const byKey = k => { const c = libKey.get(k); return c ? { nameVi: c.nameVi, code: c.code } : null; };
+const conceptSlugs = new Set(readdirSync("src/content/khai-niem").filter(f => f.endsWith(".json")).map(f => f.slice(0, -5)));
+check(["tam", "tpb", "utaut2", "ecm", "servqual", "servperf", "acsi"].every(id => api.TEMPLATES.some(t => t.id === id)), "templates: TAM, TPB, UTAUT2, ECM, SERVQUAL, SERVPERF, customer satisfaction");
+for (const t of api.TEMPLATES) {
+  const keysOk = t.nodes.every(([k]) => k === null || libKey.has(k)), m = api.templateModel(t, byKey);
+  const linked = m.nodes.filter(n => n.key).length, wantLinked = t.nodes.filter(([k]) => k).length;
+  check(keysOk && linked === wantLinked && m.nodes.length === t.nodes.length && api.backEdges(m).size === 0 && m.edges.length >= m.nodes.length - 1 && !api.modelWarnings(m, { itemsOf: n => null }).some(w => w.kind === "lone"),
+    `template ${t.name}: ${m.nodes.length} constructs (${linked} from the library), ${m.edges.length} arrows, no loop, nothing unconnected`);
+  check(scales.some(s => s.slug === t.scale) && (t.concepts || []).every(c => conceptSlugs.has(c)), `template ${t.name}: its scale page and concept pages exist`);
+}
+const tamT = api.templateModel(api.TEMPLATES.find(t => t.id === "tam"), byKey);
+check(api.edgesToText(tamT) === "PEOU -> PU\nPU -> BI\nPEOU -> BI" && tamT.nodes.every(n => n.key && n.key.startsWith("tam:")), "TAM template: PEOU → PU → BI with library keys");
+const acsi = api.templateModel(api.TEMPLATES.find(t => t.id === "acsi"), byKey);
+check(acsi.edges.filter(e => e.sign < 0).length === 2 && acsi.nodes.find(n => n.id === "KV").key === null && acsi.nodes.find(n => n.id === "HL").key === "ecm-tiep-tuc-su-dung:SAT", "customer-satisfaction template: complaints arrows negative, expectation free-named, satisfaction from the library");
+check(new URLSearchParams(api.kitQuery(tamT).slice(1)).get("c") === "tam:PEOU,tam:PU,tam:BI", "a template opens in the questionnaire kit with its scales");
+
+// ---- 4. auto-layout ----
+const M7 = t => t.length * 7;
+const arr2 = (m, dir) => { api.autoArrange(m, { measure: M7, dir }); return new Map(m.nodes.map(n => [n.id, api.boxOf(n, { measure: M7 })])); };
+const noOverlap = bx => { const v = [...bx.values()]; return !v.some((p, i) => v.some((q, j) => i < j && api.overlaps(p, q, 8))); };
+const ut = api.templateModel(api.TEMPLATES.find(t => t.id === "utaut2"), byKey);
+let ub = arr2(ut);
+const xs0 = id => ub.get(id).x;
+check(["PE", "EE", "SI", "FC", "HM", "PV", "HT"].every(id => xs0(id) === 0) && xs0("BI") === 300 && xs0("USE") === 600, "UTAUT2: independents in the first column, BI next, USE last, columns 300 px apart");
+check(noOverlap(ub) && ut.nodes.every(n => n.x % 20 === 0 && n.y % 20 === 0), "UTAUT2: on the grid, boxes at least 8 px apart");
+const col0 = ["PE", "EE", "SI", "FC", "HM", "PV", "HT"].map(id => ub.get(id)).sort((a, b) => a.y - b.y), gaps = col0.slice(1).map((b, i) => b.y - col0[i].y - col0[i].h);
+check(Math.max(...gaps) - Math.min(...gaps) <= 20 && Math.min(...gaps) >= 20, `evenly spaced column (gaps ${[...new Set(gaps)].join(", ")} px)`);
+const midY = b => b.y + b.h / 2, c0 = (Math.min(...col0.map(b => b.y)) + Math.max(...col0.map(b => b.y + b.h))) / 2;
+check(Math.abs(midY(ub.get("BI")) - c0) <= 30, "a single-box column is centred on the tallest column");
+check(api.routeAll(ut, ub).every(r => r.hits === 0), "UTAUT2: no arrow passes through a box");
+for (const t of api.TEMPLATES) { const m = api.templateModel(t, byKey), bx = arr2(m); check(noOverlap(bx) && api.routeAll(m, bx).every(r => r.hits === 0), `template ${t.name} laid out: no overlapping boxes, no arrow through a box`, true); }
+const cross = (m, bx) => { const seg = m.edges.map(e => [bx.get(e.from), bx.get(e.to)]).map(([a, b]) => [a.x + a.w, a.y + a.h / 2, b.x, b.y + b.h / 2]); let k = 0;
+  for (let i = 0; i < seg.length; i++) for (let j = i + 1; j < seg.length; j++) { const [a, b] = [seg[i], seg[j]]; if (a[0] === b[0] && a[2] === b[2] && (a[1] - b[1]) * (a[3] - b[3]) < 0) k++; } return k; };
+const crossM = { nodes: [], edges: [] };
+api.parseArrows("A -> Y2\nB -> Y1\nC -> Y2\nY1 -> Z\nY2 -> Z", crossM).edges.forEach(e => api.addEdge(crossM, e.from, e.to, e.sign));
+check(cross(crossM, arr2(crossM)) === 0, "boxes are ordered so that arrows do not cross when they need not");
+const modM = pq("X -> Y\nZ -> Y\nThu nhập điều tiết X → Y").m, modB = arr2(modM);
+check(modB.get("TN").y + modB.get("TN").h <= Math.min(modB.get("X").y, modB.get("Y").y) && noOverlap(modB), "a moderator with no arrows of its own sits above the arrow it moderates");
+const tb = arr2(api.templateModel(api.TEMPLATES.find(t => t.id === "tam"), byKey), "TB");
+check(tb.get("PEOU").y < tb.get("PU").y && tb.get("PU").y < tb.get("BI").y && noOverlap(tb), "“Xếp dọc”: layers become rows, top to bottom");
+const tbb = api.boundsOf([...tb.values()]), lrb = api.boundsOf([...arr2(api.templateModel(api.TEMPLATES.find(t => t.id === "tam"), byKey)).values()]);
+check(api.fitView(tbb, 336, 540, 16).k >= 1 && api.fitView(lrb, 336, 540, 16).k < 0.5, `on a 390 px phone the vertical TAM reads at ${Math.round(api.fitView(tbb, 336, 540, 16).k * 100)}% (left-to-right: ${Math.round(api.fitView(lrb, 336, 540, 16).k * 100)}%)`);
+const ub2 = arr2(api.templateModel(api.TEMPLATES.find(t => t.id === "utaut2"), byKey), "TB");
+check(noOverlap(ub2) && ub2.get("USE").y > ub2.get("BI").y, "UTAUT2 vertical: no overlaps, USE below BI");
+
+// ---- 5. picture: OCR lines → box labels ----
+const ocr = api.ocrLabels([
+  { text: "Chắt lượng dịch vụ", conf: 81, bbox: { x0: 37, y0: 55, x1: 254, y1: 72 } },
+  { text: "(", conf: 20, bbox: { x0: 332, y0: 129, x1: 360, y1: 143 } },
+  { text: "Giá cả cảm nhận", conf: 96, bbox: { x0: 63, y0: 183, x1: 228, y1: 202 } },
+  { text: "lG]", conf: 30, bbox: { x0: 344, y0: 204, x1: 360, y1: 218 } },
+  { text: "Sự hài lòng", conf: 88, bbox: { x0: 487, y0: 232, x1: 558, y1: 247 } },
+  { text: "H5 (3)", conf: 70, bbox: { x0: 725, y0: 229, x1: 765, y1: 243 } },
+  { text: "Lòng trung thành", conf: 91, bbox: { x0: 873, y0: 243, x1: 1017, y1: 262 } },
+  { text: "của khách hàng", conf: 90, bbox: { x0: 471, y0: 254, x1: 619, y1: 273 } },
+  { text: "Hình ảnh thương hiệu", conf: 95, bbox: { x0: 31, y0: 313, x1: 258, y1: 332 } },
+  { text: "Rủi ro cảm nhận.", conf: 89, bbox: { x0: 67, y0: 445, x1: 223, y1: 458 } },
+]);
+check(ocr.map(l => l.text).join(" | ") === "Chắt lượng dịch vụ | Giá cả cảm nhận | Sự hài lòng của khách hàng | Lòng trung thành | Hình ảnh thương hiệu | Rủi ro cảm nhận", `OCR: two lines of one box merged; H labels, brackets and stray letters dropped (${ocr.map(l => l.text).join(" | ")})`);
+check(Math.abs(ocr[2].cx - 545) < 30 && Math.abs(ocr[2].cy - 252) < 10, "OCR: each label keeps the centre of its box in the picture");
+check(api.ocrLabels([]).length === 0 && api.ocrLabels([{ text: "HL", conf: 99, bbox: { x0: 0, y0: 0, x1: 9, y1: 9 } }]).length === 0, "OCR: nothing read, nothing proposed");
+
+// ---- page hooks: tool_run once on the first model, exports and copy picked up by src/scripts/track.ts ----
+const trackSrc = readFileSync("src/scripts/track.ts", "utf8");
+const runIds = [...src.matchAll(/id="([\w-]+-run)"/g)].map(m => m[1]);
+check(runIds.join() === "vm-model-run" && /<button type="button" id="vm-model-run" hidden/.test(src) && /function markRun\(\)\{if\(ranOnce\)return;ranOnce=true;const b=\$\('vm-model-run'\);if\(b\)b\.click\(\)\}/.test(src), "one hidden *-run button, clicked once when a model is first made (tool_run)");
+check(/button\[id\$="-run"\]/.test(trackSrc) && /id\.endsWith\("-run"\)/.test(trackSrc), "track.ts still sends tool_run for a *-run button");
+const expPats = [...trackSrc.matchAll(/\[\/(.+?)\/, "(\w+)"\]/g)].map(m => [new RegExp(m[1]), m[2]]);
+for (const [id, fmt] of [["vm-png", "png"], ["vm-svg", "svg"], ["vm-link", "link"], ["vm-copy-h", "copy"], ["vm-copy-hs", "copy"]]) check(src.includes(`id="${id}"`) && expPats.find(([re]) => re.test(id))?.[1] === fmt, `export button ${id} is tracked as ${fmt}`);
+check(/scale=Math\.min\(6,Math\.max\(3,Math\.ceil\(2400\/x\.width\)\)\)/.test(src) && /font-family="\$\{esc\(\$\('vm-font'\)\.value\)\}"/.test(src), "PNG at least 2400 px wide (300 dpi print), chosen font in the exported figure");
+}
 console.log(`
 ${passed} passed, ${failed} failed`);
 if (failed) process.exit(1);

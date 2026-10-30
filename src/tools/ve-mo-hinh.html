@@ -1,7 +1,7 @@
 <style>
-  .vm-app{--vm-w:min(1440px,calc(100vw - 32px));width:var(--vm-w);margin-left:calc(50% - var(--vm-w) / 2);display:grid;gap:16px;grid-template-columns:minmax(0,1fr);grid-template-areas:"main" "pal" "side";align-items:start}
-  @media (min-width:768px){.vm-app{grid-template-columns:240px minmax(0,1fr);grid-template-areas:"pal main" "side side"}}
-  @media (min-width:1200px){.vm-app{grid-template-columns:250px minmax(0,1fr) 330px;grid-template-areas:"pal main side"}}
+  .vm-app{--vm-w:min(1440px,calc(100vw - 32px));width:var(--vm-w);margin-left:calc(50% - var(--vm-w) / 2);display:grid;gap:16px;grid-template-columns:minmax(0,1fr);grid-template-areas:"start" "main" "side" "pal";align-items:start}
+  @media (min-width:768px){.vm-app{grid-template-columns:240px minmax(0,1fr);grid-template-areas:"start start" "pal main" "side side"}}
+  @media (min-width:1200px){.vm-app{grid-template-columns:250px minmax(0,1fr) 330px;grid-template-areas:"start start start" "pal main side"}}
   .vm-app .vm-pal{grid-area:pal;padding:14px;gap:12px}
   .vm-app .vm-main{grid-area:main;padding:10px;gap:8px}
   .vm-app .vm-side{grid-area:side;padding:16px;gap:14px}
@@ -142,9 +142,130 @@
   #vm-mga-f{display:flex;flex-direction:column;gap:6px} #vm-mga-f[hidden]{display:none}
   .vm-ctl{list-style:none;margin:0;padding:0;font-size:.84rem;line-height:1.5}
   .vm-side .result .num{font-size:1.6rem}
+  /* quick start: paste, data file, templates, picture */
+  .vm-app .vm-start{grid-area:start;padding:14px;gap:12px}
+  .vm-start-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 12px}
+  .vm-start-h strong{font-size:1rem}
+  .vm-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  @media (min-width:640px){.vm-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .vm-tab{display:flex;align-items:center;gap:8px;min-height:48px;padding:6px 12px;border:1px solid var(--border-strong);border-radius:10px;background:var(--surface);color:var(--foreground);font:inherit;font-size:.9rem;font-weight:600;text-align:left;cursor:pointer;line-height:1.25}
+  .vm-tab small{display:block;font-weight:400;font-size:.74rem;color:var(--muted-foreground)}
+  .vm-tab svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .vm-tab:hover{border-color:var(--accent)}
+  .vm-tab[aria-selected=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+  .vm-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .vm-pane{display:flex;flex-direction:column;gap:10px}
+  .vm-pane[hidden],#vm-start-body[hidden]{display:none}
+  .vm-app #vm-paste{min-height:7.5rem;font-size:.92rem;line-height:1.5}
+  .vm-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .vm-row .btn{min-height:44px}
+  .vm-two{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+  @media (min-width:900px){.vm-two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  .vm-sum{margin:0;font-size:.9rem;font-weight:600}
+  .vm-cons{width:100%;border-collapse:collapse;font-size:.86rem}
+  .vm-cons th{text-align:left;font-weight:600;font-size:.76rem;color:var(--muted-foreground);padding:2px 4px}
+  .vm-cons td{padding:3px 4px;vertical-align:middle}
+  .vm-app .vm-cons input{width:100%;min-width:0;padding:6px 8px;min-height:40px}
+  .vm-cons td.c{width:5.5rem}
+  .vm-cons .role{font-size:.76rem;color:var(--muted-foreground);white-space:nowrap}
+  .vm-cons .guess input{border-color:var(--warm)}
+  .vm-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;font-size:.84rem;line-height:1.45;max-height:16rem;overflow:auto}
+  .vm-lines li{display:flex;gap:6px}
+  .vm-lines .ok{color:var(--accent);font-weight:700;flex:none}
+  .vm-lines .no{color:var(--warm);font-weight:700;flex:none}
+  .vm-lines .src{color:var(--muted-foreground)}
+  .vm-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .vm-chip{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 10px;border:1px solid var(--border-strong);border-radius:22px;background:var(--surface);font-size:.86rem;cursor:pointer}
+  .vm-chip input{margin:0;width:20px;height:20px;accent-color:var(--accent)}
+  .vm-chip:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+  .vm-chip .n{color:var(--muted-foreground);font-size:.76rem}
+  .vm-fs{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .vm-fs legend{font-weight:600;font-size:.9rem;padding:0;margin-bottom:6px}
+  .vm-tpls{display:grid;gap:8px;grid-template-columns:minmax(0,1fr)}
+  @media (min-width:640px){.vm-tpls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1100px){.vm-tpls{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .vm-tpl{border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;background:var(--surface)}
+  .vm-tpl b{font-size:.95rem}
+  .vm-tpl p{margin:0;font-size:.8rem;line-height:1.45;color:var(--muted-foreground)}
+  .vm-tpl .btn{min-height:44px;margin-top:auto}
+  .vm-tpl .lk{font-size:.78rem;line-height:1.5}
+  .vm-auto{margin:0;padding-left:18px;font-size:.82rem;line-height:1.55}
+  .vm-ocr{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .vm-ocr li{display:flex;gap:8px;align-items:center}
+  .vm-ocr input[type=checkbox]{width:22px;height:22px;flex:none;accent-color:var(--accent)}
+  .vm-app .vm-ocr input[type=text]{flex:1;min-width:0;padding:6px 8px;min-height:40px}
+  .vm-bg{pointer-events:none}
+  .vm-empty .vm-go{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0 8px;pointer-events:auto}
+  .vm-empty .vm-go button{min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--accent);background:var(--surface);color:var(--accent);font:inherit;font-weight:600;cursor:pointer}
+  .vm-empty .vm-go button:hover{background:var(--accent);color:var(--accent-foreground)}
+  .vm-hact{display:flex;flex-wrap:wrap;gap:8px}
+  .vm-hint summary{cursor:pointer;font-size:.8rem;color:var(--muted-foreground);padding:6px 0}
+  .vm-hint small{display:block;font-size:.78rem;line-height:1.5}
+  .vm-hact .btn{min-height:44px}
+  /* bigger tap targets */
+  .vm-app input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent)}
+  .vm-app label.check{min-height:32px;align-items:center}
+  @media (pointer:coarse){.vm-app label.check{min-height:44px}.vm-zoom .vm-tb.ic{min-width:44px}.vm-inline .btn{min-height:44px}}
+  @media (max-width:640px){.vm-tools{flex-wrap:wrap;overflow:visible}.vm-grp{flex-wrap:wrap}}
 </style>
 
 <div class="vm-app" id="vm-app">
+  <section class="panel vm-start" id="vm-start" aria-labelledby="vm-start-title">
+    <div class="vm-start-h"><strong id="vm-start-title">Bắt đầu từ thứ bạn đã có</strong>
+      <button type="button" class="vm-mini" id="vm-start-toggle" aria-expanded="true" aria-controls="vm-start-body">Thu gọn</button></div>
+    <div class="vm-tabs" role="tablist" aria-label="Cách tạo mô hình">
+      <button type="button" class="vm-tab" role="tab" id="vm-tab-text" data-tab="text" aria-selected="true" aria-controls="vm-pane-text"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 11h16M4 16h10"/><path d="M17 15l3 3-3 3"/></svg><span>Dán giả thuyết<small>chữ trong đề cương</small></span></button>
+      <button type="button" class="vm-tab" role="tab" id="vm-tab-data" data-tab="data" aria-selected="false" aria-controls="vm-pane-data" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg><span>Tải dữ liệu<small>CSV, Excel, Google Forms</small></span></button>
+      <button type="button" class="vm-tab" role="tab" id="vm-tab-tpl" data-tab="tpl" aria-selected="false" aria-controls="vm-pane-tpl" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="3" y="14" width="7" height="6" rx="1.5"/><rect x="14" y="9" width="7" height="6" rx="1.5"/><path d="M10 7h2v10h-2M12 12h2"/></svg><span>Mô hình mẫu<small>TAM, TPB, UTAUT2…</small></span></button>
+      <button type="button" class="vm-tab" role="tab" id="vm-tab-img" data-tab="img" aria-selected="false" aria-controls="vm-pane-img" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg><span>Ảnh mô hình<small>làm nền để vẽ đè</small></span></button>
+    </div>
+    <div id="vm-start-body">
+      <div class="vm-pane" role="tabpanel" id="vm-pane-text" aria-labelledby="vm-tab-text">
+        <div class="vm-two">
+          <div class="field" style="gap:6px"><label for="vm-paste">Dán giả thuyết hoặc sơ đồ dạng chữ, mỗi dòng một quan hệ</label>
+            <textarea id="vm-paste" spellcheck="false" placeholder="H1: Chất lượng dịch vụ → Sự hài lòng&#10;H2 (-): Rủi ro cảm nhận tác động ngược chiều đến Ý định mua&#10;CL, GT, NT -> HL -> TT&#10;Thu nhập điều tiết Giá cảm nhận → Ý định mua"></textarea>
+            <details class="vm-hint"><summary>Các cách viết công cụ hiểu</summary><small>Mũi tên <code>A -&gt; B</code>, <code>A → B</code>, <code>A, B -&gt; C -&gt; D</code>; “X tác động (cùng chiều / ngược chiều) đến Y”, “X có ảnh hưởng tích cực đến Y”, “Y chịu tác động của X”, “M đóng vai trò trung gian giữa X và Y”, “Z điều tiết X → Y”; tiền tố <code>H1:</code>, <code>H2 (-):</code>; mã trong ngoặc “Sự hài lòng (HL)” hoặc dòng “HL: Sự hài lòng”; tiếng Anh như “X positively affects Y”, “W moderates the relationship between X and Y”.</small></details></div>
+          <div id="vm-paste-out" aria-live="polite"><p class="vm-note">Công cụ đọc ngay khi bạn dán và cho xem nó hiểu thế nào trước khi vẽ: tên khái niệm, mã viết tắt, chiều tác động. Sửa tên, mã ở bảng này hoặc sửa chữ bên trái.</p></div>
+        </div>
+        <div class="vm-row"><button type="button" class="btn" id="vm-paste-go" disabled>Vẽ mô hình</button><button type="button" class="btn ghost" id="vm-paste-add" hidden>Thêm vào mô hình đang có</button><button type="button" class="btn ghost" id="vm-paste-ex">Điền ví dụ</button></div>
+      </div>
+      <div class="vm-pane" role="tabpanel" id="vm-pane-data" aria-labelledby="vm-tab-data" hidden>
+        <div class="vm-two">
+          <div class="field" style="gap:6px"><label for="vm-file">File dữ liệu khảo sát (.csv, .xlsx, file tải về từ Google Forms)</label>
+            <input type="file" id="vm-file" accept=".csv,.tsv,.txt,.xlsx,.xls,text/csv">
+            <small>Công cụ chỉ đọc dòng tiêu đề, ngay trong trình duyệt, không gửi file đi đâu. Các cột cùng tiền tố như HL1, HL2, HL3 được gộp thành khái niệm HL (giống công cụ <a class="text-accent underline" href="/cong-cu/cronbach-alpha/">Cronbach's Alpha</a> và <a class="text-accent underline" href="/cong-cu/pls-sem/">PLS-SEM</a>); cột kiểu “Mức độ đồng ý [HL1. …]” của Google Forms cũng đọc được.</small>
+            <div class="vm-row"><button type="button" class="btn ghost" id="vm-data-ex">Thử với dữ liệu mẫu</button></div>
+            <p id="vm-data-msg" class="vm-note" aria-live="polite"></p></div>
+          <div id="vm-data-out"></div>
+        </div>
+      </div>
+      <div class="vm-pane" role="tabpanel" id="vm-pane-tpl" aria-labelledby="vm-tab-tpl" hidden>
+        <p class="vm-note" style="margin:0">Một cú bấm là có mô hình gốc với thang đo có trích dẫn trong <a class="text-accent underline" href="/thang-do/">Thư viện thang đo</a>; sau đó thêm, bớt khái niệm cho đề tài của bạn.</p>
+        <div class="vm-tpls" id="vm-tpls"></div>
+      </div>
+      <div class="vm-pane" role="tabpanel" id="vm-pane-img" aria-labelledby="vm-tab-img" hidden>
+        <div class="vm-two">
+          <div class="field" style="gap:6px"><label for="vm-img">Ảnh mô hình đã có (chụp từ đề cương, PowerPoint; PNG hoặc JPG)</label>
+            <input type="file" id="vm-img" accept="image/*">
+            <div class="vm-row" id="vm-img-ctl" hidden>
+              <label for="vm-img-op" style="font-size:.84rem">Độ đậm ảnh nền</label><input type="range" id="vm-img-op" min="10" max="90" value="35" style="flex:1;min-width:120px">
+              <button type="button" class="btn ghost" id="vm-img-ocr">Đọc tên các ô trong ảnh</button>
+              <button type="button" class="btn ghost" id="vm-img-del">Bỏ ảnh nền</button>
+            </div>
+            <p id="vm-img-msg" class="vm-note" aria-live="polite"></p></div>
+          <div>
+            <ul class="vm-auto">
+              <li><b>Tự động:</b> ảnh nằm mờ dưới khung vẽ để bạn đặt ô và nối mũi tên đè lên. Bấm “Đọc tên các ô” để công cụ đọc chữ trong ảnh (Tesseract, chạy trên máy bạn, tải khoảng 3 MB lần đầu) và đề xuất các ô ở đúng chỗ.</li>
+              <li><b>Không tự động:</b> nhận ra mũi tên nào nối ô nào. Chữ đọc được có thể sai dấu; bạn duyệt danh sách, rồi tự nối mũi tên (kéo chấm tròn bên phải ô). Ảnh không được lưu vào link hay trình duyệt.</li>
+            </ul>
+            <div id="vm-ocr-out" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <button type="button" id="vm-model-run" hidden tabindex="-1" aria-hidden="true">Tạo mô hình</button>
+
   <aside class="panel vm-pal" aria-label="Thêm khái niệm">
     <div class="field"><label for="vm-search">Thư viện khái niệm</label>
       <input id="vm-search" type="search" placeholder="Ví dụ: hữu ích; dễ sử dụng; ý định" autocomplete="off" aria-controls="vm-hits">
@@ -192,9 +313,11 @@
           <marker id="vm-ah-k" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
           <marker id="vm-ah-s" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="11" markerHeight="11" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
         </defs>
-        <g id="vm-vp"><g id="vm-elayer"></g><g id="vm-nlayer"></g><g id="vm-llayer"></g><g id="vm-olayer"></g></g>
+        <g id="vm-vp"><g id="vm-bglayer" class="vm-bg"></g><g id="vm-elayer"></g><g id="vm-nlayer"></g><g id="vm-llayer"></g><g id="vm-olayer"></g></g>
       </svg>
-      <div class="vm-empty" id="vm-empty"><div><b>Khung vẽ trống.</b><br>Nhấp đúp (chạm hai lần) vào đây để thêm khái niệm,<br>kéo một khái niệm từ thư viện vào, hoặc bấm “Nạp ví dụ TAM”.</div></div>
+      <div class="vm-empty" id="vm-empty"><div><b>Khung vẽ trống. Có mô hình trong một phút:</b>
+        <div class="vm-go"><button type="button" data-go="text">Dán giả thuyết</button><button type="button" data-go="data">Tải dữ liệu</button><button type="button" data-go="tpl">Chọn mô hình mẫu</button></div>
+        hoặc nhấp đúp (chạm hai lần) vào khung để thêm từng khái niệm.</div></div>
       <div class="vm-zoom" role="group" aria-label="Thu phóng">
         <button type="button" class="vm-tb ic" id="vm-zout" title="Thu nhỏ (−)" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></button>
         <button type="button" class="vm-tb" id="vm-z100" title="Về 100%" aria-label="Mức thu phóng, bấm để về 100%">100%</button>
@@ -209,7 +332,8 @@
       </div>
       <div class="vm-menu" id="vm-menu" role="menu" hidden></div>
     </div>
-    <p class="vm-help" id="vm-keys"><b>Chuột:</b> nhấp đúp chỗ trống để thêm khái niệm · kéo ô để di chuyển · kéo chấm tròn bên phải ô sang ô khác để nối · bấm nhãn <b>+/−</b> trên mũi tên để đổi chiều · kéo chỗ trống để di chuyển khung, Shift + kéo để chọn nhiều, lăn chuột để thu phóng · chuột phải để mở menu. <b>Mô hình mở rộng:</b> nút <b>Điều tiết</b> rồi kéo từ W thả vào giữa mũi tên X → Y; chọn nhiều ô rồi bấm <b>Bậc cao</b> để gộp thành khái niệm bậc cao (hoặc kéo ô vào ô bậc cao); <b>Kiểm soát</b> thêm biến kiểm soát (viền đứt); so sánh đa nhóm ở cột bên phải. <b>Điện thoại:</b> chạm hai lần để thêm, giữ lâu để mở menu, hai ngón để thu phóng. <b>Bàn phím:</b> <kbd>Tab</kbd> qua các ô, <kbd>←↑↓→</kbd> di chuyển, <kbd>Enter</kbd> đổi tên, <kbd>C</kbd> rồi Tab tới ô đích và <kbd>Enter</kbd> để nối, <kbd>M</kbd> chọn mũi tên để điều tiết, <kbd>H</kbd> gộp các ô đang chọn thành bậc cao, <kbd>Delete</kbd> xoá.</p>
+    <details class="vm-help-d"><summary class="vm-help" style="cursor:pointer;font-weight:600">Cách thao tác trên khung vẽ (chuột, điện thoại, bàn phím)</summary>
+    <p class="vm-help" id="vm-keys"><b>Chuột:</b> kéo ô bằng chuột hoặc ngón tay · nhấp đúp chỗ trống để thêm khái niệm · kéo ô để di chuyển · kéo chấm tròn bên phải ô sang ô khác để nối · bấm nhãn <b>+/−</b> trên mũi tên để đổi chiều · kéo chỗ trống để di chuyển khung, Shift + kéo để chọn nhiều, lăn chuột để thu phóng · chuột phải để mở menu. <b>Mô hình mở rộng:</b> nút <b>Điều tiết</b> rồi kéo từ W thả vào giữa mũi tên X → Y; chọn nhiều ô rồi bấm <b>Bậc cao</b> để gộp thành khái niệm bậc cao (hoặc kéo ô vào ô bậc cao); <b>Kiểm soát</b> thêm biến kiểm soát (viền đứt); so sánh đa nhóm ở cột bên phải. <b>Điện thoại:</b> chạm hai lần để thêm, giữ lâu để mở menu, hai ngón để thu phóng. <b>Bàn phím:</b> <kbd>Tab</kbd> qua các ô, <kbd>←↑↓→</kbd> di chuyển, <kbd>Enter</kbd> đổi tên, <kbd>C</kbd> rồi Tab tới ô đích và <kbd>Enter</kbd> để nối, <kbd>M</kbd> chọn mũi tên để điều tiết, <kbd>H</kbd> gộp các ô đang chọn thành bậc cao, <kbd>Delete</kbd> xoá.</p></details>
   </section>
 
   <aside class="panel vm-side" aria-label="Giả thuyết, cỡ mẫu và cảnh báo">
@@ -217,6 +341,8 @@
       <div class="vm-sec-h"><strong>Giả thuyết nghiên cứu</strong><span id="vm-hcount" class="text-muted-foreground" style="font-size:.8rem"></span></div>
       <ol id="vm-hyps" class="vm-hyps"></ol>
       <label class="check"><input type="checkbox" id="vm-med" checked> Thêm giả thuyết trung gian khi có chuỗi X → M → Y</label>
+      <div class="vm-hact"><button type="button" class="btn ghost" id="vm-copy-hs">Chép giả thuyết</button><a class="btn" id="vm-pls" href="/cong-cu/pls-sem/">Chạy PLS-SEM với mô hình này</a></div>
+      <small class="vm-note" id="vm-pls-note" style="margin:0">Mô hình được lưu trong trình duyệt. Ở trang PLS-SEM, tải file dữ liệu rồi bấm “Lấy mô hình từ Vẽ mô hình”; mã khái niệm (HL, TT…) cần trùng tiền tố tên cột (HL1, HL2…).</small>
     </div>
     <div id="vm-ctrlbox"></div>
     <div class="field" style="gap:6px" id="vm-mgabox">
@@ -236,6 +362,8 @@
       <strong style="font-size:.9rem">Hình xuất ra</strong>
       <label class="check"><input type="checkbox" id="vm-showcode" checked> Hiện mã viết tắt trong ô</label>
       <label class="check"><input type="checkbox" id="vm-showh" checked> Ghi H1, H2… trên mũi tên</label>
+      <label for="vm-font" style="font-size:.84rem">Phông chữ trong hình</label>
+      <select id="vm-font"><option value="Arial, Helvetica, sans-serif">Arial (như SmartPLS)</option><option value="'Times New Roman', Times, serif">Times New Roman (như luận văn)</option></select>
       <small class="text-muted-foreground">Chú thích dưới hình trong luận văn: “Hình 2.x. Mô hình nghiên cứu đề xuất. Nguồn: Tác giả đề xuất”.</small>
     </div>
     <details id="vm-textdet">
@@ -313,7 +441,10 @@
   function codeFrom(name){
     const raw=String(name).trim();
     if(/^[A-Za-z][A-Za-z0-9_]{0,7}$/.test(raw)&&raw===raw.toUpperCase())return raw;
-    const w=normText(raw).split(' ').filter(Boolean);
+    // "Sự hài lòng của khách hàng" → HL: a leading "sự" and a "của …" qualifier are not part of the code.
+    let w=normText(raw).split(' ').filter(Boolean);
+    const ci=w.indexOf('cua');if(ci>0)w=w.slice(0,ci);
+    if(w.length>1&&(w[0]==='su'||w[0]==='the'))w=w.slice(1);
     if(!w.length)return 'K';
     const c=w.length===1?w[0].slice(0,3):w.map(x=>x[0]).join('').slice(0,5);
     return /^[0-9]/.test(c)?'K'+c.toUpperCase():c.toUpperCase();
@@ -381,15 +512,12 @@
     model.nodes.forEach(n=>{if(!state.get(n.id))dfs(n.id)});
     return back;
   }
-  // Longest-path layers on the acyclic part: sources at 0, each construct one column right of its furthest cause.
+  // Longest-path layers on the acyclic part: every independent (no arrow in) in the first column, each other
+  // construct one column right of its furthest cause, so independents → mediators → dependent read left to right.
   function layersOf(model){
     const back=backEdges(model), fwd=model.edges.filter((e,i)=>!back.has(i));
     const layer=new Map(model.nodes.map(n=>[n.id,0]));
     for(let pass=0;pass<model.nodes.length;pass++){let moved=false;for(const e of fwd){const v=layer.get(e.from)+1;if(v>layer.get(e.to)){layer.set(e.to,v);moved=true}}if(!moved)break}
-    // Pull a pure cause right next to its earliest effect, so a lone moderator-free source is not stranded far left.
-    const outs=new Map(model.nodes.map(n=>[n.id,[]]));fwd.forEach(e=>outs.get(e.from).push(e.to));
-    const ins=new Map(model.nodes.map(n=>[n.id,0]));fwd.forEach(e=>ins.set(e.to,ins.get(e.to)+1));
-    model.nodes.forEach(n=>{if(!ins.get(n.id)&&outs.get(n.id).length){const t=Math.min(...outs.get(n.id).map(x=>layer.get(x)))-1;if(t>layer.get(n.id))layer.set(n.id,t)}});
     return {layer,back};
   }
   function wrapText(text,maxW,measure){
@@ -538,9 +666,21 @@
     for(let r=0;r<40;r++)for(let i=-r;i<=r;i++)for(const [dx,dy] of [[i,-r],[i,r],[-r,i],[r,i]]){const px=snapTo(x+dx*GRID*2),py=snapTo(y+dy*GRID*2);if(fits(px,py))return [px,py]}
     return [snapTo(x),snapTo(y)];
   }
-  // The layered layout as positions on the canvas ("Xếp tự động").
+  // The layered layout as positions on the canvas ("Xếp tự động"): columns 300 px apart, the boxes of a column evenly
+  // stepped on the grid and centred on the tallest column; o.dir 'TB' puts the layers in rows instead (narrow screens).
+  // A moderator with no arrows of its own is left out of the columns and placed above the arrow it moderates.
   function autoArrange(model,o={}){
-    const L=layout(model,o);model.nodes.forEach(n=>{const b=L.box.get(n.id);n.x=snapTo(b.x);n.y=snapTo(b.y)});
+    const L=layout(model,o),bh=id=>L.box.get(id).h,GAP=34;
+    const pureMod=new Set((model.mods||[]).map(m=>m.w).filter(w=>!model.edges.some(e=>e.from===w||e.to===w)));
+    const cols=L.cols.map(c=>c.filter(id=>!pureMod.has(id))).filter(c=>c.length);
+    if(o.dir==='TB'){
+      const rowW=cols.map(c=>c.length*BOX_W+44*(c.length-1)),W=Math.max(0,...rowW);let y=0;
+      cols.forEach((c,ci)=>{let x=snapTo((W-rowW[ci])/2);const hh=Math.max(...c.map(bh));c.forEach(id=>{const n=nodeOf(model,id);n.x=x;n.y=y+snapTo((hh-bh(id))/2);x+=BOX_W+44});y+=Math.ceil((hh+100)/GRID)*GRID});
+    }else{
+      const steps=cols.map(c=>c.map(id=>Math.ceil((bh(id)+GAP)/GRID)*GRID)),tot=steps.map(s=>s.reduce((a,v)=>a+v,0)-GAP),H=Math.max(0,...tot);
+      cols.forEach((c,ci)=>{let y=snapTo((H-tot[ci])/2);c.forEach((id,k)=>{const n=nodeOf(model,id);n.x=ci*(BOX_W+124);n.y=y;y+=steps[ci][k]})});
+    }
+    pureMod.forEach(id=>{const n=nodeOf(model,id);if(n){n.x=0;n.y=0}});
     // A moderator with no arrows of its own sits above the middle of the arrow it moderates, as in thesis figures.
     const placed=new Set();
     for(const m of model.mods||[]){
@@ -737,9 +877,10 @@
   function toggleMgaPath(model,i){const e=model.edges[i];if(!model.mga||!e)return false;const k=e.from+'>'+e.to,s=new Set(model.mga.skip||[]);s.has(k)?s.delete(k):s.add(k);model.mga.skip=[...s];return !s.has(k)}
   // Compact JSON for the link and this browser:
   // {v:3, n:[[id, name, key|0, x, y, ext?]], e:[[from, to, -1?]], mo:[[w, from, to, -1?]], g:{v, l:[…], x:[…]}}
-  // ext is {h:'rr'|'rf'} for a HOC, {c:1} for a control variable, {p:HOC id} for a LOC. Version 1 and 2 links still load.
+  // ext is {h:'rr'|'rf'} for a HOC, {c:1} for a control variable, {p:HOC id} for a LOC, plus i: the number of items of a construct read from a data file. Version 1 and 2 links still load.
   function packModel(model){
-    const o={v:3,n:model.nodes.map(n=>{const a=[n.id,n.name,n.key||0];const ext=isHoc(n)?{h:n.mode==='rf'?'rf':'rr'}:isCtrl(n)?{c:1}:n.parent?{p:n.parent}:null;
+    const o={v:3,n:model.nodes.map(n=>{const a=[n.id,n.name,n.key||0];let ext=isHoc(n)?{h:n.mode==='rf'?'rf':'rr'}:isCtrl(n)?{c:1}:n.parent?{p:n.parent}:null;
+      if(!n.key&&!n.type&&Number.isInteger(n.items)&&n.items>0)ext={...(ext||{}),i:n.items};
       if(hasPos(n))a.push(Math.round(n.x),Math.round(n.y));else if(ext)a.push(null,null);if(ext)a.push(ext);return a}),
       e:model.edges.map(e=>e.sign<0?[e.from,e.to,-1]:[e.from,e.to])};
     if(model.mods&&model.mods.length)o.mo=model.mods.map(m=>m.dir<0?[m.w,m.from,m.to,-1]:[m.w,m.from,m.to]);
@@ -753,7 +894,7 @@
       if(!id||!name||m.nodes.some(n=>n.id===String(id)))continue;
       const n={id:String(id),name:String(name),key:key&&isKey(key)?String(key):null};
       if(Number.isFinite(x)&&Number.isFinite(y)){n.x=x;n.y=y}
-      if(ext&&typeof ext==='object'){if(ext.h){n.type='hoc';n.mode=ext.h==='rf'?'rf':'rr';n.key=null}else if(ext.c){n.type='ctrl';n.key=null}else if(ext.p)n.parent=String(ext.p)}
+      if(ext&&typeof ext==='object'){if(ext.h){n.type='hoc';n.mode=ext.h==='rf'?'rf':'rr';n.key=null}else if(ext.c){n.type='ctrl';n.key=null}else if(ext.p)n.parent=String(ext.p);if(!n.key&&!n.type&&Number.isInteger(ext.i)&&ext.i>0&&ext.i<1000)n.items=ext.i}
       m.nodes.push(n);
     }
     for(const a of Array.isArray(o&&o.e)?o.e:[])if(Array.isArray(a)){const [f,t,s]=a;if(m.nodes.some(n=>n.id===f)&&m.nodes.some(n=>n.id===t))addEdge(m,f,t,s)}
@@ -772,7 +913,315 @@
       canUndo(){return h.at>0},canRedo(){return h.at<h.list.length-1}};
     return h;
   }
+  // ---- entry paths (pure; unit-checked by scripts/check-model.mjs) ----
+  // 1. Text a student already has in the proposal → constructs and arrows. One relation per line (a pasted paragraph
+  // "H1: … H2: …" is split first): "H1: Chất lượng dịch vụ → Sự hài lòng", "CL -> HL", "CL, GT, NT -> HL -> TT",
+  // "H2 (-): Rủi ro cảm nhận tác động ngược chiều đến Ý định", "X có ảnh hưởng tích cực đến Y", "Y chịu tác động của X",
+  // "X càng cao thì Y càng cao", "M đóng vai trò trung gian giữa X và Y", "Z điều tiết X → Y", "Z điều tiết mối quan
+  // hệ giữa X và Y", legends "CL: Chất lượng dịch vụ" or "Chất lượng dịch vụ (CL)", and the same in English.
+  const fold=s=>String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d');
+  const fw=w=>fold(w).replace(/^[^a-z0-9]+|[^a-z0-9]+$/g,'');
+  function isCodeTok(s){s=String(s).trim();return (/^\p{L}[\p{L}\p{N}_]{0,9}$/u.test(s)&&s===s.toUpperCase()&&/\p{Lu}/u.test(s))||/^\p{Ll}{1,2}\p{Lu}[\p{Lu}\p{N}_]{1,8}$/u.test(s)}
+  // Matching key of a name: no accents, no leading "sự", nothing after "của" ("… của khách hàng").
+  function nameKey(s){let k=normText(s).replace(/^(su|the) /,'');const i=k.indexOf(' cua ');if(i>0)k=k.slice(0,i);return k}
+  function capFirst(s){s=String(s).trim();return s.charAt(0).toLocaleUpperCase('vi')+s.slice(1)}
+  function initialsOf(name){const w=normText(name).split(' ').filter(Boolean);if(w.length>1&&(w[0]==='su'||w[0]==='the'))w.shift();return w.map(x=>x[0]).join('').toUpperCase()}
+  const SIGN_NEG=['nguoc chieu','nghich chieu','tieu cuc','am','negative','negatively','nghich bien','lam giam','lam suy yeu','suy yeu','weaken','weakens','weakening','weakened'];
+  const SIGN_POS=['cung chieu','thuan chieu','tich cuc','duong','positive','positively','dong bien','tang cuong','lam tang','strengthen','strengthens','strengthening'];
+  function signOf(s){const f=' '+normText(s)+' ';if(SIGN_NEG.some(x=>f.includes(' '+x+' ')))return -1;if(SIGN_POS.some(x=>f.includes(' '+x+' ')))return 1;return 0}
+  // Words between a subject and its verb ("X có sự tác động") or before an object ("đến các …") that are not part of a name.
+  const SUBJ_TAIL=/\s+(?:có sự|có một|có mối|có thể|có|sẽ|đều|cũng|đồng thời|thực sự|sự|một|những|mối|được kỳ vọng|được dự đoán|được giả định|được|là một|là yếu tố|là nhân tố|là|dự kiến|has|have|had|will|would|can|may|also|both|positively|negatively|significantly|directly|strongly|a|an|positive|negative|significant)$/iu;
+  const OBJ_HEAD=/^(?:đến|tới|lên|vào|với|đối với|on|to|towards?|the|các|những|một cách|cùng chiều|ngược chiều|thuận chiều|nghịch chiều|tích cực|tiêu cực|mạnh mẽ|mạnh|đáng kể|trực tiếp|gián tiếp|có ý nghĩa thống kê|có ý nghĩa|significantly|positively|negatively|directly|strongly)\s+/iu;
+  const OBJ_TAIL=/\s+(?:một cách\s+)?(?:có ý nghĩa thống kê|có ý nghĩa|đáng kể|significantly|tích cực|tiêu cực|cùng chiều|ngược chiều|positively|negatively|trực tiếp|gián tiếp)$/iu;
+  const loopTrim=(s,re)=>{let p;s=String(s).trim();do{p=s;s=s.replace(re,'').trim()}while(s!==p);return s};
+  const trimSubj=s=>loopTrim(s,SUBJ_TAIL),trimObj=s=>loopTrim(loopTrim(s,OBJ_HEAD),OBJ_TAIL);
+  // Verb phrases in folded words; a trailing -1 marks a verb that is negative by itself.
+  const VERBS=[['tac','dong'],['anh','huong'],['tac','dung'],['quan','he'],['lien','he'],['tuong','quan'],['du','bao'],['du','doan'],['thuc','day'],['lam','tang'],['lam','giam',-1],['nang','cao'],['cai','thien'],['kim','ham',-1],['can','tro',-1],['han','che',-1],['dan','den'],['dan','toi'],['gop','phan'],['influences'],['influence'],['affects'],['affect'],['impacts'],['impact'],['effect'],['effects'],['predicts'],['predict'],['increases'],['decreases',-1],['reduces',-1],['drives'],['enhances'],['leads','to'],['contributes','to']];
+  const CONNECT=new Set(['den','toi','len','vao','voi','on','to','toward','towards']);
+  const ARROW_RE=/\s*(?:-{1,3}>|={1,2}>|→|⟶|⇒|➔|➝|➞|—>|–>|>{1,2})\s*/;
+  const BACK_RE=/\s*(?:<-{1,3}|←)\s*/;
+  const AND_RE=/\s+(?:và|and)\s+/iu;
+  // "Tên (CODE)" → {name, code}; "CODE" → {code}; quotes and stray punctuation dropped.
+  function stripCode(tok){
+    const t=String(tok).replace(/[“”"«»‘’]/g,'').replace(/^[\s\-–—•*:.,;]+|[\s:.,;]+$/g,'').replace(/\s*\((?:H\s?\d+[a-z]?|[+\-−–])\)$/i,'').trim();
+    const m=t.match(/^(.*?)\s*[([]\s*(\p{L}[\p{L}\p{N}_]{0,9})\s*[)\]]$/u);
+    if(m&&isCodeTok(m[2]))return m[1].trim()?{name:m[1].trim(),code:m[2]}:{code:m[2]};
+    if(isCodeTok(t))return {code:t};
+    if(/^[a-z]{1,4}\d?$/.test(t))return {code:t.toUpperCase()};
+    return t?{name:t}:{};
+  }
+  // "A, B và C" → three names; "A và B" only when both look like codes or are already known (a name may contain "và").
+  function splitList(s,known=()=>false){
+    const parts=String(s).replace(/^(?:cả|both)\s+/iu,'').split(/\s*[,;]\s*|\s+&\s+|\s+\+\s+/).map(x=>x.trim()).filter(Boolean),out=[];
+    for(const p of parts){const vs=p.split(AND_RE).map(x=>x.trim()).filter(Boolean);
+      if(vs.length>1&&(parts.length>1||vs.every(v=>{const c=stripCode(v);return (c.code&&!c.name)||known(v)})))out.push(...vs);else out.push(p)}
+    return out;
+  }
+  // Two constructs in "giữa X và Y", "của X lên Y", "X → Y", "X đến Y" (after a word like "điều tiết" or "trung gian").
+  function pairOf(s){
+    s=String(s).replace(/^(?:(?:trong|cho|của|đối với|in|on|of)\s+)?(?:(?:mối\s+)?(?:quan hệ|liên hệ)|tác động|ảnh hưởng|the (?:relationship|effect|link|association|impact)|relationship|effect)\s+/iu,'').trim();
+    let m=s.split(ARROW_RE);if(m.length===2)return [m[0],m[1]];
+    m=s.match(/^(?:giữa|between)\s+(.+?)\s+(?:và|and|với)\s+(.+)$/iu);if(m)return [m[1],m[2]];
+    m=s.match(/^(?:của|of)?\s*(.+?)\s+(?:lên|đến|tới|vào|đối với|on|to)\s+(.+)$/iu);if(m)return [m[1],m[2]];
+    return null;
+  }
+  // Splits a pasted paragraph so that every "H1:", "H2a." starts its own line.
+  function splitHyps(text){return String(text||'').normalize('NFC').replace(/\r/g,'').replace(/([.;:])[ \t]+(?=(?:(?:giả thuyết|gia thuyet|hypothesis)\s+)?H\s?\d+[a-z]?\s*(?:\([^)]{0,14}\))?\s*[:.)–—-]\s)/giu,'$1\n').split('\n')}
+  const DIR_RE=/(?:\s+theo hướng|\s+một cách)?\s+(tăng cường|làm mạnh thêm|làm suy yếu|làm yếu đi|làm giảm|tích cực|tiêu cực|cùng chiều|ngược chiều|positively|negatively)$/iu;
+  function parseLine(raw,known){
+    let s=String(raw).replace(/\s+/g,' ').trim();
+    if(!s||/^(#|\/\/)/.test(s))return {kind:'skip'};
+    s=s.replace(/\s+#.*$/,'').replace(/^[-*•+▪●○◦►–—]\s*/,'').replace(/^\(?\d{1,2}[.)]\s+/,'').trim();
+    let h=null,sign=0;
+    const hm=s.match(/^(?:(giả thuyết|gia thuyet|hypothesis)\s+)?(H\s?\d+[a-z]?(?:\.\d+)?|\d{1,2})\s*(?:\(\s*([+\-−–])\s*\)|([+\-−–])(?=\s*[:.)]))?\s*[:.)–—-]\s*/iu);
+    if(hm&&(/^h/i.test(hm[2])||hm[1])){h='H'+hm[2].replace(/\s/g,'').replace(/^h/i,'');if(hm[3]||hm[4])sign=/[+]/.test(hm[3]||hm[4])?1:-1;s=s.slice(hm[0].length).trim()}
+    const tm=s.match(/\s*(?:\(\s*([+\-−–])\s*\)|\(\s*(ngược chiều|cùng chiều|tiêu cực|tích cực|âm|dương|negative|positive)\s*\)|:\s*([+\-−–])|\s([+\-−–]))\s*[.;]?$/iu);
+    if(tm){const v=tm[1]||tm[2]||tm[3]||tm[4];sign=/^\+|cùng|tích|dương|positive/i.test(v)?1:-1;s=s.slice(0,tm.index).trim()}
+    s=s.replace(/[.;]+$/,'').trim();
+    if(!s)return {kind:'error',h};
+    const words=s.split(' '),F=words.map(fw);
+    const at=(ph,from=1)=>{for(let i=from;i+ph.length<=F.length;i++)if(ph.every((p,k)=>F[i+k]===p))return i;return -1};
+    // Moderation: "W điều tiết …", "W moderates …", "… được điều tiết bởi W".
+    let by=at(['dieu','tiet','boi']),byLen=3;if(by<0){by=at(['moderated','by']);byLen=2}
+    let wi=at(['dieu','tiet']),wLen=2;if(wi<0){wi=[at(['moderates']),at(['moderate'])].filter(i=>i>0).sort((a,b)=>a-b)[0]??-1;wLen=1}
+    if(by>0||wi>0){
+      let W,rest;
+      if(by>0){W=words.slice(by+byLen).join(' ');rest=words.slice(0,by).join(' ').replace(/\s+(?:được|bị|is|are|was|were)$/iu,'')}
+      else{W=trimSubj(words.slice(0,wi).join(' ').replace(/\s+(?:đóng vai trò|có vai trò|là biến|là)$/iu,''));rest=words.slice(wi+wLen).join(' ')}
+      let dir=sign;const lead=rest.match(/^(?:theo hướng\s+)?(tăng cường|làm suy yếu|làm giảm|tích cực|tiêu cực|ngược chiều|cùng chiều|positively|negatively)\s+/iu);
+      if(lead){dir=dir||signOf(lead[1])||1;rest=rest.slice(lead[0].length)}
+      const tail=rest.match(DIR_RE);if(tail){dir=dir||signOf(tail[1])||(/suy yếu|yếu đi|giảm/i.test(tail[1])?-1:1);rest=rest.slice(0,tail.index)}
+      const pr=pairOf(rest);if(!W||!pr)return {kind:'error',h,why:'mod'};
+      return {kind:'mod',h,w:W,from:trimObj(pr[0]),to:trimObj(pr[1]),dir:dir<0?-1:1};
+    }
+    // Mediation: "M đóng vai trò trung gian (trong mối quan hệ) giữa X và Y", "M mediates the relationship between X and Y".
+    let mi=at(['trung','gian']),mLen=2;if(mi<0){mi=at(['mediates']);mLen=1}
+    if(mi>0){
+      const M=trimSubj(words.slice(0,mi).join(' ').replace(/\s+(?:đóng vai trò|có vai trò|giữ vai trò|là biến|là|biến|plays? (?:a|the) (?:\w+ )?role|acts as(?: a)?)$/iu,'').replace(/\s+(?:đóng vai trò|có vai trò|là)$/iu,''));
+      const pr=pairOf(words.slice(mi+mLen).join(' '));
+      if(!M||!pr)return {kind:'error',h,why:'med'};
+      return {kind:'chain',h,sign:1,groups:[[trimObj(pr[0])],[M],[trimObj(pr[1])]]};
+    }
+    // Arrows: "A -> B", "A, B -> C -> D", "B <- A".
+    if(ARROW_RE.test(s)||BACK_RE.test(s)){
+      let parts=s.split(ARROW_RE);if(parts.length<2)parts=s.split(BACK_RE).reverse();
+      if(parts.length<2||parts.some(p=>!p.trim()))return {kind:'error',h};
+      parts=parts.map(p=>{const m=p.match(/\s*\((ngược chiều|cùng chiều|tiêu cực|tích cực|âm|dương)\)\s*$/iu);if(m){sign=sign||signOf(m[1]);return p.slice(0,m.index)}return p});
+      return {kind:'edge',h,sign:sign||1,groups:parts.map(p=>splitList(p,known))};
+    }
+    // "X càng cao thì Y càng cao" (and "càng thấp … càng thấp", "càng cao … càng thấp").
+    const cg=s.match(/^(.+?)\s+càng\s+(\S+)\s+thì\s+(.+?)\s+càng\s+(\S+)$/iu);
+    if(cg){const up=w=>!/^(thấp|ít|giảm|kém|yếu|nhỏ)$/iu.test(w);return {kind:'edge',h,sign:sign||(up(cg[2])===up(cg[4])?1:-1),groups:[splitList(trimSubj(cg[1]),known),splitList(cg[3],known)]}}
+    // "Có mối quan hệ (cùng chiều) giữa X và Y".
+    const gm=s.match(/^(?:có\s+)?(?:(?:mối\s+)?(?:quan hệ|liên hệ|tương quan)|tác động)\s+(.*?)\s*giữa\s+(.+?)\s+(?:và|với)\s+(.+)$/iu);
+    if(gm)return {kind:'edge',h,sign:sign||signOf(gm[1])||1,groups:[[gm[2]],[gm[3]]]};
+    // "Y chịu (sự) tác động (tích cực) của X", "Y bị ảnh hưởng bởi X", "Y is influenced by X".
+    for(let i=1;i<F.length;i++){
+      const vn=['chiu','bi','duoc'].includes(F[i])&&(['tac','anh'].includes(F[i+1])||(F[i+1]==='su'&&['tac','anh'].includes(F[i+2])));
+      const en=['influenced','affected','impacted','predicted','driven','determined'].includes(F[i])&&F[i+1]==='by';
+      if(!vn&&!en)continue;
+      const after=words.slice(i+1),k=after.map(fw).findIndex((w,j)=>j>0&&['cua','tu','boi','by'].includes(w));if(k<0)continue;
+      const y=trimSubj(words.slice(0,i).join(' ')),x=trimObj(after.slice(k+1).join(' '));
+      if(y&&x)return {kind:'edge',h,sign:sign||signOf(after.slice(0,k).join(' '))||1,groups:[splitList(x,known),splitList(y,known)]};
+    }
+    // "X (có) tác động (cùng chiều) đến Y", "X positively affects Y", "X làm tăng Y", "X tác động đến Y thông qua M".
+    for(let i=1;i<F.length;i++)for(const v of VERBS){
+      const ph=v.filter(x=>typeof x==='string');if(!ph.every((p,k)=>F[i+k]===p))continue;
+      const before=words.slice(0,i).join(' '),subj=trimSubj(before),after=words.slice(i+ph.length);
+      if(!subj||!after.length)continue;
+      let ti=after.map(fw).findIndex((w,j)=>(w==='thong'&&fw(after[j+1]||'')==='qua')||w==='through'||w==='via'),tLen=ti>=0&&fw(after[ti])==='thong'?2:1;
+      const main=ti>0?after.slice(0,ti):after,AF=main.map(fw),c=AF.findIndex(w=>CONNECT.has(w));
+      const mods=c>=0?main.slice(0,c).join(' '):'',obj=trimObj(c>=0?main.slice(c+1).join(' '):main.join(' '));
+      if(!obj)continue;
+      const sg=sign||(typeof v[v.length-1]==='number'?v[v.length-1]:0)||signOf(mods)||signOf(before.slice(subj.length))||signOf(main.join(' ').slice(-40))||1;
+      if(ti>0){const M=trimObj(after.slice(ti+tLen).join(' '));if(M)return {kind:'chain',h,sign:sg,groups:[splitList(subj,known),[M],splitList(obj,known)]}}
+      return {kind:'edge',h,sign:sg,groups:[splitList(subj,known),splitList(obj,known)]};
+    }
+    // Legend: "CL: Chất lượng dịch vụ", "CL = …", "CL – …"; or a lone "Chất lượng dịch vụ (CL)".
+    const lg=s.match(/^(\p{L}[\p{L}\p{N}_]{0,9})\s*(?::|=|–|—|-)\s*(.+)$/u);
+    if(lg&&isCodeTok(lg[1])&&!/^H\d/.test(lg[1]))return {kind:'legend',h,code:lg[1],name:stripCode(lg[2]).name||lg[2].trim()};
+    const lone=stripCode(s);if(lone.code&&lone.name)return {kind:'legend',h,code:lone.code,name:lone.name};
+    return {kind:'error',h};
+  }
+  function parseModelText(text){
+    const cons=[],notes=[],lines=[],edges=[],mods=[];
+    const byCode=c=>cons.find(x=>x.code&&x.code.toUpperCase()===String(c).toUpperCase());
+    const byName=n=>{const k=nameKey(n);return k?cons.find(x=>x.named&&nameKey(x.name)===k):null};
+    const known=t=>{const s=stripCode(t);return !!((s.code&&byCode(s.code))||(s.name&&byName(s.name)))};
+    function resolve(tok){
+      const t=stripCode(tok);if(!t.name&&!t.code)return null;
+      if(t.name&&t.code){let c=byCode(t.code)||byName(t.name);
+        if(c){if(!c.named){c.name=capFirst(t.name);c.named=true}if(!c.codeGiven&&!byCode(t.code)){c.code=t.code;c.codeGiven=true}return c}
+        c={name:capFirst(t.name),code:t.code,codeGiven:true,named:true};cons.push(c);return c}
+      if(t.code){let c=byCode(t.code);if(c)return c;c={name:t.code,code:t.code,codeGiven:true,named:false};cons.push(c);return c}
+      let c=byName(t.name);if(c)return c;
+      c={name:capFirst(t.name),code:null,codeGiven:false,named:true};cons.push(c);return c;
+    }
+    const raw=splitHyps(text),parsed=raw.map(l=>parseLine(l,known));
+    // Legends first, so "CL -> HL" written before "CL: Chất lượng dịch vụ" still gets the full name.
+    parsed.forEach(p=>{if(p.kind==='legend')resolve(`${p.name} (${p.code})`)});
+    // Re-read arrow lines now that the legend codes are known ("A và B" may split).
+    parsed.forEach((p,i)=>{if(p.kind==='edge')parsed[i]=parseLine(raw[i],known)});
+    parsed.forEach((p,i)=>{
+      const line=raw[i].trim(),n=i+1;
+      if(p.kind==='skip')return;
+      if(p.kind==='legend'){lines.push({n,line,ok:true,kind:'legend',c:byCode(p.code)});return}
+      if(p.kind==='error'){lines.push({n,line,ok:false,why:p.why});return}
+      const add=(a,b,sg)=>{const had=edges.find(e=>e.a===a&&e.b===b);if(had){if(!had.implied)had.sign=sg;delete had.implied;return had}const e={a,b,sign:sg,h:p.h,n};edges.push(e);return e};
+      if(p.kind==='edge'||p.kind==='chain'){
+        const gs=p.groups.map(g=>g.map(resolve).filter(Boolean));if(gs.some(g=>!g.length)){lines.push({n,line,ok:false});return}
+        const made=[];let self=false;
+        for(let k=0;k+1<gs.length;k++)for(const a of gs[k])for(const b of gs[k+1]){if(a===b){self=true;continue}made.push(add(a,b,k===0||p.kind!=='chain'?p.sign:1))}
+        if(!made.length){lines.push({n,line,ok:false,why:self?'self':''});return}
+        lines.push({n,line,ok:true,kind:p.kind==='chain'&&gs.length===3&&gs[1].length===1?'med':'edge',edges:made,h:p.h});return}
+      if(p.kind==='mod'){const w=resolve(p.w),x=resolve(p.from),y=resolve(p.to);if(!w||!x||!y||w===x||w===y||x===y){lines.push({n,line,ok:false,why:'mod'});return}
+        if(!edges.some(e=>e.a===x&&e.b===y))edges.push({a:x,b:y,sign:1,n,implied:true});
+        mods.push({w,a:x,b:y,dir:p.dir,h:p.h,n});lines.push({n,line,ok:true,kind:'mod',w,x,y,dir:p.dir});return}
+    });
+    // A bare code (CL) and a full name used elsewhere (Chất lượng dịch vụ) are one construct when the code is the name's initials.
+    for(const c of cons.filter(x=>!x.named)){
+      const up=c.code.toUpperCase(),hits=cons.filter(x=>x.named&&!x.codeGiven&&(initialsOf(x.name)===up||(up.length>=2&&initialsOf(x.name).startsWith(up))));
+      if(hits.length!==1)continue;const t=hits[0];
+      t.code=c.code;t.codeGiven=true;t.guess=true;
+      edges.forEach(e=>{if(e.a===c)e.a=t;if(e.b===c)e.b=t});mods.forEach(m=>['w','a','b'].forEach(f=>{if(m[f]===c)m[f]=t}));
+      lines.forEach(l=>['c','w','x','y'].forEach(f=>{if(l[f]===c)l[f]=t}));
+      cons.splice(cons.indexOf(c),1);notes.push(`Hiểu ${t.code} là “${t.name}” (chữ cái đầu). Sửa ở bảng bên dưới nếu không đúng.`);
+    }
+    // Merging can leave a loop on one construct or a duplicate arrow.
+    for(let i=edges.length-1;i>=0;i--){const e=edges[i];if(e.a===e.b||edges.findIndex(x=>x.a===e.a&&x.b===e.b)<i)edges.splice(i,1)}
+    const taken=new Set(cons.filter(c=>c.code).map(c=>c.code.toUpperCase()));
+    cons.forEach(c=>{if(!c.code){c.code=uniqueCode(codeFrom(c.name),taken);taken.add(c.code.toUpperCase())}});
+    // The tool numbers H1…Hn in arrow order; say so when the student's own numbers would change.
+    const direct=edges.filter(e=>!e.implied),moved=direct.filter((e,i)=>e.h&&/^H\d+$/.test(e.h)&&+e.h.slice(1)!==i+1);
+    if(moved.length)notes.push(`Công cụ đánh số H1, H2… theo thứ tự mũi tên, nên ${moved.map(e=>e.h).join(', ')} trong văn bản sẽ mang số khác. Đổi thứ tự bằng nút ↑ ở danh sách giả thuyết.`);
+    const bare=cons.filter(c=>!c.named);
+    if(bare.length)notes.push(`Chưa có tên đầy đủ cho ${bare.map(c=>c.code).join(', ')}: điền vào bảng bên dưới, hoặc thêm dòng “${bare[0].code}: tên khái niệm”.`);
+    return {cons,edges,mods,lines,notes};
+  }
+  // The parsed text as a model. o.names / o.codes: corrections typed in the preview, by construct index.
+  function modelFromParsed(r,o={}){
+    const m={nodes:[],edges:[]},idOf=new Map(),taken=new Set();
+    r.cons.forEach((c,i)=>{const name=String((o.names&&o.names[i])||c.name).replace(/\s+/g,' ').trim()||c.code;
+      let code=String((o.codes&&o.codes[i])||c.code).replace(/\s+/g,'');if(!/^\p{L}[\p{L}\p{N}_]{0,9}$/u.test(code))code=codeFrom(name);
+      code=uniqueCode(code,taken);taken.add(code.toUpperCase());m.nodes.push({id:code,name:capFirst(name),key:null});idOf.set(c,code)});
+    r.edges.forEach(e=>addEdge(m,idOf.get(e.a),idOf.get(e.b),e.sign));
+    r.mods.forEach(x=>addMod(m,idOf.get(x.w),idOf.get(x.a),idOf.get(x.b),x.dir));
+    return tidy(m);
+  }
+  // Adds a model's constructs and arrows to another, matching constructs by code or by name; returns the arrows added.
+  function mergeInto(model,add){
+    const map=new Map();
+    for(const n of add.nodes){const had=model.nodes.find(x=>x.id.toUpperCase()===n.id.toUpperCase())||model.nodes.find(x=>nameKey(x.name)===nameKey(n.name));
+      if(had){map.set(n.id,had.id);continue}const nn=addNode(model,n.name,n.key,n.id);if(n.items)nn.items=n.items;map.set(n.id,nn.id)}
+    let k=0;for(const e of add.edges)if(addEdge(model,map.get(e.from),map.get(e.to),e.sign)==='added')k++;
+    for(const x of add.mods||[])addMod(model,map.get(x.w),map.get(x.from),map.get(x.to),x.dir);
+    tidy(model);return k;
+  }
+
+  // 2. A data file → constructs from item-name prefixes (HL1, HL2… → HL), then arrows once the dependent is known.
+  // Dependent guess: the last construct whose code reads like an outcome, otherwise the last one in the file.
+  const DV_HINT=['YD','YDM','YDSD','YDTT','YDHV','QD','QDM','QDMH','HV','HVM','HVSD','BI','INT','PI','CI','UB','USE','LOY','TT','LTT','TTH','HL','SHL','SAT','CS','KQ','HQ','DG','DV','Y'];
+  function guessDV(groups){if(!groups.length)return null;const hint=groups.filter(g=>DV_HINT.includes(g.code.toUpperCase()));return (hint.length?hint[hint.length-1]:groups[groups.length-1]).code}
+  // All independents → each mediator → the dependent (no mediator: all → dependent); o.direct adds independents → dependent.
+  function modelFromGroups(groups,o={}){
+    const m={nodes:[],edges:[]},names=o.names||{},dv=o.dv,med=(o.med||[]).filter(c=>c!==dv);
+    groups.forEach(g=>{const n=addNode(m,names[g.code]||g.code,null,g.code);n.items=g.items.length});
+    if(!dv||!m.nodes.some(n=>n.id===dv))return m;
+    const iv=m.nodes.map(n=>n.id).filter(id=>id!==dv&&!med.includes(id)&&!(o.skip||[]).includes(id));
+    if(med.length){iv.forEach(a=>med.forEach(b=>addEdge(m,a,b)));med.forEach(b=>addEdge(m,b,dv));if(o.direct)iv.forEach(a=>addEdge(m,a,dv))}
+    else iv.forEach(a=>addEdge(m,a,dv));
+    return m;
+  }
+
+  // 3. One-click templates from the scale library. Each node: [library key, short code, name when not the library's].
+  const TEMPLATES=[
+    {id:'tam',name:'TAM',full:'Mô hình chấp nhận công nghệ',cite:'Davis (1989)',scale:'tam',
+      nodes:[['tam:PEOU'],['tam:PU'],['tam:BI']],edges:'PEOU -> PU\nPU -> BI\nPEOU -> BI',concepts:['nhan-thuc-de-su-dung','nhan-thuc-su-huu-ich','y-dinh-su-dung']},
+    {id:'tpb',name:'TPB',full:'Thuyết hành vi có kế hoạch',cite:'Ajzen (1991)',scale:'tpb',
+      nodes:[['tpb:ATT'],['tpb:SN'],['tpb:PBC'],['tpb:INT']],edges:'ATT, SN, PBC -> INT',concepts:['thai-do','chuan-chu-quan','nhan-thuc-kiem-soat-hanh-vi']},
+    {id:'utaut2',name:'UTAUT2',full:'Chấp nhận và sử dụng công nghệ (mở rộng)',cite:'Venkatesh và cộng sự (2012)',scale:'utaut2',
+      nodes:[['utaut2:PE'],['utaut2:EE'],['utaut2:SI'],['utaut2:FC'],['utaut2:HM'],['utaut2:PV'],['utaut2:HT'],['utaut2:BI'],['utaut2:USE']],edges:'PE, EE, SI, FC, HM, PV, HT -> BI\nFC, HT, BI -> USE',concepts:['y-dinh-su-dung'],
+      note:'Mô hình gốc có tuổi, giới tính, kinh nghiệm điều tiết; thêm bằng nút Điều tiết nếu đề tài cần.'},
+    {id:'ecm',name:'ECM',full:'Kỳ vọng – xác nhận, tiếp tục sử dụng',cite:'Bhattacherjee (2001)',scale:'ecm-tiep-tuc-su-dung',
+      nodes:[['ecm-tiep-tuc-su-dung:CONF'],['ecm-tiep-tuc-su-dung:PU'],['ecm-tiep-tuc-su-dung:SAT'],['ecm-tiep-tuc-su-dung:CI']],edges:'CONF -> PU\nCONF -> SAT\nPU -> SAT\nPU -> CI\nSAT -> CI',concepts:['su-hai-long-khach-hang','nhan-thuc-su-huu-ich']},
+    {id:'servqual',name:'SERVQUAL → hài lòng → trung thành',full:'Năm thành phần chất lượng dịch vụ',cite:'Parasuraman và cộng sự (1988)',scale:'servqual',
+      nodes:[['servqual:TAN'],['servqual:REL'],['servqual:RES'],['servqual:ASS'],['servqual:EMP'],['ecm-tiep-tuc-su-dung:SAT','HL','Sự hài lòng'],['y-dinh-hanh-vi-khach-hang:LOY','TT','Lòng trung thành']],
+      edges:'TAN, REL, RES, ASS, EMP -> HL\nHL -> TT',concepts:['chat-luong-dich-vu','su-hai-long-khach-hang','long-trung-thanh'],
+      note:'SERVQUAL gốc hỏi cả kỳ vọng và cảm nhận; khoá luận thường chỉ đo cảm nhận (mẫu SERVPERF).'},
+    {id:'servperf',name:'SERVPERF → hài lòng → trung thành',full:'Chất lượng dịch vụ theo cảm nhận',cite:'Cronin và Taylor (1992)',scale:'servperf',
+      nodes:[['servperf:TAN'],['servperf:REL'],['servperf:RES'],['servperf:ASU'],['servperf:EMP'],['ecm-tiep-tuc-su-dung:SAT','HL','Sự hài lòng'],['y-dinh-hanh-vi-khach-hang:LOY','TT','Lòng trung thành']],
+      edges:'TAN, REL, RES, ASU, EMP -> HL\nHL -> TT',concepts:['chat-luong-dich-vu','su-hai-long-khach-hang','long-trung-thanh']},
+    {id:'acsi',name:'Hài lòng khách hàng (kiểu ACSI)',full:'Kỳ vọng, chất lượng, giá trị → hài lòng → trung thành',cite:'Fornell và cộng sự (1996); Kotler và Keller (2016)',scale:'y-dinh-mua',
+      nodes:[[null,'KV','Kỳ vọng của khách hàng'],['y-dinh-mua:PQ','CL','Chất lượng cảm nhận'],['y-dinh-mua:PV','GT','Giá trị cảm nhận'],['ecm-tiep-tuc-su-dung:SAT','HL','Sự hài lòng'],[null,'PN','Phàn nàn'],['y-dinh-hanh-vi-khach-hang:LOY','TT','Lòng trung thành']],
+      edges:'KV -> CL\nKV -> GT\nKV -> HL\nCL -> GT\nCL -> HL\nGT -> HL\nHL -> PN (-)\nHL -> TT\nPN -> TT (-)',concepts:['chat-luong-cam-nhan','gia-tri-cam-nhan','su-hai-long-khach-hang','long-trung-thanh'],
+      note:'Kỳ vọng và phàn nàn chưa có thang đo trong thư viện: tìm thang gần nghĩa hoặc tự xây dựng.'},
+  ];
+  // A template as a model; byKey(key) gives {nameVi, code} of a library construct, or null when it is missing.
+  function templateModel(t,byKey){
+    const m={nodes:[],edges:[]};
+    for(const [key,code,name] of t.nodes){const x=key&&byKey(key);addNode(m,name||(x&&x.nameVi)||code,x?key:null,code||(x&&x.code)||null)}
+    parseArrows(t.edges,m).edges.forEach(e=>addEdge(m,e.from,e.to,e.sign));
+    return m;
+  }
+
+  // 5. Text read from a picture of a model (OCR lines with boxes) → candidate box labels: the lines of one box are
+  // merged; H1 labels, signs, stray letters and low-confidence reads are dropped. Nothing about arrows is guessed.
+  function ocrLabels(lines,o={}){
+    const minConf=o.minConf==null?55:o.minConf;
+    const ok=lines.map(l=>({text:String(l.text||'').replace(/\s+/g,' ').replace(/^[^\p{L}]+|[^\p{L}\p{N})]+$/gu,'').trim(),conf:l.conf==null?100:l.conf,b:l.bbox}))
+      .filter(l=>l.b&&l.conf>=minConf&&(l.text.match(/\p{L}/gu)||[]).length>=3&&!/^H\s?\d+[a-z]?(?![\p{L}])/iu.test(l.text));
+    ok.sort((a,b)=>a.b.y0-b.b.y0||a.b.x0-b.b.x0);
+    const out=[];
+    for(const l of ok){
+      const h=l.b.y1-l.b.y0,cx=(l.b.x0+l.b.x1)/2;
+      const prev=out.find(p=>{const gap=l.b.y0-p.b.y1;return p.lines<3&&gap>=-h*0.3&&gap<h*0.9&&Math.abs((p.b.x0+p.b.x1)/2-cx)<Math.max(30,(p.b.x1-p.b.x0)*0.35)});
+      if(prev){prev.text+=' '+l.text;prev.b={x0:Math.min(prev.b.x0,l.b.x0),y0:prev.b.y0,x1:Math.max(prev.b.x1,l.b.x1),y1:l.b.y1};prev.lines++;prev.conf=Math.min(prev.conf,l.conf)}
+      else out.push({text:l.text,b:{...l.b},lines:1,conf:l.conf});
+    }
+    return out.map(x=>({text:capFirst(x.text),cx:(x.b.x0+x.b.x1)/2,cy:(x.b.y0+x.b.y1)/2,conf:x.conf}));
+  }
   //#model-end
+
+  // ---- reading a data file: same functions as the PLS-SEM tool (pls-sem.html; checked by scripts/check-model.mjs) ----
+  //#data-start
+  function parseCSV(text){
+    text=String(text).replace(/^﻿/,'');
+    let first='';{let q=false,start=0;for(let i=0;i<=text.length;i++){const c=text[i];if(c==='"')q=!q;else if(!q&&(c==='\n'||i===text.length)){const l=text.slice(start,i);if(l.trim()){first=l;break}start=i+1}}}
+    const count=ch=>{let q=false,n=0;for(const c of first){if(c==='"')q=!q;else if(!q&&c===ch)n++}return n};
+    const d=count('\t')>0?'\t':count(';')>count(',')?';':',';
+    const rows=[];let row=[],f='',q=false,quoted=false;
+    for(let i=0;i<text.length;i++){const c=text[i];
+      if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c;continue}
+      if(c==='"'&&!quoted&&f.trim()===''){q=true;quoted=true;f='';continue}
+      if(c===d){row.push(f);f='';quoted=false;continue}
+      if(c==='\r')continue;
+      if(c==='\n'){row.push(f);rows.push(row);row=[];f='';quoted=false;continue}
+      f+=c}
+    if(f!==''||row.length){row.push(f);rows.push(row)}
+    return rows.map(r=>r.map(v=>v.trim())).filter(r=>r.some(v=>v!==''));
+  }
+  // The variable code in a header: "CL1", "CL1. Nhân viên…", "Mức độ đồng ý [CL1. …]" (Google Forms grid), "… (CL1)".
+  function extractCode(h){
+    const s=String(h==null?'':h).normalize('NFC').replace(/\s+/g,' ').trim();
+    if(/^[\p{L}][\p{L}\p{N}_.]*$/u.test(s))return s;
+    let m=s.match(/\[\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)\]–-]/u);if(m)return m[1];
+    m=s.match(/^([\p{L}][\p{L}\p{N}_]*\p{N})\s*[.:)–-]\s*\S/u);if(m)return m[1];
+    m=s.match(/[[(]\s*([\p{L}][\p{L}\p{N}_]*\p{N})\s*[\])]\s*$/u);if(m)return m[1];
+    return s;
+  }
+  const ITEM_RE=/^([\p{L}][\p{L}\p{N}_.]*?)[_.]?(\d+)$/u;
+  const groupOf=c=>{const m=String(c).match(ITEM_RE);return m?m[1].replace(/[_.]+$/,'').toLocaleUpperCase('vi'):null};
+  const isNumStr=s=>/^[-+]?\d+(?:[.,]\d+)?$/.test(s);
+  function pickHeaderRow(raw){let best=0,bs=-Infinity;for(let r=0;r<Math.min(6,raw.length);r++){const cells=raw[r].map(v=>String(v==null?'':v).trim()).filter(Boolean);if(!cells.length)continue;
+      const codes=cells.filter(v=>groupOf(extractCode(v))).length,text=cells.filter(v=>!isNumStr(v)).length,score=codes*2+text-(cells.length-text)*3;if(score>bs){bs=score;best=r}}return best}
+  function buildTable(raw,hi){const head=(raw[hi]||[]).map(v=>String(v==null?'':v).trim());let width=head.length;for(let r=hi+1;r<Math.min(raw.length,hi+50);r++)width=Math.max(width,raw[r].length);
+    const header=[],seen=new Map();
+    for(let j=0;j<width;j++){const orig=head[j]||'';let c=orig?extractCode(orig):`Cột ${j+1}`;const k=c.toLowerCase();if(seen.has(k)){seen.set(k,seen.get(k)+1);c=`${c}_dup${seen.get(k)}`}else seen.set(k,1);header.push(c)}
+    const rows=[];for(let r=hi+1;r<raw.length;r++){const x=raw[r];if(!x||!x.some(v=>String(v==null?'':v).trim()!==''))continue;const row=new Array(width);for(let j=0;j<width;j++)row[j]=x[j]==null?'':x[j];rows.push(row)}
+    return {header,rows}}
+  function suggestGroups(header){const g={};header.forEach(h=>{const k=groupOf(h);if(k)(g[k]=g[k]||[]).push(h)});return Object.entries(g).filter(([,it])=>it.length>=2).map(([code,items])=>({code,items}))}
+  //#data-end
+
 
   const DATA=JSON.parse(document.getElementById('vm-data').textContent);
   const $=id=>document.getElementById(id);
@@ -782,7 +1231,7 @@
   const BYKEY=new Map(CONSTRUCTS.map(x=>[x.key,x]));
   const INDEX=CONSTRUCTS.map(x=>indexConstruct(x.scale,x.c));
   const KIT='/cong-cu/bo-khao-sat/';
-  const isKey=k=>BYKEY.has(k), itemsOf=n=>n.key&&BYKEY.has(n.key)?BYKEY.get(n.key).c.items.length:null;
+  const isKey=k=>BYKEY.has(k), itemsOf=n=>n.key&&BYKEY.has(n.key)?BYKEY.get(n.key).c.items.length:Number.isInteger(n.items)?n.items:null;
 
   const app=$('vm-app'),stage=$('vm-stage'),svg=$('vm-canvas'),vp=$('vm-vp'),gE=$('vm-elayer'),gN=$('vm-nlayer'),gL=$('vm-llayer'),gO=$('vm-olayer');
   const coarse=matchMedia('(pointer: coarse)').matches;
@@ -821,7 +1270,7 @@
 
   function status(t){$('vm-status').textContent=t}
   // Every finished edit: snapshot for undo, redraw, save.
-  function commit(msg){hist.push(packModel(model));renderAll();if(msg)status(msg)}
+  function commit(msg){const before=hist.list[hist.at];hist.push(packModel(model));renderAll();if(msg)status(msg);if(model.nodes.length&&before&&!/"n":\[\[/.test(before))markRun()}
   function restore(s){model=unpackModel(s,isKey);placeNew(model,opt());const ids=new Set(model.nodes.map(n=>n.id));sel.nodes=new Set([...sel.nodes].filter(id=>ids.has(id)));if(sel.edge&&!model.edges.some(e=>ekey(e)===sel.edge))sel.edge=null;if(sel.mod&&!(model.mods||[]).some(m=>mkey(m)===sel.mod))sel.mod=null;pending=null;renderAll()}
   function undo(){const s=hist.undo();if(s==null){status('Không còn bước nào để hoàn tác.');return}restore(s);status('Đã hoàn tác.')}
   function redo(){const s=hist.redo();if(s==null){status('Không còn bước nào để làm lại.');return}restore(s);status('Đã làm lại.')}
@@ -882,7 +1331,7 @@
       `<rect class="vm-ring" x="-5" y="-5" width="${b.w+10}" height="${b.h+10}" rx="16"/><rect class="vm-box" width="${b.w}" height="${b.h}" rx="12"/>`+
       (hoc?`<rect class="vm-box2" x="4" y="4" width="${b.w-8}" height="${b.h-8}" rx="9"/>`:'')+
       `<text text-anchor="middle">${b.lines.map((l,k)=>`<tspan x="${b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text>`+
-      (items!=null?`<g class="vm-badge${items<3?' warn':''}" transform="translate(${b.w-8},0)"><title>${items} biến quan sát trong thang đo gốc</title><rect x="-13" y="-10" width="26" height="20" rx="10"/><text y="4" text-anchor="middle">${items}</text></g>`:'')+
+      (items!=null?`<g class="vm-badge${items<3?' warn':''}" transform="translate(${b.w-8},0)"><title>${items} biến quan sát ${n.key?'trong thang đo gốc':'trong dữ liệu'}</title><rect x="-13" y="-10" width="26" height="20" rx="10"/><text y="4" text-anchor="middle">${items}</text></g>`:'')+
       (tag?`<g class="vm-tag" transform="translate(${b.w-12},0)"><title>${hoc?(n.mode==='rf'?'Bậc cao phản ánh–cấu tạo: các thành phần → bậc cao':'Bậc cao phản ánh–phản ánh: bậc cao → các thành phần'):'Biến kiểm soát: không có giả thuyết'}</title><rect x="-17" y="-9" width="34" height="18" rx="9"/><text y="3.6" text-anchor="middle">${tag}</text></g>`:'')+
       (n.parent?'':`<g class="vm-port" data-port="${esc(n.id)}" transform="translate(${b.w},${b.h/2})"><title>Kéo để nối mũi tên, hoặc thả vào giữa một mũi tên để điều tiết</title><circle class="vm-port-hit" r="${pr+10}"/><circle class="vm-port-dot" r="${pr}"/><path d="M-4,0h7M0,-3.5l3.5,3.5l-3.5,3.5"/></g>`)+`</g>`;
   }
@@ -906,7 +1355,7 @@
     $('vm-hyps').querySelectorAll('li[data-key]').forEach(li=>li.classList.toggle('sel',li.dataset.key===sel.edge||li.dataset.key==='m:'+sel.mod));
   }
   function updateToolbar(){
-    $('vm-undo').disabled=!hist.canUndo();$('vm-redo').disabled=!hist.canRedo();
+    $('vm-undo').disabled=!hist.canUndo();if(pasteR)$('vm-paste-add').hidden=!pasteR.cons.length||!model.nodes.length;$('vm-redo').disabled=!hist.canRedo();
     document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));
     $('vm-snap').setAttribute('aria-pressed',snapOn);
     const q=kitQuery(model),kit=$('vm-kit');
@@ -1104,7 +1553,7 @@
       items.push([m.dir<0?'Đổi sang tăng cường (+)':'Đổi sang làm suy yếu (−)','Enter',()=>flipMod(t.i)],null,['Xoá biến điều tiết','Delete',()=>deleteMod(t.i),'danger']);
     }else{
       const w=t.w||toWorld(sx,sy);
-      items.push(['Thêm khái niệm ở đây','Nhấp đúp',()=>openNamebox({at:w})],['Thêm khái niệm bậc cao ở đây','',()=>openNamebox({at:w,kind:'hoc'})],['Thêm biến kiểm soát ở đây','',()=>openNamebox({at:w,kind:'ctrl'})],null,['Xếp tự động','',arrange],['Vừa khung','0',()=>fit()]);
+      items.push(['Thêm khái niệm ở đây','Nhấp đúp',()=>openNamebox({at:w})],['Thêm khái niệm bậc cao ở đây','',()=>openNamebox({at:w,kind:'hoc'})],['Thêm biến kiểm soát ở đây','',()=>openNamebox({at:w,kind:'ctrl'})],null,['Xếp tự động (trái → phải)','',()=>arrange()],['Xếp dọc (hợp màn hình điện thoại)','',()=>arrange('TB')],['Vừa khung','0',()=>fit()]);
       if(model.nodes.length)items.push(['Chọn tất cả','Ctrl+A',selectAll]);
     }
     const m=$('vm-menu');
@@ -1192,7 +1641,7 @@
     const nv=String(v).replace(/\s+/g,'');if(nv&&nv!==id){if(sel.nodes.delete(id))sel.nodes.add(nv);if(pending===id)pending=null;sel.edge=null;sel.mod=null;commit(`Đã đổi mã ${id} thành ${nv}.`);focusNode(nv)}
   }
   function selectAll(){sel.nodes=new Set(model.nodes.map(n=>n.id));sel.edge=null;sel.mod=null;refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.`)}
-  function arrange(){if(!model.nodes.length)return;autoArrange(model,opt());commit('Đã xếp tự động: biến độc lập bên trái, trung gian ở giữa, phụ thuộc bên phải; khái niệm thành phần bên trái khái niệm bậc cao.');fit()}
+  function arrange(dir){if(!model.nodes.length)return;autoArrange(model,{...opt(),dir});commit(dir==='TB'?'Đã xếp dọc: biến độc lập trên cùng, phụ thuộc dưới cùng. Bấm “Xếp tự động” để về trái → phải như hình trong luận văn.':'Đã xếp tự động: biến độc lập bên trái, trung gian ở giữa, phụ thuộc bên phải; khái niệm thành phần bên trái khái niệm bậc cao.'+(stageSize()[0]<500?' Chữ nhỏ? Giữ lâu chỗ trống trên khung, chọn “Xếp dọc”.':''));fit()}
   const MODES=['select','add','connect','moderate','hoc','ctrl'];
   function setMode(m){
     mode=m;MODES.forEach(x=>stage.classList.remove('mode-'+x));stage.classList.add('mode-'+m);
@@ -1473,13 +1922,7 @@
     msg.textContent=[...r.errors,r.added.length?`Đã thêm khái niệm mới: ${r.added.join(', ')}.`:''].filter(Boolean).join(' ');
     $('vm-text').blur();sel.nodes.clear();sel.edge=null;commit(`Đã áp dụng ${model.edges.length} mũi tên.`);if(r.added.length)fit();
   });
-  $('vm-example').addEventListener('click',()=>{
-    model={nodes:[],edges:[]};sel.nodes.clear();sel.edge=null;pending=null;
-    ['tam:PEOU','tam:PU','tam:BI'].forEach(k=>{const x=BYKEY.get(k);if(x)addNode(model,x.c.nameVi,k,x.c.code)});
-    if(model.nodes.length<3){model={nodes:[],edges:[]};addNode(model,'Nhận thức tính dễ sử dụng',null,'PEOU');addNode(model,'Nhận thức sự hữu ích',null,'PU');addNode(model,'Ý định sử dụng',null,'BI')}
-    addEdge(model,'PEOU','PU');addEdge(model,'PU','BI');addEdge(model,'PEOU','BI');autoArrange(model,opt());
-    commit('Đã nạp mô hình TAM (Davis, 1989). Ctrl+Z để quay lại mô hình trước.');fit();
-  });
+  $('vm-example').addEventListener('click',()=>useTemplate('tam'));
 
   // ---- downloads and copy ----
   function exportSvg(){
@@ -1508,15 +1951,15 @@
     if(cap)labels+=`<text x="${(x0+M).toFixed(1)}" y="${(y1-M+4).toFixed(1)}" font-size="12" font-style="italic" fill="${INK}">${esc(cap)}</text>`;
     const mk=(id,c)=>`<marker id="${id}" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>`;
     const desc=[...model.edges.map(e=>`${e.from} tới ${e.to}`),...(model.mods||[]).map(m=>`${m.w} điều tiết ${m.from} tới ${m.to}`)].join(', ');
-    const svgText=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${Hh}" viewBox="${x0.toFixed(1)} ${y0.toFixed(1)} ${W} ${Hh}" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="${esc('Mô hình nghiên cứu: '+desc)}"><defs>${mk('vm-ah',LINE)}${mk('vm-ah-n',NEG)}</defs><rect x="${x0.toFixed(1)}" y="${y0.toFixed(1)}" width="${W}" height="${Hh}" fill="#fff"/>${edges}${nodes}${labels}</svg>`;
+    const svgText=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${Hh}" viewBox="${x0.toFixed(1)} ${y0.toFixed(1)} ${W} ${Hh}" font-family="${esc($('vm-font').value)}" role="img" aria-label="${esc('Mô hình nghiên cứu: '+desc)}"><defs>${mk('vm-ah',LINE)}${mk('vm-ah-n',NEG)}</defs><rect x="${x0.toFixed(1)}" y="${y0.toFixed(1)}" width="${W}" height="${Hh}" fill="#fff"/>${edges}${nodes}${labels}</svg>`;
     return {svg:svgText,width:W,height:Hh};
   }
   function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
   $('vm-svg').addEventListener('click',()=>{const x=exportSvg();if(!x){status('Chưa có mô hình để tải.');return}download(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n'+x.svg],{type:'image/svg+xml'}),'mo-hinh-nghien-cuu.svg');status('Đã tải SVG.')});
   $('vm-png').addEventListener('click',()=>{
     const x=exportSvg();if(!x){status('Chưa có mô hình để tải.');return}
-    const img=new Image(),scale=3;
-    img.onload=()=>{const c=document.createElement('canvas');c.width=x.width*scale;c.height=x.height*scale;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(img,0,0,c.width,c.height);c.toBlob(b=>{if(b){download(b,'mo-hinh-nghien-cuu.png');status('Đã tải PNG.')}else status('Trình duyệt không xuất được PNG, hãy tải SVG.')},'image/png')};
+    const img=new Image(),scale=Math.min(6,Math.max(3,Math.ceil(2400/x.width)));
+    img.onload=()=>{const c=document.createElement('canvas');c.width=x.width*scale;c.height=x.height*scale;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(img,0,0,c.width,c.height);c.toBlob(b=>{if(b){download(b,'mo-hinh-nghien-cuu.png');status(`Đã tải PNG ${c.width} × ${c.height} điểm ảnh: in rõ ở 300 dpi với bề rộng ${Math.round(c.width/300*2.54)} cm.`)}else status('Trình duyệt không xuất được PNG, hãy tải SVG.')},'image/png')};
     img.onerror=()=>status('Trình duyệt không xuất được PNG, hãy tải SVG.');
     img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(x.svg);
   });
@@ -1524,13 +1967,179 @@
     try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
     status(msg);
   }
-  $('vm-copy-h').addEventListener('click',()=>{const hs=hypotheses(model,{mediation:$('vm-med').checked});if(!hs.length){status('Chưa có giả thuyết: nối mũi tên trước.');return}const cs=controlsOf(model);copy(hs.map(h=>`H${h.h}: ${h.text}`).join('\n')+(cs.length?'\nBiến kiểm soát: '+cs.map(c=>`${c.name} (${c.id})`).join(', ')+'.':''),`Đã sao chép ${hs.length} giả thuyết.`)});
+  function copyHyps(){const hs=hypotheses(model,{mediation:$('vm-med').checked});if(!hs.length){status('Chưa có giả thuyết: nối mũi tên trước.');return}const cs=controlsOf(model);copy(hs.map(h=>`H${h.h}: ${h.text}`).join('\n')+(cs.length?'\nBiến kiểm soát: '+cs.map(c=>`${c.name} (${c.id})`).join(', ')+'.':''),`Đã sao chép ${hs.length} giả thuyết.`)}
+  $('vm-copy-h').addEventListener('click',copyHyps);$('vm-copy-hs').addEventListener('click',copyHyps);
   $('vm-link').addEventListener('click',()=>{flushSave();copy(location.href,'Đã sao chép link. Mở link này sẽ ra đúng mô hình và vị trí các ô.')});
+
+  // ---- quick start: paste, data file, templates, picture ----
+  let CONCEPTS={};try{CONCEPTS=JSON.parse($('vm-concepts').textContent)}catch(e){}
+  const SCALE_NAME=new Map(DATA.map(s=>[s.slug,s.name]));
+  // tool_run (src/scripts/track.ts) once per page, when a model is first made here: the hidden *-run button.
+  let ranOnce=false;
+  function markRun(){if(ranOnce)return;ranOnce=true;const b=$('vm-model-run');if(b)b.click()}
+  function loadScript(src){return new Promise((ok,bad)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+  const TABS=['text','data','tpl','img'],FIRST={text:'vm-paste',data:'vm-file',tpl:'vm-tpls',img:'vm-img'};
+  function startOpen(){return !$('vm-start-body').hidden}
+  function openStart(tab,focus){
+    $('vm-start-body').hidden=false;$('vm-start-toggle').setAttribute('aria-expanded','true');$('vm-start-toggle').textContent='Thu gọn';
+    if(tab){TABS.forEach(t=>{const b=$('vm-tab-'+t),on=t===tab;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;$('vm-pane-'+t).hidden=!on});try{localStorage.setItem('vm-tab',tab)}catch(e){}}
+    if(focus){const r=$('vm-start').getBoundingClientRect();if(r.top<0||r.top>innerHeight*0.6)$('vm-start').scrollIntoView({behavior:'smooth',block:'start'});
+      const el=tab==='tpl'?$('vm-tpls').querySelector('button'):$(FIRST[tab]);if(el)setTimeout(()=>el.focus({preventScroll:true}),tab==='tpl'?0:250)}
+  }
+  function closeStart(){$('vm-start-body').hidden=true;$('vm-start-toggle').setAttribute('aria-expanded','false');$('vm-start-toggle').textContent='Mở'}
+  const curTab=()=>TABS.find(t=>$('vm-tab-'+t).getAttribute('aria-selected')==='true')||'text';
+  document.querySelectorAll('.vm-tab').forEach(b=>b.addEventListener('click',()=>openStart(b.dataset.tab,false)));
+  $('vm-start').querySelector('[role=tablist]').addEventListener('keydown',e=>{
+    const i=TABS.indexOf(curTab());let j=-1;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%TABS.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i+TABS.length-1)%TABS.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=TABS.length-1;
+    if(j<0)return;e.preventDefault();openStart(TABS[j],false);$('vm-tab-'+TABS[j]).focus();
+  });
+  $('vm-start-toggle').addEventListener('click',()=>startOpen()?closeStart():openStart(curTab(),true));
+  $('vm-empty').addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)openStart(b.dataset.go,true)});
+  // A new model from one of the entry paths (undoable), laid out and shown whole.
+  function fitCompact(){
+    const [w]=stageSize(),bb=boundsOf([...boxes.values()]);
+    if(w>=500||!bb){stage.style.height='';fit();return}
+    const k=Math.min(1.25,(w-32)/Math.max(bb.w,1)),max=Math.min(innerHeight*0.68,540);
+    stage.style.height=Math.round(Math.min(max,Math.max(360,bb.h*k+100)))+'px';fit();
+  }
+  function useModel(m,msg,merge){
+    if(merge&&model.nodes.length){const k=mergeInto(model,m);placeNew(model,opt());msg=msg.replace('{k}',k)}
+    else{model=tidy(m);autoArrange(model,opt())}
+    sel.nodes.clear();sel.edge=null;sel.mod=null;pending=null;
+    commit(msg);markRun();closeStart();fitCompact();
+    const r=stage.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)stage.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  // 1. Paste.
+  const PASTE_HINT=$('vm-paste-out').innerHTML;
+  let pasteR=null,pasteFix={names:{},codes:{}},pasteSig='';
+  const WHY={self:'Một khái niệm không trỏ vào chính nó.',mod:'Chưa đọc ra biến điều tiết. Viết: “Z điều tiết X → Y” hoặc “Z điều tiết mối quan hệ giữa X và Y”.',med:'Chưa đọc ra biến trung gian. Viết: “M đóng vai trò trung gian giữa X và Y”.'};
+  function renderPaste(){
+    const v=$('vm-paste').value,out=$('vm-paste-out');
+    if(!v.trim()){pasteR=null;pasteSig='';$('vm-paste-go').disabled=true;$('vm-paste-add').hidden=true;out.innerHTML=PASTE_HINT;return}
+    const r=parseModelText(v);pasteR=r;
+    const sig=r.cons.map(c=>c.code+'|'+c.name).join(';');if(sig!==pasteSig){pasteSig=sig;pasteFix={names:{},codes:{}}}
+    const code=c=>pasteFix.codes[r.cons.indexOf(c)]||c.code,arrow=e=>`${esc(code(e.a))} → ${esc(code(e.b))}${e.sign<0?' (−)':''}`;
+    const role=c=>{const i=r.edges.some(e=>e.b===c),o=r.edges.some(e=>e.a===c),w=r.mods.some(m=>m.w===c);return w&&!i&&!o?'điều tiết':!i&&!o?'chưa nối':!i?'độc lập':!o?'phụ thuộc':'trung gian'};
+    const desc=l=>l.kind==='legend'?`${esc(code(l.c))} = ${esc(l.c.name)}`:l.kind==='mod'?`${esc(code(l.w))} điều tiết ${esc(code(l.x))} → ${esc(code(l.y))} (${l.dir<0?'làm suy yếu':'tăng cường'})`:l.kind==='med'?`${l.edges.map(arrow).join(', ')} (trung gian)`:l.edges.map(arrow).join(', ');
+    const ok=r.lines.filter(l=>l.ok).length;
+    let html=`<p class="vm-sum">Hiểu được ${r.cons.length} khái niệm, ${r.edges.length} mũi tên${r.mods.length?`, ${r.mods.length} biến điều tiết`:''} (${ok}/${r.lines.length} dòng).</p>`;
+    if(r.cons.length)html+=`<table class="vm-cons"><thead><tr><th>Mã</th><th>Tên khái niệm</th><th>Vai trò</th></tr></thead><tbody>${r.cons.map((c,i)=>`<tr class="${c.guess||!c.named?'guess':''}"><td class="c"><input type="text" data-ci="${i}" data-f="codes" value="${esc(pasteFix.codes[i]||c.code)}" aria-label="Mã của ${esc(c.name)}" maxlength="10" autocomplete="off"></td><td><input type="text" data-ci="${i}" data-f="names" value="${esc(pasteFix.names[i]||(c.named?c.name:''))}" placeholder="${c.named?'':'Tên đầy đủ của '+esc(c.code)}" aria-label="Tên khái niệm ${esc(c.code)}" autocomplete="off"></td><td class="role">${role(c)}</td></tr>`).join('')}</tbody></table>`;
+    html+=`<ul class="vm-lines">${r.lines.map(l=>l.ok?`<li><span class="ok" aria-label="Đã hiểu">✓</span><span><span class="src">Dòng ${l.n}:</span> ${desc(l)}</span></li>`:`<li><span class="no" aria-label="Chưa hiểu">✗</span><span><span class="src">Dòng ${l.n}: “${esc(l.line.slice(0,90))}”</span> ${WHY[l.why]||'Chưa hiểu dòng này: viết dạng <code>X -&gt; Y</code> hoặc “X tác động đến Y”. Dòng này sẽ bị bỏ qua.'}</span></li>`).join('')}</ul>`;
+    if(r.notes.length)html+=r.notes.map(t=>`<p class="vm-note">${esc(t)}</p>`).join('');
+    out.innerHTML=html;$('vm-paste-go').disabled=!r.cons.length;$('vm-paste-add').hidden=!r.cons.length||!model.nodes.length;
+  }
+  let pasteT=0;$('vm-paste').addEventListener('input',()=>{clearTimeout(pasteT);pasteT=setTimeout(renderPaste,200)});
+  $('vm-paste-out').addEventListener('input',e=>{const t=e.target;if(t.dataset.ci==null)return;pasteFix[t.dataset.f][+t.dataset.ci]=t.value.trim()});
+  $('vm-paste-out').addEventListener('change',e=>{if(e.target.dataset.f==='codes'){const a=document.activeElement&&document.activeElement.dataset?document.activeElement.dataset:null;renderPaste();if(a&&a.ci!=null){const el=$('vm-paste-out').querySelector(`[data-ci="${a.ci}"][data-f="${a.f}"]`);if(el)el.focus()}}});
+  const pasteModel=()=>{clearTimeout(pasteT);renderPaste();return pasteR&&pasteR.cons.length?modelFromParsed(pasteR,pasteFix):null};
+  $('vm-paste-go').addEventListener('click',()=>{const m=pasteModel();if(!m)return;useModel(m,`Đã vẽ ${m.nodes.length} khái niệm, ${m.edges.length} mũi tên từ văn bản. Giả thuyết ở cột bên phải; nút Hoàn tác (Ctrl+Z) để quay lại.`)});
+  $('vm-paste-add').addEventListener('click',()=>{const m=pasteModel();if(!m)return;useModel(m,'Đã thêm {k} mũi tên vào mô hình đang có; khái niệm trùng mã hoặc trùng tên được gộp.',true)});
+  $('vm-paste-ex').addEventListener('click',()=>{$('vm-paste').value='H1: Chất lượng dịch vụ (CL) tác động cùng chiều đến Sự hài lòng (HL)\nH2: Giá cả cảm nhận (GC) → HL\nH3 (-): Rủi ro cảm nhận (RR) tác động ngược chiều đến HL\nH4: HL có ảnh hưởng tích cực đến Lòng trung thành (TT)\nThu nhập (TN) điều tiết GC → HL';renderPaste();$('vm-paste').focus()});
+
+  // 2. Data file: only the header row is read.
+  let dataG=null;
+  const SAMPLE_HEAD=['Dấu thời gian','Giới tính','CL1','CL2','CL3','CL4','GT1','GT2','GT3','NT1','NT2','NT3','HL1','HL2','HL3','HL4','TT1','TT2','TT3','TT4'];
+  const SAMPLE_NAMES={CL:'Chất lượng dịch vụ',GT:'Giá trị cảm nhận',NT:'Niềm tin',HL:'Sự hài lòng',TT:'Lòng trung thành'};
+  function useHeader(raw,label,names){
+    const msg=$('vm-data-msg');
+    if(!raw||!raw.length){msg.textContent='File không có dữ liệu.';$('vm-data-out').innerHTML='';dataG=null;return}
+    const hi=pickHeaderRow(raw),tbl=buildTable(raw,hi),groups=suggestGroups(tbl.header);
+    if(groups.length<2){dataG=null;$('vm-data-out').innerHTML='';msg.innerHTML=`<span class="err">${esc(label)}: chỉ nhận ra ${groups.length} khái niệm từ dòng tiêu đề. Tên cột cần dạng mã + số (HL1, HL2, HL3…), hoặc “Mức độ đồng ý [HL1. …]” khi tải từ Google Forms. Đổi tên cột rồi tải lại, hoặc dùng mục “Dán giả thuyết”.</span>`;return}
+    const used=groups.reduce((s,g)=>s+g.items.length,0);
+    dataG={groups,label,names:{...(names||{})},dv:guessDV(groups),med:new Set(),direct:false};
+    msg.textContent=`${label}: dòng tiêu đề là dòng ${hi+1}; ${groups.length} khái niệm, ${used} biến quan sát; ${tbl.header.length-used} cột khác (thời gian, giới tính…) bỏ qua.`;
+    renderData();
+  }
+  function renderData(){
+    const g=dataG;if(!g){$('vm-data-out').innerHTML='';return}
+    const guess=guessDV(g.groups);
+    $('vm-data-out').innerHTML=`<table class="vm-cons"><thead><tr><th>Mã</th><th>Tên khái niệm (không bắt buộc)</th><th>Số biến</th></tr></thead><tbody>${g.groups.map(x=>`<tr><td class="c"><b>${esc(x.code)}</b></td><td><input type="text" data-gname="${esc(x.code)}" value="${esc(g.names[x.code]||'')}" placeholder="Ví dụ: ${esc(SAMPLE_NAMES[x.code]||'tên đầy đủ')}" aria-label="Tên khái niệm ${esc(x.code)}" autocomplete="off"></td><td class="role">${x.items.length}${x.items.length<3?' (dưới 3)':''}</td></tr>`).join('')}</tbody></table>
+      <fieldset class="vm-fs"><legend>Biến phụ thuộc là gì?</legend><div class="vm-chips">${g.groups.map(x=>`<label class="vm-chip"><input type="radio" name="vm-dv" value="${esc(x.code)}" ${g.dv===x.code?'checked':''}> ${esc(x.code)}${x.code===guess?' <span class="n">(đoán)</span>':''}</label>`).join('')}</div></fieldset>
+      <fieldset class="vm-fs"><legend>Biến trung gian (nếu có)</legend><div class="vm-chips">${g.groups.filter(x=>x.code!==g.dv).map(x=>`<label class="vm-chip"><input type="checkbox" data-med="${esc(x.code)}" ${g.med.has(x.code)?'checked':''}> ${esc(x.code)}</label>`).join('')}</div>
+        ${g.med.size?`<label class="check"><input type="checkbox" id="vm-data-direct" ${g.direct?'checked':''}> Thêm cả tác động trực tiếp từ biến độc lập đến ${esc(g.dv)}</label>`:''}</fieldset>
+      <p class="vm-note" id="vm-data-plan"></p>
+      <div class="vm-row"><button type="button" class="btn" id="vm-data-go">Vẽ mô hình</button></div>`;
+    planData();
+  }
+  function dataModel(){const g=dataG;return modelFromGroups(g.groups,{dv:g.dv,med:[...g.med],direct:g.direct,names:g.names})}
+  function planData(){const m=dataModel(),by=new Map();m.edges.forEach(e=>{(by.get(e.to)||by.set(e.to,[]).get(e.to)).push(e.from)});
+    $('vm-data-plan').textContent=`Sẽ vẽ ${m.edges.length} mũi tên: ${[...by].map(([t,f])=>`${f.join(', ')} → ${t}`).join('; ')}. Sửa, thêm, bớt mũi tên trên khung vẽ sau đó.`}
+  $('vm-data-out').addEventListener('change',e=>{const t=e.target,g=dataG;if(!g)return;
+    if(t.name==='vm-dv'){g.dv=t.value;g.med.delete(t.value);renderData();const r=$('vm-data-out').querySelector(`input[name="vm-dv"][value="${CSS.escape(t.value)}"]`);if(r)r.focus();return}
+    if(t.dataset.med){t.checked?g.med.add(t.dataset.med):g.med.delete(t.dataset.med);const c=t.dataset.med;renderData();const r=$('vm-data-out').querySelector(`[data-med="${CSS.escape(c)}"]`);if(r)r.focus();return}
+    if(t.id==='vm-data-direct'){g.direct=t.checked;planData()}});
+  $('vm-data-out').addEventListener('input',e=>{const t=e.target;if(dataG&&t.dataset.gname)dataG.names[t.dataset.gname]=t.value.trim()});
+  $('vm-data-out').addEventListener('click',e=>{if(!e.target.closest('#vm-data-go')||!dataG)return;const m=dataModel(),g=dataG;
+    useModel(m,`Đã vẽ ${m.nodes.length} khái niệm từ ${g.label} (số trên góc ô là số biến quan sát) với ${m.edges.length} mũi tên vào ${g.dv}. Mã trùng tiền tố cột nên “Chạy PLS-SEM” nhận đúng.`)});
+  $('vm-file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;const msg=$('vm-data-msg');msg.textContent='Đang đọc dòng tiêu đề…';
+    try{let raw;
+      if(/\.(xlsx|xls)$/i.test(f.name)){if(!window.XLSX)await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');const wb=XLSX.read(await f.arrayBuffer(),{sheetRows:8});raw=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:'',raw:true})}
+      else{const t=await f.slice(0,262144).text();raw=parseCSV(t).slice(0,8)}
+      useHeader(raw,f.name)}catch(err){msg.innerHTML='<span class="err">Không đọc được file. Lưu lại dạng .xlsx hoặc .csv (UTF-8) rồi thử lại.</span>'}});
+  $('vm-data-ex').addEventListener('click',()=>useHeader([SAMPLE_HEAD,SAMPLE_HEAD.map((h,i)=>i<2?'':String(1+i%5))],'Dữ liệu mẫu',SAMPLE_NAMES));
+
+  // 3. Templates.
+  $('vm-tpls').innerHTML=TEMPLATES.map(t=>{const cs=t.nodes.map(([k,c])=>c||(k&&k.split(':')[1])).join(', ');
+    const links=[`<a class="text-accent underline" href="/thang-do/${t.scale}/">Thang đo ${esc(SCALE_NAME.get(t.scale)||t.scale)}</a>`,...(t.concepts||[]).filter(c=>CONCEPTS[c]).map(c=>`<a class="text-accent underline" href="/khai-niem/${c}/">${esc(CONCEPTS[c])}</a>`)].join(' · ');
+    return `<div class="vm-tpl"><b>${esc(t.name)}</b><p>${esc(t.full)}. ${esc(t.cite)}. ${esc(cs)}.</p><p class="lk">${links}</p>${t.note?`<p>${esc(t.note)}</p>`:''}<button type="button" class="btn ghost" data-tpl="${t.id}" aria-label="Dùng mẫu ${esc(t.name)}">Dùng mẫu này</button></div>`}).join('');
+  function useTemplate(id){const t=TEMPLATES.find(x=>x.id===id);if(!t)return;
+    const m=templateModel(t,k=>{const x=BYKEY.get(k);return x?{nameVi:x.c.nameVi,code:x.c.code}:null});
+    useModel(m,`Đã nạp ${t.name} (${t.cite}): ${m.nodes.length} khái niệm, ${m.edges.length} mũi tên. Số trên góc ô là số biến quan sát của thang đo gốc. Hoàn tác (Ctrl+Z) để quay lại.`)}
+  $('vm-tpls').addEventListener('click',e=>{const b=e.target.closest('[data-tpl]');if(b)useTemplate(b.dataset.tpl)});
+
+  // 5. Picture: a faint background to trace over, and optionally its text read by Tesseract (in the browser).
+  let bg=null;
+  function renderBg(){$('vm-bglayer').innerHTML=bg?`<image href="${bg.url}" x="${bg.x}" y="${bg.y}" width="${bg.w}" height="${bg.h}" opacity="${bg.op}" preserveAspectRatio="none"/>`:'';$('vm-img-ctl').hidden=!bg}
+  $('vm-img').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(!/^image\//.test(f.type)){$('vm-img-msg').textContent='Chọn một file ảnh (PNG, JPG).';return}
+    const url=URL.createObjectURL(f),im=new Image();
+    im.onload=()=>{if(bg)URL.revokeObjectURL(bg.url);const w=Math.min(im.naturalWidth,1100),h=w*im.naturalHeight/im.naturalWidth;
+      bg={url,file:f,nw:im.naturalWidth,nh:im.naturalHeight,x:0,y:0,w,h,op:+$('vm-img-op').value/100};renderBg();$('vm-ocr-out').innerHTML='';
+      const bb=boundsOf([...boxes.values(),{x:0,y:0,w,h}]),[sw,sh]=stageSize();view=fitView(bb,sw,sh,sw<500?12:40,1);applyView();
+      $('vm-img-msg').textContent='Ảnh đã nằm mờ dưới khung vẽ. Nhấp đúp (chạm hai lần) lên từng ô trong ảnh để đặt khái niệm, hoặc bấm “Đọc tên các ô trong ảnh”.';
+      if(innerWidth<768)stage.scrollIntoView({behavior:'smooth',block:'center'})};
+    im.onerror=()=>{URL.revokeObjectURL(url);$('vm-img-msg').textContent='Không mở được ảnh này.'};im.src=url});
+  $('vm-img-op').addEventListener('input',e=>{if(bg){bg.op=+e.target.value/100;renderBg()}});
+  $('vm-img-del').addEventListener('click',()=>{if(bg)URL.revokeObjectURL(bg.url);bg=null;renderBg();$('vm-ocr-out').innerHTML='';$('vm-img').value='';$('vm-img-msg').textContent='Đã bỏ ảnh nền.'});
+  let ocrL=[];
+  $('vm-img-ocr').addEventListener('click',async()=>{
+    if(!bg)return;const btn=$('vm-img-ocr'),msg=$('vm-img-msg');btn.disabled=true;
+    try{
+      msg.textContent='Đang tải bộ đọc chữ tiếng Việt (khoảng 3 MB, lần đầu mất 10–30 giây)…';
+      if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
+      const worker=await Tesseract.createWorker('vie',1,{logger:m=>{if(m.status==='recognizing text')msg.textContent=`Đang đọc chữ trong ảnh… ${Math.round(m.progress*100)}%`}});
+      // Small pictures are read at twice the size; page mode "sparse text" finds the label of each box separately.
+      const s=bg.nw<1200?2:1,cv=document.createElement('canvas');cv.width=bg.nw*s;cv.height=bg.nh*s;const g=cv.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,cv.width,cv.height);
+      const im=new Image();await new Promise((ok,bad)=>{im.onload=ok;im.onerror=bad;im.src=bg.url});g.drawImage(im,0,0,cv.width,cv.height);
+      await worker.setParameters({tessedit_pageseg_mode:'11'});
+      const r=await worker.recognize(cv);await worker.terminate();
+      ocrL=ocrLabels(r.data.lines.map(l=>({text:l.text,conf:l.confidence,bbox:{x0:l.bbox.x0/s,y0:l.bbox.y0/s,x1:l.bbox.x1/s,y1:l.bbox.y1/s}})));
+      if(!ocrL.length){msg.textContent='Không đọc được tên ô nào. Ảnh mờ hoặc chữ quá nhỏ: hãy nhấp đúp lên ảnh để tự thêm từng ô, hoặc dùng mục “Dán giả thuyết”.';$('vm-ocr-out').innerHTML='';return}
+      msg.textContent=`Đọc được ${ocrL.length} dòng chữ. Bỏ chọn dòng không phải tên khái niệm, sửa dấu nếu sai, rồi thêm ô.`;
+      $('vm-ocr-out').innerHTML=`<ul class="vm-ocr">${ocrL.map((l,i)=>`<li><input type="checkbox" data-oi="${i}" ${l.conf>=70?'checked':''} aria-label="Dùng dòng ${i+1}"><input type="text" data-ot="${i}" value="${esc(l.text)}" aria-label="Tên ô ${i+1}" autocomplete="off"></li>`).join('')}</ul><div class="vm-row" style="margin-top:8px"><button type="button" class="btn" id="vm-ocr-add">Thêm các ô đã chọn</button></div><p class="vm-note">Mũi tên không được nhận ra tự động: sau khi thêm ô, kéo chấm tròn bên phải ô này sang ô kia để nối.</p>`;
+    }catch(err){msg.textContent='Không tải hoặc không chạy được bộ đọc chữ (cần mạng). Vẫn có thể vẽ đè lên ảnh nền.'}
+    finally{btn.disabled=false}
+  });
+  $('vm-ocr-out').addEventListener('click',e=>{if(!e.target.closest('#vm-ocr-add')||!bg)return;
+    const pick=ocrL.map((l,i)=>({...l,on:$('vm-ocr-out').querySelector(`[data-oi="${i}"]`).checked,text:$('vm-ocr-out').querySelector(`[data-ot="${i}"]`).value.trim()})).filter(l=>l.on&&l.text);
+    if(!pick.length){$('vm-img-msg').textContent='Chưa chọn dòng nào.';return}
+    const o=opt(),rects=model.nodes.map(n=>boxOf(n,o)),k=bg.w/bg.nw;let added=0;
+    for(const l of pick){const n=addNode(model,l.text);if(!n)continue;const b=boxOf(n,o);
+      const [x,y]=freeSpot(rects,bg.x+l.cx*k-b.w/2,bg.y+l.cy*k-b.h/2,b.w,b.h,8);n.x=x;n.y=y;rects.push({...b,x,y});added++}
+    sel.nodes.clear();sel.edge=null;commit(`Đã thêm ${added} ô theo chữ đọc được trong ảnh. Giờ nối mũi tên: kéo chấm tròn bên phải ô sang ô đích.`);markRun();
+    $('vm-img-msg').textContent=`Đã thêm ${added} ô. Kiểm tra lại tên (nhấp đúp vào ô để sửa) và tự nối mũi tên.`;stage.scrollIntoView({behavior:'smooth',block:'center'})});
+
+  // Hand-off to the PLS-SEM tool: it reads the model saved in this browser.
+  $('vm-pls').addEventListener('click',e=>{if(!model.edges.length){e.preventDefault();status('Nối ít nhất một mũi tên trước khi chạy PLS-SEM.');return}flushSave()});
 
   // ---- start ----
   function boot(){
     model=load();placeNew(model,opt());hist.reset(packModel(model));
     renderAll();setMode('select');status('');
+    // The quick start is open on an empty canvas, folded away once there is a model.
+    let tab='text';try{const t=localStorage.getItem('vm-tab');if(TABS.includes(t))tab=t}catch(e){}
+    if(model.nodes.length){openStart(tab,false);closeStart()}else openStart(tab,false);
     let first=true;
     const ro=window.ResizeObserver?new ResizeObserver(()=>{if(first&&svg.clientWidth){first=false;fit(0.4)}}):null;
     if(ro)ro.observe(stage);else fit(0.4);

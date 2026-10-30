@@ -21,23 +21,80 @@ const scales = (await getCollection("scales"))
   }))
   .sort((a, b) => a.name.localeCompare(b.name, "vi"));
 const json = JSON.stringify(scales).replace(/</g, "\\u003c");
+// Concept pages linked from the one-click templates: slug → name.
+const conceptNames = JSON.stringify(
+  Object.fromEntries((await getCollection("concepts")).map(({ id, data }) => [id, data.name]))
+).replace(/</g, "\\u003c");
 ---
 
 <ToolLayout
   slug="ve-mo-hinh"
-  title="Vẽ mô hình nghiên cứu online, tự viết giả thuyết H1, H2"
+  title="Vẽ mô hình nghiên cứu online từ giả thuyết H1, H2"
   h1="Vẽ mô hình nghiên cứu online"
-  description="Kéo thả khái niệm, nối mũi tên như SmartPLS, vẽ biến trung gian, điều tiết; tải hình PNG, SVG cho Word và nhận giả thuyết H1…Hn viết sẵn. Miễn phí."
-  lede="Vẽ mô hình nghiên cứu ngay trên trình duyệt, không cần Visio hay PowerPoint, và nhận luôn giả thuyết cho từng mũi tên. Kéo khái niệm lên khung vẽ, kéo mũi tên từ ô này sang ô kia như trong SmartPLS. Công cụ viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian, điều tiết, khác biệt giữa các nhóm), vẽ được khái niệm bậc cao và biến kiểm soát, đếm số biến dự báo nhiều nhất để ra cỡ mẫu tối thiểu, xuất hình để chèn vào chương 2, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
+  description="Dán giả thuyết H1, H2 từ đề cương, tải file dữ liệu hoặc chọn mẫu TAM, TPB, SERVQUAL để có ngay sơ đồ mô hình, giả thuyết viết sẵn và hình PNG, SVG. Miễn phí."
+  lede="Có mô hình nghiên cứu trong một phút, không cần Visio hay PowerPoint: dán các giả thuyết H1, H2… đang có trong đề cương, tải file dữ liệu khảo sát (công cụ gộp HL1, HL2… thành khái niệm HL) hoặc chọn một mô hình mẫu như TAM, TPB, UTAUT2, SERVQUAL. Công cụ xếp sơ đồ gọn từ trái sang phải, viết sẵn giả thuyết (cùng chiều, ngược chiều, trung gian, điều tiết), tính cỡ mẫu tối thiểu, xuất hình PNG, SVG cho chương 2 và chuyển mô hình sang công cụ PLS-SEM. Vẫn kéo thả, nối mũi tên như SmartPLS được khi cần chỉnh."
   html={html}
 >
   <script is:inline type="application/json" id="vm-data" set:html={json} />
+  <script is:inline type="application/json" id="vm-concepts" set:html={conceptNames} />
   <Fragment slot="guide">
-    <h2>Cách dùng</h2>
+    <h2>Bốn cách có mô hình nhanh</h2>
     <p>
-      Khung vẽ làm việc giống SmartPLS: khái niệm là các ô kéo thả được, mũi
-      tên kéo từ ô này sang ô kia, giả thuyết và cỡ mẫu cập nhật ngay ở cột bên
-      phải (bên dưới trên điện thoại).
+      Phần “Bắt đầu từ thứ bạn đã có” ở đầu công cụ cho bốn lối vào. Lối nào
+      cũng ra cùng một sơ đồ trên khung vẽ, xếp sẵn biến độc lập bên trái, biến
+      trung gian ở giữa, biến phụ thuộc bên phải; sau đó vẫn chỉnh tay được và
+      nút Hoàn tác đưa về mô hình trước.
+    </p>
+    <ol>
+      <li>
+        <strong>Dán giả thuyết.</strong> Chép phần giả thuyết trong đề cương dán
+        vào ô, mỗi dòng một quan hệ, hoặc cả đoạn “H1: … H2: …”. Công cụ hiểu
+        <code>CL -&gt; HL</code>, <code>CL, GT, NT -&gt; HL -&gt; TT</code>,
+        “H1: Chất lượng dịch vụ → Sự hài lòng”, “H2 (-): Rủi ro cảm nhận tác động
+        ngược chiều đến ý định mua”, “X có ảnh hưởng tích cực đến Y”, “Y chịu tác
+        động của X”, “X càng cao thì Y càng cao”, “M đóng vai trò trung gian giữa
+        X và Y”, “Thu nhập điều tiết giá cảm nhận → ý định mua”, và mã trong ngoặc
+        như “Sự hài lòng (HL)” hoặc dòng chú thích “HL: Sự hài lòng”. Trước khi vẽ,
+        bảng bên cạnh cho xem công cụ đã hiểu gì: từng khái niệm với mã viết tắt,
+        vai trò, từng dòng có dấu ✓ hoặc ✗. Sửa tên, mã ngay trong bảng.
+      </li>
+      <li>
+        <strong>Tải dữ liệu.</strong> Chọn file .csv, .xlsx hoặc file tải về từ
+        Google Forms. Công cụ chỉ đọc dòng tiêu đề, ngay trên máy bạn, gộp các
+        cột cùng tiền tố (HL1, HL2, HL3 → HL) như công cụ
+        <a href="/cong-cu/cronbach-alpha/">Cronbach's Alpha</a> và
+        <a href="/cong-cu/pls-sem/">PLS-SEM</a>, rồi chỉ hỏi một câu: biến phụ
+        thuộc là gì (có thể chọn thêm biến trung gian). Mũi tên đề xuất đi từ mọi
+        biến độc lập vào biến trung gian rồi vào biến phụ thuộc; mỗi ô ghi số biến
+        quan sát đọc được.
+      </li>
+      <li>
+        <strong>Mô hình mẫu.</strong> Một cú bấm nạp TAM, TPB, UTAUT2, ECM,
+        SERVQUAL hoặc SERVPERF dẫn tới hài lòng và trung thành, hoặc mô hình hài
+        lòng khách hàng kiểu ACSI. Khái niệm lấy từ
+        <a href="/thang-do/">Thư viện thang đo</a> nên có sẵn số biến quan sát,
+        trích dẫn và link tới trang thang đo, trang khái niệm.
+      </li>
+      <li>
+        <strong>Ảnh mô hình.</strong> Đã có hình chụp từ đề cương hay
+        PowerPoint thì đặt nó làm nền mờ dưới khung vẽ rồi vẽ đè lên. Nút “Đọc tên
+        các ô trong ảnh” dùng Tesseract (chạy trong trình duyệt) để đọc chữ và đề
+        xuất ô đúng chỗ trong ảnh; bạn duyệt lại tên. Mũi tên không được nhận ra
+        tự động: việc đó cần mô hình thị giác máy tính và hay sai, nên bạn tự nối.
+      </li>
+    </ol>
+    <p>
+      Xong mô hình, bấm “Chạy PLS-SEM với mô hình này”: mô hình được lưu trong
+      trình duyệt, sang trang <a href="/cong-cu/pls-sem/">PLS-SEM</a> tải dữ
+      liệu rồi bấm “Lấy mô hình từ Vẽ mô hình”. Mã khái niệm cần trùng tiền tố
+      tên cột; mô hình tạo từ file dữ liệu tự đúng điều này.
+    </p>
+
+    <h2>Cách dùng khung vẽ</h2>
+    <p>
+      Khung vẽ làm việc giống SmartPLS: khái niệm là các ô kéo thả được (bằng
+      chuột hoặc ngón tay), mũi tên kéo từ ô này sang ô kia, giả thuyết và cỡ mẫu
+      cập nhật ngay ở cột bên phải (bên dưới khung vẽ trên điện thoại).
     </p>
     <ol>
       <li>
@@ -61,8 +118,10 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         Chuột phải (điện thoại: giữ lâu) trên ô hoặc mũi tên để đổi tên, đổi mã
         viết tắt, đảo hướng, đưa giả thuyết lên trước hoặc xoá. Kéo chỗ trống để
         di chuyển khung, lăn chuột hoặc hai ngón để thu phóng; Shift + kéo để chọn
-        nhiều ô rồi kéo cả nhóm. “Xếp tự động” đặt biến độc lập bên trái, trung
-        gian ở giữa, phụ thuộc bên phải. Mọi thao tác hoàn tác được.
+        nhiều ô rồi kéo cả nhóm. “Xếp tự động” đặt mọi biến độc lập ở cột trái,
+        trung gian ở giữa, phụ thuộc bên phải, các ô cách đều và ít mũi tên cắt
+        nhau; trên điện thoại, giữ lâu chỗ trống rồi chọn “Xếp dọc” để chữ to hơn.
+        Mọi thao tác hoàn tác được.
       </li>
       <li>
         <strong>Chép giả thuyết</strong> vào cuối chương 2 và viết lập luận cho
@@ -71,9 +130,10 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         chưa nối và thang đo dưới 3 biến.
       </li>
       <li>
-        <strong>Tải hình và mở tiếp.</strong> Tải PNG (độ phân giải gấp 3 lần, đủ
-        nét khi in) để chèn vào Word, hoặc SVG để chỉnh trong PowerPoint,
-        Inkscape, draw.io. Bấm “Mở trong Bộ khảo sát” để chuyển các khái niệm từ
+        <strong>Tải hình và mở tiếp.</strong> Tải PNG (rộng ít nhất 2.400 điểm
+        ảnh, in rõ ở 300 dpi) để chèn vào Word, hoặc SVG để chỉnh trong
+        PowerPoint, Inkscape, draw.io; chọn phông Arial hoặc Times New Roman ở mục
+        “Hình xuất ra”, cả hai đều hiển thị đủ dấu tiếng Việt. Bấm “Mở trong Bộ khảo sát” để chuyển các khái niệm từ
         thư viện, số mũi tên lớn nhất và biến phụ thuộc sang
         <a href="/cong-cu/bo-khao-sat/">Bộ khảo sát</a> để ghép
         bảng hỏi, tính cỡ mẫu và viết đoạn chương 3.
@@ -113,7 +173,7 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
 
     <h2>Ví dụ: mô hình TAM</h2>
     <p>
-      Bấm “Nạp ví dụ TAM” ở cột trái. Mô hình chấp nhận công nghệ của Davis (1989) có ba
+      Chọn “Mô hình mẫu” rồi TAM (hoặc bấm “Nạp ví dụ TAM” ở cột thư viện). Mô hình chấp nhận công nghệ của Davis (1989) có ba
       khái niệm: Nhận thức tính dễ sử dụng (PEOU), Nhận thức sự hữu ích (PU) và
       Ý định sử dụng (BI), với ba mũi tên PEOU → PU, PU → BI và PEOU → BI. Công
       cụ viết ra:
@@ -281,6 +341,30 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
     </p>
 
     <h2>Câu hỏi thường gặp</h2>
+    <h3>Dán giả thuyết từ đề cương thì công cụ hiểu đến đâu?</h3>
+    <p>
+      Công cụ đọc các cách viết hay gặp: mũi tên (<code>-&gt;</code>, →, =&gt;),
+      “tác động / ảnh hưởng (cùng chiều, ngược chiều, tích cực, tiêu cực) đến”,
+      “chịu tác động của”, “càng … thì … càng”, “đóng vai trò trung gian giữa”,
+      “điều tiết”, tiền tố H1, H2 (-) và mã viết tắt trong ngoặc. Dòng nào không
+      hiểu được đánh dấu ✗ và bị bỏ qua, không vẽ bừa. Khi chỉ có mã (CL, HL),
+      công cụ ghép với tên đầy đủ có cùng chữ cái đầu và ghi rõ là đoán để bạn
+      kiểm tra.
+    </p>
+    <h3>Tải dữ liệu lên thì công cụ đoán biến phụ thuộc thế nào?</h3>
+    <p>
+      Công cụ chọn sẵn khái niệm có mã hay dùng cho biến kết quả (YD, TT, HL,
+      BI, INT…), không có thì lấy khái niệm cuối file, và ghi “(đoán)” cạnh lựa
+      chọn đó. Bạn chỉ cần bấm đúng biến phụ thuộc, chọn thêm biến trung gian nếu
+      có. Dữ liệu không rời khỏi máy; công cụ chỉ đọc dòng tiêu đề.
+    </p>
+    <h3>Tải ảnh mô hình lên có tự vẽ lại được không?</h3>
+    <p>
+      Một phần. Ảnh được đặt làm nền để vẽ đè, và tên trong các ô có thể được
+      đọc tự động (Tesseract, tiếng Việt), nhưng chữ đọc được có thể sai dấu và
+      mũi tên phải tự nối. Nếu đề cương có sẵn phần giả thuyết dạng chữ, dán chữ
+      vào mục “Dán giả thuyết” nhanh và chính xác hơn đọc ảnh.
+    </p>
     <h3>Khi nào ghi “cùng chiều”, khi nào “ngược chiều”?</h3>
     <p>
       Theo lý thuyết và nghiên cứu trước: biến này tăng thì biến kia tăng là
@@ -317,7 +401,9 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
     <p>
       Không. Mọi thứ chạy trong trình duyệt; mô hình (kể cả vị trí các ô) được lưu
       trong đường link (nút Link trên thanh công cụ) và bộ nhớ của trình duyệt để
-      lần sau mở lại.
+      lần sau mở lại. File dữ liệu và ảnh mô hình chỉ được đọc trên máy bạn; ảnh
+      không được lưu lại. Riêng nút đọc chữ trong ảnh tải thư viện Tesseract và
+      dữ liệu tiếng Việt từ cdn.jsdelivr.net, ảnh vẫn không gửi đi đâu.
     </p>
 
     <h2>Tài liệu tham khảo</h2>
@@ -327,6 +413,9 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         size and power in assessing moderating effects of categorical variables
         using multiple regression: A 30-year review. <em>Journal of Applied
         Psychology, 90</em>(1), 94–107. https://doi.org/10.1037/0021-9010.90.1.94
+      </li>
+      <li>
+        Ajzen, I. (1991). The theory of planned behavior. <em>Organizational Behavior and Human Decision Processes, 50</em>(2), 179–211. https://doi.org/10.1016/0749-5978(91)90020-T
       </li>
       <li>
         Becker, J.-M., Klein, K., &amp; Wetzels, M. (2012). Hierarchical latent
@@ -341,8 +430,14 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         1–21. https://doi.org/10.47263/JASEM.2(2)01
       </li>
       <li>
+        Bhattacherjee, A. (2001). Understanding information systems continuance: An expectation-confirmation model. <em>MIS Quarterly, 25</em>(3), 351–370. https://doi.org/10.2307/3250921
+      </li>
+      <li>
         Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1),
         155–159. https://doi.org/10.1037/0033-2909.112.1.155
+      </li>
+      <li>
+        Cronin, J. J., Jr., &amp; Taylor, S. A. (1992). Measuring service quality: A reexamination and extension. <em>Journal of Marketing, 56</em>(3), 55–68. https://doi.org/10.1177/002224299205600304
       </li>
       <li>
         Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user
@@ -354,6 +449,9 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         Statistical power analyses using G*Power 3.1: Tests for correlation and
         regression analyses. <em>Behavior Research Methods, 41</em>(4),
         1149–1160. https://doi.org/10.3758/BRM.41.4.1149
+      </li>
+      <li>
+        Fornell, C., Johnson, M. D., Anderson, E. W., Cha, J., &amp; Bryant, B. E. (1996). The American Customer Satisfaction Index: Nature, purpose, and findings. <em>Journal of Marketing, 60</em>(4), 7–18. https://doi.org/10.1177/002224299606000403
       </li>
       <li>
         Fritz, M. S., &amp; MacKinnon, D. P. (2007). Required sample size to detect
@@ -377,10 +475,19 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         https://doi.org/10.1111/isj.12131
       </li>
       <li>
+        Kotler, P., &amp; Keller, K. L. (2016). <em>Marketing management</em> (15th ed.). Pearson.
+      </li>
+      <li>
+        Parasuraman, A., Zeithaml, V. A., &amp; Berry, L. L. (1988). SERVQUAL: A multiple-item scale for measuring consumer perceptions of service quality. <em>Journal of Retailing, 64</em>(1), 12–40.
+      </li>
+      <li>
         Sarstedt, M., Hair, J. F., Cheah, J.-H., Becker, J.-M., &amp; Ringle, C. M.
         (2019). How to specify, estimate, and validate higher-order constructs in
         PLS-SEM. <em>Australasian Marketing Journal, 27</em>(3), 197–211.
         https://doi.org/10.1016/j.ausmj.2019.05.003
+      </li>
+      <li>
+        Venkatesh, V., Thong, J. Y. L., &amp; Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. <em>MIS Quarterly, 36</em>(1), 157–178. https://doi.org/10.2307/41410412
       </li>
       <li>
         Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron

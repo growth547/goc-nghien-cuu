@@ -77,7 +77,7 @@ export function layersOf(nodes: string[], paths: { from: string; to: string }[])
 }
 
 // Break a label into lines of at most `max` characters, at most `lines` lines.
-export function wrap(text: string, max = 23, lines = 2): string[] {
+export function wrap(text: string, max = 27, lines = 2): string[] {
   const out: string[] = [];
   let cur = "";
   for (const w of text.split(/\s+/)) {
@@ -107,7 +107,7 @@ export function layoutModel(
   nodes: { key: string; name: string; code: string }[],
   paths: { from: string; to: string; sign?: "+" | "-" }[]
 ): Diagram {
-  const W = 190,
+  const W = 204,
     H = 58,
     GX = 112,
     GY = 22,

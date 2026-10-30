@@ -78,6 +78,7 @@ export function header(site: URL) {
     `- [Khái niệm / Constructs](${u("khai-niem")}): mỗi khái niệm gom các thang đo đo nó`,
     `- [Mẫu bảng hỏi / Questionnaire templates](${u("mau-bang-hoi")}): bảng hỏi theo đề tài khoá luận`,
     `- [Dữ liệu thứ cấp Việt Nam / Vietnam data](${u("du-lieu")}): chỉ số World Bank, ILO, FAO, PWT và giá hàng hoá, tải CSV`,
+    `- [Biến nghiên cứu tài chính / Firm and bank variables](${u("bien-nghien-cuu")}): định nghĩa, công thức theo chỉ tiêu BCTC Việt Nam (Thông tư 200, 49), code Stata/R, tài liệu tham khảo`,
     `- [Bài viết / Guides](${u("posts")}): hướng dẫn phương pháp nghiên cứu`,
     `- [Phương pháp biên soạn / Methodology](${u("phuong-phap-bien-soan")}): cách kiểm chứng thang đo, thống kê, dữ liệu`,
     "",

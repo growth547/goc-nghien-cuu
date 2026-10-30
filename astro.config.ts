@@ -44,6 +44,9 @@ export default defineConfig({
   site: config.site.url,
   base: "/",
   trailingSlash: "ignore",
+  // Compression drops the line break between text and an inline tag on the next line ("Trên<a>"),
+  // gluing words to links across ~160 pages; keep the whitespace instead.
+  compressHTML: false,
   // Old URLs from the first version of the site (already submitted to search engines).
   redirects: Object.fromEntries(
     [

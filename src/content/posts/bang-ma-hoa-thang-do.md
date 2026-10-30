@@ -109,6 +109,8 @@ COMPUTE PE = MEAN.3(PE1, PE2, PE3).
 EXECUTE.</code></pre>
 <p>Từ khoá TO lấy mọi biến nằm giữa PE1 và BI3 theo thứ tự cột trong file, nên hãy chắc các câu Likert đứng liền nhau và không có cột khác xen giữa. Hàm MEAN.3 chỉ tính trung bình khi có ít nhất 3 giá trị hợp lệ, an toàn hơn MEAN thông thường vốn tính cả khi chỉ có một giá trị.</p>
 
+<p>Nếu dữ liệu đến từ Google Forms, <a href="/cong-cu/lam-sach-du-lieu/">công cụ chuyển dữ liệu Google Form sang SPSS</a> đặt mã biến theo bảng mã hoá, đổi nhãn thành số và sinh sẵn cú pháp khai báo Variable View.</p>
+
 <h2>Lỗi thường gặp</h2>
 <table>
 <thead><tr><th>Lỗi</th><th>Hậu quả</th><th>Cách sửa</th></tr></thead>

@@ -1,5 +1,5 @@
 ---
-title: "Thang đo Likert 5 mức, 7 mức: chọn loại nào và dùng sao cho đúng"
+title: "Thang đo Likert 5 mức độ, 7 mức độ: chọn loại nào, dùng sao"
 description: "Thang đo Likert 5 mức, 7 mức khác nhau thế nào, nhãn cho tần suất và mức hài lòng, có nên giữ mức trung lập, mã hoá câu đảo chiều, phân tích dữ liệu."
 pubDatetime: 2026-10-29T03:00:00+07:00
 modDatetime: 2026-10-30T02:27:45+07:00
@@ -101,6 +101,8 @@ tags: ["thang đo","bảng hỏi"]
 <li>Dùng biến đại diện đó cho tương quan, hồi quy, so sánh nhóm.</li>
 </ol>
 <p>Khi diễn giải điểm trung bình thang 5 mức, nhiều bài dùng khoảng cách (5 − 1) / 5 = 0,8 để chia mức: 1,00 đến 1,80 rất thấp; 1,81 đến 2,60 thấp; 2,61 đến 3,40 trung bình; 3,41 đến 4,20 cao; 4,21 đến 5,00 rất cao. Cách chia này chỉ là một quy ước diễn giải phổ biến trong khoá luận ở Việt Nam, không phải ngưỡng do Likert hay một sách phương pháp chuẩn đưa ra. Nếu dùng, ghi rõ là quy ước và nêu cách tính khoảng (giá trị lớn nhất trừ nhỏ nhất, chia cho số mức). Với thang 7 mức, khoảng là (7 − 1) / 7 ≈ 0,86.</p>
+
+<p>Thang đo Likert gồm nhiều câu chỉ dùng được khi các câu đo cùng một khái niệm; kiểm tra điều này bằng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a> trước khi lấy điểm trung bình.</p>
 
 <h2>Dữ liệu Likert và vấn đề trả lời rập khuôn</h2>
 <p>Khối câu Likert dạng lưới là nơi người trả lời mệt hoặc thiếu tập trung dễ chọn cùng một cột từ đầu đến cuối. Phiếu như vậy làm tương quan giữa các câu cao giả tạo, và có thể kéo Cronbach's alpha lên mà không phản ánh thực tế. Một vài cách giảm rủi ro:</p>

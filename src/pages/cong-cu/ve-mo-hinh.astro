@@ -24,10 +24,10 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
 
 <ToolLayout
   slug="ve-mo-hinh"
-  title="Vẽ mô hình nghiên cứu online, tự viết giả thuyết H1, H2 và tính cỡ mẫu"
-  h1="Vẽ mô hình nghiên cứu"
-  description="Kéo thả khái niệm từ thư viện thang đo, nối mũi tên như SmartPLS, vẽ biến điều tiết, khái niệm bậc cao, biến kiểm soát, so sánh đa nhóm; tải hình (PNG, SVG), nhận giả thuyết H1…Hn tiếng Việt và cỡ mẫu tối thiểu PLS-SEM. Miễn phí."
-  lede="Kéo khái niệm lên khung vẽ, kéo mũi tên từ ô này sang ô kia như trong SmartPLS. Công cụ viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian, điều tiết, khác biệt giữa các nhóm), vẽ được khái niệm bậc cao và biến kiểm soát, đếm số biến dự báo nhiều nhất để ra cỡ mẫu tối thiểu, xuất hình để chèn vào chương 2, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
+  title="Vẽ mô hình nghiên cứu online, tự viết giả thuyết H1, H2"
+  h1="Vẽ mô hình nghiên cứu online"
+  description="Kéo thả khái niệm, nối mũi tên như SmartPLS, vẽ biến trung gian, điều tiết; tải hình PNG, SVG cho Word và nhận giả thuyết H1…Hn viết sẵn. Miễn phí."
+  lede="Vẽ mô hình nghiên cứu ngay trên trình duyệt, không cần Visio hay PowerPoint, và nhận luôn giả thuyết cho từng mũi tên. Kéo khái niệm lên khung vẽ, kéo mũi tên từ ô này sang ô kia như trong SmartPLS. Công cụ viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian, điều tiết, khác biệt giữa các nhóm), vẽ được khái niệm bậc cao và biến kiểm soát, đếm số biến dự báo nhiều nhất để ra cỡ mẫu tối thiểu, xuất hình để chèn vào chương 2, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
   html={html}
 >
   <script is:inline type="application/json" id="vm-data" set:html={json} />

@@ -81,6 +81,8 @@ tags: ["thu mẫu","khoá luận"]
 </ol>
 <p>Cách làm từng bước, kể cả cú pháp SPSS, có ở bài <a href="/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Ghi lại số phiếu bị loại ở từng bước. Phần này đưa vào chương 3 dưới dạng "Thu về 342 phiếu, loại 41 phiếu không hợp lệ, còn 301 phiếu đưa vào phân tích" làm hội đồng tin dữ liệu của bạn hơn hẳn. Sau khi lọc xong, bước tiếp theo thường là kiểm định độ tin cậy, xem hướng dẫn đọc bảng kết quả trong bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
 
+<p>Lọc phiếu theo quy tắc khai báo trước, kèm nhật ký phiếu bị loại để đưa vào chương 3, làm được bằng <a href="/cong-cu/lam-sach-du-lieu/">công cụ làm sạch dữ liệu khảo sát</a>.</p>
+
 <h2>Danh sách kiểm tra trước khi gửi link đầu tiên</h2>
 <ol>
 <li>Đã có một câu mô tả đối tượng được phép trả lời.</li>

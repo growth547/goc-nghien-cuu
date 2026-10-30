@@ -18,8 +18,8 @@ const fields = [...new Set(concepts.map(x => x.data.field))].sort((a, b) => a.lo
 ---
 
 <Layout
-  title={`Thang đo theo khái niệm nghiên cứu tiếng Việt | ${config.site.title}`}
-  description="Thang đo tiếng Việt xếp theo khái niệm: ý định mua, sự hài lòng, lòng trung thành, chuẩn chủ quan, căng thẳng, kiệt sức. So sánh các thang và chọn thang phù hợp đề tài."
+  title="Thang đo theo khái niệm: hài lòng, ý định mua, trung thành"
+  description="Thang đo tiếng Việt xếp theo khái niệm: ý định mua, sự hài lòng, lòng trung thành, chuẩn chủ quan, căng thẳng, kiệt sức. So sánh để chọn thang phù hợp đề tài."
 >
   <JsonLd slot="head" data={glossaryLd(concepts, abs("khai-niem"), c => abs(`khai-niem/${c.id}`))} />
   <Header />

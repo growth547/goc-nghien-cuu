@@ -14,10 +14,10 @@ const locale = Astro.currentLocale ?? config.site.lang;
 const [datasets, templates] = await Promise.all([getCollection("datasets"), getCollection("templates")]);
 ---
 
-<Layout title={`Công cụ miễn phí | ${config.site.title}`} description="Công cụ miễn phí cho khoá luận: tạo bảng hỏi từ thang đo gốc, vẽ mô hình nghiên cứu và giả thuyết, chọn phương pháp phân tích, tính cỡ mẫu (PLS-SEM, G*Power), Cronbach's alpha, phân tích dữ liệu và trích dẫn APA 7.">
+<Layout title="Công cụ nghiên cứu khoa học miễn phí cho khoá luận" description="Công cụ miễn phí cho khoá luận định lượng: tạo bảng hỏi, tính cỡ mẫu, Cronbach's alpha, phân tích dữ liệu, vẽ mô hình, trích dẫn APA 7. Không cần cài đặt.">
   <Header />
   <Breadcrumb />
-  <Main pageTitle="Công cụ" pageDesc="Miễn phí, chạy ngay trong trình duyệt, không cần cài phần mềm.">
+  <Main pageTitle="Công cụ nghiên cứu khoa học miễn phí" pageDesc="Công cụ cho khoá luận, luận văn định lượng, từ bảng hỏi, cỡ mẫu tới Cronbach's alpha, phân tích dữ liệu và trích dẫn APA. Miễn phí, chạy ngay trong trình duyệt, không cần cài phần mềm.">
     <ToolCards />
     <h2 class="text-foreground mt-14 mb-4 text-xl font-bold">Đi kèm công cụ</h2>
     <ul class="grid gap-4 sm:grid-cols-2">

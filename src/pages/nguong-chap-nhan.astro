@@ -28,7 +28,7 @@ const pageUrl = new URL("nguong-chap-nhan/", siteUrl).href;
 
 const title = "Ngưỡng chấp nhận các chỉ số trong luận văn định lượng";
 const description =
-  "Bảng ngưỡng Cronbach's alpha, CR, AVE, KMO, hệ số tải, CFI, RMSEA, HTMT, VIF, R², f², Q², Durbin–Watson, effect size, CMB; mỗi ngưỡng có nguồn gốc kèm DOI và ghi chú khi nguồn hay bị dẫn sai.";
+  "Bảng ngưỡng Cronbach's alpha, CR, AVE, KMO, hệ số tải, HTMT, VIF, CFI, RMSEA, R², f² cho luận văn định lượng; mỗi ngưỡng có nguồn gốc kèm DOI để trích dẫn.";
 const author = config.site.author;
 const [y, m, d] = data.published.split("-");
 const vnDate = (iso: string) => iso.split("-").reverse().join("/");
@@ -70,7 +70,7 @@ const ld = [
 const slash = (iso: string) => iso.replace(/-/g, "/");
 ---
 
-<Layout title={`${title} | ${config.site.title}`} description={description} ogType="article">
+<Layout title="Ngưỡng chấp nhận Cronbach, KMO, AVE, HTMT, VIF có nguồn" description={description} ogType="article">
   <Fragment slot="head">
     <meta name="citation_title" content={title} />
     <meta name="citation_author" content={author} />

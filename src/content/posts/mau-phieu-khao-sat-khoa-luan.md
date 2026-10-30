@@ -131,6 +131,8 @@ tags: ["bảng hỏi","khoá luận"]
 </ol>
 <p>Nếu đề tài của bạn gần với các chủ đề phổ biến như ví điện tử, mua sắm online, ý định nghỉ việc, chất lượng dịch vụ, xem các <a href="/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a> có sẵn mô hình, cỡ mẫu và nguồn thang đo.</p>
 
+<p>Sửa xong phiếu, tính số phiếu cần thu bằng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu</a>; khi có câu trả lời, <a href="/cong-cu/lam-sach-du-lieu/">chuyển dữ liệu Google Form sang SPSS</a> để mã hoá theo đúng mã biến trong phiếu.</p>
+
 <h2>Lỗi thường gặp</h2>
 <table>
 <thead><tr><th>Lỗi</th><th>Vì sao là vấn đề</th><th>Cách sửa</th></tr></thead>

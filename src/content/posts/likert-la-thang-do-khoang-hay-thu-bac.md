@@ -65,6 +65,8 @@ tags: ["thang đo","SPSS","khoá luận"]
 </table>
 <p>Nếu bạn dùng <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a> của Góc Nghiên Cứu, các bước tạo biến tổng hợp, Cronbach, EFA và hồi quy đã đi theo đúng thứ tự trên.</p>
 
+<p>Nếu đề tài còn so sánh nhóm, hồi quy hay SEM, <a href="/cong-cu/chon-phuong-phap/">công cụ chọn phương pháp phân tích dữ liệu</a> gợi ý phép kiểm định phù hợp với loại biến và nêu giả định cần kiểm tra.</p>
+
 <h2>Khai báo Measure trong SPSS</h2>
 <p>Trong Variable View, cột Measure có ba lựa chọn: Scale, Ordinal, Nominal. Hai điều cần biết:</p>
 <ol>

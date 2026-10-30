@@ -91,6 +91,8 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 </table>
 <p>Boateng và cộng sự (2018) nhấn mạnh rằng độ tin cậy cao trong bài gốc không đảm bảo thang đo phù hợp với quần thể của bạn; bối cảnh và định nghĩa quan trọng không kém con số alpha.</p>
 
+<p>Mỗi thang đo tìm được nên ghi ngay tài liệu tham khảo kèm DOI; <a href="/cong-cu/trich-dan-apa/">công cụ trích dẫn APA 7</a> chuyển DOI thành mục tài liệu đúng chuẩn và sửa tên tác giả Việt bị đảo.</p>
+
 <h2>Bảng ghi chép khi tìm thang đo</h2>
 <p>Lập một bảng tính với các cột sau ngay từ đầu. Bảng này về sau thành bảng nguồn trong chương 3 và <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>:</p>
 <table>

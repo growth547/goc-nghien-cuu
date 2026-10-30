@@ -5,10 +5,10 @@ import html from "@/tools/trung-gian-dieu-tiet.html?raw";
 
 <ToolLayout
   slug="trung-gian-dieu-tiet"
-  title="Kiểm định trung gian và điều tiết online (kiểu PROCESS Model 4, 6, 1, 7) có bootstrap"
+  title="Kiểm định biến trung gian, điều tiết online như PROCESS"
   h1="Kiểm định biến trung gian và biến điều tiết"
-  description="Chạy trung gian đơn, song song, nối tiếp, điều tiết và trung gian có điều tiết theo PROCESS của Hayes ngay trong trình duyệt: bootstrap 5.000 lần, simple slopes, Johnson–Neyman, đồ thị tương tác và đoạn chương 4 tiếng Việt."
-  lede="Tải file khảo sát, chọn X, M, W, Y và biến kiểm soát. Công cụ ước lượng bằng hồi quy OLS như PROCESS (Model 4, 6, 1, 7), tính khoảng tin cậy bootstrap cho tác động gián tiếp, vẽ đồ thị tương tác và Johnson–Neyman, rồi viết sẵn mục kiểm định cho chương 4 để tải về Word."
+  description="Chạy trung gian đơn, song song, nối tiếp, điều tiết theo PROCESS (Model 4, 6, 1, 7) ngay trên trình duyệt: bootstrap, Johnson–Neyman, chương 4 viết sẵn."
+  lede="Biến trung gian cho biết X tác động lên Y qua con đường nào; biến điều tiết cho biết tác động đó mạnh hay yếu đi tuỳ theo một biến thứ ba. Tải file khảo sát, chọn X, M, W, Y và biến kiểm soát. Công cụ ước lượng bằng hồi quy OLS như PROCESS (Model 4, 6, 1, 7), tính khoảng tin cậy bootstrap cho tác động gián tiếp, vẽ đồ thị tương tác và Johnson–Neyman, rồi viết sẵn mục kiểm định cho chương 4 để tải về Word."
   html={html}
 >
   <Fragment slot="guide">
@@ -141,6 +141,35 @@ import html from "@/tools/trung-gian-dieu-tiet.html?raw";
         Kiểm định tương tác cần mẫu lớn hơn hiệu ứng chính; công cụ cảnh báo khi dưới 20 phiếu cho mỗi biến giải thích.
       </li>
     </ul>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Biến trung gian và biến điều tiết khác nhau thế nào?</h3>
+    <p>
+      Biến trung gian (M) nằm trên đường tác động: X ảnh hưởng tới M, rồi M ảnh hưởng
+      tới Y. Biến điều tiết (W) không nằm trên đường đó mà làm thay đổi độ mạnh hoặc
+      chiều của tác động X → Y. Trên
+      <a href="/cong-cu/ve-mo-hinh/">sơ đồ mô hình nghiên cứu</a>, trung gian là một ô
+      ở giữa hai mũi tên, còn điều tiết là mũi tên chĩa vào một mũi tên khác.
+    </p>
+    <h3>Có cần cài PROCESS macro vào SPSS không?</h3>
+    <p>
+      Không cần để dùng công cụ này: phép tính chạy trong trình duyệt theo cùng cách
+      ước lượng OLS của các Model 4, 6, 1, 7. Nếu khoa yêu cầu nộp kết quả từ SPSS, bạn
+      vẫn dùng công cụ để kiểm tra trước, rồi chạy PROCESS với cùng biến và cùng số mẫu
+      bootstrap.
+    </p>
+    <h3>Khi nào kết luận có tác động trung gian?</h3>
+    <p>
+      Khi khoảng tin cậy bootstrap của tác động gián tiếp (a × b) không chứa số 0. Tác
+      động trực tiếp c' còn ý nghĩa hay không chỉ cho biết trung gian một phần hay toàn
+      phần, không phải điều kiện để có trung gian (Zhao và cộng sự, 2010).
+    </p>
+    <h3>Cần bao nhiêu phiếu để kiểm định điều tiết?</h3>
+    <p>
+      Tương tác cần mẫu lớn hơn hiệu ứng chính. Tính trước bằng
+      <a href="/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a> (mục biến điều tiết) và xem
+      ngưỡng của các chỉ số ở trang <a href="/nguong-chap-nhan/">ngưỡng chấp nhận</a>.
+    </p>
 
     <h2>Kiểm chứng</h2>
     <p>

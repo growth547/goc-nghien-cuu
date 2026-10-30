@@ -31,4 +31,56 @@ Trùng backlog nhưng nên viết **trước**: `htmt-la-gi` + `ave-cr-la-gi` (g
 
 ## Cụm từ khoá và trang đích
 
-(đang điền, xem bảng dưới)
+Cách đọc cột "Đối thủ top 3": với *cronbach alpha bao nhiêu là đạt* là SERP tiếng Việt quan sát trực tiếp (30/10/2026). Các cụm còn lại: công cụ tìm kiếm chặn truy vấn tự động bằng CAPTCHA sau vài lượt (không vượt), nên cột này ghi **các site có bài chuyên cho cụm đó** (tìm theo domain), sắp theo mức độ hiện diện; Autocomplete cũng tự gợi tên thương hiệu "phamlocblog", "xulydinhluong", "thái thanh trúc" ở vài cụm, cho thấy người dùng tìm thẳng các nguồn này. Cần kiểm lại bằng tay trên Google (trình duyệt thường, `hl=vi`) khi có thời gian.
+
+Độ khó: **Thấp** = top là blog/forum yếu, bài cũ, không có công cụ; **TB** = blog SPSS chuyên (phamlocblog, xulysolieu…) có bài tốt nhưng không có công cụ; **Cao** = trang báo lớn, trường, Wikipedia hoặc công cụ quốc tế.
+
+| Cụm | Truy vấn chính | Biến thể (Autocomplete thật) | Trang đích | Đối thủ top 3 | Độ khó / cơ hội |
+|---|---|---|---|---|---|
+| Tính Cronbach online | tính cronbach alpha online | tính cronbach alpha, cronbach alpha calculator, kiểm định cronbach alpha, chạy spss cronbach alpha | /cong-cu/cronbach-alpha/ | Công cụ tiếng Anh (cogn-iq, statscalculators, uedufy); không có công cụ tiếng Việt | **Thấp, cơ hội lớn nhất**: không đối thủ Việt có công cụ |
+| Cronbach là gì / ngưỡng | cronbach alpha bao nhiêu là đạt | cronbach alpha là gì, cách đọc, cronbach's alpha if item deleted là gì, lớn hơn 0.9, độ tin cậy thang đo là gì | /posts/cronbach-alpha-la-gi/ | xulydinhluong, maasedtech, dienform (quan sát); phamlocblog | TB. Khác biệt: nguồn Nunnally đọc đúng, bảng có DOI |
+| Cỡ mẫu (công cụ) | tính cỡ mẫu nghiên cứu online | tính cỡ mẫu online, tính cỡ mẫu nghiên cứu khoa học, cỡ mẫu pls sem, cỡ mẫu tối thiểu của pls sem, g*power online | /cong-cu/tinh-co-mau/ | xulysolieu (bài), phamlocblog (bài cỡ mẫu SmartPLS, AMOS, EFA); Raosoft (EN) | **Thấp–TB**: đối thủ chỉ có bài, không có máy tính tiếng Việt |
+| Cỡ mẫu (kiến thức) | cỡ mẫu nghiên cứu bao nhiêu là đủ | cỡ mẫu tối thiểu trong nghiên cứu, công thức tính cỡ mẫu cochran, cỡ mẫu nghiên cứu khoa học | /posts/co-mau-nghien-cuu-bao-nhieu-la-du/ | phamlocblog, xulysolieu, phantichspss | TB. Nhánh y tế (Thái Thanh Trúc, ước lượng 1 tỷ lệ) để cho bài riêng, xem Khoảng trống #9 |
+| Vẽ mô hình | vẽ mô hình nghiên cứu online | vẽ mô hình nghiên cứu khoa học online, vẽ mô hình nghiên cứu trong word, cách vẽ mô hình nghiên cứu, bằng visio | /cong-cu/ve-mo-hinh/ | phantichspss (Visio), xulydinhluong & phamlocblog (SmartPLS) | **Thấp**: không ai có công cụ vẽ online tiếng Việt |
+| Mô hình nghiên cứu đề xuất | mô hình nghiên cứu đề xuất | mô hình nghiên cứu là gì, mô hình nghiên cứu đề xuất là gì, mô hình nghiên cứu có biến kiểm soát | /posts/cach-xay-dung-mo-hinh-nghien-cuu/ | xulydinhluong, chayspss, luanvanviet | TB |
+| Trích dẫn APA | trích dẫn apa 7 online | trích dẫn apa 7th online, trích dẫn apa miễn phí, tài liệu tham khảo apa 7, apa 7 citation generator | /cong-cu/trich-dan-apa/ | papersflow (vi), scribbr/mybib (EN), luanvanviet (bài cũ, còn ghi nơi xuất bản) | TB–Cao (công cụ quốc tế mạnh). Lợi thế: tên tác giả Việt, văn bản pháp luật |
+| Phân tích dữ liệu không SPSS | phân tích dữ liệu khảo sát online | chạy spss online, spss online free, phân tích dữ liệu spss, xử lý số liệu spss | /cong-cu/phan-tich-du-lieu/ | Dịch vụ chạy thuê (xulysolieu, phantichspss), trang tải SPSS | **Thấp–TB**: ý định "không cần SPSS" gần như chưa ai phục vụ |
+| Trung gian / điều tiết (công cụ) | kiểm định biến trung gian | kiểm định biến trung gian spss, process macro model 4, process macro spss, kiểm định vai trò trung gian | /cong-cu/trung-gian-dieu-tiet/ | phamlocblog, xulysolieu (nhiều bài), phantichspss | TB. "biến trung gian là gì" để cho bài viết (backlog `bien-trung-gian-dieu-tiet`) |
+| Google Form sang SPSS | cách chuyển dữ liệu từ google form sang spss | mã hoá dữ liệu spss, làm sạch dữ liệu spss, cách lọc phiếu khảo sát | /cong-cu/lam-sach-du-lieu/ | phamlocblog, xulysolieu, phantichspss | **Thấp**: chỉ có hướng dẫn Ctrl+H thủ công |
+| Lọc phiếu | cách lọc phiếu khảo sát | lọc phiếu khảo sát không hợp lệ | /posts/cach-loc-phieu-khao-sat-khong-hop-le/ | dienform, blog SPSS | Thấp, volume nhỏ |
+| Chọn phương pháp | phương pháp phân tích dữ liệu định lượng | lựa chọn phương pháp nghiên cứu, phương pháp phân tích dữ liệu trong nghiên cứu khoa học, phương pháp phân tích dữ liệu thứ cấp | /cong-cu/chon-phuong-phap/ | Giáo trình, trường, blog tổng quát | TB–Cao. "là gì" để cho bài (Khoảng trống #7) |
+| Khi kết quả không đạt | cronbach alpha thấp | vì sao cronbach alpha thấp, kmo là gì, kmo nhỏ hơn 0.5, r bình phương hiệu chỉnh nhỏ hơn 50 | /cong-cu/bac-si-ket-qua/ | dienform (bài alpha < 0,6, phương sai < 50%), phamlocblog | **Thấp**: không ai có chẩn đoán theo quy tắc |
+| Ngưỡng chỉ số | ngưỡng cronbach's alpha | tiêu chuẩn kiểm định cronbach alpha, giá trị hội tụ ave, độ giá trị phân biệt fornell larcker htmt, hệ số vif lớn hơn 2 | /nguong-chap-nhan/ | resdata, xulydinhluong, phamlocblog (mỗi chỉ số một bài) | TB. Lợi thế: một bảng đủ mọi ngưỡng, có DOI |
+| Bảng hỏi (công cụ) | tạo bảng câu hỏi khảo sát | bảng câu hỏi khảo sát nghiên cứu khoa học, bảng hỏi định lượng, bảng hỏi thang đo likert | /cong-cu/bo-khao-sat/ | ahaslides, limesurvey (vi), blog | TB |
+| Mẫu bảng hỏi | mẫu bảng hỏi khảo sát nghiên cứu khoa học | mẫu bảng hỏi khảo sát, mẫu bảng hỏi nckh, mẫu bảng hỏi likert, bảng câu hỏi khảo sát hành vi người tiêu dùng | /mau-bang-hoi/ | 123doc/tailieu (file), limesurvey, luanvanviet | TB. Trang con theo đề tài là cửa vào long-tail |
+| Mẫu phiếu khoá luận | mẫu phiếu khảo sát khoá luận | phiếu khảo sát mẫu, mẫu phiếu khảo sát sinh viên | /posts/mau-phieu-khao-sat-khoa-luan/ | 123doc, tailieu, trang trường | TB |
+| Thư viện thang đo | thang đo nghiên cứu khoa học | thang đo trong nghiên cứu định lượng, các thang đo nghiên cứu, bảng thang đo nghiên cứu, thang đo trong nghiên cứu marketing | /thang-do/ | luanvanviet, xulysolieu, tailieu | TB. Long-tail mạnh ở trang con: thang đo servqual, thang đo pss 10, thang đo kiệt sức maslach, thang đo sự hài lòng với cuộc sống swls |
+| Thang đo theo khái niệm | thang đo sự hài lòng của khách hàng | thang đo ý định mua hàng, thang đo lòng trung thành, thang đo căng thẳng, thang đo sự hài lòng trong công việc | /khai-niem/ (hub) → /khai-niem/<slug>/ | Blog luận văn, 123doc | **Thấp–TB**: ít trang so sánh nhiều thang có nguồn |
+| Likert | thang đo likert 5 mức độ | thang đo likert, likert 7 mức độ, likert 5 mức độ của ai, likert 3 mức độ | /posts/thang-do-likert/ | Wikipedia vi, blog SPSS, trang khảo sát | Cao (Wikipedia). Bài "khoảng hay thứ bậc" nhận long-tail riêng |
+| Likert khoảng/thứ bậc | likert là thang đo khoảng cách hay thứ bậc | likert là định tính hay định lượng | /posts/likert-la-thang-do-khoang-hay-thu-bac/ | Blog SPSS | Thấp |
+| EFA | phân tích efa spss | efa là gì, ma trận xoay spss, kmo và bartlett, phân tích efa và cfa | /posts/cach-doc-ket-qua-efa-spss/ | phamlocblog (thương hiệu xuất hiện trong gợi ý), xulysolieu, xulydinhluong | Cao (phamlocblog thống trị). Đánh bằng ngách: đọc bảng có nguồn |
+| Hồi quy | hồi quy tuyến tính bội spss | đọc kết quả hồi quy spss, chạy hồi quy spss, hồi quy bội spss | /posts/hoi-quy-tuyen-tinh-boi-spss/ | phamlocblog, xulysolieu, phantichspss | Cao |
+| Giả thuyết | cách đặt giả thuyết nghiên cứu | giả thuyết nghiên cứu là gì ví dụ, giả thuyết nghiên cứu ví dụ | /posts/cach-dat-gia-thuyet-nghien-cuu/ | chayspss, trang giáo dục, giáo trình | TB |
+| Chương 4 | cách viết chương 4 kết quả nghiên cứu | chương 4 kết quả nghiên cứu | /posts/cach-viet-chuong-4-ket-qua-nghien-cuu/ | luanvanviet, dịch vụ viết thuê | TB |
+| Google Form | cách tạo phiếu khảo sát trên google form | tạo phiếu khảo sát google form, làm phiếu khảo sát google form, mẫu phiếu khảo sát google form | /posts/cach-tao-phieu-khao-sat-google-forms/ | Báo công nghệ (thegioididong, fptshop…), Google hỗ trợ | Cao; giữ góc "cho khoá luận" |
+| Nghiên cứu sơ bộ | nghiên cứu sơ bộ là gì | nghiên cứu sơ bộ định tính, nghiên cứu định lượng sơ bộ | /posts/nghien-cuu-so-bo-la-gi/ | Blog luận văn | Thấp |
+| Back translation | back translation là gì | back translation method, dịch ngược thang đo | /posts/dich-nguoc-back-translation-la-gi/ | Ít trang tiếng Việt | Thấp, volume nhỏ |
+| Dữ liệu vĩ mô | dữ liệu kinh tế vĩ mô việt nam | số liệu gdp việt nam qua các năm, lạm phát việt nam qua các năm, lãi suất việt nam qua các năm, fdi việt nam qua các năm, cách tải dữ liệu từ world bank | /du-lieu/ (hub) → /du-lieu/gdp/, /du-lieu/lam-phat/… | GSO/NSO, VnEconomy, VietnamBiz data, World Bank | Cao ở đầu cụm; trang con theo chỉ số có cơ hội nhờ bảng + CSV + APA |
+| Chỉ số tài chính (công cụ) | tính chỉ số tài chính từ báo cáo tài chính | công thức roa roe, chỉ số roa roe, z score altman calculator, công thức z score altman | /cong-cu/tinh-chi-so-tai-chinh/ | CafeF, VietnamBiz, FireAnt (bài cho nhà đầu tư) | TB. Ý định "tính cho khoá luận, nhiều năm" chưa ai phục vụ |
+| Biến nghiên cứu tài chính | biến nghiên cứu tài chính doanh nghiệp | roa là gì, tobin's q là gì, nim ngân hàng là gì, z score altman | /bien-nghien-cuu/ (hub) → /bien-nghien-cuu/roa/… | VietnamBiz, CafeF, luanvanviet | Cao ở "là gì"; trang con thắng ở "đo lường trong luận văn, code Stata" |
+| Thương hiệu | góc nghiên cứu | công cụ khoá luận miễn phí | / | – | Trang chủ giữ thương hiệu, không ôm truy vấn của trang con |
+
+### Quy tắc chống ăn thịt từ khoá đã áp dụng
+
+- "tính cỡ mẫu … online" → công cụ; "cỡ mẫu bao nhiêu là đủ / tối thiểu" → bài viết. Bài viết link về công cụ bằng anchor "công cụ tính cỡ mẫu nghiên cứu online".
+- "tính cronbach alpha online" → công cụ; "cronbach alpha là gì / bao nhiêu là đạt" → bài viết; "ngưỡng" cho mọi chỉ số → /nguong-chap-nhan/.
+- "mẫu bảng hỏi … theo đề tài" → /mau-bang-hoi/; "mẫu phiếu khảo sát khoá luận (bố cục)" → bài viết; "tạo bảng câu hỏi" → /cong-cu/bo-khao-sat/.
+- "vẽ mô hình nghiên cứu online" → công cụ; "mô hình nghiên cứu đề xuất" → bài viết.
+- "kiểm định biến trung gian" → công cụ; "biến trung gian là gì / khác biến điều tiết" → bài viết (đang được viết: `bien-trung-gian-bien-dieu-tiet-la-gi`).
+- Trang công cụ có lời "không cần SPSS" vì đúng với chức năng; không dùng cụm "chạy SPSS online" trong title để tránh hiểu nhầm là SPSS thật.
+
+## Việc on-page đã làm (30/10/2026)
+
+Title, description, H1, câu trả lời mở đầu: trang chủ, /cong-cu/ và 11 trang công cụ, /thang-do/, /khai-niem/, /du-lieu/, /mau-bang-hoi/, /nguong-chap-nhan/, 6 bài viết (cronbach, EFA, cỡ mẫu, Likert, Google Form, mô hình đề xuất). FAQ mới (câu hỏi lấy từ Autocomplete): bác sĩ kết quả, trung gian–điều tiết, bộ khảo sát, thêm một câu ở trang chủ. Link ngữ cảnh mới: khối "Phân tích thang đo … sau khi thu dữ liệu" trên mọi trang thang đo, khối liên kết trên mọi trang khái niệm, mẫu bảng hỏi, biến nghiên cứu, dữ liệu; đoạn link ngữ cảnh trong 17 bài viết (69 link trong mã nguồn, khoảng 1.200 link sau khi template nhân ra các trang con).
+
+Việc còn lại: đo lại sau 4–6 tuần bằng Search Console (truy vấn thật, CTR); kiểm SERP bằng tay cho các cụm ghi "ước lượng"; title/description của từng trang thang đo, khái niệm (JSON trong `src/content/`) chưa rà theo truy vấn "thang đo + tên khái niệm".

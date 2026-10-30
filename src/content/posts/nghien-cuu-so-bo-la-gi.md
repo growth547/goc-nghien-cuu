@@ -75,6 +75,8 @@ tags: ["bảng hỏi","thu mẫu","khoá luận"]
 </table>
 <p>Không loại câu khỏi thang đo kế thừa chỉ vì alpha sơ bộ thấp. Quyết định loại câu dựa trên dữ liệu chính thức, như hướng dẫn trong bài <a href="/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>. Tính nhanh trên dữ liệu pilot bằng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a>.</p>
 
+<p>Câu nào làm alpha sơ bộ thấp thì xem cách chẩn đoán trong <a href="/cong-cu/bac-si-ket-qua/">bác sĩ kết quả</a> trước khi sửa câu chữ; số phiếu cho đợt chính thức tính bằng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu nghiên cứu online</a>.</p>
+
 <h2>Có gộp dữ liệu pilot vào mẫu chính không</h2>
 <p>Nguyên tắc an toàn là không gộp. Lý do: nếu bạn đã sửa câu hỏi sau pilot, hai nhóm trả lời hai phiếu khác nhau. Kể cả khi không sửa gì, người tham gia pilot thường được chọn khác cách (bạn bè, người quen của nhóm) và một số đã được phỏng vấn thêm, nên trả lời không độc lập như mẫu chính. Nếu vì lý do đặc biệt bạn gộp, chỉ gộp khi phiếu giữ nguyên hoàn toàn và phải ghi rõ trong chương 3.</p>
 

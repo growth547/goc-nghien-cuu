@@ -111,6 +111,10 @@ const faq = [
     a: "Mỗi trang thang đo ghi nguồn của từng khái niệm, bản tiếng Anh gốc của từng câu hỏi và danh sách tài liệu tham khảo để bạn trích dẫn bản gốc.",
   },
   {
+    q: "Không có SPSS thì tính Cronbach's alpha, EFA, hồi quy bằng gì?",
+    a: "Dùng mục Công cụ: tính Cronbach's alpha cho mọi thang đo một lần, phân tích dữ liệu khảo sát (EFA, tương quan, hồi quy) và kiểm định trung gian, điều tiết ngay trong trình duyệt, kèm đoạn văn viết sẵn cho chương 4.",
+  },
+  {
     q: "Số liệu ở mục Dữ liệu lấy từ đâu?",
     a: "Từ World Development Indicators của World Bank (giấy phép CC BY 4.0). Mỗi chỉ số có bảng theo năm, biểu đồ, file CSV và trích dẫn APA.",
   },
@@ -177,9 +181,9 @@ const indicatorCards = featuredData.map(d => {
 });
 
 const homeTitle =
-  "Góc Nghiên Cứu: thang đo, mẫu bảng hỏi, cỡ mẫu, chương 3–4 khoá luận";
+  "Góc Nghiên Cứu: thang đo và công cụ khoá luận miễn phí";
 const homeDescription =
-  "Thang đo gốc có trích dẫn, mẫu bảng hỏi tiếng Việt, máy tính cỡ mẫu và Cronbach's alpha, đoạn chương 3–4 viết sẵn cho khoá luận. Miễn phí, không cần đăng ký.";
+  "Thư viện thang đo có trích dẫn, mẫu bảng hỏi, công cụ tính cỡ mẫu, Cronbach's alpha, vẽ mô hình, trích dẫn APA cho khoá luận. Miễn phí, không cần đăng ký.";
 
 const siteUrl = new URL(config.site.url).href;
 const homeLd = {

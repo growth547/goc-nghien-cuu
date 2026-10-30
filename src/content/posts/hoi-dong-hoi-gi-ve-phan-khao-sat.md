@@ -64,6 +64,8 @@ tags: ["bảo vệ khoá luận","cỡ mẫu","PLS-SEM"]
 <h3>14. "Có khác biệt giữa nam và nữ (hoặc giữa các nhóm thu nhập) không?"</h3>
 <p>Câu này hay đến khi bạn có câu hỏi nghiên cứu về nhóm, hoặc khi hội đồng thấy bảng mô tả mẫu lệch. Chuẩn bị: t-test cho biến hai nhóm, ANOVA một yếu tố cho biến nhiều nhóm; đọc kiểm định Levene trước, nếu phương sai không đồng nhất thì dùng dòng "Equal variances not assumed" hoặc kiểm định Welch. Nhớ kiểm tra số người mỗi nhóm: với α = 0,05 và power 0,80, phát hiện khác biệt cỡ trung bình giữa hai nhóm cần khoảng 64 người mỗi nhóm (Faul và cộng sự, 2007). Nếu một nhóm chỉ có 20 người, hãy nói rõ kết quả cho nhóm đó chỉ mang tính tham khảo, hoặc gộp nhóm trước khi phân tích. Bảng cỡ mẫu theo nhóm có ở bài <a href="/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>, cách trình bày ở mục so sánh nhóm của bài <a href="/posts/cach-viet-chuong-4-ket-qua-nghien-cuu/">cách viết chương 4</a>.</p>
 
+<p>Trước buổi bảo vệ, đối chiếu từng chỉ số của bạn với <a href="/nguong-chap-nhan/">bảng ngưỡng chấp nhận có nguồn</a>, nhập những chỉ số chưa đạt vào <a href="/cong-cu/bac-si-ket-qua/">bác sĩ kết quả</a> để chuẩn bị câu trả lời, và kiểm tra lại danh mục tài liệu bằng <a href="/cong-cu/trich-dan-apa/">công cụ trích dẫn APA 7</a>: hội đồng hay soi lỗi trích dẫn thang đo gốc.</p>
+
 <h2>Một trang để in mang theo</h2>
 <p>Trước buổi bảo vệ, viết ra giấy cho từng câu trên: con số của bạn, lý do, và một trích dẫn. Mẫu một dòng cho mỗi câu: "Câu 1: n tối thiểu 155 (Kock &amp; Hadaya, 2018), thu 412, hợp lệ 365." Nếu câu nào bạn chưa trả lời được trong một câu nói, đó là chỗ cần sửa trong chương 3 trước, không phải chỗ để ứng biến trước hội đồng.</p>
 

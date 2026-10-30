@@ -1,5 +1,5 @@
 ---
-title: "Cỡ mẫu nghiên cứu bao nhiêu là đủ? Từ Cochran tới G*Power, PLS-SEM"
+title: "Cỡ mẫu nghiên cứu bao nhiêu là đủ? Cochran, EFA, PLS-SEM"
 description: "Cỡ mẫu tối thiểu theo phương pháp phân tích: Cochran, bảng Krejcie & Morgan, EFA, CFA, hồi quy, t-test, PLS-SEM với G*Power, kèm đoạn mẫu chương 3."
 pubDatetime: 2026-10-29T07:00:00+07:00
 modDatetime: 2026-10-30T02:18:59+07:00
@@ -7,7 +7,7 @@ featured: true
 tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 ---
 
-<p>"Em cần bao nhiêu phiếu?" là câu sinh viên hỏi giảng viên hướng dẫn nhiều nhất, và câu trả lời đúng là "tuỳ em định phân tích gì". Muốn ước lượng một tỉ lệ trong tổng thể thì dùng công thức Cochran. Muốn chạy EFA thì nhìn số biến quan sát. Muốn chạy hồi quy thì nhìn số biến độc lập. Bài này đi qua từng cách, tính tay từng con số, rồi chỉ cách gộp lại thành một cỡ mẫu bạn bảo vệ được trước hội đồng.</p>
+<p>"Em cần bao nhiêu phiếu?" là câu sinh viên hỏi giảng viên hướng dẫn nhiều nhất, và câu trả lời đúng là "tuỳ em định phân tích gì". Muốn ước lượng một tỉ lệ trong tổng thể thì dùng công thức Cochran. Muốn chạy EFA thì nhìn số biến quan sát. Muốn chạy hồi quy thì nhìn số biến độc lập. Muốn có ngay con số và đoạn văn chương 3, dùng <a href="/cong-cu/tinh-co-mau/">công cụ tính cỡ mẫu nghiên cứu online</a>. Bài này đi qua từng cách, tính tay từng con số, rồi chỉ cách gộp lại thành một cỡ mẫu bạn bảo vệ được trước hội đồng.</p>
 
 <h2>Công thức Cochran: khi bạn muốn ước lượng một tỉ lệ</h2>
 <p>Công thức trong sách <em>Sampling Techniques</em> của Cochran (1977) dùng khi mục tiêu là ước lượng một tỉ lệ, ví dụ tỉ lệ sinh viên có dùng ví điện tử, với sai số cho trước:</p>
@@ -130,6 +130,8 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 <p><code>n_min &gt; (2,486 / |p_min|)²</code> với α = 5% và power = 0,80.</p>
 <p>Nếu không có nghiên cứu trước, chọn mức thận trọng p<sub>min</sub> = 0,11 thì cần (2,486 / 0,11)² = 510,8, tức 511 phiếu; với p<sub>min</sub> = 0,2 cần 155 phiếu. Hair và cộng sự (2022) khuyên dùng phương pháp này khi chạy PLS-SEM. Memon và cộng sự (2020) có bài tổng quan rất dễ đọc về các cách xác định cỡ mẫu cho nghiên cứu khảo sát, nên đọc nếu hội đồng hỏi sâu.</p>
 
+<p>Số mũi tên nhiều nhất trỏ vào một khái niệm đếm dễ nhất trên hình vẽ: kéo các khái niệm vào <a href="/cong-cu/ve-mo-hinh/">công cụ vẽ mô hình nghiên cứu online</a>, công cụ tự đếm và cho cỡ mẫu tối thiểu PLS-SEM.</p>
+
 <h2>Khi so sánh nhóm: t-test và ANOVA</h2>
 <p>Nếu câu hỏi nghiên cứu là "nam và nữ có khác nhau về ý định mua không" hay "ba nhóm thu nhập có mức hài lòng khác nhau không", cỡ mẫu tính theo từng nhóm chứ không theo tổng. Trong G*Power 3 (Faul và cộng sự, 2007), với α = 5% (hai phía), power 0,80 và các cỡ hiệu ứng quy ước của Cohen (1988), ta có:</p>
 <table>
@@ -145,6 +147,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 <p>Hệ quả thực tế: một mẫu 300 phiếu chia khá đều cho 3 nhóm đủ để phát hiện khác biệt cỡ trung bình, nhưng nếu một nhóm chỉ có 20 người (ví dụ nhóm thu nhập trên 30 triệu) thì kiểm định cho nhóm đó gần như không có power. Khi phân bố nhóm lệch, hãy gộp nhóm trước khi phân tích và ghi rõ lý do.</p>
 
 <h2>Chọn con số nào: mức tối thiểu của phương pháp phân tích chính</h2>
+<p>Chưa chắc phương pháp phân tích chính là gì? Trả lời vài câu trong <a href="/cong-cu/chon-phuong-phap/">công cụ chọn phương pháp phân tích dữ liệu</a> trước, rồi mới chọn công thức cỡ mẫu tương ứng.</p>
 <p>Đừng cộng dồn hay lấy số lớn nhất của mọi công thức. Hãy xác định phương pháp phân tích chính của đề tài, lấy cỡ mẫu tối thiểu mà phương pháp đó đòi hỏi, và trích đúng nguồn:</p>
 <table>
 <thead>

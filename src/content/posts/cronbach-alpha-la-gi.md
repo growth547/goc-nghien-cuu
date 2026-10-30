@@ -1,11 +1,13 @@
 ---
-title: "Cronbach's alpha là gì? Cách đọc kết quả SPSS từng bảng"
-description: "Cronbach's alpha là gì, ngưỡng bao nhiêu là đạt, cách đọc bảng SPSS từng cột, khi nào loại câu, alpha khác omega và CR thế nào, kèm FAQ và trích dẫn APA."
+title: "Cronbach's alpha là gì, bao nhiêu là đạt? Cách đọc bảng SPSS"
+description: "Cronbach's alpha là gì, bao nhiêu là đạt (0,6 hay 0,7), cách đọc từng bảng SPSS, khi nào loại câu, alpha khác omega và CR ra sao, kèm câu mẫu chương 4."
 pubDatetime: 2026-10-29T05:00:00+07:00
 modDatetime: 2026-10-30T02:23:14+07:00
 featured: false
 tags: ["độ tin cậy","SPSS"]
 ---
+
+<p>Cronbach's alpha là hệ số đo độ nhất quán nội tại của một thang đo nhiều câu hỏi: các câu cùng đo một khái niệm thì câu trả lời phải đi cùng chiều nhau. Mốc được trích nhiều nhất là 0,7 (Nunnally, 1978), có thể chấp nhận 0,6 trong nghiên cứu khám phá (Hair và cộng sự, 2010). Muốn tính ngay không cần SPSS, dùng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha online</a>.</p>
 
 <p>Chạy xong Cronbach's alpha trong SPSS, bạn nhận được ba bảng với hàng chục con số. Phần lớn sinh viên chỉ nhìn một số duy nhất là alpha tổng có trên 0,7 không, rồi bỏ qua bảng quan trọng nhất là bảng Item-Total Statistics. Bài này giải thích alpha đo cái gì, cách chạy, cách đọc từng bảng, và khi nào nên loại một câu hỏi.</p>
 
@@ -37,6 +39,8 @@ tags: ["độ tin cậy","SPSS"]
 </tbody>
 </table>
 <p>Mốc 0,7 của Nunnally thực ra gắn với mục đích sử dụng. Lance và cộng sự (2006) đọc lại sách gốc và chỉ ra rằng Nunnally (1978) đề nghị khoảng 0,7 cho giai đoạn đầu của một hướng nghiên cứu, 0,8 cho nghiên cứu cơ bản, và từ 0,9 trở lên khi điểm số được dùng để ra quyết định về từng cá nhân (ví dụ tuyển dụng, chẩn đoán). Khoá luận khảo sát thái độ, hành vi thuộc nhóm đầu, nên 0,7 là mốc hợp lý; nhưng đừng viết "Nunnally cho rằng 0,7 là đủ cho mọi trường hợp".</p>
+
+<p>Ngưỡng của alpha và các chỉ số đi kèm (CR, AVE, KMO, HTMT) cùng nguồn gốc từng con số được tổng hợp ở trang <a href="/nguong-chap-nhan/">ngưỡng chấp nhận các chỉ số trong luận văn định lượng</a>. Nếu alpha của bạn dưới 0,6 hoặc có tương quan biến–tổng âm, <a href="/cong-cu/bac-si-ket-qua/">bác sĩ kết quả</a> chỉ ra thứ tự kiểm tra và những cách xử lý hội đồng chấp nhận.</p>
 
 <h2>Chạy Cronbach's alpha trong SPSS</h2>
 <ol>
@@ -95,6 +99,8 @@ tags: ["độ tin cậy","SPSS"]
 <li>CR = 8,8209 / (8,8209 + 1,7891) = 8,8209 / 10,61 = 0,831.</li>
 </ol>
 <p>Cùng bộ hệ số tải đó, phương sai trích trung bình AVE = (0,5625 + 0,49 + 0,64 + 0,5184) / 4 = 0,553, trên ngưỡng 0,5. Trong SmartPLS, CR hiện ở cột rho_c, kèm rho_a nằm giữa alpha và CR. Nếu khoá luận của bạn chỉ chạy SPSS để làm EFA và hồi quy, alpha vẫn là hệ số hội đồng chờ đợi; nếu chạy CFA hoặc PLS-SEM, hãy báo cáo cả alpha và CR, cộng AVE cho giá trị hội tụ.</p>
+
+<p>Với dữ liệu khảo sát thử 20–30 phiếu, đọc alpha thận trọng như hướng dẫn trong bài <a href="/posts/nghien-cuu-so-bo-la-gi/">nghiên cứu sơ bộ là gì</a>.</p>
 
 <h2>Quy trình loại câu hỏi đúng cách</h2>
 <ol>

@@ -125,6 +125,8 @@ EXECUTE.</code></pre>
 </ol>
 <p>Phần trượt câu kiểm tra chú ý, phiếu rập khuôn, mã hoá ngược câu đảo chiều và chạy alpha (bước 4, 6 và 8) có thể làm tự động bằng <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát</a>: công cụ ghi rõ số phiếu bị loại theo từng lý do để bạn đưa vào chương 4. Các tiêu chí còn lại như thời gian làm bài hay mâu thuẫn giữa các câu vẫn cần lọc tay theo bảng ở trên.</p>
 
+<p>Các quy tắc rập khuôn, trả lời quá nhanh, trượt câu kiểm tra chú ý và phiếu trùng có sẵn trong <a href="/cong-cu/lam-sach-du-lieu/">công cụ làm sạch dữ liệu khảo sát Google Forms</a>: bạn khai báo ngưỡng trước, công cụ ghi lại phiếu nào bị loại vì lý do gì.</p>
+
 <h2>Đoạn mẫu báo cáo phiếu bị loại trong chương 3</h2>
 <p>Viết tiêu chí lọc ở chương 3 (phương pháp), còn số phiếu cụ thể bị loại theo từng lý do đưa vào mục 4.1 của chương 4. Ví dụ đoạn chương 3:</p>
 <blockquote>Dữ liệu được làm sạch theo các tiêu chí xác định trước khi phân tích, dựa trên Meade và Craig (2012) và Curran (2016). Phiếu bị loại khi (1) không thuộc đối tượng khảo sát theo câu gạn lọc, (2) trùng lặp, (3) trả lời sai câu kiểm tra chú ý, hoặc (4) có từ hai dấu hiệu trả lời bất cẩn trở lên trong số: thời gian hoàn thành dưới 2 giây cho mỗi câu (Huang và cộng sự, 2012), chọn cùng một mức cho mọi câu của tất cả các khối Likert, chuỗi trả lời giống nhau dài hơn một khối, và trả lời mâu thuẫn ở các cặp câu đảo chiều.</blockquote>

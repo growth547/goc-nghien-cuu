@@ -45,6 +45,8 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 </ol>
 <p>Thời gian thực tế: khoảng một tuần cho thang đo 20 đến 30 câu, phần lâu nhất là chờ người dịch ngược.</p>
 
+<p>Bước khảo sát thử sau khi dịch được hướng dẫn chi tiết trong bài <a href="/posts/nghien-cuu-so-bo-la-gi/">nghiên cứu sơ bộ và pilot test</a>. Bản dịch đã kiểm tra xong có thể ghép thành bảng câu hỏi hoàn chỉnh trong <a href="/cong-cu/bo-khao-sat/">công cụ tạo bảng câu hỏi khảo sát</a>.</p>
+
 <h2>Nhật ký dịch mẫu</h2>
 <p>Nhật ký dịch là bằng chứng bạn đưa vào phụ lục. Ví dụ với ba câu từ thang <a href="/thang-do/dass-21/">DASS-21</a> và <a href="/thang-do/cang-thang-pss-10/">PSS-10</a>:</p>
 <table>

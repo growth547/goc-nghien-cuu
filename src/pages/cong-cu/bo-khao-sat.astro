@@ -20,11 +20,42 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
 
 <ToolLayout
   slug="bo-khao-sat"
-  title="Tạo bảng hỏi khoá luận từ thang đo gốc, kèm cỡ mẫu và chương 3"
-  h1="Bộ khảo sát khoá luận"
-  description="Chọn các khái niệm trong mô hình, nhận bảng hỏi tiếng Việt từ thang đo gốc có trích dẫn, cỡ mẫu PLS-SEM hoặc SPSS, đoạn chương 3, file Word và Google Form."
+  title="Tạo bảng câu hỏi khảo sát khoá luận từ thang đo gốc"
+  h1="Tạo bảng câu hỏi khảo sát khoá luận"
+  description="Chọn khái niệm trong mô hình, nhận bảng câu hỏi khảo sát tiếng Việt từ thang đo gốc có trích dẫn, cỡ mẫu, đoạn chương 3, file Word và Google Form."
   lede="Chọn các khái niệm trong mô hình nghiên cứu. Công cụ ghép bảng hỏi tiếng Việt từ thang đo gốc, tính cỡ mẫu tối thiểu và viết sẵn đoạn “Thang đo và cỡ mẫu” cho chương 3. Tải về Word, tạo Google Form trong vài phút, kèm bảng mã hoá cho SPSS."
   html={html}
 >
   <script is:inline type="application/json" id="bk-data" set:html={json} />
+  <Fragment slot="guide">
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Bảng câu hỏi khảo sát khoá luận gồm những phần nào?</h3>
+    <p>
+      Thường có lời chào và cam kết bảo mật, câu gạn lọc đúng đối tượng, các thang đo
+      chính theo từng khái niệm trong mô hình, thông tin cá nhân và lời cảm ơn. Bộ khảo
+      sát ghép sẵn phần thang đo; bố cục đầy đủ và một phiếu mẫu nằm trong bài
+      <a href="/posts/mau-phieu-khao-sat-khoa-luan/">mẫu phiếu khảo sát khoá luận</a>.
+    </p>
+    <h3>Câu hỏi lấy từ đâu, có trích dẫn được không?</h3>
+    <p>
+      Mỗi câu lấy từ một thang đo gốc trong
+      <a href="/thang-do/">thư viện thang đo nghiên cứu khoa học</a>, kèm bản tiếng Anh
+      và tài liệu tham khảo để bạn trích dẫn bản gốc. Bản tiếng Việt cần được kiểm tra
+      lại bằng <a href="/posts/dich-nguoc-back-translation-la-gi/">dịch ngược</a> và
+      khảo sát thử trước khi phát chính thức.
+    </p>
+    <h3>Dùng Likert 5 mức hay 7 mức?</h3>
+    <p>
+      Công cụ cho chọn 5 mức, 7 mức hoặc giữ số mức của bản gốc. Ưu nhược điểm từng
+      loại có trong bài <a href="/posts/thang-do-likert/">thang đo Likert 5 mức độ, 7 mức
+      độ</a>.
+    </p>
+    <h3>Tạo xong bảng hỏi thì làm gì tiếp?</h3>
+    <p>
+      Tạo Google Form, thu phiếu, rồi tải file trả lời vào
+      <a href="/cong-cu/lam-sach-du-lieu/">công cụ chuyển dữ liệu Google Form sang SPSS</a>
+      để mã hoá và lọc phiếu, sau đó kiểm tra độ tin cậy bằng
+      <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha</a>.
+    </p>
+  </Fragment>
 </ToolLayout>

@@ -1,5 +1,5 @@
 ---
-title: "Cách tạo phiếu khảo sát Google Forms cho khoá luận: từng bước"
+title: "Cách tạo phiếu khảo sát trên Google Form cho khoá luận"
 description: "Tạo phiếu khảo sát khoá luận bằng Google Forms: lưới Likert hay trắc nghiệm, bắt buộc trả lời, chia phần, câu gạn lọc, câu kiểm tra chú ý, xuất sang SPSS."
 pubDatetime: 2026-10-30T01:01:00+07:00
 modDatetime: 2026-10-30T09:06:28+07:00
@@ -117,6 +117,8 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <p>Muốn xem nhanh Cronbach's alpha và EFA trước khi mở SPSS, dán dữ liệu đã đổi sang số vào <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</p>
 <h3>Google Forms không ghi thời gian bắt đầu</h3>
 <p>Cột "Dấu thời gian" chỉ ghi lúc bấm gửi, không ghi lúc bắt đầu làm. Vì vậy bạn không tính được thời gian hoàn thành, và tiêu chí "loại phiếu làm dưới 2 phút" không áp dụng được. Dựa vào câu kiểm tra chú ý, trả lời rập khuôn và cặp câu mâu thuẫn, hoặc dùng nền tảng có ghi thời lượng.</p>
+
+<p>Không muốn làm tay từng bước trên? <a href="/cong-cu/lam-sach-du-lieu/">Công cụ chuyển dữ liệu Google Form sang SPSS</a> đọc thẳng file tải về từ Google Sheets, đổi nhãn Likert thành số, đảo câu ngược, lọc phiếu và xuất cú pháp SPSS có sẵn nhãn biến.</p>
 
 <h2>Lỗi thường gặp và cách sửa</h2>
 <table>

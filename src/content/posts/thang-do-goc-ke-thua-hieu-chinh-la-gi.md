@@ -69,6 +69,8 @@ tags: ["thang đo","bảng hỏi","khoá luận"]
 <h2>Câu mẫu cho chương 3</h2>
 <blockquote><p>Thang đo nhận thức sự hữu ích được kế thừa từ Davis (1989) và hiệu chỉnh cho bối cảnh sử dụng ví điện tử của sinh viên. Thang đo gốc gồm 6 biến quan sát; nghiên cứu giữ lại 4 biến, loại 2 biến đề cập tới năng suất và hiệu quả công việc vì không phù hợp với đối tượng chưa đi làm. Các câu hỏi được dịch sang tiếng Việt theo quy trình dịch xuôi, dịch ngược và đối chiếu, sau đó được điều chỉnh từ ngữ dựa trên ý kiến của 2 giảng viên và kết quả phỏng vấn thử với 8 sinh viên. Chi tiết câu gốc, câu sử dụng và nội dung hiệu chỉnh được trình bày tại Bảng 3.2.</p></blockquote>
 
+<p>Tài liệu tham khảo của thang đo gốc viết theo APA 7 bằng <a href="/cong-cu/trich-dan-apa/">công cụ tạo trích dẫn APA 7 online</a>: dán DOI của bài gốc là có mục tài liệu đúng chuẩn.</p>
+
 <h2>Lỗi thường gặp</h2>
 <ul>
 <li><strong>Ghi nguồn là một khoá luận hoặc trang web</strong> thay vì bài báo gốc. Hội đồng sẽ hỏi "thang đo gốc của ai?". Truy ngược tới bài báo đầu tiên.</li>

@@ -327,11 +327,33 @@ const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${new UR
         }.
       </p>
 
+      <h2>Phân tích thang đo {d.name} sau khi thu dữ liệu</h2>
+      <p>
+        Kiểm tra độ tin cậy từng khái niệm bằng <a href="/cong-cu/cronbach-alpha/"
+          >công cụ tính Cronbach's alpha online</a
+        >, rồi chạy EFA, tương quan và hồi quy trong <a href="/cong-cu/phan-tich-du-lieu/"
+          >công cụ phân tích dữ liệu khảo sát</a
+        >. Đối chiếu kết quả với <a href="/nguong-chap-nhan/"
+          >bảng ngưỡng chấp nhận Cronbach, KMO, AVE, HTMT</a
+        >; chỉ số nào không đạt thì <a href="/cong-cu/bac-si-ket-qua/"
+          >bác sĩ kết quả</a
+        > gợi ý cách xử lý hợp lệ. Để trình bày quan hệ giữa các khái niệm, dùng <a
+          href="/cong-cu/ve-mo-hinh/">công cụ vẽ mô hình nghiên cứu</a
+        >; mô hình có biến trung gian hoặc điều tiết thì kiểm định bằng <a href="/cong-cu/trung-gian-dieu-tiet/"
+          >công cụ kiểm định biến trung gian, điều tiết</a
+        >. Muốn so sánh với thang đo khác cùng khái niệm, xem <a href="/khai-niem/">thang đo theo khái niệm</a>.
+      </p>
+
       <h2>Bản quyền và quyền sử dụng {d.name}</h2>
       <p>{d.license}</p>
 
       <h2>Tài liệu tham khảo thang đo {d.name}</h2>
       <ul class="text-sm">{d.references.map(r => <li set:html={r} />)}</ul>
+      <p class="text-sm">
+        Các tài liệu khác trong khoá luận định dạng theo cùng chuẩn bằng <a href="/cong-cu/trich-dan-apa/"
+          >công cụ trích dẫn APA 7 online</a
+        >: dán DOI là có mục tài liệu tham khảo.
+      </p>
     </div>
 
     {

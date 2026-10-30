@@ -1,11 +1,13 @@
 ---
-title: "Cách đọc kết quả EFA trong SPSS: KMO, phương sai, ma trận xoay"
-description: "Đọc kết quả EFA trong SPSS từng bảng: KMO, Bartlett, Communalities, Total Variance Explained, Rotated Component Matrix, xử lý biến tải chéo, ngưỡng có nguồn."
+title: "Phân tích EFA trong SPSS: đọc KMO, Bartlett, ma trận xoay"
+description: "Phân tích EFA trong SPSS và đọc kết quả từng bảng: KMO, Bartlett, Communalities, phương sai trích, ma trận xoay, xử lý biến tải chéo, ngưỡng có nguồn."
 pubDatetime: 2026-10-30T01:05:00+07:00
 modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["EFA","SPSS","phân tích dữ liệu"]
 ---
+
+<p>Kết quả EFA trong SPSS đọc theo bốn bảng: KMO and Bartlett's Test (KMO từ 0,5 theo Kaiser, 1974, Bartlett có Sig. dưới 0,05), Communalities, Total Variance Explained và Rotated Component Matrix. Không có SPSS thì chạy EFA bằng <a href="/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu khảo sát online</a>.</p>
 
 <p>Chạy EFA trong SPSS mất một phút; phần khó là đọc kết quả và quyết định giữ hay bỏ biến, nhất là biến tải lên hai nhân tố. Bài này đi qua từng bảng theo thứ tự nên đọc, nói rõ ngưỡng nào đến từ đâu, chỗ nào chỉ là quy ước, và kết thúc bằng đoạn văn mẫu cho chương 4. Ví dụ xuyên suốt: 16 biến quan sát của năm nhân tố độc lập trong mô hình ý định dùng ứng dụng giao đồ ăn, mẫu 320 phiếu (số liệu minh hoạ).</p>
 
@@ -40,6 +42,8 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <p>Kiểm định giả thuyết ma trận tương quan là ma trận đơn vị, tức các biến không tương quan với nhau (Bartlett, 1954). Sig. nhỏ hơn 0,05 thì bác bỏ giả thuyết này, dữ liệu phù hợp để phân tích nhân tố. Với cỡ mẫu vài trăm, Bartlett gần như luôn có ý nghĩa, nên nó ít khi là vấn đề. KMO thông tin hơn.</p>
 <p>SPSS hiển thị Sig. = .000. Khi viết, ghi <em>p</em> &lt; 0,001, không ghi "p = 0,000", vì xác suất không bao giờ bằng 0 tuyệt đối.</p>
 <p><strong>Ví dụ:</strong> KMO = 0,861; Bartlett χ² = 2.914,6; df = 120; Sig. = .000. df = 16 × 15 / 2 = 120, đúng với 16 biến. Kết luận: dữ liệu phù hợp để phân tích nhân tố.</p>
+
+<p>KMO dưới 0,5 hoặc Bartlett không có ý nghĩa thì chưa nên đọc tiếp các bảng sau. Nhập con số vào <a href="/cong-cu/bac-si-ket-qua/">bác sĩ kết quả</a> để xem nguyên nhân thường gặp và cách xử lý hợp lệ; ngưỡng KMO, hệ số tải và nguồn trích dẫn có ở trang <a href="/nguong-chap-nhan/">ngưỡng chấp nhận Cronbach, KMO, AVE, HTMT</a>.</p>
 
 <h2>Bảng 2: Communalities</h2>
 <p>Cột <em>Extraction</em> cho biết bao nhiêu phần phương sai của mỗi biến được các nhân tố trích giải thích. Hair và cộng sự (2010) coi biến có communality dưới 0,5 là chưa được giải thích đủ. Đây không phải lệnh loại biến ngay, mà là dấu hiệu để xem kỹ biến đó trong ma trận xoay.</p>
@@ -89,6 +93,8 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <p>Phần lớn khoá luận dùng ngưỡng 0,5 bất kể cỡ mẫu, vì nó vừa có ý nghĩa thực tiễn vừa an toàn với mẫu từ 120 trở lên. Chọn một ngưỡng, ghi rõ trong chương 3 kèm nguồn, và áp dụng nhất quán.</p>
 <h3>Hệ số tải âm</h3>
 <p>Hệ số tải âm lớn trong khi các biến cùng nhóm dương gần như chắc chắn là câu đảo chiều chưa đảo điểm. Quay lại bước mã hoá, đừng loại biến. Xem bài <a href="/posts/bang-ma-hoa-thang-do/">bảng mã hoá thang đo</a>.</p>
+
+<p>Sau khi loại biến khỏi EFA, chạy lại độ tin cậy cho khái niệm đó bằng <a href="/cong-cu/cronbach-alpha/">công cụ tính Cronbach's alpha online</a> để có bảng lần 1, lần 2 đặt cạnh nhau trong chương 4.</p>
 
 <h2>Biến tải chéo: xử lý từng bước</h2>
 <p>Biến tải chéo là biến có hệ số tải đáng kể lên hai nhân tố trở lên. Nó cho thấy người trả lời không phân biệt rõ câu đó thuộc khái niệm nào, làm yếu giá trị phân biệt. Hair và cộng sự (2010) coi biến tải chéo là ứng viên để loại. Quy trình hợp lý:</p>

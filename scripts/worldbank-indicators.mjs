@@ -1,22 +1,12 @@
-// Editorial list of World Bank WDI indicators published under /du-lieu/.
-// The fetch script (scripts/fetch-worldbank.mjs) merges these fields with the live series.
-// To add an indicator: append an entry here (code must exist for VNM in WDI), then re-run the fetch script.
+// Editorial list of the first 39 World Bank WDI indicators published under /du-lieu/ (source "wdi").
+// More rich-page indicators live in scripts/indicators/*.mjs; all of them are merged in scripts/indicators/index.mjs
+// and fetched/built by scripts/fetch-data.mjs.
 //
-// Fields: slug (file name, ascii kebab), code (World Bank code), theme (must be one of THEMES and of
-// DATASET_THEMES in src/content.config.ts), shortVi (used in the page title "Số liệu <shortVi> Việt Nam..."),
-// nameVi, unit (unit of the raw value in the CSV), scale + displayUnit + decimals (how the page shows values),
-// explanation (what the indicator measures), thesisUse (how theses typically use it).
-
-export const THEMES = [
-  "Tăng trưởng & cơ cấu kinh tế",
-  "Giá cả, lao động & thu nhập",
-  "Thương mại & đầu tư nước ngoài",
-  "Tài chính – ngân hàng",
-  "Dân số & đô thị hoá",
-  "Công nghệ & chuyển đổi số",
-  "Giáo dục & y tế",
-  "Năng lượng & môi trường",
-];
+// Fields: slug (file name, ascii kebab), source (default "wdi"; key of SOURCES in scripts/data-sources.mjs), code (series
+// code in that source), theme (one of THEMES in scripts/indicators/index.mjs = DATASET_THEMES in src/content.config.ts),
+// shortVi (short name used in the page title "<shortVi> Việt Nam 1990–2025: số liệu, biểu đồ, CSV"; do not include
+// "Việt Nam"), nameVi, unit (unit of the raw value in the CSV), scale + displayUnit + decimals (how the page shows
+// values: shown = raw / scale), explanation (what the indicator measures), thesisUse (how theses typically use it).
 
 const pctGdp = { unit: "% GDP", scale: 1, displayUnit: "% GDP", decimals: 2 };
 
@@ -132,7 +122,7 @@ export const INDICATORS = [
     slug: "tong-tich-luy-tai-san",
     code: "NE.GDI.TOTL.ZS",
     theme: "Tăng trưởng & cơ cấu kinh tế",
-    shortVi: "tổng tích luỹ tài sản (đầu tư) so với GDP",
+    shortVi: "tổng đầu tư so với GDP",
     nameVi: "Tổng tích luỹ tài sản (% GDP)",
     ...pctGdp,
     explanation:
@@ -230,7 +220,7 @@ export const INDICATORS = [
     slug: "fdi",
     code: "BX.KLT.DINV.CD.WD",
     theme: "Thương mại & đầu tư nước ngoài",
-    shortVi: "FDI vào Việt Nam",
+    shortVi: "FDI vào",
     nameVi: "Đầu tư trực tiếp nước ngoài (FDI), dòng vốn vào ròng",
     unit: "USD, giá hiện hành (cán cân thanh toán)",
     scale: 1e9,
@@ -381,7 +371,7 @@ export const INDICATORS = [
     slug: "tin-dung-khu-vuc-tu-nhan",
     code: "FS.AST.PRVT.GD.ZS",
     theme: "Tài chính – ngân hàng",
-    shortVi: "tín dụng cho khu vực tư nhân so với GDP",
+    shortVi: "tín dụng tư nhân so với GDP",
     nameVi: "Tín dụng trong nước cho khu vực tư nhân (% GDP)",
     unit: "% GDP",
     scale: 1,
@@ -427,7 +417,7 @@ export const INDICATORS = [
     slug: "chi-nhanh-ngan-hang",
     code: "FB.CBK.BRCH.P5",
     theme: "Tài chính – ngân hàng",
-    shortVi: "số chi nhánh ngân hàng trên 100.000 người trưởng thành",
+    shortVi: "chi nhánh ngân hàng/100.000 người lớn",
     nameVi: "Số chi nhánh ngân hàng thương mại trên 100.000 người trưởng thành",
     unit: "chi nhánh/100.000 người trưởng thành",
     scale: 1,
@@ -545,7 +535,7 @@ export const INDICATORS = [
     slug: "chi-tieu-giao-duc",
     code: "SE.XPD.TOTL.GD.ZS",
     theme: "Giáo dục & y tế",
-    shortVi: "chi tiêu công cho giáo dục so với GDP",
+    shortVi: "chi tiêu công cho giáo dục",
     nameVi: "Chi tiêu của Chính phủ cho giáo dục (% GDP)",
     ...pctGdp,
     explanation:
@@ -571,7 +561,7 @@ export const INDICATORS = [
     slug: "chi-tieu-y-te-tu-tui",
     code: "SH.XPD.OOPC.CH.ZS",
     theme: "Giáo dục & y tế",
-    shortVi: "chi tiêu y tế từ tiền túi hộ gia đình",
+    shortVi: "chi tiêu y tế từ tiền túi",
     nameVi: "Chi tiêu y tế trực tiếp từ tiền túi hộ gia đình (% tổng chi y tế thường xuyên)",
     unit: "% chi tiêu y tế thường xuyên",
     scale: 1,
@@ -605,7 +595,7 @@ export const INDICATORS = [
     slug: "ty-le-tiep-can-dien",
     code: "EG.ELC.ACCS.ZS",
     theme: "Năng lượng & môi trường",
-    shortVi: "tỷ lệ dân số được tiếp cận điện",
+    shortVi: "tỷ lệ tiếp cận điện",
     nameVi: "Tỷ lệ dân số được tiếp cận điện",
     unit: "% dân số",
     scale: 1,

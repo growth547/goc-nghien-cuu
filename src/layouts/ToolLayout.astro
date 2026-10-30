@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Footer from "@/components/Footer.astro";
+import ShareBar from "@/components/ShareBar.astro";
 import { appLink } from "@/utils/appLink";
 import config from "@/config";
 
@@ -69,6 +70,8 @@ const NEXT: Record<string, [string, string, string][]> = {
   ],
 };
 const next = NEXT[slug] ?? [];
+// Tools that carry their own Genius Data note (after the result or in the guide): one sponsored note per page, so no footer line.
+const OWN_CTA = new Set(["tinh-co-mau", "pls-sem", "phan-tich-du-lieu", "cronbach-alpha", "ve-mo-hinh", "bo-khao-sat"]);
 const ld = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -104,6 +107,7 @@ const crumbsLd = {
     <p class="text-muted-foreground mt-2 mb-6 max-w-3xl">{lede}</p>
     <slot />
     <Fragment set:html={html} />
+    <ShareBar />
     {
       Astro.slots.has("guide") && (
         <div class="app-prose max-w-app mt-12">
@@ -127,7 +131,11 @@ const crumbsLd = {
       )}
       Đây là một trong {Object.keys(NEXT).length} <a class="text-accent underline underline-offset-4" href="/cong-cu/">công cụ nghiên cứu khoa học miễn phí</a> của Góc Nghiên Cứu.
     </p>
-    <p class="text-muted-foreground mt-4 max-w-3xl text-sm">Tính xong cỡ mẫu, cần người trả lời đúng đối tượng? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")} rel="sponsored noopener">Genius Data</a>.</p>
+    {
+      !OWN_CTA.has(slug) && (
+        <p class="text-muted-foreground mt-4 max-w-3xl text-sm">Cần người trả lời đúng đối tượng cho khảo sát? Tham khảo <a class="text-accent underline underline-offset-4" href={appLink("tool", slug, "/app/forms")} rel="sponsored noopener" data-placement={`${slug}-cuoi-trang`}>Genius Data</a> (link giới thiệu).</p>
+      )
+    }
   </main>
   <Footer />
 </Layout>

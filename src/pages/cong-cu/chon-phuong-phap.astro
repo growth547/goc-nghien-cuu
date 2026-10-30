@@ -1,6 +1,7 @@
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
 import html from "@/tools/chon-phuong-phap.html?raw";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <ToolLayout
@@ -26,7 +27,7 @@ import html from "@/tools/chon-phuong-phap.html?raw";
         <strong>Trả lời các câu hỏi phụ hiện ra.</strong> Quan trọng nhất là cách
         đo biến kết quả. Trung bình của nhiều câu Likert được xem như biến liên
         tục; một câu Likert đơn lẻ là biến thứ bậc (xem
-        <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert</a>).
+        <a href={`${base}/posts/thang-do-likert/`}>thang đo Likert</a>).
       </li>
       <li>
         <strong>Đọc gợi ý chính và phương án khác.</strong> Mỗi gợi ý có lý do,
@@ -55,7 +56,7 @@ import html from "@/tools/chon-phuong-phap.html?raw";
       200: gợi ý PLS-SEM với cỡ mẫu là số lớn hơn giữa G*Power và phương pháp
       căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018), kèm các ngưỡng đánh giá
       mô hình đo lường và cấu trúc theo Hair và cộng sự (2019). Vẽ mô hình và
-      đếm mũi tên bằng <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a>.
+      đếm mũi tên bằng <a href={`${base}/cong-cu/ve-mo-hinh/`}>Vẽ mô hình nghiên cứu</a>.
     </p>
     <p>
       <strong>Các yếu tố tác động đến nợ xấu của 27 ngân hàng, 2012–2023, có
@@ -63,7 +64,7 @@ import html from "@/tools/chon-phuong-phap.html?raw";
       vị ít năm, có biến phụ thuộc trễ: gợi ý GMM hệ thống với kiểm định AR(2),
       Hansen và lưu ý số biến công cụ phải nhỏ hơn số ngân hàng (Roodman, 2009),
       kèm link tới cách tính
-      <a href="/goc-nghien-cuu/bien-nghien-cuu/ty-le-no-xau/">tỷ lệ nợ xấu</a>,
+      <a href={`${base}/bien-nghien-cuu/ty-le-no-xau/`}>tỷ lệ nợ xấu</a>,
       NIM, Z-score, CAR. Không có biến trễ thì gợi ý Pooled OLS, FEM, REM với
       kiểm định F, Breusch–Pagan và Hausman.
     </p>
@@ -72,7 +73,7 @@ import html from "@/tools/chon-phuong-phap.html?raw";
       Chọn “Chuỗi thời gian vĩ mô”, một phương trình: sau kiểm định nghiệm đơn
       vị, biến lẫn lộn I(0) và I(1) thì gợi ý ARDL bounds (Pesaran và cộng sự,
       2001), với khoảng 30 quan sát năm thì dùng giá trị tới hạn của Narayan
-      (2005). Số liệu lấy ở <a href="/goc-nghien-cuu/du-lieu/">Dữ liệu thứ cấp</a>.
+      (2005). Số liệu lấy ở <a href={`${base}/du-lieu/`}>Dữ liệu thứ cấp</a>.
     </p>
 
     <h2>Công cụ chọn theo nguyên tắc nào?</h2>
@@ -133,11 +134,11 @@ import html from "@/tools/chon-phuong-phap.html?raw";
     <p>
       Cronbach’s alpha, EFA, tương quan, t-test, ANOVA, hồi quy, CR/AVE/HTMT chạy
       được miễn phí trong
-      <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>,
+      <a href={`${base}/cong-cu/phan-tich-du-lieu/`}>công cụ phân tích dữ liệu</a>,
       kèm đoạn chương 4 viết sẵn. Chưa có bảng hỏi thì bắt đầu từ
-      <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> và
-      <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>; cỡ mẫu với giả
-      định khác tính ở <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.
+      <a href={`${base}/cong-cu/bo-khao-sat/`}>Bộ khảo sát</a> và
+      <a href={`${base}/thang-do/`}>Thư viện thang đo</a>; cỡ mẫu với giả
+      định khác tính ở <a href={`${base}/cong-cu/tinh-co-mau/`}>Máy tính cỡ mẫu</a>.
     </p>
 
     <h2>Tài liệu tham khảo</h2>

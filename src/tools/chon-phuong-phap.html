@@ -224,7 +224,9 @@
   // Cohen (1992, Table 2): chi-square, w = .30 (medium), α = .05, power = .80, by degrees of freedom.
   const CHI_N={1:87,2:107,3:122,4:133,5:143,6:152};
   const FM={SS:[558,462],HH:[162,148],MM:[78,71],LL:[36,34]};
-  const L=(href,text)=>({href:'/goc-nghien-cuu/'+href,text});
+  // Site root taken from this page's own URL, so links follow the deploy base ("/" or a sub-path).
+  const BASE=typeof location!=='undefined'?location.pathname.replace(/cong-cu\/chon-phuong-phap\/?.*$/,''):'/';
+  const L=(href,text)=>({href:BASE+href,text});
   const T={
     analysis:L('cong-cu/phan-tich-du-lieu/','Phân tích dữ liệu khảo sát (miễn phí, không cần SPSS)'),
     sample:L('cong-cu/tinh-co-mau/','Máy tính cỡ mẫu'),

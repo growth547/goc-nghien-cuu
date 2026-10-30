@@ -21,6 +21,7 @@ const check = (ok, label, quiet = false) => {
   if (!ok) failed++;
   else passed++;
 };
+check(!/goc-nghien-cuu/.test(block(src, "advisor")), "advisor links carry no hard-coded base path");
 check(norm(block(src, "math")) === norm(block(calcSrc, "math")), "math block matches tinh-co-mau.html");
 const api = new Function(`${block(src, "math")}${block(src, "advisor")} return { recommend, anovaN, pairedN, corrN, regN, isrN, factN, finv, ncfcdf, REFS, CHI_N, T };`)();
 
@@ -126,7 +127,7 @@ for (const [goal, o] of Object.entries(OPTS))
     names.add(r.main.name);
     const m = r.main;
     check(m.why.length && m.assume.length && m.sample.length && m.report.length, `${where}: why, assumptions, sample, reporting all filled (${m.name})`, true);
-    check(m.links.length >= 2 && m.links.every(l => l && routes.includes(l.href.replace("/goc-nghien-cuu/", ""))), `${where}: at least two links to site pages (${m.name})`, true);
+    check(m.links.length >= 2 && m.links.every(l => l && l.href.startsWith("/") && routes.includes(l.href.slice(1))), `${where}: at least two links to site pages (${m.name})`, true);
     m.links.forEach(l => linked.add(l.href));
     const refs = [...new Set([m, ...r.alts].flatMap(x => x.refs))];
     refs.forEach(k => refsUsed.add(k));

@@ -1,0 +1,129 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+import html from "@/tools/chon-phuong-phap.html?raw";
+---
+
+<ToolLayout
+  slug="chon-phuong-phap"
+  title="Chọn phương pháp phân tích dữ liệu: t-test, ANOVA, hồi quy, EFA, PLS-SEM"
+  h1="Chọn phương pháp phân tích"
+  description="Trả lời vài câu về mục tiêu, loại biến, số nhóm và thiết kế, nhận gợi ý phương pháp phân tích (t-test, ANOVA, chi bình phương, tương quan, hồi quy, logistic, EFA/CFA, PLS-SEM, CB-SEM, trung gian, điều tiết, dữ liệu bảng) kèm lý do, giả định và cỡ mẫu tối thiểu có nguồn."
+  lede="Trả lời vài câu về câu hỏi nghiên cứu và dữ liệu. Công cụ gợi ý phương pháp phân tích phù hợp, giải thích vì sao, liệt kê giả định cần kiểm tra, cỡ mẫu tối thiểu có trích dẫn và những gì cần báo cáo ở chương 4."
+  html={html}
+>
+  <Fragment slot="guide">
+    <h2>Cách dùng</h2>
+    <ol>
+      <li>
+        <strong>Chọn câu hỏi nghiên cứu.</strong> So sánh nhóm, liên hệ giữa hai
+        biến, nhiều yếu tố tác động tới một biến, mô hình nhiều khái niệm, kiểm
+        tra thang đo, trung gian và điều tiết, dữ liệu bảng hay mô tả. Đề tài có
+        nhiều câu hỏi thì chạy công cụ cho từng câu.
+      </li>
+      <li>
+        <strong>Trả lời các câu hỏi phụ hiện ra.</strong> Quan trọng nhất là cách
+        đo biến kết quả. Trung bình của nhiều câu Likert được xem như biến liên
+        tục; một câu Likert đơn lẻ là biến thứ bậc (xem
+        <a href="/goc-nghien-cuu/posts/thang-do-likert/">thang đo Likert</a>).
+      </li>
+      <li>
+        <strong>Đọc gợi ý chính và phương án khác.</strong> Mỗi gợi ý có lý do,
+        giả định cần kiểm tra, cỡ mẫu tối thiểu kèm nguồn và danh sách những gì
+        cần báo cáo. Phương án khác là lựa chọn dự phòng khi giả định bị vi phạm.
+      </li>
+      <li>
+        <strong>Bấm “Sao chép gợi ý”</strong> để có đoạn ghi chú kèm tài liệu
+        tham khảo APA, dùng khi viết mục “Phương pháp phân tích dữ liệu” ở chương
+        3, hoặc “Sao chép link” để gửi giảng viên hướng dẫn.
+      </li>
+    </ol>
+
+    <h2>Ví dụ</h2>
+    <p>
+      <strong>So sánh mức hài lòng giữa ba nhóm thu nhập.</strong> Biến hài lòng
+      là trung bình 5 câu Likert (liên tục), 3 nhóm độc lập: công cụ gợi ý ANOVA
+      một yếu tố, Welch nếu phương sai không đồng nhất, kiểm định sau Tukey hoặc
+      Games–Howell; cỡ mẫu 53 người mỗi nhóm để phát hiện hiệu ứng trung bình (f
+      = 0,25), tính như G*Power. Nếu nhóm nhỏ và dữ liệu lệch nhiều, phương án
+      khác là Kruskal–Wallis.
+    </p>
+    <p>
+      <strong>Mô hình UTAUT mở rộng với 6 khái niệm.</strong> Chọn “Kiểm định mô
+      hình nhiều khái niệm”, mục tiêu giải thích và mở rộng lý thuyết, mẫu dưới
+      200: gợi ý PLS-SEM với cỡ mẫu là số lớn hơn giữa G*Power và phương pháp
+      căn bậc hai nghịch đảo (Kock &amp; Hadaya, 2018), kèm các ngưỡng đánh giá
+      mô hình đo lường và cấu trúc theo Hair và cộng sự (2019). Vẽ mô hình và
+      đếm mũi tên bằng <a href="/goc-nghien-cuu/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a>.
+    </p>
+
+    <h2>Công cụ chọn theo nguyên tắc nào?</h2>
+    <ul>
+      <li>
+        <strong>Loại biến kết quả</strong> quyết định họ kiểm định: liên tục thì
+        so sánh trung bình (t-test, ANOVA, hồi quy tuyến tính), thứ bậc thì
+        phương pháp dựa trên thứ hạng (Mann–Whitney, Kruskal–Wallis, Spearman),
+        định danh thì bảng chéo và logistic (Field, 2018).
+      </li>
+      <li>
+        <strong>Thiết kế độc lập hay lặp lại</strong>: cùng người đo nhiều lần
+        thì các quan sát không độc lập, phải dùng t mẫu cặp, ANOVA đo lặp lại,
+        Wilcoxon hoặc McNemar.
+      </li>
+      <li>
+        <strong>Cỡ mẫu</strong> tính cho hiệu ứng mức trung bình, α = 0,05, power
+        0,80 (Cohen, 1992). Hồi quy, t-test và ANOVA được tính như G*Power (Faul
+        và cộng sự, 2009); logistic theo 10 biến cố cho mỗi biến (Peduzzi và cộng
+        sự, 1996); trung gian theo bảng mô phỏng bootstrap của Fritz và MacKinnon
+        (2007).
+      </li>
+      <li>
+        <strong>PLS-SEM hay CB-SEM</strong> theo mục tiêu (dự báo, mở rộng lý
+        thuyết hay khẳng định lý thuyết), khái niệm cấu tạo và cỡ mẫu (Hair và
+        cộng sự, 2019).
+      </li>
+    </ul>
+
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Likert là biến thứ bậc hay liên tục?</h3>
+    <p>
+      Một câu Likert là thứ bậc. Trung bình hoặc tổng của nhiều câu cùng đo một
+      khái niệm (đã qua Cronbach’s alpha và EFA) thường được xem là biến liên tục
+      và phân tích bằng t-test, ANOVA, hồi quy; đây là cách đa số khoá luận dùng.
+    </p>
+    <h3>Vì sao không dùng các bước Baron và Kenny cho biến trung gian?</h3>
+    <p>
+      Các bước này đòi hỏi X tác động có ý nghĩa lên Y trước, nên bỏ sót nhiều
+      trường hợp có trung gian thật và cần mẫu rất lớn. Khuyến nghị hiện nay là
+      kiểm định trực tiếp tác động gián tiếp bằng bootstrap (Zhao và cộng sự,
+      2010; Hayes, 2022).
+    </p>
+    <h3>Kiểm định giả định thất bại thì sao?</h3>
+    <p>
+      Dùng phương án khác mà công cụ gợi ý (phi tham số, Welch, sai số chuẩn bền
+      vững), và ghi rõ trong chương 4 giả định nào bị vi phạm và cách xử lý.
+    </p>
+    <h3>Chạy các phương pháp này ở đâu?</h3>
+    <p>
+      Cronbach’s alpha, EFA, tương quan, t-test, ANOVA, hồi quy, CR/AVE/HTMT chạy
+      được miễn phí trong
+      <a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>,
+      kèm đoạn chương 4 viết sẵn. Chưa có bảng hỏi thì bắt đầu từ
+      <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> và
+      <a href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>; cỡ mẫu với giả
+      định khác tính ở <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.
+    </p>
+
+    <h2>Tài liệu tham khảo</h2>
+    <ul class="text-sm">
+      <li>Cohen, J. (1992). A power primer. <em>Psychological Bulletin</em>, <em>112</em>(1), 155–159. https://doi.org/10.1037/0033-2909.112.1.155</li>
+      <li>Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. <em>Behavior Research Methods</em>, <em>41</em>(4), 1149–1160. https://doi.org/10.3758/BRM.41.4.1149</li>
+      <li>Field, A. (2018). <em>Discovering statistics using IBM SPSS Statistics</em> (5th ed.). Sage.</li>
+      <li>Fritz, M. S., &amp; MacKinnon, D. P. (2007). Required sample size to detect the mediated effect. <em>Psychological Science</em>, <em>18</em>(3), 233–239. https://doi.org/10.1111/j.1467-9280.2007.01882.x</li>
+      <li>Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review</em>, <em>31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203</li>
+      <li>Hayes, A. F. (2022). <em>Introduction to mediation, moderation, and conditional process analysis: A regression-based approach</em> (3rd ed.). Guilford Press.</li>
+      <li>Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in PLS-SEM: The inverse square root and gamma-exponential methods. <em>Information Systems Journal</em>, <em>28</em>(1), 227–261. https://doi.org/10.1111/isj.12131</li>
+      <li>Peduzzi, P., Concato, J., Kemper, E., Holford, T. R., &amp; Feinstein, A. R. (1996). A simulation study of the number of events per variable in logistic regression analysis. <em>Journal of Clinical Epidemiology</em>, <em>49</em>(12), 1373–1379. https://doi.org/10.1016/S0895-4356(96)00236-3</li>
+      <li>Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. <em>Journal of Consumer Research</em>, <em>37</em>(2), 197–206. https://doi.org/10.1086/651257</li>
+    </ul>
+  </Fragment>
+</ToolLayout>

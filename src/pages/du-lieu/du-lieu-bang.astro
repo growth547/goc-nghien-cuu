@@ -1,0 +1,154 @@
+---
+// Documentation page for the panel-ready downloads (wide Viet Nam file, ASEAN country-year file,
+// monthly commodity prices, codebook) with import code for Stata, R and EViews.
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import { getAssetPath } from "@/utils/withBase";
+import { PANEL_FILES, panelSets } from "./_lib/panel";
+import { ASEAN_PEERS } from "../../../scripts/data-sources.mjs";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const { vnAnnual, asean, monthly } = await panelSets();
+const href = (f: string) => getAssetPath(`du-lieu/${f}`);
+const years = vnAnnual.flatMap(d => d.data.values.map(v => v.year));
+const firstYear = Math.min(...years);
+const lastYear = Math.max(...years);
+const lastFetched = [...vnAnnual, ...monthly].map(d => d.data.fetchedAt).sort().at(-1);
+const sample = (sets: typeof vnAnnual, n: number) => sets.slice(0, n).map(d => d.data.varName);
+const ex = ["ny_gdp_mktp_kd_zg", "fp_cpi_totl_zg", "fr_inr_lend", "bx_klt_dinv_wd_gd_zs"].filter(v =>
+  vnAnnual.some(d => d.data.varName === v)
+);
+const files = [
+  {
+    file: PANEL_FILES.wide,
+    title: "Việt Nam, dạng rộng (năm × chỉ số)",
+    desc: `${vnAnnual.length} chỉ số năm, ${firstYear}–${lastYear}; mỗi dòng một năm, mỗi cột một biến. Dùng cho hồi quy chuỗi thời gian (OLS, ARDL, VAR, VECM).`,
+  },
+  {
+    file: PANEL_FILES.asean,
+    title: "ASEAN + Trung Quốc, dạng nước–năm",
+    desc: `${asean.length} chỉ số cho ${ASEAN_PEERS.length} nước (${ASEAN_PEERS.map(p => p.name).join(", ")}); mỗi dòng một nước–năm. Dùng cho dữ liệu bảng (FEM, REM, GMM).`,
+  },
+  {
+    file: PANEL_FILES.monthly,
+    title: "Giá hàng hoá thế giới theo tháng",
+    desc: `${monthly.length} chuỗi giá của World Bank Pink Sheet; mỗi dòng một tháng. Dùng cho truyền dẫn giá, VAR, GARCH.`,
+  },
+  {
+    file: PANEL_FILES.codebook,
+    title: "Codebook (từ điển biến)",
+    desc: "Tên biến, nhãn tiếng Việt, tên gốc tiếng Anh, đơn vị, nguồn, giấy phép, ngày truy xuất và trích dẫn APA của từng biến.",
+  },
+];
+---
+
+<Layout
+  title={`Dữ liệu bảng Việt Nam, ASEAN cho Stata, R, EViews | ${config.site.title}`}
+  description={`File CSV sẵn cho hồi quy: ${vnAnnual.length} chỉ số Việt Nam dạng rộng, dữ liệu bảng ASEAN theo nước–năm, giá hàng hoá theo tháng, kèm codebook và lệnh nhập Stata, R, EViews.`}
+>
+  <Header />
+  <Breadcrumb current="Dữ liệu bảng" />
+  <Main
+    pageTitle="Dữ liệu bảng cho Stata, R, EViews"
+    pageDesc={`Ghép sẵn các chỉ số có trang riêng thành file dùng ngay cho hồi quy, kèm từ điển biến. Truy xuất lần gần nhất: ${lastFetched}.`}
+  >
+    <ul class="mb-10 grid gap-3 sm:grid-cols-2">
+      {
+        files.map(f => (
+          <li>
+            <a href={href(f.file)} download class="card gap-1 p-4">
+              <span class="text-accent font-bold">{f.title}</span>
+              <span class="card-meta">{f.desc}</span>
+              <span class="card-foot">
+                <span>
+                  <code>{f.file}</code>
+                </span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="app-prose max-w-none">
+      <h2>Cấu trúc file</h2>
+      <ul>
+        <li>
+          Tên biến là mã chỉ số của nguồn viết thường, dấu chấm đổi thành gạch dưới (ví dụ <code>ny_gdp_mktp_kd_zg</code> là
+          tăng trưởng GDP của World Bank; biến WGI bắt đầu bằng <code>wgi_</code>, Penn World Table bằng <code>pwt_</code>,
+          ILOSTAT bằng <code>ilo_</code>, FAOSTAT bằng <code>fao_</code>, giá hàng hoá bằng <code>pink_</code>), dài tối đa
+          32 ký tự nên hợp lệ trong Stata và EViews. Nhãn tiếng Việt và đơn vị nằm trong <a href={href(PANEL_FILES.codebook)} download
+            >codebook</a
+          >.
+        </li>
+        <li>
+          Ô trống là năm/tháng nguồn chưa có số liệu (Stata, R và EViews đều đọc là giá trị khuyết). Giá trị giữ nguyên
+          đơn vị gốc trong codebook, ví dụ GDP tính bằng USD (không phải tỷ USD như trên trang).
+        </li>
+        <li>
+          File ASEAN có cột <code>id</code> (1 = Việt Nam, rồi theo thứ tự {ASEAN_PEERS.slice(1).map(p => p.name).join(", ")}),
+          <code>country_code</code> (ISO3) và <code>year</code>.
+        </li>
+        <li>
+          Mỗi biến có thể có giai đoạn khác nhau. Trước khi chạy mô hình, kiểm tra số quan sát chung và tránh nội suy những
+          chuỗi chỉ có các năm khảo sát (nghèo, Gini, Enterprise Surveys, Findex).
+        </li>
+      </ul>
+
+      <h2>Nhập vào Stata</h2>
+      <pre><code>{`* Việt Nam, chuỗi thời gian
+import delimited "${PANEL_FILES.wide}", clear encoding(utf8)
+tsset year
+${ex.length ? `describe ${ex.join(" ")}` : "describe"}
+
+* ASEAN, dữ liệu bảng
+import delimited "${PANEL_FILES.asean}", clear encoding(utf8)
+xtset id year
+xtdescribe`}</code></pre>
+
+      <h2>Nhập vào R</h2>
+      <pre><code>{`vn <- read.csv("${PANEL_FILES.wide}", fileEncoding = "UTF-8-BOM")
+vn_ts <- ts(vn[, -1], start = min(vn$year))
+
+library(plm)
+asean <- read.csv("${PANEL_FILES.asean}", fileEncoding = "UTF-8-BOM")
+pdat <- pdata.frame(asean, index = c("country_code", "year"))
+
+codebook <- read.csv("${PANEL_FILES.codebook}", fileEncoding = "UTF-8-BOM")`}</code></pre>
+
+      <h2>Nhập vào EViews</h2>
+      <pre><code>{`' Việt Nam: workfile năm từ cột year
+import "${PANEL_FILES.wide}" ftype=ascii delim=comma names=1 @freq a @id year
+' ASEAN: workfile bảng theo id và year
+import "${PANEL_FILES.asean}" ftype=ascii delim=comma names=1 @freq a @id id year
+' Giá hàng hoá theo tháng
+import "${PANEL_FILES.monthly}" ftype=ascii delim=comma names=1 @freq m @id period`}</code></pre>
+      <p class="text-sm">
+        Có thể mở trực tiếp bằng Excel hoặc SPSS: file dùng UTF-8 có BOM, dấu phẩy phân cách, dấu chấm thập phân. Nếu Excel
+        của bạn dùng dấu phẩy thập phân, nhập qua Data → From Text/CSV và chọn dấu thập phân là dấu chấm.
+      </p>
+
+      <h2>Biến trong file Việt Nam</h2>
+      <p class="text-sm">
+        Ví dụ một số biến: {sample(vnAnnual, 8).map((v, i) => <><code>{v}</code>{i < 7 ? ", " : ""}</>)}… Danh sách đầy đủ,
+        kèm nhãn và nguồn, xem trong codebook hoặc trang của từng chỉ số tại
+        <a href={getRelativeLocaleUrl(locale, "du-lieu")}>Dữ liệu thứ cấp Việt Nam</a>. Cần chỉ số không có trong file? Tìm
+        trong <a href={getRelativeLocaleUrl(locale, "du-lieu/kho-chi-so")}>Kho chỉ số</a> và tải CSV từng chuỗi.
+      </p>
+
+      <h2>Nguồn, giấy phép và trích dẫn</h2>
+      <p class="text-sm">
+        Các file ghép số liệu từ World Bank (WDI, WGI, GFDD, Pink Sheet), ILO (ILOSTAT), FAO (FAOSTAT) và Penn World Table
+        11.0, đều theo giấy phép Creative Commons Attribution 4.0. Khi dùng, trích dẫn nguồn gốc của từng biến bạn đưa vào mô
+        hình: cột <code>citation_apa</code> của codebook có sẵn tài liệu tham khảo APA 7 với ngày truy xuất. Không trích
+        dẫn {config.site.title} như nguồn số liệu.
+      </p>
+    </div>
+  </Main>
+  <Footer />
+</Layout>

@@ -5,13 +5,17 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Footer from "@/components/Footer.astro";
+import LineChart from "./_components/LineChart.astro";
 import { getAssetPath } from "@/utils/withBase";
 import {
+  annualAverages,
   apaCitation,
   buildChart,
   changeOf,
   displayValue,
-  pageTitleOf,
+  formatNumber,
+  isMonthly,
+  periodLabel,
   yearSpan,
 } from "@/utils/dataSeries";
 import config from "@/config";
@@ -31,108 +35,141 @@ type Props = {
 const { dataset, all } = Astro.props;
 const d = dataset.data;
 const locale = Astro.currentLocale ?? config.site.lang;
+const monthly = isMonthly(d);
+const world = d.kind === "world";
 const { first, last } = yearSpan(d);
-const title = pageTitleOf(d);
-const description = `${d.nameVi} của Việt Nam ${first}–${last} theo World Bank (WDI): bảng số liệu từng năm, biểu đồ, tải CSV miễn phí, trích dẫn APA.`;
+const place = world ? "thị trường thế giới" : "Việt Nam";
 const latest = d.values[d.values.length - 1];
-const missingYears = last - first + 1 - d.values.length;
-const chart = buildChart(d);
+const cap = (s: string) => s.charAt(0).toLocaleUpperCase("vi") + s.slice(1);
+const crumb = world ? `Giá ${d.shortVi}` : cap(d.shortVi);
+const unitNote = d.displayUnit ? ` ${d.displayUnit}` : "";
 const cite = apaCitation(d);
 const csvHref = getAssetPath(`du-lieu/${dataset.id}.csv`);
-const allCsvHref = getAssetPath("du-lieu/tat-ca-chi-so.csv");
-const rows = d.values
-  .map((p, i) => ({ ...p, change: changeOf(d, d.values[i - 1], p) }))
-  .reverse();
-const sameTheme = all.filter(
-  s => s.id !== dataset.id && s.data.theme === d.theme
+const aseanHref = getAssetPath(`du-lieu/asean/${dataset.id}.csv`);
+const panelHref = getRelativeLocaleUrl(locale, "du-lieu/du-lieu-bang");
+const exploreHref = getRelativeLocaleUrl(locale, "du-lieu/kho-chi-so");
+const sourceShort = `${d.publisher}, ${d.sourceName}`;
+
+// Main chart and tables
+const chart = buildChart(
+  [{ key: "VNM", label: world ? d.nameVi : "Việt Nam", values: d.values }],
+  d.scale,
+  d.decimals,
+  monthly
 );
+const expected = monthly
+  ? (last - first) * 12 + (latest.month ?? 1) - (d.values[0].month ?? 1) + 1
+  : last - first + 1;
+const missing = expected - d.values.length;
+const rows = d.values.map((p, i) => ({ ...p, change: changeOf(d, d.values[i - 1], p) })).reverse();
+const recentMonths = monthly ? rows.slice(0, 24) : [];
+const averages = monthly
+  ? annualAverages(d.values)
+      .map((a, i, arr) => ({
+        ...a,
+        change:
+          i > 0 && arr[i - 1].year === a.year - 1 && arr[i - 1].value !== 0
+            ? ((a.value - arr[i - 1].value) / Math.abs(arr[i - 1].value)) * 100
+            : null,
+      }))
+      .reverse()
+  : [];
+
+// ASEAN comparison
+const peers = d.comparison ?? [];
+const compChart = peers.length
+  ? buildChart(
+      [
+        { key: "VNM", label: "Việt Nam", values: d.values },
+        ...peers.map(p => ({ key: p.code, label: p.name, values: p.values })),
+      ],
+      d.scale,
+      d.decimals
+    )
+  : null;
+const latestYear = Math.max(latest.year, ...peers.map(p => p.values[p.values.length - 1].year));
+const compRows = [{ code: "VNM", name: "Việt Nam", values: d.values }, ...peers]
+  .map(c => {
+    const lv = c.values[c.values.length - 1];
+    return { code: c.code, name: c.name, year: lv.year, value: lv.value, first: c.values[0].year };
+  })
+  .sort((a, b) => b.value - a.value);
+const defaultPeer = peers.find(p => p.code === "THA")?.code ?? peers[0]?.code;
+
+const sameTheme = all.filter(s => s.id !== dataset.id && s.data.theme === d.theme);
 const url = new URL(Astro.url.pathname, Astro.site).href;
 const ld = {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  name: title,
-  description: `${description} ${d.explanation}`,
+  name: d.title,
+  description: `${d.description} ${d.explanation}`.slice(0, 4900),
   url,
   inLanguage: "vi",
   isAccessibleForFree: true,
   license: d.licenseUrl,
-  creator: {
-    "@type": "Organization",
-    name: "World Bank",
-    url: "https://www.worldbank.org",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: config.site.title,
-    url: config.site.url,
-  },
+  creator: { "@type": "Organization", name: d.publisher },
+  publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
   isBasedOn: d.dataUrl,
   identifier: d.code,
-  keywords: [d.nameVi, d.nameEn, "Việt Nam", "World Development Indicators"],
+  keywords: [d.nameVi, d.nameEn, world ? "giá hàng hoá thế giới" : "Việt Nam", d.sourceName],
   variableMeasured: `${d.nameEn} (${d.unit})`,
   temporalCoverage: `${first}/${last}`,
-  spatialCoverage: { "@type": "Place", name: "Việt Nam" },
+  spatialCoverage: { "@type": "Place", name: world ? "Thế giới" : "Việt Nam" },
   dateModified: d.lastUpdated,
   distribution: [
-    {
-      "@type": "DataDownload",
-      encodingFormat: "text/csv",
-      contentUrl: new URL(csvHref, Astro.site).href,
-    },
+    { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: new URL(csvHref, Astro.site).href },
+    ...(peers.length
+      ? [{ "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: new URL(aseanHref, Astro.site).href }]
+      : []),
   ],
   citation: cite.text,
 };
 ---
 
-<Layout title={`${title} | ${config.site.title}`} description={description}>
-  <script
-    is:inline
-    type="application/ld+json"
-    slot="head"
-    set:html={JSON.stringify(ld)}
-  />
+<Layout title={`${d.title} | ${config.site.title}`} description={d.description}>
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
   <Header />
-  <Breadcrumb />
+  <Breadcrumb current={crumb} />
   <main id="main-content" class="app-layout pb-10" data-pagefind-body>
-    <p class="text-accent text-xs font-semibold tracking-wider uppercase">
-      {d.theme}
-    </p>
-    <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">{title}</h1>
+    <p class="eyebrow">{d.theme}</p>
+    <h1 class="mt-1 text-2xl font-bold sm:text-3xl">{d.title}</h1>
     <p class="text-muted-foreground mt-2 text-sm">
-      {d.nameVi} · <span lang="en">{d.nameEn}</span> · Mã World Bank: <code
-        >{d.code}</code
-      >
+      {d.nameVi} · <span lang="en">{d.nameEn}</span> · Mã: <code>{d.code}</code> · Nguồn: {sourceShort}
     </p>
 
     <dl
-      class="border-border mt-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-xl border p-4 text-sm sm:grid-cols-4"
+      class="border-border bg-surface mt-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-xl border p-4 text-sm sm:grid-cols-4"
     >
       <div>
-        <dt class="text-muted-foreground">Năm {latest.year}</dt>
-        <dd class="font-semibold">
-          {displayValue(d, latest.value)}
-          {d.displayUnit}
-        </dd>
+        <dt class="text-muted-foreground">{monthly ? `Tháng ${periodLabel(latest)}` : `Năm ${latest.year}`}</dt>
+        <dd class="font-semibold">{displayValue(d, latest.value)}{unitNote}</dd>
       </div>
       <div>
         <dt class="text-muted-foreground">Giai đoạn</dt>
-        <dd class="font-semibold">{first}–{last}</dd>
+        <dd class="font-semibold">
+          {monthly ? `${periodLabel(d.values[0])}–${periodLabel(latest)}` : `${first}–${last}`}
+        </dd>
       </div>
       <div>
-        <dt class="text-muted-foreground">Số năm có dữ liệu</dt>
+        <dt class="text-muted-foreground">{monthly ? "Số tháng có dữ liệu" : "Số năm có dữ liệu"}</dt>
         <dd class="font-semibold">{d.values.length}</dd>
       </div>
       <div>
-        <dt class="text-muted-foreground">Cập nhật (World Bank)</dt>
+        <dt class="text-muted-foreground">Nguồn cập nhật</dt>
         <dd class="font-semibold">{d.lastUpdated}</dd>
       </div>
     </dl>
 
     <div class="mt-5 flex flex-wrap gap-3">
-      <a class="btn" href={csvHref} download>Tải CSV ({d.values.length} năm)</a>
-      <a class="btn ghost" href={allCsvHref} download>
-        Tải CSV tất cả {all.length} chỉ số
-      </a>
+      <a class="btn" href={csvHref} download>Tải CSV ({d.values.length} {monthly ? "tháng" : "năm"})</a>
+      {
+        peers.length > 0 && (
+          <a class="btn ghost" href={aseanHref} download>
+            CSV so sánh ASEAN
+          </a>
+        )
+      }
+      <a class="btn ghost" href={panelHref}>Dữ liệu bảng cho Stata, R, EViews</a>
     </div>
 
     <div class="app-prose mt-6 max-w-none">
@@ -141,217 +178,306 @@ const ld = {
       <p class="text-sm">
         <strong>Đơn vị:</strong>
         {d.unit}
-        {
-          d.scale !== 1 && (
-            <>
-              {" "}
-              (trên trang hiển thị theo {d.displayUnit}; file CSV giữ nguyên giá
-              trị gốc)
-            </>
-          )
-        }.
+        {d.scale !== 1 && <>(trên trang hiển thị theo {d.displayUnit}; file CSV giữ nguyên giá trị gốc)</>}.
       </p>
 
       <h2>Khoá luận, luận văn dùng chỉ số này thế nào?</h2>
       <ul>{d.thesisUse.map(u => <li>{u}</li>)}</ul>
-      <ul>
-        <li>
-          Số liệu World Bank có thể khác số liệu của Tổng cục Thống kê (nay là
-          Cục Thống kê) do khác phương pháp, thời điểm cập nhật hoặc ước tính.
-          Chọn một nguồn cho cả chuỗi và ghi rõ nguồn trong bài.
-        </li>
-        <li>
-          World Bank có thể sửa số liệu các năm trước khi cập nhật. Ghi ngày truy
-          cập trong trích dẫn và lưu lại file CSV bạn đã dùng.
-        </li>
-      </ul>
+      {
+        world ? (
+          <ul>
+            <li>
+              Đây là giá danh nghĩa bằng USD. Khi phân tích dài hạn, chia cho một chỉ số giá (ví dụ chỉ số MUV hoặc
+              CPI của Mỹ) để có giá thực; khi so với giá trong nước, quy đổi bằng tỷ giá USD/VND cùng tháng.
+            </li>
+            <li>
+              Chuỗi giá thường không dừng ở dạng mức: lấy logarit và kiểm định nghiệm đơn vị trước khi chạy VAR/ECM;
+              với mô hình năm, dùng bảng bình quân năm bên dưới hoặc tự tính từ file CSV.
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              Số liệu của tổ chức quốc tế có thể khác số liệu của Cục Thống kê (Tổng cục Thống kê trước đây) do khác
+              phương pháp, thời điểm cập nhật hoặc ước tính. Chọn một nguồn cho cả chuỗi và ghi rõ nguồn trong bài.
+            </li>
+            <li>
+              Nguồn có thể sửa số liệu các năm trước khi cập nhật. Ghi ngày truy cập trong trích dẫn và lưu lại file
+              CSV bạn đã dùng.
+            </li>
+          </ul>
+        )
+      }
 
-      <h2>Biểu đồ {d.shortVi} Việt Nam {first}–{last}</h2>
+      <h2>Biểu đồ {world ? `giá ${d.shortVi}` : `${d.shortVi} Việt Nam`} {first}–{last}</h2>
     </div>
 
-    <figure class="mt-2">
-      <svg
-        viewBox={`0 0 ${chart.width} ${chart.height}`}
-        class="h-auto w-full"
-        role="img"
-        aria-labelledby={`chart-title-${dataset.id}`}
-      >
-        <title id={`chart-title-${dataset.id}`}>
-          {d.nameVi}, Việt Nam {first}–{last}, đơn vị {d.displayUnit}
-        </title>
-        {
-          chart.yTicks.map(t => (
-            <g>
-              <line
-                x1={chart.left}
-                x2={chart.right}
-                y1={t.y}
-                y2={t.y}
-                class="stroke-border"
-                stroke-width="1"
-              />
-              <text
-                x={chart.left - 8}
-                y={t.y + 4}
-                text-anchor="end"
-                font-size="12"
-                class="fill-muted-foreground"
-              >
-                {t.label}
-              </text>
-            </g>
-          ))
-        }
-        {
-          chart.zeroY !== null && (
-            <line
-              x1={chart.left}
-              x2={chart.right}
-              y1={chart.zeroY}
-              y2={chart.zeroY}
-              class="stroke-muted-foreground"
-              stroke-width="1"
-            />
-          )
-        }
-        {
-          chart.xTicks.map(t => (
-            <text
-              x={t.x}
-              y={chart.bottom + 20}
-              text-anchor="middle"
-              font-size="12"
-              class="fill-muted-foreground"
-            >
-              {t.label}
-            </text>
-          ))
-        }
-        <path
-          d={chart.path}
-          fill="none"
-          class="stroke-accent"
-          stroke-width="2.5"
-          stroke-linejoin="round"
-          stroke-linecap="round"
-        />
-        {
-          chart.dots.map(p => (
-            <circle cx={p.x} cy={p.y} r="3.5" class="fill-accent">
-              <title>
-                {p.year}: {p.label} {d.displayUnit}
-              </title>
-            </circle>
-          ))
-        }
-      </svg>
-      <figcaption class="text-muted-foreground mt-1 text-xs">
-        Đơn vị: {d.displayUnit}. Nguồn: World Bank, World Development Indicators
-        ({d.code}).{
-          missingYears > 0 &&
-            ` Đường bị ngắt ở những năm không có số liệu (${missingYears} năm trống).`
-        }
-      </figcaption>
-    </figure>
+    <LineChart
+      chart={chart}
+      id={dataset.id}
+      title={`${d.nameVi}, ${place}, ${first}–${last}, đơn vị ${d.displayUnit}`}
+      unit={d.displayUnit}
+      caption={`Đơn vị: ${d.displayUnit}. Nguồn: ${sourceShort} (${d.code}).${missing > 0 ? ` Đường bị ngắt ở những ${monthly ? "tháng" : "năm"} không có số liệu (${missing} ${monthly ? "tháng" : "năm"} trống).` : ""}`}
+    />
 
-    <div class="app-prose mt-6 max-w-none">
-      <h2>Bảng số liệu {d.shortVi} Việt Nam theo năm</h2>
-      <div class="overflow-x-auto">
-        <table>
-          <thead>
-            <tr>
-              <th>Năm</th>
-              <th>Giá trị ({d.displayUnit})</th>
-              <th>Thay đổi so với năm trước</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              rows.map(r => (
-                <tr>
-                  <td class="font-semibold">{r.year}</td>
-                  <td class="tabular-nums">{displayValue(d, r.value)}</td>
-                  <td class="text-muted-foreground tabular-nums">{r.change}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-      <p class="text-sm">
-        Năm không có trong bảng là năm World Bank chưa có số liệu cho Việt Nam.
-        Số trên trang được làm tròn; file <a href={csvHref} download>CSV</a> giữ
-        nguyên độ chính xác gốc, định dạng dài (mỗi dòng một năm), mở được bằng
-        Excel, SPSS, Stata, EViews, R.
-      </p>
+    {
+      compChart && (
+        <section class="mt-8" aria-labelledby="so-sanh">
+          <div class="app-prose max-w-none">
+            <h2 id="so-sanh">So sánh Việt Nam với ASEAN và Trung Quốc</h2>
+            <p class="text-sm">
+              Cùng chỉ số, cùng nguồn và phương pháp cho {peers.length} nước so sánh. Đường xanh là Việt Nam; chọn một
+              nước để làm nổi bật trên biểu đồ.
+            </p>
+          </div>
+          <label class="mt-2 inline-flex items-center gap-2 text-sm">
+            <span class="text-muted-foreground">Làm nổi bật:</span>
+            <select class="field w-auto py-1.5" data-peer-select={dataset.id}>
+              {peers.map(p => (
+                <option value={p.code} selected={p.code === defaultPeer}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <LineChart
+            chart={compChart}
+            id={`${dataset.id}-asean`}
+            title={`${d.nameVi}: Việt Nam và ${peers.map(p => p.name).join(", ")}`}
+            unit={d.displayUnit}
+            caption={`Đơn vị: ${d.displayUnit}. Nguồn: ${sourceShort}. Đường xám là các nước so sánh, đường cam là nước đang chọn.`}
+          />
+          <div class="app-prose mt-4 max-w-none">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nước</th>
+                    <th>Năm gần nhất</th>
+                    <th>Giá trị ({d.displayUnit})</th>
+                    <th>Có số liệu từ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compRows.map(r => (
+                    <tr class={r.code === "VNM" ? "font-semibold" : ""}>
+                      <td>{r.name}</td>
+                      <td class="tabular-nums">
+                        {r.year}
+                        {r.year < latestYear ? " *" : ""}
+                      </td>
+                      <td class="tabular-nums">{displayValue(d, r.value)}</td>
+                      <td class="tabular-nums">{r.first}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm">
+              Xếp theo giá trị năm gần nhất của từng nước; dấu * là nước chưa có số liệu năm {latestYear}, nên so sánh
+              cần thận trọng. Tải{" "}
+              <a href={aseanHref} download>
+                CSV so sánh ASEAN
+              </a>{" "}
+              (định dạng dài: nước, năm, giá trị) để chạy hồi quy dữ liệu bảng.
+            </p>
+          </div>
+        </section>
+      )
+    }
+
+    <div class="app-prose mt-8 max-w-none">
+      {
+        monthly ? (
+          <>
+            <h2>Giá {d.shortVi} 24 tháng gần nhất</h2>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tháng</th>
+                    <th>Giá ({d.displayUnit})</th>
+                    <th>So với tháng trước</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentMonths.map(r => (
+                    <tr>
+                      <td class="font-semibold">{periodLabel(r)}</td>
+                      <td class="tabular-nums">{displayValue(d, r.value)}</td>
+                      <td class="text-muted-foreground tabular-nums">{r.change}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <h2>Giá {d.shortVi} bình quân theo năm</h2>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Năm</th>
+                    <th>Bình quân ({d.displayUnit})</th>
+                    <th>So với năm trước</th>
+                    <th>Số tháng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {averages.map(a => (
+                    <tr>
+                      <td class="font-semibold">{a.year}</td>
+                      <td class="tabular-nums">{displayValue(d, a.value)}</td>
+                      <td class="text-muted-foreground tabular-nums">
+                        {a.change === null ? "" : `${a.change > 0 ? "+" : ""}${formatNumber(a.change, 1)}%`}
+                      </td>
+                      <td class="tabular-nums">{a.months}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm">
+              Bình quân năm do {config.site.title} tính bằng trung bình cộng các tháng có số liệu (năm chưa đủ 12 tháng
+              được ghi rõ số tháng). File{" "}
+              <a href={csvHref} download>
+                CSV
+              </a>{" "}
+              chứa toàn bộ {d.values.length} tháng với độ chính xác gốc, kèm nguồn, giấy phép, ngày truy xuất và trích
+              dẫn trên từng dòng.
+            </p>
+          </>
+        ) : (
+          <>
+            <h2>Bảng số liệu {d.shortVi} Việt Nam theo năm</h2>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Năm</th>
+                    <th>Giá trị ({d.displayUnit || "đơn vị gốc"})</th>
+                    <th>Thay đổi so với năm trước</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map(r => (
+                    <tr>
+                      <td class="font-semibold">{r.year}</td>
+                      <td class="tabular-nums">{displayValue(d, r.value)}</td>
+                      <td class="text-muted-foreground tabular-nums">{r.change}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm">
+              Năm không có trong bảng là năm nguồn chưa có số liệu cho Việt Nam. Số trên trang được làm tròn; file{" "}
+              <a href={csvHref} download>
+                CSV
+              </a>{" "}
+              giữ nguyên độ chính xác gốc, định dạng dài (mỗi dòng một năm, kèm nguồn, giấy phép, ngày truy xuất và
+              trích dẫn), mở được bằng Excel, SPSS, Stata, EViews, R.
+            </p>
+          </>
+        )
+      }
 
       <h2>Trích dẫn (APA 7)</h2>
-      <p class="text-sm">
-        Danh mục tài liệu tham khảo:
-      </p>
+      <p class="text-sm">Danh mục tài liệu tham khảo:</p>
       <blockquote><p set:html={cite.html} /></blockquote>
+      {
+        cite.article && (
+          <p class="text-sm">
+            Penn World Table yêu cầu trích dẫn thêm bài báo gốc: <span lang="en">{cite.article}</span>
+          </p>
+        )
+      }
       <p class="text-sm">
-        Trích dẫn trong bài: <strong>{cite.inText}</strong>. Nếu trường của bạn
-        dùng kiểu trích dẫn khác, giữ các thành phần: tác giả (World Bank), năm
-        cập nhật, tên chỉ số, tên bộ dữ liệu World Development Indicators, đường
-        dẫn và ngày truy cập.
+        Trích dẫn trong bài: <strong>{cite.inText}</strong>. Trích dẫn tổ chức công bố số liệu ({d.publisher}), không
+        trích dẫn trang này. Nếu trường của bạn dùng kiểu trích dẫn khác, giữ các thành phần: tác giả, năm cập nhật, tên
+        chỉ số, tên bộ dữ liệu, đường dẫn và ngày truy cập.
       </p>
 
       <h2>Nguồn và giấy phép</h2>
       <p class="text-sm">
-        Dữ liệu: World Bank, {d.source} (mã <code>{d.code}</code>), cập nhật {
-          d.lastUpdated
-        }, truy xuất qua World Bank API ngày {d.fetchedAt}. Nguồn gốc theo World
-        Bank: <span lang="en">{d.sourceOrganization}</span>.
+        Dữ liệu: {sourceShort} (mã <code>{d.code}</code>), nguồn cập nhật {d.lastUpdated}, {config.site.title} truy xuất
+        ngày {d.fetchedAt}.
+        {
+          d.sourceOrganization && d.sourceOrganization !== d.publisher && (
+            <>
+              Nguồn gốc theo {d.publisher}: <span lang="en">{d.sourceOrganization}</span>.
+            </>
+          )
+        }
       </p>
       <p class="text-sm">
-        Giấy phép: <a href={d.licenseUrl} rel="license noopener" target="_blank"
-          >{d.license}</a
-        > (xem <a href={d.termsUrl} rel="noopener" target="_blank"
-          >điều khoản dữ liệu của World Bank</a
-        >). {config.site.title} đã chọn lọc, dịch tên và mô tả sang tiếng Việt,
-        định dạng lại bảng và vẽ biểu đồ; không thay đổi giá trị số liệu. Xem dữ
-        liệu gốc tại <a href={d.dataUrl} rel="noopener" target="_blank"
-          >data.worldbank.org</a
+        Giấy phép: <a href={d.licenseUrl} rel="license noopener" target="_blank">{d.license}</a> (xem <a
+          href={d.termsUrl}
+          rel="noopener"
+          target="_blank">điều khoản của nguồn</a
+        >). {config.site.title} đã chọn lọc, dịch tên và mô tả sang tiếng Việt, định dạng lại bảng, tính bình quân năm
+        (nếu có) và vẽ biểu đồ; không thay đổi giá trị số liệu. Xem dữ liệu gốc tại <a
+          href={d.dataUrl}
+          rel="noopener"
+          target="_blank">trang của {d.publisher}</a
         >.
       </p>
-      <details class="text-sm">
-        <summary>Định nghĩa gốc của World Bank (tiếng Anh)</summary>
-        <p lang="en">{d.sourceNote}</p>
-      </details>
+      {
+        d.sourceNote && (
+          <details class="text-sm">
+            <summary>Định nghĩa gốc (tiếng Anh)</summary>
+            <p lang="en">{d.sourceNote}</p>
+          </details>
+        )
+      }
     </div>
 
-    {
-      sameTheme.length > 0 && (
-        <section data-pagefind-ignore class="border-border mt-10 border-t pt-6">
-          <h2 class="mb-4 text-xl font-semibold">Số liệu cùng chủ đề</h2>
-          <ul class="grid gap-3 sm:grid-cols-2">
-            {sameTheme.map(s => (
-              <li>
-                <a
-                  href={getRelativeLocaleUrl(locale, `du-lieu/${s.id}`)}
-                  class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors"
-                >
-                  <span class="font-semibold">{s.data.nameVi}</span>
-                  <span class="text-muted-foreground block text-sm">
-                    {yearSpan(s.data).first}–{yearSpan(s.data).last} ·{" "}
-                    {s.data.displayUnit}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p class="mt-4 text-sm">
-            <a
-              class="text-accent underline"
-              href={getRelativeLocaleUrl(locale, "du-lieu")}
-            >
-              Xem tất cả chỉ số
-            </a>
-          </p>
-        </section>
-      )
-    }
+    <section data-pagefind-ignore class="border-border mt-10 border-t pt-6">
+      {
+        sameTheme.length > 0 && (
+          <>
+            <h2 class="mb-4 text-xl font-bold">Số liệu cùng chủ đề</h2>
+            <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {sameTheme.map(s => (
+                <li>
+                  <a href={getRelativeLocaleUrl(locale, `du-lieu/${s.id}`)} class="card gap-1 p-4">
+                    <span class="font-semibold">{s.data.nameVi}</span>
+                    <span class="card-meta">
+                      {yearSpan(s.data).first}–{yearSpan(s.data).last} · {s.data.displayUnit}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+      <p class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <a class="text-accent underline" href={getRelativeLocaleUrl(locale, "du-lieu")}>
+          Tất cả chỉ số có trang riêng
+        </a>
+        <a class="text-accent underline" href={exploreHref}>Kho chỉ số: tra cứu mọi chuỗi số liệu</a>
+      </p>
+    </section>
   </main>
   <Footer />
 </Layout>
+
+<script>
+  function setupPeerSelect() {
+    document.querySelectorAll<HTMLSelectElement>("[data-peer-select]").forEach(sel => {
+      const fig = document.querySelector(`[data-chart="${sel.dataset.peerSelect}-asean"]`);
+      if (!fig) return;
+      const main = fig.querySelector('[data-line="VNM"]');
+      const apply = () =>
+        fig.querySelectorAll<SVGPathElement>(".peer-line").forEach(p => {
+          const on = p.dataset.line === sel.value;
+          p.classList.toggle("is-hl", on);
+          if (on && main) main.parentNode?.insertBefore(p, main);
+        });
+      sel.addEventListener("change", apply);
+      apply();
+    });
+  }
+  setupPeerSelect();
+  document.addEventListener("astro:after-swap", setupPeerSelect);
+</script>

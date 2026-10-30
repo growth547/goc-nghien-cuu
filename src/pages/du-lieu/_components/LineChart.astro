@@ -1,0 +1,97 @@
+---
+// Build-time SVG line chart for /du-lieu/ pages. The first line is the main series (accent);
+// further lines are comparison series, drawn thin and muted, and can be highlighted by a
+// script through [data-line="<key>"] / the "is-hl" class.
+import type { Chart } from "@/utils/dataSeries";
+
+type Props = { chart: Chart; id: string; title: string; unit: string; caption: string };
+const { chart, id, title, unit, caption } = Astro.props;
+const [main, ...others] = chart.lines;
+---
+
+<figure class="mt-2" data-chart={id}>
+  <svg
+    viewBox={`0 0 ${chart.width} ${chart.height}`}
+    class="h-auto w-full"
+    role="img"
+    aria-labelledby={`chart-title-${id}`}
+  >
+    <title id={`chart-title-${id}`}>{title}</title>
+    {
+      chart.yTicks.map(t => (
+        <g>
+          <line x1={chart.left} x2={chart.right} y1={t.y} y2={t.y} class="stroke-border" stroke-width="1" />
+          <text x={chart.left - 8} y={t.y + 4} text-anchor="end" font-size="12" class="fill-muted-foreground">
+            {t.label}
+          </text>
+        </g>
+      ))
+    }
+    {
+      chart.zeroY !== null && (
+        <line
+          x1={chart.left}
+          x2={chart.right}
+          y1={chart.zeroY}
+          y2={chart.zeroY}
+          class="stroke-muted-foreground"
+          stroke-width="1"
+        />
+      )
+    }
+    {
+      chart.xTicks.map(t => (
+        <text x={t.x} y={chart.bottom + 20} text-anchor="middle" font-size="12" class="fill-muted-foreground">
+          {t.label}
+        </text>
+      ))
+    }
+    {
+      others.map(l => (
+        <path
+          d={l.path}
+          data-line={l.key}
+          fill="none"
+          class="peer-line stroke-muted-foreground"
+          stroke-width="1.25"
+          stroke-opacity="0.45"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        >
+          <title>{l.label}</title>
+        </path>
+      ))
+    }
+    {
+      main && (
+        <path
+          d={main.path}
+          data-line={main.key}
+          fill="none"
+          class="stroke-accent"
+          stroke-width="2.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+      )
+    }
+    {
+      chart.dots.map(p => (
+        <circle cx={p.x} cy={p.y} r="3.5" class="fill-accent">
+          <title>
+            {p.label}: {p.text} {unit}
+          </title>
+        </circle>
+      ))
+    }
+  </svg>
+  <figcaption class="text-muted-foreground mt-1 text-xs">{caption}</figcaption>
+</figure>
+
+<style>
+  [data-chart] :global(.peer-line.is-hl) {
+    stroke: var(--warm);
+    stroke-opacity: 1;
+    stroke-width: 2.25;
+  }
+</style>

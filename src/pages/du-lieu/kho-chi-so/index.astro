@@ -1,0 +1,569 @@
+---
+// "Kho chỉ số": one searchable page over every series the registered sources publish for Viet Nam
+// (plus world commodity prices). Data are loaded on demand from /du-lieu/kho-chi-so/data/*.json.
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import { getAssetPath } from "@/utils/withBase";
+import { formatNumber } from "@/utils/dataSeries";
+import { buildExplorer, type ExplorerItem } from "../_lib/explorer";
+import { richMap } from "../_lib/richMap";
+import config from "@/config";
+
+const locale = Astro.currentLocale ?? config.site.lang;
+const { index } = buildExplorer(await richMap());
+const idx = index as {
+  sources: Record<string, { name: string; org: string; licenseShort: string; licenseUrl: string; lastUpdated: string; fetchedAt: string }>;
+  topics: string[];
+  items: ExplorerItem[];
+};
+const total = idx.items.length;
+const bySource = Object.entries(idx.sources).map(([key, s]) => ({
+  key,
+  ...s,
+  count: idx.items.filter(i => i.s === key).length,
+}));
+const richCount = idx.items.filter(i => i.r).length;
+const dataBase = getAssetPath("du-lieu/kho-chi-so/data/");
+const siteBase = getAssetPath("du-lieu/");
+const examples = ["lạm phát", "lãi suất", "xuất khẩu", "nợ xấu", "giá gạo", "lao động nữ", "điện", "tham nhũng"];
+---
+
+<Layout
+  title={`Kho chỉ số Việt Nam: tra cứu ${formatNumber(total, 0)} chuỗi số liệu | ${config.site.title}`}
+  description={`Tra cứu ${formatNumber(total, 0)} chuỗi số liệu về Việt Nam và giá hàng hoá thế giới từ World Bank, ILO, FAO, Penn World Table: biểu đồ, tải CSV, trích dẫn APA.`}
+>
+  <Header />
+  <Breadcrumb current="Kho chỉ số" />
+  <Main
+    pageTitle="Kho chỉ số"
+    pageDesc={`${formatNumber(total, 0)} chuỗi số liệu về Việt Nam (và giá hàng hoá thế giới) từ ${bySource.length} nguồn có giấy phép cho phép tái sử dụng. Gõ từ khoá tiếng Việt hoặc tiếng Anh, chọn một chỉ số để xem biểu đồ và tải CSV.`}
+  >
+    <div data-explorer data-base={dataBase} data-site={siteBase}>
+      <div class="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center">
+        <label class="relative block w-full lg:max-w-md">
+          <span class="sr-only">Tìm chỉ số</span>
+          <svg
+            class="text-muted-foreground pointer-events-none absolute start-3 top-1/2 size-5 -translate-y-1/2"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="10" cy="10" r="7"></circle>
+            <path d="m21 21-6-6"></path>
+          </svg>
+          <input
+            type="search"
+            data-q
+            placeholder="Ví dụ: lạm phát, lãi suất, giá cà phê, FDI…"
+            autocomplete="off"
+            class="border-border-strong bg-surface text-foreground placeholder:text-muted-foreground focus-visible:outline-accent h-12 w-full rounded-xl border ps-11 pe-4 text-base focus-visible:outline-2 focus-visible:outline-offset-0"
+          />
+        </label>
+        <div class="flex flex-wrap gap-2">
+          <select data-src class="field w-auto py-2 text-sm" aria-label="Nguồn">
+            <option value="">Mọi nguồn</option>
+            {bySource.map(s => <option value={s.key}>{s.name} ({s.count})</option>)}
+          </select>
+          <select data-topic class="field w-auto py-2 text-sm" aria-label="Chủ đề">
+            <option value="">Mọi chủ đề</option>
+            {idx.topics.map((t, i) => <option value={i}>{t}</option>)}
+          </select>
+        </div>
+      </div>
+      <p class="text-muted-foreground mb-3 text-sm">
+        Gợi ý:
+        {
+          examples.map(e => (
+            <button type="button" data-example={e} class="text-accent me-2 underline underline-offset-2">
+              {e}
+            </button>
+          ))
+        }
+        <span class="ms-1" aria-live="polite" data-count></span>
+      </p>
+
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+        <div>
+          <ul data-results class="divide-border border-border bg-surface divide-y overflow-hidden rounded-xl border"></ul>
+          <button type="button" data-more hidden class="btn ghost mt-3 w-full">Hiện thêm</button>
+          <noscript>
+            <p class="text-muted-foreground p-4 text-sm">
+              Kho chỉ số cần JavaScript. Bạn vẫn có thể dùng các trang chỉ số có sẵn tại
+              <a href={getRelativeLocaleUrl(locale, "du-lieu")}>Dữ liệu thứ cấp Việt Nam</a>.
+            </p>
+          </noscript>
+        </div>
+        <section data-detail class="border-border bg-surface rounded-xl border p-4 sm:p-5" aria-live="polite">
+          <p class="text-muted-foreground text-sm">
+            Chọn một chỉ số trong danh sách để xem biểu đồ, bảng số liệu, nguồn, giấy phép và tải CSV.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <section class="app-prose mt-12 max-w-none">
+      <h2>Kho chỉ số gồm những gì?</h2>
+      <p>
+        Kho chỉ số tập hợp mọi chuỗi số liệu mà các nguồn dưới đây công bố cho Việt Nam, cùng giá hàng hoá thế giới
+        theo tháng. {richCount} chỉ số quan trọng nhất có trang riêng với giải thích tiếng Việt, cách dùng trong khoá
+        luận và so sánh ASEAN; các chuỗi còn lại tra cứu ngay tại đây với tên gốc tiếng Anh.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Nguồn</th>
+              <th>Số chuỗi</th>
+              <th>Giấy phép</th>
+              <th>Nguồn cập nhật</th>
+              <th>Truy xuất</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              bySource.map(s => (
+                <tr>
+                  <td>
+                    {s.org}, {s.name}
+                  </td>
+                  <td class="tabular-nums">{s.count}</td>
+                  <td>
+                    <a href={s.licenseUrl} rel="license noopener" target="_blank">
+                      {s.licenseShort}
+                    </a>
+                  </td>
+                  <td class="tabular-nums">{s.lastUpdated}</td>
+                  <td class="tabular-nums">{s.fetchedAt}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <h2>Mẹo tìm kiếm</h2>
+      <ul>
+        <li>
+          Tên chỉ số trong kho là tên gốc tiếng Anh của nguồn. Ô tìm kiếm tự hiểu nhiều từ tiếng Việt thông dụng (lạm
+          phát → inflation, lãi suất → interest rate, xuất khẩu → exports…); nếu không ra kết quả, thử từ tiếng Anh.
+        </li>
+        <li>
+          Có thể tìm theo mã chỉ số, ví dụ <code>NY.GDP.MKTP.KD.ZG</code> hoặc <code>GFDD.SI.01</code>.
+        </li>
+        <li>
+          Mỗi file CSV có cột nguồn, giấy phép, ngày truy xuất và trích dẫn APA trên từng dòng. Muốn ghép nhiều chỉ số
+          để chạy hồi quy, xem <a href={getRelativeLocaleUrl(locale, "du-lieu/du-lieu-bang")}
+            >dữ liệu bảng cho Stata, R, EViews</a
+          >.
+        </li>
+        <li>
+          Số liệu được tải từ API, file chính thức của nguồn và cập nhật định kỳ; {config.site.title} không thay đổi giá
+          trị. Nguồn có thể sửa số liệu cũ, nên ghi ngày truy cập khi trích dẫn.
+        </li>
+      </ul>
+    </section>
+  </Main>
+  <Footer />
+</Layout>
+
+<script>
+  type Item = {
+    id: string;
+    n: string;
+    s: string;
+    t: number;
+    u: string;
+    f: "A" | "M";
+    a: string;
+    b: string;
+    c: number;
+    k: string;
+    r?: string;
+    v?: string;
+  };
+  type Src = {
+    name: string;
+    org: string;
+    license: string;
+    licenseShort: string;
+    licenseUrl: string;
+    termsUrl: string;
+    homeUrl: string;
+    author: string;
+    container: string;
+    doi: string | null;
+    publisher: string | null;
+    licenceNote: string | null;
+    lastUpdated: string;
+    fetchedAt: string;
+  };
+  type Index = { sources: Record<string, Src>; topics: string[]; items: Item[] };
+
+  // Vietnamese search terms (without diacritics) → words that appear in the English series names.
+  const GLOSSARY: Record<string, string[]> = {
+    "lam phat": ["inflation", "consumer price", "deflator"],
+    "tang truong": ["growth"],
+    "xuat khau": ["export"],
+    "nhap khau": ["import"],
+    "dau tu truc tiep": ["direct investment"],
+    "dau tu": ["investment", "capital formation"],
+    "lai suat": ["interest rate", "lending rate", "deposit rate", "spread"],
+    "ty gia": ["exchange rate", "lcu per us$", "ppp conversion"],
+    "tin dung": ["credit", "loan", "lending"],
+    "ngan hang": ["bank"],
+    "no xau": ["nonperforming", "non-performing"],
+    "that nghiep": ["unemployment"],
+    "lao dong": ["labor", "labour", "employment", "employ"],
+    "viec lam": ["employment", "employ"],
+    "phi chinh thuc": ["informal"],
+    "luong toi thieu": ["minimum wage"],
+    "thu nhap": ["income", "earnings", "gni"],
+    luong: ["wage", "earnings", "salar"],
+    "dan so": ["population"],
+    "do thi": ["urban"],
+    "giao duc": ["education", "school", "enrollment", "literacy", "teacher"],
+    "dai hoc": ["tertiary"],
+    "y te": ["health"],
+    "tuoi tho": ["life expectancy"],
+    "tu vong": ["mortality", "death"],
+    ngheo: ["poverty", "poor"],
+    "bat binh dang": ["gini", "income share"],
+    dien: ["electric"],
+    "nang luong": ["energy", "fuel"],
+    "tai tao": ["renewable"],
+    "phat thai": ["emission", "co2", "greenhouse"],
+    "khi nha kinh": ["greenhouse"],
+    rung: ["forest"],
+    nuoc: ["water"],
+    "nong nghiep": ["agricultur", "crop", "cereal", "fertilizer"],
+    "thuy san": ["fish", "aquaculture", "shrimp"],
+    gao: ["rice"],
+    lua: ["rice", "cereal"],
+    "ca phe": ["coffee"],
+    "cao su": ["rubber"],
+    duong: ["sugar"],
+    ngo: ["maize"],
+    "lua mi": ["wheat"],
+    "dau tuong": ["soybean"],
+    "dau co": ["palm oil"],
+    bong: ["cotton"],
+    che: ["tea"],
+    tom: ["shrimp"],
+    tieu: ["pepper"],
+    dieu: ["cashew"],
+    "thit lon": ["pig"],
+    "phan bon": ["fertilizer", "urea", "dap", "potassium", "phosphate"],
+    "dau tho": ["crude oil"],
+    "dau mo": ["crude oil", "oil"],
+    xang: ["fuel", "crude oil"],
+    vang: ["gold"],
+    than: ["coal"],
+    "khi dot": ["natural gas"],
+    sat: ["iron"],
+    thep: ["iron", "steel"],
+    dong: ["copper"],
+    nhom: ["aluminum"],
+    internet: ["internet", "broadband"],
+    "di dong": ["mobile", "cellular"],
+    thue: ["tax", "tariff"],
+    "ngan sach": ["government", "expense", "revenue"],
+    "no cong": ["debt", "government"],
+    no: ["debt"],
+    "kieu hoi": ["remittance"],
+    "du lich": ["tourism", "tourist"],
+    "tham nhung": ["corruption"],
+    "quan tri": ["governance", "government effectiveness", "regulatory", "rule of law"],
+    "phap quyen": ["rule of law"],
+    "doanh nghiep": ["firm", "business", "enterprise"],
+    "khoi nghiep": ["new business"],
+    "von con nguoi": ["human capital"],
+    "nang suat": ["productivity", "per person employed", "tfp", "yield"],
+    "tiet kiem": ["saving"],
+    "tieu dung": ["consumption"],
+    "chinh phu": ["government"],
+    nu: ["female", "women"],
+    "phu nu": ["female", "women"],
+    "tre em": ["child", "under-5", "infant"],
+    sinh: ["fertility", "birth"],
+    "chi so gia": ["price index", "index"],
+    gia: ["price"],
+    "chung khoan": ["stock", "market capitalization"],
+    "bao hiem": ["insurance"],
+    "cong nghe cao": ["high-technology"],
+    "nghien cuu": ["research", "r&d"],
+    "sang che": ["patent"],
+    "chi tieu": ["expenditure", "spending"],
+    "can can thuong mai": ["balance", "net exports"],
+    "vang lai": ["current account"],
+    "du tru": ["reserves"],
+    "cung tien": ["broad money", "money"],
+    "dien thoai": ["mobile", "telephone"],
+  };
+  const KEYS = Object.keys(GLOSSARY).sort((a, b) => b.length - a.length);
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/đ/g, "d");
+  const esc = (s: string) =>
+    s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+  const MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const fmt = (v: number, d = 2) => new Intl.NumberFormat("vi-VN", { maximumFractionDigits: d }).format(v);
+
+  /** Splits the query into concepts; each concept is a list of alternatives (any may match). */
+  function concepts(q: string): string[][] {
+    let s = ` ${norm(q).replace(/\s+/g, " ").trim()} `;
+    const out: string[][] = [];
+    for (const k of KEYS) {
+      const pat = ` ${k} `;
+      while (s.includes(pat)) {
+        out.push([k, ...GLOSSARY[k]]);
+        s = s.replace(pat, " ");
+      }
+    }
+    for (const w of s.split(" ").filter(Boolean)) out.push([w]);
+    return out;
+  }
+
+  const root = document.querySelector<HTMLElement>("[data-explorer]");
+  if (root) init(root);
+
+  async function init(root: HTMLElement) {
+    const base = root.dataset.base!;
+    const site = root.dataset.site!;
+    const $ = <T extends Element>(sel: string) => root.querySelector<T>(sel)!;
+    const q = $<HTMLInputElement>("[data-q]");
+    const srcSel = $<HTMLSelectElement>("[data-src]");
+    const topicSel = $<HTMLSelectElement>("[data-topic]");
+    const list = $<HTMLUListElement>("[data-results]");
+    const more = $<HTMLButtonElement>("[data-more]");
+    const count = $<HTMLElement>("[data-count]");
+    const detail = $<HTMLElement>("[data-detail]");
+    list.innerHTML = `<li class="text-muted-foreground p-4 text-sm">Đang tải danh mục…</li>`;
+    let idx: Index;
+    try {
+      idx = await (await fetch(`${base}index.json`)).json();
+    } catch {
+      list.innerHTML = `<li class="p-4 text-sm">Không tải được danh mục. Hãy tải lại trang.</li>`;
+      return;
+    }
+    const texts = idx.items.map(i => norm(`${i.n} ${i.v ?? ""} ${i.id} ${idx.topics[i.t]} ${idx.sources[i.s]?.name ?? ""}`));
+    const shardCache = new Map<string, Promise<Record<string, [string, (number | null)[]]>>>();
+    let matches: number[] = [];
+    let shown = 0;
+    const PAGE = 40;
+
+    function run() {
+      const cs = concepts(q.value);
+      const src = srcSel.value;
+      const topic = topicSel.value;
+      matches = [];
+      idx.items.forEach((it, i) => {
+        if (src && it.s !== src) return;
+        if (topic && String(it.t) !== topic) return;
+        if (cs.every(alts => alts.some(a => texts[i].includes(a)))) matches.push(i);
+      });
+      matches.sort((a, b) => {
+        const A = idx.items[a];
+        const B = idx.items[b];
+        return Number(!!B.r) - Number(!!A.r) || B.c - A.c;
+      });
+      shown = 0;
+      list.innerHTML = "";
+      count.textContent = `· ${fmt(matches.length, 0)} chuỗi`;
+      if (!matches.length) {
+        list.innerHTML = `<li class="text-muted-foreground p-4 text-sm">Không có chuỗi phù hợp. Thử từ khoá ngắn hơn hoặc từ tiếng Anh.</li>`;
+      }
+      renderMore();
+    }
+
+    function renderMore() {
+      const slice = matches.slice(shown, shown + PAGE);
+      for (const i of slice) {
+        const it = idx.items[i];
+        const li = document.createElement("li");
+        li.innerHTML = `<button type="button" class="hover:bg-accent-soft/60 block w-full p-3 text-start transition-colors" data-id="${esc(it.id)}">
+          <span class="block text-sm font-semibold">${esc(it.v ?? it.n)}</span>
+          ${it.v ? `<span class="text-muted-foreground block text-xs" lang="en">${esc(it.n)}</span>` : ""}
+          <span class="text-muted-foreground mt-0.5 block text-xs">${esc(idx.sources[it.s]?.name ?? it.s)} · ${esc(it.a)}–${esc(it.b)} · ${it.c} ${it.f === "M" ? "tháng" : "năm"}${it.r ? ' · <span class="badge">có trang riêng</span>' : ""}</span>
+        </button>`;
+        list.appendChild(li);
+      }
+      shown += slice.length;
+      more.hidden = shown >= matches.length;
+    }
+
+    const loadShard = (k: string) => {
+      if (!shardCache.has(k)) shardCache.set(k, fetch(`${base}${k}.json`).then(r => r.json()));
+      return shardCache.get(k)!;
+    };
+
+    function periods(it: Item, start: string, n: number) {
+      if (it.f === "M") {
+        const y0 = Number(start.slice(0, 4));
+        const m0 = Number(start.slice(5, 7)) - 1;
+        return Array.from({ length: n }, (_, i) => {
+          const t = y0 * 12 + m0 + i;
+          return { year: Math.floor(t / 12), month: (t % 12) + 1 };
+        });
+      }
+      return Array.from({ length: n }, (_, i) => ({ year: Number(start) + i, month: 0 }));
+    }
+
+    function urlOf(it: Item) {
+      const code = it.id.slice(it.s.length + 1);
+      if (it.s === "wdi") return `https://data.worldbank.org/indicator/${encodeURIComponent(code)}?locations=VN`;
+      if (it.s === "wgi") return "https://databank.worldbank.org/source/worldwide-governance-indicators";
+      if (it.s === "gfdd") return "https://databank.worldbank.org/source/global-financial-development";
+      if (it.s === "faostat") return "https://www.fao.org/faostat/en/#data/PP";
+      if (it.s === "ilostat") return "https://ilostat.ilo.org/data/";
+      return idx.sources[it.s].homeUrl;
+    }
+
+    function citation(it: Item) {
+      const s = idx.sources[it.s];
+      const year = s.lastUpdated.slice(0, 4);
+      const [y, m, d] = s.fetchedAt.split("-").map(Number);
+      const author = /\.$/.test(s.author) ? s.author : `${s.author}.`;
+      if (s.doi) return `${author} (${year}). ${s.container} [Data set]. ${s.publisher ?? ""}. ${s.doi}`.replace(/\.\s*\./g, ".");
+      const title = it.s === "pink" ? `${it.n} (monthly)` : `${it.n}: Viet Nam`;
+      return `${author} (${year}). ${title} [Data set]. ${s.container}. Retrieved ${MONTHS_EN[m - 1]} ${d}, ${y}, from ${urlOf(it)}${s.licenceNote ? ` ${s.licenceNote}` : ""}`;
+    }
+
+    function chartSvg(pts: { t: number; v: number | null }[], monthly: boolean) {
+      const W = 720, H = 280, L = 64, R = W - 12, T = 12, B = H - 30;
+      const vals = pts.filter(p => p.v !== null) as { t: number; v: number }[];
+      let lo = Math.min(...vals.map(p => p.v));
+      let hi = Math.max(...vals.map(p => p.v));
+      if (lo === hi) { lo -= 1; hi += 1; }
+      const raw = (hi - lo) / 5;
+      const mag = 10 ** Math.floor(Math.log10(raw));
+      const nn = raw / mag;
+      const step = (nn <= 1 ? 1 : nn <= 2 ? 2 : nn <= 2.5 ? 2.5 : nn <= 5 ? 5 : 10) * mag;
+      lo = Math.floor(lo / step) * step;
+      hi = Math.ceil(hi / step) * step;
+      if (lo > 0 && lo <= (hi - lo) * 0.5) lo = 0;
+      const t0 = pts[0].t, t1 = pts[pts.length - 1].t;
+      const x = (t: number) => (t0 === t1 ? (L + R) / 2 : L + ((t - t0) / (t1 - t0)) * (R - L));
+      const yy = (v: number) => B - ((v - lo) / (hi - lo)) * (B - T);
+      let d = "";
+      let pen = false;
+      for (const p of pts) {
+        if (p.v === null) { pen = false; continue; }
+        d += `${pen ? "L" : "M"}${x(p.t).toFixed(1)},${yy(p.v).toFixed(1)}`;
+        pen = true;
+      }
+      const dec = step >= 1 ? 0 : Math.min(4, Math.ceil(-Math.log10(step)));
+      let grid = "";
+      for (let v = lo; v <= hi + step / 2; v += step) {
+        grid += `<line x1="${L}" x2="${R}" y1="${yy(v)}" y2="${yy(v)}" class="stroke-border" stroke-width="1"/><text x="${L - 8}" y="${yy(v) + 4}" text-anchor="end" font-size="12" class="fill-muted-foreground">${fmt(v, dec)}</text>`;
+      }
+      const span = Math.floor(t1) - Math.floor(t0);
+      const ys = span <= 12 ? 2 : span <= 25 ? 5 : span <= 50 ? 10 : 15;
+      for (let yr = Math.ceil(t0 / ys) * ys; yr <= t1; yr += ys) {
+        grid += `<text x="${x(yr)}" y="${B + 20}" text-anchor="middle" font-size="12" class="fill-muted-foreground">${yr}</text>`;
+      }
+      const dots = !monthly && vals.length <= 20 ? vals.map(p => `<circle cx="${x(p.t)}" cy="${yy(p.v)}" r="3.5" class="fill-accent"/>`).join("") : "";
+      return `<svg viewBox="0 0 ${W} ${H}" class="h-auto w-full" role="img" aria-label="Biểu đồ">${grid}<path d="${d}" fill="none" class="stroke-accent" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>${dots}</svg>`;
+    }
+
+    async function show(id: string) {
+      const it = idx.items.find(i => i.id === id);
+      if (!it) return;
+      history.replaceState(null, "", `#${encodeURIComponent(id)}`);
+      detail.innerHTML = `<p class="text-muted-foreground text-sm">Đang tải số liệu…</p>`;
+      let shard;
+      try {
+        shard = await loadShard(it.k);
+      } catch {
+        detail.innerHTML = `<p class="text-sm">Không tải được số liệu. Thử lại sau.</p>`;
+        return;
+      }
+      const [start, values] = shard[id];
+      const ps = periods(it, start, values.length);
+      const pts = ps.map((p, i) => ({ t: p.year + (p.month ? (p.month - 1) / 12 : 0), v: values[i] }));
+      const rows = ps.map((p, i) => ({ ...p, v: values[i] })).filter(r => r.v !== null) as { year: number; month: number; v: number }[];
+      const s = idx.sources[it.s];
+      const cite = citation(it);
+      const code = it.id.slice(it.s.length + 1);
+      const label = (r: { year: number; month: number }) => (r.month ? `${String(r.month).padStart(2, "0")}/${r.year}` : String(r.year));
+      const last = rows[rows.length - 1];
+      detail.innerHTML = `
+        <p class="eyebrow">${esc(idx.topics[it.t])}</p>
+        <h2 class="mt-1 text-lg font-bold">${esc(it.v ?? it.n)}</h2>
+        ${it.v ? `<p class="text-muted-foreground text-sm" lang="en">${esc(it.n)}</p>` : ""}
+        <p class="text-muted-foreground mt-1 text-xs">Mã <code>${esc(code)}</code> · ${esc(s.org)}, ${esc(s.name)}${it.u ? ` · Đơn vị: ${esc(it.u)}` : ""}</p>
+        <p class="mt-3 text-sm"><strong>${label(last)}:</strong> ${fmt(last.v, 4)}${it.u ? ` ${esc(it.u)}` : ""} · ${rows.length} ${it.f === "M" ? "tháng" : "năm"} có số liệu (${esc(it.a)}–${esc(it.b)})</p>
+        <div class="mt-3">${chartSvg(pts, it.f === "M")}</div>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button type="button" class="btn" data-csv>Tải CSV</button>
+          <button type="button" class="btn ghost" data-table>Xem bảng số liệu</button>
+          ${it.r ? `<a class="btn ghost" href="${site}${it.r}/">Trang chi tiết, so sánh ASEAN</a>` : ""}
+        </div>
+        <div data-tablebox hidden class="table-scroll mt-3 max-h-80 overflow-y-auto"></div>
+        <div class="mt-4 text-sm">
+          <p class="font-semibold">Trích dẫn (APA 7)</p>
+          <p class="border-border bg-background mt-1 rounded-lg border p-3 text-xs break-words" lang="en">${esc(cite)}</p>
+          <p class="text-muted-foreground mt-2 text-xs">Nguồn: ${esc(s.org)}, ${esc(s.name)}; nguồn cập nhật ${esc(s.lastUpdated)}, truy xuất ${esc(s.fetchedAt)}. Giấy phép: <a class="underline" href="${esc(s.licenseUrl)}" rel="license noopener" target="_blank">${esc(s.license)}</a> (<a class="underline" href="${esc(s.termsUrl)}" rel="noopener" target="_blank">điều khoản</a>). Số liệu giữ nguyên giá trị gốc.</p>
+        </div>`;
+      detail.querySelector("[data-csv]")!.addEventListener("click", () => {
+        const cell = (v: string | number) => (/[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
+        const area = it.s === "pink" ? ["World market", "WLD"] : ["Viet Nam", "VNM"];
+        const lines = [
+          "country,country_code,indicator_code,indicator_name,unit,year,month,value,source,license,retrieved,citation",
+          ...rows.map(r =>
+            [area[0], area[1], code, it.n, it.u, r.year, r.month || "", r.v, `${s.org}, ${s.name}`, s.license, s.fetchedAt, cite].map(cell).join(",")
+          ),
+        ];
+        const blob = new Blob(["﻿" + lines.join("\r\n") + "\r\n"], { type: "text/csv;charset=utf-8" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `${it.s}-${code.replace(/[^A-Za-z0-9_.-]+/g, "_")}.csv`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      });
+      detail.querySelector("[data-table]")!.addEventListener("click", e => {
+        const box = detail.querySelector<HTMLElement>("[data-tablebox]")!;
+        if (!box.innerHTML) {
+          box.innerHTML = `<table class="w-full text-sm"><thead><tr><th class="text-start">${it.f === "M" ? "Tháng" : "Năm"}</th><th class="text-end">Giá trị</th></tr></thead><tbody>${rows
+            .slice()
+            .reverse()
+            .map(r => `<tr><td>${label(r)}</td><td class="text-end tabular-nums">${fmt(r.v, 4)}</td></tr>`)
+            .join("")}</tbody></table>`;
+        }
+        box.hidden = !box.hidden;
+        (e.currentTarget as HTMLButtonElement).textContent = box.hidden ? "Xem bảng số liệu" : "Ẩn bảng";
+      });
+      if (window.matchMedia("(max-width: 1023px)").matches) detail.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    let timer: number | undefined;
+    q.addEventListener("input", () => {
+      clearTimeout(timer);
+      timer = window.setTimeout(run, 120);
+    });
+    srcSel.addEventListener("change", run);
+    topicSel.addEventListener("change", run);
+    more.addEventListener("click", renderMore);
+    root.querySelectorAll<HTMLButtonElement>("[data-example]").forEach(b =>
+      b.addEventListener("click", () => {
+        q.value = b.dataset.example!;
+        run();
+      })
+    );
+    list.addEventListener("click", e => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-id]");
+      if (btn) show(btn.dataset.id!);
+    });
+    run();
+    const hash = decodeURIComponent(location.hash.slice(1));
+    if (hash) show(hash);
+  }
+</script>

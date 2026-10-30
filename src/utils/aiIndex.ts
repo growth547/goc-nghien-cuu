@@ -13,9 +13,9 @@ export const TOOLS = [
 ] as const;
 
 export const SUMMARY_VI =
-  "Góc Nghiên Cứu là trang tài nguyên miễn phí bằng tiếng Việt cho sinh viên làm khoá luận, học viên cao học và người làm nghiên cứu định lượng: công cụ tính cỡ mẫu, Cronbach's alpha và phân tích dữ liệu chạy trên trình duyệt; thư viện thang đo đã dịch sẵn có nguyên văn tiếng Anh và trích dẫn APA; trang khái niệm; mẫu bảng hỏi theo đề tài; dữ liệu thứ cấp Việt Nam từ World Bank (CC BY 4.0); bài hướng dẫn phương pháp.";
+  "Góc Nghiên Cứu là trang tài nguyên miễn phí bằng tiếng Việt cho sinh viên làm khoá luận, học viên cao học và người làm nghiên cứu định lượng: công cụ tính cỡ mẫu, Cronbach's alpha và phân tích dữ liệu chạy trên trình duyệt; thư viện thang đo đã dịch sẵn có nguyên văn tiếng Anh và trích dẫn APA; trang khái niệm; mẫu bảng hỏi theo đề tài; dữ liệu thứ cấp Việt Nam và giá hàng hoá thế giới từ World Bank, ILO, FAO, Penn World Table (CC BY 4.0); bài hướng dẫn phương pháp.";
 export const SUMMARY_EN =
-  "Góc Nghiên Cứu (\"Research Corner\") is a free Vietnamese-language resource for undergraduate thesis writers, master's students and survey researchers: in-browser calculators (sample size, Cronbach's alpha, data analysis), a library of validated measurement scales with the original English items, Vietnamese translations and APA references, construct pages, ready-made questionnaires, Vietnam indicators from the World Bank WDI (CC BY 4.0), and methods guides.";
+  "Góc Nghiên Cứu (\"Research Corner\") is a free Vietnamese-language resource for undergraduate thesis writers, master's students and survey researchers: in-browser calculators (sample size, Cronbach's alpha, data analysis), a library of validated measurement scales with the original English items, Vietnamese translations and APA references, construct pages, ready-made questionnaires, Vietnam indicators and world commodity prices from the World Bank, ILO, FAO and Penn World Table (CC BY 4.0), and methods guides.";
 
 /** Absolute URL with trailing slash; `site` already contains the base path. */
 export const pageUrl = (site: URL, path: string) => new URL(path.replace(/^\/+/, "").replace(/\/?$/, "/"), site).href;
@@ -50,9 +50,10 @@ export async function loadIndex() {
 
 /** Latest observation of a dataset in display units, e.g. "2024: 4.282,5 USD". */
 export const latestValue = (d: CollectionEntry<"datasets">) => {
-  const v = [...d.data.values].sort((a, b) => b.year - a.year)[0];
+  const v = d.data.values[d.data.values.length - 1];
   const n = (v.value / d.data.scale).toLocaleString("vi-VN", { maximumFractionDigits: d.data.decimals, minimumFractionDigits: d.data.decimals });
-  return `${v.year}: ${n} ${d.data.displayUnit}`.trim();
+  const when = v.month ? `${String(v.month).padStart(2, "0")}/${v.year}` : String(v.year);
+  return `${when}: ${n} ${d.data.displayUnit}`.trim();
 };
 
 export const oneLine = (s: string) => s.replace(/\s+/g, " ").trim();
@@ -76,7 +77,7 @@ export function header(site: URL) {
     `- [Thư viện thang đo / Scale library](${u("thang-do")}): thang đo đã kiểm chứng, nguyên văn tiếng Anh + bản dịch tiếng Việt + trích dẫn`,
     `- [Khái niệm / Constructs](${u("khai-niem")}): mỗi khái niệm gom các thang đo đo nó`,
     `- [Mẫu bảng hỏi / Questionnaire templates](${u("mau-bang-hoi")}): bảng hỏi theo đề tài khoá luận`,
-    `- [Dữ liệu thứ cấp Việt Nam / Vietnam data](${u("du-lieu")}): chỉ số World Bank WDI, tải CSV`,
+    `- [Dữ liệu thứ cấp Việt Nam / Vietnam data](${u("du-lieu")}): chỉ số World Bank, ILO, FAO, PWT và giá hàng hoá, tải CSV`,
     `- [Bài viết / Guides](${u("posts")}): hướng dẫn phương pháp nghiên cứu`,
     `- [Phương pháp biên soạn / Methodology](${u("phuong-phap-bien-soan")}): cách kiểm chứng thang đo, thống kê, dữ liệu`,
     "",

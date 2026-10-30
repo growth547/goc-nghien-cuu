@@ -6,69 +6,129 @@ import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
+import ListFilter from "@/components/ListFilter.astro";
+import JsonLd from "@/components/JsonLd.astro";
 import { DATASET_THEMES } from "@/content.config";
 import { getAssetPath } from "@/utils/withBase";
-import { displayValue, yearSpan } from "@/utils/dataSeries";
+import { dataCatalogLd } from "@/utils/jsonLd";
+import { displayValue, formatNumber, periodLabel, yearSpan } from "@/utils/dataSeries";
+import { SOURCES, REJECTED } from "../../../scripts/data-sources.mjs";
+import { buildExplorer } from "./_lib/explorer";
+import { richMap } from "./_lib/richMap";
 import config from "@/config";
 
 const locale = Astro.currentLocale ?? config.site.lang;
-const datasets = (await getCollection("datasets")).sort((a, b) =>
-  a.data.nameVi.localeCompare(b.data.nameVi, "vi")
-);
-const themes = DATASET_THEMES.filter(t =>
-  datasets.some(s => s.data.theme === t)
-);
-const lastUpdated = datasets
-  .map(s => s.data.lastUpdated)
-  .sort()
-  .at(-1);
+const datasets = (await getCollection("datasets")).sort((a, b) => a.data.nameVi.localeCompare(b.data.nameVi, "vi"));
+const themes = DATASET_THEMES.filter(t => datasets.some(s => s.data.theme === t));
+const themeId = (t: string) => `chu-de-${DATASET_THEMES.indexOf(t as (typeof DATASET_THEMES)[number]) + 1}`;
+const { index } = buildExplorer(await richMap());
+const explorerTotal = (index as { items: unknown[] }).items.length;
+const lastFetched = datasets.map(s => s.data.fetchedAt).sort().at(-1);
+const withAsean = datasets.filter(s => s.data.comparison?.length).length;
+const usedSources = Object.entries(SOURCES as Record<string, any>).map(([key, s]) => ({
+  key,
+  ...s,
+  pages: datasets.filter(d => d.data.source === key).length,
+}));
+const rejected = Object.entries(REJECTED as Record<string, string>);
+const REJECTED_NAMES: Record<string, string> = {
+  imf: "IMF (IFS, FSI)",
+  who: "WHO Global Health Observatory",
+  uis: "UNESCO UIS",
+  bis: "BIS",
+  oecd: "OECD",
+  owid: "Our World in Data",
+  adb: "ADB Key Indicators",
+  findex: "Global Findex (bản riêng)",
+  enterpriseSurveys: "Enterprise Surveys (cổng riêng)",
+  vnGov: "Cổng dữ liệu cơ quan nhà nước Việt Nam",
+};
 const allCsvHref = getAssetPath("du-lieu/tat-ca-chi-so.csv");
+const pageUrl = (id: string) => new URL(getRelativeLocaleUrl(locale, `du-lieu/${id}`), Astro.site).href;
+const catalog = dataCatalogLd(datasets, new URL(Astro.url.pathname, Astro.site).href, d => pageUrl(d.id));
+catalog.name = "Dữ liệu thứ cấp Việt Nam và giá hàng hoá thế giới";
+catalog.dataset = catalog.dataset.map((entry, i) => ({
+  ...entry,
+  creator: { "@type": "Organization", name: datasets[i].data.publisher },
+  spatialCoverage: { "@type": "Place", name: datasets[i].data.kind === "world" ? "Thế giới" : "Việt Nam" },
+}));
 ---
 
 <Layout
   title={`Dữ liệu thứ cấp Việt Nam cho khoá luận: tải CSV | ${config.site.title}`}
-  description="Số liệu vĩ mô Việt Nam qua các năm từ World Bank: GDP, lạm phát, FDI, lãi suất, tỷ giá, dân số, Internet, giáo dục, y tế, CO2. Có biểu đồ, tải CSV, trích dẫn APA."
+  description="Số liệu Việt Nam qua các năm và giá hàng hoá thế giới theo tháng: GDP, lạm phát, lãi suất, ngân hàng, FDI, lao động, giá gạo, cà phê. Biểu đồ, CSV, trích dẫn APA."
 >
+  <JsonLd slot="head" data={catalog} />
   <Header />
   <Breadcrumb />
   <Main
     pageTitle="Dữ liệu thứ cấp Việt Nam"
-    pageDesc={`${datasets.length} chỉ số kinh tế – xã hội của Việt Nam qua các năm, lấy từ World Development Indicators của World Bank (giấy phép CC BY 4.0). Mỗi chỉ số có bảng số liệu, biểu đồ, file CSV và trích dẫn APA.`}
+    pageDesc={`${datasets.length} chỉ số có trang riêng (giải thích tiếng Việt, cách dùng trong khoá luận, ${withAsean} chỉ số có so sánh ASEAN) và ${formatNumber(explorerTotal, 0)} chuỗi trong Kho chỉ số, từ World Bank, ILO, FAO và Penn World Table – chỉ những nguồn cho phép tái sử dụng.`}
   >
-    <div class="cta mt-0">
-      <p>
-        Dữ liệu cập nhật từ World Bank ngày {lastUpdated}. Muốn chạy hồi quy
-        nhiều biến? Tải một file gồm tất cả chỉ số (định dạng dài: quốc gia, mã
-        chỉ số, tên chỉ số, đơn vị, năm, giá trị).
-      </p>
-      <a class="btn" href={allCsvHref} download>
-        Tải CSV tất cả {datasets.length} chỉ số
+    <div class="mb-8 grid gap-3 sm:grid-cols-3">
+      <a href={getRelativeLocaleUrl(locale, "du-lieu/kho-chi-so")} class="card gap-1 p-4">
+        <span class="text-accent font-bold">Kho chỉ số</span>
+        <span class="card-meta">Tìm trong {formatNumber(explorerTotal, 0)} chuỗi số liệu, xem biểu đồ, tải CSV từng chuỗi.</span>
+      </a>
+      <a href={getRelativeLocaleUrl(locale, "du-lieu/du-lieu-bang")} class="card gap-1 p-4">
+        <span class="text-accent font-bold">Dữ liệu bảng cho Stata, R, EViews</span>
+        <span class="card-meta">File rộng (năm × chỉ số) cho Việt Nam, file nước–năm cho ASEAN, giá hàng hoá theo tháng.</span>
+      </a>
+      <a href={allCsvHref} download class="card gap-1 p-4">
+        <span class="text-accent font-bold">Tải CSV tất cả {datasets.length} chỉ số</span>
+        <span class="card-meta">Định dạng dài, có nguồn, giấy phép, ngày truy xuất và trích dẫn APA trên từng dòng.</span>
       </a>
     </div>
 
+    <ListFilter
+      label="Lọc chỉ số"
+      placeholder="Lọc theo tên, ví dụ: lạm phát, nợ xấu, giá gạo…"
+      total={datasets.length}
+      unit="chỉ số"
+    />
+    <nav aria-label="Chủ đề" class="-mt-4 mb-10 flex flex-wrap gap-2">
+      {
+        themes.map(t => (
+          <a
+            href={`#${themeId(t)}`}
+            class="border-border bg-surface hover:border-accent hover:text-accent inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 text-sm font-medium transition-colors"
+          >
+            {t}
+            <span class="text-muted-foreground tabular-nums">{datasets.filter(s => s.data.theme === t).length}</span>
+          </a>
+        ))
+      }
+    </nav>
+
     {
       themes.map(theme => (
-        <section class="mb-8">
-          <h2 class="mb-3 text-xl font-semibold">{theme}</h2>
-          <ul class="grid gap-3 sm:grid-cols-2">
+        <section class="mb-12" data-filter-group aria-labelledby={themeId(theme)}>
+          <h2 id={themeId(theme)} class="text-foreground mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-bold">
+            {theme}
+            <span class="badge neutral">{datasets.filter(s => s.data.theme === theme).length}</span>
+          </h2>
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {datasets
               .filter(s => s.data.theme === theme)
               .map(s => {
                 const { first, last } = yearSpan(s.data);
                 const latest = s.data.values[s.data.values.length - 1];
                 return (
-                  <li>
-                    <a
-                      href={getRelativeLocaleUrl(locale, `du-lieu/${s.id}`)}
-                      class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors"
-                    >
+                  <li
+                    data-filter-item
+                    data-filter-text={`${s.data.nameVi} ${s.data.shortVi} ${s.data.nameEn} ${s.data.code} ${s.data.sourceName}`}
+                  >
+                    <a href={getRelativeLocaleUrl(locale, `du-lieu/${s.id}`)} class="card gap-1 p-4">
                       <span class="font-semibold">{s.data.nameVi}</span>
-                      <span class="text-muted-foreground block text-sm">
-                        {first}–{last} · {s.data.code}
+                      <span class="card-meta">
+                        {first}–{last} · {s.data.publisher === "World Bank" ? "World Bank" : s.data.sourceName}
                       </span>
-                      <span class="text-muted-foreground mt-1 block text-xs">
-                        Năm {latest.year}: {displayValue(s.data, latest.value)}{" "}
-                        {s.data.displayUnit}
+                      <span class="card-foot">
+                        <span>
+                          {s.data.frequency === "M" ? periodLabel(latest) : latest.year}: {displayValue(s.data, latest.value)}{" "}
+                          {s.data.displayUnit}
+                        </span>
+                        {s.data.comparison?.length ? <span>ASEAN</span> : null}
                       </span>
                     </a>
                   </li>
@@ -79,27 +139,66 @@ const allCsvHref = getAssetPath("du-lieu/tat-ca-chi-so.csv");
       ))
     }
 
-    <section class="app-prose max-w-none text-sm">
-      <h2>Nguồn và giấy phép</h2>
+    <section class="app-prose max-w-none text-sm" aria-labelledby="nguon">
+      <h2 id="nguon">Nguồn và giấy phép</h2>
       <p>
-        Toàn bộ số liệu lấy từ World Bank, World Development Indicators, qua
-        World Bank API, theo giấy phép <a
-          href="https://creativecommons.org/licenses/by/4.0/"
-          rel="license noopener"
-          target="_blank">Creative Commons Attribution 4.0 (CC BY 4.0)</a
-        > (<a
-          href="https://datacatalog.worldbank.org/public-licenses"
-          rel="noopener"
-          target="_blank">điều khoản dữ liệu của World Bank</a
-        >). {config.site.title} đã chọn lọc, dịch tên và mô tả sang tiếng Việt, định
-        dạng lại và vẽ biểu đồ; không thay đổi giá trị số liệu. Mỗi trang chỉ số
-        ghi rõ tổ chức cung cấp gốc (IMF, ILO, ITU, UNESCO, WHO...) theo World
-        Bank.
+        Chỉ dùng nguồn có điều khoản cho phép sao chép và phân phối lại, kể cả cho mục đích thương mại, với điều kiện ghi
+        nguồn. Mỗi trang và mỗi file CSV ghi tên nguồn, giấy phép, ngày truy xuất (lần gần nhất: {lastFetched}) và trích
+        dẫn APA. {config.site.title} chỉ chọn lọc, dịch tên và mô tả, định dạng lại và vẽ biểu đồ; không thay đổi giá trị
+        số liệu.
       </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Nguồn</th>
+              <th>Giấy phép</th>
+              <th>Trang riêng</th>
+              <th>Căn cứ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              usedSources.map(s => (
+                <tr>
+                  <td>
+                    <a href={s.homeUrl} rel="noopener" target="_blank">
+                      {s.org}, {s.name}
+                    </a>
+                  </td>
+                  <td>
+                    <a href={s.licenseUrl} rel="license noopener" target="_blank">
+                      {s.licenseShort}
+                    </a>
+                  </td>
+                  <td class="tabular-nums">{s.pages}</td>
+                  <td>
+                    <a href={s.termsUrl} rel="noopener" target="_blank">
+                      điều khoản
+                    </a>{" "}
+                    (kiểm tra {s.checkedAt})
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Nguồn đã xem xét nhưng chưa dùng, và lý do</summary>
+        <ul>
+          {
+            rejected.map(([k, why]) => (
+              <li>
+                <strong>{REJECTED_NAMES[k] ?? k}</strong>: <span lang="en">{why}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
       <p>
-        Khi dùng trong khoá luận, trích dẫn World Bank (không trích dẫn trang
-        này) theo mẫu APA có sẵn trên từng trang chỉ số, và ghi ngày truy cập vì
-        World Bank có thể sửa số liệu các năm trước.
+        Khi dùng trong khoá luận, trích dẫn tổ chức công bố số liệu (không trích dẫn trang này) theo mẫu APA có sẵn trên
+        từng trang, và ghi ngày truy cập vì nguồn có thể sửa số liệu các năm trước.
       </p>
     </section>
   </Main>

@@ -14,7 +14,7 @@ const locale = Astro.currentLocale ?? config.site.lang;
 const [datasets, templates] = await Promise.all([getCollection("datasets"), getCollection("templates")]);
 ---
 
-<Layout title={`Công cụ miễn phí | ${config.site.title}`} description="Công cụ miễn phí cho người làm khảo sát: tính cỡ mẫu (PLS-SEM, G*Power, hồi quy, EFA, Cochran) và tính Cronbach's alpha online.">
+<Layout title={`Công cụ miễn phí | ${config.site.title}`} description="Công cụ miễn phí cho khoá luận: tạo bảng hỏi từ thang đo gốc, vẽ mô hình nghiên cứu và giả thuyết, chọn phương pháp phân tích, tính cỡ mẫu (PLS-SEM, G*Power), Cronbach's alpha, phân tích dữ liệu và trích dẫn APA 7.">
   <Header />
   <Breadcrumb />
   <Main pageTitle="Công cụ" pageDesc="Miễn phí, chạy ngay trong trình duyệt, không cần cài phần mềm.">

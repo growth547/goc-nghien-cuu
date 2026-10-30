@@ -40,7 +40,7 @@
     },
     {
       "q": "Vì sao nhận thức sự hữu ích thường có tác động mạnh nhất?",
-      "a": "Người dùng chủ yếu chấp nhận công nghệ vì nó giúp họ làm việc tốt hơn. Davis (1989) và nhiều phân tích tổng hợp cho thấy tác động của sự hữu ích lên ý định mạnh hơn tác động của tính dễ sử dụng."
+      "a": "Người dùng chủ yếu chấp nhận công nghệ vì nó giúp họ làm việc tốt hơn. Davis (1989) và phân tích tổng hợp 88 nghiên cứu của King và He (2006) cho thấy tác động của sự hữu ích lên ý định mạnh hơn tác động của tính dễ sử dụng."
     }
   ],
   "related": [
@@ -48,5 +48,8 @@
     "y-dinh-su-dung",
     "chuan-chu-quan",
     "su-hai-long-khach-hang"
+  ],
+  "references": [
+    "King, W. R., &amp; He, J. (2006). A meta-analysis of the technology acceptance model. <em>Information &amp; Management, 43</em>(6), 740–755. https://doi.org/10.1016/j.im.2006.05.003"
   ]
 }

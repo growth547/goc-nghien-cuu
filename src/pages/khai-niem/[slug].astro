@@ -5,8 +5,11 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Footer from "@/components/Footer.astro";
+import JsonLd from "@/components/JsonLd.astro";
 import config from "@/config";
 import { citeOf, isAgreementScale } from "@/utils/kit";
+import { conceptTermLd } from "@/utils/jsonLd";
+import { responseLabel, reverseRule } from "./_lib";
 
 export async function getStaticPaths() {
   const [concepts, scales] = await Promise.all([getCollection("concepts"), getCollection("scales")]);
@@ -34,12 +37,18 @@ const parts = d.constructs.map(({ key, note }) => {
     c,
     anchor: `${slug}-${code.toLowerCase()}`,
     cite: citeOf(c.source),
-    response: scale.data.responseScale.split(/[(.;:,]/)[0].trim(),
+    response: responseLabel(scale.data.responseScale, c.items),
   };
 });
 const hasReverse = parts.some(p => p.c.items.some(i => i.reverse));
+// One rule per scale that has reversed items, on that scale's own range (PSS-10: 4 − điểm, CBI: 100 − điểm…).
+const reverseRules = [
+  ...new Set(parts.filter(p => p.c.items.some(i => i.reverse)).map(p => `${p.scale.data.name}: ${reverseRule(p.scale.data.responseScale)}`)),
+];
 const kitBase = getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat");
 const kitHref = (key: string) => `${kitBase}?c=${encodeURIComponent(key)}`;
+// Several constructs of one scale on this page (e.g. the five SERVPERF dimensions) open together.
+const setOf = (scaleId: string) => parts.filter(p => p.scale.id === scaleId).map(p => p.key);
 
 const related = d.related
   .map(slug => concepts.find(x => x.id === slug))
@@ -61,7 +70,7 @@ const ld = [
     author: { "@type": "Organization", name: config.site.author },
     publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
     about: `${d.name} (${d.nameEn})`,
-    citation: [...new Set(parts.map(p => p.cite))],
+    citation: [...new Set([...parts.map(p => p.cite), ...d.references.map(r => r.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&"))])],
   },
   {
     "@context": "https://schema.org",
@@ -88,6 +97,7 @@ const ld = [
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[0])} />
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[1])} />
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[2])} />
+  <JsonLd slot="head" data={conceptTermLd(concept, url, abs("khai-niem"))} />
   <Header />
   <Breadcrumb current={`Thang đo ${d.name.toLowerCase()}`} />
   <main id="main-content" class="app-layout pb-10" data-pagefind-body>
@@ -181,6 +191,11 @@ const ld = [
             </p>
             <div class="not-prose mt-3 mb-6 flex flex-wrap gap-3">
               <a class="btn" href={kitHref(p.key)}>Dùng trong Bộ khảo sát</a>
+              {setOf(p.scale.id).length > 1 && p === parts.find(x => x.scale.id === p.scale.id) && (
+                <a class="btn ghost" href={kitHref(setOf(p.scale.id).join(","))}>
+                  Mở cả bộ {p.scale.data.name} ({setOf(p.scale.id).length} thành phần)
+                </a>
+              )}
             </div>
           </section>
         ))
@@ -188,8 +203,7 @@ const ld = [
       {
         hasReverse && (
           <p class="text-sm">
-            (R): câu đảo chiều, đảo điểm trước khi phân tích (thang 5 mức: 6 − điểm; thang 7 mức: 8 − điểm). Thang bắt đầu từ 0
-            đảo theo hướng dẫn trên trang thang đo gốc.
+            (R): câu đảo chiều, đảo điểm trước khi phân tích theo đúng khoảng điểm của từng thang: {reverseRules.join("; ")}.
           </p>
         )
       }
@@ -205,6 +219,14 @@ const ld = [
             <p>{f.a}</p>
           </section>
         ))
+      }
+      {
+        d.references.length > 0 && (
+          <>
+            <h2>Tài liệu được nhắc tới</h2>
+            <ul class="text-sm">{d.references.map(r => <li set:html={r} />)}</ul>
+          </>
+        )
       }
     </div>
 

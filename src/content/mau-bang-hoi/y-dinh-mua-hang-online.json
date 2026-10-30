@@ -1,5 +1,5 @@
 {
-  "title": "Mẫu bảng hỏi ý định mua hàng: chất lượng và giá trị cảm nhận",
+  "title": "Mẫu bảng hỏi ý định mua: chất lượng và giá trị cảm nhận (Dodds)",
   "description": "Mẫu bảng hỏi khảo sát ý định mua theo Dodds, Monroe và Grewal (1991): chất lượng cảm nhận, giá trị cảm nhận, sẵn lòng mua. Có mô hình, cỡ mẫu, chương 3.",
   "topic": "Ý định mua sản phẩm",
   "audience": "Người tiêu dùng",
@@ -28,7 +28,37 @@
   "method": "pls",
   "tips": [
     "Thay 'sản phẩm này' bằng sản phẩm cụ thể và cho người trả lời xem hình hoặc mô tả, vì thang đo gốc hỏi về một sản phẩm có giá cụ thể.",
-    "Bản gốc dùng cả câu dạng đồng ý và cặp đầu mút; khi đồng nhất về Likert 5 mức, ghi rõ trong chương 3.",
+    "Bản gốc dùng cả câu đồng ý và câu có hai đầu mút (rất cao … rất thấp). Câu hai đầu mút không trả lời được bằng đồng ý/không đồng ý, nên trang này và Bộ khảo sát hiện chúng thành thang đối nghĩa 5 mức, đảo cực để 1 = rất thấp và 5 = rất cao; ghi rõ trong chương 3.",
+    "Mẫu này chưa có yếu tố riêng của mua hàng online (niềm tin vào người bán, truyền miệng điện tử). Với đề tài mua online, thêm niềm tin của Gefen và cộng sự (2003) hoặc eWOM từ thư viện thang đo.",
     "Với PLS-SEM, kiểm tra thêm tác động gián tiếp của chất lượng qua giá trị cảm nhận."
+  ],
+  "studies": [
+    {
+      "authors": "Le, Tran và Le",
+      "year": 2011,
+      "title": "\"Vietnamese consumes Vietnamese products\": the role of ethnocentrism, perceived quality and perceived price on willingness to buy",
+      "journal": "Tạp chí Phát triển Khoa học và Công nghệ, 14(3), 56–67",
+      "url": "https://doi.org/10.32508/stdj.v14i3.1979",
+      "sample": "422 người tiêu dùng TP.HCM, hàng may mặc nội địa; chất lượng → cảm nhận về giá → sẵn lòng mua, dẫn Dodds và cộng sự (1991)",
+      "reliability": "α 0,816–0,886 (Bảng 1)"
+    },
+    {
+      "authors": "Truong và Le",
+      "year": 2017,
+      "title": "The effects of consumer ethnocentrism on Vietnamese brand credibility and perceived value – A study of Vietnamese branded smartphone",
+      "journal": "Science & Technology Development Journal: Economics – Law and Management, 1(Q1), 68–82",
+      "url": "https://doi.org/10.32508/stdjelm.v1iq1.434",
+      "sample": "259 người tiêu dùng; chất lượng và giá cảm nhận → giá trị cảm nhận → sẵn lòng mua",
+      "reliability": "α 0,834–0,946; CR 0,841–0,948 (Bảng 2)"
+    },
+    {
+      "authors": "Vo và Nguyen",
+      "year": 2015,
+      "title": "Factors Influencing Customer Perceived Quality and Purchase Intention toward Private Labels in the Vietnam Market: The Moderating Effects of Store Image",
+      "journal": "International Journal of Marketing Studies, 7(4), 51–63",
+      "url": "https://doi.org/10.5539/ijms.v7n4p51",
+      "sample": "380 người mua tại TP.HCM; câu chất lượng cảm nhận lấy từ Dodds và cộng sự (1991); không có giá trị cảm nhận",
+      "reliability": "α 0,700–0,840; CR 0,705–0,841 (Bảng 1)"
+    }
   ]
 }

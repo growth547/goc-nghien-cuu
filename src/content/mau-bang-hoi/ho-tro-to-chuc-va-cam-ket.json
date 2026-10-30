@@ -4,7 +4,7 @@
   "topic": "Cam kết với tổ chức của nhân viên",
   "audience": "Nhân viên",
   "intro": "Cam kết với tổ chức là biến kết quả quen thuộc trong đề tài quản trị nhân lực. Mẫu này dùng OCQ của Mowday, Steers và Porter (1979), là thang đo công bố trong bài báo và dùng được cho nghiên cứu học thuật.",
-  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan: hỗ trợ từ tổ chức làm tăng hài lòng công việc và cam kết tổ chức; hài lòng công việc làm tăng cam kết tổ chức.",
+  "modelNote": "Mô hình gợi ý, dựa trên lý thuyết hỗ trợ tổ chức và tổng quan của Rhoades và Eisenberger (2002): hỗ trợ từ tổ chức làm tăng hài lòng công việc và cam kết tổ chức; hài lòng công việc làm tăng cam kết tổ chức.",
   "placeholders": {
     "công ty": "công ty"
   },
@@ -33,7 +33,39 @@
   "method": "pls",
   "tips": [
     "OCQ và POS đều có nhiều câu đảo chiều; kiểm tra lại mã hoá trước khi chạy độ tin cậy.",
-    "Không dùng bộ TCM thương mại của Meyer và Allen nếu chưa mua quyền; OCQ là lựa chọn công bố tự do trong bài báo.",
+    "Bộ ba thành phần TCM của Meyer và Allen được phân phối kèm điều khoản sử dụng riêng; nếu muốn dùng TCM, đọc và đăng ký giấy phép theo hướng dẫn của bên phát hành. OCQ được công bố đầy đủ trong bài báo gốc.",
     "Bảng hỏi khá dài (34 câu đo lường); cân nhắc thời gian trả lời khi khảo sát nhân viên trong giờ làm."
+  ],
+  "studies": [
+    {
+      "authors": "Nguyen, Le, Trieu, Huynh và Tran",
+      "year": 2022,
+      "title": "Determinants of turnover intention: The case of public servants in Vietnam",
+      "journal": "Problems and Perspectives in Management, 20(2), 149–160",
+      "url": "https://doi.org/10.21511/ppm.20(2).2022.13",
+      "sample": "300 công chức; SEM (AMOS); có POS, hài lòng công việc, cam kết và ý định nghỉ việc",
+      "reliability": "CR 0,788–0,865 (Bảng 2)",
+      "result": "POS → cam kết: β = 0,315; hài lòng → ý định nghỉ việc: β = 0,352 (theo bài)"
+    },
+    {
+      "authors": "Nguyen, Bui, To và Nguyen",
+      "year": 2025,
+      "title": "Predictors of Employees' Organizational Commitment: The Moderating Effect of Supervisor Accessibility in Ho Chi Minh City's Travel Agencies",
+      "journal": "SAGE Open, 15(2), 21582440251340761",
+      "url": "https://doi.org/10.1177/21582440251340761",
+      "sample": "418 nhân viên đại lý du lịch tại TP.HCM; SEM; POS và hài lòng công việc dẫn tới cam kết"
+    },
+    {
+      "authors": "Nguyen, Tran, Vu và Le",
+      "year": 2020,
+      "title": "An Empirical Study of Affective Commitment: the Case of Machinery Enterprises in Hochiminh City",
+      "journal": "Organizations and Markets in Emerging Economies, 11(22), 429–455",
+      "url": "https://doi.org/10.15388/omee.2020.11.41",
+      "sample": "220 nhân viên doanh nghiệp cơ khí; POS 17 biến của Eisenberger và cộng sự (1986) dẫn tới cam kết tình cảm",
+      "reliability": "α 0,810–0,927; CR 0,812–0,924 (Bảng 2, Bảng 4)"
+    }
+  ],
+  "references": [
+    "Rhoades, L., &amp; Eisenberger, R. (2002). Perceived organizational support: A review of the literature. <em>Journal of Applied Psychology, 87</em>(4), 698–714. https://doi.org/10.1037/0021-9010.87.4.698"
   ]
 }

@@ -35,8 +35,43 @@
   ],
   "method": "pls",
   "tips": [
-    "Câu hỏi gốc viết cho bối cảnh công việc; đổi 'công việc' thành 'việc học' nhưng giữ đúng ý của biến.",
+    "Bốn câu hiệu quả kỳ vọng gốc viết cho người đi làm (công việc, tăng lương); mẫu này viết lại cho việc học và giữ câu gốc bên dưới để đối chiếu. Ghi rõ việc điều chỉnh trong chương 3.",
     "Nếu trường bắt buộc dùng hệ thống, ý định sử dụng ít biến thiên; cân nhắc đo sự hài lòng hoặc ý định tiếp tục sử dụng.",
     "Ghi rõ tên hệ thống cụ thể (ví dụ LMS của trường, Google Classroom) trong câu sàng lọc."
-  ]
+  ],
+  "studies": [
+    {
+      "authors": "Pham, Le và Vo",
+      "year": 2023,
+      "title": "Determinants of Online Education Technology Acceptance Among Vietnamese Undergraduates: A UTAUT-Typed Model Analysis",
+      "journal": "Vietnam Journal of Education, 7(3), 288–301",
+      "url": "https://doi.org/10.52296/vje.2023.303",
+      "sample": "232 sinh viên đại học, chọn mẫu phân tầng; CFA và SEM",
+      "reliability": "α 0,81–0,89 (Bảng 5)"
+    },
+    {
+      "authors": "Cao và Nguyen",
+      "year": 2022,
+      "title": "Factors Affecting Students in Vietnam's Intention on Using Smartphones for Learning on the Mobile Learning Platforms",
+      "journal": "Journal of Educational and Social Research, 12(2), 113–125",
+      "url": "https://doi.org/10.36941/jesr-2022-0038",
+      "sample": "831 sinh viên; UTAUT2 cho học qua điện thoại; PLS-SEM",
+      "reliability": "CR 0,906–0,962 (mục 4.2.1)"
+    },
+    {
+      "authors": "Nguyen, Nguyen và Cao",
+      "year": 2014,
+      "title": "Chấp nhận và sử dụng e-learning dựa trên điện toán đám mây (Acceptance and use of cloud-based e-learning)",
+      "journal": "Tạp chí Phát triển Khoa học và Công nghệ, ĐHQG-HCM, 17(3), 71–87",
+      "url": "https://doi.org/10.32508/stdj.v17i3.1514",
+      "sample": "282 người dùng e-learning, khoảng một nửa 19–23 tuổi; UTAUT2",
+      "reliability": "α 0,685–0,830 (mục 4.2.1)"
+    }
+  ],
+  "itemOverrides": {
+    "utaut:PE1": "Tôi thấy [hệ thống] hữu ích cho việc học của mình.",
+    "utaut:PE2": "Sử dụng [hệ thống] giúp tôi hoàn thành các nhiệm vụ học tập nhanh hơn.",
+    "utaut:PE3": "Sử dụng [hệ thống] làm tăng hiệu quả học tập của tôi.",
+    "utaut:PE4": "Nếu sử dụng [hệ thống], tôi sẽ có nhiều cơ hội đạt kết quả học tập tốt hơn."
+  }
 }

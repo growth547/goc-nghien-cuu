@@ -57,8 +57,40 @@
   ],
   "method": "pls",
   "tips": [
-    "Giá trị giá cả (PV) chỉ có nghĩa khi người dùng trả phí; nếu ứng dụng miễn phí, cân nhắc bỏ PV và giải thích trong chương 2.",
-    "Ý định hành vi nhận 7 mũi tên nên cỡ mẫu theo power cao hơn mô hình TAM; đừng thu dưới mức tối thiểu.",
+    "Giá trị giá cả (PV) và động lực hưởng thụ (HM) thường yếu khi ứng dụng ngân hàng miễn phí và mang tính tiện ích; nếu bỏ, giải thích trong chương 2.",
+    "Ý định hành vi nhận 7 mũi tên: G*Power chỉ cần 103 quan sát, nhưng với PLS-SEM, căn bậc hai nghịch đảo đòi 155, nên cỡ mẫu tối thiểu là 155 và cần thu khoảng 183 phiếu.",
+    "PE4 gốc nói về năng suất làm việc nên được viết lại theo bối cảnh tài chính cá nhân; HT3 gốc 'I must use' được diễn đạt lại để không bị hiểu là bắt buộc.",
     "Bản gốc có biến điều tiết giới tính, tuổi, kinh nghiệm; nếu đưa vào mô hình thì cần thêm câu hỏi và cỡ mẫu lớn hơn."
-  ]
+  ],
+  "studies": [
+    {
+      "authors": "Nguyen, Nguyen, Mai và Tran",
+      "year": 2020,
+      "title": "Determinants of Digital Banking Services in Vietnam: Applying UTAUT2 Model",
+      "journal": "Asian Economic and Financial Review, 10(6), 680–697",
+      "url": "https://doi.org/10.18488/journal.aefr.2020.106.680.697",
+      "sample": "241 người trả lời, phần lớn trẻ tuổi, có bằng đại học; UTAUT2 thêm niềm tin",
+      "reliability": "α 0,718–0,966 (Bảng 2)"
+    },
+    {
+      "authors": "Pham, Pham, Thalassinos và Le",
+      "year": 2022,
+      "title": "The Application of SEM–Neural Network Method to Determine the Factors Affecting the Intention to Use Online Banking Services in Vietnam",
+      "journal": "Sustainability, 14(10), 6021",
+      "url": "https://doi.org/10.3390/su14106021",
+      "sample": "433 khách hàng ở ba vùng kinh tế; UTAUT2 điều chỉnh cho ngân hàng trực tuyến"
+    },
+    {
+      "authors": "Nguyen và Nguyen",
+      "year": 2023,
+      "title": "Analyzing the adoption of mobile banking service in Vietnam: Extending UTAUT2 with fear of COVID-19",
+      "journal": "Business Management, 33(3)",
+      "url": "https://doi.org/10.58861/tae.bm.2023.3.03",
+      "sample": "Người dùng mobile banking; UTAUT2 thêm nỗi sợ COVID-19 (cỡ mẫu xem trong bài)"
+    }
+  ],
+  "itemOverrides": {
+    "utaut2:PE4": "Sử dụng [dịch vụ] giúp tôi quản lý tài chính cá nhân hiệu quả hơn.",
+    "utaut2:HT3": "Tôi cảm thấy mình không thể không sử dụng [dịch vụ]."
+  }
 }

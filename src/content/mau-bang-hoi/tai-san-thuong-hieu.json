@@ -1,10 +1,10 @@
 {
-  "title": "Mẫu bảng hỏi tài sản thương hiệu theo Yoo và Donthu (2001)",
+  "title": "Mẫu bảng hỏi tài sản thương hiệu (Yoo, Donthu và Lee, 2000)",
   "description": "Mẫu bảng hỏi khảo sát tài sản thương hiệu: nhận biết và liên tưởng, chất lượng cảm nhận, trung thành thương hiệu và tài sản thương hiệu tổng thể, kèm cỡ mẫu.",
   "topic": "Tài sản thương hiệu",
   "audience": "Người tiêu dùng",
-  "intro": "Tài sản thương hiệu dựa trên khách hàng là đề tài quen thuộc của ngành marketing, áp dụng cho điện thoại, xe máy, đồ uống, chuỗi bán lẻ. Thang đo đa chiều của Yoo và Donthu (2001) được kiểm định ở nhiều nền văn hoá và có bản gốc đầy đủ.",
-  "modelNote": "Mô hình theo Yoo và Donthu (2001): nhận biết và liên tưởng thương hiệu, chất lượng cảm nhận và trung thành thương hiệu cùng tác động lên tài sản thương hiệu tổng thể.",
+  "intro": "Tài sản thương hiệu dựa trên khách hàng là đề tài quen thuộc của ngành marketing, áp dụng cho điện thoại, xe máy, đồ uống, chuỗi bán lẻ. Mẫu này ghép mô hình cấu trúc của Yoo, Donthu và Lee (2000) với thang đo đa chiều mà Yoo và Donthu (2001) phát triển và kiểm định ở nhiều nền văn hoá.",
+  "modelNote": "Mô hình cấu trúc theo Yoo, Donthu và Lee (2000): nhận biết và liên tưởng thương hiệu, chất lượng cảm nhận và trung thành thương hiệu cùng tác động lên tài sản thương hiệu tổng thể. Yoo và Donthu (2001) là bài phát triển và kiểm định thang đo, không phải bài đề xuất mô hình này.",
   "placeholders": {
     "thương hiệu": "thương hiệu này"
   },
@@ -36,5 +36,35 @@
     "Thang tài sản thương hiệu tổng thể (OBE) so sánh với một thương hiệu khác cùng tính năng; nêu rõ thương hiệu so sánh hoặc để người trả lời tự hình dung.",
     "Chất lượng cảm nhận chỉ có 2 biến trong thang MBE; cân nhắc báo cáo độ tin cậy tổng hợp.",
     "Chọn thương hiệu đủ quen để người trả lời có trải nghiệm thật."
+  ],
+  "studies": [
+    {
+      "authors": "Tran và Le",
+      "year": 2016,
+      "title": "The Relationships among Brand Equity, Brand Preference, and Purchase Intention: Empirical Evidence from the Motorbike Market in Vietnam",
+      "journal": "International Journal of Economics and Finance, 8(3), 75–84",
+      "url": "https://doi.org/10.5539/ijef.v8n3p75",
+      "sample": "309 người tiêu dùng xe máy; nhận biết, liên tưởng, chất lượng cảm nhận, trung thành → tài sản thương hiệu tổng thể theo Yoo và cộng sự (2000)",
+      "reliability": "α 0,747–0,840; CR 0,750–0,843 (Bảng 3)"
+    },
+    {
+      "authors": "Tran, Nguyen, Tran, Tran và Huynh",
+      "year": 2019,
+      "title": "Brand equity in a tourism destination: a case study of domestic tourists in Hoi An city, Vietnam",
+      "journal": "Tourism Review, 74(3), 704–720",
+      "url": "https://doi.org/10.1108/TR-08-2017-0130",
+      "sample": "319 khách du lịch nội địa ở Hội An; tài sản thương hiệu điểm đến"
+    },
+    {
+      "authors": "Nguyen Viet và Nguyen Anh",
+      "year": 2021,
+      "title": "The role of selected marketing mix elements in consumer based brand equity creation: milk industry in Vietnam",
+      "journal": "Journal of Food Products Marketing, 27(2), 72–88",
+      "url": "https://doi.org/10.1080/10454446.2021.1892007",
+      "sample": "477 người tiêu dùng sữa; marketing mix → các thành phần → tài sản thương hiệu"
+    }
+  ],
+  "references": [
+    "Yoo, B., Donthu, N., &amp; Lee, S. (2000). An examination of selected marketing mix elements and brand equity. <em>Journal of the Academy of Marketing Science, 28</em>(2), 195–211. https://doi.org/10.1177/0092070300282002"
   ]
 }

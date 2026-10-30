@@ -208,6 +208,7 @@ const examples = ["lạm phát", "lãi suất", "xuất khẩu", "nợ xấu", "
   // Vietnamese search terms (without diacritics) → words that appear in the English series names.
   const GLOSSARY: Record<string, string[]> = {
     "lam phat": ["inflation", "consumer price", "deflator"],
+    fdi: ["foreign direct investment"],
     "tang truong": ["growth"],
     "xuat khau": ["export"],
     "nhap khau": ["import"],
@@ -312,6 +313,11 @@ const examples = ["lạm phát", "lãi suất", "xuất khẩu", "nợ xấu", "
       .normalize("NFD")
       .replace(/[̀-ͯ]/g, "")
       .replace(/đ/g, "d");
+  /** Normalized word tokens separated by single spaces. */
+  const words = (s: string) =>
+    norm(s)
+      .replace(/[^a-z0-9%&]+/g, " ")
+      .trim();
   const esc = (s: string) =>
     s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
   const MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -319,7 +325,7 @@ const examples = ["lạm phát", "lãi suất", "xuất khẩu", "nợ xấu", "
 
   /** Splits the query into concepts; each concept is a list of alternatives (any may match). */
   function concepts(q: string): string[][] {
-    let s = ` ${norm(q).replace(/\s+/g, " ").trim()} `;
+    let s = ` ${words(q)} `;
     const out: string[][] = [];
     for (const k of KEYS) {
       const pat = ` ${k} `;
@@ -329,11 +335,20 @@ const examples = ["lạm phát", "lãi suất", "xuất khẩu", "nợ xấu", "
       }
     }
     for (const w of s.split(" ").filter(Boolean)) out.push([w]);
-    return out;
+    // Alternatives must match at the start of a word (so "rice" does not match "price").
+    return out.map(alts => alts.map(a => ` ${words(a)}`));
   }
 
-  const root = document.querySelector<HTMLElement>("[data-explorer]");
-  if (root) init(root);
+  // Runs on first load and after client-side navigation (ClientRouter).
+  function boot() {
+    const root = document.querySelector<HTMLElement>("[data-explorer]");
+    if (root && !root.dataset.ready) {
+      root.dataset.ready = "1";
+      init(root);
+    }
+  }
+  boot();
+  document.addEventListener("astro:page-load", boot);
 
   async function init(root: HTMLElement) {
     const base = root.dataset.base!;
@@ -354,7 +369,9 @@ const examples = ["lạm phát", "lãi suất", "xuất khẩu", "nợ xấu", "
       list.innerHTML = `<li class="p-4 text-sm">Không tải được danh mục. Hãy tải lại trang.</li>`;
       return;
     }
-    const texts = idx.items.map(i => norm(`${i.n} ${i.v ?? ""} ${i.id} ${idx.topics[i.t]} ${idx.sources[i.s]?.name ?? ""}`));
+    const texts = idx.items.map(
+      i => ` ${words(`${i.n} ${i.v ?? ""} ${i.id} ${idx.topics[i.t]} ${idx.sources[i.s]?.name ?? ""}`)}`
+    );
     const shardCache = new Map<string, Promise<Record<string, [string, (number | null)[]]>>>();
     let matches: number[] = [];
     let shown = 0;

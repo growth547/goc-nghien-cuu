@@ -1,5 +1,5 @@
 {
-  "title": "Mẫu bảng hỏi căng thẳng, lòng tự trọng và hài lòng cuộc sống",
+  "title": "Mẫu bảng hỏi căng thẳng, tự trọng, tự hiệu quả và hài lòng cuộc sống",
   "description": "Mẫu bảng hỏi khảo sát sinh viên: căng thẳng cảm nhận PSS-10, lòng tự trọng Rosenberg, tự hiệu quả GSE và hài lòng cuộc sống SWLS. Có mô hình, cỡ mẫu, chương 3.",
   "topic": "Căng thẳng và hài lòng cuộc sống của sinh viên",
   "audience": "Sinh viên",
@@ -31,8 +31,48 @@
   ],
   "method": "spss",
   "tips": [
-    "Mỗi thang đo có thang trả lời riêng (tần suất, mức độ đúng, đồng ý); giữ nguyên thang gốc, đừng ép tất cả về Likert 5 mức.",
-    "Đề tài về sức khoẻ tinh thần cần tuân thủ quy định đạo đức nghiên cứu của trường và nên ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi.",
-    "PSS-10 và Rosenberg có câu đảo chiều; đảo điểm trước khi tính điểm tổng."
+    "Mỗi thang đo có thang trả lời riêng: PSS-10 hỏi tần suất từ 0 đến 4, Rosenberg 4 mức từ 0 đến 3, GSE 4 mức mức độ đúng. Giữ nguyên thang gốc, đừng ép tất cả về Likert 5 mức.",
+    "SWLS có các khoảng diễn giải điểm (ví dụ 20 = trung lập) tính trên thang 7 mức của Diener và cộng sự (1985). Nếu muốn dùng các khoảng này, giữ thang 7 mức (trong Bộ khảo sát chọn giữ thang gốc) thay vì Likert 5 mức.",
+    "PSS-10 và Rosenberg có câu đảo chiều, và mỗi thang đảo theo khoảng điểm của nó: PSS-10 lấy 4 − điểm, Rosenberg lấy 3 − điểm. Đảo trước khi tính điểm tổng hoặc chạy Cronbach's alpha.",
+    "Chưa có bài thẩm định bản tiếng Việt của Rosenberg và GSE trên sinh viên được công bố có DOI mà ban biên tập tìm được; báo cáo kỹ độ tin cậy và phân tích nhân tố trên mẫu của bạn.",
+    "Đề tài về sức khoẻ tinh thần cần tuân thủ quy định đạo đức nghiên cứu của trường và nên ghi một đầu mối hỗ trợ tâm lý ở cuối bảng hỏi."
+  ],
+  "studies": [
+    {
+      "authors": "Pham-Ngoc, Nguyen, Nguyen-Thi, Nguyen, Vo, Do, Ho và Tran-Chi",
+      "year": 2026,
+      "title": "Psychological and religious predictors of help seeking attitudes among university students under perceived stress",
+      "journal": "Scientific Reports, 16, 6398",
+      "url": "https://doi.org/10.1038/s41598-026-36332-5",
+      "sample": "416 sinh viên đại học; PSS-10; PLS-SEM",
+      "reliability": "PSS-10: α 0,69; CR 0,77; AVE 0,30 (Bảng 2–3), thấp hơn ngưỡng thường dùng"
+    },
+    {
+      "authors": "Trinh, Nguyen, Nguyen, Ngo, Nguyen, Nguyen, Mac và Nguyen",
+      "year": 2025,
+      "title": "Impacts of Adverse Childhood Experiences on Mental Health and Satisfaction With Life in First-Year College Students: Results From a Cross-Sectional Study in Vietnam",
+      "journal": "Psychiatry Investigation, 22(8), 939–948",
+      "url": "https://doi.org/10.30773/pi.2025.0068",
+      "sample": "1.391 sinh viên năm nhất",
+      "reliability": "SWLS: α 0,81 (phần Phương pháp)"
+    },
+    {
+      "authors": "Dao-Tran, Anderson và Seib",
+      "year": 2017,
+      "title": "The Vietnamese version of the Perceived Stress Scale (PSS-10): Translation equivalence and psychometric properties among older women",
+      "journal": "BMC Psychiatry, 17, 53",
+      "url": "https://doi.org/10.1186/s12888-017-1221-6",
+      "sample": "473 phụ nữ từ 60 tuổi; thẩm định bản tiếng Việt PSS-10",
+      "reliability": "α 0,80; độ ổn định sau một tháng 0,43 (tóm tắt)"
+    },
+    {
+      "authors": "Arrindell, Checa, Espejo, Chen, Carrozzino, Vu-Bich, Dambach và Vagos",
+      "year": 2022,
+      "title": "Measurement Invariance and Construct Validity of the Satisfaction With Life Scale (SWLS) in Community Volunteers in Vietnam",
+      "journal": "International Journal of Environmental Research and Public Health, 19(6), 3460",
+      "url": "https://doi.org/10.3390/ijerph19063460",
+      "sample": "1.073 tình nguyện viên cộng đồng tại TP.HCM; thẩm định SWLS",
+      "reliability": "omega 0,756 (mục 3.2)"
+    }
   ]
 }

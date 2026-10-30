@@ -4,7 +4,7 @@
   "topic": "Ý định nghỉ việc của nhân viên",
   "audience": "Nhân viên văn phòng",
   "intro": "Ý định nghỉ việc là đề tài phổ biến của ngành quản trị nhân lực. Mẫu này nối hỗ trợ từ tổ chức với sự hài lòng công việc và ý định nghỉ việc, dùng thang đo của Eisenberger và cộng sự (1986) và bộ MOAQ của Cammann và cộng sự (1979).",
-  "modelNote": "Mô hình gợi ý, cần lập luận từ tổng quan (thường dựa trên lý thuyết trao đổi xã hội): hỗ trợ từ tổ chức làm tăng sự hài lòng công việc, còn hỗ trợ từ tổ chức và hài lòng công việc làm giảm ý định nghỉ việc.",
+  "modelNote": "Mô hình gợi ý, dựa trên lý thuyết trao đổi xã hội và tổng quan của Rhoades và Eisenberger (2002): hỗ trợ từ tổ chức làm tăng sự hài lòng công việc, còn hỗ trợ từ tổ chức và hài lòng công việc làm giảm ý định nghỉ việc.",
   "placeholders": {
     "công ty": "công ty"
   },
@@ -33,7 +33,40 @@
   "method": "pls",
   "tips": [
     "Thang POS có 16 câu, nhiều câu đảo chiều; nhớ đảo điểm trước khi chạy Cronbach's alpha.",
+    "TI1 hỏi mức khả năng (rất không có khả năng … rất có khả năng), TI2 và TI3 hỏi mức đồng ý; Bộ khảo sát giữ đúng hai dạng này.",
     "Người lao động thường ngại trả lời thật về ý định nghỉ việc; nhấn mạnh ẩn danh trong lời mở đầu và không thu tên, email.",
     "Nếu khảo sát trong một công ty, xin phép bộ phận nhân sự và ghi rõ trong phần đạo đức nghiên cứu."
+  ],
+  "studies": [
+    {
+      "authors": "Nguyen, Le, Trieu, Huynh và Tran",
+      "year": 2022,
+      "title": "Determinants of turnover intention: The case of public servants in Vietnam",
+      "journal": "Problems and Perspectives in Management, 20(2), 149–160",
+      "url": "https://doi.org/10.21511/ppm.20(2).2022.13",
+      "sample": "300 công chức; SEM (AMOS); có POS, hài lòng công việc, cam kết và ý định nghỉ việc",
+      "reliability": "CR 0,788–0,865 (Bảng 2)",
+      "result": "POS → cam kết: β = 0,315; hài lòng → ý định nghỉ việc: β = 0,352 (theo bài)"
+    },
+    {
+      "authors": "Giao, Vuong, Huan, Tushar và Quan",
+      "year": 2020,
+      "title": "The Effect of Emotional Intelligence on Turnover Intention and the Moderating Role of Perceived Organizational Support: Evidence from the Banking Industry of Vietnam",
+      "journal": "Sustainability, 12(5), 1857",
+      "url": "https://doi.org/10.3390/su12051857",
+      "sample": "722 nhân viên ngân hàng; PLS-SEM; POS 7 biến của Eisenberger và cộng sự (1986)",
+      "reliability": "α 0,807–0,921; CR 0,875–0,935 (Bảng 3)"
+    },
+    {
+      "authors": "Nguyen, Nguyen, Nguyen và Le",
+      "year": 2022,
+      "title": "The role of organizational justice and job satisfaction in mitigating turnover intention of emotionally exhausted employees: evidence from Vietnam",
+      "journal": "Evidence-based HRM, 11(2), 215–232",
+      "url": "https://doi.org/10.1108/ebhrm-06-2021-0115",
+      "sample": "369 nhân viên tuyến đầu ngành dịch vụ, khảo sát hai đợt; PLS-SEM"
+    }
+  ],
+  "references": [
+    "Rhoades, L., &amp; Eisenberger, R. (2002). Perceived organizational support: A review of the literature. <em>Journal of Applied Psychology, 87</em>(4), 698–714. https://doi.org/10.1037/0021-9010.87.4.698"
   ]
 }

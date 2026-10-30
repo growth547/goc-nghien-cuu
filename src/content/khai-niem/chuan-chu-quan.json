@@ -22,7 +22,7 @@
   ],
   "tips": [
     "Câu SN1 của TPB dùng cặp đầu mút 'nên … không nên' và phải đảo điểm. Nếu chuyển sang Likert đồng ý, viết lại thành 'Hầu hết những người quan trọng với tôi nghĩ rằng tôi nên…'.",
-    "SN3 (áp lực xã hội) thường có hệ số tải thấp. Nếu loại biến, báo cáo lý do trong chương 4.",
+    "Nếu một biến có hệ số tải thấp và bị loại, báo cáo hệ số, lý do loại và kiểm tra lại độ giá trị nội dung của khái niệm sau khi loại trong chương 4.",
     "Thay [thực hiện hành vi] bằng hành vi cụ thể kèm thời gian, giống cách viết ở thang ý định, để các khái niệm TPB khớp nhau.",
     "Không dùng SI3, SI4 của UTAUT cho người tiêu dùng cá nhân vì không có ban lãnh đạo hay tổ chức đứng sau."
   ],
@@ -37,7 +37,7 @@
     },
     {
       "q": "Vì sao chuẩn chủ quan hay không có ý nghĩa thống kê?",
-      "a": "Nhiều nghiên cứu TPB cho thấy chuẩn chủ quan là yếu tố dự báo yếu nhất của ý định, đặc biệt với hành vi mang tính cá nhân. Kết quả không có ý nghĩa vẫn là phát hiện hợp lệ và nên được thảo luận."
+      "a": "Phân tích tổng hợp 185 nghiên cứu của Armitage và Conner (2001) cho thấy chuẩn chủ quan là yếu tố dự báo ý định yếu nhất trong ba yếu tố của TPB. Vì vậy kết quả không có ý nghĩa thống kê vẫn là phát hiện hợp lệ và nên được thảo luận, đặc biệt với hành vi mang tính cá nhân."
     }
   ],
   "related": [
@@ -45,5 +45,8 @@
     "nhan-thuc-kiem-soat-hanh-vi",
     "y-dinh-mua",
     "y-dinh-su-dung"
+  ],
+  "references": [
+    "Armitage, C. J., &amp; Conner, M. (2001). Efficacy of the theory of planned behaviour: A meta-analytic review. <em>British Journal of Social Psychology, 40</em>(4), 471–499. https://doi.org/10.1348/014466601164939"
   ]
 }

@@ -24,7 +24,7 @@
     "Thang SAT của ECM dùng cặp tính từ đối nghĩa 7 mức, khác Likert đồng ý. Đặt một câu dẫn chung như 'Cảm nhận của bạn về việc sử dụng [dịch vụ] là:' trước 4 cặp tính từ.",
     "Thang hài lòng người dùng của Cidral và cộng sự viết cho môi trường học trực tuyến (US1). Khi dùng cho ngành khác, sửa câu này theo bối cảnh và ghi rõ đã điều chỉnh.",
     "Thang PSQ-18 có câu đảo chiều (PSQ17). Đảo điểm trước khi tính Cronbach's alpha, nếu không hệ số sẽ thấp bất thường.",
-    "Thư viện chưa có thang hài lòng khách hàng tổng quát cho bán lẻ hay khách sạn. Với các ngành này, nhiều khoá luận dùng thang SAT của ECM và đổi tên đối tượng."
+    "Thư viện chưa có thang hài lòng khách hàng tổng quát cho bán lẻ hay khách sạn. Nếu dùng thang SAT của ECM cho các ngành này, sửa câu dẫn theo đối tượng, ghi rõ đã điều chỉnh từ Bhattacherjee (2001) và kiểm định lại độ tin cậy, giá trị hội tụ."
   ],
   "faq": [
     {

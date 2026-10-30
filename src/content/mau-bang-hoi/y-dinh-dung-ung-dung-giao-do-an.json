@@ -52,7 +52,32 @@
   "method": "pls",
   "tips": [
     "Nêu rõ trong chương 2 vì sao bỏ điều kiện thuận lợi, nếu không hội đồng sẽ hỏi.",
+    "PE4 gốc nói về năng suất làm việc; mẫu này viết lại theo bối cảnh ăn uống. HT3 gốc là 'I must use', dịch sát thành 'Tôi phải sử dụng' dễ bị hiểu là bị bắt buộc nên được diễn đạt lại.",
     "Giá trị giá cả hỏi về phí giao hàng và giá món; điều chỉnh câu chữ cho rõ nhưng giữ ý gốc.",
     "Chỉ khảo sát người đã dùng ứng dụng ít nhất một lần, vì thói quen và hưởng thụ cần trải nghiệm thật."
-  ]
+  ],
+  "studies": [
+    {
+      "authors": "Luong, Dao, Nguyen, La, Tran và Duong",
+      "year": 2023,
+      "title": "Continuous Behavior of Using Food Delivery Mobile Applications in Vietnam after Covid-19 Pandemic",
+      "journal": "Journal of Distribution Science, 21(3), 47–60",
+      "url": "https://doi.org/10.15722/jds.21.03.202303.47",
+      "sample": "473 người dùng ở Hà Nội, nhóm 18–22 tuổi đông nhất; UTAUT2 thêm chất lượng thông tin; hồi quy",
+      "reliability": "α 0,784–0,881 (Bảng 1)"
+    },
+    {
+      "authors": "Chang, Chao và Nguyen",
+      "year": 2024,
+      "title": "Beyond convenience: exploring the determinants of continuance usage intentions in online food delivery services in Vietnam",
+      "journal": "International Journal of Research in Business and Social Science, 13(4), 1–14",
+      "url": "https://doi.org/10.20525/ijrbs.v13i4.3407",
+      "sample": "406 người dùng dịch vụ giao đồ ăn; UTAUT với ý thức sức khoẻ làm biến điều tiết; PLS-SEM",
+      "reliability": "α 0,870–0,929 (Bảng 2)"
+    }
+  ],
+  "itemOverrides": {
+    "utaut2:PE4": "Sử dụng [dịch vụ] giúp tôi sắp xếp việc ăn uống hằng ngày hiệu quả hơn.",
+    "utaut2:HT3": "Tôi cảm thấy mình không thể không sử dụng [dịch vụ]."
+  }
 }

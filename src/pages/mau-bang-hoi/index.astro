@@ -6,10 +6,28 @@ import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
+import ListFilter from "@/components/ListFilter.astro";
 import config from "@/config";
+import { maxIndegree } from "@/utils/kit";
 
 const locale = Astro.currentLocale ?? config.site.lang;
-const templates = (await getCollection("templates")).sort((a, b) => a.data.topic.localeCompare(b.data.topic, "vi"));
+const [all, scales] = await Promise.all([getCollection("templates"), getCollection("scales")]);
+const scaleOf = (key: string) => scales.find(s => s.id === key.split(":")[0])!;
+// A template's field is the field of the scale its dependent variable comes from.
+const fieldOf = (t: (typeof all)[number]) => {
+  const n = maxIndegree(t.data.paths);
+  const indeg = new Map<string, number>();
+  t.data.paths.forEach(p => indeg.set(p.to, (indeg.get(p.to) ?? 0) + 1));
+  const dv = [...indeg].find(([, v]) => v === n)![0];
+  return scaleOf(dv).data.field;
+};
+const templates = all
+  .map(t => ({ t, field: fieldOf(t), models: [...new Set(t.data.constructs.map(k => scaleOf(k).data.name))] }))
+  .sort((a, b) => a.t.data.topic.localeCompare(b.t.data.topic, "vi"));
+const fields = [...new Set(templates.map(x => x.field))].sort((a, b) => a.localeCompare(b, "vi"));
+const fieldId = (f: string) => `linh-vuc-${fields.indexOf(f) + 1}`;
+const itemsOf = (keys: string[]) =>
+  keys.reduce((n, k) => n + scaleOf(k).data.constructs.find(c => c.code === k.split(":")[1])!.items.length, 0);
 ---
 
 <Layout
@@ -20,20 +38,61 @@ const templates = (await getCollection("templates")).sort((a, b) => a.data.topic
   <Breadcrumb />
   <Main
     pageTitle="Mẫu bảng hỏi theo đề tài"
-    pageDesc={`${templates.length} mẫu bảng hỏi cho các đề tài khoá luận hay gặp. Mỗi mẫu có mô hình gợi ý, câu hỏi từ thang đo gốc, cỡ mẫu và đoạn chương 3; mở trong Bộ khảo sát để chỉnh và tải về Word.`}
+    pageDesc={`${templates.length} mẫu bảng hỏi cho các đề tài khoá luận hay gặp. Mỗi mẫu có sơ đồ mô hình, câu hỏi từ thang đo gốc kèm nguồn, cỡ mẫu và đoạn chương 3; mở trong Bộ khảo sát để chỉnh và tải về Word.`}
   >
-    <ul class="grid gap-3 sm:grid-cols-2">
+    <ListFilter
+      label="Lọc mẫu bảng hỏi"
+      placeholder="Lọc theo đề tài hoặc mô hình, ví dụ: ví điện tử, TAM, nghỉ việc…"
+      total={templates.length}
+      unit="mẫu bảng hỏi"
+    />
+    <nav aria-label="Lĩnh vực" class="-mt-4 mb-10 flex flex-wrap gap-2">
       {
-        templates.map(t => (
-          <li>
-            <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${t.id}`)} class="border-border hover:border-accent block h-full rounded-xl border p-4 transition-colors">
-              <span class="font-semibold">{t.data.topic}</span>
-              <span class="text-muted-foreground block text-sm">{t.data.audience} · {t.data.constructs.length} khái niệm</span>
-            </a>
-          </li>
+        fields.map(f => (
+          <a
+            href={`#${fieldId(f)}`}
+            class="border-border bg-surface hover:border-accent hover:text-accent inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 text-sm font-medium transition-colors"
+          >
+            {f}
+            <span class="text-muted-foreground tabular-nums">{templates.filter(x => x.field === f).length}</span>
+          </a>
         ))
       }
-    </ul>
+    </nav>
+    {
+      fields.map(f => (
+        <section class="mb-12" data-filter-group aria-labelledby={fieldId(f)}>
+          <h2 id={fieldId(f)} class="text-foreground mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-bold">
+            {f}
+            <span class="badge neutral">{templates.filter(x => x.field === f).length}</span>
+          </h2>
+          <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {templates
+              .filter(x => x.field === f)
+              .map(({ t, models }) => (
+                <li data-filter-item data-filter-text={`${t.data.topic} ${t.data.title} ${t.data.audience} ${models.join(" ")}`}>
+                  <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${t.id}`)} class="card gap-1 p-4">
+                    <span class="card-title">{t.data.topic}</span>
+                    <span class="card-meta line-clamp-2">{models.join(", ")} · {t.data.audience}</span>
+                    <span class="card-foot">
+                      <span>{t.data.constructs.length} khái niệm</span>
+                      <span>{itemsOf(t.data.constructs)} biến quan sát</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ))
+    }
+    <aside class="border-border bg-accent-soft/60 mt-4 flex flex-col items-start gap-3 rounded-xl border p-6 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-foreground">
+        Đề tài của bạn chưa có mẫu? Chọn từng khái niệm trong
+        <a class="text-accent font-semibold underline underline-offset-4" href={getRelativeLocaleUrl(locale, "khai-niem")}>thang đo theo khái niệm</a>
+        rồi ghép thành bảng hỏi.
+      </p>
+      <a class="btn flex-none" href={getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}>Tạo bảng hỏi</a>
+    </aside>
   </Main>
   <Footer />
 </Layout>

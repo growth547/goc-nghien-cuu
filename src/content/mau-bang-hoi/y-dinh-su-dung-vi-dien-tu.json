@@ -1,6 +1,6 @@
 {
   "title": "Mẫu bảng hỏi ý định sử dụng ví điện tử của sinh viên (TAM)",
-  "description": "Mẫu bảng hỏi khảo sát ý định sử dụng ví điện tử theo mô hình TAM: 14 câu từ thang đo gốc Davis (1989), mô hình, giả thuyết, cỡ mẫu và đoạn chương 3.",
+  "description": "Mẫu bảng hỏi ý định sử dụng ví điện tử theo TAM: 12 câu của Davis (1989) và 2 câu ý định của Venkatesh và Davis (2000), có mô hình, cỡ mẫu, chương 3.",
   "topic": "Ý định sử dụng ví điện tử",
   "audience": "Sinh viên",
   "intro": "Đề tài về ý định sử dụng ví điện tử (MoMo, ZaloPay, ShopeePay…) là một trong những đề tài khoá luận phổ biến nhất ở các trường kinh tế. Mẫu này dùng mô hình chấp nhận công nghệ TAM, đủ gọn cho khoá luận đại học và dễ mở rộng thêm biến như niềm tin hay rủi ro cảm nhận.",
@@ -33,7 +33,50 @@
   "method": "pls",
   "tips": [
     "Khái niệm Ý định sử dụng chỉ có 2 biến; hội đồng hay hỏi về độ tin cậy, nên cân nhắc bổ sung biến từ Venkatesh và cộng sự (2003) và ghi rõ nguồn.",
-    "Thay 'công việc' trong các câu PU bằng việc cụ thể như 'thanh toán', 'chuyển tiền' nhưng giữ nguyên ý của biến.",
-    "Nếu khảo sát người chưa từng dùng ví điện tử, đổi câu sàng lọc và đặt câu hỏi theo hướng dự định."
+    "Sáu câu PU gốc nói về 'công việc'; mẫu này viết lại theo thanh toán, chi tiêu và giữ câu gốc để đối chiếu. Ghi rõ việc điều chỉnh trong chương 3.",
+    "Phần lớn sinh viên đã dùng ví điện tử, nên câu 'Nếu được tiếp cận…' ít phù hợp. Với người đã dùng, cân nhắc thay BI bằng ý định tiếp tục sử dụng (CI) của mô hình ECM trong thư viện.",
+    "Phân tích tổng hợp của King và He (2006) cho thấy nhận thức sự hữu ích thường dự báo ý định mạnh hơn nhận thức tính dễ sử dụng; đây là căn cứ tốt cho giả thuyết ở chương 2."
+  ],
+  "studies": [
+    {
+      "authors": "To và Trinh",
+      "year": 2021,
+      "title": "Understanding behavioral intention to use mobile wallets in Vietnam: Extending the TAM model with trust and enjoyment",
+      "journal": "Cogent Business & Management, 8(1), 1891661",
+      "url": "https://doi.org/10.1080/23311975.2021.1891661",
+      "sample": "332 người dùng ví điện tử (37,3% là sinh viên); TAM thêm niềm tin và sự thích thú",
+      "reliability": "α 0,841–0,904; CR 0,844–0,906 (Bảng 2)",
+      "result": "PU → BI: β = 0,244; PEOU → BI: β = 0,131 (Bảng 4)"
+    },
+    {
+      "authors": "Nguyen và Nguyen",
+      "year": 2023,
+      "title": "An investigation of students' intention to use E-payment service in Mobile Wallet in Ho Chi Minh City",
+      "journal": "Tạp chí Nghiên cứu Tài chính – Marketing, 14(6), 96–106",
+      "url": "https://doi.org/10.52932/jfm.vi6.447",
+      "sample": "310 sinh viên tại TP.HCM; TAM thêm niềm tin và sự tiện lợi; SmartPLS",
+      "result": "PU → BI: hệ số 0,195; p = 0,014 (Bảng 1)"
+    },
+    {
+      "authors": "Nguyen, Cao, Dang và Nguyen",
+      "year": 2016,
+      "title": "Predicting Consumer Intention to Use Mobile Payment Services: Empirical Evidence from Vietnam",
+      "journal": "International Journal of Marketing Studies, 8(1), 117",
+      "url": "https://doi.org/10.5539/ijms.v8n1p117",
+      "sample": "489 người tiêu dùng tại Hà Nội; kết hợp TAM và TPB; hồi quy",
+      "reliability": "α 0,752–0,912 (Bảng 1)",
+      "result": "PU → ý định: β chuẩn hoá = 0,127 (Bảng 4)"
+    }
+  ],
+  "itemOverrides": {
+    "tam:PU1": "Sử dụng [hệ thống] giúp tôi thanh toán nhanh hơn.",
+    "tam:PU2": "Sử dụng [hệ thống] giúp tôi quản lý chi tiêu tốt hơn.",
+    "tam:PU3": "Sử dụng [hệ thống] giúp tôi tiết kiệm thời gian khi thanh toán và chuyển tiền.",
+    "tam:PU4": "Sử dụng [hệ thống] giúp việc thanh toán, chi tiêu của tôi hiệu quả hơn.",
+    "tam:PU5": "Sử dụng [hệ thống] khiến việc thanh toán, chi tiêu của tôi dễ dàng hơn.",
+    "tam:PU6": "Tôi thấy [hệ thống] hữu ích cho việc thanh toán, chi tiêu của mình."
+  },
+  "references": [
+    "King, W. R., &amp; He, J. (2006). A meta-analysis of the technology acceptance model. <em>Information &amp; Management, 43</em>(6), 740–755. https://doi.org/10.1016/j.im.2006.05.003"
   ]
 }

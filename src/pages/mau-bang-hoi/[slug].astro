@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import config from "@/config";
 import { appLink } from "@/utils/appLink";
 import { fillPlaceholders, citeOf, citedBy, stripHtml, isAgreementScale, reverseRuleOf, audienceCode, POWER_N, ISR_N, maxIndegree } from "@/utils/kit";
+import { bipolarOf, overrideKey, layoutModel, b64url } from "./_lib";
 
 export async function getStaticPaths() {
   const [templates, scales] = await Promise.all([getCollection("templates"), getCollection("scales")]);
@@ -22,65 +23,130 @@ type Props = {
 const { t, scales, templates } = Astro.props;
 const d = t.data;
 const locale = Astro.currentLocale ?? config.site.lang;
+const fill = (s: string) => fillPlaceholders(s, d.placeholders);
 
-// Resolve "<scale>:<code>" keys; check-kit.mjs fails the build input if any key is unknown.
+// Resolve "<scale>:<code>" keys; check-kit.mjs and check-concepts.mjs fail on unknown keys.
+// Each item: the wording shown (override or original) and its answer format as the kit builds it
+// (agreement Likert 5, bipolar 5 with the low pole at 1, or the scale's own format).
 const parts = d.constructs.map(key => {
   const [slug, code] = key.split(":");
   const scale = scales.find(s => s.id === slug)!;
   const c = scale.data.constructs.find(x => x.code === code)!;
-  return { key, scale, c, cite: citeOf(c.source) };
+  const agree = isAgreementScale(scale.data.responseScale);
+  const items = c.items.map(i => {
+    const ov = d.itemOverrides[overrideKey(slug, i.code)];
+    const vi = ov ?? i.vi;
+    const bi = bipolarOf(vi, i.reverse);
+    return {
+      ...i,
+      text: fill(bi ? bi.stem || vi : vi),
+      original: ov ? fill(i.vi) : null,
+      rawEdit: ov ?? null,
+      bi: bi && { ...bi, low: fill(bi.low), high: fill(bi.high) },
+      kind: bi ? "bipolar" : agree ? "agree" : "own",
+    };
+  });
+  return { key, slug, scale, c, cite: citeOf(c.source), items };
 });
 const byKey = new Map(parts.map(p => [p.key, p]));
-const items = parts.flatMap(p => p.c.items.map(i => ({ ...i, vi: fillPlaceholders(i.vi, d.placeholders) })));
+const items = parts.flatMap(p => p.items);
 const arrows = maxIndegree(d.paths);
 const pow = POWER_N[arrows];
 const second = d.method === "pls" ? ISR_N : Math.max(50, 5 * items.length);
 const minN = Math.max(pow, second);
 const issue = Math.ceil(minN / 0.85);
-const ownScale = [...new Set(parts.filter(p => !isAgreementScale(p.scale.data.responseScale)).map(p => p.scale.data.name))];
+const ownScale = [...new Set(parts.filter(p => p.items.some(i => i.kind === "own")).map(p => p.scale.data.name))];
+const hasBipolar = items.some(i => i.kind === "bipolar");
+const edited = items.filter(i => i.original);
 const reverse = items.filter(i => i.reverse).map(i => i.code);
-// Reverse scoring follows each scale's real range: Likert 5 for agreement scales, the original range otherwise.
+// Reverse scoring follows the format each item is answered on: Likert 5 or bipolar 5 → 6 − điểm;
+// a scale kept in its own format → its own range (PSS-10 0–4: 4 − điểm, Rosenberg 0–3: 3 − điểm).
 const reverseRules = [
-  ...new Set(parts.filter(p => p.c.items.some(i => i.reverse)).map(p => `${p.scale.data.name}: ${reverseRuleOf(p.scale.data.responseScale)}`)),
+  ...new Set(
+    parts
+      .filter(p => p.items.some(i => i.reverse))
+      .map(p => {
+        const own = p.items.filter(i => i.reverse).every(i => i.kind === "own");
+        return `${p.scale.data.name}: ${own ? reverseRuleOf(p.scale.data.responseScale) : "6 − điểm"}`;
+      })
+  ),
 ];
 // Dependent variables: the constructs most arrows point to.
 const indeg = new Map<string, number>();
 d.paths.forEach(p => indeg.set(p.to, (indeg.get(p.to) ?? 0) + 1));
 const dv = [...indeg].filter(([, n]) => n === arrows).map(([k]) => k);
 const refs = [
-  ...new Set(
-    parts.flatMap(p => p.scale.data.references.filter(r => citedBy(p.cite, stripHtml(r))))
-  ),
+  ...new Set([...parts.flatMap(p => p.scale.data.references.filter(r => citedBy(p.cite, stripHtml(r)))), ...d.references]),
 ].sort((a, b) => stripHtml(a).localeCompare(stripHtml(b), "en"));
 
-const kitParams = new URLSearchParams({
-  c: d.constructs.join(","),
-  ph: Object.entries(d.placeholders).map(([k, v]) => `${k}=${v}`).join(";"),
-  a: String(arrows),
-  m: d.method,
-  dt: audienceCode(d.audience),
-  dv: dv.join(","),
-});
-const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${kitParams}`;
-const others = templates.filter(x => x.id !== t.id).slice(0, 6);
+// Kit link. With adapted wording the whole state travels in ?k= so the kit shows the same items.
+let kitQuery: string;
+if (edited.length) {
+  const edits = Object.fromEntries(parts.flatMap(p => p.items.filter(i => i.rawEdit).map(i => [`${p.key}|${i.code}`, i.rawEdit])));
+  const st = { order: d.constructs, ph: d.placeholders, method: d.method, arrows, arrowsSet: true, aud: audienceCode(d.audience), dv, edits };
+  kitQuery = `k=${b64url(JSON.stringify(st))}`;
+} else {
+  kitQuery = new URLSearchParams({
+    c: d.constructs.join(","),
+    ph: Object.entries(d.placeholders).map(([k, v]) => `${k}=${v}`).join(";"),
+    a: String(arrows),
+    m: d.method,
+    dt: audienceCode(d.audience),
+    dv: dv.join(","),
+  }).toString();
+}
+const kitHref = `${getRelativeLocaleUrl(locale, "cong-cu/bo-khao-sat")}?${kitQuery}`;
+
+// Model diagram, built from the paths.
+const diagram = layoutModel(
+  parts.map(p => ({ key: p.key, name: p.c.nameVi, code: p.c.code })),
+  d.paths
+);
+const hyp = d.paths.map(
+  (p, i) =>
+    `H${i + 1}: ${byKey.get(p.from)!.c.nameVi} (${byKey.get(p.from)!.c.code}) tác động ${p.sign === "-" ? "ngược chiều" : "cùng chiều"} tới ${byKey.get(p.to)!.c.nameVi} (${byKey.get(p.to)!.c.code}).`
+);
+
+// Other templates: those sharing scales first, then the same audience.
+const scaleSet = new Set(parts.map(p => p.slug));
+const score = (o: CollectionEntry<"templates">) =>
+  o.data.constructs.filter(k => scaleSet.has(k.split(":")[0])).length * 2 + (audienceCode(o.data.audience) === audienceCode(d.audience) ? 1 : 0);
+const others = templates
+  .filter(x => x.id !== t.id)
+  .sort((a, b) => score(b) - score(a) || a.data.topic.localeCompare(b.data.topic, "vi"))
+  .slice(0, 6);
+
+const abs = (path: string) => new URL(getRelativeLocaleUrl(locale, path), Astro.site).href;
 const url = new URL(Astro.url.pathname, Astro.site).href;
-const ld = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: d.title,
-  description: d.description,
-  inLanguage: "vi",
-  mainEntityOfPage: url,
-  author: { "@type": "Organization", name: config.site.author },
-  publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
-  citation: refs.map(stripHtml),
-};
+const ld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: d.title,
+    description: d.description,
+    inLanguage: "vi",
+    mainEntityOfPage: url,
+    author: { "@type": "Organization", name: config.site.author },
+    publisher: { "@type": "Organization", name: config.site.title, url: config.site.url },
+    citation: [...refs.map(stripHtml), ...d.studies.map(s => `${s.authors} (${s.year}). ${s.title}. ${s.journal}. ${s.url}`)],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Trang chủ", item: abs("") },
+      { "@type": "ListItem", position: 2, name: "Mẫu bảng hỏi", item: abs("mau-bang-hoi") },
+      { "@type": "ListItem", position: 3, name: d.title, item: url },
+    ],
+  },
+];
 ---
 
 <Layout title={`${d.title} | ${config.site.title}`} description={d.description}>
-  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[0])} />
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(ld[1])} />
   <Header />
-  <Breadcrumb />
+  <Breadcrumb current={d.title} />
   <main id="main-content" class="app-layout pb-10" data-pagefind-body>
     <p class="text-accent text-xs font-semibold tracking-wider uppercase">Mẫu bảng hỏi khoá luận</p>
     <h1 class="mt-1 text-2xl font-semibold sm:text-3xl">{d.title}</h1>
@@ -101,12 +167,80 @@ const ld = {
 
       <h2>Mô hình nghiên cứu gợi ý</h2>
       <p>{d.modelNote}</p>
+      <figure class="not-prose my-6">
+        <div class="overflow-x-auto">
+          <svg
+            viewBox={`0 0 ${diagram.width} ${diagram.height}`}
+            width={diagram.width}
+            height={diagram.height}
+            style={`max-width:100%;height:auto;min-width:${Math.min(diagram.width, 560)}px`}
+            role="img"
+            aria-labelledby="model-title model-desc"
+          >
+            <title id="model-title">Sơ đồ mô hình: {d.topic}</title>
+            <desc id="model-desc">{hyp.join(" ")}</desc>
+            <defs>
+              <marker id="model-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)" />
+              </marker>
+            </defs>
+            {
+              diagram.edges.map(e => (
+                <path
+                  d={e.d}
+                  fill="none"
+                  stroke-width="1.6"
+                  stroke-dasharray={e.sign === "-" ? "6 4" : undefined}
+                  marker-end="url(#model-arrow)"
+                  style="stroke:var(--accent)"
+                />
+              ))
+            }
+            {
+              diagram.boxes.map(b => (
+                <g>
+                  <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="10" stroke-width="1.4" style="fill:var(--surface);stroke:var(--border-strong)" />
+                  {b.lines.map((l, i) => (
+                    <text
+                      x={b.x + b.w / 2}
+                      y={b.y + b.h / 2 + (i - (b.lines.length - 1) / 2) * 15 - 6}
+                      text-anchor="middle"
+                      dominant-baseline="middle"
+                      font-size="12.5"
+                      font-weight="600"
+                      style="fill:var(--foreground)"
+                    >
+                      {l}
+                    </text>
+                  ))}
+                  <text x={b.x + b.w / 2} y={b.y + b.h - 8} text-anchor="middle" font-size="11" style="fill:var(--muted-foreground)">
+                    {b.code}
+                  </text>
+                </g>
+              ))
+            }
+            {
+              diagram.edges.map(e => (
+                <g>
+                  <rect x={e.lx - (e.label.length * 3.6 + 5)} y={e.ly - 9} width={e.label.length * 7.2 + 10} height="18" rx="9" style="fill:var(--accent-soft)" />
+                  <text x={e.lx} y={e.ly + 0.5} text-anchor="middle" dominant-baseline="middle" font-size="11" font-weight="600" style="fill:var(--accent-strong)">
+                    {e.label}
+                  </text>
+                </g>
+              ))
+            }
+          </svg>
+        </div>
+        <figcaption class="text-muted-foreground mt-2 text-sm">
+          Sơ đồ mô hình gợi ý. Mũi tên liền: tác động cùng chiều; mũi tên nét đứt, ghi (−): tác động ngược chiều.
+        </figcaption>
+      </figure>
       <ul>
         {
-          d.paths.map((p, i) => (
+          hyp.map(h => (
             <li>
-              <strong>H{i + 1}:</strong> {byKey.get(p.from)!.c.nameVi} ({byKey.get(p.from)!.c.code}) tác động{" "}
-              {p.sign === "-" ? "ngược chiều" : "cùng chiều"} tới {byKey.get(p.to)!.c.nameVi} ({byKey.get(p.to)!.c.code}).
+              <strong>{h.slice(0, h.indexOf(":") + 1)}</strong>
+              {h.slice(h.indexOf(":") + 1)}
             </li>
           ))
         }
@@ -114,10 +248,20 @@ const ld = {
 
       <h2>Bảng hỏi: các phát biểu đo lường</h2>
       <p class="text-sm">
-        Các phát biểu dạng đồng ý dùng thang Likert 5 mức: 1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý.{ownScale.length > 0 && ` Riêng ${ownScale.join(", ")} giữ thang trả lời gốc, ghi ngay dưới bảng.`}{" "}
+        Các phát biểu dạng đồng ý dùng thang Likert 5 mức: 1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý.{
+          hasBipolar &&
+            " Câu có hai đầu mút (ghi ngay dưới câu) không trả lời bằng đồng ý hay không đồng ý mà bằng thang đối nghĩa 5 mức: người trả lời chọn một số từ 1 đến 5, càng gần đầu nào thì càng đúng với cảm nhận ở đầu đó."
+        }{ownScale.length > 0 && ` Riêng ${ownScale.join(", ")} giữ thang trả lời gốc, ghi ngay dưới bảng.`}{" "}
         Nên thêm một câu sàng lọc đúng đối tượng ({d.audience.toLowerCase()}) và một câu kiểm tra sự chú ý;
         Bộ khảo sát tự thêm hai câu này và phần thông tin chung theo đối tượng khảo sát.
       </p>
+      {
+        edited.length > 0 && (
+          <p class="text-sm">
+            Câu đánh dấu <span class="badge warm">điều chỉnh từ bản gốc</span> được viết lại cho đúng bối cảnh của đề tài. Câu dịch sát bản gốc ghi ngay bên dưới để bạn đối chiếu và tự quyết định. Nếu dùng câu điều chỉnh, ghi rõ trong chương 3; Bộ khảo sát mở từ trang này đã điền sẵn các câu điều chỉnh.
+          </p>
+        )
+      }
       {
         parts.map(p => (
           <section>
@@ -126,16 +270,29 @@ const ld = {
               <table>
                 <thead><tr><th>Mã</th><th>Phát biểu</th></tr></thead>
                 <tbody>
-                  {p.c.items.map(i => (
+                  {p.items.map(i => (
                     <tr>
                       <td class="font-semibold whitespace-nowrap">{i.code}{i.reverse && " (R)"}</td>
-                      <td>{fillPlaceholders(i.vi, d.placeholders)}</td>
+                      <td>
+                        {i.text}
+                        {i.bi && (
+                          <span class="text-muted-foreground block text-sm">
+                            Thang đối nghĩa: 1 = {i.bi.low} … 5 = {i.bi.high}
+                          </span>
+                        )}
+                        {i.original && (
+                          <span class="block text-sm">
+                            <span class="badge warm">điều chỉnh từ bản gốc</span>{" "}
+                            <span class="text-muted-foreground">Bản gốc: {i.original}</span>
+                          </span>
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            {!isAgreementScale(p.scale.data.responseScale) && <p class="text-sm"><strong>Thang trả lời:</strong> {p.scale.data.responseScale}</p>}
+            {p.items.some(i => i.kind === "own") && <p class="text-sm"><strong>Thang trả lời:</strong> {p.scale.data.responseScale}</p>}
             <p class="text-muted-foreground text-sm">
               Nguồn: {p.cite}. Xem bản gốc tiếng Anh: <a href={getRelativeLocaleUrl(locale, `thang-do/${p.scale.id}`)}>thang đo {p.scale.data.name}</a>.
             </p>
@@ -150,15 +307,61 @@ const ld = {
         {d.method === "pls"
           ? `phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) với hệ số đường dẫn nhỏ nhất 0,2 cho ${second}.`
           : `quy tắc 5 quan sát cho mỗi biến của Hair và cộng sự (2010) cho ${second}.`}{" "}
-        Cỡ mẫu tối thiểu là <strong>{minN}</strong>; dự phòng 15% phiếu loại thì cần thu khoảng <strong>{issue} phiếu</strong>.
+        Cỡ mẫu tối thiểu lấy mức lớn hơn trong hai con số này: <strong>{minN}</strong>. Dự phòng 15% phiếu loại thì cần thu khoảng <strong>{issue} phiếu</strong>.
       </p>
+
+      {
+        d.studies.length > 0 && (
+          <>
+            <h2>Nghiên cứu tại Việt Nam dùng mô hình này</h2>
+            <p class="text-sm">
+              Các bài dưới đây đã được đối chiếu với bản ghi DOI (Crossref) hoặc trang của tạp chí. Mô hình trong từng bài có thể rộng hơn mẫu này; đọc bài gốc trước khi trích dẫn.
+            </p>
+            <div class="overflow-x-auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tác giả (năm)</th>
+                    <th>Nghiên cứu</th>
+                    <th>Mẫu</th>
+                    <th>Độ tin cậy, kết quả bài báo báo cáo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {d.studies.map(s => (
+                    <tr>
+                      <td>{s.authors} ({s.year})</td>
+                      <td>
+                        <a href={s.url} rel="noopener">{s.title}</a>
+                        <span class="text-muted-foreground block text-sm"><em>{s.journal}</em></span>
+                      </td>
+                      <td>{s.sample}</td>
+                      <td>
+                        {s.reliability ?? "Chưa trích (chưa đọc được bản đầy đủ)"}
+                        {s.result && <span class="text-muted-foreground block text-sm">{s.result}</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {d.studies.some(s => s.reliability) && (
+              <p class="text-sm">
+                <strong>Kết quả điển hình:</strong> trong các bài có báo cáo số liệu,{" "}
+                {d.studies.filter(s => s.reliability).map(s => `${s.authors} (${s.year}) cho ${s.reliability}`).join("; ")}. Đây là kết quả trên mẫu
+                của từng bài, không bảo đảm mẫu của bạn cũng đạt.
+              </p>
+            )}
+          </>
+        )
+      }
 
       <h2>Đoạn văn chương 3 (bản rút gọn)</h2>
       <blockquote>
         <p>
           Bảng hỏi gồm {parts.length} khái niệm với {items.length} biến quan sát kế thừa từ:{" "}
           {parts.map((p, i) => `${p.c.nameVi} (${p.c.code}, ${p.c.items.length} biến) theo ${p.cite}${i < parts.length - 1 ? "; " : "."}`)}{" "}
-          Các phát biểu dạng đồng ý được đo bằng thang Likert 5 mức{ownScale.length > 0 ? `; ${ownScale.join(", ")} giữ thang trả lời của nghiên cứu gốc.` : "."}{reverse.length > 0 && ` Các biến ${reverse.join(", ")} là câu đảo chiều và được đảo điểm trước khi phân tích.`}{" "}
+          Các phát biểu dạng đồng ý được đo bằng thang Likert 5 mức{hasBipolar ? "; các biến dạng cặp từ đối lập được đo bằng thang đối nghĩa 5 mức" : ""}{ownScale.length > 0 ? `; ${ownScale.join(", ")} giữ thang trả lời của nghiên cứu gốc.` : "."}{edited.length > 0 && ` Các biến ${edited.map(i => i.code).join(", ")} được điều chỉnh câu chữ cho phù hợp bối cảnh nghiên cứu.`}{reverse.length > 0 && ` Các biến ${reverse.join(", ")} là câu đảo chiều và được đảo điểm trước khi phân tích.`}{" "}
           [Nếu đã thực hiện:] Thang đo được dịch xuôi và dịch ngược (Brislin, 1970). [Nếu đã thực hiện:] Bảng hỏi được khảo sát thử với [số người] người thuộc đối tượng nghiên cứu trước khi khảo sát chính thức.
         </p>
       </blockquote>
@@ -182,9 +385,9 @@ const ld = {
           <ul class="grid gap-3 sm:grid-cols-2">
             {others.map(o => (
               <li>
-                <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${o.id}`)} class="border-border hover:border-accent block rounded-xl border p-4 transition-colors">
-                  <span class="font-semibold">{o.data.topic}</span>
-                  <span class="text-muted-foreground block text-sm">{o.data.audience}</span>
+                <a href={getRelativeLocaleUrl(locale, `mau-bang-hoi/${o.id}`)} class="card gap-1 p-4">
+                  <span class="card-title">{o.data.topic}</span>
+                  <span class="card-meta">{o.data.audience} · {o.data.constructs.length} khái niệm</span>
                 </a>
               </li>
             ))}

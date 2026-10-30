@@ -4,7 +4,7 @@
   "topic": "Ý định khởi nghiệp của sinh viên",
   "audience": "Sinh viên năm cuối",
   "intro": "Ý định khởi nghiệp là đề tài phổ biến ở các trường kinh tế và kỹ thuật. Thuyết hành vi có kế hoạch (TPB) là khung lý thuyết được dùng nhiều nhất cho đề tài này, với bảng hỏi xây dựng theo hướng dẫn của Francis và cộng sự (2004).",
-  "modelNote": "Mô hình theo thuyết hành vi có kế hoạch (TPB): thái độ, chuẩn chủ quan và nhận thức kiểm soát hành vi cùng tác động lên ý định.",
+  "modelNote": "Mô hình theo thuyết hành vi có kế hoạch (TPB) của Ajzen, cách dùng phổ biến trong nghiên cứu ý định khởi nghiệp (Krueger, Reilly và Carsrud, 2000; Liñán và Chen, 2009): thái độ, chuẩn chủ quan và nhận thức kiểm soát hành vi cùng tác động lên ý định.",
   "placeholders": {
     "thực hiện hành vi": "khởi nghiệp kinh doanh sau khi tốt nghiệp"
   },
@@ -33,8 +33,44 @@
   ],
   "method": "pls",
   "tips": [
-    "Thái độ trong TPB đo bằng cặp tính từ đối lập (ví dụ có hại … có lợi), không phải câu đồng ý; giữ dạng này.",
+    "Thái độ trong TPB đo bằng cặp tính từ đối lập (ví dụ có hại … có lợi), không phải câu đồng ý. Trang này và Bộ khảo sát hiện các câu này thành thang đối nghĩa 5 mức, đặt đầu tiêu cực ở mức 1 trừ câu đánh dấu (R).",
     "Hành vi cần được định nghĩa cụ thể về hành động, đối tượng, bối cảnh và thời gian, ví dụ 'khởi nghiệp trong 2 năm sau khi tốt nghiệp'.",
-    "Có thể thêm biến như giáo dục khởi nghiệp nếu tổng quan ủng hộ, nhưng phải tìm thang đo có nguồn."
-  ]
+    "SN5 gốc hỏi những người giống mình đã làm hành vi; với sinh viên chưa tốt nghiệp, mẫu này hỏi về các bạn cùng trang lứa sẽ làm.",
+    "Muốn dùng bảng hỏi chuyên cho khởi nghiệp, xem thang EIQ của Liñán và Chen (2009); có thể thêm giáo dục khởi nghiệp nếu tổng quan ủng hộ, nhưng phải tìm thang đo có nguồn."
+  ],
+  "studies": [
+    {
+      "authors": "Dao, Bui, Doan, Dao, Le và Le",
+      "year": 2021,
+      "title": "Impact of academic majors on entrepreneurial intentions of Vietnamese students: An extension of the theory of planned behavior",
+      "journal": "Heliyon, 7(3), e06381",
+      "url": "https://doi.org/10.1016/j.heliyon.2021.e06381",
+      "sample": "1.844 sinh viên kỹ thuật và kinh tế ở 4 trường; câu hỏi theo Krueger và cộng sự (2000), Liñán và Chen (2009)",
+      "reliability": "α 0,735–0,870; CR 0,753–0,873 (Bảng 3)"
+    },
+    {
+      "authors": "Nguyen",
+      "year": 2017,
+      "title": "Entrepreneurial intention of international business students in Viet Nam: a survey of the country joining the Trans-Pacific Partnership",
+      "journal": "Journal of Innovation and Entrepreneurship, 6, 7",
+      "url": "https://doi.org/10.1186/s13731-017-0066-z",
+      "sample": "372 sinh viên năm cuối ngành kinh doanh quốc tế; TPB",
+      "reliability": "α 0,739–0,866 (Bảng 1)"
+    },
+    {
+      "authors": "Doanh",
+      "year": 2021,
+      "title": "The role of contextual factors on predicting entrepreneurial intention among Vietnamese students",
+      "journal": "Entrepreneurial Business and Economics Review, 9(1), 169–188",
+      "url": "https://doi.org/10.15678/eber.2021.090111",
+      "sample": "2.218 sinh viên năm cuối ở 14 trường; các yếu tố TPB làm trung gian"
+    }
+  ],
+  "references": [
+    "Krueger, N. F., Reilly, M. D., &amp; Carsrud, A. L. (2000). Competing models of entrepreneurial intentions. <em>Journal of Business Venturing, 15</em>(5–6), 411–432. https://doi.org/10.1016/S0883-9026(98)00033-0",
+    "Liñán, F., &amp; Chen, Y.-W. (2009). Development and cross-cultural application of a specific instrument to measure entrepreneurial intentions. <em>Entrepreneurship Theory and Practice, 33</em>(3), 593–617. https://doi.org/10.1111/j.1540-6520.2009.00318.x"
+  ],
+  "itemOverrides": {
+    "tpb:SN5": "Hầu hết các bạn cùng trang lứa với tôi sẽ [thực hiện hành vi]. (khó có khả năng 1 … 7 rất có khả năng)"
+  }
 }

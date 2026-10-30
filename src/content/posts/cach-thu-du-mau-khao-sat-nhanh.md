@@ -2,6 +2,7 @@
 title: "Cách thu đủ mẫu khảo sát nhanh mà không làm hỏng dữ liệu"
 description: "Cách thu đủ mẫu khảo sát khoá luận nhanh: lập lịch ngược từ hạn nộp, so sánh kênh, ưu nhược điểm điền form chéo, quà tặng, panel trả phí, kiểm tra chất lượng."
 pubDatetime: 2026-10-30T01:03:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 ---
@@ -114,7 +115,7 @@ tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 
 <h2>Ghi vào chương 3 thế nào</h2>
 <p>Hội đồng chấp nhận chọn mẫu thuận tiện nếu bạn mô tả trung thực. Chọn mẫu thuận tiện là chọn những người dễ tiếp cận và sẵn lòng tham gia (Etikan và cộng sự, 2016), nên kết quả không suy rộng thống kê ra toàn tổng thể được. Một đoạn mẫu:</p>
-<blockquote><p>Dữ liệu được thu thập từ ngày 05/11 đến 24/11/2026 bằng bảng hỏi trực tuyến, theo phương pháp chọn mẫu thuận tiện kết hợp giới thiệu dây chuyền. Đường liên kết được chia sẻ qua mạng lưới cá nhân của tác giả, các nhóm sinh viên và hai nhóm cộng đồng về ẩm thực (đã được quản trị viên cho phép). Tổng cộng thu về 402 phiếu; 38 phiếu bị loại ở câu gạn lọc, 29 phiếu trả lời sai câu kiểm tra chú ý và 12 phiếu chọn cùng một mức cho mọi phát biểu, còn lại 323 phiếu hợp lệ.</p></blockquote>
+<blockquote><p>Dữ liệu được thu thập từ ngày [ngày bắt đầu] đến [ngày kết thúc] bằng bảng hỏi trực tuyến, theo phương pháp chọn mẫu thuận tiện kết hợp giới thiệu dây chuyền. Đường liên kết được chia sẻ qua mạng lưới cá nhân của tác giả, các nhóm sinh viên và hai nhóm cộng đồng về ẩm thực (đã được quản trị viên cho phép). Tổng cộng thu về 402 phiếu; 38 phiếu bị loại ở câu gạn lọc, 29 phiếu trả lời sai câu kiểm tra chú ý và 12 phiếu chọn cùng một mức cho mọi phát biểu, còn lại 323 phiếu hợp lệ.</p></blockquote>
 
 <h2>Lỗi thường gặp</h2>
 <ul>
@@ -137,6 +138,8 @@ tags: ["thu mẫu","khoá luận","làm sạch dữ liệu"]
 <p>Báo giảng viên sớm. Các lựa chọn hợp lệ: kéo dài thời gian thu, mở thêm kênh, hoặc phân tích với số phiếu hiện có và nêu rõ hạn chế về power trong bài. Không có lựa chọn nào bao gồm việc thêm phiếu không có thật.</p>
 <h3>Có cần loại hết phiếu từ nhóm điền chéo không?</h3>
 <p>Không. Áp dụng cùng tiêu chí lọc như mọi kênh. Phiếu đạt tiêu chí thì giữ, và báo cáo tỉ lệ phiếu đến từ mỗi kênh.</p>
+<h3>Chưa có bảng hỏi thì bắt đầu từ đâu?</h3>
+<p>Tính cỡ mẫu tối thiểu bằng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>, rồi ghép bảng hỏi từ thang đo gốc trong <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> hoặc chọn một trong các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a>. Bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách đưa bảng hỏi lên form để dữ liệu xuất ra dùng được ngay.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

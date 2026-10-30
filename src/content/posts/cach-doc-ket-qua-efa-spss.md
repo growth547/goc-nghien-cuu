@@ -2,6 +2,7 @@
 title: "Cách đọc kết quả EFA trong SPSS: KMO, phương sai, ma trận xoay"
 description: "Đọc kết quả EFA trong SPSS từng bảng: KMO, Bartlett, Communalities, Total Variance Explained, Rotated Component Matrix, xử lý biến tải chéo, ngưỡng có nguồn."
 pubDatetime: 2026-10-30T01:05:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["EFA","SPSS","phân tích dữ liệu"]
 ---
@@ -92,7 +93,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <h2>Biến tải chéo: xử lý từng bước</h2>
 <p>Biến tải chéo là biến có hệ số tải đáng kể lên hai nhân tố trở lên. Nó cho thấy người trả lời không phân biệt rõ câu đó thuộc khái niệm nào, làm yếu giá trị phân biệt. Hair và cộng sự (2010) coi biến tải chéo là ứng viên để loại. Quy trình hợp lý:</p>
 <ol>
-<li><strong>Xác định mức chênh.</strong> Tính hiệu giữa hệ số tải lớn nhất và hệ số tải lớn thứ hai của biến. Nhiều khoá luận ở Việt Nam dùng quy ước: nếu hiệu nhỏ hơn 0,3, biến bị coi là tải chéo và cân nhắc loại. Đây là quy ước thực hành phổ biến, không phải ngưỡng trong Hair và cộng sự (2010), nên nếu dùng, hãy ghi là quy ước và trích nguồn tài liệu tiếng Việt bạn theo.</li>
+<li><strong>Xác định mức chênh.</strong> Tính hiệu giữa hệ số tải lớn nhất và hệ số tải lớn thứ hai của biến. Nhiều khoá luận ở Việt Nam dùng quy ước: nếu hiệu nhỏ hơn 0,3, biến bị coi là tải chéo và cân nhắc loại. Đây là quy ước thực hành phổ biến, không phải ngưỡng trong Hair và cộng sự (2010). Nhiều khoá luận dẫn quy ước này về Jabnoun và Al-Tamimi (2003), một nghiên cứu về chất lượng dịch vụ ngân hàng ở UAE; chúng tôi chưa đối chiếu được câu chữ trong bài gốc nên không khẳng định bài đó đặt ra mốc 0,3. Nếu dùng, hãy viết "theo quy ước thực hành" và chỉ dẫn nguồn sau khi bạn đã tự đọc bài gốc hoặc tài liệu tiếng Việt mà bạn theo.</li>
 <li><strong>Đọc lại nội dung câu.</strong> Câu có hai ý không? Có từ ngữ gần với khái niệm kia không? Ví dụ "Ứng dụng dễ dùng nên giúp tôi đặt món nhanh hơn" vừa đo sự dễ dùng vừa đo hiệu quả. Lý do về nội dung giúp bạn bảo vệ quyết định trước hội đồng.</li>
 <li><strong>Loại từng biến một.</strong> Loại biến có vấn đề nặng nhất trước (chênh lệch nhỏ nhất, hoặc hệ số tải chính thấp nhất), rồi chạy lại EFA. Loại một biến có thể làm biến khác hết tải chéo.</li>
 <li><strong>Giữ tối thiểu 3 biến mỗi nhân tố.</strong> Nhân tố dưới 3 biến thường yếu và không ổn định (Costello &amp; Osborne, 2005). Nếu loại tiếp sẽ còn 2 biến, cân nhắc giữ biến tải chéo nhẹ và nêu trong phần hạn chế.</li>
@@ -138,7 +139,9 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <h3>Đã chạy PLS-SEM thì có cần EFA không?</h3>
 <p>Không bắt buộc, vì mô hình đo lường trong PLS-SEM đã đánh giá hệ số tải, độ tin cậy, giá trị hội tụ và phân biệt (Hair và cộng sự, 2019). Một số giảng viên vẫn yêu cầu EFA như bước sơ bộ; khi đó báo cáo ngắn gọn.</p>
 <h3>Loại biến ở EFA có cần chạy lại Cronbach's alpha không?</h3>
-<p>Có, cho nhân tố bị loại biến hoặc bị gộp, tách. Báo cáo alpha cuối cùng.</p>
+<p>Có, cho nhân tố bị loại biến hoặc bị gộp, tách. Báo cáo alpha cuối cùng, cách đọc ở bài <a href="/goc-nghien-cuu/posts/cronbach-alpha-la-gi/">Cronbach's alpha là gì</a>.</p>
+<h3>Cỡ mẫu bao nhiêu thì chạy được EFA?</h3>
+<p>Quy tắc hay dùng là ít nhất 5 quan sát cho mỗi biến, tốt hơn là 10 (Hair và cộng sự, 2010). Với 16 biến như ví dụ, tối thiểu 80, tốt hơn 160. Bảng so sánh với CFA và các phương pháp khác ở bài <a href="/goc-nghien-cuu/posts/co-mau-nghien-cuu-bao-nhieu-la-du/">cỡ mẫu nghiên cứu bao nhiêu là đủ</a>, tính nhanh bằng <a href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">máy tính cỡ mẫu</a>. Các biến trong ví dụ lấy từ <a href="/goc-nghien-cuu/thang-do/utaut2/">thang đo UTAUT2</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>
@@ -148,6 +151,7 @@ tags: ["EFA","SPSS","phân tích dữ liệu"]
 <li>Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2010). <em>Multivariate data analysis</em> (7th ed.). Pearson Prentice Hall.</li>
 <li>Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. https://doi.org/10.1108/EBR-11-2018-0203</li>
 <li>Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. <em>Psychometrika, 30</em>(2), 179–185. https://doi.org/10.1007/BF02289447</li>
+<li>Jabnoun, N., &amp; Al-Tamimi, H. A. H. (2003). Measuring perceived service quality at UAE commercial banks. <em>International Journal of Quality &amp; Reliability Management, 20</em>(4), 458–472. https://doi.org/10.1108/02656710310468614</li>
 <li>Kaiser, H. F. (1960). The application of electronic computers to factor analysis. <em>Educational and Psychological Measurement, 20</em>(1), 141–151. https://doi.org/10.1177/001316446002000116</li>
 <li>Kaiser, H. F. (1974). An index of factorial simplicity. <em>Psychometrika, 39</em>(1), 31–36. https://doi.org/10.1007/BF02291575</li>
 </ul>

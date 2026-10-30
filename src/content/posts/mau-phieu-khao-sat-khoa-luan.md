@@ -2,6 +2,7 @@
 title: "Mẫu phiếu khảo sát khoá luận: bố cục 6 phần và ví dụ đầy đủ"
 description: "Mẫu phiếu khảo sát khoá luận: lời chào, cam kết bảo mật, câu gạn lọc, thang đo chính, thông tin cá nhân, lời cảm ơn, kèm một phiếu hoàn chỉnh để sửa lại."
 pubDatetime: 2026-10-30T01:02:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["bảng hỏi","khoá luận"]
 ---
@@ -70,7 +71,7 @@ tags: ["bảng hỏi","khoá luận"]
 </ul>
 
 <p><strong>PHẦN B. ĐÁNH GIÁ CỦA ANH/CHỊ VỀ ỨNG DỤNG GIAO ĐỒ ĂN</strong></p>
-<p>Với mỗi phát biểu, anh/chị vui lòng chọn mức độ đồng ý: 1 = Rất không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Rất đồng ý. Khi trả lời, anh/chị hãy nghĩ về ứng dụng giao đồ ăn mình dùng nhiều nhất.</p>
+<p>Với mỗi phát biểu, anh/chị vui lòng chọn mức độ đồng ý: 1 = Hoàn toàn không đồng ý, 2 = Không đồng ý, 3 = Trung lập, 4 = Đồng ý, 5 = Hoàn toàn đồng ý. Khi trả lời, anh/chị hãy nghĩ về ứng dụng giao đồ ăn mình dùng nhiều nhất.</p>
 <table>
 <thead><tr><th>Mã</th><th>Phát biểu (chọn 1 đến 5)</th></tr></thead>
 <tbody>

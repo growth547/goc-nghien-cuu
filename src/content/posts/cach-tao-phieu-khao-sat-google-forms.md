@@ -2,6 +2,7 @@
 title: "Cách tạo phiếu khảo sát Google Forms cho khoá luận: từng bước"
 description: "Tạo phiếu khảo sát khoá luận bằng Google Forms: lưới Likert hay trắc nghiệm, bắt buộc trả lời, chia phần, câu gạn lọc, câu kiểm tra chú ý, xuất sang SPSS."
 pubDatetime: 2026-10-30T01:01:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["Google Forms","bảng hỏi","SPSS"]
 ---
@@ -33,7 +34,7 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <p>Lưới trắc nghiệm gọn nhất, nhưng trên màn hình điện thoại hẹp, các cột bị ép nhỏ hoặc phải kéo ngang, người trả lời dễ bấm nhầm hàng. Lưới cũng khiến việc chọn cùng một cột cho mọi hàng trở nên rất dễ, đúng kiểu trả lời đối phó mà Krosnick (1991) gọi là <em>satisficing</em>. Link chia sẻ qua Zalo, Messenger hay nhóm Facebook chủ yếu được mở trên điện thoại, nên hãy xem trước trên điện thoại thật.</p>
 <p>Phạm vi tuyến tính cho ra số trực tiếp. Tuy vậy, thang có nhãn cho mọi mức thường được người trả lời hiểu nhất quán hơn thang chỉ gắn nhãn hai đầu (Krosnick &amp; Presser, 2010), nên nếu dùng loại này, ghi rõ ý nghĩa 5 mức trong phần mô tả của mục.</p>
 <h3>Mẹo để lưới vẫn xuất ra số</h3>
-<p>Đặt nhãn cột có số đứng đầu: "1. Rất không đồng ý", "2. Không đồng ý", "3. Trung lập", "4. Đồng ý", "5. Rất đồng ý". Khi xử lý, lấy ký tự đầu bằng <code>=VALUE(LEFT(B2;1))</code> (hoặc dấu phẩy thay dấu chấm phẩy, tuỳ thiết lập vùng của Sheets). Dùng một bộ nhãn cho toàn phiếu.</p>
+<p>Đặt nhãn cột có số đứng đầu: "1. Hoàn toàn không đồng ý", "2. Không đồng ý", "3. Trung lập", "4. Đồng ý", "5. Hoàn toàn đồng ý". Khi xử lý, lấy ký tự đầu bằng <code>=VALUE(LEFT(B2;1))</code> (hoặc dấu phẩy thay dấu chấm phẩy, tuỳ thiết lập vùng của Sheets). Dùng một bộ nhãn cho toàn phiếu.</p>
 
 <h2>Bước 3: Bắt buộc trả lời, nhưng có lối thoát</h2>
 <ul>
@@ -108,7 +109,7 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <li>Tab <strong>Câu trả lời</strong>, bấm <strong>Liên kết với Trang tính</strong> (hoặc <strong>Xem trong Trang tính</strong> nếu đã liên kết). Làm việc trên một bản sao, giữ nguyên trang gốc.</li>
 <li>Xoá các dòng chạy thử, dòng bị loại ở câu gạn lọc, và áp dụng các tiêu chí lọc phiếu đã định.</li>
 <li>Đổi tiêu đề cột thành mã biến: "Câu hỏi [Tôi thấy ứng dụng hữu ích...]" thành PE1, không dấu cách.</li>
-<li>Đổi nhãn chữ sang số. Nếu dùng mẹo đánh số ở bước 2, dùng hàm LEFT. Nếu không, dùng <strong>Tìm và thay thế</strong> với tuỳ chọn khớp toàn bộ nội dung ô, thay "Rất không đồng ý" trước "Không đồng ý" để tránh thay nhầm.</li>
+<li>Đổi nhãn chữ sang số. Nếu dùng mẹo đánh số ở bước 2, dùng hàm LEFT. Nếu không, dùng <strong>Tìm và thay thế</strong> với tuỳ chọn khớp toàn bộ nội dung ô, thay "Hoàn toàn không đồng ý" trước "Không đồng ý" để tránh thay nhầm.</li>
 <li>Câu hộp kiểm (chọn nhiều đáp án) xuất ra một ô chứa các đáp án cách nhau bởi dấu phẩy. Tách thành nhiều cột 0 và 1, mỗi đáp án một cột, trước khi đưa vào SPSS.</li>
 <li><strong>Tệp</strong>, <strong>Tải xuống</strong>, chọn Microsoft Excel (.xlsx). Trong SPSS: <strong>File</strong>, <strong>Import Data</strong>, <strong>Excel</strong>, tích "Read variable names from the first row of data".</li>
 <li>Khai báo Values, Measure, Missing trong Variable View theo bảng mã hoá.</li>
@@ -138,6 +139,9 @@ tags: ["Google Forms","bảng hỏi","SPSS"]
 <p>Không, dấu thời gian chỉ ghi lúc gửi (xem bước 10).</p>
 <h3>Xuất dữ liệu ra SPSS có cần tiện ích bổ sung không?</h3>
 <p>Không. Tải file .xlsx rồi dùng File, Import Data, Excel trong SPSS là đủ.</p>
+
+<h3>Có cách nào không phải gõ lại từng câu vào Google Forms?</h3>
+<p>Nếu bảng hỏi của bạn ghép từ các thang đo có trong thư viện, <a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> xuất được một đoạn Google Apps Script tạo form với lưới Likert, câu gạn lọc và câu kiểm tra AC1. Sau khi chạy, vẫn rà lại từng câu theo các bước ở trên. Nếu chưa có bảng hỏi, xem các <a href="/goc-nghien-cuu/mau-bang-hoi/">mẫu bảng hỏi theo đề tài</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

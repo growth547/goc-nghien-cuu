@@ -2,6 +2,7 @@
 title: "Bảng mã hoá thang đo: cách lập cho chương 3 và SPSS"
 description: "Cách lập bảng mã hoá thang đo cho chương 3 và Variable View trong SPSS: đặt mã biến, câu đảo chiều, biến nhân khẩu học, giá trị thiếu, kèm bảng mẫu, cú pháp."
 pubDatetime: 2026-10-30T01:04:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["thang đo","SPSS","khoá luận"]
 ---
@@ -45,7 +46,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 <tr><td>BI3</td><td>Tôi có kế hoạch tiếp tục sử dụng ứng dụng giao đồ ăn thường xuyên.</td></tr>
 </tbody>
 </table>
-<p>Ghi chú dưới bảng: thang đo Likert 5 mức, 1 = Rất không đồng ý đến 5 = Rất đồng ý. PE1, PE2, PE3 tương ứng PE1, PE3, PE4 trong bài gốc. Nguồn: tác giả tổng hợp.</p>
+<p>Ghi chú dưới bảng: thang đo Likert 5 mức, 1 = Hoàn toàn không đồng ý đến 5 = Hoàn toàn đồng ý. PE1, PE2, PE3 tương ứng PE1, PE3, PE4 trong bài gốc. Nguồn: tác giả tổng hợp.</p>
 <p>Nếu khoa của bạn quen dùng bảng có thêm cột "Phát biểu gốc (tiếng Anh)", thêm cột đó. Nó giúp hội đồng kiểm tra chất lượng bản dịch ngay trên bảng.</p>
 <p><a href="/goc-nghien-cuu/cong-cu/bo-khao-sat/">Bộ khảo sát</a> tạo sẵn bảng này: chọn các khái niệm trong mô hình, bấm "Tải bảng mã hoá (Excel)" để nhận file có các cột Mã, Khái niệm, Phát biểu (tiếng Việt), Phát biểu gốc, Đảo điểm, Nguồn và Thang trả lời. Bạn chỉ cần xoá cột không dùng và dán vào Word.</p>
 
@@ -55,7 +56,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 <thead><tr><th>Mã</th><th>Nội dung</th><th>Giá trị</th><th>Thang đo lường (Measure)</th></tr></thead>
 <tbody>
 <tr><td>SC1</td><td>Đặt đồ ăn qua ứng dụng trong 3 tháng gần đây</td><td>1 = Có; 0 = Không</td><td>Nominal</td></tr>
-<tr><td>PE1 đến BI3</td><td>Các phát biểu Likert</td><td>1 = Rất không đồng ý; 2 = Không đồng ý; 3 = Trung lập; 4 = Đồng ý; 5 = Rất đồng ý</td><td>Scale (xem bước 5)</td></tr>
+<tr><td>PE1 đến BI3</td><td>Các phát biểu Likert</td><td>1 = Hoàn toàn không đồng ý; 2 = Không đồng ý; 3 = Trung lập; 4 = Đồng ý; 5 = Hoàn toàn đồng ý</td><td>Scale (xem bước 5)</td></tr>
 <tr><td>AC1</td><td>Câu kiểm tra chú ý</td><td>Đạt nếu = 2; còn lại loại phiếu</td><td>Nominal</td></tr>
 <tr><td>D1</td><td>Giới tính</td><td>1 = Nam; 2 = Nữ; 3 = Khác; 99 = Không muốn trả lời</td><td>Nominal</td></tr>
 <tr><td>D2</td><td>Độ tuổi</td><td>1 = Dưới 18; 2 = 18 đến 22; 3 = 23 đến 27; 4 = 28 đến 35; 5 = Trên 35</td><td>Ordinal</td></tr>
@@ -86,7 +87,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 <tr><td>Type</td><td>Numeric cho mọi câu đã mã hoá thành số</td><td>Numeric</td></tr>
 <tr><td>Width / Decimals</td><td>Decimals = 0 cho câu Likert và nhân khẩu học</td><td>8 / 0</td></tr>
 <tr><td>Label</td><td>Nội dung phát biểu, có dấu tiếng Việt</td><td>Ứng dụng hữu ích trong cuộc sống hằng ngày</td></tr>
-<tr><td>Values</td><td>Nhãn cho từng giá trị</td><td>1 = Rất không đồng ý ... 5 = Rất đồng ý</td></tr>
+<tr><td>Values</td><td>Nhãn cho từng giá trị</td><td>1 = Hoàn toàn không đồng ý ... 5 = Hoàn toàn đồng ý</td></tr>
 <tr><td>Missing</td><td>Mã giá trị thiếu</td><td>99</td></tr>
 <tr><td>Measure</td><td>Nominal, Ordinal hoặc Scale</td><td>Scale</td></tr>
 </tbody>
@@ -96,7 +97,7 @@ tags: ["thang đo","SPSS","khoá luận"]
 <h3>Làm nhanh bằng cú pháp</h3>
 <p>Thay vì bấm từng ô, mở <strong>File</strong>, <strong>New</strong>, <strong>Syntax</strong>, dán đoạn sau (sửa tên biến cho khớp dữ liệu của bạn), bôi đen và chạy:</p>
 <pre><code>VALUE LABELS PE1 TO BI3
-  1 'Rất không đồng ý' 2 'Không đồng ý' 3 'Trung lập' 4 'Đồng ý' 5 'Rất đồng ý'.
+  1 'Hoàn toàn không đồng ý' 2 'Không đồng ý' 3 'Trung lập' 4 'Đồng ý' 5 'Hoàn toàn đồng ý'.
 VARIABLE LEVEL PE1 TO BI3 (SCALE).
 VALUE LABELS D1 1 'Nam' 2 'Nữ' 3 'Khác' 99 'Không muốn trả lời'.
 MISSING VALUES D1 D6 (99).
@@ -130,6 +131,9 @@ EXECUTE.</code></pre>
 <p>Không xoá ở chương 3, vì bảng đó mô tả thang đo bạn đã dùng để thu dữ liệu. Việc loại biến được báo cáo ở chương 4, kèm lý do.</p>
 <h3>Có cần khai báo Label cho từng câu Likert không?</h3>
 <p>Không bắt buộc, nhưng nên. Label giúp bảng kết quả SPSS dễ đọc khi đối chiếu, và bạn có thể tắt hiển thị Label nếu bảng quá rộng.</p>
+
+<h3>Các cột flag lọc phiếu đặt tên thế nào?</h3>
+<p>Dùng tiền tố chung như F_AC (trượt câu kiểm tra), F_NHANH (làm quá nhanh), F_RAPKHUON (rập khuôn), F_LONGSTR (chuỗi trả lời giống nhau dài) và một cột F_TONG cộng các flag. Ghi chúng vào bảng mã hoá như biến bình thường, với giá trị 0 = không, 1 = có. Cách tính từng flag có ở bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>; nếu dữ liệu đến từ Google Forms, bài <a href="/goc-nghien-cuu/posts/cach-tao-phieu-khao-sat-google-forms/">cách tạo phiếu khảo sát bằng Google Forms</a> chỉ cách đổi nhãn chữ sang số trước khi áp bảng mã hoá.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

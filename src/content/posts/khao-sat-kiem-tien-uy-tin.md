@@ -2,6 +2,7 @@
 title: "Khảo sát kiếm tiền uy tín: cách nhận biết trang thật, trang lừa"
 description: "Làm khảo sát kiếm tiền uy tín: checklist nhận biết trang lừa đảo (đòi phí, hứa thu nhập cao, xin OTP), tiêu chí chọn trang thật và kỳ vọng thu nhập hợp lý."
 pubDatetime: 2026-10-29T00:00:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["đáp viên"]
 ---
@@ -68,7 +69,7 @@ tags: ["đáp viên"]
 <h2>Làm sao để phiếu của bạn được tính</h2>
 <p>Ở các trang làm thật, phiếu điền bừa thường bị loại và không có thưởng. Một vài thói quen giúp bạn ít bị từ chối:</p>
 <ul>
-<li>Đọc kỹ từng câu. Nhiều form có câu kiểm tra kiểu "Hãy chọn Đồng ý ở câu này" để xem bạn có đọc không.</li>
+<li>Đọc kỹ từng câu. Nhiều form có câu kiểm tra kiểu "Vui lòng chọn mức 2 – Không đồng ý cho câu này" để xem bạn có đọc không.</li>
 <li>Đừng chọn cùng một mức cho cả trang chỉ để làm nhanh.</li>
 <li>Trả lời nhất quán. Nếu đầu form bạn nói chưa từng dùng sản phẩm, đừng chấm điểm chi tiết nó ở cuối form.</li>
 <li>Câu tự luận viết bằng lời của bạn, ngắn cũng được. Đừng dán từ ChatGPT: người làm nghiên cứu cần trải nghiệm của bạn, và nhiều nền tảng có cách nhận ra câu trả lời do AI viết.</li>

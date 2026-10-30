@@ -2,6 +2,7 @@
 title: "Cách viết chương 4 kết quả nghiên cứu: cấu trúc và câu mẫu"
 description: "Cách viết chương 4 khoá luận định lượng: mô tả mẫu, Cronbach's alpha, EFA, tương quan, hồi quy hoặc PLS-SEM, kiểm định giả thuyết, thảo luận, kèm câu mẫu."
 pubDatetime: 2026-10-30T01:06:00+07:00
+modDatetime: 2026-10-30T09:06:28+07:00
 featured: false
 tags: ["khoá luận","SPSS","PLS-SEM"]
 ---
@@ -138,6 +139,8 @@ tags: ["khoá luận","SPSS","PLS-SEM"]
 <p>Không, nếu bạn báo cáo trung thực và giải thích có căn cứ trong phần thảo luận. Sửa dữ liệu hay đổi giả thuyết sau khi thấy kết quả mới là vấn đề.</p>
 <h3>Có công cụ nào tạo sẵn đoạn văn chương 4 không?</h3>
 <p><a href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">Công cụ phân tích dữ liệu</a> nhận file Excel khảo sát, chạy lọc phiếu, Cronbach's alpha, EFA, tương quan, hồi quy và sinh đoạn văn chương 4 viết sẵn. Dùng nó để đối chiếu với SPSS và làm bản nháp, rồi viết lại theo giọng văn và bối cảnh đề tài của bạn.</p>
+<h3>Hội đồng thường hỏi gì về chương 4?</h3>
+<p>Hay gặp nhất: vì sao loại biến, có đa cộng tuyến không, R² có thấp không, giả thuyết bị bác giải thích thế nào. Câu trả lời mẫu cho từng câu có ở bài <a href="/goc-nghien-cuu/posts/hoi-dong-hoi-gi-ve-phan-khao-sat/">hội đồng hay hỏi gì về phần khảo sát</a>. Tiêu chí loại phiếu ở mục 4.1 phải khớp với chương 3; cách đặt tiêu chí có ở bài <a href="/goc-nghien-cuu/posts/cach-loc-phieu-khao-sat-khong-hop-le/">cách lọc phiếu khảo sát không hợp lệ</a>. Nguồn và câu hỏi gốc của các thang đo UTAUT2 dùng trong ví dụ có ở <a href="/goc-nghien-cuu/thang-do/utaut2/">trang thang đo UTAUT2</a>.</p>
 
 <h2>Tài liệu tham khảo</h2>
 <ul>

@@ -175,7 +175,7 @@ tags: ["cỡ mẫu","khoá luận","PLS-SEM"]
 
 <h2>Năm lỗi hay gặp khi trình bày cỡ mẫu</h2>
 <ol>
-<li><strong>Dùng Slovin nhưng không có N.</strong> Ghi "N là toàn bộ người dùng mạng xã hội tại Việt Nam" mà không có nguồn số liệu thì công thức mất căn cứ.</li>
+<li><strong>Dùng Slovin nhưng không có N.</strong> Ghi "N là toàn bộ người dùng mạng xã hội tại Việt Nam" mà không có nguồn số liệu thì công thức mất căn cứ. Nếu cần quy mô tổng thể cấp quốc gia, lấy từ nguồn chính thức và ghi năm, ví dụ <a href="/goc-nghien-cuu/du-lieu/dan-so/">dân số Việt Nam</a> và <a href="/goc-nghien-cuu/du-lieu/nguoi-dung-internet/">tỉ lệ người dùng internet</a> theo Ngân hàng Thế giới; với tổng thể vài triệu người trở lên, phần hiệu chỉnh gần như không đổi kết quả.</li>
 <li><strong>Tính đúng cỡ mẫu xác suất rồi chọn mẫu thuận tiện.</strong> Công thức Cochran giả định mẫu ngẫu nhiên. Nếu bạn phát link qua mạng xã hội, hãy nói rõ con số chỉ là tham chiếu, và nêu hạn chế về tính đại diện.</li>
 <li><strong>Đếm nhầm m.</strong> Trong 50 + 8m, m là số biến độc lập, không phải số câu hỏi. Ngược lại, trong quy tắc của Hair, cái cần đếm là số câu hỏi.</li>
 <li><strong>Quên phần phiếu bị loại.</strong> Thu đúng 260 phiếu rồi loại 30 phiếu thì bạn đã dưới mức 10:1.</li>

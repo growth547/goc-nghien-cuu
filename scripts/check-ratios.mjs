@@ -6,7 +6,7 @@ import { readFileSync } from "node:fs";
 const src = readFileSync(new URL("../src/tools/tinh-chi-so-tai-chinh.html", import.meta.url), "utf8");
 const block = src.split("//#fr-start")[1]?.split("//#fr-end")[0];
 if (!block) { console.log("FAIL: markers //#fr-start, //#fr-end not found"); process.exit(1); }
-const T = new Function(`${block}; return { FIELDS, REFS, VARS, num, headerKey, parse, compute, toCSV, measurementText };`)();
+const T = new Function(`${block}; return { FIELDS, REFS, VARS, UNITS, num, headerKey, detectDecimal, yearOf, parse, compute, pctile, winsorize, describe, checkData, csvColumns, toCSV, codeSnippets, measurementText };`)();
 
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; console.log(`FAIL ${msg}`); } };
@@ -14,9 +14,9 @@ const near = (got, want, msg, tol = 1e-9) => ok(Number.isFinite(got) && Math.abs
 const isNaNv = (got, msg) => ok(Number.isNaN(got), `${msg}: got ${got}, want empty`);
 
 // ---- number parsing ----
-for (const [s, v] of [["1.234.567", 1234567], ["1,234,567", 1234567], ["1 234 567", 1234567], ["(1.250)", -1250], ["-1.234,5", -1234.5], ["1,234.5", 1234.5], ["6,4", 6.4], ["12.5", 12.5], ["1,234", 1234], ["0", 0], ["11,5%", 11.5]])
+for (const [s, v] of [["1.234.567", 1234567], ["1,234,567", 1234567], ["1 234 567", 1234567], ["(1.250)", -1250], ["-1.234,5", -1234.5], ["1,234.5", 1234.5], ["6,4", 6.4], ["12.5", 12.5], ["1,234", 1234], ["0", 0], ["11,5%", 11.5], ["-", 0], ["–", 0], ["0.125", 0.125], ["0,125", 0.125], ["−5", -5], ["1.234,567", 1234.567]])
   near(T.num(s), v, `num("${s}")`);
-for (const s of ["", "-", "abc", "1/1/2020"]) isNaNv(T.num(s), `num("${s}")`);
+for (const s of ["", "abc", "1/1/2020", "n/a"]) isNaNv(T.num(s), `num("${s}")`);
 
 // ---- headers ----
 for (const [h, k] of [["ta", "ta"], ["270", "ta"], ["CĐKT 270", "ta"], ["Tổng cộng tài sản", "ta"], ["tong cong tai san", "ta"], ["KQKD 60", "ni"], ["Mã CK", "firm"], ["Năm", "year"], ["51+52", "tax"], ["mcap", "mcap"]])
@@ -115,6 +115,130 @@ for (const v of T.VARS) ok(T.REFS[v.cite], `${v.id} cites unknown reference ${v.
 for (const [k, r] of Object.entries(T.REFS)) ok(/^10\.\d{4,9}\/\S+$/.test(r.doi) && /\(\d{4}\)/.test(r.apa), `reference ${k} needs a DOI and (year)`);
 ok(new Set(T.VARS.map(v => v.id)).size === T.VARS.length, "variable ids are unique");
 for (const tpl of ["firm", "bank"]) ok(new Set(T.FIELDS[tpl].map(f => f.key)).size === T.FIELDS[tpl].length, `${tpl} field keys are unique`);
+
+// ---- header aliases, ambiguity, statement-scoped codes ----
+for (const [h, k, tpl = "firm", sec] of [["Tổng tài sản", "ta"], ["LNST", "ni"], ["Doanh thu thuần", "rev"], ["Phải thu khách hàng", "ar"], ["Vay ngắn hạn", "std"], ["Total assets", "ta"], ["51", "taxc"], ["52", "taxd"], ["Mã chứng khoán", "firm"],
+  ["20", "cfo", "firm", "LCTT"], ["02", "da", "firm", "LCTT"], ["Cho vay khách hàng", "loans", "bank"], ["Tiền gửi của khách hàng", "deposits", "bank"], ["Lợi nhuận sau thuế", "ni", "bank"], ["Tỷ lệ nợ xấu (%)", "nplr", "bank"], ["Ngân hàng", "firm", "bank"]])
+  ok(T.headerKey(h, tpl, sec) === k, `headerKey("${h}", ${tpl}, ${sec}) = ${T.headerKey(h, tpl, sec)}, want ${k}`);
+ok(T.headerKey("Lợi nhuận", "firm") === null, "ambiguous 'Lợi nhuận' is not guessed");
+ok(T.headerKey("20", "firm", "KQKD") === null, "KQKD 20 (gross profit) is not LCTT 20");
+for (const [c, y] of [["2023", 2023], ["Năm 2023", 2023], ["31/12/2023", 2023], ["01/01/2023", 2022], ["FY2021", 2021], ["Thuyết minh", null], ["Mã số", null]])
+  ok(T.yearOf(c) === y, `yearOf("${c}") = ${T.yearOf(c)}, want ${y}`);
+
+// ---- decimal mark decided for the whole table ----
+ok(T.detectDecimal([["1,250", "12,5"]]) === ",", "comma decimal detected from 12,5");
+ok(T.detectDecimal([["1,250", "0.5"]]) === ".", "dot decimal detected from 0.5");
+ok(T.detectDecimal([["1.234.567", "1,250"]]) === ",", "dot thousands imply comma decimals");
+ok(T.detectDecimal([["1,250"]]) === null, "1,250 alone is ambiguous");
+near(T.parse("firm\tyear\tta\tni\nX\t2023\t1,250\t12,5", "firm").data[0].ta, 1.25, "1,250 is 1.25 in a comma-decimal table");
+near(T.parse('firm,year,ta,ni\nX,2023,"1,250",0.5', "firm").data[0].ta, 1250, "1,250 is 1250 in a dot-decimal table");
+near(T.parse("Mã CK;Năm;Tổng tài sản;LNST\nVNM;2023;1.234,5;12,5", "firm").data[0].ta, 1234.5, "semicolon CSV with Vietnamese numbers");
+
+// ---- full vertical BCTC with title, Mã số, Thuyết minh, date columns and KQKD/LCTT codes that collide ----
+const bctc = [
+  "CÔNG TY CỔ PHẦN XYZ", "BẢNG CÂN ĐỐI KẾ TOÁN\t\t\t\t",
+  "Chỉ tiêu\tMã số\tThuyết minh\t31/12/2023\t01/01/2023", "Mã CK\t\t\tXYZ\tXYZ",
+  "TÀI SẢN NGẮN HẠN\t100\t\t600\t500", "Tiền và các khoản tương đương tiền\t110\tV.1\t90\t80", "Tiền\t111\t\t50\t40",
+  "TỔNG CỘNG TÀI SẢN\t270\t\t1.200\t1.000", "NỢ PHẢI TRẢ\t300\t\t700\t550", "VỐN CHỦ SỞ HỮU\t400\t\t500\t450",
+  "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH\t\t\t\t",
+  "Doanh thu thuần về bán hàng và cung cấp dịch vụ\t10\t\t1.500\t1.300", "Giá vốn hàng bán\t11\t\t(1.100)\t(950)",
+  "Lợi nhuận gộp về bán hàng và cung cấp dịch vụ\t20\t\t400\t350", "Chi phí tài chính\t22\t\t30\t25", "Trong đó: Chi phí lãi vay\t23\t\t20\t18",
+  "Tổng lợi nhuận kế toán trước thuế\t50\t\t120\t100", "Chi phí thuế TNDN hiện hành\t51\t\t25\t21", "Chi phí thuế TNDN hoãn lại\t52\t\t(1)\t-",
+  "Lợi nhuận sau thuế thu nhập doanh nghiệp\t60\t\t96\t79",
+  "Lợi nhuận trước thuế\t01\t\t120\t100", "Khấu hao TSCĐ và BĐSĐT\t02\t\t40\t35", "Lưu chuyển tiền thuần từ hoạt động kinh doanh\t20\t\t110\t90",
+  "Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác\t21\t\t(80)\t(60)",
+].join("\n");
+const PX = T.parse(bctc, "firm");
+ok(PX.transposed && PX.data.length === 2 && PX.data.every(r => r.firm === "XYZ"), `vertical BCTC: ${PX.data.length} rows of XYZ`);
+const x23 = PX.data.find(r => r.year === 2023) ?? {}, x22 = PX.data.find(r => r.year === 2022) ?? {};
+for (const [k, v] of Object.entries({ ta: 1200, ca: 600, cash: 90, tl: 700, eq: 500, rev: 1500, cogs: -1100, int: 20, ebt: 120, tax: 24, ni: 96, da: 40, cfo: 110, capex: -80 }))
+  near(x23[k], v, `vertical BCTC 2023 ${k}`);
+near(x22.ta, 1000, "01/01/2023 column is year 2022");
+near(x22.tax, 21, "tax = 51 + 52 with '-' as zero");
+const RX = T.compute(PX.data, "firm", false);
+near(get("XYZ", 2023, "gpm", RX), 400 / 1500, "gross margin with cost of sales in parentheses");
+near(get("XYZ", 2023, "etr", RX), 24 / 120, "ETR from codes 51 + 52");
+near(get("XYZ", 2023, "capex", RX), 80 / 1000, "capex over previous-year assets from vertical input");
+
+// ---- long data (firm, year, variable, value) and a table without firm column ----
+const PL = T.parse("firm,year,variable,value\nA,2022,ta,100\nA,2022,ni,5\nA,2023,ta,110\nA,2023,ni,6", "firm");
+near(get("A", 2023, "roa", T.compute(PL.data, "firm", false)), 6 / 110, "roa from long data");
+const PN = T.parse("year\tta\tni\n2022\t100\t5\n2023\t110\t6", "firm");
+ok(PN.errors.length === 0 && PN.data.length === 2 && PN.data[0].firm === "DN" && PN.notes.length === 1, "no firm column: one firm named DN");
+
+// ---- bank: CAR as decimal or percent, NPL ratio when the amount is missing ----
+const PB2 = T.parse("firm\tyear\tta\tloans\tcar\tnplr\nB\t2023\t100\t60\t0,119\t1,8\nC\t2023\t100\t60\t12,5\t", "bank");
+const RB2 = T.compute(PB2.data, "bank", false);
+near(get("B", 2023, "car", RB2), 0.119, "CAR entered as a decimal is kept");
+near(get("C", 2023, "car", RB2), 0.125, "CAR entered as percent is divided by 100");
+near(get("B", 2023, "npl", RB2), 0.018, "NPL from the published ratio when the amount is missing");
+isNaNv(get("C", 2023, "npl", RB2), "NPL empty without amount or ratio");
+
+// ---- negative equity under averaging, units for price × shares ----
+const neg = T.parse("firm\tyear\tni\teq\tta\nN\t2022\t5\t(10)\t100\nN\t2023\t8\t40\t120", "firm");
+isNaNv(get("N", 2023, "roe", T.compute(neg.data, "firm", { avg: true })), "ROE with average equity is empty when last year's equity was negative");
+near(get("N", 2023, "roe", T.compute(neg.data, "firm", false)), 8 / 40, "ROE on ending equity still computed");
+const psu = T.parse("firm\tyear\tta\ttl\teq\tprice\tshares\nX\t2022\t1000\t400\t600\t20000\t45000000", "firm");
+near(T.compute(psu.data, "firm", { unit: "trieu" }).rows[0].values.q, (20000 * 45000000 / 1e6 + 400) / 1000, "price × shares converted to triệu đồng");
+
+// ---- Stata percentiles, winsorizing, lags, descriptive statistics ----
+const s5 = [1, 2, 3, 4, 5], s10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+near(T.pctile(s10, 50), 5.5, "pctile 50 of 1..10"); near(T.pctile(s5, 50), 3, "pctile 50 of 1..5");
+near(T.pctile(s5, 1), 1, "pctile 1 of 5 values"); near(T.pctile(s5, 99), 5, "pctile 99 of 5 values");
+near(T.pctile(s10, 25), 3, "pctile 25 of 1..10 (P = 2.5, 3rd value)");
+near(T.pctile(Array.from({ length: 200 }, (_, i) => i + 1), 1), 2.5, "pctile 1 of 1..200 (P = 2, mean of 2nd and 3rd)");
+const fake = { vars: [{ id: "x" }], rows: Array.from({ length: 200 }, (_, i) => ({ values: { x: i + 1 } })) };
+fake.rows[5].values.x = NaN;
+T.winsorize(fake, 1);
+const xs = Array.from({ length: 200 }, (_, i) => i + 1).filter(v => v !== 6);
+ok(fake.bounds.x.lo === xs[Math.ceil(199 * 0.01) - 1], `winsor p1 of 199 values = ${xs[Math.ceil(199 * 0.01) - 1]}, got ${fake.bounds.x.lo}`);
+ok(fake.bounds.x.hi === xs[Math.ceil(199 * 0.99) - 1], `winsor p99 of 199 values = ${xs[Math.ceil(199 * 0.99) - 1]}, got ${fake.bounds.x.hi}`);
+ok(fake.rows[0].final.x === fake.bounds.x.lo && fake.rows[199].final.x === fake.bounds.x.hi && fake.rows[100].final.x === 101, "winsorized values clamp only the tails");
+ok(fake.bounds.x.nlo === 1 && fake.bounds.x.nhi === 1, `one value replaced at each end, got ${fake.bounds.x.nlo}/${fake.bounds.x.nhi}`);
+ok(Number.isNaN(fake.rows[5].final.x), "missing stays missing after winsorizing");
+ok(fake.rows[0].values.x === 1, "raw value kept beside the winsorized one");
+const RW = T.compute(T.parse(firmText, "firm").data, "firm", { winsor: 1, lag: true });
+near(RW.rows.find(r => r.firm === "AAA" && r.year === 2022).lag.roa, RW.rows.find(r => r.firm === "AAA" && r.year === 2021).final.roa, "lag of roa is the previous year's value");
+isNaNv(RW.rows.find(r => r.firm === "AAA" && r.year === 2021).lag.roa, "no lag across the 2019→2021 gap");
+isNaNv(RW.rows.find(r => r.firm === "BBB" && r.year === 2022).lag.roa, "no lag across firms");
+const ds = T.describe(R).find(d => d.id === "roa"), roaAll = R.rows.map(r => r.values.roa);
+const mean = roaAll.reduce((a, b) => a + b, 0) / 5;
+ok(ds.n === 5, "describe N"); near(ds.mean, mean, "describe mean");
+near(ds.sd, Math.sqrt(roaAll.reduce((a, b) => a + (b - mean) ** 2, 0) / 4), "describe SD with n − 1");
+near(ds.min, Math.min(...roaAll), "describe min"); near(ds.max, Math.max(...roaAll), "describe max");
+
+// ---- panel CSV: unique Stata/R/EViews names, winsorized and lag columns ----
+const hd = T.toCSV(P.data, RW, "firm").trim().split("\n");
+const h0 = hd[0].split(",");
+ok(new Set(h0).size === h0.length, `CSV column names are unique: ${h0.filter((c, i) => h0.indexOf(c) !== i)}`);
+ok(new Set(h0.map(c => c.toLowerCase())).size === h0.length, "CSV names stay unique for case-insensitive EViews");
+ok(h0.every(c => /^[a-z][a-z0-9_]{0,31}$/.test(c)), "CSV names are valid Stata names");
+for (const c of ["cash", "cash_ta", "capex", "capex_ta", "roa", "roa_w", "roa_w_l1"]) ok(h0.includes(c), `CSV has column ${c}`);
+const row22 = hd.find(l => l.startsWith("AAA,2022,")).split(",");
+near(+row22[h0.indexOf("roa_w_l1")], RW.rows.find(r => r.firm === "AAA" && r.year === 2021).final.roa, "CSV lag column", 1e-8);
+const hb = T.toCSV(PB.data, RB, "bank").trim().split("\n")[0].split(",");
+ok(new Set(hb).size === hb.length && hb.includes("npl") && hb.includes("npl_ratio") && hb.includes("car_ratio"), "bank CSV keeps npl input apart from npl_ratio");
+const code = T.codeSnippets(RW, "firm", "f.csv");
+ok(/xtset id year/.test(code) && /pdata\.frame/.test(code) && /pagestruct/.test(code), "Stata, R and EViews code");
+
+// ---- data checks ----
+const bad = T.parse("firm\tyear\tta\ttl\teq\nK\t2022\t1000\t400\t500\nK\t2023\t1100000\t500000\t600000", "firm");
+const w = T.checkData(bad.data, "firm", "ty");
+ok(w.some(m => /K 2022: tổng tài sản/.test(m)), "balance-sheet identity violation reported");
+ok(w.some(m => /100 lần/.test(m)), "unit jump between years reported");
+ok(T.checkData(P.data, "firm", "ty").length === 0, `clean fixture has no warnings: ${T.checkData(P.data, "firm", "ty")}`);
+ok(T.checkData(P.data, "firm", "dong").some(m => /Đơn vị/.test(m)), "small totals in đồng trigger a unit warning");
+
+// ---- measurement paragraph mentions unit, winsorizing and lags ----
+const mw = T.measurementText(RW, RW.opts).html;
+ok(/winsorize ở phân vị 1% và 99%/.test(mw) && /Biến trễ/.test(mw) && /đơn vị đồng/.test(mw), "paragraph states winsorizing, lag and unit");
+
+// ---- vertical statement with "Năm nay / Năm trước" columns: the year comes from the title ----
+const rel = T.parse(["BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH", "Cho năm tài chính kết thúc ngày 31/12/2024", "Chỉ tiêu\tMã số\tNăm nay\tNăm trước", "Doanh thu thuần về bán hàng và cung cấp dịch vụ\t10\t900\t800", "Lợi nhuận sau thuế thu nhập doanh nghiệp\t60\t45\t40"].join("\n"), "firm");
+ok(rel.transposed && rel.errors.length === 0 && rel.data.map(r => r.year).join() === "2023,2024", `Năm nay / Năm trước read as 2024 / 2023: ${rel.data.map(r => r.year)} ${rel.errors}`);
+near(rel.data[1].rev, 900, "Năm nay column holds the report year");
+const relNo = T.parse(["Chỉ tiêu\tMã số\tNăm nay\tNăm trước", "Doanh thu thuần\t10\t900\t800", "LNST\t60\t45\t40"].join("\n"), "firm");
+ok(relNo.errors.some(e => /Năm nay/.test(e)), "Năm nay without a year in the title asks for year headers");
 
 if (fails) { console.log(`\n${fails} of ${n} checks failed`); process.exit(1); }
 console.log(`OK ${n} calculator checks`);

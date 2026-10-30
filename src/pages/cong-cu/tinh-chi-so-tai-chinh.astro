@@ -1,14 +1,53 @@
 ---
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import ToolLayout from "@/layouts/ToolLayout.astro";
-import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
+import rawHtml from "@/tools/tinh-chi-so-tai-chinh.html?raw";
+
+// Listed-bank panel from /du-lieu/ngan-hang-niem-yet/ (when that dataset exists): the first CSV endpoint or static CSV
+// whose path names it. The tool shows its "Nạp bộ dữ liệu ngân hàng niêm yết" button only when a URL is found.
+function bankCsvUrl(): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const found: string[] = [];
+  const scan = (dir: string, prefix: string, ext: string) => {
+    if (!existsSync(dir)) return;
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.isDirectory() && e.name.startsWith("ngan-hang-niem-yet"))
+        scan(join(dir, e.name), `${prefix}${e.name}/`, ext);
+      else if (
+        e.isFile() &&
+        e.name.endsWith(ext) &&
+        !e.name.includes("[") &&
+        (prefix.includes("ngan-hang-niem-yet") ||
+          e.name.startsWith("ngan-hang-niem-yet"))
+      )
+        found.push(
+          `${base}/du-lieu/${prefix}${e.name.slice(0, -ext.length)}.csv`
+        );
+    }
+  };
+  scan(join(process.cwd(), "src/pages/du-lieu"), "", ".csv.ts");
+  scan(join(process.cwd(), "public/du-lieu"), "", ".csv");
+  return (
+    found.sort(
+      (a, b) =>
+        Number(/codebook|tu-dien/.test(a)) -
+          Number(/codebook|tu-dien/.test(b)) || a.length - b.length
+    )[0] ?? ""
+  );
+}
+const html = rawHtml.replace(
+  'data-bank-csv=""',
+  `data-bank-csv="${bankCsvUrl()}"`
+);
 ---
 
 <ToolLayout
   slug="tinh-chi-so-tai-chinh"
   title="Tính chỉ số tài chính từ BCTC: ROA, ROE, đòn bẩy, Z-score, NIM"
   h1="Tính chỉ số tài chính từ báo cáo tài chính"
-  description="Dán số liệu BCTC của nhiều doanh nghiệp hoặc ngân hàng qua nhiều năm, nhận ROA, ROE, đòn bẩy, Altman Z, Tobin's Q, NIM, NPL, Z-score kèm công thức, file dữ liệu bảng CSV và đoạn đo lường biến cho chương 3."
-  lede="Dán chỉ tiêu từ báo cáo tài chính (mỗi dòng một doanh nghiệp trong một năm). Công thức hiện rõ cho từng biến, có file dữ liệu bảng để chạy Stata, R hoặc EViews và đoạn văn đo lường biến có trích dẫn."
+  description="Dán BCTC doanh nghiệp, ngân hàng nhiều năm, nhận ROA, ROE, đòn bẩy, Altman Z, Tobin's Q, NIM, NPL kèm công thức, winsorize, biến trễ, thống kê mô tả, CSV cho Stata, R."
+  lede="Dán chỉ tiêu từ báo cáo tài chính (mỗi dòng một doanh nghiệp trong một năm, hoặc nguyên bảng dọc chép từ BCTC). Công thức hiện rõ cho từng biến; chọn số dư cuối kỳ hay bình quân, winsorize, biến trễ; có thống kê mô tả, file dữ liệu bảng cho Stata, R, EViews và đoạn văn đo lường biến có trích dẫn."
   html={html}
 >
   <Fragment slot="guide">
@@ -16,30 +55,44 @@ import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
     <ol>
       <li>
         Chọn mẫu báo cáo: <strong>doanh nghiệp phi tài chính</strong> (Thông tư 200/2014/TT-BTC)
-        hoặc <strong>ngân hàng</strong>
-        (Thông tư 49/2014/TT-NHNN). Hai mẫu có danh sách chỉ tiêu khác nhau; bấm "Danh
-        sách cột được nhận" để xem.
+        hoặc <strong>ngân hàng</strong> (Thông tư 49/2014/TT-NHNN), và <strong
+          >đơn vị</strong
+        > của số liệu (đồng, nghìn, triệu hay tỷ đồng). Hai mẫu có danh sách chỉ tiêu
+        khác nhau; bấm "Danh sách cột được nhận" để xem.
       </li>
       <li>
         Bấm <strong>Tải file mẫu (CSV)</strong>, mở bằng Excel và điền số liệu:
-        mỗi dòng là một doanh nghiệp trong một năm, cột
-        <code>firm</code> là mã chứng khoán, cột <code>year</code> là năm tài chính.
-        Không cần điền đủ mọi cột: biến nào thiếu chỉ tiêu thì để trống, công cụ nêu
-        rõ còn thiếu gì.
+        mỗi dòng là một doanh nghiệp trong một năm, cột <code>firm</code> là mã chứng
+        khoán, cột <code>year</code> là năm tài chính. Không cần điền đủ mọi cột:
+        biến nào thiếu chỉ tiêu thì để trống, công cụ nêu rõ còn thiếu gì.
       </li>
       <li>
         Bôi đen bảng trong Excel (kể cả dòng tiêu đề), sao chép và dán vào ô dữ
         liệu, rồi bấm <strong>Tính chỉ số</strong>. Tên cột có thể là mã ngắn (<code
           >ta</code
-        >), mã số trên BCTC (<code>270</code>, <code>KQKD 60</code>) hoặc tên
-        chỉ tiêu tiếng Việt. Bảng dọc của một doanh nghiệp (chỉ tiêu theo dòng,
-        năm theo cột, như khi chép từ BCTC) cũng được nhận.
+        >), mã số trên BCTC (<code>270</code>, <code>KQKD 60</code>), tên chỉ
+        tiêu tiếng Việt (<code>Tổng tài sản</code>, <code>LNST</code>) hoặc
+        tiếng Anh (<code>Total assets</code>). Có thể chép nguyên BCTC của một
+        doanh nghiệp theo chiều dọc, gồm cả cột Mã số, Thuyết minh và các cột
+        năm (<code>Năm 2023</code>,
+        <code>31/12/2023</code>, hoặc <code>Năm nay</code>/<code>Năm trước</code
+        > khi dòng tiêu đề có ghi năm): công cụ đọc mã số theo đúng báo cáo, nên mã
+        20 của KQKD (lợi nhuận gộp) không bị nhầm với mã 20 của LCTT.
+      </li>
+      <li>
+        Đọc mục <strong>Kiểm tra số liệu</strong>: công cụ báo những dòng mà
+        tổng tài sản khác nợ phải trả cộng vốn chủ sở hữu, LNTT trừ thuế khác
+        LNST, hoặc tổng tài sản nhảy hơn 100 lần giữa hai năm (thường do nhập
+        lẫn đơn vị).
       </li>
       <li>
         Bấm <strong>Tải dữ liệu bảng (CSV)</strong> để có file dạng dài (một dòng
-        một doanh nghiệp – năm) gồm cả chỉ tiêu gốc và biến đã tính. File dùng dấu
-        chấm thập phân, mở thẳng bằng Stata (<code>import delimited</code>) hoặc
-        R (<code>read.csv</code>).
+        một doanh nghiệp – năm) gồm chỉ tiêu gốc, biến đã tính và, nếu chọn, biến
+        đã winsorize (đuôi <code>_w</code>) và biến trễ (đuôi <code>_l1</code>).
+        Mục "Lệnh đọc file" có sẵn lệnh Stata (<code>import delimited</code>,
+        <code>xtset</code>), R (<code>plm</code>) và EViews (<code
+          >pagestruct</code
+        >).
       </li>
     </ol>
     <p>
@@ -50,25 +103,40 @@ import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
     <h2>Nhập số liệu đúng cách</h2>
     <ul>
       <li>
-        <strong>Đơn vị:</strong> giữ một đơn vị cho toàn bộ bảng và ghi vào chương
-        3 (biến quy mô ln tổng tài sản phụ thuộc đơn vị). Nhập vốn hoá thị trường
-        vào cột <code>mcap</code> cùng đơn vị; chỉ dùng <code>price</code> × <code
+        <strong>Đơn vị:</strong> giữ một đơn vị cho toàn bộ bảng và chọn đúng ô "Đơn
+        vị số liệu BCTC" (biến quy mô ln tổng tài sản phụ thuộc đơn vị; đoạn văn chương
+        3 ghi đơn vị này). Vốn hoá thị trường nhập vào cột <code>mcap</code> cùng
+        đơn vị với BCTC; nếu nhập <code>price</code> (đồng/cổ phiếu) và <code
           >shares</code
-        >
-        khi BCTC nhập theo đồng.
+        >, công cụ tự đổi giá × số cổ phiếu sang đơn vị đã chọn.
       </li>
       <li>
-        <strong>Số âm:</strong> BCTC ghi số âm trong ngoặc, ví dụ <code
-          >(1.250)</code
-        >; công cụ đọc là −1.250. Tiền chi mua sắm tài sản cố định (LCTT mã 21)
-        và cổ tức đã trả (LCTT mã 36) được lấy giá trị tuyệt đối.
+        <strong>Số âm và số 0:</strong> BCTC ghi số âm trong ngoặc, ví dụ
+        <code>(1.250)</code>; công cụ đọc là −1.250. Ô chỉ có dấu gạch
+        <code>-</code> (định dạng kế toán của Excel) được hiểu là 0; ô trống là thiếu
+        số liệu. Giá vốn, chi phí lãi vay, tiền chi mua sắm tài sản cố định (LCTT
+        mã 21), cổ tức đã trả (LCTT mã 36), chi phí hoạt động và chi phí dự phòng
+        của ngân hàng được lấy giá trị tuyệt đối, nên ghi dương hay trong ngoặc đều
+        được.
       </li>
       <li>
-        <strong>Dấu phân cách:</strong>
-        <code>1.234.567</code>, <code>1,234,567</code> và <code>1 234 567</code> đọc
-        như nhau;
-        <code>6,4</code> là số thập phân. Tránh số thập phân có đúng ba chữ số lẻ:
-        <code>1,234</code> được hiểu là 1234.
+        <strong>Dấu phân cách:</strong> công cụ xem cả bảng để biết dấu thập phân
+        là dấu phẩy (Excel tiếng Việt) hay dấu chấm (Excel tiếng Anh). Trong bảng
+        có
+        <code>6,4</code> thì <code>1,250</code> là 1,25; trong bảng có
+        <code>0.5</code> thì <code>1,250</code> là 1250. <code>0.125</code> luôn là
+        số thập phân.
+      </li>
+      <li>
+        <strong>Thuế TNDN:</strong> nhập cột <code>tax</code> (mã 51 + 52), hoặc hai
+        cột <code>51</code> và <code>52</code> riêng, công cụ tự cộng.
+      </li>
+      <li>
+        <strong>Ngân hàng:</strong> CAR nhập dạng phần trăm (11,9) hay thập phân (0,119)
+        đều được. Nếu chỉ có tỷ lệ nợ xấu ngân hàng công bố, nhập vào cột
+        <code>nplr</code> (đơn vị %); khi có cả số nợ xấu nhóm 3–5 (<code
+          >npl</code
+        >) và dư nợ, công cụ ưu tiên tự tính.
       </li>
       <li>
         <strong>BCTC hợp nhất hay riêng:</strong> chọn một loại và dùng thống nhất.
@@ -79,8 +147,8 @@ import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
 
     <h2>Công thức và quy ước tính</h2>
     <p>
-      Bảng "Công thức đã dùng" dưới kết quả liệt kê công thức của từng biến;
-      trang của từng biến trong
+      Bảng "Công thức đã dùng" dưới kết quả liệt kê công thức và tên cột CSV của
+      từng biến; trang của từng biến trong
       <a href="/goc-nghien-cuu/bien-nghien-cuu/">thư viện biến nghiên cứu</a> ghi
       biến thể, dấu kỳ vọng và code Stata, R. Một số quy ước cần ghi vào chương 3:
     </p>
@@ -89,17 +157,21 @@ import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
         <strong>Số cuối kỳ hay bình quân:</strong> mặc định mẫu số là số dư cuối kỳ.
         Chọn "bình quân đầu kỳ và cuối kỳ" thì các biến có số dư ở mẫu số (ROA, ROE,
         vòng quay tài sản, chu kỳ chuyển đổi tiền, NIM, chi phí dự phòng) cần năm
-        liền trước, nên năm đầu tiên của mỗi doanh nghiệp bị trống.
+        liền trước, nên năm đầu tiên của mỗi doanh nghiệp bị trống. Đòn bẩy, thanh
+        khoản, quy mô luôn dùng số cuối kỳ.
       </li>
       <li>
-        <strong>Biến trễ:</strong> tăng trưởng doanh thu, tăng trưởng tín dụng, tổng
-        dồn tích và chi đầu tư chỉ tính khi có đúng năm liền trước; khoảng trống một
-        năm không bị nối qua.
+        <strong>Năm thiếu:</strong> tăng trưởng doanh thu, tăng trưởng tín dụng, tổng
+        dồn tích, chi đầu tư, số dư bình quân và biến trễ chỉ tính khi có đúng năm
+        liền trước; khoảng trống một năm (ví dụ có 2019 và 2021, thiếu 2020) không
+        bị nối qua.
       </li>
       <li>
         <strong>Quan sát không có nghĩa:</strong> ROE, D/E, MTB để trống khi vốn chủ
-        sở hữu âm; thuế suất thực tế và tỷ lệ chi trả cổ tức để trống khi lỗ; khả
-        năng thanh toán lãi vay để trống khi không có chi phí lãi vay.
+        sở hữu âm (với ROE bình quân, cả khi vốn chủ sở hữu năm trước âm); thuế suất
+        thực tế và tỷ lệ chi trả cổ tức để trống khi lỗ; khả năng thanh toán lãi vay
+        để trống khi không có chi phí lãi vay. Z'' vẫn tính khi vốn chủ sở hữu âm
+        vì đó chính là dấu hiệu kiệt quệ.
       </li>
       <li>
         <strong>Z-score ngân hàng:</strong> độ lệch chuẩn ROA tính trên cửa sổ ba
@@ -118,6 +190,31 @@ import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
       đủ.
     </p>
 
+    <h2>Winsorize là gì, có nên dùng?</h2>
+    <p>
+      Tỷ số tài chính hay có vài giá trị cực đoan (doanh nghiệp tổng tài sản rất
+      nhỏ, doanh thu gần 0), đủ để kéo lệch hệ số hồi quy. Winsorize 1% và 99%
+      thay mọi giá trị nhỏ hơn phân vị thứ 1 bằng chính phân vị 1, mọi giá trị
+      lớn hơn phân vị 99 bằng phân vị 99; số quan sát giữ nguyên, khác với cắt
+      bỏ (trim). Công cụ tính phân vị trên toàn mẫu (gộp mọi doanh nghiệp – năm)
+      theo quy tắc của lệnh
+      <code>_pctile</code> trong Stata, cùng cách với
+      <code>winsor2 roa, cuts(1 99)</code>. Biến trễ được lấy từ giá trị đã
+      winsorize. Với mẫu dưới 100 quan sát, mức 1% chỉ chạm tới giá trị lớn nhất
+      và nhỏ nhất; nên báo cáo kết quả cả trước và sau winsorize nếu hội đồng
+      hỏi. File CSV giữ cả biến gốc lẫn biến đã winsorize để bạn tự kiểm tra.
+    </p>
+
+    <h2>Thống kê mô tả</h2>
+    <p>
+      Bảng thống kê mô tả gồm số quan sát, trung bình, độ lệch chuẩn (chia n −
+      1), nhỏ nhất, trung vị và lớn nhất của từng biến, giống <code
+        >summarize</code
+      > của Stata, tính trên giá trị đã winsorize nếu bạn chọn. Bấm "Sao chép bảng"
+      rồi dán vào Word hay Excel. Số quan sát của từng biến khác nhau là bình thường:
+      biến cần năm liền trước mất năm đầu, ROE mất các năm vốn chủ sở hữu âm.
+    </p>
+
     <h2>Lấy số liệu ở đâu</h2>
     <p>
       Theo Thông tư 96/2020/TT-BTC, công ty đại chúng phải đăng BCTC năm đã kiểm
@@ -125,20 +222,33 @@ import html from "@/tools/tinh-chi-so-tai-chinh.html?raw";
       (hoặc tra trên HOSE, HNX rồi mở tệp gốc) và ghi lại đường dẫn, số trang
       của từng chỉ tiêu. Điều khoản của các trang tổng hợp như FiinGroup,
       Vietstock, VNDIRECT, SSI cấm sao chép hoặc phân phối lại dữ liệu, nên đừng
-      đăng kèm khoá luận dữ liệu tải từ các nguồn đó.
+      đăng kèm khoá luận dữ liệu tải từ các nguồn đó. Khi mục <a
+        href="/goc-nghien-cuu/du-lieu/">dữ liệu</a
+      > có bộ số liệu ngân hàng niêm yết, nút "Nạp bộ dữ liệu ngân hàng niêm yết"
+      hiện ngay dưới ô nhập để nạp thẳng vào công cụ.
     </p>
 
     <h2>Câu hỏi thường gặp</h2>
     <h3>Kết quả có khớp với số trên các trang tài chính không?</h3>
     <p>
-      Thường lệch nhẹ, vì mỗi trang chọn mẫu số khác nhau. Công thức ở đây được
-      ghi rõ để bạn đối chiếu và trích dẫn.
+      Thường lệch nhẹ, vì mỗi trang chọn mẫu số khác nhau (cuối kỳ hay bình
+      quân, LNST hay LNST của cổ đông công ty mẹ). Công thức ở đây được ghi rõ
+      để bạn đối chiếu và trích dẫn.
+    </p>
+    <h3>Dán nhiều doanh nghiệp theo chiều dọc được không?</h3>
+    <p>
+      Bảng dọc chỉ nhận một doanh nghiệp mỗi lần. Với nhiều doanh nghiệp, dùng
+      file mẫu dạng ngang (mỗi dòng một doanh nghiệp – năm), hoặc dữ liệu dạng
+      dài có bốn cột
+      <code>firm</code>, <code>year</code>, <code>variable</code>, <code
+        >value</code
+      >.
     </p>
     <h3>Đoạn văn chương 3 dùng thế nào?</h3>
     <p>
-      Đoạn văn liệt kê mọi biến tính được kèm công thức và tài liệu gốc đã kiểm
-      tra DOI. Xoá những biến không có trong mô hình, thêm nguồn dữ liệu cụ thể
-      và cách xử lý ngoại lai (ví dụ winsorize 1% hai đầu) trước khi nộp.
+      Đoạn văn liệt kê mọi biến tính được kèm công thức, đơn vị, cách xử lý
+      ngoại lai và tài liệu gốc đã kiểm tra DOI. Xoá những biến không có trong
+      mô hình và thêm nguồn dữ liệu cụ thể trước khi nộp.
     </p>
   </Fragment>
 </ToolLayout>

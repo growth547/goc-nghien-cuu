@@ -1,24 +1,39 @@
-<div class="tool">
+<div class="tool" style="grid-template-columns:minmax(0,1fr)">
   <div class="panel">
     <div class="row">
       <div class="field"><label for="fr-tpl">Mẫu báo cáo tài chính</label>
         <select id="fr-tpl"><option value="firm" selected>Doanh nghiệp phi tài chính (Thông tư 200/2014)</option><option value="bank">Ngân hàng (Thông tư 49/2014)</option></select></div>
+      <div class="field"><label for="fr-unit">Đơn vị số liệu BCTC</label>
+        <select id="fr-unit"><option value="dong" selected>đồng</option><option value="nghin">nghìn đồng</option><option value="trieu">triệu đồng</option><option value="ty">tỷ đồng</option></select>
+        <small>Dùng để đổi giá × số cổ phiếu về cùng đơn vị và ghi vào đoạn văn.</small></div>
       <div class="field"><label for="fr-avg">Mẫu số dạng số dư</label>
         <select id="fr-avg"><option value="end" selected>Số cuối kỳ</option><option value="avg">Bình quân đầu kỳ và cuối kỳ</option></select>
         <small>Bình quân cần năm liền trước của cùng doanh nghiệp, nên năm đầu tiên sẽ trống.</small></div>
+      <div class="field"><label for="fr-win">Xử lý giá trị ngoại lai</label>
+        <select id="fr-win"><option value="0" selected>Không winsorize</option><option value="1">Winsorize 1% và 99%</option><option value="5">Winsorize 5% và 95%</option></select>
+        <small>Thay giá trị dưới phân vị 1 (trên phân vị 99) bằng chính phân vị đó, gộp mọi quan sát; không xoá dòng nào.</small></div>
     </div>
+    <label class="check"><input type="checkbox" id="fr-lag"> Thêm biến trễ một năm (t−1) vào bảng và file CSV, chỉ lấy từ đúng năm liền trước</label>
     <div class="field"><label for="fr-data">Dữ liệu BCTC (dán từ Excel)</label>
       <textarea id="fr-data" spellcheck="false" style="min-height:220px"></textarea>
-      <small>Mỗi dòng là một doanh nghiệp trong một năm. Dòng đầu là tên cột: dùng mã ngắn (<code>ta</code>, <code>ni</code>…), mã số trên BCTC (<code>270</code>, <code>KQKD 60</code>) hoặc tên chỉ tiêu trong bảng bên dưới. Hai cột bắt buộc: <code>firm</code> (mã doanh nghiệp) và <code>year</code> (năm). Dán theo chiều dọc (chỉ tiêu theo dòng, năm theo cột) của một doanh nghiệp cũng được, công cụ tự xoay lại. Số có thể viết 1.234.567 hoặc 1,234,567; số âm trong ngoặc (123) được hiểu là −123. Dữ liệu chỉ xử lý trong trình duyệt của bạn.</small></div>
-    <div class="row"><button type="button" class="btn" id="fr-run">Tính chỉ số</button><button type="button" class="btn ghost" id="fr-sample">Nạp ví dụ</button><button type="button" class="btn ghost" id="fr-template">Tải file mẫu (CSV)</button></div>
-    <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Danh sách cột được nhận</summary><div class="table-wrap" id="fr-fields"></div></details>
+      <small>Mỗi dòng là một doanh nghiệp trong một năm. Dòng đầu là tên cột: dùng mã ngắn (<code>ta</code>, <code>ni</code>…), mã số trên BCTC (<code>270</code>, <code>KQKD 60</code>) hoặc tên chỉ tiêu trong bảng bên dưới. Hai cột cần có: <code>firm</code> (mã doanh nghiệp) và <code>year</code> (năm). Dán nguyên BCTC theo chiều dọc (cột Chỉ tiêu, Mã số, rồi các cột năm như <code>Năm 2023</code> hoặc <code>31/12/2023</code>) của một doanh nghiệp cũng được, công cụ tự xoay lại. Số có thể viết 1.234.567 hoặc 1,234,567; số âm trong ngoặc (123) là −123; ô chỉ có dấu gạch (-) là 0, ô trống là thiếu số liệu. Dữ liệu chỉ xử lý trong trình duyệt của bạn.</small></div>
+    <div class="row"><button type="button" class="btn" id="fr-run">Tính chỉ số</button><button type="button" class="btn ghost" id="fr-sample">Nạp ví dụ</button><button type="button" class="btn ghost" id="fr-template">Tải file mẫu (CSV)</button><button type="button" class="btn ghost" id="fr-bank" data-bank-csv="" hidden>Nạp bộ dữ liệu ngân hàng niêm yết</button></div>
+    <details style="margin-top:4px"><summary style="cursor:pointer;font-weight:600">Danh sách cột được nhận</summary><div class="table-wrap" id="fr-fields"></div></details>
   </div>
   <div class="panel" id="fr-out" aria-live="polite"></div>
 </div>
 <div class="panel" style="margin-top:24px">
-  <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+  <div class="row" style="justify-content:space-between;align-items:center;gap:8px">
+    <strong>Dữ liệu bảng cho Stata, R, EViews</strong>
+    <button type="button" class="btn" id="fr-csv">Tải dữ liệu bảng (CSV)</button>
+  </div>
+  <p class="how" id="fr-csvinfo" style="margin:0"></p>
+  <details><summary style="cursor:pointer;font-weight:600">Lệnh đọc file và khai báo dữ liệu bảng</summary><pre id="fr-code" style="white-space:pre-wrap;font-size:12px;margin:8px 0 0"></pre></details>
+</div>
+<div class="panel" style="margin-top:24px">
+  <div class="row" style="justify-content:space-between;align-items:center;gap:8px">
     <strong>Đoạn văn chương 3: Đo lường biến</strong>
-    <span class="row" style="gap:8px"><button type="button" class="btn ghost" id="fr-csv">Tải dữ liệu bảng (CSV)</button><button type="button" class="btn" id="fr-copy">Sao chép đoạn văn</button></span>
+    <button type="button" class="btn" id="fr-copy">Sao chép đoạn văn</button>
   </div>
   <div id="fr-thesis" style="line-height:1.7"></div>
   <small class="text-muted-foreground">Chỉ giữ lại những biến có trong mô hình của bạn. Định nghĩa đầy đủ, biến thể và code Stata/R của từng biến: <a href="/goc-nghien-cuu/bien-nghien-cuu/">thư viện biến nghiên cứu</a>.</small>
@@ -26,53 +41,59 @@
 <script>
 (function(){
   //#fr-start
+  // Units the statements may be entered in; factor converts to đồng (market value from price × shares is in đồng).
+  const UNITS={dong:{f:1,label:'đồng'},nghin:{f:1e3,label:'nghìn đồng'},trieu:{f:1e6,label:'triệu đồng'},ty:{f:1e9,label:'tỷ đồng'}};
   // Input columns. code = mã số on the Thông tư 200/2014 statements (st: CĐKT = B01-DN, KQKD = B02-DN, LCTT = B03-DN).
+  // al = other header names students use (Vietnamese short forms, English names from data vendors).
   const FIELDS={
     firm:[
-      {key:'ta',label:'Tổng cộng tài sản',st:'CĐKT',code:'270'},
-      {key:'ca',label:'Tài sản ngắn hạn',st:'CĐKT',code:'100'},
-      {key:'cash',label:'Tiền và các khoản tương đương tiền',st:'CĐKT',code:'110'},
-      {key:'sti',label:'Đầu tư tài chính ngắn hạn',st:'CĐKT',code:'120'},
-      {key:'ar',label:'Phải thu ngắn hạn của khách hàng',st:'CĐKT',code:'131'},
-      {key:'inv',label:'Hàng tồn kho',st:'CĐKT',code:'140'},
-      {key:'ppe',label:'Tài sản cố định hữu hình (giá trị còn lại)',st:'CĐKT',code:'221'},
-      {key:'tl',label:'Nợ phải trả',st:'CĐKT',code:'300'},
-      {key:'cl',label:'Nợ ngắn hạn',st:'CĐKT',code:'310'},
-      {key:'ap',label:'Phải trả người bán ngắn hạn',st:'CĐKT',code:'311'},
-      {key:'std',label:'Vay và nợ thuê tài chính ngắn hạn',st:'CĐKT',code:'320'},
-      {key:'ltd',label:'Vay và nợ thuê tài chính dài hạn',st:'CĐKT',code:'338'},
-      {key:'eq',label:'Vốn chủ sở hữu',st:'CĐKT',code:'400'},
-      {key:'re',label:'Lợi nhuận sau thuế chưa phân phối',st:'CĐKT',code:'421'},
-      {key:'rev',label:'Doanh thu thuần về bán hàng và cung cấp dịch vụ',st:'KQKD',code:'10'},
-      {key:'cogs',label:'Giá vốn hàng bán',st:'KQKD',code:'11'},
-      {key:'int',label:'Chi phí lãi vay',st:'KQKD',code:'23'},
-      {key:'ebt',label:'Tổng lợi nhuận kế toán trước thuế',st:'KQKD',code:'50'},
-      {key:'tax',label:'Chi phí thuế TNDN (hiện hành + hoãn lại)',st:'KQKD',code:'51+52'},
-      {key:'ni',label:'Lợi nhuận sau thuế thu nhập doanh nghiệp',st:'KQKD',code:'60'},
-      {key:'cfo',label:'Lưu chuyển tiền thuần từ hoạt động kinh doanh',st:'LCTT',code:'20'},
-      {key:'da',label:'Khấu hao TSCĐ và BĐSĐT',st:'LCTT',code:'02'},
-      {key:'capex',label:'Tiền chi mua sắm, xây dựng TSCĐ và tài sản dài hạn khác',st:'LCTT',code:'21'},
-      {key:'div',label:'Cổ tức, lợi nhuận đã trả cho chủ sở hữu',st:'LCTT',code:'36'},
-      {key:'mcap',label:'Giá trị vốn hoá thị trường cuối năm (cùng đơn vị với BCTC)',st:'Thị trường',code:''},
-      {key:'shares',label:'Số cổ phiếu đang lưu hành cuối năm',st:'Thị trường',code:''},
-      {key:'price',label:'Giá đóng cửa cuối năm (đồng/cổ phiếu)',st:'Thị trường',code:''}
+      {key:'ta',label:'Tổng cộng tài sản',st:'CĐKT',code:'270',al:['Tổng tài sản','TTS','Total assets']},
+      {key:'ca',label:'Tài sản ngắn hạn',st:'CĐKT',code:'100',al:['TSNH','Current assets']},
+      {key:'cash',label:'Tiền và các khoản tương đương tiền',st:'CĐKT',code:'110',al:['Tiền và tương đương tiền','Cash and cash equivalents']},
+      {key:'sti',label:'Đầu tư tài chính ngắn hạn',st:'CĐKT',code:'120',al:['Short-term investments']},
+      {key:'ar',label:'Phải thu ngắn hạn của khách hàng',st:'CĐKT',code:'131',al:['Phải thu khách hàng','Phải thu của khách hàng','Accounts receivable']},
+      {key:'inv',label:'Hàng tồn kho',st:'CĐKT',code:'140',al:['HTK','Inventory','Inventories']},
+      {key:'ppe',label:'Tài sản cố định hữu hình (giá trị còn lại)',st:'CĐKT',code:'221',al:['TSCĐ hữu hình','Tài sản cố định hữu hình','PPE','Tangible fixed assets']},
+      {key:'tl',label:'Nợ phải trả',st:'CĐKT',code:'300',al:['Tổng nợ phải trả','Tổng nợ','Total liabilities']},
+      {key:'cl',label:'Nợ ngắn hạn',st:'CĐKT',code:'310',al:['Current liabilities']},
+      {key:'ap',label:'Phải trả người bán ngắn hạn',st:'CĐKT',code:'311',al:['Phải trả người bán','Accounts payable']},
+      {key:'std',label:'Vay và nợ thuê tài chính ngắn hạn',st:'CĐKT',code:'320',al:['Vay ngắn hạn','Short-term debt','Short-term borrowings']},
+      {key:'ltd',label:'Vay và nợ thuê tài chính dài hạn',st:'CĐKT',code:'338',al:['Vay dài hạn','Long-term debt','Long-term borrowings']},
+      {key:'eq',label:'Vốn chủ sở hữu',st:'CĐKT',code:'400',al:['VCSH','Equity','Total equity']},
+      {key:'re',label:'Lợi nhuận sau thuế chưa phân phối',st:'CĐKT',code:'421',al:['LNST chưa phân phối','Lợi nhuận chưa phân phối','Retained earnings']},
+      {key:'rev',label:'Doanh thu thuần về bán hàng và cung cấp dịch vụ',st:'KQKD',code:'10',al:['Doanh thu thuần','Doanh thu','DTT','Net revenue','Net sales','Revenue']},
+      {key:'cogs',label:'Giá vốn hàng bán',st:'KQKD',code:'11',al:['Giá vốn','COGS','Cost of goods sold']},
+      {key:'int',label:'Chi phí lãi vay',st:'KQKD',code:'23',al:['Trong đó: Chi phí lãi vay','Lãi vay','Interest expense']},
+      {key:'ebt',label:'Tổng lợi nhuận kế toán trước thuế',st:'KQKD',code:'50',al:['Lợi nhuận trước thuế','LNTT','EBT','Profit before tax']},
+      {key:'tax',label:'Chi phí thuế TNDN (hiện hành + hoãn lại)',st:'KQKD',code:'51+52',al:['Chi phí thuế TNDN','Thuế TNDN','Income tax expense']},
+      {key:'taxc',label:'Chi phí thuế TNDN hiện hành',st:'KQKD',code:'51',al:['Current income tax']},
+      {key:'taxd',label:'Chi phí thuế TNDN hoãn lại',st:'KQKD',code:'52',al:['Deferred income tax']},
+      {key:'ni',label:'Lợi nhuận sau thuế thu nhập doanh nghiệp',st:'KQKD',code:'60',al:['Lợi nhuận sau thuế','LNST','Net income','Net profit','Profit after tax']},
+      {key:'cfo',label:'Lưu chuyển tiền thuần từ hoạt động kinh doanh',st:'LCTT',code:'20',al:['LCTT từ HĐKD','CFO','Operating cash flow']},
+      {key:'da',label:'Khấu hao TSCĐ và BĐSĐT',st:'LCTT',code:'02',al:['Khấu hao','Khấu hao TSCĐ','Depreciation']},
+      {key:'capex',label:'Tiền chi mua sắm, xây dựng TSCĐ và tài sản dài hạn khác',st:'LCTT',code:'21',al:['Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác','Capital expenditure']},
+      {key:'div',label:'Cổ tức, lợi nhuận đã trả cho chủ sở hữu',st:'LCTT',code:'36',al:['Cổ tức đã trả','Dividends paid']},
+      {key:'mcap',label:'Giá trị vốn hoá thị trường cuối năm (cùng đơn vị với BCTC)',st:'Thị trường',code:'',al:['Vốn hoá','Vốn hoá thị trường','Market cap','Market capitalization']},
+      {key:'shares',label:'Số cổ phiếu đang lưu hành cuối năm',st:'Thị trường',code:'',al:['Số cổ phiếu lưu hành','KLCP lưu hành','Shares outstanding']},
+      {key:'price',label:'Giá đóng cửa cuối năm (đồng/cổ phiếu)',st:'Thị trường',code:'',al:['Giá đóng cửa','Giá cuối năm','Close price']}
     ],
     bank:[
-      {key:'ta',label:'Tổng tài sản',st:'CĐKT-TCTD',code:''},
-      {key:'loans',label:'Cho vay khách hàng (trước dự phòng)',st:'CĐKT-TCTD',code:''},
-      {key:'llr',label:'Dự phòng rủi ro cho vay khách hàng',st:'CĐKT-TCTD',code:''},
-      {key:'deposits',label:'Tiền gửi của khách hàng',st:'CĐKT-TCTD',code:''},
-      {key:'eq',label:'Vốn chủ sở hữu',st:'CĐKT-TCTD',code:''},
-      {key:'ea',label:'Tài sản sinh lãi',st:'Thuyết minh',code:''},
-      {key:'ii',label:'Thu nhập lãi và các khoản thu nhập tương tự',st:'KQKD-TCTD',code:''},
-      {key:'nii',label:'Thu nhập lãi thuần',st:'KQKD-TCTD',code:''},
-      {key:'toi',label:'Tổng thu nhập hoạt động',st:'KQKD-TCTD',code:''},
-      {key:'opex',label:'Chi phí hoạt động',st:'KQKD-TCTD',code:''},
-      {key:'prov',label:'Chi phí dự phòng rủi ro tín dụng',st:'KQKD-TCTD',code:''},
-      {key:'ebt',label:'Tổng lợi nhuận trước thuế',st:'KQKD-TCTD',code:''},
-      {key:'ni',label:'Lợi nhuận sau thuế',st:'KQKD-TCTD',code:''},
-      {key:'npl',label:'Nợ xấu (nhóm 3, 4, 5)',st:'Thuyết minh',code:''},
-      {key:'car',label:'Tỷ lệ an toàn vốn CAR (%)',st:'Thuyết minh',code:''}
+      {key:'ta',label:'Tổng tài sản',st:'CĐKT-TCTD',code:'',al:['Tổng cộng tài sản','Tổng tài sản có','TTS','Total assets']},
+      {key:'loans',label:'Cho vay khách hàng (trước dự phòng)',st:'CĐKT-TCTD',code:'',al:['Cho vay khách hàng','Dư nợ cho vay khách hàng','Dư nợ cho vay','Loans','Gross loans','Loans to customers']},
+      {key:'llr',label:'Dự phòng rủi ro cho vay khách hàng',st:'CĐKT-TCTD',code:'',al:['Loan loss reserve','Loan loss reserves']},
+      {key:'deposits',label:'Tiền gửi của khách hàng',st:'CĐKT-TCTD',code:'',al:['Tiền gửi khách hàng','Deposits','Customer deposits']},
+      {key:'eq',label:'Vốn chủ sở hữu',st:'CĐKT-TCTD',code:'',al:['VCSH','Equity','Total equity']},
+      {key:'ea',label:'Tài sản sinh lãi',st:'Thuyết minh',code:'',al:['Earning assets','Interest-earning assets']},
+      {key:'ii',label:'Thu nhập lãi và các khoản thu nhập tương tự',st:'KQKD-TCTD',code:'',al:['Thu nhập lãi','Interest income']},
+      {key:'nii',label:'Thu nhập lãi thuần',st:'KQKD-TCTD',code:'',al:['Net interest income']},
+      {key:'toi',label:'Tổng thu nhập hoạt động',st:'KQKD-TCTD',code:'',al:['Total operating income']},
+      {key:'opex',label:'Chi phí hoạt động',st:'KQKD-TCTD',code:'',al:['Operating expenses','Operating expense']},
+      {key:'prov',label:'Chi phí dự phòng rủi ro tín dụng',st:'KQKD-TCTD',code:'',al:['Chi phí dự phòng','Provision expense','Provisions for credit losses']},
+      {key:'ebt',label:'Tổng lợi nhuận trước thuế',st:'KQKD-TCTD',code:'',al:['Lợi nhuận trước thuế','LNTT','Profit before tax']},
+      {key:'ni',label:'Lợi nhuận sau thuế',st:'KQKD-TCTD',code:'',al:['LNST','Net income','Net profit','Profit after tax']},
+      {key:'npl',label:'Nợ xấu (nhóm 3, 4, 5)',st:'Thuyết minh',code:'',al:['Nợ xấu','Non-performing loans']},
+      {key:'nplr',label:'Tỷ lệ nợ xấu (%)',st:'Thuyết minh',code:'',al:['NPL ratio']},
+      {key:'car',label:'Tỷ lệ an toàn vốn CAR (%)',st:'Thuyết minh',code:'',al:['Tỷ lệ an toàn vốn','Hệ số an toàn vốn','Capital adequacy ratio']}
     ]
   };
   // Works cited by the measurement paragraph (all DOIs checked on api.crossref.org).
@@ -103,71 +124,96 @@
     foos2010:{cite:'Foos và cộng sự (2010)',apa:'Foos, D., Norden, L., &amp; Weber, M. (2010). Loan growth and riskiness of banks. <em>Journal of Banking &amp; Finance, 34</em>(12), 2929–2940.',doi:'10.1016/j.jbankfin.2010.06.007'},
     stiroh2004:{cite:'Stiroh (2004)',apa:'Stiroh, K. J. (2004). Diversification in banking: Is noninterest income the answer? <em>Journal of Money, Credit, and Banking, 36</em>(5), 853–882.',doi:'10.1353/mcb.2004.0076'}
   };
-  // Each variable: id (= `calc` in src/content/bien-nghien-cuu/<slug>.json), formula as shown, needs (input keys),
-  // f(c, p, A, h) with c = this firm-year, p = previous year of the same firm (or null), A(k) = end or average
-  // balance, h = this firm's rows up to and including c. Return a number, or {v, note} to flag an approximation.
+  // Each variable: id (= `calc` in src/content/bien-nghien-cuu/<slug>.json), col = column name in the panel CSV when the id
+  // is also an input key, formula as shown, needs (input keys), f(c, p, A, h, o) with c = this firm-year, p = previous year
+  // of the same firm (or null), A(k) = end or average balance, h = this firm's rows up to and including c, o = options.
+  // Return a number, or {v, note} to flag an approximation.
   const VARS=[
     {id:'roa',slug:'roa',scope:'both',name:'Tỷ suất sinh lời trên tổng tài sản',sym:'ROA',formula:'LNST / Tổng tài sản',needs:['ni','ta'],cite:'athanasoglou2008',bal:['ta'],f:(c,p,A)=>c.ni/A('ta')},
-    {id:'roe',slug:'roe',scope:'both',name:'Tỷ suất sinh lời trên vốn chủ sở hữu',sym:'ROE',formula:'LNST / Vốn chủ sở hữu',needs:['ni','eq'],cite:'athanasoglou2008',bal:['eq'],f:(c,p,A)=>A('eq')>0?c.ni/A('eq'):NaN},
-    {id:'ros',slug:'ros',scope:'firm',name:'Tỷ suất lợi nhuận trên doanh thu',sym:'ROS',formula:'LNST / Doanh thu thuần',needs:['ni','rev'],cite:'deloof2003',f:c=>c.ni/c.rev},
-    {id:'gpm',slug:'bien-loi-nhuan-gop',scope:'firm',name:'Biên lợi nhuận gộp',sym:'GPM',formula:'(Doanh thu thuần − Giá vốn hàng bán) / Doanh thu thuần',needs:['rev','cogs'],cite:'deloof2003',f:c=>(c.rev-c.cogs)/c.rev},
+    {id:'roe',slug:'roe',scope:'both',name:'Tỷ suất sinh lời trên vốn chủ sở hữu',sym:'ROE',formula:'LNST / Vốn chủ sở hữu (để trống khi VCSH âm)',needs:['ni','eq'],cite:'athanasoglou2008',bal:['eq'],f:(c,p,A,h,o)=>c.eq>0&&(!o.avg||(p&&p.eq>0))?c.ni/A('eq'):NaN},
+    {id:'ros',slug:'ros',scope:'firm',name:'Tỷ suất lợi nhuận trên doanh thu',sym:'ROS',formula:'LNST / Doanh thu thuần',needs:['ni','rev'],cite:'deloof2003',f:c=>c.rev>0?c.ni/c.rev:NaN},
+    {id:'gpm',slug:'bien-loi-nhuan-gop',scope:'firm',name:'Biên lợi nhuận gộp',sym:'GPM',formula:'(Doanh thu thuần − Giá vốn hàng bán) / Doanh thu thuần',needs:['rev','cogs'],cite:'deloof2003',f:c=>c.rev>0?(c.rev-Math.abs(c.cogs))/c.rev:NaN},
     {id:'at',slug:'vong-quay-tong-tai-san',scope:'firm',name:'Vòng quay tổng tài sản',sym:'AT',formula:'Doanh thu thuần / Tổng tài sản',needs:['rev','ta'],cite:'deloof2003',bal:['ta'],f:(c,p,A)=>c.rev/A('ta')},
     {id:'lev',slug:'don-bay-tai-chinh',scope:'firm',name:'Đòn bẩy tài chính (nợ phải trả / tổng tài sản)',sym:'LEV',formula:'Nợ phải trả / Tổng tài sản',needs:['tl','ta'],cite:'rajan1995',f:c=>c.tl/c.ta},
     {id:'debt',slug:'no-vay-tren-tong-tai-san',scope:'firm',name:'Nợ vay trên tổng tài sản',sym:'DEBT',formula:'(Vay ngắn hạn + Vay dài hạn) / Tổng tài sản',needs:['std','ltd','ta'],cite:'rajan1995',f:c=>(c.std+c.ltd)/c.ta},
-    {id:'de',slug:'no-tren-von-chu-so-huu',scope:'firm',name:'Hệ số nợ trên vốn chủ sở hữu',sym:'D/E',formula:'Nợ phải trả / Vốn chủ sở hữu',needs:['tl','eq'],cite:'titman1988',f:c=>c.eq>0?c.tl/c.eq:NaN},
+    {id:'de',slug:'no-tren-von-chu-so-huu',scope:'firm',name:'Hệ số nợ trên vốn chủ sở hữu',sym:'D/E',formula:'Nợ phải trả / Vốn chủ sở hữu (để trống khi VCSH âm)',needs:['tl','eq'],cite:'titman1988',f:c=>c.eq>0?c.tl/c.eq:NaN},
     {id:'ltdr',slug:'no-dai-han',scope:'firm',name:'Nợ vay dài hạn trên tổng tài sản',sym:'LTD',formula:'Vay dài hạn / Tổng tài sản',needs:['ltd','ta'],cite:'vo2017',f:c=>c.ltd/c.ta},
     {id:'stdr',slug:'ky-han-no',scope:'firm',name:'Tỷ trọng nợ vay ngắn hạn',sym:'STD',formula:'Vay ngắn hạn / (Vay ngắn hạn + Vay dài hạn)',needs:['std','ltd'],cite:'barclay1995',f:c=>c.std+c.ltd>0?c.std/(c.std+c.ltd):NaN},
-    {id:'icr',slug:'kha-nang-thanh-toan-lai-vay',scope:'firm',name:'Khả năng thanh toán lãi vay',sym:'ICR',formula:'(LN trước thuế + Chi phí lãi vay) / Chi phí lãi vay',needs:['ebt','int'],cite:'frank2009',f:c=>c.int>0?(c.ebt+c.int)/c.int:NaN},
-    {id:'cr',slug:'kha-nang-thanh-toan-hien-hanh',scope:'firm',name:'Khả năng thanh toán hiện hành',sym:'CR',formula:'Tài sản ngắn hạn / Nợ ngắn hạn',needs:['ca','cl'],cite:'opler1999',f:c=>c.ca/c.cl},
-    {id:'qr',slug:'kha-nang-thanh-toan-nhanh',scope:'firm',name:'Khả năng thanh toán nhanh',sym:'QR',formula:'(Tài sản ngắn hạn − Hàng tồn kho) / Nợ ngắn hạn',needs:['ca','inv','cl'],cite:'opler1999',f:c=>(c.ca-c.inv)/c.cl},
-    {id:'cash',slug:'nam-giu-tien-mat',scope:'firm',name:'Tỷ lệ nắm giữ tiền',sym:'CASH',formula:'Tiền và tương đương tiền / Tổng tài sản',needs:['cash','ta'],cite:'opler1999',f:c=>c.cash/c.ta},
-    {id:'ccc',slug:'chu-ky-chuyen-doi-tien',scope:'firm',name:'Chu kỳ chuyển đổi tiền (ngày)',sym:'CCC',formula:'365 × (Hàng tồn kho / Giá vốn + Phải thu KH / Doanh thu thuần − Phải trả người bán / Giá vốn)',needs:['inv','cogs','ar','rev','ap'],cite:'deloof2003',bal:['inv','ar','ap'],f:(c,p,A)=>365*(A('inv')/c.cogs+A('ar')/c.rev-A('ap')/c.cogs)},
-    {id:'z',slug:'altman-z-score',scope:'firm',name:'Chỉ số Z của Altman (bản gốc, có giá thị trường)',sym:'Z',formula:'1,2·X1 + 1,4·X2 + 3,3·X3 + 0,6·X4 + 1,0·X5; X1 = (TSNH − Nợ NH)/TTS; X2 = LNST chưa phân phối/TTS; X3 = (LNTT + Lãi vay)/TTS; X4 = Giá trị thị trường VCSH/Nợ phải trả; X5 = Doanh thu thuần/TTS',needs:['ca','cl','re','ebt','int','ta','tl','rev','mve'],cite:'altman1968',f:c=>1.2*(c.ca-c.cl)/c.ta+1.4*c.re/c.ta+3.3*(c.ebt+c.int)/c.ta+0.6*c.mve/c.tl+1.0*c.rev/c.ta},
-    {id:'z2',slug:'altman-z-score-thi-truong-moi-noi',scope:'firm',name:"Chỉ số Z'' của Altman (thị trường mới nổi)",sym:"Z''",formula:'6,56·X1 + 3,26·X2 + 6,72·X3 + 1,05·X4; X4 = Vốn chủ sở hữu (sổ sách)/Nợ phải trả',needs:['ca','cl','re','ebt','int','ta','eq','tl'],cite:'altman1998',f:c=>6.56*(c.ca-c.cl)/c.ta+3.26*c.re/c.ta+6.72*(c.ebt+c.int)/c.ta+1.05*c.eq/c.tl},
+    {id:'icr',slug:'kha-nang-thanh-toan-lai-vay',scope:'firm',name:'Khả năng thanh toán lãi vay',sym:'ICR',formula:'(LN trước thuế + Chi phí lãi vay) / Chi phí lãi vay',needs:['ebt','int'],cite:'frank2009',f:c=>{const i=Math.abs(c.int);return i>0?(c.ebt+i)/i:NaN}},
+    {id:'cr',slug:'kha-nang-thanh-toan-hien-hanh',scope:'firm',name:'Khả năng thanh toán hiện hành',sym:'CR',formula:'Tài sản ngắn hạn / Nợ ngắn hạn',needs:['ca','cl'],cite:'opler1999',f:c=>c.cl>0?c.ca/c.cl:NaN},
+    {id:'qr',slug:'kha-nang-thanh-toan-nhanh',scope:'firm',name:'Khả năng thanh toán nhanh',sym:'QR',formula:'(Tài sản ngắn hạn − Hàng tồn kho) / Nợ ngắn hạn',needs:['ca','inv','cl'],cite:'opler1999',f:c=>c.cl>0?(c.ca-c.inv)/c.cl:NaN},
+    {id:'cash',col:'cash_ta',slug:'nam-giu-tien-mat',scope:'firm',name:'Tỷ lệ nắm giữ tiền',sym:'CASH',formula:'Tiền và tương đương tiền / Tổng tài sản',needs:['cash','ta'],cite:'opler1999',f:c=>c.cash/c.ta},
+    {id:'ccc',slug:'chu-ky-chuyen-doi-tien',scope:'firm',name:'Chu kỳ chuyển đổi tiền (ngày)',sym:'CCC',formula:'365 × (Hàng tồn kho / Giá vốn + Phải thu KH / Doanh thu thuần − Phải trả người bán / Giá vốn)',needs:['inv','cogs','ar','rev','ap'],cite:'deloof2003',bal:['inv','ar','ap'],f:(c,p,A)=>{const g=Math.abs(c.cogs);return g>0&&c.rev>0?365*(A('inv')/g+A('ar')/c.rev-A('ap')/g):NaN}},
+    {id:'z',slug:'altman-z-score',scope:'firm',name:'Chỉ số Z của Altman (bản gốc, có giá thị trường)',sym:'Z',formula:'1,2·X1 + 1,4·X2 + 3,3·X3 + 0,6·X4 + 1,0·X5; X1 = (TSNH − Nợ NH)/TTS; X2 = LNST chưa phân phối/TTS; X3 = (LNTT + Lãi vay)/TTS; X4 = Giá trị thị trường VCSH/Nợ phải trả; X5 = Doanh thu thuần/TTS',needs:['ca','cl','re','ebt','int','ta','tl','rev','mve'],cite:'altman1968',f:c=>1.2*(c.ca-c.cl)/c.ta+1.4*c.re/c.ta+3.3*(c.ebt+Math.abs(c.int))/c.ta+0.6*c.mve/c.tl+1.0*c.rev/c.ta},
+    {id:'z2',slug:'altman-z-score-thi-truong-moi-noi',scope:'firm',name:"Chỉ số Z'' của Altman (thị trường mới nổi)",sym:"Z''",formula:'6,56·X1 + 3,26·X2 + 6,72·X3 + 1,05·X4; X4 = Vốn chủ sở hữu (sổ sách)/Nợ phải trả',needs:['ca','cl','re','ebt','int','ta','eq','tl'],cite:'altman1998',f:c=>6.56*(c.ca-c.cl)/c.ta+3.26*c.re/c.ta+6.72*(c.ebt+Math.abs(c.int))/c.ta+1.05*c.eq/c.tl},
     {id:'q',slug:'tobin-q',scope:'firm',name:"Tobin's Q (xấp xỉ)",sym:'Q',formula:'(Giá trị thị trường VCSH + Nợ phải trả) / Tổng tài sản',needs:['mve','tl','ta'],cite:'chung1994',f:c=>(c.mve+c.tl)/c.ta},
-    {id:'mtb',slug:'gia-tri-thi-truong-tren-so-sach',scope:'firm',name:'Giá trị thị trường trên giá trị sổ sách',sym:'MTB',formula:'Giá trị thị trường VCSH / Vốn chủ sở hữu',needs:['mve','eq'],cite:'fama1992',f:c=>c.eq>0?c.mve/c.eq:NaN},
+    {id:'mtb',slug:'gia-tri-thi-truong-tren-so-sach',scope:'firm',name:'Giá trị thị trường trên giá trị sổ sách',sym:'MTB',formula:'Giá trị thị trường VCSH / Vốn chủ sở hữu (để trống khi VCSH âm)',needs:['mve','eq'],cite:'fama1992',f:c=>c.eq>0?c.mve/c.eq:NaN},
     {id:'size',slug:'quy-mo-doanh-nghiep',scope:'both',name:'Quy mô',sym:'SIZE',formula:'ln(Tổng tài sản)',needs:['ta'],cite:'frank2009',f:c=>c.ta>0?Math.log(c.ta):NaN},
     {id:'growth',slug:'tang-truong-doanh-thu',scope:'firm',name:'Tăng trưởng doanh thu',sym:'GROWTH',formula:'(Doanh thu thuần năm t − năm t−1) / Doanh thu thuần năm t−1',needs:['rev'],lag:true,cite:'titman1988',f:(c,p)=>p&&p.rev>0?(c.rev-p.rev)/p.rev:NaN},
     {id:'tang',slug:'tai-san-huu-hinh',scope:'firm',name:'Tài sản hữu hình',sym:'TANG',formula:'TSCĐ hữu hình (giá trị còn lại) / Tổng tài sản',needs:['ppe','ta'],cite:'rajan1995',f:c=>c.ppe/c.ta},
-    {id:'capex',slug:'chi-dau-tu-tai-san-co-dinh',scope:'firm',name:'Chi đầu tư tài sản cố định',sym:'CAPEX',formula:'Tiền chi mua sắm TSCĐ năm t / Tổng tài sản cuối năm t−1',needs:['capex','ta'],lag:true,cite:'richardson2006',f:(c,p)=>p&&p.ta>0?Math.abs(c.capex)/p.ta:NaN},
-    {id:'etr',slug:'thue-suat-thuc-te',scope:'firm',name:'Thuế suất thực tế',sym:'ETR',formula:'Chi phí thuế TNDN / LN trước thuế',needs:['tax','ebt'],cite:'dyreng2008',f:c=>c.ebt>0?c.tax/c.ebt:NaN},
-    {id:'payout',slug:'ty-le-chi-tra-co-tuc',scope:'firm',name:'Tỷ lệ chi trả cổ tức',sym:'PAYOUT',formula:'Cổ tức đã trả bằng tiền / LNST',needs:['div','ni'],cite:'fama2001',f:c=>c.ni>0?Math.abs(c.div)/c.ni:NaN},
+    {id:'capex',col:'capex_ta',slug:'chi-dau-tu-tai-san-co-dinh',scope:'firm',name:'Chi đầu tư tài sản cố định',sym:'CAPEX',formula:'Tiền chi mua sắm TSCĐ năm t / Tổng tài sản cuối năm t−1',needs:['capex','ta'],lag:true,cite:'richardson2006',f:(c,p)=>p&&p.ta>0?Math.abs(c.capex)/p.ta:NaN},
+    {id:'etr',slug:'thue-suat-thuc-te',scope:'firm',name:'Thuế suất thực tế',sym:'ETR',formula:'Chi phí thuế TNDN (hiện hành + hoãn lại) / LN trước thuế (để trống khi lỗ)',needs:['tax','ebt'],cite:'dyreng2008',f:c=>c.ebt>0?c.tax/c.ebt:NaN},
+    {id:'payout',slug:'ty-le-chi-tra-co-tuc',scope:'firm',name:'Tỷ lệ chi trả cổ tức',sym:'PAYOUT',formula:'Cổ tức đã trả bằng tiền / LNST (để trống khi lỗ)',needs:['div','ni'],cite:'fama2001',f:c=>c.ni>0?Math.abs(c.div)/c.ni:NaN},
     {id:'tacc',slug:'tong-dieu-chinh-don-tich',scope:'firm',name:'Tổng điều chỉnh dồn tích',sym:'TACC',formula:'(LNST − Lưu chuyển tiền thuần từ HĐKD) / Tổng tài sản cuối năm t−1',needs:['ni','cfo','ta'],lag:true,cite:'dechow1995',f:(c,p)=>p&&p.ta>0?(c.ni-c.cfo)/p.ta:NaN},
     {id:'nim',slug:'nim',scope:'bank',name:'Biên lãi thuần',sym:'NIM',formula:'Thu nhập lãi thuần / Tài sản sinh lãi',needs:['nii'],cite:'ho1981',bal:['ea','ta'],f:(c,p,A)=>{const ea=A('ea');if(Number.isFinite(ea)&&ea>0)return c.nii/ea;const ta=A('ta');return Number.isFinite(ta)&&ta>0?{v:c.nii/ta,note:'thiếu tài sản sinh lãi, đã chia cho tổng tài sản'}:NaN}},
-    {id:'zbank',slug:'z-score-ngan-hang',scope:'bank',name:'Z-score ngân hàng',sym:'ZSCORE',formula:'(ROA + VCSH/Tổng tài sản) / Độ lệch chuẩn ROA của 3 năm gần nhất',needs:['ni','ta','eq'],lag:true,cite:'laeven2009',f:(c,p,A,h)=>{const w=h.slice(-3).filter(r=>Number.isFinite(r.ni)&&r.ta>0);if(w.length<3||w[2].year-w[0].year!==2)return NaN;const r=w.map(x=>x.ni/x.ta),m=r.reduce((s,x)=>s+x,0)/3,sd=Math.sqrt(r.reduce((s,x)=>s+(x-m)**2,0)/2);return sd>0?(c.ni/c.ta+c.eq/c.ta)/sd:NaN}},
-    {id:'npl',slug:'ty-le-no-xau',scope:'bank',name:'Tỷ lệ nợ xấu',sym:'NPL',formula:'Nợ xấu (nhóm 3–5) / Tổng dư nợ cho vay khách hàng',needs:['npl','loans'],cite:'berger1997',f:c=>c.npl/c.loans},
-    {id:'car',slug:'ty-le-an-toan-von',scope:'bank',name:'Tỷ lệ an toàn vốn',sym:'CAR',formula:'Lấy từ thuyết minh BCTC hoặc báo cáo thường niên (%), đổi sang số thập phân',needs:['car'],cite:'berger2013',f:c=>c.car/100},
-    {id:'ldr',slug:'ty-le-cho-vay-tren-tien-gui',scope:'bank',name:'Tỷ lệ cho vay trên tiền gửi',sym:'LDR',formula:'Cho vay khách hàng / Tiền gửi của khách hàng',needs:['loans','deposits'],cite:'dietrich2011',f:c=>c.loans/c.deposits},
-    {id:'cir',slug:'ty-le-chi-phi-tren-thu-nhap',scope:'bank',name:'Tỷ lệ chi phí trên thu nhập',sym:'CIR',formula:'Chi phí hoạt động / Tổng thu nhập hoạt động',needs:['opex','toi'],cite:'athanasoglou2008',f:c=>Math.abs(c.opex)/c.toi},
+    {id:'zbank',slug:'z-score-ngan-hang',scope:'bank',name:'Z-score ngân hàng',sym:'ZSCORE',formula:'(ROA + VCSH/Tổng tài sản) / Độ lệch chuẩn ROA của 3 năm liền nhau gần nhất',needs:['ni','ta','eq'],lag:true,cite:'laeven2009',f:(c,p,A,h)=>{const w=h.slice(-3).filter(r=>Number.isFinite(r.ni)&&r.ta>0);if(w.length<3||w[2].year-w[0].year!==2)return NaN;const r=w.map(x=>x.ni/x.ta),m=r.reduce((s,x)=>s+x,0)/3,sd=Math.sqrt(r.reduce((s,x)=>s+(x-m)**2,0)/2);return sd>0?(c.ni/c.ta+c.eq/c.ta)/sd:NaN}},
+    {id:'npl',col:'npl_ratio',slug:'ty-le-no-xau',scope:'bank',name:'Tỷ lệ nợ xấu',sym:'NPL',formula:'Nợ xấu (nhóm 3–5) / Tổng dư nợ cho vay khách hàng',needs:[],hint:'npl và loans, hoặc nplr',cite:'berger1997',f:c=>Number.isFinite(c.npl)&&c.loans>0?c.npl/c.loans:Number.isFinite(c.nplr)?{v:c.nplr/100,note:'lấy tỷ lệ nợ xấu ngân hàng công bố (nplr)'}:NaN},
+    {id:'car',col:'car_ratio',slug:'ty-le-an-toan-von',scope:'bank',name:'Tỷ lệ an toàn vốn',sym:'CAR',formula:'Lấy từ thuyết minh BCTC hoặc báo cáo thường niên (%), đổi sang số thập phân',needs:['car'],cite:'berger2013',f:c=>c.car>=1?c.car/100:c.car>0?c.car:NaN},
+    {id:'ldr',slug:'ty-le-cho-vay-tren-tien-gui',scope:'bank',name:'Tỷ lệ cho vay trên tiền gửi',sym:'LDR',formula:'Cho vay khách hàng / Tiền gửi của khách hàng',needs:['loans','deposits'],cite:'dietrich2011',f:c=>c.deposits>0?c.loans/c.deposits:NaN},
+    {id:'cir',slug:'ty-le-chi-phi-tren-thu-nhap',scope:'bank',name:'Tỷ lệ chi phí trên thu nhập',sym:'CIR',formula:'Chi phí hoạt động / Tổng thu nhập hoạt động',needs:['opex','toi'],cite:'athanasoglou2008',f:c=>c.toi>0?Math.abs(c.opex)/c.toi:NaN},
     {id:'llp',slug:'chi-phi-du-phong-rui-ro-tin-dung',scope:'bank',name:'Chi phí dự phòng rủi ro tín dụng trên dư nợ',sym:'LLP',formula:'Chi phí dự phòng rủi ro tín dụng / Cho vay khách hàng',needs:['prov','loans'],cite:'dietrich2011',bal:['loans'],f:(c,p,A)=>Math.abs(c.prov)/A('loans')},
     {id:'lg',slug:'tang-truong-tin-dung',scope:'bank',name:'Tăng trưởng tín dụng',sym:'LG',formula:'(Cho vay KH năm t − năm t−1) / Cho vay KH năm t−1',needs:['loans'],lag:true,cite:'foos2010',f:(c,p)=>p&&p.loans>0?(c.loans-p.loans)/p.loans:NaN},
-    {id:'nonint',slug:'da-dang-hoa-thu-nhap',scope:'bank',name:'Tỷ trọng thu nhập ngoài lãi',sym:'NONII',formula:'(Tổng thu nhập hoạt động − Thu nhập lãi thuần) / Tổng thu nhập hoạt động',needs:['toi','nii'],cite:'stiroh2004',f:c=>(c.toi-c.nii)/c.toi},
+    {id:'nonint',slug:'da-dang-hoa-thu-nhap',scope:'bank',name:'Tỷ trọng thu nhập ngoài lãi',sym:'NONII',formula:'(Tổng thu nhập hoạt động − Thu nhập lãi thuần) / Tổng thu nhập hoạt động',needs:['toi','nii'],cite:'stiroh2004',f:c=>c.toi>0?(c.toi-c.nii)/c.toi:NaN},
     {id:'eqta',slug:'von-chu-so-huu-tren-tong-tai-san',scope:'bank',name:'Vốn chủ sở hữu trên tổng tài sản',sym:'EQTA',formula:'Vốn chủ sở hữu / Tổng tài sản',needs:['eq','ta'],cite:'batten2019',f:c=>c.eq/c.ta}
   ];
+  const colOf=v=>v.col||v.id;
   const fold=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/[^a-z0-9+]+/g,' ').trim();
-  // A header cell maps to a field by short key, by "<code>" / "<statement> <code>", or by the label (accent-insensitive).
-  function headerKey(h,tpl){
+  const FIRM_RE=/^(firm|ma|ma dn|ma doanh nghiep|ma ck|ma chung khoan|ma co phieu|ticker|symbol|bank|ma ngan hang|ngan hang|cong ty|doanh nghiep|ten doanh nghiep|id)$/;
+  const YEAR_RE=/^(year|nam|nam tai chinh|fy|fiscal year)$/;
+  // A header cell maps to a field by short key, by "<code>" / "<statement> <code>" (only codes of statement `sec` when given),
+  // by the label or a known alias (accent-insensitive), or by an unambiguous start of a label ("Doanh thu thuần về...").
+  function headerKey(h,tpl,sec){
     const s=fold(h);if(!s)return null;
-    if(/^(firm|ma|ma dn|ma doanh nghiep|ma ck|ma co phieu|ticker|ma ngan hang|ngan hang|cong ty|doanh nghiep|id)$/.test(s))return 'firm';
-    if(/^(year|nam|nam tai chinh)$/.test(s))return 'year';
-    for(const f of FIELDS[tpl]){
-      if(s===f.key)return f.key;
-      if(f.code&&(s===fold(f.code)||s===fold(f.st+' '+f.code)||s===fold('ma '+f.code)||s===fold('ma so '+f.code)))return f.key;
-      if(s===fold(f.label)||(s.length>=8&&fold(f.label).startsWith(s)))return f.key;
-    }
+    if(FIRM_RE.test(s))return 'firm';
+    if(YEAR_RE.test(s))return 'year';
+    const F=FIELDS[tpl];
+    const byCode=f=>f.code&&(!sec||f.st===sec)&&(s===fold(f.code)||s===fold(f.st+' '+f.code)||s===fold('ma '+f.code)||s===fold('ma so '+f.code));
+    const names=f=>[f.label,...(f.al||[])].map(fold);
+    const hit=F.find(f=>s===f.key)||F.find(byCode)||F.find(f=>names(f).includes(s));
+    if(hit)return hit.key;
+    if(s.length>=8){const c=F.filter(f=>names(f).some(n=>n.startsWith(s+' ')));if(c.length===1)return c[0].key}
     return null;
   }
-  // "1.234.567", "1,234,567", "1 234 567", "(123)", "-1.234,5", "12,5" all read as numbers.
-  function num(x){
-    let s=String(x==null?'':x).trim().replace(/ /g,' ');if(!s||s==='-'||s==='—')return NaN;
+  // Decimal mark used by the whole table: ',' (Vietnamese Excel), '.' (English Excel) or null when nothing tells.
+  // Evidence: both marks in one number, a group that cannot be thousands (1,5 / 0.25 / 12.3456), or 2+ thousand groups.
+  function detectDecimal(rows){
+    let comma=0,dot=0;
+    for(const r of rows)for(const x of r){
+      const s=String(x??'').replace(/[\s ()\-−%]/g,'');if(!/^[\d.,]+$/.test(s)||!/\d/.test(s))continue;
+      const d=s.includes('.'),c=s.includes(',');
+      if(d&&c){s.lastIndexOf(',')>s.lastIndexOf('.')?comma++:dot++;continue}
+      if(c){if(/^\d{1,3}(,\d{3}){2,}$/.test(s))dot++;else if(/^\d+,\d+$/.test(s)&&!/^[1-9]\d{0,2},\d{3}$/.test(s))comma++}
+      if(d){if(/^\d{1,3}(\.\d{3}){2,}$/.test(s))comma++;else if(/^\d+\.\d+$/.test(s)&&!/^[1-9]\d{0,2}\.\d{3}$/.test(s))dot++}
+    }
+    return comma>dot?',':dot>comma?'.':null;
+  }
+  // "1.234.567", "1,234,567", "1 234 567", "(123)", "-1.234,5", "12,5" all read as numbers; "-" alone is zero (Excel
+  // accounting format), blank is missing. dec = the table's decimal mark from detectDecimal, if known.
+  function num(x,dec){
+    let s=String(x==null?'':x).trim().replace(/ /g,' ').replace(/[−–—]/g,'-');if(!s)return NaN;
+    if(/^-+$/.test(s))return 0;
     let neg=false;if(/^\(.*\)$/.test(s)){neg=true;s=s.slice(1,-1)}
     s=s.replace(/\s/g,'').replace(/%$/,'');if(s.startsWith('-')){neg=!neg;s=s.slice(1)}
-    if(!/^[\d.,]+$/.test(s))return NaN;
-    const dots=(s.match(/\./g)||[]).length,commas=(s.match(/,/g)||[]).length;
-    if(dots&&commas){const dec=s.lastIndexOf('.')>s.lastIndexOf(',')?'.':',';s=s.split(dec==='.'?',':'.').join('');if(dec===',')s=s.replace(',','.')}
-    else if(dots>1||(dots===1&&/^\d{1,3}(\.\d{3})+$/.test(s)))s=s.replace(/\./g,'');
-    else if(commas>1||(commas===1&&/^\d{1,3}(,\d{3})+$/.test(s)))s=s.replace(/,/g,'');
-    else if(commas===1)s=s.replace(',','.');
+    if(!/^[\d.,]+$/.test(s)||!/\d/.test(s))return NaN;
+    if(dec){const th=dec===','?'.':',';s=s.split(th).join('');if(dec===',')s=s.replace(',','.');if((s.match(/\./g)||[]).length>1)return NaN}
+    else{
+      const dots=(s.match(/\./g)||[]).length,commas=(s.match(/,/g)||[]).length;
+      // A thousands group never starts with 0: "0.125" and "0,125" are decimals.
+      if(dots&&commas){const d=s.lastIndexOf('.')>s.lastIndexOf(',')?'.':',';s=s.split(d==='.'?',':'.').join('');if(d===',')s=s.replace(',','.')}
+      else if(dots>1||(dots===1&&/^[1-9]\d{0,2}(\.\d{3})+$/.test(s)))s=s.replace(/\./g,'');
+      else if(commas>1||(commas===1&&/^[1-9]\d{0,2}(,\d{3})+$/.test(s)))s=s.replace(/,/g,'');
+      else if(commas===1)s=s.replace(',','.');
+    }
     const v=parseFloat(s);return neg?-v:v;
   }
   function splitLines(text){
@@ -177,81 +223,219 @@
     const cells=l=>sep!==','?l.split(sep):(l.match(/("([^"]|"")*"|[^,]*)(,|$)/g)||[]).map(c=>c.replace(/,$/,'')).slice(0,-1).map(c=>c.replace(/^"|"$/g,'').replace(/""/g,'"'));
     return lines.map(l=>cells(l).map(c=>c.trim()));
   }
-  // Wide statements pasted with items as rows and years as columns (one firm) are turned into firm-year rows.
+  // Year of a column header in a vertical statement: "2023", "Năm 2023", "FY2023", "31/12/2023"; "01/01/2023" is the
+  // opening balance, i.e. the end of 2022.
+  function yearOf(c){
+    const s=String(c??'').trim();
+    let m=s.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-]((?:19|20)\d{2})$/);if(m)return +m[1]===1&&+m[2]===1?+m[3]-1:+m[3];
+    m=fold(s).match(/^(?:nam|nam tai chinh|fy|so cuoi nam|cuoi nam)?\s*((?:19|20)\d{2})$/);return m?+m[1]:null;
+  }
+  // 'Năm nay', 'Số cuối năm' = the report year; 'Năm trước', 'Số đầu năm' = the year before (offset from that year).
+  function relYear(c){const s=fold(c);return /^(nam nay|so cuoi nam|cuoi nam|so cuoi ky|cuoi ky|ky nay)$/.test(s)?0:/^(nam truoc|so dau nam|dau nam|so dau ky|dau ky|ky truoc)$/.test(s)?-1:null}
+  const SECTION=[[/bang can doi ke toan|bao cao tinh hinh tai chinh/,'CĐKT'],[/ket qua hoat dong kinh doanh|bao cao ket qua kinh doanh/,'KQKD'],[/luu chuyen tien te/,'LCTT']];
+  // Statements pasted with items as rows and years as columns (one firm, as copied from the BCTC) become firm-year rows.
+  // The header row may sit below a title; columns left of the first year hold the item name and "Mã số". Rows with a
+  // TT200 code are matched by code within their statement (CĐKT: 3-digit codes; KQKD then LCTT: 2-digit codes, LCTT
+  // starts when the codes restart or at its heading), so KQKD 20 (gross profit) is never read as LCTT 20.
   function maybeTranspose(rows,tpl){
-    if(rows.length<2)return {rows,transposed:false};
-    const yearsInHead=rows[0].slice(1).filter(c=>/^(19|20)\d{2}$/.test(String(c).replace(/^(nam|năm)\s*/i,''))).length;
-    const keysInCol=rows.slice(1).filter(r=>headerKey(r[0],tpl)).length;
-    if(yearsInHead<1||keysInCol<2)return {rows,transposed:false};
-    const firmRow=rows.find(r=>headerKey(r[0],tpl)==='firm');
-    const out=[['firm','year',...rows.slice(1).filter(r=>!['firm','year'].includes(headerKey(r[0],tpl))).map(r=>r[0])]];
-    rows[0].slice(1).forEach((y,j)=>{const yy=String(y).replace(/\D/g,'');if(!yy)return;out.push([firmRow?firmRow[j+1]:'DN',yy,...rows.slice(1).filter(r=>!['firm','year'].includes(headerKey(r[0],tpl))).map(r=>r[j+1]??'')])});
-    return {rows:out,transposed:true};
+    let hr=-1,yc=[];
+    for(let i=0;i<Math.min(rows.length-1,15);i++){
+      if(rows[i].some(c=>headerKey(c,tpl)==='year'))return {rows,transposed:false};
+      const ys=rows[i].map((c,j)=>j>0&&(yearOf(c)!=null||relYear(c)!=null)?j:-1).filter(j=>j>0);
+      if(ys.length&&rows.slice(i+1).filter(r=>headerKey(r[0],tpl)||(r[1]&&headerKey(r[1],tpl))).length>=2){hr=i;yc=ys;break}
+    }
+    if(hr<0)return {rows,transposed:false};
+    const lab=rows[hr].map((c,j)=>j).filter(j=>j<yc[0]);
+    const base=Math.max(...rows.slice(0,hr).flatMap(r=>(r.join(' ').match(/(?:19|20)\d{2}/g)||[]).map(Number)));
+    const years=yc.map(j=>yearOf(rows[hr][j])??(relYear(rows[hr][j])!=null&&base>0?base+relYear(rows[hr][j]):null));
+    const vals={},order=[];let firmRow=null,sec=null,prev=null;
+    for(const r of rows.slice(hr+1)){
+      const labels=lab.map(j=>r[j]??''),txt=fold(labels.join(' '));
+      const empty=yc.every(j=>!String(r[j]??'').trim());
+      const head=SECTION.find(([re])=>re.test(txt));
+      if(head&&empty){sec=head[1];prev=null;continue}
+      const code=tpl==='firm'?labels.map(x=>String(x).trim()).find(x=>/^\d{2,3}$/.test(x)):null;
+      let key=null;
+      if(code){
+        if(code.length===3)sec='CĐKT';
+        else{const n=+code;if(sec!=='KQKD'&&sec!=='LCTT')sec='KQKD';else if(sec==='KQKD'&&prev!=null&&n<prev)sec='LCTT';prev=n}
+        key=headerKey(code,tpl,sec);
+        if(!key){const k=labels.map(x=>headerKey(x,tpl)).find(Boolean);const f=FIELDS[tpl].find(f=>f.key===k);if(k&&(!f||!f.code))key=k}
+      }else key=labels.map(x=>headerKey(x,tpl)).find(Boolean)||null;
+      if(!key||key==='year')continue;
+      if(key==='firm'){firmRow=r;continue}
+      if(vals[key])continue;
+      vals[key]=yc.map(j=>r[j]??'');order.push(key);
+    }
+    const out=[['firm','year',...order]];
+    years.forEach((y,i)=>{if(y==null||out.some((o,k)=>k>0&&+o[1]===y))return;out.push([firmRow?String(firmRow[yc[i]]??'').trim()||'DN':'DN',String(y),...order.map(k=>vals[k][i])])});
+    return {rows:out,transposed:true,named:!!firmRow,needYear:years.some(y=>y==null)};
+  }
+  // Long data (firm, year, item, value per row) is pivoted to one row per firm-year.
+  function maybePivot(rows,tpl){
+    const h=rows[0].map(fold),fi=rows[0].findIndex(c=>headerKey(c,tpl)==='firm'),yi=rows[0].findIndex(c=>headerKey(c,tpl)==='year');
+    const ii=h.findIndex(s=>/^(variable|bien|chi tieu|item|indicator|ma bien|ma chi tieu)$/.test(s)),vi=h.findIndex(s=>/^(value|gia tri|so lieu)$/.test(s));
+    if(fi<0||yi<0||ii<0||vi<0)return null;
+    const keys=[],cell={};
+    for(const r of rows.slice(1)){const k=headerKey(r[ii],tpl);if(!k||k==='firm'||k==='year')continue;if(!keys.includes(k))keys.push(k);const id=r[fi]+'|'+r[yi];(cell[id]=cell[id]||{firm:r[fi],year:r[yi]})[k]??=r[vi]}
+    return [['firm','year',...keys],...Object.values(cell).map(o=>[o.firm,o.year,...keys.map(k=>o[k]??'')])];
   }
   function parse(text,tpl){
-    let rows=splitLines(text);if(!rows.length)return {data:[],cols:[],unknown:[],errors:['Chưa có dữ liệu.']};
+    let rows=splitLines(text);if(!rows.length)return {data:[],cols:[],unknown:[],errors:['Chưa có dữ liệu.'],notes:[]};
     const t=maybeTranspose(rows,tpl);rows=t.rows;
+    const pv=t.transposed?null:maybePivot(rows,tpl);if(pv)rows=pv;
     const head=rows[0].map(h=>headerKey(h,tpl)),unknown=rows[0].filter((h,j)=>h&&!head[j]);
-    const errors=[];
-    if(!head.includes('firm'))errors.push('Thiếu cột firm (mã doanh nghiệp).');
+    for(let j=0;j<head.length;j++)if(head[j]&&head.indexOf(head[j])<j)head[j]=null;
+    const errors=[],notes=[];
     if(!head.includes('year'))errors.push('Thiếu cột year (năm).');
+    const noFirm=!head.includes('firm');
+    if(noFirm&&head.includes('year'))notes.push('Không có cột firm: coi mọi dòng là của một doanh nghiệp tên "DN".');
+    if(t.needYear)errors.push('Bảng dọc dùng cột "Năm nay", "Năm trước" mà không tìm thấy năm báo cáo ở dòng tiêu đề phía trên: đổi tên các cột thành năm (ví dụ 2023, 2022).');
+    if(t.transposed&&!t.named)notes.push('Bảng dọc chưa có mã doanh nghiệp: đặt tên "DN". Thêm một dòng "Mã CK" cùng mã ở mỗi cột năm để đặt tên.');
+    const dec=detectDecimal(rows.slice(1).map(r=>r.filter((c,j)=>head[j]&&head[j]!=='firm'&&head[j]!=='year')));
     const data=[],seen=new Set();
     for(const r of rows.slice(1)){
-      const o={};head.forEach((k,j)=>{if(!k)return;o[k]=k==='firm'?String(r[j]??'').trim():k==='year'?parseInt(String(r[j]??'').replace(/\D/g,''),10):num(r[j])});
-      if(!o.firm||!Number.isFinite(o.year))continue;
+      const o=noFirm?{firm:'DN'}:{};
+      head.forEach((k,j)=>{if(!k)return;o[k]=k==='firm'?String(r[j]??'').trim():k==='year'?parseInt(String(r[j]??'').replace(/\D/g,''),10):num(r[j],dec)});
+      if(!o.firm||!Number.isFinite(o.year)||o.year<1900||o.year>2100)continue;
+      if(!Number.isFinite(o.tax)&&Number.isFinite(o.taxc))o.tax=o.taxc+(Number.isFinite(o.taxd)?o.taxd:0);
       const id=o.firm+'|'+o.year;if(seen.has(id)){errors.push(`Trùng dòng ${o.firm} năm ${o.year}: giữ dòng đầu tiên.`);continue}
       seen.add(id);data.push(o);
     }
     data.sort((a,b)=>a.firm.localeCompare(b.firm)||a.year-b.year);
-    return {data,cols:[...new Set(head.filter(k=>k&&k!=='firm'&&k!=='year'))],unknown,errors,transposed:t.transposed};
+    const cols=[...new Set(head.filter(k=>k&&k!=='firm'&&k!=='year'))];
+    if(cols.includes('taxc')&&!cols.includes('tax'))cols.push('tax');
+    return {data,cols,unknown,errors,notes,transposed:t.transposed,dec};
   }
+  const opt=o=>typeof o==='object'&&o?{avg:!!o.avg,unit:UNITS[o.unit]?o.unit:'dong',winsor:+o.winsor||0,lag:!!o.lag}:{avg:!!o,unit:'dong',winsor:0,lag:false};
   // Lagged values only come from the immediately preceding year (2019 after 2017 is not a lag).
-  function compute(data,tpl,avg){
+  function compute(data,tpl,o){
+    o=opt(o);
     const vars=VARS.filter(v=>v.scope==='both'||v.scope===tpl),rows=[];
     const by={};for(const r of data)(by[r.firm]=by[r.firm]||[]).push(r);
     for(const firm of Object.keys(by)){
       const list=by[firm];
       list.forEach((c,i)=>{
-        // Market value of equity: mcap if given, else price × shares (only meaningful when the statements are in đồng).
-        c.mve=Number.isFinite(c.mcap)?c.mcap:Number.isFinite(c.price)&&Number.isFinite(c.shares)?c.price*c.shares:NaN;
+        // Market value of equity: mcap if given, else price (đồng) × shares, converted to the statement unit.
+        c.mve=Number.isFinite(c.mcap)?c.mcap:Number.isFinite(c.price)&&Number.isFinite(c.shares)?c.price*c.shares/UNITS[o.unit].f:NaN;
         const p=i>0&&list[i-1].year===c.year-1?list[i-1]:null;
-        const A=k=>avg?(p&&Number.isFinite(p[k])&&Number.isFinite(c[k])?(c[k]+p[k])/2:NaN):c[k];
+        const A=k=>o.avg?(p&&Number.isFinite(p[k])&&Number.isFinite(c[k])?(c[k]+p[k])/2:NaN):c[k];
         const out={firm,year:c.year,values:{},notes:{}};
         for(const v of vars){
           if(v.needs.some(k=>!Number.isFinite(c[k]))){out.values[v.id]=NaN;continue}
-          let r;try{r=v.f(c,p,A,list.slice(0,i+1))}catch(e){r=NaN}
+          let r;try{r=v.f(c,p,A,list.slice(0,i+1),o)}catch(e){r=NaN}
           if(r&&typeof r==='object'){out.notes[v.id]=r.note;r=r.v}
           out.values[v.id]=Number.isFinite(r)?r:NaN;
         }
         rows.push(out);
       });
     }
-    return {vars,rows};
+    const res={vars,rows,opts:o};
+    winsorize(res,o.winsor);addLags(res);
+    return res;
   }
+  // Percentile with Stata's _pctile rule (used by summarize, detail and winsor2): with P = n·p/100, the mean of the
+  // P-th and (P+1)-th smallest values when P is a whole number, else the ⌈P⌉-th smallest.
+  function pctile(sorted,p){
+    const n=sorted.length;if(!n)return NaN;
+    const P=n*p/100,i=Math.floor(P+1e-9);
+    if(Math.abs(P-i)<1e-9)return i<=0?sorted[0]:i>=n?sorted[n-1]:(sorted[i-1]+sorted[i])/2;
+    return sorted[Math.min(i,n-1)];
+  }
+  // Winsorizing at p and 100−p on the pooled sample (all firm-years), variable by variable: values below the lower
+  // percentile are set to it, values above the upper one likewise; missing stays missing, no row is dropped.
+  function winsorize(res,p){
+    res.bounds={};
+    for(const r of res.rows)r.final={...r.values};
+    if(!(p>0))return res;
+    for(const v of res.vars){
+      const xs=res.rows.map(r=>r.values[v.id]).filter(Number.isFinite).sort((a,b)=>a-b);if(!xs.length)continue;
+      const lo=pctile(xs,p),hi=pctile(xs,100-p);let nlo=0,nhi=0;
+      for(const r of res.rows){const x=r.values[v.id];if(!Number.isFinite(x))continue;if(x<lo){r.final[v.id]=lo;nlo++}else if(x>hi){r.final[v.id]=hi;nhi++}}
+      res.bounds[v.id]={lo,hi,nlo,nhi};
+    }
+    return res;
+  }
+  // One-year lag of the final (winsorized when chosen) value, only from year t−1 of the same firm.
+  function addLags(res){
+    const prev={};
+    for(const r of res.rows){const q=prev[r.firm];r.lag={};for(const v of res.vars)r.lag[v.id]=q&&q.year===r.year-1?q.final[v.id]:NaN;prev[r.firm]=r}
+    return res;
+  }
+  // Descriptive statistics as in Stata `summarize`: N, mean, SD (n − 1), min, median (_pctile rule), max.
+  function describe(res,key){
+    key=key||'final';
+    return res.vars.map(v=>{
+      const xs=res.rows.map(r=>r[key][v.id]).filter(Number.isFinite).sort((a,b)=>a-b),n=xs.length;
+      if(!n)return null;
+      const mean=xs.reduce((s,x)=>s+x,0)/n,sd=n>1?Math.sqrt(xs.reduce((s,x)=>s+(x-mean)**2,0)/(n-1)):NaN;
+      return {id:v.id,sym:v.sym,col:colOf(v),n,mean,sd,min:xs[0],p50:pctile(xs,50),max:xs[n-1]};
+    }).filter(Boolean);
+  }
+  const median=xs=>{const s=xs.filter(Number.isFinite).sort((a,b)=>a-b);return s.length?pctile(s,50):NaN};
+  // Plausibility checks a student can act on: the balance-sheet identity, parts larger than wholes, unit slips.
+  function checkData(data,tpl,unit){
+    const w=[],f=x=>Math.round(x).toLocaleString('vi-VN');
+    const add=(r,m)=>w.push(`${r.firm} ${r.year}: ${m}`);
+    for(const r of data){
+      const ok=k=>Number.isFinite(r[k]);
+      if(tpl==='firm'){
+        if(ok('ta')&&ok('tl')&&ok('eq')&&Math.abs(r.ta-r.tl-r.eq)>0.01*Math.abs(r.ta))add(r,`tổng tài sản ${f(r.ta)} khác nợ phải trả + vốn chủ sở hữu ${f(r.tl+r.eq)}, kiểm tra cột hoặc dòng dán lệch`);
+        if(ok('ca')&&ok('ta')&&r.ca>r.ta*1.0001)add(r,'tài sản ngắn hạn lớn hơn tổng tài sản');
+        if(ok('cl')&&ok('tl')&&r.cl>r.tl*1.0001)add(r,'nợ ngắn hạn lớn hơn nợ phải trả');
+        if(ok('ebt')&&ok('ni')&&ok('tax')&&Math.abs(r.ebt-r.tax-r.ni)>0.01*Math.max(Math.abs(r.ebt),1))add(r,`LN trước thuế − thuế (${f(r.ebt-r.tax)}) khác LNST ${f(r.ni)}`);
+      }else{
+        if(ok('loans')&&ok('ta')&&r.loans>r.ta)add(r,'cho vay khách hàng lớn hơn tổng tài sản');
+        if(ok('npl')&&ok('loans')&&r.npl>r.loans)add(r,'nợ xấu lớn hơn dư nợ cho vay');
+        if(ok('eq')&&ok('ta')&&r.eq>r.ta)add(r,'vốn chủ sở hữu lớn hơn tổng tài sản');
+      }
+      if(ok('ta')&&r.ta<=0)add(r,'tổng tài sản không dương');
+    }
+    const by={};for(const r of data)(by[r.firm]=by[r.firm]||[]).push(r);
+    for(const list of Object.values(by))for(let i=1;i<list.length;i++){const a=list[i-1],b=list[i];if(a.ta>0&&b.ta>0&&(b.ta/a.ta>100||a.ta/b.ta>100))add(b,`tổng tài sản ${b.ta>a.ta?'tăng':'giảm'} hơn 100 lần so với ${a.year}, có thể hai năm nhập khác đơn vị`)}
+    const m=median(data.map(r=>r.ta));
+    if(Number.isFinite(m)&&m>0){const d=m*UNITS[unit].f;if(d<1e9||d>5e16)w.unshift(`Tổng tài sản trung vị là ${f(m)} ${UNITS[unit].label} (≈ ${d<1e9?'dưới 1 tỷ đồng':'trên 50 triệu tỷ đồng'}): kiểm tra lại ô "Đơn vị số liệu BCTC".`)}
+    return w;
+  }
+  const used=res=>res.vars.filter(v=>res.rows.some(r=>Number.isFinite(r.values[v.id])));
   const csvCell=x=>{const s=x==null?'':String(x);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};
-  // Long panel: one row per firm-year, inputs then variables, dot decimals, blank = missing.
-  function toCSV(data,res,tpl){
+  const cnum=x=>Number.isFinite(x)?+x.toPrecision(10):'';
+  // Column names of the panel CSV: inputs, variables, then <var>_w (winsorized) and <var>_l1 / <var>_w_l1 (lag).
+  function csvColumns(data,res,tpl){
+    const o=res.opts||opt(false),u=used(res);
     const inKeys=FIELDS[tpl].map(f=>f.key).filter(k=>data.some(r=>Number.isFinite(r[k])));
-    const used=res.vars.filter(v=>res.rows.some(r=>Number.isFinite(r.values[v.id])));
-    const head=['firm','year',...inKeys,...used.map(v=>v.id)];
+    const base=v=>colOf(v)+(o.winsor?'_w':'');
+    return {inKeys,u,head:['firm','year',...inKeys,...u.map(colOf),...(o.winsor?u.map(base):[]),...(o.lag?u.map(v=>base(v)+'_l1'):[])]};
+  }
+  // Long panel: one row per firm-year, dot decimals, blank = missing; opens with Stata import delimited, R read.csv, EViews.
+  function toCSV(data,res,tpl){
+    const o=res.opts||opt(false),{inKeys,u,head}=csvColumns(data,res,tpl);
     const byId=Object.fromEntries(data.map(r=>[r.firm+'|'+r.year,r]));
     const lines=[head.join(',')];
-    for(const r of res.rows){const d=byId[r.firm+'|'+r.year];lines.push([r.firm,r.year,...inKeys.map(k=>Number.isFinite(d[k])?d[k]:''),...used.map(v=>Number.isFinite(r.values[v.id])?+r.values[v.id].toPrecision(10):'')].map(csvCell).join(','))}
+    for(const r of res.rows){const d=byId[r.firm+'|'+r.year];lines.push([r.firm,r.year,...inKeys.map(k=>cnum(d[k])),...u.map(v=>cnum(r.values[v.id])),...(o.winsor?u.map(v=>cnum(r.final[v.id])):[]),...(o.lag?u.map(v=>cnum(r.lag[v.id])):[])].map(csvCell).join(','))}
     return lines.join('\n')+'\n';
   }
-  function measurementText(res,avg){
-    const used=res.vars.filter(v=>res.rows.some(r=>Number.isFinite(r.values[v.id])));
-    if(!used.length)return {html:'',refs:[]};
-    const keys=[...new Set(used.map(v=>v.cite))];
+  function codeSnippets(res,tpl,file){
+    const u=used(res),o=res.opts||opt(false),vs=u.map(v=>colOf(v)+(o.winsor?'_w':'')).join(' ');
+    return `* Stata\nimport delimited using "${file}", clear encoding(utf-8)\nencode firm, gen(id)\nxtset id year\nsummarize ${vs}\n\n# R\nlibrary(plm)\nd <- read.csv("${file}", fileEncoding = "UTF-8-BOM")\npd <- pdata.frame(d, index = c("firm", "year"))\nsummary(d[, c(${u.map(v=>'"'+colOf(v)+(o.winsor?'_w':'')+'"').join(', ')})])\n\n' EViews\nimport "${file}"\npagestruct(freq=a) firm @date(year)\ngroup g ${vs}\ng.stats`;
+  }
+  function measurementText(res,o){
+    o=res.opts&&typeof o!=='object'?{...res.opts,avg:!!o}:opt(o);
+    const u=used(res);
+    if(!u.length)return {html:'',refs:[]};
+    const keys=[...new Set(u.map(v=>v.cite))];
+    const bank=res.vars.some(v=>v.scope==='bank'),who=bank?'ngân hàng':'doanh nghiệp';
     const firms=new Set(res.rows.map(r=>r.firm)).size,ys=res.rows.map(r=>r.year);
-    const lines=used.map(v=>`<li><strong>${v.name} (${v.sym})</strong> = ${v.formula}${avg&&v.bal?' (các khoản mục số dư lấy bình quân đầu kỳ và cuối kỳ)':''}, theo ${REFS[v.cite].cite}.</li>`);
+    const lines=u.map(v=>`<li><strong>${v.name} (${v.sym})</strong> = ${v.id==='size'?`ln(Tổng tài sản, đơn vị ${UNITS[o.unit].label})`:v.formula}${o.avg&&v.bal?' (các khoản mục số dư lấy bình quân đầu kỳ và cuối kỳ)':''}, theo ${REFS[v.cite].cite}.</li>`);
     const refs=keys.map(k=>REFS[k]).sort((a,b)=>a.apa.localeCompare(b.apa));
-    const html=`<p>Dữ liệu được thu thập từ báo cáo tài chính năm đã kiểm toán của ${firms} ${res.vars.some(v=>v.scope==='bank')?'ngân hàng':'doanh nghiệp'} trong giai đoạn ${Math.min(...ys)}–${Math.max(...ys)}, tạo thành dữ liệu bảng gồm ${res.rows.length} quan sát ${res.vars.some(v=>v.scope==='bank')?'ngân hàng':'doanh nghiệp'} – năm. Các biến được đo lường như sau:</p><ul>${lines.join('')}</ul><p>Số liệu lấy từ các chỉ tiêu tương ứng trên Bảng cân đối kế toán, Báo cáo kết quả hoạt động kinh doanh và Báo cáo lưu chuyển tiền tệ lập theo ${res.vars.some(v=>v.scope==='bank')?'Thông tư 49/2014/TT-NHNN':'Thông tư 200/2014/TT-BTC'}.</p><p><strong>Tài liệu tham khảo</strong></p><ul>${refs.map(r=>`<li>${r.apa} https://doi.org/${r.doi}</li>`).join('')}</ul>`;
+    const extra=[o.winsor?`Để hạn chế ảnh hưởng của giá trị ngoại lai, các biến liên tục được winsorize ở phân vị ${o.winsor}% và ${100-o.winsor}% trên toàn mẫu.`:'',o.lag?'Biến trễ một năm (t−1) chỉ lấy từ đúng năm liền trước của cùng '+who+'.':''].filter(Boolean).join(' ');
+    const html=`<p>Dữ liệu được thu thập từ báo cáo tài chính năm đã kiểm toán của ${firms} ${who} trong giai đoạn ${Math.min(...ys)}–${Math.max(...ys)}, tạo thành dữ liệu bảng gồm ${res.rows.length} quan sát ${who} – năm. Các biến được đo lường như sau:</p><ul>${lines.join('')}</ul><p>Số liệu lấy từ các chỉ tiêu tương ứng trên Bảng cân đối kế toán, Báo cáo kết quả hoạt động kinh doanh và Báo cáo lưu chuyển tiền tệ lập theo ${bank?'Thông tư 49/2014/TT-NHNN':'Thông tư 200/2014/TT-BTC'}, đơn vị ${UNITS[o.unit].label}.${extra?' '+extra:''}</p><p><strong>Tài liệu tham khảo</strong></p><ul>${refs.map(r=>`<li>${r.apa} https://doi.org/${r.doi}</li>`).join('')}</ul>`;
     return {html,refs:keys};
   }
   //#fr-end
 
   const $=id=>document.getElementById(id);
+  if(!$('fr-data'))return;
   const SAMPLE={
     firm:`firm\tyear\tta\tca\tcash\tsti\tar\tinv\tppe\ttl\tcl\tap\tstd\tltd\teq\tre\trev\tcogs\tint\tebt\ttax\tni\tcfo\tda\tcapex\tdiv\tmcap
 AAA\t2021\t1000\t600\t80\t20\t150\t200\t300\t550\t350\t90\t150\t120\t450\t110\t1200\t900\t15\t70\t14\t56\t40\t25\t(60)\t(20)\t750
@@ -264,36 +448,64 @@ NHA\t2021\t1000000\t650000\t9000\t780000\t80000\t930000\t60000\t28000\t36000\t13
 NHA\t2022\t1120000\t730000\t10000\t850000\t92000\t1040000\t72000\t31000\t40000\t14500\t9000\t16500\t13200\t12400\t11,5
 NHA\t2023\t1250000\t820000\t11500\t930000\t105000\t1160000\t80000\t33000\t43000\t15500\t10500\t17000\t13600\t15580\t11,9`
   };
+  const SAMPLE_UNIT={firm:'ty',bank:'ty'};
   const fmt=(x,id)=>!Number.isFinite(x)?'—':(id==='ccc'?x.toFixed(1):id==='size'?x.toFixed(3):Math.abs(x)>=100?x.toFixed(1):x.toFixed(4)).replace('.',',');
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   function download(name,content){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+content],{type:'text/csv;charset=utf-8'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
-  function renderFields(){const tpl=$('fr-tpl').value;$('fr-fields').innerHTML=`<table><thead><tr><th>Cột</th><th>Chỉ tiêu</th><th>Báo cáo</th><th>Mã số</th></tr></thead><tbody><tr><td><code>firm</code></td><td>Mã doanh nghiệp (ví dụ mã chứng khoán)</td><td></td><td></td></tr><tr><td><code>year</code></td><td>Năm tài chính</td><td></td><td></td></tr>${FIELDS[tpl].map(f=>`<tr><td><code>${f.key}</code></td><td>${esc(f.label)}</td><td>${esc(f.st)}</td><td>${esc(f.code)}</td></tr>`).join('')}</tbody></table>`}
+  function renderFields(){const tpl=$('fr-tpl').value;$('fr-fields').innerHTML=`<table><thead><tr><th>Cột</th><th>Chỉ tiêu</th><th>Báo cáo</th><th>Mã số</th></tr></thead><tbody><tr><td><code>firm</code></td><td>Mã doanh nghiệp (ví dụ mã chứng khoán)</td><td></td><td></td></tr><tr><td><code>year</code></td><td>Năm tài chính</td><td></td><td></td></tr>${FIELDS[tpl].map(f=>`<tr><td><code>${f.key}</code></td><td>${esc(f.label)}${f.al&&f.al.length?`<br><small>cũng nhận: ${esc(f.al.join('; '))}</small>`:''}</td><td>${esc(f.st)}</td><td>${esc(f.code)}</td></tr>`).join('')}</tbody></table>`}
+  const opts=()=>({avg:$('fr-avg').value==='avg',unit:$('fr-unit').value,winsor:+$('fr-win').value,lag:$('fr-lag').checked});
+  const fileName=tpl=>`du-lieu-bang-${tpl==='bank'?'ngan-hang':'doanh-nghiep'}.csv`;
   let last=null;
+  function copyBtn(b,getText,label){b.addEventListener('click',()=>{const done=()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent=label,1500)};try{navigator.clipboard.writeText(getText()).then(done,()=>b.textContent='Không sao chép được')}catch(e){b.textContent='Không sao chép được'}})}
   function run(){
-    const tpl=$('fr-tpl').value,avg=$('fr-avg').value==='avg',out=$('fr-out'),th=$('fr-thesis');
+    const tpl=$('fr-tpl').value,o=opts(),out=$('fr-out'),th=$('fr-thesis');
     const p=parse($('fr-data').value,tpl);
     let html=p.errors.map(e=>`<p class="err">${esc(e)}</p>`).join('');
-    if(p.unknown.length)html+=`<p class="err">Không nhận ra cột: ${esc(p.unknown.join(', '))}. Đổi tên theo bảng "Danh sách cột được nhận".</p>`;
+    if(p.unknown.length){
+      const other=tpl==='firm'?'bank':'firm',hits=p.unknown.filter(h=>headerKey(h,other)).length;
+      html+=`<p class="err">Bỏ qua cột không nhận ra: ${esc(p.unknown.join(', '))}. Đổi tên theo bảng "Danh sách cột được nhận".${hits>=2?` Các cột này giống mẫu ${other==='bank'?'ngân hàng':'doanh nghiệp'}: kiểm tra ô "Mẫu báo cáo tài chính".`:''}</p>`;
+    }
+    html+=p.notes.map(n=>`<p class="how">${esc(n)}</p>`).join('');
     if(p.transposed)html+='<p class="how">Đã xoay bảng dọc (chỉ tiêu theo dòng) thành dạng doanh nghiệp – năm.</p>';
-    if(!p.data.length){out.innerHTML=html||'<p class="err">Không đọc được dòng dữ liệu nào.</p>';th.innerHTML='';last=null;return}
-    const res=compute(p.data,tpl,avg);last={p,res,tpl,avg};
-    const used=res.vars.filter(v=>res.rows.some(r=>Number.isFinite(r.values[v.id])));
-    const missing=res.vars.filter(v=>!used.includes(v)).map(v=>`${v.sym} (cần ${v.needs.filter(k=>k==='mve'?!(p.cols.includes('mcap')||(p.cols.includes('price')&&p.cols.includes('shares'))):!p.cols.includes(k)).map(k=>k==='mve'?'mcap hoặc price và shares':k).join(', ')||'năm liền trước'})`);
-    html+=`<div class="result"><span class="lbl">Đã tính</span><span class="num">${used.length} biến</span><span class="how">${new Set(p.data.map(r=>r.firm)).size} doanh nghiệp, ${p.data.length} quan sát doanh nghiệp – năm. Mẫu số dạng số dư: ${avg?'bình quân đầu kỳ và cuối kỳ':'số cuối kỳ'}.</span></div>`;
-    html+=`<div class="table-wrap"><table><thead><tr><th>firm</th><th>year</th>${used.map(v=>`<th title="${esc(v.formula)}">${esc(v.sym)}</th>`).join('')}</tr></thead><tbody>${res.rows.map(r=>`<tr><td>${esc(r.firm)}</td><td>${r.year}</td>${used.map(v=>`<td${r.notes[v.id]?` title="${esc(r.notes[v.id])}"`:''}>${fmt(r.values[v.id],v.id)}${r.notes[v.id]?' *':''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-    if(res.rows.some(r=>Object.keys(r.notes).length))html+='<p class="how">* Ô có dấu sao là giá trị xấp xỉ, rê chuột để xem lý do.</p>';
-    html+=`<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Công thức đã dùng</summary><div class="table-wrap"><table><thead><tr><th>Biến</th><th>Công thức</th><th>Nguồn</th></tr></thead><tbody>${used.map(v=>`<tr><td><a href="/goc-nghien-cuu/bien-nghien-cuu/${v.slug}/">${esc(v.sym)}</a></td><td>${esc(v.formula)}</td><td>${esc(REFS[v.cite].cite)}</td></tr>`).join('')}</tbody></table></div></details>`;
+    if(!p.data.length){out.innerHTML=html||'<p class="err">Không đọc được dòng dữ liệu nào.</p>';th.innerHTML='';$('fr-csvinfo').textContent='';$('fr-code').textContent='';last=null;return}
+    const res=compute(p.data,tpl,o);last={p,res,tpl,o};
+    const u=used(res);
+    const hasMve=p.cols.includes('mcap')||(p.cols.includes('price')&&p.cols.includes('shares'));
+    const missing=res.vars.filter(v=>!u.includes(v)).map(v=>`${v.sym} (cần ${v.hint||v.needs.filter(k=>k==='mve'?!hasMve:!p.cols.includes(k)).map(k=>k==='mve'?'mcap hoặc price và shares':k).join(', ')||'năm liền trước hoặc giá trị hợp lệ'})`);
+    const nf=new Set(p.data.map(r=>r.firm)).size;
+    html+=`<div class="result"><span class="lbl">Đã tính</span><span class="num">${u.length} biến</span><span class="how">${nf} ${tpl==='bank'?'ngân hàng':'doanh nghiệp'}, ${p.data.length} quan sát, năm ${Math.min(...p.data.map(r=>r.year))}–${Math.max(...p.data.map(r=>r.year))}. Mẫu số dạng số dư: ${o.avg?'bình quân đầu kỳ và cuối kỳ':'số cuối kỳ'}. Đơn vị: ${UNITS[o.unit].label}.${o.winsor?` Đã winsorize ${o.winsor}% và ${100-o.winsor}%.`:''}${p.dec?` Dấu thập phân đọc là "${p.dec}".`:''}</span></div>`;
+    const warn=checkData(p.data,tpl,o.unit);
+    if(warn.length)html+=`<details open><summary class="err" style="cursor:pointer">Kiểm tra số liệu: ${warn.length} điểm cần xem lại</summary><ul class="err" style="margin:6px 0 0 18px;list-style:disc">${warn.slice(0,12).map(w=>`<li>${esc(w)}</li>`).join('')}${warn.length>12?`<li>… và ${warn.length-12} điểm khác</li>`:''}</ul></details>`;
+    const MAX=300,shown=res.rows.slice(0,MAX),cols=[...u.map(v=>({v,k:'final',h:v.sym})),...(o.lag?u.map(v=>({v,k:'lag',h:v.sym+'(t−1)'})):[])];
+    html+=`<div class="table-wrap"><table><thead><tr><th>firm</th><th>year</th>${cols.map(c=>`<th title="${esc(c.v.formula)}">${esc(c.h)}</th>`).join('')}</tr></thead><tbody>${shown.map(r=>`<tr><td>${esc(r.firm)}</td><td>${r.year}</td>${cols.map(c=>{const x=r[c.k][c.v.id],w=c.k==='final'&&o.winsor&&Number.isFinite(x)&&x!==r.values[c.v.id],n=c.k==='final'&&r.notes[c.v.id];return `<td${n?` title="${esc(n)}"`:w?` title="giá trị gốc ${fmt(r.values[c.v.id],c.v.id)}"`:''}>${fmt(x,c.v.id)}${n?' *':''}${w?' †':''}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>`;
+    if(res.rows.length>MAX)html+=`<p class="how">Bảng chỉ hiện ${MAX} dòng đầu; file CSV có đủ ${res.rows.length} dòng.</p>`;
+    if(res.rows.some(r=>Object.keys(r.notes).length))html+='<p class="how">* Giá trị xấp xỉ, rê chuột để xem lý do.</p>';
+    if(o.winsor)html+='<p class="how">† Giá trị đã bị thay bằng phân vị khi winsorize, rê chuột để xem giá trị gốc.</p>';
+    const st=describe(res),f4=x=>Number.isFinite(x)?(Math.abs(x)>=100?x.toFixed(2):x.toFixed(4)).replace('.',','):'—';
+    html+=`<div class="row" style="justify-content:space-between;align-items:center;margin-top:8px"><strong>Thống kê mô tả${o.winsor?' (sau winsorize)':''}</strong><button type="button" class="btn ghost" id="fr-copystats">Sao chép bảng</button></div><div class="table-wrap"><table><thead><tr><th>Biến</th><th>N</th><th>Trung bình</th><th>Độ lệch chuẩn</th><th>Nhỏ nhất</th><th>Trung vị</th><th>Lớn nhất</th></tr></thead><tbody>${st.map(s=>`<tr><td>${esc(s.sym)}</td><td>${s.n}</td><td>${f4(s.mean)}</td><td>${f4(s.sd)}</td><td>${f4(s.min)}</td><td>${f4(s.p50)}</td><td>${f4(s.max)}</td></tr>`).join('')}</tbody></table></div>`;
+    if(o.winsor){const b=u.map(v=>({v,b:res.bounds[v.id]})).filter(x=>x.b);html+=`<details><summary style="cursor:pointer;font-weight:600">Ngưỡng winsorize từng biến</summary><div class="table-wrap"><table><thead><tr><th>Biến</th><th>Phân vị ${o.winsor}</th><th>Phân vị ${100-o.winsor}</th><th>Số giá trị bị thay (dưới / trên)</th></tr></thead><tbody>${b.map(x=>`<tr><td>${esc(x.v.sym)}</td><td>${f4(x.b.lo)}</td><td>${f4(x.b.hi)}</td><td>${x.b.nlo} / ${x.b.nhi}</td></tr>`).join('')}</tbody></table></div></details>`;
+      if(res.rows.length<100)html+=`<p class="how">Mẫu có ${res.rows.length} quan sát: winsorize ${o.winsor}% chỉ chạm tới khoảng ${Math.max(1,Math.round(res.rows.length*o.winsor/100))} giá trị mỗi đầu.</p>`}
+    html+=`<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Công thức đã dùng</summary><div class="table-wrap"><table><thead><tr><th>Biến</th><th>Cột CSV</th><th>Công thức</th><th>Nguồn</th></tr></thead><tbody>${u.map(v=>`<tr><td><a href="/goc-nghien-cuu/bien-nghien-cuu/${v.slug}/">${esc(v.sym)}</a></td><td><code>${esc(colOf(v))}</code></td><td>${esc(v.formula)}${o.avg&&v.bal?' (số dư bình quân)':''}</td><td>${esc(REFS[v.cite].cite)}</td></tr>`).join('')}</tbody></table></div></details>`;
     if(missing.length)html+=`<p class="how">Chưa tính được: ${esc(missing.join('; '))}.</p>`;
-    out.innerHTML=html;th.innerHTML=measurementText(res,avg).html;
+    out.innerHTML=html;th.innerHTML=measurementText(res,o).html;
+    const cc=csvColumns(p.data,res,tpl);
+    $('fr-csvinfo').textContent=`${res.rows.length} dòng × ${cc.head.length} cột: firm, year, ${cc.inKeys.length} chỉ tiêu gốc, ${cc.u.length} biến${o.winsor?`, ${cc.u.length} biến winsorize (đuôi _w)`:''}${o.lag?`, ${cc.u.length} biến trễ (đuôi _l1)`:''}. Ô trống là thiếu số liệu, dấu chấm thập phân.`;
+    $('fr-code').textContent=codeSnippets(res,tpl,fileName(tpl));
+    const cs=$('fr-copystats');if(cs)copyBtn(cs,()=>['Biến\tN\tTrung bình\tĐộ lệch chuẩn\tNhỏ nhất\tTrung vị\tLớn nhất',...st.map(s=>[s.sym,s.n,f4(s.mean),f4(s.sd),f4(s.min),f4(s.p50),f4(s.max)].join('\t'))].join('\n'),'Sao chép bảng');
   }
-  $('fr-tpl').addEventListener('change',()=>{renderFields();$('fr-data').value=SAMPLE[$('fr-tpl').value];run()});
-  $('fr-avg').addEventListener('change',run);
+  const isSample=t=>!t.trim()||Object.values(SAMPLE).includes(t);
+  function loadSample(){const tpl=$('fr-tpl').value;$('fr-data').value=SAMPLE[tpl];$('fr-unit').value=SAMPLE_UNIT[tpl];run()}
+  // Switching the template keeps pasted data; only the example is swapped.
+  $('fr-tpl').addEventListener('change',()=>{renderFields();if(isSample($('fr-data').value))loadSample();else run()});
+  for(const id of ['fr-avg','fr-unit','fr-win','fr-lag'])$(id).addEventListener('change',run);
   $('fr-run').addEventListener('click',run);
-  $('fr-sample').addEventListener('click',()=>{$('fr-data').value=SAMPLE[$('fr-tpl').value];run()});
+  $('fr-sample').addEventListener('click',loadSample);
   $('fr-template').addEventListener('click',()=>{const tpl=$('fr-tpl').value;download(`mau-nhap-bctc-${tpl==='bank'?'ngan-hang':'doanh-nghiep'}.csv`,['firm','year',...FIELDS[tpl].map(f=>f.key)].join(',')+'\n')});
-  $('fr-csv').addEventListener('click',()=>{if(!last){run();if(!last)return}download(`du-lieu-bang-${last.tpl==='bank'?'ngan-hang':'doanh-nghiep'}.csv`,toCSV(last.p.data,last.res,last.tpl))});
+  $('fr-csv').addEventListener('click',()=>{if(!last){run();if(!last)return}download(fileName(last.tpl),toCSV(last.p.data,last.res,last.tpl))});
+  const bankBtn=$('fr-bank'),bankUrl=bankBtn.dataset.bankCsv;
+  if(bankUrl){bankBtn.hidden=false;bankBtn.addEventListener('click',()=>{const t=bankBtn.textContent;bankBtn.textContent='Đang tải…';fetch(bankUrl).then(r=>{if(!r.ok)throw new Error(r.status);return r.text()}).then(txt=>{$('fr-tpl').value='bank';renderFields();$('fr-data').value=txt.replace(/^﻿/,'');const m=fold(txt.slice(0,400)).match(/don vi (ty|trieu|nghin) dong/);if(m)$('fr-unit').value=m[1];run();bankBtn.textContent=t}).catch(()=>{bankBtn.textContent='Không tải được bộ dữ liệu'})})}
   $('fr-copy').addEventListener('click',()=>{const el=$('fr-thesis'),b=$('fr-copy'),done=()=>{b.textContent='Đã sao chép';setTimeout(()=>b.textContent='Sao chép đoạn văn',1500)};
     const fb=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Đã chọn, nhấn Ctrl+C'};try{navigator.clipboard.writeText(el.innerText).then(done,fb)}catch(e){fb()}});
-  renderFields();$('fr-data').value=SAMPLE.firm;run();
+  renderFields();loadSample();
 })();
 </script>

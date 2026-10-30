@@ -26,8 +26,8 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
   slug="ve-mo-hinh"
   title="Vẽ mô hình nghiên cứu online, tự viết giả thuyết H1, H2 và tính cỡ mẫu"
   h1="Vẽ mô hình nghiên cứu"
-  description="Kéo thả khái niệm từ thư viện thang đo, nối mũi tên như SmartPLS, tải hình mô hình nghiên cứu (PNG, SVG), nhận giả thuyết H1…Hn tiếng Việt và cỡ mẫu tối thiểu PLS-SEM. Miễn phí."
-  lede="Kéo khái niệm lên khung vẽ, kéo mũi tên từ ô này sang ô kia như trong SmartPLS. Công cụ viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian), đếm số mũi tên nhiều nhất để ra cỡ mẫu tối thiểu, xuất hình để chèn vào chương 2, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
+  description="Kéo thả khái niệm từ thư viện thang đo, nối mũi tên như SmartPLS, vẽ biến điều tiết, khái niệm bậc cao, biến kiểm soát, so sánh đa nhóm; tải hình (PNG, SVG), nhận giả thuyết H1…Hn tiếng Việt và cỡ mẫu tối thiểu PLS-SEM. Miễn phí."
+  lede="Kéo khái niệm lên khung vẽ, kéo mũi tên từ ô này sang ô kia như trong SmartPLS. Công cụ viết sẵn giả thuyết H1, H2… (cùng chiều, ngược chiều, trung gian, điều tiết, khác biệt giữa các nhóm), vẽ được khái niệm bậc cao và biến kiểm soát, đếm số biến dự báo nhiều nhất để ra cỡ mẫu tối thiểu, xuất hình để chèn vào chương 2, rồi mở tiếp trong Bộ khảo sát để có bảng hỏi."
   html={html}
 >
   <script is:inline type="application/json" id="vm-data" set:html={json} />
@@ -92,9 +92,12 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         <tbody>
           <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Chuyển qua các ô khái niệm rồi các nhãn mũi tên</td></tr>
           <tr><td><kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></td><td>Di chuyển ô đang chọn một nấc lưới (thêm <kbd>Shift</kbd>: 1 điểm ảnh); không chọn ô thì di chuyển khung</td></tr>
-          <tr><td><kbd>Enter</kbd> hoặc <kbd>F2</kbd></td><td>Đổi tên ô; trên nhãn mũi tên: đổi chiều + / −</td></tr>
+          <tr><td><kbd>Enter</kbd> hoặc <kbd>F2</kbd></td><td>Đổi tên ô; trên nhãn mũi tên: đổi chiều + / −; trên nhãn điều tiết: tăng cường / làm suy yếu</td></tr>
           <tr><td><kbd>C</kbd> rồi <kbd>Tab</kbd> tới ô đích, <kbd>Enter</kbd></td><td>Nối mũi tên từ ô đang chọn tới ô đích</td></tr>
           <tr><td><kbd>A</kbd></td><td>Thêm khái niệm ở giữa khung</td></tr>
+          <tr><td><kbd>M</kbd> trên một ô</td><td>Chọn mũi tên để ô đó điều tiết (không chọn ô: chế độ Điều tiết)</td></tr>
+          <tr><td><kbd>H</kbd></td><td>Gộp các ô đang chọn thành khái niệm bậc cao (không đủ hai ô: chế độ Bậc cao)</td></tr>
+          <tr><td><kbd>K</kbd></td><td>Thêm biến kiểm soát</td></tr>
           <tr><td><kbd>V</kbd> / <kbd>C</kbd> (khi không chọn ô)</td><td>Chế độ Chọn / Nối mũi tên</td></tr>
           <tr><td><kbd>Delete</kbd> hoặc <kbd>Backspace</kbd></td><td>Xoá ô hoặc mũi tên đang chọn</td></tr>
           <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>Hoàn tác / làm lại</td></tr>
@@ -128,6 +131,137 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
       bị loại thì cần thu khoảng 183 phiếu.
     </p>
 
+    <h2>Mô hình mở rộng: bậc cao, điều tiết, trung gian, đa nhóm, kiểm soát</h2>
+    <p>
+      Ngoài quan hệ trực tiếp, khung vẽ có năm loại phần tử thường gặp trong luận
+      văn dùng PLS-SEM. Mỗi loại có giả thuyết viết sẵn và được tính vào cỡ mẫu
+      theo đúng cách mô hình được ước lượng.
+    </p>
+
+    <h3>Khái niệm bậc cao (higher-order construct)</h3>
+    <p>
+      <strong>Khi nào dùng.</strong> Khi một khái niệm trừu tượng gồm nhiều khía
+      cạnh, mỗi khía cạnh đã có thang đo riêng, ví dụ chất lượng dịch vụ gồm
+      phương tiện hữu hình, độ tin cậy, khả năng đáp ứng, sự đảm bảo và sự đồng
+      cảm. Mô hình bậc cao gọn hơn và tránh đa cộng tuyến khi các khía cạnh tương
+      quan cao. Có hai loại hay gặp (Sarstedt và cộng sự, 2019):
+    </p>
+    <ul>
+      <li>
+        <strong>Phản ánh–phản ánh (R–R):</strong> khái niệm bậc cao là nguyên nhân
+        chung của các thành phần; mũi tên đi từ bậc cao sang từng thành phần.
+      </li>
+      <li>
+        <strong>Phản ánh–cấu tạo (R–F):</strong> các thành phần cùng tạo nên khái
+        niệm bậc cao và không thay thế được cho nhau; mũi tên đi từ từng thành
+        phần sang bậc cao.
+      </li>
+    </ul>
+    <p>
+      <strong>Cách vẽ.</strong> Shift + bấm (hoặc Shift + kéo khung) để chọn các
+      khái niệm thành phần, rồi bấm nút <b>Bậc cao</b> (phím <kbd>H</kbd>) và đặt
+      tên. Hoặc bật chế độ Bậc cao, bấm chỗ trống để đặt ô bậc cao, rồi kéo từng
+      khái niệm thả vào ô đó. Ô bậc cao có viền đôi và nhãn R–R hoặc R–F; chuột
+      phải để đổi loại, tách một thành phần ra hoặc bỏ bậc cao. Mũi tên cấu trúc
+      (giả thuyết) gắn vào ô bậc cao; nối vào một thành phần thì công cụ tự chuyển
+      sang bậc cao của nó.
+    </p>
+    <p>
+      <strong>Cỡ mẫu.</strong> Bậc cao R–R chỉ tính các mũi tên cấu trúc như bình
+      thường. Bậc cao R–F ước lượng bằng cách lặp lại biến quan sát hoặc hai giai
+      đoạn: ở bước đầu, bậc cao là biến nội sinh nhận một mũi tên từ mỗi thành
+      phần, cộng với các mũi tên cấu trúc trỏ vào nó. Ví dụ chất lượng dịch vụ R–F
+      có 5 thành phần và 1 mũi tên từ hình ảnh thương hiệu thì nhận 6 biến dự
+      báo, và con số này được đưa vào phép đếm “nhiều biến dự báo nhất”. Khi bậc
+      cao R–F có mũi tên trỏ vào, hãy dùng cách tiếp cận hai giai đoạn, vì khi
+      lặp lại biến quan sát các thành phần đã giải thích gần hết phương sai của
+      bậc cao và hệ số của mũi tên trỏ vào gần bằng 0 (Becker và cộng sự, 2012).
+      Bộ khảo sát nhận các khái niệm thành phần, vì biến quan sát của chúng là thứ
+      được hỏi trên phiếu.
+    </p>
+
+    <h3>Biến điều tiết (moderator)</h3>
+    <p>
+      <strong>Khi nào dùng.</strong> Khi lý thuyết cho rằng tác động của X lên Y
+      mạnh hay yếu tuỳ theo mức của W, ví dụ thu nhập làm suy yếu tác động của giá
+      cảm nhận lên ý định mua.
+    </p>
+    <p>
+      <strong>Cách vẽ.</strong> Kéo chấm tròn bên phải ô W thả vào giữa mũi tên X →
+      Y (hoặc bật chế độ <b>Điều tiết</b> rồi kéo từ cả ô W; trên điện thoại giữ
+      lâu mũi tên rồi chọn “Thêm biến điều tiết…”; bàn phím: chọn ô W, bấm
+      <kbd>M</kbd> rồi chọn mũi tên). Mũi tên điều tiết chạm vào giữa đường X → Y.
+      Giả thuyết có dạng “W điều tiết tác động của X lên Y theo hướng tăng cường”;
+      bấm nhãn + / − trên mũi tên điều tiết để đổi sang “làm suy yếu”. “Xếp tự
+      động” đặt biến điều tiết phía trên mũi tên nó điều tiết.
+    </p>
+    <p>
+      <strong>Cỡ mẫu.</strong> Khi ước lượng, Y nhận thêm hai biến dự báo: W và
+      biến tương tác X×W, nên công cụ cộng 2 vào số mũi tên trỏ vào Y (W đã có mũi
+      tên vào Y thì chỉ cộng biến tương tác). Hiệu ứng tương tác thường rất nhỏ:
+      f² khoảng 0,005–0,035, và tổng quan 30 năm của Aguinis và cộng sự (2005) có
+      f² trung bình chỉ 0,009. Bật “Tính cỡ mẫu cho giả thuyết điều tiết với f² =
+      0,02” để lấy cỡ mẫu đủ phát hiện riêng biến tương tác (G*Power, hồi quy bội,
+      R² tăng thêm, 1 biến được kiểm định, α = 0,05, power = 0,80): khoảng 395 quan
+      sát. Ước lượng bằng cách tiếp cận hai giai đoạn (Becker, Ringle và Sarstedt,
+      2018): giai đoạn 1 lấy điểm của X và W, giai đoạn 2 đưa X, W và X×W vào Y.
+    </p>
+
+    <h3>Biến trung gian (mediator)</h3>
+    <p>
+      <strong>Khi nào dùng.</strong> Khi X tác động lên Y thông qua M. Không cần vẽ
+      gì thêm: có chuỗi X → M → Y là công cụ viết giả thuyết “M đóng vai trò trung
+      gian trong mối quan hệ giữa X và Y” (bỏ dấu tích nếu không cần). Kiểm định
+      tác động gián tiếp a × b bằng bootstrap, không theo các bước của Baron và
+      Kenny (Zhao và cộng sự, 2010).
+    </p>
+    <p>
+      <strong>Cỡ mẫu.</strong> M và Y được tính như mọi biến nội sinh. Riêng tác
+      động gián tiếp, Fritz và MacKinnon (2007) cho thấy với bootstrap, khi cả hai
+      đường a và b đều nhỏ (0,14) cần khoảng 460–560 quan sát để đạt power 0,80;
+      khi cả hai ở mức trung bình (0,39) chỉ cần khoảng 70–80.
+    </p>
+
+    <h3>So sánh đa nhóm (multigroup analysis)</h3>
+    <p>
+      <strong>Khi nào dùng.</strong> Khi muốn biết các hệ số đường dẫn có khác nhau
+      giữa các nhóm hay không, ví dụ nam và nữ, doanh nghiệp nhà nước và tư nhân.
+    </p>
+    <p>
+      <strong>Cách vẽ.</strong> Ở cột bên phải, tích “So sánh đa nhóm (MGA)”, gõ tên
+      biến phân nhóm và 2–4 nhóm ngăn bằng dấu chấm phẩy. Mặc định mọi mũi tên đều
+      được so sánh; bỏ tích những mũi tên không cần. Mỗi mũi tên được so sánh có
+      một giả thuyết dạng “Tác động của X lên Y khác nhau giữa nhóm Nam và nhóm
+      Nữ”. Hình xuất ra có dòng chú thích các nhóm.
+    </p>
+    <p>
+      <strong>Cỡ mẫu.</strong> Mô hình được ước lượng riêng trên từng nhóm, nên mỗi
+      nhóm phải tự đạt cỡ mẫu tối thiểu; tổng cỡ mẫu bằng cỡ mẫu tối thiểu nhân số
+      nhóm. Trước khi so sánh hệ số, kiểm tra tính bất biến đo lường của các khái
+      niệm bằng quy trình MICOM (Henseler, Ringle và Sarstedt, 2016), rồi so sánh
+      bằng PLS-MGA hoặc kiểm định hoán vị.
+    </p>
+
+    <h3>Biến kiểm soát (control variable)</h3>
+    <p>
+      <strong>Khi nào dùng.</strong> Khi một biến như tuổi, giới tính, quy mô doanh
+      nghiệp có thể ảnh hưởng đến biến phụ thuộc nhưng không phải trọng tâm của đề
+      tài.
+    </p>
+    <p>
+      <strong>Cách vẽ.</strong> Bật chế độ <b>Kiểm soát</b> (phím <kbd>K</kbd>), bấm
+      chỗ trống, đặt tên rồi nối mũi tên từ nó vào biến phụ thuộc; hoặc chuột phải
+      trên một ô có sẵn, chọn “Đặt làm biến kiểm soát”. Ô có viền đứt, mũi tên chấm
+      và nhãn KS. Biến kiểm soát không có giả thuyết, được liệt kê riêng dưới mục
+      “Biến kiểm soát”, không nhận mũi tên trỏ vào và không làm biến điều tiết.
+    </p>
+    <p>
+      <strong>Cỡ mẫu.</strong> Mỗi mũi tên từ biến kiểm soát là một biến dự báo của
+      biến phụ thuộc, nên được tính vào phép đếm. “Mở trong Bộ khảo sát” mang tên
+      biến kiểm soát và biến phân nhóm sang để thành câu hỏi ở phần thông tin chung
+      của phiếu.
+    </p>
+
     <h2>Đếm mũi tên và cỡ mẫu</h2>
     <p>
       Trong PLS-SEM, mỗi biến nội sinh được ước lượng bằng một phương trình hồi
@@ -152,11 +286,14 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
     </p>
     <h3>Biến điều tiết vẽ thế nào?</h3>
     <p>
-      Công cụ vẽ quan hệ trực tiếp và tự nhận biết biến trung gian (chuỗi X → M
-      → Y). Biến điều tiết là mũi tên trỏ vào một mũi tên khác; hãy tải SVG rồi
-      thêm mũi tên đó trong PowerPoint hoặc draw.io, và viết giả thuyết dạng “W
-      điều tiết mối quan hệ giữa X và Y”. Cách kiểm định trung gian, điều tiết
-      xem ở <a href="/goc-nghien-cuu/cong-cu/chon-phuong-phap/">Chọn phương pháp phân tích</a>.
+      Kéo chấm tròn bên phải ô W thả vào giữa mũi tên X → Y (chi tiết ở mục Biến
+      điều tiết bên trên). Cách chọn kỹ thuật kiểm định trung gian, điều tiết xem
+      ở <a href="/goc-nghien-cuu/cong-cu/chon-phuong-phap/">Chọn phương pháp phân tích</a>.
+    </p>
+    <h3>Biến kiểm soát có cần giả thuyết không?</h3>
+    <p>
+      Không. Biến kiểm soát được đưa vào để loại bớt cách giải thích khác; báo cáo
+      hệ số của nó cạnh các giả thuyết, không kết luận “ủng hộ” hay “bác bỏ”.
     </p>
     <h3>Có nên thêm giả thuyết trung gian?</h3>
     <p>
@@ -181,6 +318,24 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
     <h2>Tài liệu tham khảo</h2>
     <ul class="text-sm">
       <li>
+        Aguinis, H., Beaty, J. C., Boik, R. J., &amp; Pierce, C. A. (2005). Effect
+        size and power in assessing moderating effects of categorical variables
+        using multiple regression: A 30-year review. <em>Journal of Applied
+        Psychology, 90</em>(1), 94–107. https://doi.org/10.1037/0021-9010.90.1.94
+      </li>
+      <li>
+        Becker, J.-M., Klein, K., &amp; Wetzels, M. (2012). Hierarchical latent
+        variable models in PLS-SEM: Guidelines for using reflective-formative type
+        models. <em>Long Range Planning, 45</em>(5–6), 359–394.
+        https://doi.org/10.1016/j.lrp.2012.10.001
+      </li>
+      <li>
+        Becker, J.-M., Ringle, C. M., &amp; Sarstedt, M. (2018). Estimating
+        moderating effects in PLS-SEM and PLSc-SEM: Interaction term generation*data
+        treatment. <em>Journal of Applied Structural Equation Modeling, 2</em>(2),
+        1–21. https://doi.org/10.47263/JASEM.2(2)01
+      </li>
+      <li>
         Cohen, J. (1992). A power primer. <em>Psychological Bulletin, 112</em>(1),
         155–159. https://doi.org/10.1037/0033-2909.112.1.155
       </li>
@@ -196,15 +351,31 @@ const json = JSON.stringify(scales).replace(/</g, "\\u003c");
         1149–1160. https://doi.org/10.3758/BRM.41.4.1149
       </li>
       <li>
+        Fritz, M. S., &amp; MacKinnon, D. P. (2007). Required sample size to detect
+        the mediated effect. <em>Psychological Science, 18</em>(3), 233–239.
+        https://doi.org/10.1111/j.1467-9280.2007.01882.x
+      </li>
+      <li>
         Hair, J. F., Hult, G. T. M., Ringle, C. M., &amp; Sarstedt, M. (2022).
         <em>A primer on partial least squares structural equation modeling (PLS-SEM)</em>
         (3rd ed.). Sage.
+      </li>
+      <li>
+        Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2016). Testing measurement
+        invariance of composites using partial least squares. <em>International
+        Marketing Review, 33</em>(3), 405–431. https://doi.org/10.1108/IMR-09-2014-0304
       </li>
       <li>
         Kock, N., &amp; Hadaya, P. (2018). Minimum sample size estimation in
         PLS-SEM: The inverse square root and gamma-exponential methods.
         <em>Information Systems Journal, 28</em>(1), 227–261.
         https://doi.org/10.1111/isj.12131
+      </li>
+      <li>
+        Sarstedt, M., Hair, J. F., Cheah, J.-H., Becker, J.-M., &amp; Ringle, C. M.
+        (2019). How to specify, estimate, and validate higher-order constructs in
+        PLS-SEM. <em>Australasian Marketing Journal, 27</em>(3), 197–211.
+        https://doi.org/10.1016/j.ausmj.2019.05.003
       </li>
       <li>
         Zhao, X., Lynch, J. G., Jr., &amp; Chen, Q. (2010). Reconsidering Baron

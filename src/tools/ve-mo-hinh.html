@@ -115,6 +115,32 @@
   .vm-warn{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
   .vm-side details summary{cursor:pointer;font-weight:600;font-size:.9rem}
   .vm-app #vm-text{min-height:8rem;margin-top:8px}
+  /* higher-order constructs, control variables, moderation */
+  .vm-stage.mode-hoc #vm-canvas,.vm-stage.mode-ctrl #vm-canvas{cursor:crosshair}
+  .vm-stage.mode-moderate .vm-n{cursor:crosshair}
+  .vm-n.hoc .vm-box{stroke-width:2.4}
+  .vm-box2{fill:none;stroke:var(--foreground);stroke-width:1;pointer-events:none}
+  .vm-n.sel .vm-box2{stroke:var(--accent)}
+  .vm-n.ctrl .vm-box{stroke-dasharray:6 4;fill:var(--background)}
+  .vm-n.loc .vm-box{fill:color-mix(in oklab,var(--accent-soft) 40%,var(--surface))}
+  .vm-n.drop .vm-box{stroke:var(--accent);stroke-width:4}
+  .vm-tag rect{fill:var(--foreground)}
+  .vm-tag text{fill:var(--surface);font-size:10px;font-weight:700}
+  .vm-link{fill:none;stroke:var(--foreground);stroke-width:1.3;pointer-events:none}
+  .vm-e.ctl .vm-e-line{stroke-dasharray:2 4}
+  .vm-e.tgt .vm-e-line{stroke:var(--accent);stroke-width:4}
+  .vm-m-line{fill:none;stroke:var(--foreground);stroke-width:1.6}
+  .vm-m.neg .vm-m-line{stroke:var(--warm)}
+  .vm-m.sel .vm-m-line{stroke:var(--accent);stroke-width:3}
+  .vm-m-dot{fill:var(--foreground)} .vm-m.sel .vm-m-dot{fill:var(--accent)}
+  #vm-ah-k path{fill:var(--foreground)}
+  .vm-lab.mod rect{stroke-dasharray:3 2}
+  .vm-note{margin:6px 0 0;font-size:.78rem;line-height:1.5;color:var(--muted-foreground)}
+  .vm-note.warn{color:var(--warm)}
+  .vm-paths{display:flex;flex-direction:column;gap:0;max-height:12rem;overflow:auto}
+  .vm-app .vm-side input[type=text]{padding:7px 9px}
+  #vm-mga-f{display:flex;flex-direction:column;gap:6px} #vm-mga-f[hidden]{display:none}
+  .vm-ctl{list-style:none;margin:0;padding:0;font-size:.84rem;line-height:1.5}
   .vm-side .result .num{font-size:1.6rem}
 </style>
 
@@ -136,6 +162,9 @@
         <button type="button" class="vm-tb" data-mode="select" aria-pressed="true" title="Chọn và di chuyển (V)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l13 8-6 1.5L9 19z"/></svg><span class="t">Chọn</span></button>
         <button type="button" class="vm-tb" data-mode="add" aria-pressed="false" title="Thêm khái niệm: bấm vào chỗ trống (A)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M12 9v6M9 12h6"/></svg><span class="t">Thêm khái niệm</span></button>
         <button type="button" class="vm-tb" data-mode="connect" aria-pressed="false" title="Nối mũi tên: kéo từ khái niệm này sang khái niệm kia (C)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2"/><path d="M7 12h12M15 8l4 4-4 4"/></svg><span class="t">Nối mũi tên</span></button>
+        <button type="button" class="vm-tb" data-mode="moderate" aria-pressed="false" title="Biến điều tiết: kéo từ khái niệm W thả vào giữa một mũi tên X → Y (M)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M17 13l4 4-4 4M12 3v10M9 10l3 3 3-3"/></svg><span class="t">Điều tiết</span></button>
+        <button type="button" class="vm-tb" data-mode="hoc" aria-pressed="false" title="Khái niệm bậc cao: chọn nhiều ô rồi bấm để gộp, hoặc bấm chỗ trống để thêm rồi kéo các ô thành phần vào (H)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="4"/><rect x="5.5" y="7" width="13" height="4" rx="1.5"/><rect x="5.5" y="13" width="13" height="4" rx="1.5"/></svg><span class="t">Bậc cao</span></button>
+        <button type="button" class="vm-tb" data-mode="ctrl" aria-pressed="false" title="Biến kiểm soát: bấm chỗ trống để thêm, rồi nối mũi tên vào biến phụ thuộc (K)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4" stroke-dasharray="3 2.5"/><path d="M9 12h6"/></svg><span class="t">Kiểm soát</span></button>
       </div>
       <div class="vm-grp" role="group" aria-label="Lịch sử">
         <button type="button" class="vm-tb" id="vm-undo" title="Hoàn tác (Ctrl+Z)" aria-label="Hoàn tác"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 010 10h-3"/></svg></button>
@@ -160,6 +189,7 @@
         <defs>
           <marker id="vm-ah" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
           <marker id="vm-ah-n" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="vm-ah-k" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
           <marker id="vm-ah-s" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="11" markerHeight="11" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z"/></marker>
         </defs>
         <g id="vm-vp"><g id="vm-elayer"></g><g id="vm-nlayer"></g><g id="vm-llayer"></g><g id="vm-olayer"></g></g>
@@ -179,7 +209,7 @@
       </div>
       <div class="vm-menu" id="vm-menu" role="menu" hidden></div>
     </div>
-    <p class="vm-help" id="vm-keys"><b>Chuột:</b> nhấp đúp chỗ trống để thêm khái niệm · kéo ô để di chuyển · kéo chấm tròn bên phải ô sang ô khác để nối · bấm nhãn <b>+/−</b> trên mũi tên để đổi chiều · kéo chỗ trống để di chuyển khung, Shift + kéo để chọn nhiều, lăn chuột để thu phóng · chuột phải để mở menu. <b>Điện thoại:</b> chạm hai lần để thêm, giữ lâu để mở menu, hai ngón để thu phóng. <b>Bàn phím:</b> <kbd>Tab</kbd> qua các ô, <kbd>←↑↓→</kbd> di chuyển, <kbd>Enter</kbd> đổi tên, <kbd>C</kbd> rồi Tab tới ô đích và <kbd>Enter</kbd> để nối, <kbd>Delete</kbd> xoá.</p>
+    <p class="vm-help" id="vm-keys"><b>Chuột:</b> nhấp đúp chỗ trống để thêm khái niệm · kéo ô để di chuyển · kéo chấm tròn bên phải ô sang ô khác để nối · bấm nhãn <b>+/−</b> trên mũi tên để đổi chiều · kéo chỗ trống để di chuyển khung, Shift + kéo để chọn nhiều, lăn chuột để thu phóng · chuột phải để mở menu. <b>Mô hình mở rộng:</b> nút <b>Điều tiết</b> rồi kéo từ W thả vào giữa mũi tên X → Y; chọn nhiều ô rồi bấm <b>Bậc cao</b> để gộp thành khái niệm bậc cao (hoặc kéo ô vào ô bậc cao); <b>Kiểm soát</b> thêm biến kiểm soát (viền đứt); so sánh đa nhóm ở cột bên phải. <b>Điện thoại:</b> chạm hai lần để thêm, giữ lâu để mở menu, hai ngón để thu phóng. <b>Bàn phím:</b> <kbd>Tab</kbd> qua các ô, <kbd>←↑↓→</kbd> di chuyển, <kbd>Enter</kbd> đổi tên, <kbd>C</kbd> rồi Tab tới ô đích và <kbd>Enter</kbd> để nối, <kbd>M</kbd> chọn mũi tên để điều tiết, <kbd>H</kbd> gộp các ô đang chọn thành bậc cao, <kbd>Delete</kbd> xoá.</p>
   </section>
 
   <aside class="panel vm-side" aria-label="Giả thuyết, cỡ mẫu và cảnh báo">
@@ -187,6 +217,17 @@
       <div class="vm-sec-h"><strong>Giả thuyết nghiên cứu</strong><span id="vm-hcount" class="text-muted-foreground" style="font-size:.8rem"></span></div>
       <ol id="vm-hyps" class="vm-hyps"></ol>
       <label class="check"><input type="checkbox" id="vm-med" checked> Thêm giả thuyết trung gian khi có chuỗi X → M → Y</label>
+    </div>
+    <div id="vm-ctrlbox"></div>
+    <div class="field" style="gap:6px" id="vm-mgabox">
+      <label class="check"><input type="checkbox" id="vm-mga"> <b>So sánh đa nhóm (MGA)</b></label>
+      <div id="vm-mga-f" hidden>
+        <label for="vm-mga-name" style="font-size:.84rem">Biến phân nhóm</label>
+        <input id="vm-mga-name" type="text" placeholder="Ví dụ: Giới tính" autocomplete="off" maxlength="60">
+        <label for="vm-mga-groups" style="font-size:.84rem">Các nhóm (2–4, ngăn bằng dấu chấm phẩy)</label>
+        <input id="vm-mga-groups" type="text" placeholder="Ví dụ: Nam; Nữ" autocomplete="off">
+        <fieldset style="border:0;margin:0;padding:0"><legend style="font-size:.84rem;padding:0">Mũi tên được so sánh</legend><div id="vm-mga-paths" class="vm-paths"></div></fieldset>
+      </div>
     </div>
     <div id="vm-sample"></div>
     <div id="vm-warnbox"></div>
@@ -321,7 +362,17 @@
   function edgesToText(model){return model.edges.map(e=>`${e.from} -> ${e.to}${e.sign<0?' (-)':''}`).join('\n')}
   function inDegree(model){const m=new Map(model.nodes.map(n=>[n.id,0]));for(const e of model.edges)m.set(e.to,(m.get(e.to)||0)+1);return m}
   function outDegree(model){const m=new Map(model.nodes.map(n=>[n.id,0]));for(const e of model.edges)m.set(e.from,(m.get(e.from)||0)+1);return m}
-  function maxArrows(model){let best=0,at=[];inDegree(model).forEach((v,k)=>{if(v>best){best=v;at=[k]}else if(v===best&&v>0)at.push(k)});return {max:best,at}}
+  // Predictors of each construct's regression in the structural model: its arrows in (control variables
+  // included), for a reflective–formative HOC each of its LOCs, for a LOC of a reflective–reflective HOC the
+  // HOC, and for a moderated arrow X → Y the moderator W and the interaction term X×W.
+  function predictorsOf(model){
+    const p=new Map(model.nodes.map(n=>[n.id,[]]));
+    for(const e of model.edges)if(p.has(e.to))p.get(e.to).push(e.from);
+    for(const l of hocLinks(model))if(p.has(l.to))p.get(l.to).push(l.from);
+    for(const m of model.mods||[]){const a=p.get(m.to);if(!a)continue;if(!a.includes(m.w))a.push(m.w);a.push(m.from+'×'+m.w)}
+    return p;
+  }
+  function maxArrows(model){let best=0,at=[];predictorsOf(model).forEach((v,k)=>{v=v.length;if(v>best){best=v;at=[k]}else if(v===best&&v>0)at.push(k)});return {max:best,at}}
   // Arrows that close a loop (found by depth-first search in list order); a PLS-SEM or regression path model must be recursive.
   function backEdges(model){
     const out=new Map(model.nodes.map(n=>[n.id,[]]));model.edges.forEach((e,i)=>out.get(e.from)&&out.get(e.from).push(i));
@@ -350,6 +401,11 @@
   function layout(model,o={}){
     const measure=o.measure||(t=>t.length*7.2), W=o.boxW||176, PADX=10, LH=17, GX=o.gapX||120, GY=26, M=24;
     const showCode=o.showCode!==false;
+    // For placing only: a LOC sits one column left of its HOC, a moderator left of the construct it moderates into.
+    const extra=[],seenX=new Set(model.edges.map(e=>e.from+'>'+e.to));
+    const pushX=(f,t)=>{const k=f+'>'+t;if(!seenX.has(k)&&f!==t){seenX.add(k);extra.push({from:f,to:t,sign:1,virtual:true})}};
+    hocLinks(model).forEach(l=>pushX(l.child,l.hoc));(model.mods||[]).forEach(m=>pushX(m.w,m.to));
+    if(extra.length)model={nodes:model.nodes,edges:[...model.edges,...extra]};
     const {layer,back}=layersOf(model);
     const nL=model.nodes.length?Math.max(...layer.values())+1:0;
     const cols=Array.from({length:nL},()=>[]);
@@ -409,30 +465,61 @@
   function bez(s,t){const u=1-t;return [0,1].map(k=>u*u*u*s[0][k]+3*u*u*t*s[1][k]+3*u*t*t*s[2][k]+t*t*t*s[3][k])}
   // Lower-case the first letter of a name used mid-sentence, unless the first word is an acronym (eWOM, COVID).
   function lcFirst(s){const w=String(s).split(' ')[0];return /^\p{Lu}\p{Ll}*$/u.test(w)?s[0].toLowerCase()+s.slice(1):s}
+  // Order: direct effects (not from control variables), mediation, moderation, group differences.
   function hypotheses(model,o={}){
     const byId=new Map(model.nodes.map(n=>[n.id,n])), nm=(id,mid)=>{const n=byId.get(id);const t=mid?lcFirst(n.name):n.name;return n.id!==n.name?`${t} (${n.id})`:t};
-    const out=model.edges.map((e,i)=>({h:i+1,edge:i,text:`${nm(e.from)} có tác động ${e.sign<0?'ngược chiều':'cùng chiều'} đến ${nm(e.to,true)}.`}));
+    const ctl=id=>isCtrl(byId.get(id)),out=[];let h=0;
+    model.edges.forEach((e,i)=>{if(!ctl(e.from))out.push({h:++h,edge:i,text:`${nm(e.from)} có tác động ${e.sign<0?'ngược chiều':'cùng chiều'} đến ${nm(e.to,true)}.`})});
     if(o.mediation!==false){
-      let h=out.length;
       for(const e1 of model.edges)for(const e2 of model.edges)
-        if(e1.to===e2.from&&e1.from!==e2.to)out.push({h:++h,mediator:e1.to,text:`${nm(e1.to)} đóng vai trò trung gian trong mối quan hệ giữa ${nm(e1.from,true)} và ${nm(e2.to,true)}.`});
+        if(e1.to===e2.from&&e1.from!==e2.to&&!ctl(e1.from))out.push({h:++h,mediator:e1.to,text:`${nm(e1.to)} đóng vai trò trung gian trong mối quan hệ giữa ${nm(e1.from,true)} và ${nm(e2.to,true)}.`});
+    }
+    if(o.moderation!==false)(model.mods||[]).forEach((m,i)=>{if(byId.has(m.w)&&byId.has(m.from)&&byId.has(m.to))out.push({h:++h,mod:i,text:`${nm(m.w)} điều tiết tác động của ${nm(m.from,true)} lên ${nm(m.to,true)} theo hướng ${m.dir<0?'làm suy yếu':'tăng cường'}.`})});
+    const G=model.mga&&model.mga.groups||[];
+    if(o.mga!==false&&G.length>=2){
+      const gt=G.length===2?`nhóm ${G[0]} và nhóm ${G[1]}`:`các nhóm ${G.slice(0,-1).join(', ')} và ${G[G.length-1]}`,by=model.mga.name?` (phân theo ${lcFirst(model.mga.name)})`:'';
+      mgaPaths(model).forEach(i=>{const e=model.edges[i];out.push({h:++h,mga:i,text:`Tác động của ${nm(e.from,true)} lên ${nm(e.to,true)} khác nhau giữa ${gt}${by}.`})});
     }
     return out;
   }
-  // Same rule as the questionnaire kit's PLS-SEM sample: larger of G*Power (f² = 0,15) and the inverse square root method.
-  function modelSample(model){
-    const {max,at}=maxArrows(model);if(!max)return null;
-    const pow=regN(max,0.15,0.05,0.8),isr=isrN(0.2,0.05,0.8);
-    return {arrows:max,at,pow,isr,min:Math.max(pow,isr),send:Math.ceil(Math.max(pow,isr)/0.85)};
+  // H number of each arrow and each moderation, for the labels on the canvas.
+  function hNumbers(hs){const edge=new Map(),mod=new Map();for(const h of hs){if(h.edge!=null)edge.set(h.edge,h.h);if(h.mod!=null)mod.set(h.mod,h.h)}return {edge,mod}}
+  // Control variables and the constructs they point into; they get no hypothesis.
+  function controlsOf(model){return model.nodes.filter(isCtrl).map(n=>({id:n.id,name:n.name,to:model.edges.filter(e=>e.from===n.id).map(e=>e.to)}))}
+  // G*Power "Linear multiple regression: Fixed model, R² increase": q tested predictors out of k.
+  function incPower(n,k,q,f2,alpha){const d2=n-k-1;if(d2<1)return 0;const crit=finv(1-alpha,q,d2);return 1-ncfcdf(crit,q,d2,f2*n)}
+  function incN(k,q,f2,alpha,power){let lo=k+1,hi=k+2;while(incPower(hi,k,q,f2,alpha)<power){lo=hi;hi*=2;if(hi>400000)return NaN}while(hi-lo>1){const mid=(lo+hi)>>1;incPower(mid,k,q,f2,alpha)>=power?hi=mid:lo=mid}return hi}
+  // Same rule as the questionnaire kit's PLS-SEM sample: larger of G*Power (f² = 0,15) and the inverse square root method,
+  // with the predictors of predictorsOf(). o.modF2: also enough power for one interaction term at f² = 0,02.
+  // With groups compared, every group needs the minimum on its own.
+  function modelSample(model,o={}){
+    const P=predictorsOf(model),{max,at}=maxArrows(model);if(!max)return null;
+    const pow=regN(max,0.15,0.05,0.8),isr=isrN(0.2,0.05,0.8),s={arrows:max,at,pow,isr,base:Math.max(pow,isr)};
+    s.min=s.base;
+    const mods=model.mods||[];
+    if(mods.length){let k=0,y=null;for(const m of mods){const v=(P.get(m.to)||[]).length;if(v>k){k=v;y=m.to}}
+      s.mod={at:y,k,f2:0.02,n:incN(k,1,0.02,0.05,0.8),on:!!o.modF2};if(o.modF2)s.min=Math.max(s.min,s.mod.n)}
+    const G=model.mga&&model.mga.groups||[];s.groups=G.length>=2?G.length:0;
+    s.total=s.groups?s.min*s.groups:s.min;s.send=Math.ceil(s.total/0.85);
+    return s;
   }
-  // Link into the kit: library constructs in model order, dependent ones (arrows in, none out) flagged.
+  // Link into the kit: library constructs in model order (LOCs of a HOC included: their items are what is
+  // measured), dependent ones (arrows in, none out; for a dependent HOC its LOCs) flagged, control variables
+  // and the grouping variable as general questions.
   function kitQuery(model){
-    const ind=inDegree(model),outd=outDegree(model),lib=model.nodes.filter(n=>n.key);
+    const ind=inDegree(model),outd=outDegree(model),lib=model.nodes.filter(n=>n.key&&!n.type);
     if(!lib.length)return '';
     const p=['c='+encodeURIComponent(lib.map(n=>n.key).join(','))];
     const a=maxArrows(model).max;if(a>=1)p.push('a='+a);
     p.push('m=pls');
-    const dv=lib.filter(n=>ind.get(n.id)>0&&!outd.get(n.id)).map(n=>n.key);
+    const dvIds=new Set(model.nodes.filter(n=>!isCtrl(n)&&ind.get(n.id)>0&&!outd.get(n.id)).map(n=>n.id));
+    const dv=lib.filter(n=>dvIds.has(n.id)||(n.parent&&dvIds.has(n.parent))).map(n=>n.key);
+    // Control variables and the grouping variable become general questions in the kit: ctrl=A;B and grp=Name:G1;G2.
+    const clean=v=>String(v).replace(/[;:|]/g,' ').replace(/\s+/g,' ').trim();
+    const cs=model.nodes.filter(isCtrl).map(n=>clean(n.name)).filter(Boolean);
+    if(cs.length)p.push('ctrl='+encodeURIComponent(cs.join(';')));
+    const G=model.mga&&model.mga.groups||[];
+    if(G.length>=2)p.push('grp='+encodeURIComponent((clean(model.mga.name)||'Nhóm so sánh')+':'+G.map(clean).join(';')));
     if(dv.length)p.push('dv='+encodeURIComponent(dv.join(',')));
     return '?'+p.join('&');
   }
@@ -452,7 +539,18 @@
     return [snapTo(x),snapTo(y)];
   }
   // The layered layout as positions on the canvas ("Xếp tự động").
-  function autoArrange(model,o={}){const L=layout(model,o);model.nodes.forEach(n=>{const b=L.box.get(n.id);n.x=snapTo(b.x);n.y=snapTo(b.y)});return L}
+  function autoArrange(model,o={}){
+    const L=layout(model,o);model.nodes.forEach(n=>{const b=L.box.get(n.id);n.x=snapTo(b.x);n.y=snapTo(b.y)});
+    // A moderator with no arrows of its own sits above the middle of the arrow it moderates, as in thesis figures.
+    const placed=new Set();
+    for(const m of model.mods||[]){
+      const W=nodeOf(model,m.w);if(!W||placed.has(W.id)||model.edges.some(e=>e.from===W.id||e.to===W.id))continue;
+      const a=boxOf(nodeOf(model,m.from),o),b=boxOf(nodeOf(model,m.to),o),wb=boxOf(W,o);
+      const rects=model.nodes.filter(n=>n!==W).map(n=>boxOf(n,o)),mx=(a.x+a.w/2+b.x+b.w/2)/2;
+      const [x,y]=freeSpot(rects,mx-wb.w/2,Math.min(a.y,b.y)-wb.h-80,wb.w,wb.h);W.x=x;W.y=y;placed.add(W.id);
+    }
+    return L;
+  }
   // Constructs without a position (from the arrow list or an old link) get one: all new, the layered layout; otherwise a free spot near o.at or right of the drawing.
   function placeNew(model,o={}){
     const missing=model.nodes.filter(n=>!hasPos(n));if(!missing.length)return 0;
@@ -496,18 +594,30 @@
   function routeAll(model,boxes){
     const all=[...boxes.values()],placed=[];
     const clash=p=>placed.some(q=>Math.abs(q[0]-p[0])<44&&Math.abs(q[1]-p[1])<24)||all.some(r=>p[0]>r.x-14&&p[0]<r.x+r.w+14&&p[1]>r.y-11&&p[1]<r.y+r.h+11);
+    // A moderated arrow keeps its middle free for the moderator's arrowhead.
+    const modded=new Set((model.mods||[]).map(m=>m.from+'>'+m.to));
     return model.edges.map((e,i)=>{
       const a=boxes.get(e.from),b=boxes.get(e.to);if(!a||!b)return null;
       const r={i,e,...routeEdge(a,b,all.filter(x=>x!==a&&x!==b),{bend:edgeIndex(model,e.to,e.from)>=0?22:0})};
-      for(const t of [0.5,0.38,0.62,0.3,0.7,0.24,0.76]){const p=quadAt(r.p0,r.c,r.p1,t);if(!clash(p)){r.label=p;break}}
+      const ts=modded.has(e.from+'>'+e.to)?[0.27,0.73,0.2,0.8]:[0.5,0.38,0.62,0.3,0.7,0.24,0.76];
+      if(modded.has(e.from+'>'+e.to))r.label=quadAt(r.p0,r.c,r.p1,0.27);
+      for(const t of ts){const p=quadAt(r.p0,r.c,r.p1,t);if(!clash(p)){r.label=p;break}}
       placed.push(r.label);return r;
     }).filter(Boolean);
   }
   function nodesInRect(boxes,r){const out=[];boxes.forEach((b,id)=>{if(overlaps(b,r))out.push(id)});return out}
-  function removeNodes(model,ids){const s=new Set(ids);model.nodes=model.nodes.filter(n=>!s.has(n.id));model.edges=model.edges.filter(e=>!s.has(e.from)&&!s.has(e.to))}
-  function removeEdge(model,i){if(!model.edges[i])return false;model.edges.splice(i,1);return true}
+  // Deleting a HOC frees its LOCs; deleting an arrow or a construct drops the moderations that used it.
+  function removeNodes(model,ids){const s=new Set(ids);model.nodes=model.nodes.filter(n=>!s.has(n.id));model.edges=model.edges.filter(e=>!s.has(e.from)&&!s.has(e.to));tidy(model)}
+  function removeEdge(model,i){if(!model.edges[i])return false;model.edges.splice(i,1);tidy(model);return true}
   function toggleSign(model,i){const e=model.edges[i];if(!e)return 0;e.sign=e.sign<0?1:-1;return e.sign}
-  function reverseEdge(model,i){const e=model.edges[i];if(!e)return 'none';if(edgeIndex(model,e.to,e.from)>=0)return 'exists';[e.from,e.to]=[e.to,e.from];return 'reversed'}
+  function reverseEdge(model,i){
+    const e=model.edges[i];if(!e)return 'none';if(edgeIndex(model,e.to,e.from)>=0)return 'exists';
+    if(isCtrl(nodeOf(model,e.from)))return 'ctrl';
+    const k=e.from+'>'+e.to,rk=e.to+'>'+e.from;
+    (model.mods||[]).forEach(m=>{if(m.from===e.from&&m.to===e.to){m.from=e.to;m.to=e.from}});
+    if(model.mga)model.mga.skip=(model.mga.skip||[]).map(x=>x===k?rk:x);
+    [e.from,e.to]=[e.to,e.from];tidy(model);return 'reversed';
+  }
   function moveEdge(model,i,d){const j=i+d;if(!model.edges[i]||!model.edges[j])return false;[model.edges[i],model.edges[j]]=[model.edges[j],model.edges[i]];return true}
   function moveNodes(model,ids,dx,dy){const s=new Set(ids);model.nodes.forEach(n=>{if(s.has(n.id)){n.x=(n.x||0)+dx;n.y=(n.y||0)+dy}})}
   function renameNode(model,id,name){const n=model.nodes.find(x=>x.id===id);name=String(name).replace(/\s+/g,' ').trim();if(!n||!name||n.name===name)return false;n.name=name;return true}
@@ -517,31 +627,140 @@
     if(!n)return 'Không tìm thấy khái niệm.';if(!v||v===old)return '';
     if(!/^[\p{L}][\p{L}0-9_]{0,9}$/u.test(v))return 'Mã chỉ gồm chữ, số và dấu gạch dưới, bắt đầu bằng chữ, tối đa 10 ký tự.';
     if(model.nodes.some(x=>x!==n&&x.id.toUpperCase()===v.toUpperCase()))return 'Mã này đã dùng cho khái niệm khác.';
-    n.id=v;model.edges.forEach(e=>{if(e.from===old)e.from=v;if(e.to===old)e.to=v});return '';
+    n.id=v;model.edges.forEach(e=>{if(e.from===old)e.from=v;if(e.to===old)e.to=v});
+    model.nodes.forEach(x=>{if(x.parent===old)x.parent=v});
+    (model.mods||[]).forEach(m=>['w','from','to'].forEach(f=>{if(m[f]===old)m[f]=v}));
+    if(model.mga)model.mga.skip=(model.mga.skip||[]).map(k=>k.split('>').map(x=>x===old?v:x).join('>'));
+    return '';
   }
   // Warnings beside the canvas. itemsOf(node) gives the number of items of a library construct, or null.
   function modelWarnings(model,o={}){
     const out=[],back=backEdges(model),itemsOf=o.itemsOf||(()=>null);
     if(back.size)out.push({kind:'cycle',ids:[...back].map(i=>model.edges[i].from+'>'+model.edges[i].to),text:`Mô hình có vòng lặp (${[...back].map(i=>`${model.edges[i].from} → ${model.edges[i].to}`).join(', ')}): PLS-SEM và hồi quy chỉ ước lượng mô hình một chiều. Bỏ một mũi tên trong vòng.`});
-    const lone=model.nodes.filter(n=>!model.edges.some(e=>e.from===n.id||e.to===n.id));
+    const used=new Set((model.mods||[]).map(m=>m.w));
+    const lone=model.nodes.filter(n=>!n.parent&&!isCtrl(n)&&!used.has(n.id)&&!model.edges.some(e=>e.from===n.id||e.to===n.id));
     if(lone.length&&model.nodes.length>1)out.push({kind:'lone',ids:lone.map(n=>n.id),text:`Chưa nối: ${lone.map(n=>n.id).join(', ')}. Khái niệm không có mũi tên sẽ không có giả thuyết.`});
     const few=model.nodes.map(n=>[n,itemsOf(n)]).filter(([,k])=>k!=null&&k<3);
     if(few.length)out.push({kind:'items',ids:few.map(([n])=>n.id),text:`${few.map(([n,k])=>`${n.id} (${k} biến)`).join(', ')}: thang đo gốc có dưới 3 biến quan sát, chưa đủ để đánh giá độ tin cậy và giá trị hội tụ của khái niệm kết quả (reflective). Thêm biến hoặc chọn thang đo khác.`});
+    for(const h of model.nodes.filter(isHoc)){
+      const k=childrenOf(model,h.id).length;
+      if(k<2)out.push({kind:'hoc-few',ids:[h.id],text:`${h.id} là khái niệm bậc cao nhưng mới có ${k} khái niệm thành phần. Kéo ít nhất hai khái niệm vào ô ${h.id} (hoặc chọn nhiều ô rồi “Gộp thành bậc cao”).`});
+      if(h.mode==='rf'&&model.edges.some(e=>e.to===h.id))out.push({kind:'hoc-rf-in',ids:[h.id],text:`${h.id} là khái niệm bậc cao phản ánh–cấu tạo và có mũi tên trỏ vào: các thành phần đã giải thích gần hết phương sai của ${h.id} khi lặp lại biến quan sát, nên hãy ước lượng bằng cách tiếp cận hai giai đoạn (Becker và cộng sự, 2012; Sarstedt và cộng sự, 2019).`});
+    }
+    const idle=model.nodes.filter(n=>isCtrl(n)&&!model.edges.some(e=>e.from===n.id));
+    if(idle.length)out.push({kind:'ctrl',ids:idle.map(n=>n.id),text:`Biến kiểm soát ${idle.map(n=>n.id).join(', ')} chưa trỏ vào biến phụ thuộc nào.`});
+    if(model.mga&&(model.mga.groups||[]).length<2)out.push({kind:'mga',ids:[],text:'So sánh đa nhóm cần ít nhất hai nhóm: điền tên nhóm, ngăn bằng dấu chấm phẩy (ví dụ: Nam; Nữ).'});
     return out;
   }
-  // Compact JSON for the link and this browser: {v:2, n:[[id, name, key|0, x, y]], e:[[from, to, -1?]]}; old links without positions still load.
-  function packModel(model){return JSON.stringify({v:2,n:model.nodes.map(n=>{const a=[n.id,n.name,n.key||0];if(hasPos(n))a.push(Math.round(n.x),Math.round(n.y));return a}),e:model.edges.map(e=>e.sign<0?[e.from,e.to,-1]:[e.from,e.to])})}
+  // ---- higher-order constructs, control variables, moderation, groups ----
+  // A node may carry type 'hoc' (higher-order construct; mode 'rr' reflective–reflective, HOC → LOCs, or 'rf'
+  // reflective–formative, LOCs → HOC), type 'ctrl' (control variable), or parent: the HOC it is a LOC of.
+  // model.mods = [{w, from, to, dir}]: W moderates the arrow from → to (dir 1 strengthens, -1 weakens).
+  // model.mga = {name, groups:[2–4 labels], skip:['from>to' not compared]} or absent.
+  function nodeOf(model,id){return model.nodes.find(n=>n.id===id)||null}
+  function isHoc(n){return !!n&&n.type==='hoc'}
+  function isCtrl(n){return !!n&&n.type==='ctrl'}
+  function childrenOf(model,id){return model.nodes.filter(n=>n.parent===id)}
+  // The HOC–LOC links, drawn in the direction of the HOC type.
+  function hocLinks(model){
+    return model.nodes.filter(n=>n.parent&&isHoc(nodeOf(model,n.parent))).map(n=>{const h=nodeOf(model,n.parent);
+      return h.mode==='rf'?{from:n.id,to:h.id,hoc:h.id,child:n.id,mode:'rf'}:{from:h.id,to:n.id,hoc:h.id,child:n.id,mode:'rr'}});
+  }
+  // Keeps a model consistent after any edit or load: a LOC's structural arrows and moderations move to its HOC,
+  // nothing points into a control variable, no loops on one construct or duplicate arrows, moderations need their arrow.
+  function tidy(model){
+    const has=id=>model.nodes.some(n=>n.id===id);
+    model.nodes.forEach(n=>{if(n.parent!=null&&(n.type||!isHoc(nodeOf(model,n.parent))))delete n.parent});
+    const lift=id=>{const n=nodeOf(model,id);return n&&n.parent?n.parent:id};
+    const edges=[];
+    for(const e of model.edges){const f=lift(e.from),t=lift(e.to);
+      if(!has(f)||!has(t)||f===t||isCtrl(nodeOf(model,t))||edges.some(x=>x.from===f&&x.to===t))continue;
+      edges.push(f===e.from&&t===e.to?e:{...e,from:f,to:t})}
+    model.edges=edges;
+    if(model.mods){const ms=[];
+      for(const m of model.mods){const w=lift(m.w),f=lift(m.from),t=lift(m.to),W=nodeOf(model,w);
+        if(!W||isCtrl(W)||w===f||w===t||edgeIndex(model,f,t)<0||ms.some(x=>x.w===w&&x.from===f&&x.to===t))continue;
+        ms.push({w,from:f,to:t,dir:m.dir<0?-1:1})}
+      model.mods=ms}
+    if(model.mga){const keys=new Set(model.edges.map(e=>e.from+'>'+e.to));model.mga.skip=[...new Set((model.mga.skip||[]).filter(k=>keys.has(k)))]}
+    return model;
+  }
+  // Selected constructs become the LOCs of a new HOC; their arrows to the rest of the model move to the HOC.
+  function makeHoc(model,ids,name,mode='rr',code=null){
+    const kids=ids.map(id=>nodeOf(model,id)).filter(n=>n&&!n.type);
+    if(kids.length<2)return null;
+    const h=addNode(model,name||'Khái niệm bậc cao',null,code);h.type='hoc';h.mode=mode==='rf'?'rf':'rr';
+    kids.forEach(k=>{k.parent=h.id});tidy(model);return h;
+  }
+  function attachChild(model,id,hocId){const n=nodeOf(model,id),h=nodeOf(model,hocId);if(!n||n.type||!isHoc(h)||n.parent===hocId)return false;n.parent=hocId;tidy(model);return true}
+  function detachChild(model,id){const n=nodeOf(model,id);if(!n||!n.parent)return false;delete n.parent;return true}
+  // The HOC becomes an ordinary construct (keeping its arrows), its LOCs ordinary constructs.
+  function ungroupHoc(model,id){const h=nodeOf(model,id);if(!isHoc(h))return false;childrenOf(model,id).forEach(c=>delete c.parent);delete h.type;delete h.mode;return true}
+  function setHocMode(model,id,mode){const h=nodeOf(model,id);if(!isHoc(h))return false;h.mode=mode==='rf'?'rf':'rr';return true}
+  // A control variable: no arrows in, no moderating; returns false when the construct cannot be one.
+  function setCtrl(model,id,on){
+    const n=nodeOf(model,id);if(!n)return false;
+    if(!on){if(!isCtrl(n))return false;delete n.type;return true}
+    if(n.type||n.parent)return false;n.type='ctrl';n.key=null;tidy(model);return true;
+  }
+  // LOCs in a column left of their HOC, centred on it.
+  function arrangeChildren(model,hocId,o={}){
+    const h=nodeOf(model,hocId),ks=childrenOf(model,hocId);if(!h||!ks.length||!hasPos(h))return;
+    const bs=ks.map(k=>boxOf(k,o)),steps=bs.map(b=>Math.ceil((b.h+14)/GRID)*GRID),total=steps.reduce((s,v)=>s+v,0)-14;
+    let y=snapTo(h.y+boxOf(h,o).h/2-total/2);const x=h.x-BOX_W-80;
+    ks.forEach((k,i)=>{k.x=x;k.y=y;y+=steps[i]});
+  }
+  function addMod(model,w,from,to,dir=1){
+    if(edgeIndex(model,from,to)<0)return 'noedge';
+    const W=nodeOf(model,w);if(!W)return 'none';if(W.parent)w=W.parent;
+    if(isCtrl(nodeOf(model,w)))return 'ctrl';if(w===from||w===to)return 'self';
+    model.mods=model.mods||[];if(model.mods.some(m=>m.w===w&&m.from===from&&m.to===to))return 'exists';
+    model.mods.push({w,from,to,dir:dir<0?-1:1});return 'added';
+  }
+  function removeMod(model,i){if(!model.mods||!model.mods[i])return false;model.mods.splice(i,1);return true}
+  function toggleModDir(model,i){const m=model.mods&&model.mods[i];if(!m)return 0;m.dir=m.dir<0?1:-1;return m.dir}
+  // Each moderator's arrow ends on the middle of the arrow it moderates (several on one arrow are spread along it).
+  function modRoutes(model,boxes,routes){
+    const byEdge=new Map(routes.map(r=>[r.i,r])),cnt=new Map(),seen=new Map(),f=v=>v.toFixed(1);
+    (model.mods||[]).forEach(m=>{const k=m.from+'>'+m.to;cnt.set(k,(cnt.get(k)||0)+1)});
+    return (model.mods||[]).map((m,i)=>{
+      const r=byEdge.get(edgeIndex(model,m.from,m.to)),b=boxes.get(m.w);if(!r||!b)return null;
+      const k=m.from+'>'+m.to,n=cnt.get(k),j=seen.get(k)||0;seen.set(k,j+1);
+      const p1=quadAt(r.p0,r.c,r.p1,0.5+0.12*(j-(n-1)/2)),p0=borderPoint(b,p1[0],p1[1]);
+      return {i,m,p0,p1,d:`M${f(p0[0])},${f(p0[1])} L${f(p1[0])},${f(p1[1])}`,label:[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2]};
+    }).filter(Boolean);
+  }
+  function parseGroups(v){const out=[];for(const g of Array.isArray(v)?v:String(v||'').split(/[;\n]+/)){const t=String(g).replace(/\s+/g,' ').trim().slice(0,40);if(t&&!out.includes(t))out.push(t)}return out.slice(0,4)}
+  function setMga(model,o){if(!o){delete model.mga;return model}model.mga={name:String(o.name||'').replace(/\s+/g,' ').trim().slice(0,60),groups:parseGroups(o.groups),skip:[...(o.skip||[])]};tidy(model);return model}
+  // Arrows compared between groups: every structural arrow (not from a control variable) unless switched off.
+  function mgaPaths(model){if(!model.mga)return [];const skip=new Set(model.mga.skip||[]);return model.edges.map((e,i)=>i).filter(i=>{const e=model.edges[i];return !isCtrl(nodeOf(model,e.from))&&!skip.has(e.from+'>'+e.to)})}
+  function toggleMgaPath(model,i){const e=model.edges[i];if(!model.mga||!e)return false;const k=e.from+'>'+e.to,s=new Set(model.mga.skip||[]);s.has(k)?s.delete(k):s.add(k);model.mga.skip=[...s];return !s.has(k)}
+  // Compact JSON for the link and this browser:
+  // {v:3, n:[[id, name, key|0, x, y, ext?]], e:[[from, to, -1?]], mo:[[w, from, to, -1?]], g:{v, l:[…], x:[…]}}
+  // ext is {h:'rr'|'rf'} for a HOC, {c:1} for a control variable, {p:HOC id} for a LOC. Version 1 and 2 links still load.
+  function packModel(model){
+    const o={v:3,n:model.nodes.map(n=>{const a=[n.id,n.name,n.key||0];const ext=isHoc(n)?{h:n.mode==='rf'?'rf':'rr'}:isCtrl(n)?{c:1}:n.parent?{p:n.parent}:null;
+      if(hasPos(n))a.push(Math.round(n.x),Math.round(n.y));else if(ext)a.push(null,null);if(ext)a.push(ext);return a}),
+      e:model.edges.map(e=>e.sign<0?[e.from,e.to,-1]:[e.from,e.to])};
+    if(model.mods&&model.mods.length)o.mo=model.mods.map(m=>m.dir<0?[m.w,m.from,m.to,-1]:[m.w,m.from,m.to]);
+    if(model.mga)o.g={v:model.mga.name,l:model.mga.groups,x:model.mga.skip||[]};
+    return JSON.stringify(o);
+  }
   function unpackModel(json,isKey=()=>true){
     const o=typeof json==='string'?JSON.parse(json):json,m={nodes:[],edges:[]};
     for(const a of Array.isArray(o&&o.n)?o.n:[]){
-      if(!Array.isArray(a))continue;const [id,name,key,x,y]=a;
+      if(!Array.isArray(a))continue;const [id,name,key,x,y,ext]=a;
       if(!id||!name||m.nodes.some(n=>n.id===String(id)))continue;
       const n={id:String(id),name:String(name),key:key&&isKey(key)?String(key):null};
       if(Number.isFinite(x)&&Number.isFinite(y)){n.x=x;n.y=y}
+      if(ext&&typeof ext==='object'){if(ext.h){n.type='hoc';n.mode=ext.h==='rf'?'rf':'rr';n.key=null}else if(ext.c){n.type='ctrl';n.key=null}else if(ext.p)n.parent=String(ext.p)}
       m.nodes.push(n);
     }
     for(const a of Array.isArray(o&&o.e)?o.e:[])if(Array.isArray(a)){const [f,t,s]=a;if(m.nodes.some(n=>n.id===f)&&m.nodes.some(n=>n.id===t))addEdge(m,f,t,s)}
-    return m;
+    const mo=Array.isArray(o&&o.mo)?o.mo.filter(a=>Array.isArray(a)&&a.length>=3).map(([w,f,t,d])=>({w:String(w),from:String(f),to:String(t),dir:d<0?-1:1})):[];
+    if(mo.length)m.mods=mo;
+    if(o&&o.g&&typeof o.g==='object')m.mga={name:String(o.g.v||'').slice(0,60),groups:parseGroups(Array.isArray(o.g.l)?o.g.l:[]),skip:Array.isArray(o.g.x)?o.g.x.map(String):[]};
+    return tidy(m);
   }
   // Undo/redo over packed snapshots; pushing the current snapshot again is a no-op.
   function createHistory(limit=200){
@@ -568,9 +787,12 @@
   const app=$('vm-app'),stage=$('vm-stage'),svg=$('vm-canvas'),vp=$('vm-vp'),gE=$('vm-elayer'),gN=$('vm-nlayer'),gL=$('vm-llayer'),gO=$('vm-olayer');
   const coarse=matchMedia('(pointer: coarse)').matches;
   let model={nodes:[],edges:[]},view={k:1,x:0,y:0},mode='select',pending=null,snapOn=true,boxes=new Map();
-  const sel={nodes:new Set(),edge:null}; // edge selected by "from>to"
+  const sel={nodes:new Set(),edge:null,mod:null}; // edge selected by "from>to", moderation by "w|from>to"
+  let pendingKind='arrow',modF2=false;
+  try{modF2=localStorage.getItem('vm-modf2')==='1'}catch(e){}
   const hist=createHistory(200);
-  const ekey=e=>e.from+'>'+e.to;
+  const ekey=e=>e.from+'>'+e.to, mkey=m=>m.w+'|'+m.from+'>'+m.to;
+  const hypOpt=()=>({mediation:$('vm-med').checked});
 
   // ---- text width for wrapping labels in the boxes ----
   let ctx=null;try{ctx=document.createElement('canvas').getContext('2d');if(ctx)ctx.font='13px Arial, Helvetica, sans-serif'}catch(e){}
@@ -600,7 +822,7 @@
   function status(t){$('vm-status').textContent=t}
   // Every finished edit: snapshot for undo, redraw, save.
   function commit(msg){hist.push(packModel(model));renderAll();if(msg)status(msg)}
-  function restore(s){model=unpackModel(s,isKey);placeNew(model,opt());const ids=new Set(model.nodes.map(n=>n.id));sel.nodes=new Set([...sel.nodes].filter(id=>ids.has(id)));if(sel.edge&&!model.edges.some(e=>ekey(e)===sel.edge))sel.edge=null;pending=null;renderAll()}
+  function restore(s){model=unpackModel(s,isKey);placeNew(model,opt());const ids=new Set(model.nodes.map(n=>n.id));sel.nodes=new Set([...sel.nodes].filter(id=>ids.has(id)));if(sel.edge&&!model.edges.some(e=>ekey(e)===sel.edge))sel.edge=null;if(sel.mod&&!(model.mods||[]).some(m=>mkey(m)===sel.mod))sel.mod=null;pending=null;renderAll()}
   function undo(){const s=hist.undo();if(s==null){status('Không còn bước nào để hoàn tác.');return}restore(s);status('Đã hoàn tác.')}
   function redo(){const s=hist.redo();if(s==null){status('Không còn bước nào để làm lại.');return}restore(s);status('Đã làm lại.')}
 
@@ -624,24 +846,45 @@
 
   // ---- drawing ----
   function computeBoxes(){const o=opt();boxes=new Map(model.nodes.map(n=>[n.id,boxOf(n,o)]))}
-  function roleOf(id){const i=model.edges.some(e=>e.to===id),o=model.edges.some(e=>e.from===id);return !i&&!o?'chưa nối':!i?'biến độc lập':!o?'biến phụ thuộc':'biến trung gian'}
+  function roleOf(id){
+    const n=nodeOf(model,id);if(!n)return '';
+    if(isCtrl(n))return 'biến kiểm soát';
+    if(n.parent)return `khái niệm thành phần của ${n.parent}`;
+    const i=model.edges.some(e=>e.to===id),o=model.edges.some(e=>e.from===id),r=!i&&!o?((model.mods||[]).some(m=>m.w===id)?'biến điều tiết':'chưa nối'):!i?'biến độc lập':!o?'biến phụ thuộc':'biến trung gian';
+    return isHoc(n)?`khái niệm bậc cao ${n.mode==='rf'?'phản ánh–cấu tạo':'phản ánh–phản ánh'} có ${childrenOf(model,id).length} thành phần, ${r}`:r;
+  }
+  const ctlEdge=e=>isCtrl(nodeOf(model,e.from));
   function renderEdges(){
-    const showH=$('vm-showh').checked;let lines='',labs='';
-    for(const r of routeAll(model,boxes)){
-      const neg=r.e.sign<0,s=sel.edge===ekey(r.e),cls=`vm-e${neg?' neg':''}${s?' sel':''}`;
+    const showH=$('vm-showh').checked,H=hNumbers(hypotheses(model,hypOpt()));let lines='',labs='';
+    // HOC–LOC links: thin, not clickable, arrow toward the LOCs (reflective–reflective) or toward the HOC (reflective–formative).
+    for(const l of hocLinks(model)){const a=boxes.get(l.from),b=boxes.get(l.to);if(!a||!b)continue;
+      const r=routeEdge(a,b,[...boxes.values()].filter(x=>x!==a&&x!==b));lines+=`<path class="vm-link" d="${r.d}" marker-end="url(#vm-ah-k)"/>`}
+    const rs=routeAll(model,boxes);
+    for(const r of rs){
+      const neg=r.e.sign<0,s=sel.edge===ekey(r.e),ctl=ctlEdge(r.e),cls=`vm-e${neg?' neg':''}${s?' sel':''}${ctl?' ctl':''}`,h=H.edge.get(r.i);
       lines+=`<g class="${cls}" data-edge="${r.i}"><path class="vm-e-hit" d="${r.d}"/><path class="vm-e-line" d="${r.d}" marker-end="url(#vm-ah${s?'-s':neg?'-n':''})"/></g>`;
-      const t=(showH?`H${r.i+1} `:'')+(neg?'−':'+'),w=Math.max(24,measure(t)*0.95+14);
-      labs+=`<g class="${cls} vm-lab" data-edge="${r.i}" data-key="${esc(ekey(r.e))}" transform="translate(${r.label[0].toFixed(1)},${r.label[1].toFixed(1)})" tabindex="0" role="button" aria-label="${esc(`H${r.i+1}: ${r.e.from} tới ${r.e.to}, ${neg?'ngược chiều':'cùng chiều'}. Enter đổi chiều, Delete xoá.`)}"><rect x="${(-w/2).toFixed(1)}" y="-11" width="${w.toFixed(1)}" height="22" rx="11"/><text y="4.3" text-anchor="middle">${esc(t)}</text></g>`;
+      const t=(ctl?'KS ':showH&&h?`H${h} `:'')+(neg?'−':'+'),w=Math.max(24,measure(t)*0.95+14);
+      const name=ctl?`Biến kiểm soát ${r.e.from} tới ${r.e.to}`:`H${h}: ${r.e.from} tới ${r.e.to}`;
+      labs+=`<g class="${cls} vm-lab" data-edge="${r.i}" data-key="${esc(ekey(r.e))}" transform="translate(${r.label[0].toFixed(1)},${r.label[1].toFixed(1)})" tabindex="0" role="button" aria-label="${esc(`${name}, ${neg?'ngược chiều':'cùng chiều'}. Enter đổi chiều, Delete xoá.`)}"><rect x="${(-w/2).toFixed(1)}" y="-11" width="${w.toFixed(1)}" height="22" rx="11"/><text y="4.3" text-anchor="middle">${esc(t)}</text></g>`;
+    }
+    for(const r of modRoutes(model,boxes,rs)){
+      const m=r.m,k=mkey(m),s=sel.mod===k,neg=m.dir<0,cls=`vm-m${neg?' neg':''}${s?' sel':''}`,h=H.mod.get(r.i);
+      lines+=`<g class="${cls}" data-mod="${r.i}"><path class="vm-e-hit" d="${r.d}"/><path class="vm-m-line" d="${r.d}" marker-end="url(#vm-ah${s?'-s':'-k'})"/><circle class="vm-m-dot" cx="${r.p1[0].toFixed(1)}" cy="${r.p1[1].toFixed(1)}" r="3"/></g>`;
+      const t=(showH&&h?`H${h} `:'')+(neg?'−':'+'),w=Math.max(24,measure(t)*0.95+14);
+      labs+=`<g class="${cls} vm-lab mod" data-mod="${r.i}" data-key="${esc('m:'+k)}" transform="translate(${r.label[0].toFixed(1)},${r.label[1].toFixed(1)})" tabindex="0" role="button" aria-label="${esc(`H${h}: ${m.w} điều tiết ${m.from} tới ${m.to}, ${neg?'làm suy yếu':'tăng cường'}. Enter đổi hướng, Delete xoá.`)}"><rect x="${(-w/2).toFixed(1)}" y="-11" width="${w.toFixed(1)}" height="22" rx="11"/><text y="4.3" text-anchor="middle">${esc(t)}</text></g>`;
     }
     gE.innerHTML=lines;gL.innerHTML=labs;
   }
   function nodeHtml(n){
-    const b=boxes.get(n.id),s=sel.nodes.has(n.id),items=itemsOf(n),ty=b.h/2-(b.lines.length-1)*8.5+4.5,pr=coarse?12:8;
-    return `<g class="vm-n${s?' sel':''}${pending===n.id?' pend':''}${n.key?' lib':''}" data-node="${esc(n.id)}" transform="translate(${b.x},${b.y})" tabindex="0" role="button" aria-pressed="${s}" aria-label="${esc(`${n.name} (${n.id}), ${roleOf(n.id)}${items!=null?`, ${items} biến quan sát`:''}${pending&&pending!==n.id?`. Enter để nối ${pending} tới đây`:''}`)}">`+
+    const b=boxes.get(n.id),s=sel.nodes.has(n.id),items=itemsOf(n),ty=b.h/2-(b.lines.length-1)*8.5+4.5,pr=coarse?12:8,hoc=isHoc(n),ctl=isCtrl(n);
+    const tag=hoc?(n.mode==='rf'?'R–F':'R–R'):ctl?'KS':'';
+    return `<g class="vm-n${s?' sel':''}${pending===n.id?' pend':''}${n.key?' lib':''}${hoc?' hoc':''}${ctl?' ctrl':''}${n.parent?' loc':''}" data-node="${esc(n.id)}" transform="translate(${b.x},${b.y})" tabindex="0" role="button" aria-pressed="${s}" aria-label="${esc(`${n.name} (${n.id}), ${roleOf(n.id)}${items!=null?`, ${items} biến quan sát`:''}${pending&&pending!==n.id&&pendingKind==='arrow'?`. Enter để nối ${pending} tới đây`:''}`)}">`+
       `<rect class="vm-ring" x="-5" y="-5" width="${b.w+10}" height="${b.h+10}" rx="16"/><rect class="vm-box" width="${b.w}" height="${b.h}" rx="12"/>`+
+      (hoc?`<rect class="vm-box2" x="4" y="4" width="${b.w-8}" height="${b.h-8}" rx="9"/>`:'')+
       `<text text-anchor="middle">${b.lines.map((l,k)=>`<tspan x="${b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text>`+
       (items!=null?`<g class="vm-badge${items<3?' warn':''}" transform="translate(${b.w-8},0)"><title>${items} biến quan sát trong thang đo gốc</title><rect x="-13" y="-10" width="26" height="20" rx="10"/><text y="4" text-anchor="middle">${items}</text></g>`:'')+
-      `<g class="vm-port" data-port="${esc(n.id)}" transform="translate(${b.w},${b.h/2})"><title>Kéo để nối mũi tên</title><circle class="vm-port-hit" r="${pr+10}"/><circle class="vm-port-dot" r="${pr}"/><path d="M-4,0h7M0,-3.5l3.5,3.5l-3.5,3.5"/></g></g>`;
+      (tag?`<g class="vm-tag" transform="translate(${b.w-12},0)"><title>${hoc?(n.mode==='rf'?'Bậc cao phản ánh–cấu tạo: các thành phần → bậc cao':'Bậc cao phản ánh–phản ánh: bậc cao → các thành phần'):'Biến kiểm soát: không có giả thuyết'}</title><rect x="-17" y="-9" width="34" height="18" rx="9"/><text y="3.6" text-anchor="middle">${tag}</text></g>`:'')+
+      (n.parent?'':`<g class="vm-port" data-port="${esc(n.id)}" transform="translate(${b.w},${b.h/2})"><title>Kéo để nối mũi tên, hoặc thả vào giữa một mũi tên để điều tiết</title><circle class="vm-port-hit" r="${pr+10}"/><circle class="vm-port-dot" r="${pr}"/><path d="M-4,0h7M0,-3.5l3.5,3.5l-3.5,3.5"/></g>`)+`</g>`;
   }
   let restoring=false;
   function renderCanvas(){
@@ -657,8 +900,10 @@
     gN.querySelectorAll('[data-node]').forEach(el=>{const s=sel.nodes.has(el.dataset.node);el.classList.toggle('sel',s);el.setAttribute('aria-pressed',s);el.classList.toggle('pend',pending===el.dataset.node)});
     const neg=i=>model.edges[i]&&model.edges[i].sign<0;
     gE.querySelectorAll('[data-edge]').forEach(el=>{const i=+el.dataset.edge,s=model.edges[i]&&sel.edge===ekey(model.edges[i]);el.classList.toggle('sel',s);el.querySelector('.vm-e-line').setAttribute('marker-end',`url(#vm-ah${s?'-s':neg(i)?'-n':''})`)});
+    gE.querySelectorAll('[data-mod]').forEach(el=>{const m=(model.mods||[])[+el.dataset.mod],s=!!m&&sel.mod===mkey(m);el.classList.toggle('sel',s);el.querySelector('.vm-m-line').setAttribute('marker-end',`url(#vm-ah${s?'-s':'-k'})`)});
     gL.querySelectorAll('[data-edge]').forEach(el=>el.classList.toggle('sel',sel.edge===el.dataset.key));
-    $('vm-hyps').querySelectorAll('li[data-key]').forEach(li=>li.classList.toggle('sel',li.dataset.key===sel.edge));
+    gL.querySelectorAll('[data-mod]').forEach(el=>el.classList.toggle('sel','m:'+sel.mod===el.dataset.key));
+    $('vm-hyps').querySelectorAll('li[data-key]').forEach(li=>li.classList.toggle('sel',li.dataset.key===sel.edge||li.dataset.key==='m:'+sel.mod));
   }
   function updateToolbar(){
     $('vm-undo').disabled=!hist.canUndo();$('vm-redo').disabled=!hist.canRedo();
@@ -670,27 +915,57 @@
 
   // ---- side panel: hypotheses, sample size, warnings ----
   function renderSide(){
-    const hs=hypotheses(model,{mediation:$('vm-med').checked}),n=model.edges.length;
+    const hs=hypotheses(model,hypOpt());
     $('vm-hcount').textContent=hs.length?`${hs.length} giả thuyết`:'';
     const up='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+    const firstEdge=model.edges.findIndex(e=>!ctlEdge(e));
     $('vm-hyps').innerHTML=hs.length?hs.map(h=>{
+      if(h.mod!=null){const m=model.mods[h.mod],k='m:'+mkey(m),neg=m.dir<0;
+        return `<li class="e${'m:'+sel.mod===k?' sel':''}" data-key="${esc(k)}" data-mod="${h.mod}"><b>H${h.h}:</b> ${esc(h.text)}<div class="vm-hctl"><button type="button" class="vm-mini${neg?' neg':''}" data-mdir="${h.mod}" aria-label="${esc(`H${h.h}: đổi sang ${neg?'tăng cường':'làm suy yếu'}`)}">${neg?'− làm suy yếu':'+ tăng cường'}</button><button type="button" class="vm-mini" data-mdel="${h.mod}" aria-label="${esc(`Xoá biến điều tiết H${h.h}`)}" title="Xoá biến điều tiết">✕</button></div></li>`}
+      if(h.mga!=null)return `<li class="med"><b>H${h.h}:</b> ${esc(h.text)}<div class="vm-hctl"><button type="button" class="vm-mini" data-mgaoff="${h.mga}" aria-label="${esc(`Không so sánh mũi tên của H${h.h} giữa các nhóm`)}">Bỏ so sánh</button></div></li>`;
       if(h.edge==null)return `<li class="med"><b>H${h.h}:</b> ${esc(h.text)}</li>`;
       const e=model.edges[h.edge],k=ekey(e),neg=e.sign<0;
-      return `<li class="e${sel.edge===k?' sel':''}" data-key="${esc(k)}" data-i="${h.edge}"><b>H${h.h}:</b> ${esc(h.text)}<div class="vm-hctl"><button type="button" class="vm-mini${neg?' neg':''}" data-hsign="${h.edge}" aria-label="${esc(`H${h.h}: đổi sang ${neg?'cùng chiều':'ngược chiều'}`)}">${neg?'− ngược chiều':'+ cùng chiều'}</button><button type="button" class="vm-mini" data-hup="${h.edge}" ${h.edge?'':'disabled'} aria-label="${esc(`Đưa H${h.h} lên trước`)}" title="Đưa lên trước">${up}</button><button type="button" class="vm-mini" data-hdel="${h.edge}" aria-label="${esc(`Xoá mũi tên H${h.h}`)}" title="Xoá mũi tên">✕</button></div></li>`}).join('')
+      return `<li class="e${sel.edge===k?' sel':''}" data-key="${esc(k)}" data-i="${h.edge}"><b>H${h.h}:</b> ${esc(h.text)}<div class="vm-hctl"><button type="button" class="vm-mini${neg?' neg':''}" data-hsign="${h.edge}" aria-label="${esc(`H${h.h}: đổi sang ${neg?'cùng chiều':'ngược chiều'}`)}">${neg?'− ngược chiều':'+ cùng chiều'}</button><button type="button" class="vm-mini" data-hup="${h.edge}" ${h.edge>firstEdge?'':'disabled'} aria-label="${esc(`Đưa H${h.h} lên trước`)}" title="Đưa lên trước">${up}</button><button type="button" class="vm-mini" data-hdel="${h.edge}" aria-label="${esc(`Xoá mũi tên H${h.h}`)}" title="Xoá mũi tên">✕</button></div></li>`}).join('')
       :`<li class="med">${model.nodes.length>1?'Nối mũi tên giữa các khái niệm để có giả thuyết.':'Thêm ít nhất hai khái niệm rồi nối mũi tên.'}</li>`;
-    const s=modelSample(model),byId=new Map(model.nodes.map(x=>[x.id,x]));
+    // Control variables: listed, no hypothesis.
+    const cs=controlsOf(model);
+    $('vm-ctrlbox').innerHTML=cs.length?`<div class="field" style="gap:4px"><strong style="font-size:.9rem">Biến kiểm soát</strong><ul class="vm-ctl">${cs.map(c=>`<li>${esc(c.name)} (${esc(c.id)}) → ${c.to.length?c.to.map(esc).join(', '):'<i>chưa nối</i>'}</li>`).join('')}</ul><p class="vm-note">Không đặt giả thuyết cho biến kiểm soát; báo cáo hệ số của chúng cùng các giả thuyết để cho thấy kết quả không đổi khi đã kiểm soát. Mỗi mũi tên kiểm soát vẫn là một biến dự báo khi tính cỡ mẫu.</p></div>`:'';
+    renderMga();
+    const s=modelSample(model,{modF2}),byId=new Map(model.nodes.map(x=>[x.id,x])),P=predictorsOf(model);
     let html='<strong>Cỡ mẫu tối thiểu (PLS-SEM)</strong>';
     if(!s)html+='<p class="text-muted-foreground" style="margin:4px 0 0;font-size:.86rem">Nối mũi tên để tính cỡ mẫu.</p>';
-    else html+=`<div class="result"><span class="lbl">Nhiều mũi tên nhất vào một khái niệm</span><span class="num">${s.arrows}</span><span class="how">${s.at.map(id=>esc(byId.get(id).name)+' ('+esc(id)+')').join(', ')}</span></div>
-      <div class="result"><span class="lbl">Cỡ mẫu tối thiểu</span><span class="num">${fmt(s.min)}</span><span class="how">Số lớn hơn giữa G*Power (${fmt(s.pow)}: hồi quy bội, f² = 0,15, α = 0,05, power = 0,80, ${s.arrows} biến dự báo) và phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) (${fmt(s.isr)}, hệ số đường dẫn nhỏ nhất 0,20).</span></div>
-      <div class="result"><span class="lbl">Số phiếu nên thu</span><span class="num">${fmt(s.send)}</span><span class="how">Dự phòng 15% phiếu bị loại: ${fmt(s.min)} ÷ 0,85. Đổi giả định ở <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.</span></div>`;
+    else{
+      // What the largest count is made of: arrows in, LOCs of a reflective–formative HOC, moderator and interaction terms.
+      const parts=id=>{const p=P.get(id)||[],n=byId.get(id),loc=isHoc(n)&&n.mode==='rf'?childrenOf(model,id).length:0,inter=p.filter(x=>x.includes('×')).length,mw=(model.mods||[]).filter(m=>m.to===id&&!model.edges.some(e=>e.from===m.w&&e.to===id)).map(m=>m.w).filter((w,i,a)=>a.indexOf(w)===i).length,arr=p.length-loc-inter-mw;
+        const b=[`${arr} mũi tên`];if(loc)b.push(`${loc} thành phần (bậc cao phản ánh–cấu tạo)`);if(mw)b.push(`${mw} biến điều tiết`);if(inter)b.push(`${inter} biến tương tác`);return b.length>1?': '+b.join(' + '):''};
+      html+=`<div class="result"><span class="lbl">Nhiều biến dự báo nhất vào một khái niệm</span><span class="num">${s.arrows}</span><span class="how">${s.at.map(id=>esc(byId.get(id).name)+(byId.get(id).name!==id?' ('+esc(id)+')':'')+esc(parts(id))).join('; ')}</span></div>
+      <div class="result"><span class="lbl">Cỡ mẫu tối thiểu${s.groups?' mỗi nhóm':''}</span><span class="num">${fmt(s.min)}</span><span class="how">Số lớn hơn giữa G*Power (${fmt(s.pow)}: hồi quy bội, f² = 0,15, α = 0,05, power = 0,80, ${s.arrows} biến dự báo) và phương pháp căn bậc hai nghịch đảo của Kock và Hadaya (2018) (${fmt(s.isr)}, hệ số đường dẫn nhỏ nhất 0,20)${s.mod&&s.mod.on?`, và ${fmt(s.mod.n)} để phát hiện hiệu ứng điều tiết f² = 0,02`:''}.</span></div>`;
+      if(s.groups)html+=`<div class="result"><span class="lbl">Tổng cỡ mẫu (${s.groups} nhóm)</span><span class="num">${fmt(s.total)}</span><span class="how">Mỗi nhóm ${esc(model.mga.groups.join(', '))} phải tự đạt ${fmt(s.min)} quan sát hợp lệ, vì mô hình được ước lượng riêng trên từng nhóm.</span></div>`;
+      html+=`<div class="result"><span class="lbl">Số phiếu nên thu</span><span class="num">${fmt(s.send)}</span><span class="how">Dự phòng 15% phiếu bị loại: ${fmt(s.total)} ÷ 0,85${s.groups?'; nhóm nào thiếu thì thu thêm cho nhóm đó':''}. Đổi giả định ở <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/tinh-co-mau/">Máy tính cỡ mẫu</a>.</span></div>`;
+      if(s.mod)html+=`<p class="vm-note warn"><b>Hiệu ứng điều tiết thường rất nhỏ</b> (f² khoảng 0,005–0,035; tổng quan 30 năm của Aguinis và cộng sự (2005) có f² trung bình chỉ 0,009), nhỏ hơn nhiều so với f² = 0,15 ở trên. Với f² = 0,02, kiểm định biến tương tác vào ${esc(s.mod.at)} (${s.mod.k} biến dự báo) cần <b>${fmt(s.mod.n)}</b> quan sát${s.groups?' mỗi nhóm':''} (G*Power, R² tăng thêm, 1 biến kiểm định).</p>
+        <label class="check" style="margin-top:4px"><input type="checkbox" id="vm-modf2" ${modF2?'checked':''}> Tính cỡ mẫu cho giả thuyết điều tiết với f² = 0,02</label>
+        <p class="vm-note">Ước lượng bằng cách tiếp cận hai giai đoạn (Becker, Ringle và Sarstedt, 2018): giai đoạn 1 lấy điểm của X và W, giai đoạn 2 đưa X, W và X×W vào ${esc(s.mod.at)}.</p>`;
+      if(hs.some(h=>h.mediator))html+=`<p class="vm-note">Trung gian: kiểm định tác động gián tiếp bằng bootstrap (ví dụ 5.000 mẫu), không theo các bước của Baron và Kenny (Zhao và cộng sự, 2010). Fritz và MacKinnon (2007): khi cả hai đường a và b đều nhỏ (0,14) cần khoảng 460–560 quan sát, khi cả hai ở mức trung bình (0,39) khoảng 70–80.</p>`;
+      if(s.groups)html+=`<p class="vm-note">Trước khi so sánh, kiểm tra tính bất biến đo lường bằng MICOM (Henseler, Ringle và Sarstedt, 2016), rồi so sánh hệ số giữa các nhóm bằng PLS-MGA hoặc kiểm định hoán vị (permutation).</p>`;
+    }
     $('vm-sample').innerHTML=html;
     const ws=modelWarnings(model,{itemsOf});
     $('vm-warnbox').innerHTML=ws.length?`<strong style="font-size:.9rem">Cần xem lại</strong><ul class="err vm-warn">${ws.map(w=>`<li>${esc(w.text)}</li>`).join('')}</ul>`:'';
-    const lib=model.nodes.filter(x=>x.key),free=model.nodes.filter(x=>!x.key);
-    $('vm-kitbox').innerHTML=lib.length?`<a class="btn" href="${KIT}${kitQuery(model)}">Mở trong Bộ khảo sát</a><small class="text-muted-foreground" style="display:block;margin-top:6px;font-size:.78rem">Mang sang ${lib.length} khái niệm từ thư viện (${lib.map(x=>esc(x.id)).join(', ')}), số mũi tên và biến phụ thuộc để ra bảng hỏi, cỡ mẫu và đoạn chương 3.${free.length?` Khái niệm tự đặt tên (${free.map(x=>esc(x.id)).join(', ')}) chưa có thang đo: tìm thang đo gần nghĩa trong Bộ khảo sát hoặc <a class="text-accent underline" href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>.`:''} Thu xong dữ liệu: chạy Cronbach, EFA, hồi quy bằng <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</small>`
+    const lib=model.nodes.filter(x=>x.key&&!x.type),free=model.nodes.filter(x=>!x.key&&!x.type),extra=[...cs.map(c=>c.name),...(model.mga&&model.mga.name?[model.mga.name]:[])];
+    const extraNote=extra.length?` Kèm theo ${extra.map(x=>'“'+esc(x)+'”').join(', ')} (${[cs.length?'biến kiểm soát':'',model.mga?'biến phân nhóm':''].filter(Boolean).join(', ')}) để thành câu hỏi ở phần thông tin chung của phiếu; kiểm tra lại phương án trả lời ở đó.`:'';
+    const hocNote=model.nodes.some(isHoc)?' Khái niệm bậc cao không có câu hỏi riêng: phiếu đo các khái niệm thành phần của nó.':'';
+    $('vm-kitbox').innerHTML=lib.length?`<a class="btn" href="${KIT}${kitQuery(model)}">Mở trong Bộ khảo sát</a><small class="text-muted-foreground" style="display:block;margin-top:6px;font-size:.78rem">Mang sang ${lib.length} khái niệm từ thư viện (${lib.map(x=>esc(x.id)).join(', ')}), số biến dự báo lớn nhất và biến phụ thuộc để ra bảng hỏi, cỡ mẫu và đoạn chương 3.${hocNote}${extraNote}${free.length?` Khái niệm tự đặt tên (${free.map(x=>esc(x.id)).join(', ')}) chưa có thang đo: tìm thang đo gần nghĩa trong Bộ khảo sát hoặc <a class="text-accent underline" href="/goc-nghien-cuu/thang-do/">Thư viện thang đo</a>.`:''} Thu xong dữ liệu: chạy Cronbach, EFA, hồi quy bằng <a class="text-accent underline" href="/goc-nghien-cuu/cong-cu/phan-tich-du-lieu/">công cụ phân tích dữ liệu</a>.</small>`
       :model.nodes.length?`<small class="text-muted-foreground" style="font-size:.78rem">Các khái niệm đang là tên tự đặt. Thêm khái niệm từ thư viện để mở tiếp trong <a class="text-accent underline" href="${KIT}">Bộ khảo sát</a> với thang đo gốc có trích dẫn.</small>`:'';
     if(document.activeElement!==$('vm-text'))$('vm-text').value=edgesToText(model);
+  }
+  // Multigroup settings: the inputs keep what is being typed; the path list follows the model.
+  function renderMga(){
+    const g=model.mga,on=!!g;$('vm-mga').checked=on;$('vm-mga-f').hidden=!on;if(!on)return;
+    if(document.activeElement!==$('vm-mga-name'))$('vm-mga-name').value=g.name||'';
+    if(document.activeElement!==$('vm-mga-groups'))$('vm-mga-groups').value=(g.groups||[]).join('; ');
+    const skip=new Set(g.skip||[]),idx=model.edges.map((e,i)=>i).filter(i=>!ctlEdge(model.edges[i]));
+    const H=hNumbers(hypotheses(model,{...hypOpt(),mga:false}));
+    $('vm-mga-paths').innerHTML=idx.length?idx.map(i=>{const e=model.edges[i];return `<label class="check"><input type="checkbox" data-mgap="${i}" ${skip.has(ekey(e))?'':'checked'}> H${H.edge.get(i)}: ${esc(e.from)} → ${esc(e.to)}</label>`}).join(''):'<small class="text-muted-foreground">Nối mũi tên trước.</small>';
   }
   function renderAll(){renderCanvas();renderSide();renderHits();updateToolbar();save()}
 
@@ -722,6 +997,12 @@
     const n=addNode(model,x.c.nameVi,key,x.c.code);placeAt(n,w);selectOnly(n.id);
     commit(`Đã thêm ${n.name} (${n.id}, ${x.c.items.length} biến). Kéo chấm tròn bên phải ô để nối mũi tên.`);focusNode(n.id);
   }
+  // A new HOC or control variable at world point w (free name only).
+  function addSpecialAt(name,kind,w){
+    name=String(name).trim();name=name.charAt(0).toLocaleUpperCase('vi')+name.slice(1);
+    const n=addNode(model,name);if(!n)return;n.type=kind;if(kind==='hoc')n.mode='rr';placeAt(n,w);selectOnly(n.id);
+    commit(kind==='hoc'?`Đã thêm khái niệm bậc cao ${n.name} (${n.id}). Kéo các khái niệm thành phần thả vào ô này; chuột phải để đổi sang phản ánh–cấu tạo.`:`Đã thêm biến kiểm soát ${n.name} (${n.id}). Nối mũi tên từ nó vào biến phụ thuộc.`);focusNode(n.id);
+  }
   function addFreeAt(name,w){
     name=String(name).trim();name=name.charAt(0).toLocaleUpperCase('vi')+name.slice(1);
     const n=addNode(model,name);if(!n)return;placeAt(n,w);selectOnly(n.id);
@@ -733,8 +1014,9 @@
   function openNamebox(o){
     closeMenu();nb=o;const inp=$('vm-nb-input'),n=o.rename?model.nodes.find(x=>x.id===o.rename):null;
     if(o.rename&&!n){nb=null;return}
-    inp.value=n?n.name:'';$('vm-nb-label').textContent=n?`Đổi tên ${n.id}`:'Tên khái niệm mới';
-    $('vm-nb-hint').textContent=n?'Enter lưu · Esc huỷ':'↑↓ chọn gợi ý · Enter thêm · Esc huỷ';
+    inp.value=n?n.name:'';$('vm-nb-label').textContent=n?`Đổi tên ${n.id}`:o.kind==='hoc'?'Tên khái niệm bậc cao mới':o.kind==='ctrl'?'Tên biến kiểm soát mới':'Tên khái niệm mới';
+    inp.placeholder=o.kind==='hoc'?'Tên khái niệm bậc cao, ví dụ: chất lượng dịch vụ':o.kind==='ctrl'?'Biến kiểm soát, ví dụ: giới tính, tuổi':'Tên khái niệm, ví dụ: niềm tin';
+    $('vm-nb-hint').textContent=n||o.kind?'Enter lưu · Esc huỷ':'↑↓ chọn gợi ý · Enter thêm · Esc huỷ';
     $('vm-namebox').hidden=false;placeNamebox();renderSuggest();inp.focus();inp.select();
   }
   function placeNamebox(){
@@ -745,7 +1027,7 @@
   }
   function renderSuggest(){
     const v=$('vm-nb-input').value.trim(),list=$('vm-sg'),inp=$('vm-nb-input');
-    sg=[];if(!nb||nb.rename){list.innerHTML='';inp.setAttribute('aria-expanded','false');return}
+    sg=[];if(!nb||nb.rename||nb.kind){if(nb&&nb.kind&&v)sg=[{free:v}];sgAt=sg.length?0:-1;list.innerHTML='';inp.setAttribute('aria-expanded','false');return}
     const lib=v.length>=2?rankConstructs(v,INDEX,6).map(i=>({key:CONSTRUCTS[i].key})):[];
     // Enter takes the library construct only when its name contains what was typed; otherwise the typed name.
     const nv=normText(v),strong=lib.length&&nv&&[BYKEY.get(lib[0].key).c.nameVi,BYKEY.get(lib[0].key).c.nameEn,BYKEY.get(lib[0].key).c.code].some(t=>(' '+normText(t)+' ').includes(' '+nv+' '));
@@ -760,10 +1042,17 @@
   function closeNamebox(back=true){if(!nb)return;const o=nb;nb=null;$('vm-namebox').hidden=true;if(back){if(o.rename)focusNode(o.rename);else stage.focus({preventScroll:true})}}
   function chooseName(i){
     if(!nb)return;const o=nb,v=$('vm-nb-input').value.replace(/\s+/g,' ').trim();
+    if(v&&!o.rename&&!sg.length)renderSuggest(); // a value set without an input event (autofill, paste by script)
     closeNamebox(false);
-    if(o.rename){if(renameNode(model,o.rename,v))commit(`Đã đổi tên thành ${v}.`);focusNode(o.rename);return}
+    if(o.rename){
+      let id=o.rename;
+      if(renameNode(model,id,v)){
+        // A HOC just made by grouping takes its code from the name typed for it.
+        if(o.autoCode){const nc=uniqueCode(codeFrom(v),new Set(model.nodes.filter(x=>x.id!==id).map(x=>x.id.toUpperCase())));if(!recodeNode(model,id,nc)){if(sel.nodes.delete(id))sel.nodes.add(nc);id=nc}}
+        commit(`Đã đổi tên thành ${v}${id!==o.rename?` (${id})`:''}.`)}
+      focusNode(id);return}
     const s=sg[i!=null?i:sgAt];if(!s){stage.focus({preventScroll:true});return}
-    if(s.key)addLibAt(s.key,o.at);else addFreeAt(s.free,o.at);
+    if(s.key)addLibAt(s.key,o.at);else if(o.kind)addSpecialAt(s.free,o.kind,o.at);else addFreeAt(s.free,o.at);
   }
   $('vm-nb-input').addEventListener('input',renderSuggest);
   $('vm-nb-input').addEventListener('keydown',e=>{
@@ -779,20 +1068,43 @@
   let menuAt=0,menuBack=null;
   function openMenu(t,sx,sy){
     if(nb)closeNamebox(false);
-    const items=[];menuBack=document.activeElement;
-    if(t.kind==='node'){
+    const items=[];if(!menuBack||t.kind!=='pick')menuBack=document.activeElement;
+    if(t.kind==='pick'){items.push(...t.items);if(!items.length)return}
+    else if(t.kind==='node'){
       if(!sel.nodes.has(t.id)){selectOnly(t.id);refreshSel()}
-      const many=sel.nodes.size>1;
-      if(!many){items.push(['Đổi tên','Enter',()=>openNamebox({rename:t.id})],['Đổi mã viết tắt','',()=>recode(t.id)],['Nối mũi tên từ đây','C',()=>startPending(t.id)])}
+      const many=sel.nodes.size>1,n=nodeOf(model,t.id);if(!n)return;
+      if(many){
+        const ok=[...sel.nodes].filter(id=>{const x=nodeOf(model,id);return x&&!x.type});
+        if(ok.length>=2)items.push([`Gộp ${ok.length} khái niệm thành bậc cao`,'H',()=>groupSelection()]);
+      }else{
+        items.push(['Đổi tên','Enter',()=>openNamebox({rename:t.id})],['Đổi mã viết tắt','',()=>recode(t.id)]);
+        if(!n.parent)items.push(['Nối mũi tên từ đây','C',()=>startPending(t.id)]);
+        if(!n.parent&&!isCtrl(n)&&model.edges.length)items.push(['Điều tiết một mũi tên…','M',()=>pickEdgeFor(t.id,sx,sy)]);
+        if(isHoc(n))items.push([n.mode==='rf'?'Đổi sang phản ánh–phản ánh (bậc cao → thành phần)':'Đổi sang phản ánh–cấu tạo (thành phần → bậc cao)','',()=>{setHocMode(model,n.id,n.mode==='rf'?'rr':'rf');commit(`${n.id} giờ là bậc cao ${n.mode==='rf'?'phản ánh–cấu tạo':'phản ánh–phản ánh'}.`)}],['Bỏ bậc cao (giữ các ô)','',()=>{ungroupHoc(model,n.id);commit(`${n.id} giờ là khái niệm thường; các thành phần đã tách ra.`)}]);
+        if(n.parent)items.push([`Tách khỏi ${n.parent}`,'',()=>{const p=n.parent;detachChild(model,n.id);n.x=snapTo(n.x-40);commit(`Đã tách ${n.id} khỏi ${p}.`)}]);
+        const hocs=model.nodes.filter(x=>isHoc(x)&&x.id!==n.parent);
+        if(!n.type&&hocs.length)items.push(['Đưa vào khái niệm bậc cao…','',()=>openMenu({kind:'pick',items:hocs.map(h=>[h.name!==h.id?`${h.name} (${h.id})`:h.id,'',()=>attachTo(n.id,h.id)])},sx,sy)]);
+        if(!n.type&&!n.parent)items.push(['Đặt làm biến kiểm soát','',()=>makeCtrl(n.id)]);
+        if(isCtrl(n))items.push(['Bỏ đánh dấu biến kiểm soát','',()=>{setCtrl(model,n.id,false);commit(`${n.id} giờ là khái niệm thường.`)}]);
+      }
       items.push(null,[many?`Xoá ${sel.nodes.size} khái niệm`:'Xoá khái niệm','Delete',deleteSelection,'danger']);
     }else if(t.kind==='edge'){
-      const e=model.edges[t.i];if(!e)return;sel.edge=ekey(e);sel.nodes.clear();refreshSel();
-      items.push([e.sign<0?'Đổi sang cùng chiều (+)':'Đổi sang ngược chiều (−)','Enter',()=>flipSign(t.i)],['Đảo hướng mũi tên','',()=>{const r=reverseEdge(model,t.i);if(r==='exists')status('Đã có mũi tên theo chiều ngược lại.');else{sel.edge=ekey(model.edges[t.i]);commit(`Đã đảo thành ${model.edges[t.i].from} → ${model.edges[t.i].to}.`)}}]);
-      if(t.i>0)items.push([`Đưa lên trước (thành H${t.i})`,'',()=>{moveEdge(model,t.i,-1);commit(`Đã đổi thứ tự: ${e.from} → ${e.to} là H${t.i}.`)}]);
+      const e=model.edges[t.i];if(!e)return;sel.edge=ekey(e);sel.mod=null;sel.nodes.clear();refreshSel();
+      const ctl=ctlEdge(e);
+      items.push([e.sign<0?'Đổi sang cùng chiều (+)':'Đổi sang ngược chiều (−)','Enter',()=>flipSign(t.i)]);
+      if(!ctl)items.push(['Đảo hướng mũi tên','',()=>{const r=reverseEdge(model,t.i);if(r==='exists')status('Đã có mũi tên theo chiều ngược lại.');else{sel.edge=ekey(model.edges[t.i]);commit(`Đã đảo thành ${model.edges[t.i].from} → ${model.edges[t.i].to}.`)}}]);
+      const cands=model.nodes.filter(n=>!n.parent&&!isCtrl(n)&&n.id!==e.from&&n.id!==e.to&&!(model.mods||[]).some(m=>m.w===n.id&&m.from===e.from&&m.to===e.to));
+      if(!ctl&&cands.length)items.push(['Thêm biến điều tiết…','',()=>openMenu({kind:'pick',items:cands.map(n=>[n.name!==n.id?`${n.name} (${n.id})`:n.id,'',()=>moderate(n.id,t.i)])},sx,sy)]);
+      if(!ctl&&model.mga){const on=mgaPaths(model).includes(t.i);items.push([on?'Không so sánh giữa các nhóm':'So sánh giữa các nhóm','',()=>{toggleMgaPath(model,t.i);commit(on?`Bỏ so sánh ${e.from} → ${e.to} giữa các nhóm.`:`So sánh ${e.from} → ${e.to} giữa các nhóm.`)}])}
+      const prev=model.edges.slice(0,t.i).some(x=>!ctlEdge(x));
+      if(prev&&!ctl)items.push(['Đưa lên trước','',()=>{let j=t.i-1;while(j>0&&ctlEdge(model.edges[j]))j--;const x=model.edges.splice(t.i,1)[0];model.edges.splice(j,0,x);commit(`Đã đưa ${e.from} → ${e.to} lên trước.`)}]);
       items.push(null,['Xoá mũi tên','Delete',()=>deleteEdge(t.i),'danger']);
+    }else if(t.kind==='mod'){
+      const m=(model.mods||[])[t.i];if(!m)return;sel.mod=mkey(m);sel.edge=null;sel.nodes.clear();refreshSel();
+      items.push([m.dir<0?'Đổi sang tăng cường (+)':'Đổi sang làm suy yếu (−)','Enter',()=>flipMod(t.i)],null,['Xoá biến điều tiết','Delete',()=>deleteMod(t.i),'danger']);
     }else{
       const w=t.w||toWorld(sx,sy);
-      items.push(['Thêm khái niệm ở đây','Nhấp đúp',()=>openNamebox({at:w})],['Xếp tự động','',arrange],['Vừa khung','0',()=>fit()]);
+      items.push(['Thêm khái niệm ở đây','Nhấp đúp',()=>openNamebox({at:w})],['Thêm khái niệm bậc cao ở đây','',()=>openNamebox({at:w,kind:'hoc'})],['Thêm biến kiểm soát ở đây','',()=>openNamebox({at:w,kind:'ctrl'})],null,['Xếp tự động','',arrange],['Vừa khung','0',()=>fit()]);
       if(model.nodes.length)items.push(['Chọn tất cả','Ctrl+A',selectAll]);
     }
     const m=$('vm-menu');
@@ -800,6 +1112,13 @@
     m._items=items;m.hidden=false;menuAt=Date.now();
     const [sw,sh]=stageSize();m.style.left=Math.max(4,Math.min(sw-m.offsetWidth-4,sx))+'px';m.style.top=Math.max(4,Math.min(sh-m.offsetHeight-4,sy))+'px';
     const first=m.querySelector('button');if(first)first.focus();
+  }
+  // Keyboard and touch route to moderation: pick the arrow W moderates.
+  function pickEdgeFor(w,sx,sy){
+    const H=hNumbers(hypotheses(model,hypOpt()));
+    const list=model.edges.map((e,i)=>[e,i]).filter(([e])=>!ctlEdge(e)&&e.from!==w&&e.to!==w&&!(model.mods||[]).some(m=>m.w===w&&m.from===e.from&&m.to===e.to));
+    if(!list.length){status(`Chưa có mũi tên nào để ${w} điều tiết.`);return}
+    openMenu({kind:'pick',items:list.map(([e,i])=>[`H${H.edge.get(i)}: ${e.from} → ${e.to}`,'',()=>moderate(w,i)])},sx,sy);
   }
   function closeMenu(back){const m=$('vm-menu');if(m.hidden)return;m.hidden=true;if(back&&menuBack&&document.contains(menuBack))menuBack.focus({preventScroll:true});else if(back)stage.focus({preventScroll:true})}
   $('vm-menu').addEventListener('click',e=>{const b=e.target.closest('[data-mi]');if(!b)return;const fn=$('vm-menu')._items[+b.dataset.mi][2];closeMenu(true);fn()});
@@ -813,41 +1132,87 @@
   document.addEventListener('pointerdown',e=>{if(!$('vm-menu').hidden&&!(e.target instanceof Element&&e.target.closest('#vm-menu')))closeMenu(false)},true);
 
   // ---- edits ----
+  const hOf=i=>hNumbers(hypotheses(model,hypOpt())).edge.get(i);
   function connect(f,t){
+    const F=nodeOf(model,f),T=nodeOf(model,t);if(!F||!T)return;
+    // Structural arrows attach to the HOC, never to one of its LOCs.
+    let note='';
+    if(F.parent){note=` (${f} là thành phần của ${F.parent}: mũi tên gắn vào bậc cao)`;f=F.parent}
+    if(T.parent){note=` (${t} là thành phần của ${T.parent}: mũi tên gắn vào bậc cao)`;t=T.parent}
     if(f===t){status('Chọn một khái niệm khác để nối.');return}
-    const i=edgeIndex(model,f,t);if(i>=0){sel.edge=ekey(model.edges[i]);sel.nodes.clear();refreshSel();status(`${f} → ${t} đã có (H${i+1}).`);return}
-    addEdge(model,f,t,1);sel.edge=f+'>'+t;sel.nodes.clear();
-    commit(`Đã nối ${f} → ${t} (H${model.edges.length}, cùng chiều). Bấm nhãn + trên mũi tên để đổi sang ngược chiều.`);
+    if(isCtrl(nodeOf(model,t))){status(`${t} là biến kiểm soát: chỉ nối từ nó vào biến phụ thuộc, không nối vào nó.`);return}
+    const i=edgeIndex(model,f,t);if(i>=0){sel.edge=ekey(model.edges[i]);sel.nodes.clear();refreshSel();status(`${f} → ${t} đã có${hOf(i)?` (H${hOf(i)})`:''}.`);return}
+    addEdge(model,f,t,1);sel.edge=f+'>'+t;sel.mod=null;sel.nodes.clear();
+    const ctl=isCtrl(nodeOf(model,f));
+    commit(ctl?`Đã nối biến kiểm soát ${f} → ${t}${note}. Không có giả thuyết; vẫn tính vào cỡ mẫu.`:`Đã nối ${f} → ${t} (H${hOf(model.edges.length-1)}, cùng chiều)${note}. Bấm nhãn + trên mũi tên để đổi sang ngược chiều.`);
   }
-  function startPending(id){pending=id;refreshSel();status(`Nối từ ${id}: bấm (hoặc Tab tới rồi Enter) khái niệm đích. Esc để huỷ.`)}
-  function flipSign(i){const s=toggleSign(model,i);if(!s)return;const e=model.edges[i];sel.edge=ekey(e);commit(`H${i+1} (${e.from} → ${e.to}) giờ là ${s<0?'ngược chiều (−)':'cùng chiều (+)'}.`)}
-  function deleteEdge(i){const e=model.edges[i];if(!e)return;removeEdge(model,i);if(sel.edge===ekey(e))sel.edge=null;commit(`Đã xoá mũi tên ${e.from} → ${e.to}. Ctrl+Z để hoàn tác.`);stage.focus({preventScroll:true})}
+  function startPending(id,kind='arrow'){pending=id;pendingKind=kind;refreshSel();status(kind==='mod'?`${id} điều tiết: bấm vào mũi tên cần điều tiết. Esc để huỷ.`:`Nối từ ${id}: bấm (hoặc Tab tới rồi Enter) khái niệm đích. Esc để huỷ.`)}
+  function flipSign(i){const s=toggleSign(model,i);if(!s)return;const e=model.edges[i];sel.edge=ekey(e);const h=hOf(i);commit(`${h?`H${h}`:'Mũi tên kiểm soát'} (${e.from} → ${e.to}) giờ là ${s<0?'ngược chiều (−)':'cùng chiều (+)'}.`)}
+  function deleteEdge(i){const e=model.edges[i];if(!e)return;const nm=(model.mods||[]).filter(m=>m.from===e.from&&m.to===e.to).length;removeEdge(model,i);if(sel.edge===ekey(e))sel.edge=null;commit(`Đã xoá mũi tên ${e.from} → ${e.to}${nm?` và ${nm} biến điều tiết trên nó`:''}. Ctrl+Z để hoàn tác.`);stage.focus({preventScroll:true})}
+  function moderate(w,i){
+    const e=model.edges[i];if(!e)return;
+    if(ctlEdge(e)){status('Không điều tiết mũi tên của biến kiểm soát.');return}
+    const r=addMod(model,w,e.from,e.to,1),W=nodeOf(model,w),wid=W&&W.parent?W.parent:w;
+    const why={noedge:'Không tìm thấy mũi tên.',none:'Không tìm thấy khái niệm.',ctrl:`${w} là biến kiểm soát; bỏ đánh dấu kiểm soát nếu muốn dùng làm biến điều tiết.`,self:`${wid} đã nằm trên mũi tên ${e.from} → ${e.to}, không tự điều tiết được.`,exists:`${wid} đã điều tiết ${e.from} → ${e.to}.`}[r];
+    if(why){status(why);return}
+    sel.mod=mkey(model.mods[model.mods.length-1]);sel.edge=null;sel.nodes.clear();pending=null;
+    commit(`Đã thêm: ${wid} điều tiết ${e.from} → ${e.to} (tăng cường). Bấm nhãn + để đổi sang làm suy yếu. Cỡ mẫu tính thêm ${model.edges.some(x=>x.from===wid&&x.to===e.to)||model.mods.slice(0,-1).some(x=>x.w===wid&&x.to===e.to)?'':wid+' và '}${e.from}×${wid} vào ${e.to}.`);
+  }
+  function flipMod(i){const d=toggleModDir(model,i);if(!d)return;const m=model.mods[i];sel.mod=mkey(m);commit(`${m.w} điều tiết ${m.from} → ${m.to} theo hướng ${d<0?'làm suy yếu (−)':'tăng cường (+)'}.`)}
+  function deleteMod(i){const m=(model.mods||[])[i];if(!m)return;removeMod(model,i);if(sel.mod===mkey(m))sel.mod=null;commit(`Đã xoá biến điều tiết ${m.w} trên ${m.from} → ${m.to}. Ctrl+Z để hoàn tác.`);stage.focus({preventScroll:true})}
   function deleteSelection(){
     if(sel.nodes.size){const ids=[...sel.nodes];removeNodes(model,ids);sel.nodes.clear();if(ids.includes(pending))pending=null;commit(`Đã xoá ${ids.join(', ')}. Ctrl+Z để hoàn tác.`);stage.focus({preventScroll:true});return}
+    if(sel.mod){const i=(model.mods||[]).findIndex(m=>mkey(m)===sel.mod);if(i>=0)deleteMod(i);return}
     if(sel.edge){const i=model.edges.findIndex(e=>ekey(e)===sel.edge);if(i>=0)deleteEdge(i)}
+  }
+  // Selected ordinary constructs → LOCs of a new HOC placed right of them; then name it.
+  function groupSelection(){
+    const ids=[...sel.nodes].filter(id=>{const n=nodeOf(model,id);return n&&!n.type});
+    if(ids.length<2){status('Chọn ít nhất hai khái niệm (Shift + bấm, hoặc Shift + kéo) rồi bấm “Bậc cao” để gộp. Hoặc bấm chỗ trống để thêm ô bậc cao rồi kéo các ô vào.');return false}
+    const kids=ids.map(id=>nodeOf(model,id)),bx=boundsOf(kids.map(k=>boxOf(k,opt())));
+    const h=makeHoc(model,ids,'Khái niệm bậc cao','rr');if(!h)return false;
+    h.x=snapTo(bx.x)+BOX_W+80;h.y=snapTo(bx.y+bx.h/2-23);arrangeChildren(model,h.id,opt());
+    selectOnly(h.id);setMode('select');
+    commit(`Đã gộp ${ids.join(', ')} thành khái niệm bậc cao ${h.id} (phản ánh–phản ánh). Đặt tên cho nó; chuột phải để đổi sang phản ánh–cấu tạo.`);
+    openNamebox({rename:h.id,autoCode:true});return true;
+  }
+  function attachTo(id,hocId){
+    if(!attachChild(model,id,hocId)){status(`Không đưa ${id} vào ${hocId} được: chỉ khái niệm thường mới làm thành phần.`);return}
+    arrangeChildren(model,hocId,opt());selectOnly(id);
+    commit(`${id} giờ là thành phần của ${hocId}. Các mũi tên của ${id} đã chuyển sang ${hocId}.`);focusNode(id);
+  }
+  function makeCtrl(id){
+    const had=model.edges.filter(e=>e.to===id).length;
+    if(!setCtrl(model,id,true)){status(`${id} không đặt làm biến kiểm soát được.`);return}
+    commit(`${id} giờ là biến kiểm soát (không có giả thuyết)${had?`; đã bỏ ${had} mũi tên trỏ vào nó`:''}.`);
   }
   function recode(id){
     const v=prompt('Mã viết tắt mới (chữ và số, không dấu cách):',id);if(v==null)return;
     const err=recodeNode(model,id,v);if(err){alert(err);return}
-    const nv=String(v).replace(/\s+/g,'');if(nv&&nv!==id){if(sel.nodes.delete(id))sel.nodes.add(nv);if(pending===id)pending=null;sel.edge=null;commit(`Đã đổi mã ${id} thành ${nv}.`);focusNode(nv)}
+    const nv=String(v).replace(/\s+/g,'');if(nv&&nv!==id){if(sel.nodes.delete(id))sel.nodes.add(nv);if(pending===id)pending=null;sel.edge=null;sel.mod=null;commit(`Đã đổi mã ${id} thành ${nv}.`);focusNode(nv)}
   }
-  function selectAll(){sel.nodes=new Set(model.nodes.map(n=>n.id));sel.edge=null;refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.`)}
-  function arrange(){if(!model.nodes.length)return;autoArrange(model,opt());commit('Đã xếp tự động: biến độc lập bên trái, trung gian ở giữa, phụ thuộc bên phải.');fit()}
+  function selectAll(){sel.nodes=new Set(model.nodes.map(n=>n.id));sel.edge=null;sel.mod=null;refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.`)}
+  function arrange(){if(!model.nodes.length)return;autoArrange(model,opt());commit('Đã xếp tự động: biến độc lập bên trái, trung gian ở giữa, phụ thuộc bên phải; khái niệm thành phần bên trái khái niệm bậc cao.');fit()}
+  const MODES=['select','add','connect','moderate','hoc','ctrl'];
   function setMode(m){
-    mode=m;stage.classList.remove('mode-select','mode-add','mode-connect');stage.classList.add('mode-'+m);
-    if(m!=='connect'&&pending){pending=null;refreshSel()}
+    mode=m;MODES.forEach(x=>stage.classList.remove('mode-'+x));stage.classList.add('mode-'+m);
+    if(m!=='connect'&&m!=='moderate'&&pending){pending=null;refreshSel()}
     updateToolbar();
-    status(m==='add'?'Thêm khái niệm: bấm vào chỗ trống trên khung để đặt ô mới. Esc hoặc V để quay lại chọn.':m==='connect'?'Nối mũi tên: kéo từ khái niệm nguồn thả vào khái niệm đích (hoặc bấm nguồn rồi bấm đích).':'Chọn: kéo ô để di chuyển, Shift + bấm để chọn nhiều.');
+    status({add:'Thêm khái niệm: bấm vào chỗ trống trên khung để đặt ô mới. Esc hoặc V để quay lại chọn.',
+      connect:'Nối mũi tên: kéo từ khái niệm nguồn thả vào khái niệm đích (hoặc bấm nguồn rồi bấm đích).',
+      moderate:'Biến điều tiết: kéo từ khái niệm W thả vào giữa mũi tên X → Y (hoặc bấm W rồi bấm mũi tên). Esc để thôi.',
+      hoc:'Khái niệm bậc cao: bấm chỗ trống để đặt ô bậc cao, rồi kéo các khái niệm thành phần thả vào nó. Hoặc chọn nhiều ô rồi bấm “Bậc cao” để gộp.',
+      ctrl:'Biến kiểm soát: bấm chỗ trống để đặt ô (viền đứt), rồi nối mũi tên từ nó vào biến phụ thuộc.'}[m]||'Chọn: kéo ô để di chuyển, Shift + bấm để chọn nhiều.');
   }
-
   // ---- pointer: select, move, connect, pan, rubber band, pinch, double tap, long press ----
   const pointers=new Map();let G=null,lp=0,lastTap=null,spaceDown=false;
   const cancelLP=()=>{if(lp){clearTimeout(lp);lp=0}};
   const dist=(a,b)=>Math.hypot(a.sx-b.sx,a.sy-b.sy),mid=(a,b)=>({sx:(a.sx+b.sx)/2,sy:(a.sy+b.sy)/2});
   function targetOf(el){
-    const port=el.closest&&el.closest('[data-port]'),node=el.closest&&el.closest('#vm-canvas [data-node]'),edge=el.closest&&el.closest('#vm-canvas [data-edge]');
+    const port=el.closest&&el.closest('[data-port]'),node=el.closest&&el.closest('#vm-canvas [data-node]'),edge=el.closest&&el.closest('#vm-canvas [data-edge]'),mod=el.closest&&el.closest('#vm-canvas [data-mod]');
     if(port)return {kind:'port',id:port.dataset.port};if(node)return {kind:'node',id:node.dataset.node};
-    if(edge)return {kind:'edge',i:+edge.dataset.edge,label:edge.classList.contains('vm-lab')};return {kind:'empty'};
+    if(edge)return {kind:'edge',i:+edge.dataset.edge,label:edge.classList.contains('vm-lab')};
+    if(mod)return {kind:'mod',i:+mod.dataset.mod,label:mod.classList.contains('vm-lab')};return {kind:'empty'};
   }
   function longPress(t,p){cancelLP();lp=setTimeout(()=>{lp=0;if(G&&!G.moved){G=null;stage.classList.remove('dragging');openMenu(t.kind==='port'?{kind:'node',id:t.id}:t,p.sx,p.sy)}},550)}
   svg.addEventListener('pointerdown',e=>{
@@ -862,29 +1227,43 @@
     if(t.kind==='empty'||e.button===1||spaceDown)e.preventDefault();
     if(t.kind==='empty'&&document.activeElement!==stage)stage.focus({preventScroll:true});
     if(e.button===1||spaceDown){G={...base,type:'pan',v0:{...view}};return}
-    if(t.kind==='port'||(t.kind==='node'&&mode==='connect')){G={...base,type:'connect',from:t.id};e.preventDefault();if(base.touch)longPress(t,p);return}
+    if(t.kind==='port'||(t.kind==='node'&&(mode==='connect'||mode==='moderate'))){G={...base,type:'connect',from:t.id,modOnly:mode==='moderate'};e.preventDefault();if(base.touch)longPress(t,p);return}
     if(t.kind==='node'){
       if(!base.shift&&!sel.nodes.has(t.id)){selectOnly(t.id);refreshSel()}
       G={...base,type:'node',node:t.id};if(base.touch)longPress(t,p);return}
-    if(t.kind==='edge'){G={...base,type:'edge',v0:{...view}};if(base.touch)longPress(t,p);return}
+    if(t.kind==='edge'||t.kind==='mod'){G={...base,type:'edge',v0:{...view}};if(base.touch)longPress(t,p);return}
     G={...base,type:'empty',v0:{...view}};if(base.touch)longPress(t,p);
   });
   function chooseNameOrClose(){if($('vm-nb-input').value.trim())chooseName();else closeNamebox(false)}
-  function clearOverlay(){gO.innerHTML='';gN.querySelectorAll('.tgt').forEach(x=>x.classList.remove('tgt'));stage.classList.remove('panning','dragging')}
+  function clearOverlay(){gO.innerHTML='';svg.querySelectorAll('.tgt,.drop').forEach(x=>x.classList.remove('tgt','drop'));stage.classList.remove('panning','dragging')}
+  // The HOC under a dragged ordinary construct (by the centre of its box), where dropping makes it a LOC.
+  function hocUnder(id){
+    const n=nodeOf(model,id),b0=boxes.get(id);if(!n||n.type||!b0)return null;const b={...b0,x:n.x,y:n.y};
+    const cx=b.x+b.w/2,cy=b.y+b.h/2;
+    for(const h of model.nodes)if(isHoc(h)&&h.id!==n.parent){const r=boxes.get(h.id);if(r&&cx>r.x&&cx<r.x+r.w&&cy>r.y&&cy<r.y+r.h)return h.id}
+    return null;
+  }
   function startMove(){
     if(G.shift&&!sel.nodes.has(G.node)){sel.nodes.add(G.node);sel.edge=null;refreshSel()}
     G.ids=sel.nodes.has(G.node)?[...sel.nodes]:[G.node];
+    const kids=model.nodes.filter(n=>n.parent&&G.ids.includes(n.parent)&&!G.ids.includes(n.id)).map(n=>n.id);G.ids.push(...kids);
     G.orig=new Map(G.ids.map(id=>{const n=model.nodes.find(x=>x.id===id);return [id,[n.x,n.y]]}));
     stage.classList.add('dragging');
   }
   function moveFrame(){
     if(!G||G.type!=='node')return;
     for(const id of G.ids){const n=model.nodes.find(x=>x.id===id),b=boxes.get(id);if(!n||!b)continue;b.x=n.x;b.y=n.y;const el=gN.querySelector(`[data-node="${CSS.escape(id)}"]`);if(el)el.setAttribute('transform',`translate(${n.x},${n.y})`)}
+    const h=G.ids.length===1?hocUnder(G.ids[0]):null;
+    gN.querySelectorAll('.drop').forEach(x=>{if(x.dataset.node!==h)x.classList.remove('drop')});
+    if(h){const el=gN.querySelector(`[data-node="${CSS.escape(h)}"]`);if(el)el.classList.add('drop')}
     renderEdges();
   }
   function endMove(g){
     stage.classList.remove('dragging');
     const moved=g.ids.some(id=>{const n=model.nodes.find(x=>x.id===id),o=g.orig.get(id);return n&&(n.x!==o[0]||n.y!==o[1])});
+    // One ordinary construct dropped on a HOC becomes its LOC.
+    const h=g.ids.length===1?hocUnder(g.ids[0]):null;
+    if(h){gN.querySelectorAll('.drop').forEach(x=>x.classList.remove('drop'));attachTo(g.ids[0],h);return}
     if(moved)commit(g.ids.length>1?`Đã di chuyển ${g.ids.length} khái niệm.`:`Đã di chuyển ${g.ids[0]}.`);
   }
   svg.addEventListener('pointermove',e=>{
@@ -908,10 +1287,13 @@
     if(G.type==='connect'){
       const a=boxes.get(G.from);if(!a)return;const s=borderPoint(a,w[0],w[1]);
       gO.innerHTML=`<path class="vm-temp" d="M${s[0].toFixed(1)},${s[1].toFixed(1)} L${w[0].toFixed(1)},${w[1].toFixed(1)}" marker-end="url(#vm-ah-s)"/>`;
-      const el=document.elementFromPoint(e.clientX,e.clientY),tn=el&&el.closest&&el.closest('#vm-canvas [data-node]');
-      gN.querySelectorAll('.tgt').forEach(x=>{if(x!==tn)x.classList.remove('tgt')});if(tn&&tn.dataset.node!==G.from)tn.classList.add('tgt');
+      const el=document.elementFromPoint(e.clientX,e.clientY),tn=G.modOnly?null:el&&el.closest&&el.closest('#vm-canvas [data-node]'),te=tn?null:edgeAt(el);
+      svg.querySelectorAll('.tgt').forEach(x=>{if(x!==tn&&x!==te)x.classList.remove('tgt')});if(tn&&tn.dataset.node!==G.from)tn.classList.add('tgt');
+      if(te)te.classList.add('tgt');
     }
   });
+  // The arrow (line group, not label) under the pointer, as a drop target for a moderator.
+  function edgeAt(el){const x=el&&el.closest&&el.closest('#vm-canvas [data-edge]');if(!x)return null;return gE.querySelector(`[data-edge="${x.dataset.edge}"]`)}
   function onUp(e,cancelled){
     pointers.delete(e.pointerId);cancelLP();
     if(!G)return;
@@ -920,28 +1302,35 @@
     const g=G;G=null;stage.classList.remove('panning');
     if(g.moved||cancelled){
       if(g.type==='node'&&g.ids)endMove(g);
-      else if(g.type==='connect'&&!cancelled){const el=document.elementFromPoint(e.clientX,e.clientY),tn=el&&el.closest&&el.closest('#vm-canvas [data-node]');clearOverlay();if(tn)connect(g.from,tn.dataset.node);else status('Thả mũi tên vào một khái niệm khác để nối.')}
-      else if(g.type==='band'&&g.rect){const ids=nodesInRect(boxes,g.rect);ids.forEach(id=>sel.nodes.add(id));sel.edge=null;clearOverlay();refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.`)}
+      else if(g.type==='connect'&&!cancelled){const el=document.elementFromPoint(e.clientX,e.clientY),tn=el&&el.closest&&el.closest('#vm-canvas [data-node]'),te=tn?null:edgeAt(el);clearOverlay();
+        if(te)moderate(g.from,+te.dataset.edge);else if(tn&&!g.modOnly)connect(g.from,tn.dataset.node);else status(g.modOnly?'Thả vào giữa một mũi tên để thêm biến điều tiết.':'Thả mũi tên vào một khái niệm khác để nối, hoặc vào giữa một mũi tên để điều tiết.')}
+      else if(g.type==='band'&&g.rect){const ids=nodesInRect(boxes,g.rect);ids.forEach(id=>sel.nodes.add(id));sel.edge=null;sel.mod=null;clearOverlay();refreshSel();status(`Đã chọn ${sel.nodes.size} khái niệm.${sel.nodes.size>1?' Bấm “Bậc cao” (H) để gộp thành khái niệm bậc cao.':''}`)}
       clearOverlay();return;
     }
     const p=local(e),now=Date.now(),tk=g.t.kind+':'+(g.t.id||g.t.i||''),dbl=lastTap&&now-lastTap.t<380&&Math.hypot(p.sx-lastTap.sx,p.sy-lastTap.sy)<24&&lastTap.k===tk;
     lastTap=dbl?null:{t:now,sx:p.sx,sy:p.sy,k:tk};
     if(g.type==='empty'){
       if(pending){pending=null;refreshSel();status('Đã huỷ nối.');return}
+      if(mode==='hoc'||mode==='ctrl'){openNamebox({at:g.w,kind:mode});return}
       if(dbl||mode==='add'){openNamebox({at:g.w});return}
-      if(sel.nodes.size||sel.edge){sel.nodes.clear();sel.edge=null;refreshSel()}
+      if(sel.nodes.size||sel.edge||sel.mod){sel.nodes.clear();sel.edge=null;sel.mod=null;refreshSel()}
     }else if(g.type==='node'){
       if(dbl){openNamebox({rename:g.node});return}
-      if(pending&&pending!==g.node){const f=pending;pending=null;connect(f,g.node);return}
+      if(pending&&pending!==g.node&&pendingKind==='arrow'){const f=pending;pending=null;connect(f,g.node);return}
       if(g.shift){sel.nodes.has(g.node)?sel.nodes.delete(g.node):sel.nodes.add(g.node);sel.edge=null}else selectOnly(g.node);
       refreshSel();
     }else if(g.type==='connect'){
-      if(pending&&pending!==g.from){const f=pending;pending=null;connect(f,g.from)}
-      else if(pending===g.from){pending=null;refreshSel();status('Đã huỷ nối.')}
-      else startPending(g.from);
+      const kind=g.modOnly?'mod':'arrow';
+      if(pending&&pending!==g.from&&pendingKind==='arrow'&&!g.modOnly){const f=pending;pending=null;connect(f,g.from)}
+      else if(pending===g.from){pending=null;refreshSel();status('Đã huỷ.')}
+      else startPending(g.from,kind);
+    }else if(g.type==='edge'&&g.t.kind==='mod'){
+      const m=(model.mods||[])[g.t.i];if(!m)return;
+      if(g.t.label)flipMod(g.t.i);else{sel.mod=mkey(m);sel.edge=null;sel.nodes.clear();refreshSel();status(`Đã chọn: ${m.w} điều tiết ${m.from} → ${m.to}. Delete để xoá, bấm nhãn để đổi hướng.`)}
     }else if(g.type==='edge'){
       const e2=model.edges[g.t.i];if(!e2)return;
-      if(g.t.label)flipSign(g.t.i);else{sel.edge=ekey(e2);sel.nodes.clear();refreshSel();status(`Đã chọn H${g.t.i+1}: ${e2.from} → ${e2.to}. Delete để xoá, bấm nhãn để đổi chiều.`)}
+      if(pending&&pendingKind==='mod'){const w=pending;pending=null;moderate(w,g.t.i);return}
+      if(g.t.label)flipSign(g.t.i);else{sel.edge=ekey(e2);sel.mod=null;sel.nodes.clear();refreshSel();const h=hOf(g.t.i);status(`Đã chọn ${h?`H${h}`:'mũi tên kiểm soát'}: ${e2.from} → ${e2.to}. Delete để xoá, bấm nhãn để đổi chiều.`)}
     }
   }
   svg.addEventListener('pointerup',e=>onUp(e,false));
@@ -949,7 +1338,7 @@
   svg.addEventListener('contextmenu',e=>{
     e.preventDefault();if(Date.now()-menuAt<900&&!$('vm-menu').hidden)return;
     cancelLP();G=null;const p=local(e),t=targetOf(e.target);
-    openMenu(t.kind==='port'?{kind:'node',id:t.id}:t.kind==='edge'?{kind:'edge',i:t.i}:t,p.sx,p.sy);
+    openMenu(t.kind==='port'?{kind:'node',id:t.id}:t.kind==='edge'?{kind:'edge',i:t.i}:t.kind==='mod'?{kind:'mod',i:t.i}:t,p.sx,p.sy);
   });
   svg.addEventListener('wheel',e=>{e.preventDefault();const p=local(e),f=Math.exp(-e.deltaY*(e.deltaMode===1?16:1)*(e.ctrlKey?0.01:0.0015));view=zoomAt(view,f,p.sx,p.sy);frame(applyView)},{passive:false});
   svg.addEventListener('dblclick',e=>e.preventDefault());
@@ -959,7 +1348,8 @@
     if(restoring||pointers.size)return;
     const t=targetOf(e.target);
     if(t.kind==='node'&&!sel.nodes.has(t.id)){selectOnly(t.id);refreshSel()}
-    else if(t.kind==='edge'&&model.edges[t.i]&&sel.edge!==ekey(model.edges[t.i])){sel.edge=ekey(model.edges[t.i]);sel.nodes.clear();refreshSel()}
+    else if(t.kind==='edge'&&model.edges[t.i]&&sel.edge!==ekey(model.edges[t.i])){sel.edge=ekey(model.edges[t.i]);sel.mod=null;sel.nodes.clear();refreshSel()}
+    else if(t.kind==='mod'&&model.mods&&model.mods[t.i]&&sel.mod!==mkey(model.mods[t.i])){sel.mod=mkey(model.mods[t.i]);sel.edge=null;sel.nodes.clear();refreshSel()}
   });
   const typing=el=>el&&(/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)||el.isContentEditable);
   stage.addEventListener('keydown',e=>{
@@ -967,29 +1357,34 @@
     const k=e.key,t=targetOf(e.target),mod=e.ctrlKey||e.metaKey;
     if(mod&&(k==='a'||k==='A')){e.preventDefault();selectAll();return}
     if(mod||e.altKey)return;
-    if(k==='Escape'){if(pending){pending=null;refreshSel();status('Đã huỷ nối.')}else if(mode!=='select')setMode('select');else{sel.nodes.clear();sel.edge=null;refreshSel()}return}
+    if(k==='Escape'){if(pending){pending=null;refreshSel();status('Đã huỷ.')}else if(mode!=='select')setMode('select');else{sel.nodes.clear();sel.edge=null;sel.mod=null;refreshSel()}return}
     if(k==='ContextMenu'||(k==='F10'&&e.shiftKey)){e.preventDefault();const r=e.target.getBoundingClientRect(),s=svg.getBoundingClientRect();openMenu(t.kind==='port'?{kind:'node',id:t.id}:t,r.left-s.left+Math.min(40,r.width/2),r.top-s.top+Math.min(30,r.height/2));return}
     // The focused construct is what arrow keys and Delete act on.
     if(t.kind==='node'&&!sel.nodes.has(t.id)&&(k.startsWith('Arrow')||k==='Delete'||k==='Backspace')){selectOnly(t.id);refreshSel()}
-    if(k==='Delete'||k==='Backspace'){e.preventDefault();if(t.kind==='edge')deleteEdge(t.i);else deleteSelection();return}
-    if(k==='Enter'||k==='F2'||(k===' '&&t.kind==='edge')){
+    if(k==='Delete'||k==='Backspace'){e.preventDefault();if(t.kind==='edge')deleteEdge(t.i);else if(t.kind==='mod')deleteMod(t.i);else deleteSelection();return}
+    if(k==='Enter'||k==='F2'||(k===' '&&(t.kind==='edge'||t.kind==='mod'))){
       e.preventDefault();
-      if(t.kind==='node'&&pending&&pending!==t.id){const f=pending;pending=null;connect(f,t.id);return}
+      if(t.kind==='node'&&pending&&pending!==t.id&&pendingKind==='arrow'){const f=pending;pending=null;connect(f,t.id);return}
       if(t.kind==='node'){openNamebox({rename:t.id});return}
+      if(t.kind==='edge'&&pending&&pendingKind==='mod'){const w=pending;pending=null;moderate(w,t.i);return}
       if(t.kind==='edge'){flipSign(t.i);return}
+      if(t.kind==='mod'){flipMod(t.i);return}
       if(k==='Enter'&&t.kind==='empty'){openNamebox({at:centerWorld()});return}
       return;
     }
     if(k===' '){e.preventDefault();if(!spaceDown){spaceDown=true;stage.classList.add('space')}return}
     if(k.startsWith('Arrow')){
       e.preventDefault();const dx=k==='ArrowLeft'?-1:k==='ArrowRight'?1:0,dy=k==='ArrowUp'?-1:k==='ArrowDown'?1:0;
-      if(sel.nodes.size){const st=e.shiftKey?1:GRID;const ids=[...sel.nodes];if(snapOn&&!e.shiftKey)model.nodes.forEach(n=>{if(sel.nodes.has(n.id)){n.x=snapTo(n.x);n.y=snapTo(n.y)}});moveNodes(model,ids,dx*st,dy*st);commit();status(`Đã di chuyển ${ids.join(', ')}.`)}
+      if(sel.nodes.size){const st=e.shiftKey?1:GRID;const ids=[...sel.nodes];model.nodes.forEach(n=>{if(n.parent&&sel.nodes.has(n.parent)&&!ids.includes(n.id))ids.push(n.id)});if(snapOn&&!e.shiftKey)model.nodes.forEach(n=>{if(sel.nodes.has(n.id)){n.x=snapTo(n.x);n.y=snapTo(n.y)}});moveNodes(model,ids,dx*st,dy*st);commit();status(`Đã di chuyển ${ids.join(', ')}.`)}
       else{view={...view,x:view.x-dx*60,y:view.y-dy*60};applyView()}
       return;
     }
     const lk=k.toLowerCase();
     if(lk==='c'){e.preventDefault();if(t.kind==='node')startPending(t.id);else setMode(mode==='connect'?'select':'connect');return}
     if(lk==='v'){setMode('select');return}
+    if(lk==='m'){e.preventDefault();if(t.kind==='node'){const r=e.target.getBoundingClientRect(),s2=svg.getBoundingClientRect();pickEdgeFor(t.id,r.left-s2.left+20,r.top-s2.top+20)}else setMode(mode==='moderate'?'select':'moderate');return}
+    if(lk==='h'){e.preventDefault();if(!groupSelection())setMode('hoc');return}
+    if(lk==='k'){e.preventDefault();setMode('ctrl');openNamebox({at:centerWorld(),kind:'ctrl'});return}
     if(lk==='a'){e.preventDefault();setMode('add');openNamebox({at:centerWorld()});return}
     if(k==='+'||k==='='){zoomBy(1.2);return}
     if(k==='-'||k==='_'){zoomBy(1/1.2);return}
@@ -1029,11 +1424,16 @@
   $('vm-free').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addFree()}});
 
   // ---- toolbar and side panel ----
-  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',e=>{setMode(b.dataset.mode);if(b.dataset.mode==='add'&&e.detail===0)openNamebox({at:centerWorld()})}));
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',e=>{
+    const m=b.dataset.mode;
+    if(m==='hoc'&&[...sel.nodes].filter(id=>{const n=nodeOf(model,id);return n&&!n.type}).length>=2){groupSelection();return}
+    setMode(m);
+    if(e.detail===0&&(m==='add'||m==='hoc'||m==='ctrl'))openNamebox({at:centerWorld(),kind:m==='add'?undefined:m});
+  }));
   $('vm-undo').addEventListener('click',undo);$('vm-redo').addEventListener('click',redo);
   $('vm-layout').addEventListener('click',arrange);
   $('vm-snap').addEventListener('click',()=>{snapOn=!snapOn;try{localStorage.setItem('vm-snap',snapOn?'1':'0')}catch(e){}updateToolbar();status(snapOn?'Bắt lưới: bật.':'Bắt lưới: tắt.')});
-  $('vm-clear').addEventListener('click',()=>{if(!model.nodes.length)return;model={nodes:[],edges:[]};sel.nodes.clear();sel.edge=null;pending=null;$('vm-text-msg').hidden=true;commit('Đã xoá mô hình. Ctrl+Z (hoặc nút Hoàn tác) để lấy lại.')});
+  $('vm-clear').addEventListener('click',()=>{if(!model.nodes.length)return;model={nodes:[],edges:[]};sel.nodes.clear();sel.edge=null;sel.mod=null;pending=null;$('vm-text-msg').hidden=true;commit('Đã xoá mô hình. Ctrl+Z (hoặc nút Hoàn tác) để lấy lại.')});
   $('vm-zin').addEventListener('click',()=>zoomBy(1.2));$('vm-zout').addEventListener('click',()=>zoomBy(1/1.2));
   $('vm-z100').addEventListener('click',()=>{const [w,h]=stageSize();view=zoomAt(view,1/view.k,w/2,h/2);applyView()});
   $('vm-fit').addEventListener('click',()=>fit());
@@ -1041,16 +1441,34 @@
   $('vm-hyps').addEventListener('click',e=>{
     const s=e.target.closest('[data-hsign]'),u=e.target.closest('[data-hup]'),d=e.target.closest('[data-hdel]');
     if(s){flipSign(+s.dataset.hsign);return}
-    if(u){const i=+u.dataset.hup;if(moveEdge(model,i,-1))commit(`Đã đưa ${model.edges[i-1].from} → ${model.edges[i-1].to} lên H${i}.`);return}
+    if(u){const i=+u.dataset.hup;let j=i-1;while(j>0&&ctlEdge(model.edges[j]))j--;if(j>=0&&!ctlEdge(model.edges[j])){const x=model.edges.splice(i,1)[0];model.edges.splice(j,0,x);commit(`Đã đưa ${x.from} → ${x.to} lên H${hOf(j)}.`)}return}
     if(d){deleteEdge(+d.dataset.hdel);return}
-    const li=e.target.closest('li[data-key]');if(li){sel.edge=li.dataset.key;sel.nodes.clear();refreshSel()}
+    const md=e.target.closest('[data-mdir]'),mx=e.target.closest('[data-mdel]'),mo=e.target.closest('[data-mgaoff]');
+    if(md){flipMod(+md.dataset.mdir);return}
+    if(mx){deleteMod(+mx.dataset.mdel);return}
+    if(mo){const i=+mo.dataset.mgaoff,e2=model.edges[i];toggleMgaPath(model,i);commit(`Bỏ so sánh ${e2.from} → ${e2.to} giữa các nhóm.`);return}
+    const lm=e.target.closest('li[data-mod]');if(lm){const m=model.mods[+lm.dataset.mod];if(m){sel.mod=mkey(m);sel.edge=null;sel.nodes.clear();refreshSel()}return}
+    const li=e.target.closest('li[data-key]');if(li){sel.edge=li.dataset.key;sel.mod=null;sel.nodes.clear();refreshSel()}
   });
   ['vm-showcode','vm-showh'].forEach(id=>$(id).addEventListener('change',()=>renderAll()));
-  $('vm-med').addEventListener('change',renderSide);
+  $('vm-med').addEventListener('change',()=>{renderSide();renderEdges();refreshSel()});
+  // Sample section: the f² = 0,02 toggle for moderation.
+  $('vm-sample').addEventListener('change',e=>{if(e.target.id!=='vm-modf2')return;modF2=e.target.checked;try{localStorage.setItem('vm-modf2',modF2?'1':'0')}catch(_){}renderSide();const x=$('vm-modf2');if(x)x.focus();status(modF2?'Cỡ mẫu tính cả giả thuyết điều tiết với f² = 0,02.':'Cỡ mẫu tính với f² = 0,15.')});
+  // Multigroup settings.
+  $('vm-mga').addEventListener('change',e=>{
+    if(e.target.checked)setMga(model,{name:$('vm-mga-name').value||'Giới tính',groups:$('vm-mga-groups').value||'Nam; Nữ'});else setMga(model,null);
+    commit(e.target.checked?`Đã bật so sánh đa nhóm theo ${model.mga.name}: ${model.mga.groups.join(', ')}.`:'Đã tắt so sánh đa nhóm.');
+    if(e.target.checked)$('vm-mga-name').focus();
+  });
+  const mgaInput=()=>{if(!model.mga)return;setMga(model,{name:$('vm-mga-name').value,groups:$('vm-mga-groups').value,skip:model.mga.skip});hist.push(packModel(model));renderSide();renderEdges();refreshSel();updateToolbar();save()};
+  let mgaT=0;['vm-mga-name','vm-mga-groups'].forEach(id=>{$(id).addEventListener('input',()=>{clearTimeout(mgaT);mgaT=setTimeout(mgaInput,300)});$(id).addEventListener('change',()=>{clearTimeout(mgaT);mgaInput()})});
+  $('vm-mga-paths').addEventListener('change',e=>{const i=e.target.dataset.mgap;if(i==null)return;const on=toggleMgaPath(model,+i),x=model.edges[+i];commit(`${on?'So sánh':'Bỏ so sánh'} ${x.from} → ${x.to} giữa các nhóm.`);const c=$('vm-mga-paths').querySelector(`[data-mgap="${i}"]`);if(c)c.focus()});
   $('vm-apply').addEventListener('click',()=>{
-    const m={nodes:model.nodes.map(n=>({...n})),edges:[]};
+    const m={nodes:model.nodes.map(n=>({...n})),edges:[],mods:(model.mods||[]).map(x=>({...x}))};
+    if(model.mga)m.mga={...model.mga,groups:[...model.mga.groups],skip:[...(model.mga.skip||[])]};
     const r=parseArrows($('vm-text').value,m);r.edges.forEach(x=>addEdge(m,x.from,x.to,x.sign));
-    placeNew(m,opt());model=m;const msg=$('vm-text-msg');
+    const into=r.edges.filter(x=>isCtrl(nodeOf(m,x.to))).map(x=>x.to);if(into.length)r.errors.push(`Bỏ mũi tên trỏ vào biến kiểm soát ${[...new Set(into)].join(', ')}.`);
+    tidy(m);placeNew(m,opt());model=m;const msg=$('vm-text-msg');
     msg.hidden=!r.errors.length&&!r.added.length;
     msg.textContent=[...r.errors,r.added.length?`Đã thêm khái niệm mới: ${r.added.join(', ')}.`:''].filter(Boolean).join(' ');
     $('vm-text').blur();sel.nodes.clear();sel.edge=null;commit(`Đã áp dụng ${model.edges.length} mũi tên.`);if(r.added.length)fit();
@@ -1066,20 +1484,32 @@
   // ---- downloads and copy ----
   function exportSvg(){
     if(!model.nodes.length)return null;
-    const o=opt(),bx=new Map(model.nodes.map(n=>[n.id,boxOf(n,o)])),rs=routeAll(model,bx),showH=$('vm-showh').checked;
-    const INK='#1f2937',LINE='#374151',NEG='#b91c1c',M=24;
+    const o=opt(),bx=new Map(model.nodes.map(n=>[n.id,boxOf(n,o)])),rs=routeAll(model,bx),ms=modRoutes(model,bx,rs),showH=$('vm-showh').checked;
+    const H=hNumbers(hypotheses(model,hypOpt())),INK='#1f2937',LINE='#374151',NEG='#b91c1c',M=24;
+    const links=hocLinks(model).map(l=>{const a=bx.get(l.from),b=bx.get(l.to);return a&&b?routeEdge(a,b,[...bx.values()].filter(x=>x!==a&&x!==b)):null}).filter(Boolean);
     const pts=[...bx.values()].flatMap(b=>[[b.x,b.y],[b.x+b.w,b.y+b.h]]);
     rs.forEach(r=>{for(let i=0;i<=12;i++)pts.push(quadAt(r.p0,r.c,r.p1,i/12));if(showH){pts.push([r.label[0]-32,r.label[1]-12],[r.label[0]+32,r.label[1]+12])}});
-    const x0=Math.min(...pts.map(p=>p[0]))-M,y0=Math.min(...pts.map(p=>p[1]))-M,W=Math.ceil(Math.max(...pts.map(p=>p[0]))-x0+M),H=Math.ceil(Math.max(...pts.map(p=>p[1]))-y0+M);
+    ms.forEach(r=>{pts.push(r.p0,r.p1);if(showH)pts.push([r.label[0]-32,r.label[1]-12],[r.label[0]+32,r.label[1]+12])});
+    links.forEach(r=>{for(let i=0;i<=12;i++)pts.push(quadAt(r.p0,r.c,r.p1,i/12))});
+    const G=model.mga&&model.mga.groups.length>=2?model.mga:null,cap=G?`So sánh đa nhóm${G.name?' theo '+lcFirst(G.name):''}: ${G.groups.join(', ')}`:'';
+    let x0=Math.min(...pts.map(p=>p[0]))-M,y0=Math.min(...pts.map(p=>p[1]))-M,x1=Math.max(...pts.map(p=>p[0]))+M,y1=Math.max(...pts.map(p=>p[1]))+M;
+    if(cap){x1=Math.max(x1,x0+measure(cap)+2*M);y1+=24}
+    const W=Math.ceil(x1-x0),Hh=Math.ceil(y1-y0);
     let edges='',labels='',nodes='';
-    rs.forEach(r=>{const neg=r.e.sign<0;
-      edges+=`<path d="${r.d}" fill="none" stroke="${neg?NEG:LINE}" stroke-width="1.6"${neg?' stroke-dasharray="6 4"':''} marker-end="url(#${neg?'vm-ah-n':'vm-ah'})"/>`;
-      if(showH){const t=`H${r.i+1} (${neg?'−':'+'})`,w=measure(t)*0.92+10;labels+=`<g><rect x="${(r.label[0]-w/2).toFixed(1)}" y="${(r.label[1]-10).toFixed(1)}" width="${w.toFixed(1)}" height="20" rx="4" fill="#fff"/><text x="${r.label[0].toFixed(1)}" y="${(r.label[1]+4.5).toFixed(1)}" text-anchor="middle" font-size="12" font-style="italic" fill="${neg?NEG:INK}">${esc(t)}</text></g>`}});
-    bx.forEach(b=>{const ty=b.y+b.h/2-(b.lines.length-1)*8.5+4.5;
-      nodes+=`<g><rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" rx="10" fill="#f8fafc" stroke="${INK}" stroke-width="1.5"/><text x="${b.x+b.w/2}" text-anchor="middle" font-size="13" fill="${INK}">${b.lines.map((l,k)=>`<tspan x="${b.x+b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text></g>`});
+    links.forEach(r=>{edges+=`<path d="${r.d}" fill="none" stroke="${INK}" stroke-width="1.2" marker-end="url(#vm-ah)"/>`});
+    rs.forEach(r=>{const neg=r.e.sign<0,ctl=ctlEdge(r.e),h=H.edge.get(r.i);
+      edges+=`<path d="${r.d}" fill="none" stroke="${neg?NEG:LINE}" stroke-width="1.6"${ctl?' stroke-dasharray="2 4"':neg?' stroke-dasharray="6 4"':''} marker-end="url(#${neg?'vm-ah-n':'vm-ah'})"/>`;
+      if(showH&&!ctl){const t=`H${h} (${neg?'−':'+'})`,w=measure(t)*0.92+10;labels+=`<g><rect x="${(r.label[0]-w/2).toFixed(1)}" y="${(r.label[1]-10).toFixed(1)}" width="${w.toFixed(1)}" height="20" rx="4" fill="#fff"/><text x="${r.label[0].toFixed(1)}" y="${(r.label[1]+4.5).toFixed(1)}" text-anchor="middle" font-size="12" font-style="italic" fill="${neg?NEG:INK}">${esc(t)}</text></g>`}});
+    ms.forEach(r=>{const neg=r.m.dir<0,h=H.mod.get(r.i);
+      edges+=`<path d="${r.d}" fill="none" stroke="${neg?NEG:LINE}" stroke-width="1.6" marker-end="url(#${neg?'vm-ah-n':'vm-ah'})"/>`;
+      if(showH){const t=`H${h} (${neg?'−':'+'})`,w=measure(t)*0.92+10;labels+=`<g><rect x="${(r.label[0]-w/2).toFixed(1)}" y="${(r.label[1]-10).toFixed(1)}" width="${w.toFixed(1)}" height="20" rx="4" fill="#fff"/><text x="${r.label[0].toFixed(1)}" y="${(r.label[1]+4.5).toFixed(1)}" text-anchor="middle" font-size="12" font-style="italic" fill="${neg?NEG:INK}">${esc(t)}</text></g>`}});
+    model.nodes.forEach(n=>{const b=bx.get(n.id),ty=b.y+b.h/2-(b.lines.length-1)*8.5+4.5,hoc=isHoc(n),ctl=isCtrl(n);
+      nodes+=`<g><rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" rx="10" fill="${ctl?'#fff':n.parent?'#eef2f7':'#f8fafc'}" stroke="${INK}" stroke-width="${hoc?2.2:1.5}"${ctl?' stroke-dasharray="6 4"':''}/>${hoc?`<rect x="${b.x+4}" y="${b.y+4}" width="${b.w-8}" height="${b.h-8}" rx="7" fill="none" stroke="${INK}" stroke-width="0.9"/>`:''}<text x="${b.x+b.w/2}" text-anchor="middle" font-size="13" fill="${INK}">${b.lines.map((l,k)=>`<tspan x="${b.x+b.w/2}" y="${(ty+k*17).toFixed(1)}">${esc(l)}</tspan>`).join('')}</text></g>`});
+    if(cap)labels+=`<text x="${(x0+M).toFixed(1)}" y="${(y1-M+4).toFixed(1)}" font-size="12" font-style="italic" fill="${INK}">${esc(cap)}</text>`;
     const mk=(id,c)=>`<marker id="${id}" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="${c}"/></marker>`;
-    const svgText=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="${x0.toFixed(1)} ${y0.toFixed(1)} ${W} ${H}" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="${esc('Mô hình nghiên cứu: '+model.edges.map(e=>`${e.from} tới ${e.to}`).join(', '))}"><defs>${mk('vm-ah',LINE)}${mk('vm-ah-n',NEG)}</defs><rect x="${x0.toFixed(1)}" y="${y0.toFixed(1)}" width="${W}" height="${H}" fill="#fff"/>${edges}${labels}${nodes}</svg>`;
-    return {svg:svgText,width:W,height:H};
+    const desc=[...model.edges.map(e=>`${e.from} tới ${e.to}`),...(model.mods||[]).map(m=>`${m.w} điều tiết ${m.from} tới ${m.to}`)].join(', ');
+    const svgText=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${Hh}" viewBox="${x0.toFixed(1)} ${y0.toFixed(1)} ${W} ${Hh}" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="${esc('Mô hình nghiên cứu: '+desc)}"><defs>${mk('vm-ah',LINE)}${mk('vm-ah-n',NEG)}</defs><rect x="${x0.toFixed(1)}" y="${y0.toFixed(1)}" width="${W}" height="${Hh}" fill="#fff"/>${edges}${nodes}${labels}</svg>`;
+    return {svg:svgText,width:W,height:Hh};
   }
   function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
   $('vm-svg').addEventListener('click',()=>{const x=exportSvg();if(!x){status('Chưa có mô hình để tải.');return}download(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n'+x.svg],{type:'image/svg+xml'}),'mo-hinh-nghien-cuu.svg');status('Đã tải SVG.')});
@@ -1094,7 +1524,7 @@
     try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
     status(msg);
   }
-  $('vm-copy-h').addEventListener('click',()=>{const hs=hypotheses(model,{mediation:$('vm-med').checked});if(!hs.length){status('Chưa có giả thuyết: nối mũi tên trước.');return}copy(hs.map(h=>`H${h.h}: ${h.text}`).join('\n'),`Đã sao chép ${hs.length} giả thuyết.`)});
+  $('vm-copy-h').addEventListener('click',()=>{const hs=hypotheses(model,{mediation:$('vm-med').checked});if(!hs.length){status('Chưa có giả thuyết: nối mũi tên trước.');return}const cs=controlsOf(model);copy(hs.map(h=>`H${h.h}: ${h.text}`).join('\n')+(cs.length?'\nBiến kiểm soát: '+cs.map(c=>`${c.name} (${c.id})`).join(', ')+'.':''),`Đã sao chép ${hs.length} giả thuyết.`)});
   $('vm-link').addEventListener('click',()=>{flushSave();copy(location.href,'Đã sao chép link. Mở link này sẽ ra đúng mô hình và vị trí các ô.')});
 
   // ---- start ----
@@ -1107,7 +1537,7 @@
   }
   window.addEventListener('hashchange',()=>{
     const h=location.hash.match(/^#m=([\w-]+)/);if(!h)return;
-    try{const m=unpackModel(b64d(h[1]),isKey);if(packModel(m)===packModel(model))return;model=m;placeNew(model,opt());sel.nodes.clear();sel.edge=null;commit('Đã mở mô hình từ link.');fit()}catch(e){}
+    try{const m=unpackModel(b64d(h[1]),isKey);if(packModel(m)===packModel(model))return;model=m;placeNew(model,opt());sel.nodes.clear();sel.edge=null;sel.mod=null;commit('Đã mở mô hình từ link.');fit()}catch(e){}
   });
   boot();
 })();

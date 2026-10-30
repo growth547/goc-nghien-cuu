@@ -1,7 +1,8 @@
 // Unit check for the research-model drawer (src/tools/ve-mo-hinh.html): its statistics block is the
 // sample-size calculator's, its concept search ranks like the questionnaire kit, and the pure model
-// helpers (arrow list parser, layers, layout, hypotheses, sample size, kit link) and the canvas editor's
-// pure parts (graph edits, undo/redo, geometry, warnings, link format) behave.
+// helpers (arrow list parser, layers, layout, hypotheses, sample size, kit link), the canvas editor's
+// pure parts (graph edits, undo/redo, geometry, warnings, link format) and the extended models (higher-order
+// constructs, moderation, multigroup comparison, control variables) behave.
 import { readFileSync, readdirSync } from "node:fs";
 
 const block = (src, tag) => {
@@ -27,7 +28,9 @@ const api = new Function(
   `${block(src, "math")}${block(src, "search")}${block(src, "model")}
    return { codeFrom, addNode, addEdge, removeNode, findNode, parseArrows, edgesToText, inDegree, maxArrows, backEdges, layersOf, layout, lcFirst, hypotheses, modelSample, kitQuery, rankConstructs, indexConstruct, citeOf, regN, isrN,
      GRID, BOX_W, snapTo, hasPos, boxOf, overlaps, freeSpot, autoArrange, placeNew, boundsOf, fitView, zoomAt, borderPoint, quadAt, routeEdge, routeAll, edgeIndex, nodesInRect,
-     removeNodes, removeEdge, toggleSign, reverseEdge, moveEdge, moveNodes, renameNode, recodeNode, modelWarnings, packModel, unpackModel, createHistory };`
+     removeNodes, removeEdge, toggleSign, reverseEdge, moveEdge, moveNodes, renameNode, recodeNode, modelWarnings, packModel, unpackModel, createHistory,
+     predictorsOf, hNumbers, controlsOf, incN, regPower, tidy, makeHoc, attachChild, detachChild, ungroupHoc, setHocMode, setCtrl, arrangeChildren, hocLinks, childrenOf,
+     addMod, removeMod, toggleModDir, modRoutes, setMga, mgaPaths, toggleMgaPath, parseGroups };`
 )();
 const kit = new Function(`${block(kitSrc, "math")}${block(kitSrc, "kit")} return { rankConstructs, indexConstruct, kitSample, citeOf };`)();
 
@@ -128,7 +131,7 @@ const q = new URLSearchParams(api.kitQuery(m1).slice(1));
 check(q.get("c") === "tam:PEOU,tam:PU,tam:BI" && q.get("a") === "3" && q.get("m") === "pls" && q.get("dv") === "tam:BI", `kit link carries library constructs, arrows and DV (${api.kitQuery(m1)})`);
 const keys = new Set(scales.flatMap(s => s.constructs.map(c => `${s.slug}:${c.code}`)));
 check(q.get("c").split(",").every(k => keys.has(k)), "kit link keys exist in the scale library");
-check(/else if\(qs\.get\('c'\)\)/.test(kitSrc) && /qs\.get\('dv'\)/.test(kitSrc) && /qs\.get\('a'\)/.test(kitSrc), "the kit still reads ?c=, ?a= and ?dv=");
+check(/else if\(qs\.get\('c'\)/.test(kitSrc) && /qs\.get\('dv'\)/.test(kitSrc) && /qs\.get\('a'\)/.test(kitSrc), "the kit still reads ?c=, ?a= and ?dv=");
 check(api.kitQuery({ nodes: [{ id: "A", name: "A", key: null }], edges: [] }) === "", "no library construct, no kit link");
 
 
@@ -272,5 +275,171 @@ check(api.modelSample(ss).arrows === 4 && api.modelSample(ss).min === kit.kitSam
 api.removeNodes(ss, ["PR", "SN", "PU"]);
 check(api.modelSample(ss).arrows === 1, "deleting constructs lowers it again");
 
-console.log(`\n${passed} passed, ${failed} failed`);
+// ======== higher-order constructs, moderation, multigroup, control variables ========
+// As the page does after the arrow list or a link: parse, add, then tidy.
+const arrows = (m, text) => { api.parseArrows(text, m).edges.forEach(e => api.addEdge(m, e.from, e.to, e.sign)); return api.tidy(m); };
+const plsMin = a => kit.kitSample("pls", a, 1).min;
+
+// ---- higher-order constructs ----
+const hc = arrows({ nodes: [], edges: [] }, "TAN, DU, DC -> SAT\nTAN -> DU\nPV -> SAT");
+const sq = api.makeHoc(hc, ["TAN", "DU", "DC"], "Chất lượng dịch vụ", "rr", "SQ");
+check(sq && sq.id === "SQ" && sq.type === "hoc" && api.childrenOf(hc, "SQ").map(n => n.id).join() === "TAN,DU,DC", "makeHoc: three LOCs under SQ");
+check(api.edgesToText(hc) === "SQ -> SAT\nPV -> SAT", `makeHoc: LOC arrows move to the HOC, LOC→LOC arrows and duplicates go (${api.edgesToText(hc).replace(/\n/g, "; ")})`);
+check(api.hocLinks(hc).every(l => l.from === "SQ") && api.hocLinks(hc).length === 3, "reflective–reflective: links run HOC → LOCs");
+let P = api.predictorsOf(hc);
+check(P.get("SAT").length === 2 && P.get("TAN").join() === "SQ" && P.get("SQ").length === 0, "reflective–reflective: each LOC has the HOC as its one predictor");
+check(api.maxArrows(hc).max === 2 && api.modelSample(hc).min === plsMin(2), "reflective–reflective HOC: the sample follows the structural arrows (2 into SAT)");
+check(api.hypotheses(hc).length === 2 && api.hypotheses(hc)[0].text === "Chất lượng dịch vụ (SQ) có tác động cùng chiều đến SAT.", `HOC hypotheses are about the HOC, none for its LOCs (${api.hypotheses(hc)[0].text})`);
+api.setHocMode(hc, "SQ", "rf");
+check(api.hocLinks(hc).every(l => l.to === "SQ"), "reflective–formative: links run LOCs → HOC");
+P = api.predictorsOf(hc);
+check(P.get("SQ").join() === "TAN,DU,DC" && api.maxArrows(hc).max === 3 && api.maxArrows(hc).at.join() === "SQ", "reflective–formative: the HOC gets one predictor per LOC (3), the largest count");
+check(api.modelSample(hc).arrows === 3 && api.modelSample(hc).min === plsMin(3), "reflective–formative HOC: sample for 3 predictors like the kit");
+arrows(hc, "IMG -> SQ");
+check(api.predictorsOf(hc).get("SQ").length === 4 && api.modelSample(hc).arrows === 4, "an antecedent of a reflective–formative HOC adds to its LOCs (3 + 1)");
+check(api.modelWarnings(hc).some(w => w.kind === "hoc-rf-in" && /hai giai đoạn/.test(w.text)), "warning: reflective–formative HOC with arrows in → two-stage approach");
+arrows(hc, "PV -> TAN");
+check(api.edgesToText(hc).split("\n").includes("PV -> SQ") && !hc.edges.some(e => e.to === "TAN"), "an arrow drawn to a LOC attaches to its HOC");
+check(api.attachChild(hc, "PV", "SQ") && hc.nodes.find(n => n.id === "PV").parent === "SQ" && !hc.edges.some(e => e.from === "PV" || e.to === "PV"), "attachChild: a construct dropped in the HOC becomes a LOC; its arrows move to the HOC");
+check(!api.attachChild(hc, "SQ", "SQ") && api.detachChild(hc, "PV") && !hc.nodes.find(n => n.id === "PV").parent, "a HOC cannot be its own LOC; detachChild frees a LOC");
+const one = arrows({ nodes: [], edges: [] }, "A -> B");
+check(api.makeHoc(one, ["A"], "X") === null, "makeHoc needs at least two constructs");
+const fewHoc = arrows({ nodes: [], edges: [] }, "A -> B"); api.addNode(fewHoc, "Bậc cao", null, "H"); fewHoc.nodes[2].type = "hoc"; fewHoc.nodes[2].mode = "rr";
+check(api.modelWarnings(fewHoc).some(w => w.kind === "hoc-few" && w.ids[0] === "H"), "warning: a HOC with fewer than two LOCs");
+const ug = arrows({ nodes: [], edges: [] }, "A, B -> Y"); api.makeHoc(ug, ["A", "B"], "Bậc cao", "rr", "H");
+api.removeNodes(ug, ["H"]);
+check(ug.nodes.every(n => !n.parent) && ug.edges.length === 0, "deleting a HOC frees its LOCs");
+const ug2 = arrows({ nodes: [], edges: [] }, "A, B -> Y"); api.makeHoc(ug2, ["A", "B"], "Bậc cao", "rr", "H");
+check(api.ungroupHoc(ug2, "H") && ug2.nodes.every(n => !n.parent && !n.type) && api.edgesToText(ug2) === "H -> Y", "ungroupHoc: the HOC becomes an ordinary construct and keeps its arrows");
+const lay = arrows({ nodes: [], edges: [] }, "A, B -> Y"); api.makeHoc(lay, ["A", "B"], "Bậc cao", "rf", "H");
+const ll = api.layersOf({ nodes: lay.nodes, edges: [...lay.edges, ...api.hocLinks(lay).map(l => ({ from: l.child, to: l.hoc }))] }).layer;
+api.autoArrange(lay, {});
+const xs = id => lay.nodes.find(n => n.id === id).x;
+check(xs("A") < xs("H") && xs("B") < xs("H") && xs("H") < xs("Y") && ll.get("H") === 1, "auto layout: LOCs left of their HOC, HOC left of its outcome");
+lay.nodes.find(n => n.id === "H").x = 600; lay.nodes.find(n => n.id === "H").y = 300;
+api.arrangeChildren(lay, "H", {});
+const lb = ["A", "B"].map(id => api.boxOf(lay.nodes.find(n => n.id === id)));
+check(lb.every(b => b.x + b.w < 600) && !api.overlaps(lb[0], lb[1]) && lb.every(b => b.y % 20 === 0), "arrangeChildren: LOCs in a column left of the HOC, no overlap");
+
+// ---- moderation ----
+const md = arrows({ nodes: [], edges: [] }, "X -> Y\nZ -> Y");
+api.addNode(md, "Thu nhập", null, "W");
+check(api.addMod(md, "W", "X", "Y") === "added" && md.mods.length === 1 && md.mods[0].dir === 1, "addMod: W moderates X → Y");
+P = api.predictorsOf(md);
+check(P.get("Y").join() === "X,Z,W,X×W" && api.maxArrows(md).max === 4, "moderation: Y gains W and X×W (2 + 2 predictors)");
+check(api.modelSample(md).arrows === 4 && api.modelSample(md).min === plsMin(4), "moderation: sample of 4 predictors into Y like the kit");
+let mh = api.hypotheses(md);
+check(mh[2].mod === 0 && mh[2].text === "Thu nhập (W) điều tiết tác động của x lên y theo hướng tăng cường.", `moderation hypothesis text (${mh[2].text})`);
+check(api.toggleModDir(md, 0) === -1 && /theo hướng làm suy yếu\.$/.test(api.hypotheses(md)[2].text), "moderation: strengthening ↔ weakening");
+check(api.addMod(md, "W", "X", "Y") === "exists" && api.addMod(md, "X", "X", "Y") === "self" && api.addMod(md, "W", "Y", "X") === "noedge", "addMod refuses duplicates, a moderator on its own arrow and a missing arrow");
+api.addMod(md, "W", "Z", "Y");
+check(api.predictorsOf(md).get("Y").join() === "X,Z,W,X×W,Z×W", "a second moderated arrow into Y by the same W adds only its interaction term");
+const md2 = arrows({ nodes: [], edges: [] }, "X -> Y\nW -> Y");
+api.addMod(md2, "W", "X", "Y");
+check(api.predictorsOf(md2).get("Y").length === 3, "W already pointing into Y is not counted twice (X, W, X×W)");
+const s0 = api.modelSample(md), sF = api.modelSample(md, { modF2: true });
+check(s0.mod && s0.mod.f2 === 0.02 && s0.mod.k === 5 && s0.mod.at === "Y" && s0.min === s0.base, "the f² = 0,02 figure is shown without changing the minimum by default");
+check(sF.min === Math.max(sF.base, sF.mod.n) && sF.mod.n === 395 && sF.min === 395, `toggle on: minimum covers the interaction at f² = 0,02 (${sF.mod.n})`);
+check(api.incN(1, 1, 0.02, 0.05, 0.8) === api.regN(1, 0.02, 0.05, 0.8) && api.incN(1, 1, 0.02, 0.05, 0.8) === 395, `R² increase with one predictor equals the R² test: 395 like G*Power (${api.incN(1, 1, 0.02, 0.05, 0.8)})`);
+check(api.incN(3, 1, 0.15, 0.05, 0.8) === 55 && api.incN(5, 1, 0.02, 0.05, 0.8) === 395 && api.regN(5, 0.02, 0.05, 0.8) > 600, `R² increase, 1 tested of 3 or 5: 55 (f² = 0,15) and 395 (f² = 0,02) like G*Power; testing the whole R² would need ${api.regN(5, 0.02, 0.05, 0.8)}`);
+const mb = new Map(md.nodes.map((n, i) => [n.id, api.boxOf({ ...n, x: [0, 400, 0, 200][i], y: [0, 0, 200, -200][i] })]));
+const mr = api.routeAll(md, mb), mm = api.modRoutes(md, mb, mr);
+const xr = mr[0], mid0 = api.quadAt(xr.p0, xr.c, xr.p1, 0.5);
+check(mm.length === 2 && Math.hypot(mm[0].p1[0] - mid0[0], mm[0].p1[1] - mid0[1]) < 1e-6, "the moderator's arrow ends on the middle of X → Y");
+check(Math.hypot(xr.label[0] - mid0[0], xr.label[1] - mid0[1]) > 30, "a moderated arrow's H label moves off its middle");
+const mrm = arrows({ nodes: [], edges: [] }, "X -> Y\nW -> V"); api.addMod(mrm, "W", "X", "Y");
+api.reverseEdge(mrm, 0);
+check(mrm.mods[0].from === "Y" && mrm.mods[0].to === "X", "reversing an arrow carries its moderator");
+api.recodeNode(mrm, "W", "TN");
+check(mrm.mods[0].w === "TN", "recoding the moderator updates the moderation");
+api.removeEdge(mrm, 0);
+check(mrm.mods.length === 0, "deleting the arrow drops its moderation");
+const mrn = arrows({ nodes: [], edges: [] }, "X -> Y\nW -> V"); api.addMod(mrn, "W", "X", "Y"); api.removeNodes(mrn, ["W"]);
+check(mrn.mods.length === 0 && api.removeMod(md, 1) && md.mods.length === 1, "deleting the moderator drops it; removeMod");
+check(api.modelWarnings(arrows({ nodes: [{ id: "W", name: "W" }], edges: [], mods: [] }, "X -> Y")).some(w => w.kind === "lone") && !(() => { const m = arrows({ nodes: [{ id: "W", name: "W" }], edges: [] }, "X -> Y"); api.addMod(m, "W", "X", "Y"); return api.modelWarnings(m).some(w => w.kind === "lone"); })(), "a moderator with no arrows of its own is not flagged as unconnected");
+
+// ---- control variables ----
+const cv = arrows({ nodes: [], edges: [] }, "PU, PEOU -> BI\nPEOU -> PU");
+api.addNode(cv, "Giới tính", null, "GT"); api.addNode(cv, "Tuổi", null, "AGE");
+check(api.setCtrl(cv, "GT", true) && api.setCtrl(cv, "AGE", true), "setCtrl marks control variables");
+arrows(cv, "GT, AGE -> BI\nPU -> GT");
+check(!cv.edges.some(e => e.to === "GT"), "nothing points into a control variable");
+const ch = api.hypotheses(cv);
+check(ch.filter(h => h.edge != null).length === 3 && !ch.some(h => /GT|AGE/.test(h.text)) && ch.map(h => h.h).join() === "1,2,3,4", `control variables get no hypothesis; numbering skips them (${ch.map(h => h.text).join(" | ")})`);
+check(api.controlsOf(cv).map(c => `${c.id}:${c.to.join()}`).join() === "GT:BI,AGE:BI", "controlsOf lists them with their dependent constructs");
+check(api.predictorsOf(cv).get("BI").length === 4 && api.modelSample(cv).arrows === 4 && api.modelSample(cv).min === plsMin(4), "control variables count as predictors for the sample (2 + 2 into BI)");
+const hn = api.hNumbers(ch);
+check(hn.edge.get(cv.edges.findIndex(e => e.from === "GT")) === undefined && hn.edge.get(0) === 1, "hNumbers: control arrows have no H label");
+check(api.addMod(cv, "GT", "PU", "BI") === "ctrl", "a control variable cannot moderate");
+check(!api.setCtrl(cv, "BI", false) && api.setCtrl(cv, "GT", false) && api.hypotheses(cv).some(h => /Giới tính/.test(h.text)), "unmarking a control variable gives it a hypothesis again");
+check(api.setCtrl(cv, "PU", true) && !cv.edges.some(e => e.to === "PU"), "turning a construct into a control drops the arrows into it");
+const idleCv = { nodes: [{ id: "A", name: "A" }, { id: "C", name: "C", type: "ctrl" }], edges: [] };
+check(api.modelWarnings(idleCv).some(w => w.kind === "ctrl"), "warning: a control variable with no arrow");
+check(api.hypotheses(arrows({ nodes: [{ id: "C", name: "C", type: "ctrl" }], edges: [] }, "C -> M\nM -> Y")).filter(h => h.mediator).length === 0, "no mediation hypothesis starting from a control variable");
+
+// ---- multigroup ----
+const mg = tam();
+check(api.parseGroups("Nam; Nữ ;; Nam; Khác; A; B").join() === "Nam,Nữ,Khác,A", "parseGroups: trims, drops duplicates, at most 4");
+api.setMga(mg, { name: "Giới tính", groups: "Nam; Nữ" });
+let gh = api.hypotheses(mg);
+const mgaH = gh.filter(h => h.mga != null);
+check(mgaH.length === 3 && mgaH[0].text === "Tác động của PEOU lên PU khác nhau giữa nhóm Nam và nhóm Nữ (phân theo giới tính).", `MGA: one hypothesis per compared arrow (${mgaH[0] && mgaH[0].text})`);
+check(gh.map(h => h.h).join() === "1,2,3,4,5,6,7", "MGA hypotheses come after direct and mediation ones");
+let ms = api.modelSample(mg);
+check(ms.groups === 2 && ms.min === plsMin(2) && ms.total === 2 * plsMin(2) && ms.send === Math.ceil(2 * plsMin(2) / 0.85), `MGA: each group needs the minimum, total ×2 (${ms.min} × 2 = ${ms.total})`);
+check(api.toggleMgaPath(mg, 1) === false && api.mgaPaths(mg).join() === "0,2" && api.hypotheses(mg).filter(h => h.mga != null).length === 2, "an arrow can be left out of the comparison");
+api.setMga(mg, { name: "Khu vực", groups: "Bắc; Trung; Nam", skip: mg.mga.skip });
+check(/khác nhau giữa các nhóm Bắc, Trung và Nam \(phân theo khu vực\)\.$/.test(api.hypotheses(mg).find(h => h.mga != null).text) && api.modelSample(mg).total === 3 * plsMin(2), "three groups: wording and total ×3");
+api.reverseEdge(mg, 1);
+check(mg.mga.skip.join() === "BI>PU", "the left-out key follows a reversed arrow");
+api.recodeNode(mg, "BI", "INT");
+check(mg.mga.skip.join() === "INT>PU", "…and a recoded construct");
+api.setMga(mg, { name: "X", groups: "Một" });
+check(api.hypotheses(mg).every(h => h.mga == null) && api.modelSample(mg).groups === 0 && api.modelWarnings(mg).some(w => w.kind === "mga"), "one group: no comparison, a warning");
+api.setMga(mg, null);
+check(!("mga" in mg), "MGA off");
+
+// ---- link / storage with every element type ----
+const full = arrows({ nodes: [], edges: [] }, "TAN, DU -> SAT\nPV -> SAT\nSAT -> LOY (-)\nGT -> LOY");
+full.nodes.find(n => n.id === "TAN").key = "servqual:TAN";
+api.makeHoc(full, ["TAN", "DU"], "Chất lượng dịch vụ", "rf", "SQ");
+api.setCtrl(full, "GT", true);
+api.addNode(full, "Thu nhập", null, "TN");
+api.addMod(full, "TN", "PV", "SAT", -1);
+api.setMga(full, { name: "Giới tính", groups: ["Nam", "Nữ"], skip: ["PV>SAT"] });
+api.placeNew(full, {});
+delete full.nodes.find(n => n.id === "TN").x;
+const pk = api.packModel(full), back2 = api.unpackModel(pk);
+check(api.packModel(back2) === pk, "pack → unpack → pack round-trips HOC, LOCs, control, moderation, groups");
+check(back2.nodes.find(n => n.id === "SQ").type === "hoc" && back2.nodes.find(n => n.id === "SQ").mode === "rf" && back2.nodes.find(n => n.id === "TAN").parent === "SQ" && back2.nodes.find(n => n.id === "TAN").key === "servqual:TAN", "…HOC type and LOC parent and key");
+check(back2.nodes.find(n => n.id === "GT").type === "ctrl" && back2.mods[0].w === "TN" && back2.mods[0].dir === -1 && back2.mga.groups.join() === "Nam,Nữ" && back2.mga.skip.join() === "PV>SAT", "…control variable, moderation direction, groups and the skipped arrow");
+check(!api.hasPos(back2.nodes.find(n => n.id === "TN")) && JSON.parse(pk).n.find(a => a[0] === "TN").length === 3, "…a construct without a position stays without one");
+check(JSON.stringify(api.hypotheses(back2)) === JSON.stringify(api.hypotheses(full)) && api.modelSample(back2).total === api.modelSample(full).total, "…same hypotheses and sample after the round trip");
+const v2 = '{"v":2,"n":[["PEOU","Dễ sử dụng","tam:PEOU",0,0],["PU","Hữu ích","tam:PU",240,0],["BI","Ý định","tam:BI",480,0]],"e":[["PEOU","PU"],["PU","BI"],["PEOU","BI",-1]]}';
+const old2 = api.unpackModel(v2);
+check(old2.nodes.length === 3 && old2.nodes.every(n => api.hasPos(n) && !n.type && !n.parent) && !old2.mods && !old2.mga && old2.edges[2].sign === -1, "a v2 link (positions, no new elements) still loads");
+check(api.packModel(old2) === api.packModel(api.unpackModel(api.packModel(old2))) && api.hypotheses(old2).length === 4, "…and re-saves and reads the same");
+const bad = api.unpackModel('{"v":3,"n":[["A","A",0,0,0,{"p":"B"}],["B","B",0,0,0],["C","C",0,null,null,{"c":1}],["H","H",0,null,null,{"h":"zz"}]],"e":[["A","B"],["B","C"]],"mo":[["C","A","B"],["H","B","A"],["H","A","B",-1],"x"],"g":{"v":"G","l":["a"," a ","b","c","d","e"],"x":["Q>R"]}}');
+check(!bad.nodes[0].parent && bad.edges.length === 1 && bad.nodes[3].mode === "rr", "a tampered link: a parent that is no HOC is dropped, arrows into a control variable go, unknown HOC mode reads reflective–reflective");
+check(bad.mods.length === 1 && bad.mods[0].w === "H" && bad.mods[0].dir === -1 && bad.mga.groups.join() === "a,b,c,d" && bad.mga.skip.length === 0, "…moderations by a control variable or on a missing arrow are dropped; groups capped at 4");
+
+// ---- kit hand-off with HOC and control variables ----
+const kq = arrows({ nodes: [], edges: [] }, "A -> Q\nGT -> Q");
+kq.nodes[0].key = "tam:PEOU";
+api.addNode(kq, "Dễ dùng 2", "tam:PU", "PU"); api.addNode(kq, "Ý định", "tam:BI", "BI");
+api.makeHoc(kq, ["PU", "BI"], "Bậc cao", "rr", "HQ");
+arrows(kq, "A -> HQ");
+api.setCtrl(kq, "GT", true);
+const kqq = new URLSearchParams(api.kitQuery(kq).slice(1));
+check(kqq.get("c") === "tam:PEOU,tam:PU,tam:BI" && kqq.get("dv") === "tam:PU,tam:BI" && kqq.get("a") === "2", `kit link: LOCs of a dependent HOC are its measured items and flagged dependent (${api.kitQuery(kq)})`);
+api.addNode(kq, "Quy mô: lớn; nhỏ", null, "QM"); api.setCtrl(kq, "QM", true);
+api.setMga(kq, { name: "Loại hình", groups: "Nhà nước; Tư nhân" });
+const kq2 = new URLSearchParams(api.kitQuery(kq).slice(1));
+check(kq2.get("ctrl") === "GT;Quy mô lớn nhỏ" && kq2.get("grp") === "Loại hình:Nhà nước;Tư nhân", `kit link: control variables as ctrl=, the grouping variable as grp=Name:G1;G2 (${kq2.get("ctrl")} | ${kq2.get("grp")})`);
+check(api.kitQuery(tam()).indexOf("ctrl=") < 0 && api.kitQuery(tam()).indexOf("grp=") < 0, "no control or grouping variable, no ctrl= or grp=");
+// When the kit reads them, it splits ctrl on ";" and grp on the first ":" then ";" (as built above).
+if (/qs\.getAll\('ctrl'\)/.test(kitSrc)) check(/qs\.get\('grp'\)/.test(kitSrc) && /indexOf\(':'\)/.test(kitSrc), "the kit reads ?ctrl= and ?grp=Name:groups");
+
+console.log(`
+${passed} passed, ${failed} failed`);
 if (failed) process.exit(1);

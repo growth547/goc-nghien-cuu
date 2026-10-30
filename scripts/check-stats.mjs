@@ -324,6 +324,11 @@ const plain = h => h.replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&am
   check(nums.every((v, i) => v === i + 1), `sections numbered without gaps (${nums})`);
 }
 
+{ // the built-in sample reads like a kit export: labelled demographics, so the chapter says “giới tính”, not “GT”
+  const src = readFileSync("src/tools/phan-tich-du-lieu.html", "utf8");
+  check(/TT1. Giới tính/.test(src) && /TT2. Độ tuổi/.test(src), "sample data: demographic headers carry kit codes and labels");
+}
+
 // ---------- the standalone Cronbach tool (src/tools/cronbach-alpha.html) ----------
 {
   const caSrc = readFileSync("src/tools/cronbach-alpha.html", "utf8");

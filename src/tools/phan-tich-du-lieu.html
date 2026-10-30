@@ -552,7 +552,7 @@
 
   // Synthetic TAM data (PEOU → PU → BI), fixed seed so the demo is reproducible. AC1 is the kit's attention check (correct answer 2).
   function sampleData(){let s=20261030;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296,norm=()=>Math.sqrt(-2*Math.log(rnd()+1e-12))*Math.cos(2*Math.PI*rnd());
-    const lik=v=>Math.min(5,Math.max(1,Math.round(3.4+v)));const head=['ID','GT','TUOI',...[1,2,3,4,5,6].map(i=>'PEOU'+i),...[1,2,3,4,5,6].map(i=>'PU'+i),'BI1','BI2','BI3','AC1'],out=[head];
+    const lik=v=>Math.min(5,Math.max(1,Math.round(3.4+v)));const head=['ID','TT1. Giới tính','TT2. Độ tuổi',...[1,2,3,4,5,6].map(i=>'PEOU'+i),...[1,2,3,4,5,6].map(i=>'PU'+i),'BI1','BI2','BI3','AC1'],out=[head];
     for(let i=1;i<=250;i++){const peou=norm(),pu=0.55*peou+0.8*norm(),bi=0.45*pu+0.3*peou+0.75*norm(),it=l=>lik(0.75*l+0.55*norm());
       out.push([i,rnd()<0.58?'Nữ':'Nam',['18–22','23–30','31–40'][Math.floor(rnd()*3)],...Array.from({length:6},()=>it(peou)),...Array.from({length:6},()=>it(pu)),it(bi),it(bi),it(bi),rnd()<0.95?2:4])}
     return out}

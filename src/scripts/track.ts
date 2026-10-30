@@ -42,7 +42,7 @@ document.addEventListener("astro:page-load", () => {
 
 const inTool = (el: Element) =>
   el.closest("#main-content") !== null &&
-  el.closest(".share-bar, .app-prose") === null;
+  el.closest(".share-bar, .app-prose, [data-no-track]") === null;
 
 const firstUse = () => {
   const tool = toolSlug();

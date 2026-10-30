@@ -327,3 +327,15 @@ tr.flagged td {
 .check {
   @apply flex items-start gap-2 text-sm font-normal;
 }
+
+/* Phones: long DOIs and URLs in references wrap instead of widening the page,
+   and small buttons inside result tables (Loại, Đảo điểm…) get a usable tap target. */
+#main-content :is(p, li, dd, figcaption) {
+  overflow-wrap: break-word;
+}
+@media (pointer: coarse) {
+  #main-content table button {
+    min-height: 2.25rem;
+    min-width: 2.75rem;
+  }
+}

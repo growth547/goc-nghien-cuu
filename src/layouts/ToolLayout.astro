@@ -117,7 +117,9 @@ const crumbsLd = {
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-8">
     <h1 class="text-2xl font-semibold sm:text-3xl">{h1}</h1>
-    <p class="text-muted-foreground mt-2 mb-6 max-w-3xl">{lede}</p>
+    <p id="tool-lede" class="text-muted-foreground mt-2 max-w-3xl max-sm:line-clamp-3">{lede}</p>
+    <button type="button" id="tool-lede-more" data-no-track class="text-accent min-h-11 text-sm font-semibold underline underline-offset-4 sm:hidden" aria-controls="tool-lede" aria-expanded="false">Đọc tiếp giới thiệu</button>
+    <div class="mb-6 max-sm:mb-3"></div>
     <slot />
     <Fragment set:html={html} />
     <ShareBar />
@@ -157,3 +159,13 @@ const crumbsLd = {
   </main>
   <Footer />
 </Layout>
+
+<script>
+  // Phones: the intro is clamped to 3 lines so the tool shows on the first screen.
+  document.addEventListener("click", event => {
+    const btn = (event.target as Element | null)?.closest("#tool-lede-more");
+    if (!btn) return;
+    document.getElementById("tool-lede")?.classList.remove("max-sm:line-clamp-3");
+    btn.remove();
+  });
+</script>

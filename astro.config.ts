@@ -17,13 +17,46 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { readdirSync, readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import rehypeA11y from "./src/utils/transformers/rehypeA11y";
 import config from "./astro-paper.config";
 
-// Sitemap <lastmod>: posts use modDatetime (or pubDatetime) from their front
-// matter; every other page (tools, scale pages, lists) uses the build date.
+// Sitemap <lastmod>: posts use modDatetime (or pubDatetime) from their front matter; scale,
+// concept, template, dataset and variable pages use the last commit that touched their JSON file,
+// and their hub (/thang-do/ …) the newest of those; every other page uses the last commit that
+// touched code or layout. Google and Bing ignore lastmod on sites where it is always "now", so it
+// must change only when the page does. Without git history (shallow clone, uncommitted file) the
+// build date is used, as before.
 const BUILD_DATE = new Date().toISOString();
+const CONTENT_DIRS = ["thang-do", "khai-niem", "mau-bang-hoi", "du-lieu", "bien-nghien-cuu"];
+const contentLastmod = new Map<string, string>(); // "thang-do/tam" and "thang-do" -> ISO date
+let codeLastmod = BUILD_DATE;
+try {
+  const git = (...args: string[]) =>
+    execFileSync("git", ["-c", "core.quotePath=false", ...args], { encoding: "utf8", maxBuffer: 64 << 20 }).trim();
+  if (git("rev-parse", "--is-shallow-repository") === "false") {
+    let date = "";
+    for (const line of git("log", "--format=@%cI", "--name-only", "--", ...CONTENT_DIRS.map(d => `src/content/${d}`)).split(/\r?\n/)) {
+      if (line.startsWith("@")) date = new Date(line.slice(1)).toISOString();
+      const m = line.match(/^src\/content\/([^/]+)\/([^/_][^/]*)\.json$/);
+      if (!m || !date) continue;
+      // git log is newest first: the first date seen for a file (or a hub) is its latest change
+      if (!contentLastmod.has(`${m[1]}/${m[2]}`)) contentLastmod.set(`${m[1]}/${m[2]}`, date);
+      if (!contentLastmod.has(m[1])) contentLastmod.set(m[1], date);
+    }
+    const code = git("log", "-1", "--format=%cI", "--", ".", ":!src/content", ":!docs");
+    if (code) codeLastmod = new Date(code).toISOString();
+  }
+} catch {
+  // no git: keep BUILD_DATE
+}
+const pageLastmod = (pathname: string) => {
+  const parts = decodeURIComponent(pathname).split("/").filter(Boolean);
+  if (parts[0] === "posts" && parts.length === 2) return postLastmod.get(parts[1]) ?? BUILD_DATE;
+  if (CONTENT_DIRS.includes(parts[0]) && parts.length <= 2) return contentLastmod.get(parts.join("/")) ?? BUILD_DATE;
+  return codeLastmod;
+};
 const POSTS_DIR = new URL("./src/content/posts/", import.meta.url);
 const postLastmod = new Map<string, string>();
 for (const file of readdirSync(POSTS_DIR)) {
@@ -67,11 +100,7 @@ export default defineConfig({
         (config.features?.showArchives !== false ||
           !page.endsWith("/archives/")) &&
         !SITEMAP_EXCLUDE.test(new URL(page).pathname),
-      serialize: item => {
-        const post = new URL(item.url).pathname.match(/\/posts\/([^/]+)\/?$/);
-        const lastmod = post && postLastmod.get(decodeURIComponent(post[1]));
-        return { ...item, lastmod: lastmod ?? BUILD_DATE };
-      },
+      serialize: item => ({ ...item, lastmod: pageLastmod(new URL(item.url).pathname) }),
     }),
   ],
   i18n: {

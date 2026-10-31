@@ -646,7 +646,7 @@
   function useRaw(table,label,paths){raw=table.map(r=>(r||[]).map(v=>v==null?'':v));if(!raw.length){setStatus('File không có dữ liệu.',true);return}
     const hi=pickHeaderRow(raw);
     $('ps-hdr').innerHTML=raw.slice(0,Math.min(6,raw.length)).map((r,i)=>`<option value="${i}">Dòng ${i+1}: ${escH(r.slice(0,4).map(v=>String(v).slice(0,18)).join(' | '))}</option>`).join('');$('ps-hdr').value=String(hi);
-    setData(hi,label);if(paths!=null)$('ps-paths').value=paths;refreshNames()}
+    setData(hi,label);if(paths!=null)$('ps-paths').value=paths;refreshNames();if(vmPending&&paths==null){vmPending=false;importVm()}}
   function setData(hi,label){tbl=buildTable(raw,hi);const gs=suggestGroups(tbl.header);
     $('ps-groups').value=gs.map(g=>`${g.code}: ${g.items.join(' ')}`).join('\n');
     let lo=Infinity,top=-Infinity;for(const g of gs)for(const h of g.items){const j=tbl.header.indexOf(h);for(const r of tbl.rows){const v=likertNum(r[j]);if(Number.isFinite(v)){if(v<lo)lo=v;if(v>top)top=v}}}
@@ -671,9 +671,13 @@
   $('ps-paths').addEventListener('input',()=>later(checkPaths));
   $('ps-add').addEventListener('click',()=>{const a=$('ps-from').value,b=$('ps-to').value;if(!a||!b||a===b){$('ps-pathmsg').innerHTML='<span class="err">Chọn hai khái niệm khác nhau.</span>';return}
     const box=$('ps-paths');box.value=(box.value.trim()?box.value.replace(/\s*$/,'')+'\n':'')+`${a} -> ${b}`;checkPaths()});
-  $('ps-vm').addEventListener('click',()=>{let s=null;try{s=localStorage.getItem('vm-state-v2')}catch(e){}
+  function importVm(){let s=null;try{s=localStorage.getItem('vm-state-v2')}catch(e){}
     if(!s){$('ps-pathmsg').innerHTML='<span class="err">Trình duyệt này chưa có mô hình nào trong Vẽ mô hình. Vẽ ở <a class="text-accent underline" href="/cong-cu/ve-mo-hinh/">Vẽ mô hình nghiên cứu</a> rồi quay lại, hoặc dán link mô hình vào ô đường dẫn.</span>';return}
-    try{const r=fromDrawing(s,conNames());if(r.count)$('ps-paths').value=r.text;showPathMsg(r,'vm')}catch(e){$('ps-pathmsg').innerHTML='<span class="err">Không đọc được mô hình đã lưu.</span>'}});
+    try{const r=fromDrawing(s,conNames());if(r.count)$('ps-paths').value=r.text;showPathMsg(r,'vm')}catch(e){$('ps-pathmsg').innerHTML='<span class="err">Không đọc được mô hình đã lưu.</span>'}}
+  $('ps-vm').addEventListener('click',importVm);
+  // Arriving from "Chạy PLS-SEM với mô hình này" (?tu=ve-mo-hinh): the saved drawing fills section 3 as soon as a data file is loaded.
+  let vmPending=new URLSearchParams(location.search).get('tu')==='ve-mo-hinh';
+  if(vmPending)setStatus('Đã nhận mô hình từ Vẽ mô hình. Tải file dữ liệu lên, các đường dẫn sẽ được điền tự động.');
 
   // One worker per task: bootstrap (d.task absent) or PLSpredict (d.task = 'predict').
   function workerURL(){return URL.createObjectURL(new Blob([`const P=(${PLS_ENGINE.toString()})();onmessage=e=>{try{const d=e.data;if(d.task==='predict'){postMessage({pred:P.plsPredict(d.pr,d.o)});return}const r=P.bootstrap(d.pr,d.est,d.B,d.seed,d.o,f=>postMessage({progress:f}));postMessage({done:r})}catch(err){postMessage({error:String(err&&err.message||err)})}}`],{type:'text/javascript'}))}

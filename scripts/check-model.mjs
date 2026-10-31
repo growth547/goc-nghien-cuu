@@ -551,7 +551,8 @@ check(api.modelWarnings({ nodes: [{ id: "A", name: "A", items: 2 }, { id: "B", n
 const fd = pls.fromDrawing(dpk, g1.map(g => g.code));
 check(fd.count === dm.edges.length && !fd.notes.length && fd.text.split("\n")[0] === "CL -> HL", `PLS-SEM reads the saved model: ${fd.count} paths, codes match the column prefixes`);
 check(/localStorage\.getItem\('vm-state-v2'\)/.test(plsSrc) && /localStorage\.setItem\('vm-state-v2'/.test(src), "hand-off: this tool saves vm-state-v2 and the PLS-SEM tool reads it");
-check(/id="vm-pls" href="\/cong-cu\/pls-sem\/"/.test(src) && /\$\('vm-pls'\)\.addEventListener\('click'.*flushSave\(\)\}\);/.test(src), "“Chạy PLS-SEM với mô hình này” saves before leaving");
+check(/id="vm-pls" href="\/cong-cu\/pls-sem\/\?tu=ve-mo-hinh"/.test(src) && /\$\('vm-pls'\)\.addEventListener\('click'.*flushSave\(\)\}\);/.test(src), "“Chạy PLS-SEM với mô hình này” saves before leaving");
+check(/searchParams|URLSearchParams\(location\.search\)\.get\('tu'\)==='ve-mo-hinh'/.test(plsSrc) && /if\(vmPending&&paths==null\)\{vmPending=false;importVm\(\)\}/.test(plsSrc), "PLS-SEM opened from this tool fills the paths itself once data is loaded");
 
 // ---- 3. templates from the scale library ----
 const libKey = new Map(all.map(x => [`${x.s.slug}:${x.c.code}`, x.c]));

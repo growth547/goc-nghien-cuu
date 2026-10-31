@@ -48,9 +48,13 @@ jobs:
       - run: pnpm exec astro build
       - run: node scripts/check-seo.mjs dist
       - run: pnpm exec pagefind --site dist
+      # The sitemap live before this deploy, so IndexNow gets only the pages that are new or changed.
+      - run: curl -sf https://gocnghiencuu.com/sitemap-0.xml -o "$RUNNER_TEMP/live-sitemap.xml" || true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+      - run: node scripts/submit-indexnow.mjs --changed "$RUNNER_TEMP/live-sitemap.xml"
+        continue-on-error: true

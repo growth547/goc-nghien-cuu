@@ -1,0 +1,185 @@
+{
+  "title": "Thang đo sẵn sàng học trực tuyến tiếng Việt: Hung (2010)",
+  "description": "Thang đo sẵn sàng học trực tuyến OLRS 18 biến, 5 thành phần của Hung và cộng sự (2010), dịch sẵn tiếng Việt, có bản gốc tiếng Anh, dùng cho đề tài e-learning.",
+  "name": "OLRS",
+  "fullName": "Thang đo mức độ sẵn sàng học trực tuyến (Online Learning Readiness Scale)",
+  "field": "Công nghệ & hệ thống thông tin",
+  "keyword": "thang đo sẵn sàng học trực tuyến",
+  "intro": "OLRS do Hung, Chou, Chen và Own (2010) phát triển trên sinh viên đại học Đài Loan để đo mức độ người học sẵn sàng cho môi trường học trực tuyến. Thang có 18 biến chia thành 5 thành phần: tự tin dùng máy tính và internet, tự định hướng học tập, tự kiểm soát khi học trực tuyến, động lực học tập và tự tin giao tiếp trực tuyến. Ở Việt Nam, OLRS hợp với đề tài về học trực tuyến, học kết hợp, LMS của trường hoặc kết quả học tập của sinh viên sau giai đoạn COVID-19.",
+  "responseScale": "Likert 5 mức (1 = Hoàn toàn không đồng ý … 5 = Hoàn toàn đồng ý), như các nghiên cứu dùng lại thang của Ilankoon và cộng sự (2025). Không có câu đảo chiều; tính điểm trung bình cho từng thành phần.",
+  "responseScaleShort": "Likert 5 mức",
+  "constructs": [
+    {
+      "code": "CIS",
+      "nameVi": "Tự tin dùng máy tính và internet",
+      "nameEn": "Computer/Internet self-efficacy",
+      "definition": "Mức độ người học tự tin vào kỹ năng dùng máy tính, phần mềm và internet phục vụ việc học trực tuyến.",
+      "source": "Hung và cộng sự (2010), 3 biến; nguyên văn theo Bảng A1 của Sarfraz và cộng sự (2022).",
+      "items": [
+        {
+          "code": "CIS1",
+          "en": "I feel confident in performing the basic functions of Microsoft Office programs (MS Word, MS Excel, and MS PowerPoint).",
+          "vi": "Tôi tự tin thực hiện các chức năng cơ bản của Microsoft Office (Word, Excel và PowerPoint)."
+        },
+        {
+          "code": "CIS2",
+          "en": "I feel confident in my knowledge and skills of how to manage software for online learning.",
+          "vi": "Tôi tự tin vào kiến thức và kỹ năng sử dụng các phần mềm học trực tuyến."
+        },
+        {
+          "code": "CIS3",
+          "en": "I feel confident in using the Internet (Google, Yahoo) to find or gather information for online learning.",
+          "vi": "Tôi tự tin dùng internet (Google, Yahoo) để tìm hoặc thu thập thông tin cho việc học trực tuyến."
+        }
+      ]
+    },
+    {
+      "code": "SDL",
+      "nameVi": "Tự định hướng học tập",
+      "nameEn": "Self-directed learning",
+      "definition": "Mức độ người học tự lập kế hoạch, đặt mục tiêu, quản lý thời gian và chủ động tìm hỗ trợ trong việc học.",
+      "source": "Hung và cộng sự (2010), 5 biến; nguyên văn theo Bảng A1 của Sarfraz và cộng sự (2022).",
+      "items": [
+        {
+          "code": "SDL1",
+          "en": "I carry out my own study plan.",
+          "vi": "Tôi thực hiện kế hoạch học tập do chính mình đặt ra."
+        },
+        {
+          "code": "SDL2",
+          "en": "I seek assistance when facing learning problems.",
+          "vi": "Tôi tìm sự hỗ trợ khi gặp khó khăn trong học tập."
+        },
+        {
+          "code": "SDL3",
+          "en": "I manage time well.",
+          "vi": "Tôi quản lý thời gian tốt."
+        },
+        {
+          "code": "SDL4",
+          "en": "I set up my learning goals.",
+          "vi": "Tôi tự đặt ra mục tiêu học tập cho mình."
+        },
+        {
+          "code": "SDL5",
+          "en": "I have higher expectations for my learning performance.",
+          "vi": "Tôi đặt kỳ vọng cao hơn cho kết quả học tập của mình."
+        }
+      ]
+    },
+    {
+      "code": "LC",
+      "nameVi": "Tự kiểm soát khi học trực tuyến",
+      "nameEn": "Learner control (in an online context)",
+      "definition": "Mức độ người học tự điều khiển tiến độ, tập trung và cách dùng tài liệu khi học trực tuyến.",
+      "source": "Hung và cộng sự (2010), 3 biến; nguyên văn theo Bảng A1 của Sarfraz và cộng sự (2022).",
+      "items": [
+        {
+          "code": "LC1",
+          "en": "I can direct my own learning progress.",
+          "vi": "Tôi có thể tự điều chỉnh tiến độ học tập của mình."
+        },
+        {
+          "code": "LC2",
+          "en": "I am not distracted by other online activities when learning online (instant messages, Internet surfing).",
+          "vi": "Tôi không bị phân tâm bởi các hoạt động trực tuyến khác khi học trực tuyến (nhắn tin, lướt web)."
+        },
+        {
+          "code": "LC3",
+          "en": "I repeat the online instructional materials on the basis of my needs.",
+          "vi": "Tôi xem lại tài liệu học trực tuyến tuỳ theo nhu cầu của mình."
+        }
+      ]
+    },
+    {
+      "code": "MFL",
+      "nameVi": "Động lực học tập",
+      "nameEn": "Motivation for learning (in an online context)",
+      "definition": "Mức độ người học có động lực, cởi mở với ý tưởng mới và sẵn lòng chia sẻ khi học trực tuyến.",
+      "source": "Hung và cộng sự (2010), 4 biến; nguyên văn theo Bảng A1 của Sarfraz và cộng sự (2022).",
+      "items": [
+        {
+          "code": "MFL1",
+          "en": "I am open to new ideas.",
+          "vi": "Tôi cởi mở với những ý tưởng mới."
+        },
+        {
+          "code": "MFL2",
+          "en": "I have motivation to learn.",
+          "vi": "Tôi có động lực học tập."
+        },
+        {
+          "code": "MFL3",
+          "en": "I improve from my mistakes.",
+          "vi": "Tôi tiến bộ lên từ những lỗi sai của mình."
+        },
+        {
+          "code": "MFL4",
+          "en": "I like to share my ideas with others.",
+          "vi": "Tôi thích chia sẻ ý tưởng của mình với người khác."
+        }
+      ]
+    },
+    {
+      "code": "OCS",
+      "nameVi": "Tự tin giao tiếp trực tuyến",
+      "nameEn": "Online communication self-efficacy",
+      "definition": "Mức độ người học tự tin trao đổi, bày tỏ ý kiến và đặt câu hỏi qua các công cụ trực tuyến.",
+      "source": "Hung và cộng sự (2010), 3 biến; nguyên văn theo Bảng A1 của Sarfraz và cộng sự (2022).",
+      "items": [
+        {
+          "code": "OCS1",
+          "en": "I feel confident in using online tools (email, discussion) to effectively communicate with others.",
+          "vi": "Tôi tự tin dùng các công cụ trực tuyến (email, diễn đàn thảo luận) để giao tiếp hiệu quả với người khác."
+        },
+        {
+          "code": "OCS2",
+          "en": "I feel confident in expressing myself (emotions and humor) through text.",
+          "vi": "Tôi tự tin bày tỏ bản thân (cảm xúc và sự hài hước) bằng chữ viết."
+        },
+        {
+          "code": "OCS3",
+          "en": "I feel confident in posting questions in online discussions.",
+          "vi": "Tôi tự tin đặt câu hỏi trong các buổi thảo luận trực tuyến."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Các bản chép lại OLRS lệch nhau vài chữ (ví dụ 'repeat' hay 'repeated' ở LC3, 'email, discussion' hay 'email, LMS' ở OCS1). Trang này lấy nguyên văn từ Bảng A1 của Sarfraz và cộng sự (2022); nếu bạn có bản gốc của Hung và cộng sự (2010), đối chiếu lại trước khi đưa vào phụ lục.",
+    "Ví dụ trong ngoặc như Yahoo, MS Word có thể đổi sang công cụ quen thuộc với sinh viên Việt Nam (Google, Zalo, Microsoft Teams, LMS của trường), nhưng ghi rõ là đã điều chỉnh.",
+    "Thành phần tự kiểm soát (LC) thường có độ tin cậy thấp nhất vì chỉ 3 biến và câu LC2 mang ý phủ định; dịch giữ đúng 'không bị phân tâm', đừng đảo thành 'bị phân tâm'.",
+    "Chạy CFA cho mô hình 5 thành phần; nếu dùng OLRS làm một biến bậc hai (sẵn sàng học trực tuyến), báo cáo thêm hệ số tải của từng thành phần lên khái niệm bậc hai."
+  ],
+  "examinerQA": [
+    {
+      "q": "OLRS được phát triển ở Đài Loan năm 2010, em dùng cho sinh viên Việt Nam có phù hợp không?",
+      "a": "Thang đã được dùng lại ở nhiều nước, ví dụ Pakistan (Sarfraz và cộng sự, 2022) và Sri Lanka (Ilankoon và cộng sự, 2025), với chỉnh sửa nhỏ về ví dụ công cụ. Em đã dịch, thử nghiệm với một nhóm sinh viên và kiểm định lại bằng Cronbach's alpha và CFA trên mẫu của mình."
+    },
+    {
+      "q": "Sao em không dùng điểm tổng 18 biến mà tách 5 thành phần?",
+      "a": "Hung và cộng sự (2010) xây dựng OLRS là thang đa chiều với 5 thành phần; mỗi thành phần có ý nghĩa riêng cho can thiệp giảng dạy. Có thể dùng thêm mô hình bậc hai nếu CFA cho thấy 5 thành phần cùng tải mạnh lên một khái niệm chung."
+    }
+  ],
+  "sampleSize": {
+    "note": "OLRS là thang 18 biến, 5 thành phần. Để chạy CFA ổn định nên có từ 200 quan sát trở lên; khi đưa vào mô hình, tính thêm cỡ mẫu theo số mũi tên trỏ vào biến phụ thuộc."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật của Hung và cộng sự (2010) và chép lại trong bài truy cập mở CC BY của Sarfraz và cộng sự (2022). Khi dùng, trích dẫn bài gốc; chưa thấy điều kiện hạn chế nào cho nghiên cứu học thuật.",
+  "references": [
+    "Hung, M.-L., Chou, C., Chen, C.-H., &amp; Own, Z.-Y. (2010). Learner readiness for online learning: Scale development and student perceptions. <em>Computers &amp; Education, 55</em>(3), 1080–1090. https://doi.org/10.1016/j.compedu.2010.05.004",
+    "Ilankoon, M. P. S. I., &amp; Seneviratne, M. K. S. S. (2025). Nursing undergraduates' use, readiness, barriers, and perceived effectiveness of online distance learning during COVID-19 in Sri Lanka: A cross-sectional study. <em>BMC Nursing, 24</em>. https://doi.org/10.1186/s12912-025-03583-y",
+    "Sarfraz, M., Hussain, G., Shahid, M., Riaz, A., Muavia, M., Fahed, Y. S., Azam, F., &amp; Abdullah, M. T. (2022). Medical students' online learning perceptions, online learning readiness, and learning outcomes during COVID-19: The moderating role of teacher's readiness to teach online. <em>International Journal of Environmental Research and Public Health, 19</em>(6), 3520. https://doi.org/10.3390/ijerph19063520"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8955236/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12273194/fullTextXML",
+    "https://api.crossref.org/works/10.1016/j.compedu.2010.05.004",
+    "https://api.crossref.org/works/10.3390/ijerph19063520",
+    "https://api.crossref.org/works/10.1186/s12912-025-03583-y"
+  ],
+  "related": [
+    "dong-luc-hoc-tap-mslq",
+    "tu-hieu-qua-gse",
+    "tam"
+  ]
+}

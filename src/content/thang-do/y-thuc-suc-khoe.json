@@ -1,0 +1,117 @@
+{
+  "title": "Thang đo ý thức sức khoẻ tiếng Việt: Gould (1990)",
+  "description": "Thang đo ý thức sức khoẻ HCS 9 biến quan sát của Gould (1990), dịch sẵn tiếng Việt kèm bản gốc tiếng Anh, thang 5 mức, đơn hướng, dùng cho đề tài thực phẩm và lối sống.",
+  "name": "HCS",
+  "fullName": "Thang đo ý thức về sức khoẻ (Health Consciousness Scale)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo ý thức sức khoẻ",
+  "intro": "Health Consciousness Scale (HCS) do Gould (1990) xây dựng để đo mức độ một người để tâm, suy nghĩ và theo dõi tình trạng sức khoẻ của chính mình. Thang gồm 9 biến, đo một khái niệm duy nhất, và đã được Remr (2023) kiểm định lại trên 1.321 người Séc với cấu trúc đơn hướng. Ở Việt Nam, ý thức sức khoẻ hay xuất hiện như biến tiền đề trong đề tài về ý định mua thực phẩm hữu cơ, thực phẩm chức năng, đồ uống ít đường hoặc dùng ứng dụng theo dõi sức khoẻ, thường ghép với TPB.",
+  "responseScale": "Thang 5 mức mức độ phản ánh bản thân: 1 = Hoàn toàn không phản ánh tình trạng của tôi … 5 = Phản ánh đầy đủ tình trạng của tôi, theo mô tả của Remr (2023), người cho biết các mức trả lời được lấy từ thang gốc. Không có câu đảo chiều; điểm tổng từ 9 đến 45, điểm cao hơn là ý thức sức khoẻ cao hơn. Nhiều nghiên cứu hành vi tiêu dùng đổi sang Likert đồng ý 5 hoặc 7 mức; khi đổi cần ghi rõ.",
+  "responseScaleShort": "Mức độ phản ánh 1–5",
+  "constructs": [
+    {
+      "code": "HC",
+      "nameVi": "Ý thức sức khoẻ",
+      "nameEn": "Health Consciousness",
+      "definition": "Mức độ một người chú ý, suy nghĩ và theo dõi sức khoẻ của bản thân trong đời sống hằng ngày.",
+      "source": "Gould (1990), 9 biến; nguyên văn tiếng Anh theo Bảng A1 của Remr (2023).",
+      "items": [
+        {
+          "code": "HC1",
+          "en": "I reflect about my health a lot.",
+          "vi": "Tôi suy nghĩ nhiều về sức khoẻ của mình."
+        },
+        {
+          "code": "HC2",
+          "en": "I am very self-conscious about my health.",
+          "vi": "Tôi rất để tâm tới sức khoẻ của bản thân."
+        },
+        {
+          "code": "HC3",
+          "en": "I am generally attentive to my inner feeling about my health.",
+          "vi": "Tôi thường chú ý tới cảm nhận bên trong của mình về sức khoẻ."
+        },
+        {
+          "code": "HC4",
+          "en": "I am constantly examining my health.",
+          "vi": "Tôi thường xuyên tự kiểm tra sức khoẻ của mình."
+        },
+        {
+          "code": "HC5",
+          "en": "I am alert to changes in my health.",
+          "vi": "Tôi nhạy bén với những thay đổi trong sức khoẻ của mình."
+        },
+        {
+          "code": "HC6",
+          "en": "I am usually aware of my health.",
+          "vi": "Tôi thường nắm rõ tình trạng sức khoẻ của mình."
+        },
+        {
+          "code": "HC7",
+          "en": "I am aware of the state of my health as I go through the day.",
+          "vi": "Trong ngày, tôi luôn biết tình trạng sức khoẻ của mình ra sao."
+        },
+        {
+          "code": "HC8",
+          "en": "I notice how I feel physically as I go through the day.",
+          "vi": "Trong ngày, tôi để ý cơ thể mình đang cảm thấy thế nào."
+        },
+        {
+          "code": "HC9",
+          "en": "I am very involved with my health.",
+          "vi": "Tôi rất quan tâm và chủ động với sức khoẻ của mình."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Câu HC2 'self-conscious' dễ bị dịch thành 'tự ti' hoặc 'lo lắng'; nghĩa trong thang là để tâm, chú ý tới sức khoẻ. Bản tiếng Séc của Remr (2023) cũng phải sửa nhẹ câu chữ ở một biến sau phỏng vấn nhận thức, nên hãy thử bản dịch với 5 đến 10 người trước khi khảo sát chính thức.",
+    "Nếu dùng HCS làm biến tiền đề trong TPB hoặc mô hình ý định mua thực phẩm hữu cơ, giữ đủ 9 biến khi chạy EFA rồi mới loại biến có hệ số tải thấp; đừng cắt sẵn còn 3 hoặc 4 biến mà không có lý do.",
+    "Khi đổi thang trả lời sang Likert đồng ý, ghi rõ trong phần phương pháp và không so điểm trung bình trực tiếp với số liệu của Gould (1990) hay Remr (2023).",
+    "Kiểm tra tính đơn hướng bằng EFA (một nhân tố), sau đó báo cáo Cronbach's alpha, CR và AVE nếu chạy CFA hoặc PLS-SEM."
+  ],
+  "reliability": [
+    {
+      "construct": "HCS (9 biến, bản tiếng Séc)",
+      "value": "α = 0,947; CR = 0,96; AVE = 0,70",
+      "sample": "n = 1.321 người trưởng thành tại Cộng hoà Séc",
+      "source": "Remr (2023), mục 3.2 và 3.3",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10252204/fullTextXML"
+    },
+    {
+      "construct": "HCS (9 biến, bản gốc)",
+      "value": "Độ tin cậy = 0,92",
+      "sample": "Mẫu gốc của Gould, theo trích dẫn của Remr (2023)",
+      "source": "Remr (2023), mục 3.2",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10252204/fullTextXML"
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Thang đo ý thức sức khoẻ chỉ có một khái niệm, em kiểm định giá trị hội tụ thế nào?",
+      "a": "Chạy EFA để xác nhận 9 biến tải lên một nhân tố, rồi chạy CFA hoặc mô hình đo lường PLS-SEM để báo cáo CR và AVE. Remr (2023) thu được một nhân tố với các hệ số tải từ 0,772 đến 0,886, CR = 0,96 và AVE = 0,70, có thể dùng làm mốc so sánh."
+    },
+    {
+      "q": "Vì sao em dùng thang của Gould (1990) mà không tự viết biến về sức khoẻ?",
+      "a": "HCS là thang đã được kiểm định, có nguồn gốc rõ ràng và được kiểm định lại gần đây với độ tin cậy cao (Remr, 2023). Tự viết biến thì phải tự chứng minh giá trị nội dung và cấu trúc, tốn thêm một nghiên cứu sơ bộ."
+    }
+  ],
+  "sampleSize": {
+    "note": "HCS là thang đơn lẻ 9 biến. Nếu chỉ kiểm định thang, nên có từ 100 quan sát trở lên cho EFA và Cronbach's alpha; khi đưa vào mô hình, tính cỡ mẫu theo số mũi tên trỏ vào biến phụ thuộc của mô hình đó."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật của Gould (1990) và chép lại trong bài truy cập mở CC BY 4.0 của Remr (2023). Khi dùng, trích dẫn bài gốc; chưa thấy điều kiện hạn chế nào cho nghiên cứu học thuật.",
+  "references": [
+    "Gould, S. J. (1990). Health consciousness and health behavior: The application of a new health consciousness scale. <em>American Journal of Preventive Medicine, 6</em>(4), 228–237. https://doi.org/10.1016/S0749-3797(18)31009-2",
+    "Remr, J. (2023). Validation of the Health Consciousness Scale among the Czech population. <em>Healthcare, 11</em>(11), 1628. https://doi.org/10.3390/healthcare11111628"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10252204/fullTextXML",
+    "https://api.crossref.org/works/10.1016/S0749-3797(18)31009-2",
+    "https://api.crossref.org/works/10.3390/healthcare11111628"
+  ],
+  "related": [
+    "tpb",
+    "y-dinh-mua",
+    "moi-quan-tam-moi-truong"
+  ]
+}

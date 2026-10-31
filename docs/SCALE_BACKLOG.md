@@ -14,14 +14,12 @@ Thứ tự theo tần suất trong khoảng 80 nghiên cứu khảo sát Việt 
 - hinh-anh-diem-den | Destination image (cognitive + affective), Baloglu & McCleary (1999) | đã thử 1 lần (31/10: chỉ thấy 4 cặp tính từ cảm xúc ghi nguồn tác giả khác; danh sách thuộc tính nhận thức không có nguyên văn)
 - y-dinh-quay-lai-diem-den | Revisit/recommend intention, Chen & Tsai (2007) | đã thử 1 lần (31/10: chưa thấy bài truy cập mở chép biến kèm nguồn Chen & Tsai)
 - hai-long-ve-luong | Pay Satisfaction Questionnaire, Heneman & Schwab (1985) | đã thử 1 lần (31/10: chỉ thấy bản đã thêm "I feel satisfied with…" trước từng biến, không phải nguyên văn)
-- ho-tro-dong-nghiep | Coworker support, Ducharme & Martin (2000) | đã thử 1 lần (31/10: bài truy cập mở trên Europe PMC chỉ trích Ducharme & Martin, không chép nguyên văn biến)
+- ho-tro-dong-nghiep | Coworker support, Ducharme & Martin (2000) | đã thử 2 lần (31/10: bài truy cập mở trên Europe PMC chỉ trích Ducharme & Martin, không chép nguyên văn biến; 31/10 lượt 3: PMC7214758 cũng chỉ trích Ducharme & Martin, không chép biến)
 - dao-tao-thang-tien | Training and promotion opportunity, Schwepker (2001) |
 - giao-duc-khoi-nghiep | Entrepreneurship education, Souitaris và cộng sự (2007) |
-- y-thuc-suc-khoe | Health consciousness, Gould (1988) hoặc Michaelidou & Hassan (2008) |
-- nhan-thuc-csr | CSR perception, Turker (2009) |
+- nhan-thuc-csr | CSR perception, Turker (2009) | đã thử 1 lần (31/10: các bài PMC chỉ chép vài biến mẫu hoặc 6 biến rút gọn, chưa thấy đủ 17 biến)
 - hedperf | HEdPERF, Abdullah (2006) | đã thử 1 lần
 - tuong-tac-hoc-truc-tuyen | Online learning interaction and satisfaction, Kuo và cộng sự (2014) |
-- san-sang-hoc-truc-tuyen | Online Learning Readiness Scale, Hung và cộng sự (2010) |
 - chia-se-tri-thuc | Knowledge sharing, van den Hooff & de Ridder (2004) hoặc Bock và cộng sự (2005) |
 - van-hoa-to-chuc | Organisational culture, Recardo & Jolly (1997); không dùng Denison (có phí) |
 - suc-hap-dan-nha-tuyen-dung | Employer attractiveness EmpAt, Berthon và cộng sự (2005) |
@@ -41,6 +39,8 @@ Không đưa vào (có phí hoặc bản quyền thương mại): MLQ, TCM Meyer
 
 ## Đã xử lý
 
+- y-thuc-suc-khoe | Health consciousness, Gould (1990) | đã thêm, 9 biến, nguyên văn từ Bảng A1 của Remr (2023) (31/10/2026 10:53)
+- san-sang-hoc-truc-tuyen | Online Learning Readiness Scale, Hung và cộng sự (2010) | đã thêm, 18 biến, 5 thành phần, nguyên văn từ Bảng A1 của Sarfraz và cộng sự (2022) (31/10/2026 10:53)
 - ho-tro-cap-tren | Perceived supervisor support, Eisenberger và cộng sự (2002) | đã thêm, 4 biến theo Rhoades, Eisenberger & Armeli (2001), nguyên văn từ van Woerkom & Kroon (2020), Ojo và cộng sự (2022) (31/10/2026 10:06)
 - hanh-vi-doi-moi-sang-tao | Innovative work behaviour, Janssen (2000) | đã thêm, 9 biến, nguyên văn từ Albort-Morant và cộng sự (2020) (31/10/2026 10:06)
 - niem-tin-xanh | Green trust, Chen (2010) | đã thêm phần niềm tin xanh, 5 biến, nguyên văn từ Tong và cộng sự (2020); chưa làm green purchase intention và greenwashing (31/10/2026 10:06)

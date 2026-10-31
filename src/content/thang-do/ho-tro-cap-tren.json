@@ -1,0 +1,114 @@
+{
+  "title": "Thang đo hỗ trợ cấp trên tiếng Việt: Rhoades và cs (2001)",
+  "description": "Thang đo hỗ trợ cấp trên tiếng Việt: 4 biến đo nhận thức sự hỗ trợ từ cấp trên, phỏng theo Rhoades, Eisenberger & Armeli (2001), có bản gốc và câu đảo chiều.",
+  "name": "PSS",
+  "fullName": "Nhận thức sự hỗ trợ của cấp trên (Perceived Supervisor Support)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo hỗ trợ cấp trên",
+  "intro": "Nhận thức sự hỗ trợ của cấp trên là mức độ nhân viên tin rằng người quản lý trực tiếp coi trọng đóng góp và quan tâm đến đời sống của mình. Eisenberger và cộng sự (2002) cho thấy nhân viên coi sự hỗ trợ của cấp trên là dấu hiệu tổ chức có hỗ trợ mình hay không, và sự hỗ trợ đó gắn với ý định ở lại. Thang 4 biến hay dùng nhất lấy từ thang hỗ trợ tổ chức rút gọn của Rhoades, Eisenberger & Armeli (2001), thay chữ 'tổ chức' bằng 'cấp trên'. Ở Việt Nam, Le và cộng sự (2025) dùng thang đo này cùng sự hài lòng công việc và gắn kết tổ chức để giải thích hiệu quả công việc của nhân viên lữ hành.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như van Woerkom & Kroon (2020) và Ojo và cộng sự (2022); Le và cộng sự (2025) dùng Likert 5 mức.",
+  "responseScaleShort": "Likert 7 hoặc 5 mức",
+  "reverseRule": "Thang 1–7: điểm mới = 1 + 7 − điểm = 8 − điểm; thang 1–5: điểm mới = 1 + 5 − điểm = 6 − điểm.",
+  "constructs": [
+    {
+      "code": "PSS",
+      "nameVi": "Nhận thức sự hỗ trợ của cấp trên",
+      "nameEn": "Perceived Supervisor Support",
+      "definition": "Mức độ nhân viên tin rằng cấp trên trực tiếp coi trọng ý kiến, mục tiêu và đời sống của mình.",
+      "source": "Rhoades, Eisenberger & Armeli (2001), 4 biến phỏng theo thang hỗ trợ tổ chức; câu chữ đối chiếu theo van Woerkom & Kroon (2020) và Ojo và cộng sự (2022).",
+      "items": [
+        {
+          "code": "PSS1",
+          "en": "My supervisor cares about my opinions.",
+          "vi": "Cấp trên của tôi quan tâm đến ý kiến của tôi."
+        },
+        {
+          "code": "PSS2",
+          "en": "My work supervisor really cares about my well-being.",
+          "vi": "Cấp trên trực tiếp của tôi thực sự quan tâm đến đời sống của tôi."
+        },
+        {
+          "code": "PSS3",
+          "en": "My supervisor strongly considers my goals and values.",
+          "vi": "Cấp trên của tôi rất coi trọng mục tiêu và giá trị của tôi."
+        },
+        {
+          "code": "PSS4",
+          "en": "My supervisor shows very little concern for me.",
+          "vi": "Cấp trên của tôi tỏ ra rất ít quan tâm đến tôi.",
+          "reverse": true
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "PSS4 là câu đảo chiều: đảo điểm trước khi tính Cronbach's alpha và điểm trung bình. Nếu PSS4 có hệ số tương quan biến tổng thấp hoặc tải âm, thường là do quên đảo điểm hoặc người trả lời đọc lướt, không phải do bản dịch.",
+    "Câu PSS2 có hai cách viết trong các bài đã công bố: van Woerkom & Kroon (2020) ghi 'My supervisor cares about my well-being', còn Ojo và cộng sự (2022) giữ nguyên 'My work supervisor really cares about my well-being'. Chọn một cách và ghi rõ nguồn.",
+    "Le và cộng sự (2025) dùng bản 5 biến theo Eisenberger và cộng sự (2002), thêm hai câu 'My supervisor is willing to help me when I need a special favour' và 'My supervisor takes pride in my accomplishments at work', bỏ câu về ý kiến. Nếu cần nhiều biến hơn để CFA ổn định, có thể theo cách này và trích cả hai nguồn.",
+    "Khi đo cùng hỗ trợ tổ chức (POS), hai thang có câu chữ gần như trùng nhau, chỉ khác chủ thể. Đặt hai khối câu hỏi cách xa nhau và kiểm tra giá trị phân biệt bằng HTMT theo Henseler, Ringle & Sarstedt (2015)."
+  ],
+  "reliability": [
+    {
+      "construct": "PSS (4 biến)",
+      "value": "α = 0,87",
+      "sample": "n = 422 chuyên viên tư vấn ở Hà Lan, Likert 7 mức",
+      "source": "van Woerkom & Kroon (2020), mục Measures",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7438919/fullTextXML"
+    },
+    {
+      "construct": "PSS (5 biến, bản Eisenberger và cộng sự 2002)",
+      "value": "α = 0,821; CR = 0,875; AVE = 0,583",
+      "sample": "n = 322 nhân viên công ty lữ hành ở miền Bắc Việt Nam, Likert 5 mức",
+      "source": "Le và cộng sự (2025), Bảng 4",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12151257/fullTextXML"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Le, B. H., Duong, C. H., & Nguyen, G. T.",
+      "year": 2025,
+      "title": "Perceived supervisor support and its impact to job performance: Dataset from the hospitality industry in Vietnam",
+      "journal": "Data in Brief, 60, 111649",
+      "url": "https://doi.org/10.1016/j.dib.2025.111649",
+      "note": "322 phiếu hợp lệ từ nhân viên công ty lữ hành miền Bắc, PSS 5 biến phỏng theo Eisenberger và cộng sự (2002), phân tích PLS-SEM với sự hài lòng công việc và gắn kết tổ chức làm trung gian."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Hỗ trợ cấp trên và hỗ trợ tổ chức có phải là một khái niệm không?",
+      "a": "Không. Eisenberger và cộng sự (2002) cho thấy hỗ trợ của cấp trên dẫn tới nhận thức hỗ trợ của tổ chức, tức là hai khái niệm liên quan nhưng tách biệt. Em chứng minh bằng CFA so sánh mô hình một nhân tố và hai nhân tố, kèm HTMT dưới 0,85 theo Henseler, Ringle & Sarstedt (2015)."
+    },
+    {
+      "q": "Thang chỉ có 4 biến, một biến lại đảo chiều, độ tin cậy có đủ không?",
+      "a": "van Woerkom & Kroon (2020) báo cáo α = 0,87 cho 4 biến này. Nếu mẫu của em cho alpha thấp, kiểm tra lại việc đảo điểm PSS4 trước; nếu PSS4 vẫn tải yếu, có thể loại và nêu rõ lý do, hoặc dùng bản 5 biến như Le và cộng sự (2025)."
+    }
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, thường làm biến độc lập. Cỡ mẫu tính theo biến nhận nhiều mũi tên nhất trong mô hình của đề tài; ví dụ 4 mũi tên cần tối thiểu 85 quan sát (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và chép lại trong các bài truy cập mở; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Rhoades, Eisenberger & Armeli (2001) và bài bạn lấy câu chữ.",
+  "references": [
+    "Eisenberger, R., Stinglhamber, F., Vandenberghe, C., Sucharski, I. L., &amp; Rhoades, L. (2002). Perceived supervisor support: Contributions to perceived organizational support and employee retention. <em>Journal of Applied Psychology, 87</em>(3), 565–573. https://doi.org/10.1037/0021-9010.87.3.565",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Le, B. H., Duong, C. H., &amp; Nguyen, G. T. (2025). Perceived supervisor support and its impact to job performance: Dataset from the hospitality industry in Vietnam. <em>Data in Brief, 60</em>, 111649. https://doi.org/10.1016/j.dib.2025.111649",
+    "Ojo, A. O., Fawehinmi, O., &amp; Yusliza, M. Y. (2022). Survey data on the social, personal, and work resources associated with work engagement among knowledge workers in Malaysia amid the COVID-19 pandemic. <em>Data in Brief, 40</em>, 107690. https://doi.org/10.1016/j.dib.2021.107690",
+    "Rhoades, L., Eisenberger, R., &amp; Armeli, S. (2001). Affective commitment to the organization: The contribution of perceived organizational support. <em>Journal of Applied Psychology, 86</em>(5), 825–836. https://doi.org/10.1037/0021-9010.86.5.825",
+    "van Woerkom, M., &amp; Kroon, B. (2020). The effect of strengths-based performance appraisal on perceived supervisor support and the motivation to improve performance. <em>Frontiers in Psychology, 11</em>, 1883. https://doi.org/10.3389/fpsyg.2020.01883"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7438919/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8653410/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12151257/fullTextXML",
+    "https://api.crossref.org/works/10.1037/0021-9010.86.5.825",
+    "https://api.crossref.org/works/10.1037/0021-9010.87.3.565",
+    "https://api.crossref.org/works/10.3389/fpsyg.2020.01883",
+    "https://api.crossref.org/works/10.1016/j.dib.2021.107690",
+    "https://api.crossref.org/works/10.1016/j.dib.2025.111649",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8"
+  ],
+  "related": [
+    "ho-tro-to-chuc-pos",
+    "lmx-7",
+    "y-dinh-nghi-viec"
+  ]
+}

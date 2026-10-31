@@ -1,0 +1,155 @@
+{
+  "title": "Thang đo hành vi đổi mới sáng tạo tiếng Việt: Janssen (2000)",
+  "description": "Thang đo hành vi đổi mới sáng tạo tiếng Việt: 9 biến của Janssen (2000) cho tạo ý tưởng, thúc đẩy ý tưởng và hiện thực hoá ý tưởng, kèm bản gốc tiếng Anh.",
+  "name": "IWB",
+  "fullName": "Hành vi đổi mới sáng tạo trong công việc (Innovative Work Behaviour)",
+  "field": "Quản trị nhân sự & tổ chức",
+  "keyword": "thang đo hành vi đổi mới sáng tạo",
+  "intro": "Janssen (2000) định nghĩa hành vi đổi mới sáng tạo là việc người lao động chủ động tạo ra, giới thiệu và áp dụng ý tưởng mới trong công việc, nhóm hoặc tổ chức để cải thiện kết quả. Thang đo gồm 9 biến, chia đều cho ba giai đoạn của quá trình đổi mới: tạo ý tưởng, thúc đẩy ý tưởng và hiện thực hoá ý tưởng. Đây là thang đo hành vi đổi mới được trích nhiều nhất, hay dùng làm biến phụ thuộc trong các đề tài về lãnh đạo chuyển đổi, trao quyền tâm lý và chia sẻ tri thức, ví dụ nghiên cứu của Nguyen và cộng sự (2020) với nhân viên viễn thông Việt Nam.",
+  "responseScale": "Tần suất 7 mức (1 = Không bao giờ … 7 = Luôn luôn), người trả lời cho biết mình thực hiện từng hành vi thường xuyên đến đâu, như cách Letouche & Wille (2022) dùng. Nhiều nghiên cứu ở Việt Nam chuyển sang Likert đồng ý 5 mức, ví dụ Nguyen và cộng sự (2020).",
+  "responseScaleShort": "Tần suất 7 mức",
+  "constructs": [
+    {
+      "code": "IG",
+      "nameVi": "Tạo ý tưởng",
+      "nameEn": "Idea Generation",
+      "definition": "Mức độ người lao động nghĩ ra ý tưởng, cách làm và giải pháp mới cho vấn đề trong công việc.",
+      "source": "Janssen (2000), 3 biến; câu chữ đối chiếu theo phụ lục A của Albort-Morant và cộng sự (2020).",
+      "items": [
+        {
+          "code": "IG1",
+          "en": "Creating new ideas for difficult issues.",
+          "vi": "Tôi tạo ra ý tưởng mới cho những vấn đề khó."
+        },
+        {
+          "code": "IG2",
+          "en": "Searching out new working methods, techniques, or instruments.",
+          "vi": "Tôi tìm kiếm phương pháp, kỹ thuật hoặc công cụ làm việc mới."
+        },
+        {
+          "code": "IG3",
+          "en": "Generating original solutions for problems.",
+          "vi": "Tôi đưa ra giải pháp độc đáo cho các vấn đề."
+        }
+      ]
+    },
+    {
+      "code": "IP",
+      "nameVi": "Thúc đẩy ý tưởng",
+      "nameEn": "Idea Promotion",
+      "definition": "Mức độ người lao động vận động sự ủng hộ và chấp thuận của người khác cho ý tưởng mới.",
+      "source": "Janssen (2000), 3 biến; câu chữ đối chiếu theo phụ lục A của Albort-Morant và cộng sự (2020).",
+      "items": [
+        {
+          "code": "IP1",
+          "en": "Mobilizing support for innovative ideas.",
+          "vi": "Tôi vận động sự ủng hộ cho các ý tưởng đổi mới."
+        },
+        {
+          "code": "IP2",
+          "en": "Acquiring approval for innovative ideas.",
+          "vi": "Tôi tranh thủ sự chấp thuận cho các ý tưởng đổi mới."
+        },
+        {
+          "code": "IP3",
+          "en": "Making important organizational members enthusiastic for innovative ideas.",
+          "vi": "Tôi khiến những người có vai trò quan trọng trong tổ chức hào hứng với các ý tưởng đổi mới."
+        }
+      ]
+    },
+    {
+      "code": "IR",
+      "nameVi": "Hiện thực hoá ý tưởng",
+      "nameEn": "Idea Realization",
+      "definition": "Mức độ người lao động biến ý tưởng mới thành ứng dụng và đưa vào công việc thường ngày.",
+      "source": "Janssen (2000), 3 biến; câu chữ đối chiếu theo phụ lục A của Albort-Morant và cộng sự (2020).",
+      "items": [
+        {
+          "code": "IR1",
+          "en": "Transforming innovative ideas into useful applications.",
+          "vi": "Tôi biến các ý tưởng đổi mới thành ứng dụng hữu ích."
+        },
+        {
+          "code": "IR2",
+          "en": "Introducing innovative ideas into the work environment in a systematic way.",
+          "vi": "Tôi đưa các ý tưởng đổi mới vào môi trường làm việc một cách có hệ thống."
+        },
+        {
+          "code": "IR3",
+          "en": "Evaluating the utility of innovative ideas.",
+          "vi": "Tôi đánh giá tính hữu dụng của các ý tưởng đổi mới."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Janssen (2000) cộng ba thành phần thành một điểm chung vì chúng tương quan rất cao. Nếu đề tài chỉ dùng một biến hành vi đổi mới, có thể chạy CFA bậc hai hoặc dùng điểm trung bình 9 biến; nếu tách ba thành phần, phải kiểm tra giá trị phân biệt vì HTMT giữa chúng thường cao.",
+    "Biến gốc là cụm hành động không có chủ ngữ, đi sau câu dẫn hỏi về tần suất. Khi dịch, thêm 'Tôi' vào đầu hoặc đặt câu dẫn 'Bạn có thường xuyên…' và giữ nguyên phần hành động; đừng đổi sang thang đồng ý mà vẫn giữ câu dẫn tần suất.",
+    "Tự đánh giá dễ bị thổi phồng. Janssen (2000) thu cả đánh giá của cấp trên; nếu không làm được, nên giảm sai lệch phương pháp chung bằng cách tách thời điểm đo biến độc lập và biến phụ thuộc, rồi chạy kiểm định Harman.",
+    "Nguyen và cộng sự (2020) chỉ dùng 4 biến kế thừa từ nhiều tác giả; nếu rút gọn như vậy, ghi rõ biến nào lấy từ Janssen (2000) để hội đồng đối chiếu."
+  ],
+  "reliability": [
+    {
+      "construct": "Hành vi đổi mới sáng tạo (9 biến, một điểm chung)",
+      "value": "α = 0,95; ω = 0,97",
+      "sample": "n = 4.270 nhân viên một tổ chức dịch vụ lớn ở Bỉ, tần suất 7 mức",
+      "source": "Letouche & Wille (2022), mục Measures",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9110883/fullTextXML"
+    },
+    {
+      "construct": "Hành vi đổi mới sáng tạo (4 biến, bản tiếng Việt)",
+      "value": "α = 0,808",
+      "sample": "n = 396 nhân viên doanh nghiệp viễn thông Việt Nam, Likert 5 mức",
+      "source": "Nguyen và cộng sự (2020), Bảng 3",
+      "url": "http://www.growingscience.com/msl/Vol10/msl_2019_229.pdf"
+    }
+  ],
+  "vietnamStudies": [
+    {
+      "authors": "Nguyen, T. P. L., Tran, N. M., Doan, X. H., & Nguyen, V. H.",
+      "year": 2020,
+      "title": "The impact of knowledge sharing on innovative work behavior of Vietnam telecommunications enterprises employees",
+      "journal": "Management Science Letters, 10, 53–62",
+      "url": "https://doi.org/10.5267/j.msl.2019.8.016",
+      "note": "Khảo sát 396 nhân viên viễn thông, đo hành vi đổi mới bằng 4 biến kế thừa Scott & Bruce, Janssen và Bysted; α = 0,808. Cả cho đi và thu nhận tri thức đều tác động tích cực lên hành vi đổi mới."
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Ba thành phần của Janssen tương quan rất cao, em xử lý giá trị phân biệt thế nào?",
+      "a": "Janssen (2000) vốn gộp ba thành phần thành một thang đo chung vì chúng tương quan cao. Nếu giữ ba thành phần, em báo cáo HTMT theo Henseler, Ringle & Sarstedt (2015); vượt 0,90 thì nên mô hình hoá hành vi đổi mới như một khái niệm bậc hai hoặc dùng một điểm chung 9 biến."
+    },
+    {
+      "q": "Nhân viên tự đánh giá hành vi đổi mới của mình thì có tin được không?",
+      "a": "Đây là hạn chế cần thừa nhận. Janssen (2000) dùng cả tự đánh giá và đánh giá của cấp trên. Nếu chỉ có tự đánh giá, em nên trình bày kiểm định sai lệch phương pháp chung và nêu đây là giới hạn của đề tài."
+    }
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm, không có mô hình đường dẫn gốc. Cỡ mẫu tính theo mô hình của đề tài: ví dụ hành vi đổi mới nhận 3 mũi tên từ các biến độc lập thì phân tích power (f² = 0,15, α = 5%, power 0,80) cần tối thiểu 77 quan sát."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và chép lại trong nhiều bài truy cập mở; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Janssen (2000).",
+  "references": [
+    "Albort-Morant, G., Ariza-Montes, A., Leal-Rodríguez, A., &amp; Giorgi, G. (2020). How does positive work-related stress affect the degree of innovation development? <em>International Journal of Environmental Research and Public Health, 17</em>(2), 520. https://doi.org/10.3390/ijerph17020520",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Janssen, O. (2000). Job demands, perceptions of effort-reward fairness and innovative work behaviour. <em>Journal of Occupational and Organizational Psychology, 73</em>(3), 287–302. https://doi.org/10.1348/096317900167038",
+    "Letouche, S., &amp; Wille, B. (2022). Connecting the dots: Exploring psychological network analysis as a tool for analyzing organizational survey data. <em>Frontiers in Psychology, 13</em>, 838093. https://doi.org/10.3389/fpsyg.2022.838093",
+    "Nguyen, T. P. L., Tran, N. M., Doan, X. H., &amp; Nguyen, V. H. (2020). The impact of knowledge sharing on innovative work behavior of Vietnam telecommunications enterprises employees. <em>Management Science Letters, 10</em>, 53–62. https://doi.org/10.5267/j.msl.2019.8.016"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7013452/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12998079/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9110883/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5797748/fullTextXML",
+    "http://www.growingscience.com/msl/Vol10/msl_2019_229.pdf",
+    "https://api.crossref.org/works/10.1348/096317900167038",
+    "https://api.crossref.org/works/10.3390/ijerph17020520",
+    "https://api.crossref.org/works/10.3389/fpsyg.2022.838093",
+    "https://api.crossref.org/works/10.5267/j.msl.2019.8.016",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8"
+  ],
+  "related": [
+    "lanh-dao-chuyen-doi-glts",
+    "trao-quyen-tam-ly",
+    "hieu-qua-cong-viec"
+  ]
+}

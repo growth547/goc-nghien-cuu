@@ -1,0 +1,95 @@
+{
+  "title": "Thang đo niềm tin xanh tiếng Việt: Chen (2010), 5 biến",
+  "description": "Thang đo niềm tin xanh tiếng Việt: 5 biến của Chen (2010) đo niềm tin của người tiêu dùng vào cam kết môi trường của thương hiệu, kèm bản gốc tiếng Anh.",
+  "name": "Green Trust",
+  "fullName": "Niềm tin xanh (Green Trust)",
+  "field": "Hành vi người tiêu dùng",
+  "keyword": "thang đo niềm tin xanh",
+  "intro": "Niềm tin xanh là mức độ người tiêu dùng tin vào các cam kết, tuyên bố và kết quả bảo vệ môi trường của một thương hiệu. Chen (2010) đề xuất khái niệm này cùng hình ảnh thương hiệu xanh và sự hài lòng xanh như ba yếu tố dẫn tới tài sản thương hiệu xanh, kèm thang đo 5 biến. Thang đo hay được dùng làm biến trung gian giữa hoạt động marketing xanh hoặc hành vi tẩy xanh (greenwashing) với ý định mua sản phẩm xanh. Với đề tài ở Việt Nam, thang đo phù hợp cho các nghiên cứu về ý định mua sản phẩm xanh, thực phẩm hữu cơ hay thời trang bền vững.",
+  "responseScale": "Likert 7 mức (1 = Hoàn toàn không đồng ý … 7 = Hoàn toàn đồng ý), như Tong và cộng sự (2020) dùng; nhiều nghiên cứu khác dùng Likert 5 mức.",
+  "responseScaleShort": "Likert 7 mức",
+  "constructs": [
+    {
+      "code": "GT",
+      "nameVi": "Niềm tin xanh",
+      "nameEn": "Green Trust",
+      "definition": "Mức độ người tiêu dùng tin rằng thương hiệu đáng tin cậy và giữ đúng cam kết trong việc bảo vệ môi trường.",
+      "source": "Chen (2010), 5 biến; câu chữ đối chiếu theo Tong và cộng sự (2020).",
+      "items": [
+        {
+          "code": "GT1",
+          "en": "You feel that this brand’s environmental commitments are generally reliable.",
+          "vi": "Tôi thấy các cam kết về môi trường của [thương hiệu] nhìn chung là đáng tin cậy."
+        },
+        {
+          "code": "GT2",
+          "en": "You feel that this brand’s environmental performance is generally dependable.",
+          "vi": "Tôi thấy kết quả bảo vệ môi trường của [thương hiệu] nhìn chung là đáng tin."
+        },
+        {
+          "code": "GT3",
+          "en": "You feel that this brand’s environmental argument is generally trustworthy.",
+          "vi": "Tôi thấy những lập luận về môi trường mà [thương hiệu] đưa ra nhìn chung là đáng tin."
+        },
+        {
+          "code": "GT4",
+          "en": "This brand’s environmental concern meets your expectations.",
+          "vi": "Sự quan tâm đến môi trường của [thương hiệu] đáp ứng được kỳ vọng của tôi."
+        },
+        {
+          "code": "GT5",
+          "en": "This brand keeps its promises and commitments regarding environmental protection.",
+          "vi": "[Thương hiệu] giữ đúng lời hứa và cam kết về bảo vệ môi trường."
+        }
+      ]
+    }
+  ],
+  "usage": [
+    "Câu gốc viết ở ngôi thứ hai ('You feel…', 'your expectations'). Bản tiếng Việt nên chuyển về ngôi 'tôi' như trên; Dash (2026) cũng đổi thành 'I feel that…' và chỉ giữ 4 biến, bỏ câu về kỳ vọng.",
+    "Thay [thương hiệu] bằng tên thương hiệu hoặc loại sản phẩm cụ thể trong đề tài (ví dụ thương hiệu mỹ phẩm thuần chay mà người trả lời đang dùng). Nếu hỏi về một nhóm sản phẩm chung, ghi rõ trong câu dẫn để người trả lời không nghĩ tới nhiều thương hiệu cùng lúc.",
+    "Niềm tin xanh hay đi cùng nhận thức tẩy xanh, giá trị cảm nhận xanh và ý định mua xanh. Các khái niệm này có câu chữ gần nhau, nên chạy EFA chung trước rồi kiểm tra HTMT theo Henseler, Ringle & Sarstedt (2015).",
+    "Người trả lời có thể chưa biết gì về hoạt động môi trường của thương hiệu. Thêm câu sàng lọc hoặc phương án 'không rõ' ở phần đầu để tránh câu trả lời đoán mò dồn về mức giữa."
+  ],
+  "reliability": [
+    {
+      "construct": "Niềm tin xanh (5 biến)",
+      "value": "α = 0,797",
+      "sample": "Nghiên cứu 1, n = 211 người tham gia trực tuyến, Likert 7 mức",
+      "source": "Tong và cộng sự (2020), mục Measures của nghiên cứu 1",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7561679/fullTextXML"
+    }
+  ],
+  "examinerQA": [
+    {
+      "q": "Niềm tin xanh khác gì niềm tin thương hiệu thông thường?",
+      "a": "Niềm tin thương hiệu nói chung hỏi về chất lượng và sự trung thực của thương hiệu, còn niềm tin xanh trong Chen (2010) chỉ hỏi về cam kết, kết quả và tuyên bố liên quan đến môi trường. Nếu đề tài đo cả hai, em cần chứng minh giá trị phân biệt bằng HTMT theo Henseler, Ringle & Sarstedt (2015)."
+    },
+    {
+      "q": "Vì sao em đặt niềm tin xanh làm biến trung gian?",
+      "a": "Chen (2010) xem niềm tin xanh là một trong ba yếu tố dẫn tới tài sản thương hiệu xanh, và Tong và cộng sự (2020) kiểm định niềm tin xanh làm trung gian giữa chiến lược nhân hoá sản phẩm và ý định mua sản phẩm xanh. Em dựa vào hai nghiên cứu này để lập luận rằng hoạt động marketing xanh tác động tới ý định mua thông qua niềm tin."
+    }
+  ],
+  "sampleSize": {
+    "note": "Đây là thang đo một khái niệm. Cỡ mẫu tính theo biến nhận nhiều mũi tên nhất trong mô hình của đề tài; ví dụ niềm tin xanh nhận 3 mũi tên thì cần tối thiểu 77 quan sát (f² = 0,15, α = 5%, power 0,80)."
+  },
+  "license": "Các biến được công bố trong bài báo học thuật và chép lại trong các bài truy cập mở; không tìm thấy điều kiện sử dụng riêng của tác giả. Khi dùng, trích dẫn Chen (2010).",
+  "references": [
+    "Chen, Y.-S. (2010). The drivers of green brand equity: Green brand image, green satisfaction, and green trust. <em>Journal of Business Ethics, 93</em>(2), 307–319. https://doi.org/10.1007/s10551-009-0223-9",
+    "Dash, G. (2026). Determinants of green consumer loyalty in sustainable fashion: The mediating role of green brand trust. <em>Behavioral Sciences, 16</em>(7), 1207. https://doi.org/10.3390/bs16071207",
+    "Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. https://doi.org/10.1007/s11747-014-0403-8",
+    "Tong, Z., Li, T., Feng, J., &amp; Zhang, Q. (2020). Using images of eyes to enhance green brand purchase intentions through green brand anthropomorphism strategies: The moderator role of facial expression. <em>Frontiers in Psychology, 11</em>, 568595. https://doi.org/10.3389/fpsyg.2020.568595"
+  ],
+  "verifiedFrom": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7561679/fullTextXML",
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13404432/fullTextXML",
+    "https://api.crossref.org/works/10.1007/s10551-009-0223-9",
+    "https://api.crossref.org/works/10.3389/fpsyg.2020.568595",
+    "https://api.crossref.org/works/10.3390/bs16071207",
+    "https://api.crossref.org/works/10.1007/s11747-014-0403-8"
+  ],
+  "related": [
+    "moi-quan-tam-moi-truong",
+    "y-dinh-mua",
+    "niem-tin-trung-thanh-thuong-hieu"
+  ]
+}

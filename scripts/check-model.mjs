@@ -264,7 +264,8 @@ api.autoArrange(arr, { measure: t => t.length * 7 });
 const ab = arr.nodes.map(n => api.boxOf(n, { measure: t => t.length * 7 }));
 check(arr.nodes.every(n => n.x % 20 === 0 && n.y % 20 === 0) && !ab.some((p, i) => ab.some((q, j) => i !== j && api.overlaps(p, q))), "auto layout: snapped to the grid, no overlaps");
 check(arr.nodes.find(n => n.id === "PEOU").x < arr.nodes.find(n => n.id === "PU").x && arr.nodes.find(n => n.id === "PU").x < arr.nodes.find(n => n.id === "BI").x, "auto layout: PEOU left, PU middle, BI right");
-check(api.boxOf({ id: "X", name: "X" }).h === 46 && api.boxOf({ id: "PU", name: "Nhận thức sự hữu ích" }, { showCode: true, measure: t => t.length * 7 }).lines.join(" ") === "Nhận thức sự hữu ích (PU)", "boxOf: label with code, minimum height");
+const ny = (m, id) => m.nodes.find(n => n.id === id).y;
+check(ny(arr, "PU") < ny(arr, "PEOU") - 46 && ny(arr, "PEOU") === ny(arr, "BI"), "auto layout: TAM as the mediation triangle, PU raised above the PEOU → BI line");check(api.boxOf({ id: "X", name: "X" }).h === 46 && api.boxOf({ id: "PU", name: "Nhận thức sự hữu ích" }, { showCode: true, measure: t => t.length * 7 }).lines.join(" ") === "Nhận thức sự hữu ích (PU)", "boxOf: label with code, minimum height");
 const placed = tam();
 api.placeNew(placed, {});
 api.addNode(placed, "Rủi ro cảm nhận", null, "PR");
@@ -575,6 +576,8 @@ check(new URLSearchParams(api.kitQuery(tamT).slice(1)).get("c") === "tam:PEOU,ta
 // ---- 4. auto-layout ----
 const M7 = t => t.length * 7;
 const arr2 = (m, dir) => { api.autoArrange(m, { measure: M7, dir }); return new Map(m.nodes.map(n => [n.id, api.boxOf(n, { measure: M7 })])); };
+const ecmT = api.templateModel(api.TEMPLATES.find(t => t.id === "ecm"), byKey), ecmB = arr2(ecmT), ey = id => ecmB.get(id).y + ecmB.get(id).h / 2;
+check(ey("PU") < ey("CONF") && ey("SAT") > ey("CONF") && Math.abs(ey("CONF") - ey("CI")) <= 20, `auto layout: ECM as in Bhattacherjee (2001), PU above, satisfaction below the confirmation → continuance line (${["CONF", "PU", "SAT", "CI"].map(ey).join(", ")})`);
 const noOverlap = bx => { const v = [...bx.values()]; return !v.some((p, i) => v.some((q, j) => i < j && api.overlaps(p, q, 8))); };
 const ut = api.templateModel(api.TEMPLATES.find(t => t.id === "utaut2"), byKey);
 let ub = arr2(ut);

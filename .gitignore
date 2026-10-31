@@ -38,3 +38,6 @@ docs/launch/reels/*.png
 
 # UI snapshots (scripts/ui-snapshots.py)
 ui-shots/
+
+# python bytecode (scripts/video)
+__pycache__/

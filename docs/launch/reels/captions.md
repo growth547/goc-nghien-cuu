@@ -1,5 +1,59 @@
 # Caption 3 video Reels / TikTok
 
+## Bản v4 "Cú trực đêm" (31/10/2026, dựng bằng `scripts/video/studio.py`)
+
+Đây là các video có cú Nghiên lồng tiếng, quay màn hình thật trên https://gocnghiencuu.com/ và dùng dữ liệu mẫu có sẵn trong công cụ:
+
+- `reel-1-pls-sem-v4.mp4`
+- `reel-2-cronbach-v4.mp4`
+- `reel-3-ve-mo-hinh-v4.mp4`
+
+Video đã có nhạc và hiệu ứng tiếng riêng, nên không cần thêm nhạc trong app.
+
+- Trên Instagram, link trong caption không bấm được, nên ghi "link ở bio".
+- Trên Facebook thì để link.
+
+### v4 Reel 1: PLS-SEM
+
+```
+2 giờ sáng, SmartPLS hết hạn dùng thử, mai nộp chương 4. Quen không? 🦉
+
+Cú Nghiên chạy PLS-SEM ngay trên trình duyệt, không cài gì, miễn phí: bootstrap 5.000 mẫu trong vài giây, có hệ số tải, CR, AVE, HTMT, kiểm định giả thuyết và file Word soạn sẵn đoạn văn (nhớ đọc lại cho khớp đề tài nha). Video dùng dữ liệu mẫu của công cụ.
+
+Gửi đứa bạn còn thức vì chương 4 👇
+Link ở bio · gocnghiencuu.com
+
+#khoaluan #plssem #smartpls #sinhvien #nckh #chuong4
+```
+
+### v4 Reel 2: Cronbach's alpha
+
+```
+Alpha ra 0,28 đừng vội xoá câu hỏi! 🦉
+
+Tương quan biến–tổng âm thường là câu đảo chiều chưa đảo điểm. Trong video (dữ liệu mẫu), đảo điểm TC3 xong alpha của thang đo TC lên 0,759. Biến yếu thật thì bấm Loại, công cụ ghi cả lần 1 và lần 2, kèm đoạn văn chương 4 có trích dẫn. Miễn phí, chạy trên trình duyệt.
+
+Gửi đứa bạn sắp xoá câu hỏi oan 👇
+Link ở bio · gocnghiencuu.com
+
+#khoaluan #cronbachalpha #spss #sinhvien #nckh #luanvan
+```
+
+### v4 Reel 3: Vẽ mô hình nghiên cứu
+
+```
+Vẽ mô hình bằng Word, xê một ô là lệch hết mũi tên? 🦉
+
+Dán giả thuyết H1, H2… là ra sơ đồ; giả thuyết ngược chiều tự vẽ nét đứt. Danh sách giả thuyết viết sẵn, có mẫu TAM, TPB, UTAUT2, tải PNG hoặc SVG chèn vào luận văn. Giả thuyết vẫn cần bạn dẫn lý thuyết ở chương 2 nha.
+
+Gửi đứa bạn đang vẽ mô hình bằng Word 👇
+Link ở bio · gocnghiencuu.com
+
+#khoaluan #mohinhnghiencuu #smartpls #sinhvien #nckh #luanvan
+```
+
+## Bản cũ (không tiếng, 31/10/2026)
+
 Video dựng từ ảnh chụp màn hình thật trên https://gocnghiencuu.com/ (ngày 31/10/2026), dùng dữ liệu mẫu có sẵn trong công cụ. File video và ảnh bìa (`reel-*.mp4`, `cover-*.png`) nằm cùng thư mục này nhưng không commit vào git. Video không có lời đọc, chỉ có chữ trên màn hình và một rãnh âm thanh im lặng; khi đăng có thể chọn nhạc nền trong app. Nhớ đặt link https://gocnghiencuu.com/ ở bio trước khi đăng.
 
 ## Video 1: reel-1-pls-sem.mp4

@@ -6,11 +6,6 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 
 ## Chờ viết
 
-- chay-spss-can-bao-nhieu-mau | chạy spss cần bao nhiêu mẫu | dẫn sang máy tính cỡ mẫu
-- cach-tinh-co-mau-theo-cong-thuc-slovin | công thức slovin, yamane | khi nào không nên dùng
-- bang-krejcie-morgan | bảng krejcie morgan | Krejcie & Morgan 1970
-- phan-tich-tuong-quan-pearson | tương quan pearson spss | ngưỡng Cohen 1988
-- cfa-amos-chi-so-phu-hop | cfa amos, chỉ số phù hợp mô hình | Hu & Bentler 1999
 - common-method-bias | common method bias, harman | Podsakoff 2003, Kock 2015
 - mo-hinh-tam-la-gi | mô hình tam | Davis 1989, dẫn thang đo TAM
 - mo-hinh-utaut2 | mô hình utaut2 | Venkatesh 2012
@@ -55,4 +50,9 @@ Mỗi dòng: `slug đề xuất | truy vấn chính | ghi chú`.
 - likert-la-thang-do-khoang-hay-thu-bac | likert là thang đo khoảng cách hay thứ bậc | Norman 2010, Carifio & Perla | đã viết: /posts/likert-la-thang-do-khoang-hay-thu-bac/
 - thang-do-goc-ke-thua-hieu-chinh-la-gi | thang đo gốc là gì, thang đo kế thừa, thang đo hiệu chỉnh | dẫn sang thư viện thang đo | đã viết: /posts/thang-do-goc-ke-thua-hieu-chinh-la-gi/
 - dich-nguoc-back-translation-la-gi | back translation là gì, dịch thang đo | Brislin 1970, quy trình chi tiết | đã viết: /posts/dich-nguoc-back-translation-la-gi/
+- chay-spss-can-bao-nhieu-mau | chạy spss cần bao nhiêu mẫu | dẫn sang máy tính cỡ mẫu | trùng bài có sẵn (mục EFA, hồi quy): /posts/co-mau-nghien-cuu-bao-nhieu-la-du/ (31/10/2026)
+- cach-tinh-co-mau-theo-cong-thuc-slovin | công thức slovin, yamane | khi nào không nên dùng | trùng bài có sẵn (mục Slovin và Yamane): /posts/co-mau-nghien-cuu-bao-nhieu-la-du/ (31/10/2026)
+- bang-krejcie-morgan | bảng krejcie morgan | Krejcie & Morgan 1970 | trùng bài có sẵn (mục bảng Krejcie & Morgan): /posts/co-mau-nghien-cuu-bao-nhieu-la-du/ (31/10/2026)
+- phan-tich-tuong-quan-pearson | tương quan pearson spss | Cohen 1988, Gignac & Szodorai 2016, Bishara & Hittner 2012, Anscombe 1973 (DOI đã kiểm tra) | đã viết: /posts/phan-tich-tuong-quan-pearson/ (31/10/2026)
+- cfa-amos-chi-so-phu-hop | cfa amos, chỉ số phù hợp mô hình | Hu & Bentler 1999, Browne & Cudeck 1992, MacCallum 1996, Sharma 2005 (DOI đã kiểm tra) | đã viết: /posts/cfa-amos-chi-so-phu-hop/ (31/10/2026)
 - (xem git log của src/content/posts)
